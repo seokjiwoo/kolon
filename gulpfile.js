@@ -36,6 +36,7 @@ gulp.task('server', function() {
 			baseDir: './dist/html/',
 			routes: {
 				"/css": "./dist/css",
+				"/font": "./dist/font",
 				"/images": "./dist/images",
 				"/js": "./dist/js"
 			}
@@ -94,9 +95,21 @@ gulp.task('jsBundlePreview', function() {
 		.pipe(browserSync.reload({stream: true}));
 });
 
+/**
+ * 이미지 파일 복사
+ */
 gulp.task('imagePass', function() {
 	return gulp.src('src/images/**')
 		.pipe(gulp.dest('dist/images'))
+		.pipe(browserSync.reload({stream: true}));
+});
+
+/**
+ * 폰트 파일 복사
+ */
+gulp.task('fontPass', function() {
+	return gulp.src('src/font/**')
+		.pipe(gulp.dest('dist/font'))
 		.pipe(browserSync.reload({stream: true}));
 });
 
@@ -121,10 +134,11 @@ gulp.task('watch', function() {
 	gulp.watch('src/**/*.css', ['minifycss']);
 	gulp.watch('src/**/*.html', ['minifyhtml']);
 	gulp.watch('src/images/*', ['imagePass']);
+	gulp.watch('src/font/*', ['fontPass']);
 });
 
 // 빌드
-gulp.task('build', ['jsBundlePreview', 'bowerBundle', 'minifycss', 'minifyhtml', 'imagePass']);
+gulp.task('build', ['jsBundlePreview', 'bowerBundle', 'fontPass', 'minifycss', 'minifyhtml', 'imagePass']);
 
 // gulp를 실행하면 수행할 default 작업
 gulp.task('default', function (done) {
