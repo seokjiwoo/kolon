@@ -1,0 +1,19 @@
+{
+  "name": "kolon-uppp",
+  "description": "Kolon UPPP web site",
+  "main": "main.js",
+  "authors": [
+    "VinylX"
+  ],
+  "license": "UNLICENSED",
+  "moduleType": [],
+  "homepage": "http://vinyl-x.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
