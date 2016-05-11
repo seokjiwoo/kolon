@@ -65,10 +65,9 @@ gulp.task('bowerBundle', function() {
 	return gulp.src('bower.json')
 		.pipe(mainBowerFiles({
             overrides: {
-                "iscroll": {
-                    "main": "build/iscroll-zoom.js"
-                }, "crypto-js": {
-                    "main": ["index.js", "core.js", "x64-core.js", "lib-typedarrays.js", "md5.js"]
+                "isotope": {
+                    "main": ["dist/isotope.pkgd.js"],
+					"dependencies": {}
                 }
             }
         }))
