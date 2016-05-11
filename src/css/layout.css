@@ -1,0 +1,43 @@
+body{line-height:1;font-family:'RobotoL','NotoSansL', sans-serif}
+a{text-decoration:none;}
+a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
+ul, ol, li{list-style:none;padding:0;margin:0;}
+fieldset{border:0;padding:0;margin:0;}
+h1, h2, h3, h4, h5, h6, p{margin:0;font-weight:normal;}
+input, textarea, button, select, option, {line-height:1;font-family:'RobotoL','NotoSansL', sans-serif;border:0;outline:0;background:none}
+b,strong{font-weight:normal;}
+.hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
+
+.wrapper{background:#e0e0e0;}
+.topBanner{display: none;}
+.main .topBanner{display: block;}
+.login .btnLogin{display: none;}
+
+.topMenu{overflow: hidden;position: fixed;left: 0;top: 0;right: 0;height: 60px;background: #fff;box-shadow:0px 2px #c9c9c9;z-index: 1;}
+.topMenu .topL{float: left;width:55%;height: 100%;}
+.topMenu .topL .btnLnb{float: left;width: 80px;height:60px;background:url('../images/btn_menu.png') no-repeat center;}
+.topMenu .topL .logo{float: left;vertical-align: top;}
+.topMenu .topL .logo a{display: block;padding: 15px 0;}
+.topMenu .topL .menu{overflow: hidden;margin-left: 25%;}
+.topMenu .topL .menu li{float: left;width:20%;text-align: center;}
+.topMenu .topL .menu li a{display: block;padding: 22px 0;font-family:'RobotoM','NotoSansB', sans-serif;color:#333;font-size:16px;}
+
+.topMenu .topR{float: left;width:45%;height: 100%;text-align: center;}
+.topMenu .topR .searchWrap{display: inline-block;padding:17px 0;}
+.topMenu .topR .searchWrap #searchTxt{width: 230px;border:0;border-bottom:1px solid #f1645c;}
+.topMenu .topR .searchWrap button{width:20px;height:20px;font-size:0;background: url('../images/ico_search.png') no-repeat center;border:0;}
+.topMenu .topR .member{float:right;margin-right:30px;padding: 10px 0;}
+.topMenu .topR .member a{display: inline-block;vertical-align: middle;}
+.topMenu .topR .member .name{font-family:'RobotoR','NotoSansR', sans-serif;color: #737373;}
+.topMenu .topR .member .name:after{content:'';display: inline-block;width: 20px;height: 18px;margin:0 10px 0 5px;background: url('../images/ico_home.png') no-repeat;vertical-align: bottom;}
+.topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
+.topMenu .topR .member .pic img{width: 100%;}
+.topMenu .topR .btnLogin{float:right;}
+
+.lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: 0;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
+.lnb .profile{background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom}
+.lnb .profile .close{float: left;display: block;width: 80px;height:60px;background: url('../images/btn_close.png') no-repeat center}
+.lnb .profile .setting{float: right;display: block;width: 80px;height:60px;background: url('../images/btn_set.png') no-repeat center}
+.lnb .profile .logoL{display: block;margin:0 80px;}
+
+.container{max-width: 1520px;height: 1500px;margin:0 auto;padding-top: 60px;}
