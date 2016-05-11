@@ -1,4 +1,4 @@
-body{line-height:1;font-family:'RobotoL','NotoSansL', sans-serif}
+body{margin:0;line-height:1;font-family:'RobotoL','NotoSansL', sans-serif}
 a{text-decoration:none;}
 a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
 ul, ol, li{list-style:none;padding:0;margin:0;}
@@ -6,6 +6,7 @@ fieldset{border:0;padding:0;margin:0;}
 h1, h2, h3, h4, h5, h6, p{margin:0;font-weight:normal;}
 input, textarea, button, select, option, {line-height:1;font-family:'RobotoL','NotoSansL', sans-serif;border:0;outline:0;background:none}
 b,strong{font-weight:normal;}
+ul, li{list-style:none;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
 .wrapper{background:#e0e0e0;letter-spacing:-0.5px;}
@@ -34,8 +35,9 @@ b,strong{font-weight:normal;}
 .topMenu .topR .member .pic img{width: 100%;}
 .topMenu .topR .btnLogin{float:right;}
 
-.lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: 0;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
-.lnb .profile{background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;text-align: center;}
+.lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);text-align: center;}
+.lnb .profile{min-height:420px;background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;}
+.lnb .profile .count{border-radius:10px;padding:4px 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;}
 .lnb .profile .close{float: left;display: block;width: 80px;height:60px;background: url('../images/btn_close.png') no-repeat center}
 .lnb .profile .setting{float: right;display: block;width: 80px;height:60px;background: url('../images/btn_set.png') no-repeat center}
 .lnb .profile .logoL{display: block;margin:0 80px;padding:17px 0;text-align: center;}
@@ -49,11 +51,25 @@ b,strong{font-weight:normal;}
 .lnb .profile .btnList .btnList02{background-position: -22px 0;}
 .lnb .profile .btnList .btnList03{background-position: -44px 0;}
 .lnb .profile .btnList .btnList04{background-position: -66px 0;}
-.lnb .profile .btnList .count{position: absolute;top:-10px;right:-20px;background:#a11b13;border-radius:10px;padding:4px 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;}
+.lnb .profile .btnList .count{position: absolute;top:-10px;right:-20px;background:#a11b13;}
 .lnb .profile .btnMypage{display: inline-block;margin-top:20px;padding:11px 30px;background:#fff;border-radius:20px;font-size:13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;color: #000;}
 .lnb .profile .btnMypage:after{content:'';display: inline-block;width: 20px;height: 18px;margin-left:5px;background: url('../images/ico_home.png') no-repeat;vertical-align: bottom; }
-.lnb .profile
-.lnb .profile
-
+.lnb .profile .myMenu{display: none;margin-top:18px;padding:0 30px;text-align: left;}
+.lnb .profile .myMenu li{position: relative;border-top:1px solid #f4837d;}
+.lnb .profile .myMenu li:first-child{border:0;}
+.lnb .profile .myMenu li a{display:block; padding:10px 0 10px 10px;color: #fff;font-size:14px;}
+.lnb .profile .myMenu .count{float: right;margin-top: -2px;background: #d64e48;}
+.lnb .profile .menuToggle{display: block;padding:20px 0;}
+.lnb .profile .menuToggle img{display: block;margin: 0 auto}
+.lnb .leftMenu{margin-top:13px;padding: 0 30px;line-height: 2em;text-align: left;}
+.lnb .leftMenu a{display: block;font-size:14px;}
+.lnb .leftMenu .depth01{padding:5px 0;border-bottom:1px solid #f2f2f2;font-family:'RobotoM','NotoSansM', sans-serif;color:#333;}
+.lnb .leftMenu .depth01 .toggle{float:right;display: inline-block;width:12px;height:8px;margin-top:12px;background:url('../images/ico_lnb.png')}
+.lnb .leftMenu .depth02{display: none;padding:10px 0;border-bottom:1px solid #f2f2f2;}
+.lnb .leftMenu .depth02 a{padding:0 10px;font-family:'RobotoR','NotoSansR', sans-serif;color:#666;}
+.lnb .leftMenu .depth02 b{color:#bdcb6b;}
+.lnb .btnLog{overflow: hidden;display: inline-block;margin:52px auto;padding:10px 30px;border-radius:15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;}
+.login .lnb .in{display: none;} 
+.logout .lnb .out{display: none;}
 
 .container{max-width: 1520px;height: 1500px;margin:0 auto;padding-top: 60px;}
