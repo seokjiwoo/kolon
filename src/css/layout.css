@@ -8,7 +8,7 @@ input, textarea, button, select, option, {line-height:1;font-family:'RobotoL','N
 b,strong{font-weight:normal;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
-.wrapper{background:#e0e0e0;}
+.wrapper{background:#e0e0e0;letter-spacing:-0.5px;}
 .topBanner{display: none;}
 .main .topBanner{display: block;}
 .login .btnLogin{display: none;}
@@ -35,9 +35,25 @@ b,strong{font-weight:normal;}
 .topMenu .topR .btnLogin{float:right;}
 
 .lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: 0;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
-.lnb .profile{background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom}
+.lnb .profile{background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;text-align: center;}
 .lnb .profile .close{float: left;display: block;width: 80px;height:60px;background: url('../images/btn_close.png') no-repeat center}
 .lnb .profile .setting{float: right;display: block;width: 80px;height:60px;background: url('../images/btn_set.png') no-repeat center}
-.lnb .profile .logoL{display: block;margin:0 80px;}
+.lnb .profile .logoL{display: block;margin:0 80px;padding:17px 0;text-align: center;}
+.lnb .profile .pic{overflow: hidden;width:100px;height:100px;border-radius: 50%;margin:20px auto;}
+.lnb .profile .pic img{display: block;width: 100%;}
+.lnb .profile .profileInfo{color:#fff;font-size:13px;line-height: 1.3em}
+.lnb .profile .profileInfo span{font-size:16px;}
+.lnb .profile .btnList{margin-top:10px;font-size: 0;}
+.lnb .profile .btnList li{position: relative;display: inline-block;width:22px;height: 22px;margin:0 7px;background-image: url('../images/btn_profile.png');}
+.lnb .profile .btnList .btnList01{background-position: 0 0;}
+.lnb .profile .btnList .btnList02{background-position: -22px 0;}
+.lnb .profile .btnList .btnList03{background-position: -44px 0;}
+.lnb .profile .btnList .btnList04{background-position: -66px 0;}
+.lnb .profile .btnList .count{position: absolute;top:-10px;right:-20px;background:#a11b13;border-radius:10px;padding:4px 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;}
+.lnb .profile .btnMypage{display: inline-block;margin-top:20px;padding:11px 30px;background:#fff;border-radius:20px;font-size:13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;color: #000;}
+.lnb .profile .btnMypage:after{content:'';display: inline-block;width: 20px;height: 18px;margin-left:5px;background: url('../images/ico_home.png') no-repeat;vertical-align: bottom; }
+.lnb .profile
+.lnb .profile
+
 
 .container{max-width: 1520px;height: 1500px;margin:0 auto;padding-top: 60px;}
