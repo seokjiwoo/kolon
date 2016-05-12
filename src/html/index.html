@@ -14,7 +14,7 @@
 			<div class="topBanner"></div><!-- 메인에서만 제공 -->
 			<div class="topMenu">
 				<div class="topL">
-					<a href="" class="btnLnb"></a>
+					<a href="" class="btnLnb" id="btnLnb"></a>
 					<h1 class="logo"><a href="index.html"><img src="images/logo.png" alt="uppp"></a></h1>
 					<ul class="menu">
 						<li><a href="">리빙서비스</a></li>
@@ -25,6 +25,7 @@
 					</ul>
 				</div>
 				<div class="topR">
+					<a href="" class="searchOpen"></a>
 					<div class="searchWrap">
 						<form action="">
 							<fieldset>
@@ -43,9 +44,9 @@
 				</div>
 			</div>
 		</header>
-		<aside class="lnb">
+		<aside class="lnb" id="lnb">
 			<div class="profile">
-				<a href="" class="close"></a>
+				<a href="" class="close" id="profileClose"></a>
 				<a href="" class="setting"></a>
 				<a href="" class="logoL"><img src="images/logoW.png" alt="UPPP"></a>
 				<div class="pic"><img src="images/temp01.jpg" alt=""></div>
@@ -57,14 +58,14 @@
 					<li class="btnList04"><a href="">마이카트<span class="count">16</span></a></li>
 				</ul>
 				<a href="" class="btnMypage">나의 UPPP</a>
-				<ul class="myMenu">
+				<ul class="myMenu" id="myMenu">
 					<li><a href="">진행 중인 주문/배송<span class="count">16</span></a></li>
 					<li><a href="">취소/반품/교환<span class="count">16</span></a></li>
 					<li><a href="">최근 본 상품<span class="count">16</span></a></li>
 					<li><a href="">나의 시공중인 상품<span class="count">16</span></a></li>
 					<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>
 				</ul>
-				<a href="" class="menuToggle"><img src="images/btn_profile_down.png" alt="toggle"></a>
+				<a href="" class="menuToggle" id="menuToggle"><img src="images/btn_profile_down.png" alt="toggle"></a>
 			</div>
 			<ul class="leftMenu">
 				<li>
@@ -121,29 +122,111 @@
 			<a href="" class="btnLog"><span class="out">로그아웃</span><span class="in">로그인</span></a>
 		</aside>
 		<div class="container">
+			<div class="arrayWrap">
+				<ul class="arrayDrop arrayCat">
+					<li><a href="">모든 카드</a></li>
+					<li><a href="">홈인테리어</a></li>
+					<li><a href="">홈드레싱</a></li>
+					<li><a href="">리빙아이템</a></li>
+					<li><a href="">홈즈매거진</a></li>
+				</ul>
+				<ul class="arrayDrop arrayCount">
+					<li><a href="">최신순</a></li>
+					<li><a href="">인기순</a></li>
+					<li><a href="">가격높은순</a></li>
+					<li><a href="">가격낮은순</a></li>
+					<li><a href="">스크랩 많은 순</a></li>
+				</ul>
+			</div>
+			<!-- 카드 모듈
+				cardType01 -> 메거진-뉴스
+				cardType02 -> 메거진-리뷰
+				cardType03 -> 메거진-팁
+				cardType04 -> 배송형
+				cardType05 -> 시공형
+				cardType06 -> 개인화-알림
+				cardType07 -> 개인화-수집
+				cardType08 -> 개인화-추천
+				cardType09 -> 기능-검색
+				cardType10 -> 기능-연결 
+				cardType11 -> 기능-소개
+
+				cardSize01 -> 285x320
+				cardSize02 -> 285x490
+				cardSize03 -> 285x660
+				cardSize04 -> 590x754
+			 -->
+			<ul class="cardWrap" id="cardWrap">
+				<li class="cardType06 cardSize04" style="background-image: url('images/temp02.jpg')">
+					<div>
+						<p class="cardDate">2016.04</p>
+						<h2 class="cardTit">현재  UPPP를 통해 <br>임대관리 중인 고객님의 부동산</h2>
+						<a  href="" class="cardEnter"><img src="images/btn_card_more.png" alt=""></a>
+						<img src="images/bg_card_top02.png" alt="" class="cardTop">
+						<img src="images/bg_card_btm02.png" alt="" class="cardBtm">
+					</div>
+				</li>
+				<li class="cardType06 cardSize01">
+					<div>
+						<a href="" class="cardRemove"></a>
+						<h2 class="cardTit">공간 알림신청</h2>
+						<p class="cardSub">찾으시는 공간이 없나요?</p>
+						<p class="cardIntro">원하시는 공간의 조건을 말씀해주시면 <br>UPPP가 알려드리겠습니다.</p>
+						<a  href="" class="cardEnter"><img src="images/btn_card_moreW.png" alt=""></a>
+						<img src="images/bg_card_top01.png" alt="" class="cardTop">
+						<img src="images/bg_card_btm01.png" alt="" class="cardBtm">
+					</div>
+				</li>
+				<li class="cardType01 cardSize03"  style="background-image: url('images/temp03.jpg')">
+					<div>
+						<p class="cardCat">MAGAZINE</p>
+						<h2 class="cardTit">2016<br> 부동산 경제를<br> 움직이는 인물들 </h2>
+						<p class="cardIntro">오피니언 리더 11인이 전하는 <br>대한민국 부동산·경제 해법</p>
+						<div class="cardDetail">
+							<div class="cardDetailWrap">
+								<span class="like">886</span><span class="comt">120</span>
+							</div>
+						</div>
+						<img src="images/bg_card_top01.png" alt="" class="cardTop">
+						<img src="images/bg_card_btm01.png" alt="" class="cardBtm">
+					</div>
+				</li>
+				<li class="cardType05 cardSize02"  style="background-image: url('images/temp09.jpg')">
+					<div>
+						<h2 class="cardTit">코울 1등 펜던트 <br>블랙or화이트</h2>
+						<p class="cardSub">바탕 컬러가 베이지 톤에 가까운 아이보리 <br>컬러라서 블랙과도 부드러운 조화를 이루는 <br>쿠션이에요. 20수 옥스포드 소재로 톡톡한 <br>표면감과 두께감을 지녔습니다.</p>
+						<p class="cardIntro"><b>49,600</b>원</p>
+						<ul class="tag">
+							<li>#페브릭</li>
+							<li>#쿠션</li>
+							<li>#쿠션커버</li>
+						</ul>
+						<div class="cardDetail">
+							<div class="cardDetailWrap">
+								<span class="like">886</span><span class="comt">120</span>
+								<div class="cardAuthorPic"><img src="images/temp01.jpg" alt=""></div>
+								<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+							</div>
+						</div>
+						<img src="images/bg_card_top01.png" alt="" class="cardTop">
+						<img src="images/bg_card_btm01.png" alt="" class="cardBtm">
+					</div>
+				</li>
+				<li class="cardType06 cardSize01">
+					<div>
+						<a href="" class="cardRemove"></a>
+						<h2 class="cardTit">03.23</h2>
+						<p class="cardSub">시공 시작 일입니다.</p>
+						<p class="cardIntro">원하시는 공간의 조건을 말씀해주시면 <br>UPPP가 알려드리겠습니다.</p>
+						<a  href="" class="cardEnter"><img src="images/btn_card_moreW.png" alt=""></a>
+						<img src="images/bg_card_top01.png" alt="" class="cardTop">
+						<img src="images/bg_card_btm01.png" alt="" class="cardBtm">
+					</div>
+				</li>
+			</ul>
 			<adide class="floating"></adide>
 			<footer></footer>
 		</div>
 	</div>
-	<script>
-		jQuery(function($) {
-			$('.btnLnb').click(function(e){
-				e.preventDefault();
-				$('.lnb').animate({'left':'0'}, 500);
-			});
-			$('.profile .close').click(function(e){
-				e.preventDefault();
-				$('.lnb').animate({'left':'-285px'}, 500);
-			});
-			$('.depth01').click(function(e){
-				e.preventDefault();
-				$(this).siblings().slideToggle();
-			});
-			$('.menuToggle').click(function(e){
-				e.preventDefault();
-				$('.myMenu').slideToggle();
-			});
-		});
-	</script>
 </body>
 </html>

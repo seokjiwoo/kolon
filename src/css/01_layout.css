@@ -9,12 +9,12 @@ b,strong{font-weight:normal;}
 ul, li{list-style:none;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
-.wrapper{background:#e0e0e0;letter-spacing:-0.5px;}
+.wrapper{background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
 .topBanner{display: none;}
 .main .topBanner{display: block;}
 .login .btnLogin{display: none;}
 
-.topMenu{overflow: hidden;position: fixed;left: 0;top: 0;right: 0;height: 60px;background: #fff;box-shadow:0px 2px #c9c9c9;z-index: 1;}
+.topMenu{overflow: hidden;position: fixed;left: 0;top: 0;right: 0;height: 60px;background: #fff;box-shadow:0px 2px #c9c9c9;z-index: 2;}
 .topMenu .topL{float: left;width:55%;height: 100%;}
 .topMenu .topL .btnLnb{float: left;width: 80px;height:60px;background:url('../images/btn_menu.png') no-repeat center;}
 .topMenu .topL .logo{float: left;vertical-align: top;}
@@ -72,4 +72,56 @@ ul, li{list-style:none;}
 .login .lnb .in{display: none;} 
 .logout .lnb .out{display: none;}
 
-.container{max-width: 1520px;height: 1500px;margin:0 auto;padding-top: 60px;}
+.container{max-width: 1520px;height: 1500px;margin:0 auto;padding-top: 90px;}
+
+.arrayWrap{clear: both}
+.arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
+.arrayWrap .arrayDrop:after{content:'';position: absolute;top: 15px;right: 10px;width:12px;height:8px;background:url('../images/ico_lnb.png') no-repeat;}
+.arrayWrap .arrayDrop li{width: 100%;height:100%;}
+.arrayWrap .arrayDrop li a{display: block;padding:12px 40px 12px 15px;font-family:'RobotoR','NotoSansR', sans-serif;color:#666;font-size: 13px;}
+.arrayWrap .arrayDrop.arrayCount{float: right;}
+
+.cardWrap{overflow: hidden;min-width:1024px;max-width:1520px;margin:40px auto;}
+.cardWrap li{float: left;width:285px;margin-bottom: 10px;background-color:#fff;padding:80px 0;text-align: center;color:#fefefe;}
+.cardWrap .cardSize01{height:160px;}
+.cardWrap .cardSize02{height:330px;}
+.cardWrap .cardSize03{height:500px;}
+.cardWrap .cardSize04{width:590px;height:585px;}
+.cardWrap .cardType06{background-color: #f1645c;}
+.cardWrap .cardSize04.cardType06{background-color: #fff;color:#000;}
+
+
+.cardWrap li > div{position: relative;display: block;width:100%;height:100%;}
+.cardWrap li .cardTop{position: absolute;top:-80px;left:0;z-index: 0}
+.cardWrap li .cardBtm{position: absolute;bottom:-80px;left:0;z-index: 0}
+.cardWrap li .cardEnter{position: absolute;left:50%;bottom:-47px;margin-left: -32px;}
+.cardWrap li .cardEnter img{display: block;}
+.cardWrap li .cardTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 34px;line-height: 1.2em;}
+.cardWrap li .cardSub{font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;line-height: 1.2em;}
+.cardWrap li .cardIntro{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;}
+.cardWrap li .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:18px auto;background: #fff}
+.cardWrap li .cardCat{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
+.cardWrap li .cardCat:before{content: '';display: block;width: 28px;height:28px;margin:0 auto;background: url('/images/ico_card_type.png') no-repeat;}
+.cardWrap li .cardType01 .cardCat:before{background-position:0 0}
+.cardWrap li .cardType02 .cardCat:before{background-position:-28px 0}
+.cardWrap li .cardType03 .cardCat:before{background-position:-56px 0}
+.cardWrap li .cardType04 .cardCat:before{background-position:-84px 0}
+.cardWrap li .cardDetail{position: absolute;left:0;bottom:-77px;width:100%;height:130px}
+.cardWrap li .cardDetail:before{content:'';display: inline-block;width:0;height: 100%;vertical-align: middle;}
+.cardWrap li .cardDetailWrap{display: inline-block;margin-left: -5px;vertical-align: middle;}
+.cardWrap li .cardDetail .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
+.cardWrap li .cardDetail img{display: block;width: 100%;}
+.cardWrap li .cardDetail .cardAuthorInfo{display: none;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#ccc;}
+.cardWrap li .cardDetail .cardAuthorInfo b{color:#fff}
+.cardWrap li .cardDetail span:before{content:'';display: inline-block;width: 12px;height: 10px;margin:0 7px;background:url('../images/ico_card_popular.png') no-repeat;}
+.cardWrap li .cardDetail .comt:before{background-position:-11px 0}
+
+
+.cardWrap .cardType06 .cardDate{display: inline-block;margin-bottom:20px;padding:7px 20px;border:1px solid #b2b2b2;border-radius:15px;font-family:'RobotoM', sans-serif;font-size: 16px;color: #b2b2b2;}
+.cardWrap .cardType05 .cardTit{font-size: 20px;}
+.cardWrap .cardType05 .cardSub{display: none;}
+.cardWrap .cardType05 .cardIntro{font-size: 20px;}
+.cardWrap .cardType05 .cardIntro b{font-size: 40px;}
+
+
+
