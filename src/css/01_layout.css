@@ -9,7 +9,7 @@ b,strong{font-weight:normal;}
 ul, li{list-style:none;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
-.wrapper{background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
+.wrapper{min-width:1220px;background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
 .topBanner{display: none;}
 .main .topBanner{display: block;}
 .login .btnLogin{display: none;}
@@ -47,6 +47,7 @@ ul, li{list-style:none;}
 .lnb .profile .profileInfo span{font-size:16px;}
 .lnb .profile .btnList{margin-top:10px;font-size: 0;}
 .lnb .profile .btnList li{position: relative;display: inline-block;width:22px;height: 22px;margin:0 7px;background-image: url('../images/btn_profile.png');}
+.lnb .profile .btnList li a{display: block;width: 100%;height: 100%;}
 .lnb .profile .btnList .btnList01{background-position: 0 0;}
 .lnb .profile .btnList .btnList02{background-position: -22px 0;}
 .lnb .profile .btnList .btnList03{background-position: -44px 0;}
@@ -72,7 +73,7 @@ ul, li{list-style:none;}
 .login .lnb .in{display: none;} 
 .logout .lnb .out{display: none;}
 
-.container{max-width: 1520px;height: 1500px;margin:0 auto;padding-top: 90px;}
+.container{padding-bottom:200px;max-width: 1500px;margin:0 auto;padding-top: 90px;position: relative;z-index: 1;}
 
 .arrayWrap{clear: both}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
@@ -81,47 +82,126 @@ ul, li{list-style:none;}
 .arrayWrap .arrayDrop li a{display: block;padding:12px 40px 12px 15px;font-family:'RobotoR','NotoSansR', sans-serif;color:#666;font-size: 13px;}
 .arrayWrap .arrayDrop.arrayCount{float: right;}
 
-.cardWrap{overflow: hidden;min-width:1024px;max-width:1520px;margin:40px auto;}
-.cardWrap li{float: left;width:285px;margin-bottom: 10px;background-color:#fff;padding:80px 0;text-align: center;color:#fefefe;}
-.cardWrap .cardSize01{height:160px;}
-.cardWrap .cardSize02{height:330px;}
-.cardWrap .cardSize03{height:500px;}
-.cardWrap .cardSize04{width:590px;height:585px;}
+.cardWrap{overflow: hidden;margin:40px -20px 0 0;}
+.cardWrap > li{overflow: hidden;float: left;width:285px;margin-bottom: 10px;background-color:#fff;text-align: center;color:#fefefe;background-size: 100%;background-position: center}
+
+.cardWrap .cardCon{position: relative;display: block;width:265px;padding:80px 10px;color:#fefefe;}
+.cardWrap .cardTop{position: absolute;top:0;left:0;z-index: 1}
+.cardWrap .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
+.cardWrap .cardCon .hoverCon{display: none;}
+/*.cardWrap .cardCon:hover .hoverCon{display: block;}*/
+/*.cardWrap .cardCon:hover .hoverOff{display: none;}*/
+.cardWrap .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2}
+.cardWrap .cardEnter img{display: block;}
+.cardWrap .cardRemove{position: absolute;top:20px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
+.cardWrap .cardTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 34px;line-height: 1.2em;}
+.cardWrap .cardSub{font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;line-height: 1.2em;}
+.cardWrap .cardIntro{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;}
+.cardWrap .cardInfo{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 20px;line-height: 1.2em;}
+.cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
+.cardWrap .cardThumb img{display: block;width: 100%;}
+.cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:18px auto;background: #fff}
+.cardWrap .cardCat{position: relative;top:-30px;margin-bottom:10px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
+.cardWrap .cardCat:before{content: '';display: block;width: 28px;height:28px;margin:0 auto;background: url('/images/ico_card_type.png') no-repeat;}
+.cardWrap .cardType01 .cardCat:before{background-position:0 0}
+.cardWrap .cardType02 .cardCat:before{background-position:-28px 0}
+.cardWrap .cardType03 .cardCat:before{background-position:-56px 0}
+.cardWrap .cardType11 .cardCat:before{background-position:-84px 0}
+.cardWrap .cardDetail{position: absolute;left:0;bottom:13px;width:100%;height:130px}
+.cardWrap .cardDetail:before{content:'';display: inline-block;width:0;height: 100%;vertical-align: middle;}
+.cardWrap .cardDetailWrap{display: inline-block;margin-left: -5px;vertical-align: middle;}
+.cardWrap .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
+.cardWrap .cardAuthorPic img{display: block;width: 100%;}
+.cardWrap .cardAuthorInfo{padding-bottom:20px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#ccc;}
+.cardWrap .cardAuthorInfo b{color:#fff}
+.cardWrap .cardDetail span:before{content:'';display: inline-block;width: 12px;height: 13px;margin:0 7px;background:url('../images/ico_card_popular.png') no-repeat;}
+.cardWrap .cardDetail .comt:before{background-position:-11px 0}
+.cardWrap .cardDetail .scrap:before{background-position:-25px -10px}
+.cardWrap .cardCollect {overflow: hidden;width:148px;margin:10px auto 0;}
+.cardWrap .cardCollect li{overflow: hidden;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
+.cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer}
+.cardWrap .cardCollect input{position: absolute;top: -100px;left: -100px}
+.cardWrap .cardCollect .collect01 label{background-position:0 0}
+.cardWrap .cardCollect .collect01 label:hover, .cardWrap .cardCollect .collect01.on label{background-position:0 -64px;}
+.cardWrap .cardCollect .collect02 label{background-position:-64px 0}
+.cardWrap .cardCollect .collect02 label:hover, .cardWrap .cardCollect .collect02.on label{background-position:-64px -64px}
+.cardWrap .cardCollect .collect03 label{background-position:-128px 0}
+.cardWrap .cardCollect .collect03 label:hover, .cardWrap .cardCollect .collect03.on label{background-position:-128px -64px}
+.cardWrap .cardCollect .collect04 label{background-position:-192px 0}
+.cardWrap .cardCollect .collect04 label:hover, .cardWrap .cardCollect .collect04.on label{background-position:-192px -64px}
+
+.cardWrap .cardCollect.pet label{background-image: url('../images/btn_card_pet.png')} 
+.cardWrap .cardCollect.fam label{background-image: url('../images/btn_card_fam.png')} 
+
+.cardWrap .tag{margin-top:15px;}
+.cardWrap .tag li{display: inline-block;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #c3d656}
+
+.cardWrap .cardSize01 .cardCon{height:160px;}
+.cardWrap .cardSize02 .cardCon{height:330px;}
+.cardWrap .cardSize03 .cardCon{height:500px;}
+.cardWrap .cardSize04{width:590px;}
+.cardWrap .cardSize04 .cardCon{width:570px;height:585px;}
+.cardWrap .cardSize04.cardType06 {background-color: #fff;}
+.cardWrap .cardSize04.cardType06 .cardCon, .cardWrap .cardType11 .cardCon {color:#000;}
+
+.cardWrap .cardType04 .cardTit{font-size: 20px;}
+.cardWrap .cardType04 .cardSub{margin-top:10px;font-family:'RobotoL','NotoSansL', sans-serif; }
+.cardWrap .cardType04 .cardIntro{font-size: 20px;}
+.cardWrap .cardType04 .cardIntro b{font-size: 40px;}
+.cardWrap .cardType04 a.cardCon:hover, .cardWrap .cardType05 a.cardCon:hover{background: url('../images/bg_dim.png')}
+
+.cardWrap .cardType05 .cardCon{color: #000;}
+.cardWrap .cardType05 .cardTit02{float: left;width:102px;padding:50px 10px 0 20px;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: left;word-break: keep-all}
+.cardWrap .cardType05 .cardAuthorInfo {float: left;width:100px;padding-left: 20px;color: #666;}
+.cardWrap .cardType05 .cardAuthorInfo b{color: #000;}
+.cardWrap .cardType05 .cardSub{display: none;font-family: 'RobotoL','NotoSansL', sans-serif;}
+.cardWrap .cardType05 .union{margin:-20px auto 160px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;color: #fff;}
+.cardWrap .cardType05 .union span{display: inline-block;padding:7px 20px;border:1px solid #fff;border-radius: 20px;}
+.cardWrap .cardType05 .cardDetail span:before{background-position:0 -13px}
+.cardWrap .cardType05 .cardDetail .comt:before{background-position:-12px -12px}
+.cardWrap .cardType05 .cardIntro{color: #666;font-size: 20px;margin-bottom:10px}
+.cardWrap .cardType05 .cardIntro b{font-size:40px;}
+.cardWrap .cardType05 .cardIntro:before{display: none;}
+
+.cardWrap .cardType05 .cardCon:hover{color: #fff;}
+.cardWrap .cardType05 .cardCon:hover .cardTit02{float: none;width:auto;padding:0 10px;margin:0px auto 5px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 20px;text-align: center;}
+.cardWrap .cardType05 .cardCon:hover .cardAuthorInfo{width: 100%;padding: 0;color: #ccc}
+.cardWrap .cardType05 .cardCon:hover .cardAuthorInfo b{color: #fff}
+
 .cardWrap .cardType06{background-color: #f1645c;}
-.cardWrap .cardSize04.cardType06{background-color: #fff;color:#000;}
-
-
-.cardWrap li > div{position: relative;display: block;width:100%;height:100%;}
-.cardWrap li .cardTop{position: absolute;top:-80px;left:0;z-index: 0}
-.cardWrap li .cardBtm{position: absolute;bottom:-80px;left:0;z-index: 0}
-.cardWrap li .cardEnter{position: absolute;left:50%;bottom:-47px;margin-left: -32px;}
-.cardWrap li .cardEnter img{display: block;}
-.cardWrap li .cardTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 34px;line-height: 1.2em;}
-.cardWrap li .cardSub{font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;line-height: 1.2em;}
-.cardWrap li .cardIntro{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;}
-.cardWrap li .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:18px auto;background: #fff}
-.cardWrap li .cardCat{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
-.cardWrap li .cardCat:before{content: '';display: block;width: 28px;height:28px;margin:0 auto;background: url('/images/ico_card_type.png') no-repeat;}
-.cardWrap li .cardType01 .cardCat:before{background-position:0 0}
-.cardWrap li .cardType02 .cardCat:before{background-position:-28px 0}
-.cardWrap li .cardType03 .cardCat:before{background-position:-56px 0}
-.cardWrap li .cardType04 .cardCat:before{background-position:-84px 0}
-.cardWrap li .cardDetail{position: absolute;left:0;bottom:-77px;width:100%;height:130px}
-.cardWrap li .cardDetail:before{content:'';display: inline-block;width:0;height: 100%;vertical-align: middle;}
-.cardWrap li .cardDetailWrap{display: inline-block;margin-left: -5px;vertical-align: middle;}
-.cardWrap li .cardDetail .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
-.cardWrap li .cardDetail img{display: block;width: 100%;}
-.cardWrap li .cardDetail .cardAuthorInfo{display: none;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#ccc;}
-.cardWrap li .cardDetail .cardAuthorInfo b{color:#fff}
-.cardWrap li .cardDetail span:before{content:'';display: inline-block;width: 12px;height: 10px;margin:0 7px;background:url('../images/ico_card_popular.png') no-repeat;}
-.cardWrap li .cardDetail .comt:before{background-position:-11px 0}
-
-
 .cardWrap .cardType06 .cardDate{display: inline-block;margin-bottom:20px;padding:7px 20px;border:1px solid #b2b2b2;border-radius:15px;font-family:'RobotoM', sans-serif;font-size: 16px;color: #b2b2b2;}
-.cardWrap .cardType05 .cardTit{font-size: 20px;}
-.cardWrap .cardType05 .cardSub{display: none;}
-.cardWrap .cardType05 .cardIntro{font-size: 20px;}
-.cardWrap .cardType05 .cardIntro b{font-size: 40px;}
+.cardWrap .cardType06 .cardThum{margin-top: 15px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.3em;}
+.cardWrap .cardType06 .cardThum img{display: block;margin: 0 auto 15px;}
 
+.cardWrap .cardType07{background: #f0f0f0;}
+.cardWrap .cardType07 .cardTit{color: #000;}
+.cardWrap .cardType07 .cardIntro{color: #666}
+.cardWrap .cardType07 .cardIntro:before{background:#666;}
+.cardWrap .cardType07 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}
+
+.cardWrap .cardType08{background-color: #f1645c;}
+
+.cardWrap .cardType10{background: #f0f0f0;}
+.cardWrap .cardType10 .cardRemove{background-image: url('../images/btn_closeG.png');}
+.cardWrap .cardType10 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2}
+.cardWrap .cardType10 .cardCon .btn02{background-position:-64px 0 }
+.cardWrap .cardType10 .cardCon a:hover{background-position:0 -64px; }
+.cardWrap .cardType10 .cardCon .btn02:hover{background-position:-64px -64px; }
+.cardWrap .cardType10 .share a{background: url('../images/btn_card_fb.png');}
+.cardWrap .cardType10 .share {color: #4862a3;}
+.cardWrap .cardType10 .share .cardSub span{color: #808080;font-family: 'RobotoR','NotoSansR', sans-serif;}
+.cardWrap .cardType10 .app {color: #333;}
+.cardWrap .cardType10 .app a{background: url('../images/btn_card_app.jpg');}
+.cardWrap .cardType10 .app .cardSub{color: #808080;}
+.cardWrap .cardType10 .tag{color: #000}
+.cardWrap .cardType10 .tag .cardIntro{color: #666;}
+.cardWrap .cardType10 .tag .cardIntro:before{background: #666}
+.cardWrap .cardType10 .tag ul{margin-top:20px;}
+.cardWrap .cardType10 .tag a{overflow: hidden;width:auto;height: auto;padding: 10px 15px;margin:3px;border:1px solid #f3918b;color: #f1645c;border-radius: 17px;}
+
+.cardWrap .cardType11 .cardIntro:before{;background:#000;}
+.cardWrap .expert .cardSub{margin-top:5px;color: #f1645c;}
+.cardWrap .expert .cardIntro{color: #666;}
+.cardWrap .expert .cardIntro:before{display: none;}
 
 
