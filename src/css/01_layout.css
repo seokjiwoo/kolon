@@ -12,9 +12,8 @@ ul, li{list-style:none;}
 .wrapper{min-width:1220px;background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
 .topBanner{display: none;}
 .main .topBanner{display: block;}
-.login .btnLogin{display: none;}
 
-.topMenu{overflow: hidden;position: fixed;left: 0;top: 0;right: 0;height: 60px;background: #fff;box-shadow:0px 2px #c9c9c9;z-index: 2;}
+.topMenu{position: fixed;left: 0;top: 0;right: 0;height: 60px;background: #fff;box-shadow:0px 2px #c9c9c9;z-index: 2;}
 .topMenu .topL{float: left;width:55%;height: 100%;}
 .topMenu .topL .btnLnb{float: left;width: 80px;height:60px;background:url('../images/btn_menu.png') no-repeat center;}
 .topMenu .topL .logo{float: left;vertical-align: top;}
@@ -24,16 +23,42 @@ ul, li{list-style:none;}
 .topMenu .topL .menu li a{display: block;padding: 22px 0;font-family:'RobotoM','NotoSansB', sans-serif;color:#333;font-size:16px;}
 
 .topMenu .topR{float: left;width:45%;height: 100%;text-align: center;}
-.topMenu .topR .searchWrap{display: inline-block;padding:17px 0;}
-.topMenu .topR .searchWrap #searchTxt{width: 230px;border:0;border-bottom:1px solid #f1645c;}
-.topMenu .topR .searchWrap button{width:20px;height:20px;font-size:0;background: url('../images/ico_search.png') no-repeat center;border:0;}
-.topMenu .topR .member{float:right;margin-right:30px;padding: 10px 0;}
+.topMenu .topR .searchOpen{overflow: hidden;display: inline-block;float: right;width: 40px;height: 40px;margin-top:10px;background: #f1645c url('../images/iso_search.png') no-repeat center;border-radius: 50%;}
+
+.topMenu .topR .searchWrap{position: absolute;top: 60px;left: 0;width: 100%;background: #fff;text-align: left;}
+.topMenu .topR .searchWrap .keyWrap{overflow: hidden;padding:10px 0;font-size:14px;}
+.topMenu .topR .searchWrap .wrap{max-width:1500px;margin:0 auto;}
+.topMenu .topR .searchWrap .keyTit{float: left;margin-top:14px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;}
+.topMenu .topR .searchWrap .keyword{margin-left: 90px;}
+.topMenu .topR .searchWrap .keyword li{display: inline-block;margin-left: 10px;}
+.topMenu .topR .searchWrap .keyword li:first-child{margin:0;}
+.topMenu .topR .searchWrap .keyword li a{font-family:'RobotoM','NotoSansM', sans-serif;vertical-align: middle;}
+.topMenu .topR .searchWrap .keyword .del{display: inline-block;width: 30px;height: 30px;background: url('../images/btn_closeS.png') no-repeat center;vertical-align: middle;cursor: pointer;}
+.topMenu .topR .searchWrap .keyword .delAll{background: #999;}
+.topMenu .topR .searchWrap .keyword .delAll a{color: #fff;}
+.topMenu .topR .searchWrap .keyword .delAll .del{background:url('../images/btn_closeW.png') no-repeat center;}
+
+.topMenu .topR .searchWrap .searchSet{position: relative;float: right;width: 35%;padding:5px 40px 5px 20px;background: #fff;border-radius:20px;}
+.topMenu .topR .searchWrap #searchTxt{width: 100%;border:0;height: 28px;line-height: 28px;}
+.topMenu .topR .searchWrap button{position: absolute;top:6px;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/ico_search.png') no-repeat center;border:0;vertical-align: middle;}
+
+.topMenu .topR .searchWrap .recomand{background: #f1645c;}
+.topMenu .topR .searchWrap .recomand .keyTit {color: #fff;}
+.topMenu .topR .searchWrap .recomand a{color: #fff}
+.topMenu .topR .searchWrap .recomand .keyword{padding-top: 14px;}
+.topMenu .topR .searchWrap .recently .keyTit {color: #333;}
+.topMenu .topR .searchWrap .recently li{border-radius: 20px;border:1px solid #d9d9d9;}
+.topMenu .topR .searchWrap .recently a{display: inline-block;padding: 12px 14px;color: #666;}
+
+.topMenu .topR .member{display: none;float:right;margin-right:30px;padding: 10px 0;}
+.login .topMenu .topR .member{display: block;}
 .topMenu .topR .member a{display: inline-block;vertical-align: middle;}
 .topMenu .topR .member .name{font-family:'RobotoR','NotoSansR', sans-serif;color: #737373;}
-.topMenu .topR .member .name:after{content:'';display: inline-block;width: 20px;height: 18px;margin:0 10px 0 5px;background: url('../images/ico_home.png') no-repeat;vertical-align: bottom;}
 .topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
 .topMenu .topR .member .pic img{width: 100%;}
-.topMenu .topR .btnLogin{float:right;}
+.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
+.topMenu .topR .btnLogin{float:right;display: inline-block;margin:12px 30px 12px 10px;padding:11px 20px 9px;border-radius: 20px;background:#a9c700;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:14px;}
+.login .topR .btnLogin{display: none;}
 
 .lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);text-align: center;}
 .lnb .profile{min-height:420px;background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;}

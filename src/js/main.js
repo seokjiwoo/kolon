@@ -28,14 +28,5 @@ jQuery(function($) {
 			$(this).parent().siblings().removeClass('on');
 		}
 	})
-	$('a.cardCon').hover(function(){
-    	$(this).parent().stop().animate({'background-size':'110%'}, 300);
-    	$(this).find('.hoverCon').stop().slideDown(400);
-    	$(this).find('.hoverOff').stop().slideUp(100);
-    }, function(){
-    	$(this).parent().stop().animate({'background-size':'100%'}, 300);
-    	$(this).find('.hoverCon').stop().slideUp(100)
-    	$(this).find('.hoverOff').stop().slideDown(400);
-	});
 
 });
