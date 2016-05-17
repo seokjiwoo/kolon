@@ -6,7 +6,6 @@ fieldset{border:0;padding:0;margin:0;}
 h1, h2, h3, h4, h5, h6, p{margin:0;font-weight:normal;}
 input, textarea, button, select, option, {line-height:1;font-family:'RobotoL','NotoSansL', sans-serif;border:0;outline:0;background:none}
 b,strong{font-weight:normal;}
-ul, li{list-style:none;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
 .wrapper{min-width:1240px;background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
@@ -99,6 +98,19 @@ ul, li{list-style:none;}
 .lnb .btnLog{overflow: hidden;display: inline-block;margin:52px auto;padding:10px 30px;border-radius:15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;}
 .login .lnb .in{display: none;} 
 .logout .lnb .out{display: none;}
+
+.floating{position: fixed;top: 50%;right: 40px;z-index: 3}
+.floating a{display: block;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);border-radius: 50%;}
+.floating #floatingMenu{position: relative;}
+.floating #floatingMenu li{position: absolute;left: 5px;}
+.floating #floatingMenu li a{position: relative;width: 50px;height: 50px;margin:0 auto;background: #fff url('../images/ico_cs.png') no-repeat;}
+.floating #floatingMenu li.floating01 a{background-position: 0 0;}
+.floating #floatingMenu li.floating02 a{background-position: -50px 0;}
+.floating #floatingMenu li.floating03 a{background-position: -100px 0;}
+.floating #floatingMenu li.floating04 a{background-position: -150px 0;}
+.floating #floatingMenu li span{position: absolute;top:18px;right: 3px;width: 50px; color: #404040;font-size: 13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: right;z-index: -1;}
+.floating #floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;}
+.floating #floatingToggle.opened{}
 
 .container{padding:0 20px 200px;max-width: 1500px;margin:0 auto;padding-top: 90px;position: relative;z-index: 1;}
 

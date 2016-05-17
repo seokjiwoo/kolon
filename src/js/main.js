@@ -36,8 +36,48 @@ jQuery(function($) {
 		} else {
 			$(this).addClass('opened')
 			$('#searchWrap').animate({'top':'60px'},250);
+		}		
+	});
+
+	$('#floatingToggle').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('opened')){
+			$(this).removeClass('opened');
+			$('.floating04').animate({'top':'0'}, {
+				duration: 300, 
+				easing: 'easeInBack', 
+			});
+			$('.floating03').animate({'top':'0'}, {
+				duration: 400, 
+				easing: 'easeInBack', 
+			});
+			$('.floating02').animate({'top':'0'}, {
+				duration: 500, 
+				easing: 'easeInBack', 
+			});
+			$('.floating01').animate({'top':'0'}, {
+				duration: 600, 
+				easing: 'easeInBack', 
+			});
+		} else {
+			$(this).addClass('opened');
+			$('.floating04').animate({'top':'-65px'}, {
+				duration: 300, 
+				easing: 'easeOutBack', 
+			});
+			$('.floating03').animate({'top':'-125px'}, {
+				duration: 400, 
+				easing: 'easeOutBack', 
+			});
+			$('.floating02').animate({'top':'-185px'}, {
+				duration: 500, 
+				easing: 'easeOutBack', 
+			});
+			$('.floating01').animate({'top':'-245px'}, {
+				duration: 600, 
+				easing: 'easeOutBack', 
+			});
 		}
 		
 	});
-
 });
