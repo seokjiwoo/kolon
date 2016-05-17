@@ -6,19 +6,19 @@ jQuery(function($) {
 			gutter: 1
 		}
 	});
-	$('#btnLnb').click(function(e){
+	$('#btnLnb').on('click', function(e) {
 		e.preventDefault();
 		$('#lnb').animate({'left':'0'}, 500);
 	});
-	$('#profileClose').click(function(e){
+	$('#profileClose').on('click', function(e) {
 		e.preventDefault();
 		$('#lnb').animate({'left':'-285px'}, 500);
 	});
-	$('.depth01').click(function(e){
+	$('.depth01').on('click', function(e) {
 		e.preventDefault();
 		$(this).siblings().slideToggle();
 	});
-	$('#menuToggle').click(function(e){
+	$('#menuToggle').on('click', function(e) {
 		e.preventDefault();
 		$('#myMenu').slideToggle();
 	});
@@ -28,7 +28,7 @@ jQuery(function($) {
 			$(this).parent().siblings().removeClass('on');
 		}
 	});
-	$('#searchOpen').click(function(e){
+	$('#searchOpen').on('click', function(e) {
 		e.preventDefault();
 		if($(this).hasClass('opened')){
 			$(this).removeClass('opened');
@@ -39,45 +39,89 @@ jQuery(function($) {
 		}		
 	});
 
-	$('#floatingToggle').click(function(e){
+	$('#floatingToggle').on('click', function(e) {
 		e.preventDefault();
 		if($(this).hasClass('opened')){
 			$(this).removeClass('opened');
-			$('.floating04').animate({'top':'0'}, {
-				duration: 300, 
-				easing: 'easeInBack', 
+			$('#floatingMenu').find('span').animate({'right':'3px'},50,
+			function(){
+				$('.floating04').animate({'top':'0'}, {
+					duration: 300, 
+					easing: 'easeInBack'
+				});
+				$('.floating03').animate({'top':'0'}, {
+					duration: 400, 
+					easing: 'easeInBack'
+				});
+				$('.floating02').animate({'top':'0'}, {
+					duration: 500, 
+					easing: 'easeInBack'
+				});
+				$('.floating01').animate({'top':'0'}, {
+					duration: 600, 
+					easing: 'easeInBack'
+				});
 			});
-			$('.floating03').animate({'top':'0'}, {
-				duration: 400, 
-				easing: 'easeInBack', 
-			});
-			$('.floating02').animate({'top':'0'}, {
+			$('#floatingMenu a').removeClass('on');
+			$('.lyPop').animate({'bottom':'-100%'},{
 				duration: 500, 
-				easing: 'easeInBack', 
+				easing: 'easeInBack'
 			});
-			$('.floating01').animate({'top':'0'}, {
-				duration: 600, 
-				easing: 'easeInBack', 
-			});
+			$('#dim').stop().fadeOut(100);
 		} else {
 			$(this).addClass('opened');
-			$('.floating04').animate({'top':'-65px'}, {
+			$('.floating04').queue('fx',[]).stop().animate({'top':'-65px'}, {
 				duration: 300, 
-				easing: 'easeOutBack', 
+				easing: 'easeOutBack',
+				complete: function(){
+					$(this).find('span').animate({'right':'60px'},50)
+				}
 			});
-			$('.floating03').animate({'top':'-125px'}, {
+			$('.floating03').queue('fx',[]).stop().animate({'top':'-125px'}, { 
 				duration: 400, 
 				easing: 'easeOutBack', 
+				complete: function(){
+					$(this).stop().find('span').animate({'right':'60px'},50)
+				}
 			});
-			$('.floating02').animate({'top':'-185px'}, {
+			$('.floating02').queue('fx',[]).stop().animate({'top':'-185px'}, {
 				duration: 500, 
 				easing: 'easeOutBack', 
+				complete: function(){
+					$(this).find('span').animate({'right':'60px'},50)
+				}
 			});
-			$('.floating01').animate({'top':'-245px'}, {
+			$('.floating01').queue('fx',[]).stop().animate({'top':'-245px'}, {
 				duration: 600, 
 				easing: 'easeOutBack', 
+				complete: function(){
+					$(this).find('span').animate({'right':'60px'},50)
+				}
 			});
 		}
-		
+		$('#floatingMenu a').on('click', function(e) {
+			e.preventDefault();
+			if($(this).hasClass('on')){
+				$(this).removeClass('on').siblings('.lyPop').queue('fx',[]).animate({'bottom':'-100%'},{
+					duration: 500, 
+					easing: 'easeInBack',
+					complete: function(){
+						$('#floatingMenu').find('span').animate({'right':'60px'},50);
+					}
+				});
+				$('#dim').stop().fadeOut(100);
+			} else {				
+				$(this).addClass('on').siblings('.lyPop').animate({'bottom':'140px'},{
+					duration: 700, 
+					easing: 'easeOutBack'
+				});
+				$('#floatingMenu').find('span').animate({'right':'3px'},50);
+				$('#dim').stop().fadeIn(100);
+			}
+		});
+	});	
+	$('#goTop').on('click', function(e) {
+		e.preventDefault();
+		$('body, html').animate({ scrollTop:0}, 400);
 	});
 });

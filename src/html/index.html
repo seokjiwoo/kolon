@@ -554,16 +554,49 @@
 				</li>
 			</ul>
 			<adide class="floating">
-				<ul id="floatingMenu">
-					<li class="floating01"><a href=""><span>전화상담</span></a></li>
-					<li class="floating02"><a href=""><span>의견묻기</span></a></li>
-					<li class="floating03"><a href=""><span>공유</span></a></li>
-					<li class="floating04"><a href=""><span>도운말</span></a></li>
-				</ul>
+				<form action="">
+					<ul id="floatingMenu">
+						<li class="floating01">
+							<a href=""><span>전화상담</span></a>
+							<div class="lyPop">
+								<p class="popIco">전화상담</p>
+								<h3 class="popTit">1644-1234</h3>
+								<p class="popSub">궁금한 것은 언제든지 물어보세요</p>
+								<fieldset class="popCon">
+									<legend class="hide">전화상담 번호 입력</legend>
+									<p class="phoneWrp">
+										<select name="" id="">
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="012">012</option>
+											<option value="012">019</option>
+										</select>
+										<label for="phone01" class="hide">전화번호 앞자리</label>
+										<input type="text" id="phone01" maxlength="4">
+										<label for="phone02" class="hide">전화번호 뒷자리</label>
+										<input type="text" id="phone02" maxlength="4">
+									</p>
+									<button type="submit" class="popSubmit">상담받기</button>
+								</fieldset>
+								<p class="note"><b>상담 받기 버튼</b>을 누르시면 <br>상담원이 바로 고객님께 연락 드리겠습니다. <br><b>연락 받을 전화 번호를 확인해 주세요.</b></p>
+							</div>
+						</li>
+						<li class="floating02">
+							<a href=""><span>의견묻기</span></a>
+						</li>
+						<li class="floating03">
+							<a href=""><span>공유</span></a>
+						</li>
+						<li class="floating04">
+							<a href=""><span>도운말</span></a>
+						</li>
+					</ul>
+				</form>
 				<a href="" id="floatingToggle"></a>
-				<a href="" id="goTop"></a>
+				<a href="#top" id="goTop">TOP</a>
 			</adide>
 			<footer></footer>
+			<div id="dim"></div>
 		</div>
 	</div>
 </body>

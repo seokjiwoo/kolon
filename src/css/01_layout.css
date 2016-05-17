@@ -99,18 +99,46 @@ b,strong{font-weight:normal;}
 .login .lnb .in{display: none;} 
 .logout .lnb .out{display: none;}
 
-.floating{position: fixed;top: 50%;right: 40px;z-index: 3}
+.floating{position: fixed;bottom: 70px;right: 40px;z-index: 3;}
 .floating a{display: block;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);border-radius: 50%;}
-.floating #floatingMenu{position: relative;}
-.floating #floatingMenu li{position: absolute;left: 5px;}
-.floating #floatingMenu li a{position: relative;width: 50px;height: 50px;margin:0 auto;background: #fff url('../images/ico_cs.png') no-repeat;}
-.floating #floatingMenu li.floating01 a{background-position: 0 0;}
-.floating #floatingMenu li.floating02 a{background-position: -50px 0;}
-.floating #floatingMenu li.floating03 a{background-position: -100px 0;}
-.floating #floatingMenu li.floating04 a{background-position: -150px 0;}
-.floating #floatingMenu li span{position: absolute;top:18px;right: 3px;width: 50px; color: #404040;font-size: 13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: right;z-index: -1;}
-.floating #floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;}
-.floating #floatingToggle.opened{}
+
+#floatingMenu{position: relative;}
+#floatingMenu li{position: absolute;top:0;left: 5px;}
+#floatingMenu li a{position: relative;width: 50px;height: 50px;margin:0 auto;background: #fff url('../images/ico_cs.png') no-repeat;}
+#floatingMenu li.floating01 a{background-position: 0 0;}
+#floatingMenu li.floating02 a{background-position: -50px 0;}
+#floatingMenu li.floating03 a{background-position: -100px 0;}
+#floatingMenu li.floating04 a{background-position: -150px 0;}
+#floatingMenu li span{position: absolute;top:18px;right: 3px;width: 50px; color: #404040;font-size: 13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: right;z-index: -1;}
+#floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;
+-webkit-transition: all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-o-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-in-out;}
+#floatingToggle.opened{-ms-transform: rotate(315deg);-webkit-transform: rotate(315deg);transform: rotate(315deg);}
+#goTop{width:60px;height: 34px;margin-top:10px;padding:13px 0;background: #fff;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;font-size: 14px;text-align: center;}
+#goTop:before{content: '';display: block;width: 25px;height:15px;margin:0 auto 2px;background:url('../images/ico_top.png') no-repeat;}
+
+.lyPop{position: fixed;bottom:140px;right: 128px; width: 285px;background:#fff;border-radius: 10px;}
+#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 2;background: rgba(0,0,0,0.2);}
+
+.floating .lyPop{bottom:-100%;}
+.floating .lyPop{overflow: hidden;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
+.floating .lyPop .popIco{color: #a9c700;}
+.floating .lyPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin: 20px auto 0;background: url('../images/ico_cs.png') no-repeat;}
+.floating .lyPop .popTit{color: #000;font-size: 34px;line-height: 1.4em}
+.floating .lyPop .popSub{color: #000;}
+.floating .lyPop .popCon{padding-bottom:30px;}
+.floating .lyPop .popCon:before{content: '';display: block;width: 25px;height: 1px;background: #b2b2b2;margin:20px auto 30px;}
+.floating .lyPop .popCon .phoneWrp{margin-bottom: 10px;}
+.floating .lyPop .popCon .phoneWrp select{width: 66px;padding: 7px;border-radius: 8px;border-color: #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;}
+.floating .lyPop .popCon .phoneWrp input[type="text"]{width: 62px;margin-left: 3px;padding:8px 7px;border-radius: 8px;border:1px solid #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;}
+.floating .lyPop .popSubmit{width:130px;padding: 10px 20px;border-radius: 20px;background: #f1645c;font-family:'RobotoR','NotoSansR', sans-serif;color: #fff;font-size: 14px;border:0;outline: 0;cursor: pointer;}
+.floating .lyPop .note{color: #999;background: #f7f7f7;padding:20px;line-height: 1.3em}
+.floating .lyPop .note b{color: #f1645c}
+
+.floating01 .lyPop .popIco:before{background-position: 0 center}
+.floating02 .lyPop .popIco:before{background-position: -50px center}
+.floating03 .lyPop .popIco:before{background-position: -100px center}
+.floating04 .lyPop .popIco:before{background-position: -150px center}
+
 
 .container{padding:0 20px 200px;max-width: 1500px;margin:0 auto;padding-top: 90px;position: relative;z-index: 1;}
 
