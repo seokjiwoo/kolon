@@ -109,7 +109,9 @@ b,strong{font-weight:normal;}
 #floatingMenu li.floating02 a{background-position: -50px 0;}
 #floatingMenu li.floating03 a{background-position: -100px 0;}
 #floatingMenu li.floating04 a{background-position: -150px 0;}
-#floatingMenu li span{position: absolute;top:18px;right: 3px;width: 50px; color: #404040;font-size: 13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: right;z-index: -1;}
+#floatingMenu li a.on{background: #fff url('../images/btn_closeG.png') no-repeat center;}
+#floatingMenu li .menuTit{position: absolute;top:18px;right: 3px;width: 50px; color: #404040;font-size: 13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: right;z-index: -1;}
+#floatingMenu li .pointer{display: none;position: absolute;top:10px;right: 84px;width: 17px;height: 30px;background: url('../images/pop_pointer.png') no-repeat; z-index: -1;}
 #floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;
 -webkit-transition: all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-o-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-in-out;}
 #floatingToggle.opened{-ms-transform: rotate(315deg);-webkit-transform: rotate(315deg);transform: rotate(315deg);}
@@ -128,7 +130,7 @@ b,strong{font-weight:normal;}
 .floating .lyPop .popCon{padding-bottom:30px;}
 .floating .lyPop .popCon:before{content: '';display: block;width: 25px;height: 1px;background: #b2b2b2;margin:20px auto 30px;}
 .floating .lyPop .popCon .phoneWrp{margin-bottom: 10px;}
-.floating .lyPop .popCon .phoneWrp select{width: 66px;padding: 7px;border-radius: 8px;border-color: #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;}
+.floating .lyPop .popCon .phoneWrp select{width: 66px;padding: 7px;border-radius: 8px;border-color: #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;outline: 0;}
 .floating .lyPop .popCon .phoneWrp input[type="text"]{width: 62px;margin-left: 3px;padding:8px 7px;border-radius: 8px;border:1px solid #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;}
 .floating .lyPop .popSubmit{width:130px;padding: 10px 20px;border-radius: 20px;background: #f1645c;font-family:'RobotoR','NotoSansR', sans-serif;color: #fff;font-size: 14px;border:0;outline: 0;cursor: pointer;}
 .floating .lyPop .note{color: #999;background: #f7f7f7;padding:20px;line-height: 1.3em}

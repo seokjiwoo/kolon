@@ -43,7 +43,7 @@ jQuery(function($) {
 		e.preventDefault();
 		if($(this).hasClass('opened')){
 			$(this).removeClass('opened');
-			$('#floatingMenu').find('span').animate({'right':'3px'},50,
+			$('#floatingMenu').find('.menuTit').animate({'right':'3px'},50,
 			function(){
 				$('.floating04').animate({'top':'0'}, {
 					duration: 300, 
@@ -68,34 +68,35 @@ jQuery(function($) {
 				easing: 'easeInBack'
 			});
 			$('#dim').stop().fadeOut(100);
+			$('.pointer').hide().css('right','84px');
 		} else {
 			$(this).addClass('opened');
 			$('.floating04').queue('fx',[]).stop().animate({'top':'-65px'}, {
 				duration: 300, 
 				easing: 'easeOutBack',
 				complete: function(){
-					$(this).find('span').animate({'right':'60px'},50)
+					$(this).find('.menuTit').animate({'right':'60px'},50)
 				}
 			});
 			$('.floating03').queue('fx',[]).stop().animate({'top':'-125px'}, { 
 				duration: 400, 
 				easing: 'easeOutBack', 
 				complete: function(){
-					$(this).stop().find('span').animate({'right':'60px'},50)
+					$(this).stop().find('.menuTit').animate({'right':'60px'},50)
 				}
 			});
 			$('.floating02').queue('fx',[]).stop().animate({'top':'-185px'}, {
 				duration: 500, 
 				easing: 'easeOutBack', 
 				complete: function(){
-					$(this).find('span').animate({'right':'60px'},50)
+					$(this).find('.menuTit').animate({'right':'60px'},50)
 				}
 			});
 			$('.floating01').queue('fx',[]).stop().animate({'top':'-245px'}, {
 				duration: 600, 
 				easing: 'easeOutBack', 
 				complete: function(){
-					$(this).find('span').animate({'right':'60px'},50)
+					$(this).find('.menuTit').animate({'right':'60px'},50)
 				}
 			});
 		}
@@ -108,16 +109,25 @@ jQuery(function($) {
 				duration: 500, 
 				easing: 'easeInBack',
 				complete: function(){
-					$('#floatingMenu').find('span').animate({'right':'60px'},50);
+					$('#floatingMenu').find('.menuTit').animate({'right':'60px'},50);
 				}
 			});
 			$('#dim').stop().fadeOut(100);
+			$(this).siblings('.pointer').hide().css('right','84px');
 		} else {				
+			$('#floatingMenu a.on').siblings('.lyPop').queue('fx',[]).animate({'bottom':'-100%'},{
+				duration: 500, 
+				easing: 'easeInBack'
+			});
+			$('#floatingMenu a.on').siblings('.pointer').hide().css('right','84px');
 			$(this).addClass('on').siblings('.lyPop').animate({'bottom':'140px'},{
 				duration: 700, 
-				easing: 'easeOutBack'
+				easing: 'easeOutBack',
+				complete: function(){
+					$(this).siblings('.pointer').show().animate({'right':'66px'},200);
+				}
 			});
-			$('#floatingMenu').find('span').animate({'right':'3px'},50);
+			$('#floatingMenu').find('.menuTit').animate({'right':'3px'},50);
 			$('#dim').stop().fadeIn(100);
 		}
 	});
