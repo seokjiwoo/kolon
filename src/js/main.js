@@ -99,27 +99,29 @@ jQuery(function($) {
 				}
 			});
 		}
-		$('#floatingMenu a').on('click', function(e) {
-			e.preventDefault();
-			if($(this).hasClass('on')){
-				$(this).removeClass('on').siblings('.lyPop').queue('fx',[]).animate({'bottom':'-100%'},{
-					duration: 500, 
-					easing: 'easeInBack',
-					complete: function(){
-						$('#floatingMenu').find('span').animate({'right':'60px'},50);
-					}
-				});
-				$('#dim').stop().fadeOut(100);
-			} else {				
-				$(this).addClass('on').siblings('.lyPop').animate({'bottom':'140px'},{
-					duration: 700, 
-					easing: 'easeOutBack'
-				});
-				$('#floatingMenu').find('span').animate({'right':'3px'},50);
-				$('#dim').stop().fadeIn(100);
-			}
-		});
-	});	
+	});
+	
+	$('#floatingMenu a').on('click', function(e) {
+		e.preventDefault();
+		if($(this).hasClass('on')){
+			$(this).removeClass('on').siblings('.lyPop').queue('fx',[]).animate({'bottom':'-100%'},{
+				duration: 500, 
+				easing: 'easeInBack',
+				complete: function(){
+					$('#floatingMenu').find('span').animate({'right':'60px'},50);
+				}
+			});
+			$('#dim').stop().fadeOut(100);
+		} else {				
+			$(this).addClass('on').siblings('.lyPop').animate({'bottom':'140px'},{
+				duration: 700, 
+				easing: 'easeOutBack'
+			});
+			$('#floatingMenu').find('span').animate({'right':'3px'},50);
+			$('#dim').stop().fadeIn(100);
+		}
+	});
+	
 	$('#goTop').on('click', function(e) {
 		e.preventDefault();
 		$('body, html').animate({ scrollTop:0}, 400);
