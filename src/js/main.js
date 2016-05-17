@@ -27,6 +27,17 @@ jQuery(function($) {
 			$(this).parent().addClass('on');
 			$(this).parent().siblings().removeClass('on');
 		}
-	})
+	});
+	$('#searchOpen').click(function(e){
+		e.preventDefault();
+		if($(this).hasClass('opened')){
+			$(this).removeClass('opened');
+			$('#searchWrap').animate({'top':'-60px'},250);
+		} else {
+			$(this).addClass('opened')
+			$('#searchWrap').animate({'top':'60px'},250);
+		}
+		
+	});
 
 });
