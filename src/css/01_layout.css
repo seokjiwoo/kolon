@@ -121,8 +121,8 @@ b,strong{font-weight:normal;}
 .lyPop{position: fixed;bottom:140px;right: 128px; width: 285px;background: #fff;border-radius: 10px;}
 #dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 2;background: rgba(0,0,0,0.2);}
 
-.floating .lyPop{bottom:-100%;}
-.floating .lyPop{overflow: hidden;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
+.floating .lyPop{overflow: hidden;bottom:-100%;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
+.floating .lyPop a{box-shadow: none;}
 .floating .lyPop .popIco{color: #a9c700;}
 .floating .lyPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin: 25px auto 0;background: url('../images/ico_cs.png') no-repeat;}
 .floating .lyPop .popTit{color: #000;font-size: 34px;line-height: 1.4em}
@@ -137,10 +137,20 @@ b,strong{font-weight:normal;}
 .floating .lyPop .note{color: #999;background: #f7f7f7;padding:20px;line-height: 1.3em}
 .floating .lyPop .note b{color: #f1645c}
 
-.floating01 .lyPop .popIco:before{background-position: 0 center}
-.floating02 .lyPop .popIco:before{background-position: -50px center}
-.floating03 .lyPop .popIco:before{background-position: -100px center}
-.floating04 .lyPop .popIco:before{background-position: -150px center}
+#flCall .popIco:before{background-position: 0 center}
+#flAsk .popIco:before{background-position: -50px center}
+#flShare .popIco:before{background-position: -100px center}
+#flQna .popIco:before{background-position: -150px center}
+
+#flAsk .bx-wrapper{margin:0 auto;}
+#flAsk .bx-controls{margin-top:15px;}
+#flAsk .bx-pager-item{display: inline-block;}
+#flAsk .bx-pager-item a{display: block;width: 10px;height: 10px;background: #ccc;font-size: 0;margin:2px;}
+#flAsk .bx-pager-item .active{background: #f1645c}
+#slideHomesin .inPic{overflow: hidden;width: 64px;height: 64px;margin: 0 auto;border-radius: 50%;}
+#slideHomesin .inPic img{display: block;width: 100%;}
+#slideHomesin .inTit{margin-top:5px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color: #666;}
+#slideHomesin .inTit b{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
 
 
 .container{padding:0 20px 200px;max-width: 1500px;margin:0 auto;padding-top: 90px;position: relative;z-index: 1;}
@@ -159,8 +169,6 @@ b,strong{font-weight:normal;}
 .cardWrap .cardTop{position: absolute;top:0;left:0;z-index: 1}
 .cardWrap .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
 .cardWrap .cardCon .hoverCon{display: none;}
-/*.cardWrap .cardCon:hover .hoverCon{display: block;}*/
-/*.cardWrap .cardCon:hover .hoverOff{display: none;}*/
 .cardWrap .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2}
 .cardWrap .cardEnter img{display: block;}
 .cardWrap .cardRemove{position: absolute;top:20px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
