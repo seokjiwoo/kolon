@@ -120,6 +120,7 @@ jQuery(function($) {
 				easing: 'easeInBack'
 			});
 			$('#floatingMenu a.on').siblings('.pointer').hide().css('right','84px');
+			$('#floatingMenu a.on').removeClass('on')
 			$(this).addClass('on').siblings('.lyPop').animate({'bottom':'140px'},{
 				duration: 700, 
 				easing: 'easeOutBack',
