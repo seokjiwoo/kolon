@@ -35,7 +35,7 @@ img{border:none}
 #top .searchWrap .keyword li:nth-child(2){margin:0;}
 #top .searchWrap .keyword li a{font-family:'RobotoM','NotoSansM', sans-serif;vertical-align: middle;}
 #top .searchWrap .keyword .del{display: inline-block;width: 30px;height: 30px;background: url('../images/btn_closeS.png') no-repeat center;vertical-align: middle;cursor: pointer;}
-#top .searchWrap .keyword .delAll{float: right;background: #999;}
+#top .searchWrap .keyword .delAll{float: right;background: #999;border:0;}
 #top .searchWrap .keyword .delAll a{color: #fff;}
 #top .searchWrap .keyword .delAll .del{background:url('../images/btn_closeW.png') no-repeat center;}
 
@@ -126,11 +126,13 @@ img{border:none}
 .floating .lyPop a{box-shadow: none;}
 .floating .lyPop .popIco{color: #a9c700;}
 .floating .lyPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin: 25px auto 0;background: url('../images/ico_cs.png') no-repeat;}
-.floating .lyPop .popTit{color: #000;font-size: 34px;line-height: 1.4em}
+.floating .lyPop .popTit{color: #000;font-size: 34px;line-height: 1.1em}
 .floating .lyPop .popTit:before{content: '';display: block;width: 25px;height: 1px;background: #000;margin:15px auto 10px;}
-.floating .lyPop .popSub{color: #000;}
+.floating .lyPop .popSub{margin-top:10px;color: #000;line-height: 1.3em}
 .floating .lyPop .popCon{padding-bottom:30px;}
 .floating .lyPop .popCon:before{content: '';display: block;width: 25px;height: 1px;background: #b2b2b2;margin:18px auto 30px;}
+.floating .lyPop .popCon .productInfo{margin-bottom:15px;color: #666;line-height: 1.1em}
+.floating .lyPop .popCon .productInfo b{color: #f1645c;text-decoration: underline;}
 .floating .lyPop .popCon .phoneWrp{margin-bottom: 10px;}
 .floating .lyPop .popCon .phoneWrp select{width: 81px;padding: 8px;border-radius: 8px;border-color: #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;outline: 0;}
 .floating .lyPop .popCon .phoneWrp input[type="text"]{width: 50px;margin-left: 3px;padding:9px 7px;border-radius: 8px;border:1px solid #999;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;font-size: 14px;text-align: center;}
@@ -143,16 +145,24 @@ img{border:none}
 #flShare .popIco:before{background-position: -100px center}
 #flQna .popIco:before{background-position: -150px center}
 
+#flAsk .popCon{margin-top:30px;}
+#flAsk .popCon:before{display: none;}
 #flAsk .bx-wrapper{margin:0 auto;}
 #flAsk .bx-controls{margin-top:15px;}
 #flAsk .bx-pager-item{display: inline-block;}
 #flAsk .bx-pager-item a{display: block;width: 10px;height: 10px;background: #ccc;font-size: 0;margin:2px;}
 #flAsk .bx-pager-item .active{background: #f1645c}
+#slideHomesin{overflow: hidden}
 #slideHomesin .inPic{overflow: hidden;width: 64px;height: 64px;margin: 0 auto;border-radius: 50%;}
 #slideHomesin .inPic img{display: block;width: 100%;}
 #slideHomesin .inTit{margin-top:5px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color: #666;}
 #slideHomesin .inTit b{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
 
+#flShare li{display: inline-block;margin:3px;}
+#flShare li a{display: block;width: 64px;height: 64px;background: url('../images/btn_sns.png') no-repeat;}
+#flShare li.sns01 a{background-position: 0 0}
+#flShare li.sns02 a{background-position: -64px 0}
+#flShare li.sns03 a{background-position: -128px 0}
 
 .container{padding:0 20px 200px;max-width: 1500px;margin:0 auto;padding-top: 90px;position: relative;z-index: 1;}
 
@@ -194,7 +204,7 @@ img{border:none}
 .cardWrap .cardAuthorInfo{padding-bottom:20px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#ccc;}
 .cardWrap .cardAuthorInfo b{color:#fff}
 .cardWrap .cardDetail span:before{content:'';display: inline-block;width: 12px;height: 13px;margin:0 7px;background:url('../images/ico_card_popular.png') no-repeat;}
-.cardWrap .cardDetail .comt:before{background-position:-11px 0}
+.cardWrap .cardDetail .comt:before{background-position:-12px 0}
 .cardWrap .cardDetail .scrap:before{background-position:-25px -10px}
 .cardWrap .cardCollect {overflow: hidden;width:148px;margin:10px auto 0;}
 .cardWrap .cardCollect li{overflow: hidden;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
@@ -236,7 +246,7 @@ img{border:none}
 .cardWrap .cardType05 .cardSub{display: none;font-family: 'RobotoL','NotoSansL', sans-serif;}
 .cardWrap .cardType05 .union{margin:-20px auto 160px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;color: #fff;}
 .cardWrap .cardType05 .union span{display: inline-block;padding:7px 20px;border:1px solid #fff;border-radius: 20px;}
-.cardWrap .cardType05 .cardDetail span:before{background-position:0 -13px}
+.cardWrap .cardType05 .cardDetail .like:before{background-position:0 -13px}
 .cardWrap .cardType05 .cardDetail .comt:before{background-position:-12px -12px}
 .cardWrap .cardType05 .cardIntro{color: #666;font-size: 20px;margin-bottom:10px}
 .cardWrap .cardType05 .cardIntro b{font-size:40px;}
