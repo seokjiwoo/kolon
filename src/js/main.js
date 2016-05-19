@@ -20,6 +20,7 @@ jQuery(function($) {
 	});
 	$('#menuToggle').on('click', function(e) {
 		e.preventDefault();
+		$(this).toggleClass('opened');
 		$('#myMenu').slideToggle();
 	});
 	$('.cardCollect label').click(function(){
@@ -145,5 +146,10 @@ jQuery(function($) {
 		 maxSlides: 2,
 		 controls:false,
 		 slideWidth: 100,
+	});
+	$('#sortToggle').on('click', function(e) {
+		e.preventDefault();
+		$(this).toggleClass('opened');
+		$('.catSort ul').slideToggle(300);
 	});
 });
