@@ -29,7 +29,7 @@ img{border:none}
 .topMenu .topR #searchOpen.opened{background-position: bottom;}
 
 #top .searchWrap{position: absolute;top: -60px;left: 0;width: 100%;background: #fff;text-align: left;box-shadow:0px 2px #c9c9c9;z-index: -1}
-#top .searchWrap .keyWrap{overflow: hidden;padding:0 30px;font-size:14px;}
+#top .searchWrap .keyWrap{overflow: hidden;padding:10px 30px;font-size:14px;}
 #top .searchWrap .wrap{max-width:1500px;}
 #top .searchWrap .keyTit{float: left;margin-top:14px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;}
 #top .searchWrap .keyword{overflow: hidden;margin-left: 90px;}
@@ -43,7 +43,7 @@ img{border:none}
 
 #top .searchWrap .searchSet{position: relative;float: right;width: 35%;padding:5px 40px 5px 20px;background: #fff;border-radius:20px;}
 #top .searchWrap #searchTxt{width: 100%;border:0;height: 28px;line-height: 28px;}
-#top .searchWrap button{position: absolute;top:6px;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/ico_search.png') no-repeat center;border:0;vertical-align: middle;}
+#top .searchWrap button{position: absolute;top:6px;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/btn_search.png') no-repeat center;border:0;vertical-align: middle;}
 
 #top .searchWrap .recomand{background: #f1645c;}
 #top .searchWrap .recomand .keyTit {color: #fff;}
@@ -65,7 +65,7 @@ img{border:none}
 .login .topR .btnLogin{display: none;}
 
 .lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);text-align: center;}
-.lnb .profile{min-height:420px;padding-bottom:20px;background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;}
+.lnb .profile{position: relative;min-height:340px;padding-bottom:70px;background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;}
 .lnb .profile .count{border-radius:10px;padding:4px 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;}
 .lnb .profile .close{float: left;display: block;width: 80px;height:60px;background: url('../images/btn_close.png') no-repeat center}
 .lnb .profile .setting{float: right;display: block;width: 80px;height:60px;background: url('../images/btn_set.png') no-repeat center}
@@ -89,7 +89,7 @@ img{border:none}
 .lnb .profile .myMenu li:first-child{border:0;}
 .lnb .profile .myMenu li a{display:block; padding:10px 0 10px 10px;color: #fff;font-size:14px;}
 .lnb .profile .myMenu .count{float: right;margin-top: -2px;background: #d64e48;}
-.lnb .profile .menuToggle{display: block;width:40px;height: 40px;background: #D64E48 url('../images/ico_toggleW.png') no-repeat center;border-radius: 50%;margin: 20px auto 0;
+.lnb .profile .menuToggle{position: absolute;bottom: 20px;left: 50%; width:40px;height: 40px;margin-left: -20px;background: #D64E48 url('../images/ico_toggleW.png') no-repeat center;border-radius: 50%;
 	-webkit-transition: all 0.2s ease-in-out;-moz-transition:all 0.2s ease-in-out;-o-transition:all 0.2s ease-in-out;-ms-transition:all 0.2s ease-in-out;}
 .lnb .profile .menuToggle.opened{-ms-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
 .lnb .leftMenu{margin-top:13px;padding: 0 30px;line-height: 2em;text-align: left;}
@@ -184,8 +184,9 @@ img{border:none}
 #flQna .resultQna li:first-child{border:0;}
 
 .container {position: relative;padding:60px 0 200px;z-index: 1;}
-.container .wrap{max-width: 1195px;margin:0 auto;padding-top:30px;}
+.container .wrap{position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
 .main .container .wrap{max-width: 1500px;padding:30px 20px 0;}
+.container .sWrap{max-width: 780px;margin: 0 auto;}
 
 .arrayWrap{clear: both;height: 37px;}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
@@ -194,6 +195,7 @@ img{border:none}
 .arrayWrap .arrayDrop li a{display: block;padding:12px 40px 12px 15px;font-family:'RobotoR','NotoSansR', sans-serif;color:#666;font-size: 13px;}
 .arrayWrap .arrayDrop.arrayCount{float: right;}
 
-
+.bx-wrapper .bx-controls-direction a{position: absolute;top:50%;margin-top:-29px;width:30px;height: 58px;background: url('../images/ico_slide_nav.png') no-repeat;font-size: 0;}
+.bx-wrapper .bx-controls-direction .bx-next{background-position: -32px 0}
 
 

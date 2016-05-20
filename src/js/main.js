@@ -1,35 +1,29 @@
 jQuery(function($) {
-	$('.cardWrap').isotope({
-		itemSelector: '.cardWrap > li',
-		masonry: {
-			columnWidth: 100,
-			gutter: 1
-		}
-	});
-	$('#btnLnb').on('click', function(e) {
+	cardLayout();
+	$('#btnLnb').on('click', function(e) {//lnb open
 		e.preventDefault();
 		$('#lnb').animate({'left':'0'}, 500);
 	});
-	$('#profileClose').on('click', function(e) {
+	$('#profileClose').on('click', function(e) {//lnb close
 		e.preventDefault();
 		$('#lnb').animate({'left':'-285px'}, 500);
 	});
-	$('.depth01').on('click', function(e) {
+	$('.depth01').on('click', function(e) {//lnb menu drop-down
 		e.preventDefault();
 		$(this).siblings().slideToggle();
 	});
-	$('#menuToggle').on('click', function(e) {
+	$('#menuToggle').on('click', function(e) {//lnb profile drop-down
 		e.preventDefault();
 		$(this).toggleClass('opened');
 		$('#myMenu').slideToggle();
 	});
-	$('.cardCollect label').click(function(){
+	$('.cardCollect label').click(function(){// 개인화 수집 카드
 		if ($(this).siblings('input').val() != ':checked'){			
 			$(this).parent().addClass('on');
 			$(this).parent().siblings().removeClass('on');
 		}
 	});
-	$('#searchOpen').on('click', function(e) {
+	$('#searchOpen').on('click', function(e) {// search drop-down
 		e.preventDefault();
 		if($(this).hasClass('opened')){
 			$(this).removeClass('opened');
@@ -40,7 +34,7 @@ jQuery(function($) {
 		}		
 	});
 
-	$('#floatingToggle').on('click', function(e) {
+	$('#floatingToggle').on('click', function(e) {// floating menu drop-down
 		e.preventDefault();
 		if($(this).hasClass('opened')){
 			$(this).removeClass('opened');
@@ -102,7 +96,7 @@ jQuery(function($) {
 			});
 		}
 	});
-	$('#floatingMenu a').on('click', function(e) {
+	$('#floatingMenu a').on('click', function(e) {// floating menu laypopup
 		var floatingBtn = $(this);
 		var floatingLy = $(this).attr('href');
 		e.preventDefault();
@@ -137,19 +131,50 @@ jQuery(function($) {
 		}
 	});
 	
-	$('#goTop').on('click', function(e) {
+	$('#goTop').on('click', function(e) {// scroll top
 		e.preventDefault();
 		$('body, html').animate({ scrollTop:0}, 400);
 	});
-	$('#slideHomesin').bxSlider({
-		 minSlides: 2,
-		 maxSlides: 2,
-		 controls:false,
-		 slideWidth: 100,
+	$('#slideHomesin').bxSlider({ //floating 의견묻기
+		minSlides: 2,
+		maxSlides: 2,
+		controls:false,
+		slideWidth: 100,
 	});
-	$('#sortToggle').on('click', function(e) {
+	$('#expertList').bxSlider({ //expert top slide
+		minSlides: 5,
+		maxSlides: 5,
+		pager:false,
+		slideWidth: 200,
+		slideMargin:20
+	});
+	$('#infoSlider').bxSlider({ //expert top slide
+		pager:false
+	});
+	$('#sortToggle').on('click', function(e) {//category search drop-down
 		e.preventDefault();
 		$(this).toggleClass('opened');
 		$('.catSort ul').slideToggle(300);
 	});
+	$('.topTab a').on('click', function(e) {// floating menu laypopup
+		var tabBtn = $(this);
+		var tabCon = $(this).attr('href');
+		e.preventDefault();
+		$(tabBtn).parent().addClass('on').siblings().removeClass('on');
+		$(tabCon).show().siblings().hide();
+		if ($('ul').hasClass('cardWrap')){
+			cardLayout();
+		}
+		
+	});
+
 });
+function cardLayout(){	
+	$('#cardWrap').isotope({//card layout
+		itemSelector: '#cardWrap > li',
+		masonry: {
+			columnWidth: 100,
+			gutter: 1
+		}
+	});
+}
