@@ -1,5 +1,6 @@
 jQuery(function($) {
 	cardLayout();
+	var winH = $(window).height()
 	$('#btnLnb').on('click', function(e) {//lnb open
 		e.preventDefault();
 		$('#lnb').animate({'left':'0'}, 500);
@@ -58,7 +59,7 @@ jQuery(function($) {
 				});
 			});
 			$('#floatingMenu a').removeClass('on');
-			$('.lyPop').animate({'bottom':'-100%'},{
+			$('.flPop').animate({'bottom':'-100%'},{
 				duration: 500, 
 				easing: 'easeInBack'
 			});
@@ -156,7 +157,7 @@ jQuery(function($) {
 		$(this).toggleClass('opened');
 		$('.catSort ul').slideToggle(300);
 	});
-	$('.topTab a').on('click', function(e) {// floating menu laypopup
+	$('.tabWrap a').on('click', function(e) {// tab
 		var tabBtn = $(this);
 		var tabCon = $(this).attr('href');
 		e.preventDefault();
@@ -167,7 +168,29 @@ jQuery(function($) {
 		}
 		
 	});
-
+	$('.btnPop').on('click', function(e) {// layer popup open
+		var popup = $(this).attr('href');
+		e.preventDefault();
+		$(popup).show();
+		$('#dim').show();
+	});
+	$('.closePop').on('click', function(e) {// layer popup close
+		e.preventDefault();
+		$(this).parent('.lyPop').hide();
+		$('#dim').hide();
+	});
+	$.each($('.lyPop'), function(){
+		var popupH = $(this).show().height();
+		if(winH < popupH){
+			$(this).hide().css({
+				'top':'120px',
+				'bottom':'120px'
+			})
+			$(this).find('.popScroll').css('height',winH-490)
+		} else {
+			$(this).hide().css('margin-top',-popupH/2);
+		}
+	});
 });
 function cardLayout(){	
 	$('#cardWrap').isotope({//card layout
