@@ -1,12 +1,161 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-   <!-- @@include ./_template/header.html -->
+    <meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
     <title>UPPP</title>
+    <link rel='stylesheet' type='text/css' href='css/main.css' />
+    <script type='text/javascript' src='js/vendor.js'></script>
+    <script type='text/javascript' src='js/main.js'></script>
 </head>
 <body class="main login">
 	<div class="wrapper">
-		<!-- @@include ./_template/menu.html -->
+		<header id="top">
+			<div class="topBanner"></div><!-- 메인에서만 제공 -->
+			<div class="topMenu">
+				<div class="topL">
+					<a href="" class="btnLnb" id="btnLnb"></a>
+					<h1 class="logo"><a href="index.html"><img src="images/logo.png" alt="uppp"></a></h1>
+					<ul class="menu">
+						<li><a href="">리빙서비스</a></li>
+						<li><a href="">중개금융서비스</a></li>
+						<li><a href="">투자인사이트</a></li>
+						<li><a href="">UPPP메거진</a></li>
+						<li><a href="">UPPP전문가</a></li>
+					</ul>
+				</div>
+				<div class="topR">
+					<a href="" class="btnLogin">홈즈 시작하기</a>
+					<div class="member">
+						<a href="" class="btnAlarm"></a>
+						<a href="" class="pic"><img src="images/temp01.jpg" alt=""></a>
+						<a href="" class="name">김세환 님</a>
+					</div>
+					<a href="" id="searchOpen"></a>
+				</div>
+				<div class="searchWrap" id="searchWrap">
+					<div class="keyWrap recomand">
+						<div class="wrap">
+							<h3 class="keyTit">추천검색어</h3>
+							<form action="">
+								<fieldset class="searchSet">
+									<legend class="hide">전체 검색</legend>
+									<label for="searchTxt" class="hide">검색어를 입력해 주세요</label>
+									<input type="text" id="searchTxt" placeholder="검색어를 입력해 주세요">
+									<button type="submit">검색</button>
+								</fieldset>
+							</form>
+							<ul class="keyword">
+								<li><a href="">#신혼집</a></li>
+								<li><a href="">#베란다활용</a></li>
+								<li><a href="">#모던심플</a></li>
+								<li><a href="">#자투리공간활용</a></li>
+								<li><a href="">#34평</a></li>
+								<li><a href="">#화장실</a></li>
+								<li><a href="">#수방사</a></li>
+								<li><a href="">#신혼집</a></li>
+								<li><a href="">#베란다활용</a></li>
+								<li><a href="">#모던심플</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="wrap keyWrap recently">
+						<h3 class="keyTit">최근검색어</h3>
+						<ul class="keyword">
+							<li class="delAll"><a href="">전체삭제</a><span class="del"></span></li>
+							<li><a href="">#신혼집</a><span class="del"></span></li>
+							<li><a href="">#베란다활용</a><span class="del"></span></li>
+							<li><a href="">#모던심플</a><span class="del"></span></li>
+							<li><a href="">#자투리공간활용</a><span class="del"></span></li>
+							<li><a href="">#34평</a><span class="del"></span></li>
+							<li><a href="">#화장실</a><span class="del"></span></li>
+							<li><a href="">#수방사</a><span class="del"></span></li>
+							<li><a href="">#신혼집</a><span class="del"></span></li>
+							<li><a href="">#베란다활용</a><span class="del"></span></li>
+							<li><a href="">#모던심플</a><span class="del"></span></li>
+							<li><a href="">#모던심플</a><span class="del"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<aside class="lnb" id="lnb">
+			<div class="profile">
+				<a href="" class="close" id="profileClose"></a>
+				<a href="" class="setting"></a>
+				<a href="" class="logoL"><img src="images/logoW.png" alt="UPPP"></a>
+				<div class="pic"><img src="images/temp01.jpg" alt=""></div>
+				<p class="profileInfo"><span>김세환 님</span><br>dudlri@naver.com</p>
+				<ul class="btnList">
+					<li class="btnList01"><a href="">알림</a></li>
+					<li class="btnList02"><a href="">팔로우</a></li>
+					<li class="btnList03"><a href="">스크랩</a></li>
+					<li class="btnList04"><a href="">마이카트<span class="count">16</span></a></li>
+				</ul>
+				<a href="" class="btnMypage">나의 UPPP</a>
+				<ul class="myMenu" id="myMenu">
+					<li><a href="">진행 중인 주문/배송<span class="count">16</span></a></li>
+					<li><a href="">취소/반품/교환<span class="count">16</span></a></li>
+					<li><a href="">최근 본 상품<span class="count">16</span></a></li>
+					<li><a href="">나의 시공중인 상품<span class="count">16</span></a></li>
+					<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>
+				</ul>
+				<a href="" class="menuToggle" id="menuToggle"><img src="images/btn_profile_down.png" alt="toggle"></a>
+			</div>
+			<ul class="leftMenu">
+				<li>
+					<a href="" class="depth01">리빙서비스<span class="toggle"></span></a>
+					<ul class="depth02">
+						<li><a href="">홈인테리어 <b>공간을 고치다</b></a></li>
+						<li><a href="">홈드레싱 <b>공간을 채우다</b></a></li>
+						<li><a href="">리빙아이템 <b>공간을 꾸미다</b></a></li>
+						<li><a href="">라이프케어</a></li>
+						<li><a href="">홈즈가성비비교</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="" class="depth01">중개금융서비스<span class="toggle"></span></a>
+					<ul class="depth02">
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="" class="depth01">투자인사이트<span class="toggle"></span></a>
+					<ul class="depth02">
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="" class="depth01">UPPP메거진<span class="toggle"></span></a>
+					<ul class="depth02">
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="" class="depth01">UPPP전문가<span class="toggle"></span></a>
+					<ul class="depth02">
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+						<li><a href=""></a></li>
+					</ul>
+				</li>
+			</ul>
+			<a href="" class="btnLog"><span class="out">로그아웃</span><span class="in">로그인</span></a>
+		</aside>
 		<div class="container">
 			<div class="wrap">
 				<div class="arrayWrap">
@@ -406,7 +555,139 @@
 					</li>
 				</ul>
 			</div>
-			<!-- @@include ./_template/footer.html -->
+			<adide class="floating">
+				<ul id="floatingMenu">
+					<li class="floating01">
+						<a href="#flCall"><span class="menuTit">전화상담</span></a>
+						<span class="pointer"></span>
+					</li>
+					<li class="floating02">
+						<a href="#flAsk"><span class="menuTit">의견묻기</span></a>
+						<span class="pointer"></span>
+					</li>
+					<li class="floating03">
+						<a href="#flShare"><span class="menuTit">공유</span></a>
+						<span class="pointer"></span>
+					</li>
+					<li class="floating04">
+						<a href="#flQna"><span class="menuTit">도움말</span></a>
+						<span class="pointer"></span>
+					</li>
+				</ul>
+				<a href="" id="floatingToggle"></a>
+				<a href="#top" id="goTop">TOP</a>
+				<form action="">
+					<div class="flPop" id="flCall">
+						<p class="popIco">전화상담</p>
+						<h3 class="popTit">1644-1234</h3>
+						<p class="popSub">궁금한 것은 언제든지 물어보세요</p>
+						<fieldset class="popCon">
+							<legend class="hide">전화상담 번호 입력</legend>
+							<p class="productInfo">보고있는 상품 번호는<br><b>AB000012345</b> 입니다.</p>
+							<p class="phoneWrp">
+								<select name="" id="">
+									<option value="010">010</option>
+									<option value="011">011</option>
+									<option value="012">012</option>
+									<option value="012">019</option>
+								</select>
+								<label for="phone01" class="hide">전화번호 앞자리</label>
+								<input type="text" id="phone01" maxlength="4">
+								<label for="phone02" class="hide">전화번호 뒷자리</label>
+								<input type="text" id="phone02" maxlength="4">
+							</p>
+							<button type="submit" class="popSubmit">상담받기</button>
+						</fieldset>
+						<p class="note"><b>상담 받기 버튼</b>을 누르시면 <br>상담원이 바로 고객님께 연락 드리겠습니다. <br><b>연락 받을 전화 번호를 확인해 주세요.</b></p>
+					</div>
+					<div class="flPop" id="flAsk">
+						<p class="popIco">의견묻기</p>
+						<h3 class="popTit">홈즈인들에게 <br>의견묻기</h3>
+						<p class="popSub">궁금한 사항을 질문하고 <br>홈즈 전문가들의 답변을 받아보세요</p>
+						<div class="popCon">
+							<ul id="slideHomesin">
+								<li>
+									<a href="">
+										<div class="inPic"><img src="images/temp01.jpg" alt=""></div>
+										<p class="inTit"><b>bunnypony</b><br>Kolon global</p>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<div class="inPic"><img src="images/temp01.jpg" alt=""></div>
+										<p class="inTit"><b>bunnypony</b><br>Kolon global</p>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<div class="inPic"><img src="images/temp01.jpg" alt=""></div>
+										<p class="inTit"><b>bunnypony</b><br>Kolon global</p>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<div class="inPic"><img src="images/temp01.jpg" alt=""></div>
+										<p class="inTit"><b>bunnypony</b><br>Kolon global</p>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<div class="inPic"><img src="images/temp01.jpg" alt=""></div>
+										<p class="inTit"><b>bunnypony</b><br>Kolon global</p>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<div class="inPic"><img src="images/temp01.jpg" alt=""></div>
+										<p class="inTit"><b>bunnypony</b><br>Kolon global</p>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="flPop" id="flShare">
+						<p class="popIco">공유</p>
+						<ul class="popCon">
+							<li class="sns01"><a href=""></a></li>
+							<li class="sns02"><a href=""></a></li>
+							<li class="sns03"><a href=""></a></li>
+						</ul>
+						<fieldset class="shareLink">
+							<legend class="hide">공유 링크</legend>
+							<p>
+								<input type="text" id="shareLink" disabled value="http://www.homs.co.kr">
+								<label for="#shareLink"class="hide">공유 링크 복사</label>
+								<button id="shareLinkBtn">URL 복사</button>
+							</p>
+						</fieldset>
+					</div>
+					<div class="flPop" id="flQna">
+						<p class="popIco">도움말</p>
+						<fieldset class="searchQna">
+							<legend class="hide">도움말 검색</legend>
+							<input type="text" id="searchQna" placeholder="어떻게 도와드릴까요?">
+							<label for="#searchQna">도움말 검색어 입력</label>
+							<button id="searchQnaBtn">검색</button>
+						</fieldset>
+						<div class="resultQna">
+							<h3 class="resultTit">추천 도움말</h3>
+							<ul>
+								<li><a href="">홈즈에 처음 오셨나요?</a></li>
+								<li><a href="">홈즈 이용은 무료인가요?</a></li>
+								<li><a href="">홈즈만의 장점은 무엇입니까?</a></li>
+								<li><a href="">홈즈는 어떤 서비스가 있나요?</a></li>
+								<li><a href="">홈즈는 어떤 서비스가 있나요?</a></li>
+								<li><a href="">홈즈 이용은 무료인가요?</a></li>
+								<li><a href="">홈즈만의 장점은 무엇입니까?</a></li>
+								<li><a href="">홈즈는 어떤 서비스가 있나요?</a></li>
+								<li><a href="">홈즈는 어떤 서비스가 있나요?</a></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</adide>
+			<footer></footer>
+			<div id="dim"></div>
 		</div>
 	</div>
 </body>

@@ -1,4 +1,4 @@
-.cardWrap{overflow: hidden;min-width:1220px;margin:40px -20px 0 0;}
+.cardWrap{overflow: hidden;min-width:1220px;margin:40px -20px 0 0;z-index: 0}
 .cardWrap > li{overflow: hidden;float: left;width:285px;margin-bottom: 10px;background-color:#fff;text-align: center;color:#fefefe;background-size: 100%;background-position: center;border-radius: 10px;}
 
 .cardWrap .cardCon{position: relative;display: block;width:265px;padding:80px 10px;color:#fefefe;}

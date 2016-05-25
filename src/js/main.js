@@ -1,6 +1,99 @@
 jQuery(function($) {
-	cardLayout();
-	var winH = $(window).height()
+	var winH = $(window).height();
+
+	// common
+	initLnb();
+	initCardLayout();
+	initTabSlider();
+	initFloating();
+	$('.tabWrap a').on('click', function(e) {// tab
+		var tabBtn = $(this);
+		var tabCon = $(this).attr('href');
+		e.preventDefault();
+		$(tabBtn).parent().addClass('on').siblings().removeClass('on');
+		$(tabCon).show().siblings().hide();
+		if ($('ul').hasClass('cardWrap')){
+			initCardLayout();
+		}
+		if ($('ul').hasClass('infoSlider')){
+			initTabSlider();
+		}
+		
+	});
+	$('.btnPop').on('click', function(e) {// layer popup open
+		var popup = $(this).attr('href');
+		e.preventDefault();
+		$(popup).show();
+		$('#dim').show();
+	});
+	$('.closePop').on('click', function(e) {// layer popup close
+		e.preventDefault();
+		$(this).parent('.lyPop').hide();
+		$('#dim').hide();
+	});
+	$.each($('.lyPop'), function(){
+		var popupH = $(this).show().height();
+		if(winH < popupH){
+			$(this).hide().css({
+				'top':'120px',
+				'bottom':'120px'
+			})
+			$(this).find('.popScroll').css('height',winH-490)
+		} else {
+			$(this).hide().css('margin-top',-popupH/2);
+		}
+	});
+	$('.checkbox label').click(function(){// 체크박스
+		if ($(this).siblings('input').val() != ':checked'){			
+			$(this).toggleClass('on');
+		}
+	});
+	$('#searchOpen').on('click', function(e) {// search drop-down
+		e.preventDefault();
+		if($(this).hasClass('opened')){
+			$(this).removeClass('opened');
+			$('#searchWrap').animate({'top':'-60px'},250);
+		} else {
+			$(this).addClass('opened')
+			$('#searchWrap').animate({'top':'60px'},250);
+		}		
+	});
+	
+	$('#sortToggle').on('click', function(e) {//category search drop-down
+		e.preventDefault();
+		$(this).toggleClass('opened');
+		$('.catSort ul').slideToggle(300);
+	});	
+	$('.cardCollect label').click(function(){// 개인화 수집 카드
+		if ($(this).siblings('input').val() != ':checked'){			
+			$(this).parent().addClass('on');
+			$(this).parent().siblings().removeClass('on');
+		}
+	});
+	$('#expertList').bxSlider({ //expert top slide
+		minSlides: 5,
+		maxSlides: 5,
+		pager:false,
+		slideWidth: 200,
+		slideMargin:20
+	});
+});
+function initCardLayout(){ //card layout
+	$('#cardWrap').isotope({
+		itemSelector: '#cardWrap > li',
+		masonry: {
+			columnWidth: 100,
+			gutter: 1
+		}
+	});
+}
+
+function initTabSlider(){ 
+	$('#infoSlider').bxSlider({ //slide in tab content
+		pager:false
+	});
+}
+function initLnb(){
 	$('#btnLnb').on('click', function(e) {//lnb open
 		e.preventDefault();
 		$('#lnb').animate({'left':'0'}, 500);
@@ -18,23 +111,8 @@ jQuery(function($) {
 		$(this).toggleClass('opened');
 		$('#myMenu').slideToggle();
 	});
-	$('.cardCollect label').click(function(){// 개인화 수집 카드
-		if ($(this).siblings('input').val() != ':checked'){			
-			$(this).parent().addClass('on');
-			$(this).parent().siblings().removeClass('on');
-		}
-	});
-	$('#searchOpen').on('click', function(e) {// search drop-down
-		e.preventDefault();
-		if($(this).hasClass('opened')){
-			$(this).removeClass('opened');
-			$('#searchWrap').animate({'top':'-60px'},250);
-		} else {
-			$(this).addClass('opened')
-			$('#searchWrap').animate({'top':'60px'},250);
-		}		
-	});
-
+}
+function initFloating(){
 	$('#floatingToggle').on('click', function(e) {// floating menu drop-down
 		e.preventDefault();
 		if($(this).hasClass('opened')){
@@ -131,7 +209,6 @@ jQuery(function($) {
 			$('#dim').stop().fadeIn(100);
 		}
 	});
-	
 	$('#goTop').on('click', function(e) {// scroll top
 		e.preventDefault();
 		$('body, html').animate({ scrollTop:0}, 400);
@@ -141,63 +218,5 @@ jQuery(function($) {
 		maxSlides: 2,
 		controls:false,
 		slideWidth: 100,
-	});
-	$('#expertList').bxSlider({ //expert top slide
-		minSlides: 5,
-		maxSlides: 5,
-		pager:false,
-		slideWidth: 200,
-		slideMargin:20
-	});
-	$('#infoSlider').bxSlider({ //expert top slide
-		pager:false
-	});
-	$('#sortToggle').on('click', function(e) {//category search drop-down
-		e.preventDefault();
-		$(this).toggleClass('opened');
-		$('.catSort ul').slideToggle(300);
-	});
-	$('.tabWrap a').on('click', function(e) {// tab
-		var tabBtn = $(this);
-		var tabCon = $(this).attr('href');
-		e.preventDefault();
-		$(tabBtn).parent().addClass('on').siblings().removeClass('on');
-		$(tabCon).show().siblings().hide();
-		if ($('ul').hasClass('cardWrap')){
-			cardLayout();
-		}
-		
-	});
-	$('.btnPop').on('click', function(e) {// layer popup open
-		var popup = $(this).attr('href');
-		e.preventDefault();
-		$(popup).show();
-		$('#dim').show();
-	});
-	$('.closePop').on('click', function(e) {// layer popup close
-		e.preventDefault();
-		$(this).parent('.lyPop').hide();
-		$('#dim').hide();
-	});
-	$.each($('.lyPop'), function(){
-		var popupH = $(this).show().height();
-		if(winH < popupH){
-			$(this).hide().css({
-				'top':'120px',
-				'bottom':'120px'
-			})
-			$(this).find('.popScroll').css('height',winH-490)
-		} else {
-			$(this).hide().css('margin-top',-popupH/2);
-		}
-	});
-});
-function cardLayout(){	
-	$('#cardWrap').isotope({//card layout
-		itemSelector: '#cardWrap > li',
-		masonry: {
-			columnWidth: 100,
-			gutter: 1
-		}
 	});
 }
