@@ -155,11 +155,11 @@ img{border:none}
 #flAsk .bx-pager-item{display: inline-block;}
 #flAsk .bx-pager-item a{display: block;width: 10px;height: 10px;background: #ccc;font-size: 0;margin:2px;}
 #flAsk .bx-pager-item .active{background: #f1645c}
-#slideHomesin{overflow: hidden}
-#slideHomesin .inPic{overflow: hidden;width: 64px;height: 64px;margin: 0 auto;border-radius: 50%;}
-#slideHomesin .inPic img{display: block;width: 100%;}
-#slideHomesin .inTit{margin-top:5px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color: #666;}
-#slideHomesin .inTit b{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
+#slideIn{overflow: hidden}
+#slideIn .inPic{overflow: hidden;width: 64px;height: 64px;margin: 0 auto;border-radius: 50%;}
+#slideIn .inPic img{display: block;width: 100%;}
+#slideIn .inTit{margin-top:5px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color: #666;}
+#slideIn .inTit b{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
 
 #flShare li{display: inline-block;margin:3px;}
 #flShare li a{display: block;width: 64px;height: 64px;background: url('../images/btn_sns.png') no-repeat;}

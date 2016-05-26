@@ -2,39 +2,23 @@
 <html lang='ko-kr'>
 <head>
 	<!-- @@include ./_template/header.html -->
-	<title>UPPP 마이홈즈</title>
+	<title>COMMON 마이커먼</title>
 </head>
  <body class="login">
 	<div class="wrapper my">
 	<!-- @@include ./_template/menu.html -->
 	<div class="container">
-		<div class="infoTop">
-			<div class="wrap colWrap">
-				<div class="infoPic"><img src="images/temp01.jpg" alt=""></div>
-				<div class="infoWrap">
-					<h2 class="infoTit">김석훈</h2>
-					<p class="infoId">the1stpenguin</p>
-					<ul class="infoDetail">
-						<li class="myRate"><a href=""><b>10</b>마이페이지</a></li>
-						<li class="myRate"><a href=""><b>10</b>알립</a></li>
-						<li class="myRate"><a href=""><b>0</b>스크랩</a></li>
-						<li class="myRate"><a href=""><b>104</b>팔로잉</a></li>
-						<li class="myRate"><a href=""><b>1000</b>포인트</a></li>
-						<li class="myRate"><a href=""><b>24</b>마이카트</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		<!-- @@include ./_template/my_menu.html -->
 		<div class="tabType01 tabWrap">
 			<ul>
-				<li class="on"><a href="#myTimeline">마이홈즈</a></li>
+				<li><a href="#myTimeline">마이커먼</a></li>
 				<li><a href="#myOrder">주문/배송</a></li>
 				<li><a href="#myBuilding">시공중인 상품</a></li>
-				<li><a href="#myActivity">나의 활동내역</a></li>
+				<li class="on"><a href="#myActivity">나의 활동내역</a></li>
 			</ul>
 		</div>
 		<div class="wrap">
-			<section id="myTimeline">
+			<section id="myTimeline" style="display: none;">
 				
 			</section>
 			<section id="myOrder" style="display: none;">
@@ -43,7 +27,7 @@
 			<section id="myBuilding" style="display: none;">
 				
 			</section>
-			<section id="myActivity" style="display: none;">
+			<section id="myActivity">
 				<adide class="myMenu">
 					<ul>
 						<li><a href="" class="on">최근 본 상품</a></li>

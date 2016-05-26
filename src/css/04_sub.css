@@ -241,10 +241,17 @@
 
 .my .infoTop .infoWrap{width:auto;}
 .my .infoTop .myRate a{color: #666}
+.my .infoTop .myRate .my{width:20px;height: 18px;margin:0 auto 2px;background: url('../images/ico_homeB.png') no-repeat;}
+.my .infoTop .myRate.on a{color: #f1645c}
+.my .infoTop .myRate.on .my{background-image:url('../images/ico_homeR.png'); }
+.my .infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
+.my .infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
+
 .my .myMenu{float: left;width:225px;padding: 15px 30px 60px;background: #f1645c;border-radius: 10px;margin-right: 10px;}
 .my .myMenu li{border-bottom: 1px solid #f1807a;}
 .my .myMenu a{display: block;padding: 14px 0;;color: #fff;}
 .my .myMenu a.on{font-family:'RobotoM','NotoSansM', sans-serif;}
-.my .myMenu a.on:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin:0 10px;vertical-align: middle;}
+.my .myMenu a.on:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
+
 
 .my .cardWrap{float: left;width: 910px;min-width: 0;margin-top:0;}
