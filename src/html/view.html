@@ -1,45 +1,28 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ./_template/header.html {"title":"COMMON 마이커먼"} -->	
+	<!-- @@include ./_template/header.html {"title":"COMMON 나의 활동내역"} -->
 </head>
  <body class="login">
 	<div class="wrapper my">
 	<!-- @@include ./_template/menu.html -->
 	<div class="container">
-		<!-- @@include ./_template/my_menu.html {"myMenu01":"on"} -->
-		<div class="tabType01 tabWrap">
-			<ul>
-				<li><a href="#myTimeline">마이커먼</a></li>
-				<li><a href="#myOrder">주문/배송</a></li>
-				<li><a href="#myBuilding">시공중인 상품</a></li>
-				<li class="on"><a href="#myActivity">나의 활동내역</a></li>
-			</ul>
-		</div>
-		<div class="wrap">
-			<section id="myTimeline" style="display: none;">
-				
-			</section>
-			<section id="myOrder" style="display: none;">
-				
-			</section>
-			<section id="myBuilding" style="display: none;">
-				
-			</section>
-			<section id="myActivity">
-				<adide class="myMenu">
-					<ul>
-						<li><a href="" class="on">최근 본 상품</a></li>
-						<li><a href="">1:1 메시지</a></li>
-						<li><a href="">내 의견 묻기 내역</a></li>
-						<li><a href="">내가 작성한 리뷰</a></li>
-					</ul>
-				</adide>
-				<ul class="cardWrap" id="cardWrap">
-					<!-- @@include ./_template/card.html -->
+		<!-- @@include ./_template/my_depth01.html {"myMenu01":"on"} -->
+		<!-- @@include ./_template/my_depth02.html {"myMenu04":"on"} -->
+		<section class="wrap" id="myActivity">
+			<h2 class="hide">나의 활동내역</h2>
+			<adide class="myMenu">
+				<ul>
+					<li><a href="" class="on">최근 본 상품</a></li>
+					<li><a href="">1:1 메시지</a></li>
+					<li><a href="">내 의견 묻기 내역</a></li>
+					<li><a href="">내가 작성한 리뷰</a></li>
 				</ul>
-			</section>
-		</div>
+			</adide>
+			<ul class="cardWrap" id="cardWrap">
+				<!-- @@include ./_template/card.html -->
+			</ul>
+		</section>
 		<!-- @@include ./_template/footer.html -->
 		</div>
 	</div>

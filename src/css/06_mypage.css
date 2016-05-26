@@ -1,0 +1,55 @@
+.my .container .wrap{padding-top: 50px;}
+.my .tabType01 ul{width: 1200px;margin:0 auto;}
+.my .tabType01 li{width: 25%;}
+
+.my .infoTop .infoWrap{width:auto;}
+.my .infoTop .myRate a{color: #666}
+.my .infoTop .myRate .my{width:20px;height: 18px;margin:0 auto 2px;background: url('../images/ico_homeB.png') no-repeat;}
+.my .infoTop .myRate.on a{color: #f1645c}
+.my .infoTop .myRate.on .my{background-image:url('../images/ico_homeR.png'); }
+.my .infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
+.my .infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
+
+.my .myMenu{float: left;width:225px;padding: 15px 30px 60px;background: #f1645c;border-radius: 10px;margin-right: 10px;}
+.my .myMenu li{border-bottom: 1px solid #f1807a;}
+.my .myMenu a{display: block;padding: 14px 0;;color: #fff;}
+.my .myMenu a.on{font-family:'RobotoM','NotoSansM', sans-serif;}
+.my .myMenu a.on:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
+
+.my .cardWrap{float: left;width: 910px;min-width: 0;margin-top:0;}
+
+#myTimeline .recordDate{display: inline-block;margin:0 auto 15px 190px;padding: 0 15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 30px;border-radius: 15px;}
+#myTimeline .recordWrap{padding-bottom: 20px;background: url('../images/bg_my.png') repeat-y left;}
+#myTimeline .recordWrap li{margin-top: 20px;}
+#myTimeline .recordWrap li:first-child{margin-top: 0;}
+#myTimeline .recordTime{display: inline-block;vertical-align: middle;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;font-size: 20px;}
+#myTimeline .recordTime b{color: #f1645c}
+#myTimeline .recordIco{position: relative;display: inline-block;width: 96px;height: 96px;margin:0 11px 0 23px;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;font-size: 0;vertical-align: middle;}
+#myTimeline a{overflow: hidden;display: inline-block;width: 865px;height: 155px;padding-left:30px;background: #fff;border-radius: 10px;vertical-align: middle;    box-shadow: 0px 3px rgba(0,0,0,0.1);}
+#myTimeline .recordCon{display: inline-block;width: 550px;margin-right: -4px;padding-right: 30px;vertical-align: middle;}
+#myTimeline .recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
+#myTimeline .recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
+#myTimeline .recordThumb{position: relative;display: inline-block;width: 285px;height: 100%;vertical-align: middle;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;text-align: center;}
+#myTimeline .recordThumb:before{content: '';display: inline-block;width: 0;height: 100%;vertical-align: middle;}
+#myTimeline .recordThumb img{position: absolute;top: 0;left: 0;display: block;width: 100%;z-index: 0}
+#myTimeline .recordThumb p{position: relative;z-index: 1; display: inline-block;vertical-align: middle;font-size: 14px;line-height: 1.4em;}
+#myTimeline .recordThumb p b{display: block;font-size: 40px;font-family:'NotoSansM', sans-serif;}
+#myTimeline .recordThumb p:before{display: block;width:25px;height: 26px;margin: 0 auto 7px;background: url('../images/ico_timeline.png') no-repeat;}
+#myTimeline .recordCat{display: inline-block;margin-bottom: 10px;padding: 0 10px;border-radius: 10px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;color: #000;line-height: 20px;border:1px solid #000;}
+
+#myTimeline .recordType01 .recordIco{background-position: -96px 0;background-color: #65bfe5} 
+#myTimeline .recordType02 .recordIco{background-position: 0 -96px;background-color: #f1be4f}
+#myTimeline .recordType03 .recordIco{background-position: 0 -198px;background-color: #8176d2}
+#myTimeline .recordType04 .recordIco{background-position: -288px 0;background-color: #adc427}
+#myTimeline .recordType04 .recordThumb{background: #a9c700;}
+#myTimeline .recordType05 .recordIco{background-position: -288px -96px;background-color: #a5abb5}
+#myTimeline .recordType05 .recordThumb{background: #a5abb5;}
+#myTimeline .recordType05 .recordThumb p:before{content: '';background-position: -429px -261px;}
+#myTimeline .recordType05 .recordThumb p strong{font-size: 20px;font-family:'RobotoM', sans-serif;}
+#myTimeline .recordType06 .recordIco{background-position: -384px -96px;background-color: #f1645c}
+#myTimeline .recordType06 .recordThumb{background: #f1645c;}
+#myTimeline .recordType06 .recordThumb p:before{content: '';background-position: -456px -261px;}
+#myTimeline .recordType07 .recordIco{background-position: -288px 0;background-color: #adc427}
+#myTimeline .recordType07 .recordThumb{background: #a9c700;}
+#myTimeline .recordType08 .recordIco{background-position: 0 0;background-color: #f8f8f8}
+#myTimeline .recordType08 .recordIco:after{content: '';position: absolute;top:96px;left: 0;width: 100px;height: 50px;background: #e0e0e0}
