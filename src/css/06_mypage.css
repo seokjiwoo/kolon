@@ -17,8 +17,12 @@
 .my .myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
 
 .my .singleCard{padding: 50px;}
-
 .my .cardWrap{float: left;width: 910px;min-width: 0;margin-top:0;}
+
+.my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
+.my table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.my table th{padding: 20px;background: #f8f8f8;color: #333;}
+.my table td{padding: 20px;}
 
 #myTimeline .recordDate{display: inline-block;margin:0 auto 15px 190px;padding: 0 15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 30px;border-radius: 15px;}
 #myTimeline .recordWrap{padding-bottom: 20px;background: url('../images/bg_my.png') repeat-y left;}
@@ -57,13 +61,8 @@
 #myTimeline .recordType08 .recordIco:after{content: '';position: absolute;top:96px;left: 0;width: 100px;height: 50px;background: #e0e0e0}
 
 
-.my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
-.my table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.my table th{padding: 20px;background: #f8f8f8;color: #333;}
-.my table td{padding: 20px;}
-
+.my .recordSort{margin:30px 0;text-align: left;}
 .my .sortTerm{display: inline-block;}
-.my .recordSort{margin-bottom: 15px;}
 .my .recordSort li{display: inline-block;margin-left: 5px;}
 .my .recordSort li:first-child{margin:0;}
 .my .recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
