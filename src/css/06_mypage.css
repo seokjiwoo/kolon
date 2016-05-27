@@ -55,3 +55,38 @@
 #myTimeline .recordType07 .recordThumb{background: #a9c700;}
 #myTimeline .recordType08 .recordIco{background-position: 0 0;background-color: #f8f8f8}
 #myTimeline .recordType08 .recordIco:after{content: '';position: absolute;top:96px;left: 0;width: 100px;height: 50px;background: #e0e0e0}
+
+
+.my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
+.my table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.my table th{padding: 20px;background: #f8f8f8;color: #333;}
+.my table td{padding: 20px;}
+
+.my .sortTerm{display: inline-block;}
+.my .recordSort{margin-bottom: 15px;}
+.my .recordSort li{display: inline-block;margin-left: 5px;}
+.my .recordSort li:first-child{margin:0;}
+.my .recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
+.my .recordSort a.on{background: #a9c700;border:0;color: #fff;}
+.my .recordSearch{display: inline-block;padding: 5px;border:1px solid #d1d1d1;border-radius: 10px;}
+.my .recordSearch #recordInput{width: 190px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
+.my .recordSearch button{width:36px;height:28px;font-size: 0;background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle;}
+.my .sortTermSet{display: inline-block;margin-left: 15px;}
+.my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
+.my .subTxt {font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
+
+.my .record{margin-top: 20px;}
+.my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
+.my .record .recordDate{border-right: 1px solid #e1e1e1}
+.my .record .date b{color: #f1645c;text-decoration: underline;}
+.my .record .total{margin-top:20px;} 
+.my .record .total b{color: #999;}
+.my .record .recordThumb{overflow: hidden;width: 90px;height: 90px;background: #f8f8f8;}
+.my .record .recordThumb img{display: block;width: 100%;}
+.my .record .recordInfo{text-align: left;}
+.my .record .recordInfo span{display: block;}
+.my .record .recordInfo .producOption{color: #999}
+.my .record .recordInfo .productPrice{font-family:'RobotoB','NotoSansB', sans-serif;}
+.my .record .orderState a{display: block;margin-top:6px;}
+.my .record .orderState .stateTxt:after{content:'';display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
+.my .record .orderState .cancleDate{color: #f1645c;}

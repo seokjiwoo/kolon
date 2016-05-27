@@ -39,7 +39,7 @@
 .tabType02 .on a{color: #333;}
 
 /* button */
-a[class^="btnSize"], .btn{display: inline-block;color: #fff;display: inline-block;outline: 0;border: 0;font-family: 'RobotoM','NotoSansM', sans-serif;text-align: center;}
+a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0;font-family: 'RobotoM','NotoSansM', sans-serif;text-align: center;}
 
 .btnSizeS{height:30px;padding:0 20px;font-size: 14px;border-radius: 15px;line-height: 30px;}
 .btnSizeM{height:40px;min-width:140px;font-size: 14px;border-radius: 20px;line-height: 40px;}
