@@ -61,6 +61,7 @@
 
 
 .my .recordSort{margin:30px 0;text-align: left;}
+.my .recordSort tr:first-child td{padding-bottom: 0;}
 .my .sortTerm{display: inline-block;}
 .my .recordSort li{display: inline-block;margin-left: 5px;}
 .my .recordSort li:first-child{margin:0;}
@@ -85,6 +86,23 @@
 .my .record .recordInfo span{display: block;}
 .my .record .recordInfo .producOption{color: #999}
 .my .record .recordInfo .productPrice{font-family:'RobotoB','NotoSansB', sans-serif;}
+.my .record .orderState{position: relative;}
 .my .record .orderState a{display: block;margin-top:6px;}
+.my .record .orderState .stateTxt{position: relative;}
 .my .record .orderState .stateTxt:after{content:'';display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
+.my .record .orderState .stateTxt:hover .popState{display: block;}
 .my .record .orderState .cancleDate{color: #f1645c;}
+
+
+.my .record .popState{display: none;position: absolute;right: 0;bottom:30px;width: 495px;padding: 38px 20px 38px;background: #fff;border:1px solid #999;z-index: 2;}
+.my .record .popState:after{content: '';position: absolute;bottom: -18px;right: 50px;width: 18px;height: 18px;background: url('../images/ico_pointer.png') no-repeat;}
+.my .record .popState li{display: inline-block;width:16%;color: #666;}
+.my .record .popState li.on{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
+.my .record .popState .stepImg{width: 440px;height:30px;margin:0 auto 14px;background: url('../images/ico_step.png') no-repeat;}
+.my .record .popState .stepImg span{display: block;height: 100%;background: url('../images/ico_step_on.png') no-repeat;}
+.my .record .popState .step01 span{width: 82px;}
+.my .record .popState .step02 span{width: 164px;}
+.my .record .popState .step03 span{width: 246px;}
+.my .record .popState .step04 span{width: 328px;}
+.my .record .popState .step05 span{width: 410px;}
+.my .record .popState .step06 span{width: 440px;}

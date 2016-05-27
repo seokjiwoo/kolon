@@ -62,7 +62,13 @@
 						<td>ANNA</td>
 						<td>김정현</td>
 						<td>무료배송</td>
-						<td class="orderState"><p class="stateTxt">결제완료</p><a href="" class="btnSizeS btnColor01">취소신청</a></td>
+						<td class="orderState">
+							<div class="stateTxt">
+								<!-- @@include ./_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
+								결제완료
+							</div>
+							<a href="" class="btnSizeS btnColor01">취소신청</a>
+						</td>
 					</tr>
 					<tr>
 						<td><div class="recordThumb"><img src="images/temp09.jpg" alt=""></div></td>
@@ -71,7 +77,13 @@
 						<td>ANNA</td>
 						<td>김정현</td>
 						<td>무료배송</td>
-						<td class="orderState"><p class="stateTxt">상품준비중</p><a href="" class="btnSizeS btnColor01">취소신청</a></td>
+						<td class="orderState">
+							<div class="stateTxt">
+								<!-- @@include ./_template/pop_order_state.html {"step":"step03", "step03":"on"} -->
+								상품준비중
+							</div>
+							<a href="" class="btnSizeS btnColor01">취소신청</a>
+						</td>
 					</tr>
 					<tr>
 						<td><div class="recordThumb"><img src="images/temp09.jpg" alt=""></div></td>
@@ -97,7 +109,10 @@
 						<td>김정현</td>
 						<td>무료배송</td>
 						<td class="orderState">
-							<p class="stateTxt">배송완료</p>
+							<div class="stateTxt">
+								<!-- @@include ./_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+								배송완료
+							</div>
 							<a href="" class="btnSizeS btnColor01">배송추적</a>
 							<a href="" class="btnSizeS btnColor01">구매확정</a>
 						</td>
