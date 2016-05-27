@@ -212,6 +212,9 @@ module.exports = function() {
 			}
 			
 		});
+		// tab width depend on number of li
+		var countMenu = $('.tabType01 li').length ;
+		$('.tabType01 li').css('width',100/countMenu+'%');
 	}
 	
 	function initPopup(){
