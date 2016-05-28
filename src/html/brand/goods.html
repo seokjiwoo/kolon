@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ./_template/header.html {"title":"COMMON 브랜드"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 브랜드"} -->
 </head>
- <body class="login">
+ <body data-page-id="brandGoods">
 	<div class="wrapper brand">
-	<!-- @@include ./_template/menu.html -->
+	<!-- @@include ../_template/menu.html -->
 	<div class="container">
 		<div class="infoTop">
 			<div class="wrap colWrap">
@@ -30,12 +30,12 @@
 		</div>
 		<div class="tabType01 tabWrap">
 			<ul class="sWrap">
-				<li class="on"><a href="#brandInfo">브랜드 소개</a></li>
-				<li><a href="#brandList">판매상품 <span>15</span></a></li>
+				<li><a href="#brandInfo">브랜드 소개</a></li>
+				<li class="on"><a href="#brandList">판매상품 <span>15</span></a></li>
 			</ul>
 		</div>
 		<div class="wrap">
-			<section class="contentCard" id="brandInfo">
+			<section class="contentCard" id="brandInfo" style="display: none;">
 				<div class="singleCard">
 					<ul id="infoSlider">
 						<li><img src="images/temp14.jpg" alt=""></li>
@@ -64,7 +64,7 @@
 					<li><a href="">#14평</a></li>
 				</ul>
 			</section>
-			<section id="brandList" style="display: none;">
+			<section id="brandList">
 				<div class="arrayWrap">
 					<ul class="arrayDrop arrayCount">
 						<li><a href="">최신순</a></li>
@@ -75,11 +75,11 @@
 					</ul>
 				</div>
 				<ul class="cardWrap" id="cardWrap">
-					<!-- @@include ./_template/card.html -->
+					<!-- @@include ../_template/card.html -->
 				</ul>
 			</section>
 		</div>
-		<!-- @@include ./_template/footer.html -->
+		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
 </body>
