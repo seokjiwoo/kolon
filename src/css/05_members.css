@@ -11,7 +11,9 @@
 .members .formWrap .alert{/*display: none;*/color: #f1645c}
 .members .formWrap .subTxt{display: block;width: 100%;}
 .members .container input[type="checkbox"]{position: absolute;opacity: 0;}
-.members .container input[type="text"]{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+.members .container input[type="text"],
+.members .container input[type="email"],
+.members .container input[type="password"]{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .members .inputWrap{line-height: 60px;} 
 .members .inputWrap01{margin-top:30px;}
 .members .inputWrap label{display: inline-block;min-width: 70px;text-align: left;margin-right: 20px;color: #000;}
@@ -64,7 +66,9 @@
 .members .doubleCard .subTit{font-size: 20px;}
 .members .doubleCard:first-child .subTit{font-size: 34px;}
 .members .doubleCard > .subTit{margin-top:50px;}
-.members .container .formWrap02 input[type="text"]{width: 470px;margin:15px 0 0 0;padding: 18px 20px;font-size: 16px;}
+.members .container .formWrap02 input[type="text"],
+.members .container .formWrap02 input[type="email"],
+.members .container .formWrap02 input[type="password"]{width: 470px;margin:15px 0 0 0;padding: 18px 20px;font-size: 16px;}
 .members .doubleCard .btn{width: 510px;margin-top:30px;}
 .members .doubleCard .loginSns{display: block;width:auto;margin-top:15px;padding:0 25px;}
 
