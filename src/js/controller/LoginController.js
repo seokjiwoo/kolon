@@ -30,6 +30,10 @@ function ClassLoginController() {
 		
 		callerObj = {
 			/**
+			 * 소셜 로그인 URL 목록 요청
+			 */
+			getSocialLoginUrl: getSocialLoginUrl,
+			/**
 			 * 로그인 POST
 			 * @param {String} id - user id
 			 * @param {String} pw - user password
@@ -87,7 +91,21 @@ function ClassLoginController() {
 				handleError('login', result);
 				$(callerObj).trigger('loginResult', [result.status]);
 			}
-		}, true);
+		}, false);
+	};
+	
+	/**
+	 * 소셜 로그인 URL 목록
+	 */
+	function getSocialLoginUrl() {
+		callApi(API_URL+'/apis/member/socials/authLoginUrl', 'GET', {}, function(result) {
+			if (result.status == '200') {
+				// make cookie
+				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
+			} else {
+				handleError('authLoginUrl', result);
+			}
+		}, false);
 	};
 	
 	/**
@@ -308,12 +326,22 @@ function ClassLoginController() {
 	function callApi(url, method, data, callback, forceFlag) {
 		if (loadingFlag == false || forceFlag == true) {
 			loadingFlag = true;
+			var ajaxOptions;
+			if (method == 'GET') {
+				ajaxOptions = {
+					url: url,
+					method: method
+				}
+			} else {
+				ajaxOptions = {
+					url: url,
+					method: method,
+					data: JSON.stringify(data),
+					contentType: "application/json"
+				}
+			}
 			
-			$.ajax({
-				url: url,
-				method: method,
-				data: data
-			}).done(function(data, textStatus, jqXHR) {
+			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
 				callback.call(this, data);
 				loadingFlag = false;
 			}).fail(function(jqXHR, textStatus, errorThrown) {
