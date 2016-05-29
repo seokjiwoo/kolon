@@ -76,7 +76,7 @@ function ClassLoginController() {
 	 * 로그인 POST
 	 */
 	function login(id, pw) {
-		callApi(API_URL+'/apis/login', 'POST', {
+		callApi(API_URL+'/apis/user/login', 'POST', {
 			"loginId": id,
 			"loginPassword": pw
 		}, function(result) {
