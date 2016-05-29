@@ -13,6 +13,8 @@ function ClassLoginController() {
 	
 	var model;
 	
+	var loadingFlag = false;
+	
 	return {
 		getInstance: function() {
 			if (!instance) instance = LoginController();
@@ -29,6 +31,8 @@ function ClassLoginController() {
 		callerObj = {
 			/**
 			 * 로그인 POST
+			 * @param {String} id - user id
+			 * @param {String} pw - user password
 			 */
 			login: login,
 			/**
@@ -78,8 +82,10 @@ function ClassLoginController() {
 		}, function(result) {
 			if (result.status == '200') {
 				// make cookie
+				$(callerObj).trigger('loginResult', [200]);
 			} else {
 				handleError('login', result);
+				$(callerObj).trigger('loginResult', [result.status]);
 			}
 		}, true);
 	};
@@ -307,8 +313,14 @@ function ClassLoginController() {
 				url: url,
 				method: method,
 				data: data
-			}).done(function(result) {
-				callback.call(this, result);
+			}).done(function(data, textStatus, jqXHR) {
+				callback.call(this, data);
+				loadingFlag = false;
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				callback.call(this, {
+					status: jqXHR.status,
+					message: errorThrown
+				});
 				loadingFlag = false;
 			});
 		}

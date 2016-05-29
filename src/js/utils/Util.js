@@ -16,11 +16,22 @@ function ClassUtils() {
 		return {
 			/**
 			 * GET query 추출
-			 * @param {String} name query var
+			 * @param {String} name - query var
 			 */
-			getUrlVar: getUrlVar
+			getUrlVar: getUrlVar,
+			/**
+			 * 이메일 주소 검증
+			 * @param {String} value - email address for validation 
+			 */
+			checkVaildEmail: checkVaildEmail
 		}
 	};
+	
+	function checkVaildEmail(value) {
+		value = $.trim(value);
+		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+		return ((value != '') && re.test(value));
+	}
 	
 	function getUrlVar(name) {
 		return getUrlVars()[name];

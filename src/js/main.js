@@ -8,6 +8,9 @@ $(document).ready(function() {
 	pageId = $('body').data('pageId');
 	
 	switch(pageId) {
+		case 'member-login':
+			PageModuleClass = require('./pages/Login.js');
+			break;
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
