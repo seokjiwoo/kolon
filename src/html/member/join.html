@@ -10,28 +10,29 @@
 			<div class="wrap">
 				<section class="singleCard">
 					<h2 class="pageTit">커먼 회원가입</h2>
-					<form action="">
+					<form id="joinForm" action="">
 						<fieldset class="formWrap"><!-- sns가입일 경우 해당 filedset display:none -->
 							<legend class="subTit">기본정보입력<p class="note"><b>*</b>  표시는 필수 입력내용입니다.</p></legend>						
 							<ul class="formList">
 								<li>
 									<label for="joinId" class="inputTit"><b>*</b> 커먼 계정</label>
 									<input type="text" id="joinId" placeholder="이메일 주소를 입력해주세요."> 
-									<span class="alert">이메일 주소를 정확하게 입력해주세요.</span>
+									<span class="alert" id="joinIdAlert"></span>
 								</li>
 								<li>
 									<label for="joinPW" class="inputTit"><b>*</b> 비밀번호</label>
-									<input type="text" id="joinPW" placeholder="비밀번호를 입력해주세요."> 
+									<input type="password" id="joinPW" placeholder="비밀번호를 입력해주세요."> 
 									<span class="note">(영문, 숫자, 특수문자 조합한 9~16자리)</span>
 								</li>
 								<li>
 									<label for="joinPW02" class="inputTit"><b>*</b> 비밀번호 확인</label>
-									<input type="text" id="joinPW02" placeholder="비밀번호를 한번 더 입력해주세요."> 
-									<span class="alert">비밀번호가 일치하지 않습니다.</span>
+									<input type="password" id="joinPW02" placeholder="비밀번호를 한번 더 입력해주세요."> 
+									<span class="alert" id="joinPWAlert"></span>
 								</li>
 								<li>
 									<label for="joinName" class="inputTit"><b>*</b> 이름</label>
 									<input type="text" id="joinName">
+									<span class="alert" id="joinNameAlert"></span>
 								</li>
 								<li class="birth">
 									<span class="inputTit"><b>*</b> 생년월일</span>
@@ -81,6 +82,7 @@
 									<label for="joinPhone" class="inputTit"><b>*</b> 휴대폰번호</label>
 									<input type="text" id="joinPhone"> 
 									<span class="note">‘-’ 없이 숫자만 입력</span>
+									<span class="alert" id="joinPhoneAlert"></span>
 								</li>
 							</ul>						
 						</fieldset>

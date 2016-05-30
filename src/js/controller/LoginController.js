@@ -100,7 +100,6 @@ function ClassLoginController() {
 	function getSocialLoginUrl() {
 		callApi(API_URL+'/apis/member/socials/authLoginUrl', 'GET', {}, function(result) {
 			if (result.status == '200') {
-				// make cookie
 				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
 			} else {
 				handleError('authLoginUrl', result);
@@ -116,7 +115,7 @@ function ClassLoginController() {
 			"loginId": id
 		}, function(result) {
 			if (result.status == '200') {
-				// send events
+				$(callerObj).trigger('checkEmailResult', [200, result.status]);
 			} else {
 				handleError('checkEmail', result);
 			}
@@ -308,7 +307,6 @@ function ClassLoginController() {
 	};
 	
 	/*
-	소셜 로그인 URL 목록	GET	/apis/member/socials/authLoginUrl
 	회원 가입	POST	/apis/member
 	회원 정보	GET	/apis/member
 	회원 수정	PUT	/apis/member
