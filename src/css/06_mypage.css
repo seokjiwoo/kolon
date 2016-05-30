@@ -18,7 +18,7 @@
 
 .my .singleCard{padding: 50px;}
 .my .cardWrap{float: left;width: 910px;min-width: 0;margin-top:0;}
-
+body[data-page-id="mypage-scrap"] .cardWrap{width: 1220px}
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .my table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .my table th{padding: 20px;background: #f8f8f8;color: #333;}
@@ -122,3 +122,17 @@
 .my .record .popState .step04 span{width: 328px;}
 .my .record .popState .step05 span{width: 410px;}
 .my .record .popState .step06 span{width: 440px;}
+
+.my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;}
+.my .scrapTit b{color:#f1645c}
+body[data-page-id="mypage-scrap"] .delScrap{position: absolute;right: 0;width: 54px;height: 54px;background: #fff;}
+body[data-page-id="mypage-scrap"] .scrapPack li{overflow: hidden;position: relative;width: 285px;margin:10px;border-radius: 10px;}
+body[data-page-id="mypage-scrap"] .scrapPack .scrapTit{height: 160px;margin:0;padding:0 40px;text-align: center;color: #fff;line-height: 1.4em;}
+body[data-page-id="mypage-scrap"] .scrapPack .scrapTit h3{display: inline-block;vertical-align: middle;}
+body[data-page-id="mypage-scrap"] .scrapPack .scrapTit:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+body[data-page-id="mypage-scrap"] .scrapPack .scrapTit .count{display: block;}
+body[data-page-id="mypage-scrap"] .scrapPack .scrapTit .count:before{content: '';display: inline-block;width: 20px;height: 20px;margin-right: 5px;background: url('../images/btn_profile.png') -132px 0;}
+body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap{overflow: hidden; padding:23px;background: #fff;}
+body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span{overflow: hidden;display: block;float: left;width: 114px;height: 114px;}
+body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
+body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
