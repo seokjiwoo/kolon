@@ -21,7 +21,18 @@
 .lyPop .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
 #popAgree01 .popCon{text-align: center;}
-
+/* popup order */
+.lyPop.lyPopM {position:absolute;width:895px;margin-left:-447.5px;}
+.lyPop .subTit .subAddr {color:#999;}
+.lyPop .popRecord {text-align:right;width:90px;padding:20px 10px 20px 20px;}
+.lyPop .popRecord.recordInfo {text-align:left;width:auto;padding:20px 20px 20px 0;}
+.lyPop .reasonCancel {padding:25px 22px 33px 25px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
+.lyPop .reasonCancel h5 {margin-bottom:18px;font-size:15px;color:#333;}
+.lyPop .reasonCancel select {width:310px;margin-right:8px;padding:9px 10px;border:1px solid #d6d6d6;border-radius:7px;color:#999;}
+.lyPop .reasonCancel input[type="text"] {width:470px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .table03Wrap {overflow:hidden;}
+.lyPop .table03Wrap .record {float:left;width:32.66%;height:210px;margin-left:1%;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;}
+.lyPop .table03Wrap .record:first-child {margin-left:0;}
 /* tab */
 .tabType01{background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
 .tabType01 ul{height: 80px;}
