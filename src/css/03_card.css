@@ -1,5 +1,6 @@
 .cardWrap{overflow: hidden;min-width:1220px;margin:40px -20px 0 0;z-index: 0}
-.cardWrap > li{overflow: hidden;float: left;width:285px;margin-bottom: 10px;background-color:#fff;text-align: center;color:#fefefe;background-size: 100%;background-position: center;border-radius: 10px;}
+.cardWrap > li{overflow: hidden;float: left;width:285px;margin-bottom: 10px;background-color:#fff;text-align: center;color:#fefefe;background-size: 100%;background-position: center;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+body[data-page-id="index"] .cardWrap > li{box-shadow: none;-}
 
 .cardWrap .cardCon{position: relative;display: block;width:265px;padding:80px 10px;color:#fefefe;}
 .cardWrap .cardTop{position: absolute;top:0;left:0;z-index: 1}
@@ -33,8 +34,9 @@
 .cardWrap .cardDetail .scrap:before{background-position:-25px -10px}
 .cardWrap .cardCollect {overflow: hidden;width:148px;margin:10px auto 0;}
 .cardWrap .cardCollect li{overflow: hidden;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
-.cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer}
+.cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer;background-color: #fff;border-radius: 50%;}
 .cardWrap .cardCollect input{position: absolute;top: -100px;left: -100px}
+.cardWrap .cardCollect label:hover, .cardWrap .cardCollect .on label{background-color: #a9c700}
 .cardWrap .cardCollect .collect01 label{background-position:0 0}
 .cardWrap .cardCollect .collect01 label:hover, .cardWrap .cardCollect .collect01.on label{background-position:0 -64px;}
 .cardWrap .cardCollect .collect02 label{background-position:-64px 0}
@@ -46,6 +48,14 @@
 
 .cardWrap .cardCollect.pet label{background-image: url('../images/btn_card_pet.png')} 
 .cardWrap .cardCollect.fam label{background-image: url('../images/btn_card_fam.png')} 
+
+.cardWrap .cardCollect02{width: 228px;}
+.cardWrap .cardCollect02 li{font-size:14px;font-family:'RobotoM','NotoSansM', sans-serif;color: #a9c700;}
+.cardWrap .cardCollect02 li:hover, .cardWrap .cardCollect02 li.on{color: #fff;}
+.cardWrap .cardCollect02 label:before{content: '';display: inline-block;width:0;height: 100%;margin-right: -5px;vertical-align: middle;}
+.cardWrap .cardCollect02 label span{display: inline-block;vertical-align: middle;}
+
+
 
 .cardWrap .tag{margin-top:15px;}
 .cardWrap .tag li{display: inline-block;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #c3d656}

@@ -1,3 +1,8 @@
+.mt30 {margin-top:30px;}
+.mt40 {margin-top:40px;}
+
+.t_r {text-align:right}
+
 .arrayWrap{clear: both;height: 37px;}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
 .arrayWrap .arrayDrop:after{content:'';position: absolute;top: 15px;right: 10px;width:12px;height:8px;background:url('../images/ico_lnb.png') no-repeat;}
@@ -21,7 +26,37 @@
 .lyPop .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
 #popAgree01 .popCon{text-align: center;}
+/* popup order */
+.lyPop.lyPopAbsol {position:absolute;}
+.lyPop.lyPopM {width:895px;margin-left:-447.5px;}
+.lyPop .subTit .subAddr {color:#999;}
+.lyPop .popRecord {text-align:right;width:90px;padding:20px 10px 20px 20px;}
+.lyPop .popRecord.recordInfo {text-align:left;width:auto;padding:20px 20px 20px 0;}
+.lyPop .reasonCancel {padding:25px 22px 33px 25px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
+.lyPop .reasonCancel h5 {margin-bottom:18px;font-size:15px;color:#333;}
+.lyPop .reasonCancel select {width:310px;margin-right:8px;padding:9px 10px;border:1px solid #d6d6d6;border-radius:7px;color:#999;}
+.lyPop .reasonCancel input[type="text"] {width:470px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .table03Wrap {overflow:hidden;margin-bottom:30px;}
+.lyPop .table03Wrap .record {position:relative;float:left;width:32.66%;height:210px;margin-left:1%;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;border-bottom:none;}
+.lyPop .table03Wrap .record:first-child {margin-left:0;}
+.lyPop .table03Wrap .record:first-child:after {background: url('../images/ico_order.png') 0 0px no-repeat;}
+.lyPop .table03Wrap .record:last-child:after {background:none;}
+.lyPop .table03Wrap .record:after {content:'';display:block;position:absolute;width:40px;height:40px;top:50%;right:-25px;margin-top:-20px;background: url('../images/ico_order.png') 0 -40px no-repeat;z-index:3;}
+.lyPop .table03Wrap .record th, .lyPop .table03Wrap .record td {padding:0 20px;color:#333;}
+.lyPop .table03Wrap .record th.h50, .lyPop .table03Wrap .record td.h50 {height:50px;}
+.lyPop .table03Wrap .record td.t_c {text-align:center;}
+.lyPop .table03Wrap .record td {text-align:left}
+.lyPop .table03Wrap .record td span {display:block;margin-left:8px;}
+.lyPop .table03Wrap .record td b {display:block;color:#999;}
+.lyPop .infoOrder {margin-bottom:50px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .infoOrder li {line-height:21px}
+.btnCenter {text-align:center}
 
+.lyPop .record.record02 {font-family:'RobotoL','NotoSansL', sans-serif;color:#333;}
+.lyPop .record.record02 td {text-align:left;}
+.lyPop .record.record02 strong {font-weight:normal;color:#333;font-family:'RobotoR','NotoSansR', sans-serif;}
+.lyPop .record.record02 b {font-weight:normal;color:#999;}
+a.pointLink {color:#f1645c;text-decoration:underline;font-family:'RobotoR','NotoSansR', sans-serif;}
 /* tab */
 .tabType01{background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
 .tabType01 ul{height: 80px;}
