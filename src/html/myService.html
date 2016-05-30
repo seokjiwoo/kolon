@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ./_template/header.html {"title":"COMMON 나의 활동내역"} -->
+</head>
+ <body class="login" data-page-id="order">
+	<div class="wrapper my">
+	<!-- @@include ./_template/menu.html -->
+		<div class="container">
+			<!-- @@include ./_template/my_depth01.html {"myMenu02":"on"} -->
+			<!-- @@include ./_template/my_depth02.html {"myMenu03":"on"} -->
+			<div class="wrap">
+				<!-- @@include ./_template/my_depth03_02.html {"myMenu01":"on"} -->
+				<section class="singleCard" id="myActivity">
+					<h2 class="secTit">주문/배송 조회</h2>
+					<table class="recordSort">
+						<tr>
+							<th>기간별 주문조회</th>
+							<td>
+								<ul class="sortTerm">
+									<li><a href="" class="on">1주일</a></li>
+									<li><a href="">2주일</a></li>
+									<li><a href="">1개월</a></li>
+									<li><a href="">3개월</a></li>
+									<li><a href="">6개월</a></li>
+								</ul>
+								<div class="sortTermSet"><!-- datePicker --></div>
+							</td>
+						</tr>
+						<tr>
+							<th>시공 내역 검색</th>
+							<td>
+								<form action="">
+									<fieldset class="recordSearch">
+										<legend class="hide">시공 내역 검색</legend>
+										<input type="text" id="recordInput">
+										<label for="recordInput"></label>
+										<button type="submit">검색</button>
+									</fieldset>
+								</form>
+							</td>
+						</tr>
+					</table>
+					<h3 class="subTit">시공 상품 목록</h3>
+					<table class="record record03">
+						<tr>
+							<th>주문번호</th>
+							<th colspan="2">상품정보</th>
+							<th>판매처</th>
+							<th>시공지</th>
+							<th>완공일</th>
+							<th>진행상태</th>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><b>2345865</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">[인테리어 패키지] 모노<br>화이트 스타일 욕실<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="productPrice">38,700,000 원</span>
+							</td>
+							<td>에코인테리어</td>
+							<td>서울시 강남구<br>청담동 248</td>
+							<td>실측 후 게시</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ./_template/pop_order_state02.html {"step":"step02", "step02":"on"} -->
+									실측/견적요청<span class="stateIcor"></span>
+								</div>
+								<a href="#popOrder02" class="btnSizeS btnColor01 btnPop">요청취소</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><b>2345865</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">[아이방 패키지]비스트<br>콜라보레이션 룸<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="productPrice"12,500,000 원</span>
+							</td>
+							<td>(주)공간</td>
+							<td>서울시 강남구<br>청담동 248</td>
+							<td>2016.01.20</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ./_template/pop_order_state02.html {"step":"step06", "step06":"on"} -->
+									배송완료<span class="stateIcor"></span>
+								</div>
+								<a href="" class="btnSizeS btnColor01">현황확인</a>
+							</td>
+						</tr>
+						<!-- 시공 내역이 없는경우 -->
+						<tr>
+							<td colspan="7" class="noList">시공 내역이 없습니다.</td>
+						</tr>
+						<!-- // 시공 내역이 없는경우 -->
+					</table>
+				</section>
+			</div>
+			<!-- @@include ./_template/footer.html -->
+
+			<!-- popOrder01 주문 취소 신청 -->
+			<div class="lyPop lyPopM lyPopAbsol" id="popOrder01">
+				<a href="" class="closePop"></a>
+				<h4 class="popTit">주문 취소 신청</h4>
+				<div class="popCon">
+					<h3 class="subTit">1. 상품 수령지 : 자택 - <span class="subAddr">서울특별시 강남구 청담동 246</span></h3>
+					<table class="record">
+						<tr>
+							<th colspan="2">상품정보</th>
+							<th>판매처</th>
+							<th>배송비</th>
+							<th>할인금액</th>
+							<th>진행상태</th>
+						</tr>
+						<tr>
+							<td class="popRecord"><div class="recordThumb"><img src="images/temp09.jpg" alt=""></div></td>
+							<td class="popRecord recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="producOption">수량 : 1</span><span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>무료</td>
+							<td>0원</td>
+							<td>입금대기</td>
+						</tr>
+					</table>
+					<form action="">
+						<fieldset class="reasonCancel">
+							<h5>주문 취소 사유</h5>
+							<select title="주문 취소 사유를 선택해주세요">
+								<option value="defalut">주문 취소 사유를 선택해주세요</option>
+								<option value=""></option>
+								<option value=""></option>
+								<option value=""></option>
+								<option value=""></option>
+							</select>
+							<input type="text" title="상세 내용 입력">
+						</fieldset>
+					</form>
+
+					<h3 class="subTit">2. 상품 수령지 : 자택 - <span class="subAddr">서울특별시 강남구 청담동 246</span></h3>
+					<table class="record">
+						<tr>
+							<th colspan="2">상품정보</th>
+							<th>판매처</th>
+							<th>배송비</th>
+							<th>할인금액</th>
+							<th>진행상태</th>
+						</tr>
+						<tr>
+							<td class="popRecord"><div class="recordThumb"><img src="images/temp09.jpg" alt=""></div></td>
+							<td class="popRecord recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="producOption">수량 : 1</span><span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>무료</td>
+							<td>0원</td>
+							<td>입금대기</td>
+						</tr>
+					</table>
+					<form action="">
+						<fieldset class="reasonCancel">
+							<h5>주문 취소 사유</h5>
+							<select title="주문 취소 사유를 선택해주세요">
+								<option value="defalut">주문 취소 사유를 선택해주세요</option>
+								<option value=""></option>
+								<option value=""></option>
+								<option value=""></option>
+								<option value=""></option>
+							</select>
+							<input type="text" title="상세 내용 입력">
+						</fieldset>
+					</form>
+
+					<h3 class="subTit">환불정보</h3>
+					<div class="table03Wrap">
+						<table class="record">
+							<colgroup>
+                                <col width="40%" />
+                                <col width="auto" />
+                            </colgroup>
+							<tr>
+								<th class="h50">결제금액</th>
+								<td class="h50">2,600,000 원</td>
+							</tr>
+							<tr>
+								<th>할인금액</th>
+								<td>&middot; 이벤트 할인 <span>0원</span></td>
+							</tr>
+							<tr>
+								<th class="h50">환불배송비</th>
+								<td class="h50">2,500원</td>
+							</tr>
+						</table>
+						<table class="record">
+							<colgroup>
+                                <col width="40%" />
+                                <col width="auto" />
+                            </colgroup>
+							<tr>
+								<th class="h50">차감금액</th>
+								<td class="h50">0원</td>
+							</tr>
+							<tr>
+								<th>추가배송비</th>
+								<td>0원</td>
+							</tr>
+						</table>
+						<table class="record">
+							<colgroup>
+                                <col width="40%" />
+                                <col width="auto" />
+                            </colgroup>
+							<tr>
+								<th class="h50">환불예상금액</th>
+								<td class="h50">2,602,500 원</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="t_c">무통장입금<b>(취소완료 즉시 환불)</b></td>
+							</tr>
+						</table>
+					</div>
+
+					<ul class="infoOrder">
+						<li>&middot; 주문 취소 신청은 상품 배송 이전 단계에서만 가능합니다.</li>
+						<li>&middot; 배송중인 상품의 취소를 원하실 경우 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
+						<li>&middot; 묶음상품/해외배송상품 주문 취소 시 배송정책에 따라 추가되는 배송비를 결제하셔야 주문취소가 완료됩니다.</li>
+						<li>&middot; 결제수단별 환불방법과 환불소요기한에 차이가 있을 수 있습니다.</li>
+					</ul>
+					
+					<div class="btnCenter">
+						<button type="submit" class="btn btnSizeM btnColor02 btnShadow">확인</button>
+					</div>
+				</div>
+			</div>
+			<!-- // popOrder01 주문 취소 신청 -->
+
+			<!-- popOrder02 교환 상세 내역 -->
+			<div class="lyPop lyPopM" id="popOrder02">
+				<a href="" class="closePop"></a>
+				<h4 class="popTit">교환 상세 내역</h4>
+				<div class="popCon">
+					<h3 class="subTit">교환 신청정보</h3>
+					<table class="record record02">
+						<tr>
+							<th>신청일</th>
+							<td>2016.05.03 / 16:07:15</td>
+							<th>교환 완료일</th>
+							<td>2016.05.03 / 16:07:15</td>
+						</tr>
+						<tr>								
+							<th>교환신청 사유/책임</th>
+							<td colspan="3">상품에 흡집이 많이 나있네요. 다른 상품으로 교환 원합니다. <strong>- 판매자</strong></td>
+						</tr>
+					</table>
+
+					<h3 class="subTit mt40">반품 정보</h3>
+					<table class="record record02">
+						<tr>
+							<th>반품방법</th>
+							<td>택배발송</td>
+							<th>반품 운송장 정보</th>
+							<td>
+								<a href="" class="pointLink">CJ대한통운</a> / <strong>6574321876513</strong>
+							</td>
+						</tr>
+						<tr>								
+							<th>반품 도착지 정보</th>
+							<td colspan="3">
+								㈜가인인테리어<br>
+								(148071) 서울특별시 강남구 도산대로 24 가인빌딩 1층<br>
+								<b>02-1234-5678</b>
+							</td>
+						</tr>
+					</table>
+
+					<ul class="infoOrder mt30">
+						<li>&middot; 상세 문의는 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
+					</ul>
+					
+					<div class="btnCenter">
+						<button type="submit" class="btn btnSizeM btnColor02 btnShadow">확인</button>
+					</div>
+				</div>
+			</div>
+			<!-- // popOrder02 교환 상세 내역 -->
+
+			<!-- popOrder03 취소 상세내역 -->
+			<div class="lyPop lyPopM lyPopAbsol" id="popOrder03">
+				<a href="" class="closePop"></a>
+				<h4 class="popTit">취소 상세내역</h4>
+				<div class="popCon">
+					<h3 class="subTit">취소 신청정보</h3>
+					<table class="record record02">
+						<tr>
+							<th>신청일</th>
+							<td><strong>2016.05.03 / 16:07:15</strong></td>
+							<th>취소 완료일</th>
+							<td><strong>2016.05.03 / 16:07:15</strong></td>
+						</tr>
+						<tr>								
+							<th>취소신청 사유/책임</th>
+							<td colspan="3">다른 상품과 조금 더 비교해보고 사고싶어요 <strong>- 구매자</strong></td>
+						</tr>
+					</table>
+
+					<h3 class="subTit mt40">환불/결제내역</h3>
+					<table class="record record02">
+						<tr>
+							<th rowspan="4">주문일<br>2016.05.03</th>
+							<td>주문금액</td>
+							<th class="t_r">423,000원</th>
+							<td>상품금액 420,000 원 <b>+ 배송비 3,000 원</b></td>
+						</tr>
+						<tr>								
+							<td>할인금액</td>
+							<th class="t_r">-2,000원</th>
+							<td>즉시할인 <b>- 2,000 원</b><br>포인트 <b>- 3,000 원</b></td>
+						</tr>
+						<tr>								
+							<td rowspan="2">결제금액</td>
+							<th rowspan="2" class="t_r">421,000원</th>
+							<td>신용카드 421,000 원</td>
+						</tr>
+						<tr>
+							<td>
+								xx카드 (12315********) 무이자 3개월<br>
+								<b>결제일시 2016.05.03 / 13:20:44</b>
+							</td>
+						</tr>
+						<tr>
+							<th rowspan="4">취소일<br>2016.05.03</th>
+							<td>취소상품번호</td>
+							<th></th>
+							<td>1234567</td>
+						</tr>
+						<tr>								
+							<td>취소금액</td>
+							<th class="t_r">421,000 원</th>
+							<td>상품금액 <b>+ 배송비</b></td>
+						</tr>
+						<tr>								
+							<td rowspan="2">환불금액</td>
+							<th rowspan="2" class="t_r">421,000원</th>
+							<td>신용카드 421,000 원<br><b>포인트 취소 3,000 원</b></td>
+						</tr>
+						<tr>
+							<td>
+								xx카드 (12315********)<br>
+								<b>취소일시 2016.05.03 / 13:20:50</b>
+							</td>
+						</tr>
+					</table>
+
+					<ul class="infoOrder mt30">
+						<li>&middot; 상세 문의는 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
+					</ul>
+					
+					<div class="btnCenter">
+						<button type="submit" class="btn btnSizeM btnColor02 btnShadow">확인</button>
+					</div>
+				</div>
+			</div>
+			<!-- // popOrder03 취소 상세내역 -->
+		</div>
+	</div>
+</body>
+</html>
