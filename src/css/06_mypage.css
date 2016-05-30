@@ -17,8 +17,7 @@
 .my .myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
 
 .my .singleCard{padding: 50px;}
-.my .cardWrap{float: left;width: 910px;min-width: 0;margin-top:0;}
-body[data-page-id="mypage-scrap"] .cardWrap{width: 1220px}
+.my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top:0;}
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .my table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .my table th{padding: 20px;background: #f8f8f8;color: #333;}
@@ -136,3 +135,19 @@ body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap{overflow: hidden; paddin
 body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span{overflow: hidden;display: block;float: left;width: 114px;height: 114px;}
 body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
 body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
+
+#myInfo .reward{position: absolute;left: 0;bottom:50px;width: 100%;color: #666 ;font-size: 13px;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myInfo .reward:before{content: '';display: inline-block;width: 14px;height: 14px;margin-right: 5px;background: url('../images/ico_point.png') no-repeat;vertical-align: middle;}
+#myInfo #myIntro{background: #a9c700;color: #fff;}
+#myInfo .cardWrap #myIntro.cardType07 .cardTit, #myInfo .cardWrap #myIntro.cardType07 .cardIntro{color: #fff;}
+#myInfo .cardWrap #myIntro.cardType07 .cardIntro:before{background: #fff;}
+#myInfo #myIntro .cardCollect li{width: 64px;height: 64px;margin-top:45px;border-radius: 50%;background: #98b300 url('../images/btn_card_my.png');}
+#myInfo #myIntro .cardCollect .collect02{background-position:-64px 0}
+#myInfo .formList li{width: 210px;margin-top: 10px;}
+#myInfo .formList li:first-child{margin-top:0;}
+#myInfo .formList select{width: 100%;}
+#myInfo button{display: block;width: 290px;margin:40px auto 0;}
+
+.cardWrap .formListWrap{height: 170px;}
+.cardWrap .formListWrap:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+.cardWrap .formListWrap .cardCollect, .cardWrap .formListWrap .formList{display: inline-block;vertical-align: middle;margin: 0;}
