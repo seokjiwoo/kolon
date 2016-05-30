@@ -122,3 +122,31 @@
 .my .record .popState .step04 span{width: 328px;}
 .my .record .popState .step05 span{width: 410px;}
 .my .record .popState .step06 span{width: 440px;}
+
+
+.my .cartList{width:100%; margin-top:19px; overflow:hidden;}
+.my .cartList tr td{border-bottom:1px solid #e1e1e1; position:relative;}
+.my .cartList tr td .cartChk { position:absolute; top:50px; left:20px;}
+.my .cartChk{width:30px; height:30px; background:#ccc url('../images/ico_checkL.png') center no-repeat; border-radius:50%; vertical-align:middle; text-align:center;}
+.my .cartChk.on{background-color:#2ecc71;}
+.my .cartChk input[type=checkbox] {position: absolute;opacity: 0;}
+.my .cartChk label {width:150px; display:inline-block; padding:8px 0 0 39px; text-align:left;}
+.my .cartList tr td .cartTxt {padding-left:40px; overflow:hidden; position:relative;}
+.my .cartList tr td p.price {font-size:22px;}
+.my .cartList tr td p.price b {font-weight:bold;}
+.my .cartList tr td span.thumb,
+.my .cartList tr td span.thumb img{width:90px; height:90px;}
+.my .cartList tr td span.thumb {float:left; display:inline-block;}
+.my .cartList tr td span.thumb + span.cartInfo {margin-left:9px;}
+.my .cartList tr td span.cartInfo {width:263px; float:left; display:inline-block; text-align:left;}
+.my .cartList tr td span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
+.my .cartList tr td span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block;}
+.my .cartList tr td span.cartInfo span.cartTit {color:#000;}
+
+.btnG {overflow:hidden;}
+.my .cartList + .btnG {padding:20px 20px 0;}
+.my .cartList + .btnG a.btnSizeS {padding:0 26px;}
+.btnG span.pointRed {color:#f1645c;}
+.btnG .cartChk.btnL + label {font-size:16px;}
+.btnG .btnL {float:left;}
+.btnG .btnR {float:right;}
