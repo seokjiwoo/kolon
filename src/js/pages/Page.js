@@ -23,7 +23,9 @@ module.exports = function() {
 		initTab();
 		initPopup();
 		initCardRadio();
-		
+		$('.radioBox label').click(function(){// radiobox
+			$(this).addClass('on').siblings('label').removeClass('on');
+		});
 		$('.checkbox label').click(function(){// checkbox
 			if ($(this).siblings('input').val() != ':checked'){			
 				$(this).toggleClass('on');

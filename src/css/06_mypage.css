@@ -19,9 +19,7 @@
 .my .singleCard{padding: 50px;}
 .my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top:0;}
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
-.my .record{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
-.my .record td{padding: 20px;}
+.secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
 
 .timeCard .recordWrap{padding-bottom: 20px;}
 .timeCard .recordWrap li{margin-top: 20px;text-align: left;}
@@ -92,8 +90,10 @@
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
 .my .subTxt {font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
 
-.my .record{margin-top: 20px;}
+.my .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
+.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.my .record td{padding: 20px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;text-decoration: underline;}
 .my .record .total{margin-top:20px;} 
@@ -110,8 +110,10 @@
 .my .record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
 .my .record .orderState .stateTxt:hover .popState{display: block;}
 .my .record .orderState .cancleDate{color: #f1645c;}
+.my .record .require{color: #f1645c}
 
 .my .record .noList {height:52px;color:#999;}
+
 
 .my .record .popState{display: none;position: absolute;right: 0;bottom:30px;width: 495px;padding: 38px 20px 38px;background: #fff;border:1px solid #999;z-index: 2;}
 .my .record .popState:after{content: '';position: absolute;bottom: -18px;right: 40px;width: 18px;height: 18px;background: url('../images/ico_pointer.png') no-repeat;}
@@ -161,6 +163,45 @@ body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
 #myInfo .formList li:first-child{margin-top:0;}
 #myInfo .formList select{width: 100%;}
 #myInfo button{display: block;width: 290px;margin:40px auto 0;}
+
+#myInfoEdit .profileInfo{margin-top: 35px;}
+#myInfoEdit .formList{text-align: left;}
+#myInfoEdit .formList td, #myInfoEdit .formList th{padding: 15px 20px;}
+#myInfoEdit .formList .birth > div{margin:0;}
+#myInfoEdit input[type="text"]:disabled{background: #f7f7f7;}
+#myInfoEdit td{color: #666}
+#myInfoEdit .account a{border:0;color: #fff;background: #a9c700;}
+#myInfoEdit .account .active a{border:1px solid #a9c700;color: #a9c700;background: none}
+#myInfoEdit .account td{color: #999}
+#myInfoEdit .account td:first-child{font-size: 0;}
+#myInfoEdit .account td:first-child span{display: block;margin:0 auto;width: 65px;height: 14px;background: url('../images/logo_sns.jpg') no-repeat;}
+#myInfoEdit .account td.account02 span{background-position: 0 -14px;}
+#myInfoEdit .account td.account03 span{background-position: 0 -28px;}
+#myInfoEdit .account .active td{color: #000}
+#myInfoEdit .inputWrap{line-height: 50px;color: #666;font-family:'RobotoM','NotoSansM', sans-serif;}
+#myInfoEdit .inputWrap p{display: inline-block;width: 290px;font-size: 16px;}
+#myInfoEdit .inputWrap label{min-width: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
+#myInfoEdit .inputWrap.radiobox{line-height: 30px;}
+#myInfoEdit .listSquare{margin-bottom: 20px;}
+#myInfoEdit .profileNote{height: 90px;margin-top:20px;padding: 0 45px;background: #f7f7f7;border-top:1px solid #666;border-bottom:1px solid #666;;text-align:right;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
+#myInfoEdit .profileNote:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+#myInfoEdit .profileNote p{display: inline-block;width: 80%;vertical-align: middle;text-align: center;}
+#myInfoEdit .profileNote b{color: #f1645c}
+#myInfoEdit .th02{color: #000;}
+#myInfoEdit .btnWrap{margin-top: 40px;}
+#myInfoEdit .btnWrap .btn{width: 200px;margin:0 10px;}
+
+#myResign .subTit{margin-top: 35px;}
+#myResign .listTit{margin-top: 20px;padding: 0 20px;background: #f7f7f7;border-top: 1px solid #333;border-bottom: 1px solid #e8e8e8;line-height: 70px;font-size: 16px;color: #000;font-family:'RobotoM','NotoSansM', sans-serif;}
+#myResign .listTit a{float: right;margin:15px 5px;}
+#myResign .listBox{padding:25px;border-bottom: 1px solid #e8e8e8; color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myResign .checkbox.listBox{overflow: hidden;border-top: 1px solid #666;}
+#myResign .checkbox li{float: left;width: 25%;margin: 10px 0}
+#myResign .subTxt{margin-top: 10px;}
+#myResign textarea{width: 1060px;height: 150px;margin: 20px 10px;padding:20px;border-radius: 10px;border:1px solid #d6d6d6;font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myResign .btn{width: 200px;margin:0 auto;}
+#myResign .btnWrap{margin-top: 40px;}
+#myResign 
 
 .cardWrap .formListWrap{height: 210px;}
 .cardWrap .formListWrap01{height: 170px;}

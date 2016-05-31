@@ -2,6 +2,7 @@
 .mt40 {margin-top:40px;}
 
 .t_r {text-align:right}
+.t_l {text-align:left;}
 
 .arrayWrap{clear: both;height: 37px;}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
@@ -123,3 +124,44 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .loginSns:before{content: '';display: inline-block;width: 35px;height: 18px;border-right: 1px solid #c2c2c2;margin-right:20px;background: url('../images/ico_login.png') no-repeat;vertical-align: middle;}
 #loginN:before{background-position: -35px 0}
 #loginKs:before{background-position: -70px 0}
+
+/* form */
+.formWrap{width: 890px;margin:60px auto 0;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+.formWrap b{color: #f1645c}
+.formWrap .alert{/*display: none;*/color: #f1645c}
+.formWrap .subTxt{display: block;width: 100%;}
+.inputWrap{line-height: 60px;} 
+.inputWrap01{margin-top:30px;}
+.inputWrap label{display: inline-block;min-width: 70px;text-align: left;margin-right: 20px;color: #000;font-size: 16px;}
+.inputWrap label strong{color: #999;}
+.inputWrap .btn{min-width: 114px;}
+
+.formList > li{overflow: hidden;border-bottom:1px solid #e8e8e8;}
+.formList .inputTit{display: inline-block;width: 100px;margin-right: 25px;padding: 25px 40px;vertical-align: middle;background: #f7f7f7;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000}
+.formList #joinId{width:360px; }
+.formList  select{width:80px;padding: 10px 10px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;}
+.formList .joinBirth{margin-right:15px;}
+.formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
+.formList .birth > div{float: left;margin:10px 0;}
+.formList .birth .note{display: block;margin-top:15px;}
+
+.container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
+.container input[type="text"]{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+.container input.inputL{width: 357px;}
+
+.radioBox{position: relative;line-height: 30px;}
+.radioBox input{position: absolute;opacity: 0;left: 0;}
+.radioBox label:before{content: '';display: inline-block;width: 18px;height: 18px;margin-right:5px;background: url('../images/ico_radio.png') no-repeat;vertical-align: middle;}
+.radioBox label.on:before{background-position: 0 -18px;}
+
+.checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
+.checkbox {position: relative;margin-top:18px;}
+.checkbox label{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
+.checkbox label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
+.checkbox label.on:before{background-color: #a9c700}
+
+
+.listSquare{font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;}
+.listSquare li{position: relative;margin-top:8px;padding-left: 10px;line-height: 1.3em;}
+.listSquare li:first-child{margin:0;}
+.listSquare li:before{content: '';position: absolute;top: 5px;left: 0;width: 2px;height: 2px;background: #999;}
