@@ -180,6 +180,7 @@ body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
 .my .cartList + .btnG {padding:20px 20px 0;}
 .my .cartList + .btnG a.btnSizeS {padding:0 26px;}
 
+/* order.css */
 tr td .photoList {width:100%; height:90px; overflow:hidden; position:relative; display:table-cell; vertical-align:middle;}
 tr td .photoList span.thumb,
 tr td .photoList span.thumb img{width:90px; height:90px;}
@@ -214,18 +215,19 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont table{width: 100%;border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .oder .oderCont table th{padding: 20px;background: #f8f8f8;color: #333;}
 .oder .oderCont table td{padding: 20px;}
+.oder .oderCont table tr + tr td {border-top:1px solid #e8e8e8;}
 .oder .oderCont table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
+.oder .oderCont table caption {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
 .oder .oderCont span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
 .oder .oderCont span.pointRed {color:#f1645c; font-size:30px;}
 .oder .oderCont select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
-
+.oder .oderCont .photoTb {width:100%; overflow:hidden; margin-top:20px; border-top:1px solid #545454;}
 .oder .oderCont {width:100%; overflow:hidden;}
 .oder .oderCont + h3.subTit {margin-top:39px; }
 .oder .oderCont .oderTbW {width:100%; overflow:hidden;}
 .oder .oderCont .oderTb.lineN {border-top:0;}
 .oder .oderCont .oderTb {width:100%; margin-top:20px; display:inline-block; border-top:1px solid #545454;}
-.oder .oderCont .oderTb table caption {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
 .oder .oderCont .oderTb table tr th,
 .oder .oderCont .oderTb table tr td {border:1px solid #e8e8e8;}
 .oder .oderCont .oderTb table tr td {text-align:left;}
@@ -251,13 +253,13 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont .adrArea dl + dl {border-top:1px solid #e8e8e8;}
 .oder .oderCont .adrArea dl dt,
 .oder .oderCont .adrArea dl dd {float:left; font-size:14px; font-family:'RobotoR','NotoSansR', sans-serif;}
-.oder .oderCont .adrArea dl dt {padding:30px 0 30px 20px;}
-.oder .oderCont .adrArea dl dd {padding:15px 0;}
+.oder .oderCont .adrArea dl dt {padding:13px 13px 13px 0;}
+.oder .oderCont .adrArea dl dd {margin:0;}
 .oder .oderCont .adrArea dl dd + dd {padding-left:32px;}
 .oder .oderCont .adrArea dl dd select + input[type="text"] {margin-left:14px;}
 .oder .oderCont .adrArea dl dd.adrInfo {width:311px;}
 .oder .oderCont .adrArea dl dd.adrInfo select + a {margin-left:12px;}
-.oder .oderCont .adrArea dl dd.adrCon {width:604px; padding:17px 0; margin-right:20px;}
+.oder .oderCont .adrArea dl dd.adrCon {width:604px; text-align:left;}
 .oder .oderCont .adrArea dl dd.adrCon p + p {margin-top:6px; color:#;}
 .oder .oderCont .adrArea dl dd.adrCon p {line-height:130%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
 .oder .oderCont .adrArea dl dd.adrCon p span + span {margin-left:19px;}
@@ -305,6 +307,8 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont .oderTb table tr td ul.noBul li + li {width:100%; margin-top:15px;}
 .oder .oderCont .oderTb table tr td ul.noBul li p.inp4 {width:100%;}
 .oder .oderCont .oderTb table tr td ul.noBul li select + p {margin-top:10px;}
+.oder .oderCont .oderTb table tr td ul.noBul li span + span {margin-left:20px;;}
+.oder .oderCont .oderTb table tr td ul.noBul li span.radioBtn label {padding:2px 0 0 22px; }
 .oder .oderCont .oderTb table tr.total td {height:118px;}
 .oder .oderCont .oderTb table tr.total2 td {height:456px;}
 .oder .oderCont .oderTb table tr.total3 td {height:89px;}
@@ -317,4 +321,10 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
 .oder .oderCont .payTab span {margin-left:42px; display:inline-block; }
 .oder .oderCont .payTab span + span {margin-left:32px;}
-.oder .oderCont .payTab + .oderTbW .tbHf .oderTb {margin-top:0;}
+.oder .oderCont .payTab + .delivery1 .photoTb,
+.oder .oderCont .payTab + .photoTb .tbHf .oderTb {margin-top:0;}
+.oder .oderCont .radioBtn {position:relative;}
+.oder .oderCont .radioBtn input[type="radio"] {width:18px; height:18px; margin:0; opacity:0; line-height:100%; overflow:hidden; position:absolute;}
+.oder .oderCont .radioBtn label {padding:2px 0 0 23px; display:inline-block;}
+.oder .oderCont .radioBtn label:before {content:''; width:18px; height:18px; background:url('../images/ico_radio.png') 0 -18px no-repeat; position:absolute; top:0; left:0; display:inline-block;}
+.oder .oderCont .radioBtn.on label:before {background-position:0 0;}
