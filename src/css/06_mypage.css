@@ -19,9 +19,9 @@
 .my .singleCard{padding: 50px;}
 .my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top:0;}
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
-.my table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.my table th{padding: 20px;background: #f8f8f8;color: #333;}
-.my table td{padding: 20px;}
+.my .record{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.my .record td{padding: 20px;}
 
 .timeCard .recordWrap{padding-bottom: 20px;}
 .timeCard .recordWrap li{margin-top: 20px;text-align: left;}
@@ -65,7 +65,6 @@
 #myTimeline .recordType08 .recordIco{background-position: 0 0;background-color: #f8f8f8}
 #myTimeline .recordType08 .recordIco:after{content: '';position: absolute;top:96px;left: 0;width: 100px;height: 50px;background: #e0e0e0}
 
-
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
 #myNotice .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
@@ -75,17 +74,21 @@
 #myNotice .coupon a img{display: block;width: 100%;}
 #myNotice #delteAll{position: absolute;top:25px;right: 20px}
 
-.my .recordSort{margin:30px 0;text-align: left;}
-.my .recordSort tr:first-child td{padding-bottom: 0;}
-.my .sortTerm{display: inline-block;}
-.my .recordSort li{display: inline-block;margin-left: 5px;}
-.my .recordSort li:first-child{margin:0;}
-.my .recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
-.my .recordSort a.on{background: #a9c700;border:0;color: #fff;}
-.my .recordSearch{display: inline-block;padding: 5px;border:1px solid #d1d1d1;border-radius: 10px;}
-.my .recordSearch #recordInput{width: 190px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
-.my .recordSearch button{width:36px;height:28px;font-size: 0;background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle;}
-.my .sortTermSet{display: inline-block;margin-left: 15px;}
+.recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.recordSort th{padding: 20px;background: #f8f8f8;color: #333;}
+.recordSort td{padding: 20px;}
+.recordSort{margin:30px 0;text-align: left;}
+.recordSort tr:first-child td{padding-bottom: 0;}
+.sortTerm{display: inline-block;}
+.recordSort li{display: inline-block;margin-left: 5px;}
+.recordSort li:first-child{margin:0;}
+.recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
+.recordSort a.on{background: #a9c700;border:0;color: #fff;}
+.recordSearch{display: inline-block;padding: 5px;border:1px solid #d1d1d1;border-radius: 10px;}
+.recordSearch #recordInput{width: 190px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
+.recordSearch button{width:36px;height:28px;font-size: 0;background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle;}
+.sortTermSet{display: inline-block;margin-left: 15px;}
+
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
 .my .subTxt {font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
 
@@ -108,10 +111,6 @@
 .my .record .orderState .stateTxt:hover .popState{display: block;}
 .my .record .orderState .cancleDate{color: #f1645c;}
 
-.my .record.record03 th, .my .record.record03 td {padding:20px 0;}
-.my .record.record03 td.recordInfo {padding:20px 0 20px 10px;}
-.my .record.record03 .recordThumb {float:right;}
-.my .record.record03 .orderState {padding:20px}
 .my .record .noList {height:52px;color:#999;}
 
 .my .record .popState{display: none;position: absolute;right: 0;bottom:30px;width: 495px;padding: 38px 20px 38px;background: #fff;border:1px solid #999;z-index: 2;}
@@ -163,7 +162,8 @@ body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
 #myInfo .formList select{width: 100%;}
 #myInfo button{display: block;width: 290px;margin:40px auto 0;}
 
-.cardWrap .formListWrap{height: 170px;}
+.cardWrap .formListWrap{height: 210px;}
+.cardWrap .formListWrap01{height: 170px;}
 .cardWrap .formListWrap:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
 .cardWrap .formListWrap .cardCollect, .cardWrap .formListWrap .formList{display: inline-block;vertical-align: middle;margin: 0;}
 
@@ -199,7 +199,7 @@ tr td .photoList span.cartInfo span.cartTit {color:#000;}
 
 .oder .container .wrap{width: 100%; padding-top: 50px;}
 .oder .singleCard{padding: 50px;}
-.oder table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.oder table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .oder table th{padding: 20px;background: #f8f8f8;color: #333;}
 .oder table td{padding: 20px;}
 .oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}

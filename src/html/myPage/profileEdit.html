@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
+</head>
+ <body data-page-id="myPage-editInfo">
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+	<div class="container">
+		<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
+		<!-- @@include ../_template/my_depth02.html {"myMenu05":"on"} -->
+		<div class="wrap">
+			<section class="singleCard" id="myInfoEdit">
+				<h2 class="secTit">정보수정</h2>
+				<form action="">
+					<fieldset>
+						<legend class="subTit">기본정보 <span class="subTxt"><b>*</b> 표시는 필수입력 항목 이오니 반드시 입력해 주세요. </span></legend>
+						<table class="record formList">
+							<tr>
+								<th><label for="profileID">홈즈계정</label></th>
+								<td><input type="text" id="profileID"></td>
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td><a href="" class="btnSizeM btnColor01">변경하기</a></td>
+							</tr>
+							<tr>
+								<th><label for="profileName">이름</label></th>
+								<td>
+								<input type="text" disabled value="홍길동" id="profileName">
+								<button class="btn btnSizeM btnColor01">실명확인</button></td>
+							</tr>
+							<tr>
+								<th>label생년월일</th>
+								<td class="birth">
+									<div>
+										<select id="joinBirth01">
+											<option value="2016">2016</option>
+											<option value="2015">2015</option>
+											<option value="2014">2014</option>
+											<option value="2013">2013</option>
+											<option value="2012">2012</option>
+										</select>
+										<label for="joinBirth01" class="joinBirth">년</label>
+										<select id="joinBirth02">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<label for="joinBirth02" class="joinBirth">월</label>
+										<select id="joinBirth03">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<label for="joinBirth03" class="joinBirth">일</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="profilePhone">휴대폰번호</label></th>
+								<td>
+									<p class="inputWrap"><input type="text" id="profilePhone"><button class="btn btnSizeM btnColor03">인증번호 받기</button></p>
+									<p class="inputWrap"><label for="profilePermit" class="hide">인증번호 입력</label><input type="text" id="profilePermit"><button class="btn btnSizeM btnColor01">인증 확인</button></p>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="profileCell">일반 전화번호</label></th>
+								<td><input type="text" id="profileCell"></td>
+							</tr>
+							<tr>
+								<th><label for="profileAddress01">기본 배송지 주소</label></th>
+								<td>
+									<p class="inputWrap"><label for="searchAddress" class="hide">주소검색</label><input type="text" id="searchAddress"><button class="btn btnSizeM btnColor03">주소검색</button></p>
+									<p class="inputWrap"><input type="text" id="profileAddress01"><input type="text" id="profileAddress02"></p>
+								</td>
+							</tr>
+							<tr>
+								<th>이메일 및 <br>SNS 수신 여부</th>
+								<td>
+									<ul class="listSquare">
+										<li>공지 및 마케팅 메일/행사, 이벤트, 세일 정보 SMS를 수신 동의 하시면 홈즈에서 제공하는 다양한 정보를 미리 안내 받으실 수 있습니다.</li>
+										<li>수신 동의 여부와 상관 없이 주문, 결제, 배송, 취소, 비밀번호 변경 등에 대한 정보는 발송 됩니다.</li>
+									</ul>
+									<p class="inputWrap">
+										<label for="">공지 및 마케팅 메일 수신</label>
+										<input type="text">
+										<input type="text">
+									</p>
+									<p class="inputWrap">
+										<label for="">행사, 이벤트, 세일 정보 SMS 수신</label>
+										<input type="text">
+										<input type="text">
+									</p>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</form>
+			</section>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>
