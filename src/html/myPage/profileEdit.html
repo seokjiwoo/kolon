@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
+</head>
+ <body data-page-id="myPage-editInfo">
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+	<div class="container">
+		<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
+		<!-- @@include ../_template/my_depth02.html {"myMenu05":"on"} -->
+		<div class="wrap">
+			<section class="singleCard" id="myInfoEdit">
+				<h2 class="secTit secTit02">정보수정</h2>
+				<form action="">
+					<fieldset class="profileInfo">
+						<legend class="subTit">기본정보 <span class="subTxt"><b>*</b> 표시는 필수입력 항목 이오니 반드시 입력해 주세요. </span></legend>
+						<table class="record formList">
+							<tr>
+								<th><label for="profileID"><b class="require">* </b>홈즈계정</label></th>
+								<td><input type="text" disabled value="1234@google.com" id="profileID" class="inputL"></td>
+							</tr>
+							<tr>
+								<th><b class="require">* </b>비밀번호</th>
+								<td><a href="" class="btnSizeM btnColor01">변경하기</a></td>
+							</tr>
+							<tr>
+								<th><label for="profileName"><b class="require">* </b>이름</label></th>
+								<td>
+								<p class="inputWrap"><input type="text" value="홍길동" id="profileName"><button class="btn btnSizeM btnColor01">실명확인</button>
+								</p>
+								</td>
+							</tr>
+							<tr>
+								<th><b class="require">* </b>생년월일</th>
+								<td class="birth">
+									<div>
+										<select id="joinBirth01">
+											<option value="2016">2016</option>
+											<option value="2015">2015</option>
+											<option value="2014">2014</option>
+											<option value="2013">2013</option>
+											<option value="2012">2012</option>
+										</select>
+										<label for="joinBirth01" class="joinBirth">년</label>
+										<select id="joinBirth02">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<label for="joinBirth02" class="joinBirth">월</label>
+										<select id="joinBirth03">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<label for="joinBirth03" class="joinBirth">일</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="profilePhone"><b class="require">* </b>휴대폰번호</label></th>
+								<td>
+									<p class="inputWrap"><input type="text" value="01012345678"  id="profilePhone" class="inputL"><button class="btn btnSizeM btnColor03">인증번호 받기</button></p>
+									<p class="inputWrap"><label for="profilePermit" class="hide">인증번호 입력</label><input type="text" id="profilePermit" placeholder="인증번호 입력" class="inputL"><button class="btn btnSizeM btnColor01">인증 확인</button></p>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="profileCell">일반 전화번호</label></th>
+								<td><input type="text" id="profileCell"></td>
+							</tr>
+							<tr>
+								<th><label for="profileAddress01">기본 배송지 주소</label></th>
+								<td>
+									<p class="inputWrap"><label for="searchAddress" class="hide">주소검색</label><input type="text" id="searchAddress"><button class="btn btnSizeM btnColor03">주소검색</button></p>
+									<p class="inputWrap"><input type="text" id="profileAddress01" class="inputL"><input type="text" id="profileAddress02" class="inputL"></p>
+								</td>
+							</tr>
+							<tr>
+								<th>이메일 및 <br>SNS 수신 여부</th>
+								<td>
+									<ul class="listSquare">
+										<li>공지 및 마케팅 메일/행사, 이벤트, 세일 정보 SMS를 수신 동의 하시면 홈즈에서 제공하는 다양한 정보를 미리 안내 받으실 수 있습니다.</li>
+										<li>수신 동의 여부와 상관 없이 주문, 결제, 배송, 취소, 비밀번호 변경 등에 대한 정보는 발송 됩니다.</li>
+									</ul>
+									<div class="inputWrap radioBox">
+										<p>공지 및 마케팅 메일 수신</p>
+										<input type="radio" id="agreeReceive01" name="receive01">
+										<label for="agreeReceive01">수신</label>
+										<input type="radio" id="disagreeReceive01" name="receive01">
+										<label for="disagreeReceive01">수신안함</label>
+									</div>
+									<div class="inputWrap radioBox">
+										<p>행사, 이벤트, 세일 정보 SMS 수신</p>
+										<input type="radio" id="agreeReceive02" name="receive02">
+										<label for="agreeReceive02">수신</label>
+										<input type="radio" id="disagreeReceive02" name="receive02">
+										<label for="disagreeReceive02">수신안함</label>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset class="profileInfo">
+						<legend class="subTit">SNS 계정 연동</legend>
+						<table class="record account">
+							<tr>
+								<th>SNS 계정 구분</th>
+								<th>연동정보</th>
+								<th>연결</th>
+							</tr>
+							<tr>
+								<td class="account01"><span>페이스북</span></td>
+								<td>연결된 정보가 없습니다.</td>
+								<td><a href="" class="btnSizeS">계정연결</a></td>
+							</tr>
+							<tr>
+								<td class="account02"><span>카카오</span></td>
+								<td>연결된 정보가 없습니다.</td>
+								<td><a href="" class="btnSizeS">계정연결</a></td>
+							</tr>
+							<!-- 계정 연결 시 active class 추가 -->
+							<tr class="active">
+								<td class="account03"><span>네이버</span></td>
+								<td>연결되었습니다. (이메일 : kolon12345@gmail.com)</td>
+								<td><a href="" class="btnSizeS">연결해제</a></td>
+								
+							</tr>
+						</table>
+					</fieldset>
+					<div class="profileInfo">
+						<h3 class="subTit">회원유형</h3>
+						<div class="profileNote">
+							<p>고객님은 현재 <b>일반회원</b>이십니다. 유료(멤버십) 회원으로 가입하셔서 더 많은 혜택을 받아보세요.</p>
+							<a href="" class="btnSizeM btnColor02">맴버쉽 가입</a>
+						</div>
+						<table class="record ">
+							<tr>
+								<th>구분</th>
+								<th>혜택 세부사항</th>
+								<th>비고</th>
+							</tr>
+							<tr>
+								<td class="th02">일반회원</td>
+								<td class="t_l">
+									- 할부 등 금융상품 혜택, 에스크로 서비스, 고객신뢰 프로그램 제공<br>- 창고보관서비스 이용 시 할인<br>- 1,000만원 이상 패키지 이용 시 프리미엄 패키지 3회, 밸류 패키지 2회로, 용역관리 서비스 제공
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="th02">유료(멤버십) 회원</td>
+								<td class="t_l">- 일반회원 혜택 일체, 무이자 할부 지원<br>- 인테리어 및 생활서비스 이용 시 추가 특별옵션 제공<br>- 연간 20만원 상당 생활편의 쿠폰 제공 혹은 인테리어 시 20만원 환급</td>
+								<td>연회비 20만원</td>
+							</tr>
+						</table>
+					</div>
+					<div class="profileInfo">
+						<h3 class="subTit">회원유형</h3>
+						<div class="profileNote">
+							<p>회원탈퇴 시 고객님의 개인정보 및 보유하고 계신 모든 혜택이 사라집니다.</p>
+							<a href="" class="btnSizeM btnColor03">회원탈퇴신청</a>
+						</div>
+					</div>
+					<p class="btnWrap"><a href="" class="btn btnSizeL btnColor04 btnShadow">취소</a><button class="btn btnSizeL btnColor02 btnShadow">저장</button></p>
+				</form>
+			</section>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>
