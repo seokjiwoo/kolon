@@ -23,6 +23,7 @@ module.exports = function() {
 		initTab();
 		initPopup();
 		opinionToggle();
+		initCardRadio();
 		
 		$('.checkbox label').click(function(){// checkbox
 			if ($(this).siblings('input').val() != ':checked'){			
@@ -244,7 +245,7 @@ module.exports = function() {
 		});
 	}
 	
-	function initCard(){	
+	function initCardRadio(){	
 		$('.cardCollect label').click(function(){// 개인화 수집 카드
 			if ($(this).siblings('input').val() != ':checked'){			
 				$(this).parent().addClass('on');
