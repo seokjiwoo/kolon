@@ -8,6 +8,7 @@ input, textarea, button, select, option, {line-height:1;font-family:'RobotoL','N
 b,strong{font-weight:normal;}
 table{border-collapse:collapse;border-spacing:0;}
 img{border:none}
+textarea{resize: none;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
 .wrapper{min-width:1240px;background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
@@ -55,7 +56,7 @@ img{border:none}
 #top .searchWrap .recently li{border-radius: 20px;border:1px solid #d9d9d9;}
 #top .searchWrap .recently a{display: inline-block;padding: 12px 14px;color: #666;}
 
-.topMenu .topR .member{display: none;float:right;margin-right:30px;padding: 10px 0;}
+.topMenu .topR .member{float:right;margin-right:30px;padding: 10px 0;}
 .login .topMenu .topR .member{display: block;}
 .topMenu .topR .member a{display: inline-block;vertical-align: middle;}
 .topMenu .topR .member .name{font-family:'RobotoR','NotoSansR', sans-serif;color: #737373;}

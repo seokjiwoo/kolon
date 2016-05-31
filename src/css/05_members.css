@@ -1,37 +1,11 @@
 .members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #f1645c}
 .members .pageTit:before, .members .pageTit:after{background: #fff;}
-.members .container .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 30px;}
+.members .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 30px;}
 .members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;}
 .members .container .subTit .note{margin-top:8px;text-align: center;font-size: 14px;color: #666;}
 .members .container .subTxt{font-size: 16px;color: #000;}
 .members .container .subTxt02{margin-top:25px;font-size: 16px;color: #000;font-family:'RobotoR','NotoSansR', sans-serif;}
 
-.members .formWrap{width: 890px;margin:60px auto 0;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
-.members .formWrap b{color: #f1645c}
-.members .formWrap .alert{/*display: none;*/color: #f1645c}
-.members .formWrap .subTxt{display: block;width: 100%;}
-.members .container input[type="checkbox"]{position: absolute;opacity: 0;}
-.members .container input[type="text"]{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
-.members .inputWrap{line-height: 60px;} 
-.members .inputWrap01{margin-top:30px;}
-.members .inputWrap label{display: inline-block;min-width: 70px;text-align: left;margin-right: 20px;color: #000;}
-.members .inputWrap label strong{color: #999;}
-.members .inputWrap .btn{min-width: 114px;}
-
-.members .formList li{overflow: hidden;border-bottom:1px solid #e8e8e8;}
-.members .formList .inputTit{display: inline-block;width: 100px;margin-right: 25px;padding: 25px 40px;vertical-align: middle;background: #f7f7f7;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000}
-.members .formList #joinId{width:360px; }
-.formList  select{width:80px;padding: 10px 10px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;}
-.members .formList .joinBirth{margin-right:15px;}
-.members .formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
-.members .formList .birth div{float: left;margin:10px 0;}
-.members .formList .birth .note{display: block;margin-top:15px;}
-
-.members .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
-.members .checkAgree {margin-top:18px;}
-.members .checkAgree label{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
-.members .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.members .checkAgree label.on:before{background-color: #a9c700}
 .members .btnPop{display: inline-block;margin:0 10px;padding: 5px 20px;border-radius: 12px;background: #999;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 13px;color: #fff;}
 .members .btnSizeL{display: block;width: 290px;margin:40px auto 0;}
 .members .btnSelect{margin:40px 3px 0;}
