@@ -99,7 +99,7 @@
 .contentCard .relateTag li a{display: inline-block;padding: 20px 35px;background: #fff;border-radius: 30px;box-shadow: 0px 3px rgba(0,0,0,0.1);font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;}
 
 /* expert */
-body[data-page-id="expert-list"] .wrapper{background:#000 url('../images/bgB.jpg');}
+.expertList{background:#000 url('../images/bgB.jpg');}
 .expert .subTop{background: url('../images/top_expert.jpg') no-repeat;background-size: cover;}
 .expert .bx-wrapper{position: relative;margin:35px auto 19px; }
 .expert .singleCard .bx-wrapper{margin-top:0;}
@@ -151,28 +151,28 @@ body[data-page-id="expert-list"] .wrapper{background:#000 url('../images/bgB.jpg
 
 
 /* magazine */
-body[data-page-id="magazine"] .subTop .wrap{padding-bottom: 22px;}
-.magazine.cardWrap{min-width: auto;margin:0;margin-top:30px;}
-.magazine .magazineL, .magazine .magazineR{width:595px;height: 320px;}
-.magazine .magazineL{margin-right: 8px;border-radius: 10px 0 0 10px;}
-.magazine .magazineR{float: right;width: 295px;border-radius: 0 10px 10px 0}
-.magazine .magazineC{height: 156px;margin-bottom:8px;border-radius: 0;}
-.magazine .magazineC .cardTit{font-size: 20px;}
-.magazine li{position: relative;margin-bottom: 0;}
-.magazine li a{display: block;height: 100%;color: #fff;padding: 0 30px;}
-.magazine .magazineCon{display: inline-block;vertical-align: middle;}
-.magazine li a:before{content: '';display: inline-block;width: 0;height: 100%;margin:-5px;vertical-align: middle;}
+.magazineCard .subTop .wrap{padding-bottom: 22px;}
+.magazineCard.cardWrap{min-width: auto;margin:0;margin-top:30px;}
+.magazineCard .magazineL, .magazine .magazineR{width:595px;height: 320px;}
+.magazineCard .magazineL{margin-right: 8px;border-radius: 10px 0 0 10px;}
+.magazineCard .magazineR{float: right;width: 295px;border-radius: 0 10px 10px 0}
+.magazineCard .magazineC{height: 156px;margin-bottom:8px;border-radius: 0;}
+.magazineCard .magazineC .cardTit{font-size: 20px;}
+.magazineCard li{position: relative;margin-bottom: 0;}
+.magazineCard li a{display: block;height: 100%;color: #fff;padding: 0 30px;}
+.magazineCard .magazineCon{display: inline-block;vertical-align: middle;}
+.magazineCard li a:before{content: '';display: inline-block;width: 0;height: 100%;margin:-5px;vertical-align: middle;}
 
-.magazine .cardIntro{margin-top:20px;}
-.magazine .cardIntro:before{display: none;}
-.magazine .cardInfo{position: absolute;left: 0;bottom: 30px;width: 100%;text-align: center;font-size: 14px;}
-.magazine .magazineC .cardInfo{bottom: 20px;}
-.magazine .cardInfo li{display: inline-block;margin-left: 5px;}
-.magazine .cardInfo li:first-child{margin:0;}
-.magazine .cardInfo li:before{content: '';display: inline-block;width: 13px;height: 13px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_card_popular.png') no-repeat;}
-.magazine .cardInfo li.like:before{background-position: -46px -1px;}
-.magazine .cardInfo li.comment:before{background-position: -12px -1px;}
-.magazine .cardInfo li.scrap:before{background-position: -24px 0px;}
+.magazineCard .cardIntro{margin-top:20px;}
+.magazineCard .cardIntro:before{display: none;}
+.magazineCard .cardInfo{position: absolute;left: 0;bottom: 30px;width: 100%;text-align: center;font-size: 14px;}
+.magazineCard .magazineC .cardInfo{bottom: 20px;}
+.magazineCard .cardInfo li{display: inline-block;margin-left: 5px;}
+.magazineCard .cardInfo li:first-child{margin:0;}
+.magazineCard .cardInfo li:before{content: '';display: inline-block;width: 13px;height: 13px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_card_popular.png') no-repeat;}
+.magazineCard .cardInfo li.like:before{background-position: -46px -1px;}
+.magazineCard .cardInfo li.comment:before{background-position: -12px -1px;}
+.magazineCard .cardInfo li.scrap:before{background-position: -24px 0px;}
 
 #bestKey .cardCon{color: #000;}
 #bestKey .cardDate{display: inline-block;margin-top: 15px;padding: 7px 20px;border: 1px solid #b2b2b2;border-radius: 15px;font-family: 'RobotoM', sans-serif;font-size: 16px;color: #b2b2b2;}
