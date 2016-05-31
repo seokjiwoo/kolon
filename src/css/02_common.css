@@ -157,7 +157,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .formList .birth .note{display: block;margin-top:15px;}
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
-.container input[type="text"]{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+.container input[type="text"], .container input[type="password"], .container input[type="email"]
+{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
 
 .radioBox{position: relative;line-height: 30px;}
