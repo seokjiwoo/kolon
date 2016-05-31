@@ -22,6 +22,7 @@ module.exports = function() {
 		initFloating();
 		initTab();
 		initPopup();
+		opinionToggle();
 		initCardRadio();
 		
 		$('.checkbox label').click(function(){// checkbox
@@ -252,4 +253,32 @@ module.exports = function() {
 			}
 		});
 	}
+
+	// 11의견묻기_02의견묻기작성 (작성하기영역 열기,닫기)
+	function opinionToggle(){
+		var selecter = null,
+			 opinion = null;
+		function init(){
+			selecter =".opinionwrite a",
+			opinion = ".opinionInput";
+			initEvent();
+		}
+		function initEvent(){
+			$(selecter).on("click", function(e){
+				e.preventDefault();
+				showContent( $(this) )
+			});
+		};
+		function showContent(tg){
+			if( !tg.hasClass("active") ){
+				tg.addClass("active").find("span").text("의견 작성하기 접기");
+				$(opinion).stop().slideDown();
+			}else{
+				tg.removeClass("active").find("span").text("의견작성하기");
+				$(opinion).stop().slideUp();
+			}
+		};
+		init();
+	}
+
 }

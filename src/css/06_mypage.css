@@ -105,14 +105,34 @@
 .my .record .orderState a{display: block;margin-top:6px;}
 .my .record .orderState .stateTxt{position: relative;}
 .my .record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
+.my .record .orderState .stateEnd {display:block;color:#f1645c;}
 .my .record .orderState .stateTxt:hover .popState{display: block;}
 .my .record .orderState .cancleDate{color: #f1645c;}
+.my .record .arraySide {overflow:hidden;}
+.my .record .arraySide p .my .record .arraySide p span {float:left;}
+.my .record .arraySide p span {display:block;float:right;}
+.my .record .fontM {font-family:'RobotoM','NotoSansM', sans-serif;}
+.my .record .btnBox {overflow:hidden;text-align:center;}
+.my .record .btnBox .btnSizeS {float:left;width:80px;padding:0;margin-left:5px;}
+.my .record .btnBox .btnSizeS:first-child {margin-left:0;}
+
+.my .record.record02 {font-family:'RobotoL','NotoSansL', sans-serif;}
+.my .record.record02 th {font-family:'RobotoR','NotoSansR', sans-serif;}
 
 .my .record.record03 th, .my .record.record03 td {padding:20px 0;}
 .my .record.record03 td.recordInfo {padding:20px 0 20px 10px;}
 .my .record.record03 .recordThumb {float:right;}
 .my .record.record03 .orderState {padding:20px}
 .my .record .noList {height:52px;color:#999;}
+
+.my .record.record04 {margin-top:30px;}
+.my .record.record04 th, .my .record.record04 td {font-size:16px;}
+.my .record.record04 .recordDate b {margin-left:5px;text-decoration:initial;}
+
+.my .record.recordBg {margin-top:0;border-top:none;}
+.my .record.recordBg th, .my .record.recordBg td {text-align:left;}
+.my .record.recordBg th {background:#f2f4f4;}
+.my .record.recordBg td {background:#fafafa;font-family:'RobotoL','NotoSansL', sans-serif;color: #333;}
 
 .my .record .popState{display: none;position: absolute;right: 0;bottom:30px;width: 495px;padding: 38px 20px 38px;background: #fff;border:1px solid #999;z-index: 2;}
 .my .record .popState:after{content: '';position: absolute;bottom: -18px;right: 40px;width: 18px;height: 18px;background: url('../images/ico_pointer.png') no-repeat;}
@@ -133,9 +153,14 @@
 .my .record .popState .step04 span{width: 328px;}
 .my .record .popState .step05 span{width: 410px;}
 .my .record .popState .step06 span{width: 440px;}
+.my .record .popState.popState02 .step06 span{width: 492px;}
 .my .record .popState .step07 span{width: 574px;}
 .my .record .popState .step08 span{width: 656px;}
 .my .record .popState .step09 span{width: 686px;}
+
+.btnSideArray {overflow:hidden;line-height:40px;margin:20px 20px 30px 0;}
+.btnSideArray label {font-size:16px;color:#666;}
+.btnSideArray label span {color:#f1645c;}
 
 .my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;}
 .my .scrapTit b{color:#f1645c}
@@ -150,6 +175,8 @@ body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap{overflow: hidden; paddin
 body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span{overflow: hidden;display: block;float: left;width: 114px;height: 114px;}
 body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
 body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
+
+body[data-page-id="myPage-orderDetail"] .checkAgree label:before {display:inline-block;margin:0 20px;}
 
 #myInfo .reward{position: absolute;left: 0;bottom:50px;width: 100%;color: #666 ;font-size: 13px;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myInfo .reward:before{content: '';display: inline-block;width: 14px;height: 14px;margin-right: 5px;background: url('../images/ico_point.png') no-repeat;vertical-align: middle;}
@@ -179,62 +206,3 @@ body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
 .my .cartList tr td .photoList {padding-left:40px;}
 .my .cartList + .btnG {padding:20px 20px 0;}
 .my .cartList + .btnG a.btnSizeS {padding:0 26px;}
-
-tr td .photoList {width:100%; height:90px; overflow:hidden; position:relative; display:table-cell; vertical-align:middle;}
-tr td .photoList span.thumb,
-tr td .photoList span.thumb img{width:90px; height:90px;}
-tr td .photoList span.thumb {display:inline-block; position:absolute; top:0; left:0;}
-tr td .photoList span.thumb + span.cartInfo {margin-left:9px;}
-tr td .photoList span.cartInfo {padding-left:95px; display:inline-block; text-align:left;}
-tr td .photoList span.cartInfo span {width:100%;}
-tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
-tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block;}
-tr td .photoList span.cartInfo span.cartTit {color:#000;}
-
-.btnG {overflow:hidden;}
-.btnG span.pointRed {color:#f1645c;}
-.btnG .cartChk.btnL + label {font-size:16px;}
-.btnG .btnL {float:left;}
-.btnG .btnR {float:right;}
-
-.oder .container .wrap{width: 100%; padding-top: 50px;}
-.oder .singleCard{padding: 50px;}
-.oder table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.oder table th{padding: 20px;background: #f8f8f8;color: #333;}
-.oder table td{padding: 20px;}
-.oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
-.oder .oderCont {width:100%; overflow:hidden;}
-.oder .oderCont + h3.subTit {margin-top:39px; }
-.oder .oderCont .oderTb {margin-top:20px;}
-.oder .oderCont .oderTb table tr td {border-bottom:1px solid #e8e8e8;}
-.oder .oderCont .oderTb + .adrArea {width:100%; overflow:hidden; border-bottom:1px solid #ccc;}
-.oder .oderCont .adrArea dl {width:100%; margin:0; overflow:hidden;}
-.oder .oderCont .adrArea dl + dl {border-top:1px solid #e8e8e8;}
-.oder .oderCont .adrArea dl dt,
-.oder .oderCont .adrArea dl dd {float:left; font-size:14px; font-family:'RobotoR','NotoSansR', sans-serif;}
-.oder .oderCont .adrArea dl dt {padding:30px 0 30px 20px;}
-.oder .oderCont .adrArea dl dd {padding:15px 0;}
-.oder .oderCont .adrArea dl dd + dd {padding-left:32px;}
-.oder .oderCont .adrArea dl dd select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
-.oder .oderCont .adrArea dl dd input[type="text"]{width:230px; margin-right:10px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
-.oder .oderCont .adrArea dl dd select + input[type="text"] {margin-left:14px;}
-.oder .oderCont .adrArea dl dd.adrInfo {width:311px;}
-.oder .oderCont .adrArea dl dd.adrInfo select + a {margin-left:12px;}
-.oder .oderCont .adrArea dl dd.adrCon {width:604px; padding:17px 0; margin-right:20px;}
-.oder .oderCont .adrArea dl dd.adrCon p + p {margin-top:6px; color:#;}
-.oder .oderCont .adrArea dl dd.adrCon p {line-height:130%;}
-.oder .oderCont .adrArea dl dd.adrCon p span + span {margin-left:19px;}
-.oder .oderCont .adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url(../images/bul_bar.png) 100% 50% no-repeat;}
-.oder .oderCont .payTbL {width:737px; float:left;}
-.oder .oderCont .payTbR {width:358px; float:right;}
-.oder .oderCont .payTbR dl.payS + dl.payS {margin:10px 0 0;}
-.oder .oderCont .payTb {margin-top:20px;}
-.oder .oderCont .payTb dl {border:1px solid #e5e5e5; border-top:1px solid #666; float:left; margin:0;}
-.oder .oderCont .payTb dl.payS {width:360px;}
-.oder .oderCont .payTb dl.payL {width:732px; margin:10px 0 0;}
-.oder .oderCont .payTb dl + dl {margin-left:10px;}
-.oder .oderCont .payTb dl dt{width:140px; background:#f8f8f8; float:left;}
-.oder .oderCont .payTb dl dd {width:216px; float:left; margin:0;}
-.oder .oderCont .payTb dl dt div,
-.oder .oderCont .payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333;}
-.oder .oderCont .payTb dl dt div {width:140px; text-align:center;}
