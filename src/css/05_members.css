@@ -38,7 +38,8 @@
 .members .doubleCard .subTit{font-size: 20px;}
 .members .doubleCard:first-child .subTit{font-size: 34px;}
 .members .doubleCard > .subTit{margin-top:50px;}
-.members .container .formWrap02 input[type="text"]{width: 470px;margin:15px 0 0 0;padding: 18px 20px;font-size: 16px;}
+.members .container .formWrap02 input[type="text"], .members .container .formWrap02 input[type="password"], .members .container .formWrap02 input[type="email"]
+{width: 470px;margin:15px 0 0 0;padding: 18px 20px;font-size: 16px;}
 .members .doubleCard .btn{width: 510px;margin-top:30px;}
 .members .doubleCard .loginSns{display: block;width:auto;margin-top:15px;padding:0 25px;}
 

@@ -164,19 +164,19 @@
 
 .my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;}
 .my .scrapTit b{color:#f1645c}
-body[data-page-id="mypage-scrap"] .delScrap{position: absolute;right: 0;width: 54px;height: 54px;background: #fff;}
-body[data-page-id="mypage-scrap"] .scrapPack li{overflow: hidden;position: relative;width: 285px;margin:10px;border-radius: 10px;}
-body[data-page-id="mypage-scrap"] .scrapPack .scrapTit{height: 160px;margin:0;padding:0 40px;text-align: center;color: #fff;line-height: 1.4em;}
-body[data-page-id="mypage-scrap"] .scrapPack .scrapTit h3{display: inline-block;vertical-align: middle;}
-body[data-page-id="mypage-scrap"] .scrapPack .scrapTit:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
-body[data-page-id="mypage-scrap"] .scrapPack .scrapTit .count{display: block;}
-body[data-page-id="mypage-scrap"] .scrapPack .scrapTit .count:before{content: '';display: inline-block;width: 20px;height: 20px;margin-right: 5px;background: url('../images/btn_profile.png') -132px 0;}
-body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap{overflow: hidden; padding:23px;background: #fff;}
-body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span{overflow: hidden;display: block;float: left;width: 114px;height: 114px;}
-body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
-body[data-page-id="mypage-scrap"] .scrapPack .wrapScrap span img{width: 100%;}
-
-body[data-page-id="myPage-orderDetail"] .checkAgree label:before {display:inline-block;margin:0 20px;}
+/*.scrap .delScrap{position: absolute;right: 0;width: 54px;height: 54px;background: #fff;}
+.scrap .scrapPack li{overflow: hidden;position: relative;width: 285px;margin:10px;border-radius: 10px;}
+.scrap .scrapPack .scrapTit{height: 160px;margin:0;padding:0 40px;text-align: center;color: #fff;line-height: 1.4em;}
+.scrap .scrapPack .scrapTit h3{display: inline-block;vertical-align: middle;}
+.scrap .scrapPack .scrapTit:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+.scrap .scrapPack .scrapTit .count{display: block;}
+.scrap .scrapPack .scrapTit .count:before{content: '';display: inline-block;width: 20px;height: 20px;margin-right: 5px;background: url('../images/btn_profile.png') -132px 0;}
+.scrap .scrapPack .wrapScrap{overflow: hidden; padding:23px;background: #fff;}
+.scrap .scrapPack .wrapScrap span{overflow: hidden;display: block;float: left;width: 114px;height: 114px;}
+.scrap .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
+.scrap .scrapPack .wrapScrap span img{width: 100%;}
+*/
+.orderDetail .checkAgree label:before {display:inline-block;margin:0 20px;}
 
 #myInfo .reward{position: absolute;left: 0;bottom:50px;width: 100%;color: #666 ;font-size: 13px;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myInfo .reward:before{content: '';display: inline-block;width: 14px;height: 14px;margin-right: 5px;background: url('../images/ico_point.png') no-repeat;vertical-align: middle;}
@@ -190,10 +190,15 @@ body[data-page-id="myPage-orderDetail"] .checkAgree label:before {display:inline
 #myInfo .formList select{width: 100%;}
 #myInfo button{display: block;width: 290px;margin:40px auto 0;}
 
+#editPassword .subTit{margin-top:30px;}
+#editPassword .subTxt{display: initial;}
+#editPassword .btnWrap{margin-top: 40px;}
+#editPassword .btn{width: 200px}
+
 #myInfoEdit .profileInfo{margin-top: 35px;}
-#myInfoEdit .formList{text-align: left;}
-#myInfoEdit .formList td, #myInfoEdit .formList th{padding: 15px 20px;}
-#myInfoEdit .formList .birth > div{margin:0;}
+.my table.formList{text-align: left;}
+.my table.formList td, .my table.formList th{padding: 15px 20px;}
+.my table.formList .birth > div{margin:0;}
 #myInfoEdit input[type="text"]:disabled{background: #f7f7f7;}
 #myInfoEdit td{color: #666}
 #myInfoEdit .account a{border:0;color: #fff;background: #a9c700;}
