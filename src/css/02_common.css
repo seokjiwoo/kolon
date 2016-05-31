@@ -1,7 +1,19 @@
+.w90 {width:90px;}
+
+.mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
 .mt40 {margin-top:40px;}
 
 .t_r {text-align:right}
+.t_l {text-align:left}
+
+.fl_left {float:left;}
+.fl_right {float:right;}
+
+.checkAgree label{display:inline-block;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
+.checkAgree input[type="checkbox"] {position: absolute;opacity: 0;width:24px;height:24px;margin:0;padding:0;z-index:-1}
+.checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
+.checkAgree label.on:before{background-color: #a9c700}
 
 .arrayWrap{clear: both;height: 37px;}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
@@ -48,8 +60,8 @@
 .lyPop .table03Wrap .record td {text-align:left}
 .lyPop .table03Wrap .record td span {display:block;margin-left:8px;}
 .lyPop .table03Wrap .record td b {display:block;color:#999;}
-.lyPop .infoOrder {margin-bottom:50px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
-.lyPop .infoOrder li {line-height:21px}
+.infoOrder {margin-bottom:50px;font-size:14px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.infoOrder li {line-height:21px}
 .btnCenter {text-align:center}
 
 .lyPop .record.record02 {font-family:'RobotoL','NotoSansL', sans-serif;color:#333;}
