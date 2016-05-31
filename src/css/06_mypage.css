@@ -188,8 +188,8 @@ tr td .photoList span.thumb + span.cartInfo {margin-left:9px;}
 tr td .photoList span.cartInfo {padding-left:95px; display:inline-block; text-align:left;}
 tr td .photoList span.cartInfo span {width:100%;}
 tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
-tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block;}
-tr td .photoList span.cartInfo span.cartTit {color:#000;}
+tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'RobotoL','NotoSansL', sans-serif;}
+tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR','RobotoR', sans-serif;}
 
 .btnG {overflow:hidden;}
 .btnG span.pointRed {color:#f1645c;}
@@ -199,15 +199,54 @@ tr td .photoList span.cartInfo span.cartTit {color:#000;}
 
 .oder .container .wrap{width: 100%; padding-top: 50px;}
 .oder .singleCard{padding: 50px;}
-.oder table{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.oder table th{padding: 20px;background: #f8f8f8;color: #333;}
-.oder table td{padding: 20px;}
 .oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
+.oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
+.oder .container input[type="checkbox"]{position: absolute;opacity: 0;}
+.oder .checkAgree {margin-top:18px;}
+.oder .checkAgree label{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
+.oder .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
+.oder .checkAgree label.on:before{background-color: #a9c700}
+.oder .pointCk{width:26px; height:26px; border:1px solid #d1d1d1; background:#fff url('../images/ico_checkG.png') center no-repeat; border-radius:20%; vertical-align:middle; text-align:center;}
+.oder .pointCk.on{background:#fff url('../images/ico_checkR.png') center no-repeat;}
+.oder .pointCk input[type="checkbox"] {position: absolute;opacity: 0;}
+.oder .pointCk label {width:150px; display:inline-block; padding:7px 0 0 38px; text-align:left;}
+.oder .oderCont {width:100%; overflow:hidden;}
+.oder .oderCont table{width: 100%;border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.oder .oderCont table th{padding: 20px;background: #f8f8f8;color: #333;}
+.oder .oderCont table td{padding: 20px;}
+.oder .oderCont table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
+.oder .oderCont span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
+.oder .oderCont span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
+.oder .oderCont span.pointRed {color:#f1645c; font-size:30px;}
+.oder .oderCont select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
+
 .oder .oderCont {width:100%; overflow:hidden;}
 .oder .oderCont + h3.subTit {margin-top:39px; }
-.oder .oderCont .oderTb {margin-top:20px;}
-.oder .oderCont .oderTb table tr td {border-bottom:1px solid #e8e8e8;}
+.oder .oderCont .oderTbW {width:100%; overflow:hidden;}
+.oder .oderCont .oderTb.lineN {border-top:0;}
+.oder .oderCont .oderTb {width:100%; margin-top:20px; display:inline-block; border-top:1px solid #545454;}
+.oder .oderCont .oderTb table caption {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
+.oder .oderCont .oderTb table tr th,
+.oder .oderCont .oderTb table tr td {border:1px solid #e8e8e8;}
+.oder .oderCont .oderTb table tr td {text-align:left;}
+.oder .oderCont .oderTb table tr th {text-align:center;}
 .oder .oderCont .oderTb + .adrArea {width:100%; overflow:hidden; border-bottom:1px solid #ccc;}
+.oder .oderCont .oderTb table tr th.txtR,
+.oder .oderCont .oderTb table tr td.txtR {text-align:right;}
+.oder .oderCont .oderTb table tr th.txtL,
+.oder .oderCont .oderTb table tr td.txtL {text-align:left;}
+.oder .oderCont ul.tbList {width:100%; margin:0 auto; display:inline-block;}
+.oder .oderCont ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 4px no-repeat; text-align:left; display:inline-block;}
+.oder .oderCont ul.tbList li + li {margin-top:16px;}
+.oder .oderCont ul.tbList li span {width:60%; text-align:right; float:right; display:inline-block;}
+.oder .oderCont ul.tbList li span.tbListTit {width:40%; text-align:left; float:left;}
+.oder .oderCont ul.tbList li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
+.oder .oderCont ul.pdLt,
+.oder .oderCont p.pdLt {margin-left:20px;}
+.oder .oderCont p.pdLt a + a {margin-left:10px;;}
+.oder .btnC {width:100%; margin-top:55px; text-align:center;}
+.oder .btnC .btnSizeL.btnColor02 {width:200px;}
+
 .oder .oderCont .adrArea dl {width:100%; margin:0; overflow:hidden;}
 .oder .oderCont .adrArea dl + dl {border-top:1px solid #e8e8e8;}
 .oder .oderCont .adrArea dl dt,
@@ -215,26 +254,67 @@ tr td .photoList span.cartInfo span.cartTit {color:#000;}
 .oder .oderCont .adrArea dl dt {padding:30px 0 30px 20px;}
 .oder .oderCont .adrArea dl dd {padding:15px 0;}
 .oder .oderCont .adrArea dl dd + dd {padding-left:32px;}
-.oder .oderCont .adrArea dl dd select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
-.oder .oderCont .adrArea dl dd input[type="text"]{width:230px; margin-right:10px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .oder .oderCont .adrArea dl dd select + input[type="text"] {margin-left:14px;}
 .oder .oderCont .adrArea dl dd.adrInfo {width:311px;}
 .oder .oderCont .adrArea dl dd.adrInfo select + a {margin-left:12px;}
 .oder .oderCont .adrArea dl dd.adrCon {width:604px; padding:17px 0; margin-right:20px;}
 .oder .oderCont .adrArea dl dd.adrCon p + p {margin-top:6px; color:#;}
-.oder .oderCont .adrArea dl dd.adrCon p {line-height:130%;}
+.oder .oderCont .adrArea dl dd.adrCon p {line-height:130%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
 .oder .oderCont .adrArea dl dd.adrCon p span + span {margin-left:19px;}
-.oder .oderCont .adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url(../images/bul_bar.png) 100% 50% no-repeat;}
-.oder .oderCont .payTbL {width:737px; float:left;}
-.oder .oderCont .payTbR {width:358px; float:right;}
+.oder .oderCont .adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif;}
+.oder .oderCont .payTbL {width:733px; float:left; display:inline-block; text-align:left; position:relative;}
+.oder .oderCont .payTbL dl.payS {position:relative;}
+.oder .oderCont .payTbL dl.payS:after {content: ''; width:40px; height:40px; position: absolute; top:38px; right:-26px; background:url('../images/ico_order.png') 0 0 no-repeat; z-index:99;}
+.oder .oderCont .payTbL dl.payS + dl.payS:after{background-position:0 -40px;}
+.oder .oderCont .payTbR {width:361px; float:right; overflow:hidden;}
 .oder .oderCont .payTbR dl.payS + dl.payS {margin:10px 0 0;}
-.oder .oderCont .payTb {margin-top:20px;}
+.oder .oderCont .payTb {margin-top:20px; font-family:'NotoSansB','RobotoB', sans-serif;}
+.oder .oderCont .payTb ul.tbList {width:161px;}
+.oder .oderCont .payTb ul.tbList li {width:148px;}
 .oder .oderCont .payTb dl {border:1px solid #e5e5e5; border-top:1px solid #666; float:left; margin:0;}
-.oder .oderCont .payTb dl.payS {width:360px;}
-.oder .oderCont .payTb dl.payL {width:732px; margin:10px 0 0;}
+.oder .oderCont .payTb dl.payS {width:358px;}
+.oder .oderCont .payTb dl.payL {width:728px; margin:10px 0 0;}
+.oder .oderCont .payTb dl.payL dd,
+.oder .oderCont .payTb dl.payL dd div {width:588px;}
 .oder .oderCont .payTb dl + dl {margin-left:10px;}
 .oder .oderCont .payTb dl dt{width:140px; background:#f8f8f8; float:left;}
-.oder .oderCont .payTb dl dd {width:216px; float:left; margin:0;}
+.oder .oderCont .payTb dl dd {width:216px; float:left; margin:0; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
 .oder .oderCont .payTb dl dt div,
-.oder .oderCont .payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333;}
-.oder .oderCont .payTb dl dt div {width:140px; text-align:center;}
+.oder .oderCont .payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333; text-align:center;}
+.oder .oderCont .payTb dl dt div {width:140px;}
+.oder .oderCont .payTb dl dd div {width:216px;}
+.oder .oderCont .payTb ul.pointBul {width:100%; overflow:hidden;}
+.oder .oderCont .payTb ul.pointBul li {width:50%; float:left;}
+.oder .oderCont .payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:30px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
+.oder .oderCont .payTb ul.pointBul li p.tbBul label + input[type=text] {margin:0 5px 0 10px;}
+.oder .oderCont .payTb ul.pointBul li p.pointCk {margin:5px 0 0 20PX;}
+.oder .oderCont .payTb ul.pointBul li p.pointCk label {width:183px; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
+.oder .oderCont .payTb p.underTxt {margin:15px 0 0 44px; text-align:left; color:#999;}
+.oder .oderCont .payTb dl.payHL div {height:156px;}
+.oder .oderCont .payTb ul.giveList {width:150px; overflow:hidden; margin:0 auto;}
+.oder .oderCont .payTb ul.giveList li {width:50%; float:left; line-height:120%; text-align:left; font-family:'NotoSansR','RobotoR', sans-serif;}
+.oder .oderCont .payTb ul.giveList li b {font-family:'NotoSansB','RobotoB', sans-serif;}
+.oder .oderCont .payTb ul.giveList li.pc {float:right; text-align:right; padding-top:4px;}
+.oder .oderCont .tbHf {width:543px; float:left;}
+.oder .oderCont .tbHf + .tbHf {margin-left:10px;}
+.oder .oderCont .tbHf .oderTb table {width:100%;}
+.oder .oderCont .tbHf .oderTb table tr th {height:42px;}
+.oder .oderCont .oderTb table tr td ul.noBul {width:100%; overflow:hidden; margin:23px 0;}
+.oder .oderCont .oderTb table tr td ul.noBul li {width:100%; font-family:'RobotoL','NotoSansL', sans-serif;}
+.oder .oderCont .oderTb table tr td ul.noBul li b {font-family:'RobotoR','NotoSansR', sans-serif;}
+.oder .oderCont .oderTb table tr td ul.noBul li + li {width:100%; margin-top:15px;}
+.oder .oderCont .oderTb table tr td ul.noBul li p.inp4 {width:100%;}
+.oder .oderCont .oderTb table tr td ul.noBul li select + p {margin-top:10px;}
+.oder .oderCont .oderTb table tr.total td {height:118px;}
+.oder .oderCont .oderTb table tr.total2 td {height:456px;}
+.oder .oderCont .oderTb table tr.total3 td {height:89px;}
+.oder .oderCont .oderTb table tr td.cashH {height:216px;}
+.oder .oderCont .agreeBox { width:1019px; padding:40px 40px 32px; margin-top:20px; overflow:hidden; border-top:1px solid #545454; border-bottom:1px solid #e8e8e8; background:#fafafa;}
+.oder .oderCont .agreeBox .agreeCont {width:942px; height:220px; padding:38px; border:1px solid #e1e1e1; background:#fff; overflow-y:scroll;}
+.oder .oderCont .agreeBox .agreeCont p {color:#666;}
+.oder .oderCont .agreeBox .agreeCont p + p {margin-top:30px; line-height:130%;}
+.oder .oderCont .payTab {width:100%; margin-top:20px; padding:30px 0; border-top:1px solid #545454; overflow:hidden;}
+.oder .oderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
+.oder .oderCont .payTab span {margin-left:42px; display:inline-block; }
+.oder .oderCont .payTab span + span {margin-left:32px;}
+.oder .oderCont .payTab + .oderTbW .tbHf .oderTb {margin-top:0;}
