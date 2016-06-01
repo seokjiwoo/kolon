@@ -64,7 +64,6 @@ textarea{resize: none;}
 .topMenu .topR .member .pic img{width: 100%;}
 .topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 .topMenu .topR .btnLogin{float:right;display: inline-block;margin:12px 30px 12px 10px;padding:11px 20px 9px;border-radius: 20px;background:#a9c700;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:14px;}
-.login .topR .btnLogin{display: none;}
 
 .lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);text-align: center;}
 .lnb .profile{position: relative;min-height:340px;padding-bottom:70px;background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;}
@@ -77,6 +76,7 @@ textarea{resize: none;}
 .lnb .profile .profileInfo{color:#fff;font-size:13px;line-height: 1.3em}
 .lnb .profile .profileInfo span{font-size:16px;}
 .lnb .profile .btnList{margin-top:10px;font-size: 0;}
+.lnb .profile .btnList.log{opacity: 0.5;}
 .lnb .profile .btnList li{position: relative;display: inline-block;width:22px;height: 22px;margin:0 7px;background-image: url('../images/btn_profile.png');}
 .lnb .profile .btnList li a{display: block;width: 100%;height: 100%;}
 .lnb .profile .btnList .btnList01{background-position: 0 0;}
@@ -84,8 +84,8 @@ textarea{resize: none;}
 .lnb .profile .btnList .btnList03{background-position: -44px 0;}
 .lnb .profile .btnList .btnList04{background-position: -66px 0;}
 .lnb .profile .btnList .count{position: absolute;top:-10px;right:-20px;background:#a11b13;}
-.lnb .profile .btnMypage{display: inline-block;margin-top:20px;padding:11px 30px;background:#fff;border-radius:20px;font-size:13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;color: #000;}
-.lnb .profile .btnMypage:after{content:'';display: inline-block;width: 20px;height: 18px;margin-left:5px;background: url('../images/ico_home.png') no-repeat;vertical-align: bottom; }
+.lnb .profile .btnMy{display: inline-block;margin-top:20px;padding:0 30px;background:#fff;border-radius:20px;font-size:13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;color: #000;line-height: 40px;}
+.lnb .profile .btnMypage:after{content:'';display: inline-block;width: 20px;height: 18px;margin-left:5px;background: url('../images/ico_home.png') no-repeat;vertical-align: sub; }
 .lnb .profile .myMenu{display: none;margin-top:18px;padding:0 30px;text-align: left;}
 .lnb .profile .myMenu li{position: relative;border-top:1px solid #f4837d;}
 .lnb .profile .myMenu li:first-child{border:0;}
@@ -101,7 +101,8 @@ textarea{resize: none;}
 .lnb .leftMenu .depth02{display: none;padding:10px 0;border-bottom:1px solid #f2f2f2;}
 .lnb .leftMenu .depth02 a{padding:0 10px;font-family:'RobotoR','NotoSansR', sans-serif;color:#666;}
 .lnb .leftMenu .depth02 b{color:#bdcb6b;}
-.lnb .btnLog{overflow: hidden;display: inline-block;margin:52px auto;padding:10px 30px;border-radius:15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;}
+.lnb .btnLog{margin:52px auto;}
+.lnb .btnLog:after{content:'';display: inline-block;width: 17px;height: 17px;margin-left: 5px;background: url('../images/ico_log.png') no-repeat;vertical-align: sub;}
 .login .lnb .in{display: inline-block;} 
 .lnb .out{display: none;}
 
