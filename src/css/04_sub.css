@@ -27,8 +27,8 @@
 .infoTop .colR{text-align: right;}
 .infoTop #sharePage{display: inline-block;width: 40px;height: 40px;margin: 20px 0 60px;font-size: 0;background: url('../images/ico_share.png') no-repeat center;}
 .infoTop .infoBtn{position: absolute;bottom: 40px;left: 0;width: 100%;}
-.infoTop .myRate{display: inline-block;margin-right: 25px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;vertical-align: middle;text-align: center;line-height: 1.3em;font-size: 16px;}
-.infoTop .myRate b{display: block;color: #000;font-family:'RobotoM','NotoSansM', sans-serif;}
+.myRate{display: inline-block;margin-right: 25px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;vertical-align: middle;text-align: center;line-height: 1.3em;font-size: 16px;}
+.myRate b{display: block;color: #000;font-family:'RobotoM','NotoSansM', sans-serif;}
 .infoTop .infoBtn a{width: 170px;font-family:'RobotoR','NotoSansR', sans-serif;}
 .infoTop .infoBtn #btnFollow{margin-right: 10px;background:#f1645c}
 .infoTop .infoBtn #btnMsg{background: #706a69}

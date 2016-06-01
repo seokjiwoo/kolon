@@ -22,13 +22,13 @@
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
 
 .timeCard .recordWrap{padding-bottom: 20px;}
-.timeCard .recordWrap li{margin-top: 20px;text-align: left;}
-.timeCard .recordWrap li:first-child{margin-top: 0;}
+.timeCard .recordWrap > ul > li{margin-top: 20px;text-align: left;}
+.timeCard .recordWrap > ul > li:first-child{margin-top: 0;}
 .timeCard .recordDate{display: inline-block;padding: 0 15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 30px;border-radius: 15px;}
 .timeCard .recordTime{display: inline-block;vertical-align: middle;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;font-size: 20px;}
 .timeCard .recordTime b{color: #f1645c}
 .timeCard .recordIco{position: relative;display: inline-block;width: 96px;height: 96px;margin:0 11px 0 23px;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;font-size: 0;vertical-align: middle;}
-.timeCard .recordWrap li a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border-radius: 10px;vertical-align: middle;    box-shadow: 0px 3px rgba(0,0,0,0.1);}
+.timeCard .recordWrap > ul > li > a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border-radius: 10px;vertical-align: middle;box-shadow: 0px 3px rgba(0,0,0,0.1);}
 .timeCard .recordCon{display: inline-block;width: 735px;margin-right: -4px;padding-right: 30px;vertical-align: middle;}
 .timeCard .recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
 .timeCard .recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
@@ -41,6 +41,30 @@
 .timeCard .recordCat{display: inline-block;margin-bottom: 10px;padding: 0 10px;border-radius: 10px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;color: #000;line-height: 20px;border:1px solid #000;}
 .timeCard .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
 .timeCard .recordPic img{display: block;width: 100%;}
+
+.timeCard .innerWrap{padding: 20px 30px;background: #fff;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+.timeCard .innerWrap .name{width: 140px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
+.timeCard .innerWrap .name b{font-family:'RobotoM','NotoSansM', sans-serif;}
+.timeCard .innerWrap .myRateWrap{width: 190px;text-align: center;}
+.timeCard .innerWrap .myRate{color: #666;margin-right:10px;}
+.timeCard .innerWrap .myRate b{color: #666;}
+.timeCard .innerWrap .btnFollow{width: 175px;text-align: center;margin-right: 19px}
+.timeCard .innerWrap .btnFollow a{min-width: 110px;}
+.timeCard .innerWrap .btnFollow a:after{content: '';display: inline-block;width: 17px;height: 16px;margin-left: 10px;background: url('../images/ico_checkL.png') no-repeat center;vertical-align: sub;}
+.timeCard .innerWrap .btnFollow a.dismiss{border:1px solid #a9c700;color: #a9c700}
+.timeCard .innerWrap .btnFollow a.dismiss:after{background-image:url('../images/ico_plusG.png');}
+.timeCard .innerWrap li{display: inline-block;vertical-align: middle;}
+.timeCard .innerWrap .imgWrap{overflow: hidden;font-family:'RobotoM','NotoSansM', sans-serif;}
+.timeCard .innerWrap .imgWrap li{position: relative;float: left;width: 114px;height: 114px;margin-left: 10px;}
+.timeCard .innerWrap .imgWrap li:first-child{margin:0;}
+.timeCard .innerWrap .imgWrap .hoverCon{position: absolute;top: 0;left: 0;right: 0;bottom: 0;padding: 20px;background: rgba(0,0,0,0.5);color: #fff;z-index: 1;font-size: 14px;text-align: center;opacity: 0;}
+.timeCard .innerWrap .imgWrap .hoverCon:hover{opacity: 1;transition: opacity .4s ease-in-out;-moz-transition: opacity .4s ease-in-out;-webkit-transition: opacity .4s ease-in-out;}
+.timeCard .innerWrap .imgWrap .imgTit{margin-bottom: 10px;text-decoration: underline;font-family:'RobotoR','NotoSansR', sans-serif;}
+.timeCard .innerWrap .imgWrap p{line-height: 1.3em;word-break: keep-all;}
+.timeCard .innerWrap .imgWrap a{position: absolute;top:25px;left: 25px;width:64px;height: 64px;border-radius: 50%;text-align: center;color: #fff;font-size: 14px;}
+.timeCard .innerWrap .imgWrap a:before{content:'';display: block;width:17px;height: 17px;margin:13px auto 2px; background: url('../images/ico_plusM.png') no-repeat;}
+
+.timeCard .innerWrap .imgWrap img{display: block;width: 100%;}
 
 #myTimeline .recordDate{margin:0 auto 15px 190px;}
 #myTimeline .recordWrap{background: url('../images/bg_my.png') repeat-y left;}
@@ -81,6 +105,10 @@
 #myMsg .recordCon .newMsg{position: relative;display: inline-block;height: 100%;vertical-align: middle;}
 #myMsg .recordCon .newMsg span{position: absolute;top:50%;right: 0;min-width: 20px;margin-top:-15px;padding:0 10px;background: #f37972;color: #fff;line-height: 30px;border-radius: 15px;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
+
+#fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border-radius: 20px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+#fallowing #fallowSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
+#fallowing button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 20px;background: #f8f8f8;color: #333;}
