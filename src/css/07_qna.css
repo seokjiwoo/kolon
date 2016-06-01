@@ -1,12 +1,14 @@
-/* common 추가예정 */
-
 /* contents */
+.myOpinion{float:right;width:895px;font-size:14px;}
+.myOpinion .opinionArea{margin-top:0;}
+
+.qna{font-size:14px;}
 .qna .col-left{width:895px;float:left;}
 .qna .col-right{width:285px;float:right;}
-.qna .homspeople{height:433px;padding-top:60px;background:url("../images/bg_homs_people.png") no-repeat 0 0;}
+.qna .homspeople{height:430px;padding-top:60px;background:url("../images/bg_homs_people.png") no-repeat 0 0;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
 .qna .homspeople .title{text-align:center;color:#fff;font-size:40px;background:url("../images/bg_homs_tit.png") no-repeat center 0;}
 .qna .homspeople .title span{display:block;line-height:100%;}
-.qna .homspeople p{text-align:center;color:#999;margin-top:20px;line-height:24px;}
+.qna .homspeople p{text-align:center;color:#999;margin-top:20px;line-height:24px;font-size:16px;}
 .qna .homspeople p em{color:#d1a181;font-style:normal;}
 .qna .homspeople ul{overflow:hidden;text-align:center;margin-top:50px;}
 .qna .homspeople ul li{display:inline-block;margin-left:15px;}
@@ -14,7 +16,7 @@
 .qna .homspeople ul li a,
 .qna .homspeople ul li a em,
 .qna .homspeople ul li a strong,
-.qna .homspeople ul li a span{display:block;font-size:14px;}
+.qna .homspeople ul li a span{display:block;}
 .qna .homspeople ul li a em{width:140px;height:140px;overflow:hidden;display:block;background:#bcb6b4;border-radius:100%;}
 .qna .homspeople ul li a em img{min-width:142px;max-width:142px;vertical-align:top;}
 .qna .homspeople ul li a strong{color:#fff;font-family:'RobotoR','NotoSansR', sans-serif;margin-top:20px;}
@@ -31,7 +33,7 @@
 .qna .opinionInput table tbody tr td{padding:10px 0;}
 .qna .opinionInput table tbody tr:first-child td{padding-top:0;}
 .qna .opinionInput table tbody tr th{font-weight:normal;font-family:'RobotoR','NotoSansR', sans-serif;font-size:16px;text-align:left;}
-.qna .opinionInput table tbody tr th span{padding-top:3px;display:block;color:#999;font-family:'RobotoL','NotoSansL', sans-serif;}
+.qna .opinionInput table tbody tr th span{padding-top:3px;display:block;color:#999;font-family:'RobotoL','NotoSansL', sans-serif;font-size:14px;}
 .qna .opinionInput textarea.pullSize{height:144px;}
 
 .qna .scrapList ul{height:90px;overflow:hidden;}
@@ -52,15 +54,16 @@
 .opinionbox .title em{min-width:60px;height:30px;padding:0 18px;float:left;display:inline-block;background:#fff;border-radius:14px;text-align:center;font-style:normal;margin-top:18px;}
 .opinionbox .title em span{padding-top:9px;display:block;color:#8aa201;font-size:13px;font-family:'RobotoR','NotoSansR',sans-serif;}
 .opinionbox .title p{float:right;margin-top:25px;color:#fff;}
-.opinionbox .title p span{font-family:'RobotoM','NotoSansL',sans-serif;}
+.opinionbox .title p span{font-family:'RobotoM','NotoSansM',sans-serif;}
 .opinionbox .title p span:first-child + span{font-family:'RobotoL','NotoSansL',sans-serif;padding-left:5px;}
 
 .opinionbox .conbox{padding:40px 40px 20px 50px;background:#fff;}
+.opinionbox .conbox.round{box-shadow: 0px 3px rgba(0,0,0,0.1);border-radius: 0 0 10px 10px;}
 .opinionbox .conbox strong{font-size:20px;color:#000;font-family:'RobotoR','NotoSansR',sans-serif;}
-.opinionbox .conbox > p{margin-top:20px;color:#666;line-height:1.3em;font-size:14px;}
+.opinionbox .conbox > p{margin-top:20px;color:#666;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;}
 .opinionbox .conbox .more{text-align:right;}
-.opinionbox .conbox .more a{display:inline-block;padding-right:22px;background:url("../images/ico_more.png") no-repeat right center;}
-.opinionbox .conbox .more a span{display:block;font-size:13px;}
+.opinionbox .conbox .more a{display:inline-block;padding-right:22px;background:url("../images/ico_more.png") no-repeat right center;color:#666;}
+.opinionbox .conbox .more a span{display:block;font-size:13px;font-family:'RobotoR','NotoSansR',sans-serif;}
 .opinionbox .conbox .photoList{overflow:hidden;margin-top:32px;}
 .opinionbox .conbox .photoList li{width:90px;height:90px;overflow:hidden;float:left;background:#f2f2f2;margin-left:12px;}
 .opinionbox .conbox .photoList li:first-child{margin-left:0;}
@@ -69,8 +72,8 @@
 .opinionbox .commentCount{overflow:hidden;margin-top:40px;}
 .opinionbox .commentCount p{float:left;color:#000;font-family:'RobotoR','NotoSansR',sans-serif;margin-top:7px;}
 .opinionbox .commentCount p span{color:#f1645c;}
-.opinionbox .commentCount .commentBtn{min-width:60px;padding:0 20px;height:30px;background:#f1645c;border-radius:14px;float:right;text-align:center;}
-.opinionbox .commentCount .commentBtn span{padding-top:9px;display:block;color:#fff;font-size:13px;}
+.opinionbox .commentCount .btnSizeS{float:right;/*min-width:60px;padding:0 20px;height:30px;background:#f1645c;border-radius:14px;text-align:center;*/}
+/*.opinionbox .commentCount .commentBtn span{padding-top:9px;display:block;color:#fff;}*/
 
 .opinionbox .commentArea{padding:20px 40px 0 50px;background:#f8f8f8;box-shadow:0px 3px rgba(0,0,0,0.1);border-radius:0 0 10px 10px;}
 .opinionbox .commentArea > p{text-align:center;}
@@ -78,7 +81,7 @@
 .opinionbox .commentArea .moreBtn span{padding-top:8px;display:block;color:#000;font-family:'RobotoR','NotoSansR',sans-serif;font-size:13px;}
 .opinionbox .commentArea ul li{padding:30px 0;border-top:1px solid #d9d9d9;}
 .opinionbox .commentArea ul li:first-child{border-top:0;}
-.opinionbox .commentArea .date{text-align:right;color:#999;margin-top:30px;font-size:14px;}
+.opinionbox .commentArea .date{text-align:right;color:#999;margin-top:30px;font-family:'RobotoR','NotoSansR',sans-serif;}
 
 .opinionbox .expert{position:relative;}
 .opinionbox .expert:after{content:"";display:block;clear:both;}
@@ -92,17 +95,17 @@
 .opinionbox .expert .name span > em{font-style:normal;color:#f1645c;text-transform:uppercase;}
 .opinionbox .expert .name span > span{display:block;}
 .opinionbox .expert .name span > span:first-child{font-family:'RobotoR','NotoSansR',sans-serif;color:#000;font-size:16px;}
-.opinionbox .expert .name span > span:first-child + span{font-size:14px;margin-top:3px;}
+.opinionbox .expert .name span > span:first-child + span{margin-top:3px;}
 .opinionbox .expert .name span > span:first-child,
-.opinionbox .expert .name span > span:first-child + span{height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
-.opinionbox .expert .txt{width:438px;float:left;margin:14px 0 0 48px;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;color:#333;font-size:14px;}
+.opinionbox .expert .name span > span:first-child + span{height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family:'RobotoR','NotoSansR',sans-serif;}
+.opinionbox .expert .txt{width:438px;float:left;margin:14px 0 0 48px;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;color:#333;}
 
 .opinionbox .commentInput{overflow:hidden;}
 .opinionbox .commentInput .thumb{width:64px;padding-left:29px;float:left;background:url("../images/ico_comment.png") no-repeat 0 center;}
 .opinionbox .commentInput .thumb span{width:64px;height:64px;overflow:hidden;display:block;background:#fff;border-radius:100%;}
 .opinionbox .commentInput .thumb span img{width:64px;}
-.opinionbox .commentInput .inputArea{width:572px;padding:12px 14px;border:1px solid #d5d5d5;border-radius:9px;float:left;background:#fff;margin-left:17px;}
-.opinionbox .commentInput .inputArea textarea{width:100%;height:31px;padding:0;border:0;font-family:'RobotoR','NotoSansR',sans-serif;color:#999;}
+
+.opinionbox .commentInput textarea.pullSize{width:562px;height:38px;float:left;margin-left:17px;}
 .opinionbox .commentInput .confirmBtn{width:86px;height:60px;background:#999;color:#fff;float:right;border:0;border-radius:9px;}
 
 .latelyOpinion{height:323px;padding:0 30px;background:#fff;border-radius:10px;box-shadow:0px 3px rgba(0,0,0,0.1);}
@@ -112,13 +115,12 @@
 .latelyOpinion ul li a > span{display:block;}
 .latelyOpinion ul li a > span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-size:16px;font-family:'RobotoR','NotoSansR',sans-serif;}
 .latelyOpinion ul li a > span:first-child + span{margin-top:8px;}
-.latelyOpinion ul li a > span > span{overflow:hidden;;font-size:14px;margin-left:10px;padding-left:10px;}
+.latelyOpinion ul li a > span > span{overflow:hidden;margin-left:10px;padding-left:10px;}
 .latelyOpinion ul li a > span > span:first-child{position:relative;color:#999;margin-left:0;padding-left:0;}
 .latelyOpinion ul li a > span > span:first-child:after{position:absolute;right:-13px;top:3px;content:"";display:block;width:1px;height:11px;background:#989898;}
 .latelyOpinion ul li a > span > span em{color:#f1645c;font-style:normal;}
 
 .expertHelp{height:490px;padding:0 30px;background:#fff;border-radius:10px;box-shadow:0px 3px rgba(0,0,0,0.1);margin-top:17px;}
-.expertHelp{}
 .expertHelp ul li{margin-top:20px;}
 .expertHelp ul li a{display:block;overflow:hidden;color:#000;}
 .expertHelp .thumb{width:96px;height:96px;overflow:hidden;background:#ccc;border-radius:100%;display:inline-block;float:left;}
@@ -127,14 +129,15 @@
 .expertHelp .info strong,
 .expertHelp .info span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
 .expertHelp .info strong{font-size:13px;display:block;margin-bottom:12px;}
-.expertHelp .info span{display:block;font-size:14px;letter-spacing:-1px;}
+.expertHelp .info span{display:block;letter-spacing:-1px;}
 .expertHelp .info span em{color:#f1645c;font-style:normal;text-transform:uppercase;}
 .expertHelp .info strong + span + span{color:#666;margin-top:4px;}
 
-.paperNav{text-align:center;margin-top:30px;}
-.paperNav a{width:10px;height:10px;display:inline-block;background:#ccc;border-radius:100%;margin-left:4px;}
-.paperNav a:first-child{margin-left:0;}
-.paperNav a.active{background:#f1655d;}
+.paper-nav{text-align:center;margin-top:30px;}
+.paper-nav a{width:10px;height:10px;display:inline-block;background:#ccc;border-radius:100%;margin-left:4px;}
+.paper-nav a:first-child{margin-left:0;}
+.paper-nav a.active{background:#f1655d;}
+.paper-nav a span{position:absolute;left:-99990em;top:-99990em;z-index:-1;display:inline-block;}
 
 h2.optit{position:relative;height:68px;text-align:center;}
 h2.optit:after{position:absolute;left:50%;bottom:0;content:"";display:block;width:25px;height:1px;background:#000;margin-left:-12px;}
