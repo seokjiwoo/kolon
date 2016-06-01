@@ -23,6 +23,7 @@
     "js-cookie": "^2.1.1",
     "isotope": "^3.0.0",
     "jquery-easing": "*",
-    "jquery-colorbox": "^1.6.4"
+    "jquery-colorbox": "^1.6.4",
+    "jQuery.dotdotdot": "dotdotdot#^1.8.1"
   }
 }
