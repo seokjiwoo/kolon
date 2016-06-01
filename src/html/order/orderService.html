@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
 </head>
- <body class="login" data-page-id="order-orderService">
+ <body class="login">
 	<div class="wrapper oder">
 	<!-- @@include ../_template/menu.html -->
 	<div class="container">
@@ -15,9 +15,8 @@
 				<!-- 주문 상품 / 시공지 정보 -->
 				<h3 class="subTit">주문 상품 / 시공지 정보</h3>
 				<div class="oderCont">
-					<!-- 단일 시공지지 -->
 					<div class="delivery1">
-						<div class="photoTb">
+						<div class="tbSet">
 							<table>
 								<caption>주문 상품 / 시공지 정보</caption>
 								<colgroup>
@@ -33,7 +32,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<!-- 단일 반복 영역 -->
+									<!-- 주문상품 -->
 									<tr>
 										<td>
 											<div class="photoList">
@@ -51,8 +50,8 @@
 										<td><b>20,000</b> 원</td>
 										<td><b>1,720,000</b> 원</td>
 									</tr>
-									<!--// 단일 반복 영역 -->
-									<!-- 수령지 / 시공지요청사항 -->
+									<!--// 주문상품 -->
+									<!-- 시공지 정보 -->
 									<tr>
 										<td colspan="7" class="adrArea">
 											<dl>
@@ -71,37 +70,91 @@
 											</dl>
 										</td>
 									</tr>
-									<!--// 수령지 / 시공지요청사항 -->
+									<!--// 시공지 정보 -->
 								</tbody>
 							</table>
 						</div>
 					</div>
-					<!--// 단일 시공지지 -->
 				</div>
 				<!--// 주문 상품 / 시공지 정보 -->
-				<h3 class="subTit">예약자 정보</h3>
+				<!-- 예약정보 -->
+				<h3 class="subTit">예약 정보</h3>
 				<div class="oderCont">
-					<form method="post" action="">
-						<div class="">
-							<table>
-								<caption></caption>
+					<form method="post" action="/">
+						<div class="tbSet">
+							<table class="tbL">
+								<caption>예약 정보</caption>
 								<colgroup>
-									<col width=""/><col width=""/>
+									<col width="25%"/><col width="75%"/>
 								</colgroup>
-								<thead>
-									<tr>
-										<th scope=""></th>
-									</tr>
-								</thead>
 								<tbody>
 									<tr>
-										<td></td>
+										<th scope="row">희망 실측 방문/상담 날짜 선택 (필수)</th>
+										<td>
+											<span class="calendar"><input type="text" class="it " title="" value="" name=""/><a href="#" class="calBtn"><img src="/images/ico_calendar.png" alt="날짜선택"/></a></span>
+											<select name="" title="">
+												<option value="" selected="selected">시간</option>
+												<option value=""></option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">희망 시공기간 선택 (선택)</th>
+										<td>
+											<span class="calendar">
+												<input type="text" class="it " title="" value="" name=""/> -
+												<input type="text" class="it " title="" value="" name=""/>
+											</span>
+											<span class="underTxt">* 실측 상황에 따라 시공기간은 변경될 수 있습니다.</span>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">건물 종류를 선택해 주세요</th>
+										<td>
+											<ul class="homeType">
+												<li class="hType01"><span class="radioBtn on"><input type="radio" name="" value=""/><label for="">아파트</label></span></li>
+												<li class="hType02"><span class="radioBtn"><input type="radio" name="" value=""/><label for="">주택</label></span></li>
+												<li class="hType03"><span class="radioBtn"><input type="radio" name="" value=""/><label for="">빌라</label></span></li>
+												<li class="hType04"><span class="radioBtn"><input type="radio" name="" value=""/><label for="">원룸</label></span></li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">평형을 선택해 주세요.</th>
+										<td>
+											<ul class="homeSize">
+												<li><span class="radioBtn on"><input type="radio" name="" value=""/><label for="">20평형 이하</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">20평형</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">30평형</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">40평형</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">50평형</label></span></li>
+											</ul>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">리모델링을 하는 이유가 무엇인가요?</th>
+										<td>
+											<ul class="homeReason">
+												<li><span class="radioBtn on"><input type="radio" name="" value=""/><label for="">결혼해서 새 집에 들어가요!</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">이사할 집이에요!</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">집이 오래되서 고치고 싶어요!</label></span></li>
+												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">기타</label></span></li>
+											</ul>
+											<input type="text" class="it " title="" value="" name="" placeholder="기타 사항을 입력해 주세요."/>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">추가 요청사항 (선택)</th>
+										<td>
+											<textarea name="" cols="" rows="" title="" placeholder="추가로 필요한 사항을 입력해 주세요."></textarea>
+										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
 					</form>
 				</div>
+				<!--// 예약정보 -->
 				<h3 class="subTit">개인정보 제 3자 제공 동의</h3>
 				<div class="oderCont">
 					<div class="agreeBox">
