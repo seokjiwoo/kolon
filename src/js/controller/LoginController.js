@@ -83,8 +83,8 @@ function ClassLoginController() {
 		callApi(API_URL+'/apis/user/login', 'POST', {
 			"loginId": id,
 			"loginPassword": pw
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				// make cookie
 				$(callerObj).trigger('loginResult', [200]);
 			} else {
@@ -98,8 +98,8 @@ function ClassLoginController() {
 	 * 소셜 로그인 URL 목록
 	 */
 	function getSocialLoginUrl() {
-		callApi(API_URL+'/apis/member/socials/authLoginUrl', 'GET', {}, function(result) {
-			if (result.status == '200') {
+		callApi(API_URL+'/apis/member/socials/authLoginUrl', 'GET', {}, function(status, result) {
+			if (status == 200) {
 				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
 			} else {
 				handleError('authLoginUrl', result);
@@ -113,8 +113,8 @@ function ClassLoginController() {
 	function checkEmail(id) {
 		callApi(API_URL+'/apis/member/checkEmail', 'POST', {
 			"loginId": id
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				$(callerObj).trigger('checkEmailResult', [200, result.status]);
 			} else {
 				handleError('checkEmail', result);
@@ -125,12 +125,13 @@ function ClassLoginController() {
 	/**
 	 * 아이디 찾기
 	 */
-	function findId(phone, name) {
+	function findId(name, phone) {
 		callApi(API_URL+'/apis/member/findId', 'POST', {
 			"cellPhoneNumber": phone,
 			"memberName": name
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == '200') {
+				$(callerObj).trigger('findIdResult', [result, name, phone]);
 				/* {
 					"errorCode": "string",
 					"member": {
@@ -158,7 +159,7 @@ function ClassLoginController() {
 			} else {
 				handleError('findId', result);
 			}
-		}, true);
+		}, false);
 	}
 	
 	/**
@@ -167,34 +168,13 @@ function ClassLoginController() {
 	function findPassword(id) {
 		callApi(API_URL+'/apis/member/findPassword', 'POST', {
 			"loginId": id
-		}, function(result) {
-			if (result.status == '200') {
-				/* {
-					"errorCode": "string",
-					"member": {
-						"cellPhoneNumber": "string",
-						"email": "string",
-						"socials": [
-						{
-							"createDateTime": "string",
-							"endDateTime": "string",
-							"joinStatus": "string",
-							"memberNumber": 0,
-							"socialEmail": "string",
-							"socialName": "string",
-							"socialNumber": 0,
-							"socialSectionCode": "string",
-							"socialUniqueId": "string"
-						}
-						]
-					},
-					"message": "string",
-					"status": "string"
-				} */
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('findPwResult', [result, id]);
 			} else {
 				handleError('findPassword', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -205,8 +185,8 @@ function ClassLoginController() {
 			"cellPhoneNumber": phone,
 			"memberName": name,
 			"verificationCode": verificationCode
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"authorize": {
 						"authKey": "string",
@@ -219,7 +199,7 @@ function ClassLoginController() {
 			} else {
 				handleError('authorizePhoneRequest', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -228,8 +208,8 @@ function ClassLoginController() {
 	function authorizePhoneConfirm(authNumber) {
 		callApi(API_URL+'/apis/member/authorize/phone/confirm', 'POST', {
 			"authNumber": authNumber
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -238,7 +218,7 @@ function ClassLoginController() {
 			} else {
 				handleError('authorizePhoneConfirm', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -247,8 +227,8 @@ function ClassLoginController() {
 	function authorizeEmailRequest(email) {
 		callApi(API_URL+'/apis/member/authorize/email', 'POST', {
 			"email": email
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -257,7 +237,7 @@ function ClassLoginController() {
 			} else {
 				handleError('authorizePhoneConfirm', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -270,8 +250,8 @@ function ClassLoginController() {
 			"currentPassword": currentPassword,
 			"memberNumber": memberNumber,
 			"newPassword": newPassword
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -280,7 +260,7 @@ function ClassLoginController() {
 			} else {
 				handleError('changePassword', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -293,8 +273,8 @@ function ClassLoginController() {
 			"authKey": authKey,
 			"memberNumber": memberNumber,
 			"newPassword": newPassword
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -340,7 +320,7 @@ function ClassLoginController() {
 			}
 			
 			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
-				callback.call(this, data);
+				callback.call(this, jqXHR.status, data);
 				loadingFlag = false;
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				callback.call(this, {

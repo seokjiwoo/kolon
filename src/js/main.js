@@ -14,6 +14,9 @@ $(document).ready(function() {
 		case 'member-join':
 			PageModuleClass = require('./pages/Join.js');
 			break;
+		case 'member-findLoginInformation':
+			PageModuleClass = require('./pages/FindLoginInformation.js');
+			break;
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
