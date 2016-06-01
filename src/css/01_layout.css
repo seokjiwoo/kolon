@@ -9,6 +9,7 @@ b,strong{font-weight:normal;}
 table{border-collapse:collapse;border-spacing:0;}
 img{border:none}
 textarea{resize: none;}
+caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
 .wrapper{min-width:1240px;background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}

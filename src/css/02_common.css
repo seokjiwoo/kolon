@@ -1,4 +1,7 @@
 .w90 {width:90px;}
+.w558{width:558px !important;}
+.w752{width:752px !important;}
+.w795{width:795px;}
 
 .mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
@@ -160,6 +163,12 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
 {width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
+
+.container input[type="text"].pullSize,
+.container input[type="password"].pullSize,
+.container input[type="email"].pullSize{padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;color:#999;margin-right:0;}
+.container textarea.pullSize{padding:10px 20px;border: 1px solid #d6d6d6;border-radius:7px;font-family: 'RobotoM','NotoSansM', sans-serif;color: #999;}
+.container select.pullSize{padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}

@@ -261,7 +261,7 @@ module.exports = function() {
 		var selecter = null,
 			 opinion = null;
 		function init(){
-			selecter =".opinionwrite a",
+			selecter =".opinionwrite > .toggleBtn",
 			opinion = ".opinionInput";
 			initEvent();
 		}
@@ -276,7 +276,7 @@ module.exports = function() {
 				tg.addClass("active").find("span").text("의견 작성하기 접기");
 				$(opinion).stop().slideDown();
 			}else{
-				tg.removeClass("active").find("span").text("의견작성하기");
+				tg.removeClass("active").find("span").text("의견 작성하기");
 				$(opinion).stop().slideUp();
 			}
 		};
