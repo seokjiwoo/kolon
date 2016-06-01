@@ -108,6 +108,54 @@ function ClassLoginController() {
 	};
 	
 	/**
+	 * 회원가입 
+	 */
+	function join(id, pw, name, phone, birthdate) {
+		callApi(API_URL+'/apis/member', 'POST', {
+			"birthDate": birthdate,
+			"cellPhoneNumber": phone,
+			"loginId": id,
+			"loginPassword": pw,
+			"memberName": name,
+			"memberTerms": [
+				{
+					"termsNumber": 1
+				}
+			]
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('joinResult', [200, result.status]);
+			} else {
+				handleError('join', result);
+			}
+		}, true);
+	};
+	
+	/**
+	 * 회원정보 수정 
+	 */
+	function join(id, pw, name, phone, birthdate) {
+		callApi(API_URL+'/apis/member', 'PUT', {
+			"birthDate": birthdate,
+			"cellPhoneNumber": phone,
+			"loginId": id,
+			"loginPassword": pw,
+			"memberName": name,
+			"memberTerms": [
+				{
+					"termsNumber": 1
+				}
+			]
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('joinResult', [200, result.status]);
+			} else {
+				handleError('join', result);
+			}
+		}, true);
+	};
+	
+	/**
 	 * 이메일 중복 체크
 	 */
 	function checkEmail(id) {
@@ -286,12 +334,25 @@ function ClassLoginController() {
 		}, true);
 	};
 	
+	/**
+	 * 회원탈퇴
+	 */
+	function join(reasonCode, reasonStatement, modifyId) {
+		callApi(API_URL+'/apis/member', 'DELETE', {
+			"leaveReasonCode": reasonCode,
+			"leaveReasonStatement": reasonStatement,
+			"modifyId": modifyId
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('joinResult', [200, result.status]);
+			} else {
+				handleError('join', result);
+			}
+		}, true);
+	};
+	
 	/*
-	회원 가입	POST	/apis/member
-	회원 정보	GET	/apis/member
-	회원 수정	PUT	/apis/member
 	SNS 계정 연결 해제	DELETE	/apis/member/socials/{socialType}
-	회원 탈퇴	DELETE	/apis/member
 	
 	약관 목록	GET	/apis/member/terms
 	약관 상세	GET	/apis/member/terms/{termsNumber}
