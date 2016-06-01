@@ -13,6 +13,8 @@ function ClassLoginController() {
 	
 	var model;
 	
+	var loadingFlag = false;
+	
 	return {
 		getInstance: function() {
 			if (!instance) instance = LoginController();
@@ -28,7 +30,13 @@ function ClassLoginController() {
 		
 		callerObj = {
 			/**
+			 * 소셜 로그인 URL 목록 요청
+			 */
+			getSocialLoginUrl: getSocialLoginUrl,
+			/**
 			 * 로그인 POST
+			 * @param {String} id - user id
+			 * @param {String} pw - user password
 			 */
 			login: login,
 			/**
@@ -72,16 +80,31 @@ function ClassLoginController() {
 	 * 로그인 POST
 	 */
 	function login(id, pw) {
-		callApi(API_URL+'/apis/login', 'POST', {
+		callApi(API_URL+'/apis/user/login', 'POST', {
 			"loginId": id,
 			"loginPassword": pw
 		}, function(result) {
 			if (result.status == '200') {
 				// make cookie
+				$(callerObj).trigger('loginResult', [200]);
 			} else {
 				handleError('login', result);
+				$(callerObj).trigger('loginResult', [result.status]);
 			}
-		}, true);
+		}, false);
+	};
+	
+	/**
+	 * 소셜 로그인 URL 목록
+	 */
+	function getSocialLoginUrl() {
+		callApi(API_URL+'/apis/member/socials/authLoginUrl', 'GET', {}, function(result) {
+			if (result.status == '200') {
+				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
+			} else {
+				handleError('authLoginUrl', result);
+			}
+		}, false);
 	};
 	
 	/**
@@ -92,7 +115,7 @@ function ClassLoginController() {
 			"loginId": id
 		}, function(result) {
 			if (result.status == '200') {
-				// send events
+				$(callerObj).trigger('checkEmailResult', [200, result.status]);
 			} else {
 				handleError('checkEmail', result);
 			}
@@ -284,7 +307,6 @@ function ClassLoginController() {
 	};
 	
 	/*
-	소셜 로그인 URL 목록	GET	/apis/member/socials/authLoginUrl
 	회원 가입	POST	/apis/member
 	회원 정보	GET	/apis/member
 	회원 수정	PUT	/apis/member
@@ -302,13 +324,29 @@ function ClassLoginController() {
 	function callApi(url, method, data, callback, forceFlag) {
 		if (loadingFlag == false || forceFlag == true) {
 			loadingFlag = true;
+			var ajaxOptions;
+			if (method == 'GET') {
+				ajaxOptions = {
+					url: url,
+					method: method
+				}
+			} else {
+				ajaxOptions = {
+					url: url,
+					method: method,
+					data: JSON.stringify(data),
+					contentType: "application/json"
+				}
+			}
 			
-			$.ajax({
-				url: url,
-				method: method,
-				data: data
-			}).done(function(result) {
-				callback.call(this, result);
+			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
+				callback.call(this, data);
+				loadingFlag = false;
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				callback.call(this, {
+					status: jqXHR.status,
+					message: errorThrown
+				});
 				loadingFlag = false;
 			});
 		}
