@@ -33,11 +33,10 @@ var plumberOption = {
 gulp.task('server', function() {
 	return browserSync.init({
 		server: {
-			baseDir: './dist/html/',
+			baseDir: './distMobile/html/',
 			routes: {
-				"/css": "./dist/css",
-				"/font": "./dist/font",
-				"/images": "./dist/images",
+				"/css": "./distMobile/css",
+				"/images": "./distMobile/images",
 				"/js": "./dist/js"
 			}
 		}
@@ -46,16 +45,16 @@ gulp.task('server', function() {
 
 // 미리보기용 HTML 파일 build
 gulp.task('minifyhtml', function() {
-	return gulp.src(['src/**/*.html', 'src/**/*.json', '!src/html/_template/*.html'])
+	return gulp.src(['srcMobile/**/*.html', '!srcMobile/html/_template/*.html'])
 		.pipe(plumber(plumberOption)) // 빌드 과정에서 오류 발생시 gulp가 죽지않도록 예외처리
-		.pipe(newer('dist')) // dist에 있는 결과물보다 새로운 파일만 다음 단계로 진행
+		.pipe(newer('distMobile')) // dist에 있는 결과물보다 새로운 파일만 다음 단계로 진행
 		.pipe(htmlExtend({annotations: true, verbose: false})) 
-		.pipe(replace('main.js', 'main-preview.js'))
+		.pipe(replace('main-m.js', 'main-m-preview.js'))
 		/*.pipe(htmlmin({
 			collapseWhitespace: true,
 			removeComments: true
 		}))*/
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('distMobile'))
 		.pipe(browserSync.reload({stream: true}));
 });
 
@@ -81,10 +80,10 @@ gulp.task('bowerBundle', function() {
 
 // 자바스크립트 파일 번들링
 gulp.task('jsBundlePreview', function() {
-	return browserify({entries: ['src/js/main.js'], debug: false})
+	return browserify({entries: ['src/js/main-m.js'], debug: false})
 		.bundle() // browserify로 번들링
 		.on('error', errorHandler) // browserify bundling 과정에서 오류가 날 경우 gulp가 죽지않도록 예외처리
-		.pipe(source('main-preview.js')) // vinyl object 로 변환
+		.pipe(source('main-m-preview.js')) // vinyl object 로 변환
 		.pipe(buffer()) // buffered vinyl object 로 변환
 		.pipe(plumber(plumberOption))
 		.pipe(sourcemaps.init({loadMaps: false, debug: false})) // 소스맵 생성 준비
@@ -98,23 +97,14 @@ gulp.task('jsBundlePreview', function() {
  * 이미지 파일 복사
  */
 gulp.task('imagePass', function() {
-	return gulp.src('src/images/**')
-		.pipe(gulp.dest('dist/images'))
-		.pipe(browserSync.reload({stream: true}));
-});
-
-/**
- * 폰트 파일 복사
- */
-gulp.task('fontPass', function() {
-	return gulp.src('src/font/**')
-		.pipe(gulp.dest('dist/font'))
+	return gulp.src('srcMobile/images/**')
+		.pipe(gulp.dest('distMobile/images'))
 		.pipe(browserSync.reload({stream: true}));
 });
 
 // CSS 파일을 minify
 gulp.task('minifycss', function() {
-	return gulp.src('src/**/*.css')
+	return gulp.src('srcMobile/**/*.css')
 		.pipe(plumber(plumberOption))
 		.pipe(sourcemaps.init({loadMaps: false, debug: false}))
 		.pipe(cached('css'))
@@ -122,7 +112,7 @@ gulp.task('minifycss', function() {
 		.pipe(remember('css'))
 		.pipe(concat('main.css'))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('dist/css'))
+		.pipe(gulp.dest('distMobile/css'))
 		.pipe(browserSync.reload({stream: true}));
 });
 
@@ -130,14 +120,13 @@ gulp.task('minifycss', function() {
 gulp.task('watch', function() {
 	gulp.watch('bower_components/**/*.js', ['bowerBundle']);
 	gulp.watch('src/**/*.js', ['jsBundlePreview']);
-	gulp.watch('src/**/*.css', ['minifycss']);
-	gulp.watch('src/**/*.html', ['minifyhtml']);
-	gulp.watch('src/images/*', ['imagePass']);
-	gulp.watch('src/font/*', ['fontPass']);
+	gulp.watch('srcMobile/**/*.css', ['minifycss']);
+	gulp.watch('srcMobile/**/*.html', ['minifyhtml']);
+	gulp.watch('srcMobile/images/*', ['imagePass']);
 });
 
 // 빌드
-gulp.task('build', ['jsBundlePreview', 'bowerBundle', 'fontPass', 'minifycss', 'minifyhtml', 'imagePass']);
+gulp.task('build', ['jsBundlePreview', 'bowerBundle', 'minifycss', 'minifyhtml', 'imagePass']);
 
 // gulp를 실행하면 수행할 default 작업
 gulp.task('default', function (done) {
