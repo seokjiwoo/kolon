@@ -75,22 +75,25 @@
 <aside class="lnb" id="lnb">
 	<div class="profile">
 		<a href="" class="close" id="profileClose"></a>
-		<a href="" class="setting"></a>
-		<a href="" class="logoL"><img src="/images/logoW.png" alt="COMMON"></a>
-		<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
-		<p class="profileInfo"><span>김세환 님</span><br>dudlri@naver.com</p>
-		<ul class="btnList">
+		<a href="/myPage/profileEdit.html" class="setting"></a>
+		<a href="/index.html" class="logoL"><img src="/images/logoW.png" alt="COMMON"></a>
+		<!-- 로그인 전 --><div class="pic"><img src="/images/profile.png" alt=""></div>
+		<p class="profileInfo"><span>로그인 해주세요</span></p>
+		<!-- 로그인 후 <div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+		<p class="profileInfo"><span>김세환 님</span><br>dudlri@naver.com</p> -->
+		<ul class="btnList log"><!-- 로그인 전일 졍우 log class 추가 -->
 			<li class="btnList01"><a href="">알림</a></li>
 			<li class="btnList02"><a href="">팔로우</a></li>
 			<li class="btnList03"><a href="">스크랩</a></li>
 			<li class="btnList04"><a href="">마이카트<span class="count">16</span></a></li>
 		</ul>
-		<a href="" class="btnMypage">나의 커먼</a>
+		<!-- 로그인 전 --><a href="/member/login.html" class="btnMy">로그인 /  회원가입</a>
+		<!-- 로그인 후 <a href="" class="btnMy btnMypage">나의 커먼</a>-->
 		<ul class="myMenu" id="myMenu">
-			<li><a href="">진행 중인 주문/배송<span class="count">16</span></a></li>
-			<li><a href="">취소/반품/교환<span class="count">16</span></a></li>
-			<li><a href="">최근 본 상품<span class="count">16</span></a></li>
-			<li><a href="">나의 시공중인 상품<span class="count">16</span></a></li>
+			<li><a href="/myPage/order.html">진행 중인 주문/배송<span class="count">16</span></a></li>
+			<li><a href="/myPage/return.html">취소/반품/교환<span class="count">16</span></a></li>
+			<li><a href="/myPage/view.html">최근 본 상품<span class="count">16</span></a></li>
+			<li><a href="/myPage/myService.html">나의 시공중인 상품<span class="count">16</span></a></li>
 			<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>
 		</ul>
 		<a href="" class="menuToggle" id="menuToggle"></a>
@@ -147,6 +150,7 @@
 			</ul>
 		</li>
 	</ul>
-	<a href="" class="btnLog out">로그아웃</a>
-	<a href="/member/login.html" class="btnLog in">로그인</a>
+	<!-- 로그인 전 --><a href="/member/login.html" class="btnSizeM btnColor03 btnLog">로그인</a>
+
+	<!-- 로그인 후 <a href="" class="btnSizeM btnColor03 btnLog">로그아웃</a> -->
 </aside>

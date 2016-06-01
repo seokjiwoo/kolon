@@ -33,7 +33,7 @@
 .cardWrap .cardDetail .comt:before{background-position:-12px 0}
 .cardWrap .cardDetail .scrap:before{background-position:-25px -10px}
 .cardWrap .cardCollect {overflow: hidden;width:148px;margin:10px auto 0;}
-.cardWrap .cardCollect li{overflow: hidden;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
+.cardWrap .cardCollect li{overflow: hidden;position: relative;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
 .cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer;background-color: #fff;border-radius: 50%;}
 .cardWrap .cardCollect input{position: absolute;top: -100px;left: -100px}
 .cardWrap .cardCollect label:hover, .cardWrap .cardCollect .on label{background-color: #a9c700}
