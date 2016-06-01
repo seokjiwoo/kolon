@@ -28,7 +28,7 @@
 .timeCard .recordTime{display: inline-block;vertical-align: middle;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;font-size: 20px;}
 .timeCard .recordTime b{color: #f1645c}
 .timeCard .recordIco{position: relative;display: inline-block;width: 96px;height: 96px;margin:0 11px 0 23px;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;font-size: 0;vertical-align: middle;}
-.timeCard li a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border-radius: 10px;vertical-align: middle;    box-shadow: 0px 3px rgba(0,0,0,0.1);}
+.timeCard .recordWrap li a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border-radius: 10px;vertical-align: middle;    box-shadow: 0px 3px rgba(0,0,0,0.1);}
 .timeCard .recordCon{display: inline-block;width: 735px;margin-right: -4px;padding-right: 30px;vertical-align: middle;}
 .timeCard .recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
 .timeCard .recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
@@ -39,7 +39,8 @@
 .timeCard .recordThumb p b{display: block;font-size: 40px;font-family:'NotoSansM', sans-serif;}
 .timeCard .recordThumb p:before{display: block;width:25px;height: 26px;margin: 0 auto 7px;background: url('../images/ico_timeline.png') no-repeat;}
 .timeCard .recordCat{display: inline-block;margin-bottom: 10px;padding: 0 10px;border-radius: 10px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;color: #000;line-height: 20px;border:1px solid #000;}
-
+.timeCard .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
+.timeCard .recordPic img{display: block;width: 100%;}
 
 #myTimeline .recordDate{margin:0 auto 15px 190px;}
 #myTimeline .recordWrap{background: url('../images/bg_my.png') repeat-y left;}
@@ -65,12 +66,21 @@
 
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
-#myNotice .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
-#myNotice .recordPic img{display: block;width: 100%;}
 #myNotice .recordThumb{background: #a9c700;}
 #myNotice .coupon a{height: 157px;padding: 0;background:none;box-shadow: none}
 #myNotice .coupon a img{display: block;width: 100%;}
 #myNotice #delteAll{position: absolute;top:25px;right: 20px}
+
+#myMsg.timeCard .recordWrap{float: left;width: 865px;}
+#myMsg .sender{display: inline-block;vertical-align: middle;width: 275px;}
+#myMsg .sender p{display: inline-block;font-size: 13px;color: #666;line-height: 1.4em;vertical-align: middle;}
+#myMsg .sender p span{display: block;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 16px;}
+#myMsg .sender p b{color: #f1645c}
+#myMsg.timeCard .recordCon{position: relative;width: 507px;height: 100%;padding:0 25px;background: #f8f8f8;color: #000;}
+#myMsg .recordCon p{display: inline-block;width: 400px;padding-right:100px;vertical-align: middle;font-size: 14px;line-height: 1.3em;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myMsg .recordCon .newMsg{position: relative;display: inline-block;height: 100%;vertical-align: middle;}
+#myMsg .recordCon .newMsg span{position: absolute;top:50%;right: 0;min-width: 20px;margin-top:-15px;padding:0 10px;background: #f37972;color: #fff;line-height: 30px;border-radius: 15px;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 20px;background: #f8f8f8;color: #333;}
