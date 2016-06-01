@@ -13,6 +13,8 @@ function ClassLoginController() {
 	
 	var model;
 	
+	var loadingFlag = false;
+	
 	return {
 		getInstance: function() {
 			if (!instance) instance = LoginController();
@@ -28,7 +30,13 @@ function ClassLoginController() {
 		
 		callerObj = {
 			/**
+			 * 소셜 로그인 URL 목록 요청
+			 */
+			getSocialLoginUrl: getSocialLoginUrl,
+			/**
 			 * 로그인 POST
+			 * @param {String} id - user id
+			 * @param {String} pw - user password
 			 */
 			login: login,
 			/**
@@ -72,14 +80,77 @@ function ClassLoginController() {
 	 * 로그인 POST
 	 */
 	function login(id, pw) {
-		callApi(API_URL+'/apis/login', 'POST', {
+		callApi(API_URL+'/apis/user/login', 'POST', {
 			"loginId": id,
 			"loginPassword": pw
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				// make cookie
+				$(callerObj).trigger('loginResult', [200]);
 			} else {
 				handleError('login', result);
+				$(callerObj).trigger('loginResult', [result.status]);
+			}
+		}, false);
+	};
+	
+	/**
+	 * 소셜 로그인 URL 목록
+	 */
+	function getSocialLoginUrl() {
+		callApi(API_URL+'/apis/member/socials/authLoginUrl', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
+			} else {
+				handleError('authLoginUrl', result);
+			}
+		}, false);
+	};
+	
+	/**
+	 * 회원가입 
+	 */
+	function join(id, pw, name, phone, birthdate) {
+		callApi(API_URL+'/apis/member', 'POST', {
+			"birthDate": birthdate,
+			"cellPhoneNumber": phone,
+			"loginId": id,
+			"loginPassword": pw,
+			"memberName": name,
+			"memberTerms": [
+				{
+					"termsNumber": 1
+				}
+			]
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('joinResult', [200, result.status]);
+			} else {
+				handleError('join', result);
+			}
+		}, true);
+	};
+	
+	/**
+	 * 회원정보 수정 
+	 */
+	function join(id, pw, name, phone, birthdate) {
+		callApi(API_URL+'/apis/member', 'PUT', {
+			"birthDate": birthdate,
+			"cellPhoneNumber": phone,
+			"loginId": id,
+			"loginPassword": pw,
+			"memberName": name,
+			"memberTerms": [
+				{
+					"termsNumber": 1
+				}
+			]
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('joinResult', [200, result.status]);
+			} else {
+				handleError('join', result);
 			}
 		}, true);
 	};
@@ -90,9 +161,9 @@ function ClassLoginController() {
 	function checkEmail(id) {
 		callApi(API_URL+'/apis/member/checkEmail', 'POST', {
 			"loginId": id
-		}, function(result) {
-			if (result.status == '200') {
-				// send events
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('checkEmailResult', [200, result.status]);
 			} else {
 				handleError('checkEmail', result);
 			}
@@ -102,12 +173,13 @@ function ClassLoginController() {
 	/**
 	 * 아이디 찾기
 	 */
-	function findId(phone, name) {
+	function findId(name, phone) {
 		callApi(API_URL+'/apis/member/findId', 'POST', {
 			"cellPhoneNumber": phone,
 			"memberName": name
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == '200') {
+				$(callerObj).trigger('findIdResult', [result, name, phone]);
 				/* {
 					"errorCode": "string",
 					"member": {
@@ -135,7 +207,7 @@ function ClassLoginController() {
 			} else {
 				handleError('findId', result);
 			}
-		}, true);
+		}, false);
 	}
 	
 	/**
@@ -144,34 +216,13 @@ function ClassLoginController() {
 	function findPassword(id) {
 		callApi(API_URL+'/apis/member/findPassword', 'POST', {
 			"loginId": id
-		}, function(result) {
-			if (result.status == '200') {
-				/* {
-					"errorCode": "string",
-					"member": {
-						"cellPhoneNumber": "string",
-						"email": "string",
-						"socials": [
-						{
-							"createDateTime": "string",
-							"endDateTime": "string",
-							"joinStatus": "string",
-							"memberNumber": 0,
-							"socialEmail": "string",
-							"socialName": "string",
-							"socialNumber": 0,
-							"socialSectionCode": "string",
-							"socialUniqueId": "string"
-						}
-						]
-					},
-					"message": "string",
-					"status": "string"
-				} */
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('findPwResult', [result, id]);
 			} else {
 				handleError('findPassword', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -182,8 +233,8 @@ function ClassLoginController() {
 			"cellPhoneNumber": phone,
 			"memberName": name,
 			"verificationCode": verificationCode
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"authorize": {
 						"authKey": "string",
@@ -196,7 +247,7 @@ function ClassLoginController() {
 			} else {
 				handleError('authorizePhoneRequest', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -205,8 +256,8 @@ function ClassLoginController() {
 	function authorizePhoneConfirm(authNumber) {
 		callApi(API_URL+'/apis/member/authorize/phone/confirm', 'POST', {
 			"authNumber": authNumber
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -215,7 +266,7 @@ function ClassLoginController() {
 			} else {
 				handleError('authorizePhoneConfirm', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -224,8 +275,8 @@ function ClassLoginController() {
 	function authorizeEmailRequest(email) {
 		callApi(API_URL+'/apis/member/authorize/email', 'POST', {
 			"email": email
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -234,7 +285,7 @@ function ClassLoginController() {
 			} else {
 				handleError('authorizePhoneConfirm', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -247,8 +298,8 @@ function ClassLoginController() {
 			"currentPassword": currentPassword,
 			"memberNumber": memberNumber,
 			"newPassword": newPassword
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -257,7 +308,7 @@ function ClassLoginController() {
 			} else {
 				handleError('changePassword', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -270,8 +321,8 @@ function ClassLoginController() {
 			"authKey": authKey,
 			"memberNumber": memberNumber,
 			"newPassword": newPassword
-		}, function(result) {
-			if (result.status == '200') {
+		}, function(status, result) {
+			if (status == 200) {
 				/* {
 					"errorCode": "string",
 					"message": "string",
@@ -283,13 +334,25 @@ function ClassLoginController() {
 		}, true);
 	};
 	
+	/**
+	 * 회원탈퇴
+	 */
+	function join(reasonCode, reasonStatement, modifyId) {
+		callApi(API_URL+'/apis/member', 'DELETE', {
+			"leaveReasonCode": reasonCode,
+			"leaveReasonStatement": reasonStatement,
+			"modifyId": modifyId
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('joinResult', [200, result.status]);
+			} else {
+				handleError('join', result);
+			}
+		}, true);
+	};
+	
 	/*
-	소셜 로그인 URL 목록	GET	/apis/member/socials/authLoginUrl
-	회원 가입	POST	/apis/member
-	회원 정보	GET	/apis/member
-	회원 수정	PUT	/apis/member
 	SNS 계정 연결 해제	DELETE	/apis/member/socials/{socialType}
-	회원 탈퇴	DELETE	/apis/member
 	
 	약관 목록	GET	/apis/member/terms
 	약관 상세	GET	/apis/member/terms/{termsNumber}
@@ -302,13 +365,29 @@ function ClassLoginController() {
 	function callApi(url, method, data, callback, forceFlag) {
 		if (loadingFlag == false || forceFlag == true) {
 			loadingFlag = true;
+			var ajaxOptions;
+			if (method == 'GET') {
+				ajaxOptions = {
+					url: url,
+					method: method
+				}
+			} else {
+				ajaxOptions = {
+					url: url,
+					method: method,
+					data: JSON.stringify(data),
+					contentType: "application/json"
+				}
+			}
 			
-			$.ajax({
-				url: url,
-				method: method,
-				data: data
-			}).done(function(result) {
-				callback.call(this, result);
+			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
+				callback.call(this, jqXHR.status, data);
+				loadingFlag = false;
+			}).fail(function(jqXHR, textStatus, errorThrown) {
+				callback.call(this, {
+					status: jqXHR.status,
+					message: errorThrown
+				});
 				loadingFlag = false;
 			});
 		}
