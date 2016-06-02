@@ -1,20 +1,77 @@
-/* order.css */
-tr td .photoList {width:100%; height:90px; overflow:hidden; position:relative; display:table-cell; vertical-align:middle;}
-tr td .photoList span.thumb,
-tr td .photoList span.thumb img{width:90px; height:90px;}
-tr td .photoList span.thumb {display:inline-block; position:absolute; top:0; left:0;}
-tr td .photoList span.thumb + span.cartInfo {margin-left:9px;}
-tr td .photoList span.cartInfo {padding-left:95px; display:inline-block; text-align:left;}
-tr td .photoList span.cartInfo span {width:100%;}
-tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
-tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'RobotoL','NotoSansL', sans-serif;}
-tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR','RobotoR', sans-serif;}
-
-.btnG {overflow:hidden;}
+.btnG {width:100%; overflow:hidden;}
 .pointRed {color:#f1645c;}
 .btnG .cartChk.btnL + label {font-size:16px;}
 .btnG .btnL {float:left;}
 .btnG .btnR {float:right;}
+
+ul.tbList {width:100%; margin:0 auto; display:inline-block;}
+ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 4px no-repeat; text-align:left; display:inline-block;}
+ul.tbList li + li {margin-top:16px;}
+ul.tbList li span {width:60%; text-align:right; float:right; display:inline-block;}
+ul.tbList li span.tbListTit {width:40%; text-align:left; float:left;}
+ul.tbList2 {width:528px; margin:0 auto; overflow:hidden; }
+ul.tbList2 li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
+ul.tbList2 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 4px no-repeat; text-align:left; display:inline-block; color:#999;}
+ul.tbList2 li + li {margin-top:10px;}
+
+.payTb {margin-top:20px; font-family:'NotoSansB','RobotoB', sans-serif;}
+.payTb ul.tbList {width:161px;}
+.payTb ul.tbList li {width:148px;}
+.payTb dl {border:1px solid #e5e5e5; border-top:1px solid #666; float:left; margin:0;}
+.payTb dl.payS {width:358px;}
+.payTb dl.payS dt {width:40%;}
+.payTb dl.payS dd {width:60%;}
+.payTb dl.payS2 dt div,
+.payTb dl.payS2 dd div {height:57px;}
+.payTb dl.payS2 dd div {width:186px; padding:0 30px;text-align:left;}
+.payTb dl.payS2 + dl.payS2 {border-top:0;}
+.payTb dl.payS2 + dl.payS2:after {content: ''; display:none;}
+.payTb dl.payL {width:728px; margin:10px 0 0;}
+.payTb dl.payL dd,
+.payTb dl.payL dd div {width:588px;}
+.payTb dl + dl {margin-left:10px;}
+.payTb dl dt {width:140px; background:#f8f8f8; float:left; font-size:14px; font-family: 'RobotoR','NotoSansR', sans-serif; font-weight:bold;}
+.payTb dl dd {width:216px; float:left; margin:0; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
+.payTb dl dt div,
+.payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333; text-align:center;}
+.payTb dl dt div {width:140px; line-height:160%; padding:0 19px;}
+.payTb dl dd div {width:216px;}
+.payTb ul.pointBul {width:100%; overflow:hidden;}
+.payTb ul.pointBul li {width:50%; float:left;}
+.payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:30px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
+.payTb ul.pointBul li p.tbBul label + input[type=text] {margin:0 5px 0 10px;}
+.payTb ul.pointBul li p.pointCk {margin:5px 0 0 20PX; text-align:left;}
+.payTb p.underTxt {margin:15px 0 0 44px; text-align:left;}
+.payTb dl.payHL div {height:156px;}
+.payTb dl.payHL2 div {height:200px;}
+.payTb ul.giveList {width:150px; overflow:hidden; margin:0 auto;}
+.payTb ul.giveList li {width:50%; float:left; line-height:120%; text-align:left; font-family:'NotoSansR','RobotoR', sans-serif;}
+.payTb ul.giveList li b {font-family:'NotoSansB','RobotoB', sans-serif;}
+.payTb ul.giveList li.pc {float:right; text-align:right; padding-top:4px;}
+.payTb {width:733px; float:left; display:inline-block; text-align:left; position:relative;}
+.payTb dl.payS {position:relative;}
+.payTb dl.payS:after {content: ''; width:40px; height:40px; position: absolute; top:38px; right:-26px; z-index:99;}
+.payTbR {width:361px; float:right; overflow:hidden;}
+.payTbR dl.payS + dl.payS {margin:10px 0 0;}
+.payTb3 {width:100%;}
+.payTb3 dl.payS {width:259px;}
+.payTb3 dl.payS dt{width:60%;}
+.payTb3 dl.payS dd{width:40%;}
+.payTb3 dl.payS dt div,
+.payTb3 dl.payS dd div {height:62px;}
+.payTb3 dl.payS:after {top:12px}
+.payTb4 {width:100%; margin-bottom:10px;}
+.payTb4 dl.payS {width:265px;}
+.payTb4 dl.payS dt{width:42%;}
+.payTb4 dl.payS dd{width:58%;}
+.payTb4 dl.payS dd ul.tbList {width:124px;}
+.payTb4 dl.payS dd ul.tbList li {width:124px; padding-left:6px;}
+.payTb4 dl.payS dd div.txtL {text-align:left; padding-left:5px;}
+.payTb4 {width:100%; margin-bottom:10px;}
+.payTb dl.payS.equal:after {background:url('../images/ico_order.png') 0 -40px no-repeat;}
+.payTb dl.payS.minus:after {background:url('../images/ico_order.png') 0 0 no-repeat;}
+.payTb dl.payS.plus:after {background:url('../images/ico_order.png') 0 -80px no-repeat;}
+
 .oder .btnC {width:100%; margin-top:55px; text-align:center;}
 .oder .btnC .btnSizeL.btnColor02 {width:200px;}
 .oder .btnC .btnColor02.btnWL {width:300px;}
@@ -24,32 +81,17 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .singleCard{padding: 50px;}
 .oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
 .oder h3.subTit + .oderCont .tbSet {margin-top:20px;}
+.oder h3.subTit + .oderCont .tbSet.lineN {margin-top:0;}
 .oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .oder .container input[type="checkbox"]{position: absolute;opacity: 0;}
 .oder .container textarea {width:743px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .oder .checkAgree {margin-top:18px;}
-.oder .checkAgree label{font-family:'RobotoR','NotoSansR', sans-serif; font-size: 16px;color: #000;}
-.oder .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.oder .checkAgree label.on:before{background-color: #a9c700}
 .oder .pointCk label {display:inline-block; text-align:left; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
 .oder .pointCk label:before{content: '';display: inline-block;width:26px; height:26px; margin-right: 10px;background: #fff url('../images/ico_checkG.png') no-repeat center;border:1px solid #d1d1d1; border-radius: 20%;vertical-align: middle;text-align:center;}
 .oder .pointCk label.on:before{background:#fff url('../images/ico_checkR.png') center no-repeat;}
 
 .oder .oderCont {width:100%; overflow:hidden;}
-.oder .oderCont .tbSet {width:100%; overflow:hidden;border-top:1px solid #545454;}
-.oder .oderCont .tbSet table.tbL tr th,
-.oder .oderCont .tbSet table.tbL tr td {text-align:left;}
-.oder .oderCont .tbSet table.tbLThC tr th {text-align:center;}
-.oder .oderCont .tbSet table.tbLThC tr td {text-align:left; color:#333;}
-
-.oder .oderCont table{width: 100%; border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.oder .oderCont table th{padding: 20px;background: #f8f8f8;color: #333; font-family:'NotoSansR','RobotoR', sans-serif;}
-.oder .oderCont table tbody tr + tr th {border-top:1px solid #e8e8e8;}
-.oder .oderCont table td{padding:20px;}
-.oder .oderCont table tr th.txtR,
-.oder .oderCont table tr td.txtR {text-align:right !important;}
-.oder .oderCont table tr th.txtL,
-.oder .oderCont table tr td.txtL {text-align:left !important;;}
+.oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont table.lineS th {border-bottom:1px solid #e8e8e8;}
 .oder .oderCont table.lineS td {padding:20px 30px; text-align:left; color:#666; font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont table.lineS th.lineL,
@@ -57,16 +99,7 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont table.lineS ul.tbList2 {width:100%;}
 .oder .oderCont table.lineS ul.tbList2 li {padding-left:8px; color:#666; line-height:23px; background-position:0 9px;}
 .oder .oderCont table.lineS ul.tbList2 li + li {margin-top:0;}
-.oder .oderCont table tr + tr td {border-top:1px solid #e8e8e8;}
-.oder .oderCont table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
-.oder .oderCont table caption {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
-.oder .oderCont .tbSet table.lineN {border-bottom:0;}
-.oder .oderCont .tbSet .tbSBg {width:100%; overflow:hidden; border-top:1px solid #e8e8e8;}
-.oder .oderCont .tbSet .tbSBg table {border-bottom:1px solid #e8e8e8;}
-.oder .oderCont .tbSet .tbSBg table th {background:#f2f4f4;}
-.oder .oderCont .tbSet .tbSBg table td {background:#fafafa; font-family:'NotoSansR','RobotoR', sans-serif; color:#666;}
-.oder .oderCont .tbSet .tbSBg table td span.price {color:#333}
-.oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR','RobotoR', sans-serif;}
+
 .oder .oderCont span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
 .oder .oderCont span.price.pointRed {font-size:30px;}
@@ -84,15 +117,6 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont .oderTb table tr td {text-align:left;}
 .oder .oderCont .oderTb table tr th {text-align:center;}
 .oder .oderCont .oderTb + .adrArea {width:100%; overflow:hidden; border-bottom:1px solid #ccc;}
-.oder .oderCont ul.tbList {width:100%; margin:0 auto; display:inline-block;}
-.oder .oderCont ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 4px no-repeat; text-align:left; display:inline-block;}
-.oder .oderCont ul.tbList li + li {margin-top:16px;}
-.oder .oderCont ul.tbList li span {width:60%; text-align:right; float:right; display:inline-block;}
-.oder .oderCont ul.tbList li span.tbListTit {width:40%; text-align:left; float:left;}
-.oder .oderCont ul.tbList2 {width:528px; margin:0 auto; overflow:hidden; }
-.oder .oderCont ul.tbList2 li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
-.oder .oderCont ul.tbList2 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 4px no-repeat; text-align:left; display:inline-block; color:#999;}
-.oder .oderCont ul.tbList2 li + li {margin-top:10px;}
 .oder .oderCont ul.pdLt,
 .oder .oderCont p.pdLt {margin-left:20px;}
 .oder .oderCont p.pdLt a + a {margin-left:10px;;}
@@ -114,59 +138,10 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont .adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont .compt .adrArea dl dd {width:85%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
 .oder .oderCont .compt .adrArea dl dd div {height:42px; display:table-cell; vertical-align:middle;}
-.oder .oderCont .payTb {margin-top:20px; font-family:'NotoSansB','RobotoB', sans-serif;}
-.oder .oderCont .payTb ul.tbList {width:161px;}
-.oder .oderCont .payTb ul.tbList li {width:148px;}
-.oder .oderCont .payTb dl {border:1px solid #e5e5e5; border-top:1px solid #666; float:left; margin:0;}
-.oder .oderCont .payTb dl.payS {width:358px;}
-.oder .oderCont .payTb dl.payS dt {width:40%;}
-.oder .oderCont .payTb dl.payS dd {width:60%;}
-.oder .oderCont .payTb dl.payS2 dt div,
-.oder .oderCont .payTb dl.payS2 dd div {height:57px;}
-.oder .oderCont .payTb dl.payS2 dd div {width:186px; padding:0 30px;text-align:left;}
-.oder .oderCont .payTb dl.payS2 + dl.payS2 {border-top:0;}
-.oder .oderCont .payTb dl.payS2 + dl.payS2:after {content: ''; display:none;}
-.oder .oderCont .payTb dl.payL {width:728px; margin:10px 0 0;}
-.oder .oderCont .payTb dl.payL dd,
-.oder .oderCont .payTb dl.payL dd div {width:588px;}
-.oder .oderCont .payTb dl + dl {margin-left:10px;}
-.oder .oderCont .payTb dl dt {width:140px; background:#f8f8f8; float:left; font-size:14px; font-family: 'RobotoR','NotoSansR', sans-serif; font-weight:bold;}
-.oder .oderCont .payTb dl dd {width:216px; float:left; margin:0; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
-.oder .oderCont .payTb dl dt div,
-.oder .oderCont .payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333; text-align:center;}
-.oder .oderCont .payTb dl dt div {width:140px; line-height:160%; padding:0 19px;}
-.oder .oderCont .payTb dl dd div {width:216px;}
-.oder .oderCont .payTb ul.pointBul {width:100%; overflow:hidden;}
-.oder .oderCont .payTb ul.pointBul li {width:50%; float:left;}
-.oder .oderCont .payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:30px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
-.oder .oderCont .payTb ul.pointBul li p.tbBul label + input[type=text] {margin:0 5px 0 10px;}
-.oder .oderCont .payTb ul.pointBul li p.pointCk {margin:5px 0 0 20PX; text-align:left;}
-.oder .oderCont .payTb p.underTxt {margin:15px 0 0 44px; text-align:left;}
-.oder .oderCont .payTb dl.payHL div {height:156px;}
-.oder .oderCont .payTb dl.payHL2 div {height:200px;}
-.oder .oderCont .payTb ul.giveList {width:150px; overflow:hidden; margin:0 auto;}
-.oder .oderCont .payTb ul.giveList li {width:50%; float:left; line-height:120%; text-align:left; font-family:'NotoSansR','RobotoR', sans-serif;}
-.oder .oderCont .payTb ul.giveList li b {font-family:'NotoSansB','RobotoB', sans-serif;}
-.oder .oderCont .payTb ul.giveList li.pc {float:right; text-align:right; padding-top:4px;}
-.oder .oderCont .payTb {width:733px; float:left; display:inline-block; text-align:left; position:relative;}
-.oder .oderCont .payTb dl.payS {position:relative;}
-.oder .oderCont .payTb dl.payS:after {content: ''; width:40px; height:40px; position: absolute; top:38px; right:-26px; z-index:99;}
-.oder .oderCont .payTbR {width:361px; float:right; overflow:hidden;}
-.oder .oderCont .payTbR dl.payS + dl.payS {margin:10px 0 0;}
-.oder .oderCont .payTb4 {width:100%; margin-bottom:10px;}
-.oder .oderCont .payTb4 dl.payS {width:265px;}
-.oder .oderCont .payTb4 dl.payS dt{width:42%;}
-.oder .oderCont .payTb4 dl.payS dd{width:58%;}
-.oder .oderCont .payTb4 dl.payS dd ul.tbList {width:124px;}
-.oder .oderCont .payTb4 dl.payS dd ul.tbList li {width:124px; padding-left:6px;}
-.oder .oderCont .payTb4 dl.payS dd div.txtL {text-align:left; padding-left:5px;}
-.oder .oderCont .payTb dl.payS.equal:after {background:url('../images/ico_order.png') 0 -40px no-repeat;}
-.oder .oderCont .payTb dl.payS.minus:after {background:url('../images/ico_order.png') 0 0 no-repeat;}
-.oder .oderCont .payTb dl.payS.plus:after {background:url('../images/ico_order.png') 0 -80px no-repeat;}
 
 .oder .oderCont .tbHf {width:543px; float:left;}
 .oder .oderCont .tbHf + .tbHf {margin-left:10px;}
-.oder .oderCont .tbHf .oderTb table {width:100%;}
+.oder .oderCont .tbHf .oderTb table {width:99%;}
 .oder .oderCont .tbHf .oderTb table tr th {height:42px;}
 .oder .oderCont .oderTb table tr td ul.noBul {width:100%; overflow:hidden; margin:23px 0;}
 .oder .oderCont .oderTb table tr td ul.noBul li {width:100%; font-family:'RobotoL','NotoSansL', sans-serif;}
@@ -201,6 +176,7 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .oderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
 .oder .oderCont .payTab a {margin-left:42px; display:inline-block; color:#666;}
 .oder .oderCont .payTab a + a {margin-left:32px;}
+.oder .oderCont .payTab + div div .tbSet {margin-top:0;}
 .oder .oderCont .radioBtn {position:relative;}
 .oder .oderCont .radioBtn input[type="radio"] {width:18px; height:18px; margin:0; opacity:0; line-height:100%; overflow:hidden; position:absolute;}
 .oder .oderCont .radioBtn label {padding:2px 0 1px 23px; display:inline-block;}
@@ -238,7 +214,5 @@ tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR'
 .oder .completeBox p b {color:#000;}
 .oder .completeBox p span.pointRed {text-decoration:underline;}
 .oder .completeBox + h3.subTit {margin-top:57px;}
-
-
 
 .icoTitle {display:inline-block;width:10px;height:18px;background:url(../images/ico_title.png) 0 0 no-repeat;margin:0 12px;}
