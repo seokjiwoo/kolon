@@ -272,7 +272,7 @@ module.exports = function() {
 			});
 		};
 		function showContent(tg){
-			if( !tg.hasClass("active") ){
+			if( !$(opinion).is(":visible") ){
 				tg.addClass("active").find("span").text("의견 작성하기 접기");
 				$(opinion).stop().slideDown();
 			}else{

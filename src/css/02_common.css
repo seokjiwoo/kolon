@@ -170,6 +170,12 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .container textarea.pullSize{padding:10px 20px;border: 1px solid #d6d6d6;border-radius:7px;font-family: 'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container select.pullSize{padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 
+.paper-nav{text-align:center;}
+.paper-nav a{width:10px;height:10px;display:inline-block;background:#ccc;border-radius:100%;margin-left:4px;}
+.paper-nav a:first-child{margin-left:0;}
+.paper-nav a.active{background:#f1655d;}
+.paper-nav a span{position:absolute;left:-99990em;top:-99990em;z-index:-1;display:inline-block;}
+
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}
 .radioBox label:before{content: '';display: inline-block;width: 18px;height: 18px;margin-right:5px;background: url('../images/ico_radio.png') no-repeat;vertical-align: middle;}
