@@ -1,0 +1,26 @@
+.infoTop{position: relative;padding: 15px 20px;background: #fff;color: #666;}
+.infoTop .infoPic{display: inline-block;overflow: hidden;width: 48px;height: 48px;margin-right: 10px;border-radius: 50%;border:1px solid #d9d9d9;vertical-align: middle;}
+.infoTop .infoPic img{display: block;width: 100%;}
+.infoTop .infoWrap{display: inline-block;vertical-align: middle;}
+.infoTop .infoTit{color: #000;font-size: 18px;line-height: 1.1em}
+.infoTop .infoId{margin-top:10px;font-family:'RobotoL','NotoSansL', sans-serif;color: #666;font-size: 11px;}
+.infoTop .infoDetail{font-family:'RobotoL','NotoSansL', sans-serif;font-size: 14px;}
+.infoTop .infoDetail:before{content: '';display: block;width: 25px;height: 1px;background: #c7c7c7;margin:9px 0 9px;}
+.infoTop .infoDetail span:before{content: '';display: inline-block;width: 12px;height: 12px;margin-right: 3px;background: url('../images/ico_card_popular.png');vertical-align: middle;}
+.infoTop .infoDetail span.area:before{background-position: -35px -14px;}
+.infoTop .infoDetail span.star{margin-left: 10px;}
+.infoTop .infoDetail span.star:before{background-position: 0 -14px;}
+.infoTop .infoSub{margin-top:15px;font-size: 14px;line-height: 1.4em}
+
+.infoTop .infoBtn{position: absolute;bottom: 40px;left: 0;width: 100%;}
+.myRate{display: inline-block;margin-right: 25px;color: #666;vertical-align: middle;text-align: center;line-height: 1.3em;font-size: 11px;}
+.myRate b{display: block;color: #000;font-family:'RobotoM', sans-serif;font-size: 15px;}
+.infoTop .infoBtn a{}
+.infoTop .infoBtn #btnFollow{margin-right: 10px;background:#f1645c}
+.infoTop .infoBtn #btnMsg{background: #706a69}
+
+.colWrap{overflow: hidden;}
+.col{width:50%;float: left;}
+.singleCard{overflow: hidden;position: relative;padding-bottom: 80px;border-radius: 10px;background: #fff;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+.doubleCard{width:510px;padding: 30px 40px;background: #fff;border-radius: 10px;float: left;}
+.doubleCard:first-child{margin-right: 20px;}
