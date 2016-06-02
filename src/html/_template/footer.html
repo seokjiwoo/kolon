@@ -19,28 +19,29 @@
 	</ul>
 	<a href="" id="floatingToggle"></a>
 	<a href="#top" id="goTop">TOP</a>
-	<form action="">
 		<div class="flPop" id="flCall">
 			<p class="popIco">전화상담</p>
 			<h3 class="popTit">1644-1234</h3>
 			<p class="popSub">궁금한 것은 언제든지 물어보세요</p>
-			<fieldset class="popCon">
-				<legend class="hide">전화상담 번호 입력</legend>
-				<p class="productInfo">보고있는 상품 번호는<br><b>AB000012345</b> 입니다.</p>
-				<p class="phoneWrp">
-					<select name="" id="">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="012">012</option>
-						<option value="012">019</option>
-					</select>
-					<label for="phone01" class="hide">전화번호 앞자리</label>
-					<input type="text" id="phone01" maxlength="4">
-					<label for="phone02" class="hide">전화번호 뒷자리</label>
-					<input type="text" id="phone02" maxlength="4">
-				</p>
-				<button type="submit" class="popSubmit">상담받기</button>
-			</fieldset>
+			<form action="">
+				<fieldset class="popCon">
+					<legend class="hide">전화상담 번호 입력</legend>
+					<p class="productInfo">보고있는 상품 번호는<br><b>AB000012345</b> 입니다.</p>
+					<p class="phoneWrp">
+						<select name="" id="">
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="012">012</option>
+							<option value="012">019</option>
+						</select>
+						<label for="phone01" class="hide">전화번호 앞자리</label>
+						<input type="text" id="phone01" maxlength="4">
+						<label for="phone02" class="hide">전화번호 뒷자리</label>
+						<input type="text" id="phone02" maxlength="4">
+					</p>
+					<button type="submit" class="popSubmit">상담받기</button>
+				</fieldset>
+			</form>
 			<p class="note"><b>상담 받기 버튼</b>을 누르시면 <br>상담원이 바로 고객님께 연락 드리겠습니다. <br><b>연락 받을 전화 번호를 확인해 주세요.</b></p>
 		</div>
 		<div class="flPop" id="flAsk">
@@ -95,23 +96,27 @@
 				<li class="sns02"><a href=""></a></li>
 				<li class="sns03"><a href=""></a></li>
 			</ul>
-			<fieldset class="shareLink">
-				<legend class="hide">공유 링크</legend>
-				<p>
-					<input type="text" id="shareLink" disabled value="http://www.homs.co.kr">
-					<label for="#shareLink"class="hide">공유 링크 복사</label>
-					<button id="shareLinkBtn">URL 복사</button>
-				</p>
-			</fieldset>
+			<form action="">
+				<fieldset class="shareLink">
+					<legend class="hide">공유 링크</legend>
+					<p>
+						<input type="text" id="shareLink" disabled value="http://www.homs.co.kr">
+						<label for="#shareLink"class="hide">공유 링크 복사</label>
+						<button id="shareLinkBtn">URL 복사</button>
+					</p>
+				</fieldset>
+			</form>
 		</div>
 		<div class="flPop" id="flQna">
 			<p class="popIco">도움말</p>
-			<fieldset class="searchQna">
-				<legend class="hide">도움말 검색</legend>
-				<input type="text" id="searchQna" placeholder="어떻게 도와드릴까요?">
-				<label for="#searchQna">도움말 검색어 입력</label>
-				<button id="searchQnaBtn">검색</button>
-			</fieldset>
+			<form action="">
+				<fieldset class="searchQna">
+					<legend class="hide">도움말 검색</legend>
+					<input type="text" id="searchQna" placeholder="어떻게 도와드릴까요?">
+					<label for="#searchQna">도움말 검색어 입력</label>
+					<button id="searchQnaBtn">검색</button>
+				</fieldset>
+			</form>
 			<div class="resultQna">
 				<h3 class="resultTit">추천 도움말</h3>
 				<ul>
