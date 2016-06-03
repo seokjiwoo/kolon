@@ -3,8 +3,8 @@
 module.exports = ClassLoginController().getInstance();
 
 function ClassLoginController() {
-	const API_URL = 'http://uppp.oneplat.co/';
-	const CDN_URL = 'http://cdn.oneplat.co/';
+	var API_URL = 'http://uppp.oneplat.co/';
+	var CDN_URL = 'http://cdn.oneplat.co/';
 	
 	var instance;
 	var callerObj;
