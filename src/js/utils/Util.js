@@ -23,7 +23,12 @@ function ClassUtils() {
 			 * 이메일 주소 검증
 			 * @param {String} value - email address for validation 
 			 */
-			checkVaildEmail: checkVaildEmail
+			checkVaildEmail: checkVaildEmail,
+			/**
+			 * 생일 기준으로 만 나이 구하기
+			 * @param {Date} birthday - birthday
+			 */
+			calculateAge: calculateAge
 		}
 	};
 	
@@ -31,7 +36,13 @@ function ClassUtils() {
 		value = $.trim(value);
 		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
 		return ((value != '') && re.test(value));
-	}
+	};
+	
+	function calculateAge(birthday) {
+		var ageDifMs = Date.now() - birthday.getTime();
+		var ageDate = new Date(ageDifMs);
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
+	};
 	
 	function getUrlVar(name) {
 		return getUrlVars()[name];

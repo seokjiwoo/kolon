@@ -44,6 +44,14 @@ function ClassLoginController() {
 			 */
 			checkEmail: checkEmail,
 			/**
+			 * 회원가입
+			 */
+			joinMember: joinMember,
+			/**
+			 * 회원정보 수정
+			 */
+			editMemberInfo: editMemberInfo,
+			/**
 			 * 아이디 찾기
 			 */
 			findId: findId,
@@ -110,7 +118,7 @@ function ClassLoginController() {
 	/**
 	 * 회원가입 
 	 */
-	function join(id, pw, name, phone, birthdate) {
+	function joinMember(id, pw, name, phone, birthdate) {
 		callApi(API_URL+'/apis/member', 'POST', {
 			"birthDate": birthdate,
 			"cellPhoneNumber": phone,
@@ -134,7 +142,7 @@ function ClassLoginController() {
 	/**
 	 * 회원정보 수정 
 	 */
-	function join(id, pw, name, phone, birthdate) {
+	function editMemberInfo(id, pw, name, phone, birthdate) {
 		callApi(API_URL+'/apis/member', 'PUT', {
 			"birthDate": birthdate,
 			"cellPhoneNumber": phone,
@@ -143,7 +151,7 @@ function ClassLoginController() {
 			"memberName": name,
 			"memberTerms": [
 				{
-					"termsNumber": 1
+					"termsNumber": 2
 				}
 			]
 		}, function(status, result) {
@@ -163,7 +171,7 @@ function ClassLoginController() {
 			"loginId": id
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('checkEmailResult', [200, result.status]);
+				$(callerObj).trigger('checkEmailResult', [200, result.status, result.message]);
 			} else {
 				handleError('checkEmail', result);
 			}
