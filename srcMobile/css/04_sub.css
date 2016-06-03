@@ -3,7 +3,7 @@
 .infoTop .infoPic img{display: block;width: 100%;}
 .infoTop .infoWrap{display: inline-block;vertical-align: middle;}
 .infoTop .infoTit{color: #000;font-size: 18px;line-height: 1.1em}
-.infoTop .infoId{margin-top:10px;font-family:'RobotoL','NotoSansL', sans-serif;color: #666;font-size: 11px;}
+.infoTop .infoId{margin-top:5px;font-family:'RobotoL','NotoSansL', sans-serif;color: #666;font-size: 11px;}
 .infoTop .infoDetail{font-family:'RobotoL','NotoSansL', sans-serif;font-size: 14px;}
 .infoTop .infoDetail:before{content: '';display: block;width: 25px;height: 1px;background: #c7c7c7;margin:9px 0 9px;}
 .infoTop .infoDetail span:before{content: '';display: inline-block;width: 12px;height: 12px;margin-right: 3px;background: url('../images/ico_card_popular.png');vertical-align: middle;}

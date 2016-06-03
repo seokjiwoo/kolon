@@ -7,14 +7,12 @@
 .user.infoTop .infoSet{position: absolute;right: 15px;top: 15px;;display: block;font-size: 11px;color: #666;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 9px;height: 9px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;background-size: 100%;}
 
-.timeCard{padding: 25px 15px;text-align: center;}
-.timeCard .recordWrap{margin-top: 16px;}
-.timeCard .recordWrap:first-child{margin-top: 0;}
-.timeCard .recordDate{display: inline-block;padding: 0 5px;line-height: 15px; background: #999;border-radius: 15px;font-size: 11px;color: #fff;}
+.timeCard{padding: 25px 15px 25px;text-align: center;}
+.timeCard .recordWrap li:after{content:'';display: block;width: 1px;height: 15px;margin: 0 auto 2px;background: #999;}
+.timeCard .recordDate{position: relative;display: inline-block;padding: 0 5px;line-height: 15px;margin-bottom: 15px; background: #999;border-radius: 15px;font-size: 11px;color: #fff;}
+.timeCard .recordDate:after{content:'';position: absolute;bottom: -15px;left: 50%;width: 1px;height: 15px;background: #999;}
 .timeCard .recordTime{display: inline-block;font-size:11px;color: #333;}
-.timeCard .recordTime:before, .timeCard .recordTime:after{content:'';display: block;width: 1px;margin: 0 auto;background: #999;}
-.timeCard .recordTime:before{height: 15px;margin-bottom: 2px;}
-.timeCard .recordTime:after{height: 7px;margin-top: 3px;}
+.timeCard .recordTime:after{content:'';display: block;width: 1px;height: 7px;margin: 3px auto 0;background: #999;}
 .timeCard .recordIco{position: relative;font-size: 0;width: 48px;height: 48px;margin:0 auto;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;background-size: 240px}
 .timeCard .recordType01 .recordIco{background-color: #65bfe5;background-position:-96px -48px; }
 .timeCard .recordType02 .recordIco{background-color: #f1be4f;background-position:-96px 0}
@@ -35,5 +33,6 @@
 .timeCard .recordThumb{height: 115px;background: #a9c700;color: #fff;font-size: 13px;}
 .timeCard .recordThumb img{display: inline-block;}
 .timeCard .recordThumb:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -3px;vertical-align: middle;}
-.timeCard .recordThumb p{display: inline-block;vertical-align: middle;line-height: 1.2em}
-.timeCard .recordThumb b{display: block;margin:0 auto 10px;font-size:0;width: 12px;height: 10px;background: url('../images/ico_mark.png') no-repeat;background-size:100%;}
+.timeCard .recordThumb p{position: relative;display: inline-block;width: 90%;height: 2.5em;vertical-align: middle;line-height: 1.2em}
+.timeCard .recordThumb p:before{content: '';position: absolute;top: -14px;left: 50%;font-size:0;width: 12px;height: 14px;background: url('../images/ico_timeline.png') no-repeat -200px -100px;background-size:240px 144px;}
+.timeCard .recordType06 .recordThumb p:before{background-position:0 0;}

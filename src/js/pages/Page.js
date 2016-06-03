@@ -24,6 +24,7 @@ module.exports = function() {
 		initPopup();
 		opinionToggle();
 		initCardRadio();
+		$('.except').dotdotdot();
 		$('.radioBox label').click(function(){// radiobox
 			$(this).addClass('on').siblings('label').removeClass('on');
 		});

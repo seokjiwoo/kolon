@@ -17,5 +17,6 @@ module.exports = function() {
 			totalWidth += parseInt($(this).width(), 10);
 		});
 		$('.tabType01 ul').css('width',totalWidth);
+		$('.except').dotdotdot();
 	}
 }
