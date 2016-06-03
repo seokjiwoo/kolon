@@ -34,5 +34,6 @@
 .timeCard .recordThumb img{display: inline-block;}
 .timeCard .recordThumb:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -3px;vertical-align: middle;}
 .timeCard .recordThumb p{position: relative;display: inline-block;width: 90%;height: 2.5em;vertical-align: middle;line-height: 1.2em}
-.timeCard .recordThumb p:before{content: '';position: absolute;top: -14px;left: 50%;font-size:0;width: 12px;height: 14px;background: url('../images/ico_timeline.png') no-repeat -200px -100px;background-size:240px 144px;}
-.timeCard .recordType06 .recordThumb p:before{background-position:0 0;}
+.timeCard .recordThumb p:before{content: '';position: absolute;top: -14px;left: 50%;font-size:0;width: 12px;height: 14px;background: url('../images/ico_timeline.png') no-repeat -200px -130px;background-size:240px 144px;}
+.timeCard .recordType06 .recordThumb{background-color: #f1645c}
+.timeCard .recordType06 .recordThumb p:before{background-position:-228px -131px;}
