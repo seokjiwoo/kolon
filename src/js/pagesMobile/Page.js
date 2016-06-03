@@ -1,7 +1,14 @@
 /* global $ */
 
 module.exports = function() {
+	var SuperClass = require('../pagesCommon/PageCommon.js');
+	var Super = SuperClass();
+	
 	var callerObj = {
+		/**
+		 * SuperClass 연결
+		 */
+		Super: Super,
 		/**
 		 * 초기화
 		 */
@@ -11,6 +18,8 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
+		Super.init();
+		
 		console.log('mobile');
 		var totalWidth = 0;
 		$('.tabType01 li').each(function(index) {
