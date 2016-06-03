@@ -3,6 +3,9 @@
 .btnG .cartChk.btnL + label {font-size:16px;}
 .btnG .btnL {float:left;}
 .btnG .btnR {float:right;}
+.btnC {width:100%; margin-top:55px; text-align:center; overflow:hidden;}
+.btnC .btnSizeL.btnColor02.btnWM {width:200px;}
+.btnC .btnColor02.btnWL {width:300px;}
 
 ul.tbList {width:100%; margin:0 auto; display:inline-block;}
 ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 4px no-repeat; text-align:left; display:inline-block;}
@@ -55,8 +58,8 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTbR dl.payS + dl.payS {margin:10px 0 0;}
 .payTb3 {width:100%;}
 .payTb3 dl.payS {width:259px;}
-.payTb3 dl.payS dt{width:60%;}
-.payTb3 dl.payS dd{width:40%;}
+.payTb3 dl.payS dt{width:52%;}
+.payTb3 dl.payS dd{width:48%;}
 .payTb3 dl.payS dt div,
 .payTb3 dl.payS dd div {height:62px;}
 .payTb3 dl.payS:after {top:12px}
@@ -72,9 +75,6 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb dl.payS.minus:after {background:url('../images/ico_order.png') 0 0 no-repeat;}
 .payTb dl.payS.plus:after {background:url('../images/ico_order.png') 0 -80px no-repeat;}
 
-.oder .btnC {width:100%; margin-top:55px; text-align:center;}
-.oder .btnC .btnSizeL.btnColor02 {width:200px;}
-.oder .btnC .btnColor02.btnWL {width:300px;}
 .oder .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 
 .oder .container .wrap{width: 100%; padding-top: 50px;}
@@ -100,9 +100,11 @@ ul.tbList2 li + li {margin-top:10px;}
 .oder .oderCont table.lineS ul.tbList2 li {padding-left:8px; color:#666; line-height:23px; background-position:0 9px;}
 .oder .oderCont table.lineS ul.tbList2 li + li {margin-top:0;}
 
-.oder .oderCont span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
-.oder .oderCont span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
-.oder .oderCont span.price.pointRed {font-size:30px;}
+span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
+span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
+span.price.pointRed {font-size:30px;}
+span.price.fontL {font-size:22px;}
+span.price.fontS {font-size:14px;}
 .oder .oderCont select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
 .oder .oderCont .underTxt {font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
 

@@ -342,5 +342,8 @@
 .my .tbSet table .optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
 .my .tbSet table .optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px;}
 .my .tbSet table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
-.my .btnG .chkAll {width:60%; overflow:hidden; float:left;}
+.my .btnG .chkAll {width:60%; overflow:hidden; float:left; margin-left:20px;}
+.my .btnG .btnR {margin-right:30px;}
+.my .btnG .btnR a + a {margin-left:5px;}
 .my .tbSet + .btnG {margin-top:20px;}
+.my .cartCont + h3.subTit {margin-top:20px;}
