@@ -1,9 +1,16 @@
 /* global $ */
 
 module.exports = function() {
+	var SuperClass = require('../pagesCommon/PageCommon.js');
+	var Super = SuperClass();
+	
 	var winH;
 	
 	var callerObj = {
+		/**
+		 * SuperClass 연결
+		 */
+		Super: Super,
 		/**
 		 * 초기화
 		 */
@@ -13,25 +20,17 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
+		Super.init();
+		
 		winH = $(window).height();
 		
 		// common
 		initMenu();
-		initCardLayout();
-		initTabSlider();
 		initFloating();
-		initTab();
 		initPopup();
 		opinionToggle();
 		initCardRadio();
-		$('.radioBox label').click(function(){// radiobox
-			$(this).addClass('on').siblings('label').removeClass('on');
-		});
-		$('.checkbox label').click(function(){// checkbox
-			if ($(this).siblings('input').val() != ':checked'){			
-				$(this).toggleClass('on');
-			}
-		});
+		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
 			$(this).toggleClass('opened');
@@ -43,22 +42,6 @@ module.exports = function() {
 			pager:false,
 			slideWidth: 200,
 			slideMargin:20
-		});
-	}
-	
-	function initCardLayout(){ //card layout
-		$('#cardWrap').isotope({
-			itemSelector: '#cardWrap > li',
-			masonry: {
-				columnWidth: 100,
-				gutter: 1
-			}
-		});
-	}
-
-	function initTabSlider(){ 
-		$('#infoSlider').bxSlider({ //slide in detail page
-			pager:false
 		});
 	}
 	
@@ -200,26 +183,6 @@ module.exports = function() {
 			slideWidth: 100,
 		});
 	};
-
-	function initTab(){
-		$('.tabWrap a').on('click', function(e) {// common tab
-			var tabBtn = $(this);
-			var tabCon = $(this).attr('href');
-			e.preventDefault();
-			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
-			$(tabCon).show().siblings().hide();
-			if ($('ul').hasClass('cardWrap')){
-				initCardLayout();
-			}
-			if ($('ul').hasClass('infoSlider')){
-				initTabSlider();
-			}
-			
-		});
-		// tab width depend on number of li
-		var countMenu = $('.tabType01 li').length ;
-		$('.tabType01 li').css('width',100/countMenu+'%');
-	}
 	
 	function initPopup(){
 		$('.btnPop').on('click', function(e) {// layer popup open
@@ -272,7 +235,7 @@ module.exports = function() {
 			});
 		};
 		function showContent(tg){
-			if( !$(opinion).is(":visible") ){
+			if( !tg.hasClass("active") ){
 				tg.addClass("active").find("span").text("의견 작성하기 접기");
 				$(opinion).stop().slideDown();
 			}else{
