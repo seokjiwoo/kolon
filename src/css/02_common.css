@@ -124,6 +124,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .btnSizeS{height:30px;padding:0 20px;font-size: 14px;border-radius: 15px;line-height: 30px;}
 .btnSizeM{height:40px;min-width:140px;font-size: 14px;border-radius: 20px;line-height: 40px;}
+.btnSizeM2 {height:40px; padding:0 20px; font-size: 14px;border-radius: 20px;line-height: 40px;}
 .btnSizeL{height:60px;font-size: 20px;border-radius: 30px;line-height: 60px;}
 
 .btnColor01{background:#a9c700} /*green*/
@@ -158,6 +159,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
 .formList .birth > div{float: left;margin:10px 0;}
 .formList .birth .note{display: block;margin-top:15px;}
+.formList fieldset legend.hide {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
@@ -194,7 +196,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .listSquare li:before{content: '';position: absolute;top: 5px;left: 0;width: 2px;height: 2px;background: #999;}
 
 /* board */
-.tbSet {width:100%; overflow:hidden; border-top:1px solid #545454;}
+.tbSet {width:100%; display:inline-block; border-top:1px solid #545454;}
 .tbSet table{width: 100%; border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .tbSet table.tbL tr th,
 .tbSet table.tbL tr td {text-align:left;}
@@ -209,7 +211,6 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .tbSet table tr td.txtL {text-align:left !important;}
 .tbSet table tr + tr td {border-top:1px solid #e8e8e8;}
 .tbSet table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
-.tbSet table caption {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%;}
 .tbSet table.lineN {border-bottom:0;}
 .tbSet .tbSBg {width:100%; overflow:hidden; border-top:1px solid #e8e8e8;}
 .tbSet .tbSBg table {border-bottom:1px solid #e8e8e8;}
@@ -227,3 +228,11 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .tbSet table tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
 .tbSet table tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'RobotoL','NotoSansL', sans-serif;}
 .tbSet table tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR','RobotoR', sans-serif;}
+
+.calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; border-radius:7px; display:inline;}
+.calendar span.calInp {width:; position:relative;}
+.calendar span.calInp input[type="text"] {width:200px; border:0; padding:0; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin-right:16px;}
+.calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:0; right:0;}
+.calendar.cal2 {background:url('../images/ico_calendar_bar.png') 50% 50% no-repeat;}
+.calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
+.calendar.cal2 span.calInp input[type="text"] {width:80px;}
