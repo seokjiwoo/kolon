@@ -1,18 +1,18 @@
-
+.user.infoTop .myRate{margin-right: 3%;}
 .user.infoTop .myRate a{color: #666}
 .user.infoTop .myRate .my{width:20px;height: 18px;margin:0 auto 2px;background: url('../images/ico_homeB.png') no-repeat;}
 .user.infoTop .myRate.on a{color: #f1645c;}
 .user.infoTop .myRate.on a b{color: #f1645c;}
 .user.infoTop .myRate.on .my{background-image:url('../images/ico_homeR.png'); }
 .user.infoTop .infoSet{position: absolute;right: 15px;top: 15px;;display: block;font-size: 11px;color: #666;}
-.user.infoTop .infoSet:before{content: '';display: inline-block;width: 9px;height: 9px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;background-size: 100%;}
+.user.infoTop .infoSet:before{content: '';display: inline-block;width: 9px;height: 9px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;background-size: 100%;vertical-align: top;}
 
-.timeCard{padding: 25px 15px 25px;text-align: center;}
-.timeCard .recordWrap li:after{content:'';display: block;width: 1px;height: 15px;margin: 0 auto 2px;background: #999;}
-.timeCard .recordDate{position: relative;display: inline-block;padding: 0 5px;line-height: 15px;margin-bottom: 15px; background: #999;border-radius: 15px;font-size: 11px;color: #fff;}
-.timeCard .recordDate:after{content:'';position: absolute;bottom: -15px;left: 50%;width: 1px;height: 15px;background: #999;}
-.timeCard .recordTime{display: inline-block;font-size:11px;color: #333;}
-.timeCard .recordTime:after{content:'';display: block;width: 1px;height: 7px;margin: 3px auto 0;background: #999;}
+.timeCard{position: relative;padding: 25px 15px;text-align: center;}
+.timeCard:after{content:'';position: absolute;top:25px;left: 50%;bottom: 45px;width: 1px;background: #999;z-index: 0}
+.timeCard .recordWrap{position: relative;z-index: 1}
+.timeCard li{margin-bottom: 20px;}
+.timeCard .recordDate{display: inline-block;padding: 0 5px;line-height: 15px;margin-bottom: 15px; background: #999;border-radius: 15px;font-size: 11px;color: #fff;}
+.timeCard .recordTime{display: inline-block;margin-bottom: 10px;font-size:11px;color: #333;background: #e0e0e0;line-height: 14px;}
 .timeCard .recordIco{position: relative;font-size: 0;width: 48px;height: 48px;margin:0 auto;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;background-size: 240px}
 .timeCard .recordType01 .recordIco{background-color: #65bfe5;background-position:-96px -48px; }
 .timeCard .recordType02 .recordIco{background-color: #f1be4f;background-position:-96px 0}
@@ -27,13 +27,34 @@
 .timeCard .recordCon{height: 86px;padding:20px 13px;text-align: left;color: #666;font-size: 11px;}
 .timeCard .recordCon > div{display: inline-block;vertical-align: middle;}
 .timeCard .recordCon:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
-.timeCard .recordCat{display: inline-block;margin-bottom: 4px;padding: 1px 5px 3px;border-radius: 15px;border:1px solid #000;color: #000;}
+.timeCard .recordCat{display: inline-block;margin-bottom: 4px;padding:0 5px;border-radius: 15px;border:1px solid #000;color: #000;line-height: 16px}
 .timeCard .recordTxt{line-height: 1.2em;}
 .timeCard .recordTxt b{color: #000;}
 .timeCard .recordThumb{height: 115px;background: #a9c700;color: #fff;font-size: 13px;}
 .timeCard .recordThumb img{display: inline-block;}
-.timeCard .recordThumb:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -3px;vertical-align: middle;}
+.timeCard .recordThumb02:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -3px;vertical-align: middle;}
 .timeCard .recordThumb p{position: relative;display: inline-block;width: 90%;height: 2.5em;vertical-align: middle;line-height: 1.2em}
-.timeCard .recordThumb p:before{content: '';position: absolute;top: -14px;left: 50%;font-size:0;width: 12px;height: 14px;background: url('../images/ico_timeline.png') no-repeat -200px -130px;background-size:240px 144px;}
+.timeCard .recordThumb p:before{content: '';position: absolute;top: -16px;left: 50%;font-size:0;width: 12px;height: 14px;background: url('../images/ico_timeline.png') no-repeat -200px -130px;background-size:240px 144px;}
 .timeCard .recordType06 .recordThumb{background-color: #f1645c}
 .timeCard .recordType06 .recordThumb p:before{background-position:-228px -131px;}
+
+#myBoard .recent{padding-right: 0;}
+#myBoard .recent .more{margin-right: 15px}
+#myBoard .recent .secTit{margin-right: 15px;}
+#myBoard .recent .scrollWrap{margin-top: 10px;padding-bottom: 25px;}
+#myBoard .recent ul{overflow: hidden;}
+#myBoard .recent li{width: 130px;margin-left: 10px;}
+#myBoard .recent li:first-child{margin:0;}
+#myBoard .recent .imgWrap{overflow: hidden;border-radius: 5px;height: 150px;}
+#myBoard .recent li img{display: block;width: 100%;}
+#myBoard .recent li p{margin-top: 5px;font-size: 13px;color: #666;line-height: 1.2em;}
+
+#myBoard .massage .except{color: #666}
+#myBoard .review .except{color: #000}
+#myBoard .qna a > .except{color: #000}
+#myBoard .qna .date{margin-bottom: 5px;}
+#myBoard .qna .reply{position: relative;}
+#myBoard .qna .reply:before{content: '';position: absolute;top:18px;left: 15px;width:7px;height: 7px;border-left:1.5px solid #ccc;border-bottom:1.5px solid #ccc; }
+#myBoard .qna .reply .except{padding-left: 18px;}
+
+#writeReview a{margin-top: 10px;}

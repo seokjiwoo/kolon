@@ -21,11 +21,17 @@ module.exports = function() {
 		Super.init();
 		
 		console.log('mobile');
-		var totalWidth = 0;
-		$('.tabType01 li').each(function(index) {
-			totalWidth += parseInt($(this).width(), 10);
-		});
-		$('.tabType01 ul').css('width',totalWidth);
+
+		$('.scrollWrap').each(function(){//horizontal scroll wrap width
+			var totalWidth = 0;
+			var margin = 0;
+			$(this).find('li').each(function(index) {
+				totalWidth += parseInt($(this).width(), 10);
+				margin += parseInt($(this).css('margin-left'), 10);
+			});
+			$(this).find('ul').css('width',totalWidth+margin);
+		})
+		
 		$('.except').dotdotdot();
 	}
 }

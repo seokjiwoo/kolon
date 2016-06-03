@@ -52,9 +52,11 @@
 
 a.pointLink {color:#f1645c;text-decoration:underline;}
 /* tab */
-.tabType01{overflow: auto;background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
+.scrollWrap{overflow-x: auto;}
+.scrollWrap li{float: left;}
+.tabType01{background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
 .tabType01 ul{height: 49px;overflow: hidden;}
-.tabType01 li{float: left;text-align: center;}
+.tabType01 li{text-align: center;}
 .tabType01 a{position: relative;display: block;padding: 0 25px;color: #333;font-family:'RobotoL','NotoSansL', sans-serif;font-size: 13px;line-height: 49px;}
 .tabType01 .on a{color: #000;font-family:'RobotoM','NotoSansM', sans-serif;}
 .tabType01 .on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #a9c700}
@@ -71,9 +73,9 @@ a.pointLink {color:#f1645c;text-decoration:underline;}
 .btnWrap{text-align: center;}
 a[class^="btnSize"], .btn{display: inline-block;padding:0 20px;color: #fff;outline: 0;border: 0;font-family: 'RobotoM','NotoSansM', sans-serif;text-align: center;}
 
-.btnSizeS{height:25px;font-size: 14px;border-radius: 15px;line-height: 30px;}
-.btnSizeM{height:35px;font-size: 14px;border-radius: 20px;line-height: 40px;}
-.btnSizeL{height:40px;font-size: 20px;border-radius: 30px;line-height: 60px;}
+.btnSizeS{height:25px;font-size: 14px;border-radius: 13px;line-height: 25px;}
+.btnSizeM{height:35px;font-size: 14px;border-radius: 17px;line-height: 35px;}
+.btnSizeL{height:40px;font-size: 20px;border-radius: 20px;line-height: 40px;}
 
 .btnColor01{background:#a9c700} /*green*/
 .btnColor02{background:#f1645c} /*red*/

@@ -24,8 +24,7 @@ module.exports = function() {
 				$(this).toggleClass('on');
 			}
 		});
-		
-		$('.except').dotdotdot();
+				
 	};
 	
 	function initTab(){
@@ -37,12 +36,11 @@ module.exports = function() {
 			$(tabCon).show().siblings().hide();
 			if ($('ul').hasClass('cardWrap')) initCardLayout();
 			if ($('ul').hasClass('infoSlider')) initTabSlider();
+			if ($('p').hasClass('except')) $('.except').dotdotdot();
 		});
-		// tab width depend on number of li
-		var countMenu = $('.tabType01 li').length ;
-		$('.tabType01 li').css('width',100/countMenu+'%');
 	};
 	
+
 	/**
 	 * slide in detail page
 	 */
