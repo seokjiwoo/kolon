@@ -24,23 +24,21 @@ module.exports = function() {
 				$(this).toggleClass('on');
 			}
 		});
-		
-		$('.except').dotdotdot();
 	};
 	
 	function initTab(){
 		$('.tabWrap a').on('click', function(e) {// common tab
+			e.preventDefault();
 			var tabBtn = $(this);
 			var tabCon = $(this).attr('href');
-			e.preventDefault();
+			
 			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
 			$(tabCon).show().siblings().hide();
+			
 			if ($('ul').hasClass('cardWrap')) initCardLayout();
 			if ($('ul').hasClass('infoSlider')) initTabSlider();
+			if ($('p').hasClass('except')) $('.except').dotdotdot();
 		});
-		// tab width depend on number of li
-		var countMenu = $('.tabType01 li').length ;
-		$('.tabType01 li').css('width',100/countMenu+'%');
 	};
 	
 	/**
