@@ -1,9 +1,14 @@
 /* global $ */
 
 module.exports = function() {
-	var winH;
+	var SuperClass = require('../pagesCommon/PageCommon.js');
+	var Super = SuperClass();
 	
 	var callerObj = {
+		/**
+		 * SuperClass 연결
+		 */
+		Super: Super,
 		/**
 		 * 초기화
 		 */
@@ -13,25 +18,14 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		winH = $(window).height();
+		Super.init();
 		
 		// common
 		initMenu();
-		initCardLayout();
-		initTabSlider();
 		initFloating();
-		initTab();
-		initPopup();
 		opinionToggle();
 		initCardRadio();
-		$('.radioBox label').click(function(){// radiobox
-			$(this).addClass('on').siblings('label').removeClass('on');
-		});
-		$('.checkbox label').click(function(){// checkbox
-			if ($(this).siblings('input').val() != ':checked'){			
-				$(this).toggleClass('on');
-			}
-		});
+		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
 			$(this).toggleClass('opened');
@@ -44,22 +38,10 @@ module.exports = function() {
 			slideWidth: 200,
 			slideMargin:20
 		});
-	}
-	
-	function initCardLayout(){ //card layout
-		$('#cardWrap').isotope({
-			itemSelector: '#cardWrap > li',
-			masonry: {
-				columnWidth: 100,
-				gutter: 1
-			}
-		});
-	}
-
-	function initTabSlider(){ 
-		$('#infoSlider').bxSlider({ //slide in detail page
-			pager:false
-		});
+			
+		// tab width depend on number of li
+		var countMenu = $('.tabType01 li').length ;
+		$('.tabType01 li').css('width',100/countMenu+'%');
 	}
 	
 	function initMenu(){
@@ -200,52 +182,6 @@ module.exports = function() {
 			slideWidth: 100,
 		});
 	};
-
-	function initTab(){
-		$('.tabWrap a').on('click', function(e) {// common tab
-			var tabBtn = $(this);
-			var tabCon = $(this).attr('href');
-			e.preventDefault();
-			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
-			$(tabCon).show().siblings().hide();
-			if ($('ul').hasClass('cardWrap')){
-				initCardLayout();
-			}
-			if ($('ul').hasClass('infoSlider')){
-				initTabSlider();
-			}
-			
-		});
-		// tab width depend on number of li
-		var countMenu = $('.tabType01 li').length ;
-		$('.tabType01 li').css('width',100/countMenu+'%');
-	}
-	
-	function initPopup(){
-		$('.btnPop').on('click', function(e) {// layer popup open
-			var popup = $(this).attr('href');
-			e.preventDefault();
-			$(popup).show();
-			$('#dim').show();
-		});
-		$('.closePop').on('click', function(e) {// layer popup close
-			e.preventDefault();
-			$(this).parent('.lyPop').hide();
-			$('#dim').hide();
-		});
-		$.each($('.lyPop'), function(){
-			var popupH = $(this).show().height();
-			if(winH < popupH){
-				$(this).hide().css({
-					'top':'120px',
-					'bottom':'120px'
-				})
-				$(this).find('.popScroll').css('height',winH-490)
-			} else {
-				$(this).hide().css('margin-top',-popupH/2);
-			}
-		});
-	}
 	
 	function initCardRadio(){	
 		$('.cardCollect label').click(function(){// 개인화 수집 카드

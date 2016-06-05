@@ -29,8 +29,6 @@
 .bx-wrapper .bx-controls-direction .bx-next{background-position: -32px 0}
 
 /* popup */
-.lyPop{display: none;position: fixed;top:50%;left: 50%;padding: 30px;background: #fff;border-radius: 10px;z-index: 99;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
-.lyPopS{width: 530px;margin-left: -295px}
 .lyPop .popTit{padding-bottom:20px;border-bottom: 1px solid #666;font-size: 30px;}
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
 .lyPop .closePop{display: inline-block;float: right;width: 40px;height:40px;background: url('../images/btn_closeG.png') no-repeat center;}
@@ -42,8 +40,6 @@
 
 #popAgree01 .popCon{text-align: left;}
 /* popup order */
-.lyPop.lyPopAbsol {position:absolute;}
-.lyPop.lyPopM {width:895px;margin-left:-447.5px;}
 .lyPop .subTit .subAddr {color:#999;}
 .lyPop .popRecord {text-align:right;width:90px;padding:20px 10px 20px 20px;}
 .lyPop .popRecord.recordInfo {text-align:left;width:auto;padding:20px 20px 20px 0;}
@@ -76,17 +72,17 @@
 .record.record03 .recordThumb {float:right;}
 .record.record03 .orderState {padding:20px}
 
-.wrapper .tableStyle02{text-align: left;font-family:'RobotoR','NotoSansR', sans-serif;border-top: 1px solid #e8e8e8}
-.wrapper .tableStyle02 th{width:90px;padding:15px 35px;background: #f7f7f7;border-bottom: 1px solid #e8e8e8;color: #000;}
-.wrapper .tableStyle02 td{padding:15px 20px;border-bottom: 1px solid #e8e8e8}
-.wrapper .tableStyle02 .wrapScroll{display: block;width: 690px;padding:30px 20px;}
-.wrapper .tableStyle02 .popScroll{max-height: 440px;margin-top:0;}
-.wrapper .tableStyle02 .popScroll img{display: block;max-width: 100%;}
-.wrapper .tableStyle02 .bar:before{content: '';display: inline-block;width: 1px;height: 10px;margin: 0 7px;background: #999;vertical-align: middle;}
-.wrapper .tableStyle02 .tag{height: 36px;overflow: hidden;}
-.wrapper .tableStyle02 .tag li{display: inline-block;margin-left: 5px;}
-.wrapper .tableStyle02 .tag li:first-child{margin:0;}
-.wrapper .tableStyle02 .tag a{display: block;padding:0 20px;line-height: 34px;border-radius: 17px;border:1px solid #d1d1d1;color: #666;}
+.my .tableStyle02{text-align: left;font-family:'RobotoR','NotoSansR', sans-serif;border-top: 1px solid #e8e8e8}
+.my .tableStyle02 th{width:90px;padding:15px 35px;background: #f7f7f7;border-bottom: 1px solid #e8e8e8;color: #000;}
+.my .tableStyle02 td{padding:15px 20px;border-bottom: 1px solid #e8e8e8}
+.my .tableStyle02 .wrapScroll{display: block;width: 690px;padding:30px 20px;}
+.my .tableStyle02 .popScroll{max-height: 440px;margin-top:0;}
+.my .tableStyle02 .popScroll img{display: block;max-width: 100%;}
+.my .tableStyle02 .bar:before{content: '';display: inline-block;width: 1px;height: 10px;margin: 0 7px;background: #999;vertical-align: middle;}
+.my .tableStyle02 .tag{height: 36px;overflow: hidden;}
+.my .tableStyle02 .tag li{display: inline-block;margin-left: 5px;}
+.my .tableStyle02 .tag li:first-child{margin:0;}
+.my .tableStyle02 .tag a{display: block;padding:0 20px;line-height: 34px;border-radius: 17px;border:1px solid #d1d1d1;color: #666;}
 
 .grade{display: inline-block;position: relative;width: 140px;height: 27px;background: url('../images/ico_star.png') no-repeat 0 -27px;}
 .grade span{position: absolute;top:0;left: 0;display: block;height: 100%;background: url('../images/ico_star.png') no-repeat}
@@ -124,6 +120,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .btnSizeS{height:30px;padding:0 20px;font-size: 14px;border-radius: 15px;line-height: 30px;}
 .btnSizeM{height:40px;min-width:140px;font-size: 14px;border-radius: 20px;line-height: 40px;}
+.btnSizeM2 {height:40px; padding:0 20px; font-size: 14px;border-radius: 20px;line-height: 40px;}
 .btnSizeL{height:60px;font-size: 20px;border-radius: 30px;line-height: 60px;}
 
 .btnColor01{background:#a9c700} /*green*/
@@ -158,6 +155,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
 .formList .birth > div{float: left;margin:10px 0;}
 .formList .birth .note{display: block;margin-top:15px;}
+.formList fieldset legend.hide {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
@@ -169,6 +167,12 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .container input[type="email"].pullSize{padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;color:#999;margin-right:0;}
 .container textarea.pullSize{padding:10px 20px;border: 1px solid #d6d6d6;border-radius:7px;font-family: 'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container select.pullSize{padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+
+.paper-nav{text-align:center;}
+.paper-nav a{width:10px;height:10px;display:inline-block;background:#ccc;border-radius:100%;margin-left:4px;}
+.paper-nav a:first-child{margin-left:0;}
+.paper-nav a.active{background:#f1655d;}
+.paper-nav a span{position:absolute;left:-99990em;top:-99990em;z-index:-1;display:inline-block;}
 
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}
@@ -186,3 +190,45 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .listSquare li{position: relative;margin-top:8px;padding-left: 10px;line-height: 1.3em;}
 .listSquare li:first-child{margin:0;}
 .listSquare li:before{content: '';position: absolute;top: 5px;left: 0;width: 2px;height: 2px;background: #999;}
+
+/* board */
+.tbSet {width:100%; display:inline-block; border-top:1px solid #545454;}
+.tbSet table{width: 100%; border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.tbSet table.tbL tr th,
+.tbSet table.tbL tr td {text-align:left;}
+.tbSet table.tbLThC tr th {text-align:center;}
+.tbSet table.tbLThC tr td {text-align:left; color:#333;}
+.tbSet table th{padding: 20px;background: #f8f8f8;color: #333; font-family:'NotoSansR','RobotoR', sans-serif;}
+.tbSet table tbody tr + tr th {border-top:1px solid #e8e8e8;}
+.tbSet table td{padding:20px;}
+.tbSet table tr th.txtR,
+.tbSet table tr td.txtR {text-align:right !important;}
+.tbSet table tr th.txtL,
+.tbSet table tr td.txtL {text-align:left !important;}
+.tbSet table tr + tr td {border-top:1px solid #e8e8e8;}
+.tbSet table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
+.tbSet table.lineN {border-bottom:0;}
+.tbSet .tbSBg {width:100%; overflow:hidden; border-top:1px solid #e8e8e8;}
+.tbSet .tbSBg table {border-bottom:1px solid #e8e8e8;}
+.tbSet .tbSBg table th {background:#f2f4f4;}
+.tbSet .tbSBg table td {background:#fafafa; font-family:'NotoSansR','RobotoR', sans-serif; color:#666;}
+.tbSet .tbSBg table td span.price {color:#333}
+
+.tbSet table tr td .photoList {width:100%; height:90px; display:inline-block; position:relative; display:table-cell; vertical-align:middle;}
+.tbSet table tr td .photoList span.thumb,
+.tbSet table tr td .photoList span.thumb img{width:90px; height:90px;}
+.tbSet table tr td .photoList span.thumb {display:inline-block; position:absolute; top:0; left:0;}
+.tbSet table tr td .photoList span.thumb + span.cartInfo {margin-left:9px;}
+.tbSet table tr td .photoList span.cartInfo {padding-left:95px; display:inline-block; text-align:left;}
+.tbSet table tr td .photoList span.cartInfo span {width:100%;}
+.tbSet table tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
+.tbSet table tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'RobotoL','NotoSansL', sans-serif;}
+.tbSet table tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR','RobotoR', sans-serif;}
+
+.calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; border-radius:7px; display:inline;}
+.calendar span.calInp {width:; position:relative;}
+.calendar span.calInp input[type="text"] {width:200px; border:0; padding:0; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin-right:16px;}
+.calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:0; right:0;}
+.calendar.cal2 {background:url('../images/ico_calendar_bar.png') 50% 50% no-repeat;}
+.calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
+.calendar.cal2 span.calInp input[type="text"] {width:80px;}

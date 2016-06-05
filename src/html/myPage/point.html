@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 배송형 상품"} -->
+</head>
+ <body>
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+	<div class="container">
+		<!-- @@include ../_template/my_depth01.html {"myMenu06":"on"} -->
+		<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
+		<div class="wrap">
+			<section class="singleCard" id="myActivity">
+				<h2 class="secTit">포인트</h2>
+				<div class="tbSet">
+					<table class="tbL">
+						<caption>포인트</caption>
+						<tbody>
+							<tr>
+								<th scope="row">보유포인트</th>
+								<td><span class="price"><span class="pointRed">100,000</span> P</span></td>
+								<th scope="row">30일 이내 소멸 예정</th>
+								<td><span class="price"><span class="pointRed">0</span> P</span></td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+				<table class="recordSort">
+					<tr>
+						<th scope="row">기간별 주문조회</th>
+						<td>
+							<ul class="sortTerm">
+								<li><a href="" class="on">1주일</a></li>
+								<li><a href="">2주일</a></li>
+								<li><a href="">1개월</a></li>
+								<li><a href="">3개월</a></li>
+								<li><a href="">6개월</a></li>
+							</ul>
+							<div class="sortTermSet"><!-- datePicker --></div>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">주문내역 검색</th>
+						<td>
+							<form method="post" action="/" class="formList oderSearch">
+								<fieldset>
+									<legend class="hide">적립/사용내역 조회</legend>
+									<select name="" title="적립/사용내역 조회" style="width:323px;">
+										<option value="" selected="selected">적립/사용내역</option>
+										<option value=""></option>
+									</select>
+									<button type="submit" class="btn btnSizeM2 btnColor02 btnShadow">조회하기</button>
+								</fieldset> 
+							</form>
+						</td>
+					</tr>
+				</table>
+				<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+				<table class="record">
+					<tr>
+						<th scope="col">날짜</th>
+						<th scope="col">유형</th>
+						<th scope="col">내용</th>
+						<th scope="col">소멸예정일</th>
+						<th scope="col">남은기간</th>
+						<th scope="col">포인트 내역</th>
+					</tr>
+					<tr>
+						<td rowspan="3" class="recordDate">
+							<p class="date">2016. 04. 20</p>
+						</td>
+						<td><span class="pointRed">환불</span> - 홈즈</td>
+						<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
+						<td>2016.03.02</td>
+						<td>20일</td>
+						<td>-10,000</td>
+					</tr>
+					<tr>
+						<td><span class="pointRed">환불</span> - 홈즈</td>
+						<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
+						<td>2016.03.02</td>
+						<td>20일</td>
+						<td>-10,000</td>
+					</tr>
+					<tr>
+						<td><span class="pointRed">환불</span> - 홈즈</td>
+						<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
+						<td>2016.03.02</td>
+						<td>20일</td>
+						<td>-10,000</td>
+					</tr>
+				</table>
+				<ul class="infoOrder">
+					<li>· 포인트는 2008년 7월 9일 개정된 전자금융 시행령에 따라 최대 200만 포인트를 초과하여 보유 할 수 없습니다.</li>
+					<li>· 포인트 유효기간은 1년 입니다.</li>
+					<li>· 주문 시 포인트 사용 후 구매자 책임(단순변심 등)으로 취소/반품 시, 유효기간이 만료된 포인트는 소멸됩니다.</li>
+				</ul>
+			</section>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>

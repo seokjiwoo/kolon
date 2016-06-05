@@ -115,9 +115,11 @@
 									<tr>
 										<th scope="row">희망 실측 방문/상담 날짜 선택 (필수)</th>
 										<td>
+											<!-- datePicker -->
 											<div class="calendar">
-												<span class="calInp"><input type="text" class="it " title="상담 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜 선택</a></span>
+												<span class="calInp"><input type="text" title="상담 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜 선택</a></span>
 											</div>
+											<!--// datePicker -->
 											<select name="" title="상담시간 선택" style="width:247px;">
 												<option value="" selected="selected">시간</option>
 												<option value=""></option>
@@ -127,10 +129,12 @@
 									<tr>
 										<th scope="row">희망 시공기간 선택 (선택)</th>
 										<td>
+											<!-- datePicker -->
 											<div class="calendar cal2">
-												<span class="calInp"><input type="text" class="it " title="희망 시공 시작 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜선택</a></span> 
-												<span class="calInp"><input type="text" class="it " title="희망 시공 끝나는 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜선택</a></span>
+												<span class="calInp"><input type="text" title="희망 시공 시작 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜선택</a></span> 
+												<span class="calInp"><input type="text" title="희망 시공 끝나는 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜선택</a></span>
 											</div>
+											<!--// datePicker -->
 											<span class="underTxt">* 실측 상황에 따라 시공기간은 변경될 수 있습니다.</span>
 										</td>
 									</tr>
@@ -166,7 +170,7 @@
 												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">집이 오래되서 고치고 싶어요!</label></span></li>
 												<li><span class="radioBtn"><input type="radio" name="" value=""/><label for="">기타</label></span></li>
 											</ul>
-											<input type="text" class="it " title="기타 사항 입력" placeholder="기타 사항을 입력해 주세요." style="width:360px;"/>
+											<input type="text" title="기타 사항 입력" placeholder="기타 사항을 입력해 주세요." style="width:360px;"/>
 										</td>
 									</tr>
 									<tr>
@@ -203,11 +207,11 @@
 				<div class="oderCont">
 					<form method="post" action="/">
 						<div class="payTb payTbL">
-							<dl class="payS">
+							<dl class="payS minus">
 								<dt><div>상품금액<br/>(상품가 + 시공지비)</div></dt>
 								<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
 							</dl>
-							<dl class="payS">
+							<dl class="payS equal">
 								<dt><div>총 할인가</div></dt>
 								<dd>
 									<div>
@@ -279,7 +283,7 @@
 							<div class="oderTbW">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption></caption>
 												<colgroup>
@@ -322,7 +326,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>신용카드 결제</caption>
 												<colgroup>
@@ -368,7 +372,7 @@
 							<div class="oderTbW">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>무통장 입금 결제</caption>
 												<colgroup>
@@ -427,8 +431,8 @@
 																				<option value="" selected="selected">010</option>
 																				<option value=""></option>
 																			</select>
-																			<input type="text" class="it " title="" style="width:30px;"/>
-																			<input type="text" class="it " title="" style="width:30px;"/>
+																			<input type="text" title="" style="width:30px;"/>
+																			<input type="text" title="" style="width:30px;"/>
 																			<!--// 개인소득공제 : 휴대폰 번호 -->
 																			<!-- 개인소득공제 : 현금영수증 카드 -->
 																			<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
@@ -436,10 +440,10 @@
 																				<option value="">휴대폰번호</option>
 																			</select>
 																			<p class="inp4">
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
 																			</p> -->
 																			<!--// 개인소득공제 : 현금영수증 카드 -->
 																		</div>
@@ -447,9 +451,9 @@
 																		<!-- 사업자 지출 증빙 -->
 																		<div class="" id="cashCt2" style="display:none;">
 																			<p class="inp4">
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
 																			</p>
 																		</div>
 																		<!--// 사업자 지출 증빙 -->
@@ -464,7 +468,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>무통장입금 결제</caption>
 												<colgroup>
@@ -514,7 +518,7 @@
 							<div class="oderTbW" id="pay3">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>실시간 계좌이체 결제</caption>
 												<colgroup>
@@ -554,8 +558,8 @@
 																		<option value="" selected="selected">010</option>
 																		<option value=""></option>
 																	</select>
-																	<input type="text" class="it " title="" style="width:30px;"/>
-																	<input type="text" class="it " title="" style="width:30px;"/>
+																	<input type="text" title="" style="width:30px;"/>
+																	<input type="text" title="" style="width:30px;"/>
 																</li>
 																<!--// 개인소득공제 : 휴대폰 번호 -->
 																<!-- 개인소득공제 : 현금영수증 카드 -->
@@ -565,19 +569,19 @@
 																		<option value="">현금영수증 카드</option>
 																	</select>
 																	<p class="inp4">
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
 																	</p>
 																</li> -->
 																<!--// 개인소득공제 : 현금영수증 카드 -->
 																<!-- 사업자 지출 증빙 -->
 																<!-- <li>
 																	<p class="inp4">
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
 																	</p>
 																</li> -->
 																<!--// 사업자 지출 증빙 -->
@@ -590,7 +594,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>실시간 계좌이체 결제</caption>
 												<colgroup>
@@ -651,7 +655,7 @@
 							<table class="lineN">
 								<caption>시공 확정 정보</caption>
 								<colgroup>
-									<col width="*"/><col width="10%"/><col width="15%"/><col width="7%"/><col width="10%"/><col width="13%"/><col width="10%"/><col width="10%"/>
+									<col width="*"/><col width="10%"/><col width="15%"/><col width="10%"/><col width="13%"/><col width="13%"/>
 								</colgroup>
 								<thead>
 									<tr>
@@ -800,11 +804,11 @@
 				<div class="oderCont">
 					<form method="post" action="/">
 						<div class="payTb payTbL">
-							<dl class="payS">
+							<dl class="payS minus">
 								<dt><div>견적금액</div></dt>
 								<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
 							</dl>
-							<dl class="payS payS2">
+							<dl class="payS payS2 equal">
 								<dt><div>선결제금액</div></dt>
 								<dd>
 									<div>
@@ -880,7 +884,7 @@
 							<div class="oderTbW">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption></caption>
 												<colgroup>
@@ -923,7 +927,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>신용카드 결제</caption>
 												<colgroup>
@@ -973,7 +977,7 @@
 							<div class="oderTbW">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>무통장 입금 결제</caption>
 												<colgroup>
@@ -1032,8 +1036,8 @@
 																				<option value="" selected="selected">010</option>
 																				<option value=""></option>
 																			</select>
-																			<input type="text" class="it " title="" style="width:30px;"/>
-																			<input type="text" class="it " title="" style="width:30px;"/>
+																			<input type="text" title="" style="width:30px;"/>
+																			<input type="text" title="" style="width:30px;"/>
 																			<!--// 개인소득공제 : 휴대폰 번호 -->
 																			<!-- 개인소득공제 : 현금영수증 카드 -->
 																			<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
@@ -1041,10 +1045,10 @@
 																				<option value="">휴대폰번호</option>
 																			</select>
 																			<p class="inp4">
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
 																			</p> -->
 																			<!--// 개인소득공제 : 현금영수증 카드 -->
 																		</div>
@@ -1052,9 +1056,9 @@
 																		<!-- 사업자 지출 증빙 -->
 																		<div class="" id="cashCt2" style="display:none;">
 																			<p class="inp4">
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
-																				<input type="text" class="it " title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="" style="width:30px;"/>
 																			</p>
 																		</div>
 																		<!--// 사업자 지출 증빙 -->
@@ -1069,7 +1073,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>무통장입금 결제</caption>
 												<colgroup>
@@ -1119,7 +1123,7 @@
 							<div class="oderTbW" id="pay3">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>실시간 계좌이체 결제</caption>
 												<colgroup>
@@ -1159,8 +1163,8 @@
 																		<option value="" selected="selected">010</option>
 																		<option value=""></option>
 																	</select>
-																	<input type="text" class="it " title="" style="width:30px;"/>
-																	<input type="text" class="it " title="" style="width:30px;"/>
+																	<input type="text" title="" style="width:30px;"/>
+																	<input type="text" title="" style="width:30px;"/>
 																</li>
 																<!--// 개인소득공제 : 휴대폰 번호 -->
 																<!-- 개인소득공제 : 현금영수증 카드 -->
@@ -1170,19 +1174,19 @@
 																		<option value="">현금영수증 카드</option>
 																	</select>
 																	<p class="inp4">
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
 																	</p>
 																</li> -->
 																<!--// 개인소득공제 : 현금영수증 카드 -->
 																<!-- 사업자 지출 증빙 -->
 																<!-- <li>
 																	<p class="inp4">
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
-																		<input type="text" class="it " title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
+																		<input type="text" title="" style="width:30px;"/>
 																	</p>
 																</li> -->
 																<!--// 사업자 지출 증빙 -->
@@ -1195,7 +1199,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>실시간 계좌이체 결제</caption>
 												<colgroup>
@@ -1245,7 +1249,7 @@
 							<div class="oderTbW">
 								<form method="post" action="/">
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>할부결제</caption>
 												<colgroup>
@@ -1284,7 +1288,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="oderTb lineN">
+										<div class="tbSet oderTb lineN">
 											<table>
 												<caption>할부결제</caption>
 												<colgroup>

@@ -320,15 +320,30 @@
 .cardWrap .formListWrap:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
 .cardWrap .formListWrap .cardCollect, .cardWrap .formListWrap .formList{display: inline-block;vertical-align: middle;margin: 0;}
 
-.my .cartList{width:100%; margin-top:19px; overflow:hidden;}
-.my .cartList tr td{border-bottom:1px solid #e1e1e1; position:relative;}
-.my .cartList tr td .cartChk { position:absolute; top:50px; left:20px;}
-.my .cartChk{width:30px; height:30px; background:#ccc url('../images/ico_checkL.png') center no-repeat; border-radius:50%; vertical-align:middle; text-align:center;}
-.my .cartChk.on{background-color:#2ecc71;}
-.my .cartChk input[type="checkbox"] {position: absolute;opacity: 0;}
-.my .cartChk label {width:150px; display:inline-block; padding:8px 0 0 39px; text-align:left;}
-.my .cartList tr td p.price {font-size:22px;}
-.my .cartList tr td p.price b {font-weight:bold;}
-.my .cartList tr td .photoList {padding-left:40px;}
-.my .cartList + .btnG {padding:20px 20px 0;}
-.my .cartList + .btnG a.btnSizeS {padding:0 26px;}
+.my .cartCont {width:100%; overflow:hidden;}
+.my h2.secTit + .cartCont {margin-top:20px;}
+.my .tbSet table.chkTb tr td {}
+.my .cartChk {width:89%; min-height:30px; padding-left:40px; position:relative; overflow:hidden;}
+.my .cartChk p.chk {margin-top:-12px; position:absolute; top:50%; left:0; display:inline-block; z-index:1;}
+.my .chkAll {width:60%; margin-left:19px; float:left;}
+.my .tbSet table .optList {width:100%; overflow:hidden; margin-top:15px; text-align:left;}
+.my .tbSet table .optList .option {width:90%; padding:5px 30px 0 0; position:relative; display:inline-block;}
+.my .tbSet table .optList .option + .option {border-top:1px solid #d9d9d9;}
+.my .tbSet table .optList .option p {float:left; }
+.my .tbSet table .optList .option p.optionTit {width:126px; padding:5px 0; text-align:left;}
+.my .tbSet table .optList .option p.optionPrice {width:93px; padding:5px 0; text-align:right;}
+.my .tbSet table .optList .option p.optionNum {width:97px; position:relative; float:right;}
+.my .tbSet table .optList .option p.optionNum a,
+.my .tbSet table .optList .option p.optionNum span {display:inline-block; float:left;}
+.my .tbSet table .optList .option p.optionNum a {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
+.my .tbSet table .optList .option p.optionNum a.btnMinus {left:0; background:url(../images/ico_option.png) 0 0 no-repeat;}
+.my .tbSet table .optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
+.my .tbSet table .optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px; text-align:center;}
+.my .tbSet table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
+.my .btnG .btnR {margin-right:30px;}
+.my .btnG .btnR a + a {margin-left:5px;}
+.my .tbSet + .btnG {margin-top:20px;}
+.my .cartCont + h3.subTit {margin-top:20px;}
+.my .record + .infoOrder {margin-top:31px;}
+.my h2.secTit + .tbSet {margin-top:30px;}
+.my .oderSearch select + .btnSizeM2 { height:40px; margin-left:15px; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
