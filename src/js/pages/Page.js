@@ -4,8 +4,6 @@ module.exports = function() {
 	var SuperClass = require('../pagesCommon/PageCommon.js');
 	var Super = SuperClass();
 	
-	var winH;
-	
 	var callerObj = {
 		/**
 		 * SuperClass 연결
@@ -22,12 +20,9 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		
-		winH = $(window).height();
-		
 		// common
 		initMenu();
 		initFloating();
-		initPopup();
 		opinionToggle();
 		initCardRadio();
 		
@@ -187,32 +182,6 @@ module.exports = function() {
 			slideWidth: 100,
 		});
 	};
-	
-	function initPopup(){
-		$('.btnPop').on('click', function(e) {// layer popup open
-			var popup = $(this).attr('href');
-			e.preventDefault();
-			$(popup).show();
-			$('#dim').show();
-		});
-		$('.closePop').on('click', function(e) {// layer popup close
-			e.preventDefault();
-			$(this).parent('.lyPop').hide();
-			$('#dim').hide();
-		});
-		$.each($('.lyPop'), function(){
-			var popupH = $(this).show().height();
-			if(winH < popupH){
-				$(this).hide().css({
-					'top':'120px',
-					'bottom':'120px'
-				})
-				$(this).find('.popScroll').css('height',winH-490)
-			} else {
-				$(this).hide().css('margin-top',-popupH/2);
-			}
-		});
-	}
 	
 	function initCardRadio(){	
 		$('.cardCollect label').click(function(){// 개인화 수집 카드

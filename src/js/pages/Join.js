@@ -63,6 +63,14 @@ module.exports = function() {
 			
 			e.stopPropagation();
 		});
+		
+		$('#popAgree01').click(function(e) {
+			Super.Super.messagePopup('플랫폼 이용약관', '개인정보 수집/이용 항목 및 목적', '약관 본문');
+		});
+		
+		$('#popAgree02').click(function(e) {
+			Super.Super.messagePopup('개인정보 이용약관', '개인정보 수집/이용 항목 및 목적', '약관 본문');
+		});
 	};
 	
 	/**
