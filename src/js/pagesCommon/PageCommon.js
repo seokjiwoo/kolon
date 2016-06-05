@@ -95,7 +95,7 @@ module.exports = function() {
 				width = 895;
 			}
 			
-			htmlPopup('../_popup/'+popupFile+'.html', width, userClass);
+			htmlPopup(popupFile, width, userClass);
 		});
 	};
 	
@@ -119,7 +119,7 @@ module.exports = function() {
 		var popupContent = false;
 		var fixed = (userClass.indexOf('absolutePosition') != -1);
 		
-		if (content.substr(-4, 4) == 'html') {
+		if (content.indexOf('.html') != -1) {
 			popupFile = content;
 		} else {
 			popupContent = content;
