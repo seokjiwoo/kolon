@@ -24,19 +24,25 @@ module.exports = function() {
 		winH = $(window).height();
 		
 		initTab();
-		initPopupLink();
-		
-		// radiobox
-		$('.radioBox label').click(function(){
-			$(this).addClass('on').siblings('label').removeClass('on');
-		});
-		
-		// checkbox
-		$('.checkbox label').click(function(){
-			if ($(this).siblings('input').val() != ':checked'){			
-				$(this).toggleClass('on');
-			}
-		});
+		$('.radioBox label').click(radioButtonHandler);	// radio button
+		$('.checkbox label').click(checkBoxHandler);	// checkbox
+		$('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
+	};
+	
+	/**
+	 * initalize radio button
+	 */
+	function radioButtonHandler(e) {
+		$(this).addClass('on').siblings('label').removeClass('on');
+	};
+	
+	/**
+	 * initalize checkbox
+	 */
+	function checkBoxHandler(e) {
+		if ($(this).siblings('input').val() != ':checked'){			
+			$(this).toggleClass('on');
+		}
 	};
 	
 	/**
@@ -79,14 +85,11 @@ module.exports = function() {
 		});
 	};
 	
-	/**
-	 * initalize basic Popup
-	 */
-	function initPopupLink() {
-		$('.btnPop').on('click', function(e) {
-			e.preventDefault();
+	function htmlPopupLinkHandler(e) {
+		e.preventDefault();
+		var popupFile = $(this).attr('href');
+		if (popupFile != '#') {
 			var userClass = $(this).data('userClass') == undefined ? '' : $(this).data('userClass');
-			var popupFile = $(this).attr('href').substr(1);
 			var width = '100%';
 			
 			if ($(this).hasClass('btnPopS')) {
@@ -96,7 +99,7 @@ module.exports = function() {
 			}
 			
 			htmlPopup(popupFile, width, userClass);
-		});
+		}
 	};
 	
 	function messagePopup(title, subTitle, popupContent, width) {

@@ -17,6 +17,9 @@ $(document).ready(function() {
 		case 'member-findLoginInformation':
 			PageModuleClass = require('./pages/FindLoginInformation.js');
 			break;
+		case 'member-findLoginPwReset':
+			PageModuleClass = require('./pages/ResetPassword.js');
+			break;
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;

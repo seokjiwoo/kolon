@@ -15,6 +15,9 @@ function ClassLoginController() {
 	
 	var loadingFlag = false;
 	
+	var tempMemberNumber;
+	var tempAuthKey;
+	
 	return {
 		getInstance: function() {
 			if (!instance) instance = LoginController();
@@ -39,6 +42,14 @@ function ClassLoginController() {
 			 * @param {String} pw - user password
 			 */
 			login: login,
+			/**
+			 * 회원가입 약관 목록 받아오기
+			 */
+			getMemberTermsList: getMemberTermsList,
+			/**
+			 * 회원가입 약관 본문 받아오기
+			 */
+			getMemberTermsContent: getMemberTermsContent,
 			/**
 			 * 이메일 중복 체크
 			 */
@@ -82,7 +93,7 @@ function ClassLoginController() {
 		}
 		
 		return callerObj;	
-	}
+	};
 	
 	/**
 	 * 로그인 POST
@@ -110,7 +121,33 @@ function ClassLoginController() {
 			if (status == 200) {
 				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
 			} else {
-				handleError('authLoginUrl', result);
+				handleError('getSocialLoginUrl', result);
+			}
+		}, true);
+	};
+	
+	/**
+	 * 약관 목록 받아오기
+	 */
+	function getMemberTermsList() {
+		callApi(API_URL+'/apis/member/terms', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('termsListResult', [result.data.memberTerms]);
+			} else {
+				handleError('getMemberTermsList', result);
+			}
+		}, true);
+	};
+	
+	/**
+	 * 약관 본문 받아오기
+	 */
+	function getMemberTermsContent(termsNumber) {
+		callApi(API_URL+'/apis/member/terms/'+termsNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('termsResult', [result.data.memberTerm]);
+			} else {
+				handleError('getMemberTermsContent', result);
 			}
 		}, false);
 	};
@@ -140,7 +177,7 @@ function ClassLoginController() {
 	};
 	
 	/**
-	 * 회원정보 수정 
+	 * 회원정보 변경 
 	 */
 	function editMemberInfo(id, pw, name, phone, birthdate) {
 		callApi(API_URL+'/apis/member', 'PUT', {
@@ -161,6 +198,29 @@ function ClassLoginController() {
 				handleError('join', result);
 			}
 		}, true);
+	};
+	
+	/**
+	 * 비밀번호 변경
+	 */
+	function changePassword(currentPassword, newPassword) {
+		var memberNumber = 0;
+		
+		callApi(API_URL+'/apis/member/changePassword', 'PUT', {
+			"currentPassword": currentPassword,
+			"memberNumber": memberNumber,
+			"newPassword": newPassword
+		}, function(status, result) {
+			if (status == 200) {
+				/* {
+					"errorCode": "string",
+					"message": "string",
+					"status": "string"
+				} */
+			} else {
+				handleError('changePassword', result);
+			}
+		}, false);
 	};
 	
 	/**
@@ -188,35 +248,11 @@ function ClassLoginController() {
 		}, function(status, result) {
 			if (status == '200') {
 				$(callerObj).trigger('findIdResult', [result, name, phone]);
-				/* {
-					"errorCode": "string",
-					"member": {
-						"site": {
-						"createDateTime": "string",
-						"email": "string"
-						},
-						"socials": [
-						{
-							"createDateTime": "string",
-							"endDateTime": "string",
-							"joinStatus": "string",
-							"memberNumber": 0,
-							"socialEmail": "string",
-							"socialName": "string",
-							"socialNumber": 0,
-							"socialSectionCode": "string",
-							"socialUniqueId": "string"
-						}
-						]
-					},
-					"message": "string",
-					"status": "string"
-				} */
 			} else {
 				handleError('findId', result);
 			}
 		}, false);
-	}
+	};
 	
 	/**
 	 * 비밀번호 찾기
@@ -236,22 +272,19 @@ function ClassLoginController() {
 	/**
 	 * 비밀번호 찾기 - 휴대폰 인증문자 보내기
 	 */
-	function authorizePhoneRequest(phone, name, verificationCode) {
+	function authorizePhoneRequest(phone, name) {
 		callApi(API_URL+'/apis/member/authorize/phone', 'POST', {
+			"authSectionCode": "BM_AUTH_SECTION_01",
 			"cellPhoneNumber": phone,
-			"memberName": name,
-			"verificationCode": verificationCode
+			"memberName": name
 		}, function(status, result) {
 			if (status == 200) {
-				/* {
-					"authorize": {
-						"authKey": "string",
-						"expiredTime": "string"
-					},
-					"errorCode": "string",
-					"message": "string",
-					"status": "string"
-				} */
+				console.log('> '+result.data.phoneAuthNumber);	// 임시코드. 실제 서비스에선 이게 날아오면 안 됨.
+				
+				tempMemberNumber = result.data.memberAuthorizePhone.memberNumber;
+				tempAuthKey = result.data.memberAuthorizePhone.authKey;		// 이건 phone/confirm에서 날아와야 하는 거 아닌가?
+				
+				$(callerObj).trigger('authorizePhoneRequestResult', [result, id]);
 			} else {
 				handleError('authorizePhoneRequest', result);
 			}
@@ -263,14 +296,13 @@ function ClassLoginController() {
 	 */
 	function authorizePhoneConfirm(authNumber) {
 		callApi(API_URL+'/apis/member/authorize/phone/confirm', 'POST', {
-			"authNumber": authNumber
+			"authNumber": authNumber,
+			"memberNumber": tempMemberNumber
 		}, function(status, result) {
 			if (status == 200) {
-				/* {
-					"errorCode": "string",
-					"message": "string",
-					"status": "string"
-				} */
+				// tempAuthKey는 여기서 저장해야 할 거 같은데...
+				
+				$(callerObj).trigger('authorizePhoneConfirmResult', [result, tempAuthKey]);
 			} else {
 				handleError('authorizePhoneConfirm', result);
 			}
@@ -297,30 +329,7 @@ function ClassLoginController() {
 	};
 	
 	/**
-	 * 비밀번호 변경
-	 */
-	function changePassword(currentPassword, newPassword) {
-		var memberNumber = 0;
-		
-		callApi(API_URL+'/apis/member/changePassword', 'PUT', {
-			"currentPassword": currentPassword,
-			"memberNumber": memberNumber,
-			"newPassword": newPassword
-		}, function(status, result) {
-			if (status == 200) {
-				/* {
-					"errorCode": "string",
-					"message": "string",
-					"status": "string"
-				} */
-			} else {
-				handleError('changePassword', result);
-			}
-		}, false);
-	};
-	
-	/**
-	 * 비밀번호 설정
+	 * 비밀번호 재설정
 	 */
 	function resetPassword(authKey, newPassword) {
 		var memberNumber = 0;
@@ -360,11 +369,11 @@ function ClassLoginController() {
 	};
 	
 	/*
-	SNS 계정 연결 해제	DELETE	/apis/member/socials/{socialType}
-	
-	약관 목록	GET	/apis/member/terms
-	약관 상세	GET	/apis/member/terms/{termsNumber}
 	휴면 계정 활성화	POST	/apis/member/reuse
+	
+	SNS 계정 연결 해제	  DELETE	/apis/member/socials/{socialType}
+	SNS 계정 연결 			POST 	  /apis/member/socials/{socialType} 
+	SNS 계정 로그인 결과	 GET 	  /apis/member/socials/{socialType}/login
 	*/
 	
 	/**
@@ -389,14 +398,14 @@ function ClassLoginController() {
 			}
 			
 			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
-				callback.call(this, jqXHR.status, data);
 				loadingFlag = false;
+				callback.call(this, jqXHR.status, data);
 			}).fail(function(jqXHR, textStatus, errorThrown) {
+				loadingFlag = false;
 				callback.call(this, {
 					status: jqXHR.status,
 					message: errorThrown
 				});
-				loadingFlag = false;
 			});
 		}
 	};

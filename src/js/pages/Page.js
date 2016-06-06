@@ -42,7 +42,7 @@ module.exports = function() {
 		// tab width depend on number of li
 		var countMenu = $('.tabType01 li').length ;
 		$('.tabType01 li').css('width',100/countMenu+'%');
-	}
+	};
 	
 	function initMenu(){
 		$('#btnLnb').on('click', function(e) {//lnb open
@@ -72,7 +72,7 @@ module.exports = function() {
 				$('#searchWrap').animate({'top':'60px'},250);
 			}		
 		});
-	}
+	};
 	
 	function initFloating(){
 		$('#floatingToggle').on('click', function(e) {// floating menu drop-down
@@ -190,7 +190,7 @@ module.exports = function() {
 				$(this).parent().siblings().removeClass('on');
 			}
 		});
-	}
+	};
 
 	// 11의견묻기_02의견묻기작성 (작성하기영역 열기,닫기)
 	function opinionToggle(){
@@ -217,6 +217,6 @@ module.exports = function() {
 			}
 		};
 		init();
-	}
+	};
 
 }

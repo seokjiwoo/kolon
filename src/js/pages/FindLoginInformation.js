@@ -5,9 +5,22 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var controller = require('../controller/LoginController');
+	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(controller).on('findIdResult', findIdResultHandler);
 	$(controller).on('findPwResult', findPwResultHandler);
+	$(controller).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
+	$(controller).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
 	var util = require('../utils/Util.js');
+	
+	var socialName = {
+		"facebook": "페이스북",
+		"naver": "네이버",
+		"kakao": "카카오"
+	};
+	var tempMemberNumber;
+	var tempName;
+	var tempId;
+	var tempAuthKey;
 	
 	var callerObj = {
 		/**
@@ -40,13 +53,15 @@ module.exports = function() {
 	 */
 	function initForm(e) {
 		if (e != undefined) e.preventDefault();
+		Cookies.remove('loginPwReset');
+		
 		$('#inputPhone').val('');
 		$('#inputName').val('');
 		$('#inputId').val('');
 	
 		$('#findInfoForm').show().siblings('div').hide();
 		if (e != undefined) e.stopPropagation();
-	}
+	};
 	
 	/**
 	 * ID찾기 폼 submit 
@@ -75,25 +90,32 @@ module.exports = function() {
 	function findIdResultHandler(e, result, name, phone) {
 		switch(result.status) {
 			case '200':
-			case '500':	// 임시.
-				$('#idResultName').text('바야바');
-				$('#idResultPhone').text('00000000000');
-				$('#idResultId').text('ea********@altavista.co.kr');
-				$('#idResultJoinDate').text('1994. 04. 20');
-				
-				var socialTags = '';
-				socialTags += '<div class="accountSummary">';
-				socialTags += '<p><b>Kol***@gma***.com</b><br>가입일: 2016. 04. 20</p>';
-				socialTags += '<a href="" class="btn loginSns facebook btnSizeM btnShadow" id="socialLogin-facebook">페이스북 로그인</a>';
-				// socialTags += '<a href="" class="btn loginSns naver btnSizeM btnShadow" id="socialLogin-naver">네이버 로그인</a>';
-				// socialTags += '<a href="" class="btn loginSns kakao btnSizeM btnShadow" id="socialLogin-kakao">카카오 로그인</a>';
-				socialTags += '</div>';
-				$('#socialAccount').html(socialTags);
-				
-				$('#findIdResult').show().siblings('div').hide();
+				if (result.data.members.length == 1) {
+					var memberData = result.data.members[0];
+					$('#idResultName').text(name);
+					$('#idResultPhone').text(memberData.site.cellPhoneNumber);
+					$('#idResultId').text(memberData.site.loginId);
+					$('#idResultJoinDate').text('1994. 04. 20');
+					
+					var socialTags = '';
+					for (var eachSnsKey in memberData.socials) {
+						var eachSns = memberData.socials[eachSnsKey];
+						var joinSnsDate = eachSns.createDateTime.split(' ')[0].replace(/\-/gi, '. ');  // "2016-05-13 08:29:29.0"
+						
+						socialTags += '<div class="accountSummary">';
+						socialTags += '<p><b>'+eachSns.socialEmail+'</b><br>가입일: '+joinSnsDate+'</p>';
+						socialTags += '<a href="" class="btn loginSns '+eachSns.socialName+' btnSizeM btnShadow" id="socialLogin-'+eachSns.socialName+'">'+socialName[eachSns.socialName]+' 로그인</a>';
+						socialTags += '</div>';
+					}
+					$('#socialAccount').html(socialTags);
+					
+					controller.getSocialLoginUrl();
+				} else {
+					alert(name+" / "+phone+"\n\n일치하는 아이디가 없습니다.\n입력하신 정보를 다시 한 번 확인해주세요.");
+				}
 				break;
 				
-			case '500':	// 임시.
+			case '500':
 				alert(name+" / "+phone+"\n\n일치하는 아이디가 없습니다.\n입력하신 정보를 다시 한 번 확인해주세요.");
 				break;
 		}
@@ -110,6 +132,7 @@ module.exports = function() {
 		if (id == '' || !util.checkVaildEmail(id)) {
 			alert('아이디(이메일)를 정확하게 입력해주세요');
 		} else {
+			tempAuthKey = '';
 			controller.findPassword(id);
 		}
 		
@@ -122,8 +145,12 @@ module.exports = function() {
 	function findPwResultHandler(e, result, id) {
 		switch(result.status) {
 			case '200':
-				$('#pwResultName').text(result.data.site.memberNumber);
-				$('#pwResultMail').text(result.data.site.loginId);
+				tempMemberNumber = result.data.site.memberNumber;
+				tempName = result.data.site.memberNumber;
+				tempId = result.data.site.loginId;
+				
+				$('#pwResultName').text(tempName);
+				$('#pwResultMail').text(tempId);
 				$('#pwResultPhone').text(result.data.site.cellPhoneNumber);
 				
 				$('#findPwResult').show().siblings('div').hide();
@@ -154,8 +181,34 @@ module.exports = function() {
 	 */
 	function requestPhoneAuthNumber(e) {
 		e.preventDefault();
-		alert('인증번호가 발송되었습니다.'); 
+		
+		var phone = $.trim($('#findPwAuthPhonePhone').val());
+		var name = $.trim($('#findPwAuthPhoneName').val());
+		var phoneNumberRule = /^[0-9]{10,12}$/i;
+		
+		if (name == '') {
+			alert('이름을 입력해주세요');
+		} else if (phone == '' || !phoneNumberRule.test(phone)) {
+			alert('휴대폰번호를 입력해주세요');
+		} else {
+			controller.authorizePhoneRequest(phone, name);
+		}
+		
 		e.stopPropagation();
+	};
+	
+	/**
+	 * 휴대전화 인증번호 요청결과 핸들링
+	 */
+	function authorizePhoneRequestHandler(e, result) {
+		switch(result.status) {
+			case '200':
+				alert('인증번호가 발송되었습니다.'); 
+				break;
+			default:
+				alert(result.message);
+				break;
+		}
 	};
 	
 	/**
@@ -163,22 +216,47 @@ module.exports = function() {
 	 */
 	function confirmPhoneAuthNumber(e) {
 		e.preventDefault();
-		//alert('휴대폰 인증에 성공하였습니다.');
-		alert('휴대폰 인증에 실패하였습니다. 인증번호를 다시 확인해 주세요.'); 
+		tempAuthKey = '';
+		
+		alert('휴대폰 인증번호를 입력해 주세요');
 		e.stopPropagation();
+	};
+	
+	/**
+	 * 휴대전화 인증번호 검증결과 핸들링
+	 */
+	function authorizePhoneConfirmHandler(e, result, tempAuthKey) {
+		switch(result.status) {
+			case '200':
+				alert('휴대폰 인증에 성공하였습니다.');
+				tempAuthKey = tempAuthKey;
+				break;
+			case '400':
+				alert('휴대폰 인증에 실패하였습니다. 인증번호를 다시 확인해 주세요.'); 
+				break;
+			default:
+				alert(result.message);
+				break;
+		}
 	};
 	
 	/**
 	 * 휴대전화 인증 완료
 	 */
 	function completePhoneAuthNumber(e) {
-		if (true) {
-			// link
-		} else {
-			e.preventDefault();
+		e.preventDefault();
+		if (tempAuthKey == '') {
 			alert('휴대폰 인증을 진행해 주세요.');
-			e.stopPropagation();
+		} else {
+			Cookies.set('loginPwReset', {
+				memberNumber: tempMemberNumber,
+				name: tempName,
+				mail: tempId,
+				authKey: tempAuthKey
+			}, { expires: 1 });	// 1/288	// 5 minutes
+			location.href = 'findLoginPwReset.html';
 		}
+		e.stopPropagation();
 	};
 	
 	/**
@@ -197,5 +275,17 @@ module.exports = function() {
 		e.preventDefault();
 		alert('인증메일이 재발송 되었습니다');
 		e.stopPropagation();
+	};
+	
+	/**
+	 * 소셜 로그인 URL 목록처리
+	 */
+	function socialLoginUrlResultHandler(e, status, socialAuthLoginUrl) {
+		for (var key in socialAuthLoginUrl) {
+			var eachService = socialAuthLoginUrl[key];
+			$('#socialLogin-'+eachService.socialName).attr('href', eachService.authUrl);
+		}
+
+		$('#findIdResult').show().siblings('div').hide();
 	};
 }
