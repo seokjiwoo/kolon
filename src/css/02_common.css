@@ -133,8 +133,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .loginSns{font-family:'RobotoR','NotoSansR', sans-serif;color: #666;border:1px solid #e3e3e3;}
 .loginSns:before{content: '';display: inline-block;width: 35px;height: 18px;border-right: 1px solid #c2c2c2;margin-right:20px;background: url('../images/ico_login.png') no-repeat;vertical-align: middle;}
-#loginN:before{background-position: -35px 0}
-#loginKs:before{background-position: -70px 0}
+.loginSns.naver:before{background-position: -35px 0}
+.loginSns.kakao:before{background-position: -70px 0}
 
 /* form */
 .formWrap{width: 890px;margin:60px auto 0;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
