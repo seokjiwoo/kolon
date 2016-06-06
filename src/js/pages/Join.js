@@ -5,6 +5,8 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var controller = require('../controller/LoginController');
+	$(controller).on('termsListResult', termsListHandler);
+	$(controller).on('termsResult', termsContentHandler);
 	$(controller).on('checkEmailResult', checkEmailResultHandler);
 	$(controller).on('joinResult', joinResultHandler);
 	var util = require('../utils/Util.js');
@@ -38,8 +40,42 @@ module.exports = function() {
 		$('#joinPW').change(checkPasswordField);
 		$('#joinPW02').change(checkPasswordField);
 		$('#joinPhone').change(checkPhoneField);
-		
+		$('#popAgree01').click(getTermsContent);
+		$('#popAgree02').click(getTermsContent);
 		$('#joinForm').submit(submitJoinForm);
+		
+		controller.getMemberTermsList();
+	};
+	
+	/**
+	 * 회원 이용약관 목록 핸들링
+	 */
+	function termsListHandler(e, termsList) {
+		for (var key in termsList) {
+			var eachTerms = termsList[key];
+			switch(eachTerms.termsName) {
+				case '플랫폼이용약관':
+					$('#popAgree01').data('termsNumber', eachTerms.termsNumber);
+					break;
+				case '개인정보 취급방침':
+					$('#popAgree02').data('termsNumber', eachTerms.termsNumber);
+					break;
+			}
+		}
+	};
+	
+	/**
+	 * 회원 이용약관 본문 요청
+	 */
+	function getTermsContent(e) {
+		controller.getMemberTermsContent($(this).data('termsNumber'));
+	};
+	
+	/**
+	 * 회원 이용약관 본문 핸들링
+	 */
+	function termsContentHandler(e, term) {
+		Super.Super.messagePopup(term.termsName, term.termsName, term.termsContents, 540);
 	};
 	
 	/**

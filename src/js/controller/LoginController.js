@@ -43,6 +43,14 @@ function ClassLoginController() {
 			 */
 			login: login,
 			/**
+			 * 회원가입 약관 목록 받아오기
+			 */
+			getMemberTermsList: getMemberTermsList,
+			/**
+			 * 회원가입 약관 본문 받아오기
+			 */
+			getMemberTermsContent: getMemberTermsContent,
+			/**
 			 * 이메일 중복 체크
 			 */
 			checkEmail: checkEmail,
@@ -113,9 +121,35 @@ function ClassLoginController() {
 			if (status == 200) {
 				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
 			} else {
-				handleError('authLoginUrl', result);
+				handleError('getSocialLoginUrl', result);
 			}
 		}, true);
+	};
+	
+	/**
+	 * 약관 목록 받아오기
+	 */
+	function getMemberTermsList() {
+		callApi(API_URL+'/apis/member/terms', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('termsListResult', [result.data.memberTerms]);
+			} else {
+				handleError('getMemberTermsList', result);
+			}
+		}, true);
+	};
+	
+	/**
+	 * 약관 본문 받아오기
+	 */
+	function getMemberTermsContent(termsNumber) {
+		callApi(API_URL+'/apis/member/terms/'+termsNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('termsResult', [result.data.memberTerm]);
+			} else {
+				handleError('getMemberTermsContent', result);
+			}
+		}, false);
 	};
 	
 	/**
@@ -337,8 +371,6 @@ function ClassLoginController() {
 	/*
 	SNS 계정 연결 해제	DELETE	/apis/member/socials/{socialType}
 	
-	약관 목록	GET	/apis/member/terms
-	약관 상세	GET	/apis/member/terms/{termsNumber}
 	휴면 계정 활성화	POST	/apis/member/reuse
 	*/
 	
