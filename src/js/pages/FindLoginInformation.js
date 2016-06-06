@@ -4,12 +4,14 @@ module.exports = function() {
 	var SuperClass = require('./Page.js');
 	var Super = SuperClass();
 	
-	var controller = require('../controller/LoginController');
-	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
-	$(controller).on('findIdResult', findIdResultHandler);
-	$(controller).on('findPwResult', findPwResultHandler);
-	$(controller).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
-	$(controller).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
+	var loginController = require('../controller/LoginController');
+	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
+	
+	var infoController = require('../controller/MemberInfoController');
+	$(infoController).on('findIdResult', findIdResultHandler);
+	$(infoController).on('findPwResult', findPwResultHandler);
+	$(infoController).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
+	$(infoController).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
 	var util = require('../utils/Util.js');
 	
 	var socialName = {
@@ -78,7 +80,7 @@ module.exports = function() {
 		} else if (phone == '' || !phoneNumberRule.test(phone)) {
 			alert('휴대폰번호를 입력해주세요');
 		} else {
-			controller.findId(name, phone);
+			infoController.findId(name, phone);
 		}
 		
 		e.stopPropagation();
@@ -109,7 +111,7 @@ module.exports = function() {
 					}
 					$('#socialAccount').html(socialTags);
 					
-					controller.getSocialLoginUrl();
+					infoController.getSocialLoginUrl();
 				} else {
 					alert(name+" / "+phone+"\n\n일치하는 아이디가 없습니다.\n입력하신 정보를 다시 한 번 확인해주세요.");
 				}
@@ -133,7 +135,7 @@ module.exports = function() {
 			alert('아이디(이메일)를 정확하게 입력해주세요');
 		} else {
 			tempAuthKey = '';
-			controller.findPassword(id);
+			infoController.findPassword(id);
 		}
 		
 		e.stopPropagation();
@@ -191,7 +193,7 @@ module.exports = function() {
 		} else if (phone == '' || !phoneNumberRule.test(phone)) {
 			alert('휴대폰번호를 입력해주세요');
 		} else {
-			controller.authorizePhoneRequest(phone, name);
+			infoController.authorizePhoneRequest(phone, name);
 		}
 		
 		e.stopPropagation();
