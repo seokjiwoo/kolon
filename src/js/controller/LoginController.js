@@ -369,9 +369,11 @@ function ClassLoginController() {
 	};
 	
 	/*
-	SNS 계정 연결 해제	DELETE	/apis/member/socials/{socialType}
-	
 	휴면 계정 활성화	POST	/apis/member/reuse
+	
+	SNS 계정 연결 해제	  DELETE	/apis/member/socials/{socialType}
+	SNS 계정 연결 			POST 	  /apis/member/socials/{socialType} 
+	SNS 계정 로그인 결과	 GET 	  /apis/member/socials/{socialType}/login
 	*/
 	
 	/**
