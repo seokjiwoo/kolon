@@ -15,5 +15,5 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
-	}
+	};
 }

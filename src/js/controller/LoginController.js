@@ -85,7 +85,7 @@ function ClassLoginController() {
 		}
 		
 		return callerObj;	
-	}
+	};
 	
 	/**
 	 * 로그인 POST
@@ -218,7 +218,7 @@ function ClassLoginController() {
 				handleError('findId', result);
 			}
 		}, false);
-	}
+	};
 	
 	/**
 	 * 비밀번호 찾기

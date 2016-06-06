@@ -84,7 +84,7 @@ module.exports = function() {
 		}
 		
 		e.stopPropagation();
-	}
+	};
 	
 	/**
 	 * 이메일 필드 검사
@@ -133,7 +133,7 @@ module.exports = function() {
 				emailDuplicateFlag = true;
 				break;
 		}
-	}
+	};
 	
 	/**
 	 * 패스워드 필드 검사 
@@ -175,5 +175,5 @@ module.exports = function() {
 			tags += ('<option value="'+(i<10 ? '0'+i : i)+'">'+i+'</option>');
 		}
 		$('#joinBirth03').html(tags);
-	}
+	};
 }

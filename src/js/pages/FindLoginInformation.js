@@ -61,7 +61,7 @@ module.exports = function() {
 	
 		$('#findInfoForm').show().siblings('div').hide();
 		if (e != undefined) e.stopPropagation();
-	}
+	};
 	
 	/**
 	 * ID찾기 폼 submit 
