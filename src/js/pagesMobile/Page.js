@@ -27,9 +27,15 @@ module.exports = function() {
 			var margin = 0;
 			$(this).find('li').each(function(index) {
 				totalWidth += parseInt($(this).width(), 10);
-				margin += parseInt($(this).css('margin-left'), 10);
+				margin += parseInt($(this).css('margin-right'), 10);
 			});
 			$(this).find('ul').css('width',totalWidth+margin);
 		})
+		$('.btnToggle').on('click', function(e) {
+			e.preventDefault();
+			var slideCon = $(this).attr('href');
+			$(this).toggleClass('open');
+			$(slideCon).slideToggle();
+		});
 	}
 }
