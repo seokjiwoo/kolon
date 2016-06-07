@@ -22,19 +22,20 @@
 .colWrap{overflow: hidden;}
 .col{width:50%;float: left;}
 
-.plate{padding: 23px 15px 0;margin-top:10px;background: #fff;box-shadow: 0px 2px rgba(0,0,0,0.1);}
-.plate .secTit{padding-bottom: 10px;border-bottom: 1px solid #000;font-size: 15px;color: #000;font-weight: bold}
-.plate .more{position: relative;top:-10px;float: right;padding: 12px;font-size: 11px;color: #666;}
+.plate{padding: 23px 15px;margin-top:10px;background: #fff;box-shadow: 0px 2px rgba(0,0,0,0.1);}
+.plate02{padding: 23px 15px 0}
+.plate .plateTit{padding-bottom: 10px;border-bottom: 1px solid #000;font-size: 15px;color: #000;}
+.plate .more{position: relative;margin-top:-10px;float: right;padding: 12px;font-size: 11px;color: #666;}
 .plate .more:after{content: '';position: absolute;top:13px;right: 0;width: 6px;height: 11px;margin-left: 7px;background: url('../images/ico_arrowG.png') no-repeat;background-size: 100%;}
 .plate .noContent{display: none;padding: 70px 0 50px;text-align: center;font-size: 15px;color: #666;}
 
-.plate .tabWrap{overflow: hidden;width: 100%;padding: 10px 0;border-bottom: 1px solid #ccc;}
-.plate .tabWrap li{position: relative;float: left;width: 50%;border:1px solid #ccc;}
-.plate .tabWrap li:first-child{border-right: 0;border-radius: 8px 0  0 8px;}
-.plate .tabWrap li:last-child{border-left: 0;border-radius: 0 8px 8px 0;}
-.plate .tabWrap a{display: block;text-align: center;font-size: 13px;color: #999;line-height: 30px;}
-.plate .tabWrap .on{border-color:#f1645c;background: #f1645c;}
-.plate .tabWrap .on a{color: #fff;}
+.plate .tabSquare{overflow: hidden;width: 100%;padding: 10px 0;border-bottom: 1px solid #ccc;}
+.plate .tabSquare li{position: relative;float: left;width: 50%;border:1px solid #ccc;}
+.plate .tabSquare li:first-child{border-right: 0;border-radius: 8px 0  0 8px;}
+.plate .tabSquare li:last-child{border-left: 0;border-radius: 0 8px 8px 0;}
+.plate .tabSquare a{display: block;text-align: center;font-size: 13px;color: #999;line-height: 30px;}
+.plate .tabSquare .on{border-color:#f1645c;background: #f1645c;}
+.plate .tabSquare .on a{color: #fff;}
 
 .previewList li{overflow: hidden;position: relative;width: 100%;padding: 20px 0;border-top:1px solid #ccc;}
 .previewList .previewWrap{overflow: hidden;}
@@ -61,3 +62,18 @@
 .pageWrap .wrap{padding:0 15px;}
 
 .slideCon{display: none;}
+
+.formWrap{width: 100%;margin-top:10px;border-top:1px solid #666;border-bottom: 1px solid #c4c4c4;}
+.formWrap th, .formWrap td{padding: 10px;border-top:1px solid #e8e8e8;}
+.formWrap th{width: 26%;background: #f8f8f8;color: #000;text-align: center;}
+.formWrap tr:first-child th, .formWrap tr:first-child td{border-top:0;}
+.shipAddress p{margin-top: 10px;}
+.zipCode{position: relative;padding-right: 100px;}
+.zipCode a{right: 0;top:0;}
+.zipCode label{position: absolute;top: 0;right: 0;padding:0 20px;;background: #f1645c;border-radius: 15px;font-size: 13px; line-height:30px;color: #fff;}
+.partTit{margin-top: 20px;font-size: 12px;color: #000;}
+
+.textWrap{margin-top: 10px;padding:15px 10px;border-top: 1px solid #666;border-bottom: 1px solid #c4c4c4;background: #f8f8f8;}
+.textWrap textarea{width: 100%;min-height: 90px;margin-top: 10px;padding: 10px;font-size: 13px;}
+.textWrap .countTxt{margin-top:7px;text-align: right;color: #666;}
+.textWrap .countTxt span{color: #999}

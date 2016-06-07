@@ -33,9 +33,8 @@ module.exports = function() {
 		})
 		$('.btnToggle').on('click', function(e) {
 			e.preventDefault();
-			var slideCon = $(this).attr('href');
 			$(this).toggleClass('open');
-			$(slideCon).slideToggle();
+			$(this).siblings('.slideCon').slideToggle();
 		});
 	}
 }

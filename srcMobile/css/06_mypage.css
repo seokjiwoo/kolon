@@ -91,7 +91,37 @@
 
 .inputMessage{position: fixed;bottom: 0;left: 0;width: 100%;box-shadow:0px -2px 0px rgba(0,0,0,.15);}
 .inputMessage fieldset{overflow: hidden;position: relative;height: 45px;padding:0 65px 0 45px;}
-.inputMessage input[type="text"]{border:0;line-height:30px;}
+.inputMessage input[type="text"]{border:0;line-height:35px;}
 .inputMessage input[type="file"]{position: absolute;top:-30px;}
 .inputMessage .btnSend{position: absolute;top:14px;right: 10px;;color: #a9c700;background: none;border:0;}
 .inputMessage .attachPic{position: absolute;top:14px;left: 15px;display: inline-block;width: 25px;height: 18px;background: url('../images/ico_pic.png') no-repeat; background-size: 100%;}
+
+.selectAddress .tabWrap{padding: 15px 0 5px;text-align: center;}
+.selectAddress .tabWrap li{display: inline-block;width:45%;margin:0 1%;}
+.selectAddress .tabWrap a{width: 100%;background:#a0a0a0; }
+.selectAddress .tabWrap .on a{background: #a9c700;font-weight: bold;}
+#lastAddress > select{margin:10px 0;} 
+
+#myOrder .tabCon{padding-bottom: 25px;border-bottom: 1px solid #c4c4c4}
+.my .secTit{margin-bottom: 20px;padding-bottom: 10px;border-bottom: 1px solid #666;font-size: 18px;color: #000;}
+
+.goodsInfo li{position: relative;overflow: hidden;padding: 15px 0;}
+.goodsInfo .btnToggle{display: block;position: absolute;top:10px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
+.goodsInfo .btnToggle.open{background-position: 2px 5px;}
+.goodsInfo .listTit{background: #f8f8f8;padding: 15px;color: #333;line-height: 10px;}
+.goodsInfo .pic{float: left;width: 90px;height: 90px;margin-right: 15px;}
+.goodsInfo .pic img{display: block;width: 100%;}
+.goodsInfo .tit{font-size: 15px;font-weight: bold;line-height: 1.2em;}
+.goodsInfo .sub{font-size: 15px;color: #999;line-height: 1.2em;}
+.goodsInfo .price{margin-top: 15px;padding-top: 15px;border-top:1px solid #dbdbdb;text-align: right;font-size: 15px;color: #f1645c;}
+.goodsInfo .price b{font-size: 20px;}
+.goodsInfo .price .count{color: #999;}
+.goodsInfo .price .count:before{content: '';display: inline-block;width: 1px;height: 14px;margin:0 8px;vertical-align: middle;background: #dcdcdc;}
+.goodsInfo .slideCon{overflow: hidden;;width: 100%;margin-top:15px;padding:15px 0;background: #f7f7f7;color: #666;line-height: 1.3em;}
+.goodsInfo .slideCon > *{float: left;width: 50%;}
+.goodsInfo .slideCon .total{border-top:1px solid #dbdbdb;}
+.goodsInfo .slideCon dt{padding-left: 15px;}
+.goodsInfo .slideCon dd{padding-right: 15px;text-align: right;}
+.goodsInfo .slideCon dt.total{color: #000;margin-top:10px;padding-top: 10px;}
+.goodsInfo .slideCon dd.total{color: #f1645c;margin-top:10px;padding-top: 10px;}
+
