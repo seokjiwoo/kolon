@@ -177,8 +177,9 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}
-.radioBox label:before{content: '';display: inline-block;width: 18px;height: 18px;margin-right:5px;background: url('../images/ico_radio.png') no-repeat;vertical-align: middle;}
-.radioBox label.on:before{background-position: 0 -18px;}
+.radioBox label:before{content: '';display: inline-block;width: 18px;height: 18px;margin-right:5px;background: url('../images/ico_radio.png') 0 -18px no-repeat;vertical-align: middle;}
+.radioBox label.on:before{background-position: 0 0;}
+.radioBox label {color:#000;}
 
 .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
 .checkbox {position: relative;margin-top:18px;}
@@ -193,6 +194,11 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .listSquare li:before{content: '';position: absolute;top: 5px;left: 0;width: 2px;height: 2px;background: #999;}
 
 /* board */
+table tr th.txtR,
+table tr td.txtR {text-align:right !important;}
+table tr th.txtL,
+table tr td.txtL {text-align:left !important;}
+
 .tbSet {width:100%; display:inline-block; border-top:1px solid #545454;}
 .tbSet table{width: 100%; border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .tbSet table.tbL tr th,
@@ -202,29 +208,58 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .tbSet table th{padding: 20px;background: #f8f8f8;color: #333; font-family:'NotoSansR','RobotoR', sans-serif;}
 .tbSet table tbody tr + tr th {border-top:1px solid #e8e8e8;}
 .tbSet table td{padding:20px;}
-.tbSet table tr th.txtR,
-.tbSet table tr td.txtR {text-align:right !important;}
-.tbSet table tr th.txtL,
-.tbSet table tr td.txtL {text-align:left !important;}
 .tbSet table tr + tr td {border-top:1px solid #e8e8e8;}
 .tbSet table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
 .tbSet table.lineN {border-bottom:0;}
-.tbSet .tbSBg {width:100%; overflow:hidden; border-top:1px solid #e8e8e8;}
-.tbSet .tbSBg table {border-bottom:1px solid #e8e8e8;}
-.tbSet .tbSBg table th {background:#f2f4f4;}
-.tbSet .tbSBg table td {background:#fafafa; font-family:'NotoSansR','RobotoR', sans-serif; color:#666;}
-.tbSet .tbSBg table td span.price {color:#333}
+.tbSBg {width:100%; overflow:hidden; border-top:1px solid #e8e8e8; margin-top:-1px !important;}
+.tbSBg table {border-bottom:1px solid #e8e8e8;}
+.tbSBg table th {background:#f2f4f4;}
+.tbSBg table td {background:#fafafa; font-family:'NotoSansR','RobotoR', sans-serif; color:#666;}
+.tbSBg table td span.price {color:#333}
 
-.tbSet table tr td .photoList {width:100%; height:90px; display:inline-block; position:relative; display:table-cell; vertical-align:middle;}
-.tbSet table tr td .photoList span.thumb,
-.tbSet table tr td .photoList span.thumb img{width:90px; height:90px;}
-.tbSet table tr td .photoList span.thumb {display:inline-block; position:absolute; top:0; left:0;}
-.tbSet table tr td .photoList span.thumb + span.cartInfo {margin-left:9px;}
-.tbSet table tr td .photoList span.cartInfo {padding-left:95px; display:inline-block; text-align:left;}
-.tbSet table tr td .photoList span.cartInfo span {width:100%;}
-.tbSet table tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
-.tbSet table tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'RobotoL','NotoSansL', sans-serif;}
-.tbSet table tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR','RobotoR', sans-serif;}
+table tr td .photoList {width:100%; height:90px; display:inline-block; position:relative; display:table-cell; vertical-align:middle;}
+table tr td .photoList span.thumb,
+table tr td .photoList span.thumb img{width:90px; height:90px;}
+table tr td .photoList span.thumb {display:inline-block; position:absolute; top:0; left:0;}
+table tr td .photoList span.thumb + span.cartInfo {margin-left:9px;}
+table tr td .photoList span.cartInfo {padding-left:95px; display:inline-block; text-align:left;}
+table tr td .photoList span.cartInfo span {width:100%;}
+table tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%;}
+table tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'RobotoL','NotoSansL', sans-serif;}
+table tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR','RobotoR', sans-serif;}
+
+table .optList {width:100%; overflow:hidden; margin-top:15px; text-align:left;}
+table .optList .option {width:90%; padding:5px 30px 0 0; position:relative; display:inline-block;}
+table .optList .option + .option {border-top:1px solid #d9d9d9;}
+table .optList .option p {float:left; }
+table .optList .option p.optionTit {width:126px; padding:5px 0; text-align:left;}
+table .optList .option p.optionPrice {width:93px; padding:5px 0; text-align:right;}
+table .optList .option p.optionNum {width:97px; position:relative; float:right;}
+table .optList .option p.optionNum a,
+table .optList .option p.optionNum span {display:inline-block; float:left;}
+table .optList .option p.optionNum a {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
+table .optList .option p.optionNum a.btnMinus {left:0; background:url(../images/ico_option.png) 0 0 no-repeat;}
+table .optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
+table .optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px; text-align:center;}
+table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
+
+.adrArea dl {width:100%; margin:0; overflow:hidden;}
+.adrArea dl + dl {border-top:1px solid #e8e8e8;}
+.adrArea dl dt,
+.adrArea dl dd {float:left; font-size:14px; font-family:'RobotoR','NotoSansR', sans-serif; text-align:left;}
+.adrArea dl dt {padding:13px 13px 13px 0;}
+.adrArea dl dd {margin:0;}
+.adrArea dl dd + dd {padding-left:32px;}
+.adrArea dl dd select + input[type="text"] {margin-left:14px;}
+.adrArea dl dd.adrInfo {width:311px;}
+.adrArea dl dd.adrInfo select + a {margin-left:12px;}
+.adrArea dl dd.adrCon {width:583px; text-align:left;}
+.adrArea dl dd.adrCon p + p {margin-top:6px; color:#;}
+.adrArea dl dd.adrCon p {line-height:130%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
+.adrArea dl dd.adrCon p span + span {margin-left:19px;}
+.adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif;}
+.compt .adrArea dl dd {width:85%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
+.compt .adrArea dl dd div {height:42px; display:table-cell; vertical-align:middle;}
 
 .calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; border-radius:7px; display:inline;}
 .calendar span.calInp {width:; position:relative;}
@@ -233,3 +268,4 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .calendar.cal2 {background:url('../images/ico_calendar_bar.png') 50% 50% no-repeat;}
 .calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
 .calendar.cal2 span.calInp input[type="text"] {width:80px;}
+

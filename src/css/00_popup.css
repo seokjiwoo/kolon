@@ -36,3 +36,41 @@
         #cboxClose:active {outline:0;}
 
 #colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+.popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
+.popCon select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
+.popCon  fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
+
+.popCon .popTb {width:100%; display:inline-block; border-top:1px solid #545454;}
+.popCon .popTb table{width:100%; border-bottom:1px solid #ccc; font-family:'RobotoR','NotoSansR', sans-serif; font-size: 14px; text-align: center; line-height: 1.2em}
+.popCon .popTb table.tbL td {text-align:left;}
+.popCon .popTb table.tbL td.txtC {text-align:center;}
+.popCon .popTb table tr.basic td {background:#fefff5;}
+.popCon .popTb table tr th {padding:20px; background:#f8f8f8; color:#333; font-family:'NotoSansR','RobotoR', sans-serif;}
+.popCon .popTb table tr td {padding:20px; border-top:1px solid #e1e1e1;}
+.popCon .popTb table td + td {border-left:1px solid #e1e1e1;}
+.popCon .popTb table td a {color:#333;}
+.popCon .popTb table td em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%; font-size:12px;}
+.popCon .popTb table td span.adrList {width:100%; display:inline-block;}
+.popCon .popTb table td span.adrList span {width:100%; display:inline-block; font-family:'NotoSansL','RobotoL', sans-serif; color:#333;}
+.popCon .popTb table td span.adrList span b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif; display:inline-block; color:#333;}
+.popCon .popTb table td.btnZone .btnSizeS + .btnSizeS {margin-top:4px;}
+.popCon ul.addressForm {width:100%; overflow:hidden;}
+.popCon ul.addressForm li + li {margin-top:10px;}
+.popCon .adrBtnG {width:100%; overflow:hidden; margin-bottom:10px;}
+.popCon .adrBtnG .infoTxt {font-size:14px; font-family:'NotoSansL','RobotoL', sans-serif; display:inline-block;}
+.popCon .adrBtnG a.btnSizeM + .infoTxt {margin-left:10px;}
+.popCon .underTxt {font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
+.popCon input + .underTxt {width:100%; margin-top:10px; display:inline-block;}
+.popCon .searchBtnM {width:90px; height:40px; font-size:14px; border-radius:20px; line-height:40px;}
+.popCon .checkbox + .btnWrap,
+.popCon .popTb + .btnWrap {margin-top:24px;}
+.popCon .checkPw {width:100%; text-align:center;}
+.popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR','RobotoR', sans-serif;}
+ul.popList {width:100%; overflow:hidden;}
+ul.popList li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
+ul.popList li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-1px;}
+ul.popList li + li {margin-top:10px;}
+ul.popList + .btnWrap,
+.popCon form + .btnWrap {margin-top:40px;}
+.lyPop.orderPop .popCon {padding:20px 0;}

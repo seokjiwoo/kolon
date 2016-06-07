@@ -112,7 +112,7 @@
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 20px;background: #f8f8f8;color: #333;}
-.recordSort td{padding: 20px;}
+.recordSort td{padding: 15px;}
 .recordSort{margin:30px 0;text-align: left;}
 .recordSort tr:first-child td{padding-bottom: 0;}
 .sortTerm{display: inline-block;}
@@ -128,10 +128,10 @@
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
 .my .subTxt {font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
 
-.my .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
-.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
-.my .record td{padding: 15px;}
+.record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.record th, .record td{border-bottom: 1px solid #e1e1e1}
+.record th{padding: 20px;background: #f8f8f8;color: #333;}
+.record td{padding: 15px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
 .my .record .date a{color: #f1645c;text-decoration: underline;}
@@ -326,23 +326,10 @@
 .my .cartChk {width:89%; min-height:30px; padding-left:40px; position:relative; overflow:hidden;}
 .my .cartChk p.chk {margin-top:-12px; position:absolute; top:50%; left:0; display:inline-block; z-index:1;}
 .my .chkAll {width:60%; margin-left:19px; float:left;}
-.my .tbSet table .optList {width:100%; overflow:hidden; margin-top:15px; text-align:left;}
-.my .tbSet table .optList .option {width:90%; padding:5px 30px 0 0; position:relative; display:inline-block;}
-.my .tbSet table .optList .option + .option {border-top:1px solid #d9d9d9;}
-.my .tbSet table .optList .option p {float:left; }
-.my .tbSet table .optList .option p.optionTit {width:126px; padding:5px 0; text-align:left;}
-.my .tbSet table .optList .option p.optionPrice {width:93px; padding:5px 0; text-align:right;}
-.my .tbSet table .optList .option p.optionNum {width:97px; position:relative; float:right;}
-.my .tbSet table .optList .option p.optionNum a,
-.my .tbSet table .optList .option p.optionNum span {display:inline-block; float:left;}
-.my .tbSet table .optList .option p.optionNum a {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
-.my .tbSet table .optList .option p.optionNum a.btnMinus {left:0; background:url(../images/ico_option.png) 0 0 no-repeat;}
-.my .tbSet table .optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
-.my .tbSet table .optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px; text-align:center;}
-.my .tbSet table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
 .my .btnG .btnR {margin-right:30px;}
 .my .btnG .btnR a + a {margin-left:5px;}
-.my .tbSet + .btnG {margin-top:20px;}
+.my .tbSet + .btnG,
+.my table + .btnG {margin-top:20px;}
 .my .cartCont + h3.subTit {margin-top:20px;}
 .my .record + .infoOrder {margin-top:31px;}
 .my h2.secTit + .tbSet {margin-top:30px;}

@@ -25,6 +25,7 @@ module.exports = function() {
 		initFloating();
 		opinionToggle();
 		initCardRadio();
+		btnDel();
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -218,5 +219,16 @@ module.exports = function() {
 		};
 		init();
 	};
+
+	function btnDel(){
+		$('.optList').each(function(){ // 'myPage/cartGoods.html (배송형 상품)' option 삭제 버튼
+			$(this).find('.btnDel').click(function(){
+				$(this).parent().hide();
+			})
+			$(this).find('.option').eq(0).find('.btnDel').click(function(){
+				$(this).parent().next().css('border-top','0');
+			})
+		});
+	}
 
 }
