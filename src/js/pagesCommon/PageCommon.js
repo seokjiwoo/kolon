@@ -78,7 +78,7 @@ module.exports = function() {
 	function initTabContentLayout() {
 		if ($('ul').hasClass('cardWrap')) initCardLayout();
 		if ($('ul').hasClass('infoSlider')) initTabSlider();
-		if ($('p').hasClass('except')) $('.except').dotdotdot();
+		if ($('p').hasClass('except')) $('.except').dotdotdot({watch:'window'});
 	};
 	
 	/**

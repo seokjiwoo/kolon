@@ -43,18 +43,85 @@
 #myBoard .recent .secTit{margin-right: 15px;}
 #myBoard .recent .scrollWrap{margin-top: 10px;padding-bottom: 25px;}
 #myBoard .recent ul{overflow: hidden;}
-#myBoard .recent li{width: 130px;margin-left: 10px;}
-#myBoard .recent li:first-child{margin:0;}
+#myBoard .recent li{width: 130px;margin-right: 10px;}
+#myBoard .recent li:last-child{margin-right: 15px;}
 #myBoard .recent .imgWrap{overflow: hidden;border-radius: 5px;height: 150px;}
 #myBoard .recent li img{display: block;width: 100%;}
 #myBoard .recent li p{margin-top: 5px;font-size: 13px;color: #666;line-height: 1.2em;}
 
-#myBoard .massage .except{color: #666}
-#myBoard .review .except{color: #000}
-#myBoard .qna a > .except{color: #000}
-#myBoard .qna .date{margin-bottom: 5px;}
-#myBoard .qna .reply{position: relative;}
-#myBoard .qna .reply:before{content: '';position: absolute;top:18px;left: 15px;width:7px;height: 7px;border-left:1.5px solid #ccc;border-bottom:1.5px solid #ccc; }
-#myBoard .qna .reply .except{padding-left: 18px;}
+.message .except{padding-right: 55px;color: #666}
+.review .except{color: #000}
+.qna a > .except{color: #000}
+.qna .date{margin-bottom: 5px;}
+.qna .reply{position: relative;}
+.qna .reply:before{content: '';position: absolute;top:18px;left: 15px;width:7px;height: 7px;border-left:1.5px solid #ccc;border-bottom:1.5px solid #ccc; }
+.qna .reply .except{padding-left: 18px;}
 
 #writeReview a{margin-top: 10px;}
+.talkProfile{position: relative;text-align: center;border-bottom: 1px solid #e5e5e5}
+.talkProfile .btnToggle{display: block;width: 50%;margin:0 auto;padding:10px 0;color: #000;font-size: 18px;line-height: 30px}
+.talkProfile .pic{overflow: hidden;width: 50px;height: 50px;border-radius: 50%;margin:0 auto;}
+.talkProfile .pic img{display: block;width: 100%;}
+.talkProfile .btnToggle:after{content:'';display: inline-block;width: 10px;height: 6px;margin-left: 5px;vertical-align: middle;background: url('../images/ico_toggle.png') no-repeat 0 -6px;background-size: 10px 12px;}
+.talkProfile .btnToggle.open:after{background-position: 0 0}
+.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;background: #fff;z-index: 1;border-bottom: 1px solid #e5e5e5}
+
+.chatRoom .wrap{padding-bottom: 60px;}
+.chatRoom .day{margin-top: 18px;font-size: 11px;color:#666;text-align: center;}
+.chatRoom .day:before, .chatRoom .day:after{content:'';display: inline-block;width: 50px;height: 1px;background:#ccc;vertical-align: middle;}
+.chatRoom .day:before{margin-right: 6px;}
+.chatRoom .day:after{margin-left: 6px;}
+.chatRoom .chatter{position: relative;margin-top: 15px;}
+.chatRoom .chatter p{margin-top: 5px;}
+.chatRoom .chatter .pic{overflow: hidden;position: absolute;top: 0;width: 32px;height: 32px;border-radius: 50%;}
+.chatRoom .chatter .pic img{display: block;width: 100%;}
+.chatRoom .chatter .name{color: #000;font-size: 11px;}
+.chatRoom .chatter .time{margin:0 5px;color: #999;vertical-align: bottom;font-size: 11px;}
+.chatRoom .chatter span{overflow: hidden;display: inline-block;max-width: 75%;border-radius: 5px;}
+.chatRoom .chatter .text{padding: 10px;}
+.chatRoom .chatter .thumb img{display: block;max-width: 100%;}
+
+.chatRoom .sender{padding-left: 38px; }
+.chatRoom .sender .pic{left: 0;}
+.chatRoom .sender .text{background:#f0f1f2;}
+
+
+.chatRoom .taker{text-align: right;}
+.chatRoom .taker .text{background: #f37972;color: #fff;text-align: left;line-height: 1.3em;}
+
+.inputMessage{position: fixed;bottom: 0;left: 0;width: 100%;box-shadow:0px -2px 0px rgba(0,0,0,.15);}
+.inputMessage fieldset{overflow: hidden;position: relative;height: 45px;padding:0 65px 0 45px;}
+.inputMessage input[type="text"]{border:0;line-height:35px;}
+.inputMessage input[type="file"]{position: absolute;top:-30px;}
+.inputMessage .btnSend{position: absolute;top:14px;right: 10px;;color: #a9c700;background: none;border:0;}
+.inputMessage .attachPic{position: absolute;top:14px;left: 15px;display: inline-block;width: 25px;height: 18px;background: url('../images/ico_pic.png') no-repeat; background-size: 100%;}
+
+.selectAddress .tabWrap{padding: 15px 0 5px;text-align: center;}
+.selectAddress .tabWrap li{display: inline-block;width:45%;margin:0 1%;}
+.selectAddress .tabWrap a{width: 100%;background:#a0a0a0; }
+.selectAddress .tabWrap .on a{background: #a9c700;font-weight: bold;}
+#lastAddress > select{margin:10px 0;} 
+
+#myOrder .tabCon{padding-bottom: 25px;border-bottom: 1px solid #c4c4c4}
+.my .secTit{margin-bottom: 20px;padding-bottom: 10px;border-bottom: 1px solid #666;font-size: 18px;color: #000;}
+
+.goodsInfo li{position: relative;overflow: hidden;padding: 15px 0;}
+.goodsInfo .btnToggle{display: block;position: absolute;top:10px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
+.goodsInfo .btnToggle.open{background-position: 2px 5px;}
+.goodsInfo .listTit{background: #f8f8f8;padding: 15px;color: #333;line-height: 10px;}
+.goodsInfo .pic{float: left;width: 90px;height: 90px;margin-right: 15px;}
+.goodsInfo .pic img{display: block;width: 100%;}
+.goodsInfo .tit{font-size: 15px;font-weight: bold;line-height: 1.2em;}
+.goodsInfo .sub{font-size: 15px;color: #999;line-height: 1.2em;}
+.goodsInfo .price{margin-top: 15px;padding-top: 15px;border-top:1px solid #dbdbdb;text-align: right;font-size: 15px;color: #f1645c;}
+.goodsInfo .price b{font-size: 20px;}
+.goodsInfo .price .count{color: #999;}
+.goodsInfo .price .count:before{content: '';display: inline-block;width: 1px;height: 14px;margin:0 8px;vertical-align: middle;background: #dcdcdc;}
+.goodsInfo .slideCon{overflow: hidden;;width: 100%;margin-top:15px;padding:15px 0;background: #f7f7f7;color: #666;line-height: 1.3em;}
+.goodsInfo .slideCon > *{float: left;width: 50%;}
+.goodsInfo .slideCon .total{border-top:1px solid #dbdbdb;}
+.goodsInfo .slideCon dt{padding-left: 15px;}
+.goodsInfo .slideCon dd{padding-right: 15px;text-align: right;}
+.goodsInfo .slideCon dt.total{color: #000;margin-top:10px;padding-top: 10px;}
+.goodsInfo .slideCon dd.total{color: #f1645c;margin-top:10px;padding-top: 10px;}
+

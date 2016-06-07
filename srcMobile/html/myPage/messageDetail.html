@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 마이커먼"} -->
+</head>
+ <body data-page-id="messageDrtail">
+	<div class="wrapper my">
+		<!-- @@include ../_template/menu.html -->
+		<div class="container pageWrap">
+			<div class="chatRoom">
+				<div class="talkProfile">
+					<a href="#talkTarget" class="btnToggle">박실장</a>
+					<div id="talkTarget" class="slideCon">
+						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+						<p><b>박실장</b><br>KOLON GLOBAL</p>
+						<p class="btnWrap"><a href="">전문가 페이지</a><a href="">전화</a></p>
+					</div>
+				</div>
+				<section class="wrap">
+					<p class="day">2014.04.25</p>
+					<div class="chatter sender">
+						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+						<p class="name">박실장</p>
+						<p><span class="text">벽지는정하셨나요?</span></p>
+						<p><span class="text">벽지는정하셨나요?</span><span class="time">14:04</span></p>
+					</div>
+					<div class="chatter taker">						
+						<p><span class="time">14:04</span><span class="text">아니요.. 보여주신 샘플들도 예쁘지만, 처음 생각했던 이미지와는 조금 다른 것 같네요. 샘플 몇개만 더 보여주실 수 있나요? </span></p>
+					</div>
+					<div class="chatter sender">
+						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+						<p class="name">박실장</p>
+						<p><span class="thumb"><img src="/images/temp14.jpg" alt=""></span></p>
+						<p><span class="thumb"><img src="/images/temp12.jpg" alt=""></span></p>
+						<p><span class="thumb"><img src="/images/temp11.jpg" alt=""></span><span class="time">14:04</span></p>
+					</div>
+				</section>
+				<div class="inputMessage">
+					<form action="">
+						<fieldset>
+						<label for="attachPic" class="attachPic"></label>
+							<input type="file" id="attachPic">
+							<input type="text" placeholder="메시지 쓰기...">
+							<button type="submit" class="btnSend">보내기</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

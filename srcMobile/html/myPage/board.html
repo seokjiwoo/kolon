@@ -3,16 +3,16 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 마이커먼"} -->
 </head>
- <body data-page-id="mypage">
+ <body data-page-id="myBoard">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 	<div class="container">
 		<!-- @@include ../_template/my_depth01.html -->
 		<!-- @@include ../_template/my_depth02.html {"myMenu04":"on"} -->
-		<section  class="wrap" id="myBoard">
-			<div class="plate recent">
+		<section id="myBoard">
+			<div class="plate plate02 recent">
 				<a href="" class="more">전체보기</a>
-				<h2 class="secTit">최근 본 상품</h2>
+				<h2 class="plateTit">최근 본 상품</h2>
 				<div class="scrollWrap">
 					<ul>
 						<li>
@@ -48,12 +48,12 @@
 					</ul>
 				</div>
 			</div>
-			<div class="plate">
-				<a href="" class="more">전체보기</a>
-				<h2 class="secTit">1:1 메시지</h2>
-				<ul class="previewList massage">
+			<div class="plate plate02">
+				<a href="message.html" class="more">전체보기</a>
+				<h2 class="plateTit">1:1 메시지</h2>
+				<ul class="previewList message">
 					<li>
-						<a href="">
+						<a href="messageDetail.html">
 							<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
 							<p class="date dateR">2016.04.25 14:04</p>
 							<h3 class="listTit"><b>Wadiz </b>홍길동</h3>
@@ -62,16 +62,15 @@
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="messageDetail.html">
 							<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
 							<p class="date dateR">2016.04.25 14:04</p>
 							<h3 class="listTit"><b>Wadiz </b>홍길동</h3>
-							<span class="count">2</span>
-							<p class="except">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고 싶으시면 신청 현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고 싶으시면 신청</p>
+							<p class="except">현재 문의하신 제품은 품절입니다.</p>
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="messageDetail.html">
 							<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
 							<p class="date dateR">2016.04.25 14:04</p>
 							<h3 class="listTit"><b>Wadiz </b>홍길동</h3>
@@ -82,9 +81,9 @@
 				</ul>
 				<p class="noContent">아직 메시지가 없습니다.</p>
 			</div>
-			<div class="plate qna">
+			<div class="plate qna plate02">
 				<a href="" class="more">전체보기</a>
-				<h2 class="secTit">내 의견 묻기 내역</h2>
+				<h2 class="plateTit">내 의견 묻기 내역</h2>
 				<ul class="previewList">
 					<li>
 						<a href="">
@@ -111,10 +110,10 @@
 				</ul>
 				<p class="noContent">아직 메시지가 없습니다.</p>
 			</div>
-			<div class="plate">
+			<div class="plate plate02">
 				<a href="" class="more">전체보기</a>
-				<h2 class="secTit">내가 작성한 리뷰</h2>
-				<ul class="tabWrap">
+				<h2 class="plateTit">내가 작성한 리뷰</h2>
+				<ul class="tabWrap tabSquare">
 					<li class="on"><a href="#writeReview">리뷰쓰기 3</a></li>
 					<li><a href="#myReview">작성한 리뷰 3</a></li>
 				</ul>
@@ -176,5 +175,6 @@
 				</div>
 			</div>
 		</section>
+		<!-- @@include ../_template/footer.html -->
 	</div>
 </div>
