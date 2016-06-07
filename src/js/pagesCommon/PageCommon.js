@@ -1,6 +1,15 @@
 /* global $ */
 
 module.exports = function() {
+	var popupSize = {
+		"S": 540,
+		"M": 895,
+		"530": 530,
+		"540": 540,
+		"650": 650,
+		"835": 835,
+		"895": 895
+	};
 	var winH;
 	
 	var callerObj = {
@@ -101,11 +110,9 @@ module.exports = function() {
 			var userClass = $(this).data('userClass') == undefined ? '' : $(this).data('userClass');
 			var width = '100%';
 			
-			if ($(this).hasClass('btnPopS')) {
-				width = 540;
-			} else if ($(this).hasClass('btnPopM')) {
-				width = 895;
-			}
+			for (var key in popupSize) {
+				if ($(this).hasClass('btnPop'+key)) width = popupSize[key];
+			};
 			
 			htmlPopup(popupFile, width, userClass);
 		}
