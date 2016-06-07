@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 회원가입"} -->
+</head>
+ <body data-page-id="member-join">
+	<div class="wrapper members">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+				<section>
+					<h2 class="pageTit">커먼 회원가입</h2>
+					<form id="joinForm" action="">
+						<fieldset class="formWrap plate"><!-- sns가입일 경우 해당 filedset display:none -->
+							<legend class="subTit">기본정보입력<p class="note"><b>*</b>  표시는 필수 입력내용입니다.</p></legend>						
+							<ul class="formList">
+								<li>
+									<label for="joinId" class="inputTit"><b>*</b> 커먼 계정</label>
+									<input type="text" id="joinId" placeholder="이메일 주소를 입력해주세요."> 
+									<span class="alert" id="joinIdAlert"></span>
+								</li>
+								<li>
+									<label for="joinPW" class="inputTit"><b>*</b> 비밀번호</label>
+									<input type="password" id="joinPW" placeholder="비밀번호를 입력해주세요."> 
+									<span class="note">(영문, 숫자, 특수문자 조합한 9~16자리)</span>
+								</li>
+								<li>
+									<label for="joinPW02" class="inputTit"><b>*</b> 비밀번호 확인</label>
+									<input type="password" id="joinPW02" placeholder="비밀번호를 한번 더 입력해주세요."> 
+									<span class="alert" id="joinPWAlert"></span>
+								</li>
+								<li>
+									<label for="joinName" class="inputTit"><b>*</b> 이름</label>
+									<input type="text" id="joinName">
+									<span class="alert" id="joinNameAlert"></span>
+								</li>
+								<li class="birth">
+									<span class="inputTit"><b>*</b> 생년월일</span>
+									<div>
+										<select id="joinBirth01"></select>
+										<label for="joinBirth01" class="joinBirth">년</label>
+										<select id="joinBirth02">
+											<option value="01">1</option>
+											<option value="02">2</option>
+											<option value="03">3</option>
+											<option value="04">4</option>
+											<option value="05">5</option>
+											<option value="06">6</option>
+											<option value="07">7</option>
+											<option value="08">8</option>
+											<option value="09">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<label for="joinBirth02" class="joinBirth">월</label>
+										<select id="joinBirth03"></select>
+										<label for="joinBirth03" class="joinBirth">일</label>
+										<span class="note"> 만 14세 미만은 가입하실 수 없습니다.</span>
+									</div>
+								</li>
+								<li>
+									<label for="joinPhone" class="inputTit"><b>*</b> 휴대폰번호</label>
+									<input type="text" id="joinPhone"> 
+									<span class="note">‘-’ 없이 숫자만 입력</span>
+									<span class="alert" id="joinPhoneAlert"></span>
+								</li>
+							</ul>						
+						</fieldset>
+						<fieldset class="formWrap plate">
+							<legend class="subTit">약관동의</legend>
+							<div class="checkWrap">
+								<p class="checkAgree checkbox">
+									<input type="checkbox" id="agree01">
+									<label for="agree01">플랫폼 이용약관 동의 (필수)</label>
+									<a href="#" class="btnPop" id='popAgree01'>보기</a>
+									<span class="alert">플랫폼 이용약관에 동의 해주세요.</span>
+								</p>
+								<p class="checkAgree checkbox">
+									<input type="checkbox" id="agree02">
+									<label for="agree02">개인정보 수집/이용 항목 및 목적 (필수)</label>
+									<a href="#" class="btnPop" id='popAgree02'>보기</a>
+									<span class="alert">개인정보 수집/이용 항목 및 목적에 동의 해주세요.</span>
+								</p>
+							</div>
+						</fieldset>
+						<button type="submit" class="btn btnSizeL btnColor02 btnShadow">가입신청</button>
+					</form>
+				</section>
+			</div>
+			<!--
+			<div id="joinComplete">
+				<h4 class="popTit">회원가입완료</h4>
+				<p class="subTit">커먼 회원가입이 완료되었습니다.</p>
+				<div class="popCon">
+					<p>커먼에 가입해주셔서 감사합니다.<br>메인으로 이동하셔서 커먼만의 특별한 홈서비스를 만나 보세요.</p>
+					<a href="/" class="btnHome">커먼 메인으로 이동</a>
+				</div>
+			</div>
+			-->
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>

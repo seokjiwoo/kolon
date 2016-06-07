@@ -21,9 +21,6 @@
 
 .colWrap{overflow: hidden;}
 .col{width:50%;float: left;}
-.singleCard{overflow: hidden;position: relative;padding-bottom: 80px;border-radius: 10px;background: #fff;box-shadow: 0px 3px rgba(0,0,0,0.1);}
-.doubleCard{width:510px;padding: 30px 40px;background: #fff;border-radius: 10px;float: left;}
-.doubleCard:first-child{margin-right: 20px;}
 
 .plate{padding: 23px 15px 0;margin-top:10px;background: #fff;box-shadow: 0px 2px rgba(0,0,0,0.1);}
 .plate .secTit{padding-bottom: 10px;border-bottom: 1px solid #000;font-size: 15px;color: #000;font-weight: bold}

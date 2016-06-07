@@ -73,9 +73,9 @@ a.pointLink {color:#f1645c;text-decoration:underline;}
 .btnWrap{text-align: center;}
 a[class^="btnSize"], .btn{display: inline-block;padding:0 20px;color: #fff;outline: 0;border: 0;font-family: 'RobotoM','NotoSansM', sans-serif;text-align: center;}
 
-.btnSizeS{height:25px;font-size: 14px;border-radius: 13px;line-height: 25px;}
-.btnSizeM{height:35px;font-size: 14px;border-radius: 17px;line-height: 35px;}
-.btnSizeL{height:40px;font-size: 20px;border-radius: 20px;line-height: 40px;}
+.btnSizeS{height:25px;font-size: 11px;border-radius: 13px;line-height: 25px;}
+.btnSizeM{height:35px;font-size: 13px;border-radius: 17px;line-height: 35px;}
+.btnSizeL{height:40px;font-size: 18px;border-radius: 20px;line-height: 40px;}
 
 .btnColor01{background:#a9c700} /*green*/
 .btnColor02{background:#f1645c} /*red*/
@@ -91,26 +91,9 @@ a[class^="btnSize"], .btn{display: inline-block;padding:0 20px;color: #fff;outli
 #loginKs:before{background-position: -70px 0}
 
 /* form */
-.formWrap{margin:60px auto 0;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
-.formWrap b{color: #f1645c}
-.formWrap .alert{/*display: none;*/color: #f1645c}
-.formWrap .subTxt{display: block;width: 100%;}
-.inputWrap{line-height: 60px;} 
-.inputWrap01{margin-top:30px;}
-.inputWrap label{display: inline-block;text-align: left;margin-right: 20px;color: #000;font-size: 16px;}
-.inputWrap label strong{color: #999;}
-
-.formList > li{overflow: hidden;border-bottom:1px solid #e8e8e8;}
-.formList .inputTit{display: inline-block;margin-right: 25px;padding: 25px 40px;vertical-align: middle;background: #f7f7f7;font-size: 16px;color: #000}
-.formList  select{padding: 10px 10px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;}
-.formList .joinBirth{margin-right:15px;}
-.formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
-.formList .birth > div{float: left;margin:10px 0;}
-.formList .birth .note{display: block;margin-top:15px;}
-
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
-{width:100%;padding: 8px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;font-size: 13px;line-height: 35px;}
+{width:100%;padding: 5px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;font-size: 13px;line-height: 25px;}
 
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}
