@@ -41,7 +41,8 @@
 
 .qna .scrapList ul{height:90px;overflow:hidden;}
 .qna .scrapList ul li{width:90px;height:90px;overflow:hidden;float:left;background:#f2f2f2;margin-left:10px;}
-.qna .scrapList ul li:first-child{width:88px;height:88px;border:1px solid #d6d6d6;margin-left:0;background:#fff url("../images/ico_plus.png") no-repeat center center;cursor:pointer;}
+.qna .scrapList ul li:first-child{width:88px;height:88px;border:1px solid #d6d6d6;margin-left:0;}
+.qna .scrapList ul li:first-child a{display:block;height:88px;background:#fff url("../images/ico_plus.png") no-repeat center center;}
 .qna .scrapList ul li img{width:90px;}
 .qna .fileup{overflow:hidden;}
 .qna .fileup .inputs{float:left;}
@@ -62,7 +63,8 @@
 
 .opinionbox .conbox{padding:40px 40px 20px 50px;background:#fff;}
 .opinionbox .conbox.round{box-shadow: 0px 3px rgba(0,0,0,0.1);border-radius: 0 0 10px 10px;padding-bottom:45px;}
-.opinionbox .conbox strong{font-size:20px;color:#000;font-family:'RobotoR','NotoSansR',sans-serif;}
+.opinionbox .conbox strong{font-size:20px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.opinionbox .conbox strong a{color:#000;}
 .opinionbox .conbox > p{margin-top:20px;color:#666;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;}
 .opinionbox .conbox .more{text-align:right;}
 .opinionbox .conbox .more a{display:inline-block;padding-right:22px;background:url("../images/ico_more.png") no-repeat right center;color:#666;}
@@ -138,3 +140,31 @@
 h2.optit{position:relative;height:68px;text-align:center;}
 h2.optit:after{position:absolute;left:50%;bottom:0;content:"";display:block;width:25px;height:1px;background:#000;margin-left:-12px;}
 h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'RobotoR','NotoSansR',sans-serif;color:#000;}
+
+.qna .btnWrap{border-top:1px solid #e8e8e8;padding-top:30px;margin-top:30px !important;}
+.qna .picturesBox{height:302px;background:#f2f2f2 url("../images/ico_image.png") no-repeat center 82px;}
+.qna .picturesBox > div{text-align:center;}
+.qna .picturesBox > div:first-child{padding-top:152px;font-family:'RobotoR','NotoSansR',sans-serif;color:#999;}
+.qna .picturesBox > div:first-child + div{margin-top:30px;}
+
+.scrapBox{margin-top:20px;}
+.scrapBox .scroll{height:244px;overflow-y:auto;}
+.scrapBox ul{margin-top:20px;}
+.scrapBox ul:first-child{margin-top:0;}
+.scrapBox ul:after{content:"";display:block;clear:both;}
+.scrapBox ul li{position:relative;width:91px;height:91px;overflow:hidden;float:left;background:#e5e5e5;margin-left:2px;cursor:pointer;}
+.scrapBox ul li:first-child{margin-left:0;}
+.scrapBox ul li img{width:91px;vertical-align:top;}
+.scrapBox ul li i{position:absolute;top:10px;right:10px;width:24px;height:24px;display:inline-block;background:#ccc url(../images/ico_check.png) no-repeat 50%;border-radius:50%;text-align:center;font-style:normal;}
+.scrapBox ul li i span{display:block;padding-top:2px;}
+.scrapBox ul li.active{width:83px;height:83px;border:4px solid #f1645c;}
+.scrapBox ul li.active i{background:#f1645c;color:#fff;}
+
+.detailBox{position:relative;height:626px;background:#ccc;}
+.detailBox a.prev,
+.detailBox a.next{position:absolute;top:300px;width:30px;height:58px;display:block;overflow:hidden;background:url("../images/ico_slide_nav.png") no-repeat;}
+.detailBox a.prev{left:30px;background-position:0 0;}
+.detailBox a.next{right:30px;background-position:-34px 0;}
+.detailBox .imgArea{}
+
+select.scrapSelect{width:480px;padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
