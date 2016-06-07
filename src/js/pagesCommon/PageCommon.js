@@ -24,6 +24,8 @@ module.exports = function() {
 		winH = $(window).height();
 		
 		initTab();
+		initTabContentLayout();
+
 		$('.radioBox label').click(radioButtonHandler);	// radio button
 		$('.checkbox label').click(checkBoxHandler);	// checkbox
 		$('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
@@ -57,10 +59,17 @@ module.exports = function() {
 			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
 			$(tabCon).show().siblings().hide();
 			
-			if ($('ul').hasClass('cardWrap')) initCardLayout();
-			if ($('ul').hasClass('infoSlider')) initTabSlider();
-			if ($('p').hasClass('except')) $('.except').dotdotdot();
+			initTabContentLayout();
 		});
+	};
+
+	/**
+	 * init current tab layout
+	 */
+	function initTabContentLayout() {
+		if ($('ul').hasClass('cardWrap')) initCardLayout();
+		if ($('ul').hasClass('infoSlider')) initTabSlider();
+		if ($('p').hasClass('except')) $('.except').dotdotdot();
 	};
 	
 	/**
