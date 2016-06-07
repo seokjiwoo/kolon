@@ -8,11 +8,11 @@
 .btnC .btnColor02.btnWL {width:300px;}
 
 ul.tbList {width:100%; margin:0 auto; display:inline-block;}
-ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 4px no-repeat; text-align:left; display:inline-block;}
+ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 7px no-repeat; text-align:left; display:inline-block;}
 ul.tbList li + li {margin-top:16px;}
 ul.tbList li span {width:60%; text-align:right; float:right; display:inline-block;}
 ul.tbList li span.tbListTit {width:40%; text-align:left; float:left;}
-ul.tbList2 {width:528px; margin:0 auto; overflow:hidden; }
+ul.tbList2 {width:528px; margin:0 auto;}
 ul.tbList2 li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
 ul.tbList2 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 4px no-repeat; text-align:left; display:inline-block; color:#999;}
 ul.tbList2 li + li {margin-top:10px;}
@@ -37,14 +37,14 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb dl dd {width:216px; float:left; margin:0; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
 .payTb dl dt div,
 .payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333; text-align:center;}
-.payTb dl dt div {width:140px; line-height:160%; padding:0 19px;}
+.payTb dl dt div {width:140px; line-height:160%; padding:0 17px;}
 .payTb dl dd div {width:216px;}
 .payTb ul.pointBul {width:100%; overflow:hidden;}
 .payTb ul.pointBul li {width:50%; float:left;}
 .payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:30px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
 .payTb ul.pointBul li p.tbBul label + input[type=text] {margin:0 5px 0 10px;}
 .payTb ul.pointBul li p.pointCk {margin:5px 0 0 20PX; text-align:left;}
-.payTb p.underTxt {margin:15px 0 0 44px; text-align:left;}
+.payTb p.underTxt {margin:15px 0 0 40px; text-align:left;}
 .payTb dl.payHL div {height:156px;}
 .payTb dl.payHL2 div {height:200px;}
 .payTb ul.giveList {width:150px; overflow:hidden; margin:0 auto;}
@@ -87,7 +87,7 @@ span.price.fontS {font-size:14px;}
 .oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
 .oder h3.subTit + .oderCont .tbSet {margin-top:20px;}
 .oder h3.subTit + .oderCont .tbSet.lineN {margin-top:0;}
-.oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
+.oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
 .oder .container input[type="checkbox"]{position: absolute;opacity: 0;}
 .oder .container textarea {width:743px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .oder .checkAgree {margin-top:18px;}
@@ -121,24 +121,6 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont ul.pdLt,
 .oder .oderCont p.pdLt {margin-left:20px;}
 .oder .oderCont p.pdLt a + a {margin-left:10px;;}
-
-.oder .oderCont .adrArea dl {width:100%; margin:0; overflow:hidden;}
-.oder .oderCont .adrArea dl + dl {border-top:1px solid #e8e8e8;}
-.oder .oderCont .adrArea dl dt,
-.oder .oderCont .adrArea dl dd {float:left; font-size:14px; font-family:'RobotoR','NotoSansR', sans-serif; text-align:left;}
-.oder .oderCont .adrArea dl dt {padding:13px 13px 13px 0;}
-.oder .oderCont .adrArea dl dd {margin:0;}
-.oder .oderCont .adrArea dl dd + dd {padding-left:32px;}
-.oder .oderCont .adrArea dl dd select + input[type="text"] {margin-left:14px;}
-.oder .oderCont .adrArea dl dd.adrInfo {width:306px;}
-.oder .oderCont .adrArea dl dd.adrInfo select + a {margin-left:12px;}
-.oder .oderCont .adrArea dl dd.adrCon {width:583px; text-align:left;}
-.oder .oderCont .adrArea dl dd.adrCon p + p {margin-top:6px; color:#;}
-.oder .oderCont .adrArea dl dd.adrCon p {line-height:130%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
-.oder .oderCont .adrArea dl dd.adrCon p span + span {margin-left:19px;}
-.oder .oderCont .adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif;}
-.oder .oderCont .compt .adrArea dl dd {width:85%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
-.oder .oderCont .compt .adrArea dl dd div {height:42px; display:table-cell; vertical-align:middle;}
 
 .oder .oderCont .tbHf {width:542px; float:left; display:inline-block;}
 .oder .oderCont .tbHf + .tbHf {float:right;}
@@ -177,10 +159,10 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 .oder .oderCont .payTab a {margin-left:42px; display:inline-block; color:#666;}
 .oder .oderCont .payTab a + a {margin-left:32px;}
-.oder .oderCont .payTab + div div .tbSet {margin-top:0;}
+.oder .oderCont .payTab + div div table {margin-top:0;}
 .oder .oderCont .radioBtn {position:relative;}
 .oder .oderCont .radioBtn input[type="radio"] {width:18px; height:18px; margin:0; opacity:0; line-height:100%; overflow:hidden; position:absolute;}
-.oder .oderCont .radioBtn label {padding:2px 0 1px 23px; display:inline-block;}
+.oder .oderCont .radioBtn label {padding:2px 0 2px 23px; display:inline-block;}
 .oder .oderCont .radioBtn label:before {content:''; width:18px; height:18px; background:url('../images/ico_radio.png') 0 -18px no-repeat; position:absolute; top:1px; left:0; display:inline-block;}
 .oder .oderCont .on .radioBtn label {color:#000;}
 .oder .oderCont .on .radioBtn label:before {background-position:0 0;}
@@ -200,7 +182,7 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont ul.homeReason li + li {margin-left:30px;}
 .oder .oderCont ul.homeReason + input[type="text"]{margin-top:20px;}
 
-.oder h2.secTit.setTitC {width:100%; text-align:center; overflow:hidden; font-size:30px;}
+.oder h2.secTit.setTitC {width:100%; text-align:center;display:inline-block; font-size:30px;}
 .oder .completeBox {width:100%; margin-top:22px; padding:65px 0; overflow:hidden; border-top:1px solid #666; border-bottom:1px solid #ccc; text-align:center;}
 .oder .completeBox p {font-size:20px; color:#666; font-family:'NotoSansR', 'RobotoR', sans-serif; line-height:30px;}
 .oder .completeBox p.tit {font-size:30px;}
