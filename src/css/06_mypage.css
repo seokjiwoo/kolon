@@ -128,10 +128,10 @@
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
 .my .subTxt {font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
 
-.record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.record th, .record td{border-bottom: 1px solid #e1e1e1}
-.record th{padding: 20px;background: #f8f8f8;color: #333;}
-.record td{padding: 15px;}
+.my .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
+.my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
+.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.my .record td{padding: 15px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
 .my .record .date a{color: #f1645c;text-decoration: underline;}
