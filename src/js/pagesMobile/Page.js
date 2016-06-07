@@ -31,7 +31,5 @@ module.exports = function() {
 			});
 			$(this).find('ul').css('width',totalWidth+margin);
 		})
-		
-		$('.except').dotdotdot();
 	}
 }

@@ -27,6 +27,7 @@ module.exports = function() {
 		$('.radioBox label').click(radioButtonHandler);	// radio button
 		$('.checkbox label').click(checkBoxHandler);	// checkbox
 		$('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
+		$('.except').dotdotdot({watch:'window'});
 	};
 	
 	/**
@@ -59,7 +60,7 @@ module.exports = function() {
 			
 			if ($('ul').hasClass('cardWrap')) initCardLayout();
 			if ($('ul').hasClass('infoSlider')) initTabSlider();
-			if ($('p').hasClass('except')) $('.except').dotdotdot();
+			if ($('p').hasClass('except')) $('.except').dotdotdot({watch:'window'});
 		});
 	};
 	
