@@ -43,10 +43,10 @@
 .lyPop .subTit .subAddr {color:#999;}
 .lyPop .popRecord {text-align:right;width:90px;padding:20px 10px 20px 20px;}
 .lyPop .popRecord.recordInfo {text-align:left;width:auto;padding:20px 20px 20px 0;}
-.lyPop .reasonCancel {padding:25px 22px 33px 25px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
+.lyPop .reasonCancel {padding:25px 22px 33px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
 .lyPop .reasonCancel h5 {margin-bottom:18px;font-size:15px;color:#333;}
 .lyPop .reasonCancel select {width:310px;margin-right:8px;padding:9px 10px;border:1px solid #d6d6d6;border-radius:7px;color:#999;}
-.lyPop .reasonCancel input[type="text"] {width:470px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .reasonCancel input[type="text"] {width:426px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 .lyPop .table03Wrap {overflow:hidden;margin-bottom:30px;}
 .lyPop .table03Wrap .record {position:relative;float:left;width:32.66%;height:210px;margin-left:1%;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;border-bottom:none;}
 .lyPop .table03Wrap .record:first-child {margin-left:0;}
@@ -57,10 +57,10 @@
 .lyPop .table03Wrap .record th.h50, .lyPop .table03Wrap .record td.h50 {height:50px;}
 .lyPop .table03Wrap .record td.t_c {text-align:center;}
 .lyPop .table03Wrap .record td {text-align:left}
-.lyPop .table03Wrap .record td span {display:block;margin-left:8px;}
+.lyPop .table03Wrap .record td span {display:block;margin-left:10px;}
 .lyPop .table03Wrap .record td b {display:block;color:#999;}
 .infoOrder {margin-bottom:50px;font-size:14px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
-.infoOrder li {line-height:21px}
+.infoOrder li {line-height:21px;letter-spacing:-0.5px}
 .btnCenter {text-align:center}
 
 .lyPop .record.record02 {font-family:'RobotoL','NotoSansL', sans-serif;color:#333;}
@@ -79,10 +79,19 @@
 .my .tableStyle02 .popScroll{max-height: 440px;margin-top:0;}
 .my .tableStyle02 .popScroll img{display: block;max-width: 100%;}
 .my .tableStyle02 .bar:before{content: '';display: inline-block;width: 1px;height: 10px;margin: 0 7px;background: #999;vertical-align: middle;}
-.my .tableStyle02 .tag{height: 36px;overflow: hidden;}
-.my .tableStyle02 .tag li{display: inline-block;margin-left: 5px;}
-.my .tableStyle02 .tag li:first-child{margin:0;}
-.my .tableStyle02 .tag a{display: block;padding:0 20px;line-height: 34px;border-radius: 17px;border:1px solid #d1d1d1;color: #666;}
+.tag{height: 36px;overflow: hidden;}
+.tag li{display: inline-block;margin-left: 5px;}
+.tag li:first-child{margin:0;}
+.tag a{display: block;padding:0 20px;line-height: 34px;border-radius: 17px;border:1px solid #d1d1d1;color: #666;}
+
+.reviewObj {padding:24px;border:1px solid #e8e8e8;overflow:hidden;}
+.reviewObj .objBox {overflow:hidden;float:left;width:90px;height:90px;}
+.reviewObj .objBox img {width:100%;}
+.reviewObj .objTxt {float:left;margin:20px 0 0 65px;font-size:20px;color:#000;font-family:'RobotoR','NotoSansR', sans-serif;line-height:1.4}
+.pointColor01 {display:block;font-size:14px;color:#999;}
+.my .tableStyle03 {text-indent:-0.5px}
+.my .tableStyle03 th {text-align:left;padding-left:40px;background:#f7f7f7;border-bottom:1px solid #e8e8e8;}
+.my .tableStyle03 td {padding:14px 20px;border-bottom:1px solid #e8e8e8}
 
 .grade{display: inline-block;position: relative;width: 140px;height: 27px;background: url('../images/ico_star.png') no-repeat 0 -27px;}
 .grade span{position: absolute;top:0;left: 0;display: block;height: 100%;background: url('../images/ico_star.png') no-repeat}
