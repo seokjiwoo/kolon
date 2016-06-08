@@ -57,14 +57,18 @@
 .qna .reply:before{content: '';position: absolute;top:18px;left: 15px;width:7px;height: 7px;border-left:1.5px solid #ccc;border-bottom:1.5px solid #ccc; }
 .qna .reply .except{padding-left: 18px;}
 
-#writeReview a{margin-top: 10px;}
-.talkProfile{position: relative;text-align: center;border-bottom: 1px solid #e5e5e5}
+.previewList p + a{margin-top: 10px;}
+.talkProfile{position: relative;text-align: center;box-shadow: 0 1px 0 rgba(0,0,0,.15);}
 .talkProfile .btnToggle{display: block;width: 50%;margin:0 auto;padding:10px 0;color: #000;font-size: 18px;line-height: 30px}
 .talkProfile .pic{overflow: hidden;width: 50px;height: 50px;border-radius: 50%;margin:0 auto;}
 .talkProfile .pic img{display: block;width: 100%;}
 .talkProfile .btnToggle:after{content:'';display: inline-block;width: 10px;height: 6px;margin-left: 5px;vertical-align: middle;background: url('../images/ico_toggle.png') no-repeat 0 -6px;background-size: 10px 12px;}
 .talkProfile .btnToggle.open:after{background-position: 0 0}
-.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;background: #fff;z-index: 1;border-bottom: 1px solid #e5e5e5}
+.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;padding: 20px 0;background: #f8f8f8;z-index: 1;box-shadow: 0 2px 0 rgba(0,0,0,.15);}
+.talkProfile .slideCon p{margin-top: 5px;font-size: 11px;color: #f1645c;line-height: 1.4em;}
+.talkProfile .slideCon p span{font-size: 18px;color: #000;}
+.talkProfile .slideCon .btnWrap{margin-top: 15px;}
+.talkProfile .slideCon a{width: 125px;margin:0 5px;}
 
 .chatRoom .wrap{padding-bottom: 60px;}
 .chatRoom .day{margin-top: 18px;font-size: 11px;color:#666;text-align: center;}
