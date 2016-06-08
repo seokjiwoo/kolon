@@ -79,7 +79,6 @@ module.exports = function() {
 		if ($('ul').hasClass('cardWrap')) initCardLayout();
 		if ($('ul').hasClass('infoSlider')) initTabSlider();
 		if ($('p').hasClass('except')) $('.except').dotdotdot({watch:'window'});
-		if ($('p').hasClass('except02')) $('.except02').dotdotdot({after: "a.readmore"});
 	};
 	
 	/**
