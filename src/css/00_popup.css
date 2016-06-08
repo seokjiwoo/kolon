@@ -39,7 +39,13 @@
 
 .popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
 .popCon select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
-.popCon  fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
+.popCon fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
+.popCon textarea {width:87%; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
+.popCon h5.popSubTit {width:100%; overflow:hidden; font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif; line-height:130%;}
+.popCon h5.popSubTit + .popTb,
+.popCon h5.popSubTit + .tbSet,
+.popCon .popTb + h5.popSubTit {margin-top:20px;}
+.popCon .popBtnS {width:110px; height:40px; background:#999; color:#fff; border-radius:7px; overflow:hidden; display:inline-block; line-height:40px; text-align:center; outline:0; border:0;}
 
 .popCon .popTb {width:100%; display:inline-block; border-top:1px solid #545454;}
 .popCon .popTb table{width:100%; border-bottom:1px solid #ccc; font-family:'RobotoR','NotoSansR', sans-serif; font-size: 14px; text-align: center; line-height: 1.2em}
@@ -51,12 +57,21 @@
 .popCon .popTb table tbody tr th {border-bottom:1px solid #e1e1e1;}
 .popCon .popTb table td + td {border-left:1px solid #e1e1e1;}
 .popCon .popTb table td a {color:#333;}
+.popCon .popTb table td a.btnSizeS {color:#fff;}
 .popCon .popTb table td em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%; font-size:12px;}
 .popCon .popTb table td span.adrList {width:100%; display:inline-block;}
 .popCon .popTb table td span.adrList span {width:100%; display:inline-block; font-family:'NotoSansL','RobotoL', sans-serif; color:#333;}
 .popCon .popTb table td span.adrList span b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif; display:inline-block; color:#333;}
 .popCon .popTb table td.btnZone .btnSizeS + .btnSizeS {margin-top:4px;}
 .popCon .popTb + .popTb {margin-top:47px;}
+.popCon .popTb table tr td a.pointRed {color:#f1645c;}
+
+.popCon .popForm {width:100%; overflow:hidden; text-align:center;}
+.popCon .popFormLine {width:100%; padding-bottom:40px; overflow:hidden; text-align:center; border-bottom:1px solid #e8e8e8;}
+.popCon .popFormLine select + button,
+.popCon .popFormLine input[type=text] + button {margin-left:5px;}
+.popCon .popDel {width:100%; overflow:hidden; text-align:center;}
+.popCon .popDel p {font-size:16px; color:#666;}
 .popCon .titList {width:100%; overflow:hidden; padding:25px 0 40px;}
 .popCon .titList p.tit {width:12%; float:left; color:#999; text-align:center;}
 .popCon .titList ul.popList {width:88%; float:left;}
@@ -73,33 +88,45 @@
 .popCon .checkPw {width:100%; text-align:center;}
 .popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR','RobotoR', sans-serif;}
 .popCon .expertInfo {width:100%; overflow:hidden;}
-.popCon .expertInfo .ePic {width:180px; height:180px; border-radius:50%; overflow:hidden; float:left;}
+.popCon .expertInfo .ePic {width:180px; height:180px; margin-left:15px; border-radius:50%; overflow:hidden; float:left;}
 .popCon .expertInfo .ePic img {width:180px; height:180px;}
-.popCon .expertInfo .eCon {width:593px; float:right; overflow:hidden; padding:30px 0;}
+.popCon .expertInfo .eCon {width:583px; float:left; overflow:hidden; padding:30px 0; margin-left:40px;}
 .popCon .expertInfo .eCon .infoWrap {width:100%; overflow:hidden; position:relative;}
 .popCon .expertInfo .eCon .infoWrap p {line-height:130%;}
 .popCon .expertInfo .eCon .infoWrap p.infoTit {font-size:30px; font-family:'NotoSansR','RobotoR', sans-serif; color:#000;}
 #cboxLoadedContent .popCon .expertInfo .eCon .infoWrap p.infoId {margin-top:5px; font-size:16px;  font-family:'RobotoL','NotoSansL', sans-serif; color:#666;}
 .popCon .expertInfo .eCon .infoWrap a.expertMore {width:99px; height:28px; padding:0 15px; border:1px solid #999; border-radius:13px; position:absolute; top:0; right:0; display:inline-block; line-height:28px; font-size:14px; text-align:center; color:#666;  font-family:'NotoSansR','RobotoR', sans-serif;}
-.popCon .expertInfo .eCon p.infoDetail {width:100%; min-height:40px; overflow:hidden; position:relative;}
-.popCon .expertInfo .eCon p.infoDetail:before {content:''; width:50px; height:1px; background:#c7c7c7; position:absolute; top:0; left:0; display:inline-block;}
-.popCon .expertInfo .eCon p.infoDetail span { height:; font-family:'NotoSansL','RobotoL', sans-serif; display:inline-block; position:relative;}
-.popCon .expertInfo .eCon p.infoDetail span:before {content:''; display:inline-block; position:absolute;}
-.popCon .expertInfo .eCon p.infoDetail span.eAddress {padding-left:13px;}
-.popCon .expertInfo .eCon p.infoDetail span.eAddress:before { width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
-.popCon .expertInfo .eCon p.infoDetail span.eStar {padding-left:15px;}
-.popCon .expertInfo .eCon p.infoDetail span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 0 -10px no-repeat; top:2px; left:0;}
-.popCon .expertInfo .eCon p.infoDetail span + span {margin-left:13px;}
-.popCon .expertInfo .eCon p.infoDetail span + a.btnSizeM {margin-left:31px;}
+.popCon .expertInfo .eCon .infoDetail {width:100%; min-height:40px; overflow:hidden; position:relative;}
+.popCon .expertInfo .eCon .infoDetail:before {content:''; width:50px; height:1px; background:#c7c7c7; position:absolute; top:0; left:0; display:inline-block;}
+.popCon .expertInfo .eCon .infoDetail .eTxt {width:50%; margin-top:20px; min-height:40px; float:left;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span {font-family:'NotoSansL','RobotoL', sans-serif; display:inline-block; position:relative;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span:before {content:''; display:inline-block; position:absolute;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress {padding-left:13px;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before { width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eStar {padding-left:15px;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 0 -10px no-repeat; top:2px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span + span {margin-left:13px;}
+.popCon .expertInfo .eCon .infoDetail .eBtn {width:50%; margin-top:10px; float:right; text-align:right;}
+.popCon .expertInfo .eCon .infoDetail .eBtn a + a {margin-left:5px;}
 .popCon .expertInfo + .popTb {margin-top:32px;}
-
+.popCon .popMail input[type=text] {width:67px;}
+.popCon .popMail select {width:141px;}
+.popCon .messageRadio {width:100%;}
+.popCon .messageRadio span.radioBox + span.radioBox {margin-left:30px;}
+.popCon .popUnderTxt {width:100%; text-align:center; color:#000;}
+.popCon .popUnderTxt span.pointRed {color:#f1645c;}
 
 ul.popList {width:100%; overflow:hidden;}
 ul.popList li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
 ul.popList li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-1px;}
 ul.popList li + li {margin-top:10px;}
 ul.popList + .btnWrap,
-.popCon form + .btnWrap {margin-top:40px;}
+.popCon form + .btnWrap,
+.popCon .tbSet + .btnWrap,
+.popCon .popForm + .btnWrap,
+.popCon .popFormLine + .btnWrap,
+.popCon .popDel + .btnWrap {margin-top:40px;}
+
 
 
 .lyPop.orderPop .popCon {padding:20px 0;}

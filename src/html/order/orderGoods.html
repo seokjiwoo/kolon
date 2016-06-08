@@ -182,7 +182,7 @@
 															<option value="" selected="selected">자택</option>
 															<option value=""></option>
 														</select>
-														<a href="../_popup/popAddress.html" class="btnPop btnPopM absolutePosition btnSizeS btnColor01">새주소</a>
+														<a href="../_popup/popAddress01.html" class="btnSizeS btnColor01 btnPop btnPopM" data-user-class="orderPop">새주소</a>
 													</dd>
 													<dd class="adrCon">
 														<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
@@ -238,7 +238,7 @@
 															<option value="" selected="selected">자택</option>
 															<option value=""></option>
 														</select>
-														<a href="#" class="btnSizeS btnColor01">새주소</a>
+														<a href="../_popup/popAddress01.html" class="btnSizeS btnColor01 btnPop btnPopM" data-user-class="orderPop">새주소</a>
 													</dd>
 													<dd class="adrCon">
 														<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
@@ -523,29 +523,31 @@
 																				<option value="" selected="selected">010</option>
 																				<option value=""></option>
 																			</select>
-																			<input type="text" title="" style="width:30px;"/>
-																			<input type="text" title="" style="width:30px;"/>
+																			<input type="text" title="휴대폰 앞자리 입력" style="width:30px;"/>
+																			<input type="text" title="휴대폰 뒷자리 입력" style="width:30px;"/>
 																			<!--// 개인소득공제 : 휴대폰 번호 -->
 																			<!-- 개인소득공제 : 현금영수증 카드 -->
-																			<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
+																			<!-- 
+																			<select name="" title="소득공제 방법 선택" style="width:142px;">
 																				<option value="" selected="selected">현금영수증 카드</option>
 																				<option value="">휴대폰번호</option>
 																			</select>
 																			<p class="inp4">
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																			</p> -->
+																				<input type="text" title="현금영수증 카드 번호 첫번째자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드 번호 두번째자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드 번호 세번째자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드 번호 마지막자리 입력" style="width:30px;"/>
+																			</p>
+																			-->
 																			<!--// 개인소득공제 : 현금영수증 카드 -->
 																		</div>
 																		<!--// 개인소득공제 -->
 																		<!-- 사업자 지출 증빙 -->
 																		<div class="" id="cashCt2" style="display:none;">
 																			<p class="inp4">
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="사업자번호 앞자리 입력" style="width:30px;"/>
+																				<input type="text" title="사업자번호 중간자리 입력" style="width:30px;"/>
+																				<input type="text" title="사업자번호 뒷자리 입력" style="width:30px;"/>
 																			</p>
 																		</div>
 																		<!--// 사업자 지출 증빙 -->
@@ -641,46 +643,50 @@
 														<td class="cashH">
 															<ul class="noBul">
 																<li>
-																	<span class="radioBtn on"><input type="radio" name="payT3" id="payT5"/><label for="payT5">개인 소득 공제</label></span>
-																	<span class="radioBtn"><input type="radio" name="payT3" id="payT6"/><label for="payT6">사업자 지출 증빙</label></span>
+																	<div class="tabWrap">
+																		<span class="radioBtn radioBox"><a href="#cashCt2_1" class="radioBtn"><input type="radio" name="payT3" id="payT5"/><label for="payT5">개인 소득 공제</label></a></span>
+																		<span class="radioBtn radioBox"><a href="#cashCt2_2" class="radioBtn"><input type="radio" name="payT3" id="payT6"/><label for="payT6">사업자 지출 증빙</label></a></span>
+																	</div>
+																	<div class="">
+																		<!-- 개인소득공제 : 휴대폰 번호 -->
+																		<div id="cashCt2_1">
+																			<select name="" title="소득공제 방법 선택" style="width:142px;">
+																				<option value="" selected="selected">휴대폰번호</option>
+																				<option value="">현금영수증 카드</option>
+																			</select>
+																			<select name="" title="휴대폰 통신사 번호 선택" style="width:68px;">
+																				<option value="" selected="selected">010</option>
+																				<option value=""></option>
+																			</select>
+																			<input type="text" title="휴대폰 앞자리 입력" style="width:30px;"/>
+																			<input type="text" title="휴대폰 뒷자리 입력" style="width:30px;"/>
+																			<!-- 개인소득공제 : 현금영수증 카드 -->
+																			<!-- 
+																			<select name="" title="소득공제 방법 선택" style="width:142px;">
+																				<option value="" selected="selected">현금영수증 카드</option>
+																				<option value="">휴대폰번호</option>
+																			</select>
+																			<p class="inp4">
+																				<input type="text" title="현금영수증 카드 번호 첫번째자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드 번호 두번째자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드 번호 세번째자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드 번호 마지막자리 입력" style="width:30px;"/>
+																			</p>
+																			-->
+																			<!--// 개인소득공제 : 현금영수증 카드 -->
+																		</div>
+																		<!--// 개인소득공제 : 휴대폰 번호 -->
+																		<!-- 사업자 지출 증빙 -->
+																		<div id="cashCt2_2" style="display:none;">
+																			<p class="inp4">
+																				<input type="text" title="사업자번호 앞자리 입력" style="width:30px;"/>
+																				<input type="text" title="사업자번호 중간자리 입력" style="width:30px;"/>
+																				<input type="text" title="사업자번호 뒷자리 입력" style="width:30px;"/>
+																			</p>
+																		</div>
+																		<!--// 사업자 지출 증빙 -->
+																	</div>
 																</li>
-																<!-- 개인소득공제 : 휴대폰 번호 -->
-																<li>
-																	<select name="" title="소득공제 방법 선택" style="width:142px;">
-																		<option value="" selected="selected">휴대폰번호</option>
-																		<option value="">현금영수증 카드</option>
-																	</select>
-																	<select name="" title="휴대폰 통신사 번호 선택" style="width:68px;">
-																		<option value="" selected="selected">010</option>
-																		<option value=""></option>
-																	</select>
-																	<input type="text" title="" style="width:30px;"/>
-																	<input type="text" title="" style="width:30px;"/>
-																</li>
-																<!--// 개인소득공제 : 휴대폰 번호 -->
-																<!-- 개인소득공제 : 현금영수증 카드 -->
-																<!-- <li>
-																	<select name="" title="소득공제 방법 선택" style="width:142px;">
-																		<option value="" selected="selected">휴대폰번호</option>
-																		<option value="">현금영수증 카드</option>
-																	</select>
-																	<p class="inp4">
-																		<input type="text" title="" style="width:30px;"/>
-																		<input type="text" title="" style="width:30px;"/>
-																		<input type="text" title="" style="width:30px;"/>
-																		<input type="text" title="" style="width:30px;"/>
-																	</p>
-																</li> -->
-																<!--// 개인소득공제 : 현금영수증 카드 -->
-																<!-- 사업자 지출 증빙 -->
-																<!-- <li>
-																	<p class="inp4">
-																		<input type="text" title="" style="width:30px;"/>
-																		<input type="text" title="" style="width:30px;"/>
-																		<input type="text" title="" style="width:30px;"/>
-																	</p>
-																</li> -->
-																<!--// 사업자 지출 증빙 -->
 																<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk" value="" name=""><label for="pointCk">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
 															</ul>
 														</td>
