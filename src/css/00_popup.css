@@ -48,6 +48,7 @@
 .popCon .popTb table tr.basic td {background:#fefff5;}
 .popCon .popTb table tr th {padding:20px; background:#f8f8f8; color:#333; font-family:'NotoSansR','RobotoR', sans-serif;}
 .popCon .popTb table tr td {padding:20px; border-top:1px solid #e1e1e1;}
+.popCon .popTb table tbody tr th {border-bottom:1px solid #e1e1e1;}
 .popCon .popTb table td + td {border-left:1px solid #e1e1e1;}
 .popCon .popTb table td a {color:#333;}
 .popCon .popTb table td em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%; font-size:12px;}
@@ -55,6 +56,10 @@
 .popCon .popTb table td span.adrList span {width:100%; display:inline-block; font-family:'NotoSansL','RobotoL', sans-serif; color:#333;}
 .popCon .popTb table td span.adrList span b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif; display:inline-block; color:#333;}
 .popCon .popTb table td.btnZone .btnSizeS + .btnSizeS {margin-top:4px;}
+.popCon .popTb + .popTb {margin-top:47px;}
+.popCon .titList {width:100%; overflow:hidden; padding:25px 0 40px;}
+.popCon .titList p.tit {width:12%; float:left; color:#999; text-align:center;}
+.popCon .titList ul.popList {width:88%; float:left;}
 .popCon ul.addressForm {width:100%; overflow:hidden;}
 .popCon ul.addressForm li + li {margin-top:10px;}
 .popCon .adrBtnG {width:100%; overflow:hidden; margin-bottom:10px;}
@@ -67,10 +72,35 @@
 .popCon .popTb + .btnWrap {margin-top:24px;}
 .popCon .checkPw {width:100%; text-align:center;}
 .popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR','RobotoR', sans-serif;}
+.popCon .expertInfo {width:100%; overflow:hidden;}
+.popCon .expertInfo .ePic {width:180px; height:180px; border-radius:50%; overflow:hidden; float:left;}
+.popCon .expertInfo .ePic img {width:180px; height:180px;}
+.popCon .expertInfo .eCon {width:593px; float:right; overflow:hidden; padding:30px 0;}
+.popCon .expertInfo .eCon .infoWrap {width:100%; overflow:hidden; position:relative;}
+.popCon .expertInfo .eCon .infoWrap p {line-height:130%;}
+.popCon .expertInfo .eCon .infoWrap p.infoTit {font-size:30px; font-family:'NotoSansR','RobotoR', sans-serif; color:#000;}
+#cboxLoadedContent .popCon .expertInfo .eCon .infoWrap p.infoId {margin-top:5px; font-size:16px;  font-family:'RobotoL','NotoSansL', sans-serif; color:#666;}
+.popCon .expertInfo .eCon .infoWrap a.expertMore {width:99px; height:28px; padding:0 15px; border:1px solid #999; border-radius:13px; position:absolute; top:0; right:0; display:inline-block; line-height:28px; font-size:14px; text-align:center; color:#666;  font-family:'NotoSansR','RobotoR', sans-serif;}
+.popCon .expertInfo .eCon p.infoDetail {width:100%; min-height:40px; overflow:hidden; position:relative;}
+.popCon .expertInfo .eCon p.infoDetail:before {content:''; width:50px; height:1px; background:#c7c7c7; position:absolute; top:0; left:0; display:inline-block;}
+.popCon .expertInfo .eCon p.infoDetail span { height:; font-family:'NotoSansL','RobotoL', sans-serif; display:inline-block; position:relative;}
+.popCon .expertInfo .eCon p.infoDetail span:before {content:''; display:inline-block; position:absolute;}
+.popCon .expertInfo .eCon p.infoDetail span.eAddress {padding-left:13px;}
+.popCon .expertInfo .eCon p.infoDetail span.eAddress:before { width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
+.popCon .expertInfo .eCon p.infoDetail span.eStar {padding-left:15px;}
+.popCon .expertInfo .eCon p.infoDetail span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 0 -10px no-repeat; top:2px; left:0;}
+.popCon .expertInfo .eCon p.infoDetail span + span {margin-left:13px;}
+.popCon .expertInfo .eCon p.infoDetail span + a.btnSizeM {margin-left:31px;}
+.popCon .expertInfo + .popTb {margin-top:32px;}
+
+
 ul.popList {width:100%; overflow:hidden;}
 ul.popList li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
 ul.popList li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-1px;}
 ul.popList li + li {margin-top:10px;}
 ul.popList + .btnWrap,
 .popCon form + .btnWrap {margin-top:40px;}
+
+
 .lyPop.orderPop .popCon {padding:20px 0;}
+

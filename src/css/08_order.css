@@ -4,8 +4,8 @@
 .btnG .btnL {float:left;}
 .btnG .btnR {float:right;}
 .btnC {width:100%; margin-top:55px; text-align:center; overflow:hidden;}
-.btnC .btnSizeL.btnColor02.btnWM {width:200px;}
-.btnC .btnColor02.btnWL {width:300px;}
+.btnSizeL.btnColor02.btnWM {width:200px;}
+.btnColor02.btnWL {width:300px;}
 
 ul.tbList {width:100%; margin:0 auto; display:inline-block;}
 ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 7px no-repeat; text-align:left; display:inline-block;}
@@ -94,6 +94,10 @@ span.price.fontS {font-size:14px;}
 .oder .pointCk label {display:inline-block; text-align:left; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
 .oder .pointCk label:before{content: '';display: inline-block;width:26px; height:26px; margin-right: 10px;background: #fff url('../images/ico_checkG.png') no-repeat center;border:1px solid #d1d1d1; border-radius: 20%;vertical-align: middle;text-align:center;}
 .oder .pointCk label.on:before{background:#fff url('../images/ico_checkR.png') center no-repeat;}
+.oder .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
+.oder .record th, .oder .record td {border-bottom: 1px solid #e1e1e1}
+.oder .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.oder .record td{padding: 15px;}
 
 .oder .oderCont {width:100%; display:inline-block;}
 .oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR','RobotoR', sans-serif;}
