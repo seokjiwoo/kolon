@@ -97,7 +97,7 @@ module.exports = function() {
 					$('#idResultName').text(name);
 					$('#idResultPhone').text(memberData.site.cellPhoneNumber);
 					$('#idResultId').text(memberData.site.loginId);
-					$('#idResultJoinDate').text('1994. 04. 20');
+					$('#idResultJoinDate').text(memberData.site.createDateTime.split(' ')[0].replace(/\-/gi, '. '));
 					
 					var socialTags = '';
 					for (var eachSnsKey in memberData.socials) {
@@ -111,7 +111,7 @@ module.exports = function() {
 					}
 					$('#socialAccount').html(socialTags);
 					
-					infoController.getSocialLoginUrl();
+					loginController.getSocialLoginUrl();
 				} else {
 					alert(name+" / "+phone+"\n\n일치하는 아이디가 없습니다.\n입력하신 정보를 다시 한 번 확인해주세요.");
 				}
@@ -148,7 +148,7 @@ module.exports = function() {
 		switch(result.status) {
 			case '200':
 				tempMemberNumber = result.data.site.memberNumber;
-				tempName = result.data.site.memberNumber;
+				tempName = result.data.site.memberName;
 				tempId = result.data.site.loginId;
 				
 				$('#pwResultName').text(tempName);
