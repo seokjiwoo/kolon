@@ -69,8 +69,8 @@
 .formWrap tr:first-child th, .formWrap tr:first-child td{border-top:0;}
 .shipAddress p{margin-top: 10px;}
 .zipCode{position: relative;padding-right: 100px;}
-.zipCode a{right: 0;top:0;}
-.zipCode label{position: absolute;top: 0;right: 0;padding:0 20px;;background: #f1645c;border-radius: 15px;font-size: 13px; line-height:30px;color: #fff;}
+.zipCode a{position: absolute;left: 0;bottom: 0;right: 0;top:0;}
+.zipCode label{position: absolute;top: 0;right: 0;padding:0 20px;;background: #a9c700;border-radius: 15px;font-size: 13px; line-height:30px;color: #fff;}
 .partTit{margin-top: 20px;font-size: 12px;color: #000;}
 
 .textWrap{margin-top: 10px;padding:15px 10px;border-top: 1px solid #666;border-bottom: 1px solid #c4c4c4;background: #f8f8f8;}
