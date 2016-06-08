@@ -44,10 +44,10 @@
 .qna .scrapList ul li:first-child{width:88px;height:88px;border:1px solid #d6d6d6;margin-left:0;}
 .qna .scrapList ul li:first-child a{display:block;height:88px;background:#fff url("../images/ico_plus.png") no-repeat center center;}
 .qna .scrapList ul li img{width:90px;}
-.qna .fileup{overflow:hidden;}
-.qna .fileup .inputs{float:left;}
-.qna .fileup a{width:86px;height:40px;display:block;float:right;background:#999;border-radius:7px;text-align:center;}
-.qna .fileup a span{padding-top:14px;display:block;color:#fff;font-size:13px;}
+.fileup{overflow:hidden;}
+.fileup .inputs{float:left;}
+.fileup a{width:86px;height:40px;display:block;float:right;background:#999;border-radius:7px;text-align:center;}
+.fileup a span{line-height:40px;display:block;color:#fff;font-size:13px;}
 .qna .arrayWrap{margin-top:27px;}
 .qna .arrayWrap ul:first-child{float:left;}
 
