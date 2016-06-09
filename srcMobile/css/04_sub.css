@@ -64,8 +64,6 @@
 .previewList .reply .galleryThumb li:first-child{margin:0;}
 .previewList .reply .galleryThumb li img{display: block;width: 100%;}
 .previewList .reply .grade{margin-bottom: 5px;}
-.previewList .reply .tag li{display: inline-block;margin: 10px 10px 0 0;}
-.previewList .reply .tag a{display: inline-block;padding:0 10px;border-radius: 15px;background: #fefefe;line-height: 25px;color: #333;box-shadow: 0 2px 0 rgba(0,0,0,.15);}
 .previewList .reply .except02{max-height: 2.4em;line-height: 1.2em;}
 .previewList .reply .readmore{color: #a9c700 }
 
