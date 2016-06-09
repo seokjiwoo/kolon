@@ -57,14 +57,18 @@
 .qna .reply:before{content: '';position: absolute;top:18px;left: 15px;width:7px;height: 7px;border-left:1.5px solid #ccc;border-bottom:1.5px solid #ccc; }
 .qna .reply .except{padding-left: 18px;}
 
-#writeReview a{margin-top: 10px;}
-.talkProfile{position: relative;text-align: center;border-bottom: 1px solid #e5e5e5}
+.previewList p + a{margin-top: 10px;}
+.talkProfile{position: relative;text-align: center;box-shadow: 0 1px 0 rgba(0,0,0,.15);}
 .talkProfile .btnToggle{display: block;width: 50%;margin:0 auto;padding:10px 0;color: #000;font-size: 18px;line-height: 30px}
 .talkProfile .pic{overflow: hidden;width: 50px;height: 50px;border-radius: 50%;margin:0 auto;}
 .talkProfile .pic img{display: block;width: 100%;}
 .talkProfile .btnToggle:after{content:'';display: inline-block;width: 10px;height: 6px;margin-left: 5px;vertical-align: middle;background: url('../images/ico_toggle.png') no-repeat 0 -6px;background-size: 10px 12px;}
 .talkProfile .btnToggle.open:after{background-position: 0 0}
-.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;background: #fff;z-index: 1;border-bottom: 1px solid #e5e5e5}
+.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;padding: 20px 0;background: #f8f8f8;z-index: 1;box-shadow: 0 2px 0 rgba(0,0,0,.15);}
+.talkProfile .slideCon p{margin-top: 5px;font-size: 11px;color: #f1645c;line-height: 1.4em;}
+.talkProfile .slideCon p span{font-size: 18px;color: #000;}
+.talkProfile .slideCon .btnWrap{margin-top: 15px;}
+.talkProfile .slideCon a{width: 125px;margin:0 5px;}
 
 .chatRoom .wrap{padding-bottom: 60px;}
 .chatRoom .day{margin-top: 18px;font-size: 11px;color:#666;text-align: center;}
@@ -96,24 +100,21 @@
 .inputMessage .btnSend{position: absolute;top:14px;right: 10px;;color: #a9c700;background: none;border:0;}
 .inputMessage .attachPic{position: absolute;top:14px;left: 15px;display: inline-block;width: 25px;height: 18px;background: url('../images/ico_pic.png') no-repeat; background-size: 100%;}
 
-.selectAddress .tabWrap{padding: 15px 0 5px;text-align: center;}
-.selectAddress .tabWrap li{display: inline-block;width:45%;margin:0 1%;}
-.selectAddress .tabWrap a{width: 100%;background:#a0a0a0; }
-.selectAddress .tabWrap .on a{background: #a9c700;font-weight: bold;}
 #lastAddress > select{margin:10px 0;} 
 
 #myOrder .tabCon{padding-bottom: 25px;border-bottom: 1px solid #c4c4c4}
 .my .secTit{margin-bottom: 20px;padding-bottom: 10px;border-bottom: 1px solid #666;font-size: 18px;color: #000;}
 
-.goodsInfo li{position: relative;overflow: hidden;padding: 15px 0;}
+.goodsInfo li{position: relative;overflow: hidden;padding: 15px 0;border-top: 1px solid #c8c8c8}
 .goodsInfo .btnToggle{display: block;position: absolute;top:10px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
 .goodsInfo .btnToggle.open{background-position: 2px 5px;}
-.goodsInfo .listTit{background: #f8f8f8;padding: 15px;color: #333;line-height: 10px;}
-.goodsInfo .pic{float: left;width: 90px;height: 90px;margin-right: 15px;}
+.goodsInfo .listTit{background: #f8f8f8;padding: 15px;color: #333;line-height: 10px;border-top:0;}
+.goodsInfo .listTit + li{border-top-color:#e8e8e8;}
+.goodsInfo .pic{float: left;width: 90px;height: 90px;}
 .goodsInfo .pic img{display: block;width: 100%;}
-.goodsInfo .tit{font-size: 15px;font-weight: bold;line-height: 1.2em;}
-.goodsInfo .sub{font-size: 15px;color: #999;line-height: 1.2em;}
-.goodsInfo .price{margin-top: 15px;padding-top: 15px;border-top:1px solid #dbdbdb;text-align: right;font-size: 15px;color: #f1645c;}
+.goodsInfo .tit{font-size: 15px;font-weight: bold;line-height: 1.2em;margin-left: 105px;}
+.goodsInfo .sub{font-size: 15px;color: #999;line-height: 1.2em;margin-left: 105px;}
+.goodsInfo .price{margin: 15px 0 0 105px;padding-top: 15px;border-top:1px solid #dbdbdb;text-align: right;font-size: 15px;color: #f1645c;}
 .goodsInfo .price b{font-size: 20px;}
 .goodsInfo .price .count{color: #999;}
 .goodsInfo .price .count:before{content: '';display: inline-block;width: 1px;height: 14px;margin:0 8px;vertical-align: middle;background: #dcdcdc;}

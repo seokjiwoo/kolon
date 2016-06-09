@@ -334,3 +334,44 @@
 .my .record + .infoOrder {margin-top:31px;}
 .my h2.secTit + .tbSet {margin-top:30px;}
 .my .oderSearch select + .btnSizeM2 { height:40px; margin-left:15px; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
+
+.btnRoundM{height:38px;min-width:166px;font-size:14px;border-radius:20px;line-height: 40px;border:1px solid #e3e3e3;display:inline-block;font-family:'RobotoM','NotoSansM',sans-serif;text-align:center;color:#666;}
+.btnRoundM span{padding-left:26px;display:inline-block;background:url("../images/ico_home_type02.png") no-repeat;}
+.btnRoundM .home{background-position:0 13px;}
+.btnRoundM .tell{background-position:0 -31px;}
+
+.my .msgArea{width:895px;float:left;font-size:14px;}
+.my .expertBox{height:154px;padding:0 50px;background:#fff;border-radius:10px;box-shadow:0 3px rgba(0,0,0,.1);}
+.my .expertBox:after{content:"";display:block;clear:both;}
+.my .expertBox .name{width:280px;overflow:hidden;float:left;margin-top:26px;}
+.my .expertBox .name > span{display:inline-block;float: left;}
+.my .expertBox .name > span:first-child{width:96px;height:96px;overflow:hidden;background:#fff;border-radius: 100%;}
+.my .expertBox .name > span:first-child img{width:96px;}
+.my .expertBox .name > span:first-child + span{width:162px;height:32px;margin:36px 0 0 20px;}
+.my .expertBox .name > span > span{display:block;font-size:16px;}
+.my .expertBox .name > span > span em{font-style:normal;color:#f1645c;text-transform:uppercase;}
+.my .expertBox .name > span > span:first-child,
+.my .expertBox .name > span > span:first-child + span{height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family:'RobotoR','NotoSansR',sans-serif;}
+.my .expertBox .name > span > span:first-child + span{font-size:13px;}
+.my .expertBox .expertBtn{float:right;margin-top:50px;}
+.my .expertBtn .btnSizeM{min-width:168px;}
+.my .messageBox{background:#fff;border-radius:10px;box-shadow:0 3px rgba(0,0,0,.1);}
+.my .messageBox .prevMessage{height:65px;display:block;text-align:center;border-bottom:1px solid #d9d9d9;color:#333;}
+.my .messageBox .prevMessage span{display:inline-block;margin-top:26px;padding-right:21px;background:url("../images/ico_top02.png") no-repeat right center;font-family:'NotoSansR','RobotoR', sans-serif;}
+
+.my .talkList{padding:40px 50px;}
+.my .talkList ul{}
+.my .talkList ul li{margin-top:25px;}
+.my .talkList ul li:first-child{margin-top:0;}
+.my .talkList ul li div *{vertical-align:top;}
+.my .talkList .right .txt,
+.my .talkList .left .txt{min-width:30px;max-width:560px;padding:26px 20px;border-radius:10px;display:inline-block;line-height:1.2em;font-family:'NotoSansR','RobotoR', sans-serif;}
+.my .talkList .thumb{width:64px;height:64px;overflow:hidden;border-radius:100%;display:inline-block;margin-top:10px;}
+.my .talkList .thumb img{width:64px;vertical-align:top;}
+.my .talkList .right{text-align:right;}
+.my .talkList .right .txt{color:#fff;background:#a9c700;text-align:left;}
+.my .talkList .left{text-align:left;}
+.my .talkList .left .txt{color:#000;background:#f2f2f2;}
+.my .talkList .right .thumb{margin-left:15px;}
+.my .talkList .left .thumb{margin-right:15px;}
+
