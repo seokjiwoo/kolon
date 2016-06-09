@@ -79,7 +79,19 @@ module.exports = function() {
 		if ($('ul').hasClass('cardWrap')) initCardLayout();
 		if ($('ul').hasClass('infoSlider')) initTabSlider();
 		if ($('p').hasClass('except')) $('.except').dotdotdot({watch:'window'});
-		if ($('p').hasClass('except02')) $('.except02').dotdotdot({after: "a.readmore"});
+		if ($('p').hasClass('except02')) {
+			$('.except02').dotdotdot({
+				after: 'a.readmore',
+				watch:'window',
+				callback:function(){
+					$('.readmore').on('click', function(e) { // more slideDown
+						e.preventDefault();
+						$(this).parent('p').siblings('.slideCon').slideDown();
+						$(this).parent('.except02').trigger('destroy').css('max-height','none').find('a').remove();
+					});
+				}
+			});
+		}
 	};
 	
 	/**

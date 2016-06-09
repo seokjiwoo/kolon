@@ -30,7 +30,7 @@
 
 .noContent{display: none;padding: 70px 0 50px;text-align: center;font-size: 15px;color: #666;}
 
-.tabSquare{overflow: hidden;width: 100%;padding: 10px 0;border-bottom: 1px solid #ccc;}
+.tabSquare{overflow: hidden;width: 100%;padding: 15px 0;border-bottom: 1px solid #ccc;}
 .tabSquare li{position: relative;float: left;width: 50%;border:1px solid #ccc;}
 .tabSquare li:first-child{border-right: 0;border-radius: 8px 0  0 8px;}
 .tabSquare li:last-child{border-left: 0;border-radius: 0 8px 8px 0;}
@@ -54,18 +54,16 @@
 .previewList .done .info{color: #a9c700;border-color: #a9c700;}
 .previewList .count02{float: right;color:#333;font-size: 11px;}
 .previewList .count02 b{color:#f1645c;}
-.previewList .op{margin-top: 3px;font-size: 11px;color: #2db9c2;}
+.previewList .op{margin-top: 3px;font-size: 11px;color: #999;}
 
 .previewList .reply{margin-top: 8px;background: #f8f8f8;padding: 15px;}
 .previewList .reply .except{color: #666;}
-.previewList .reply .date{margin-top: 5px;}
+.previewList .reply .date{margin-top: 3px;}
 .previewList .reply .galleryThumb{overflow: hidden;margin-top: 10px;}
 .previewList .reply .galleryThumb li{float: left;width: 31%;margin-left: 3.5%;}
 .previewList .reply .galleryThumb li:first-child{margin:0;}
 .previewList .reply .galleryThumb li img{display: block;width: 100%;}
 .previewList .reply .grade{margin-bottom: 5px;}
-.previewList .reply .tag li{display: inline-block;margin: 10px 10px 0 0;}
-.previewList .reply .tag a{display: inline-block;padding:0 10px;border-radius: 15px;background: #fefefe;line-height: 25px;color: #333;box-shadow: 0 2px 0 rgba(0,0,0,.15);}
 .previewList .reply .except02{max-height: 2.4em;line-height: 1.2em;}
 .previewList .reply .readmore{color: #a9c700 }
 

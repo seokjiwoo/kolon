@@ -111,7 +111,7 @@
 #fallowing button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.recordSort th{padding: 20px;background: #f8f8f8;color: #333;}
+.recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding: 15px;}
 .recordSort{margin:30px 0;text-align: left;}
 .recordSort tr:first-child td{padding-bottom: 0;}
@@ -130,7 +130,7 @@
 
 .my .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
 .my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
-.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.my .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .my .record td{padding: 15px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
@@ -238,7 +238,7 @@
 
 #myInfoEdit .profileInfo{margin-top: 35px;}
 .my table.formList{text-align: left;}
-.my table.formList td, .my table.formList th{padding: 15px 20px;}
+.my table.formList td, .my table.formList th{padding: 15px 15px;}
 .my table.formList .birth > div{margin:0;}
 #myInfoEdit input[type="text"]:disabled{background: #f7f7f7;}
 #myInfoEdit td{color: #666}
@@ -351,22 +351,38 @@
 .my .expertBox .name > span > span{display:block;font-size:16px;}
 .my .expertBox .name > span > span em{font-style:normal;color:#f1645c;text-transform:uppercase;}
 .my .expertBox .name > span > span:first-child,
-.my .expertBox .name > span > span:first-child + span{height:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family:'RobotoR','NotoSansR',sans-serif;}
+.my .expertBox .name > span > span:first-child + span{height:16px;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family:'RobotoR','NotoSansR',sans-serif;color:#666;}
 .my .expertBox .name > span > span:first-child + span{font-size:13px;}
-.my .expertBox .expertBtn{float:right;margin-top:50px;}
+.my .expertBox .expertBtn{float:right;margin-top:55px;}
 .my .expertBtn .btnSizeM{min-width:168px;}
 .my .messageBox{background:#fff;border-radius:10px;box-shadow:0 3px rgba(0,0,0,.1);}
 .my .messageBox .prevMessage{height:65px;display:block;text-align:center;border-bottom:1px solid #d9d9d9;color:#333;}
 .my .messageBox .prevMessage span{display:inline-block;margin-top:26px;padding-right:21px;background:url("../images/ico_top02.png") no-repeat right center;font-family:'NotoSansR','RobotoR', sans-serif;}
-
-.my .talkList{padding:40px 50px;}
-.my .talkList ul{}
-.my .talkList ul li{margin-top:25px;}
-.my .talkList ul li:first-child{margin-top:0;}
-.my .talkList ul li div *{vertical-align:top;}
+.my .messageBox .inputField{height:70px;padding-top:30px;background:#f8f8f8;border-radius:0 0 10px 10px;text-align:center;}
+.my .messageBox .inputField .inp{position:relative;width:672px;display:inline-block;background:#fff;padding-right:30px;border:1px solid #d5d5d5;border-radius:7px}
+.my .messageBox .inputField .inp:after{position:absolute;right:0;top:1px;z-index:1;content:"";width:30px;height:40px;display:block;background:url("../images/ico_photo_upload.png") no-repeat 0 9px;
+}
+.my .messageBox .inputField .inp input[type="text"]{width:642px;margin:0;border:0;padding-left:10px;display:block;}
+.my .messageBox .inputField .inp input[type="file"]{position:absolute;top:0;right:0;z-index:2;width:30px; height:40px;overflow:hidden;opacity:0;}
+.my .messageBox .inputField button{width:86px;height:40px;background:#999;color:#fff;border:0;border-radius:9px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.my .talkList{height:690px;overflow:hidden;overflow-y:auto;padding:40px 50px;}
+.my .talkList > ul > li{margin-top:25px;}
+.my .talkList > ul > li *{vertical-align:top;}
+.my .talkList > ul > li:first-child{margin-top:0;}
+.my .talkList .txtbox > ul > li{margin-top:30px;}
+.my .talkList .txtbox > ul > li:first-child{margin-top:0;}
+.my .talkList .line{position:relative;text-align:center;color:#999;margin:66px 0;}
+.my .talkList .line:before,
+.my .talkList .line:after{position:absolute;top:10px;content:"";display:inline-block;width:315px;height:1px;background:#d9d9d9;}
+.my .talkList .line:before{left:0;}
+.my .talkList .line:after{right:0;}
+.my .talkList .right:after,
+.my .talkList .left:after{content:"";display:block;clear:both;}
+.my .talkList .txtbox{width:600px;display:inline-block;}
+.my .talkList em{display:block;font-style:normal;color:#999;}
 .my .talkList .right .txt,
-.my .talkList .left .txt{min-width:30px;max-width:560px;padding:26px 20px;border-radius:10px;display:inline-block;line-height:1.2em;font-family:'NotoSansR','RobotoR', sans-serif;}
-.my .talkList .thumb{width:64px;height:64px;overflow:hidden;border-radius:100%;display:inline-block;margin-top:10px;}
+.my .talkList .left .txt{min-width:25px;max-width:560px;display:inline-block;margin-bottom:8px;padding:18px 20px;border-radius:10px;line-height:1.3em;font-family:'NotoSansR','RobotoR', sans-serif;}
+.my .talkList .thumb{width:64px;height:64px;overflow:hidden;border-radius:100%;display:inline-block;}
 .my .talkList .thumb img{width:64px;vertical-align:top;}
 .my .talkList .right{text-align:right;}
 .my .talkList .right .txt{color:#fff;background:#a9c700;text-align:left;}
@@ -374,4 +390,3 @@
 .my .talkList .left .txt{color:#000;background:#f2f2f2;}
 .my .talkList .right .thumb{margin-left:15px;}
 .my .talkList .left .thumb{margin-right:15px;}
-

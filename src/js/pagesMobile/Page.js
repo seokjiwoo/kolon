@@ -36,10 +36,5 @@ module.exports = function() {
 			$(this).toggleClass('open');
 			$(this).siblings('.slideCon').slideToggle();
 		});
-		$('.readmore').on('click', function(e) { // more slideDown
-			e.preventDefault();
-			$(this).parent('p').siblings('.slideCon').slideDown();
-			$(this).parent('.except02').trigger('destroy').css('max-height','none').find('a').remove();
-		});
 	}
 }

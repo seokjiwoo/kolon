@@ -56,7 +56,7 @@
 .lyPop .table03Wrap .record:first-child:after {background: url('../images/ico_order.png') 0 0px no-repeat;}
 .lyPop .table03Wrap .record:last-child:after {background:none;}
 .lyPop .table03Wrap .record:after {content:'';display:block;position:absolute;width:40px;height:40px;top:50%;right:-25px;margin-top:-20px;background: url('../images/ico_order.png') 0 -40px no-repeat;z-index:3;}
-.lyPop .table03Wrap .record th, .lyPop .table03Wrap .record td {padding:0 20px;color:#333;}
+.lyPop .table03Wrap .record th, .lyPop .table03Wrap .record td {padding:0 15px;color:#333;}
 .lyPop .table03Wrap .record th.h50, .lyPop .table03Wrap .record td.h50 {height:50px;}
 .lyPop .table03Wrap .record td.t_c {text-align:center;}
 .lyPop .table03Wrap .record td {text-align:left}
@@ -226,9 +226,9 @@ table tr td.txtL {text-align:left !important;}
 .tbSet table.tbL tr td {text-align:left;}
 .tbSet table.tbLThC tr th {text-align:center;}
 .tbSet table.tbLThC tr td {text-align:left; color:#333;}
-.tbSet table th{padding: 20px;background: #f8f8f8;color: #333; font-family:'NotoSansR','RobotoR', sans-serif;}
+.tbSet table th{padding: 15px;background: #f8f8f8;color: #333; font-family:'NotoSansR','RobotoR', sans-serif;}
 .tbSet table tbody tr + tr th {border-top:1px solid #e8e8e8;}
-.tbSet table td{padding:20px;}
+.tbSet table td{padding:15px;}
 .tbSet table tr + tr td {border-top:1px solid #e8e8e8;}
 .tbSet table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
 .tbSet table.lineN {border-bottom:0;}
