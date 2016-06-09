@@ -27,7 +27,7 @@
 .timeCard .recordCon{height: 86px;padding:20px 13px;text-align: left;color: #666;font-size: 11px;}
 .timeCard .recordCon > div{display: inline-block;vertical-align: middle;}
 .timeCard .recordCon:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
-.timeCard .recordCat{display: inline-block;margin-bottom: 4px;padding:0 5px;border-radius: 15px;border:1px solid #000;color: #000;line-height: 16px}
+.timeCard .recordCat{display: inline-block;margin-bottom: 4px;padding:0 5px;border-radius: 15px;border:1px solid #000;color: #000;line-height: 16px;font-weight: bold}
 .timeCard .recordTxt{line-height: 1.2em;}
 .timeCard .recordTxt b{color: #000;}
 .timeCard .recordThumb{height: 115px;background: #a9c700;color: #fff;font-size: 13px;}
@@ -47,7 +47,7 @@
 #myBoard .recent li:last-child{margin-right: 15px;}
 #myBoard .recent .imgWrap{overflow: hidden;border-radius: 5px;height: 150px;}
 #myBoard .recent li img{display: block;width: 100%;}
-#myBoard .recent li p{margin-top: 5px;font-size: 13px;color: #666;line-height: 1.2em;}
+#myBoard .recent li p{margin-top: 5px;font-size: 13px;color: #333;line-height: 1.2em;}
 
 .message .except{padding-right: 55px;color: #666}
 .review .except{color: #000}
