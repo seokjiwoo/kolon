@@ -111,7 +111,7 @@
 #fallowing button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
-.recordSort th{padding: 20px;background: #f8f8f8;color: #333;}
+.recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding: 15px;}
 .recordSort{margin:30px 0;text-align: left;}
 .recordSort tr:first-child td{padding-bottom: 0;}
@@ -130,7 +130,7 @@
 
 .my .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
 .my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
-.my .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.my .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .my .record td{padding: 15px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
@@ -238,7 +238,7 @@
 
 #myInfoEdit .profileInfo{margin-top: 35px;}
 .my table.formList{text-align: left;}
-.my table.formList td, .my table.formList th{padding: 15px 20px;}
+.my table.formList td, .my table.formList th{padding: 15px 15px;}
 .my table.formList .birth > div{margin:0;}
 #myInfoEdit input[type="text"]:disabled{background: #f7f7f7;}
 #myInfoEdit td{color: #666}

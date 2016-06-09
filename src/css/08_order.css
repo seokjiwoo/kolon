@@ -96,7 +96,7 @@ span.price.fontS {font-size:14px;}
 .oder .pointCk label.on:before{background:#fff url('../images/ico_checkR.png') center no-repeat;}
 .oder .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
 .oder .record th, .oder .record td {border-bottom: 1px solid #e1e1e1}
-.oder .record th{padding: 20px;background: #f8f8f8;color: #333;}
+.oder .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .oder .record td{padding: 15px;}
 
 .oder .oderCont {width:100%; display:inline-block;}
@@ -148,12 +148,7 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont .oderTb table tr td ul.noBul2 li a.btnSizeS {font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont .oderTb table tr td ul.noBul .tabWrap + div {margin-top:20px;}
 .oder .oderCont .oderTb table tr.total td {height:118px;}
-.oder .oderCont .oderTb table tr.total2 td {height:456px;}
-.oder .oderCont .oderTb table tr.total3 td {height:89px;}
-.oder .oderCont .oderTb table tr.total4 td {height:202px;}
-.oder .oderCont .oderTb table tr.total5 td {height:539px;}
-.oder .oderCont .oderTb table tr.total6 td {height:173px;}
-.oder .oderCont .oderTb table tr td.cashH {height:216px;}
+.oder .oderCont .oderTb table tr td.cashH {height:240px;}
 .oder .oderCont .oderTb table tr td.pointH {height:58px;}
 .oder .oderCont .agreeBox { width:1019px; padding:40px 40px 32px; margin-top:20px; overflow:hidden; border-top:1px solid #545454; border-bottom:1px solid #e8e8e8; background:#fafafa;}
 .oder .oderCont .agreeBox .agreeCont {width:942px; height:220px; padding:38px; border:1px solid #e1e1e1; background:#fff; overflow-y:scroll;}

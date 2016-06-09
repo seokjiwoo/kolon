@@ -26,12 +26,15 @@ module.exports = function() {
 		opinionToggle();
 		initCardRadio();
 		btnDel();
+		tableHeight()
 		
+		/* 레이어 팝업으로 변경됨
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
 			$(this).toggleClass('opened');
 			$('.catSort ul').slideToggle(300);
-		});	
+		});*/
+
 		$('#expertList').bxSlider({ //expert top slide
 			minSlides: 5,
 			maxSlides: 5,
@@ -229,6 +232,13 @@ module.exports = function() {
 				$(this).parent().next().css('border-top','0');
 			})
 		});
+	}
+
+	function tableHeight(){ // '/order/orderGoods.html, /order/orderService.html'주문결재 결재방법 테이블 높이
+		$('.pay').each(function(){
+			var tbHC = $(this).height() - 115;
+			$(this).find('.tbHV table').css('height',tbHC);
+		})
 	}
 
 }
