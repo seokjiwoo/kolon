@@ -155,7 +155,7 @@ h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'RobotoR
 .scrapBox ul li{position:relative;width:91px;height:91px;overflow:hidden;float:left;background:#e5e5e5;margin-left:11px;cursor:pointer;}
 .scrapBox ul li:first-child{margin-left:0;}
 .scrapBox ul li img{width:91px;vertical-align:top;}
-.scrapBox ul li i{position:absolute;top:10px;right:10px;width:24px;height:24px;display:inline-block;background:#ccc url(../images/ico_check.png) no-repeat 50%;border-radius:50%;text-align:center;font-style:normal;}
+.scrapBox ul li i{position:absolute;top:10px;right:10px;width:24px;height:24px;display:inline-block;background:#ccc url("../images/ico_check.png") no-repeat 50%;border-radius:50%;text-align:center;font-style:normal;}
 .scrapBox ul li i span{display:block;padding-top:2px;}
 .scrapBox ul li.active{width:83px;height:83px;border:4px solid #f1645c;}
 .scrapBox ul li.active i{background:#f1645c;color:#fff;}
@@ -165,6 +165,4 @@ h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'RobotoR
 .detailBox a.next{position:absolute;top:300px;width:30px;height:58px;display:block;overflow:hidden;background:url("../images/ico_slide_nav.png") no-repeat;}
 .detailBox a.prev{left:30px;background-position:0 0;}
 .detailBox a.next{right:30px;background-position:-34px 0;}
-.detailBox .imgArea{}
-
-select.scrapSelect{width:480px;padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
+select.scrapSelect{width:530px;padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
