@@ -121,7 +121,7 @@ function ClassMemberInfoController() {
 			} else {
 				Super.handleError('join', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -145,7 +145,7 @@ function ClassMemberInfoController() {
 			} else {
 				Super.handleError('join', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -296,7 +296,7 @@ function ClassMemberInfoController() {
 			} else {
 				Super.handleError('resetPassword', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/**
@@ -313,7 +313,7 @@ function ClassMemberInfoController() {
 			} else {
 				Super.handleError('join', result);
 			}
-		}, true);
+		}, false);
 	};
 	
 	/*
