@@ -20,10 +20,6 @@ function ClassMemberInfoController() {
 	};
 	
 	function MemberInfoController() {
-		$.ajaxSetup({
-			type: "POST"
-		});
-		
 		callerObj = {
 			/**
 			 * 회원가입 약관 목록 받아오기

@@ -10,7 +10,6 @@ function ClassLoginController() {
 	var callerObj;
 	
 	var Model = require('../model/LoginModel');
-	
 	var model;
 	
 	return {
@@ -22,10 +21,6 @@ function ClassLoginController() {
 	
 	function LoginController() {
 		model = Model().init();
-		
-		$.ajaxSetup({
-			type: "POST"
-		});
 		
 		callerObj = {
 			/**

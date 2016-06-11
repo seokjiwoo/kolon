@@ -4,6 +4,10 @@ module.exports = function() {
 	var API_URL = 'http://uppp.oneplat.co/';
 	var CDN_URL = 'http://cdn.oneplat.co/';
 	
+	$.ajaxSetup({
+		type: "POST"
+	});
+	
 	var callerObj;
 	
 	var loadingFlag = false;
