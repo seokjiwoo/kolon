@@ -4,6 +4,8 @@ module.exports = function() {
 	var SuperClass = require('../pagesCommon/PageCommon.js');
 	var Super = SuperClass();
 	
+	var lnbScroller;
+
 	var callerObj = {
 		/**
 		 * SuperClass 연결
@@ -49,22 +51,36 @@ module.exports = function() {
 	};
 	
 	function initMenu(){
+		lnbScroller = new IScroll('#lnbWrapper', {
+			click: true, 
+			mouseWheel: true,
+			scrollbars: true,
+			fadeScrollbars: true,
+			bounce: false
+		});
+
 		$('#btnLnb').on('click', function(e) {//lnb open
 			e.preventDefault();
-			$('#lnb').animate({'left':'0'}, 500);
+			$('#lnbWrapper').animate({'left':'0'}, 500);
 		});
 		$('#profileClose').on('click', function(e) {//lnb close
 			e.preventDefault();
-			$('#lnb').animate({'left':'-285px'}, 500);
+			$('#lnbWrapper').animate({'left':'-285px'}, 500);
 		});
 		$('.depth01').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
-			$(this).siblings().slideToggle();
+			$(this).siblings().slideToggle(400, function() {
+				console.log(';;;');
+				lnbScroller.refresh();
+			});
 		});
 		$('#menuToggle').on('click', function(e) {//lnb profile drop-down
 			e.preventDefault();
 			$(this).toggleClass('opened');
-			$('#myMenu').slideToggle();
+			$('#myMenu').slideToggle(400, function() {
+				console.log(';;;');
+				lnbScroller.refresh();
+			});
 		});
 		$('#searchOpen').on('click', function(e) {// search drop-down
 			e.preventDefault();

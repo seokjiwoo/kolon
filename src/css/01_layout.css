@@ -66,7 +66,9 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 .topMenu .topR .btnLogin{float:right;display: inline-block;margin:12px 30px 12px 10px;padding:11px 20px 9px;border-radius: 20px;background:#a9c700;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:14px;}
 
-.lnb{overflow: auto;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);text-align: center;}
+
+.lnbWrapper {overflow: hidden;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
+.lnb {overflow: auto;background:#fff;text-align: center;}
 .lnb .profile{position: relative;min-height:340px;padding-bottom:70px;background: #f1645c url('../images/bg_lnb.jpg') no-repeat bottom;}
 .lnb .profile .count{border-radius:10px;padding:4px 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;}
 .lnb .profile .close{float: left;display: block;width: 80px;height:60px;background: url('../images/btn_close.png') no-repeat center}
