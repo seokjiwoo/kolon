@@ -48,12 +48,12 @@ module.exports = function() {
 	
 	/**
 	 * 로그인 완료 이벤트 핸들링
-	 * @param {String} value email address for validation 
 	 */
 	function loginCompleteHandler(e, status) {
 		switch(status) {
 			case 200:
-				alert('로그인 성공');
+				//alert('로그인 성공');
+				location.href = '/';
 				break;
 			default:
 				alert('로그인 실패, code: '+status);

@@ -11,6 +11,9 @@ module.exports = function() {
 		"1200": 1200
 	};
 	var winH;
+
+	var loginDataModel = require('../model/LoginModel');
+	var loginData = loginDataModel.loginData();
 	
 	var callerObj = {
 		/**
@@ -24,7 +27,11 @@ module.exports = function() {
 		/**
 		 * HTML 팝업 오픈
 		 */
-		htmlPopup: htmlPopup
+		htmlPopup: htmlPopup,
+		/**
+		 * 로그인 상태 정보
+		 */
+		loginData: loginData
 	};
 	
 	return callerObj;

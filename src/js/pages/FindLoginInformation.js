@@ -255,7 +255,7 @@ module.exports = function() {
 				name: tempName,
 				mail: tempId,
 				authKey: tempAuthKey
-			}, { expires: 1 });	// 1/288	// 5 minutes
+			}, { expires: 1/288 });	// 1/288	// 5 minutes
 			location.href = 'findLoginPwReset.html';
 		}
 		e.stopPropagation();

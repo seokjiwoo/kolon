@@ -9,8 +9,7 @@ function ClassLoginController() {
 	var instance;
 	var callerObj;
 	
-	var Model = require('../model/LoginModel');
-	var model;
+	var model = require('../model/LoginModel');
 	
 	return {
 		getInstance: function() {
@@ -20,8 +19,6 @@ function ClassLoginController() {
 	};
 	
 	function LoginController() {
-		model = Model().init();
-		
 		callerObj = {
 			/**
 			 * 소셜 로그인 URL 목록 요청
@@ -36,8 +33,7 @@ function ClassLoginController() {
 			/**
 			 * 로그아웃
 			 */
-			logout: logout,
-			
+			logout: logout
 		}
 		
 		return callerObj;	
@@ -52,11 +48,18 @@ function ClassLoginController() {
 			"loginPassword": pw
 		}, function(status, result) {
 			if (status == 200) {
-				// make cookie
-				$(callerObj).trigger('loginResult', [200]);
+				Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+					if (status == 200) {
+						model.setLoginInfo(result.data.data.myInfo);
+						$(callerObj).trigger('loginResult', [200]);
+					} else {
+						Super.handleError('login/myData', result);
+						$(callerObj).trigger('loginResult', [result.status]);
+					}
+				});
 			} else {
 				Super.handleError('login', result);
-				$(callerObj).trigger('loginResult', [result.status]);
+				$(callerObj).trigger('loginResult', [result]);
 			}
 		}, false);
 	};
@@ -67,7 +70,7 @@ function ClassLoginController() {
 	function logout() {
 		Super.callApi('/apis/user/logout', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				// remove cookie
+				model.removeLoginInfo();
 				$(callerObj).trigger('logoutResult', [200]);
 			} else {
 				Super.handleError('logout', result);

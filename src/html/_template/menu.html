@@ -13,17 +13,12 @@
 			</ul>
 		</div>
 		<div class="topR">
-			<!-- 로그인 전 -->
-			<a href="/member/login.html" class="btnLogin">커먼 시작하기</a>
-			<!-- //로그인 전 -->
-
-			<!-- 로그인 후 
-			<div class="member">
-				<a href="" class="btnAlarm"></a>
-				<a href="" class="pic"><img src="/images/temp01.jpg" alt=""></a>
-				<a href="" class="name">김세환 님</a>
+			<a href="/member/login.html" id="buttonLogInTop" class="btnLogin">커먼 시작하기</a>
+			<div id="topMemberInfo" class="member">
+				<a href="" id='topMemberInfoAlarm' class="btnAlarm"></a>
+				<a href="" id='topMemberInfoPic' class="pic"><img src="/images/temp01.jpg" alt=""></a>
+				<a href="" id='topMemberInfoName' class="name"></a>
 			</div>
-			//로그인 후 -->
 			<a href="" id="searchOpen"></a>
 		</div>
 		<div class="searchWrap" id="searchWrap">
@@ -73,23 +68,20 @@
 	</div>
 </header>
 <aside class="lnbWrapper" id="lnbWrapper">
-	<div class="lnb" id="lnb">
+	<div class='lnb' id='lnb'>
 		<div class="profile">
 			<a href="" class="close" id="profileClose"></a>
 			<a href="/myPage/profileEdit.html" class="setting"></a>
 			<a href="/index.html" class="logoL"><img src="/images/logoW.png" alt="COMMON"></a>
-			<!-- 로그인 전 --><div class="pic"><img src="/images/profile.png" alt=""></div>
-			<p class="profileInfo"><span>로그인 해주세요</span></p>
-			<!-- 로그인 후 <div class="pic"><img src="/images/temp01.jpg" alt=""></div>
-			<p class="profileInfo"><span>김세환 님</span><br>dudlri@naver.com</p> -->
-			<ul class="btnList log"><!-- 로그인 전일 졍우 log class 추가 -->
+			<div class="pic"><img src="/images/profile.png" id="profileImage" alt=""></div> <!-- /images/temp01.jpg -->
+			<p class="profileInfo" id="profileName"><span>로그인 해주세요</span></p> <!--<span>김세환 님</span><br>dudlri@naver.com -->
+			<ul id="myMenuButtonList" class="btnList log"><!-- 로그인 전일 졍우 log class 추가 -->
 				<li class="btnList01"><a href="">알림</a></li>
 				<li class="btnList02"><a href="">팔로우</a></li>
 				<li class="btnList03"><a href="">스크랩</a></li>
 				<li class="btnList04"><a href="">마이카트<span class="count">16</span></a></li>
 			</ul>
-			<!-- 로그인 전 --><a href="/member/login.html" class="btnMy">로그인 /  회원가입</a>
-			<!-- 로그인 후 <a href="" class="btnMy btnMypage">나의 커먼</a>-->
+			<a href="/member/login.html" class="btnMy" id="btnJoinMyPage">로그인 / 회원가입</a><!-- 로그인 후 <a href="" class="btnMy btnMypage">나의 커먼</a>-->
 			<ul class="myMenu" id="myMenu">
 				<li><a href="/myPage/order.html">진행 중인 주문/배송<span class="count">16</span></a></li>
 				<li><a href="/myPage/return.html">취소/반품/교환<span class="count">16</span></a></li>
@@ -97,7 +89,7 @@
 				<li><a href="/myPage/myService.html">나의 시공중인 상품<span class="count">16</span></a></li>
 				<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>
 			</ul>
-			<a href="" class="menuToggle" id="menuToggle"></a>
+			<a href="" class="menuToggle" id="menuToggle"></a><!-- menuToggle hide/show -->
 		</div>
 		<ul class="leftMenu">
 			<li>
@@ -151,8 +143,7 @@
 				</ul>
 			</li>
 		</ul>
-		<!-- 로그인 전 --><a href="/member/login.html" class="btnSizeM btnColor03 btnLog">로그인</a>
-
+		<a href="/member/login.html" id="buttonLogInOut" class="btnSizeM btnColor03 btnLog">로그인</a>
 		<!-- 로그인 후 <a href="" class="btnSizeM btnColor03 btnLog">로그아웃</a> -->
 	</div>
 </aside>
