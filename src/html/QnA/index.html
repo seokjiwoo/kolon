@@ -53,13 +53,13 @@
 				<div class="opinionwrite">
 					<a href="#" class="toggleBtn"><span>의견 작성하기</span></a>
 					<div class="opinionInput">
-						<table>
+						<table summary="주제선택, 제목입력, 자세한 내용입력, 첨부파일, 스크랩북항목으로 구성되어 있습니다">
 							<caption>의견작성하기테이블</caption>
-							<colgroup><col width="102" /><col width="*" /></colgroup>
+							<colgroup><col style="width:110px"><col style="width:785px"></colgroup>
 							<tbody>
 								<tr>
 									<td colspan="2">
-										<select class="pullSize w795">
+										<select class="pullSize w795" title="주제선택">
 											<option value="주제를 선택해주세요">주제를 선택해주세요</option>
 											<option value="리빙서비스">리빙서비스</option>
 											<option value="중개금융서비스">중개금융서비스</option>
@@ -69,19 +69,19 @@
 								</tr>
 								<tr>
 									<td colspan="2">
-										<input type="text" class="pullSize w752" placeholder="제목을  입력해주세요.  예)  카페같은 집을 꾸미고 싶어요" />
+										<input type="text" class="pullSize w752" placeholder="제목을  입력해주세요.  예)  카페같은 집을 꾸미고 싶어요" title="의견제목입력" />
 									</td>
 								</tr>
 								<tr>
 									<td colspan="2">
-										<textarea class="pullSize w752" placeholder="자세한 내용을 작성해 주세요."></textarea> 
+										<textarea class="pullSize w752" placeholder="자세한 내용을 작성해 주세요." title="자세한 내용 입력"></textarea> 
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">첨부파일<span>(최대3장)</span></th>
 									<td>
 										<div class="fileup">
-											<input type="text" class="pullSize w558" placeholder="모던프렌치.JPG" />
+											<input type="text" class="pullSize w558" placeholder="모던프렌치.JPG" title="첨부파일명" />
 											<a href="../../_popup/popAttachPictures.html" class="btnPop btnPop590" data-user-class="qna"><span>파일선택</span></a>
 										</div>
 									</td>
@@ -91,7 +91,7 @@
 									<td>
 										<div class="scrapList">
 											<ul>
-												<li><a href="../../_popup/popScrap.html"  class="btnPop btnPop530 btnPop590" data-user-class="qna"><span class="hide">스크랩</span></a></li>
+												<li><a href="../../_popup/popScrapAdd.html"  class="btnPop btnPop530 btnPop590" data-user-class="qna"><span class="hide">스크랩</span></a></li>
 												<li><img src="../images/temp01.jpg" alt="" /></li>
 												<li><img src="../images/temp01.jpg" alt="" /></li>
 												<li><img src="../images/temp01.jpg" alt="" /></li>
@@ -195,7 +195,7 @@
 							 			<li>
 							 				<div class="commentInput">
 							 					<div class="thumb"><span><img src="../images/temp01.jpg" alt="" /></span></div>
-							 					<textarea class="pullSize" placeholder="댓글을 입력해주세요."></textarea>
+							 					<textarea class="pullSize" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>
 							 					<button class="confirmBtn">등록</button>
 							 				</div>
 							 			</li>

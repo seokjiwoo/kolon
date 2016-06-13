@@ -24,7 +24,7 @@
 	 				<div class="expertBtn">
 	 					<a href="#" class="btnRoundM"><span class="home">전문가 페이지</span></a>
 	 					<a href="#" class="btnRoundM"><span class="tell">전화하기</span></a>
-	 					<a href="#" class="btnSizeM btnColor02" onclick=confirm("메시지내용을모두삭제하시겠습니까?\n삭제하실경우메시지내용이모두삭제되며1:1메시지목록에서도삭제됩니다.")>모든메시지 삭제</a>
+	 					<a href="#" class="btnSizeM btnColor02" id="conFirm">모든메시지 삭제</a>
 	 				</div>
 				</div>
 				<div class="messageBox mt20">
@@ -42,12 +42,12 @@
 											</li>
 										</ul>
 									</div>
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 								</div>
 							</li>
 							<li>
 								<div class="left">
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 									<div class="txtbox">
 										<ul>
 											<li>
@@ -76,7 +76,7 @@
 											</li>
 										</ul>
 									</div>
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 								</div>
 							</li>
 						</ul>
@@ -84,7 +84,7 @@
 						<ul>
 							<li>
 								<div class="left">
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 									<div class="txtbox">
 										<ul>
 											<li>
@@ -113,15 +113,15 @@
 											</li>
 										</ul>
 									</div>
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 								</div>
 							</li>
 						</ul>
 					</div>
 					<div class="inputField">
 						<span class="inp">
-							<input type="text" placeholder="최대 400자까지 입력 가능" />
-							<input type="file" />
+							<input type="text" placeholder="최대 400자까지 입력 가능" title="메시지쓰기" />
+							<input type="file" title="사진첨부하기" />
 						</span>
 						<button>보내기</button>
 					</div>
