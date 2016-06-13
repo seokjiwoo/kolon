@@ -24,6 +24,7 @@
     "isotope": "^3.0.0",
     "jquery-easing": "*",
     "jquery-colorbox": "^1.6.4",
-    "jQuery.dotdotdot": "dotdotdot#^1.8.1"
+    "jQuery.dotdotdot": "dotdotdot#^1.8.1",
+    "jquery-ui": "1.11.4"
   }
 }
