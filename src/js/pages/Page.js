@@ -29,6 +29,7 @@ module.exports = function() {
 		initCardRadio();
 		btnDel();
 		tableHeight()
+		conFirm();
 		
 		/* 레이어 팝업으로 변경됨
 		$('#sortToggle').on('click', function(e) {//category search drop-down
@@ -263,6 +264,13 @@ module.exports = function() {
 		};
 		init();
 	};
+
+	// 마이페이지-일대일 메시지-모든메시지 삭제버튼 클릭시 실행
+	function conFirm(){
+		$("#conFirm").on("click", function(){
+			confirm("메시지내용을모두삭제하시겠습니까?\n삭제하실경우메시지내용이모두삭제되며1:1메시지목록에서도삭제됩니다.");
+		});
+	}
 
 	function btnDel(){
 		$('.optList').each(function(){ // 'myPage/cartGoods.html (배송형 상품)' option 삭제 버튼
