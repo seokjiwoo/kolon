@@ -41,7 +41,7 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb dl dd div {width:216px;}
 .payTb ul.pointBul {width:100%; overflow:hidden;}
 .payTb ul.pointBul li {width:50%; float:left;}
-.payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:30px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
+.payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:24px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
 .payTb ul.pointBul li p.tbBul label + input[type=text] {margin:0 5px 0 10px;}
 .payTb ul.pointBul li p.pointCk {margin:5px 0 0 20PX; text-align:left;}
 .payTb p.underTxt {margin:15px 0 0 40px; text-align:left;}
@@ -159,6 +159,11 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont .payTab a {margin-left:42px; display:inline-block; color:#666;}
 .oder .oderCont .payTab a + a {margin-left:32px;}
 .oder .oderCont .payTab + div div table {margin-top:0;}
+.oder .oderCont .payTab.tabWrap a {padding:1px 0 1px 23px; background:url('../images/ico_radio.png') 0 -18px no-repeat;}
+.oder .oderCont .payTab.tabWrap .on a {background-position:0 0;}
+.oder .oderCont .tabWrap a {display: inline-block; padding:0px 0 2px 23px; background:url('../images/ico_radio.png') 0 -18px no-repeat;}
+.oder .oderCont .tabWrap .on a {background-position:0 0;}
+
 .oder .oderCont .radioBtn {position:relative;}
 .oder .oderCont .radioBtn input[type="radio"] {width:18px; height:18px; margin:0; opacity:0; line-height:100%; overflow:hidden; position:absolute;}
 .oder .oderCont .radioBtn label {padding:2px 0 2px 23px; display:inline-block;}

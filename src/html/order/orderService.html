@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 시공형 주문/결제"} -->
 </head>
- <body class="login">
+<body class="login">
 	<div class="wrapper oder">
 	<!-- @@include ../_template/menu.html -->
 	<div class="container">
@@ -21,7 +21,7 @@
 							<table>
 								<caption>주문 상품 / 시공지 정보</caption>
 								<colgroup>
-									<col width="*"/><col width="10%"/><col width="15%"/><col width="15%"/><col width="15%"/>
+									<col style="width:45%;"/><col style="width:10%;"/><col style="width:15%;"/><col style="width:15%;"/><col style="width:15%;"/>
 								</colgroup>
 								<thead>
 									<tr>
@@ -71,18 +71,18 @@
 									</tr>
 									<!-- 시공지 정보 -->
 									<tr>
-										<td colspan="7" class="adrArea">
+										<td colspan="5" class="adrArea">
 											<dl>
 												<dt>시공지 정보</dt>
 												<dd class="adrInfo">
-													<select name="" title="수령지 선택" style="width:212px;">
-														<option value="" selected="selected">자택</option>
-														<option value=""></option>
+													<select title="수령지 선택" style="width:212px;">
+														<option value="" label="자택" selected="selected">자택</option>
+														<option value="" label=""></option>
 													</select>
 													<a href="#" class="btnSizeS btnColor01">새주소</a>
 													<!-- 시공지 정보가 없는 경우  -->
 													<!-- 
-													<input type="text"  title="" value="우측 버튼을 눌러 주소를 등록해주세요" name="" disabled />
+													<input type="text"  title="" value="우측 버튼을 눌러 주소를 등록해주세요" disabled />
 													<a href="#" class="btnSizeS btnColor01">새주소</a> 
 													-->
 													<!--// 시공지 정보가 없는 경우  -->
@@ -92,6 +92,11 @@
 													<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span></p>
 												</dd>
 											</dl>
+											<p style="color:#75be50;">
+												└ 임시링크(삭제예정) : 
+												<a href="../_popup/popAddress02.html" class="btnPop btnPop540" style="color:#75be50;" data-user-class="orderPop">[주소록 추가/수정]</a>
+												<a href="../_popup/popAddress03.html" class="btnPop btnPop590" style="color:#75be50;" data-user-class="orderPop">[주소검색]</a>
+											</p>
 										</td>
 									</tr>
 									<!--// 시공지 정보 -->
@@ -107,9 +112,9 @@
 					<form method="post" action="/">
 						<div class="tbSet">
 							<table class="tbL">
-								<caption>예약 정보</caption>
+								<caption>예약 정보에 관한 희망 실측 방문/상담 날짜, 희망 시공기간, 건물 종류, 평형, 리모델링을 하는 이유, 추가 요청사항 선택 정보를 제공합니다.</caption>
 								<colgroup>
-									<col width="25%"/><col width="75%"/>
+									<col style="width:25%;"/><col  style="width:75%;"/>
 								</colgroup>
 								<tbody>
 									<tr>
@@ -117,12 +122,12 @@
 										<td>
 											<!-- datePicker -->
 											<div class="calendar">
-												<span class="calInp"><input type="text" title="상담 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜 선택</a></span>
+												<span class="calInp"><input type="text" title="상담 날짜 입력" value=""/><a href="#" class="calBtn">날짜 선택</a></span>
 											</div>
 											<!--// datePicker -->
-											<select name="" title="상담시간 선택" style="width:247px;">
-												<option value="" selected="selected">시간</option>
-												<option value=""></option>
+											<select title="상담시간 선택" style="width:247px;">
+												<option value="" label="시간" selected="selected">시간</option>
+												<option value="" label=""></option>
 											</select>
 										</td>
 									</tr>
@@ -131,8 +136,8 @@
 										<td>
 											<!-- datePicker -->
 											<div class="calendar cal2">
-												<span class="calInp"><input type="text" title="희망 시공 시작 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜선택</a></span> 
-												<span class="calInp"><input type="text" title="희망 시공 끝나는 날짜 입력" value="" name=""/><a href="#" class="calBtn">날짜선택</a></span>
+												<span class="calInp"><input type="text" title="희망 시공 시작 날짜 입력" value=""/><a href="#" class="calBtn">날짜선택</a></span> 
+												<span class="calInp"><input type="text" title="희망 시공 끝나는 날짜 입력" value=""/><a href="#" class="calBtn">날짜선택</a></span>
 											</div>
 											<!--// datePicker -->
 											<span class="underTxt">* 실측 상황에 따라 시공기간은 변경될 수 있습니다.</span>
@@ -153,11 +158,11 @@
 										<th scope="row">평형을 선택해 주세요.</th>
 										<td>
 											<ul class="homeSize">
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp5"/><label for="hTp5">20평형 이하</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp6"/><label for="hTp6">20평형</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp7"/><label for="hTp7">30평형</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp8"/><label for="hTp8">40평형</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp9"/><label for="hTp9">50평형</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp5"/><label for="hTp5">20평형 이하</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp6"/><label for="hTp6">20평형</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp7"/><label for="hTp7">30평형</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp8"/><label for="hTp8">40평형</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp9"/><label for="hTp9">50평형</label></span></li>
 											</ul>
 										</td>
 									</tr>
@@ -165,10 +170,10 @@
 										<th scope="row">리모델링을 하는 이유가 무엇인가요?</th>
 										<td>
 											<ul class="homeReason">
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp10"/><label for="hTp10">결혼해서 새 집에 들어가요!</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp11"/><label for="hTp11">이사할 집이에요!</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp12"/><label for="hTp12">집이 오래되서 고치고 싶어요!</label></span></li>
-												<li><span class="radioBox"><input type="radio" name="" value="" id="hTp13"/><label for="hTp13">기타</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp10"/><label for="hTp10">결혼해서 새 집에 들어가요!</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp11"/><label for="hTp11">이사할 집이에요!</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp12"/><label for="hTp12">집이 오래되서 고치고 싶어요!</label></span></li>
+												<li><span class="radioBox"><input type="radio" value="" id="hTp13"/><label for="hTp13">기타</label></span></li>
 											</ul>
 											<input type="text" title="기타 사항 입력" placeholder="기타 사항을 입력해 주세요." style="width:360px;"/>
 										</td>
@@ -271,9 +276,9 @@
 						<form method="post" action="/">
 							<fieldset >
 								<legend>결제방법 선택</legend>
-								<span class="on"><a href="#pay1" class="radioBox"><input type="radio" name="payT" id="payT1"/><label for="payT1">신용카드</label></a></span>
-								<span><a href="#pay2" class="radioBox"><input type="radio" name="payT" id="payT2"/><label for="payT2">무통장 입금</label></a></span>
-								<span><a href="#pay3" class="radioBox"><input type="radio" name="payT" id="payT3"/><label for="payT3">실시간 계좌이체</label></a></span>
+								<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
+								<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
+								<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
 							</fieldset>
 						</form>
 					</div>
@@ -285,26 +290,26 @@
 									<div class="tbHf">
 										<div class="tbSet oderTb lineN tbHV">
 											<table>
-												<caption></caption>
+												<caption>신용카드 결제에 관한 카드선택, 할부방식, 무이자할부 적용카드 정보를 제공합니다.</caption>
 												<colgroup>
-													<col width="22%"/><col width="78%"/>
+													<col style="width:22%;"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
 														<th scope="row">카드선택</th>
 														<td>
-															<select name="" title="수령지 선택" style="width:148px;">
-																<option value="" selected="selected">카드 선택</option>
-																<option value=""></option>
+															<select title="수령지 선택" style="width:148px;">
+																<option value="" label="카드 선택" selected="selected">카드 선택</option>
+																<option value="" label=""></option>
 															</select>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row">할부방식</th>
 														<td>
-															<select name="" title="수령지 선택" style="width:148px;">
-																<option value="" selected="selected">일시불</option>
-																<option value=""></option>
+															<select title="수령지 선택" style="width:148px;">
+																<option value="" label="일시불" selected="selected">일시불</option>
+																<option value="" label=""></option>
 															</select>
 														</td>
 													</tr>
@@ -328,9 +333,9 @@
 									<div class="tbHf">
 										<div class="tbSet oderTb lineN tbHV">
 											<table>
-												<caption>신용카드 결제</caption>
+												<caption>신용카드 결제에 관한 상품금액, 할인금액, 총 결제금액 정보를 제공합니다.</caption>
 												<colgroup>
-													<col width="22%"/><col width="78%"/>
+													<col style="width:22%;"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
@@ -374,24 +379,24 @@
 									<div class="tbHf">
 										<div class="tbSet oderTb lineN tbHV">
 											<table>
-												<caption>무통장 입금 결제</caption>
+												<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제안내, 현금영수증 발급신청 정보를 제공합니다.</caption>
 												<colgroup>
-													<col width="22%"/><col width="78%"/>
+													<col style="width:22%;"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
 														<th scope="row">은행선택</th>
 														<td>
-															<select name="" title="수령지 선택" style="width:148px;">
-																<option value="" selected="selected">은행 선택</option>
-																<option value=""></option>
+															<select title="은행선택" style="width:148px;">
+																<option value="" label="은행 선택" selected="selected">은행 선택</option>
+																<option value="" label=""></option>
 															</select>
 														</td>
 													</tr>
 													<tr>
-														<th scope="row">입금자</th>
+														<th scope="row"><label for="od01">입금자</label></th>
 														<td>
-															<input type="text" class="" title="" value="" name=""/>
+															<input type="text" id="od01" value=""/>
 														</td>
 													</tr>
 													<tr>
@@ -416,34 +421,34 @@
 															<ul class="noBul">
 																<li>
 																	<div class="tabWrap">
-																		<span class="on"><a href="#cashCt2_1" class="radioBox"><input type="radio" name="payT2" id="payT3"/><label for="payT3">개인 소득 공제</label></a></span>
-																		<span><a href="#cashCt2_2" class="radioBox"><input type="radio" name="payT2" id="payT4"/><label for="payT4">사업자 지출 증빙</label></a></span>
+																		<span class="on"><a href="#cashCt2_1" class="radioBtn">개인 소득 공제</a></span>
+																		<span><a href="#cashCt2_2" class="radioBtn">사업자 지출 증빙</a></span>
 																	</div>
 																	<div class="">
 																		<!-- 개인소득공제 -->
 																		<div class="" id="cashCt2_1">
 																			<!-- 개인소득공제 : 휴대폰 번호 -->
-																			<select name="" title="소득공제 방법 선택" style="width:142px;">
-																				<option value="" selected="selected">휴대폰번호</option>
-																				<option value="">현금영수증 카드</option>
+																			<select title="소득공제 방법 선택" style="width:142px;">
+																				<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																				<option value="" label="현금영수증 카드">현금영수증 카드</option>
 																			</select>
-																			<select name="" title="휴대폰 통신사 번호 선택" style="width:68px;">
-																				<option value="" selected="selected">010</option>
-																				<option value=""></option>
+																			<select title="휴대폰 통신사 번호 선택" style="width:68px;">
+																				<option value="" label="010" selected="selected">010</option>
+																				<option value="" label=""></option>
 																			</select>
-																			<input type="text" title="" style="width:30px;"/>
-																			<input type="text" title="" style="width:30px;"/>
+																			<input type="text" title="휴대폰 앞자리 입력" style="width:30px;"/>
+																			<input type="text" title="휴대폰 뒷자리 입력" style="width:30px;"/>
 																			<!--// 개인소득공제 : 휴대폰 번호 -->
 																			<!-- 개인소득공제 : 현금영수증 카드 -->
-																			<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
-																				<option value="" selected="selected">현금영수증 카드</option>
-																				<option value="">휴대폰번호</option>
+																			<!-- <select title="소득공제 방법 선택" style="width:142px;">
+																				<option value="" label="현금영수증 카드" selected="selected">현금영수증 카드</option>
+																				<option value="" label="휴대폰번호">휴대폰번호</option>
 																			</select>
 																			<p class="inp4">
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드번호 첫번째 자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드번호 두번째 자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드번호 세번째 자리 입력" style="width:30px;"/>
+																				<input type="text" title="현금영수증 카드번호 네번째 자리 입력" style="width:30px;"/>
 																			</p> -->
 																			<!--// 개인소득공제 : 현금영수증 카드 -->
 																		</div>
@@ -451,15 +456,15 @@
 																		<!-- 사업자 지출 증빙 -->
 																		<div class="" id="cashCt2_2" style="display:none;">
 																			<p class="inp4">
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="사업자 등록번호 앞자리" style="width:30px;"/>
+																				<input type="text" title="사업자 등록번호 중간자리" style="width:30px;"/>
+																				<input type="text" title="사업자 등록번호 뒷자리" style="width:30px;"/>
 																			</p>
 																		</div>
 																		<!--// 사업자 지출 증빙 -->
 																	</div>
 																</li>
-																<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk" value="" name=""><label for="pointCk">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
+																<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""><label for="pointCk01">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
 															</ul>
 														</td>
 													</tr>
@@ -470,9 +475,9 @@
 									<div class="tbHf">
 										<div class="tbSet oderTb lineN tbHV">
 											<table>
-												<caption>무통장입금 결제</caption>
+												<caption>무통장입금 결제에 관한 상품금액, 할인금액, 총결제금액에 관한 정보를 제공합니다.</caption>
 												<colgroup>
-													<col width="22%"/><col width="78%"/>
+													<col style="22%"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
@@ -515,14 +520,14 @@
 						<!--// 무통장 입금 -->
 						<!-- 실시간 계좌이체  -->
 						<div class="pay" id="pay3" style="display:none;">
-							<div class="oderTbW" id="pay3">
+							<div class="oderTbW">
 								<form method="post" action="/">
 									<div class="tbHf">
 										<div class="tbSet oderTb lineN tbHV">
 											<table>
-												<caption>실시간 계좌이체 결제</caption>
+												<caption>실시간 계좌이체 결제에 관한 결제 정보를 제공합니다.</caption>
 												<colgroup>
-													<col width="22%"/><col width="78%"/>
+													<col style="width:22%;"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
@@ -535,8 +540,8 @@
 													<tr>
 														<td colspan="2">
 															<p class=" pdLt">
-																<a href="#" class="btnSizeM btnColor03 btnPop">실시간 계좌이체 안내</a>
-																<a href="#" class="btnSizeM btnColor03 btnPop">은행별 이용시간</a>
+																<a href="../_popup/popRemittance01.html" class="btnSizeM btnColor03 btnPop btnPop540 " data-user-class="orderPop">실시간 계좌이체 안내</a>
+																<a href="../_popup/popRemittance02.html" class="btnSizeM btnColor03 btnPop btnPop895" data-user-class="orderPop">은행별 이용시간</a>
 															</p>
 														</td>
 													</tr>
@@ -546,34 +551,34 @@
 															<ul class="noBul">
 																<li>
 																	<div class="tabWrap">
-																		<span class="on"><a href="#cashCt3_1" class="radioBox"><input type="radio" name="payT3" id="payT5"/><label for="payT5">개인 소득 공제</label></a></span>
-																		<span><a href="#cashCt3_2" class="radioBox"><input type="radio" name="payT3" id="payT6"/><label for="payT6">사업자 지출 증빙</label></a></span>
+																		<span class="on"><a href="#cashCt3_1" class="radioBtn">개인 소득 공제</a></span>
+																		<span><a href="#cashCt3_2" class="radioBtn">사업자 지출 증빙</a></span>
 																	</div>
 																	<div class="">
 																		<!-- 개인소득공제 -->
 																		<div class="" id="cashCt3_1">
 																			<!-- 개인소득공제 : 휴대폰 번호 -->
-																			<select name="" title="소득공제 방법 선택" style="width:142px;">
-																				<option value="" selected="selected">휴대폰번호</option>
-																				<option value="">현금영수증 카드</option>
+																			<select title="소득공제 방법 선택" style="width:142px;">
+																				<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																				<option value="" label="현금영수증 카드">현금영수증 카드</option>
 																			</select>
-																			<select name="" title="휴대폰 통신사 번호 선택" style="width:68px;">
-																				<option value="" selected="selected">010</option>
-																				<option value=""></option>
+																			<select title="휴대폰 통신사 번호 선택" style="width:68px;">
+																				<option value="" label="010" selected="selected">010</option>
+																				<option value="" label=""></option>
 																			</select>
-																			<input type="text" title="" style="width:30px;"/>
-																			<input type="text" title="" style="width:30px;"/>
+																			<input type="text" title="휴대폰 번호 앞자리 입력" style="width:30px;"/>
+																			<input type="text" title="휴대폰 번호 뒷자리 입력" style="width:30px;"/>
 																			<!--// 개인소득공제 : 휴대폰 번호 -->
 																			<!-- 개인소득공제 : 현금영수증 카드 -->
-																			<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
-																					<option value="" selected="selected">휴대폰번호</option>
-																					<option value="">현금영수증 카드</option>
+																			<!-- <select title="소득공제 방법 선택" style="width:142px;">
+																					<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																					<option value="" label="현금영수증 카드">현금영수증 카드</option>
 																				</select>
 																				<p class="inp4">
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 번호 첫번째 자리" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 번호 두번째 자리" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 번호 세번째 자리" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 번호 네번째 자리" style="width:30px;"/>
 																				</p> -->
 																			<!--// 개인소득공제 : 현금영수증 카드 -->
 																		</div>
@@ -581,16 +586,16 @@
 																		<!-- 사업자 지출 증빙 -->
 																		<div class="" id="cashCt3_2" style="display:none;">
 																			<p class="inp4">
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="사업자 등록번호 첫번째 자리" style="width:30px;"/>
+																				<input type="text" title="사업자 등록번호 중간 자리" style="width:30px;"/>
+																				<input type="text" title="사업자 등록번호 마지막 자리" style="width:30px;"/>
 																			</p>
 																		</div>
 																		<!--// 사업자 지출 증빙 -->
 																	</div>
 																</li>
 																<!-- 개인소득공제 : 휴대폰 번호 -->
-																<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk" value="" name=""><label for="pointCk">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
+																<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
 															</ul>
 														</td>
 													</tr>
@@ -601,9 +606,9 @@
 									<div class="tbHf">
 										<div class="tbSet oderTb lineN tbHV">
 											<table>
-												<caption>실시간 계좌이체 결제</caption>
+												<caption>실시간 계좌이체 결제에 관한 상품금액, 할인금액, 총 결제금액 정보를 제공합니다.</caption>
 												<colgroup>
-													<col width="22%"/><col width="78%"/>
+													<col style="width:22%;"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
@@ -658,9 +663,9 @@
 						<div class="delivery1">
 							<div class="tbSet">
 								<table class="lineN">
-									<caption>시공 확정 정보</caption>
+									<caption>시공 확정 정보에 관한 상품정보, 상품금액, 판매자, 할인금액, 실측 후 금액, 선결제 금액 정보를 제공합니다.</caption>
 									<colgroup>
-										<col width="*"/><col width="10%"/><col width="15%"/><col width="10%"/><col width="13%"/><col width="13%"/>
+										<col style="width:39%;"/><col style="width:10%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:13%;"/><col style="width:13%;"/>
 									</colgroup>
 									<thead>
 										<tr>
@@ -715,10 +720,10 @@
 								</table>
 								<div class="tbSBg">
 									<table>
-										<caption>시공대상</caption>
-										<colgroup>
-											<col width=""/><col width=""/><col width=""/><col width=""/>
-										</colgroup>
+										<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
+									<colgroup>
+										<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
+									</colgroup>
 										<tbody>
 											<tr>
 												<th scope="row">시공대상</th>
@@ -751,9 +756,9 @@
 					<div class="oderCont">
 						<div class="tbSet">
 							<table class="lineS">
-								<caption>시공 견적 상세 정보</caption>
+								<caption>시공 견적 상세 정보에 관한 항목, 견적, 시공상세, 포함사항 정보를 제공합니다.</caption>
 								<colgroup>
-									<col width="10%"/><col width="13%"/><col width="35%"/><col width="*"/>
+									<col style="width:12%;"/><col style="width:13%;"/><col style="width:33%;"/><col style="width:42%;"/>
 								</colgroup>
 								<thead>
 									<tr>
@@ -839,8 +844,8 @@
 									<dd>
 										<div>
 											<ul class="pointBul">
-												<li><p class="tbBul"><label for="pointWt">포인트 사용</label><input type="text" style="width:116px;" id="pointWt" value="" name=""/> p</p></li>
-												<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk" value="" name=""/><label for="pointCk">모두사용 ( 잔여 포인트 :  0 p )</label></p></li>
+												<li><p class="tbBul"><label for="pointWt">포인트 사용</label><input type="text" style="width:116px;" id="pointWt" value=""/> p</p></li>
+												<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk03" value=""/><label for="pointCk03">모두사용 ( 잔여 포인트 :  0 p )</label></p></li>
 											</ul>
 											<p class="underTxt">포인트는 5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
 										</div>
@@ -876,10 +881,10 @@
 							<form method="post" action="/">
 								<fieldset >
 									<legend>결제방법 선택</legend>
-									<span class="on"><a href="#pay2_1" class="radioBox"><input type="radio" name="payT" id="payT2_1"/><label for="payT2_1">신용카드</label></a></span>
-									<span><a href="#pay2_2" class="radioBox"><input type="radio" name="payT" id="payT2_2"/><label for="payT2_2">무통장 입금</label></a></span>
-									<span><a href="#pay2_3" class="radioBox"><input type="radio" name="payT" id="payT2_3"/><label for="payT2_3">실시간 계좌이체</label></a></span>
-									<span><a href="#pay2_4" class="radioBox"><input type="radio" name="payT" id="payT2_4"/><label for="payT2_4">할부결제</label></a></span>
+									<span class="on"><a href="#pay2_1" class="radioBtn">신용카드</a></span>
+									<span><a href="#pay2_2" class="radioBtn">무통장 입금</a></span>
+									<span><a href="#pay2_3" class="radioBtn">실시간 계좌이체</a></span>
+									<span><a href="#pay2_4" class="radioBtn">할부결제</a></span>
 								</fieldset>
 							</form>
 						</div>
@@ -891,26 +896,26 @@
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption></caption>
+													<caption>신용카드에 관한 카드선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
 															<th scope="row">카드선택</th>
 															<td>
-																<select name="" title="수령지 선택" style="width:148px;">
-																	<option value="" selected="selected">카드 선택</option>
-																	<option value=""></option>
+																<select title="수령지 선택" style="width:148px;">
+																	<option value="" label="카드 선택" selected="selected">카드 선택</option>
+																	<option value="" label=""></option>
 																</select>
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">할부방식</th>
 															<td>
-																<select name="" title="수령지 선택" style="width:148px;">
-																	<option value="" selected="selected">일시불</option>
-																	<option value=""></option>
+																<select title="수령지 선택" style="width:148px;">
+																	<option value="" label="일시불" selected="selected">일시불</option>
+																	<option value="" label=""></option>
 																</select>
 															</td>
 														</tr>
@@ -933,10 +938,10 @@
 										</div>
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
-												<table>
-													<caption>신용카드 결제</caption>
+												<table >
+													<caption>신용카드 결제에 관한 견적금액, 선결제금액, 할인금액, 총 결제금액 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
@@ -984,24 +989,24 @@
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption>무통장 입금 결제</caption>
+													<caption>무통장 입금 결제에 관한 예금주, 입금마감일, 결제안내, 현금영수증 발급신청 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">은행선택</th>
+															<th scope="row"><label for="bankSel">은행선택</label></th>
 															<td>
-																<select name="" title="수령지 선택" style="width:148px;">
-																	<option value="" selected="selected">은행 선택</option>
-																	<option value=""></option>
+																<select id="bankSel" style="width:148px;">
+																	<option value="" label="은행 선택" selected="selected">은행 선택</option>
+																	<option value="" label=""></option>
 																</select>
 															</td>
 														</tr>
 														<tr>
-															<th scope="row">입금자</th>
+															<th scope="row"><label for="bankSel2">입금자</label></th>
 															<td>
-																<input type="text" class="" title="" value="" name=""/>
+																<input type="text" id="bankSel2" value=""/>
 															</td>
 														</tr>
 														<tr>
@@ -1026,34 +1031,34 @@
 																<ul class="noBul">
 																	<li>
 																		<div class="tabWrap">
-																			<span class="on"><a href="#cashCt1" class="radioBox"><input type="radio" name="payT2" id="payT3"/><label for="payT3">개인 소득 공제</label></a></span>
-																			<span><a href="#cashCt2" class="radioBox"><input type="radio" name="payT2" id="payT4"/><label for="payT4">사업자 지출 증빙</label></a></span>
+																			<span class="on"><a href="#cashCt1" class="radioBtn">개인 소득 공제</a></span>
+																			<span><a href="#cashCt2" class="radioBtn">사업자 지출 증빙</a></span>
 																		</div>
 																		<div class="">
 																			<!-- 개인소득공제 -->
 																			<div class="" id="cashCt1">
 																				<!-- 개인소득공제 : 휴대폰 번호 -->
-																				<select name="" title="소득공제 방법 선택" style="width:142px;">
-																					<option value="" selected="selected">휴대폰번호</option>
-																					<option value="">현금영수증 카드</option>
+																				<select title="소득공제 방법 선택" style="width:142px;">
+																					<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																					<option value="" label="현금영수증 카드">현금영수증 카드</option>
 																				</select>
-																				<select name="" title="휴대폰 통신사 번호 선택" style="width:68px;">
-																					<option value="" selected="selected">010</option>
-																					<option value=""></option>
+																				<select title="휴대폰 통신사 번호 선택" style="width:68px;">
+																					<option value="" label="010" selected="selected">010</option>
+																					<option value="" label=""></option>
 																				</select>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="휴대폰 앞자리 입력" style="width:30px;"/>
+																				<input type="text" title="휴대폰 뒷자리 입력" style="width:30px;"/>
 																				<!--// 개인소득공제 : 휴대폰 번호 -->
 																				<!-- 개인소득공제 : 현금영수증 카드 -->
-																				<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
-																					<option value="" selected="selected">현금영수증 카드</option>
-																					<option value="">휴대폰번호</option>
+																				<!-- <select title="소득공제 방법 선택" style="width:142px;">
+																					<option value="" label="현금영수증 카드" selected="selected">현금영수증 카드</option>
+																					<option value="" label="휴대폰번호">휴대폰번호</option>
 																				</select>
 																				<p class="inp4">
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 첫번째 자리 입력" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 두번째 자리 입력" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 세번째 자리 입력" style="width:30px;"/>
+																					<input type="text" title="현금영수증 카드 네번째 자리 입력" style="width:30px;"/>
 																				</p> -->
 																				<!--// 개인소득공제 : 현금영수증 카드 -->
 																			</div>
@@ -1061,15 +1066,15 @@
 																			<!-- 사업자 지출 증빙 -->
 																			<div class="" id="cashCt2" style="display:none;">
 																				<p class="inp4">
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
+																					<input type="text" title="사업자 등록번호 첫번째 자리 입력" style="width:30px;"/>
+																					<input type="text" title="사업자 등록번호 중간 자리 입력" style="width:30px;"/>
+																					<input type="text" title="사업자 등록번호 마지막 자리 입력" style="width:30px;"/>
 																				</p>
 																			</div>
 																			<!--// 사업자 지출 증빙 -->
 																		</div>
 																	</li>
-																	<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk" value="" name=""><label for="pointCk">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
+																	<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk04" value=""><label for="pointCk04">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
 																</ul>
 															</td>
 														</tr>
@@ -1080,9 +1085,9 @@
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption>무통장입금 결제</caption>
+													<caption>무통장입금 결제에 관한 견적금액, 선결제금액, 할인금액, 총결제금액에 관한 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
@@ -1125,14 +1130,14 @@
 							<!--// 무통장 입금 -->
 							<!-- 실시간 계좌이체  -->
 							<div class="pay" id="pay2_3" style="display:none;">
-								<div class="oderTbW" id="pay3">
+								<div class="oderTbW">
 									<form method="post" action="/">
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption>실시간 계좌이체 결제</caption>
+													<caption>실시간 계좌이체 결제에 관한 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
@@ -1145,8 +1150,8 @@
 														<tr>
 															<td colspan="2">
 																<p class=" pdLt">
-																	<a href="#" class="btnSizeM btnColor03 btnPop">실시간 계좌이체 안내</a>
-																	<a href="#" class="btnSizeM btnColor03 btnPop">은행별 이용시간</a>
+																	<a href="../_popup/popRemittance01.html" class="btnSizeM btnColor03 btnPop btnPop540 " data-user-class="orderPop">실시간 계좌이체 안내</a>
+																	<a href="../_popup/popRemittance02.html" class="btnSizeM btnColor03 btnPop btnPop895" data-user-class="orderPop">은행별 이용시간</a>
 																</p>
 															</td>
 														</tr>
@@ -1156,51 +1161,51 @@
 																<ul class="noBul">
 																	<li>
 																		<div class="tabWrap">
-																			<span class="on"><a href="#cashCt3_1" class="radioBox"><input type="radio" name="payT3" id="payT5"/><label for="payT5">개인 소득 공제</label></a></span>
-																			<span><a href="#cashCt3_2" class="radioBox"><input type="radio" name="payT3" id="payT6"/><label for="payT6">사업자 지출 증빙</label></a></span>
+																			<span class="on"><a href="#cashCt4_1" class="radioBtn">개인 소득 공제</a></span>
+																			<span><a href="#cashCt4_2" class="radioBtn">사업자 지출 증빙</a></span>
 																		</div>
 																		<div class="">
 																			<!-- 개인소득공제 -->
-																			<div class="" id="cashCt3_1">
+																			<div class="" id="cashCt4_1">
 																				<!-- 개인소득공제 : 휴대폰 번호 -->
-																				<select name="" title="소득공제 방법 선택" style="width:142px;">
-																					<option value="" selected="selected">휴대폰번호</option>
-																					<option value="">현금영수증 카드</option>
+																				<select title="소득공제 방법 선택" style="width:142px;">
+																					<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																					<option value="" label="현금영수증 카드">현금영수증 카드</option>
 																				</select>
-																				<select name="" title="휴대폰 통신사 번호 선택" style="width:68px;">
-																					<option value="" selected="selected">010</option>
-																					<option value=""></option>
+																				<select title="휴대폰 통신사 번호 선택" style="width:68px;">
+																					<option value="" label="010" selected="selected">010</option>
+																					<option value="" label=""></option>
 																				</select>
-																				<input type="text" title="" style="width:30px;"/>
-																				<input type="text" title="" style="width:30px;"/>
+																				<input type="text" title="휴대폰 앞자리 입력" style="width:30px;"/>
+																				<input type="text" title="휴대폰 뒷자리 입력" style="width:30px;"/>
 																				<!--// 개인소득공제 : 휴대폰 번호 -->
 																				<!-- 개인소득공제 : 현금영수증 카드 -->
-																				<!-- <select name="" title="소득공제 방법 선택" style="width:142px;">
-																						<option value="" selected="selected">휴대폰번호</option>
-																						<option value="">현금영수증 카드</option>
+																				<!-- <select title="소득공제 방법 선택" style="width:142px;">
+																						<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																						<option value="" label="현금영수증 카드">현금영수증 카드</option>
 																					</select>
 																					<p class="inp4">
-																						<input type="text" title="" style="width:30px;"/>
-																						<input type="text" title="" style="width:30px;"/>
-																						<input type="text" title="" style="width:30px;"/>
-																						<input type="text" title="" style="width:30px;"/>
+																						<input type="text" title="현금영수증 카드 첫번째 자리 입력" style="width:30px;"/>
+																						<input type="text" title="현금영수증 카드 두번째 자리 입력" style="width:30px;"/>
+																						<input type="text" title="현금영수증 카드 세번째 자리 입력" style="width:30px;"/>
+																						<input type="text" title="현금영수증 카드 네번째 자리 입력" style="width:30px;"/>
 																					</p> -->
 																				<!--// 개인소득공제 : 현금영수증 카드 -->
 																			</div>
 																			<!--// 개인소득공제 -->
 																			<!-- 사업자 지출 증빙 -->
-																			<div class="" id="cashCt3_2" style="display:none;">
+																			<div class="" id="cashCt4_2" style="display:none;">
 																				<p class="inp4">
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
-																					<input type="text" title="" style="width:30px;"/>
+																					<input type="text" title="사업자 등록번호 첫번째 자리 입력" style="width:30px;"/>
+																					<input type="text" title="사업자 등록번호 중간 자리 입력" style="width:30px;"/>
+																					<input type="text" title="사업자 등록번호 마지막 자리 입력" style="width:30px;"/>
 																				</p>
 																			</div>
 																			<!--// 사업자 지출 증빙 -->
 																		</div>
 																	</li>
 																	<!-- 개인소득공제 : 휴대폰 번호 -->
-																	<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk" value="" name=""><label for="pointCk">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
+																	<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk05" value=""><label for="pointCk05">선택한 방법으로 현금영수증 발급 방식 저장</label></p></li>
 																</ul>
 															</td>
 														</tr>
@@ -1211,9 +1216,9 @@
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption>실시간 계좌이체 결제</caption>
+													<caption>실시간 계좌이체 결제에 관한 견적금액, 선결제금액, 할인금액, 총결제금액 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
@@ -1261,26 +1266,26 @@
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption>할부결제</caption>
+													<caption>할부결제에 관한 카드선택, 할부방식, 무이자할부 적용카드 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>
 															<th scope="row">카드선택</th>
 															<td>
-																<select name="" title="수령지 선택" style="width:148px;">
-																	<option value="" selected="selected">카드 선택</option>
-																	<option value=""></option>
+																<select title="카드선택" style="width:148px;">
+																	<option value="" label="카드 선택" selected="selected">카드 선택</option>
+																	<option value="" label=""></option>
 																</select>
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">할부방식</th>
 															<td>
-																<select name="" title="수령지 선택" style="width:148px;">
-																	<option value="" selected="selected">일시불</option>
-																	<option value=""></option>
+																<select title="할부방식 선택" style="width:148px;">
+																	<option value="" label="일시불" selected="selected">일시불</option>
+																	<option value="" label=""></option>
 																</select>
 															</td>
 														</tr>
@@ -1300,9 +1305,9 @@
 										<div class="tbHf">
 											<div class="tbSet oderTb lineN tbHV">
 												<table>
-													<caption>할부결제</caption>
+													<caption>할부결제에 관한 경적금액, 선결제금액, 할인금액, 총결제금액 정보를 제공합니다.</caption>
 													<colgroup>
-														<col width="22%"/><col width="78%"/>
+														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
 														<tr>

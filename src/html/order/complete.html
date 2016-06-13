@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문완료"} -->
 </head>
- <body class="login">
+<body class="login">
 	<div class="wrapper oder">
 	<!-- @@include ../_template/menu.html -->
 	<div class="container">
@@ -46,9 +46,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
-							<caption>결제방법</caption>
+							<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공 합니다.</caption>
 							<colgroup>
-								<col width="15%"/><col width="30%"/><col width="15%"/><col width="40%"/>
+								<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -70,9 +70,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
-							<caption>적립예정 포인트</caption>
+							<caption>적립예정 포인트에 관한 기본, 적립시점, 구매확정 시 적립 정보를 제공합니다.</caption>
 							<colgroup>
-								<col width="15%"/><col width="35%"/><col width="15%"/><col width="35%"/>
+								<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -92,9 +92,9 @@
 						<form method="post" action="/">
 							<div class="compt">
 								<table class="record">
-									<caption>주문상품내역</caption>
+									<caption>주문상품내역에 관한 상품정보, 상품금액, 수량, 판매자, 할인금액, 결제금액, 배송비 정보를 제공합니다.</caption>
 									<colgroup>
-										<col width="*"/><col width="13%"/><col width="7%"/><col width="13%"/><col width="10%"/><col width="13%"/><col width="10%"/>
+										<col style="width:34%;"/><col style="width:13%;"/><col style="width:7%;"/><col style="width:13%;"/><col style="width:10%;"/><col style="width:13%;"/><col style="width:10%;"/>
 									</colgroup>
 									<thead>
 										<tr>
@@ -115,7 +115,7 @@
 													<a href="#">
 														<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
 														<span class="cartInfo">
-															<span class="cartTit">브리티쉬 스타일인테리어 빈티지 틴액자 </span>
+															<span class="cartTit">브리티쉬 스타일 인테리어 빈티지 틴액자 </span>
 															<span>옵션 : : 60x120 우드</span>
 														</span>
 													</a>
@@ -135,7 +135,7 @@
 													<dt>수령지 정보</dt>
 													<dd class="adrCon">
 														<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</p></span>
+														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
 													</dd>
 												</dl>
 											</td>
@@ -180,7 +180,7 @@
 													<dt>수령지 정보</dt>
 													<dd class="adrCon">
 														<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</p></span>
+														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
 													</dd>
 												</dl>
 											</td>
@@ -223,7 +223,7 @@
 													<dt>수령지 정보</dt>
 													<dd class="adrCon">
 														<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</p></span>
+														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
 													</dd>
 												</dl>
 											</td>
@@ -250,7 +250,7 @@
 			<!-- 배송형 상품 주문 완료  -->
 
 			<!-- 시공형 상품 선결제 완료  -->
-			<div style="display:none"><!-- 숨김 -->
+			<div  style="display:none"><!-- 숨김-->
 				<div class="completeBox">
 					<p class="tit"><b>선택하신 상품의 선결제 및 실측 요청 완료되었습니다.</b></p>
 					<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이홈즈 &gt; 주문/배송에서 확인하실 수 있습니다.</p>
@@ -293,9 +293,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
-							<caption>결제방법</caption>
+							<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공합니다.</caption>
 							<colgroup>
-								<col width="15%"/><col width="30%"/><col width="15%"/><col width="40%"/>
+								<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -317,9 +317,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
-							<caption>적립예정 포인트</caption>
+							<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정시 정립 정보를 제공합니다.</caption>
 							<colgroup>
-								<col width="15%"/><col width="35%"/><col width="15%"/><col width="35%"/>
+								<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -339,9 +339,9 @@
 						<form method="post" action="/">
 							<div class="compt">
 								<table class="record">
-									<caption>주문상품내역</caption>
+									<caption>주문상품내역에 관한 상품정보, 상품금액, 판매자, 할인금액, 시공예정 금액 정보를 제공합니다.</caption>
 									<colgroup>
-										<col width="*"/><col width="15%"/><col width="13%"/><col width="15%"/><col width="15%"/>
+										<col style="width:42%;"/><col style="width:15%;"/><col style="width:13%;"/><col style="width:15%;"/><col style="width:15%;"/>
 									</colgroup>
 									<thead>
 										<tr>
@@ -389,18 +389,18 @@
 										</tr>
 										<!-- 시공지 / 배송요청사항 -->
 										<tr>
-											<td colspan="7" class="adrArea">
+											<td colspan="5" class="adrArea">
 												<dl>
 													<dt>시공지 정보</dt>
 													<dd class="adrCon">
 														<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</p></span>
+														<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
 													</dd>
 												</dl>
 											</td>
 										</tr>
 										<tr>
-											<td colspan="7" class="adrArea">
+											<td colspan="5" class="adrArea">
 												<dl>
 													<dt>배송 시 요청사항</dt>
 													<dd>
@@ -423,7 +423,7 @@
 			<!-- 시공형 상품 선결제 완료  -->
 
 			<!-- 시공형 상품 잔금결제 완료 -->
-			<div style="display:none"><!-- 숨김 -->
+			<div  style="display:none"><!-- 숨김-->
 				<div class="completeBox">
 					<p class="tit"><b>선택하신 상품의 결제 및 계약이 완료되었습니다.</b></p>
 					<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이홈즈 &gt; 시공 중인 상품에서 확인하실 수 있습니다.</p>
@@ -466,9 +466,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
-							<caption>결제방법</caption>
+							<caption>결제방법에 관한 결제방법, 입금자명, 입금계좌 정보를 제공합니다.</caption>
 							<colgroup>
-								<col width="15%"/><col width="30%"/><col width="15%"/><col width="40%"/>
+								<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -490,9 +490,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
-							<caption>적립예정 포인트</caption>
+							<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정 시 적립에 관한 정보를 제공합니다.</caption>
 							<colgroup>
-								<col width="15%"/><col width="35%"/><col width="15%"/><col width="35%"/>
+								<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
 							</colgroup>
 							<tbody>
 								<tr>
@@ -513,7 +513,7 @@
 							<table class="record">
 								<caption>주문상품내역</caption>
 								<colgroup>
-									<col width="*"/><col width="15%"/><col width="10%"/><col width="14%"/><col width="13%"/><col width="13%"/>
+									<col style="width:35%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:14%;"/><col style="width:13%;"/><col style="width:13%;"/>
 								</colgroup>
 								<thead>
 									<tr>
@@ -566,9 +566,9 @@
 							</table>
 							<div class="tbSBg tbSet">
 								<table class="">
-									<caption>시공대상</caption>
+									<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
 									<colgroup>
-										<col width=""/><col width=""/><col width=""/><col width=""/>
+										<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
 									</colgroup>
 									<tbody>
 										<tr>
@@ -600,9 +600,9 @@
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="lineS">
-							<caption>시공 견적 상세 정보</caption>
+							<caption>시공 견적 상세 정보에 관한 항목, 견적, 시공 상세, 포함사항 정보를 제공합니다.</caption>
 							<colgroup>
-								<col width="10%"/><col width="13%"/><col width="35%"/><col width="*"/>
+								<col style="width:12%;"/><col style="width:13%;"/><col style="width:33%;"/><col style="width:42%;"/>
 							</colgroup>
 							<thead>
 								<tr>
