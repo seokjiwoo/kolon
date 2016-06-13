@@ -25,9 +25,11 @@
 								<td><a href="../_popup/popCheckPw.html" class="btnSizeM btnColor01 btnPop btnPop540">변경하기</a></td>
 							</tr>
 							<tr>
-								<th><label for="profileName"><b class="require">* </b>이름</label></th>
+								<th><label for="editName"><b class="require">* </b>이름</label></th>
 								<td>
-								<p class="inputWrap"><input type="text" value="홍길동" id="profileName"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650 ">실명확인</a>
+								<p class="inputWrap">
+									<input type="text" value="홍길동" id="editName">
+									<a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650 ">실명확인</a>
 								</p>
 								</td>
 							</tr>
@@ -79,8 +81,16 @@
 							<tr>
 								<th><label for="profilePhone"><b class="require">* </b>휴대폰번호</label></th>
 								<td>
-									<p class="inputWrap"><input type="text" value="01012345678"  id="profilePhone" class="inputL"><button class="btn btnSizeM btnColor03">인증번호 받기</button></p>
-									<p class="inputWrap"><label for="profilePermit" class="hide">인증번호 입력</label><input type="text" id="profilePermit" placeholder="인증번호 입력" class="inputL"><button class="btn btnSizeM btnColor01">인증 확인</button></p>
+									<p class="inputWrap">
+										<label for="profilePhone" class="hide">인증번호 받기</label>
+										<input type="text" value="01012345678"  id="profilePhone" class="inputL">
+										<button class="btn btnSizeM btnColor03">인증번호 받기</button>
+									</p>
+									<p class="inputWrap">
+										<label for="profilePermit" class="hide">인증번호 입력</label>
+										<input type="text" id="profilePermit" placeholder="인증번호 입력" class="inputL">
+										<button class="btn btnSizeM btnColor01">인증 확인</button>
+									</p>
 								</td>
 							</tr>
 							<tr>

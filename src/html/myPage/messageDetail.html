@@ -42,12 +42,12 @@
 											</li>
 										</ul>
 									</div>
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 								</div>
 							</li>
 							<li>
 								<div class="left">
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 									<div class="txtbox">
 										<ul>
 											<li>
@@ -76,7 +76,7 @@
 											</li>
 										</ul>
 									</div>
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 								</div>
 							</li>
 						</ul>
@@ -84,7 +84,7 @@
 						<ul>
 							<li>
 								<div class="left">
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 									<div class="txtbox">
 										<ul>
 											<li>
@@ -113,18 +113,22 @@
 											</li>
 										</ul>
 									</div>
-									<span class="thumb"><img src="../images/temp01.jpg" /></span>
+									<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
 								</div>
 							</li>
 						</ul>
 					</div>
-					<div class="inputField">
-						<span class="inp">
-							<input type="text" placeholder="최대 400자까지 입력 가능" />
-							<input type="file" />
-						</span>
-						<button>보내기</button>
-					</div>
+					<form action="">
+						<fieldset class="inputField">
+							<legend class="hide">메세지 쓰기</legend>
+							<span class="inp">
+							<label for="msgInput" class="hide">메세지 입력</label>
+								<input type="text" id="msgInput" placeholder="최대 400자까지 입력 가능" />
+								<input type="file" id="msgPic"/><label for="msgPic" class="hide">사진첨부</label>
+							</span>
+							<button type="submit">보내기</button>
+						</fieldset>
+					</form>
 				</div>
 			</div>
 		</section>

@@ -2,7 +2,7 @@
 .members .pageTit:before, .members .pageTit:after{background: #fff;}
 .members .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 30px;}
 .members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;}
-.members .container .subTit .note{margin-top:8px;text-align: center;font-size: 14px;color: #666;}
+.members .container .subTit .note{display: block;margin-top:8px;text-align: center;font-size: 14px;color: #666;}
 .members .container .subTxt{font-size: 16px;color: #000;}
 .members .container .subTxt02{margin-top:25px;font-size: 16px;color: #000;font-family:'RobotoR','NotoSansR', sans-serif;}
 
