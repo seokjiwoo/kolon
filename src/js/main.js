@@ -26,6 +26,9 @@ $(document).ready(function() {
 		case 'order-orderService':
 			PageModuleClass = require('./pages/OdOrderService.js');
 			break;
+		case 'living-category':
+			PageModuleClass = require('./pages/LivingCategory.js');
+			break;
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
