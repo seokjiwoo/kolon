@@ -91,7 +91,22 @@ gulp.task('bowerBundle', function() {
                 "isotope": {
                     "main": ["dist/isotope.pkgd.js"],
 					"dependencies": {}
-                }
+                },
+				// jQuery-ui 번들링 설정 : 사용하는 widget 만 번들링에 추가
+				'jquery-ui': {
+					'main': [
+								'ui/core.js', 'ui/widget.js', 'ui/mouse.js',		// UI Core
+								'ui/datepicker.js', 'ui/i18n/datepicker-ko.js',		// Widgets datePicker, i18n-ko - dependencies( core / widget )
+								'ui/slider.js'										// Widgets slider - dependencies( core / widget / mouse )
+					],
+					'dependencies': {}
+				},
+				// jQuery-outside-events : 접근성 처리용 Plugin, 비활성화 영역에서 발생되는 이벤트 체크
+				// 정상적으로 번들링되지 않아( 해당 components 에 bower.json 이 없는 문제로 추측 ) 강제 overrides 설정 추가
+				'jquery-outside-events': {
+					'main' : ['jquery.ba-outside-events.js'],
+					'dependencies': {}
+				}
             }
         }))
 		.pipe(filterJS)
