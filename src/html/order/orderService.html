@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 시공형 주문/결제"} -->
 </head>
-<body class="login">
+<body class="login" data-page-id="order-orderService">
 	<div class="wrapper oder">
 	<!-- @@include ../_template/menu.html -->
 	<div class="container">
@@ -121,8 +121,21 @@
 										<th scope="row">희망 실측 방문/상담 날짜 선택 (필수)</th>
 										<td>
 											<!-- datePicker -->
-											<div class="calendar">
-												<span class="calInp"><input type="text" title="상담 날짜 입력" value=""/><a href="#" class="calBtn">날짜 선택</a></span>
+											<div class="calendar js-picker">
+												<span class="calInp">
+													<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn">날짜 선택</a>
+													<!-- 
+													[D] datePicker container 공간 필요
+													마크업상에서 Show/Hide Toggle Class 처리 필요
+													테스트 구성
+													-->
+													<style type="text/css">
+														.cal-container {position:absolute;display:none;z-index:2}
+														.cal-container.cal-show {display:block}
+													</style>
+													<div class="cal-container js-picker" style="right:100px"></div>
+												</span>
 											</div>
 											<!--// datePicker -->
 											<select title="상담시간 선택" style="width:247px;">
@@ -135,9 +148,25 @@
 										<th scope="row">희망 시공기간 선택 (선택)</th>
 										<td>
 											<!-- datePicker -->
-											<div class="calendar cal2">
-												<span class="calInp"><input type="text" title="희망 시공 시작 날짜 입력" value=""/><a href="#" class="calBtn">날짜선택</a></span> 
-												<span class="calInp"><input type="text" title="희망 시공 끝나는 날짜 입력" value=""/><a href="#" class="calBtn">날짜선택</a></span>
+											<div class="calendar cal2 js-range-picker">
+												<span class="calInp">
+													<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn-from">날짜선택</a>
+													<!-- 
+													[D] 마크업상에서 Show/Hide Toggle Class 처리 필요
+													테스트 구성
+													-->
+													<div class="cal-container js-picker-from"></div>
+												</span> 
+												<span class="calInp">
+													<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn-to">날짜선택</a>
+													<!-- 
+													[D] 마크업상에서 Show/Hide Toggle Class 처리 필요
+													테스트 구성
+													-->
+													<div class="cal-container js-picker-to"></div>
+												</span>
 											</div>
 											<!--// datePicker -->
 											<span class="underTxt">* 실측 상황에 따라 시공기간은 변경될 수 있습니다.</span>
