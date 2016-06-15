@@ -1,9 +1,12 @@
 /* global $ */
+/* jshint node: true, strict: true */
 
 var pageId;
 var pageModule;
 
 $(document).ready(function() {
+	'use strict';
+
 	var PageModuleClass;
 	pageId = $('body').data('pageId');
 	
