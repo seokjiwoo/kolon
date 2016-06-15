@@ -45,7 +45,13 @@ function ClassUtils() {
 			 * @param   {Number}        splitNum    콤마 단위
 			 * @return  {String}
 			 */
-			comma: comma
+			comma: comma,
+			/**
+			 * @description
+			 * 	시작일 ~ 종료일 D-day 반환
+			 * @return {Object}  {startTime: Number, endTime: Number, diffTime: Number, diffDay: Number}
+			 */
+			diffDay: diffDay
 		};
 	}
 	
@@ -92,6 +98,21 @@ function ClassUtils() {
 
 	function currencyFormat(num) {
 		return comma(num, 3);
+	}
+
+	function diffDay(data) {
+		var dayMS = data.dayMS || (1000 * 60 * 60 * 24),
+		startTime = +new Date(data.startDate),
+		endTime = +new Date(data.endDate),
+		diffTime = +new Date(Math.abs(startTime-endTime)),
+		diffDay = Math.ceil(diffTime/(dayMS));
+
+		return {
+			'startTime' : startTime,
+			'endTime' : endTime,
+			'diffTime' : diffTime,
+			'diffDay' : diffDay
+		};
 	}
 
 }
