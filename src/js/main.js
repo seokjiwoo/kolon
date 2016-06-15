@@ -32,6 +32,9 @@ $(document).ready(function() {
 		case 'living-category':
 			PageModuleClass = require('./pages/LivingCategory.js');
 			break;
+		case 'myServiceDetail':
+			PageModuleClass = require('./pages/MpMyServiceDetail.js');
+			break;
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
