@@ -1,9 +1,12 @@
 /* global $ */
+/* jshint node: true, strict: true */
 
 var pageId;
 var pageModule;
 
 $(document).ready(function() {
+	'use strict';
+
 	var PageModuleClass;
 	pageId = $('body').data('pageId');
 	
@@ -25,6 +28,12 @@ $(document).ready(function() {
 			break;
 		case 'order-orderService':
 			PageModuleClass = require('./pages/OdOrderService.js');
+			break;
+		case 'living-category':
+			PageModuleClass = require('./pages/LivingCategory.js');
+			break;
+		case 'myServiceDetail':
+			PageModuleClass = require('./pages/MpMyServiceDetail.js');
 			break;
 		default:
 			PageModuleClass = require('./pages/Page.js');

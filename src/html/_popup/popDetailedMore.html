@@ -72,19 +72,46 @@
 						<li><a href="">40평</a></li>
 						<li><a href="">50평 이상</a></li>
 					</ul>
+					<!-- [D] 가격 범위 입력 필요 -->
 					<h3 class="sortTit"><span>300~2500</span>가격</h3>
+
+					<!-- [D] 테스트 임시 구성 -->
+					<style type="text/css">
+						.ui-widget-content {border-radius:5px;background:#e1e1e1;border:0;height:12px}
+
+						.ui-state-default,
+						.ui-widget-content .ui-state-default,
+						.ui-widget-header .ui-state-default {position:absolute;display:inline-block;width:41px;height:41px;top:-17px;border:0}
+
+						.ui-widget-header {background:#f1645c}
+
+						.ui-slider-handle.leftBtn {background:url('../images/detail_arrow.png') 0 0 no-repeat}
+						.ui-slider-handle.rightBtn {background:url('../images/detail_arrow.png') 0 -41px no-repeat}
+
+						.slider-container {position:relative;z-index:1;padding-right:20px}
+						.slider-wrap .graphBar {background:none !important;margin-top:-12px !important}
+
+						.slider-container .graphData {width:84px; height:12px; margin-left:-47px; padding:7px; background:#f1645c; color:#fff; border-radius:11px; position:absolute; top:-40px; left:50%; display:inline-block; line-height:100%; font-size:13px;}
+						.slider-container .graphData:after {content:''; width:11px; height:6px; margin-left:-5px; background:url('../images/detail_bg.png') 0 0 no-repeat; position:absolute; bottom:-6px; left:50%;}
+					</style>
+
 					<!-- 가격설정 그래프  -->
-					<div class="sortGraph">
-						<div style="padding-left:40px; padding-right:70px;"><!-- padding 값으로 가격 조절 -->
-							<p class="graphBar">
-								<a href="#" class="graphBtn leftBtn">가격설정 시작 지점</a><!-- 가격설정 시작 버튼 -->
-								<a href="#" class="graphBtn rightBtn">가격설정 끝 지점</a><!-- 가격설정 끝 버튼 -->
-								<span class="graphData">300 ~ 2500</span><!-- 설정된 가격 범위 값 -->
-							</p>
+					<div class="sortGraph slider-wrap js-slider-wrap">
+						<div class="slider-container js-slider-container">
+							<span class="graphData js-slider-values">300 ~ 2500</span>
+							<!-- [D] data-slider-opt 범위 옵션 설정 -->
+							<div class="js-slider"
+								data-slider-opt='{
+									"min" : 300,
+									"max" : 2500,
+									"values" : [ 750, 1500 ],
+									"currency" : "만원"
+								}'>
+							</div>
 						</div>
 						<div class="won">
-							<span class="wonL">100만원</span>
-							<span class="wonR">5000만원</span>
+							<span class="wonL js-slider-lv">100만원</span>
+							<span class="wonR js-slider-rv">5000만원</span>
 						</div>
 					</div>
 					<!--// 가격조절 그래프  -->
