@@ -173,3 +173,13 @@
 	border-right-width: 0;
 	border-left-width: 1px;
 }
+
+/* Ãß°¡ */
+.js-picker {position:relative;}
+.cal-container {position:absolute; z-index:2; top:22px; right:0; display:none;}
+.cal-container.cal-show {display:block}
+.ui-datepicker table {border:0;}
+.ui-datepicker table tr th,
+.ui-datepicker table tr td {padding:1px; }
+.ui-datepicker table tr th {padding:5px 1px; text-align:center !important;}
+.ui-datepicker table tr + tr td {border:0;}
