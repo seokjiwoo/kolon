@@ -144,3 +144,66 @@
 #bestKey .up span{border-bottom: 9px solid #f1645c }
 #bestKey .down span{border-bottom: 9px solid #a9c700 }
 #bestKey .even span{top: 9px;width: 2px;height: 2px;background: #b1b1b1}
+
+/* category */
+.category .subTop {}
+.catSorting{width:100%; text-align: center;}
+.catSorting .wrap{width:100%; overflow: hidden;padding:32px 0; max-width:1150px;}
+.catSorting .catSort {width:25%; float:left;}
+.catSorting .catSort .sortCont {padding:0 15px; overflow:hidden; margin-top:20px;}
+.catSorting .catSort +.catSort .sortCont {border-left:1px solid #d9d9d9;}
+.catSorting .catSort h3.sortTit{color: #666;font-size: 16px;}
+.catSorting .catSort h3.sortTit span{color:#f1645c; }
+.catSorting .catSort .sortCont ul{width:100%; overflow: hidden; font-family:'RobotoR','NotoSansR', sans-serif;}
+.catSorting .catSort .sortCont ul li{float: left;width:50%;margin-bottom:10px;}
+.catSorting .catSort .sortCont ul li a{width:113px; display:inline-block; position: relative; margin: 0 5px;padding: 9px 0px;background:#f2f2f2; border-radius: 20px;color: #666;font-size: 14px; border:4px solid #f2f2f2; text-align:center;}
+.catSorting .catSort .sortCont ul li a.on{color: #f1645c;border:4px solid #f1645c; background:#fff; }
+.catSorting .catSort .sortCont ul li a:before{content: ''; width:15px; height:15px; position: absolute; left:10px; top:12px; border-radius: 50%;}
+.catSorting .catSort .sortCont ul li #colorAll:before{background:url(../images/all_color.png) 0 0 no-repeat;}
+.catSorting .catSort .sortCont ul li #color01:before{width:13px; height:13px; border:1px solid #999; background:#fff; overflow:hidden;}
+.catSorting .catSort .sortCont ul li #color02:before{background:#999;}
+.catSorting .catSort .sortCont ul li #color03:before{background:#4d4d4d;}
+.catSorting .catSort .sortCont ul li #color04:before{background:#825f52;}
+.catSorting .catSort .sortCont ul li #color05:before{background:#eac294;}
+.catSorting .catSort .sortCont ul li #color06:before{background:#92278f;}
+.catSorting .catSort .sortCont ul li #color07:before{background:#ff80ab;}
+.catSorting .catSort .sortCont ul li #color08:before{background:#e1594b;}
+.catSorting .catSort .sortCont ul li #color09:before{background:#f68c0b;}
+.catSorting .catSort .sortCont ul li #color10:before{background:#ffc814;}
+.catSorting .catSort .sortCont ul li #color11:before{background:#9ccc66;}
+.catSorting .catSort .sortCont ul li #color12:before{background:#48c7ff;}
+.catSorting.catSortH02 .catSort .sortCont {height:377px;}
+.catSorting.catSortH01 {position: absolute;top:171px;left: 0;width:100%;background:#f7f7f7;text-align: center;z-index: 1;box-shadow: 0px 2px 5px rgba(0,0,0,0.1)}
+.catSorting.catSortH01 .catSort {position: relative;float: left;width: 25%;font-family:'RobotoR','NotoSansR', sans-serif;}
+.catSorting.catSortH01 .catSort:before{content: '';position: absolute;top: 0;left: 0;width: 1px;height: 100%;background: #d2d2d2;}
+.catSorting.catSortH01 .catSort:first-child:before{display: none;}
+.catSorting.catSortH01 .catSort h3.sortTit{color: #666;font-size: 16px;}
+.catSorting.catSortH01 .catSort hr.sortTit span{color:#f1645c; }
+.catSorting.catSortH01 .catSort .sortCont {display:none; height:314px;}
+.catSorting.catSortH01 .catSort .sortCont ul li {float: left;width:50%;margin-top:10px;}
+.catSorting.catSortH01 .catSort .sortCont ul li a{display: block;position: relative;margin: 0 5px;padding: 9px 0px;background: #fff;border-radius: 20px;color: #666;font-size: 14px;border:4px solid #fff;}
+.catSorting.catSortH01 .catSort .sortCont ul li a.on{color: #f1645c;border:4px solid #f1645c;}
+.catSorting.catSortH01 .catSort .sortCont ul li a:before{content: '';position: absolute;left: 10px;top:8px;width: 15px;height: 15px;border-radius: 50%;}
+.catSorting .btnSort{width:100%; overflow:hidden; text-align:center;}
+.catSorting.catSortH01 .btnSort {clear: both;display: none;}
+.catSorting .btnSort a{display: inline-block;width: 140px;margin:30px 8px 0;padding:12px 0;color: #fff;font-family:'RobotoM','NotoSansM', sans-serif;border-radius: 20px;}
+.catSorting .btnSort #btnReset{background:#666; }
+.catSorting .btnSort #btnConfirm{background: #f1645c;}
+.catSorting #sortToggle{position: absolute;left: 50%;bottom:-20px;width: 40px;height: 40px;margin-left: -20px;background: #bfbfbf;border-radius: 50%;box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+	-webkit-transition: all 0.1s ease-in-out;-moz-transition:all 0.1s ease-in-out;-o-transition:all 0.1s ease-in-out;-ms-transition:all 0.1s ease-in-out;}
+.catSorting #sortToggle:after{content: '';position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 1;background: url('../images/ico_toggleW.png') no-repeat center}
+.catSorting #sortToggle.opened:after{-ms-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
+
+.catSorting .catSort .sortCont .sortGraph {width:100%; height:12px; margin:54px 0 59px; display:inline-block; border-radius:5px; background:#e1e1e1;}
+.catSorting .catSort .sortCont .sortGraph .graphBar {width:100%; height:12px; background:#f1645c; position:relative;}
+.catSorting .catSort .sortCont .sortGraph .graphBar a.graphBtn {width:0; height:0; padding:41px 41px 0 0; overflow:hidden; display:inline-block; position:absolute; top:-17px;}
+.catSorting .catSort .sortCont .sortGraph .graphBar a.graphBtn.leftBtn {background:url('../images/detail_arrow.png') 0 0 no-repeat; left:-20px;}
+.catSorting .catSort .sortCont .sortGraph .graphBar a.graphBtn.rightBtn {background:url('../images/detail_arrow.png') 0 -41px no-repeat; right:-20px;}
+.catSorting .catSort .sortCont .sortGraph .graphBar span.graphData {width:84px; height:12px; margin-left:-47px; padding:7px; background:#f1645c; color:#fff; border-radius:11px; position:absolute; top:-40px; left:50%; display:inline-block; line-height:100%; font-size:13px;}
+.catSorting .catSort .sortCont .sortGraph .graphBar span.graphData:after {content:''; width:11px; height:6px; margin-left:-5px; background:url('../images/detail_bg.png') 0 0 no-repeat; position:absolute; bottom:-6px; left:50%;}
+.catSorting .catSort .sortCont .sortGraph .won {width:100%; overflow:hidden; margin-top:15px;}
+.catSorting .catSort .sortCont .sortGraph .won span {width:50%; float:left; display:inline-block; letter-spacing:-1px;}
+.catSorting .catSort .sortCont .sortGraph .won span.wonL {text-align:left;}
+.catSorting .catSort .sortCont .sortGraph .won span.wonR {text-align:right;}
+.catSorting .catSort .sortCont ul + h3.sortTit {margin-top:20px;}
+

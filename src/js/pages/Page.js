@@ -31,12 +31,11 @@ module.exports = function() {
 		tableHeight()
 		conFirm();
 		
-		/* 레이어 팝업으로 변경됨
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
 			$(this).toggleClass('opened');
-			$('.catSort ul').slideToggle(300);
-		});*/
+			$('.catSort .sortCont, .btnSort').slideToggle(300);
+		});
 
 		$('#expertList').bxSlider({ //expert top slide
 			minSlides: 5,
