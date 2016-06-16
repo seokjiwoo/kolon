@@ -20,23 +20,42 @@
     Change the following styles to modify the appearance of Colorbox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
-#cboxOverlay {background:#000; opacity:0.2; filter:alpha(opacity = 20);}
+#cboxOverlay {background:#000;filter:alpha(opacity = 50);}
 #colorbox {outline:0;}
-#cboxContent {overflow:visible;border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000; -moz-animation-play-state: }
-#cboxError { padding:50px; border:1px solid #ccc; }
-#cboxLoadedContent { padding:10px 0 0px;color:#666;line-height:1.4em;font-size:14px; }
-#cboxLoadedContent .popTit { top:0; padding-bottom:20px; border-bottom:1px solid #666; font-size:30px; }
+#cboxContent {overflow:visible;border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
+#cboxError {padding:50px; border:1px solid #ccc; }
+#cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; }
+#cboxLoadedContent .popTit {position: relative;top:0; font-size:30px; line-height: 80px;text-align: center;}
+#cboxLoadedContent .popTit:after{content: '';position: absolute;left: -34px;right: -34px;bottom: 0;height: 1px;background: #666;}
 #cboxLoadedContent .popTit span.count{color:#f1645c;}
-#cboxLoadedContent .subTit { font-size:20px;color:#000; }
-#cboxLoadedContent .popScroll { overflow:auto;margin-top:30px; }
-#cboxLoadedContent p { margin-top:20px; }
-#cboxLoadedContent p:first-child { margin-top:0; }
+#cboxLoadedContent .subTit {font-size:20px;color:#000; }
+#cboxLoadedContent .popScroll {overflow:auto;margin-top:30px; }
+#cboxLoadedContent p {margin-top:20px; }
+#cboxLoadedContent p:first-child {margin-top:0; }
+
+/* 모서리 형 팝업 */
+.popEdge #cboxLoadedContent:after, .popEdge #cboxLoadedContent:before{content: '';position: absolute;bottom: 0}
+.popEdge #cboxLoadedContent:before{left:0;right: 60px;height: 60px;background: #fff;}
+.popEdge #cboxLoadedContent:after{right: 0;width: 0;height: 0;border-top: 60px solid #fff;border-right: 60px solid transparent;}
+.popEdge #cboxClose {display:block;position:absolute;top:0;right:0;width:80px;height:80px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center; z-index: 1}
+.popEdge #cboxClose:active {outline:0;}
+.popEdge .popTop{position: relative;margin:0 60px;height: 80px;background: #fff;z-index: 1;}
+.popEdge .popTop:before{content: '';position: absolute;top:0;left: -60px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 60px solid transparent;}
+.popEdge .popTop:after{content: '';position: absolute;right: -60px;top: 0;width: 60px;height: 60px;background: #fff;}
+
 
 /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
-#cboxClose { display:block;position:absolute;top:30px;right:30px;width:40px;height:40px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center;  }
-#cboxClose:active {outline:0;}
 
 #colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+.wrapper .lyPop .subTit{font-size: 20px;color: #000;}
+.popEdge .popCon{position: relative;margin-top:-20px;padding: 51px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
+.popCon p{margin-top:20px;}
+.popCon p:first-child{margin-top:0;}
+.popScroll{overflow: auto;margin-top:30px;}
+.btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+#popAgree01 .popCon{text-align: left;}
 
 .popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
 .popCon select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
@@ -103,7 +122,7 @@
 .popCon .expertInfo .eCon .infoDetail .eTxt span {font-family:'NotoSansL','RobotoL', sans-serif; display:inline-block; position:relative;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span:before {content:''; display:inline-block; position:absolute;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress {padding-left:13px;}
-.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before { width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before {width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar {padding-left:15px;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 0 -10px no-repeat; top:2px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span + span {margin-left:13px;}
@@ -134,3 +153,4 @@ a.btnDetail:before {content:''; width:40px; height:40px; border-radius:50%; over
 
 .lyPop.orderPop .popCon {padding:20px 0;}
 .lyPop.categoryPop .popCon {padding:0;}
+
