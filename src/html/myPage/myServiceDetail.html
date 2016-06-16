@@ -56,6 +56,77 @@
 					</div>
 					<div class="conCard graph">
 						<!-- graph -->
+
+						<!-- [D] 테스트 임시 구성 -->
+						<style>
+							.js-graph {position:relative}
+							
+							.js-graph-container .js-graph-status,
+							.js-graph-container .js-graph-date {position:absolute;line-height:15px;margin-top:-15px}
+
+							.js-graph-container .js-graph-start {left:0;top:50%;margin-left:20px}
+							.js-graph-container .js-graph-end {right:0;top:50%;margin-right:20px}
+
+							.js-graph-status {width:100%;height:30px;top:50%;text-align:center}
+
+							.js-graph-area .js-graph-doughnut {width:130px;height:130px;margin:0 auto}
+							.js-graph-area .js-graph-horizonbar {position:relative;width:100%;margin-top:30px}
+
+							.js-graph-horizonbar .area {height:30px;border-bottom-right-radius:15px;border-bottom-left-radius:15px;border-top-right-radius:15px;border-top-left-radius:15px}
+							.js-graph-horizonbar .bg {position:absolute;width:100%;background:#f8f8f8}
+							.js-graph-horizonbar .data {position:absolute;width:0%;background:#f1645c;z-index:1}
+							.js-graph-horizonbar .txt-percent {position:absolute;display:inline-block;line-height:15px;margin:7px 0 0 12px;color:#fff;z-index:2;text-shadow:1px 1px 2px rgba(150, 150, 150, 1)}
+
+							/*
+								border-bottom-right-radius
+								border-bottom-left-radius
+								border-top-right-radius
+								border-top-left-radius
+
+								#f1645c;
+								#f8f8f8;
+							*/
+						</style>
+
+						<!-- [D] data-graph-opt 범위 옵션 설정
+							startDate : 기준일, 옵션 'today' 금일 기준
+							endDate : 종료일
+						-->
+						<div class="js-graph"
+							data-graph-opt='{
+								"startDate" : "today",
+								"endDate" : "2016.06.30"
+							}'>
+							<div class="js-graph-container">
+								<!-- [D] 시작일 입력 -->
+								<span class="js-graph-date js-graph-start">2016.04.15</span>
+								<!-- [D] 종료일 입력 -->
+								<span class="js-graph-date js-graph-end">2016.06.30</span>
+								<div class="js-graph-status">
+									<span class="js-graph-progress"></span><br>
+									<span class="js-graph-dday"></span>
+								</div>
+								<div class="js-graph-area">
+									<!-- [D] Graph 퍼센트 입력 : data-graph-percent -->
+									<div class="js-graph-doughnut" data-graph-percent="30">
+										<!-- 
+										<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin">
+											<g transform="translate(50,50)">
+												<path d="M0,50A50,50 0 1,1 0,-50A50,50 0 1,1 0,50M0,40A40,40 0 1,0 0,-40A40,40 0 1,0 0,40Z" style="fill: #eff1f3;"></path>
+												<path d="M2.6645352591003757e-15,-44.721359549995796A5,5 0 0,1 5.555555555555559,-49.69039949999533A50,50 0 0,1 8.664678935936468,49.24351062766686A5,5 0 0,1 2.808077400201465,44.633112162546745L2.808077400201465,44.633112162546745A5,5 0 0,1 6.931743148749176,39.39480850213349A40,40 0 0,0 4.444444444444447,-39.75231959999626A5,5 0 0,1 2.6645352591003757e-15,-44.721359549995796Z" style="fill: #f9cd58;"></path>
+											</g>
+										</svg>
+										 -->
+									</div>
+									<!-- [D] Graph 퍼센트 입력 : data-graph-percent -->
+									<div class="js-graph-horizonbar" data-graph-percent="30">
+										<div class="area bg"></div>
+										<div class="area data js-graph-data"></div>
+										<span class="txt-percent js-graph-percent">0%</span>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="conCard designer">
 						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
@@ -68,5 +139,88 @@
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+	<!-- [D] 테스트 임시 구성 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+	<script>
+		;(function(win, $) {
+			'use strict';
+
+			function setDemoDoughnut() {
+				var wrap = $('.js-graph-doughnut'),
+				DATA_PERCENT = wrap.data('graph-percent') || 100,
+				speed = 1000 * 1;
+
+				var t = 2 * Math.PI,
+				width = 130,
+				height = 130,
+				outerRadius = Math.min(width,height)/2,
+				innerRadius = (outerRadius/5)*4,
+				arc, svg, background, dataGraph;
+
+				arc = win.d3.svg.arc()
+							.innerRadius(innerRadius)
+							.outerRadius(outerRadius)
+							.cornerRadius(outerRadius - innerRadius)
+							.startAngle(0);
+
+				svg = win.d3.select('.js-graph-area .js-graph-doughnut').append('svg')
+						.attr('width', '100%')
+						.attr('height', '100%')
+						.attr('viewBox','0 0 '+Math.min(width,height) +' '+Math.min(width,height) )
+						.attr('preserveAspectRatio','xMinYMin')
+						.append('g')
+						.attr('transform', 'translate(' + Math.min(width,height) / 2 + ',' + Math.min(width,height) / 2 + ')');
+
+				background = svg.append('path')
+								.datum({endAngle: t})
+								.style('fill', '#eff1f3')
+								.attr('d', arc);
+
+				dataGraph = svg.append('path')
+								.datum({endAngle: 0 * t})
+								.style('fill', '#f9cd58')
+								.attr('d', arc);
+
+				dataGraph.transition()
+						.duration(speed)
+						.call(arcTween, getDataPercent() * t);
+
+				function getDataPercent() {
+					return DATA_PERCENT / 100;
+				}
+
+				function arcTween(transition, newAngle) {
+					transition.attrTween('d', function(d) {
+						var interpolate = win.d3.interpolate(d.endAngle, newAngle);
+						return function(t) {
+							d.endAngle = interpolate(t);
+							return arc(d);
+						};
+					});
+				}
+			}
+
+			function setHorizonBar() {
+				var wrap = $('.js-graph-horizonbar'),
+				percent = wrap.data('graph-percent'),
+				dataBar = wrap.find('.js-graph-data'),
+				txtArea = wrap.find('.js-graph-percent'),
+				speed = 1000 * 1;
+
+				dataBar.animate({ width : percent + '%' }, {
+					duration : speed,
+					step : function(now) {
+						txtArea.text(parseInt(now, 10) + '%');
+					}
+				});
+			}
+
+			$(function() {
+				setDemoDoughnut();
+				setHorizonBar();
+			});
+		})(window, window.jQuery);
+	</script>
 </body>
 </html>
