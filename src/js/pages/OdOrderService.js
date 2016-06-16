@@ -5,8 +5,8 @@ module.exports = function() {
 
 	var win = window,
 	$ = win.jQuery,
-	DEBUG = require('../utils/Console.js'),
-	FILE_NAME = 'OdOrderService.js';
+	debug = require('../utils/Console.js'),
+	fileName = 'OdOrderService.js';
 
 	var SuperClass = require('./Page.js'),
 	Super = SuperClass(),
@@ -25,7 +25,7 @@ module.exports = function() {
 	function init() {
 		Super.init();
 
-		DEBUG.log(FILE_NAME, 'init');
+		debug.log(fileName, 'init');
 
 		setCunsultPicker();
 		setBuildPicker();
@@ -33,7 +33,7 @@ module.exports = function() {
 
 	// 희망 상담 영역 - datePicker 설정
 	function setCunsultPicker() {
-		DEBUG.log(FILE_NAME, 'setCunsultPicker > 희망 상담 영역 - datePicker 설정');
+		debug.log(fileName, 'setCunsultPicker > 희망 상담 영역 - datePicker 설정');
 
 		var consultWrap = $('.js-picker');
 		ConsultPicker.init({
@@ -49,7 +49,7 @@ module.exports = function() {
 
 	// 희망 시공 기간 영역 - datePicker 설정
 	function setBuildPicker() {
-		DEBUG.log(FILE_NAME, 'setBuildPicker > 희망 시공 기간 영역 - datePicker 설정');
+		debug.log(fileName, 'setBuildPicker > 희망 시공 기간 영역 - datePicker 설정');
 
 		var buildWrap = $('.js-range-picker');
 		BuildPicker.init({

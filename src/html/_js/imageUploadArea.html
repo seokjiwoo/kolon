@@ -1,0 +1,143 @@
+<!-- [D]
+	prefix js- 는 테스트 구성 위해 설정한 class 명입니다.
+	js 실행을 위해서는 유지해 주세요.
+-->
+<style>
+	.js-upload-wrap {position:relative;width:100%;height:552px;margin:0 auto;background:url('../../images/@js/@js-upload-area.jpg') no-repeat}
+	.js-holder {position:absolute;width:100%;height:303px;top:78px}
+	.js-select {position:absolute;width:150px;height:30px;left:190px;top:270px;border:1px solid red;overflow:hidden}
+	.js-select .js-inp {position:absolute;right:0;top:0;font-size:30px;opacity:0;filter: alpha(opacity=0);-ms-filter: alpha(opacity=0);cursor:pointer}
+	.js-cancel {position:absolute;left:160px;bottom:77px}
+	.js-submit {position:absolute;right:110px;bottom:77px}
+</style>
+<div class="js-upload-wrap">
+	<div class="js-holder"></div>
+	<span class="js-select">
+		컴퓨터에서 이미지 선택
+		<input type="file" class="js-inp">
+	</span>
+	<button class="js-cancel">취소</button>
+	<button class="js-submit">프로필 사진으로 설정</button>
+</div>
+<script>
+	// 테스트 JS
+	;(function(win, $) {
+		'use strict';
+		if ('undefined' === typeof win.vinylX) {
+			win.vinylX = {};
+		}
+
+		var NS = win.vinylX;
+		NS.imageUpload = (function() {
+			var defParams = {
+				wrap : '.js-upload-wrap',
+				holder : '.js-holder',
+				inpFile : '.js-inp',
+				btnCancel : '.js-cancel',
+				btnSubmit : '.js-submit',
+				acceptedTypes : [
+					'image/png',
+					'image/jpg',
+					'image/jpeg',
+					'image/gif'
+				]
+			};
+			return {
+				init : function(container, args) {
+					if (!(this.container = container).size()) return;
+					this.opts = $.extend(true, defParams, args);
+
+					this.setElements();
+					this.setBindEvents();
+				},
+				isSupport : (function() {
+					return {
+						fileReader : function() {
+							return window.FileReader;
+						},
+						acceptedTypes : function(type) {
+							type = type.toLowerCase();
+
+							var flag = false;
+							$.map(NS.imageUpload.opts.acceptedTypes, function(val) {
+								if (val === type) {
+									flag = true;
+									return false;
+								}
+							});
+							return flag;
+						}
+					};
+				})(),
+				setElements : function() {
+					this.wrap = this.container.find(this.opts.wrap);
+					this.holder = this.wrap.find(this.opts.holder);
+					this.inpFile = this.wrap.find(this.opts.inpFile);
+					this.btnCancel = this.wrap.find(this.opts.btnCancel);
+					this.btnSubmit = this.wrap.find(this.opts.btnSubmit);
+
+					this.isSelected = false;
+				},
+				setBindEvents : function() {
+					this.inpFile.on('change', $.proxy(this.onInpFileChange, this));
+					win.console.log(this.holder.get(0), this.holder.get(0).ondrop);
+					this.holder.get(0).ondrop = this.onHolderDrop;
+					this.btnCancel.on('click', $.proxy(this.onBtnCancelClick, this));
+					this.btnSubmit.on('click', $.proxy(this.onBtnSubmitClick, this));
+				},
+				onHolderDrop : function(e) {
+					e.preventDefault();
+					win.console.log(e.dataTransfer, e);
+					// readfiles(e.dataTransfer.files);
+				},
+				onInpFileChange : function(e) {
+					var target = $(e.currentTarget),
+					inp = target.get(0);
+
+					if (inp.files.length) {
+						this.setPreviewFile(inp.files[0]);
+					}
+
+					// win.console.log(target, inp.files, this.isSupport, this.isSupport.fileReader());
+				},
+				onBtnCancelClick : function(e) {
+					win.console.log('onBtnCancelClick', e);
+				},
+				onBtnSubmitClick : function(e) {
+					win.console.log('onBtnSubmitClick', e);
+				},
+				setPreviewFile : function(file) {
+					if (!this.isSupport.fileReader()) {
+						alert('fileReader 미지원');
+						return;
+					}
+
+					if (!this.isSupport.fileReader()) {
+						alert('지원하지 않는 이미지 포맷');
+						return;
+					}
+
+					var _this = this,
+					reader = new FileReader();
+					reader.onload = function (event) {
+						if (_this.holder.find('.js-preview-img').size()) {
+							_this.holder.find('.js-preview-img').remove();
+						}
+						var image = $('<image class=\'js-preview-img\'>');
+						image.attr('src', event.target.result)
+							.width(_this.holder.outerWidth())
+							.height(_this.holder.outerHeight());
+						_this.holder.append(image);
+					};
+					reader.readAsDataURL(file);
+
+					win.console.log(file, this.isSupport.acceptedTypes(file.type));
+				}
+			};
+		})();
+
+		$(function() {
+			NS.imageUpload.init($('body'));
+		});
+	})(window, window.jQuery);
+</script>

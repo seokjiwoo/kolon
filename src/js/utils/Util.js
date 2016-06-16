@@ -104,8 +104,8 @@ function ClassUtils() {
 		var dayMS = data.dayMS || (1000 * 60 * 60 * 24),
 		startTime = +new Date(data.startDate),
 		endTime = +new Date(data.endDate),
-		diffTime = +new Date(Math.abs(startTime-endTime)),
-		diffDay = Math.ceil(diffTime/(dayMS));
+		diffTime = +new Date(endTime-startTime),
+		diffDay = parseInt(Math.ceil(diffTime/(dayMS)), 10);
 
 		return {
 			'startTime' : startTime,
