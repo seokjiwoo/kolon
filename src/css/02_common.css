@@ -31,17 +31,7 @@
 .bx-wrapper .bx-controls-direction a{position: absolute;top:50%;margin-top:-29px;width:30px;height: 58px;background: url('../images/ico_slide_nav.png') no-repeat;font-size: 0;}
 .bx-wrapper .bx-controls-direction .bx-next{background-position: -32px 0}
 
-/* popup */
-.lyPop .popTit{padding-bottom:20px;border-bottom: 1px solid #666;font-size: 30px;}
-.wrapper .lyPop .subTit{font-size: 20px;color: #000;}
-.lyPop .closePop{display: inline-block;float: right;width: 40px;height:40px;background: url('../images/btn_closeG.png') no-repeat center;}
-.lyPop .popCon{padding: 40px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;}
-.lyPop .popCon p{margin-top:20px;}
-.lyPop .popCon p:first-child{margin-top:0;}
-.lyPop .popScroll{overflow: auto;margin-top:30px;}
-.lyPop .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
-#popAgree01 .popCon{text-align: left;}
 /* popup order */
 .lyPop .subTit .subAddr {color:#999;}
 .lyPop .popRecord {text-align:right;width:90px;padding:20px 10px 20px 20px;}
@@ -76,14 +66,6 @@
 .record.record03 td.recordInfo {padding:20px 0 20px 10px;}
 .record.record03 .recordThumb {float:right;}
 .record.record03 .orderState {padding:20px}
-
-.my .tableStyle02{text-align: left;font-family:'RobotoR','NotoSansR', sans-serif;border-top: 1px solid #e8e8e8}
-.my .tableStyle02 th{width:90px;padding:15px 35px;background: #f7f7f7;border-bottom: 1px solid #e8e8e8;color: #000;}
-.my .tableStyle02 td{padding:15px 20px;border-bottom: 1px solid #e8e8e8}
-.my .tableStyle02 .wrapScroll{display: block;width: 690px;padding:30px 20px;}
-.my .tableStyle02 .popScroll{max-height: 440px;margin-top:0;}
-.my .tableStyle02 .popScroll img{display: block;max-width: 100%;}
-.my .tableStyle02 .bar:before{content: '';display: inline-block;width: 1px;height: 10px;margin: 0 7px;background: #999;vertical-align: middle;}
 .tag{height: 36px;overflow: hidden;}
 .tag li{display: inline-block;margin-left: 5px;}
 .tag li:first-child{margin:0;}
@@ -95,10 +77,7 @@
 .reviewObj .objBox img {width:100%;}
 .reviewObj .objTxt {float:left;margin:20px 0 0 65px;font-size:20px;color:#000;font-family:'RobotoR','NotoSansR', sans-serif;line-height:1.4}
 .pointColor01 {display:block;font-size:14px;color:#999;}
-.my .tableStyle03 {border-top:1px solid #e8e8e8;text-indent:-0.5px}
-.my .tableStyle03 th {text-align:left;padding-left:40px;background:#f7f7f7;border-bottom:1px solid #e8e8e8;}
-.my .tableStyle03 td {padding:14px 20px;border-bottom:1px solid #e8e8e8}
-.my .tableStyle03 td.tagBox {padding:14px 20px 9px;}
+
 textarea.pullSize {border:1px solid #d6d6d6;height:144px;padding:10px 20px;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 ul.tbList3 {margin-bottom:50px}
 ul.tbList3 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-0.5px; line-height:21px; margin-top:5px;}
@@ -121,7 +100,7 @@ ul.tbList3 li:first-child {margin-top:0;}
 
 a.pointLink {color:#f1645c;text-decoration:underline;font-family:'RobotoR','NotoSansR', sans-serif;}
 /* tab */
-.tabType01{width:100%; overflow:hidden; background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
+.tabType01{width:100%;background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
 .tabType01 ul{height: 80px;}
 .tabType01 li{float: left;width: 50%;text-align: center;}
 .tabType01 a{position: relative;display: block;padding: 30px 0;color: #333;font-family:'RobotoL','NotoSansL', sans-serif;font-size: 20px;}
@@ -181,7 +160,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
-{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
 
 .container input[type="text"].pullSize,
