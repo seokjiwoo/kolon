@@ -23,6 +23,11 @@ $(document).ready(function() {
 		case 'member-findLoginPwReset':
 			PageModuleClass = require('./pages/ResetPassword.js');
 			break;
+
+		case 'magazine-list':
+			PageModuleClass = require('./pages/MagazineList.js');
+			break;
+			
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
