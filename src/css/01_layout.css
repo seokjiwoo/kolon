@@ -190,7 +190,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #flQna .resultQna li:first-child{border:0;}
 
 .container {position: relative;padding:60px 0 200px;}
-.container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
+.container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:62px 10px 0;}
 .main .container .wrap{max-width: 1500px;padding:30px 20px 0;}
 .container .sWrap{max-width: 780px;margin: 0 auto;}
 

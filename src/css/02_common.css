@@ -31,17 +31,7 @@
 .bx-wrapper .bx-controls-direction a{position: absolute;top:50%;margin-top:-29px;width:30px;height: 58px;background: url('../images/ico_slide_nav.png') no-repeat;font-size: 0;}
 .bx-wrapper .bx-controls-direction .bx-next{background-position: -32px 0}
 
-/* popup */
-.lyPop .popTit{padding-bottom:20px;border-bottom: 1px solid #666;font-size: 30px;}
-.wrapper .lyPop .subTit{font-size: 20px;color: #000;}
-.lyPop .closePop{display: inline-block;float: right;width: 40px;height:40px;background: url('../images/btn_closeG.png') no-repeat center;}
-.lyPop .popCon{padding: 40px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;}
-.lyPop .popCon p{margin-top:20px;}
-.lyPop .popCon p:first-child{margin-top:0;}
-.lyPop .popScroll{overflow: auto;margin-top:30px;}
-.lyPop .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
-#popAgree01 .popCon{text-align: left;}
 /* popup order */
 .lyPop .subTit .subAddr {color:#999;}
 .lyPop .popRecord {text-align:right;width:90px;padding:20px 10px 20px 20px;}
@@ -170,7 +160,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
-{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6; border-radius: 7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
 
 .container input[type="text"].pullSize,

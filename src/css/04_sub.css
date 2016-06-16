@@ -36,8 +36,8 @@
 .colWrap{overflow: hidden;}
 .col{width:50%;float: left;}
 .singleCard{overflow: hidden;position: relative;padding-bottom: 80px;}
-.doubleCard{width:510px;padding: 30px 40px;float: left;}
-.doubleCard:first-child{margin-right: 20px;}
+.doubleCard{width:510px;float: left;}
+.doubleCard:first-child{margin-right: 60px;}
 
 /* brand */
 .singleCard .bx-wrapper{overflow: hidden;position: relative;padding: 0 210px;border-radius: 10px 10px 0 0;z-index: 1}

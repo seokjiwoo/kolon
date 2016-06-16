@@ -138,12 +138,12 @@ module.exports = function() {
 		}
 	};
 	
-	function messagePopup(title, subTitle, popupContent, width) {
+	function messagePopup(title, subTitle, popupContent, width, userClass) {
 		if (width == undefined) width = 540;
 		if (String(width).substr(-1) != '%') width += "px";
 		
-		var inline = '<h4 class="popTit">'+title+'</h4><p class="subTit">'+subTitle+'</p><div class="popScroll">'+popupContent+'</div>';
-		openPopup(inline, width, '');
+		var inline = '<div class="popTop"><h4 class="popTit">'+title+'</h4></div><div class="popCon"><p class="subTit">'+subTitle+'</p><div class="popScroll">'+popupContent+'</div></div>';
+		openPopup(inline, width, userClass);
 	};
 	
 	function htmlPopup(src, width, userClass) {
@@ -172,7 +172,7 @@ module.exports = function() {
 			className: "lyPop "+userClass,
 			transition: "none",
 			speed: 0,
-			opacity: 0.2,
+			opacity: 0.5,
 			initialWidth: "0",
 			initialHeight: "0",
 			onComplete: function() {
