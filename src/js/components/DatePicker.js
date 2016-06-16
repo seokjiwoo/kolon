@@ -5,8 +5,8 @@ module.exports = function() {
 
 	var win = window,
 	$ = win.jQuery,
-	DEBUG = require('../utils/Console.js'),
-	FILE_NAME = 'DatePicker.js';
+	debug = require('../utils/Console.js'),
+	fileName = 'DatePicker.js';
 
 	// 기본 옵션 선언
 	var defParams = {
@@ -53,7 +53,7 @@ module.exports = function() {
 	DefaultPicker = function() {
 		return {
 			init : function() {
-				DEBUG.log(FILE_NAME, 'DefaultPicker init');
+				debug.log(fileName, 'DefaultPicker init');
 
 				this.setElements();
 				this.setDatePicker();
@@ -67,13 +67,13 @@ module.exports = function() {
 				this.picker = getJqueryElement(this.wrap, this.defOpts.picker);
 			},
 			setBindEvents : function() {
-				DEBUG.log(FILE_NAME, 'DefaultPicker setBindEvents');
+				debug.log(fileName, 'DefaultPicker setBindEvents');
 
 				this.altField.on('click', $.proxy(this.onPickerToggler, this));
 				this.button.on('click', $.proxy(this.onPickerToggler, this));
 			},
 			onPickerToggler : function(e) {
-				DEBUG.log(FILE_NAME, 'DefaultPicker onPickerToggler', e);
+				debug.log(fileName, 'DefaultPicker onPickerToggler', e);
 
 				e.preventDefault();
 				this.picker.toggleClass(opts.cssClass.SHOW_HIDE);
@@ -84,7 +84,7 @@ module.exports = function() {
 				}
 			},
 			onPickerHide : function(e) {
-				DEBUG.log(FILE_NAME, 'DefaultPicker onPickerHide', e);
+				debug.log(fileName, 'DefaultPicker onPickerHide', e);
 
 				if (e && e.target) {
 					var target = $(e.target);
@@ -98,7 +98,7 @@ module.exports = function() {
 			},
 			// datepicker 설정
 			setDatePicker : function() {
-				DEBUG.log(FILE_NAME, 'DefaultPicker setDatePicker', opts.type);
+				debug.log(fileName, 'DefaultPicker setDatePicker', opts.type);
 
 				if (this.defOpts.onSelect === $.noop) {
 					this.defOpts.onSelect = $.proxy(this.onPickerSelect, this);
@@ -108,7 +108,7 @@ module.exports = function() {
 			},
 			// 일자 선택 callback
 			onPickerSelect : function(selectedDate, inst) {
-				DEBUG.log(FILE_NAME, 'DefaultPicker onPickerSelect', selectedDate, inst);
+				debug.log(fileName, 'DefaultPicker onPickerSelect', selectedDate, inst);
 				this.onPickerHide();
 			}
 		};
@@ -119,7 +119,7 @@ module.exports = function() {
 	RangePicker = function() {
 		return {
 			init : function() {
-				DEBUG.log(FILE_NAME, 'RangePicker init');
+				debug.log(fileName, 'RangePicker init');
 
 				this.setElements();
 				this.setDatePicker();
@@ -145,7 +145,7 @@ module.exports = function() {
 				}
 			},
 			setBindEvents : function() {
-				DEBUG.log(FILE_NAME, 'RangePicker setBindEvents');
+				debug.log(fileName, 'RangePicker setBindEvents');
 
 				this.fromAltField.on('click', $.proxy(this.onPickerToggler, this)).data(opts.dataAttr.IS_FROM, true);
 				this.fromButton.on('click', $.proxy(this.onPickerToggler, this)).data(opts.dataAttr.IS_FROM, true);
@@ -154,7 +154,7 @@ module.exports = function() {
 				this.toButton.on('click', $.proxy(this.onPickerToggler, this)).data(opts.dataAttr.IS_FROM, false);
 			},
 			onPickerToggler : function(e) {
-				DEBUG.log(FILE_NAME, 'RangePicker onPickerToggler', e);
+				debug.log(fileName, 'RangePicker onPickerToggler', e);
 
 				e.preventDefault();
 
@@ -179,7 +179,7 @@ module.exports = function() {
 				}
 			},
 			onPickerHide : function(e) {
-				DEBUG.log(FILE_NAME, 'RangePicker onPickerHide', e);
+				debug.log(fileName, 'RangePicker onPickerHide', e);
 
 				var wrap = (this.fromPicker.is(':visible')) ? this.fromWrap : this.toWrap,
 				picker = (this.fromPicker.is(':visible')) ? this.fromPicker : this.toPicker;
@@ -196,7 +196,7 @@ module.exports = function() {
 			},
 			// datepicker 설정
 			setDatePicker : function() {
-				DEBUG.log(FILE_NAME, 'RangePicker setDatePicker', opts.type);
+				debug.log(fileName, 'RangePicker setDatePicker', opts.type);
 
 				this.fromPicker.datepicker(this.fromOpts).data(opts.dataAttr.IS_FROM, true);
 				this.toPicker.datepicker(this.toOpts).data(opts.dataAttr.IS_FROM, false);
@@ -207,7 +207,7 @@ module.exports = function() {
 			},
 			// 일자 선택 callback
 			onPickerSelect : function(selectedDate, inst) {
-				DEBUG.log(FILE_NAME, 'RangePicker onPickerSelect', selectedDate, inst);
+				debug.log(fileName, 'RangePicker onPickerSelect', selectedDate, inst);
 
 				var picker = $(inst.dpDiv).closest('.hasDatepicker'),
 				isFrom = picker.data(opts.dataAttr.IS_FROM);
@@ -239,7 +239,7 @@ module.exports = function() {
 	function init(options) {
 		opts = $.extend(true, defParams, options);
 
-		DEBUG.log(FILE_NAME, 'init', opts, opts.type);
+		debug.log(fileName, 'init', opts, opts.type);
 
 		switch(opts.type) {
 			case 'range':

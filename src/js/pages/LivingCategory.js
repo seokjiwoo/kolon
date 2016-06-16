@@ -6,9 +6,9 @@ module.exports = function() {
 	var win = window,
 	$ = win.jQuery,
 	doc = document,
-	DEBUG = require('../utils/Console.js'),
+	debug = require('../utils/Console.js'),
 	util = require('../utils/Util.js'),
-	FILE_NAME = 'LivingCategory.js';
+	fileName = 'LivingCategory.js';
 
 	var opts = {
 		wrap : '.js-slider-wrap',
@@ -60,7 +60,7 @@ module.exports = function() {
 	function init() {
 		Super.init();
 
-		DEBUG.log(FILE_NAME, 'init');
+		debug.log(fileName, 'init');
 		
 		self = callerObj;
 
@@ -69,13 +69,13 @@ module.exports = function() {
 	}
 
 	function setElements() {
-		DEBUG.log(FILE_NAME, 'setElements');
+		debug.log(fileName, 'setElements');
 
 		self.colorbox = $(opts.colorbox.target);
 	}
 
 	function setBindEvents() {
-		DEBUG.log(FILE_NAME, 'setBindEvents');
+		debug.log(fileName, 'setBindEvents');
 
 		var CB_EVENTS = opts.colorbox.event;
 
@@ -85,7 +85,7 @@ module.exports = function() {
 	}
 
 	function onCboxEventListener(e) {
-		DEBUG.log(FILE_NAME, 'onCboxEventListener', e.type);
+		debug.log(fileName, 'onCboxEventListener', e.type);
 
 		var CB_EVENTS = opts.colorbox.event;
 
@@ -106,7 +106,7 @@ module.exports = function() {
 	}
 
 	function setRangeSlider() {
-		DEBUG.log(FILE_NAME, 'setRangeSlider');
+		debug.log(fileName, 'setRangeSlider');
 		
 		self.wrap = self.colorbox.find(opts.wrap);
 		self.slider = self.wrap.find(opts.rangeSlider.target);
@@ -139,12 +139,12 @@ module.exports = function() {
 
 		self.currency = sliderOpts.currency;
 
-		DEBUG.log(FILE_NAME, 'setRangeSlider data-slide-opt : ', self.slider, self.slider.data('slider-opt'), sliderOpts);
+		debug.log(fileName, 'setRangeSlider data-slide-opt : ', self.slider, self.slider.data('slider-opt'), sliderOpts);
 		self.slider.slider(sliderOpts);
 	}
 
 	function onSliderCreate(e, ui) {
-		DEBUG.log(FILE_NAME, 'onSliderCreate', e, ui);
+		debug.log(fileName, 'onSliderCreate', e, ui);
 
 		var inst = self.slider.slider('instance'),
 		handles = inst.handles;
@@ -160,7 +160,7 @@ module.exports = function() {
 	}
 
 	function onSliderChange(e, ui) {
-		DEBUG.log(FILE_NAME, 'onSliderChange', ui, ui.values[0] + ' ~ ' + ui.values[1]);
+		debug.log(fileName, 'onSliderChange', ui, ui.values[0] + ' ~ ' + ui.values[1]);
 		var leftValue = util.currencyFormat(ui.values[0]),
 		rightValue = util.currencyFormat(ui.values[1]);
 
@@ -172,7 +172,7 @@ module.exports = function() {
 	}
 
 	function destoryRangeSlider() {
-		DEBUG.log(FILE_NAME, 'destoryRangeSlider');
+		debug.log(fileName, 'destoryRangeSlider');
 		self.slider = self.colorbox.find(opts.rangeSlider.target);
 
 		if (self.slider.slider('instance')) {
