@@ -1,3 +1,4 @@
+.members{background-image: url('../images/bg_member.png');}
 .members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #f1645c}
 .members .pageTit:before, .members .pageTit:after{background: #fff;}
 .members .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 30px;}
@@ -6,7 +7,6 @@
 .members .container .subTxt{font-size: 16px;color: #000;}
 .members .container .subTxt02{margin-top:25px;font-size: 16px;color: #000;font-family:'RobotoR','NotoSansR', sans-serif;}
 
-.members .btnPop{display: inline-block;margin:0 10px;padding: 5px 20px;border-radius: 12px;background: #999;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 13px;color: #fff;}
 .members .btnSizeL{display: block;width: 290px;margin:40px auto 0;}
 .members .btnSelect{margin:40px 3px 0;}
 .members .btnDefault{margin:40px 3px 0;padding: 0 25px;}
@@ -30,22 +30,25 @@
 #findPW .inputWrap03 .btnPhone{background: #a9c700;}
 
 .members .doubleCard.login{width:590px;padding: 0;background: none;}
-.members .doubleCard.login #addMV{border:10px solid #000;border-radius: 10px;box-shadow: 0px 2px rgba(0,0,0,0.1);}
-.members .doubleCard.login .subTit{display: inline-block;width:auto;margin-top:20px;padding:7px 5px;background: rgba(255,255,255,0.6);}
-.members .doubleCard.login .inform{margin-top: 20px;color: #666;}
+.members .doubleCard.login .subTit{display: inline-block;width:auto;margin:20px 0 10px;padding:7px 30px 10px 12px;background: #000;color: #fff;}
+.members .doubleCard.login p{margin-left:10px;}
+.members .doubleCard.login .inform{margin-top: 20px;}
+.members .doubleCard.login .inform strong{font-family:'RobotoB','NotoSansB', sans-serif;}
 
 .members .formWrap02{width: 510px;margin-top: 0;text-align: left;}
-.members .doubleCard .subTit{font-size: 20px;}
+.members .doubleCard .subTit{font-size: 20px;font-family:'RobotoM','NotoSansM', sans-serif;}
 .members .doubleCard:first-child .subTit{font-size: 34px;}
 .members .doubleCard > .subTit{margin-top:50px;}
 .members .container .formWrap02 input[type="text"], .members .container .formWrap02 input[type="password"], .members .container .formWrap02 input[type="email"]
 {width: 470px;margin:15px 0 0 0;padding: 18px 20px;font-size: 16px;}
 .members .doubleCard .btn{width: 510px;margin-top:30px;}
-.members .doubleCard .loginSns{display: block;width:auto;margin-top:15px;padding:0 25px;}
+.members .doubleCard .loginSns{width:auto;margin-top:15px;padding:0 25px;}
+.members .doubleCard .note{margin: 20px 0 40px;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;}
+.members .doubleCard .note a{color: #f1645c;}
 
 .members .saveInfo{margin-top:10px;font-family:'RobotoR','NotoSansR', sans-serif;color: #666;}
-.members .saveInfo label:before{content: '';display: inline-block;width: 26px;height: 26px;margin-right: 10px;border:1px solid #c8ccd6;border-radius: 6px;vertical-align: middle;}
-.members .saveInfo label.on:before{background: url('../images/ico_checkG.png') no-repeat center;}
+.members .saveInfo label:before{content: '';display: inline-block;width: 26px;height: 26px;margin-right: 10px;border:1px solid #c8ccd6;border-radius: 50%;vertical-align: middle;}
+.members .saveInfo label.on:before{background-color: #00aeb9;}
 .members .saveInfo a{float: right;margin-top: 5px;color: #666}
 
 .members .methodWrap{border:0;}

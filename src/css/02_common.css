@@ -76,14 +76,6 @@
 .record.record03 td.recordInfo {padding:20px 0 20px 10px;}
 .record.record03 .recordThumb {float:right;}
 .record.record03 .orderState {padding:20px}
-
-.my .tableStyle02{text-align: left;font-family:'RobotoR','NotoSansR', sans-serif;border-top: 1px solid #e8e8e8}
-.my .tableStyle02 th{width:90px;padding:15px 35px;background: #f7f7f7;border-bottom: 1px solid #e8e8e8;color: #000;}
-.my .tableStyle02 td{padding:15px 20px;border-bottom: 1px solid #e8e8e8}
-.my .tableStyle02 .wrapScroll{display: block;width: 690px;padding:30px 20px;}
-.my .tableStyle02 .popScroll{max-height: 440px;margin-top:0;}
-.my .tableStyle02 .popScroll img{display: block;max-width: 100%;}
-.my .tableStyle02 .bar:before{content: '';display: inline-block;width: 1px;height: 10px;margin: 0 7px;background: #999;vertical-align: middle;}
 .tag{height: 36px;overflow: hidden;}
 .tag li{display: inline-block;margin-left: 5px;}
 .tag li:first-child{margin:0;}
@@ -95,10 +87,7 @@
 .reviewObj .objBox img {width:100%;}
 .reviewObj .objTxt {float:left;margin:20px 0 0 65px;font-size:20px;color:#000;font-family:'RobotoR','NotoSansR', sans-serif;line-height:1.4}
 .pointColor01 {display:block;font-size:14px;color:#999;}
-.my .tableStyle03 {border-top:1px solid #e8e8e8;text-indent:-0.5px}
-.my .tableStyle03 th {text-align:left;padding-left:40px;background:#f7f7f7;border-bottom:1px solid #e8e8e8;}
-.my .tableStyle03 td {padding:14px 20px;border-bottom:1px solid #e8e8e8}
-.my .tableStyle03 td.tagBox {padding:14px 20px 9px;}
+
 textarea.pullSize {border:1px solid #d6d6d6;height:144px;padding:10px 20px;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 ul.tbList3 {margin-bottom:50px}
 ul.tbList3 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-0.5px; line-height:21px; margin-top:5px;}

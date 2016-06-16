@@ -22,19 +22,19 @@
 */
 #cboxOverlay {background:#000; opacity:0.2; filter:alpha(opacity = 20);}
 #colorbox {outline:0;}
-    #cboxContent {overflow:visible; background:#fff; padding:30px; border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000; -moz-animation-play-state: }
-        #cboxError { padding:50px; border:1px solid #ccc; }
-        #cboxLoadedContent { padding:10px 0 0px;color:#666;line-height:1.4em;font-size:14px; }
-        #cboxLoadedContent .popTit { top:0; padding-bottom:20px; border-bottom:1px solid #666; font-size:30px; }
-        #cboxLoadedContent .popTit span.count{color:#f1645c;}
-        #cboxLoadedContent .subTit { font-size:20px;color:#000; }
-        #cboxLoadedContent .popScroll { overflow:auto;margin-top:30px; }
-        #cboxLoadedContent p { margin-top:20px; }
-        #cboxLoadedContent p:first-child { margin-top:0; }
+#cboxContent {overflow:visible;border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000; -moz-animation-play-state: }
+#cboxError { padding:50px; border:1px solid #ccc; }
+#cboxLoadedContent { padding:10px 0 0px;color:#666;line-height:1.4em;font-size:14px; }
+#cboxLoadedContent .popTit { top:0; padding-bottom:20px; border-bottom:1px solid #666; font-size:30px; }
+#cboxLoadedContent .popTit span.count{color:#f1645c;}
+#cboxLoadedContent .subTit { font-size:20px;color:#000; }
+#cboxLoadedContent .popScroll { overflow:auto;margin-top:30px; }
+#cboxLoadedContent p { margin-top:20px; }
+#cboxLoadedContent p:first-child { margin-top:0; }
 
-        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
-        #cboxClose { display:block;position:absolute;top:30px;right:30px;width:40px;height:40px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center;  }
-        #cboxClose:active {outline:0;}
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#cboxClose { display:block;position:absolute;top:30px;right:30px;width:40px;height:40px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center;  }
+#cboxClose:active {outline:0;}
 
 #colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
