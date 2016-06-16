@@ -20,8 +20,8 @@
     Change the following styles to modify the appearance of Colorbox.  They are
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
-#cboxOverlay {background:#000;filter:alpha(opacity = 50);}
-#colorbox {outline:0;}
+#cboxOverlay {background:#000;filter:alpha(opacity = 50);z-index: 4}
+#colorbox {outline:0;z-index: 5}
 #cboxContent {overflow:visible;border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
 #cboxError {padding:50px; border:1px solid #ccc; }
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; }
