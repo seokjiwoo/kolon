@@ -48,7 +48,7 @@ $(document).ready(function() {
 
 		// [S] order 			14-주문서 작성
 		case 'order-orderService':
-			PageModuleClass = require('./pages/order/OdOrderService.js');
+			PageModuleClass = require('./pages/order/OrderService.js');
 			break;
 		// [E] order 			14-주문서 작성
 
