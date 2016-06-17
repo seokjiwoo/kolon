@@ -16,6 +16,8 @@
 .fl_left {float:left;}
 .fl_right {float:right;}
 
+.italicNum{font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900;}
+
 .checkAgree label{display:inline-block;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
 .checkAgree input[type="checkbox"] {position: absolute;opacity: 0;width:24px;height:24px;margin:0;padding:0;z-index:-1}
 .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
@@ -39,7 +41,7 @@
 .lyPop .reasonCancel {padding:25px 22px 33px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
 .lyPop .reasonCancel h5 {margin-bottom:18px;font-size:15px;color:#333;}
 .lyPop .reasonCancel select {width:310px;margin-right:8px;padding:9px 10px;border:1px solid #d6d6d6;border-radius:7px;color:#999;}
-.lyPop .reasonCancel input[type="text"] {width:426px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .reasonCancel input[type="text"] {width:425px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 .lyPop .table03Wrap {overflow:hidden;margin-bottom:30px;}
 .lyPop .table03Wrap .record {position:relative;float:left;width:32.66%;height:210px;margin-left:1%;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;border-bottom:none;}
 .lyPop .table03Wrap .record:first-child {margin-left:0;}
@@ -160,7 +162,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
-{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #999;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
 
 .container input[type="text"].pullSize,

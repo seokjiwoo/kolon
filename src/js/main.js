@@ -26,6 +26,9 @@ $(document).ready(function() {
 		case 'member-findLoginPwReset':
 			PageModuleClass = require('./pages/ResetPassword.js');
 			break;
+		case 'magazine-list':
+			PageModuleClass = require('./pages/MagazineList.js');
+			break;
 		case 'order-orderService':
 			PageModuleClass = require('./pages/OdOrderService.js');
 			break;
@@ -35,6 +38,7 @@ $(document).ready(function() {
 		case 'myServiceDetail':
 			PageModuleClass = require('./pages/MpMyServiceDetail.js');
 			break;
+			
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
