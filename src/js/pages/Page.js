@@ -144,6 +144,9 @@ module.exports = function() {
 			}else{
 				$('.topMenu').css('background','none');
 			}
+			if ($(document).scrollLeft() > 0){
+				$('.topMenu').css('margin-left','-' + $(document).scrollLeft() + 'px')
+			}
 		});
 	};
 	
