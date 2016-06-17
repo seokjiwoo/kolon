@@ -120,16 +120,16 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .lnb .out{display: none;}
 
 .floating{position: fixed;bottom: 70px;right: 40px;z-index:2;}
-.floating a{display: block;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);border-radius: 50%;}
+.floating a{display: block;border-radius: 50%;}
 
 #floatingMenu{position: relative;}
-#floatingMenu li{position: absolute;top:0;left: 5px;}
-#floatingMenu li a{position: relative;width: 50px;height: 50px;margin:0 auto;background: #fff url('../images/ico_cs.png') no-repeat;}
-#floatingMenu li.floating01 a{background-position: 0 0;}
-#floatingMenu li.floating02 a{background-position: -50px 0;}
-#floatingMenu li.floating03 a{background-position: -100px 0;}
-#floatingMenu li.floating04 a{background-position: -150px 0;}
-#floatingMenu li .menuTit{position: absolute;top:18px;right: 3px;width: 50px; color: #404040;font-size: 13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: right;z-index: -1;}
+#floatingMenu li{overflow: hidden;position: absolute;top:1px;right: 5px;width: 50px;height: 50px;border-radius: 25px;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);background:  #fff ;font-size: 0}
+#floatingMenu li a{position: relative;display: block;height: 50px;padding:0 20px;margin:0 auto;background:url('../images/ico_cs.png') no-repeat;}
+#floatingMenu li.floating01 a{background-position: right 0;}
+#floatingMenu li.floating02 a{background-position: right -50px;}
+#floatingMenu li.floating03 a{background-position: right -100px;}
+#floatingMenu li.floating04 a{background-position: right -150px;}
+#floatingMenu li .menuTit{display: block;width: 70px;height: 50px;border-radius: 25px;color: #404040;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;z-index: -1;line-height: 50px;}
 #floatingMenu li .pointer{display: none;position: absolute;top:10px;right: 84px;width: 17px;height: 30px;background: url('../images/pop_pointer.png') no-repeat; z-index: -1;}
 #floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;
 -webkit-transition: all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-o-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-in-out;}
