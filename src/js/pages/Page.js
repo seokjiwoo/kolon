@@ -326,7 +326,8 @@ module.exports = function() {
 	function bannerClose(){ // main banner 닫기
 		$('.bannerClose').click(function(){
 			$(this).parent().parent().addClass('bannerHide');
-			$('.main .container').css('padding-top','0')
+			$('.main .container').css('padding-top','0');
+			$('.lnbWrapper').css('top', '0');
 		});
 	}
 }
