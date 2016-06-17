@@ -2,14 +2,24 @@
 .cardWrap > li{overflow: hidden;float: left;width:285px;margin-bottom: 10px;background-color:#fff;text-align: center;color:#fefefe;background-size: 100%;background-position: center;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
 .main .cardWrap > li{box-shadow: none;}
 
-.cardWrap .cardCon{position: relative;display: block;width:265px;padding:80px 10px;color:#fefefe;}
-.cardWrap .cardTop{position: absolute;top:0;left:0;z-index: 1}
-.cardWrap .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
-.cardWrap .cardCon .hoverCon{display: none;}
-.cardWrap .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2}
-.cardWrap .cardEnter img{display: block;}
-.cardWrap .cardRemove{position: absolute;top:20px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
-.cardWrap .cardTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 34px;line-height: 1.2em;}
+/* hexagon css */
+.hexagon{position: relative;width: 285px;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
+.hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
+.hexTop{top: -101.76px}
+.hexBottom{bottom: -101.76px;}
+.hexTop span,.hexBottom span {position: absolute;left: 0;width: 285px;height: 164.545px;transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-webkit-transform-origin: 0 0;-ms-transform-origin: 0 0;transform-origin: 0 0;background: inherit; }
+.hexTop span {background-position: center top;}
+.hexBottom span {background-position: center bottom;}
+.hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
+
+.cardCon{position: relative;display: block;width:265px;padding:80px 10px;color:#fefefe;}
+.cardTop{position: absolute;top:0;left:0;z-index: 1}
+.cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
+.cardCon .hoverCon{display: none;}
+.cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2}
+.cardEnter img{display: block;}
+.cardRemove{position: absolute;top:20px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
+.cardTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 34px;line-height: 1.2em;}
 .cardWrap .cardSub{font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;line-height: 1.2em;}
 .cardWrap .cardIntro{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;}
 .cardWrap .cardInfo{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 20px;line-height: 1.2em;}
@@ -60,13 +70,13 @@
 .cardWrap .tag{margin-top:15px;}
 .cardWrap .tag li{display: inline-block;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #c3d656}
 
-.cardWrap .cardSize01 .cardCon{height:160px;}
-.cardWrap .cardSize02 .cardCon{height:330px;}
-.cardWrap .cardSize03 .cardCon{height:500px;}
-.cardWrap .cardSize04{width:590px;}
-.cardWrap .cardSize04 .cardCon{width:570px;height:585px;}
-.cardWrap .cardSize04.cardType06 {background-color: #fff;}
-.cardWrap .cardSize04.cardType06 .cardCon, .cardWrap .cardType11 .cardCon {color:#000;}
+.cardSize01 .cardCon{height:160px;}
+.cardSize02 .cardCon{height:330px;}
+.cardSize03 .cardCon{height:500px;}
+.cardSize04{width:590px;}
+.cardSize04 .cardCon{width:570px;height:585px;}
+.cardSize04.cardType06 {background-color: #fff;}
+.cardSize04.cardType06 .cardCon, .cardType11 .cardCon {color:#000;}
 
 .cardWrap .cardType04 .cardTit{font-size: 20px;}
 .cardWrap .cardType04 .cardSub{margin-top:10px;font-family:'RobotoL','NotoSansL', sans-serif; }
