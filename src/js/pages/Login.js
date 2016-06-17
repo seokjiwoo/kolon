@@ -7,6 +7,9 @@ module.exports = function() {
 	var controller = require('../controller/LoginController');
 	$(controller).on('loginResult', loginCompleteHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
+	var memberInfoController = require('../controller/MemberInfoController');
+	$(memberInfoController).on('termsListResult', termsListHandler);
+	$(memberInfoController).on('termsResult', termsContentHandler);
 	var util = require('../utils/Util.js');
 	
 	var callerObj = {
@@ -22,6 +25,10 @@ module.exports = function() {
 		Super.init();
 		
 		controller.getSocialLoginUrl();
+		memberInfoController.getMemberTermsList();
+		
+		$('#popAgree01').click(getTermsContent);
+		$('#popAgree02').click(getTermsContent);
 		
 		$('#loginForm').submit(function(e) {
 			e.preventDefault();
@@ -35,6 +42,37 @@ module.exports = function() {
 		});
 	};
 	
+	
+	/**
+	 * 회원 이용약관 목록 핸들링
+	 */
+	function termsListHandler(e, termsList) {
+		for (var key in termsList) {
+			var eachTerms = termsList[key];
+			switch(eachTerms.termsName) {
+				case '플랫폼이용약관':
+					$('#popAgree01').data('termsNumber', eachTerms.termsNumber);
+					break;
+				case '개인정보 취급방침':
+					$('#popAgree02').data('termsNumber', eachTerms.termsNumber);
+					break;
+			}
+		}
+	};
+
+	/**
+	 * 회원 이용약관 본문 요청
+	 */
+	function getTermsContent(e) {
+		memberInfoController.getMemberTermsContent($(this).data('termsNumber'));
+	};
+	
+	/**
+	 * 회원 이용약관 본문 핸들링
+	 */
+	function termsContentHandler(e, term) {
+		Super.Super.messagePopup(term.termsName, term.termsName, term.termsContents, 590, 'popEdge');
+	};
 	
 	/**
 	 * 소셜 로그인 URL 목록처리

@@ -1,6 +1,6 @@
 <h4 class="popTit">상세조건</h4>
 <div class="popCon">
-	<div class="catSorting">
+	<div class="catSorting catSortH02">
 		<div class="wrap">
 			<div class="catSort" id="catSort01">
 				<h3 class="sortTit"><span>모든</span> 공간</h3>
@@ -72,19 +72,25 @@
 						<li><a href="">40평</a></li>
 						<li><a href="">50평 이상</a></li>
 					</ul>
+					<!-- [D] 가격 범위 입력 필요 -->
 					<h3 class="sortTit"><span>300~2500</span>가격</h3>
 					<!-- 가격설정 그래프  -->
-					<div class="sortGraph">
-						<div style="padding-left:40px; padding-right:70px;"><!-- padding 값으로 가격 조절 -->
-							<p class="graphBar">
-								<a href="#" class="graphBtn leftBtn">가격설정 시작 지점</a><!-- 가격설정 시작 버튼 -->
-								<a href="#" class="graphBtn rightBtn">가격설정 끝 지점</a><!-- 가격설정 끝 버튼 -->
-								<span class="graphData">300 ~ 2500</span><!-- 설정된 가격 범위 값 -->
-							</p>
+					<div class="sortGraph slider-wrap js-slider-wrap">
+						<div class="slider-container js-slider-container">
+							<span class="graphData js-slider-values">300 ~ 2500</span>
+							<!-- [D] data-slider-opt 범위 옵션 설정 -->
+							<div class="js-slider"
+								data-slider-opt='{
+									"min" : 300,
+									"max" : 2500,
+									"values" : [ 750, 1500 ],
+									"currency" : "만원"
+								}'>
+							</div>
 						</div>
 						<div class="won">
-							<span class="wonL">100만원</span>
-							<span class="wonR">5000만원</span>
+							<span class="wonL js-slider-lv">100만원</span>
+							<span class="wonR js-slider-rv">5000만원</span>
 						</div>
 					</div>
 					<!--// 가격조절 그래프  -->

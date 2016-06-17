@@ -1,9 +1,12 @@
 /* global $ */
+/* jshint node: true, strict: true */
 
 var pageId;
 var pageModule;
 
 $(document).ready(function() {
+	'use strict';
+
 	var PageModuleClass;
 	pageId = $('body').data('pageId');
 	
@@ -23,9 +26,17 @@ $(document).ready(function() {
 		case 'member-findLoginPwReset':
 			PageModuleClass = require('./pages/ResetPassword.js');
 			break;
-
 		case 'magazine-list':
 			PageModuleClass = require('./pages/MagazineList.js');
+			break;
+		case 'order-orderService':
+			PageModuleClass = require('./pages/OdOrderService.js');
+			break;
+		case 'living-category':
+			PageModuleClass = require('./pages/LivingCategory.js');
+			break;
+		case 'myServiceDetail':
+			PageModuleClass = require('./pages/MpMyServiceDetail.js');
 			break;
 			
 		default:

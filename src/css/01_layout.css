@@ -12,7 +12,7 @@ textarea{resize: none;}
 caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
-.wrapper{min-width:1240px;background:#e0e0e0 url('../images/bg.jpg') center repeat-y;letter-spacing:-0.5px;}
+.wrapper{min-width:1240px;background:#fff center top no-repeat;letter-spacing:-0.5px;}
 .wrap{max-width:1180px;margin:0 auto;padding: 0 10px}
 
 .topBanner{display: none;}
@@ -109,7 +109,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .login .lnb .in{display: inline-block;} 
 .lnb .out{display: none;}
 
-.floating{position: fixed;bottom: 70px;right: 40px;z-index: 4;}
+.floating{position: fixed;bottom: 70px;right: 40px;z-index:2;}
 .floating a{display: block;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);border-radius: 50%;}
 
 #floatingMenu{position: relative;}
@@ -128,13 +128,14 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #goTop{width:60px;height: 34px;margin-top:10px;padding:13px 0;background: #fff;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;font-size: 14px;text-align: center;}
 #goTop:before{content: '';display: block;width: 25px;height:15px;margin:0 auto 2px;background:url('../images/ico_top.png') no-repeat;}
 
-.flPop{position: fixed;bottom:140px;right: 128px; width: 285px;background: #fff;border-radius: 10px;}
-#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 3;background: rgba(0,0,0,0.2);}
+.flPop{position: fixed;bottom:140px;right: 128px; width: 285px;}
+
+#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 1;background: rgba(0,0,0,0.2);}
 
 .floating .flPop{overflow: hidden;bottom:-100%;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
 .floating .flPop a{box-shadow: none;}
 .floating .flPop .popIco{color: #a9c700;}
-.floating .flPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin: 25px auto 0;background: url('../images/ico_cs.png') no-repeat;}
+.floating .flPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin:0 auto;background: url('../images/ico_cs.png') no-repeat;}
 .floating .flPop .popTit{color: #000;font-size: 34px;line-height: 1.1em}
 .floating .flPop .popTit:before{content: '';display: block;width: 25px;height: 1px;background: #000;margin:15px auto 10px;}
 .floating .flPop .popSub{margin-top:10px;color: #000;line-height: 1.3em}
@@ -172,14 +173,12 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #flShare li.sns01 a{background-position: 0 0}
 #flShare li.sns02 a{background-position: -64px 0}
 #flShare li.sns03 a{background-position: -128px 0}
-#flShare .shareLink{padding-bottom: 55px;}
 #flShare .shareLink p{border:1px solid #000;padding:5px;display: inline-block;border-radius: 5px;}
-#flShare .shareLink input{background: none;border:0;width:140px;height: 25px;padding:0 5px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
-#flShare .shareLink button{background: none;border:0;font-family:'RobotoM','NotoSansM', sans-serif;color:#f1645c;}
+#flShare .shareLink input{margin:0;background: none;border:0;width:140px;height: 25px;padding:0 5px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
+#flShare .shareLink button{margin:0;padding: 0;background: none;border:0;font-family:'RobotoM','NotoSansM', sans-serif;color:#f1645c;}
 
-#flQna{padding:0 30px 30px;}
 #flQna .searchQna{margin:20px 0 30px;padding:5px;border-radius: 5px;border:1px solid #a9c700;font-size: 14px;}
-#flQna .searchQna input{width: 210px;height: 20px;padding: 0 10px;vertical-align: middle;border:0;font-family:'RobotoR','NotoSansR', sans-serif;}
+#flQna .searchQna input{width: 190px;height: 20px;padding: 0 10px;vertical-align: middle;border:0;font-family:'RobotoR','NotoSansR', sans-serif;}
 #flQna .searchQna label{display: inline-block;font-size: 0;width:1px;height: 15px;background: #d5d5d5;vertical-align: middle;}
 #flQna .searchQna button{width: 35px;height: 25px;font-size: 0;background:url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;border-radius: 0;vertical-align: middle;}
 #flQna .resultQna {overflow-y: auto;max-height: 275px;text-align: left;}
@@ -190,7 +189,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #flQna .resultQna li:first-child{border:0;}
 
 .container {position: relative;padding:60px 0 200px;}
-.container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
+.container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:62px 10px 0;}
 .main .container .wrap{max-width: 1500px;padding:30px 20px 0;}
 .container .sWrap{max-width: 780px;margin: 0 auto;}
 

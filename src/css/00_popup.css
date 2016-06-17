@@ -2,11 +2,11 @@
     Colorbox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
-#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:6; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
 #cboxWrapper {max-width:none;}
-#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxOverlay{position:fixed; width:100%; height:100%;background:#000;filter:alpha(opacity = 50);}
 #cboxMiddleLeft, #cboxBottomLeft{clear:left;}
-#cboxContent{position:relative;}
+#cboxContent{position:relative;overflow:visible;font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
 #cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling:touch;}
 #cboxTitle{margin:0;}
 #cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
@@ -15,28 +15,44 @@
 .cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
 #colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
 
-/* 
-    User Style:
-    Change the following styles to modify the appearance of Colorbox.  They are
-    ordered & tabbed in a way that represents the nesting of the generated HTML.
-*/
-#cboxOverlay {background:#000; opacity:0.2; filter:alpha(opacity = 20);}
-#colorbox {outline:0;}
-    #cboxContent {overflow:visible; background:#fff; padding:30px; border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000; -moz-animation-play-state: }
-        #cboxError { padding:50px; border:1px solid #ccc; }
-        #cboxLoadedContent { padding:10px 0 0px;color:#666;line-height:1.4em;font-size:14px; }
-        #cboxLoadedContent .popTit { top:0; padding-bottom:20px; border-bottom:1px solid #666; font-size:30px; }
-        #cboxLoadedContent .popTit span.count{color:#f1645c;}
-        #cboxLoadedContent .subTit { font-size:20px;color:#000; }
-        #cboxLoadedContent .popScroll { overflow:auto;margin-top:30px; }
-        #cboxLoadedContent p { margin-top:20px; }
-        #cboxLoadedContent p:first-child { margin-top:0; }
+#colorbox {outline:0;z-index: 7}
+#cboxError {padding:50px; border:1px solid #ccc; }
+#cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; }
+#cboxLoadedContent .popTit {position: relative;top:0; font-size:30px; line-height: 80px;text-align: center;}
+#cboxLoadedContent .popTit:after{content: '';position: absolute;left: -30px;right: -30px;bottom: 0;height: 1px;background: #666;}
+#cboxLoadedContent .popTit span.count{color:#f1645c;}
+#cboxLoadedContent .subTit {font-size:20px;color:#000; }
+#cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
+#cboxLoadedContent p {margin-top:20px; }
+#cboxLoadedContent p:first-child {margin-top:0; }
 
-        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
-        #cboxClose { display:block;position:absolute;top:30px;right:30px;width:40px;height:40px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center;  }
-        #cboxClose:active {outline:0;}
+/* 모서리 형 팝업 */
+.popEdge #cboxLoadedContent:after, .popEdge #cboxLoadedContent:before{content: '';position: absolute;bottom: 0}
+.popEdge #cboxLoadedContent:before{left:0;right: 60px;height: 60px;background: #fff;}
+.popEdge #cboxLoadedContent:after{right: 0;width: 0;height: 0;border-top: 60px solid #fff;border-right: 60px solid transparent;}
+.popEdge #cboxClose {display:block;position:absolute;top:0;right:0;width:80px;height:80px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center; z-index: 1}
+.popEdge #cboxClose:active {outline:0;}
+.popEdge .popTop{position: relative;margin:0 60px;height: 80px;background: #fff;z-index: 1;}
+.popEdge .popTop:before{content: '';position: absolute;top:0;left: -60px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 60px solid transparent;}
+.popEdge .popTop:after{content: '';position: absolute;right: -60px;top: 0;width: 60px;height: 60px;background: #fff;}
+
+/* 육각형 팝업 */
+.popHex .hexagon{background: #fff;}
+.popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+.popHex .cardCon{display: inline-block;padding:0 30px;width: 225px;vertical-align: middle;}
+
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
 
 #colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+.wrapper .lyPop .subTit{font-size: 20px;color: #000;}
+.popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
+.popCon p{margin-top:20px;}
+.popCon p:first-child{margin-top:0;}
+.btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+#popAgree01 .popCon{text-align: left;}
 
 .popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
 .popCon select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
@@ -103,7 +119,7 @@
 .popCon .expertInfo .eCon .infoDetail .eTxt span {font-family:'NotoSansL','RobotoL', sans-serif; display:inline-block; position:relative;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span:before {content:''; display:inline-block; position:absolute;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress {padding-left:13px;}
-.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before { width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before {width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar {padding-left:15px;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 0 -10px no-repeat; top:2px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span + span {margin-left:13px;}
@@ -129,53 +145,7 @@ ul.popList + .btnWrap,
 .popCon .popFormLine + .btnWrap,
 .popCon .popDel + .btnWrap {margin-top:40px;}
 
-/* category */
-.category .subTop {}
-.catSorting{width:100%; text-align: center;}
-.catSorting .wrap{width:100%; overflow: hidden;padding:32px 0; max-width:1150px;}
-.catSorting .catSort {width:25%; float:left;}
-.catSorting .catSort .sortCont {height:377px; padding:0 15px; overflow:hidden; margin-top:20px;}
-.catSorting .catSort +.catSort .sortCont {border-left:1px solid #d9d9d9;}
-.catSorting .catSort h3.sortTit{color: #666;font-size: 16px;}
-.catSorting .catSort h3.sortTit span{color:#f1645c; }
-.catSorting .catSort .sortCont ul{width:100%; overflow: hidden; font-family:'RobotoR','NotoSansR', sans-serif;}
-.catSorting .catSort .sortCont ul li{float: left;width:50%;margin-bottom:10px;}
-.catSorting .catSort .sortCont ul li a{width:113px; display:inline-block; position: relative; margin: 0 5px;padding: 9px 0px;background:#f2f2f2; border-radius: 20px;color: #666;font-size: 14px; border:4px solid #f2f2f2; text-align:center;}
-.catSorting .catSort .sortCont ul li a.on{color: #f1645c;border:4px solid #f1645c; background:#fff; }
-.catSorting .catSort .sortCont ul li a:before{content: ''; width:15px; height:15px; position: absolute; left:10px; top:12px; border-radius: 50%;}
-.catSorting .catSort .sortCont ul li #colorAll:before{background:url(../images/all_color.png) 0 0 no-repeat;}
-.catSorting .catSort .sortCont ul li #color01:before{width:13px; height:13px; border:1px solid #999; background:#fff; overflow:hidden;}
-.catSorting .catSort .sortCont ul li #color02:before{background:#999;}
-.catSorting .catSort .sortCont ul li #color03:before{background:#4d4d4d;}
-.catSorting .catSort .sortCont ul li #color04:before{background:#825f52;}
-.catSorting .catSort .sortCont ul li #color05:before{background:#eac294;}
-.catSorting .catSort .sortCont ul li #color06:before{background:#92278f;}
-.catSorting .catSort .sortCont ul li #color07:before{background:#ff80ab;}
-.catSorting .catSort .sortCont ul li #color08:before{background:#e1594b;}
-.catSorting .catSort .sortCont ul li #color09:before{background:#f68c0b;}
-.catSorting .catSort .sortCont ul li #color10:before{background:#ffc814;}
-.catSorting .catSort .sortCont ul li #color11:before{background:#9ccc66;}
-.catSorting .catSort .sortCont ul li #color12:before{background:#48c7ff;}
-.catSorting .btnSort{width:100%; overflow:hidden; text-align:center;}
-.catSorting .btnSort a{display: inline-block;width: 140px;margin:30px 8px 0;padding:12px 0;color: #fff;font-family:'RobotoM','NotoSansM', sans-serif;border-radius: 20px;}
-.catSorting .btnSort #btnReset{background:#666; }
-.catSorting .btnSort #btnConfirm{background: #f1645c;}
-.catSorting .catSort .sortCont .sortGraph {width:100%; height:12px; margin:54px 0 59px; display:inline-block; border-radius:5px; background:#e1e1e1;}
-.catSorting .catSort .sortCont .sortGraph .graphBar {width:100%; height:12px; background:#f1645c; position:relative;}
-.catSorting .catSort .sortCont .sortGraph .graphBar a.graphBtn {width:0; height:0; padding:41px 41px 0 0; overflow:hidden; display:inline-block; position:absolute; top:-17px;}
-.catSorting .catSort .sortCont .sortGraph .graphBar a.graphBtn.leftBtn {background:url('../images/detail_arrow.png') 0 0 no-repeat; left:-20px;}
-.catSorting .catSort .sortCont .sortGraph .graphBar a.graphBtn.rightBtn {background:url('../images/detail_arrow.png') 0 -41px no-repeat; right:-20px;}
-.catSorting .catSort .sortCont .sortGraph .graphBar span.graphData {width:84px; height:12px; margin-left:-47px; padding:7px; background:#f1645c; color:#fff; border-radius:11px; position:absolute; top:-40px; left:50%; display:inline-block; line-height:100%; font-size:13px;}
-.catSorting .catSort .sortCont .sortGraph .graphBar span.graphData:after {content:''; width:11px; height:6px; margin-left:-5px; background:url('../images/detail_bg.png') 0 0 no-repeat; position:absolute; bottom:-6px; left:50%;}
-.catSorting .catSort .sortCont .sortGraph .won {width:100%; overflow:hidden; margin-top:15px;}
-.catSorting .catSort .sortCont .sortGraph .won span {width:50%; float:left; display:inline-block; letter-spacing:-1px;}
-.catSorting .catSort .sortCont .sortGraph .won span.wonL {text-align:left;}
-.catSorting .catSort .sortCont .sortGraph .won span.wonR {text-align:right;}
-.catSorting .catSort .sortCont ul + h3.sortTit {margin-top:20px;}
-
 a.btnDetail {padding:10px 0 0 50px; position:relative; color:#666; float:left;}
 a.btnDetail:before {content:''; width:40px; height:40px; border-radius:50%; overflow:hidden; background:url('../images/ico_DetailedMore.png') 50% 50% no-repeat #fff; position:absolute; top:0; left:0; box-shadow:0 3px rgba(0,0,0,.12);}
 
 
-.lyPop.orderPop .popCon {padding:20px 0;}
-.lyPop.categoryPop .popCon {padding:0;}

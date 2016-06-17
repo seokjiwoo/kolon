@@ -175,9 +175,9 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont ul.homeType li {width:64px; padding-top:78px; float:left; background:url('../images/ico_home_type.png') 0 0 no-repeat; color:#666; font-family:'NotoSansR', 'RobotoR', sans-serif; font-size:14px;}
 .oder .oderCont ul.homeType li + li {margin-left:71px;}
 .oder .oderCont ul.homeType li.hType01 {background-position:0 0;}
-.oder .oderCont ul.homeType li.hType02 {background-position:0 0;}
-.oder .oderCont ul.homeType li.hType03 {background-position:0 0;}
-.oder .oderCont ul.homeType li.hType04 {background-position:0 0;}
+.oder .oderCont ul.homeType li.hType02 {background-position:-64px 0;}
+.oder .oderCont ul.homeType li.hType03 {background-position:-128px 0;}
+.oder .oderCont ul.homeType li.hType04 {background-position:-192px 0;}
 .oder .oderCont ul.homeSize {width:100%; overflow:hidden;}
 .oder .oderCont ul.homeSize li {width:124px; float:left; color:#666; font-family:'NotoSansR', 'RobotoR', sans-serif; font-size:14px;}
 .oder .oderCont ul.homeSize li + li {margin-left:10px;}
