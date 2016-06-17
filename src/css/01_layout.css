@@ -50,14 +50,14 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 
 #top {width:100%;}
-#top .searchWrap{position: absolute;top: -60px;left: 0;width: 100%;background: #fff;text-align: left;box-shadow:0px 2px #c9c9c9;z-index: -1}
+#top .searchWrap{position: absolute;top: -250px;left: 0;width: 100%;background: #fff;text-align: left;box-shadow:0px 2px #c9c9c9;z-index: -1}
 #top .searchWrap .keyWrap{overflow: hidden;padding:10px 30px;font-size:14px;}
 #top .searchWrap .wrap{max-width:1500px;}
 #top .searchWrap .keyTit{float: left;margin-top:14px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;}
 #top .searchWrap .keyword{overflow: hidden;margin-left: 90px;}
 #top .searchWrap .keyword li{display: inline-block;margin-left: 10px;}
 #top .searchWrap .keyword li:nth-child(2){margin:0;}
-#top .searchWrap .keyword li a{font-family:'RobotoM','NotoSansM', sans-serif;vertical-align: middle;}
+#top .searchWrap .keyword li a{font-family:'RobotoM','NotoSansM', sans-serif;vertical-align: top;}
 #top .searchWrap .keyword .del{display: inline-block;width: 30px;height: 30px;background: url('../images/btn_closeS.png') no-repeat center;vertical-align: middle;cursor: pointer;}
 #top .searchWrap .keyword .delAll{float: right;background: #999;border:0;}
 #top .searchWrap .keyword .delAll a{color: #fff;}
@@ -70,7 +70,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #top .searchWrap .recomand{background: #f1645c;}
 #top .searchWrap .recomand .keyTit {color: #fff;}
 #top .searchWrap .recomand a{color: #fff}
-#top .searchWrap .recomand .keyword{height: 15px;padding-top: 14px;line-height: 1.2em;}
+#top .searchWrap .recomand .keyword{height: 15px;padding-top: 14px;}
 #top .searchWrap .recently .keyword{height: 40px;}
 #top .searchWrap .recently .keyTit {color: #333;}
 #top .searchWrap .recently li{border-radius: 20px;border:1px solid #d9d9d9;}
@@ -198,9 +198,9 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #flQna .resultQna li a{display: block;padding: 15px 10px;color: #666;box-shadow:none;}
 #flQna .resultQna li:first-child{border:0;}
 
-.container {position: relative;padding:60px 0 200px;}
+.container {position: relative;padding:63px 0 200px;}
 .main .container {padding-top:113px;}
-.container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:62px 10px 0;}
+.container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
 .main .container .wrap{max-width: 1500px;padding:30px 20px 0;}
 .container .sWrap{max-width: 780px;margin: 0 auto;}
 

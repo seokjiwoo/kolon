@@ -30,6 +30,7 @@ module.exports = function() {
 		btnDel();
 		tableHeight()
 		conFirm();
+		bannerClose();
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -43,6 +44,11 @@ module.exports = function() {
 			pager:false,
 			slideWidth: 200,
 			slideMargin:20
+		});
+
+		$('#mainSlider').bxSlider({ //main slide
+			minSlides: 5,
+			maxSlides: 5
 		});
 			
 		// tab width depend on number of li
@@ -111,7 +117,7 @@ module.exports = function() {
 			e.preventDefault();
 			if($(this).hasClass('opened')){
 				$(this).removeClass('opened');
-				$('#searchWrap').animate({'top':'-60px'},250);
+				$('#searchWrap').animate({'top':'-250px'},250);
 			} else {
 				$(this).addClass('opened')
 				$('#searchWrap').animate({'top':'60px'},250);
@@ -287,6 +293,13 @@ module.exports = function() {
 			var tbHC = $(this).height() - 115;
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
+	}
+
+	function bannerClose(){ // main banner 닫기
+		$('.bannerClose').click(function(){
+			$(this).parent().hide();
+			$('.main .container').css('padding-top','0')
+		});
 	}
 
 }
