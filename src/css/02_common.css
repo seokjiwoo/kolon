@@ -151,7 +151,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .formList > li{overflow: hidden;border-bottom:1px solid #e8e8e8;}
 .formList .inputTit{display: inline-block;width: 100px;margin-right: 25px;padding: 25px 40px;vertical-align: middle;background: #f7f7f7;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000}
 .formList #joinId{width:360px; }
-.formList  select{width:80px;padding: 10px 10px;border:1px solid #d6d6d6; /*border-radius: 7px;color: #999;*/}
+.formList  select{width:80px;padding: 10px 10px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;}
 .formList .joinBirth{margin-right:15px;}
 .formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
 .formList .birth > div{float: left;margin:10px 0;}
