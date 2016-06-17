@@ -6,9 +6,9 @@ module.exports = function() {
 	var win = window,
 	$ = win.jQuery,
 	doc = document,
-	debug = require('../utils/Console.js'),
-	util = require('../utils/Util.js'),
-	fileName = 'LivingCategory.js';
+	debug = require('../../utils/Console.js'),
+	util = require('../../utils/Util.js'),
+	fileName = 'living/Category.js';
 
 	var opts = {
 		wrap : '.js-slider-wrap',
@@ -44,7 +44,7 @@ module.exports = function() {
 		}
 	};
 
-	var SuperClass = require('./Page.js'),
+	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
 	callerObj = {
 		/**

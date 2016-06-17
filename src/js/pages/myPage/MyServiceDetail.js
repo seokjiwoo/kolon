@@ -5,12 +5,14 @@ module.exports = function() {
 
 	var win = window,
 	$ = win.jQuery,
-	debug = require('../utils/Console.js'),
-	util = require('../utils/Util.js'),
-	fileName = 'MpMyServiceDetail.js';
+	debug = require('../../utils/Console.js'),
+	util = require('../../utils/Util.js'),
+	fileName = 'myPage/MyServiceDetail.js';
 
-	var SuperClass = require('./Page.js'),
+	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
+	MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass(),
 	callerObj = {
 		/**
 		 * 초기화
@@ -22,6 +24,7 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
+		MyPage.init();
 
 		debug.log(fileName, 'init');
 

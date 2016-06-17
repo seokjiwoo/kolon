@@ -5,12 +5,12 @@ module.exports = function() {
 
 	var win = window,
 	$ = win.jQuery,
-	debug = require('../utils/Console.js'),
-	fileName = 'OdOrderService.js';
+	debug = require('../../utils/Console.js'),
+	fileName = 'order/OrderService.js';
 
-	var SuperClass = require('./Page.js'),
+	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
-	DatePickerClass = require('../components/DatePicker.js'),
+	DatePickerClass = require('../../components/DatePicker.js'),
 	ConsultPicker = DatePickerClass(),
 	BuildPicker = DatePickerClass(),
 	callerObj = {

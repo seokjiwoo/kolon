@@ -26,15 +26,33 @@ $(document).ready(function() {
 		case 'member-findLoginPwReset':
 			PageModuleClass = require('./pages/ResetPassword.js');
 			break;
-		case 'order-orderService':
-			PageModuleClass = require('./pages/OdOrderService.js');
-			break;
-		case 'living-category':
-			PageModuleClass = require('./pages/LivingCategory.js');
+
+
+		// [S] living
+			// 4-카테고리
+			case 'living-category':
+				PageModuleClass = require('./pages/living/Category.js');
+				break;
+		// [E] living
+		
+
+		// [S] myPage 			13-마이홈즈
+		case 'mypage':
+			PageModuleClass = require('./pages/myPage/MyPage.js');
 			break;
 		case 'myServiceDetail':
-			PageModuleClass = require('./pages/MpMyServiceDetail.js');
+			PageModuleClass = require('./pages/myPage/MyServiceDetail.js');
 			break;
+		// [E] myPage 			 - 마이홈즈
+
+
+		// [S] order 			14-주문서 작성
+		case 'order-orderService':
+			PageModuleClass = require('./pages/order/OdOrderService.js');
+			break;
+		// [E] order 			14-주문서 작성
+
+
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
