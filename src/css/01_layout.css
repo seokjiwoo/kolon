@@ -16,6 +16,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .wrap{max-width:1180px;margin:0 auto;padding: 0 10px}
 
 .topBanner{display: none;}
+.main .bannerHide .topBanner {display:none;}
 .main .topBanner{display: block; width:100%; height:113px; overflow:hidden; background:#fff; position:relative; text-align:center;}
 .main .topBanner:after {content:''; width:100%; height:10px; background:url('../images/bg_topBanner.png') 0 0 repeat-x; position:absolute; bottom:0; left:0; z-index:2;}
 .main .topBanner img {width:1920px; height:113px;}
@@ -37,7 +38,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .topMenu .menu ul.menuList:last-child li a {color:#00aeb9;}
 
 .topMenu .topR{width:15%; min-width:183px; height:72px; text-align:right; font-size: 14px; float:right;}
-.topMenu .topR #searchOpen{display:inline-block;width: 40px;height: 40px;margin-top:10px;background: #f1645c url('../images/ico_search.png') no-repeat top;}
+.topMenu .topR #searchOpen{display:inline-block;width: 40px;height: 40px;margin:10px 30px 0 0;background: #f1645c url('../images/ico_search.png') no-repeat top;}
 .topMenu .topR #searchOpen.opened{background-position: bottom;}
 .topMenu .topR a.btnLogin {margin-top:25px; display:inline-block; color:#333; font-family:'RobotoR','NotoSansR', sans-serif; font-size:14px; vertical-align:top;}
 .topMenu .topR a.btnLogin img {width:57px;}
@@ -50,7 +51,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 
 #top {width:100%;}
-#top .searchWrap{position: absolute;top: -250px;left: 0;width: 100%;background: #fff;text-align: left;box-shadow:0px 2px #c9c9c9;z-index: -1}
+#top .searchWrap{position: absolute;top: -177px;left: 0;width: 100%;background: #fff;text-align: left;box-shadow:0px 2px #c9c9c9;z-index: -1}
 #top .searchWrap .keyWrap{overflow: hidden;padding:10px 30px;font-size:14px;}
 #top .searchWrap .wrap{max-width:1500px;}
 #top .searchWrap .keyTit{float: left;margin-top:14px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;}
