@@ -41,6 +41,7 @@
 .popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
 .popHex .cardCon{display: inline-block;padding:0 30px;width: 225px;vertical-align: middle;}
 
+#colorbox.hexAlert #cboxLoadedContent { overflow-x:hidden !important; padding:0 }
 
 /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
 

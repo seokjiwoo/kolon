@@ -33,7 +33,7 @@ module.exports = function() {
 		$('#loginForm').submit(function(e) {
 			e.preventDefault();
 			if (util.checkVaildEmail($('#inputName').val()) == false) {
-				alert('아이디를 입력하세요');
+				Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '이미 가입된 계정이 있습니다. 비밀번호 찾기를 통해서 계정 정보를 확인 해주시기 바랍니다.', '비밀번호 찾기');
 			} else {
 				controller.login($('#inputName').val(), $('#inputPW').val());
 			}
