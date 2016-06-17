@@ -9,6 +9,9 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/MyPage.js';
 
+	var SuperClass = require('../Page.js'),
+	Super = SuperClass();
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -19,6 +22,8 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
+		Super.init();
+		
 		debug.log(fileName, 'init', $, util);
 	}
 };

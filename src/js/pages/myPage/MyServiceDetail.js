@@ -9,9 +9,7 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/MyServiceDetail.js';
 
-	var SuperClass = require('../Page.js'),
-	Super = SuperClass(),
-	MyPageClass = require('./MyPage.js'),
+	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
 	callerObj = {
 		/**
@@ -23,7 +21,6 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
 		MyPage.init();
 
 		debug.log(fileName, 'init');
