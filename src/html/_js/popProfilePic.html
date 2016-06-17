@@ -27,50 +27,8 @@
 		<button type="button" class="btn btnSizeM btnColor02 btnShadow js-submit">프로필 사진으로 설정</button>
 	</div>
 </div>
+
 <script>
-	;(function(win, $) {
-		'use strict';
-
-		$(function() {
-			$.each($.flash, function(index, val) {
-				win.console.log(index, ' : ', val);
-			});
-			// $.flash.available
-			// win.console.log($.flash.hasVersion(9.1), $.flash.hasVersion(23));
-			$.flash.expressInstaller = '../images/swf/expressInstall.swf';
-			var swfPath = $.flash.hasVersion(23) ? '../images/swf/exampleFlash.swf' : $.flash.expressInstaller;
-			// $.flash.expressInstaller = 'myFlashPath/expressInstall.swf';
-			$('.js-upload-container').css({ 'background' : '#ff0000' })
-									.find('.js-holder')
-									.flash({
-										swf : swfPath,
-										id : 'imageUpoader',
-										width : '100%',
-										height : '100%',
-										wmode : 'transparent',
-										flashvars : {
-											acceptedTypes : {
-
-											},
-											viewPort : {
-												width : 835,
-												height : 500
-											}
-										}
-									});
-			var toggle = false;
-			$('.js-inp').on('click', function(e) {
-				e.preventDefault();
-				if (!toggle) {
-					$('#imageUpoader').get(0).creatureMove('left');
-				} else {
-					$('#imageUpoader').get(0).creatureMove('right');
-				}
-				toggle = !toggle;
-			});
-		});
-	})(window, window.jQuery);
-
 	// 테스트 JS
 	;(function(win, $) {
 		'use strict';
@@ -229,10 +187,34 @@
 
 					win.console.log(file, file.size, file.width, file.height);
 
-					var reader = new FileReader();
-					reader.onload = $.proxy(this.setPreviewFile, this);
-					reader.onerror = $.proxy(this.onError, this);
-					reader.readAsDataURL(file);
+					var _this = this;
+					this.imgRotation = 0;
+					EXIF.getData(file, function(e) {
+						var exif = EXIF.getAllTags(this);
+						switch(exif.Orientation) {
+							case 3:
+								//동
+								_this.imgRotation = 180;
+								break;
+							case 6:
+								//북
+								_this.imgRotation = 90;
+								break;
+							case 8:
+								//남
+								_this.imgRotation = 270;
+								break;
+							default:
+								//서
+								_this.imgRotation = 0;
+								break;
+						}
+
+						var reader = new FileReader();
+						reader.onload = $.proxy(_this.setPreviewFile, _this);
+						reader.onerror = $.proxy(_this.onError, _this);
+						reader.readAsDataURL(file);
+					});
 				},
 				onError : function(e) {
 					win.alert('일시적인 장애가 발생했습니다.\n다시 시도해주세요.', e);
@@ -281,11 +263,14 @@
 							displayHeight = imgScale.y * displayHeight;
 						}
 
+						win.console.log(this.imgRotation);
+
 						image.css({
 							'width' : displayWidth,
 							'height' : displayHeight,
 							'margin-left' : (viewPort.width - displayWidth) / 2,
-							'margin-top' : (viewPort.height - displayHeight) / 2
+							'margin-top' : (viewPort.height - displayHeight) / 2,
+							'transform' : 'rotate(' + this.imgRotation + 'deg)'
 						});
 						this.holder.append(image);
 					}, this);
@@ -305,7 +290,6 @@
 		})();
 
 		$(function() {
-			return
 			NS.imageUpload.init($('body'));
 		});
 	})(window, window.jQuery);
