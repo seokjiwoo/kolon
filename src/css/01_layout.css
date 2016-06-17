@@ -16,21 +16,40 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .wrap{max-width:1180px;margin:0 auto;padding: 0 10px}
 
 .topBanner{display: none;}
-.main .topBanner{display: block;}
+.main .topBanner{display: block; width:100%; height:113px; overflow:hidden; background:#fff; position:relative; text-align:center;}
+.main .topBanner:after {content:''; width:100%; height:10px; background:url('../images/bg_topBanner.png') 0 0 repeat-x; position:absolute; bottom:0; left:0; z-index:2;}
+.main .topBanner img {width:1920px; height:113px;}
+.main .topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
 
-.topMenu{position: fixed;left: 0;top: 0;right: 0;height: 60px;min-width: 1200px;z-index: 1;box-shadow: 0px 2px rgba(0,0,0,0.1)}
-.topMenu .topL{float: left;width:55%;height: 100%;background: #fff;}
-.topMenu .topL .btnLnb{float: left;width: 80px;height:60px;background:url('../images/btn_menu.png') no-repeat center;}
-.topMenu .topL .logo{float: left;vertical-align: top;}
-.topMenu .topL .logo a{display: block;padding: 15px 0;}
-.topMenu .topL .menu{overflow: hidden;margin-left: 25%;}
-.topMenu .topL .menu li{float: left;width:20%;text-align: center;}
-.topMenu .topL .menu li a{display: block;padding: 22px 0;font-family:'RobotoM','NotoSansB', sans-serif;color:#333;font-size:16px;}
+.topMenu{width:100%; position:fixed; z-index:99; min-width:1240px;}
+.topMenu .topL{width:15%; min-width:180px; height:72px; float:left;}
+.topMenu .topL .btnLnb{width:80px; height:60px; float:left; background:url('../images/btn_menu.png') 50% 28px no-repeat;}
+.topMenu .topL h1.logo{width:100px; float: left; overflow:hidden; line-height:0;}
+.topMenu .topL h1.logo a{width:100%; padding:28px 0; display:inline-block;}
+.topMenu .menu{width:70%; min-width:825px; height:63px; overflow:hidden; float:left; text-align:center;}
+.topMenu .menu ul.menuList {height:63px; display:inline-block;}
+.topMenu .menu ul.menuList + ul.menuList{margin-left:29px; padding-left:29px; position:relative;}
+.topMenu .menu ul.menuList + ul.menuList:before {content:''; width:5px; height:5px; margin-top:-2.5px; background:#d2d2d2; position:absolute; top:50%; left:0;}
+.topMenu .menu ul.menuList li{height:17px; text-align:center; float:left;}
+.topMenu .menu ul.menuList li + li {margin-left:39px;}
+.topMenu .menu ul.menuList li a{display:block; padding:23px 0; font-family:'RobotoM','NotoSansB', sans-serif; color:#333; font-size:16px; font-weight:bold;}
+.topMenu .menu ul.menuList li a em.point {color:#f84b40;}
+.topMenu .menu ul.menuList:last-child li a {color:#00aeb9;}
 
-.topMenu .topR{float: left;width:45%;height: 100%;text-align: center;background: #fff;font-size: 14px;}
-.topMenu .topR #searchOpen{overflow: hidden;display: inline-block;float: right;width: 40px;height: 40px;margin-top:10px;background: #f1645c url('../images/ico_search.png') no-repeat top;border-radius: 50%;}
+.topMenu .topR{width:15%; min-width:183px; height:72px; text-align:right; font-size: 14px; float:right;}
+.topMenu .topR #searchOpen{display:inline-block;width: 40px;height: 40px;margin-top:10px;background: #f1645c url('../images/ico_search.png') no-repeat top;}
 .topMenu .topR #searchOpen.opened{background-position: bottom;}
+.topMenu .topR a.btnLogin {margin-top:25px; display:inline-block; color:#333; font-family:'RobotoR','NotoSansR', sans-serif; font-size:14px; vertical-align:top;}
+.topMenu .topR a.btnLogin img {width:57px;}
+.topMenu .topR .member{float:right;margin-right:30px;padding: 10px 0;}
+.login .topMenu .topR .member{display: block;}
+.topMenu .topR .member a{display: inline-block;vertical-align: middle;}
+.topMenu .topR .member .name{font-family:'RobotoR','NotoSansR', sans-serif;color: #737373;}
+.topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
+.topMenu .topR .member .pic img{width: 100%;}
+.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 
+#top {width:100%;}
 #top .searchWrap{position: absolute;top: -60px;left: 0;width: 100%;background: #fff;text-align: left;box-shadow:0px 2px #c9c9c9;z-index: -1}
 #top .searchWrap .keyWrap{overflow: hidden;padding:10px 30px;font-size:14px;}
 #top .searchWrap .wrap{max-width:1500px;}
@@ -56,16 +75,6 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #top .searchWrap .recently .keyTit {color: #333;}
 #top .searchWrap .recently li{border-radius: 20px;border:1px solid #d9d9d9;}
 #top .searchWrap .recently a{display: inline-block;padding: 12px 14px;color: #666;}
-
-.topMenu .topR .member{float:right;margin-right:30px;padding: 10px 0;}
-.login .topMenu .topR .member{display: block;}
-.topMenu .topR .member a{display: inline-block;vertical-align: middle;}
-.topMenu .topR .member .name{font-family:'RobotoR','NotoSansR', sans-serif;color: #737373;}
-.topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
-.topMenu .topR .member .pic img{width: 100%;}
-.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
-.topMenu .topR .btnLogin{float:right;display: inline-block;margin:12px 30px 12px 10px;padding:11px 20px 9px;border-radius: 20px;background:#a9c700;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:14px;}
-
 
 .lnbWrapper {overflow: hidden;position: fixed;top: 0;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:2;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
 .lnb {overflow: auto;background:#fff;text-align: center;}
@@ -190,7 +199,28 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #flQna .resultQna li:first-child{border:0;}
 
 .container {position: relative;padding:60px 0 200px;}
+.main .container {padding-top:113px;}
 .container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:62px 10px 0;}
 .main .container .wrap{max-width: 1500px;padding:30px 20px 0;}
 .container .sWrap{max-width: 780px;margin: 0 auto;}
 
+.main .container .mainVisual {width:100%; max-width:1920px; margin:0 auto 40px; overflow:hidden; position:relative;}
+.main .container .mainVisual ul.mainSlider {overflow:hidden;}
+.main .container .mainVisual ul.mainSlider li {}
+.main .container .mainVisual ul.mainSlider li img {max-width:100%; width:auto;}
+.main .container .mainVisual .bx-controls {position:absolute; bottom:85px; left:15%;}
+.main .container .mainVisual .bx-wrapper .bx-controls-direction {}
+.main .container .mainVisual .bx-wrapper .bx-controls-direction a {width:15px; height:13px; margin-top:-7.5px; background:url('../images/btn_mainSlider.png') 0 0 no-repeat; position:absolute;  top:50%; left:0; }
+.main .container .mainVisual .bx-wrapper .bx-controls-direction a.bx-next {background-position:0 -13px; position:absolute; top:50%; left:inherit; right:0;}
+.main .container .mainVisual .bx-pager {padding:0 25px; display:inline-block;}
+.main .container .mainVisual .bx-pager .bx-pager-item {float:left; display:inline-block;}
+.main .container .mainVisual .bx-pager .bx-pager-item a {width:12px; height:13px; margin:0; background:url('../images/bul_mainSlider.png') 0 0 no-repeat; display:inline-block; font-size:0; vertical-align:middle;}
+.main .container .mainVisual .bx-pager .bx-pager-item a.active {background-position:0 -13px;}
+.main .container .mainVisual .bx-pager .bx-pager-item + .bx-pager-item {margin-left:5px;}
+.main .container .myList {width:100%; display:block; text-align:center;}
+.main .container .myList p.myTit,
+.main .container .myList a {padding:0 3px; font-size:20px; display:inline-block; font-family:'NotoSansM', 'RobotoM', sans-serif; color:#000; vertical-align:middle;}
+.main .container .myList p.myTit { font-family:'NotoSansL', 'RobotoL', sans-serif;}
+.main .container .myList a.on {background:url('../images/myList_on.gif') 0 50% repeat-x;}
+.main .container .myList a + a {margin-left:21px;}
+.main .container .myList p.myTit + a {margin-left:65px;}
