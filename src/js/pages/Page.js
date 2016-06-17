@@ -190,28 +190,28 @@ module.exports = function() {
 					duration: 300, 
 					easing: 'easeOutBack',
 					complete: function(){
-						$(this)animate({'width':'100px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 				$('.floating03').queue('fx',[]).stop().animate({'top':'-125px'}, { 
 					duration: 400, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).animate({'width':'100px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 				$('.floating02').queue('fx',[]).stop().animate({'top':'-185px'}, {
 					duration: 500, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this)..animate({'width':'100px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 				$('.floating01').queue('fx',[]).stop().animate({'top':'-245px'}, {
 					duration: 600, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).animate({'width':'100px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 			}
