@@ -159,7 +159,9 @@ module.exports = function() {
 
 	function alertPopup(title, description, buttonCaption) {
 		var inline = '<div class="popHex cardSize01"><div class="hexagon"><div class="hexTop"><span></span></div><div class="hexBottom"><span></span></div></div>';
-		inline += '<div class="cardCon"><p class="popSub">'+title+'</p>';
+		inline += '<div class="cardCon"><h4 class="popTit">'+title+'</h4>';
+		inline += '<p class="popSub">'+description+'</p>';
+		inline += '<p class="btnWrap"><a href="#" class="btnSizeM btnColor02">'+buttonCaption+'</a></p>';
 		inline += '</div></div>';
 
 		openPopup(inline, 280, 'hexAlert');

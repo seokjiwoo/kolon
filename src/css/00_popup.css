@@ -14,16 +14,13 @@
 .cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
 .cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
 #colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+#cboxLoadedContent .popTit{font-size:30px;}
 
 #colorbox {outline:0;z-index: 7}
 #cboxError {padding:50px; border:1px solid #ccc; }
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; }
-#cboxLoadedContent .popTit {position: relative;top:0; font-size:30px; line-height: 80px;text-align: center;}
-#cboxLoadedContent .popTit:after{content: '';position: absolute;left: -30px;right: -30px;bottom: 0;height: 1px;background: #666;}
-#cboxLoadedContent .popTit span.count{color:#f1645c;}
-#cboxLoadedContent .subTit {font-size:20px;color:#000; }
 #cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
-#cboxLoadedContent p {margin-top:20px; }
+#cboxLoadedContent p {margin-top:20px;}
 #cboxLoadedContent p:first-child {margin-top:0; }
 
 /* 모서리 형 팝업 */
@@ -36,10 +33,19 @@
 .popEdge .popTop:before{content: '';position: absolute;top:0;left: -60px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 60px solid transparent;}
 .popEdge .popTop:after{content: '';position: absolute;right: -60px;top: 0;width: 60px;height: 60px;background: #fff;}
 
+.popEdge .popTit {position: relative;top:0;line-height: 80px;text-align: center;}
+.popEdge .popTit:after{content: '';position: absolute;left: -30px;right: -30px;bottom: 0;height: 1px;background: #666;}
+.popEdge .popTit span.count{color:#f1645c;}
+.popEdge .subTit {font-size:20px;color:#000; }
+
 /* 육각형 팝업 */
 .popHex .hexagon{background: #fff;}
 .popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
-.popHex .cardCon{display: inline-block;padding:0 30px;width: 225px;vertical-align: middle;}
+.popHex .cardCon{display: inline-block;padding:0 30px;width: 220px;vertical-align: middle;text-align: center;color: #000;}
+#cboxLoadedContent .popHex .cardCon .btnWrap{margin-top: 30px;}
+#cboxLoadedContent .popHex .popSub{margin-top: 18px;}
+.popHex .popTit{letter-spacing: -2px;line-height: 1.2em;}
+
 
 #colorbox.hexAlert #cboxLoadedContent { overflow-x:hidden !important; padding:0 }
 
