@@ -14,23 +14,75 @@
 				<h2 class="secTit secTit02">정보수정</h2>
 				<form action="">
 					<fieldset class="profileInfo">
-						<legend class="subTit">기본정보 <span class="subTxt"><b>*</b> 표시는 필수입력 항목 이오니 반드시 입력해 주세요. </span></legend>
+						<legend class="subTit">로그인계정 <span class="subTxt"><b>*</b> 표시는 필수입력 항목 이오니 반드시 입력해 주세요. </span></legend>
 						<table class="record formList">
+							<colgroup><col style="width:178px"></colgroup>
 							<tr>
-								<th><label for="profileID"><b class="require">* </b>홈즈계정</label></th>
-								<td><input type="text" disabled value="1234@google.com" id="profileID" class="inputL"></td>
+								<th><label for="profileID"><b class="require">* </b>이메일 아이디</label></th>
+								<td>
+									<p class="inputWrap">
+										<input type="text" value="1234@google.com" id="profileID"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="editPhoneID"><b class="require">* </b>휴대폰 번호 아이디</label></th>
+								<td>
+									<p class="inputWrap">
+										<input type="text" value="" id="editPhoneID"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor03 btnPop btnPop650 ">등록하기</a>
+									</p>
+								</td>
 							</tr>
 							<tr>
 								<th><b class="require">* </b>비밀번호</th>
-								<td><a href="../_popup/popCheckPw.html" class="btnSizeM btnColor01 btnPop btnPop540">변경하기</a></td>
+								<td>
+									<p class="inputWrap">
+										<a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
+									</p>
+								</td>
 							</tr>
+						</table>
+					</fieldset>
+
+					<fieldset class="profileInfo">
+						<legend class="subTit">SNS 계정 연동</legend>
+						<table class="record account">
+							<tr>
+								<th>SNS 계정 구분</th>
+								<th>연동정보</th>
+								<th>연결</th>
+							</tr>
+							<tr>
+								<td class="account01"><span>페이스북</span></td>
+								<td>연결된 정보가 없습니다.</td>
+								<td><a href="" class="btnSizeS">계정연결</a></td>
+							</tr>
+							<tr>
+								<td class="account02"><span>카카오</span></td>
+								<td>연결된 정보가 없습니다.</td>
+								<td><a href="" class="btnSizeS">계정연결</a></td>
+							</tr>
+							<!-- 계정 연결 시 active class 추가 -->
+							<tr class="active">
+								<td class="account03"><span>네이버</span></td>
+								<td>연결되었습니다. (이메일 : kolon12345@gmail.com)</td>
+								<td><a href="" class="btnSizeS">연결해제</a></td>
+								
+							</tr>
+						</table>
+					</fieldset>
+
+					<fieldset class="profileInfo">
+						<legend class="subTit">기본정보 <span class="subTxt"><b>*</b> 표시는 필수입력 항목 이오니 반드시 입력해 주세요. </span></legend>
+						<table class="record formList">
+							<colgroup><col style="width:178px"></colgroup>
 							<tr>
 								<th><label for="editName"><b class="require">* </b>이름</label></th>
 								<td>
-								<p class="inputWrap">
-									<input type="text" value="홍길동" id="editName">
-									<a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650 ">실명확인</a>
-								</p>
+									<p class="inputWrap">
+										<input type="text" value="홍길동" id="editName">
+										<a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">실명확인</a>
+									</p>
 								</td>
 							</tr>
 							<tr>
@@ -84,12 +136,6 @@
 									<p class="inputWrap">
 										<label for="profilePhone" class="hide">인증번호 받기</label>
 										<input type="text" value="01012345678"  id="profilePhone" class="inputL">
-										<button class="btn btnSizeM btnColor03">인증번호 받기</button>
-									</p>
-									<p class="inputWrap">
-										<label for="profilePermit" class="hide">인증번호 입력</label>
-										<input type="text" id="profilePermit" placeholder="인증번호 입력" class="inputL">
-										<button class="btn btnSizeM btnColor01">인증 확인</button>
 									</p>
 								</td>
 							</tr>
@@ -100,8 +146,23 @@
 							<tr>
 								<th><label for="profileAddress01">기본 배송지 주소</label></th>
 								<td>
-									<p class="inputWrap"><label for="searchAddress" class="hide">주소검색</label><input type="text" id="searchAddress"><button class="btn btnSizeM btnColor03">주소검색</button></p>
-									<p class="inputWrap"><label for="profileAddress01" class="hide">주소 입력</label><input type="text" id="profileAddress01" class="inputL"><label for="profileAddress02" class="hide">주소 입력</label><input type="text" id="profileAddress02" class="inputL"></p>
+									<p class="inputWrap">
+										<label for="searchAddress" class="hide">주소검색</label>
+										<button class="btn btnSizeM btnColor01">주소검색</button>
+										<button class="btn btnSizeM btnColor03">주소록관리</button>
+									</p>
+									<p class="inputWrap">
+										<label for="profileAddress01" class="hide">주소 입력</label>
+										<input type="text" id="profileAddress01" class="inputL" placeholder="도로명">
+									</p>
+									<p class="inputWrap">
+										<label for="profileAddress02" class="hide">지번</label>
+										<input type="text" id="profileAddress02" class="inputL" placeholder="지번">
+									</p>
+									<p class="inputWrap">
+										<label for="profileAddress03" class="hide">상세주소</label>
+										<input type="text" id="profileAddress03" class="inputL" placeholder="상세주소">
+									</p>
 								</td>
 							</tr>
 							<tr>
@@ -126,33 +187,6 @@
 										<label for="disagreeReceive02">수신안함</label>
 									</div>
 								</td>
-							</tr>
-						</table>
-					</fieldset>
-					<fieldset class="profileInfo">
-						<legend class="subTit">SNS 계정 연동</legend>
-						<table class="record account">
-							<tr>
-								<th>SNS 계정 구분</th>
-								<th>연동정보</th>
-								<th>연결</th>
-							</tr>
-							<tr>
-								<td class="account01"><span>페이스북</span></td>
-								<td>연결된 정보가 없습니다.</td>
-								<td><a href="" class="btnSizeS">계정연결</a></td>
-							</tr>
-							<tr>
-								<td class="account02"><span>카카오</span></td>
-								<td>연결된 정보가 없습니다.</td>
-								<td><a href="" class="btnSizeS">계정연결</a></td>
-							</tr>
-							<!-- 계정 연결 시 active class 추가 -->
-							<tr class="active">
-								<td class="account03"><span>네이버</span></td>
-								<td>연결되었습니다. (이메일 : kolon12345@gmail.com)</td>
-								<td><a href="" class="btnSizeS">연결해제</a></td>
-								
 							</tr>
 						</table>
 					</fieldset>
