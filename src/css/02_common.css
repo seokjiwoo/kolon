@@ -16,6 +16,8 @@
 .fl_left {float:left;}
 .fl_right {float:right;}
 
+.italicNum{font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900;}
+
 .checkAgree label{display:inline-block;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
 .checkAgree input[type="checkbox"] {position: absolute;opacity: 0;width:24px;height:24px;margin:0;padding:0;z-index:-1}
 .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
@@ -160,7 +162,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
-{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d6d6d6;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #999;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
 
 .container input[type="text"].pullSize,

@@ -233,7 +233,7 @@ module.exports = function() {
 					duration: 500, 
 					easing: 'easeInBack'
 				});
-				$(floatingLy).animate({'bottom':'140px'},{
+				$(floatingLy).animate({'bottom':'70px'},{
 					duration: 700, 
 					easing: 'easeOutBack',
 					complete: function(){
