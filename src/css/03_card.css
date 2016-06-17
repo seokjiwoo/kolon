@@ -70,9 +70,9 @@
 .cardWrap .tag{margin-top:15px;}
 .cardWrap .tag li{display: inline-block;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;color: #c3d656}
 
-.cardSize01{height: 320px;}
-.cardSize01 .cardCon{height:160px;}
-.cardSize01 .hexagon{height: 154.545px;}
+.cardSize01{height: 330px;}
+.cardSize01 .cardCon{height:170px;}
+.cardSize01 .hexagon{height: 164.545px;}
 .cardSize02{height:490px;}
 .cardSize02 .cardCon{height:330px;}
 .cardSize02 .hexagon{height:324.55px;}
