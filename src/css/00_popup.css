@@ -61,8 +61,8 @@
 
 #popAgree01 .popCon{text-align: left;}
 
-.popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
-.popCon select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
+.popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #999;font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
+.popCon select{padding:10px 10px; border:1px solid #999;color: #999;}
 .popCon fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 .popCon textarea {width:87%; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .popCon h5.popSubTit {width:100%; overflow:hidden; font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif; line-height:130%;}
