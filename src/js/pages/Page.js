@@ -160,19 +160,19 @@ module.exports = function() {
 				$(this).removeClass('opened');
 				$('#floatingMenu').find('.menuTit').animate({'right':'3px'},50,
 				function(){
-					$('.floating04').animate({'top':'0'}, {
+					$('.floating04').animate({'width':'0'}, {
 						duration: 300, 
 						easing: 'easeInBack'
 					});
-					$('.floating03').animate({'top':'0'}, {
+					$('.floating03').animate({'width':'0'}, {
 						duration: 400, 
 						easing: 'easeInBack'
 					});
-					$('.floating02').animate({'top':'0'}, {
+					$('.floating02').animate({'width':'0'}, {
 						duration: 500, 
 						easing: 'easeInBack'
 					});
-					$('.floating01').animate({'top':'0'}, {
+					$('.floating01').animate({'width':'0'}, {
 						duration: 600, 
 						easing: 'easeInBack'
 					});
@@ -190,28 +190,28 @@ module.exports = function() {
 					duration: 300, 
 					easing: 'easeOutBack',
 					complete: function(){
-						$(this).find('.menuTit').animate({'right':'60px'},50)
+						$(this)animate({'width':'100px'},50)
 					}
 				});
 				$('.floating03').queue('fx',[]).stop().animate({'top':'-125px'}, { 
 					duration: 400, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).stop().find('.menuTit').animate({'right':'60px'},50)
+						$(this).animate({'width':'100px'},50)
 					}
 				});
 				$('.floating02').queue('fx',[]).stop().animate({'top':'-185px'}, {
 					duration: 500, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).find('.menuTit').animate({'right':'60px'},50)
+						$(this)..animate({'width':'100px'},50)
 					}
 				});
 				$('.floating01').queue('fx',[]).stop().animate({'top':'-245px'}, {
 					duration: 600, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).find('.menuTit').animate({'right':'60px'},50)
+						$(this).animate({'width':'100px'},50)
 					}
 				});
 			}
