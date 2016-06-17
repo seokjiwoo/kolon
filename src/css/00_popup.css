@@ -2,11 +2,11 @@
     Colorbox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
-#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:6; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
 #cboxWrapper {max-width:none;}
-#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxOverlay{position:fixed; width:100%; height:100%;background:#000;filter:alpha(opacity = 50);}
 #cboxMiddleLeft, #cboxBottomLeft{clear:left;}
-#cboxContent{position:relative;}
+#cboxContent{position:relative;overflow:visible;font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
 #cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling:touch;}
 #cboxTitle{margin:0;}
 #cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
@@ -15,21 +15,14 @@
 .cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
 #colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
 
-/* 
-    User Style:
-    Change the following styles to modify the appearance of Colorbox.  They are
-    ordered & tabbed in a way that represents the nesting of the generated HTML.
-*/
-#cboxOverlay {background:#000;filter:alpha(opacity = 50);z-index: 4}
-#colorbox {outline:0;z-index: 5}
-#cboxContent {overflow:visible;border-radius:10px; font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
+#colorbox {outline:0;z-index: 7}
 #cboxError {padding:50px; border:1px solid #ccc; }
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; }
 #cboxLoadedContent .popTit {position: relative;top:0; font-size:30px; line-height: 80px;text-align: center;}
-#cboxLoadedContent .popTit:after{content: '';position: absolute;left: -34px;right: -34px;bottom: 0;height: 1px;background: #666;}
+#cboxLoadedContent .popTit:after{content: '';position: absolute;left: -30px;right: -30px;bottom: 0;height: 1px;background: #666;}
 #cboxLoadedContent .popTit span.count{color:#f1645c;}
 #cboxLoadedContent .subTit {font-size:20px;color:#000; }
-#cboxLoadedContent .popScroll {overflow:auto;margin-top:30px; }
+#cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
 #cboxLoadedContent p {margin-top:20px; }
 #cboxLoadedContent p:first-child {margin-top:0; }
 
@@ -49,10 +42,9 @@
 #colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
-.popEdge .popCon{position: relative;margin-top:-20px;padding: 51px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
+.popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
 .popCon p{margin-top:20px;}
 .popCon p:first-child{margin-top:0;}
-.popScroll{overflow: auto;margin-top:30px;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
 #popAgree01 .popCon{text-align: left;}
@@ -151,6 +143,4 @@ ul.popList + .btnWrap,
 a.btnDetail {padding:10px 0 0 50px; position:relative; color:#666; float:left;}
 a.btnDetail:before {content:''; width:40px; height:40px; border-radius:50%; overflow:hidden; background:url('../images/ico_DetailedMore.png') 50% 50% no-repeat #fff; position:absolute; top:0; left:0; box-shadow:0 3px rgba(0,0,0,.12);}
 
-.lyPop.orderPop .popCon {padding:20px 0;}
-.lyPop.categoryPop .popCon {padding:0;}
 

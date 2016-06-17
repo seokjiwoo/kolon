@@ -109,7 +109,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .login .lnb .in{display: inline-block;} 
 .lnb .out{display: none;}
 
-.floating{position: fixed;bottom: 70px;right: 40px;z-index: 4;}
+.floating{position: fixed;bottom: 70px;right: 40px;z-index:2;}
 .floating a{display: block;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);border-radius: 50%;}
 
 #floatingMenu{position: relative;}
@@ -129,7 +129,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #goTop:before{content: '';display: block;width: 25px;height:15px;margin:0 auto 2px;background:url('../images/ico_top.png') no-repeat;}
 
 .flPop{position: fixed;bottom:140px;right: 128px; width: 285px;background: #fff;border-radius: 10px;}
-#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 3;background: rgba(0,0,0,0.2);}
+#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 1;background: rgba(0,0,0,0.2);}
 
 .floating .flPop{overflow: hidden;bottom:-100%;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
 .floating .flPop a{box-shadow: none;}
@@ -179,7 +179,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 
 #flQna{padding:0 30px 30px;}
 #flQna .searchQna{margin:20px 0 30px;padding:5px;border-radius: 5px;border:1px solid #a9c700;font-size: 14px;}
-#flQna .searchQna input{width: 210px;height: 20px;padding: 0 10px;vertical-align: middle;border:0;font-family:'RobotoR','NotoSansR', sans-serif;}
+#flQna .searchQna input{width: 190px;height: 20px;padding: 0 10px;vertical-align: middle;border:0;font-family:'RobotoR','NotoSansR', sans-serif;}
 #flQna .searchQna label{display: inline-block;font-size: 0;width:1px;height: 15px;background: #d5d5d5;vertical-align: middle;}
 #flQna .searchQna button{width: 35px;height: 25px;font-size: 0;background:url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;border-radius: 0;vertical-align: middle;}
 #flQna .resultQna {overflow-y: auto;max-height: 275px;text-align: left;}
