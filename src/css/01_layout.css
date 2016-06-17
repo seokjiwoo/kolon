@@ -135,7 +135,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .floating .flPop{overflow: hidden;bottom:-100%;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
 .floating .flPop a{box-shadow: none;}
 .floating .flPop .popIco{color: #a9c700;}
-.floating .flPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin: 25px auto 0;background: url('../images/ico_cs.png') no-repeat;}
+.floating .flPop .popIco:before{content: '';display: block;width: 50px;height: 50px;margin:0 auto;background: url('../images/ico_cs.png') no-repeat;}
 .floating .flPop .popTit{color: #000;font-size: 34px;line-height: 1.1em}
 .floating .flPop .popTit:before{content: '';display: block;width: 25px;height: 1px;background: #000;margin:15px auto 10px;}
 .floating .flPop .popSub{margin-top:10px;color: #000;line-height: 1.3em}
@@ -173,12 +173,10 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #flShare li.sns01 a{background-position: 0 0}
 #flShare li.sns02 a{background-position: -64px 0}
 #flShare li.sns03 a{background-position: -128px 0}
-#flShare .shareLink{padding-bottom: 55px;}
 #flShare .shareLink p{border:1px solid #000;padding:5px;display: inline-block;border-radius: 5px;}
-#flShare .shareLink input{background: none;border:0;width:140px;height: 25px;padding:0 5px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
-#flShare .shareLink button{background: none;border:0;font-family:'RobotoM','NotoSansM', sans-serif;color:#f1645c;}
+#flShare .shareLink input{margin:0;background: none;border:0;width:140px;height: 25px;padding:0 5px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
+#flShare .shareLink button{margin:0;padding: 0;background: none;border:0;font-family:'RobotoM','NotoSansM', sans-serif;color:#f1645c;}
 
-#flQna{padding:0 30px 30px;}
 #flQna .searchQna{margin:20px 0 30px;padding:5px;border-radius: 5px;border:1px solid #a9c700;font-size: 14px;}
 #flQna .searchQna input{width: 190px;height: 20px;padding: 0 10px;vertical-align: middle;border:0;font-family:'RobotoR','NotoSansR', sans-serif;}
 #flQna .searchQna label{display: inline-block;font-size: 0;width:1px;height: 15px;background: #d5d5d5;vertical-align: middle;}
