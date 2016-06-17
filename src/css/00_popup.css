@@ -36,6 +36,9 @@
 .popEdge .popTop:before{content: '';position: absolute;top:0;left: -60px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 60px solid transparent;}
 .popEdge .popTop:after{content: '';position: absolute;right: -60px;top: 0;width: 60px;height: 60px;background: #fff;}
 
+/* 육각형 팝업 */
+.popHex .hexagon{background: #fff;}
+.popHex .cardCon{position: absolute;top: 0;left: 0;z-index: 3;padding: 0;}
 
 /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
 

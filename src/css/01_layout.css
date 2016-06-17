@@ -128,7 +128,8 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #goTop{width:60px;height: 34px;margin-top:10px;padding:13px 0;background: #fff;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;font-size: 14px;text-align: center;}
 #goTop:before{content: '';display: block;width: 25px;height:15px;margin:0 auto 2px;background:url('../images/ico_top.png') no-repeat;}
 
-.flPop{position: fixed;bottom:140px;right: 128px; width: 285px;background: #fff;border-radius: 10px;}
+.flPop{position: fixed;bottom:140px;right: 128px; width: 285px;}
+
 #dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 1;background: rgba(0,0,0,0.2);}
 
 .floating .flPop{overflow: hidden;bottom:-100%;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
