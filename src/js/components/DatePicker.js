@@ -6,7 +6,7 @@ module.exports = function() {
 	var win = window,
 	$ = win.jQuery,
 	debug = require('../utils/Console.js'),
-	fileName = 'DatePicker.js';
+	fileName = 'components/DatePicker.js';
 
 	// 기본 옵션 선언
 	var defParams = {
