@@ -1,4 +1,4 @@
-body{margin:0;line-height:1;font-family:'RobotoL','NotoSansL', sans-serif}
+body{margin:0;line-height:1;font-family:'RobotoL','NotoSansL', sans-serif; min-width:1240px;}
 a{text-decoration:none;}
 a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
 ul, ol, li{list-style:none;padding:0;margin:0;}
@@ -12,14 +12,14 @@ textarea{resize: none;}
 caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-height:0;}
 .hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 
-.wrapper{min-width:1240px;background:#fff center top no-repeat;letter-spacing:-0.5px;}
+.wrapper{background:#fff center top no-repeat;letter-spacing:-0.5px;}
 .wrap{max-width:1180px;margin:0 auto;padding: 0 10px}
 
 .topBanner{display: none;}
 .main .bannerHide .topBanner {display:none;}
 .main .topBanner{display: block; width:100%; height:113px; overflow:hidden; background:#fff; position:relative; text-align:center;}
 .main .topBanner:after {content:''; width:100%; height:10px; background:url('../images/bg_topBanner.png') 0 0 repeat-x; position:absolute; bottom:0; left:0; z-index:2;}
-.main .topBanner img {width:1920px; height:113px;}
+.main .topBanner img {width:1920px; height:113px; margin-left:-960px; position:absolute; top:0; left:50%; z-index:1;}
 .main .topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
 
 .topMenu{width:100%; position:fixed; z-index:99; min-width:1240px;}
@@ -206,9 +206,7 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .container .sWrap{max-width: 780px;margin: 0 auto;}
 
 .main .container .mainVisual {width:100%; max-width:1920px; margin:0 auto 40px; overflow:hidden; position:relative;}
-.main .container .mainVisual ul.mainSlider {overflow:hidden;}
-.main .container .mainVisual ul.mainSlider li {}
-.main .container .mainVisual ul.mainSlider li img {max-width:100%; width:auto;}
+.main .container .mainVisual .bx-viewport {width:1920px !important; height:754px; position:absolute; top:0; left:50%; margin-left:-960px;}
 .main .container .mainVisual .bx-controls {position:absolute; bottom:85px; left:15%;}
 .main .container .mainVisual .bx-wrapper .bx-controls-direction {}
 .main .container .mainVisual .bx-wrapper .bx-controls-direction a {width:15px; height:13px; margin-top:-7.5px; background:url('../images/btn_mainSlider.png') 0 0 no-repeat; position:absolute;  top:50%; left:0; }

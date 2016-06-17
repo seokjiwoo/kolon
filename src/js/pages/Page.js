@@ -138,6 +138,13 @@ module.exports = function() {
 				}
 			}
 		});
+		$(window).scroll(function () { // topMenu scroll bg
+			if ($(document).scrollTop() > 60){
+				$('.topMenu').css('background','#fff');
+			}else{
+				$('.topMenu').css('background','none');
+			}
+		});
 	};
 	
 	function initFloating(){
