@@ -104,7 +104,7 @@ module.exports = function() {
 			e.preventDefault();
 			$('#lnbWrapper').animate({'left':'-285px'}, 500);
 		});
-		$('.depth01').on('click', function(e) {//lnb menu drop-down
+		$('.depth01.toggle').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
 			$(this).siblings().slideToggle(400, function() {
 				console.log(';;;');
