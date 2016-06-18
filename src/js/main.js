@@ -64,5 +64,5 @@ $(document).ready(function() {
 	}
 	
 	pageModule = PageModuleClass();
-	pageModule.init();
+	pageModule.init(pageId);
 });

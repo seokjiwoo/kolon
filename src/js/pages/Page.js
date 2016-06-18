@@ -5,6 +5,7 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var lnbScroller;
+	var pageId;
 
 	var callerObj = {
 		/**
@@ -19,7 +20,8 @@ module.exports = function() {
 	
 	return callerObj;
 	
-	function init() {
+	function init(_pageId) {
+		pageId = _pageId;
 		Super.init();
 		
 		// common
@@ -56,6 +58,9 @@ module.exports = function() {
 		$('.tabType01 li').css('width',100/countMenu+'%');
 	};
 	
+	/**
+	 * GNB/LNB 초기화
+	 */
 	function initMenu() {
 		if (Super.loginData == null) {
 			// 로그인 상태가 아닐 때
@@ -153,6 +158,9 @@ module.exports = function() {
 		});
 	};
 	
+	/**
+	 * 우측하단 플로팅버튼 메뉴 초기화
+	 */
 	function initFloating(){
 		$('#floatingToggle').on('click', function(e) {// floating menu drop-down
 			e.preventDefault();

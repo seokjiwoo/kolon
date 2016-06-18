@@ -11,6 +11,7 @@ module.exports = function() {
 		"1200": 1200
 	};
 	var winH;
+	var pageId;
 
 	var loginDataModel = require('../model/LoginModel');
 	var loginData = loginDataModel.loginData();
@@ -40,7 +41,8 @@ module.exports = function() {
 	
 	return callerObj;
 	
-	function init() {
+	function init(_pageId) {
+		pageId = _pageId;
 		winH = $(window).height();
 		
 		initTab();
@@ -165,39 +167,7 @@ module.exports = function() {
 		inline += '</div></div>';
 
 		openPopup(inline, 280, 'hexAlert');
-		/*
-		<div class="popHex cardSize02">
-			<div class="hexagon">
-				<div class="hexTop"><span></span></div>
-				<div class="hexBottom"><span></span></div>
-			</div>
-			<div class="cardCon">
-				<h3 class="popTit">1644-1234</h3>
-				<p class="popSub">궁금한 것은 언제든지 물어보세요</p>
-				<form action="">
-					<fieldset class="popCon">
-						<legend class="hide">전화상담 번호 입력</legend>
-						<p class="productInfo">보고있는 상품 번호는<br><b>AB000012345</b> 입니다.</p>
-						<p class="phoneWrp">
-							<select name="" id="">
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="012">012</option>
-								<option value="012">019</option>
-							</select>
-							<label for="phone01" class="hide">전화번호 앞자리</label>
-							<input type="text" id="phone01" maxlength="4">
-							<label for="phone02" class="hide">전화번호 뒷자리</label>
-							<input type="text" id="phone02" maxlength="4">
-						</p>
-						<button type="submit" class="popSubmit">상담받기</button>
-					</fieldset>
-				</form>
-				<p class="note"><b>상담 받기 버튼</b>을 누르시면 <br>상담원이 바로 고객님께 연락 드리겠습니다. <br><b>연락 받을 전화 번호를 확인해 주세요.</b></p>
-			</div>
-		</div>
-		*/
-	}
+	};
 	
 	function openPopup(content, width, userClass) {
 		var popupFile = false;
