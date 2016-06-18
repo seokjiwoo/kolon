@@ -27,12 +27,13 @@ module.exports = function() {
 		// common
 		initMenu();
 		initFloating();
+		initTopBanner();
+
 		opinionToggle();
 		initCardRadio();
 		btnDel();
 		tableHeight()
 		conFirm();
-		bannerClose();
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -156,6 +157,29 @@ module.exports = function() {
 				$('.topMenu').css('margin-left','0');
 			}
 		});
+	};
+
+	/**
+	 * 상단 배너영역 초기화
+	 */
+	function initTopBanner() {
+		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함.
+
+		if (showBannerFlag) {
+			$('#topBanner').show();
+			$('#closeTopBannerButton').click(hideTopBanner);
+		} else {
+			hideTopBanner();
+		}
+	};
+
+	/**
+	 * 상단 배너영역 숨기기
+	 */
+	function hideTopBanner(e) {
+		$('#topBanner').hide();
+		$('.main .container').css('padding-top','0');
+		$('.lnbWrapper').css('top', '0');
 	};
 	
 	/**
@@ -329,13 +353,5 @@ module.exports = function() {
 			var tbHC = $(this).height() - 115;
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
-	}
-
-	function bannerClose(){ // main banner 닫기
-		$('.bannerClose').click(function(){
-			$(this).parent().parent().addClass('bannerHide');
-			$('.main .container').css('padding-top','0');
-			$('.lnbWrapper').css('top', '0');
-		});
 	}
 }
