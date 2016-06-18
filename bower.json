@@ -26,6 +26,7 @@
     "jquery-colorbox": "^1.6.4",
     "jQuery.dotdotdot": "dotdotdot#^1.8.1",
     "jquery-ui": "1.11.4",
-    "jquery-outside-events": "*"
+    "jquery-outside-events": "*",
+    "mailcheck": "^1.1.1"
   }
 }

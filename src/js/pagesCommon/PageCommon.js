@@ -44,6 +44,12 @@ module.exports = function() {
 	function init(_pageId) {
 		pageId = _pageId;
 		winH = $(window).height();
+
+		Mailcheck.run({
+			domains: ['gmail.com', 'naver.com', 'hanmail.net'],
+			secondLevelDomains: ['domain', 'yetanotherdomain'],
+			topLevelDomains: ["com", "net", "org", "co.kr"]
+		});
 		
 		initTab();
 		initTabContentLayout();
