@@ -1,12 +1,12 @@
 /* global $ */
 
 module.exports = function() {
-	var SuperClass = require('./Page.js');
+	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
-	var model = require('../model/CardListModel.js');
+	var model = require('../../model/CardListModel.js');
 	
-	var controller = require('../controller/MagazineController');
+	var controller = require('../../controller/MagazineController');
 	$(controller).on('getListPopularResult', popularListHandler);
 
 	var callerObj = {

@@ -1,16 +1,16 @@
 /* global $ */
 
 module.exports = function() {
-	var SuperClass = require('./Page.js');
+	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 
-	var controller = require('../controller/LoginController');
+	var controller = require('../../controller/LoginController');
 	$(controller).on('loginResult', loginCompleteHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
-	var memberInfoController = require('../controller/MemberInfoController');
+	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
 	$(memberInfoController).on('termsResult', termsContentHandler);
-	var util = require('../utils/Util.js');
+	var util = require('../../utils/Util.js');
 	
 	var callerObj = {
 		/**

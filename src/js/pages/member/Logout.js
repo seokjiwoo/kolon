@@ -1,7 +1,7 @@
 /* global $ */
 
 module.exports = function() {
-	var controller = require('../controller/LoginController');
+	var controller = require('../../controller/LoginController');
 	$(controller).on('logoutResult', logoutResultHandler);
 	
 	var callerObj = {
