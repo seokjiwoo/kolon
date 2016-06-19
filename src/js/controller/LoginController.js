@@ -40,7 +40,8 @@ function ClassLoginController() {
 	};
 	
 	/**
-	 * 로그인
+	 * 로그인 or 회원가입
+	 * 서버에서 아이디가 있으면 로그인, 없으면 회원가입 처리.
 	 */
 	function login(id, pw) {
 		Super.callApi('/apis/user/login', 'POST', {
@@ -51,15 +52,14 @@ function ClassLoginController() {
 				Super.callApi('/apis/me', 'GET', {}, function(status, result) {
 					if (status == 200) {
 						model.setLoginInfo(result.data.data.myInfo);
-						$(callerObj).trigger('loginResult', [200]);
 					} else {
-						Super.handleError('login/myData', result);
-						$(callerObj).trigger('loginResult', [result.status]);
+						Super.handleError('login/myData', status);
 					}
+					$(callerObj).trigger('loginResult', [status, result]);
 				});
 			} else {
 				Super.handleError('login', result);
-				$(callerObj).trigger('loginResult', [result]);
+				$(callerObj).trigger('loginResult', [status, result]);
 			}
 		}, false);
 	};
@@ -71,11 +71,10 @@ function ClassLoginController() {
 		Super.callApi('/apis/user/logout', 'GET', {}, function(status, result) {
 			if (status == 200) {
 				model.removeLoginInfo();
-				$(callerObj).trigger('logoutResult', [200]);
 			} else {
 				Super.handleError('logout', result);
-				$(callerObj).trigger('logoutResult', [result.status]);
 			}
+			$(callerObj).trigger('logoutResult', [result.status]);
 		}, false);
 	};
 	

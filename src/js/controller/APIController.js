@@ -47,14 +47,13 @@ module.exports = function() {
 			}
 			
 			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
+				//console.log(url, data, textStatus, jqXHR);
 				loadingFlag = false;
 				callback.call(this, jqXHR.status, data);
 			}).fail(function(jqXHR, textStatus, errorThrown) {
+				//console.log(url, jqXHR, textStatus, errorThrown);
 				loadingFlag = false;
-				callback.call(this, {
-					status: jqXHR.status,
-					message: errorThrown
-				});
+				callback.call(this, jqXHR.status, jqXHR.responseJSON);
 			});
 		}
 	};

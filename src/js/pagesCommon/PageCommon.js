@@ -15,6 +15,8 @@ module.exports = function() {
 
 	var loginDataModel = require('../model/LoginModel');
 	var loginData = loginDataModel.loginData();
+
+	var popupCallbackFunction;
 	
 	var callerObj = {
 		/**
@@ -23,14 +25,26 @@ module.exports = function() {
 		init: init,
 		/**
 		 * 메시지 팝업 오픈
+		 * @param {string} title 팝업 타이틀
+		 * @param {string} subTitle 팝업 서브타이틀
+		 * @param {string} popupContent 팝업 내용
+		 * @param {number|string} width 폭
+		 * @param {string} userClass 추가 클래스
 		 */
 		messagePopup: messagePopup,
 		/**
-		 * HTML 팝업 오픈
+		 * HTML 팝업 오픈 (src, width, userClass)
+		 * @param {string} src 팝업 내용 HTML URL
+		 * @param {number|string} width 폭
+		 * @param {string} userClass 추가 클래스
 		 */
 		htmlPopup: htmlPopup,
 		/**
-		 * 육각형 Alert 팝업 오픈
+		 * 육각형 Alert 팝업 오픈  title, description, buttonCaption, callback
+		 * @param {string} title 팝업 타이틀
+		 * @param {string} description 팝업 본문
+		 * @param {string} buttonCaption 버튼 캡션
+		 * @param {string|function} callback 버튼 눌렀을 때 실행할 함수 or 넘길 링크 주소
 		 */
 		alertPopup: alertPopup,
 		/**
@@ -165,11 +179,32 @@ module.exports = function() {
 		openPopup(src, width, userClass);
 	};
 
-	function alertPopup(title, description, buttonCaption) {
+	function alertPopup(title, description, buttonCaption, callback) {
+		console.log(typeof(callback));
+		
+		var linkUrl;
+		var customClass;
+		popupCallbackFunction = null;
+
+		switch(typeof(callback)) {
+			case 'undefined':
+				linkUrl = '#';
+				customClass = 'popClose';
+				break;
+			case 'string':
+				linkUrl = callback;
+				customClass = '';
+				break;
+			case 'function':
+				linkUrl = '';
+				customClass = 'popCallback';
+				popupCallbackFunction = callback;
+				break;
+		}
 		var inline = '<div class="popHex cardSize01"><div class="hexagon"><div class="hexTop"><span></span></div><div class="hexBottom"><span></span></div></div>';
 		inline += '<div class="cardCon"><h4 class="popTit">'+title+'</h4>';
 		inline += '<p class="popSub">'+description+'</p>';
-		inline += '<p class="btnWrap"><a href="#" class="btnSizeM btnColor02">'+buttonCaption+'</a></p>';
+		inline += '<p class="btnWrap"><a href="'+linkUrl+'" class="btnSizeM btnColor02 '+customClass+'">'+buttonCaption+'</a></p>';
 		inline += '</div></div>';
 
 		openPopup(inline, 280, 'hexAlert');
@@ -198,6 +233,14 @@ module.exports = function() {
 			initialWidth: "0",
 			initialHeight: "0",
 			onComplete: function() {
+				$('.popClose').click(function(e) {
+					e.preventDefault();
+					$.colorbox.close();
+				});
+				$('.popCallback').click(function(e) {
+					e.preventDefault();
+					popupCallbackFunction.call();
+				});
 				$('.popScroll').css('height', winH-490+'px');
 				$.colorbox.resize();
 			}

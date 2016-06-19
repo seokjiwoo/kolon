@@ -32,34 +32,7 @@ module.exports = function() {
 		
 		$('#popAgree01').click(getTermsContent);
 		$('#popAgree02').click(getTermsContent);
-		
-		$('#loginForm').submit(function(e) {
-			e.preventDefault();
-
-			if (util.checkVaildEmail($('#inputName').val()) == false) {
-				Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
-			} else {
-				if (enteredEmailAdress != $('#inputName').val()) forceLoginFlag = false;
-				enteredEmailAdress = $('#inputName').val();
-				Mailcheck.run({
-					email: enteredEmailAdress,
-					suggested: function(suggestion) {
-						if (!forceLoginFlag) {
-							forceLoginFlag = true;
-							var enteredMail = enteredEmailAdress.split('@');
-							Super.Super.alertPopup('메일 주소를 다시 확인해 주세요.', '입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?', '확인');
-						} else {
-							controller.login(enteredEmailAdress, $('#inputPW').val());
-						}
-					},
-					empty: function() {
-						controller.login(enteredEmailAdress, $('#inputPW').val());
-					}
-				});
-			}
-			
-			e.stopPropagation();
-		});
+		$('#loginForm').submit(loginHandler);
 	};
 	
 	
@@ -103,18 +76,50 @@ module.exports = function() {
 			$('#socialLogin-'+eachService.socialName).attr('href', eachService.authUrl);
 		}
 	};
+
+	/**
+	 * 로그인 or 회원가입 요청
+	 */
+	function loginHandler(e) {
+		e.preventDefault();
+
+		if (util.checkVaildEmail($('#inputName').val()) == false || $.trim($('#inputPW').val()) == '') {
+			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
+		} else {
+			if (enteredEmailAdress != $('#inputName').val()) forceLoginFlag = false;
+			enteredEmailAdress = $('#inputName').val();
+			Mailcheck.run({
+				email: enteredEmailAdress,
+				suggested: function(suggestion) {
+					if (!forceLoginFlag) {
+						forceLoginFlag = true;
+						var enteredMail = enteredEmailAdress.split('@');
+						Super.Super.alertPopup('메일 주소를 다시 확인해 주세요.', '입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?', '확인');
+					} else {
+						controller.login(enteredEmailAdress, $('#inputPW').val());
+					}
+				},
+				empty: function() {
+					controller.login(enteredEmailAdress, $('#inputPW').val());
+				}
+			});
+		}
+		
+		e.stopPropagation();
+	};
 	
 	/**
-	 * 로그인 완료 이벤트 핸들링
+	 * 로그인 or 회원가입 완료 이벤트 핸들링
 	 */
-	function loginCompleteHandler(e, status) {
+	function loginCompleteHandler(e, status, response) {
+		console.log(response);
 		switch(status) {
 			case 200:
 				//alert('로그인 성공');
 				location.href = '/';
 				break;
 			default:
-				alert('로그인 실패, code: '+status);
+				Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 				break;
 		}
 	};
