@@ -64,9 +64,9 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 
 #top .searchWrap .searchSet{position: relative;float: right;width: 35%;padding:5px 40px 5px 20px;background: #fff;border-radius:20px;}
 #top .searchWrap #searchTxt{width: 100%;border:0;height: 28px;line-height: 28px;}
-#top .searchWrap button{position: absolute;top:6px;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/btn_search.png') no-repeat center;border:0;vertical-align: middle;}
+#top .searchWrap button{position: absolute;top:6px;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/btn_search02.png') no-repeat center;border:0;vertical-align: middle;}
 
-#top .searchWrap .recomand{background: #f1645c;}
+#top .searchWrap .recomand{background: #333;}
 #top .searchWrap .recomand .keyTit {color: #fff;}
 #top .searchWrap .recomand a{color: #fff}
 #top .searchWrap .recomand .keyword{height: 15px;padding-top: 14px;}
