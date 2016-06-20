@@ -26,6 +26,9 @@
     "jquery-colorbox": "^1.6.4",
     "jQuery.dotdotdot": "dotdotdot#^1.8.1",
     "jquery-ui": "1.11.4",
-    "jquery-outside-events": "*"
+    "jquery-outside-events": "*",
+    "swf-jquery": "^1.2.0",
+    "exif-js": "^2.1.1",
+    "modernizr": "^3.3.1"
   }
 }
