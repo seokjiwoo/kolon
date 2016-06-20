@@ -153,7 +153,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .formList > li{overflow: hidden;border-bottom:1px solid #e8e8e8;}
 .formList .inputTit{display: inline-block;width: 100px;margin-right: 25px;padding: 25px 40px;vertical-align: middle;background: #f7f7f7;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000}
 .formList #joinId{width:360px; }
-.formList  select{width:80px;padding: 10px 10px;border:1px solid #d6d6d6; border-radius: 7px;color: #999;}
+.formList  select{width:80px;padding: 10px 10px;border:1px solid #d6d6d6; /*border-radius: 7px;*/color: #999;}
 .formList .joinBirth{margin-right:15px;}
 .formList .birth .inputTit{float: left;padding: 25px 40px 50px;}
 .formList .birth > div{float: left;margin:10px 0;}
@@ -162,7 +162,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"]
-{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #999;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+{width:230px;margin-right:10px;padding: 10px 20px;border:1px solid #d1d1d1;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container input.inputL{width: 357px;}
 
 .container input[type="text"].pullSize,
