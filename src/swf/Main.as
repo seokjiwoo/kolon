@@ -11,13 +11,11 @@
 	import ui.ContextMenuVN;
 	import flash.ui.ContextMenu;
 	
-	/**
-	 * @author 	Fishingtree - Dev( hkroh )
-	 * @date 	2014. 09.
-	 * @description
-	 * 	로컬 이미지 > Preview & Upload
-	 * 	브라우저 호환성을 고려 IE 하위버전이나 PC Web에서 사용
-	 */
+	import flash.utils.ByteArray;
+	import flash.geom.Rectangle;
+	
+	import com.hurlant.util.*;
+	
 	public class Main extends MovieClip 
 	{
 		private var _contextMenu				:ContextMenuVN = new ContextMenuVN( this );
@@ -32,6 +30,12 @@
 		public var sp_event_bg 					:MovieClip;
 		
 		private var _isSelImg 					:Boolean = false;
+		private var _bs64 						:String = '';
+		private var _bs64Type 					:String = '';
+		
+		private var SEL_FILE_TYPE 				:FileFilter;
+		private var UPLOAD_URL 					:String;
+		private var UPLOAD_JS 					:Boolean = false;
 		
 		public function Main():void 
 		{
@@ -47,98 +51,73 @@
 			
 			removeEventListener( Event.ADDED_TO_STAGE, init );
 			
-			this._containerMc = this._containerMc;			
+			this._containerMc = MovieClip( this._containerMc );
 			this._btnSelect = SimpleButton( this._btnSelect );
 			
+			SEL_FILE_TYPE = Config.SEL_FILE_TYPE;
+			UPLOAD_URL = Config.UPLOAD_URL;
+			
 			setStage();
-			//setCallback();
+			setCallback();
 			setBtn();
 			setfileRef();
-		}
-		
-		private function viewStage( $idx:int ):void
-		{
-			trace( 'viewStage : ', $idx );
-			switch( $idx ) {
-				case 0:
-					this.mc_upload.visible = true;
-					this.mc_preview.visible = false;
-					this.mc_preview.alpha = 0;
-					_isSelImg = false;
-					break;
-				case 1:
-					this.mc_upload.visible = false;
-					this.mc_preview.visible = true;
-					this.mc_preview.alpha = 1;
-					_isSelImg = true;
-					ExternalInterface.call( 'trackingCode', '121' );
-					break;
-			}
-			
-			
-		}
-		
-		private function viewLoading( $flag:Boolean ):void
-		{
-			this.mc_loading.visible = $flag;
-			if ( $flag ) {
-				this.mc_loading.alpha = 1;
-				this.mc_loading.gotoAndPlay( 1 );
-			} else {
-				this.mc_loading.alpha = 0;
-			}
 		}
 		
 		private function setCallback():void 
 		{
 			if( ExternalInterface.available ) {
-				ExternalInterface.addCallback( 'sendToFlashEx', addCallbackListener );
+				ExternalInterface.addCallback( 'callFlash', addCallbackListener );
 				
 				ExternalInterface.call( 'FLASH.trace', Config.FILE_NAME + 'addCallback Setting!' );
 			} else {
 				ExternalInterface.call( 'FLASH.trace', Config.FILE_NAME + 'addCallback Setting Error!' );
 			}
 			
-			ExternalInterface.call( 'FLASH.eventInit' );
+			ExternalInterface.call( 'FLASH.eventCallback', 'init' );
 		}
 		
 		private function addCallbackListener( $type:String, $value:Object )
 		{
 			ExternalInterface.call( 'FLASH.trace', 'addCallbackListener', $type, $value );
-			/*
 			switch( $type ) {
-				case 'init':
+				case 'setFilter':
+					SEL_FILE_TYPE = new FileFilter($value.filter, $value.type);
+					break;
+				case 'setUpload':
+					if ($value.url) {
+						UPLOAD_URL = $value.url;
+					}
+					
+					if ($value.jsCallBack) {
+						UPLOAD_JS = $value.jsCallBack;
+					}
+					break;
+				case 'isSelected':
+					return _isSelImg;
+					break;
+				case 'cancel':
+					removeContainer();
 					_isSelImg = false;
-					_isImgCD = '';
-					removeContainer();
-					viewStage( 0 );
-					setBackground();
-					break;
-				case 'userInfo':
-					_userInfo = $value;
-					break;
-				case 'img_cd':
-					_isImgCD = String( $value );
-					removeContainer();
-					viewStage( 0 );
-					ExternalInterface.call( 'trackingCode', '120' );
-					setBackground();
-					break;
-				case 'kor_word':
-					_korWord = String( $value );
+					_bs64 = '';
 					break;
 				case 'upload':
 					if ( !_isSelImg ) {
-						ExternalInterface.call( 'FLASH.eventAlert', '이미지가 선택되지 않았습니다.' );
-						return;
+						return false;
+					} else {
+						if (UPLOAD_JS) {
+							return { bs64 : _bs64, type : _bs64Type };
+						} else {
+							fileRefUpload();
+						}
 					}
-					fileRefUpload();
 					break;
 			}
-			*/
 		}
+		
 		private function setBtn():void 
 		{
+			_btnSelect.width = stage.stageWidth;
+			_btnSelect.height = stage.stageHeight;
 			_btnSelect.addEventListener( MouseEvent.CLICK, btnSelectClick );
 		}
 		
@@ -158,47 +137,19 @@
 		
 		private function fileRefUpload():void 
 		{
-			/*
-			var header:URLRequestHeader = new URLRequestHeader( "enctype", "multipart/form-data" );
-			var urlVars:URLVariables = new URLVariables();
-			urlVars.category = _isImgCD;
-			urlVars.img_cd = _isImgCD;
-			urlVars.kor_word = _korWord || '';
-			urlVars.uid = _userInfo.mem_id;
-			urlVars.ugb = _userInfo.mem_type;
-			
+			var header:URLRequestHeader = new URLRequestHeader( 'enctype', 'multipart/form-data' );
+			var urlVars:URLVariables = new URLVariables();			
 			var urlRequest:URLRequest = new URLRequest();
 			urlRequest.method = URLRequestMethod.POST;
 			urlRequest.data = urlVars;
 			urlRequest.requestHeaders.push( header );
-			//urlRequest.contentType = 'multipart/form-data';
-			urlRequest.url = Config.UPLOAD_URL;
+			urlRequest.url = UPLOAD_URL;
 			_fileRef.upload( urlRequest, 'uploadFile' );
-			
-			this.viewLoading( true );
-			*/
 		}
 		
 		private function fileRefUploaded( $e:DataEvent ):void
 		{
-			//저장 이름:E:\WEBSITE\WWW.PLAYSHOT2014.COM\upload\UPFOLDER\IMG_9999.JPG<br>파일 크기:
-			trace( 'DataEvent.UPLOAD_COMPLETE_DATA : ', $e.data );
-			ExternalInterface.call( 'EVENT.eventCallback', $e.data );
-			this.viewLoading( false );
-			return;
-			var data:String = $e.data.toString();
-			data = data.split( '저장 이름:' )[ 1 ];
-			data = data.split( '<br>파일 크기' )[ 0 ];
-			data = data.split( '\\' ).join( '/' );
-			data = data.split( 'E:/WEBSITE/' )[ 1 ];
-			trace( data );
-			ExternalInterface.call( 'FLASH.trace', 'DataEvent.UPLOAD_COMPLETE_DATA : ', data );
-			
-			if ( data ) {
-				ExternalInterface.call( 'EVENT.eventCallback', { 'status' : 'success', 'img' : data } );
-			}
-			
-			this.viewLoading( false );
+			ExternalInterface.call( 'FLASH.eventCallback', 'uploadDone', $e);
 		}
 		
 		private function fileRefLoadComplete( $e:Event ):void
@@ -206,6 +157,10 @@
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener( Event.COMPLETE, loadBytesComplete );
 			loader.loadBytes( _fileRef.data );
+			
+			_bs64 = Base64.encodeByteArray( _fileRef.data );
+			_bs64Type = _fileRef.type;
+			ExternalInterface.call( 'FLASH.eventCallback', 'bs64', { bs64 : _bs64, type : _bs64Type });
 		}
 		
 		private function removeContainer():void
@@ -219,12 +174,10 @@
 		private function loadBytesComplete( $e:Event ):void
 		{
 			var loaderInfo:LoaderInfo = $e.target as LoaderInfo;
-			loaderInfo.removeEventListener( Event.COMPLETE, loadBytesComplete );
+			removeContainer();
 			
-			//removeContainer();
-			
-			var viewWidth:int = 314;
-			var viewHeight:int = 233;
+			var viewWidth:int = stage.stageWidth;
+			var viewHeight:int = stage.stageHeight;
 			var imgWidth:Number = loaderInfo.content.width;
 			var imgHeight:Number = loaderInfo.content.height;
 			var imgScaleX:Number = 1;
@@ -260,7 +213,6 @@
 			loaderInfo.content.y = ( viewHeight - loaderInfo.content.height ) / 2;
 			
 			_containerMc.addChild( loaderInfo.content );
-			//viewStage( 1 );
 			_isSelImg = true;
 		}
 		
@@ -271,15 +223,13 @@
 		
 		private function btnSelectClick( $e:MouseEvent ):void
 		{
-			_fileRef.browse( [ Config.SEL_FILE_TYPE ] );
+			//new FileReferenceList().browse( [ SEL_FILE_TYPE ] );
+			_fileRef.browse( [ SEL_FILE_TYPE ] );
 		}
 		
 		private function btnRemoveClick( $e:MouseEvent ):void
 		{
 			removeContainer();
-			ExternalInterface.call( 'trackingCode', '122' );
-			ExternalInterface.call( 'trackingCode', '120' );
-			viewStage( 0 );
 		}
 		
 		private function setStage():void 
