@@ -12,22 +12,24 @@ $(document).ready(function() {
 	
 	switch(pageId) {
 		case 'member-login':
-			PageModuleClass = require('./pages/Login.js');
+			PageModuleClass = require('./pages/member/Login.js');
 			break;
 		case 'member-logout':
-			PageModuleClass = require('./pages/Logout.js');
+			PageModuleClass = require('./pages/member/Logout.js');
 			break;
 		case 'member-join':
-			PageModuleClass = require('./pages/Join.js');
+			PageModuleClass = require('./pages/member/Join.js');
 			break;
 		case 'member-findLoginInformation':
-			PageModuleClass = require('./pages/FindLoginInformation.js');
+			PageModuleClass = require('./pages/member/FindLoginInformation.js');
 			break;
 		case 'member-findLoginPwReset':
-			PageModuleClass = require('./pages/ResetPassword.js');
+			PageModuleClass = require('./pages/member/ResetPassword.js');
 			break;
+
+			
 		case 'magazine-list':
-			PageModuleClass = require('./pages/MagazineList.js');
+			PageModuleClass = require('./pages/magazine/MagazineList.js');
 			break;
 		
 
@@ -62,5 +64,5 @@ $(document).ready(function() {
 	}
 	
 	pageModule = PageModuleClass();
-	pageModule.init();
+	pageModule.init(pageId);
 });

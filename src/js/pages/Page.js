@@ -5,6 +5,7 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var lnbScroller;
+	var pageId;
 
 	var callerObj = {
 		/**
@@ -19,18 +20,20 @@ module.exports = function() {
 	
 	return callerObj;
 	
-	function init() {
+	function init(_pageId) {
+		pageId = _pageId;
 		Super.init();
 		
 		// common
 		initMenu();
 		initFloating();
+		initTopBanner();
+
 		opinionToggle();
 		initCardRadio();
 		btnDel();
 		tableHeight()
 		conFirm();
-		bannerClose();
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -56,6 +59,9 @@ module.exports = function() {
 		$('.tabType01 li').css('width',100/countMenu+'%');
 	};
 	
+	/**
+	 * GNB/LNB 초기화
+	 */
 	function initMenu() {
 		if (Super.loginData == null) {
 			// 로그인 상태가 아닐 때
@@ -98,7 +104,7 @@ module.exports = function() {
 			e.preventDefault();
 			$('#lnbWrapper').animate({'left':'-285px'}, 500);
 		});
-		$('.depth01').on('click', function(e) {//lnb menu drop-down
+		$('.depth01.toggle').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
 			$(this).siblings().slideToggle(400, function() {
 				console.log(';;;');
@@ -144,9 +150,41 @@ module.exports = function() {
 			}else{
 				$('.topMenu').css('background','none');
 			}
+			if ($(document).scrollLeft() > 0){
+				$('.topMenu').css('margin-left','-' + $(document).scrollLeft() + 'px');
+			}
+			if ($(window).width() > 1239){
+				$('.topMenu').css('margin-left','0');
+			}
 		});
 	};
+
+	/**
+	 * 상단 배너영역 초기화
+	 */
+	function initTopBanner() {
+		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함.
+
+		if (showBannerFlag) {
+			$('#topBanner').show();
+			$('#closeTopBannerButton').click(hideTopBanner);
+		} else {
+			hideTopBanner();
+		}
+	};
+
+	/**
+	 * 상단 배너영역 숨기기
+	 */
+	function hideTopBanner(e) {
+		$('#topBanner').hide();
+		$('.main .container').css('padding-top','0');
+		$('.lnbWrapper').css('top', '0');
+	};
 	
+	/**
+	 * 우측하단 플로팅버튼 메뉴 초기화
+	 */
 	function initFloating(){
 		$('#floatingToggle').on('click', function(e) {// floating menu drop-down
 			e.preventDefault();
@@ -154,19 +192,19 @@ module.exports = function() {
 				$(this).removeClass('opened');
 				$('#floatingMenu').find('.menuTit').animate({'right':'3px'},50,
 				function(){
-					$('.floating04').animate({'top':'0'}, {
+					$('.floating04').animate({'width':'0'}, {
 						duration: 300, 
 						easing: 'easeInBack'
 					});
-					$('.floating03').animate({'top':'0'}, {
+					$('.floating03').animate({'width':'0'}, {
 						duration: 400, 
 						easing: 'easeInBack'
 					});
-					$('.floating02').animate({'top':'0'}, {
+					$('.floating02').animate({'width':'0'}, {
 						duration: 500, 
 						easing: 'easeInBack'
 					});
-					$('.floating01').animate({'top':'0'}, {
+					$('.floating01').animate({'width':'0'}, {
 						duration: 600, 
 						easing: 'easeInBack'
 					});
@@ -184,28 +222,28 @@ module.exports = function() {
 					duration: 300, 
 					easing: 'easeOutBack',
 					complete: function(){
-						$(this).find('.menuTit').animate({'right':'60px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 				$('.floating03').queue('fx',[]).stop().animate({'top':'-125px'}, { 
 					duration: 400, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).stop().find('.menuTit').animate({'right':'60px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 				$('.floating02').queue('fx',[]).stop().animate({'top':'-185px'}, {
 					duration: 500, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).find('.menuTit').animate({'right':'60px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 				$('.floating01').queue('fx',[]).stop().animate({'top':'-245px'}, {
 					duration: 600, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).find('.menuTit').animate({'right':'60px'},50)
+						$(this).animate({'width':'100px'},50);
 					}
 				});
 			}
@@ -315,12 +353,5 @@ module.exports = function() {
 			var tbHC = $(this).height() - 115;
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
-	}
-
-	function bannerClose(){ // main banner 닫기
-		$('.bannerClose').click(function(){
-			$(this).parent().parent().addClass('bannerHide');
-			$('.main .container').css('padding-top','0')
-		});
 	}
 }

@@ -1,18 +1,18 @@
 /* global $ */
 
 module.exports = function() {
-	var SuperClass = require('./Page.js');
+	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
-	var loginController = require('../controller/LoginController');
+	var loginController = require('../../controller/LoginController');
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	
-	var infoController = require('../controller/MemberInfoController');
+	var infoController = require('../../controller/MemberInfoController');
 	$(infoController).on('findIdResult', findIdResultHandler);
 	$(infoController).on('findPwResult', findPwResultHandler);
 	$(infoController).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
 	$(infoController).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
-	var util = require('../utils/Util.js');
+	var util = require('../../utils/Util.js');
 	
 	var socialName = {
 		"facebook": "페이스북",

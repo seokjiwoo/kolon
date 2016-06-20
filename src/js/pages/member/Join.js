@@ -1,15 +1,15 @@
 /* global $ */
 
 module.exports = function() {
-	var SuperClass = require('./Page.js');
+	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
-	var controller = require('../controller/MemberInfoController');
+	var controller = require('../../controller/MemberInfoController');
 	$(controller).on('termsListResult', termsListHandler);
 	$(controller).on('termsResult', termsContentHandler);
 	$(controller).on('checkEmailResult', checkEmailResultHandler);
 	$(controller).on('joinResult', joinResultHandler);
-	var util = require('../utils/Util.js');
+	var util = require('../../utils/Util.js');
 	
 	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{9,16}$/i;
 	var phoneNumberRule = /^[0-9]{10,12}$/i;

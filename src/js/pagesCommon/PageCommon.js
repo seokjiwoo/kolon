@@ -11,9 +11,12 @@ module.exports = function() {
 		"1200": 1200
 	};
 	var winH;
+	var pageId;
 
 	var loginDataModel = require('../model/LoginModel');
 	var loginData = loginDataModel.loginData();
+
+	var popupCallbackFunction;
 	
 	var callerObj = {
 		/**
@@ -22,14 +25,26 @@ module.exports = function() {
 		init: init,
 		/**
 		 * 메시지 팝업 오픈
+		 * @param {string} title 팝업 타이틀
+		 * @param {string} subTitle 팝업 서브타이틀
+		 * @param {string} popupContent 팝업 내용
+		 * @param {number|string} width 폭
+		 * @param {string} userClass 추가 클래스
 		 */
 		messagePopup: messagePopup,
 		/**
-		 * HTML 팝업 오픈
+		 * HTML 팝업 오픈 (src, width, userClass)
+		 * @param {string} src 팝업 내용 HTML URL
+		 * @param {number|string} width 폭
+		 * @param {string} userClass 추가 클래스
 		 */
 		htmlPopup: htmlPopup,
 		/**
-		 * 육각형 Alert 팝업 오픈
+		 * 육각형 Alert 팝업 오픈  title, description, buttonCaption, callback
+		 * @param {string} title 팝업 타이틀
+		 * @param {string} description 팝업 본문
+		 * @param {string} buttonCaption 버튼 캡션
+		 * @param {string|function} callback 버튼 눌렀을 때 실행할 함수 or 넘길 링크 주소
 		 */
 		alertPopup: alertPopup,
 		/**
@@ -40,8 +55,15 @@ module.exports = function() {
 	
 	return callerObj;
 	
-	function init() {
+	function init(_pageId) {
+		pageId = _pageId;
 		winH = $(window).height();
+
+		Mailcheck.run({
+			domains: ['gmail.com', 'naver.com', 'hanmail.net'],
+			secondLevelDomains: ['domain', 'yetanotherdomain'],
+			topLevelDomains: ["com", "net", "org", "co.kr"]
+		});
 		
 		initTab();
 		initTabContentLayout();
@@ -157,47 +179,36 @@ module.exports = function() {
 		openPopup(src, width, userClass);
 	};
 
-	function alertPopup(title, description, buttonCaption) {
+	function alertPopup(title, description, buttonCaption, callback) {
+		console.log(typeof(callback));
+		
+		var linkUrl;
+		var customClass;
+		popupCallbackFunction = null;
+
+		switch(typeof(callback)) {
+			case 'undefined':
+				linkUrl = '#';
+				customClass = 'popClose';
+				break;
+			case 'string':
+				linkUrl = callback;
+				customClass = '';
+				break;
+			case 'function':
+				linkUrl = '';
+				customClass = 'popCallback';
+				popupCallbackFunction = callback;
+				break;
+		}
 		var inline = '<div class="popHex cardSize01"><div class="hexagon"><div class="hexTop"><span></span></div><div class="hexBottom"><span></span></div></div>';
 		inline += '<div class="cardCon"><h4 class="popTit">'+title+'</h4>';
 		inline += '<p class="popSub">'+description+'</p>';
-		inline += '<p class="btnWrap"><a href="#" class="btnSizeM btnColor02">'+buttonCaption+'</a></p>';
+		inline += '<p class="btnWrap"><a href="'+linkUrl+'" class="btnSizeM btnColor02 '+customClass+'">'+buttonCaption+'</a></p>';
 		inline += '</div></div>';
 
 		openPopup(inline, 280, 'hexAlert');
-		/*
-		<div class="popHex cardSize02">
-			<div class="hexagon">
-				<div class="hexTop"><span></span></div>
-				<div class="hexBottom"><span></span></div>
-			</div>
-			<div class="cardCon">
-				<h3 class="popTit">1644-1234</h3>
-				<p class="popSub">궁금한 것은 언제든지 물어보세요</p>
-				<form action="">
-					<fieldset class="popCon">
-						<legend class="hide">전화상담 번호 입력</legend>
-						<p class="productInfo">보고있는 상품 번호는<br><b>AB000012345</b> 입니다.</p>
-						<p class="phoneWrp">
-							<select name="" id="">
-								<option value="010">010</option>
-								<option value="011">011</option>
-								<option value="012">012</option>
-								<option value="012">019</option>
-							</select>
-							<label for="phone01" class="hide">전화번호 앞자리</label>
-							<input type="text" id="phone01" maxlength="4">
-							<label for="phone02" class="hide">전화번호 뒷자리</label>
-							<input type="text" id="phone02" maxlength="4">
-						</p>
-						<button type="submit" class="popSubmit">상담받기</button>
-					</fieldset>
-				</form>
-				<p class="note"><b>상담 받기 버튼</b>을 누르시면 <br>상담원이 바로 고객님께 연락 드리겠습니다. <br><b>연락 받을 전화 번호를 확인해 주세요.</b></p>
-			</div>
-		</div>
-		*/
-	}
+	};
 	
 	function openPopup(content, width, userClass) {
 		var popupFile = false;
@@ -222,6 +233,14 @@ module.exports = function() {
 			initialWidth: "0",
 			initialHeight: "0",
 			onComplete: function() {
+				$('.popClose').click(function(e) {
+					e.preventDefault();
+					$.colorbox.close();
+				});
+				$('.popCallback').click(function(e) {
+					e.preventDefault();
+					popupCallbackFunction.call();
+				});
 				$('.popScroll').css('height', winH-490+'px');
 				$.colorbox.resize();
 			}
