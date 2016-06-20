@@ -26,10 +26,118 @@
 		<button type="button" class="btn btnSizeM btnColor04 btnShadow js-cancel">취소</button>
 		<button type="button" class="btn btnSizeM btnColor02 btnShadow js-submit">프로필 사진으로 설정</button>
 	</div>
+	<img alt="" id="test">
 </div>
 <script>
 	;(function(win, $) {
 		'use strict';
+
+		if (!win.atob) {
+			win.console.log('atob not defined');
+			win.atob = Base64.atob;
+			win.console.log(win.atob, Base64.atob, 'atob defined');
+		}
+
+		if ('undefined' === typeof win.FLASH) {
+			win.FLASH = {};
+		}
+
+		win.FLASH = (function() {
+			return {
+				eventInit : function() {
+					win.console.log('FLASH.eventInit', arguments);
+				},
+				byteArrary : function(type, base64) {
+
+					win.console.log('FLASH.byteArrary', 'data:image/'+ type + ';base64,' + base64);
+					base64 = 'data:image/'+ type + ';base64,' + base64;
+					$('#test').load(function() {
+						// win.console.log( 'All loaded', $(this), this );
+						win.console.log( 'All loaded' );
+						EXIF.getData(this, function(e) {
+							var exif = EXIF.getAllTags(this);
+							win.console.log('exif.Orientation', exif.Orientation);
+						});
+					})
+					.error( function() {
+						win.console.log( 'Bad things' );
+					}).attr('src', base64);
+					// var imgObj = new Image();
+					// imgObj.onload = function() {
+					// 	win.console.log('onload~~', this);
+					// }
+					// imgObj.src = base64;
+					// EXIF.getData($('#test'), function(e) {
+					// 	var exif = EXIF.getAllTags(this);
+					// 	win.console.log('exif.Orientation', exif.Orientation);
+					// });
+				},
+				trace : function() {
+					win.console.log('FLASH.trace', arguments);
+				},
+				eventCallback : function(type, values) {
+					win.console.log('FLASH.eventCallback', arguments);
+					switch(type) {
+						case 'init':
+							win.console.log('init');
+							this.imageUpoader = $('#imageUpoader').get(0);
+							break;
+						case 'uploadDone':
+							win.console.log('uploadDone', values);
+							break;
+						case 'bs64':
+							win.console.log('bs64', values);
+							break;
+					}
+				},
+				callFlash : function(type, opts) {
+					opts = opts || {};
+					var callback = opts.callback || $.noop;
+					switch(type) {
+						case 'setFilter':
+							$value.filter, $value.type
+							/*
+							opts.values = {
+								filter : 'images (*.jpg, *.png)',
+								type : '*.jpg;*.png'
+							}
+							*/
+							callback(this.imageUpoader.callFlash('setFilter', opts.values));
+							break;
+						case 'setUpload':
+							/*
+							opts.values = {
+								url : '',
+								jsCallBack : true
+							}
+							*/
+							win.console.log(opts.values);
+							callback(this.imageUpoader.callFlash('setUpload', opts.values));
+							break;
+						case 'isSelected':
+							callback(this.imageUpoader.callFlash('isSelected', opts.values));
+							break;
+						case 'cancel':
+							callback(this.imageUpoader.callFlash('cancel', opts.values));
+							break;
+						case 'upload':
+							callback(this.imageUpoader.callFlash('upload', opts.values));
+							break;
+					}
+				}
+			};
+		})();
+
+		function _arrayBufferToBase64(uarr) {
+			var strings = [], chunksize = 0xffff;
+			var len = uarr.length;
+
+			for (var i = 0; i * chunksize < len; i++){
+				strings.push(String.fromCharCode.apply(null, uarr.subarray(i * chunksize, (i + 1) * chunksize)));
+			}
+
+			return strings.join('');
+		}
 
 		$(function() {
 			$.each($.flash, function(index, val) {
@@ -38,9 +146,9 @@
 			// $.flash.available
 			// win.console.log($.flash.hasVersion(9.1), $.flash.hasVersion(23));
 			$.flash.expressInstaller = '../images/swf/expressInstall.swf';
-			var swfPath = $.flash.hasVersion(23) ? '../images/swf/exampleFlash.swf' : $.flash.expressInstaller;
+			var swfPath = $.flash.hasVersion(9) ? '../images/swf/imagePreview.swf' : $.flash.expressInstaller;
 			// $.flash.expressInstaller = 'myFlashPath/expressInstall.swf';
-			$('.js-upload-container').css({ 'background' : '#ff0000' })
+			$('.js-upload-container').css({ 'background' : '#ffffff' })
 									.find('.js-holder')
 									.flash({
 										swf : swfPath,
@@ -61,11 +169,11 @@
 			var toggle = false;
 			$('.js-inp').on('click', function(e) {
 				e.preventDefault();
-				if (!toggle) {
-					$('#imageUpoader').get(0).creatureMove('left');
-				} else {
-					$('#imageUpoader').get(0).creatureMove('right');
-				}
+				// if (!toggle) {
+				// 	$('#imageUpoader').get(0).creatureMove('left');
+				// } else {
+				// 	$('#imageUpoader').get(0).creatureMove('right');
+				// }
 				toggle = !toggle;
 			});
 		});
