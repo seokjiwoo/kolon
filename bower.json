@@ -27,6 +27,7 @@
     "jQuery.dotdotdot": "dotdotdot#^1.8.1",
     "jquery-ui": "1.11.4",
     "jquery-outside-events": "*",
-    "mailcheck": "^1.1.1"
+    "mailcheck": "^1.1.1",
+    "fullpage.js": "^2.8.1"
   }
 }
