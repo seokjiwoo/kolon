@@ -28,6 +28,9 @@
     "jquery-ui": "1.11.4",
     "jquery-outside-events": "*",
     "mailcheck": "^1.1.1",
-    "fullpage.js": "^2.8.1"
+    "fullpage.js": "^2.8.1",
+    "swf-jquery": "^1.2.0",
+    "exif-js": "^2.1.1",
+    "modernizr": "^3.3.1"
   }
 }
