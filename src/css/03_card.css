@@ -12,10 +12,34 @@
 .hexBottom span {background-position: center bottom;}
 .hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
-.cardCon{position: relative;z-index: 4;top:0;display: block;width:265px;padding:80px 10px;color:#fefefe;}
+.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.9deg); position:absolute; top:42px; left:-19px; z-index:8; text-align:left;}
+.cardLine:after {content:''; width:0; position:absolute; top:4.54px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
+.cardLine p {font-size:14px; font-style:italic; color:#fff; line-height:130%;}
+
+.cardLine.bgColor01 { background:#cde1d5;}
+.cardLine.bgColor01 p {font-size:14px; color:#000;}
+.cardLine.bgColor01 p span {color:#fd665d;}
+.cardLine.bgColor01:after {border-bottom-color:#ff6460;}
+.cardLine.bgColor02 { background:#3a4660;}
+.cardLine.bgColor02:after {border-bottom-color:#c57751;}
+.cardLine.bgColor03 { background:#8feddd;}
+.cardLine.bgColor03:after {border-bottom-color:#ff9504;}
+.cardLine.bgColor04 { background:#b94b4a;}
+.cardLine.bgColor04:after {border-bottom-color:#5e5c74;}
+.cardLine.bgColor05 { background:#fdeed1;}
+.cardLine.bgColor05:after {border-bottom-color:#3a4c62;}
+.cardLine.bgColor06 { background:#f0fafc;}
+.cardLine.bgColor06:after {border-bottom-color:#6cc8df;}
+
+.cardCon{position: relative;z-index: 4;top:0;display: block;width:265px;padding:80px 10px;color:#000;}
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
 .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
 .cardCon .hoverCon{display: none;}
+a.cardCon .cardHover {display:none;}
+a.cardCon:hover .cardHover {position:absolute; top:0; left:0; display:block; z-index:4; display:block;}
+a.cardCon:hover .cardHover .cardCon {width:285px; margin:80px 0; padding:0; background:url('../images/bg_dim.png') 0 0 repeat;}
+a.cardCon:hover .cardHover:before {content:''; width:0; border-bottom:80px solid #000; border-right:143px solid transparent; border-left:143px solid transparent; position:absolute; top:0px; left:0; overflow:hidden; opacity: 0.5;}
+a.cardCon:hover .cardHover:after {content:''; width:0; border-top:80px solid #000; border-right:143px solid transparent; border-left:143px solid transparent; position:absolute; bottom:0px; left:0; overflow:hidden; opacity: 0.5;}
 .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2}
 .cardEnter img{display: block;}
 .cardRemove{position: absolute;top:20px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
@@ -26,9 +50,16 @@
 .cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
 .cardWrap .cardThumb img{display: block;width: 100%;}
 .cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:18px auto;background: #fff}
-.cardWrap .cardCat{position: relative;top:-30px;margin-bottom:10px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
+.cardWrap .cardCat{position: relative;margin-bottom:10px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
 .cardWrap .cardCat:before{content: '';display: block;width: 28px;height:28px;margin:0 auto;background: url('/images/ico_card_type.png') no-repeat;}
-.cardWrap .cardType01 .cardCat:before{background-position:0 0}
+.cardWrap .cardType01 {}
+.cardWrap .cardType01 .cardCat {color:#ff6460; font-style:italic; font-size:14px;}
+.cardWrap .cardType01 h2.cardTit {font-size:14px; line-height:20px;}
+.cardWrap .cardType01 h2.cardTit b {display:block;}
+.cardWrap .cardType01 h2.cardTit + p.cardPrice {margin-top:30px;}
+.cardWrap .cardType01 p.cardPrice {font-size:40px; font-style:italic; position:relative; display:inline-block;}
+.cardWrap .cardType01 p.cardPrice span {font-size:14px; position:absolute; bottom:-20px; right:0;}
+.cardWrap .cardType01 .cardCat:before {display:none;}
 .cardWrap .cardType02 .cardCat:before{background-position:-28px 0}
 .cardWrap .cardType03 .cardCat:before{background-position:-56px 0}
 .cardWrap .cardType11 .cardCat:before{background-position:-84px 0}
@@ -44,7 +75,7 @@
 .cardWrap .cardDetail .scrap:before{background-position:-25px -10px}
 .cardWrap .cardCollect {overflow: hidden;width:148px;margin:10px auto 0;}
 .cardWrap .cardCollect li{overflow: hidden;position: relative;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
-.cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer;background-color: #fff;border-radius: 50%;}
+.cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer;background-color: #eee;border-radius: 50%;}
 .cardWrap .cardCollect input{position: absolute;top: -100px;left: -100px}
 .cardWrap .cardCollect label:hover, .cardWrap .cardCollect .on label{background-color: #a9c700}
 .cardWrap .cardCollect .collect01 label{background-position:0 0}
@@ -78,7 +109,7 @@
 .cardSize02 .hexagon{height:324.55px;}
 .cardSize03{height:660px;}
 .cardSize03 .cardCon{height:500px;}
-.cardSize03 .hexagon{height: 503.455px;}
+.cardSize03 .hexagon{height: 494.455px;}
 .cardSize04{width:590px;height:745px;}
 .cardSize04 .cardCon{height: 585px;}
 .cardSize04 .hexagon{height: 412.455px;background-color: #fff;}
@@ -94,7 +125,6 @@
 .cardWrap .cardType04 .cardSub{margin-top:10px;font-family:'RobotoL','NotoSansL', sans-serif; }
 .cardWrap .cardType04 .cardIntro{font-size: 20px;}
 .cardWrap .cardType04 .cardIntro b{font-size: 40px;}
-.cardWrap .cardType04 a.cardCon:hover, .cardWrap .cardType05 a.cardCon:hover{background: url('../images/bg_dim.png')}
 
 .cardWrap .cardType05 .cardCon{color: #000;}
 .cardWrap .cardType05 .cardTit02{float: left;width:102px;padding:50px 10px 0 20px;font-size: 14px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: left;word-break: keep-all}
@@ -110,23 +140,20 @@
 .cardWrap .cardType05 .cardIntro b{font-size:40px;}
 .cardWrap .cardType05 .cardIntro:before{display: none;}
 
-.cardWrap .cardType05 .cardCon:hover{color: #fff;}
-.cardWrap .cardType05 .cardCon:hover .cardTit02{float: none;width:auto;padding:0 10px;margin:0px auto 5px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 20px;text-align: center;}
-.cardWrap .cardType05 .cardCon:hover .cardAuthorInfo{width: 100%;padding: 0;color: #ccc}
-.cardWrap .cardType05 .cardCon:hover .cardAuthorInfo b{color: #fff}
-
-.cardWrap .cardType06{background-color: #f1645c;}
+.cardWrap .cardType06{}
 .cardWrap .cardType06 .cardDate{display: inline-block;margin-bottom:20px;padding:7px 20px;border:1px solid #b2b2b2;border-radius:15px;font-family:'RobotoM', sans-serif;font-size: 16px;color: #b2b2b2;}
 .cardWrap .cardType06 .cardThum{margin-top: 15px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.3em;}
 .cardWrap .cardType06 .cardThum img{display: block;margin: 0 auto 15px;}
 
-.cardWrap .cardType07{background: #f0f0f0;}
+.cardWrap .cardType07 .hexagon {width:283px; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
+.cardWrap .cardType07 .hexagon .hexTop {border-top:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
+.cardWrap .cardType07 .hexagon .hexBottom {border-left:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5;}
 .cardWrap .cardType07 .cardTit{color: #000;}
 .cardWrap .cardType07 .cardIntro{color: #666}
 .cardWrap .cardType07 .cardIntro:before{background:#666;}
 .cardWrap .cardType07 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}
 
-.cardWrap .cardType08{background-color: #f1645c;}
+.cardWrap .cardType08{}
 
 .cardWrap .cardType10{background: #f0f0f0;}
 .cardWrap .cardType10 .cardRemove{background-image: url('../images/btn_closeG.png');}
