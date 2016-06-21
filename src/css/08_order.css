@@ -21,7 +21,7 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb ul.tbList {width:161px;}
 .payTb ul.tbList li {width:148px;}
 .payTb dl {border:1px solid #e5e5e5; border-top:1px solid #666; float:left; margin:0;}
-.payTb dl.payS {width:358px;}
+.payTb dl.payS {width:366px;}
 .payTb dl.payS dt {width:40%;}
 .payTb dl.payS dd {width:60%;}
 .payTb dl.payS2 dt div,
@@ -29,11 +29,11 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb dl.payS2 dd div {width:186px; padding:0 30px;text-align:left;}
 .payTb dl.payS2 + dl.payS2 {border-top:0;}
 .payTb dl.payS2 + dl.payS2:after {content: ''; display:none;}
-.payTb dl.payL {width:728px; margin:10px 0 0;}
+.payTb dl.payL {width:731px;/* margin:10px 0 0;*/}
 .payTb dl.payL dd,
 .payTb dl.payL dd div {width:588px;}
-.payTb dl + dl {margin-left:10px;}
-.payTb dl dt {width:140px; background:#f8f8f8; float:left; font-size:14px; font-family: 'RobotoR','NotoSansR', sans-serif; font-weight:bold;}
+/*.payTb dl + dl {margin-left:10px;}
+*/.payTb dl dt {width:140px; background:#f8f8f8; float:left; font-size:14px; font-family: 'RobotoR','NotoSansR', sans-serif; font-weight:bold;}
 .payTb dl dd {width:216px; float:left; margin:0; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
 .payTb dl dt div,
 .payTb dl dd div {width:100%; height:114px; display:table-cell; vertical-align:middle; margin:0; font-family:'RobotoR','NotoSansR', sans-serif; color:#333; text-align:center;}
@@ -43,7 +43,7 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb ul.pointBul li {width:50%; float:left;}
 .payTb ul.pointBul li p.tbBul { padding-left:11px; margin-left:24px; background:url('../images/bul_dot.png') 0 17px no-repeat; text-align:left; display:inline-block; font-size:14px;}
 .payTb ul.pointBul li p.tbBul label + input[type=text] {margin:0 5px 0 10px;}
-.payTb ul.pointBul li p.pointCk {margin:5px 0 0 20PX; text-align:left;}
+.payTb ul.pointBul li p.pointCk {margin:5px 0 0 20px; text-align:left;}
 .payTb p.underTxt {margin:15px 0 0 40px; text-align:left;}
 .payTb dl.payHL div {height:156px;}
 .payTb dl.payHL2 div {height:200px;}
@@ -51,10 +51,10 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb ul.giveList li {width:50%; float:left; line-height:120%; text-align:left; font-family:'NotoSansR','RobotoR', sans-serif;}
 .payTb ul.giveList li b {font-family:'NotoSansB','RobotoB', sans-serif;}
 .payTb ul.giveList li.pc {float:right; text-align:right; padding-top:4px;}
-.payTb {width:733px; float:left; display:inline-block; text-align:left; position:relative;}
+.payTb {/*width:733px; */float:left; display:inline-block; text-align:left; position:relative;}
 .payTb dl.payS {position:relative;}
-.payTb dl.payS:after {content: ''; width:40px; height:40px; position: absolute; top:38px; right:-26px; z-index:99;}
-.payTbR {width:361px; float:right; overflow:hidden;}
+.payTb dl.payS:after {content: ''; width:40px; height:47px; position: absolute; top:33px; right:-20px; z-index:99;}
+.payTbR {/*width:361px; float:right;*/ overflow:hidden;}
 .payTbR dl.payS + dl.payS {margin:10px 0 0;}
 .payTb3 {width:100%;}
 .payTb3 dl.payS {}
@@ -71,14 +71,33 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb4 dl.payS dd ul.tbList li {width:124px; padding-left:6px;}
 .payTb4 dl.payS dd div.txtL {text-align:left; padding-left:5px;}
 .payTb4 {width:100%; margin-bottom:10px;}
-.payTb dl.payS.equal:after {background:url('../images/ico_order.png') 0 -40px no-repeat;}
-.payTb dl.payS.minus:after {background:url('../images/ico_order.png') 0 0 no-repeat;}
+.payTb dl.payS.equal:after {background:url('../images/ico_order2.png') 0 -47px no-repeat;}
+.payTb dl.payS.minus:after {background:url('../images/ico_order2.png') 0 0 no-repeat;}
 .payTb dl.payS.plus:after {background:url('../images/ico_order.png') 0 -80px no-repeat;}
 span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
 span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
 span.price.pointRed {font-size:30px;}
 span.price.fontL {font-size:22px;}
 span.price.fontS {font-size:14px;}
+
+.payTb.border{border:2px solid #000;}
+.payTb.border dl{width:364px;border:0;border-left:1px solid #000;}
+.payTb.border dl:first-child{border-left:0;}
+.payTb.border dl:first-child + dl + dl,
+.payTb.border dl:first-child + dl + dl dt{background:#f1645c;}
+.payTb.border dl:first-child + dl + dl dt div,
+.payTb.border dl:first-child + dl + dl dd div{color:#fff;}
+.payTb dl.boderGray{border-color:#e5e5e5;}
+.payTb dl.boderGray:first-child{border-right:0;}
+
+.payTb.border dl dd.totalwrap,
+.payTb.border dl dd.totalwrap div{width:100% !important;}
+.payTb.border dl dd.totalwrap div{display:block;}
+.payTb.border dl ul.totalList li{padding:18px 30px;border-top:1px solid #000;}
+.payTb.border dl ul.totalList li:first-child{border-top:0;}
+.payTb.border dl ul.totalList li:after{content:"";display:block;clear:both;}
+.payTb.border dl ul.totalList li em{float:left;display:inline-block;font-style:normal;font-family: 'RobotoR','NotoSansR',sans-serif;}
+.payTb.border dl ul.totalList li span.price{float:right;}
 
 .oder .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 
@@ -87,7 +106,7 @@ span.price.fontS {font-size:14px;}
 .oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
 .oder h3.subTit + .oderCont .tbSet {margin-top:20px;}
 .oder h3.subTit + .oderCont .tbSet.lineN {margin-top:0;}
-.oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
+.oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; /*border-radius:7px;*/ font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
 .oder .container input[type="checkbox"]{position: absolute;opacity: 0;}
 .oder .container textarea {width:743px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .oder .checkAgree {margin-top:18px;}
@@ -98,6 +117,7 @@ span.price.fontS {font-size:14px;}
 .oder .record th, .oder .record td {border-bottom: 1px solid #e1e1e1}
 .oder .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .oder .record td{padding: 15px;}
+.oder .record tr.border0 td{border:0;}
 
 .oder .oderCont {width:100%; display:inline-block;}
 .oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR','RobotoR', sans-serif;}
@@ -109,7 +129,7 @@ span.price.fontS {font-size:14px;}
 .oder .oderCont table.lineS ul.tbList2 li {padding-left:8px; color:#666; line-height:23px; background-position:0 9px;}
 .oder .oderCont table.lineS ul.tbList2 li + li {margin-top:0;}
 
-.oder .oderCont select{padding:10px 10px; border:1px solid #d6d6d6; border-radius:7px;color: #999;}
+.oder .oderCont select{padding:9px 10px; border:1px solid #d6d6d6; /*border-radius:7px;*/color: #999;}
 .oder .oderCont .underTxt {font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
 
 .oder .oderCont + h3.subTit {margin-top:39px; }

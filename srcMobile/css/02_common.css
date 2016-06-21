@@ -87,7 +87,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 /* form */
 .container input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"], select
-{width:100%;padding: 5px;border:1px solid #d1d1d1; border-radius: 7px;color: #999;font-size: 13px;line-height: 18px;}
+{width:100%;padding: 5px;border:1px solid #d1d1d1; /*border-radius: 7px;*/color: #999;font-size: 13px;line-height: 18px;}
 .phone select{width: 30%;}
 .phone input[type="text"]{width: 28%;}
 .phone label.hide{opacity: 0;}
@@ -99,10 +99,10 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .radioBox label.on:before{background-position: 0 -18px;}
 
 .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
-.checkbox {position: relative;margin-top:18px;}
-.checkbox label{font-size: 16px;color: #000;}
-.checkbox label:before{content: '';display: inline-block;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.checkbox label.on:before{background-color: #a9c700}
+.checkbox {position: relative;/*margin-top:18px;*/}
+.checkbox label{font-size: 12px;color: #666;}
+.checkbox label:before{content: '';display:inline-block;width:24px;height:24px;border:1px solid #ccc;margin-right:10px;vertical-align:middle;}
+.checkbox label.on:before{background:url('../images/ico_check.png') no-repeat center center;background-size:14px;}
 
 .listSquare{font-size: 14px;}
 .listSquare li{position: relative;margin-top:8px;padding-left: 10px;line-height: 1.3em;}

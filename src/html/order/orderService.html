@@ -223,9 +223,9 @@
 				<h3 class="subTit">결제 정보</h3>
 				<div class="oderCont">
 					<form method="post" action="/">
-						<div class="payTb payTbL">
+						<div class="payTb payTbL border">
 							<dl class="payS minus">
-								<dt><div>상품금액<br/>(상품가 + 시공지비)</div></dt>
+								<dt><div>상품금액</div></dt>
 								<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
 							</dl>
 							<dl class="payS equal">
@@ -237,15 +237,34 @@
 												<span class="tbListTit">기본할인</span>
 												<span><b>10,000</b>원</span>
 											</li>
-											<li>
+											<!-- <li>
 												<span class="tbListTit">포인트</span>
 												<span><b>3,000</b>원</span>
+											</li> -->
+										</ul>
+									</div>
+								</dd>
+							</dl>
+							<dl class="payS">
+								<!-- <dt><div>총 결제금액</div></dt> -->
+								<dd class="totalwrap">
+									<div>
+										<ul class="totalList">
+											<li>
+												<em>시공예정금액</em>
+												<span class="price"><b>1,720,000</b> 원</span>
+											</li>
+											<li>
+												<em>선결제금액(10%)</em>
+												<span class="price"><b>172,000</b> 원</span>
 											</li>
 										</ul>
 									</div>
 								</dd>
 							</dl>
-							<dl class="payL payHL2">
+						</div>
+						<div class="payTb payTbR">
+							<dl class="payL payHL2 boderGray">
 								<dt><div>시공상품<br/>구매 안내</div></dt>
 								<dd>
 									<div>
@@ -258,15 +277,7 @@
 									</div>
 								</dd>
 							</dl>
-						</div>
-						<div class="payTb payTbR">
-							<dl class="payS">
-								<dt><div>총 결제금액</div></dt>
-								<dd>
-									<div><span class="price"><b>2,602,500</b> 원</span></div>
-								</dd>
-							</dl>
-							<dl class="payS payHL2">
+							<dl class="payS payHL2 boderGray">
 								<dt><div>구매 혜택</div></dt>
 								<dd>
 									<div>
@@ -343,7 +354,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="tbSet oderTb lineN tbHV">
+										<!-- <div class="tbSet oderTb lineN tbHV">
 											<table>
 												<caption>신용카드 결제에 관한 상품금액, 할인금액, 총 결제금액 정보를 제공합니다.</caption>
 												<colgroup>
@@ -368,6 +379,47 @@
 														</td>
 													</tr>
 													<tr class="total">
+														<th scope="row">총 결제금액</th>
+														<td class="txtR">
+															<span class="price pointRed"><b>2,600,000</b> 원</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div> -->
+										<div class="tbSet02 tbHV">
+											<table>
+												<caption>신용카드 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
+												<colgroup>
+													<col style="width:22%;"/><col style="width:78%;"/>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row">주문금액</th>
+														<td class="txtR">
+															<span class="price"><b>2,602,500</b> 원</span>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">할인금액</th>
+														<td>
+															<ul class="tbList">
+																<li>
+																	<span class="tbListTit">기본할인</span>
+																	<span class="price"><b>-10,000</b> 원</span>
+																</li>
+																<li>
+																	<span class="tbListTit">포인트</span>
+																	<span class="price"><b>-0</b> P</span>
+																</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">배송비</th>
+														<td class="txtR"><span class="price"><b>0</b> 원</span></td>
+													</tr>
+													<tr class="total dotted">
 														<th scope="row">총 결제금액</th>
 														<td class="txtR">
 															<span class="price pointRed"><b>2,600,000</b> 원</span>
@@ -485,11 +537,11 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="tbSet oderTb lineN tbHV">
+										<!-- <div class="tbSet oderTb lineN tbHV">
 											<table>
 												<caption>무통장입금 결제에 관한 상품금액, 할인금액, 총결제금액에 관한 정보를 제공합니다.</caption>
 												<colgroup>
-													<col style="22%"/><col style="width:78%;"/>
+													<col style="width:22%"/><col style="width:78%;"/>
 												</colgroup>
 												<tbody>
 													<tr>
@@ -514,6 +566,47 @@
 														</td>
 													</tr>
 													<tr class="total">
+														<th scope="row">총 결제금액</th>
+														<td class="txtR">
+															<span class="price pointRed"><b>2,600,000</b> 원</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div> -->
+										<div class="tbSet02 tbHV">
+											<table>
+												<caption>신용카드 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
+												<colgroup>
+													<col style="width:22%;"/><col style="width:78%;"/>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row">주문금액</th>
+														<td class="txtR">
+															<span class="price"><b>2,602,500</b> 원</span>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">할인금액</th>
+														<td>
+															<ul class="tbList">
+																<li>
+																	<span class="tbListTit">기본할인</span>
+																	<span class="price"><b>-10,000</b> 원</span>
+																</li>
+																<li>
+																	<span class="tbListTit">포인트</span>
+																	<span class="price"><b>-0</b> P</span>
+																</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">배송비</th>
+														<td class="txtR"><span class="price"><b>0</b> 원</span></td>
+													</tr>
+													<tr class="total dotted">
 														<th scope="row">총 결제금액</th>
 														<td class="txtR">
 															<span class="price pointRed"><b>2,600,000</b> 원</span>
@@ -616,7 +709,7 @@
 										</div>
 									</div>
 									<div class="tbHf">
-										<div class="tbSet oderTb lineN tbHV">
+										<!-- <div class="tbSet oderTb lineN tbHV">
 											<table>
 												<caption>실시간 계좌이체 결제에 관한 상품금액, 할인금액, 총 결제금액 정보를 제공합니다.</caption>
 												<colgroup>
@@ -645,6 +738,47 @@
 														</td>
 													</tr>
 													<tr class="total">
+														<th scope="row">총 결제금액</th>
+														<td class="txtR">
+															<span class="price pointRed"><b>2,600,000</b> 원</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div> -->
+										<div class="tbSet02 tbHV">
+											<table>
+												<caption>신용카드 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
+												<colgroup>
+													<col style="width:22%;"/><col style="width:78%;"/>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th scope="row">주문금액</th>
+														<td class="txtR">
+															<span class="price"><b>2,602,500</b> 원</span>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">할인금액</th>
+														<td>
+															<ul class="tbList">
+																<li>
+																	<span class="tbListTit">기본할인</span>
+																	<span class="price"><b>-10,000</b> 원</span>
+																</li>
+																<li>
+																	<span class="tbListTit">포인트</span>
+																	<span class="price"><b>-0</b> P</span>
+																</li>
+															</ul>
+														</td>
+													</tr>
+													<tr>
+														<th scope="row">배송비</th>
+														<td class="txtR"><span class="price"><b>0</b> 원</span></td>
+													</tr>
+													<tr class="total dotted">
 														<th scope="row">총 결제금액</th>
 														<td class="txtR">
 															<span class="price pointRed"><b>2,600,000</b> 원</span>

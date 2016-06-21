@@ -219,6 +219,19 @@ table tr td.txtL {text-align:left !important;}
 .tbSBg table td {background:#fafafa; font-family:'NotoSansR','RobotoR', sans-serif; color:#666;}
 .tbSBg table td span.price {color:#333}
 
+.tbSet02{position:relative;padding:0 20px;border-left:1px solid #e8e8e8;border-right:1px solid #e8e8e8;}
+.tbSet02:before,
+.tbSet02:after{position:absolute;left:0;width:100%;height:1px;display:block;background:#e8e8e8;content:"";}
+.tbSet02:before{top:0;}
+.tbSet02:after{bottom:0;}
+.tbSet02 table{width:100%;font-size:14px;}
+.tbSet02 table tbody tr th{height:42px;text-align:center;padding:15px;border-top:1px solid #e8e8e8;color:#333;font-family: 'NotoSansR','RobotoR',sans-serif;text-align:left;}
+.tbSet02 table tbody tr td{text-align:right;padding:15px 15px 15px 0;border-top:1px solid #e8e8e8;}
+.tbSet02 table tbody tr.dotted th,
+.tbSet02 table tbody tr.dotted td{border-top:1px dashed #000;}
+.tbSet02 table tbody tr:first-child th,
+.tbSet02 table tbody tr:first-child td{border-top:0;}
+
 table tr td .photoList {width:100%; height:90px; display:inline-block; position:relative; display:table-cell; vertical-align:middle;}
 table tr td .photoList span.thumb,
 table tr td .photoList span.thumb img{width:90px; height:90px;}
@@ -263,7 +276,7 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .compt .adrArea dl dd {width:85%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
 .compt .adrArea dl dd div {height:42px; display:table-cell; vertical-align:middle;}
 
-.calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; border-radius:7px; display:inline;}
+.calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; /*border-radius:7px;*/ display:inline;}
 .calendar span.calInp {width:; position:relative;}
 .calendar span.calInp input[type="text"] {width:200px; border:0; padding:0; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin-right:16px;}
 .calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:1px; right:0;}

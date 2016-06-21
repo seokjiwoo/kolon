@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 회원가입"} -->
+</head>
+ <body data-page-id="member-login">
+	<div class="wrapper members">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+				<section>
+					<h2 class="pageTit">로그인</h2>
+					<div class="lifeStyle">
+						<p>주거가 가벼워지는<br />라이프스타일,</p>
+						<img src="../../images/txt_common.png" alt="common" >
+					</div>
+					<form id="loginForm" class="loginForm" action="">
+						<div>
+							<p>회원가입과 로그인을 한 번에 하실 수 있습니다.</p>
+							<ul>
+								<li>
+									<input type="text" placeholder="이메일 또는 휴대번호 입력" />
+								</li>
+								<li>
+									<input type="password" placeholder="비밀번호 (영문, 특수문자, 숫자 혼합 6~12자)" />
+								</li>
+							</ul>
+							<div class="stateBox">
+								<p class="checkbox">
+									<input type="checkbox" id="loginState" />
+									<label for="loginState" />로그인유지</label>
+								</p>
+								<a href="#">비밀번호 찾기</a>
+							</div>
+							<button type="submit" class="btn btnSizeL btnColor02 btnShadow">시작하기</button>
+						</div>
+					</form>
+					<ul class="snsList">
+						<li><a href="#" class="snsBtn facebook"><span>페이스북으로 시작하기</span></a></li>
+						<li><a href="#" class="snsBtn naver"><span>네이버로 시작하기</span></a></li>
+						<li><a href="#" class="snsBtn kakao"><span>카카오로 시작하기</span></a></li>
+					</ul>
+					<p class="policy">
+						* 커먼은 만 14세 이상의 고객님만 가입하실 수 있으며, <br />가입 시 <span>플랫폼 이용약관</span> 및 <span>개인정보 수집/이용  정책에</span> <br />동의하게 됩니다.
+					</p>
+				</section>
+			</div>
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>
