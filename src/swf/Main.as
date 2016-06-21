@@ -160,7 +160,18 @@
 			
 			_bs64 = Base64.encodeByteArray( _fileRef.data );
 			_bs64Type = _fileRef.type;
-			ExternalInterface.call( 'FLASH.eventCallback', 'bs64', { bs64 : _bs64, type : _bs64Type });
+			
+			ExternalInterface.call( 'FLASH.eventCallback', 'selectedFile', { 
+			   name : _fileRef.name,
+			   size : _fileRef.size,
+			   type : _fileRef.type,
+			   lastModifiedDate : _fileRef.modificationDate,
+			   lastModified : new Date(_fileRef.modificationDate).getTime()
+			});
+			ExternalInterface.call( 'FLASH.eventCallback', 'bs64', {
+				bs64 : _bs64,
+				type : _bs64Type
+			});
 		}
 		
 		private function removeContainer():void
