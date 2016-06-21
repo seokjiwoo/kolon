@@ -7,7 +7,6 @@ function ClassImageUploader() {
 	var win = window,
 	$ = win.jQuery,
 	debug = require('../utils/Console.js'),
-	util = require('../utils/Util.js'),
 	flashAddCallBack = require('./FlashAddCallBack.js'),
 	fileName = 'compoents/ImageUploader.js';
 
@@ -52,6 +51,10 @@ function ClassImageUploader() {
 		cssClass : {
 			hide : 'is-hide',
 			active : 'is-active'
+		},
+		multiple : {
+			enabled : false,
+			maxSize : 3
 		}
 	},
 	isSupport = (function() {
@@ -76,7 +79,8 @@ function ClassImageUploader() {
 
 	var callerObj = {
 		init : init,
-		destory : destory
+		destory : destory,
+		getSelectedFiles: getSelectedFiles
 	},
 	instance, self;
 	
@@ -115,18 +119,30 @@ function ClassImageUploader() {
 		self.imageInfo = null;
 		self.imgRotation = 0;
 		self.flashVersion = false;
+		self.selectedFiles = [];
+		self.multiple = false;
+
+		if (self.opts.multiple.enabled) {
+			self.inpFile.attr('multiple', 'multiple');
+			self.multiple = true;
+		}
+		self.inpFile.attr('accept', self.opts.acceptedTypes.join(','));
 	}
 
 	function setFlashVersion() {
 		debug.log(fileName, 'setFlashVersion', self.opts.flashOpts);
 
 		flashAddCallBack.setOptions(self.opts.flashOpts);
-		flashAddCallBack.event.on('eventCallback.init', function() {
+		flashAddCallBack.event.on('eventCallback.init', function(/*e, target*/) {
 			flashAddCallBack.callFlash('setFilter', {values: self.opts.flashOpts.filterOpt});
 			flashAddCallBack.callFlash('setUpload', {values: self.opts.flashOpts.upload});
 		});
-		flashAddCallBack.event.on('eventCallback.bs64', function() {
+		flashAddCallBack.event.on('eventCallback.bs64', function(/*e, bs64*/) {
+			//'data:image/'+ values.type + ';base64,' + values.base64;
 			setBtnSubmitActive();
+		});
+		flashAddCallBack.event.on('eventCallback.selectedFile', function(e, selectedFile) {
+			setSelectedFiles(selectedFile);
 		});
 		win.FLASH = flashAddCallBack;
 
@@ -221,7 +237,7 @@ function ClassImageUploader() {
 		debug.log(fileName, 'onBtnSubmitClick', e);
 
 		if (self.flashVersion) {
-			flashAddCallBack.callFlash('upload', { callback: function(bs64, type) {
+			flashAddCallBack.callFlash('upload', { callback: function(bs64/*, type*/) {
 				self.imageInfo = bs64;
 				debug.info(fileName, '전송처리 단계~');
 				debug.log(fileName, 'self.imageInfo', self.imageInfo);
@@ -238,6 +254,16 @@ function ClassImageUploader() {
 	}
 	
 	function setReadFiles(file) {
+		if (!self.multiple && file.length > 1) {
+			win.alert('1개의 이미지만 선택하세요');
+			return;
+		}
+
+		if (self.multiple && file.length > self.opts.multiple.maxSize) {
+			win.alert('최대 ' + self.opts.multiple.maxSize + '개의 이미지를 선택 할 수 있습니다.');
+			return;
+		}
+
 		file = file[0];
 
 		if (!isSupport.fileReader()) {
@@ -276,6 +302,8 @@ function ClassImageUploader() {
 			reader.onload = setPreviewFile;
 			reader.onerror = onError;
 			reader.readAsDataURL(file);
+
+			setSelectedFiles(file);
 		});
 	}
 	
@@ -350,6 +378,14 @@ function ClassImageUploader() {
 		self.btnSubmit.addClass(self.opts.cssClass.active);
 	}
 
+	function getSelectedFiles() {
+		return self.selectedFiles;
+	}
+
+	function setSelectedFiles(info) {
+		self.selectedFiles.push(info);
+	}
+
 	function clearPreviewFile() {
 		if (self.holder.find('.js-preview-img').size()) {
 			self.holder.find('.js-preview-img').remove();
@@ -357,6 +393,7 @@ function ClassImageUploader() {
 		// input 정보 초기화
 		self.inpFile.val('');
 		self.imageInfo = null;
+		self.setSelectedFiles = [];
 	}
 
 	function destory() {
