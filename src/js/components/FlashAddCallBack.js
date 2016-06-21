@@ -53,6 +53,10 @@ function FlashAddCallBack() {
 						debug.log(fileName, 'bs64', values);
 						this.event.trigger('eventCallback.bs64', values);
 						break;
+					case 'selectedFile':
+						debug.log(fileName, 'selectedFile', values);
+						this.event.trigger('eventCallback.selectedFile', values);
+						break;
 				}
 			},
 			callFlash : function(type, opts) {

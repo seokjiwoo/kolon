@@ -45,6 +45,9 @@ $(document).ready(function() {
 		case 'mypage':
 			PageModuleClass = require('./pages/myPage/MyPage.js');
 			break;
+		case 'myPage-editInfo':
+			PageModuleClass = require('./pages/myPage/ProfileEdit.js');
+			break;
 		case 'myServiceDetail':
 			PageModuleClass = require('./pages/myPage/MyServiceDetail.js');
 			break;

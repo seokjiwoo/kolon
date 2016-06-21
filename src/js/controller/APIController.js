@@ -31,19 +31,23 @@ module.exports = function() {
 	function callApi(url, method, data, callback, forceFlag) {
 		if (loadingFlag == false || forceFlag == true) {
 			loadingFlag = true;
-			var ajaxOptions;
-			if (method == 'GET') {
-				ajaxOptions = {
-					url: API_URL+url,
-					method: method
-				}
-			} else {
-				ajaxOptions = {
-					url: API_URL+url,
-					method: method,
-					data: JSON.stringify(data),
-					contentType: "application/json"
-				}
+			var ajaxOptions = {
+				url: API_URL+url,
+				method: method,
+				xhrFields: {
+					withCredentials: true
+				},
+				contentType: "application/json"
+			}
+			switch(method) {
+				case 'POST':
+					ajaxOptions.data = JSON.stringify(data);
+					break;
+				case 'GET':
+				case 'PUT':
+				case 'DELETE':
+					// does nothing yet
+					break;
 			}
 			
 			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
@@ -63,6 +67,10 @@ module.exports = function() {
 	 */
 	function handleError(callerId, result) {
 		console.log('ERROR ON', callerId, result);
+		if (result.status == '401' && result.errorCode == '1603') {
+			alert('세션이 만료되었습니다. 다시 로그인해 주세요.');
+			location.href = '/member/logout.html';
+		}
 	};
 }
 
