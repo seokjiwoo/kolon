@@ -74,7 +74,7 @@ function ClassLoginController() {
 			} else {
 				Super.handleError('logout', result);
 			}
-			$(callerObj).trigger('logoutResult', [result.status]);
+			$(callerObj).trigger('logoutResult', [status]);
 		}, false);
 	};
 	
