@@ -51,7 +51,16 @@ function ClassLoginController() {
 			if (status == 200) {
 				Super.callApi('/apis/me', 'GET', {}, function(status, result) {
 					if (status == 200) {
-						model.setLoginInfo(result.data.data.myInfo);
+						switch(result.status) {
+							case '200':
+								// 로그인 성공
+								model.setLoginInfo(result.data.data.myInfo);
+								break;
+							case '201':
+								// 회원가입 성공
+								alert('회원가입 성공');
+								break;
+						}
 					} else {
 						Super.handleError('login/myData', status);
 					}
