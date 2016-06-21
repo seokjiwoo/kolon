@@ -236,7 +236,12 @@ function ClassImageUploader() {
 	function onBtnSubmitClick(e) {
 		debug.log(fileName, 'onBtnSubmitClick', e);
 
-		if (self.flashVersion) {
+		if (!self.imageInfo) {
+			win.alert('이미지를 선택하세요.');
+			return;
+		}
+
+		if (self.flashVersion && self.opts.flashOpts.upload) {
 			flashAddCallBack.callFlash('upload', { callback: function(bs64/*, type*/) {
 				self.imageInfo = bs64;
 				debug.info(fileName, '전송처리 단계~');
@@ -244,11 +249,7 @@ function ClassImageUploader() {
 			}});
 			return;
 		}
-
-		if (!self.imageInfo) {
-			win.alert('이미지를 선택하세요.');
-			return;
-		}
+		
 		debug.info(fileName, '전송처리 단계~');
 		debug.log(fileName, 'self.imageInfo', self.imageInfo);
 	}
