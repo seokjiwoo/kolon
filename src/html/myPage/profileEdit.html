@@ -21,7 +21,7 @@
 								<th><label for="profileID"><b class="require">* </b>이메일 아이디</label></th>
 								<td>
 									<p class="inputWrap">
-										<input type="text" value="1234@google.com" id="profileID"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
+										<input type="email" value="" id="profileID"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
 									</p>
 								</td>
 							</tr>
@@ -29,7 +29,7 @@
 								<th><label for="editPhoneID"><b class="require">* </b>휴대폰 번호 아이디</label></th>
 								<td>
 									<p class="inputWrap">
-										<input type="text" value="" id="editPhoneID"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor03 btnPop btnPop650 ">등록하기</a>
+										<input type="text" value="" id="editPhoneID"><a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor03 btnPop btnPop650" data-user-class="popEdge">등록하기</a>
 									</p>
 								</td>
 							</tr>
@@ -37,7 +37,7 @@
 								<th><b class="require">* </b>비밀번호</th>
 								<td>
 									<p class="inputWrap">
-										<a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
+										<a href="../_popup/popCheckPw.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
 									</p>
 								</td>
 							</tr>
@@ -62,12 +62,11 @@
 								<td>연결된 정보가 없습니다.</td>
 								<td><a href="" class="btnSizeS">계정연결</a></td>
 							</tr>
-							<!-- 계정 연결 시 active class 추가 -->
-							<tr class="active">
+							<!-- 계정 연결 시 tr에 active class 추가 -->
+							<tr>
 								<td class="account03"><span>네이버</span></td>
-								<td>연결되었습니다. (이메일 : kolon12345@gmail.com)</td>
-								<td><a href="" class="btnSizeS">연결해제</a></td>
-								
+								<td>연결된 정보가 없습니다.</td> <!-- 연결되었습니다. (이메일 : kolon12345@gmail.com) -->
+								<td><a href="" class="btnSizeS">계정연결</a></td> <!-- 연결해제 -->
 							</tr>
 						</table>
 					</fieldset>
@@ -89,43 +88,24 @@
 								<th><b class="require">* </b>생년월일</th>
 								<td class="birth">
 									<div>
-										<select id="joinBirth01">
-											<option value="2016">2016</option>
-											<option value="2015">2015</option>
-											<option value="2014">2014</option>
-											<option value="2013">2013</option>
-											<option value="2012">2012</option>
-										</select>
+										<select id="joinBirth01"></select>
 										<label for="joinBirth01" class="joinBirth">년</label>
 										<select id="joinBirth02">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
+											<option value="01">1</option>
+											<option value="02">2</option>
+											<option value="03">3</option>
+											<option value="04">4</option>
+											<option value="05">5</option>
+											<option value="06">6</option>
+											<option value="07">7</option>
+											<option value="08">8</option>
+											<option value="09">9</option>
 											<option value="10">10</option>
 											<option value="11">11</option>
 											<option value="12">12</option>
 										</select>
 										<label for="joinBirth02" class="joinBirth">월</label>
-										<select id="joinBirth03">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
-										</select>
+										<select id="joinBirth03"></select>
 										<label for="joinBirth03" class="joinBirth">일</label>
 									</div>
 								</td>
@@ -135,7 +115,7 @@
 								<td>
 									<p class="inputWrap">
 										<label for="profilePhone" class="hide">인증번호 받기</label>
-										<input type="text" value="01012345678"  id="profilePhone" class="inputL">
+										<input type="text" value=""  id="profilePhone" class="inputL">
 									</p>
 								</td>
 							</tr>

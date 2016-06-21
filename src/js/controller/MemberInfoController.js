@@ -68,7 +68,11 @@ function ClassMemberInfoController() {
 			/**
 			 * 비밀번호 설정
 			 */
-			resetPassword: resetPassword
+			resetPassword: resetPassword,
+			/**
+			 * 내 정보 받아오기
+			 */
+			getMyInfo: getMyInfo
 		}
 		
 		return callerObj;	
@@ -275,6 +279,20 @@ function ClassMemberInfoController() {
 			}
 		}, false);
 	};
+
+	/**
+	 * 내 정보 받아오기
+	 */
+	function getMyInfo() {
+		Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myInfoResult', [result.data.data.myInfo]);
+			} else {
+				Super.handleError('getMyInfo', result);
+			}
+		}, false);
+	};
+	
 	
 	/**
 	 * 비밀번호 재설정
