@@ -20,6 +20,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var browserSync = require('browser-sync').create();
 var browserify = require('browserify');
+var childProcess = require('child_process');
 
 var src;
 var dist;
@@ -188,9 +189,26 @@ gulp.task('clean', function () {
 	.pipe(clean());
 });
 
+// bower install Task
+gulp.task('bowerInstall', function(cb) {
+	cb = cb || function(){};
+
+	var bowerInstall = childProcess.exec('bower install', function(err, stdout, stderr) {
+		cb();
+	});
+
+	bowerInstall.stdout.on('data', function(data) {
+	    console.log(data);
+	});
+
+	bowerInstall.stderr.on('data', function (data) {
+		console.log(data)
+	});
+});
+
 // 모바일 빌드
 gulp.task('buildMoblie', ['jsBundlePreview', 'bowerBundle', 'minifycss', 'minifyhtml', 'imagePass']);
-gulp.task('mobile', function (done) {
+gulp.task('mobile', ['bowerInstall'], function (done) {
 	src = 'srcMobile';
 	dist = 'distMobile';
 	suffix = '-m';
@@ -200,7 +218,7 @@ gulp.task('mobile', function (done) {
 
 // PC 빌드
 gulp.task('buildPc', ['jsBundlePreview', 'bowerBundle', 'fontPass', 'minifycss', 'minifyhtml', 'imagePass']);
-gulp.task('pc', function (done) {
+gulp.task('pc', ['bowerInstall'], function (done) {
 	src = 'src';
 	dist = 'dist';
 	suffix = '';
