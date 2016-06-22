@@ -126,3 +126,50 @@
 .goodsInfo .slideCon dt.total{color: #000;margin-top:10px;padding-top: 10px;}
 .goodsInfo .slideCon dd.total{color: #f1645c;margin-top:10px;padding-top: 10px;}
 
+.pageTop {padding:10px 60px 10px 15px; background:#f8f8f8; position:relative; color:#333; border-top:1px solid #e0e0e0;}
+.pageTop p {width:100%; line-height:130%;}
+.pageTop button.allDel {padding:7.5px 7.5px 7.5px 15px; position:absolute; top:0; right:0; border:0; background:none;}
+.pageTop.scrap {padding-right:15px;}
+.pageTop.scrap p {text-align:center;}
+.pageTop.scrap + .scrollWrap {border-top:1px solid #ddd;}
+
+ul.noticeList {width:100%; border-top:1px solid #ccc;}
+ul.noticeList li {padding:0 15px; position:relative;}
+ul.noticeList li.on {background:#e7f8f8;}
+ul.noticeList li a {width:100%; display:inline-block; border-bottom:1px solid #ccc;}
+ul.noticeList li p.photo {width:48px; height:48px; margin-top:-24px; position:absolute; top:50%; left:15px;}
+ul.noticeList li p.photo img {width:48px; height:48px;}
+ul.noticeList li p.photo.member {border-radius:50%; overflow:hidden;}
+ul.noticeList li .text {padding-left:58px; height:78px; display:table-cell; vertical-align: middle;}
+ul.noticeList li .text p {width:100%; line-height:130%;}
+ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute; bottom:10px; right:15px; font-size:11px; color:#999; text-align:right;}
+
+.scrapWrap {padding:45px 15px 15px; background:#e0e0e0;}
+.scrapWrap ul.scrap {width:100%; overflow:hidden;}
+.scrapWrap ul.scrap li {width:100%; padding:30px 0; overflow:hidden; position:relative; }
+.scrapWrap ul.scrap li + li {margin-top:10px;}
+.scrapWrap ul.scrap li:before {content:''; border-top:30px solid transparent; border-right:30px solid #5ccfd0; position:absolute; top:0px; left:0;}
+.scrapWrap ul.scrap li:after {content:''; width:1200px; height:30px; position:absolute; top:0px; left:30px; background:#5ccfd0;}
+.scrapWrap ul.scrap li .scrapCont {padding:0 15px; background-size:4px 130px;}
+.scrapWrap ul.scrap li .scrapCont:before {content:''; width:1200px; height:30px; position:absolute; bottom:0px; right:30px; background:#fff;}
+.scrapWrap ul.scrap li .scrapCont:after {content:''; border-bottom:30px solid transparent; border-left:30px solid #fff; position:absolute; bottom:0px; right:0;}
+.scrapWrap ul.scrap li .scrapCont p.tit {width:100%; font-size:18px; color:#fff; font-family:'NotoSansR', 'RobotoR', sans-serif; text-align:center;}
+.scrapWrap ul.scrap li .scrapCont p.tit + .scrapPhoto {margin-top:30px;}
+.scrapWrap ul.scrap li .scrapCont .scrapPhoto {width:100%; overflow:hidden;}
+.scrapWrap ul.scrap li .scrapCont .scrapPhoto p {width:25%; text-align:center; float:left;}
+.scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {}
+.scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
+.scrapWrap ul.scrap li a span.photoNum {}
+/* scrap color */
+.scrapWrap ul.scrap li.scrapBg01 {}
+.scrapWrap ul.scrap li.scrapBg01:before {border-right-color:#5ccfd0;}
+.scrapWrap ul.scrap li.scrapBg01:after {background-color:#5ccfd0;}
+.scrapWrap ul.scrap li.scrapBg01 .scrapCont {background:url(../images/scrap_bg01.gif) 0 0 repeat-x #5ccfd0; background-size:4px 130px;}
+.scrapWrap ul.scrap li.scrapBg02 {}
+.scrapWrap ul.scrap li.scrapBg02:before {border-right-color:#ae66ff;}
+.scrapWrap ul.scrap li.scrapBg02:after {background:#ae66ff;}
+.scrapWrap ul.scrap li.scrapBg02 .scrapCont {background:url(../images/scrap_bg02.gif) 0 0 repeat-x #ae66ff; background-size:4px 130px;}
+.scrapWrap ul.scrap li.scrapBg03 {}
+.scrapWrap ul.scrap li.scrapBg03:before {border-right-color:#ffbd4a;}
+.scrapWrap ul.scrap li.scrapBg03:after {background:#ffbd4a;}
+.scrapWrap ul.scrap li.scrapBg03 .scrapCont {background:url(../images/scrap_bg03.gif) 0 0 repeat-x #ffbd4a; background-size:4px 130px;}
