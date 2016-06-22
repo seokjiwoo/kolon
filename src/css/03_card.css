@@ -3,8 +3,8 @@
 .main .cardWrap > li{box-shadow: none; border-radius:0; padding-top:84px; margin-top:-83px;}
 .main .cardWrap {padding-top:83px;}
 
-.cardLayer {width:1500px; height:754px; padding:0 20px; position:absolute; top:0; left:50%; margin-left:-750px; z-index:90;}
-.cardLayer .cardWrap {position:relative;}
+.cardLayer {width:100%; height:754px; padding:0 20px; position:absolute; top:0; left:0; z-index:90;}
+.cardLayer .cardWrap {width:1500px; margin:0 auto; position:relative; }
 .cardLayer .cardWrap li {position:relative; background:none;}
 .cardLayer .cardWrap li + li {margin-left:10px;}
 
