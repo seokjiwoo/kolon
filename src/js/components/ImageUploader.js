@@ -50,8 +50,8 @@ function ClassImageUploader() {
 			noFilereader : 'no-filereader'
 		},
 		multiple : {
-			enabled : false,
-			maxSize : 3
+				enabled : false,
+				maxSize : 3
 		}
 	},
 	isSupport = (function() {
@@ -105,7 +105,7 @@ function ClassImageUploader() {
 		setElements();
 
 		if (!isSupport.fileReader()) {
-			this.wrap.addClass(self.opts.cssClass.noFilereader);
+			self.wrap.addClass(self.opts.cssClass.noFilereader);
 			setFlashVersion();
 		} else {
 			setHtmlVersion();
