@@ -108,8 +108,7 @@ function ClassImageUploader() {
 			this.wrap.addClass(self.opts.cssClass.noFilereader);
 			setFlashVersion();
 		} else {
-			setFlashVersion();
-			// setHtmlVersion();
+			setHtmlVersion();
 		}
 		
 		setBindEvents();
