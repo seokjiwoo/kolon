@@ -26,66 +26,9 @@ $(document).ready(function() {
             } 
         }
 	});
+
+
 });
-
-;(function(win, $) {
-	'use strict';
-
-	var doc = document,
-	winSize = function() {
-		var win_wh = {
-			w : win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth,
-			h : win.innerHeight || doc.documentElement.clientHeight || doc.body.clientHeight
-		};
-		return win_wh;
-	};
-
-	var mhNav = (function() {
-		var defParams = {
-			minWidth : 1240,
-			navi : '#hmNav'
-		};
-		return {
-			init : function(container, args) {
-				if (!(this.container = container).size()) return;
-
-				this.opts = $.extend(true, defParams, args);
-				this.setElements();
-				this.setBindEvents();
-			},
-			setElements : function() {
-				this.navi = this.container.find(this.opts.navi);
-				this.naviMarginLeft = parseInt(this.navi.css('margin-left').split('px')[0]);
-			},
-			setBindEvents : function() {
-				this.onScrollListener();
-				$(win).on('scroll resize', $.proxy(this.onScrollListener, this));
-			},
-			onScrollListener : function() {
-				var winWidth = winSize().w,
-				scrLeft = $(doc).scrollLeft();
-
-				if (winWidth <= this.opts.minWidth) {
-					this.navi.css({
-						'left': this.opts.minWidth/2,
-						'margin-left': this.naviMarginLeft + (scrLeft*-1)
-					});
-				} else {
-					this.navi.css({
-						'left': '',
-						'margin-left': ''
-					});
-				}
-			}
-		};
-	})();
-
-	$(function() {
-		mhNav.init($('body'));
-	});
-
-})(window, window.jQuery);
-
 </script>
  <body data-page-id="homeService">
 	<div class="wrapper">
