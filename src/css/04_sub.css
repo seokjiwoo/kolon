@@ -202,11 +202,12 @@
 .catSorting .catSort .sortCont ul + h3.sortTit {margin-top:20px;}
 
 /* homeService index */
+body[data-page-id=homeService] {overflow-y:hidden !important;}
 .container.homeWrap {padding:0 0 200px;}
-.homeWrap .section0 {background:url('../images/hm_section00.jpg') center no-repeat;background-size:auto 100%;}
-.homeWrap .section1 {background:url('../images/hm_section01.jpg') center no-repeat;background-size:auto 100%;}
-.homeWrap .section2 {background:url('../images/hm_section02.jpg') center no-repeat;background-size:auto 100%;}
-.homeWrap .section3 {background:url('../images/hm_section03.jpg') center no-repeat;background-size:auto 100%;}
+.homeWrap .section0 {background:url('../images/hm_section00.jpg') center no-repeat;background-size:cover}
+.homeWrap .section1 {background:url('../images/hm_section01.jpg') center no-repeat;background-size:cover}
+.homeWrap .section2 {background:url('../images/hm_section02.jpg') center no-repeat;background-size:cover}
+.homeWrap .section3 {background:url('../images/hm_section03.jpg') center no-repeat;background-size:cover}
 
 .homeWrap #hmNav {position:fixed;top:0;bottom:0;left:50%;z-index:2;width:70px;margin-left:-35px;}
 .homeWrap #hmNav ul {text-align:center;position:absolute;bottom:30px;left:0;z-index:3;-webkit-transition: all 1s;-moz-transition:all 1s;-o-transition:all 1s;-ms-transition:all 1s;}
@@ -217,17 +218,35 @@
 .homeWrap #hmNav ul li + li {margin-top:10px;}
 .homeWrap #hmNav ul li + li:before {content:'';display:block;position:absolute;bottom:80px;left:50%;width:2px;height:10px;background:#000;opacity:.2;margin-left:-1px;}
 .homeWrap #hmNav ul li a {display:inline-block;width:70px;height:80px;background:url('../images/hm_nav_bg.png') 0 0 no-repeat;line-height:80px;font-size:20px;color:#000;font-family:'RobotoM','NotoSansM', sans-serif;}
-.homeWrap #hmNav ul li a.on {background-position:0 -80px;color:#fff;}
+.homeWrap #hmNav ul li.active a {background-position:0 -80px;color:#fff;}
 
-.homeWrap .fp-tableCell {display:inline-block;float:right;width:50%;vertical-align:middle}
-.homeWrap .fp-tableCell:after {content:'';display:inline-block;width:0;height:100%;vertical-align:middle}
-.homeWrap .textBox {display:inline-block;margin-left:97px;vertical-align:middle;}
-.homeWrap .textBox h1 {font-size:60px;line-height:66px;font-family:'RobotoT','NotoSansT', sans-serif;}
-.homeWrap .textBox h1 span {display:block;font-family:'RobotoM','NotoSansM', sans-serif;}
-.homeWrap .textBox p {margin-top:20px}
-.homeWrap .textBox ul {overflow:hidden;margin-top:55px}
-.homeWrap .textBox li {float:left;width:25%;font-size:14px;line-height:22px}
-.homeWrap .textBox li b {display:block;margin-bottom:5px;font-size:16px;font-family:'RobotoM','NotoSansM', sans-serif;}
-.homeWrap .textBox .hmStep {margin-top:60px;}
-.homeWrap .textBox p.hmNotice {font-size:14px;}
-.homeWrap .textBox button {margin-top:43px;width:200px;}
+.homeWrap .fp-tableCell {position:relative;}
+.homeWrap .textBoxWrap {position:absolute;top:50%;left:50%;margin-left:85px;margin-top:-275px;}
+.homeWrap .textBoxWrap .textBox {display:none;}
+.homeWrap .textBox h1 {font-size:55px;line-height:66px;font-family:'RobotoT','NotoSansT', sans-serif;}
+.homeWrap .section3 .textBox h1 {letter-spacing:-10px}
+.homeWrap .textBox h1 span {display:block;font-family:'RobotoB','NotoSansB', sans-serif;text-shadow:3px 4px 1px #fff}
+.homeWrap .textBox p {margin-top:20px;line-height:20px;}
+.homeWrap .textBox ul {overflow:hidden;margin-top:40px}
+.homeWrap .textBox li {float:left;font-size:14px;line-height:22px}
+.homeWrap .textBox li span {display:block;padding-left:5px;}
+.homeWrap .textBox li b {display:inline-block;margin-bottom:5px;height:22px;line-height:22px;padding:0 5px;background:#000;color:#fff;font-size:16px;font-family:'RobotoM','NotoSansM', sans-serif;}
+
+.homeWrap .textBox ul.gird4 li {width:25%;}
+.homeWrap .textBox ul.gird4 li b {width:85px;}
+
+.homeWrap .textBox ul.gird3 {width:520px;margin-top:10px;}
+.homeWrap .textBox ul.gird3 li {width:185px;margin-top:30px;}
+.homeWrap .textBox ul.gird3 li:nth-child(3n+0) {width:150px;}
+.homeWrap .textBox ul.gird3 li:nth-child(3n+0) b {width:140px;}
+.homeWrap .textBox ul.gird3 li b {width:150px;}
+
+.homeWrap .textBox ul.gird3_2 {width:520px;}
+.homeWrap .textBox ul.gird3_2 li {width:175px;}
+.homeWrap .textBox ul.gird3_2 li:nth-child(3n+0) {width:160px;}
+.homeWrap .textBox ul.gird3_2 li:nth-child(3n+0) b {width:150px;font-size:14px;text-indent:-3px;}
+.homeWrap .textBox ul.gird3_2 li b {width:150px;}
+
+.homeWrap .textBox .hmStep {margin-top:30px;}
+.homeWrap .textBox p.hmNotice {font-size:14px;line-height:18px;}
+.homeWrap .textBox button {margin-top:50px;width:200px;}
