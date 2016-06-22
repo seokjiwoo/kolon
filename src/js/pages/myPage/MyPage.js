@@ -77,6 +77,21 @@ module.exports = function() {
 				.on(CB_EVENTS.CLOSED, onCboxEventListener);
 	}
 
+	function onUploaderSelectedFiles(e, selectedFiles) {
+		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.SELECTED_FILES, selectedFiles);
+		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
+	}
+
+	function onUploaderSubmit(e) {
+		debug.log(fileName, 'onUploaderSubmit', imageUploader.EVENT.SUBMIT);
+		debug.log(fileName, 'onUploaderSubmit', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
+	}
+
+	function onUploaderCancel(e) {
+		debug.log(fileName, 'onUploaderCancel', imageUploader.EVENT.CANCEL);
+		debug.log(fileName, 'onUploaderCancel', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
+	}
+
 	function onCboxEventListener(e) {
 		debug.log(fileName, 'onCboxEventListener', e.type);
 
@@ -85,11 +100,19 @@ module.exports = function() {
 		switch(e.type) {
 			case CB_EVENTS.COMPLETE:
 				if (self.colorbox.hasClass(opts.cssClass.popProfilePic)) {
+					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
+									.on(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
+									.on(imageUploader.EVENT.CANCEL, onUploaderCancel);
+
 					imageUploader.init(opts.imageUploader);
 				}
 				break;
 			case CB_EVENTS.CLEANUP:
 				if (self.colorbox.hasClass(opts.cssClass.popProfilePic)) {
+					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
+									.off(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
+									.off(imageUploader.EVENT.CANCEL, onUploaderCancel);
+
 					imageUploader.destory();
 				}
 				break;

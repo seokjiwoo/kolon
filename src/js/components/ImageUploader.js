@@ -42,10 +42,6 @@ function ClassImageUploader() {
 			filterOpt : {
 				filter : 'images (*.jpg, *.jpeg, *.png)',
 				type : '*.jpg;*.jpeg;*.png'
-			},
-			upload : {
-				url : '',
-				jsCallBack : true
 			}
 		},
 		cssClass : {
@@ -80,8 +76,16 @@ function ClassImageUploader() {
 	var callerObj = {
 		init : init,
 		destory : destory,
-		getSelectedFiles: getSelectedFiles
+		getSelectedFiles: getSelectedFiles,
+		EVENT : {
+			SELECTED_FILES : 'IMAGE_UPLOADER-SELECTED_FILES',
+			GET_SELECTED_FILES : 'IMAGE_UPLOADER-GET_SELECTED_FILES',
+			SUBMIT : 'IMAGE_UPLOADER-SUBMIT',
+			CANCEL : 'IMAGE_UPLOADER-CANCEL'
+		}
 	},
+	EVENT = callerObj.EVENT,
+	FB_EVENT = flashAddCallBack.EVENT,
 	instance, self;
 	
 	return {
@@ -116,7 +120,8 @@ function ClassImageUploader() {
 		self.btnCancel = self.wrap.find(self.opts.btnCancel);
 		self.btnSubmit = self.wrap.find(self.opts.btnSubmit);
 		self.btnExit = $(self.opts.btnExit);
-		self.imageInfo = null;
+
+		self.selTempFile = null;
 		self.imgRotation = 0;
 		self.flashVersion = false;
 		self.selectedFiles = [];
@@ -133,18 +138,14 @@ function ClassImageUploader() {
 		debug.log(fileName, 'setFlashVersion', self.opts.flashOpts);
 
 		flashAddCallBack.setOptions(self.opts.flashOpts);
-		flashAddCallBack.event.on('eventCallback.init', function(/*e, target*/) {
+		$(flashAddCallBack).on(FB_EVENT.INIT, function(/*e, target*/) {
 			flashAddCallBack.callFlash('setFilter', {values: self.opts.flashOpts.filterOpt});
-			flashAddCallBack.callFlash('setUpload', {values: self.opts.flashOpts.upload});
+			flashAddCallBack.callFlash('setMultiple', {values: self.opts.flashOpts.multiple});
 		});
-		flashAddCallBack.event.on('eventCallback.bs64', function(/*e, bs64*/) {
-			//'data:image/'+ values.type + ';base64,' + values.base64;
-			setBtnSubmitActive();
-		});
-		flashAddCallBack.event.on('eventCallback.selectedFile', function(e, selectedFile) {
+
+		$(flashAddCallBack).on(FB_EVENT.SELECTED_FILES, function(e, selectedFile) {
 			setSelectedFiles(selectedFile);
 		});
-		win.FLASH = flashAddCallBack;
 
 		self.flashVersion = true;
 
@@ -167,6 +168,10 @@ function ClassImageUploader() {
 					.on('click', onHolderClick);
 		self.btnCancel.on('click', onBtnCancelClick);
 		self.btnSubmit.on('click', onBtnSubmitClick);
+
+		$(self).on(EVENT.GET_SELECTED_FILES, function() {
+			return getSelectedFiles();
+		});
 	}
 
 	function onHolderDrapOver(e) {
@@ -230,149 +235,76 @@ function ClassImageUploader() {
 			clearPreviewFile();
 		}
 
+		$(self).trigger(EVENT.CANCEL);
 		self.btnExit.trigger('click');
 	}
 				
 	function onBtnSubmitClick(e) {
 		debug.log(fileName, 'onBtnSubmitClick', e);
 
-		if (!self.imageInfo) {
+		if (!self.selectedFiles.length) {
 			win.alert('이미지를 선택하세요.');
 			return;
 		}
-
-		if (self.flashVersion && self.opts.flashOpts.upload) {
-			flashAddCallBack.callFlash('upload', { callback: function(bs64/*, type*/) {
-				self.imageInfo = bs64;
-				debug.info(fileName, '전송처리 단계~');
-				debug.log(fileName, 'self.imageInfo', self.imageInfo);
-			}});
-			return;
-		}
 		
-		debug.info(fileName, '전송처리 단계~');
+		debug.info(fileName, '전송처리 단계~', getSelectedFiles());
 		debug.log(fileName, 'self.imageInfo', self.imageInfo);
+		$(self).trigger(EVENT.SUBMIT);
 	}
 	
-	function setReadFiles(file) {
-		if (!self.multiple && file.length > 1) {
-			win.alert('1개의 이미지만 선택하세요');
+	function setReadFiles(files) {
+		var supportFlag = true,
+		reader, bs64;
+
+		if (!self.multiple && files.length > 1 || self.selectedFiles.length >= 1) {
+			win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
 			return;
 		}
 
-		if (self.multiple && file.length > self.opts.multiple.maxSize) {
+		if (self.multiple && files.length > self.opts.multiple.maxSize || self.selectedFiles.length >= self.opts.multiple.maxSize) {
 			win.alert('최대 ' + self.opts.multiple.maxSize + '개의 이미지를 선택 할 수 있습니다.');
 			return;
 		}
-
-		file = file[0];
 
 		if (!isSupport.fileReader()) {
 			win.alert('fileReader 미지원 브라우저입니다.');
 			return;
 		}
 
-		if (file.type && !isSupport.acceptedTypes(file.type)) {
+		$.each(files, function(index, curFile) {
+			if (curFile.type && !isSupport.acceptedTypes(curFile.type)) {
+				supportFlag = false;
+				return false;
+			}
+		});
+
+		if (!supportFlag) {
 			win.alert('지원하지 않는 포맷입니다.');
 			return;
 		}
 
-		var _self = self;
-		win.EXIF.getData(file, function() {
-			var exif = win.EXIF.getAllTags(this);
-			switch(exif.Orientation) {
-				case 3:
-					//동
-					_self.imgRotation = 180;
-					break;
-				case 6:
-					//북
-					_self.imgRotation = 90;
-					break;
-				case 8:
-					//남
-					_self.imgRotation = 270;
-					break;
-				default:
-					//서
-					_self.imgRotation = 0;
-					break;
-			}
+		if (!self.multiple) {
+			files = [files[0]];
+		}
 
-			var reader = new FileReader();
-			reader.onload = setPreviewFile;
-			reader.onerror = onError;
-			reader.readAsDataURL(file);
-
-			setSelectedFiles(file);
+		$.each(files, function(index, curFile) {
+			(function(idx, loadFile) {
+				reader = new FileReader();
+				reader.onload = function(e) {
+					bs64 = e.target.result;
+					setSelectedFiles({ file : loadFile, bs64: bs64 });
+				};
+				reader.onerror = onError;
+				reader.readAsDataURL(loadFile);
+			})(index, curFile);
 		});
+
+		// input 정보 초기화
+		self.inpFile.val('');
 	}
 	
 	function onError(e) {
 		win.console.warn('일시적인 장애가 발생했습니다.\n다시 시도해주세요.', e);
-	}
-
-	function setPreviewFile(e) {
-		clearPreviewFile();
-
-		self.imageInfo = e.target.result;
-
-		var imgObj = new Image(),
-		image = $('<image class=\'js-preview-img\'>');
-
-		imgObj.onload = $.proxy(function() {
-			var imgWidth = imgObj.width,
-			imgHeight = imgObj.height,
-			imgOpt = self.opts.previewOpt,
-			imgScale = imgOpt.scale,
-			viewPort = imgOpt.viewPort,
-			displayWidth, displayHeight;
-
-			if (imgWidth > imgHeight) {
-				// 가로형 - landscape
-				imgScale.x = viewPort.width / imgWidth;
-				imgScale.y = imgScale.x;
-				debug.log(fileName, '가로형 ', viewPort, imgScale);
-			} else if (imgHeight > imgWidth) {
-				// 세로형 - portrait
-				imgScale.y = viewPort.height / imgHeight;
-				imgScale.x = imgScale.y;
-				debug.log(fileName, '세로형 ', imgScale);
-			} else {
-				// 정방형
-				imgScale.y = viewPort.height / imgHeight;
-				imgScale.x = imgScale.y;
-				debug.log(fileName, '정방형 ', imgScale);
-			}
-
-			displayWidth = imgScale.x * imgWidth;
-			displayHeight = imgScale.y * imgHeight;
-
-			if (displayHeight > viewPort.height) {
-				imgScale.y = viewPort.height / displayHeight;
-				imgScale.x = imgScale.y;
-
-				displayWidth = imgScale.x * displayWidth;
-				displayHeight = imgScale.y * displayHeight;
-			}
-
-			debug.log(fileName, 'self.imgRotation', self.imgRotation);
-
-			image.css({
-				'width' : displayWidth,
-				'height' : displayHeight,
-				'margin-left' : (viewPort.width - displayWidth) / 2,
-				'margin-top' : (viewPort.height - displayHeight) / 2,
-				'transform' : 'rotate(' + self.imgRotation + 'deg)'
-			});
-			self.holder.append(image);
-
-			setBtnSubmitActive();
-		}, self);
-
-		imgObj.onerror = onError;
-		image.attr('src', self.imageInfo);
-		imgObj.src = self.imageInfo;
 	}
 
 	function setBtnSubmitActive() {
@@ -384,7 +316,20 @@ function ClassImageUploader() {
 	}
 
 	function setSelectedFiles(info) {
+		if (!self.multiple && self.selectedFiles.length >= 1) {
+			win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+			return;
+		}
+
+		if (self.multiple && self.selectedFiles.length >= self.opts.multiple.maxSize) {
+			win.alert('최대 ' + self.opts.multiple.maxSize + '개의 이미지를 선택 할 수 있습니다.');
+			return;
+		}
+
 		self.selectedFiles.push(info);
+
+		$(self).trigger(EVENT.SELECTED_FILES, getSelectedFiles());
+		setBtnSubmitActive();
 	}
 
 	function clearPreviewFile() {
@@ -393,13 +338,13 @@ function ClassImageUploader() {
 		}
 		// input 정보 초기화
 		self.inpFile.val('');
-		self.imageInfo = null;
-		self.setSelectedFiles = [];
+		self.selectedFiles = [];
 	}
 
 	function destory() {
-		flashAddCallBack.event.off('eventCallback.init');
-		win.FLASH = null;
+		$(flashAddCallBack).off(FB_EVENT.INIT);
+		$(flashAddCallBack).off(FB_EVENT.SELECTED_FILES);
+		$(self).off(EVENT.GET_SELECTED_FILES);
 		debug.log(fileName, 'destory');
 	}
 

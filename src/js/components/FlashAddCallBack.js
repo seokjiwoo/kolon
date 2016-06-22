@@ -18,12 +18,17 @@ function FlashAddCallBack() {
 			filterOpt : {
 				filter : 'images (*.jpg, *.png, *.bmp)',
 				type : '*.jpg;*.png;*.bmp'
-			}
+			},
+			base64Format : 'data:image/{{TYPE}};base64,'
 		};
 		return {
+			EVENT : {
+				INIT : 'eventCallback.init',
+				SELECTED_FILES : 'eventCallback.selectedFile'
+			},
 			init : function() {
 				debug.log(fileName, 'init');
-				this.event = $('<div data-flash-event>');
+				win.FLASH = this;
 				return this;
 			},
 			setOptions : function(opts) {
@@ -42,20 +47,12 @@ function FlashAddCallBack() {
 					case 'init':
 						this.imageUpoader = $('#' + this.opts.id).get(0);
 						debug.warn(fileName, 'init', this.imageUpoader);
-						this.event.trigger('eventCallback.init', this.imageUpoader);
-						break;
-					case 'uploadDone':
-						debug.log(fileName, 'uploadDone', values);
-						this.event.trigger('eventCallback.uploadDone', values);
-						break;
-					case 'bs64':
-						//'data:image/'+ values.type + ';base64,' + values.base64;
-						debug.log(fileName, 'bs64', values);
-						this.event.trigger('eventCallback.bs64', values);
+						$(this).trigger(this.EVENT.INIT, this.imageUpoader);
 						break;
 					case 'selectedFile':
 						debug.log(fileName, 'selectedFile', values);
-						this.event.trigger('eventCallback.selectedFile', values);
+						values.bs64 = this.opts.base64Format.replace('{{TYPE}}', values.file.type.replace('.','')) + values.bs64;
+						$(this).trigger(this.EVENT.SELECTED_FILES, values);
 						break;
 				}
 			},
@@ -79,23 +76,14 @@ function FlashAddCallBack() {
 						*/
 						callback(this.imageUpoader.callFlash('setFilter', opts.values));
 						break;
-					case 'setUpload':
+					case 'setMultiple':
 						/*
 						opts.values = {
-							url : '',
-							jsCallBack : true
+							enabled : false,
+							maxSize : 3
 						}
 						*/
-						callback(this.imageUpoader.callFlash('setUpload', opts.values));
-						break;
-					case 'isSelected':
-						callback(this.imageUpoader.callFlash('isSelected', opts.values));
-						break;
-					case 'cancel':
-						callback(this.imageUpoader.callFlash('cancel', opts.values));
-						break;
-					case 'upload':
-						callback(this.imageUpoader.callFlash('upload', opts.values));
+						callback(this.imageUpoader.callFlash('setMultiple', opts.values));
 						break;
 				}
 			}
