@@ -46,9 +46,13 @@ function ClassMemberInfoController() {
 			 */
 			findId: findId,
 			/**
-			 * 비밀번호 찾기
+			 * 비밀번호 찾기 (이메일)
 			 */
-			findPassword: findPassword,
+			findPasswordByMail: findPasswordByMail,
+			/**
+			 * 비밀번호 찾기 (휴대폰)
+			 */
+			findPasswordByPhone: findPasswordByPhone,
 			/**
 			 * 비밀번호 찾기 - 휴대폰 인증문자 보내기
 			 */
@@ -207,11 +211,11 @@ function ClassMemberInfoController() {
 	};
 	
 	/**
-	 * 비밀번호 찾기
+	 * 비밀번호 찾기 (이메일)
 	 */
-	function findPassword(id) {
-		Super.callApi('/apis/member/findPassword', 'POST', {
-			"loginId": id
+	function findPasswordByMail(id) {
+		Super.callApi('/apis/authorize/find/email', 'POST', {
+			"email": id
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('findPwResult', [result, id]);
@@ -220,6 +224,23 @@ function ClassMemberInfoController() {
 			}
 		}, false);
 	};
+	
+	/**
+	 * 비밀번호 찾기 (휴대폰)
+	 */
+	function findPasswordByPhone(id) {
+		Super.callApi('/apis/authorize/find/email', 'POST', {
+			"phoneNumber": id
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('findPwResult', [result, id]);
+			} else {
+				Super.handleError('findPassword', result);
+			}
+		}, false);
+	};
+	
+
 	
 	/**
 	 * 비밀번호 찾기 - 휴대폰 인증문자 보내기

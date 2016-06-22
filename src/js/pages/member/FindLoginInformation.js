@@ -4,25 +4,17 @@ module.exports = function() {
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
-	var loginController = require('../../controller/LoginController');
-	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
-	
 	var infoController = require('../../controller/MemberInfoController');
-	$(infoController).on('findIdResult', findIdResultHandler);
 	$(infoController).on('findPwResult', findPwResultHandler);
 	$(infoController).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
 	$(infoController).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
 	var util = require('../../utils/Util.js');
 	
-	var socialName = {
-		"facebook": "페이스북",
-		"naver": "네이버",
-		"kakao": "카카오"
-	};
-	var tempMemberNumber;
-	var tempName;
+	var findMethod;
 	var tempId;
 	var tempAuthKey;
+
+	var phoneNumberRule = /^[0-9]{10,12}$/i;
 	
 	var callerObj = {
 		/**
@@ -36,16 +28,13 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		
-		$('.tabWrap a').click(initForm);
 		$('.btnBackToForm').click(initForm);
 		$('#pwAuthPhone').click(initPwAuthPhoneForm);
-		$('#pwAuthMail').click(requstPwAuthMail);
 		$('#findPwAuthPhoneRequestButton').click(requestPhoneAuthNumber);
 		$('#findPwAuthPhoneConfirmButton').click(confirmPhoneAuthNumber);
 		$('#findPwAuthPhoneCompleteButton').click(completePhoneAuthNumber);
 		$('#findPwAuthMailResendButton').click(requstPwAuthMailResend);
 		
-		$('#findID').submit(findIdFormSubmitHandler);
 		$('#findPW').submit(findPwFormSubmitHandler);
 		initForm();
 	};
@@ -57,8 +46,6 @@ module.exports = function() {
 		if (e != undefined) e.preventDefault();
 		Cookies.remove('loginPwReset');
 		
-		$('#inputPhone').val('');
-		$('#inputName').val('');
 		$('#inputId').val('');
 	
 		$('#findInfoForm').show().siblings('div').hide();
@@ -66,78 +53,30 @@ module.exports = function() {
 	};
 	
 	/**
-	 * ID찾기 폼 submit 
-	 */
-	function findIdFormSubmitHandler(e) {
-		e.preventDefault();
-			
-		var phone = $.trim($('#inputPhone').val());
-		var name = $.trim($('#inputName').val());
-		var phoneNumberRule = /^[0-9]{10,12}$/i;
-		
-		if (name == '') {
-			alert('이름을 입력해주세요');
-		} else if (phone == '' || !phoneNumberRule.test(phone)) {
-			alert('휴대폰번호를 입력해주세요');
-		} else {
-			infoController.findId(name, phone);
-		}
-		
-		e.stopPropagation();
-	};
-	
-	/**
-	 * ID찾기 결과 handling
-	 */
-	function findIdResultHandler(e, result, name, phone) {
-		switch(result.status) {
-			case '200':
-				if (result.data.members.length == 1) {
-					var memberData = result.data.members[0];
-					$('#idResultName').text(name);
-					$('#idResultPhone').text(memberData.site.cellPhoneNumber);
-					$('#idResultId').text(memberData.site.loginId);
-					$('#idResultJoinDate').text(memberData.site.createDateTime.split(' ')[0].replace(/\-/gi, '. '));
-					
-					var socialTags = '';
-					for (var eachSnsKey in memberData.socials) {
-						var eachSns = memberData.socials[eachSnsKey];
-						var joinSnsDate = eachSns.createDateTime.split(' ')[0].replace(/\-/gi, '. ');  // "2016-05-13 08:29:29.0"
-						
-						socialTags += '<div class="accountSummary">';
-						socialTags += '<p><b>'+eachSns.socialEmail+'</b><br>가입일: '+joinSnsDate+'</p>';
-						socialTags += '<a href="" class="btn loginSns '+eachSns.socialName+' btnSizeM btnShadow" id="socialLogin-'+eachSns.socialName+'">'+socialName[eachSns.socialName]+' 로그인</a>';
-						socialTags += '</div>';
-					}
-					$('#socialAccount').html(socialTags);
-					
-					loginController.getSocialLoginUrl();
-				} else {
-					alert(name+" / "+phone+"\n\n일치하는 아이디가 없습니다.\n입력하신 정보를 다시 한 번 확인해주세요.");
-				}
-				break;
-				
-			case '500':
-				alert(name+" / "+phone+"\n\n일치하는 아이디가 없습니다.\n입력하신 정보를 다시 한 번 확인해주세요.");
-				break;
-		}
-	};
-	
-	/**
 	 * 비번찾기 폼 submit 
 	 */
 	function findPwFormSubmitHandler(e) {
 		e.preventDefault();
-			
+
+		tempAuthKey = '';
 		var id = $.trim($('#inputId').val());
 		
-		if (id == '' || !util.checkVaildEmail(id)) {
-			alert('아이디(이메일)를 정확하게 입력해주세요');
+		if (phoneNumberRule.test(id)) {
+			// 휴대폰 번호
+			findMethod = 'phone';
+			tempId = id;
+			infoController.findPasswordByPhone(id);
 		} else {
-			tempAuthKey = '';
-			infoController.findPassword(id);
+			// 이메일
+			if (util.checkVaildEmail(id)) {
+				findMethod = 'mail';
+				tempId = id;
+				infoController.findPasswordByMail(id);
+			} else {
+				Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
+			}
 		}
-		
+
 		e.stopPropagation();
 	};
 	
@@ -147,15 +86,14 @@ module.exports = function() {
 	function findPwResultHandler(e, result, id) {
 		switch(result.status) {
 			case '200':
-				tempMemberNumber = result.data.site.memberNumber;
-				tempName = result.data.site.memberName;
-				tempId = result.data.site.loginId;
-				
-				$('#pwResultName').text(tempName);
-				$('#pwResultMail').text(tempId);
-				$('#pwResultPhone').text(result.data.site.cellPhoneNumber);
-				
-				$('#findPwResult').show().siblings('div').hide();
+				switch(findMethod) {
+					case 'phone':
+						$('#findPwAuthMail').show().siblings('div').hide();
+						break;
+					case 'mail':
+						$('#findPwAuthMail').show().siblings('div').hide();
+						break;
+				}
 				break;
 				
 			case '3001':
@@ -163,6 +101,15 @@ module.exports = function() {
 				alert(id+"\n\n등록된 정보가 없습니다. 입력하신 정보를 다시 한 번 확인해주세요.");
 				break;
 		}
+	};
+	
+	/**
+	 * 이메일 인증 재요청
+	 */
+	function requstPwAuthMailResend(e) {
+		e.preventDefault();
+		alert('인증메일이 재발송 되었습니다');
+		e.stopPropagation();
 	};
 	
 	/**
@@ -186,7 +133,6 @@ module.exports = function() {
 		
 		var phone = $.trim($('#findPwAuthPhonePhone').val());
 		var name = $.trim($('#findPwAuthPhoneName').val());
-		var phoneNumberRule = /^[0-9]{10,12}$/i;
 		
 		if (name == '') {
 			alert('이름을 입력해주세요');
@@ -259,35 +205,5 @@ module.exports = function() {
 			location.href = 'findLoginPwReset.html';
 		}
 		e.stopPropagation();
-	};
-	
-	/**
-	 * 이메일 인증 요청
-	 */
-	function requstPwAuthMail(e) {
-		e.preventDefault();
-		$('#findPwAuthMail').show().siblings('div').hide();
-		e.stopPropagation();
-	};
-	
-	/**
-	 * 이메일 인증 재요청
-	 */
-	function requstPwAuthMailResend(e) {
-		e.preventDefault();
-		alert('인증메일이 재발송 되었습니다');
-		e.stopPropagation();
-	};
-	
-	/**
-	 * 소셜 로그인 URL 목록처리
-	 */
-	function socialLoginUrlResultHandler(e, status, socialAuthLoginUrl) {
-		for (var key in socialAuthLoginUrl) {
-			var eachService = socialAuthLoginUrl[key];
-			$('#socialLogin-'+eachService.socialName).attr('href', eachService.authUrl);
-		}
-
-		$('#findIdResult').show().siblings('div').hide();
 	};
 }
