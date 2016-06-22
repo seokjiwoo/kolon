@@ -34,7 +34,6 @@ module.exports = function() {
 		btnDel();
 		tableHeight()
 		conFirm();
-		livingService();
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -356,29 +355,5 @@ module.exports = function() {
 			var tbHC = parseInt($(this).height())
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
-	}
-
-	function livingService() {
-		$('#fullpage').fullpage({
-			anchors: ['intro', 'move', 'cleaning', 'washing'],
-			menu: '#hmNavLi',
-			css3: true,
-			scrollBar: true,
-			onLeave : function(index, nextIndex, direction){
-				if(index != 2){
-					//moving the nav
-					$('#hmNav').find('ul').removeClass('moveCenter').addClass('moveCenter');
-				} else if (index == 2 && direction == 'up') {
-					$('#hmNav').find('ul').removeClass('moveCenter');
-				} $('.textBox').hide();
-			},
-			afterLoad: function(anchorLink, index){
-	            var loadedSection = $(this);
-	           //using anchorLink
-	            if(anchorLink != 'intro'){
-	            	$('.textBox').delay(200).fadeIn();
-	            } 
-	        }
-		});
 	}
 }

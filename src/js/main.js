@@ -60,6 +60,9 @@ $(document).ready(function() {
 			break;
 		// [E] myPage 			13-마이홈즈
 
+		case 'livingService':
+			PageModuleClass = require('./pages/livingService/livingService.js');
+			break;
 
 		// [S] order 			14-주문서 작성
 		case 'order-orderService':
