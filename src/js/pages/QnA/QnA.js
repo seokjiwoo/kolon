@@ -9,7 +9,7 @@ module.exports = function() {
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
-	fileName = 'myPage/MyPage.js';
+	fileName = 'QnA/QnA.js';
 
 	var opts = {
 		colorbox : {
@@ -21,7 +21,7 @@ module.exports = function() {
 			}
 		},
 		cssClass : {
-			popProfilePic : 'popProfilePic'
+			popAttachPictures : 'popAttachPictures'
 		},
 		imageUploader : {
 			flashOpts : {
@@ -34,6 +34,10 @@ module.exports = function() {
 					filter : 'images (*.jpg, *.jpeg, *.png)',
 					type : '*.jpg;*.jpeg;*.png'
 				}
+			},
+			multiple : {
+				enabled : true,
+				maxSize : 3
 			}
 		}
 	};
@@ -99,7 +103,7 @@ module.exports = function() {
 
 		switch(e.type) {
 			case CB_EVENTS.COMPLETE:
-				if (self.colorbox.hasClass(opts.cssClass.popProfilePic)) {
+				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.on(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
 									.on(imageUploader.EVENT.CANCEL, onUploaderCancel);
@@ -108,7 +112,7 @@ module.exports = function() {
 				}
 				break;
 			case CB_EVENTS.CLEANUP:
-				if (self.colorbox.hasClass(opts.cssClass.popProfilePic)) {
+				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.off(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
 									.off(imageUploader.EVENT.CANCEL, onUploaderCancel);

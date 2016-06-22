@@ -105,8 +105,14 @@ gulp.task('bowerBundle', function() {
 				// jQuery-outside-events : 접근성 처리용 Plugin, 비활성화 영역에서 발생되는 이벤트 체크
 				// 정상적으로 번들링되지 않아( 해당 components 에 bower.json 이 없는 문제로 추측 ) 강제 overrides 설정 추가
 				'jquery-outside-events': {
-					'main' : ['jquery.ba-outside-events.js'],
+					'main': ['jquery.ba-outside-events.js'],
 					'dependencies': {}
+				},
+				// waypoints : 스크린위치에 따른 객체 위치 감지용
+				// jquery 버전 & shortcuts/inview 번들링
+				'waypoints': {
+					'main': ['lib/jquery.waypoints.js', 'lib/shortcuts/inview.js'],
+					'dependencies': {}	
 				}
             }
         }))
