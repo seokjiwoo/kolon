@@ -3,10 +3,10 @@
 .main .cardWrap > li{box-shadow: none; border-radius:0; padding-top:84px; margin-top:-83px;}
 .main .cardWrap {padding-top:83px;}
 
-.mainVisual .cardLayer {width:1506px; height:754px; position:absolute; top:0; left:50%; margin-left:-753px; z-index:99;}
-.mainVisual .cardLayer .cardWrap {position:relative;}
-.mainVisual .cardLayer .cardWrap li {position:relative; background:none;}
-.mainVisual .cardLayer .cardWrap li + li {margin-left:10px;}
+.cardLayer {width:1500px; height:754px; padding:0 20px; position:absolute; top:0; left:50%; margin-left:-750px; z-index:90;}
+.cardLayer .cardWrap {position:relative;}
+.cardLayer .cardWrap li {position:relative; background:none;}
+.cardLayer .cardWrap li + li {margin-left:10px;}
 
 /* hexagon css */
 .hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
