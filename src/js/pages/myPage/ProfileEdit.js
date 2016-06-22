@@ -33,6 +33,8 @@ module.exports = function() {
 		$('#joinBirth01').html(tags);
 		$('#joinBirth02').change(updateDateSelect);
 		updateDateSelect();
+		
+		$('#profileEditApplyButton').click(submitEditForm);
 		/*
 		$('#joinId').change(checkEmailField);
 		$('#joinPW').change(checkPasswordField);
@@ -55,8 +57,8 @@ module.exports = function() {
 		// ( 소셜인증 )
 		$('#editName').val(infoObject.memberName);		// memberName
 		// ( 생년월일 )
-		$('#profilePhone').val(infoObject.cellPhoneNumber);	// cellPhoneNumber
-		$('#profileCell').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
+		$('#profileMobile').val(infoObject.cellPhoneNumber);	// cellPhoneNumber
+		$('#profileHomePhone').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
 		// ( 배송지주소 )
 		switch(infoObject.emailReceiveYn) {
 			case 'Y': 
@@ -81,44 +83,43 @@ module.exports = function() {
 	}
 	
 	/**
-	 * 회원가입 절차 진행
+	 * 정보수정 진행
 	 */
-	function submitJoinForm(e) {
+	function submitEditForm(e) {
 		e.preventDefault();
-		
-		var id = $('#joinId').val();
-		var pw1 = $('#joinPW').val();
-		var pw2 = $('#joinPW02').val();
-		var joinName = $('#joinName').val();
-		var phone = $('#joinPhone').val();
+
+		var emailId = $('#profileID').val();
+		var phoneId = $('#editPhoneID').val();
+
+		var name = $('#editName').val();
 		var birthDate = $('#joinBirth01').val()+$('#joinBirth02').val()+$('#joinBirth03').val();
 		var age = util.calculateAge(new Date($('#joinBirth01').val(), $('#joinBirth02').val(), $('#joinBirth03').val()));
+		var mobile = $('#profileMobile').val();
+		var phone = $('#profileHomePhone').val();
+		var agreeMail = $('#agreeReceive01')[0].checked ? 'Y' : 'N';
+		var agreeSms = $('#agreeReceive02')[0].checked ? 'Y' : 'N';
 		
 		$('#joinNameAlert').text('');
-		
 		if (age < 14) {
 			alert('만 14세 미만은 가입하실 수 없습니다.');
 			$('.birth').find('span.note').addClass('alert');
-		} else if (util.checkVaildEmail(id) == false) {
+		} else if (util.checkVaildEmail(emailId) == false) {
 			alert('이메일 주소를 정확하게 입력해주세요.');
-			$('#joinIdAlert').text('이메일 주소를 정확하게 입력해주세요.');
-		} else if (pw1 == '' || pw2 == '') {
-			alert('비밀번호를 입력해 주세요.');
-			$('#joinPWAlert').text('비밀번호를 입력해 주세요.');
-		} else if (pw1 != pw2) {
-			alert('비밀번호가 일치하지 않습니다.');
-			$('#joinPWAlert').text('비밀번호가 일치하지 않습니다.');
-		} else if (!passwordRule.test(pw1)) {
-			alert('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
-			$('#joinPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
-		} else if ($.trim(joinName) == '') {
+		} else if ($.trim(name) == '') {
 			alert('이름을 입력해 주세요.');
-			$('#joinNameAlert').text('이름을 입력해 주세요.');
-		} else if (!passwordRule.test(phone)) {
+		} else if (!phoneNumberRule.test(mobile)) {
 			alert('휴대폰번호는 10-12자리의 숫자만 입력해 주세요.');
-			$('#joinPhoneAlert').text('10-12자리의 숫자만 입력해 주세요.');
 		} else {
-			controller.joinMember(id, pw1, joinName, phone, birthDate);
+			//controller.joinMember(id, pw1, joinName, phone, birthDate);
+			/*
+			{
+			"birthDate": "19881122",
+			"cellPhoneNumber": "01012123434",
+			"generalPhoneNumber": "01012123434",
+			"memberName": "홍길동"
+			}
+			*/
+			//console.log(emailId, phoneId, name, birthDate, mobile, phone, agreeMail, agreeSms);
 		}
 		
 		e.stopPropagation();
