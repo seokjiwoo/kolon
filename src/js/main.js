@@ -40,6 +40,13 @@ $(document).ready(function() {
 				break;
 		// [E] living
 		
+		
+		// [S] QnA 				11-의견묻기
+		case 'qna':
+			PageModuleClass = require('./pages/QnA/QnA.js');
+			break;
+		// [E] QnA 				11-의견묻기
+		
 
 		// [S] myPage 			13-마이홈즈
 		case 'mypage':
@@ -51,7 +58,7 @@ $(document).ready(function() {
 		case 'myServiceDetail':
 			PageModuleClass = require('./pages/myPage/MyServiceDetail.js');
 			break;
-		// [E] myPage 			 - 마이홈즈
+		// [E] myPage 			13-마이홈즈
 
 
 		// [S] order 			14-주문서 작성
@@ -59,8 +66,8 @@ $(document).ready(function() {
 			PageModuleClass = require('./pages/order/OrderService.js');
 			break;
 		// [E] order 			14-주문서 작성
-		
-			
+
+
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;

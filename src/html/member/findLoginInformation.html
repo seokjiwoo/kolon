@@ -9,76 +9,33 @@
 		<div class="container">
 			<div class="wrap">
 				<section class="singleCard">
-					<h2 class="pageTit">아이디 / 비밀번호 찾기</h2>
+					<h2 class="pageTit">비밀번호 찾기</h2>
 					<div class="formWrap">
-						<ul class="tabType02 tabWrap">
-							<li class="on"><a href="#findID">아이디 찾기</a></li>
-							<li><a href="#findPW">비밀번호 찾기</a></li>
-						</ul>
-						<!-- 아이디/비밀번호 찾기 입력 폼 -->
+						<!-- 비밀번호 찾기 입력 폼 -->
 						<div id='findInfoForm'>
-							<form action="#" id="findID">
+							<form action="#" id="findPW">
 								<div class="conWrap">
 									<fieldset>
-										<legend class="subTxt">회원가입 시 등록한 이름과 휴대폰번호로 아이디를 찾을 수 있습니다.</legend>
+										<legend class="subTxt">회원가입 시 등록한 아이디를 입력해주세요.</legend>
 										<p class="subInform">* SNS 계정으로 가입하신 분들은 가입하신 SNS로 로그인해주세요.</p>
-										<p class="inputWrap inputWrap01"><label for="inputName">이름</label><input type="text" id="inputName" placeholder="이름을 입력해주세요"></p>
-										<p class="inputWrap"><label for="inputPhone">휴대폰 번호</label><input type="text" id="inputPhone" placeholder="휴대폰번호를 입력해주세요."></p>
-									</fieldset>
-								</div>
-								<button type="submit" class="btn btnSizeL btnColor02 btnShadow">확인</button>
-							</form>
-							<form action="#" id="findPW" style="display: none;">
-								<div class="conWrap">
-									<fieldset>
-										<legend class="subTxt">회원가입 시 등록한 아이디(이메일)를 입력해주세요.</legend>
-										<p class="subInform">* SNS 계정으로 가입하신 분들은 가입하신 SNS로 로그인해주세요.</p>
-										<p class="inputWrap inputWrap01"><label for="inputId">아이디<strong>(이메일)</strong></label><input type="text" id="inputId" placeholder="아이디(이메일)을 입력해주세요."></p>
+										<p class="inputWrap inputWrap01"><label for="inputId">아이디</label><input type="text" id="inputId" placeholder="아이디(이메일 또는 휴대폰 번호)를 입력해주세요."></p>
 									</fieldset>
 								</div>
 								<button type="submit" class="btn btnSizeL btnColor02 btnShadow">확인</button>								
 							</form>
 						</div>
-						<!-- 아이디/비밀번호 찾기 입력 폼 -->
+						<!-- 비밀번호 찾기 입력 폼 -->
 						
-						<!-- 아이디 검색 결과 -->
-						<div id='findIdResult' class="conWrap methodWrap">
-							<h3 class="inform"><strong><span id='idResultName'></span> / <span id='idResultPhone'></span></strong> 으로 검색된 결과입니다.</h3>
-							<p class="subInform">개인정보 보호를 위해 이메일 계정 끝자리와 이메일 주소 끝자리 일부는 *로 표시됩니다.</p>
-							<ul class="accountList">
-								<li>
-									<h4 class="methodTit">이메일 계정</h4>
-									<div class="accountSummary">
-										<p><b><span id='idResultId'></span></b><br>가입일: <span id='idResultJoinDate'></span></p>
-										<a href="login.html" class="btn btnSizeM btnColor02">로그인</a>
-									</div>
-								</li>
-								<li>
-									<h4 class="methodTit">SNS 계정</h4>
-									<div id='socialAccount'></div></li>
-							</ul>
-							<a href="#" class="btn btnSizeL btnColor04 btnShadow btnBackToForm">이전으로</a>
+						<!-- 이메일 인증 요청 -->
+						<div id="findPwAuthMail">
+							<div class="conWrap">
+								<p class="inform"><b>Kol***@gma***.com</b><br>회원님의 이메일 주소로 인증메일이 발송되었습니다. </p>
+								<p class="subTxt02">1시간 이내로 인증메일을 확인하시고 인증링크를 클릭하시면 <br>새로운 비밀번호를 설정하실 수 있습니다.</p>
+								<p class="subInform">(인증메일을 받지 못하셨다면 인증메일 재발송 버튼을 누르시고 다시 한 번 메일을 확인해주세요.)</p>
+								<a href='#' id='findPwAuthMailResendButton' class="btnDefault btn btnSizeM btnColor03">인증메일 재발송</a>
+							</div>
 						</div>
-						<!-- 아이디 검색 결과 -->
-						
-						<!-- 비번 검색 결과 -->
-						<div id='findPwResult' class="conWrap methodWrap">
-							<h3 class="inform"><strong><span id='pwResultName'></span>님,</strong> 아래의 본인 인증 수단 중 하나를 선택하여 <br>비밀번호를 찾으실 수 있습니다.</h3>
-							<p class="subInform">개인정보 보호를 위해 연락처 일부는 *로 표시됩니다.</p>
-							<ul class="method01">
-								<li>
-									<h4 class="methodTit">휴대폰번호로 인증하기</h4>
-									<p><b><span id='pwResultPhone'></span></b><br>휴대폰 번호 인증 후 비밀번호 재설정하기</p>
-									<a href="#" class="btnSizeM btnColor01" id='pwAuthPhone'>인증하기</a>
-								</li>
-								<li>
-									<h4 class="methodTit">이메일로 인증하기</h4>
-									<p><b><span id='pwResultMail'></span></b><br>이메일 인증 후 비밀번호 재설정하기</p>
-									<a href="#" class="btnSizeM btnColor01" id='pwAuthMail'>인증하기</a>
-								</li>
-							</ul>
-						</div>
-						<!-- 비번 검색 결과 -->
+						<!-- 이메일 인증 요청 -->
 						
 						<!-- 휴대폰 인증 요청 -->
 						<div id='findPwAuthPhone'>
@@ -102,17 +59,6 @@
 							<a href="findLoginPwReset.html" id='findPwAuthPhoneCompleteButton' class="btn btnSizeL btnColor02 btnShadow">확인</a>
 						</div>
 						<!-- 휴대폰 인증 요청 -->
-						
-						<!-- 이메일 인증 요청 -->
-						<div id="findPwAuthMail">
-							<div class="conWrap">
-								<p class="inform"><b>Kol***@gma***.com</b><br>회원님의 이메일 주소로 인증메일이 발송되었습니다. </p>
-								<p class="subTxt02">1시간 이내로 인증메일을 확인하시고 인증링크를 클릭하시면 <br>새로운 비밀번호를 설정하실 수 있습니다.</p>
-								<p class="subInform">(인증메일을 받지 못하셨다면 인증메일 재발송 버튼을 누르시고 다시 한 번 메일을 확인해주세요.)</p>
-								<a href='#' id='findPwAuthMailResendButton' class="btnDefault btn btnSizeM btnColor03">인증메일 재발송</a>
-							</div>
-						</div>
-						<!-- 이메일 인증 요청 -->
 					</div>
 				</section>
 			</div>
