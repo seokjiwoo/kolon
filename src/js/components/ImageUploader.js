@@ -46,7 +46,8 @@ function ClassImageUploader() {
 		},
 		cssClass : {
 			hide : 'is-hide',
-			active : 'is-active'
+			active : 'is-active',
+			noFilereader : 'no-filereader'
 		},
 		multiple : {
 			enabled : false,
@@ -104,9 +105,11 @@ function ClassImageUploader() {
 		setElements();
 
 		if (!isSupport.fileReader()) {
+			this.wrap.addClass(self.opts.cssClass.noFilereader);
 			setFlashVersion();
 		} else {
-			setHtmlVersion();
+			setFlashVersion();
+			// setHtmlVersion();
 		}
 		
 		setBindEvents();
@@ -131,6 +134,7 @@ function ClassImageUploader() {
 			self.inpFile.attr('multiple', 'multiple');
 			self.multiple = true;
 		}
+
 		self.inpFile.attr('accept', self.opts.acceptedTypes.join(','));
 	}
 
@@ -140,11 +144,23 @@ function ClassImageUploader() {
 		flashAddCallBack.setOptions(self.opts.flashOpts);
 		$(flashAddCallBack).on(FB_EVENT.INIT, function(/*e, target*/) {
 			flashAddCallBack.callFlash('setFilter', {values: self.opts.flashOpts.filterOpt});
-			flashAddCallBack.callFlash('setMultiple', {values: self.opts.flashOpts.multiple});
+			flashAddCallBack.callFlash('setMultiple', {values: self.opts.multiple});
 		});
 
 		$(flashAddCallBack).on(FB_EVENT.SELECTED_FILES, function(e, selectedFile) {
 			setSelectedFiles(selectedFile);
+		});
+
+		$(flashAddCallBack).on(FB_EVENT.SELECTED_OVER_SIZE, function(e, selectedSize) {
+			if (!self.multiple && selectedSize >= 1) {
+				win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+				return;
+			}
+
+			if (self.multiple && selectedSize >= self.opts.multiple.maxSize) {
+				win.alert('최대 ' + self.opts.multiple.maxSize + '개의 이미지를 선택 할 수 있습니다.');
+				return;
+			}
 		});
 
 		self.flashVersion = true;
@@ -256,7 +272,7 @@ function ClassImageUploader() {
 		var supportFlag = true,
 		reader, bs64;
 
-		if (!self.multiple && files.length > 1 || self.selectedFiles.length >= 1) {
+		if (!self.multiple && files.length > 1 || !self.multiple && self.selectedFiles.length >= 1) {
 			win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
 			return;
 		}
@@ -344,6 +360,7 @@ function ClassImageUploader() {
 	function destory() {
 		$(flashAddCallBack).off(FB_EVENT.INIT);
 		$(flashAddCallBack).off(FB_EVENT.SELECTED_FILES);
+		$(flashAddCallBack).off(FB_EVENT.SELECTED_OVER_SIZE);
 		$(self).off(EVENT.GET_SELECTED_FILES);
 		debug.log(fileName, 'destory');
 	}

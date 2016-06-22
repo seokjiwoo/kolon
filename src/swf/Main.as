@@ -111,6 +111,11 @@
 				addPendingFile(file);
 			} else {
 				fileList = _fileRefList.fileList;
+				
+				if (fileList.length > _multipleOpts.maxSize) {
+					ExternalInterface.call( 'FLASH.eventCallback', 'overMaxSize', fileList.length );
+					return;
+				}
 				for (var i:uint = 0; i < fileList.length; i++) {
 					file = FileReference(fileList[i]);
 					addPendingFile(file);
