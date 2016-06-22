@@ -61,13 +61,13 @@
 						<style>
 							.js-graph {position:relative}
 							
-							.js-graph-container .js-graph-status,
-							.js-graph-container .js-graph-date {position:absolute;line-height:15px;margin-top:-15px}
+							.js-diffdate .js-diffdate-status,
+							.js-diffdate .js-diffdate-date {position:absolute;line-height:15px;margin-top:-15px}
 
-							.js-graph-container .js-graph-start {left:0;top:50%;margin-left:20px}
-							.js-graph-container .js-graph-end {right:0;top:50%;margin-right:20px}
+							.js-diffdate .js-diffdate-start {left:0;top:50%;margin-left:20px}
+							.js-diffdate .js-diffdate-end {right:0;top:50%;margin-right:20px}
 
-							.js-graph-status {width:100%;height:30px;top:50%;text-align:center}
+							.js-diffdate-status {width:100%;height:30px;top:50%;text-align:center}
 
 							.js-graph-area .js-graph-doughnut {width:130px;height:130px;margin:0 auto}
 							.js-graph-area .js-graph-horizonbar {position:relative;width:100%;margin-top:30px}
@@ -78,27 +78,58 @@
 							.js-graph-horizonbar .txt-percent {position:absolute;display:inline-block;line-height:15px;margin:7px 0 0 12px;color:#fff;z-index:2;text-shadow:1px 1px 2px rgba(150, 150, 150, 1)}
 						</style>
 
-						<!-- [D] data-graph-opt 범위 옵션 설정
+						<!-- 
+							[D] data-diffdate-opts 범위 옵션 설정
+
 							startDate : 기준일, 옵션 'today' 금일 기준
 							endDate : 종료일
 						-->
-						<div class="js-graph"
-							data-graph-opt='{
+						<div class="js-graph js-diffdate"
+							data-diffdate-opts='{
 								"startDate" : "today",
 								"endDate" : "2016.06.30"
 							}'>
-							<div class="js-graph-container">
+							<div>
 								<!-- [D] 시작일 입력 -->
-								<span class="js-graph-date js-graph-start">2016.04.15</span>
+								<span class="js-diffdate-date js-diffdate-start">2016.04.15</span>
 								<!-- [D] 종료일 입력 -->
-								<span class="js-graph-date js-graph-end">2016.06.30</span>
-								<div class="js-graph-status">
-									<span class="js-graph-progress"></span><br>
-									<span class="js-graph-dday"></span>
+								<span class="js-diffdate-date js-diffdate-end">2016.06.30</span>
+								<div class="js-diffdate-status">
+									<span class="js-diffdate-progress"></span><br>
+									<span class="js-diffdate-dday"></span>
 								</div>
 								<div class="js-graph-area">
-									<!-- [D] Graph 퍼센트 입력 : data-graph-percent -->
-									<div class="js-graph-doughnut" data-graph-percent="30">
+									<!-- 
+										[D] Graph 정보 입력
+
+										color.background : 그래프 배경색
+										color.graph : 표현되는 그래프 색상
+										attr.width : svg 속성 - width / 기본값 100%
+										attr.height : svg 속성 - height / 기본값 100%
+										attr.viewBox : svg 속성 - viewBox / 기본값 0 0 Math.min(width,height) Math.min(width,height)
+										attr.preserveAspectRatio : svg 속성 - preserveAspectRatio / 기본값 xMinYMin
+										attr.translate : svg 속성 - translate / 기본값 Math.min(width,height)/2 Math.min(width,height)/2
+										percent : 그래프 퍼센트
+										speed : 애니메이션 속도 - 1000ms = 1s
+										onScreen : 화면에 위치시 애니메이션 실행
+									 -->
+									<div class="js-graph-doughnut"
+										data-graph-opts='{
+											"color" : {
+												"background" : "#eff1f3",
+												"graph" : "#f9cd58"
+											},
+											"attr" : {
+												"width" : "100%",
+												"height" : "100%",
+												"viewBox" : "0 0 130 130",
+												"preserveAspectRatio" : "xMinYMin",
+												"translate" : [65, 60]
+											},
+											"percent" : 30,
+											"speed" : 2000,
+											"onScreen" : true
+										}'>
 										<!-- 
 										<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin">
 											<g transform="translate(50,50)">
@@ -108,8 +139,19 @@
 										</svg>
 										 -->
 									</div>
-									<!-- [D] Graph 퍼센트 입력 : data-graph-percent -->
-									<div class="js-graph-horizonbar" data-graph-percent="30">
+									<!-- 
+										[D] Graph 정보 입력
+
+										percent : 그래프 퍼센트
+										speed : 애니메이션 속도 - 1000ms = 1s
+										onScreen : 화면에 위치시 애니메이션 실행
+									 -->
+									<div class="js-graph-horizonbar"
+										data-graph-opts='{
+											"percent" : 30,
+											"speed" : 5000,
+											"onScreen" : true
+										}'>
 										<div class="area bg"></div>
 										<div class="area data js-graph-data"></div>
 										<span class="txt-percent js-graph-percent">0%</span>
@@ -138,8 +180,9 @@
 
 			function setDemoDoughnut() {
 				var wrap = $('.js-graph-doughnut'),
-				DATA_PERCENT = wrap.data('graph-percent') || 100,
-				speed = 1000 * 1;
+				opts = wrap.data('graph-opts'),
+				DATA_PERCENT = opts.percent || 100,
+				speed = opts.speed;
 
 				var t = 2 * Math.PI,
 				width = 130,
@@ -164,17 +207,17 @@
 
 				background = svg.append('path')
 								.datum({endAngle: t})
-								.style('fill', '#eff1f3')
+								.style('fill', opts.color.background)
 								.attr('d', arc);
 
 				dataGraph = svg.append('path')
 								.datum({endAngle: 0 * t})
-								.style('fill', '#f9cd58')
+								.style('fill', opts.color.graph)
 								.attr('d', arc);
 
-				dataGraph.transition()
-						.duration(speed)
-						.call(arcTween, getDataPercent() * t);
+				// dataGraph.transition()
+				// 		.duration(speed)
+				// 		.call(arcTween, getDataPercent() * t);
 
 				function getDataPercent() {
 					return DATA_PERCENT / 100;
@@ -189,14 +232,33 @@
 						};
 					});
 				}
+
+				new Waypoint.Inview({
+					element: $('.js-graph')[0],
+					enter: function(direction) {
+						console.log('Enter triggered with direction ' + direction, dataGraph, arcTween);
+					},
+					entered: function(direction) {
+						console.log('Entered triggered with direction ' + direction);
+						dataGraph.transition().duration(speed).call(arcTween, getDataPercent() * t);
+					},
+					exit: function(direction) {
+						console.log('Exit triggered with direction ' + direction);
+					},
+					exited: function(direction) {
+						console.log('Exited triggered with direction ' + direction);
+						dataGraph.transition().duration(0).call(arcTween, 0 * t);
+					}
+				});
 			}
 
 			function setHorizonBar() {
 				var wrap = $('.js-graph-horizonbar'),
-				percent = wrap.data('graph-percent'),
+				opts = wrap.data('graph-opts'),
+				percent = opts.percent,
 				dataBar = wrap.find('.js-graph-data'),
 				txtArea = wrap.find('.js-graph-percent'),
-				speed = 1000 * 1;
+				speed = opts.speed;
 
 				dataBar.animate({ width : percent + '%' }, {
 					duration : speed,

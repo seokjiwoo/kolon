@@ -25,8 +25,8 @@ module.exports = function() {
 
 		debug.log(fileName, 'init');
 
-		var graph = $('.js-graph'),
-		opts = graph.data('graph-opt'),
+		var graph = $('.js-diffdate'),
+		opts = graph.data('diffdate-opts'),
 		diff = util.diffDay({
 			startDate : (opts.startDate === 'today' ? new Date() : opts.startDate),
 			endDate : opts.endDate
@@ -35,14 +35,14 @@ module.exports = function() {
 		debug.log(fileName, 'init > graph-opt', opts);
 
 		if (diff.diffDay && diff.diffDay > 0) {
-			graph.find('.js-graph-progress').text('시공진행중');
-			graph.find('.js-graph-dday').text('D-' + diff.diffDay);
+			graph.find('.js-diffdate-progress').text('시공진행중');
+			graph.find('.js-diffdate-dday').text('D-' + diff.diffDay);
 		} else {
-			graph.find('.js-graph-progress').text('----- 문구 ----');
+			graph.find('.js-diffdate-progress').text('----- 문구 ----');
 			if (diff.diffDay === 0) {
-				graph.find('.js-graph-dday').text('D-Day');
+				graph.find('.js-diffdate-dday').text('D-Day');
 			} else {
-				graph.find('.js-graph-dday').text(diff.diffDay);
+				graph.find('.js-diffdate-dday').text(diff.diffDay);
 			}			
 		}
 
