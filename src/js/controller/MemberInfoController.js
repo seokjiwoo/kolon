@@ -220,7 +220,8 @@ function ClassMemberInfoController() {
 			if (status == 200) {
 				$(callerObj).trigger('findPwResult', [result, id]);
 			} else {
-				Super.handleError('findPassword', result);
+				Super.handleError('findPasswordByMail', result);
+				$(callerObj).trigger('findPwResult', [result]);
 			}
 		}, false);
 	};
@@ -235,7 +236,8 @@ function ClassMemberInfoController() {
 			if (status == 200) {
 				$(callerObj).trigger('findPwResult', [result, id]);
 			} else {
-				Super.handleError('findPassword', result);
+				Super.handleError('findPasswordByPhone', result);
+				$(callerObj).trigger('findPwResult', [result]);
 			}
 		}, false);
 	};

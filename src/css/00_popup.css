@@ -42,6 +42,7 @@
 /* 육각형 팝업 */
 .popHex .hexagon{background: #fff; top:0;}
 .popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+#cboxLoadedContent .popHex:before{margin-right:0;}
 .popHex .cardCon{display: inline-block;padding:0 30px;width: 220px;vertical-align: middle;text-align: center;color: #000;}
 #cboxLoadedContent .popHex .popSub{margin-top: 18px;}
 .popHex .popTit{line-height: 1.2em;font-size:20px;font-family:'RobotoM','NotoSansM', sans-serif;}

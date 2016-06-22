@@ -88,7 +88,7 @@ module.exports = function() {
 			case '200':
 				switch(findMethod) {
 					case 'phone':
-						$('#findPwAuthMail').show().siblings('div').hide();
+						//$('#findPwAuthMail').show().siblings('div').hide();
 						break;
 					case 'mail':
 						$('#findPwAuthMail').show().siblings('div').hide();
@@ -96,9 +96,9 @@ module.exports = function() {
 				}
 				break;
 				
-			case '3001':
+			case '400':
 				// 아이디 없음
-				alert(id+"\n\n등록된 정보가 없습니다. 입력하신 정보를 다시 한 번 확인해주세요.");
+				Super.Super.alertPopup('비밀번호 찾기', result.message, '확인');
 				break;
 		}
 	};
@@ -108,7 +108,7 @@ module.exports = function() {
 	 */
 	function requstPwAuthMailResend(e) {
 		e.preventDefault();
-		alert('인증메일이 재발송 되었습니다');
+		Super.Super.alertPopup('비밀번호 찾기', '인증메일이 재발송 되었습니다', '확인');
 		e.stopPropagation();
 	};
 	
