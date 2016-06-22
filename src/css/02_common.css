@@ -204,6 +204,9 @@ table tr td.txtL {text-align:left !important;}
 
 .tbSet {width:100%; display:inline-block; border-top:1px solid #545454;}
 .tbSet table{width: 100%; border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.tbSet table a {color:#666;}
+.tbSet table .btn, 
+.tbSet table a[class^=btnSize] {color:#fff;}
 .tbSet table.tbL tr th,
 .tbSet table.tbL tr td {text-align:left;}
 .tbSet table.tbLThC tr th {text-align:center;}

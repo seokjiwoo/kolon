@@ -19,6 +19,10 @@
 					</ul>
 					<h2 class="secTit">시공 상품 내역 <span class="icoTitle"></span> 시공 상세</h2>
 					<table class="record">
+						<colgroup>
+							<col style="width:10%;"/><col style="width:90%;"/>
+						</colgroup>
+						<caption>시공상품 내역에 관한 주문번호, 시공대상 정보를 제공합니다.</caption>
 						<tr>
 							<th>주문번호</th>
 							<td class="date t_l">2016.04.20 <b>2354865</b></td>
@@ -41,6 +45,116 @@
 							<li>시공 검수</li>
 							<li>시공완료 및<br>구매확정</li>
 						</ul>
+					</div>
+					<h3 class="subTit">결제정보</h3>
+					<div class="tbSet tbMt">
+						<table>
+							<caption>결제정보에 관한 견적금액, 선결제금액, 할인 금액, 총 결제 금액, 결제 방법 정보를 제공합니다.</caption>
+							<colgroup>
+								<col style="width:6%;"/><col style="width:14%;"/><col style="width:6%;"/><col style="width:14%;"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">견적금액</th>
+									<td class="txtR"><span class="price">32,000,000</span> 원</td>
+									<th scope="row" rowspan="5">결제방법</th>
+									<td rowspan="5">
+										<div class="cashTbSet">
+											<p class="tit">무통장입금</p>
+											<ul class="csList">
+												<li>
+													<span class="csTit">입금계좌</span>
+													<span class="csCont">123-567890-01-123</span>
+												</li>
+												<li>
+													<span class="csTit">예금주</span>
+													<span class="csCont">(주)코오롱 글로벌</span>
+												</li>
+												<li>
+													<span class="csTit">입금기한</span>
+													<span class="csCont">결제완료</span>
+												</li>
+												<li>
+													<span class="csTit">증빙서류</span>
+													<span class="csCont">현금영수증<br/>지출증빙용(01012345678)</span>
+												</li>
+											</ul>
+											<div class="csBtn">
+												<a href="#" class="btnSizeM btnColor03">거래명세서</a>
+												<a href="#" class="btnSizeM btnColor03">입금표</a>
+												<a href="#" class="btnSizeM btnColor03">견적서</a>
+												<a href="#" class="btnSizeM btnColor03">현금영수증</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">견적금액</th>
+									<td class="txtR"><span class="price">32,000,000</span> 원</td>
+								</tr>
+								<tr>
+									<th scope="row">선결제금액</th>
+									<td class="txtR"><span class="price">300,000</span> 원</td>
+								</tr>
+								<tr>
+									<th scope="row">할인 금액</th>
+									<td>
+										<ul class="tbList">
+											<li>
+												<span class="tbListTit">포인트</span>
+												<span class="price"><b>-0</b> P</span>
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">총 결제금액</th>
+									<td class="txtR"><span class="price">31,700,000</span> 원</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="subTit">주문자 정보</h3>
+					<div class="tbSet tbMt">
+						<table class="tbLThC">
+							<caption>주문자 정보에 관한 이름, 연락처, 이메일주소 정보를 제공합니다.</caption>
+							<colgroup>
+								<col style="width:6%;"/><col style="width:14%;"/><col style="width:6%;"/><col style="width:14%;"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">주문자 이름</th>
+									<td colspan="3">홍길동</td>
+								</tr>
+								<tr>
+									<th scope="row">연락처</th>
+									<td>010-1234-5678</td>
+									<th scope="row">이메일 주소</th>
+									<td><a href="mailto:kolon1234@gmail.com" target="_blank"  title="새창으로 열기">kolon1234@gmail.com</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="subTit">시공 정보</h3>
+					<div class="tbSet tbMt">
+						<table class="tbLThC">
+							<caption>시공 정보에 관한 정보를 제공합니다.</caption>
+							<colgroup>
+								<col style="width:6%;"/><col style="width:14%;"/><col style="width:6%;"/><col style="width:14%;"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">시공대상</th>
+									<td colspan="3">서울 서초구 반포동 자이아파트 101동 303호 (79㎡)</td>
+								</tr>
+								<tr>
+									<th scope="row">희망시공기간</th>
+									<td>2016. 04. 17 ~ 05.02 (16일)</td>
+									<th scope="row">예상시공기간</th>
+									<td>2016. 04. 17 ~ 05.02 (16일)</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 					<div class="conCard product" style="background-image: url('/images/temp14.jpg');">
 						<p class="union">24평</p>
@@ -118,9 +232,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="conCard designer">
+					<div class="conCard designer construction">
 						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
-						<h3 class="cardTit"><span class="group">Wadiz</span><b>Design by </b>홍길동</h3>
+						<h3 class="cardTit"><span class="group">Wadiz</span><b>Construction by </b>홍길동</h3>
 						<p class="cardTxt">홈인테리어&amp;홈드레싱 <span class="area">전지역</span></p>
 						<a href="" class="btnSizeM btnColor01 btnShadow">팔로우</a><a href="../_popup/popMessage.html" class="btnSizeM btnColor04 btnShadow btnPop btnPop650" data-user-class="orderPop">1:1메세지</a>
 					</div>

@@ -40,7 +40,7 @@
 .popEdge .subTit {font-size:20px;color:#000; }
 
 /* 육각형 팝업 */
-.popHex .hexagon{background: #fff;}
+.popHex .hexagon{background: #fff; top:0;}
 .popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
 .popHex .cardCon{display: inline-block;padding:0 30px;width: 220px;vertical-align: middle;text-align: center;color: #000;}
 #cboxLoadedContent .popHex .popSub{margin-top: 18px;}
