@@ -202,7 +202,7 @@
 .catSorting .catSort .sortCont ul + h3.sortTit {margin-top:20px;}
 
 /* homeService index */
-body[data-page-id=homeService] {overflow-y:hidden !important;}
+body[data-page-id=livingService] {overflow-y:hidden !important;}
 .container.homeWrap {padding:0 0 200px;}
 .homeWrap .section0 {background:url('../images/hm_section00.jpg') center no-repeat;background-size:cover}
 .homeWrap .section1 {background:url('../images/hm_section01.jpg') center no-repeat;background-size:cover}
@@ -228,7 +228,7 @@ body[data-page-id=homeService] {overflow-y:hidden !important;}
 .homeWrap .textBox h1 span {display:block;font-family:'RobotoB','NotoSansB', sans-serif;text-shadow:3px 4px 1px #fff}
 .homeWrap .textBox p {margin-top:20px;line-height:20px;}
 .homeWrap .textBox ul {overflow:hidden;margin-top:40px}
-.homeWrap .textBox li {float:left;font-size:14px;line-height:22px}
+.homeWrap .textBox li {float:left;font-size:14px;line-height:18px}
 .homeWrap .textBox li span {display:block;padding-left:5px;}
 .homeWrap .textBox li b {display:inline-block;margin-bottom:5px;height:22px;line-height:22px;padding:0 5px;background:#000;color:#fff;font-size:16px;font-family:'RobotoM','NotoSansM', sans-serif;}
 
