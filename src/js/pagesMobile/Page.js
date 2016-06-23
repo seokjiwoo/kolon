@@ -36,5 +36,12 @@ module.exports = function() {
 			$(this).toggleClass('open');
 			$(this).siblings('.slideCon').slideToggle();
 		});
+
+		$('#mobileScrap li').each(function(){ // scrap fadeToggle
+			$(this).find('.scrapMore').on('click', function(){
+				$(this).toggleClass('opened');
+				$(this).parent().find('.scrapMoreList, .dim').fadeToggle();
+			})
+		});
 	}
 }
