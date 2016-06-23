@@ -89,15 +89,15 @@
 .snsList{margin-top:20px;}
 .snsList li{padding:0 30px;margin-top:6px;}
 .snsList li:first-child{margin-top:0;}
-.snsBtn{position:relative;display:block;border:1px solid #ccc;border-radius:20px;text-align:center;font-family:'RobotoB','NotoSansB', sans-serif;}
-.snsBtnS{height:30px;font-size:12px;text-align:left !important;}
-.snsBtnS span{display:block;padding-top:7px;padding-left:50px;}
-.snsBtnS:before{position:absolute;left:40px;top:8px;content:"";display:block;width:1px;height:12px;background:#ccc;}
+.snsBtn{position:relative;display:block;border:1px solid #ccc;border-radius:20px;text-align:center;font-family:'RobotoB','NotoSansB', sans-serif;letter-spacing:-1px;}
+.snsBtnS{height:30px;font-size:13px;text-align:left !important;}
+.snsBtnS span{display:block;padding-top:6px;padding-left:46px;}
+.snsBtnS:before{position:absolute;left:36px;top:8px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .snsBtnS.facebook{background:url("../images/ico_sns.png") no-repeat 17px 6px;background-size:10px;}
-.snsBtnS.naver{background:url("../images/ico_sns.png") no-repeat 17px -42px;background-size:10px;}
+.snsBtnS.naver{background:url("../images/ico_sns.png") no-repeat 17px -40px;background-size:10px;}
 .snsBtnS.kakao{background:url("../images/ico_sns.png") no-repeat 17px -84px;background-size:10px;}
-.snsBtnM{height:34px;font-size:14px;}
-.snsBtnM span{display:block;padding-top:8px;}
+.snsBtnM{height:35px;font-size:13px;}
+.snsBtnM span{display:block;padding-top:9px;}
 .snsBtnM:before{position:absolute;left:55px;top:11px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .snsBtnM.facebook{background:url("../images/ico_sns.png") no-repeat 26px 10px;background-size:10px;}
 .snsBtnM.naver{background:url("../images/ico_sns.png") no-repeat 26px -37px;background-size:10px;}
@@ -107,7 +107,7 @@
 .members .accTxt em,
 .members .accTxt span{display:block;}
 .members .accTxt em{font-style:normal;font-size:15px;font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
-.members .accTxt span{margin-top:14px;line-height:1.4em;color:#666;font-size:12px;}
+.members .accTxt span{margin-top:14px;line-height:1.4em;color:#666;letter-spacing:-1px;padding:0 6px;}
 .members .accountArea{padding:0 16px;margin-top:20px;}
 .members .accountArea dl{border:1px solid #ccc;text-align:center;margin-top:10px;}
 .members .accountArea dl:first-child{margin-top:0;}
@@ -117,7 +117,7 @@
 .members .accountArea dd div.bdt{border-top:1px solid #e5e5e5;}
 .members .accountArea .date strong,
 .members .accountArea .date span{display:block;}
-.members .accountArea .date strong{color:#333;font-family:'RobotoB','NotoSansB', sans-serif;font-size:14px;}
+.members .accountArea .date strong{color:#333;font-family:'RobotoB','NotoSansB', sans-serif;font-size:15px;}
 .members .accountArea .date span{margin:6px 0 16px;color:#999;font-size:12px;}
 .members .accountArea .date + p{line-height:1.4em;margin:16px 0 16px;color:#666;}
 .members .accountArea .btn,
@@ -128,9 +128,9 @@
 .members .restAccount{text-align:center;padding:25px 15px 0}
 .members .restAccount div{padding-bottom:20px;border-bottom:1px solid #ccc;}
 .members .restAccount p{line-height:1.4em;font-family:'RobotoR','NotoSansR', sans-serif;}
-.members .restAccount p:first-child{color:#000;font-size:16px;}
+.members .restAccount p:first-child{color:#000;font-size:15px;}
 .members .restAccount p:first-child span{color:#00aeb9;}
-.members .restAccount p:first-child + p{margin-top:14px;color:#666;font-size:12px;}
+.members .restAccount p:first-child + p{margin-top:14px;color:#666;letter-spacing:-1px;}
 .members .btnWrap{text-align:center;margin-top:20px;}
 .members .btnWrap .btn{width:140px;display:inline-block;}
 
@@ -138,11 +138,16 @@
 .members .certification div{padding-bottom:20px;border-bottom:1px solid #ccc;}
 .members .certification.bd0 div{border:0;}
 .members .certification p{line-height:1.4em;}
-.members .certification p:first-child{font-size:16px;}
-.members .certification p:last-child{margin-top:15px;font-size:12px;color:#666;}
+.members .certification p:first-child{font-size:15px;}
+.members .certification p:last-child{margin-top:15px;color:#666;letter-spacing:-1px;}
 .members .certification p:first-child span,
 .members .certification p:last-child span{color:#00aeb9;}
 .members .numInput{padding:0 15px;margin-top:20px;}
+.members .numInput ul li{margin-top:6px;}
+.members .numInput ul li:first-child{margin-top:0;}
+.members .numInput ul li input[type="password"]{background:url("../images/ico_check02.png") no-repeat right 10px;background-size:24px;}
+.members .numInput ul li.active input[type="password"]{background-position:right -22px;}
+.members .numInput ul li p{line-height:1.4em;margin-top:5px;}
 
 .members .terms h4{font-size:15px;}
 .members .terms h5{margin-top:18px;color:#666;font-size:13px;}
@@ -151,7 +156,14 @@
 .members .emailSend{padding:20px 6px;background:#f8f8f8;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;text-align:center;}
 .members .emailSend p{line-height:1.4em;letter-spacing:-1px;}
 .members .emailSend p:first-child{color:#000;font-family:'RobotoB','NotoSansB', sans-serif;}
-.members .emailSend p:first-child + p{color:#999;margin-bottom:20px;}
+.members .emailSend p:first-child + p{color:#999;margin-bottom:20px;font-size:12px;}
 .members .emailSend .btn{width:140px;}
-.members .commonMain{padding:0 15px;margin-top:20px;}
-.members .commonMain .btn{width:100%;}
+.members .commonMain{padding:0 15px;margin-top:20px;text-align:center;}
+.members .commonMain a{display:inline-block;text-decoration:underline;color:#666;}
+
+.members .checkArea{padding:20px 6px;background:#f8f8f8;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;}
+.members .checkArea p{line-height:1.4em;letter-spacing:-1px;}
+.members .checkArea p:first-child{color:#000;font-family:'RobotoB','NotoSansB', sans-serif;}
+.members .checkArea .checkbox{width:248px;margin:0 auto;}
+.members .checkArea label{overflow:hidden;}
+.members .checkArea label:before{float:left;margin-top:7px;}
