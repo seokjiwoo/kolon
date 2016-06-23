@@ -78,7 +78,7 @@ function ClassLoginController() {
 	 */
 	function logout() {
 		Super.callApi('/apis/user/logout', 'GET', {}, function(status, result) {
-			if (status == 200) {
+			if (status == 200 || status == 0) {
 				model.removeLoginInfo();
 			} else {
 				Super.handleError('logout', result);
