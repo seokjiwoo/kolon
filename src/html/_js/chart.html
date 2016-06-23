@@ -324,10 +324,134 @@
 						</div>
 					</div>
 
+					<div class="dummy" style="height:600px">dummy 영역</div>
+					<div class="dummy" style="height:600px">dummy 영역</div>
+
+					<button class="js-doughnut-btn" style="position:fixed;left:40%;bottom:10px">도넛 구성 테스트</button>
+					<button class="js-horizonbar-btn" style="position:fixed;left:60%;bottom:10px">바 구성 테스트</button>
+					<div class="js-dom-area"></div>
+
 				</section>
 			</div>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+	<script id="hb-doughnut-template" type="text/x-handlebars-template">
+		{{#list}}
+		<div class="conCard graph">
+			<div class="js-graph-area">
+				<div class="js-graph-doughnut"
+					data-graph-opts='{
+						"color" : {
+							"background" : "#eff1f3",
+							"graph" : "#ff6600"
+						},
+						"easing" : "bounce",
+						"percent" : {{percent}},
+						"speed" : 2000,
+						"onScreen" : {{onScreen}},
+						"toFixed" : 2
+					}'>
+					<!-- [D] 퍼센트 정보 출력시 -->
+					{{#if displayPercent}}
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		{{/list}} 
+	</script>
+
+	<script id="hb-horizonbar-template" type="text/x-handlebars-template">
+		{{#list}}
+		<div class="conCard graph">
+			<div class="js-graph-area">
+				<div class="js-graph-horizonbar"
+					data-graph-opts='{
+						"easing" : "easeOutElastic",
+						"percent" : {{percent}},
+						"speed" : 2000,
+						"onScreen" : {{onScreen}},
+						"toFixed" : 0
+					}'>
+					<div class="area bg"></div>
+
+					<!-- [D] 퍼센트바 .js-graph-data -->
+					<div class="area data js-graph-data"></div>
+
+					<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+					{{#if displayPercent}}
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		{{/list}} 
+	</script>
+
+	<script>
+	;(function(win, $) {
+		'use strict';
+		$(function() {
+			// 도넛 차트 테스트
+			$('.js-doughnut-btn').on('click', function() {
+				var source = $("#hb-doughnut-template").html(),
+				template = Handlebars.compile(source),
+				data, html;
+
+				data = {
+					list : [
+						{ percent : 10, onScreen : false, displayPercent : true },
+						{ percent : 15, onScreen : false, displayPercent : true },
+						{ percent : 50, onScreen : true, displayPercent : false },
+						{ percent : 25, onScreen : true, displayPercent : false }
+					]
+				}; 
+
+				html = template(data);
+
+				var insertElements = $(html);
+				$('.js-dom-area').append(insertElements);
+
+				// $('body').trigger('DOUGHNUT_CHART-REFRESH');
+				$('body').trigger('DOUGHNUT_CHART-APPEND', {
+					container : $('.js-dom-area'),
+					insertElements: insertElements
+				});
+			});
+
+			$('.js-horizonbar-btn').on('click', function() {
+				var source = $("#hb-horizonbar-template").html(),
+				template = Handlebars.compile(source),
+				data, html;
+
+				data = {
+					list : [
+						{ percent : 10, onScreen : false, displayPercent : true },
+						{ percent : 15, onScreen : false, displayPercent : true },
+						{ percent : 50, onScreen : true, displayPercent : false },
+						{ percent : 25, onScreen : true, displayPercent : false }
+					]
+				}; 
+
+				html = template(data);
+
+				var insertElements = $(html);
+				$('.js-dom-area').append(insertElements);
+
+				// $('body').trigger('HORIZON_BAR_CHART-REFRESH');
+				$('body').trigger('HORIZON_BAR_CHART-APPEND', {
+					container : $('.js-dom-area'),
+					insertElements: insertElements
+				});
+			});
+		});
+	})(window, window.jQuery);
+	</script>
 </body>
 </html>

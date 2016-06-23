@@ -31,6 +31,7 @@
     "fullpage.js": "^2.8.1",
     "swf-jquery": "^1.2.0",
     "d3": "^3.5.17",
-    "waypoints": "^4.0.0"
+    "waypoints": "^4.0.0",
+    "handlebars": "^4.0.5"
   }
 }

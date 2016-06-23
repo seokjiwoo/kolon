@@ -16,6 +16,7 @@ function DoughnutChart() {
 
 	var opts = {
 		wrap : 'body',
+		svgName : 'd3-graph-doughnut',
 		graphs : '.js-graph-doughnut',
 		percentTxt : '.js-graph-percent',
 		dataAttr : {
@@ -47,7 +48,15 @@ function DoughnutChart() {
 
 	var callerObj = {
 		init : init,
-		destory : destory
+		destory : destory,
+		refresh : refresh,
+		append : append,
+		EVENT : {
+			REFRESH : 'DOUGHNUT_CHART-REFRESH',
+			DESTROY : 'DOUGHNUT_CHART-DESTORY',
+			INIT : 'DOUGHNUT_CHART-INIT',
+			APPEND : 'DOUGHNUT_CHART-APPEND'
+		}
 	},
 	instance, self;
 	
@@ -70,6 +79,7 @@ function DoughnutChart() {
 		}
 
 		setElements();
+		removeBindEvents();
 		setBindEvents();
 		createChart();
 	}
@@ -77,13 +87,34 @@ function DoughnutChart() {
 	function setElements() {
 		self.wrap = $(self.opts.wrap);
 		self.graphs = self.wrap.find(self.opts.graphs);
+		self.waypoints = [];
 	}
 
 	function setBindEvents() {
+		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
+					.on(self.EVENT.DESTROY, $.proxy(destory, self))
+					.on(self.EVENT.INIT, $.proxy(init, self))
+					.on(self.EVENT.APPEND, $.proxy(append, self));
 
+		$(self).on(self.EVENT.REFRESH, $.proxy(refresh, self))
+				.on(self.EVENT.DESTROY, $.proxy(destory, self))
+				.on(self.EVENT.INIT, $.proxy(init, self))
+				.on(self.EVENT.APPEND, $.proxy(append, self));
 	}
 
-	function createChart() {
+	function removeBindEvents() {
+		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
+					.off(self.EVENT.DESTROY, $.proxy(destory, self))
+					.off(self.EVENT.INIT, $.proxy(init, self))
+					.off(self.EVENT.APPEND, $.proxy(append, self));
+
+		$(self).off(self.EVENT.REFRESH, $.proxy(refresh, self))
+				.off(self.EVENT.DESTROY, $.proxy(destory, self))
+				.off(self.EVENT.INIT, $.proxy(init, self))
+				.off(self.EVENT.APPEND, $.proxy(append, self));
+	}
+
+	function createChart(elements) {
 		var t = 2 * Math.PI,
 		width, height, outerRadius, innerRadius,
 		arc, svg, background, dataGraph, graphOpts,
@@ -91,7 +122,7 @@ function DoughnutChart() {
 
 		debug.log(fileName, 'createChart');
 
-		$.each(self.graphs, function() {
+		$.each(elements || self.graphs, function() {
 			container = $(this);
 			opts = container.data(self.opts.dataAttr.opts);
 
@@ -118,6 +149,7 @@ function DoughnutChart() {
 			}
 
 			svg = win.d3.select(container.get(0)).append('svg')
+					.attr('name', self.opts.svgName)
 					.attr('width', graphOpts.attr.width)
 					.attr('height', graphOpts.attr.height)
 					.attr('viewBox', viewBox)
@@ -145,25 +177,7 @@ function DoughnutChart() {
 			debug.log(fileName, 'createChart > graphs', container, graphOpts, drawOpts);
 
 			if (graphOpts.onScreen) {
-				;(function(dataGraph, drawOpts) {
-					var container = drawOpts.container;
-
-					new win.Waypoint.Inview({
-						element: container.get(0),
-						entered: function(/*direction*/) {
-							container.addClass(self.opts.cssClass.isEntered)
-									.removeClass(self.opts.cssClass.isExited);
-
-							dataGraph.transition().duration(drawOpts.graphOpts.speed).ease(drawOpts.graphOpts.easing).call(arcTween, drawOpts);
-						},
-						exited: function(/*direction*/) {
-							container.removeClass(self.opts.cssClass.isEntered)
-									.addClass(self.opts.cssClass.isExited);
-
-							dataGraph.transition().duration(0).ease(drawOpts.graphOpts.easing).call(arcTween, drawOpts, true);
-						}
-					});
-				})(dataGraph, drawOpts);
+				setWaypoint(dataGraph, drawOpts);
 			} else {
 				dataGraph.transition()
 						.duration(graphOpts.speed)
@@ -171,6 +185,45 @@ function DoughnutChart() {
 						.call(arcTween, drawOpts);
 			}
 		});
+	}
+
+	function append(e, insert) {
+		if (!insert || !insert.insertElements) {
+			return;
+		}
+
+		var graphs = [];
+		$.each(insert.insertElements, function() {
+			if ($(this).hasClass(self.opts.graphs.split('.')[1])) {
+				graphs.push($(this));
+			} else if ($(this).find(self.opts.graphs).size()) {
+				graphs.push($(this).find(self.opts.graphs));
+			}
+		});
+		createChart(graphs);
+	}
+
+	function setWaypoint(dataGraph, drawOpts) {
+		var container = drawOpts.container,
+		waypoint;
+
+		waypoint = new win.Waypoint.Inview({
+			element: container.get(0),
+			entered: function(/*direction*/) {
+				container.addClass(self.opts.cssClass.isEntered)
+						.removeClass(self.opts.cssClass.isExited);
+
+				dataGraph.transition().duration(drawOpts.graphOpts.speed).ease(drawOpts.graphOpts.easing).call(arcTween, drawOpts);
+			},
+			exited: function(/*direction*/) {
+				container.removeClass(self.opts.cssClass.isEntered)
+						.addClass(self.opts.cssClass.isExited);
+
+				dataGraph.transition().duration(0).ease(drawOpts.graphOpts.easing).call(arcTween, drawOpts, true);
+			}
+		});
+
+		self.waypoints.push(waypoint);
 	}
 
 	function getDataPercent(percent) {
@@ -208,6 +261,22 @@ function DoughnutChart() {
 	}
 
 	function destory() {
+		removeBindEvents();
+		$.each(self.waypoints, function(index, waypoint) {
+			waypoint.destroy();
+		});
+
+		$.each(self.graphs, function() {
+			var svg = $(this).find('[name="' + self.opts.svgName + '"]');
+			if (svg.size()) {
+				svg.remove();
+			}
+		});
+	}
+
+	function refresh() {
+		destory();
+		init();
 	}
 
 }

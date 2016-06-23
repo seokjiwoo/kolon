@@ -36,7 +36,15 @@ function DoughnutChart() {
 
 	var callerObj = {
 		init : init,
-		destory : destory
+		destory : destory,
+		refresh : refresh,
+		append : append,
+		EVENT : {
+			REFRESH : 'HORIZON_BAR_CHART-REFRESH',
+			DESTROY : 'HORIZON_BAR_CHART-DESTORY',
+			INIT : 'HORIZON_BAR_CHART-INIT',
+			APPEND : 'HORIZON_BAR_CHART-APPEND'
+		}
 	},
 	instance, self;
 	
@@ -54,6 +62,7 @@ function DoughnutChart() {
 		debug.log(fileName, 'init', self.opts);
 
 		setElements();
+		removeBindEvents();
 		setBindEvents();
 		createChart();
 	}
@@ -61,17 +70,38 @@ function DoughnutChart() {
 	function setElements() {
 		self.wrap = $(self.opts.wrap);
 		self.graphs = self.wrap.find(self.opts.graphs);
+		self.waypoints = [];
 	}
 
 	function setBindEvents() {
+		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
+					.on(self.EVENT.DESTROY, $.proxy(destory, self))
+					.on(self.EVENT.INIT, $.proxy(init, self))
+					.on(self.EVENT.APPEND, $.proxy(append, self));
 
+		$(self).on(self.EVENT.REFRESH, $.proxy(refresh, self))
+				.on(self.EVENT.DESTROY, $.proxy(destory, self))
+				.on(self.EVENT.INIT, $.proxy(init, self))
+				.on(self.EVENT.APPEND, $.proxy(append, self));
 	}
 
-	function createChart() {
+	function removeBindEvents() {
+		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
+					.off(self.EVENT.DESTROY, $.proxy(destory, self))
+					.off(self.EVENT.INIT, $.proxy(init, self))
+					.off(self.EVENT.APPEND, $.proxy(append, self));
+
+		$(self).off(self.EVENT.REFRESH, $.proxy(refresh, self))
+				.off(self.EVENT.DESTROY, $.proxy(destory, self))
+				.off(self.EVENT.INIT, $.proxy(init, self))
+				.off(self.EVENT.APPEND, $.proxy(append, self));
+	}
+
+	function createChart(elements) {
 		debug.log(fileName, 'createChart');
 
 		var container, opts, graphOpts, drawOpts;
-		$.each(self.graphs, function() {
+		$.each(elements || self.graphs, function() {
 			container = $(this);
 			opts = container.data(self.opts.dataAttr.opts);
 
@@ -93,9 +123,27 @@ function DoughnutChart() {
 		});
 	}
 
+	function append(e, insert) {
+		if (!insert || !insert.insertElements) {
+			return;
+		}
+
+		var graphs = [];
+		$.each(insert.insertElements, function() {
+			if ($(this).hasClass(self.opts.graphs.split('.')[1])) {
+				graphs.push($(this));
+			} else if ($(this).find(self.opts.graphs).size()) {
+				graphs.push($(this).find(self.opts.graphs));
+			}
+		});
+		createChart(graphs);
+	}
+
 	function setWaypoint(drawOpts) {
-		var container = drawOpts.container;
-		new win.Waypoint.Inview({
+		var container = drawOpts.container,
+		waypoint;
+
+		waypoint = new win.Waypoint.Inview({
 			element: container.get(0),
 			entered: function(/*direction*/) {
 				container.addClass(self.opts.cssClass.isEntered)
@@ -110,6 +158,7 @@ function DoughnutChart() {
 				tweenChart(drawOpts, true);
 			}
 		});
+		self.waypoints.push(waypoint);
 	}
 
 	function tweenChart(drawOpts, exited) {
@@ -144,6 +193,15 @@ function DoughnutChart() {
 	}
 
 	function destory() {
+		removeBindEvents();
+		$.each(self.waypoints, function(index, waypoint) {
+			waypoint.destroy();
+		});
+	}
+
+	function refresh() {
+		destory();
+		init();
 	}
 
 }
