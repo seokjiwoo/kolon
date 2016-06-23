@@ -296,3 +296,26 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
 .calendar.cal2 span.calInp input[type="text"] {width:80px;}
 
+/* dropBox */
+.drop {overflow:hidden;height:38px;border:1px solid #ccc;}
+.drop li {width:138px;height:38px;border-top:1px solid #ccc;}
+.drop li:first-child {color:#666;border-top:none}
+.drop li:first-child a:after {content:'';display:block;position:absolute;top:7px;right:15px;width:20px;height:20px;background:url(../images/ico_lnb.png) no-repeat;background-position:0 0;}
+.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#666;background:#fff;}
+/* dropBox on 되었었을 시 dropOn class 추가 */
+.drop.dropOn {height:auto;}
+.drop.dropOn li:first-child a:after {top:10px;background-position:0 -20px;}
+/* dropBox check 기능 있을 시 dropChk class 추가 */
+.drop.dropChk li:first-child {width:138px;padding:0;}
+.drop.dropChk li {position:relative;width:108px;padding:0 15px;background:#fff;}
+.drop.dropChk li label {display:block;width:100%;font-size:13px;color:#999;}
+.drop.dropChk .checkbox {display:block;height:40px;margin-top:0;}
+.drop.dropChk .checkbox label:before {content:'';display:inline-block;width:20px;height:20px;border:none;border-radius:0;margin-right:0;visibility:hidden;position:absolute;top:10px;right:0;}
+.drop.dropChk .checkbox label.on {color:#f1645c;}
+.drop.dropChk .checkbox label.on:before {visibility:visible;background:url(../images/ico_lnb.png) no-repeat;background-position:0 -40px;}
+/* dropBox check 기능 있으면서 on되었을 시 dropChk class 추가 */
+.drop.dropChk.dropOn li:first-child a:after {top:8px;background-position:0 -60px;} 
+
+/* myPage order.html 제목줄 옆 dropBox 레이아웃 */
+.alignBox {position:relative;line-height:40px}
+.alignBox .drop {position:absolute;top:0;right:0;z-index:1}
