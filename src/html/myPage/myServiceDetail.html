@@ -171,7 +171,9 @@
 					<div class="conCard graph">
 						<!-- graph -->
 
-						<!-- [D] 테스트 임시 구성 -->
+						<!-- [D] 테스트 임시 구성
+								js- 프리픽스는 js에서 셀렉트를 위해 지정한 클래스명입니다.
+						 -->
 						<style>
 							.js-graph {position:relative}
 							
@@ -223,9 +225,11 @@
 										attr.viewBox : svg 속성 - viewBox / 기본값 0 0 Math.min(width,height) Math.min(width,height)
 										attr.preserveAspectRatio : svg 속성 - preserveAspectRatio / 기본값 xMinYMin
 										attr.translate : svg 속성 - translate / 기본값 Math.min(width,height)/2 Math.min(width,height)/2
+										easing : 애니메이션 easing / 기본값 quadOut / @see http://bl.ocks.org/hunzy/9929724
 										percent : 그래프 퍼센트
 										speed : 애니메이션 속도 - 1000ms = 1s
 										onScreen : 화면에 위치시 애니메이션 실행
+										toFixed : 소수점 처리 / 기본값 0
 									 -->
 									<div class="js-graph-doughnut"
 										data-graph-opts='{
@@ -238,37 +242,41 @@
 												"height" : "100%",
 												"viewBox" : "0 0 130 130",
 												"preserveAspectRatio" : "xMinYMin",
-												"translate" : [65, 60]
+												"translate" : [65, 65]
 											},
+											"easing" : "quadOut",
 											"percent" : 30,
 											"speed" : 2000,
-											"onScreen" : true
+											"onScreen" : true,
+											"toFixed" : 2
 										}'>
-										<!-- 
-										<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin">
-											<g transform="translate(50,50)">
-												<path d="M0,50A50,50 0 1,1 0,-50A50,50 0 1,1 0,50M0,40A40,40 0 1,0 0,-40A40,40 0 1,0 0,40Z" style="fill: #eff1f3;"></path>
-												<path d="M2.6645352591003757e-15,-44.721359549995796A5,5 0 0,1 5.555555555555559,-49.69039949999533A50,50 0 0,1 8.664678935936468,49.24351062766686A5,5 0 0,1 2.808077400201465,44.633112162546745L2.808077400201465,44.633112162546745A5,5 0 0,1 6.931743148749176,39.39480850213349A40,40 0 0,0 4.444444444444447,-39.75231959999626A5,5 0 0,1 2.6645352591003757e-15,-44.721359549995796Z" style="fill: #f9cd58;"></path>
-											</g>
-										</svg>
-										 -->
 									</div>
 									<!-- 
 										[D] Graph 정보 입력
 
+										easing : 애니메이션 easing / 기본값 easeOutQuad / @see http://gsgd.co.uk/sandbox/jquery/easing/
 										percent : 그래프 퍼센트
 										speed : 애니메이션 속도 - 1000ms = 1s
 										onScreen : 화면에 위치시 애니메이션 실행
+										toFixed : 소수점 처리 / 기본값 0
 									 -->
 									<div class="js-graph-horizonbar"
 										data-graph-opts='{
+											"easing" : "easeOutQuad",
 											"percent" : 30,
-											"speed" : 5000,
-											"onScreen" : true
+											"speed" : 2000,
+											"onScreen" : true,
+											"toFixed" : 0
 										}'>
 										<div class="area bg"></div>
+
+										<!-- [D] 퍼센트바 .js-graph-data -->
 										<div class="area data js-graph-data"></div>
-										<span class="txt-percent js-graph-percent">0%</span>
+
+										<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+										<span class="txt-percent">
+											<span class="js-graph-percent"></span>%
+										</span>
 									</div>
 								</div>
 							</div>
@@ -285,108 +293,5 @@
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
-
-	<!-- [D] 테스트 임시 구성 -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-	<script>
-		;(function(win, $) {
-			'use strict';
-
-			function setDemoDoughnut() {
-				var wrap = $('.js-graph-doughnut'),
-				opts = wrap.data('graph-opts'),
-				DATA_PERCENT = opts.percent || 100,
-				speed = opts.speed;
-
-				var t = 2 * Math.PI,
-				width = 130,
-				height = 130,
-				outerRadius = Math.min(width,height)/2,
-				innerRadius = (outerRadius/5)*4,
-				arc, svg, background, dataGraph;
-
-				arc = win.d3.svg.arc()
-							.innerRadius(innerRadius)
-							.outerRadius(outerRadius)
-							.cornerRadius(outerRadius - innerRadius)
-							.startAngle(0);
-
-				svg = win.d3.select('.js-graph-area .js-graph-doughnut').append('svg')
-						.attr('width', '100%')
-						.attr('height', '100%')
-						.attr('viewBox','0 0 '+Math.min(width,height) +' '+Math.min(width,height) )
-						.attr('preserveAspectRatio','xMinYMin')
-						.append('g')
-						.attr('transform', 'translate(' + Math.min(width,height) / 2 + ',' + Math.min(width,height) / 2 + ')');
-
-				background = svg.append('path')
-								.datum({endAngle: t})
-								.style('fill', opts.color.background)
-								.attr('d', arc);
-
-				dataGraph = svg.append('path')
-								.datum({endAngle: 0 * t})
-								.style('fill', opts.color.graph)
-								.attr('d', arc);
-
-				// dataGraph.transition()
-				// 		.duration(speed)
-				// 		.call(arcTween, getDataPercent() * t);
-
-				function getDataPercent() {
-					return DATA_PERCENT / 100;
-				}
-
-				function arcTween(transition, newAngle) {
-					transition.attrTween('d', function(d) {
-						var interpolate = win.d3.interpolate(d.endAngle, newAngle);
-						return function(t) {
-							d.endAngle = interpolate(t);
-							return arc(d);
-						};
-					});
-				}
-
-				new Waypoint.Inview({
-					element: $('.js-graph')[0],
-					enter: function(direction) {
-						console.log('Enter triggered with direction ' + direction, dataGraph, arcTween);
-					},
-					entered: function(direction) {
-						console.log('Entered triggered with direction ' + direction);
-						dataGraph.transition().duration(speed).call(arcTween, getDataPercent() * t);
-					},
-					exit: function(direction) {
-						console.log('Exit triggered with direction ' + direction);
-					},
-					exited: function(direction) {
-						console.log('Exited triggered with direction ' + direction);
-						dataGraph.transition().duration(0).call(arcTween, 0 * t);
-					}
-				});
-			}
-
-			function setHorizonBar() {
-				var wrap = $('.js-graph-horizonbar'),
-				opts = wrap.data('graph-opts'),
-				percent = opts.percent,
-				dataBar = wrap.find('.js-graph-data'),
-				txtArea = wrap.find('.js-graph-percent'),
-				speed = opts.speed;
-
-				dataBar.animate({ width : percent + '%' }, {
-					duration : speed,
-					step : function(now) {
-						txtArea.text(parseInt(now, 10) + '%');
-					}
-				});
-			}
-
-			$(function() {
-				setDemoDoughnut();
-				setHorizonBar();
-			});
-		})(window, window.jQuery);
-	</script>
 </body>
 </html>
