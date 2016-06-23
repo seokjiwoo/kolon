@@ -63,7 +63,12 @@ function ClassUtils() {
 			 * 	문자값이 'true' 인지 체크하여 반환
 			 * @type {Boolean}
 			 */
-			strToBoolean : strToBoolean
+			strToBoolean : strToBoolean,
+			/**
+			 * 브라우저 기능 지원여부 체크
+			 * @type {Function}
+			 */
+			isSupport : isSupport
 		};
 	}
 	
@@ -137,6 +142,17 @@ function ClassUtils() {
 
 	function strToBoolean(str) {
 		return 'true' === str.toLowerCase();
+	}
+
+	function isSupport() {
+		return {
+			svg : (function() {
+				return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
+			})(),
+			fileReader : (function() {
+				return window.FileReader;
+			})()
+		};
 	}
 
 }

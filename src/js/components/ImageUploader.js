@@ -7,6 +7,7 @@ function ClassImageUploader() {
 	var win = window,
 	$ = win.jQuery,
 	debug = require('../utils/Console.js'),
+	util = require('../utils/Util.js'),
 	flashAddCallBack = require('./FlashAddCallBack.js'),
 	fileName = 'compoents/ImageUploader.js';
 
@@ -56,9 +57,6 @@ function ClassImageUploader() {
 	},
 	isSupport = (function() {
 		return {
-			fileReader : function() {
-				return window.FileReader;
-			},
 			acceptedTypes : function(type) {
 				type = type.toLowerCase();
 
@@ -104,7 +102,7 @@ function ClassImageUploader() {
 
 		setElements();
 
-		if (!isSupport.fileReader()) {
+		if (!util.isSupport().fileReader) {
 			self.wrap.addClass(self.opts.cssClass.noFilereader);
 			setFlashVersion();
 		} else {
@@ -281,7 +279,7 @@ function ClassImageUploader() {
 			return;
 		}
 
-		if (!isSupport.fileReader()) {
+		if (!util.isSupport().fileReader) {
 			win.alert('fileReader 미지원 브라우저입니다.');
 			return;
 		}

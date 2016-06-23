@@ -11,6 +11,7 @@ function DoughnutChart() {
 	var win = window,
 	$ = win.jQuery,
 	debug = require('../utils/Console.js'),
+	util = require('../utils/Util.js'),
 	fileName = 'compoents/DoughnutChart.js';
 
 	var opts = {
@@ -42,14 +43,7 @@ function DoughnutChart() {
 			isEntered : 'is-entered',
 			isExited : 'is-exited'
 		}
-	},
-	isSupport = (function() {
-		return {
-			svg : function() {
-				return !!document.createElementNS && !!document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect;
-			}
-		};
-	})();
+	};
 
 	var callerObj = {
 		init : init,
@@ -68,9 +62,9 @@ function DoughnutChart() {
 		self = callerObj;
 		self.opts = $.extend({}, opts, options);
 
-		debug.log(fileName, 'init', self.opts, isSupport);
+		debug.log(fileName, 'init', self.opts, util.isSupport().svg);
 
-		if (!isSupport.svg) {
+		if (!util.isSupport().svg) {
 			debug.warn('SVG 를 지원하지 않는 환경입니다.');
 			return;
 		}
