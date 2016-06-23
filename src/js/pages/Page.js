@@ -17,6 +17,10 @@ module.exports = function() {
 		 */
 		init: init
 	};
+
+	// 공통차트 컴포넌트 - @see html/_js/chart.html
+	var doughnutChart = require('../components/DoughnutChart.js'),
+	horizonBarChart = require('../components/HorizonBarChart.js');
 	
 	return callerObj;
 	
@@ -28,6 +32,8 @@ module.exports = function() {
 		initMenu();
 		initFloating();
 		initTopBanner();
+		// 공통차트 컴포넌트
+		initChart();
 
 		opinionToggle();
 		initCardRadio();
@@ -174,6 +180,14 @@ module.exports = function() {
 			hideTopBanner();
 		}
 	};
+
+	/**
+	 * 공통차트 컴포넌트 초기화
+	 */
+	function initChart() {
+		doughnutChart.init();
+		horizonBarChart.init();
+	}
 
 	/**
 	 * 상단 배너영역 숨기기

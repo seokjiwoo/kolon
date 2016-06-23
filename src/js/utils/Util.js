@@ -51,7 +51,19 @@ function ClassUtils() {
 			 * 	시작일 ~ 종료일 D-day 반환
 			 * @return {Object}  {startTime: Number, endTime: Number, diffTime: Number, diffDay: Number}
 			 */
-			diffDay: diffDay
+			diffDay: diffDay,
+			/**
+			 * @description
+			 * 	window width, height 값 반환
+			 * @type {Object}
+			 */
+			winSize: winSize,
+			/**
+			 * @description
+			 * 	문자값이 'true' 인지 체크하여 반환
+			 * @type {Boolean}
+			 */
+			strToBoolean : strToBoolean
 		};
 	}
 	
@@ -113,6 +125,18 @@ function ClassUtils() {
 			'diffTime' : diffTime,
 			'diffDay' : diffDay
 		};
+	}
+
+	function winSize() {
+		var win_wh = {
+			w : window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+			h : window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+		};
+		return win_wh;
+	}
+
+	function strToBoolean(str) {
+		return 'true' === str.toLowerCase();
 	}
 
 }
