@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
 </head>
- <body data-page-id="order">
+ <body data-page-id="mypage">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -14,6 +14,10 @@
 				<section class="singleCard" id="myOrder">
 					<h2 class="secTit">주문/배송 조회</h2>
 					<table class="recordSort">
+						<colgroup>
+							<col style="width:130px;"/>
+							<col style="width:auto;"/>
+						</colgroup>
 						<tr>
 							<th>기간별 주문조회</th>
 							<td>
@@ -24,7 +28,22 @@
 									<li><a href="">3개월</a></li>
 									<li><a href="">6개월</a></li>
 								</ul>
-								<div class="sortTermSet"><!-- datePicker --></div>
+								<div class="sortTermSet">
+									<!-- datePicker -->
+									<div class="calendar cal2 js-range-picker">
+										<span class="calInp">
+											<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-from">날짜선택</a>
+											<div class="cal-container js-picker-from"></div>
+										</span> 
+										<span class="calInp">
+											<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-to">날짜선택</a>
+											<div class="cal-container js-picker-to"></div>
+										</span>
+									</div>
+									<!--// datePicker -->
+								</div>
 							</td>
 						</tr>
 						<tr>
