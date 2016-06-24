@@ -19,6 +19,7 @@
 #cboxError {padding:50px; border:1px solid #ccc; }
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; word-break: keep-all;}
 #cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
+#cboxLoadedContent .popScroll2 {overflow:auto; max-height:518px;}
 #cboxLoadedContent p {margin-top:20px;}
 #cboxLoadedContent p:first-child {margin-top:0; }
 #cboxLoadedContent .cardCon .btnWrap{margin-top: 30px;}
@@ -56,14 +57,15 @@
 
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
 .popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
+.popEdge .popCon3 {padding-top:40px;}
 .popCon p{margin-top:20px;}
 .popCon p:first-child{margin-top:0;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
 #popAgree01 .popCon{text-align: left;}
 
-.popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #999;font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
-.popCon select{padding:10px 10px; border:1px solid #999;color: #999;}
+.popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #ccc;font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
+.popCon select{padding:10px 10px; border:1px solid #ccc;color: #999;}
 .popCon fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 .popCon textarea {width:87%; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'RobotoM','NotoSansM', sans-serif; color: #999;}
 .popCon h5.popSubTit {width:100%; overflow:hidden; font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif; line-height:130%;}
@@ -71,6 +73,7 @@
 .popCon h5.popSubTit + .tbSet,
 .popCon .popTb + h5.popSubTit {margin-top:20px;}
 .popCon .popBtnS {width:110px; height:40px; background:#999; color:#fff; border-radius:7px; overflow:hidden; display:inline-block; line-height:40px; text-align:center; outline:0; border:0;}
+.popCon .tbSet.mtNon {margin-top:-31px;}
 
 .popCon .popTb {width:100%; display:inline-block; border-top:1px solid #545454;}
 .popCon .popTb table{width:100%; border-bottom:1px solid #ccc; font-family:'RobotoR','NotoSansR', sans-serif; font-size: 14px; text-align: center; line-height: 1.2em}
@@ -83,7 +86,7 @@
 .popCon .popTb table td + td {border-left:1px solid #e1e1e1;}
 .popCon .popTb table td a {color:#333;}
 .popCon .popTb table td a.btnSizeS {color:#fff;}
-.popCon .popTb table td em {padding:5px 8px; margin-bottom:9px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%; font-size:12px;}
+.popCon .popTb table td em {padding:5px 8px; margin-bottom:6px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%; font-size:12px;}
 .popCon .popTb table td span.adrList {width:100%; display:inline-block;}
 .popCon .popTb table td span.adrList span {width:100%; display:inline-block; font-family:'NotoSansL','RobotoL', sans-serif; color:#333;}
 .popCon .popTb table td span.adrList span b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif; display:inline-block; color:#333;}
@@ -140,7 +143,7 @@
 .popCon .messageRadio span.radioBox + span.radioBox {margin-left:30px;}
 .popCon .popUnderTxt {width:100%; text-align:center; color:#000;}
 .popCon .popUnderTxt span.pointRed {color:#f1645c;}
-.popCon .popSearch {width:100%; overflow:hidden; text-align:center; margin-bottom:20px;}
+.popCon .popSearch {width:100%; overflow:hidden; text-align:center; margin-bottom:10px;}
 .popTop.popTopp02 {height:60px;}
 .popCon.popCon02 {padding:10px 30px 0;margin-top:0;text-align:center;letter-spacing:-.5px}
 .popCon.popCon02 h4 {font-size:20px;color:#000;font-family:'RobotoM', 'NotoSansM', sans-serif;}
@@ -149,12 +152,13 @@
 .popCon.popCon02 .CertificationNum input[type=text] {width:248px;border:1px solid #ccc;}
 .popCon.popCon02 .CertificationNum button {margin-left:6px;width:110px;height:40px;line-height:40px;font-size:13px;color:#fff;background:#999;border-radius:5px;border:none;letter-spacing:-.5px}
 .popCon.popCon02 .btnWrap {margin-top:30px;}
-.popCon.popCon02 .btnWrap button + button {margin-left:6px;}
+.popCon .btnWrap button + button,
+.popCon .btnWrap a + a {margin-left:6px;}
 
 ul.popList {width:100%; overflow:hidden;}
 ul.popList li span b {font-family:'RobotoB', 'NotoSansB', sans-serif;}
 ul.popList li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-1px;}
-ul.popList li + li {margin-top:10px;}
+ul.popList li + li {margin-top:5px;}
 ul.popList + .btnWrap,
 .popCon form + .btnWrap,
 .popCon .tbSet + .btnWrap,

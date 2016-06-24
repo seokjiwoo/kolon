@@ -142,7 +142,7 @@ span.price.fontS {font-size:14px;}
 
 .oder .oderCont select{padding:9px 10px; border:1px solid #d6d6d6; /*border-radius:7px;*/color: #999;}
 .oder .oderCont .underTxt {font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
-
+.oder .oderCont + .oderCont {margin-top:10px;}
 .oder .oderCont + h3.subTit {margin-top:39px; }
 .oder .oderCont .pay,
 .oder .oderCont .oderTbW {width:100%; display:inline-block;}
