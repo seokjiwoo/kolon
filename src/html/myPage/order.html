@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
+</head>
+ <body data-page-id="myPage-order">
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
+			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
+			<div class="wrap">
+				<!-- @@include ../_template/my_depth03_01.html {"myMenu01":"on"} -->
+				<section class="singleCard" id="myOrder">
+					<h2 class="secTit">주문/배송 조회</h2>
+					<table class="recordSort">
+						<tr>
+							<th>기간별 주문조회</th>
+							<td>
+								<ul class="sortTerm">
+									<li><a href="" class="on">1주일</a></li>
+									<li><a href="">2주일</a></li>
+									<li><a href="">1개월</a></li>
+									<li><a href="">3개월</a></li>
+									<li><a href="">6개월</a></li>
+								</ul>
+								<div class="sortTermSet"><!-- datePicker --></div>
+							</td>
+						</tr>
+						<tr>
+							<th>주문내역 검색</th>
+							<td>
+								<form action="">
+									<fieldset class="recordSearch">
+										<legend class="hide"></legend>
+										<input type="text" id="recordInput">
+										<label for="recordInput"></label>
+										<button type="submit">검색</button>
+									</fieldset>
+								</form>
+							</td>
+						</tr>
+					</table>
+					<div class="alignBox">
+						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+						
+						<!-- 
+							[D] dropbox - active 시 .dropOn 
+							
+							- data-prevent Flag값 입력
+							- data-prevent : a href prevent flag / 기본값 - true
+						-->
+						<style>
+							/* 테스트 임시 구성 */
+							/*.drop a.on {color:#f1645c}*/
+						</style>
+						<ul class="drop" data-prevent="true">
+							<li><a href="#">진행상태 보기</a></li>
+							<li><a href="#" data-value="type-1">전체</a></li>
+							<li><a href="#" data-value="type-2">입금대기</a></li>
+							<li><a href="#" data-value="type-3">결제완료</a></li>
+							<li><a href="#" data-value="type-4">상품준비중</a></li>
+							<li><a href="#" data-value="type-5">배송중</a></li>
+							<li><a href="#" data-value="type-6">배송완료</a></li>
+							<li><a href="#" data-value="type-7">구매확정</a></li>
+						</ul>
+
+						<!-- 
+							[D] dropbox 체크 타입 - active 시 .dropOn
+
+							- data-prevent Flag값 입력
+							- data-prevent : a href prevent flag / 기본값 - true
+						 -->
+						<ul class="drop dropChk" style="right:200px" data-prevent="true">
+							<li><a href="#">진행상태 보기</a></li>
+							<li>
+								<p class="checkbox">
+									<label for="chkAll" class="on">전체</label>
+									<input type="checkbox" name="chkGroup" id="chkAll" checked="checked" data-value="type-1">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk01" class="on">입금대기</label>
+									<input type="checkbox" name="chkGroup" id="chk01" checked="checked" data-value="type-2">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk02" class="on">결제완료</label>
+									<input type="checkbox" name="chkGroup" id="chk02" checked="checked" data-value="type-3">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk03" class="on">상품준비중</label>
+									<input type="checkbox" name="chkGroup" id="chk03" checked="checked" data-value="type-4">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk04" class="on">배송중</label>
+									<input type="checkbox" name="chkGroup" id="chk04" checked="checked" data-value="type-5">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk05" class="on">배송완료</label>
+									<input type="checkbox" name="chkGroup" id="chk05" checked="checked" data-value="type-6">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk06" class="on">구매확정</label>
+									<input type="checkbox" name="chkGroup" id="chk06" checked="checked" data-value="type-7">
+								</p>
+							</li>
+						</ul>
+						
+					</div>
+					<table class="record">
+						<tr>
+							<th>주문정보</th>
+							<th colspan="2">상품정보</th>
+							<th>판매처</th>
+							<th>수령자</th>
+							<th>배송비</th>
+							<th>진행상태</th>
+						</tr>
+						<tr>
+							<td rowspan="3" class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total"><b>총 결제금액</b><br>3,850,000 원</p>
+							</td>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
+									결제완료<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">교환상세</a>
+							</td>
+						</tr>
+						<tr>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step03", "step03":"on"} -->
+									상품준비중<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소신청</a>
+							</td>
+						</tr>
+						<tr>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<p>취소완료</p><p class="cancleDate">2016.04.20</p>
+								<a href="../../_popup/popOrderCancelDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소상세</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+									배송완료<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderChangeHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">교환반려</a>
+								<a href="../../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">반품상세</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+									배송완료<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderReturnHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">반품반려</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+									배송완료<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderCancelHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소반려</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>무료배송</td>
+							<td class="orderState">
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+									배송완료<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popReviewWrite.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">리뷰작성</a>
+							</td>
+						</tr>
+					</table>
+				</section>
+			</div>
+			<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>
