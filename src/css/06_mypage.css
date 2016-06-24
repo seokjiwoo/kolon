@@ -182,7 +182,7 @@
 .my .record td{padding: 15px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
-.my .record .date a{color: #f1645c;text-decoration: underline;}
+.my .record .date a{color: #f1645c;text-decoration: underline;font-family:'RobotoM','NotoSansM', sans-serif;}
 .my .record .total{margin-top:20px;} 
 .my .record .total b{color: #999;}
 .my .record .recordThumb{overflow: hidden;width: 90px;height: 90px;background: #f8f8f8;}
@@ -230,22 +230,34 @@
 .my .popState .stepImg{width: 440px;height:30px;margin:0 auto 14px;background: url('../images/ico_step.png') no-repeat;}
 .my .popState .stepImg span{display: block;height: 100%;background: url('../images/ico_step_on.png') no-repeat;}
 
-.my .popState.popState02{right:-20px;}
-.my .popState.popState02:after{right:80px;}
+.my .popState.popState02{right:0;}
+.my .popState.popState02:after{right:60px;}
 .my .popState.popState02{padding:40px 5px;width:793px;}
-.my .popState.popState02 li{vertical-align:top;width:10%;}
-.my .popState.popState02 .stepImg {width:686px;background: url('../images/ico_step02.png') no-repeat;}
+.my .popState.popState02 li{vertical-align:top;width:8.3%;}
+.my .popState.popState02 .stepImg {width:730px;background: url('../images/ico_step02.png') no-repeat;}
 .my .popState.popState02 .stepImg span{background: url('../images/ico_step02_on.png') no-repeat;}
+
 .my .popState .step01 span{width: 82px;}
 .my .popState .step02 span{width: 164px;}
 .my .popState .step03 span{width: 246px;}
 .my .popState .step04 span{width: 328px;}
 .my .popState .step05 span{width: 410px;}
 .my .popState .step06 span{width: 440px;}
-.my .popState.popState02 .step06 span{width: 492px;}
 .my .popState .step07 span{width: 574px;}
 .my .popState .step08 span{width: 656px;}
 .my .popState .step09 span{width: 686px;}
+
+.my .popState.popState02 .step01 span{width: 70px;}
+.my .popState.popState02 .step02 span{width: 140px;}
+.my .popState.popState02 .step03 span{width: 210px;}
+.my .popState.popState02 .step04 span{width: 280px;}
+.my .popState.popState02 .step05 span{width: 350px;}
+.my .popState.popState02 .step06 span{width: 420px;}
+.my .popState.popState02 .step07 span{width: 490px;}
+.my .popState.popState02 .step08 span{width: 560px;}
+.my .popState.popState02 .step09 span{width: 630px;}
+.my .popState.popState02 .step10 span{width: 700px;}
+.my .popState.popState02 .step11 span{width: 730px;}
 
 .btnSideArray {overflow:hidden;line-height:40px;margin:20px 20px 30px 0;}
 .btnSideArray label {font-size:16px;color:#666;}
