@@ -77,11 +77,13 @@
 .sortGraph .ui-widget-content {border-radius:5px;background:#e1e1e1;border:0;height:12px}
 .sortGraph .ui-state-default,
 .sortGraph .ui-widget-content .ui-state-default,
-.sortGraph .ui-widget-header .ui-state-default {position:absolute;display:inline-block;width:41px;height:41px;top:-17px;border:0}
+.sortGraph .ui-widget-header .ui-state-default {position:absolute;display:inline-block;width:26px;height:26px;top:-7px;border:0}
 .sortGraph .ui-widget-header {background:#f1645c}
 .sortGraph .ui-slider-handle.leftBtn {background:url('../images/detail_arrow.png') 0 0 no-repeat}
-.sortGraph .ui-slider-handle.rightBtn {background:url('../images/detail_arrow.png') 0 -41px no-repeat}
+.sortGraph .ui-slider-handle.rightBtn {background:url('../images/detail_arrow.png') 0 -26px no-repeat}
 .sortGraph .slider-container {position:relative;z-index:1;padding-right:20px}
 .sortGraph .slider-wrap .graphBar {background:none !important;margin-top:-12px !important}
-.sortGraph .slider-container .graphData {width:84px; height:12px; margin-left:-47px; padding:7px; background:#f1645c; color:#fff; border-radius:11px; position:absolute; top:-40px; left:50%; display:inline-block; line-height:100%; font-size:13px;}
-.sortGraph .slider-container .graphData:after {content:''; width:11px; height:6px; margin-left:-5px; background:url('../images/detail_bg.png') 0 0 no-repeat; position:absolute; bottom:-6px; left:50%;}
+.sortGraph .slider-container .graphData {width:53px; height:12px; padding:7px; background:#fff; color:#f1645c; border:1px solid #f1645c; border-radius:15px; position:absolute; top:-38px; display:inline-block; line-height:100%; font-size:13px; text-align:center;}
+.sortGraph .slider-container .graphData:after {content:''; width:11px; height:7px; margin-left:-5px; background:url('../images/detail_bg.png') 0 0 no-repeat; position:absolute; bottom:-7px; left:50%;}
+.sortGraph .slider-container .graphData.dataMin {left:0; margin-left:-23px;}
+.sortGraph .slider-container .graphData.dataMax {right:0; margin-right:-23px;}

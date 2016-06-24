@@ -1,11 +1,11 @@
 <div class="popTop">
 	<h4 class="popTit">상세조건</h4>
 </div>
-<div class="popCon">
+<div class="popCon popConBg">
 	<div class="catSorting catSortH02">
 		<div class="wrap">
 			<div class="catSort" id="catSort01">
-				<h3 class="sortTit"><span>모든</span> 공간</h3>
+				<h3 class="sortTit">공간</h3>
 				<div class="sortCont">
 					<ul>
 						<li><a href="" class="on">모든공간</a></li>
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="catSort" id="catSort02">
-				<h3 class="sortTit"><span>스포츠/다이어트</span> 라이프스타일</h3>
+				<h3 class="sortTit">라이프스타일</h3>
 				<div class="sortCont">
 					<ul>
 						<li><a href="" class="on">모든라이프스타일</a></li>
@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="catSort" id="catSort03">
-				<h3 class="sortTit"><span>모든</span> 컬러</h3>
+				<h3 class="sortTit">컬러</h3>
 				<div class="sortCont">
 					<ul>
 						<li><a href="" id="colorAll" class="on">모든컬러</a></li>
@@ -62,9 +62,9 @@
 					</ul>
 				</div>
 			</div>
-			<!-- 배송형 상세조건 -->
+			<!-- 시공형 상세조건 시 평수 삭제 -->
 			<div class="catSort" id="catSort04">
-				<h3 class="sortTit"><span>50평 이상 </span>평수</h3>
+				<h3 class="sortTit">평수</h3>
 				<div class="sortCont">
 					<ul>
 						<li><a href="" class="on">모든평수</a></li>
@@ -75,24 +75,31 @@
 						<li><a href="">50평 이상</a></li>
 					</ul>
 					<!-- [D] 가격 범위 입력 필요 -->
-					<h3 class="sortTit"><span>300~2500</span>가격</h3>
+				</div>
+			</div>
+			<!--// 시공형 상세조건 시 평수 삭제 -->
+			<div class="catSort" id="catSort05">
+				<h3 class="sortTit">가격</h3>
+				<div class="sortCont">
 					<!-- 가격설정 그래프  -->
 					<div class="sortGraph slider-wrap js-slider-wrap">
 						<div class="slider-container js-slider-container">
-							<span class="graphData js-slider-values">300 ~ 2500</span>
+							<!-- <span class="graphData js-slider-values">300 ~ 2500</span> -->
 							<!-- [D] data-slider-opt 범위 옵션 설정 -->
 							<div class="js-slider"
 								data-slider-opt='{
 									"min" : 300,
 									"max" : 2500,
 									"values" : [ 750, 1500 ],
-									"currency" : "만원"
+									"currency" : ""
 								}'>
+								<span class="ui-slider-handle leftBtn"><span class="graphData dataMin js-slider-lv">300</span></span><!-- 최소금액 -->
+								<span class="ui-slider-handle rightBtn"><span class="graphData dataMax js-slider-rv">2500</span></span><!-- 최대금액 -->
 							</div>
 						</div>
 						<div class="won">
-							<span class="wonL js-slider-lv">100만원</span>
-							<span class="wonR js-slider-rv">5000만원</span>
+							<span class="wonL"><b class="js-slider-lv">100</b> 만원</span>
+							<span class="wonR"><b class="js-slider-rv">5000</b> 만원</span>
 						</div>
 					</div>
 					<!--// 가격조절 그래프  -->
@@ -101,34 +108,9 @@
 					</ul>
 				</div>
 			</div>
-			<!-- 배송형 상세조건 -->
 			<!-- 시공형 상세조건 -->
-			<div class="catSort" id="catSort04" style="display:none;"><!-- 숨김 -->
-				<h3 class="sortTit"><span>300~2500</span>가격</h3>
-				<div class="sortCont">
-					<!-- 가격설정 그래프  -->
-					<div class="sortGraph">
-						<div style="padding-left:40px; padding-right:70px;"><!-- padding 값으로 가격조절 -->
-							<p class="graphBar">
-								<a href="#" class="graphBtn leftBtn">가격설정 시작 지점</a><!-- 가격설정 시작 버튼 -->
-								<a href="#" class="graphBtn rightBtn">가격설정 끝 지점</a><!-- 가격설정 끝 버튼 -->
-								<span class="graphData">300 ~ 2500</span><!-- 설정된 가격 범위 값 -->
-							</p>
-						</div>
-						<div class="won">
-							<span class="wonL">100만원</span>
-							<span class="wonR">5000만원</span>
-						</div>
-					</div>
-					<!--// 가격조절 그래프  -->
-					<ul>
-						<li><a href="#">모든 가격</a></li>
-					</ul>
-				</div>
-			</div>
-			<!--// 시공형 상세조건 -->
-			<p class="btnSort"><a href="" id="btnReset">초기화</a><a href="" id="btnConfirm">확인</a></p>
 		</div>
+		<p class="btnSort"><a href="" id="btnReset">초기화</a><a href="" id="btnConfirm">확인</a></p>
 
 	</div>
 </div>

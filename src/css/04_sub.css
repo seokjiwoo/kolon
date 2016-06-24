@@ -149,15 +149,14 @@
 .category .subTop {}
 .catSorting{width:100%; text-align: center;}
 .catSorting .wrap{width:100%; overflow: hidden;padding:32px 0; max-width:1150px;}
-.catSorting .catSort {width:25%; float:left;}
+.catSorting .catSort {width:278px; float:left;}
 .catSorting .catSort .sortCont {padding:0 15px; overflow:hidden; margin-top:20px;}
-.catSorting .catSort +.catSort .sortCont {border-left:1px solid #d9d9d9;}
 .catSorting .catSort h3.sortTit{color: #666;font-size: 16px;}
 .catSorting .catSort h3.sortTit span{color:#f1645c; }
 .catSorting .catSort .sortCont ul{width:100%; overflow: hidden; font-family:'RobotoR','NotoSansR', sans-serif;}
 .catSorting .catSort .sortCont ul li{float: left;width:50%;margin-bottom:10px;}
-.catSorting .catSort .sortCont ul li a{width:113px; display:inline-block; position: relative; margin: 0 5px;padding: 9px 0px;background:#f2f2f2; border-radius: 20px;color: #666;font-size: 14px; border:4px solid #f2f2f2; text-align:center;}
-.catSorting .catSort .sortCont ul li a.on{color: #f1645c;border:4px solid #f1645c; background:#fff; }
+.catSorting .catSort .sortCont ul li a{width:116px; display:inline-block; position: relative; margin: 0 5px;padding: 10px 0px;background:#fff; border-radius: 20px;color: #666;font-size: 14px; border:1px solid #d9d9d9; text-align:center;}
+.catSorting .catSort .sortCont ul li a.on{color: #f1645c;border:1px solid #f1645c; background:#fff;}
 .catSorting .catSort .sortCont ul li a:before{content: ''; width:15px; height:15px; position: absolute; left:10px; top:12px; border-radius: 50%;}
 .catSorting .catSort .sortCont ul li #colorAll:before{background:url(../images/all_color.png) 0 0 no-repeat;}
 .catSorting .catSort .sortCont ul li #color01:before{width:13px; height:13px; border:1px solid #999; background:#fff; overflow:hidden;}
@@ -172,7 +171,16 @@
 .catSorting .catSort .sortCont ul li #color10:before{background:#ffc814;}
 .catSorting .catSort .sortCont ul li #color11:before{background:#9ccc66;}
 .catSorting .catSort .sortCont ul li #color12:before{background:#48c7ff;}
-.catSorting.catSortH02 .catSort .sortCont {height:377px;}
+.catSorting.catSortH02 {overflow:hidden;}
+.catSorting.catSortH02 .catSort {width:292px;}
+.catSorting.catSortH02 .wrap {width:876px; overflow:hidden; position:relative; padding:0; margin:-42px 0 0 -21px;}
+.catSorting.catSortH02 .wrap:before,
+.catSorting.catSortH02 .wrap:after {content:''; width:1px; height:100%; position:absolute; top:80px; background:#d9d9d9;}
+.catSorting.catSortH02 .wrap:before {left:292px;}
+.catSorting.catSortH02 .wrap:after {right:292px;}
+.catSorting.catSortH02 h3.sortTit {margin-top:42px; font-size:20px; color:#000; line-height:110%;}
+.catSorting.catSortH02 .catSort#catSort05 .sortCont {padding:0 25px;}
+.catSorting.catSortH02 .catSort .sortCont ul li a {width:118px;}
 .catSorting.catSortH01 {position: absolute;top:171px;left: 0;width:100%;background:#f7f7f7;text-align: center;z-index: 1;box-shadow: 0px 2px 5px rgba(0,0,0,0.1)}
 .catSorting.catSortH01 .catSort {position: relative;float: left;width: 25%;font-family:'RobotoR','NotoSansR', sans-serif;}
 .catSorting.catSortH01 .catSort:before{content: '';position: absolute;top: 0;left: 0;width: 1px;height: 100%;background: #d2d2d2;}
@@ -184,7 +192,7 @@
 .catSorting.catSortH01 .catSort .sortCont ul li a{display: block;position: relative;margin: 0 5px;padding: 9px 0px;background: #fff;border-radius: 20px;color: #666;font-size: 14px;border:4px solid #fff;}
 .catSorting.catSortH01 .catSort .sortCont ul li a.on{color: #f1645c;border:4px solid #f1645c;}
 .catSorting.catSortH01 .catSort .sortCont ul li a:before{content: '';position: absolute;left: 10px;top:8px;width: 15px;height: 15px;border-radius: 50%;}
-.catSorting .btnSort{width:100%; overflow:hidden; text-align:center;}
+#cboxLoadedContent .catSorting p.btnSort{width:100%; overflow:hidden; text-align:center; margin-top:0;}
 .catSorting.catSortH01 .btnSort {clear: both;display: none;}
 .catSorting .btnSort a{display: inline-block;width: 140px;margin:30px 8px 0;padding:12px 0;color: #fff;font-family:'RobotoM','NotoSansM', sans-serif;border-radius: 20px;}
 .catSorting .btnSort #btnReset{background:#666; }
@@ -194,12 +202,13 @@
 .catSorting #sortToggle:after{content: '';position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 1;background: url('../images/ico_toggleW.png') no-repeat center}
 .catSorting #sortToggle.opened:after{-ms-transform: rotate(180deg);-webkit-transform: rotate(180deg);transform: rotate(180deg);}
 
-.catSorting .catSort .sortCont .sortGraph {width:100%; height:12px; margin:54px 0 59px; display:inline-block; border-radius:5px; background:#e1e1e1;}
-.catSorting .catSort .sortCont .sortGraph .won {width:100%; overflow:hidden; margin-top:15px;}
-.catSorting .catSort .sortCont .sortGraph .won span {width:50%; float:left; display:inline-block; letter-spacing:-1px;}
-.catSorting .catSort .sortCont .sortGraph .won span.wonL {text-align:left;}
-.catSorting .catSort .sortCont .sortGraph .won span.wonR {text-align:right;}
-.catSorting .catSort .sortCont ul + h3.sortTit {margin-top:20px;}
+.catSorting .catSort .sortGraph {width:100%; height:12px; margin:45px 0 44px; display:inline-block; border-radius:5px; background:#e1e1e1;}
+.catSorting .catSort .sortGraph .won {width:100%; overflow:hidden; margin-top:15px;}
+.catSorting .catSort .sortGraph .won span {width:50%; float:left; display:inline-block; letter-spacing:-1px;}
+.catSorting .catSort .sortGraph .won span b {font-weight:normal;}
+.catSorting .catSort .sortGraph .won span.wonL {text-align:left;}
+.catSorting .catSort .sortGraph .won span.wonR {text-align:right;}
+.catSorting .catSort ul + h3.sortTit {margin-top:20px;}
 
 /* homeService index */
 body[data-page-id=livingService] {overflow-y:hidden !important;}
