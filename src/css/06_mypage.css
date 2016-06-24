@@ -170,6 +170,7 @@
 .sortTermSet{display: inline-block;margin-left: 10px;}
 .sortTermSet .calendar {margin-right:0;padding:10px 18px;border:1px solid #ccc;}
 .sortTermSet .calendar.cal2 span.calInp input[type=text] {width:73px;}
+.sortTermSet .cal-container {z-index:3}
 
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
 .my .subTit b{color:#f1645c;}
