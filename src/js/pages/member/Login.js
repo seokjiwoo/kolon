@@ -6,14 +6,17 @@ module.exports = function() {
 
 	var controller = require('../../controller/LoginController');
 	$(controller).on('loginResult', loginCompleteHandler);
+	$(controller).on('resendAuthNumberResult', resendAuthNumberHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
 	$(memberInfoController).on('termsResult', termsContentHandler);
 	var util = require('../../utils/Util.js');
 
-	var enteredEmailAdress;
+	var enteredId;
 	var forceLoginFlag = false;
+
+	var phoneNumberRule = /^[0-9]{10,12}$/i;
 	
 	var callerObj = {
 		/**
@@ -83,26 +86,40 @@ module.exports = function() {
 	function loginHandler(e) {
 		e.preventDefault();
 
-		if (util.checkVaildEmail($('#inputName').val()) == false || $.trim($('#inputPW').val()) == '') {
+		var id = $.trim($('#inputName').val());
+		var pw = $.trim($('#inputPW').val());
+
+		if (id == '' || pw == '') {
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
 		} else {
-			if (enteredEmailAdress != $('#inputName').val()) forceLoginFlag = false;
-			enteredEmailAdress = $('#inputName').val();
-			Mailcheck.run({
-				email: enteredEmailAdress,
-				suggested: function(suggestion) {
-					if (!forceLoginFlag) {
-						forceLoginFlag = true;
-						var enteredMail = enteredEmailAdress.split('@');
-						Super.Super.alertPopup('메일 주소를 다시 확인해 주세요.', '입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?', '확인');
-					} else {
-						controller.login(enteredEmailAdress, $('#inputPW').val());
-					}
-				},
-				empty: function() {
-					controller.login(enteredEmailAdress, $('#inputPW').val());
+			if (phoneNumberRule.test(id)) {
+				// 휴대폰 번호
+				controller.login(id, pw);
+			} else {
+				// 이메일
+				if (enteredId != $('#inputName').val()) forceLoginFlag = false;
+				enteredId = $('#inputName').val();
+				
+				if (util.checkVaildEmail(enteredId)) {
+					Mailcheck.run({
+						email: enteredId,
+						suggested: function(suggestion) {
+							if (!forceLoginFlag) {
+								forceLoginFlag = true;
+								var enteredMail = enteredId.split('@');
+								Super.Super.alertPopup('메일 주소를 다시 확인해 주세요.', '입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?', '확인');
+							} else {
+								controller.login(enteredId, pw);
+							}
+						},
+						empty: function() {
+							controller.login(enteredId, pw);
+						}
+					});
+				} else {
+					Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
 				}
-			});
+			}
 		}
 		
 		e.stopPropagation();
@@ -112,14 +129,62 @@ module.exports = function() {
 	 * 로그인 or 회원가입 완료 이벤트 핸들링
 	 */
 	function loginCompleteHandler(e, status, response) {
-		console.log(response);
 		switch(status) {
 			case 200:
-				//alert('로그인 성공');
-				location.href = '/';
+				switch(Number(response.status)) {
+					case 200:	// 로그인 성공
+						location.href = '/';
+						break;
+					case 201:	// 회원가입 완료
+						Super.Super.alertPopup('회원가입이 완료되었습니다.', '메인화면으로 이동합니다.', '확인', function() {
+							var id = $.trim($('#inputName').val());
+							var pw = $.trim($('#inputPW').val());
+							controller.login(id, pw);
+						});
+						break;
+				}
+				break;
+			case 400:
+				switch(Number(response.errorCode)) {
+					case 1606:	// ID/PW
+						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
+						break;
+					case 1901:	// 모바일 인증번호
+						alert(response.message);
+						break;
+					case 1900:	// 모바일 가입 인증 요구
+						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
+							onOpen: function() {
+								$('#mobileAuthNumber').val('');
+								$('#sendedPhoneNumber').text(enteredId.substr(0, 3)+'-'+enteredId.substr(3, enteredId.length-7)+'-'+enteredId.substr(-4, 4));
+								$('#resendButton').click(function(e) {
+									//
+								});
+							},
+							onSubmit: function() {
+								controller.login(enteredId, $('#inputPW').val(), $('#mobileAuthNumber').val());
+							}
+						});
+						break;
+				}
 				break;
 			default:
 				Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
+				break;
+		}
+	};
+
+	/**
+	 * 인증번호 재발송 이벤트 핸들링
+	 */
+	function resendAuthNumberHandler(e, status, response) {
+		switch(status) {
+			case 200:
+				alert(response.message);
+				$('#mobileAuthNumber').val('');
+				break;
+			default:
+				alert(response.message);
 				break;
 		}
 	};

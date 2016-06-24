@@ -16,6 +16,7 @@ module.exports = function() {
 	var loginDataModel = require('../model/LoginModel');
 	var loginData = loginDataModel.loginData();
 
+	var popupOpenHandlerFunction;
 	var popupCallbackFunction;
 	
 	var callerObj = {
@@ -168,13 +169,24 @@ module.exports = function() {
 		if (width == undefined) width = 540;
 		if (String(width).substr(-1) != '%') width += "px";
 		
+		popupOpenHandlerFunction = null;
+		popupCallbackFunction = null;
+
 		var inline = '<div class="popTop"><h4 class="popTit">'+title+'</h4></div><div class="popCon"><p class="subTit">'+subTitle+'</p><div class="popScroll">'+popupContent+'</div></div>';
 		openPopup(inline, width, userClass);
 	};
 	
-	function htmlPopup(src, width, userClass) {
+	function htmlPopup(src, width, userClass, handlerObject) {
 		if (width == undefined) width = 540;
 		if (String(width).substr(-1) != '%') width += "px";
+
+		popupOpenHandlerFunction = null;
+		popupCallbackFunction = null;
+
+		if (handlerObject != undefined) {
+			if (handlerObject.onOpen != undefined) popupOpenHandlerFunction = handlerObject.onOpen;
+			if (handlerObject.onSubmit != undefined) popupCallbackFunction = handlerObject.onSubmit;
+		}
 		
 		openPopup(src, width, userClass);
 	};
@@ -184,6 +196,7 @@ module.exports = function() {
 		
 		var linkUrl;
 		var customClass;
+		popupOpenHandlerFunction = null;
 		popupCallbackFunction = null;
 
 		switch(typeof(callback)) {
@@ -243,6 +256,8 @@ module.exports = function() {
 				});
 				$('.popScroll').css('height', winH-490+'px');
 				$.colorbox.resize();
+console.log(popupOpenHandlerFunction);
+				if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
 			}
 		});
 	};
