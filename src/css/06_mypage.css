@@ -156,18 +156,20 @@
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
-.recordSort td{padding: 15px;}
+.recordSort td{padding:15px 0 15px 15px;}
 .recordSort{margin:30px 0;text-align: left;}
 .recordSort tr:first-child td{padding-bottom: 0;}
 .sortTerm{display: inline-block;}
-.recordSort li{display: inline-block;margin-left: 5px;}
+.recordSort li{display: inline-block;margin-left:2px;}
 .recordSort li:first-child{margin:0;}
 .recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
 .recordSort a.on{background: #a9c700;border:0;color: #fff;}
-.recordSearch{display: inline-block;padding: 5px;border:1px solid #d1d1d1;border-radius: 10px;}
-.recordSearch #recordInput{width: 190px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
-.recordSearch button{width:36px;height:28px;font-size: 0;background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle;}
-.sortTermSet{display: inline-block;margin-left: 15px;}
+.recordSearch{display: inline-block;padding: 5px;border:1px solid #ccc;}
+.recordSearch #recordInput{width: 597px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
+.recordSearch button{width:36px;height:14px;font-size: 0; background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle; border-left:1px solid #d5d5d5;}
+.sortTermSet{display: inline-block;margin-left: 10px;}
+.sortTermSet .calendar {margin-right:0;padding:10px 18px;border:1px solid #ccc;}
+.sortTermSet .calendar.cal2 span.calInp input[type=text] {width:73px;}
 
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
 .my .subTit b{color:#f1645c;}

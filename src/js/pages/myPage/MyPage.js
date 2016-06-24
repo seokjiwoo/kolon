@@ -9,6 +9,8 @@ module.exports = function() {
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
+	DatePickerClass = require('../../components/DatePicker.js'),
+	datePicker = DatePickerClass(),
 	fileName = 'myPage/MyPage.js';
 
 	var opts = {
@@ -59,6 +61,25 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
+
+		var buildWrap = $('.js-range-picker');
+		datePicker.init({
+			type : 'range',
+			range : {
+				from : {
+					wrap : buildWrap,
+					picker : buildWrap.find('.js-picker-from'),
+					altField : buildWrap.find('.js-alt-from'),
+					button : buildWrap.find('.js-btn-from')
+				},
+				to : {
+					wrap : buildWrap,
+					picker : buildWrap.find('.js-picker-to'),
+					altField : buildWrap.find('.js-alt-to'),
+					button : buildWrap.find('.js-btn-to')
+				}
+			}
+		});
 	}
 
 	function setElements() {
