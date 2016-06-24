@@ -36,12 +36,12 @@ function DoughnutChart() {
 
 	var callerObj = {
 		init : init,
-		destory : destory,
+		destroy : destroy,
 		refresh : refresh,
 		append : append,
 		EVENT : {
 			REFRESH : 'HORIZON_BAR_CHART-REFRESH',
-			DESTROY : 'HORIZON_BAR_CHART-DESTORY',
+			DESTROY : 'HORIZON_BAR_CHART-DESTROY',
 			INIT : 'HORIZON_BAR_CHART-INIT',
 			APPEND : 'HORIZON_BAR_CHART-APPEND'
 		}
@@ -192,7 +192,7 @@ function DoughnutChart() {
 		});
 	}
 
-	function destory() {
+	function destroy() {
 		removeBindEvents();
 		$.each(self.waypoints, function(index, waypoint) {
 			waypoint.destroy();
@@ -200,7 +200,7 @@ function DoughnutChart() {
 	}
 
 	function refresh() {
-		destory();
+		destroy();
 		init();
 	}
 
