@@ -14,6 +14,7 @@ module.exports = function() {
 	var util = require('../../utils/Util.js');
 
 	var enteredId;
+	var authNumberResendFlag = false;
 	var forceLoginFlag = false;
 
 	var phoneNumberRule = /^[0-9]{10,12}$/i;
@@ -94,6 +95,7 @@ module.exports = function() {
 		} else {
 			if (phoneNumberRule.test(id)) {
 				// 휴대폰 번호
+				enteredId = id;
 				controller.login(id, pw);
 			} else {
 				// 이메일
@@ -158,8 +160,12 @@ module.exports = function() {
 								$('#mobileAuthNumber').val('');
 								$('#sendedPhoneNumber').text(enteredId.substr(0, 3)+'-'+enteredId.substr(3, enteredId.length-7)+'-'+enteredId.substr(-4, 4));
 								$('#resendButton').click(function(e) {
-									//
+									authNumberResendFlag = true;
+									controller.resendAuthNumber(enteredId);
 								});
+
+								authNumberResendFlag = false;
+								controller.resendAuthNumber(enteredId);
 							},
 							onSubmit: function() {
 								controller.login(enteredId, $('#inputPW').val(), $('#mobileAuthNumber').val());
@@ -180,11 +186,11 @@ module.exports = function() {
 	function resendAuthNumberHandler(e, status, response) {
 		switch(status) {
 			case 200:
-				alert(response.message);
+				if (authNumberResendFlag) alert(response.message);
 				$('#mobileAuthNumber').val('');
 				break;
 			default:
-				alert(response.message);
+				if (authNumberResendFlag) alert(response.message);
 				break;
 		}
 	};
