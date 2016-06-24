@@ -23,21 +23,21 @@
 					<div class="payTb payTbL border">
 						<dl class="payS minus">
 							<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
-							<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
+							<dd><div><span class="price"><b>23,580,000</b> 원</span></div></dd>
 						</dl>
 						<dl class="payS equal">
-							<dt><div>총 할인가</div></dt>
+							<dt><div>총 할인금액</div></dt>
 							<dd>
 								<div>
 									<ul class="tbList">
 										<li>
 											<span class="tbListTit">기본할인</span>
-											<span><b>10,000</b>원</span>
+											<span><b>0</b>원</span>
 										</li>
-										<li>
+										<!-- <li>
 											<span class="tbListTit">포인트</span>
 											<span><b>3,000</b>원</span>
-										</li>
+										</li> -->
 									</ul>
 								</div>
 							</dd>
@@ -45,7 +45,7 @@
 						<dl class="payS">
 							<dt><div>총 결제금액</div></dt>
 							<dd>
-								<div><span class="price"><b>2,602,500</b> 원</span></div>
+								<div><span class="price"><b>23,580,000</b> 원</span></div>
 							</dd>
 						</dl>
 					</div>
@@ -128,12 +128,12 @@
 													</a>
 												</div>
 											</td>
-											<td><b>50,000</b> 원</td>
+											<td><b>1,700,000</b> 원</td>
 											<td><b>1</b></td>
 											<td>ANNA</td>
-											<td><b>0</b> 원</td>
-											<td><b>50,000</b> 원</td>
-											<td><b>2,000</b> 원</td>
+											<td><b>10,000</b> 원</td>
+											<td><b>1,690,000</b> 원</td>
+											<td>무료</td>
 										</tr>
 										<!-- 수령지 / 배송요청사항 -->
 										<tr>
@@ -257,7 +257,7 @@
 			<!-- 배송형 상품 주문 완료  -->
 
 			<!-- 시공형 상품 선결제 완료  -->
-			<div><!-- 숨김  style="display:none"-->
+			<div style="display:none"><!-- 숨김 -->
 				<div class="completeBox">
 					<p class="tit"><b>선택하신 상품의 선결제 및 실측 요청 완료되었습니다.</b></p>
 					<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이홈즈 &gt; 주문/배송에서 확인하실 수 있습니다.</p>
@@ -265,37 +265,48 @@
 				<!-- 결제 정보 -->
 				<h3 class="subTit">결제 정보</h3>
 				<div class="oderCont">
-					<div class="payTb payTbL payTb4">
-						<dl class="payS minus">
-							<dt><div>상품금액</div></dt>
-							<dd><div><span class="price"><b>2,000,000</b> 원</span></div></dd>
-						</dl>
-						<dl class="payS equal">
-							<dt><div>할인금액</div></dt>
-							<dd>
-								<div class="txtL">
-									<ul class="tbList">
-										<li>
-											<span class="tbListTit">기본할인</span>
-											<span><b>280,000</b>원</span>
-										</li>
-									</ul>
-								</div>
-							</dd>
-						</dl>
-						<dl class="payS equal">
-							<dt><div>시공예정<br/>금액</div></dt>
-							<dd>
-								<div><span class="price"><b>1,720,000</b> 원</span></div>
-							</dd>
-						</dl>
-						<dl class="payS ">
-							<dt><div>선결제(10%)<br/>금액</div></dt>
-							<dd>
-								<div><span class="price"><b>172,000</b> 원</span></div>
-							</dd>
-						</dl>
-					</div>
+					<form method="post" action="/">
+						<div class="payTb payTbL border">
+							<dl class="payS minus">
+								<dt><div>상품금액</div></dt>
+								<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
+							</dl>
+							<dl class="payS equal">
+								<dt><div>할인금액</div></dt>
+								<dd>
+									<div>
+										<ul class="tbList">
+											<li>
+												<span class="tbListTit">기본할인</span>
+												<span><b>10,000</b>원</span>
+											</li>
+											<!-- <li>
+												<span class="tbListTit">포인트</span>
+												<span><b>3,000</b>원</span>
+											</li> -->
+										</ul>
+									</div>
+								</dd>
+							</dl>
+							<dl class="payS">
+								<!-- <dt><div>총 결제금액</div></dt> -->
+								<dd class="totalwrap">
+									<div>
+										<ul class="totalList">
+											<li>
+												<em>시공예정금액</em>
+												<span class="price"><b>1,720,000</b> 원</span>
+											</li>
+											<li>
+												<em>선결제금액(10%)</em>
+												<span class="price"><b>172,000</b> 원</span>
+											</li>
+										</ul>
+									</div>
+								</dd>
+							</dl>
+						</div>
+					</form>
 				</div>
 				<div class="oderCont">
 					<div class="tbSet">
@@ -430,46 +441,43 @@
 			<!-- 시공형 상품 선결제 완료  -->
 
 			<!-- 시공형 상품 잔금결제 완료 -->
-			<div  style="display:none"><!-- 숨김-->
+			<div style="display:none"><!-- 숨김 -->
 				<div class="completeBox">
 					<p class="tit"><b>선택하신 상품의 결제 및 계약이 완료되었습니다.</b></p>
 					<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이홈즈 &gt; 시공 중인 상품에서 확인하실 수 있습니다.</p>
 				</div>
 				<!-- 결제 정보 -->
 				<h3 class="subTit">결제 정보</h3>
-				<div class="oderCont">
-					<div class="payTb payTbL payTb4">
-						<dl class="payS minus">
-							<dt><div>견적금액</div></dt>
-							<dd><div><span class="price"><b>32,000,000</b> 원</span></div></dd>
-						</dl>
-						<dl class="payS minus">
-							<dt><div>선결제금액</div></dt>
-							<dd>
-								<div><span class="price"><b>300,000</b> 원</span></div>
-							</dd>
-						</dl>
-						<dl class="payS equal">
-							<dt><div>총 할인금액</div></dt>
-							<dd>
-								<div class="txtL">
-									<ul class="tbList">
-										<li>
-											<span class="tbListTit">포인트</span>
-											<span><b>0</b>P</span>
-										</li>
-									</ul>
-								</div>
-							</dd>
-						</dl>
-						<dl class="payS ">
-							<dt><div>총 결제금액</div></dt>
-							<dd>
-								<div><span class="price"><b>31,700,000</b> 원</span></div>
-							</dd>
-						</dl>
+					<div class="oderCont">
+						<div class="payTb payTbL border">
+							<dl class="payS minus">
+								<dt><div>견적금액</div></dt>
+								<dd><div><span class="price"><b>32,000,000</b> 원</span></div></dd>
+							</dl>
+							<dl class="payS equal">
+								<dd class="pricewrap">
+									<div>
+										<ul class="priceList">
+											<li>
+												<em>선결제금액</em>
+												<span class="price"><b>300,000</b> 원</span>
+											</li>
+											<li>
+												<em>총 할인금액</em>
+												<span class="point">포인트 <i>0P</i></span>
+											</li>
+										</ul>
+									</div>
+								</dd>
+							</dl>
+							<dl class="payS">
+								<dt><div>총 결제금액</div></dt>
+								<dd>
+									<div><span class="price"><b>31,700,000</b> 원</span></div>
+								</dd>
+							</dl>
+						</div>
 					</div>
-				</div>
 				<div class="oderCont">
 					<div class="tbSet">
 						<table class="tbLThC">
