@@ -45,7 +45,7 @@
 #myBoard .recent ul{overflow: hidden;}
 #myBoard .recent li{width: 130px;margin-right: 10px;}
 #myBoard .recent li:last-child{margin-right: 15px;}
-#myBoard .recent .imgWrap{overflow: hidden;border-radius: 5px;height: 150px;}
+#myBoard .recent .imgWrap{overflow: hidden;/*border-radius: 5px;*/height: 150px;}
 #myBoard .recent li img{display: block;width: 100%;}
 #myBoard .recent li p{margin-top: 5px;font-size: 13px;color: #333;line-height: 1.2em;}
 
@@ -81,7 +81,7 @@
 .chatRoom .chatter .pic img{display: block;width: 100%;}
 .chatRoom .chatter .name{color: #000;font-size: 11px;}
 .chatRoom .chatter .time{margin:0 5px;color: #999;vertical-align: bottom;font-size: 11px;}
-.chatRoom .chatter span{overflow: hidden;display: inline-block;max-width: 75%;border-radius: 5px;}
+.chatRoom .chatter span{overflow: hidden;display: inline-block;max-width: 75%;/*border-radius: 5px;*/}
 .chatRoom .chatter .text{padding: 10px;}
 .chatRoom .chatter .thumb img{display: block;max-width: 100%;}
 
@@ -216,3 +216,31 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 	.scrapListWrap ul.scrapList li img {width:140px; height:140px;}
 	.scrapListWrap ul.scrapList li.on a:before {width:140px; height:140px;}
 }
+
+.reviewTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;}
+.reviewTop .pageTit{font-size:18px;}
+.reviewTop .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
+.reviewArea{padding:20px 15px 0;}
+
+.writeBox{border:1px solid #ccc;margin-top:6px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.writeBox .txt{padding:14px 14px 14px;border-top:1px solid #ccc;}
+.writeBox .txt textarea{height:128px;border:0;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999;}
+.writeBox .point{height:52px;line-height:52px;text-align:center;}
+.writeBox .point *{vertical-align:middle;}
+.writeBox .point span{display:inline-block;margin-right:10px;}
+.writeBox .info{height:36px;overflow:hidden;padding:0 14px;border-top:1px solid #ccc;background:#f8f8f8;}
+.writeBox .pic{position:relative;height:18px;display:inline-block;}
+.writeBox .pic:before{content:"";display:block;width:25px;height:18px;background:url("../images/ico_pic.png") no-repeat 0 0;background-size:25px;margin-top:8px;}
+.writeBox .pic input{position:absolute;left:0;top:8px;width:25px;height:18px;overflow:hidden;opacity:0;}
+.writeBox .count{display:inline-block;float:right;color:#999;margin-top:10px;}
+.writeBox .count i{font-style:normal;color:#666;}
+
+.tagBox{border:1px solid #ccc;margin-top:6px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.tagBox .txt{padding:14px 14px 14px;}
+.tagBox .txt textarea{height:100px;border:0;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999;}
+.tagBox .tag{padding:15px;background:#f8f8f8;border-top:1px solid #ccc;}
+.tagBox .tagBtn{height:30px;padding:0 15px;display:inline-block;background:#fff;border:1px solid #d1d1d1;border-radius:15px;margin:4px 0;}
+.tagBtn.active{background:#f1645c;border-color:#f1645c;color:#fff;}
+.tagBtn.close:after{width:12px;height:12px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_close02.png") no-repeat center center;background-size:12px;vertical-align:middle;margin-left:7px;}
+.tagBtn span{display:inline-block;padding-top:5px;}
+.reviewTxt{line-height:1.4em;color:#999;font-family:'NotoSansR', 'RobotoR', sans-serif;margin-top:15px;padding-bottom:32px;}

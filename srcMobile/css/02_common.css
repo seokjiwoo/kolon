@@ -39,6 +39,18 @@
 .grade span.grade35{right: 35px}
 .grade span.grade45{right: 21px}
 
+.gradeBig{display: inline-block;position: relative;width: 114px;height: 22px;background: url('../images/ico_star_big.png') no-repeat 0 -22px;background-size: 114px;}
+.gradeBig span{position: absolute;top:0;left: 0;display: block;height: 100%;background: url('../images/ico_star_big.png') no-repeat  0 0;background-size: 114px;}
+.gradeBig span.grade01{right: 91px}
+.gradeBig span.grade02{right: 69px}
+.gradeBig span.grade03{right: 46px}
+.gradeBig span.grade04{right: 23px}
+.gradeBig span.grade05{right: 0}
+.gradeBig span.grade15{right: 102px}
+.gradeBig span.grade25{right: 80px}
+.gradeBig span.grade35{right: 57px}
+.gradeBig span.grade45{right: 11px}
+
 .grade + .gradeTxt{margin-left: 5px;vertical-align:top;font-weight: bold;}
 
 a.pointLink {color:#f1645c;text-decoration:underline;}
