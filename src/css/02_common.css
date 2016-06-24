@@ -1,4 +1,6 @@
 .w90 {width:90px;}
+.w160 {width:160px !important;}
+.w298 {width:298px !important;}
 .w502{width:502px !important;}
 .w558{width:558px !important;}
 .w593{width:593px !important;}
@@ -12,6 +14,7 @@
 
 .t_r {text-align:right}
 .t_l {text-align:left;}
+.t_c {text-align:center;}
 
 .fl_left {float:left;}
 .fl_right {float:right;}
@@ -131,6 +134,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnColor03{background:#999} /*light grey*/
 .btnColor04{background:#666} /*dark grey*/
 .btnColor05{background:#1a1a1a} /*black*/
+.btnColor06{background:#00aeb9} /*dark green*/
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 .btnShadow{box-shadow: 0px 2px rgba(0,0,0,0.1);}
@@ -146,7 +150,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .formWrap .alert{/*display: none;*/color: #f1645c}
 .formWrap .subTxt{display: block;width: 100%;}
 .inputWrap{line-height: 60px;} 
-.inputWrap01{margin-top:30px;}
+.inputWrap01{margin-top:10px;}
 .inputWrap label{display: inline-block;min-width: 70px;text-align: left;margin-right: 20px;color: #000;font-size: 16px;}
 .inputWrap label strong{color: #999;}
 .inputWrap .btn{min-width: 114px;}
@@ -204,6 +208,7 @@ table tr td.txtL {text-align:left !important;}
 
 .tbSet {width:100%; display:inline-block; border-top:1px solid #545454;}
 .tbSet table{width: 100%; border-bottom:1px solid #ccc;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.tbSet table.borderBtm0{border-bottom:0 !important;}
 .tbSet table a {color:#666;}
 .tbSet table .btn, 
 .tbSet table a[class^=btnSize] {color:#fff;}
@@ -215,6 +220,9 @@ table tr td.txtL {text-align:left !important;}
 .tbSet table tbody tr + tr th {border-top:1px solid #e8e8e8;}
 .tbSet table td{padding:15px;}
 .tbSet table tr + tr td {border-top:1px solid #e8e8e8;}
+.tbSet table tr td.borderLeft1,
+.tbSet table tr th.borderLeft1{border-left:1px solid #e8e8e8;}
+
 .tbSet table td b{font-family:'RobotoM','NotoSansM', sans-serif;}
 .tbSet table.lineN {border-bottom:0;}
 .tbSBg {width:100%; overflow:hidden; border-top:1px solid #e8e8e8; margin-top:-1px !important;}
@@ -288,3 +296,26 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
 .calendar.cal2 span.calInp input[type="text"] {width:80px;}
 
+/* dropBox */
+.drop {overflow:hidden;height:38px;border:1px solid #ccc;}
+.drop li {width:138px;height:38px;border-top:1px solid #ccc;}
+.drop li:first-child {color:#666;border-top:none}
+.drop li:first-child a:after {content:'';display:block;position:absolute;top:7px;right:15px;width:20px;height:20px;background:url(../images/ico_lnb.png) no-repeat;background-position:0 0;}
+.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#666;background:#fff;}
+/* dropBox on 되었었을 시 dropOn class 추가 */
+.drop.dropOn {height:auto;}
+.drop.dropOn li:first-child a:after {top:10px;background-position:0 -20px;}
+/* dropBox check 기능 있을 시 dropChk class 추가 */
+.drop.dropChk li:first-child {width:138px;padding:0;}
+.drop.dropChk li {position:relative;width:108px;padding:0 15px;background:#fff;}
+.drop.dropChk li label {display:block;width:100%;font-size:13px;color:#999;}
+.drop.dropChk .checkbox {display:block;height:40px;margin-top:0;}
+.drop.dropChk .checkbox label:before {content:'';display:inline-block;width:20px;height:20px;border:none;border-radius:0;margin-right:0;visibility:hidden;position:absolute;top:10px;right:0;}
+.drop.dropChk .checkbox label.on {color:#f1645c;}
+.drop.dropChk .checkbox label.on:before {visibility:visible;background:url(../images/ico_lnb.png) no-repeat;background-position:0 -40px;}
+/* dropBox check 기능 있으면서 on되었을 시 dropChk class 추가 */
+.drop.dropChk.dropOn li:first-child a:after {top:8px;background-position:0 -60px;} 
+
+/* myPage order.html 제목줄 옆 dropBox 레이아웃 */
+.alignBox {position:relative;line-height:40px}
+.alignBox .drop {position:absolute;top:0;right:0;z-index:1}

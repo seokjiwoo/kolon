@@ -41,7 +41,68 @@
 							</td>
 						</tr>
 					</table>
-					<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+					<div class="alignBox">
+						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+						<!-- dropBox 
+						<ul class="drop dropOn">
+							<li><a href="#">진행상태 보기</a></li>
+							<li><a href="#">전체</a></li>
+							<li><a href="#">입금대기</a></li>
+							<li><a href="#">결제완료</a></li>
+							<li><a href="#">상품준비중</a></li>
+							<li><a href="#">배송중</a></li>
+							<li><a href="#">배송완료</a></li>
+							<li><a href="#">구매확정</a></li>
+						</ul>
+						-->
+
+						<!-- dropBox Check 기능 추가 -->
+						<ul class="drop dropChk dropOn">
+							<li><a href="#">진행상태 보기</a></li>
+							<li>
+								<p class="checkbox">
+									<label for="chkAll">전체</label>
+									<input type="checkbox" name="chkGroup" id="chkAll">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk01">입금대기</label>
+									<input type="checkbox" name="chkGroup" id="chk01">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk02">결제완료</label>
+									<input type="checkbox" name="chkGroup" id="chk02">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk03" class="on">상품준비중</label>
+									<input type="checkbox" name="chkGroup" checked="checked" 
+								</p>id="chk03">
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk04" class="on">배송중</label>
+									<input type="checkbox" name="chkGroup" checked="checked" 
+								</p>id="chk04">
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk05" class="on">배송완료</label>
+									<input type="checkbox" name="chkGroup" checked="checked" 
+								</p>id="chk05">
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk06" class="on">구매확정</label>
+									<input type="checkbox" name="chkGroup" checked="checked" 
+								</p>id="chk06">
+							</li>
+						</ul>
+					</div>
 					<table class="record">
 						<tr>
 							<th>주문정보</th>

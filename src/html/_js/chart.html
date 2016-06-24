@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
+</head>
+ <body>
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<!-- @@include ../_template/my_depth01.html {"myMenu02":"on"} -->
+			<!-- @@include ../_template/my_depth02.html {"myMenu03":"on"} -->
+			<div class="wrap">
+				<!-- @@include ../_template/my_depth03_02.html {"myMenu01":"on"} -->
+
+				<!-- [D] 테스트 임시 구성
+						js- 프리픽스는 js에서 셀렉트를 위해 지정한 클래스명입니다.
+				-->
+				<style>
+					.js-graph {position:relative}
+					
+					.js-diffdate .js-diffdate-status,
+					.js-diffdate .js-diffdate-date {position:absolute;line-height:15px;margin-top:-15px}
+
+					.js-diffdate .js-diffdate-start {left:0;top:50%;margin-left:20px}
+					.js-diffdate .js-diffdate-end {right:0;top:50%;margin-right:20px}
+
+					.js-diffdate-status {width:100%;height:30px;top:50%;text-align:center}
+
+					.js-graph-area .js-graph-doughnut {width:130px;height:130px;margin:0 auto}
+					.js-graph-area .js-graph-horizonbar {position:relative;width:100%;margin-top:30px}
+
+					.js-graph-horizonbar .area {height:30px;border-bottom-right-radius:15px;border-bottom-left-radius:15px;border-top-right-radius:15px;border-top-left-radius:15px}
+					.js-graph-horizonbar .bg {position:absolute;width:100%;background:#f8f8f8}
+					.js-graph-horizonbar .data {position:absolute;width:0%;background:#f1645c;z-index:1}
+					.js-graph-horizonbar .txt-percent {position:absolute;display:inline-block;line-height:15px;margin:7px 0 0 12px;color:#fff;z-index:2;text-shadow:1px 1px 2px rgba(150, 150, 150, 1)}
+				</style>
+
+
+				<section class="singleCard" id="serviceDetail">
+					<div class="conCard graph">
+						<!-- graph -->
+						<div class="js-graph-area">
+							<!-- 
+								[D] Graph 정보 입력
+
+								color.background : 그래프 배경색
+								color.graph : 표현되는 그래프 색상
+								attr.width : svg 속성 - width / 기본값 100%
+								attr.height : svg 속성 - height / 기본값 100%
+								attr.viewBox : svg 속성 - viewBox / 기본값 0 0 Math.min(width,height) Math.min(width,height)
+								attr.preserveAspectRatio : svg 속성 - preserveAspectRatio / 기본값 xMinYMin
+								attr.translate : svg 속성 - translate / 기본값 Math.min(width,height)/2 Math.min(width,height)/2
+								easing : 애니메이션 easing / 기본값 quadOut / @see http://bl.ocks.org/hunzy/9929724
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-doughnut"
+								data-graph-opts='{
+									"color" : {
+										"background" : "#eff1f3",
+										"graph" : "#f9cd58"
+									},
+									"attr" : {
+										"width" : "100%",
+										"height" : "100%",
+										"viewBox" : "0 0 130 130",
+										"preserveAspectRatio" : "xMinYMin",
+										"translate" : [65, 65]
+									},
+									"easing" : "quadOut",
+									"percent" : 30,
+									"speed" : 2000,
+									"onScreen" : false,
+									"toFixed" : 2
+								}'>
+								<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+								<!--
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+								-->
+							</div>
+							<!-- 
+								[D] Graph 정보 입력
+
+								easing : 애니메이션 easing / 기본값 easeOutQuad / @see http://gsgd.co.uk/sandbox/jquery/easing/
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-horizonbar"
+								data-graph-opts='{
+									"easing" : "easeOutQuad",
+									"percent" : 30,
+									"speed" : 2000,
+									"onScreen" : false,
+									"toFixed" : 0
+								}'>
+								<div class="area bg"></div>
+
+								<!-- [D] 퍼센트바 .js-graph-data -->
+								<div class="area data js-graph-data"></div>
+
+								<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="conCard graph">
+						<!-- graph -->
+						<div class="js-graph-area">
+							<!-- 
+								[D] Graph 정보 입력
+
+								color.background : 그래프 배경색
+								color.graph : 표현되는 그래프 색상
+								attr.width : svg 속성 - width / 기본값 100%
+								attr.height : svg 속성 - height / 기본값 100%
+								attr.viewBox : svg 속성 - viewBox / 기본값 0 0 Math.min(width,height) Math.min(width,height)
+								attr.preserveAspectRatio : svg 속성 - preserveAspectRatio / 기본값 xMinYMin
+								attr.translate : svg 속성 - translate / 기본값 Math.min(width,height)/2 Math.min(width,height)/2
+								easing : 애니메이션 easing / 기본값 quadOut / @see http://bl.ocks.org/hunzy/9929724
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-doughnut"
+								data-graph-opts='{
+									"color" : {
+										"background" : "#eff1f3",
+										"graph" : "#ff6600"
+									},
+									"easing" : "bounce",
+									"percent" : 65,
+									"speed" : 2000,
+									"onScreen" : false,
+									"toFixed" : 1
+								}'>
+								<!-- [D] 퍼센트 정보 출력시 -->
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+							<!-- 
+								[D] Graph 정보 입력
+
+								easing : 애니메이션 easing / 기본값 easeOutQuad / @see http://gsgd.co.uk/sandbox/jquery/easing/
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-horizonbar"
+								data-graph-opts='{
+									"easing" : "easeOutQuad",
+									"percent" : 80,
+									"speed" : 2000,
+									"onScreen" : false,
+									"toFixed" : 0
+								}'>
+								<div class="area bg"></div>
+
+								<!-- [D] 퍼센트바 .js-graph-data -->
+								<div class="area data js-graph-data" style="background:blue"></div>
+
+								<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+								
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="dummy" style="height:600px">dummy 영역</div>
+					<div class="dummy" style="height:600px">dummy 영역</div>
+
+					<div class="conCard graph">
+						<!-- graph -->
+						<div class="js-graph-area">
+							<!-- 
+								[D] Graph 정보 입력
+
+								color.background : 그래프 배경색
+								color.graph : 표현되는 그래프 색상
+								attr.width : svg 속성 - width / 기본값 100%
+								attr.height : svg 속성 - height / 기본값 100%
+								attr.viewBox : svg 속성 - viewBox / 기본값 0 0 Math.min(width,height) Math.min(width,height)
+								attr.preserveAspectRatio : svg 속성 - preserveAspectRatio / 기본값 xMinYMin
+								attr.translate : svg 속성 - translate / 기본값 Math.min(width,height)/2 Math.min(width,height)/2
+								easing : 애니메이션 easing / 기본값 quadOut / @see http://bl.ocks.org/hunzy/9929724
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-doughnut"
+								data-graph-opts='{
+									"color" : {
+										"background" : "#eff1f3",
+										"graph" : "#f9cd58"
+									},
+									"attr" : {
+										"width" : 200,
+										"height" : 200,
+										"viewBox" : "0 0 200 200",
+										"preserveAspectRatio" : "xMinYMin",
+										"translate" : [100, 100]
+									},
+									"easing" : "bounce",
+									"percent" : 30,
+									"speed" : 2000,
+									"onScreen" : true,
+									"toFixed" : 2
+								}'
+								style="width:200px;height:200px">
+								<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+							<!-- 
+								[D] Graph 정보 입력
+
+								easing : 애니메이션 easing / 기본값 easeOutQuad / @see http://gsgd.co.uk/sandbox/jquery/easing/
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-horizonbar"
+								data-graph-opts='{
+									"easing" : "easeOutElastic",
+									"percent" : 30,
+									"speed" : 2000,
+									"onScreen" : true,
+									"toFixed" : 0
+								}'>
+								<div class="area bg"></div>
+
+								<!-- [D] 퍼센트바 .js-graph-data -->
+								<div class="area data js-graph-data"></div>
+
+								<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="conCard graph">
+						<!-- graph -->
+						<div class="js-graph-area">
+							<!-- 
+								[D] Graph 정보 입력
+
+								color.background : 그래프 배경색
+								color.graph : 표현되는 그래프 색상
+								attr.width : svg 속성 - width / 기본값 100%
+								attr.height : svg 속성 - height / 기본값 100%
+								attr.viewBox : svg 속성 - viewBox / 기본값 0 0 Math.min(width,height) Math.min(width,height)
+								attr.preserveAspectRatio : svg 속성 - preserveAspectRatio / 기본값 xMinYMin
+								attr.translate : svg 속성 - translate / 기본값 Math.min(width,height)/2 Math.min(width,height)/2
+								easing : 애니메이션 easing / 기본값 quadOut / @see http://bl.ocks.org/hunzy/9929724
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-doughnut"
+								data-graph-opts='{
+									"color" : {
+										"background" : "#eff1f3",
+										"graph" : "#ff6600"
+									},
+									"easing" : "bounce",
+									"percent" : 65,
+									"speed" : 2000,
+									"onScreen" : true,
+									"toFixed" : 2
+								}'>
+								<!-- [D] 퍼센트 정보 출력시 -->
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+							<!-- 
+								[D] Graph 정보 입력
+
+								easing : 애니메이션 easing / 기본값 easeOutQuad / @see http://gsgd.co.uk/sandbox/jquery/easing/
+								percent : 그래프 퍼센트
+								speed : 애니메이션 속도 - 1000ms = 1s
+								onScreen : 화면에 위치시 애니메이션 실행
+								toFixed : 소수점 처리 / 기본값 0
+							 -->
+							<div class="js-graph-horizonbar"
+								data-graph-opts='{
+									"easing" : "easeOutElastic",
+									"percent" : 80,
+									"speed" : 2000,
+									"onScreen" : true,
+									"toFixed" : 0
+								}'>
+								<div class="area bg"></div>
+
+								<!-- [D] 퍼센트바 .js-graph-data -->
+								<div class="area data js-graph-data" style="background:blue"></div>
+
+								<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+								
+								<span class="txt-percent">
+									<span class="js-graph-percent"></span>%
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="dummy" style="height:600px">dummy 영역</div>
+					<div class="dummy" style="height:600px">dummy 영역</div>
+
+					<button class="js-doughnut-btn" style="position:fixed;left:40%;bottom:10px">도넛 구성 테스트</button>
+					<button class="js-horizonbar-btn" style="position:fixed;left:60%;bottom:10px">바 구성 테스트</button>
+					<div class="js-dom-area"></div>
+
+				</section>
+			</div>
+			<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+
+	<script id="hb-doughnut-template" type="text/x-handlebars-template">
+		{{#list}}
+		<div class="conCard graph">
+			<div class="js-graph-area">
+				<div class="js-graph-doughnut"
+					data-graph-opts='{
+						"color" : {
+							"background" : "#eff1f3",
+							"graph" : "#ff6600"
+						},
+						"easing" : "bounce",
+						"percent" : {{percent}},
+						"speed" : 2000,
+						"onScreen" : {{onScreen}},
+						"toFixed" : 2
+					}'>
+					<!-- [D] 퍼센트 정보 출력시 -->
+					{{#if displayPercent}}
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		{{/list}} 
+	</script>
+
+	<script id="hb-horizonbar-template" type="text/x-handlebars-template">
+		{{#list}}
+		<div class="conCard graph">
+			<div class="js-graph-area">
+				<div class="js-graph-horizonbar"
+					data-graph-opts='{
+						"easing" : "easeOutElastic",
+						"percent" : {{percent}},
+						"speed" : 2000,
+						"onScreen" : {{onScreen}},
+						"toFixed" : 0
+					}'>
+					<div class="area bg"></div>
+
+					<!-- [D] 퍼센트바 .js-graph-data -->
+					<div class="area data js-graph-data"></div>
+
+					<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+					{{#if displayPercent}}
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		{{/list}} 
+	</script>
+
+	<script>
+	;(function(win, $) {
+		'use strict';
+		$(function() {
+			// 도넛 차트 테스트
+			$('.js-doughnut-btn').on('click', function() {
+				var source = $("#hb-doughnut-template").html(),
+				template = Handlebars.compile(source),
+				data, html;
+
+				data = {
+					list : [
+						{ percent : 10, onScreen : false, displayPercent : true },
+						{ percent : 15, onScreen : false, displayPercent : true },
+						{ percent : 50, onScreen : true, displayPercent : false },
+						{ percent : 25, onScreen : true, displayPercent : false }
+					]
+				}; 
+
+				html = template(data);
+
+				var insertElements = $(html);
+				$('.js-dom-area').append(insertElements);
+
+				// $('body').trigger('DOUGHNUT_CHART-REFRESH');
+				$('body').trigger('DOUGHNUT_CHART-APPEND', {
+					container : $('.js-dom-area'),
+					insertElements: insertElements
+				});
+			});
+
+			$('.js-horizonbar-btn').on('click', function() {
+				var source = $("#hb-horizonbar-template").html(),
+				template = Handlebars.compile(source),
+				data, html;
+
+				data = {
+					list : [
+						{ percent : 10, onScreen : false, displayPercent : true },
+						{ percent : 15, onScreen : false, displayPercent : true },
+						{ percent : 50, onScreen : true, displayPercent : false },
+						{ percent : 25, onScreen : true, displayPercent : false }
+					]
+				}; 
+
+				html = template(data);
+
+				var insertElements = $(html);
+				$('.js-dom-area').append(insertElements);
+
+				// $('body').trigger('HORIZON_BAR_CHART-REFRESH');
+				$('body').trigger('HORIZON_BAR_CHART-APPEND', {
+					container : $('.js-dom-area'),
+					insertElements: insertElements
+				});
+			});
+		});
+	})(window, window.jQuery);
+	</script>
+</body>
+</html>

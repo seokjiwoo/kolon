@@ -20,12 +20,12 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .topBanner img {width:1920px; height:113px; margin-left:-960px; position:absolute; top:0; left:50%; z-index:1;}
 .topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
 
-.topMenu{width:100%; position:fixed; z-index:99; min-width:1240px;}
+.topMenu{width:100%; position:fixed; z-index:99; min-width:1240px; white-space: nowrap;}
 .topMenu .topL{width:15%; min-width:180px; height:72px; float:left;}
 .topMenu .topL .btnLnb{width:80px; height:60px; float:left; background:url('../images/btn_menu.png') 50% 28px no-repeat;}
 .topMenu .topL h1.logo{width:100px; float: left; overflow:hidden; line-height:0;}
 .topMenu .topL h1.logo a{width:100%; padding:28px 0; display:inline-block;}
-.topMenu .menu{width:70%; min-width:825px; height:63px; overflow:hidden; float:left; text-align:center;}
+.topMenu .menu{width:65%; min-width:765px; height:63px; overflow:hidden; float:left; text-align:center;}
 .topMenu .menu ul.menuList {height:72px; display:inline-block;}
 .topMenu .menu ul.menuList + ul.menuList{margin-left:29px; padding-left:29px; position:relative;}
 .topMenu .menu ul.menuList + ul.menuList:before {content:''; width:5px; height:5px; margin-top:-2.5px; background:#d2d2d2; position:absolute; top:50%; left:0;}
@@ -34,14 +34,15 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 .topMenu .menu ul.menuList li a{display:block; padding:28px 0; font-family:'RobotoM','NotoSansB', sans-serif; color:#333; font-size:16px; font-weight:bold;}
 .topMenu .menu ul.menuList li a em.point {color:#f84b40;}
 .topMenu .menu ul.menuList:last-child li a {color:#00aeb9;}
+@media (max-width:1310px){.topMenu .menu ul.menuList li + li {margin-left:20px;}}
 
-.topMenu .topR{width:15%; min-width:183px; height:72px; text-align:right; font-size: 14px; float:right;}
-.topMenu .topR #searchOpen{display:inline-block;width: 40px;height: 40px;margin:10px 25px 0 0;background: #f1645c url('../images/ico_search.png') no-repeat top;}
+.topMenu .topR{width:20%; min-width:236px; height:72px; text-align:right; font-size: 14px; float:right; position:relative;}
+.topMenu .topR #searchOpen{display:inline-block;width: 40px;height: 40px;margin-top:-20px;background: #f1645c url('../images/ico_search.png') no-repeat top; position:absolute; top:50%; right:25px;}
 .topMenu .topR #searchOpen.opened{background-position: bottom;}
-.topMenu .topR a.btnLogin {margin-top:25px; display:inline-block; color:#333; font-family:'RobotoR','NotoSansR', sans-serif; font-size:14px; vertical-align:top;}
+.topMenu .topR a.btnLogin {margin:25px 70px 0 0; display:inline-block; color:#333; font-family:'RobotoR','NotoSansR', sans-serif; font-size:14px; vertical-align:top;}
 .topMenu .topR a.btnLogin img {width:57px;}
-.topMenu .topR .member{float:right;margin-right:30px;padding: 10px 0;}
-.login .topMenu .topR .member{display: block;}
+.topMenu .topR .member{padding: 10px 0;}
+.login .topMenu .topR .member{display:inline-block; padding:0; vertical-align:top; margin:15px 70px 0 0;}
 .topMenu .topR .member a{display: inline-block;vertical-align: middle;}
 .topMenu .topR .member .name{font-family:'RobotoR','NotoSansR', sans-serif;color: #737373;}
 .topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}

@@ -16,7 +16,6 @@
 .my .myMenu ul:before {content:''; width:225px; height:60px; background:#f1645c; position:absolute; bottom:-60px; left:0; z-index:0;}
 .my .myMenu ul:after {content:''; border-right:60px solid transparent; border-top:60px solid #f1645c; position:absolute; bottom:-60px; right:0; z-index:0;}
 .my .myMenu li{border-bottom: 1px solid #f1807a;}
-.my .myMenu li a{display: block; padding:0 0 14px; color: #fff;}
 .my .myMenu li + li a{padding: 14px 0;}
 .my .myMenu li.on a{font-family:'RobotoM','NotoSansM', sans-serif;}
 .my .myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
@@ -27,14 +26,69 @@
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
 
 .timeCard .recordWrap{padding-bottom: 20px;}
+.timeCard .recordWrap.recordFirst {padding-bottom:0;}
+.timeCard .recordWrap.recordFirst > ul {height:157px;}
 .timeCard .recordWrap > ul > li{margin-top: 20px;text-align: left;}
 .timeCard .recordWrap > ul > li:first-child{margin-top: 0;}
 .timeCard .recordDate{display: inline-block;padding: 0 15px;background: #999;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 30px;border-radius: 15px;}
 .timeCard .recordTime{display: inline-block;vertical-align: middle;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;font-size: 20px;}
 .timeCard .recordTime b{color: #f1645c}
-.timeCard .recordIco{position: relative;display: inline-block;width: 96px;height: 96px;margin:0 11px 0 23px;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;font-size: 0;vertical-align: middle;}
-.timeCard .recordWrap > ul > li > a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border-radius: 10px;vertical-align: middle;box-shadow: 0px 3px rgba(0,0,0,0.1);}
-.timeCard .recordCon{display: inline-block;width: 735px;margin-right: -4px;padding-right: 30px;vertical-align: middle;}
+
+.timeCard .recordIco {position:relative; display:inline-block; z-index:4; margin:0 10px;}
+.timeCard .recordFirst .recordIco {vertical-align:middle}
+.timeCard .recordFirst .recordIco:before, .timeCard .recordFirst .recordIco:after {display:none;}
+.timeCard .recordIco .recordIcoCon {width:96px; height:55px; margin:28px 0; padding:0; background:url(../images/ico_timeline.png) no-repeat;text-indent:-9999px;font-size:0;display:inline-block;vertical-align:middle}
+.timeCard .recordIco:before {content:''; width:0; border-right:48px solid transparent; border-left:48px solid transparent; position:absolute; top:0px; left:0; overflow:hidden;}
+.timeCard .recordIco:after {content:''; width:0; border-right:48px solid transparent; border-left:48px solid transparent; position:absolute; bottom:0px; left:0; overflow:hidden;}
+.timeCard .recordType01 .recordIcoCon {background-position: -96px -20px;background-color: #65bfe5}
+.timeCard .recordType01 .recordIco:before {border-bottom:28px solid #65bfe5;}
+.timeCard .recordType01 .recordIco:after {border-top:28px solid #65bfe5;}
+.timeCard .recordType02 .recordIcoCon {background-position: 0 -116px;background-color: #f1be4f}
+.timeCard .recordType02 .recordIco:before {border-bottom:28px solid #f1be4f;}
+.timeCard .recordType02 .recordIco:after {border-top:28px solid #f1be4f;}
+.timeCard .recordType03 .recordIcoCon {background-position: 0 -213px;background-color: #8176d2}
+.timeCard .recordType03 .recordIco:before {border-bottom:28px solid #8176d2;}
+.timeCard .recordType03 .recordIco:after {border-top:28px solid #8176d2;}
+.timeCard .recordType04 .recordIcoCon {background-position: -288px -23px;background-color: #adc427}
+.timeCard .recordType04 .recordIco:before {border-bottom:28px solid #adc427;}
+.timeCard .recordType04 .recordIco:after {border-top:28px solid #adc427;}
+.timeCard .recordType04 .recordThumb{background: #a9c700;}
+.timeCard .recordType05 .recordIcoCon {background-position: -290px -115px;background-color: #a5abb5}
+.timeCard .recordType05 .recordIco:before {border-bottom:28px solid #a5abb5;}
+.timeCard .recordType05 .recordIco:after {border-top:28px solid #a5abb5;}
+.timeCard .recordType05 .recordThumb{background: #a5abb5;}
+.timeCard .recordType05 .recordThumb p:before{content: '';background-position: -429px -261px;}
+.timeCard .recordType05 .recordThumb p strong{font-size: 20px;font-family:'RobotoM', sans-serif;}
+.timeCard .recordType06 .recordIcoCon {background-position: -382px -115px;background-color: #f1645c}
+.timeCard .recordType06 .recordIco:before {border-bottom:28px solid #f1645c;}
+.timeCard .recordType06 .recordIco:after {border-top:28px solid #f1645c;}
+.timeCard .recordType06 .recordThumb{background: #f1645c;}
+.timeCard .recordType06 .recordThumb p:before{content: '';background-position: -456px -261px;}
+.timeCard .recordType07 .recordIcoCon {background-position: -288px -23px;background-color: #adc427}
+.timeCard .recordType07 .recordIco:before {border-bottom:28px solid #adc427;}
+.timeCard .recordType07 .recordIco:after {border-top:28px solid #adc427;}
+.timeCard .recordType07 .recordThumb{background: #a9c700;}
+.timeCard .recordType08 .recordIcoCon {background-position: 0 -20px;background-color: #f8f8f8}
+.timeCard .recordType08 .recordIco:before {border-bottom:28px solid #f8f8f8;}
+.timeCard .recordType08 .recordIco:after {border-top:28px solid #f8f8f8;}
+.timeCard .recordType08 .recordIcoCon :after{content: '';position: absolute;top:96px;left: 0;width: 100px;height: 50px;background: #e0e0e0}
+.timeCard .recordType09 .recordIcoCon {background-position: -190px -20px;background-color: #62b3bd}
+.timeCard .recordType09 .recordIco:before {border-bottom:28px solid #62b3bd;}
+.timeCard .recordType09 .recordIco:after {border-top:28px solid #62b3bd;}
+.timeCard .recordType10 .recordIcoCon {background-position: -385px -20px;background-color: #65bfe5}
+.timeCard .recordType10 .recordIco:before {border-bottom:28px solid #65bfe5;}
+.timeCard .recordType10 .recordIco:after {border-top:28px solid #65bfe5;}
+.timeCard .recordType11 .recordIcoCon {background-position: -95px -120px;background-color: #f5814e}
+.timeCard .recordType11 .recordIco:before {border-bottom:28px solid #f5814e;}
+.timeCard .recordType11 .recordIco:after {border-top:28px solid #f5814e;}
+.timeCard .recordType12 .recordIcoCon {background-position: -192px -115px;background-color: #f5814e}
+.timeCard .recordType12 .recordIco:before {border-bottom:28px solid #f5814e;}
+.timeCard .recordType12 .recordIco:after {border-top:28px solid #f5814e;}
+
+
+
+.timeCard .recordWrap > ul > li > a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border:1px solid #e5e5e5;vertical-align: middle;}
+.timeCard .recordCon{display: inline-block;width: 735px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
 .timeCard .recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
 .timeCard .recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
 .timeCard .recordThumb{position: relative;display: inline-block;width: 285px;height: 100%;vertical-align: middle;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;text-align: center;}
@@ -73,25 +127,10 @@
 
 #myTimeline .recordDate{margin:0 auto 15px 190px;}
 #myTimeline .recordWrap{background: url('../images/bg_my.png') repeat-y left;}
-#myTimeline li a{display: inline-block;width: 865px;}
+#myTimeline li a{display: inline-block;width: 868px;}
 #myTimeline .recordCon{width: 550px;}
 
-#myTimeline .recordType01 .recordIco{background-position: -96px 0;background-color: #65bfe5} 
-#myTimeline .recordType02 .recordIco{background-position: 0 -96px;background-color: #f1be4f}
-#myTimeline .recordType03 .recordIco{background-position: 0 -198px;background-color: #8176d2}
-#myTimeline .recordType04 .recordIco{background-position: -288px 0;background-color: #adc427}
-#myTimeline .recordType04 .recordThumb{background: #a9c700;}
-#myTimeline .recordType05 .recordIco{background-position: -288px -96px;background-color: #a5abb5}
-#myTimeline .recordType05 .recordThumb{background: #a5abb5;}
-#myTimeline .recordType05 .recordThumb p:before{content: '';background-position: -429px -261px;}
-#myTimeline .recordType05 .recordThumb p strong{font-size: 20px;font-family:'RobotoM', sans-serif;}
-#myTimeline .recordType06 .recordIco{background-position: -384px -96px;background-color: #f1645c}
-#myTimeline .recordType06 .recordThumb{background: #f1645c;}
-#myTimeline .recordType06 .recordThumb p:before{content: '';background-position: -456px -261px;}
-#myTimeline .recordType07 .recordIco{background-position: -288px 0;background-color: #adc427}
-#myTimeline .recordType07 .recordThumb{background: #a9c700;}
-#myTimeline .recordType08 .recordIco{background-position: 0 0;background-color: #f8f8f8}
-#myTimeline .recordType08 .recordIco:after{content: '';position: absolute;top:96px;left: 0;width: 100px;height: 50px;background: #e0e0e0}
+
 
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
