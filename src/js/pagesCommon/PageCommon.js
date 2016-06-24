@@ -255,9 +255,9 @@ module.exports = function() {
 					popupCallbackFunction.call();
 				});
 				$('.popScroll').css('height', winH-490+'px');
-				$.colorbox.resize();
-console.log(popupOpenHandlerFunction);
+				
 				if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
+				$.colorbox.resize();
 			}
 		});
 	};
