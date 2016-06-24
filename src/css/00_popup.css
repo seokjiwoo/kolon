@@ -57,7 +57,7 @@
 
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
 .popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
-.popEdge .popCon3 {padding-top:40px;}
+.popEdge .popCon.popConBg {background:url(../images/category_popup_bg.png) 100% 100% no-repeat #fff;}
 .popCon p{margin-top:20px;}
 .popCon p:first-child{margin-top:0;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
