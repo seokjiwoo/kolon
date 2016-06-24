@@ -92,24 +92,24 @@ function DoughnutChart() {
 
 	function setBindEvents() {
 		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
-					.on(self.EVENT.DESTROY, $.proxy(destory, self))
+					.on(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.on(self.EVENT.INIT, $.proxy(init, self))
 					.on(self.EVENT.APPEND, $.proxy(append, self));
 
 		$(self).on(self.EVENT.REFRESH, $.proxy(refresh, self))
-				.on(self.EVENT.DESTROY, $.proxy(destory, self))
+				.on(self.EVENT.DESTROY, $.proxy(destroy, self))
 				.on(self.EVENT.INIT, $.proxy(init, self))
 				.on(self.EVENT.APPEND, $.proxy(append, self));
 	}
 
 	function removeBindEvents() {
 		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
-					.off(self.EVENT.DESTROY, $.proxy(destory, self))
+					.off(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.off(self.EVENT.INIT, $.proxy(init, self))
 					.off(self.EVENT.APPEND, $.proxy(append, self));
 
 		$(self).off(self.EVENT.REFRESH, $.proxy(refresh, self))
-				.off(self.EVENT.DESTROY, $.proxy(destory, self))
+				.off(self.EVENT.DESTROY, $.proxy(destroy, self))
 				.off(self.EVENT.INIT, $.proxy(init, self))
 				.off(self.EVENT.APPEND, $.proxy(append, self));
 	}
