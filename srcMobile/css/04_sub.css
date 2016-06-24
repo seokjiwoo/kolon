@@ -24,7 +24,8 @@
 
 .plate{padding: 23px 15px;margin-top:10px;background: #fff;box-shadow: 0px 2px rgba(0,0,0,0.1);}
 .plate02{padding: 23px 15px 0}
-.plate .plateTit{padding-bottom: 10px;border-bottom: 1px solid #000;font-size: 15px;color: #000;}
+.plate .plateTit{position:relative;padding-bottom: 10px;border-bottom: 1px solid #000;font-size: 15px;color: #000;}
+.plate .plateTit.icoN:after{width:5px;height:5px;display:inline-block;content:"";background:url("../images/ico_n.png") no-repeat 0 top;background-size:100%;margin-top:-10px;vertical-align:super;}
 .plate .more{position: relative;margin-top:-10px;float: right;padding: 12px;font-size: 11px;color: #666;}
 .plate .more:after{content: '';position: absolute;top:13px;right: 0;width: 6px;height: 11px;margin-left: 7px;background: url('../images/ico_arrowG.png') no-repeat;background-size: 100%;}
 
@@ -32,8 +33,8 @@
 
 .tabSquare{overflow: hidden;width: 100%;padding: 15px 0;border-bottom: 1px solid #ccc;}
 .tabSquare li{position: relative;float: left;width: 50%;border:1px solid #ccc;}
-.tabSquare li:first-child{border-right: 0;border-radius: 8px 0  0 8px;}
-.tabSquare li:last-child{border-left: 0;border-radius: 0 8px 8px 0;}
+.tabSquare li:first-child{border-right: 0;/*border-radius: 8px 0  0 8px;*/}
+.tabSquare li:last-child{border-left: 0;/*border-radius: 0 8px 8px 0;*/}
 .tabSquare a{display: block;text-align: center;font-size: 13px;color: #999;line-height: 30px;}
 .tabSquare .on{border-color:#f1645c;background: #f1645c;}
 .tabSquare .on a{color: #fff;}
@@ -42,22 +43,30 @@
 .previewList .previewWrap{overflow: hidden;}
 .previewList > li:first-child{border:0;}
 .previewList .pic{overflow: hidden;float: left;width: 50px;height: 50px;margin-right: 8px;border-radius: 50%;}
-.previewList .thumb{overflow: hidden;float: left;width: 80px;height: 80px;margin-right: 10px;}
+.previewList .thumb{overflow: hidden;float: left;width: 78px;height: 78px;margin-right: 10px;}
 .previewList img{display: block;width: 100%;}
 .previewList .except{max-height: 2.4em;line-height: 1.2em;}
 .previewList .listTit{margin-bottom:3px;font-size: 15px;font-weight: bold;color: #000;}
 .previewList .listTit b{color: #f1645c}
 .previewList .date{font-size: 11px;color: #999;}
 .previewList .dateR{float: right;}
-.previewList .count{position: absolute;;right: 0;bottom: 20px;display: inline-block;min-width: 33px;padding:0 10px;border-radius: 13px;background: #f1645c;line-height: 25px;color: #fff;font-size: 15px;text-align: center;}
-.previewList .info{display: inline-block;margin-right: 5px;padding: 0 5px;border-radius: 8px;border:1px solid #999;color: #666;line-height: 15px;}
-.previewList .done .info{color: #a9c700;border-color: #a9c700;}
+.previewList .count{position: absolute;right: 0;bottom: 20px;display: inline-block;min-width: 33px;padding:0 10px;border-radius: 13px;background: #f1645c;line-height: 25px;color: #fff;font-size: 15px;text-align: center;}
+.previewList .hexagon{position: absolute;right: 0;bottom: 20px;display: inline-block;min-width: 32px;height:18px;line-height: 18px;background: #f1645c;color: #fff;font-size: 15px;text-align: center;}
+.previewList .hexagon:before,
+.previewList .hexagon:after{content: ""; position:absolute;left:0;width:0;height:0;border-left: 16px solid transparent;border-right: 16px solid transparent;}
+.previewList .hexagon:before{top:-10px;border-bottom: 10px solid #f1645c;}
+.previewList .hexagon:after{bottom:-10px;border-top: 10px solid #f1645c}
+
+.previewList .info{display: inline-block;margin-right: 5px;padding: 0 5px;/*border-radius: 8px;*/border:1px solid #999;color: #666;line-height: 15px;}
+.previewList .done .info{color: #00aeb9;border-color: #00aeb9;}
 .previewList .count02{float: right;color:#333;font-size: 11px;}
 .previewList .count02 b{color:#f1645c;}
 .previewList .op{margin-top: 3px;font-size: 11px;color: #999;}
 
 .previewList .reply{margin-top: 8px;background: #f8f8f8;padding: 15px;}
 .previewList .reply .except{color: #666;}
+
+
 .previewList .reply .date{margin-top: 3px;}
 .previewList .reply .galleryThumb{overflow: hidden;margin-top: 10px;}
 .previewList .reply .galleryThumb li{float: left;width: 31%;margin-left: 3.5%;}
@@ -67,8 +76,11 @@
 .previewList .reply .except02{max-height: 2.4em;line-height: 1.2em;}
 .previewList .reply .readmore{color: #a9c700 }
 
+.previewList.reviewType > li{background:#f8f8f8;padding:0;}
+.previewList.reviewType .except{margin-top:12px;}
+
 .pageWrap{background: #fff;}
-.pageWrap .pageTit{padding: 7px 0;border-bottom:1px solid #e5e5e5;font-size: 13px;color:#666;text-align: center;}
+.pageWrap .pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
 .pageWrap .wrap{padding:0 15px;}
 
 .slideCon{display: none;}
