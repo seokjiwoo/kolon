@@ -291,7 +291,7 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; /*border-radius:7px;*/ display:inline;}
 .calendar span.calInp {width:; position:relative;}
 .calendar span.calInp input[type="text"] {width:200px; border:0; padding:0; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin-right:16px;}
-.calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:1px; right:0;}
+.calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:1px; right:0;border:none;border-radius:0;}
 .calendar.cal2 {background:url('../images/ico_calendar_bar.png') 50% 50% no-repeat;}
 .calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
 .calendar.cal2 span.calInp input[type="text"] {width:80px;}
