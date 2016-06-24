@@ -82,6 +82,7 @@ module.exports = function() {
 			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		} else {
 			// 로그인 상태일 때
+			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
 			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
@@ -137,7 +138,7 @@ module.exports = function() {
 					$(this).addClass('opened')
 					$('#searchWrap').animate({'top':'60px'},250);
 				}
-			}else {
+			} else {
 				if($(this).hasClass('opened')){
 					$(this).removeClass('opened');
 					$('#searchWrap').animate({'top':'-177px'},250);
