@@ -145,13 +145,21 @@ function DoughnutChart() {
 
 		waypoint = new win.Waypoint.Inview({
 			element: container.get(0),
-			entered: function(/*direction*/) {
+			entered: function(direction) {
+				if (direction === 'up') {
+					return;
+				}
+
 				container.addClass(self.opts.cssClass.isEntered)
 						.removeClass(self.opts.cssClass.isExited);
 						
 				tweenChart(drawOpts);
 			},
-			exited: function(/*direction*/) {
+			exited: function(direction) {
+				if (direction === 'down') {
+					return;
+				}
+
 				container.removeClass(self.opts.cssClass.isEntered)
 						.addClass(self.opts.cssClass.isExited);
 
