@@ -325,7 +325,8 @@
 #serviceDetail .popState{display: block;position: static;width: auto;border:0;padding:30px 0;text-align: center;font-size: 14px;}
 #serviceDetail .popState .stepImg{width: 750px;background:url('../images/ico_step03.png') no-repeat; }
 #serviceDetail .popState .stepImg span{background: url('../images/ico_step03_on.png') no-repeat; }
-#serviceDetail .popState li{width: 10.7%;vertical-align: middle;}
+#serviceDetail .popState ul {}
+#serviceDetail .popState li{width:85px;vertical-align: middle;}
 #serviceDetail .popState .step01 span{width: 90px;}
 #serviceDetail .popState .step02 span{width: 180px;}
 #serviceDetail .popState .step03 span{width: 270px;}
@@ -342,24 +343,38 @@
 .shareCon .tw{background-position: -40px 0;}
 .shareCon .ks{background-position: -80px 0;}
 
-.conCard{position: relative;float: left;width: 350px;height: 205px;padding: 20px;margin:5px;border:1px solid #e3e3e3;border-bottom-width: 4px;font-family:'RobotoR','NotoSansR', sans-serif;}
-.conCard.product{color: #fff;background-size: cover;}
+.conCard{position: relative;float: left;height: 205px;width:764px; padding: 20px; margin-top:39px; font-family:'RobotoR','NotoSansR', sans-serif; background-size: 100% 100%;;}
+.conCard + .conCard {width:762px; border:1px solid #e3e3e3; margin-top:10px;}
 .conCard .cardTit{font-size: 20px;}
 .conCard .cardTxt{font-size: 14px;margin-top: 10px;}
-.conCard.product .union{display: inline-block;margin-bottom: 20px;padding: 5px 10px;border-radius: 12px;border:1px solid #fff;font-size: 13px;}
-.conCard.product a{position: absolute;right: 0;bottom: 0;padding: 15px 20px;color: #fff;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;}
-.conCard.product a:after{content: '';display: inline-block;width: 11px;height: 11px;margin-left: 4px;background: url('../images/ico_plusW.png') no-repeat;}
-.conCard.designer .pic{overflow: hidden;display: inline-block;width: 60px;height: 60px;margin-right: 15px;border-radius: 50%;vertical-align: middle;}
-.conCard.designer .pic img{display: block;width: 100%;}
-.conCard.designer .cardTit{display: inline-block;vertical-align: middle;}
-.conCard.designer .cardTit b{color: #666;}
-.conCard.designer .group{display: block;margin-bottom: 5px;color: #f1645c;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;}
-.conCard.designer .cardTxt{padding-left: 4px;margin-bottom: 30px;color: #666;}
-.conCard.designer .cardTxt:before{content: '';display: block;width: 50px;height: 1px;margin:20px 0;background: #c7c7c7;}
-.conCard.designer a{width: 170px;}
-.conCard.designer a.btnColor01{margin-right: 10px;}
-.conCard.designer .area:before{content: '';display: inline-block;width: 10px;height: 12px;margin-left: 3px;background: url('../images/ico_card_popular.png') no-repeat -35px -14px;vertical-align: top;}
-/*.conCard.construction {width:753px;}*/
+.conCard .product {overflow:hidden; color: #fff;}
+.conCard .product .union{display: inline-block;padding: 5px 10px;border-radius: 12px;border:1px solid #fff;font-size: 13px; float:left;}
+.conCard .product h3.cardTit {width:684px; min-height:25px; float:left; margin:0 0 0 6px;}
+.conCard .product p.cardTxt {width:100%; line-height:130%; margin-top:5px; float:left;}
+.conCard.visualW,
+.conCard.visualW .designer h3.cardTit,
+.conCard.visualW .designer h3.cardTit b,
+.conCard.visualW .designer .group {color: #fff;}
+.conCard.visualW .designer:before {content: '';display: block;width: 50px;height: 1px;margin:20px 0;background: #c7c7c7;}
+.conCard.visualW a.more{position: absolute;right: 0;bottom: 0;padding: 15px 20px;color: #fff;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px; text-align:right; vertical-align:middle;}
+.conCard.visualW a.more:after{content: '';display: inline-block;width: 11px;height: 11px;margin-left: 4px;background: url('../images/ico_plusW.png') no-repeat;}
+.conCard .designer {width:100%; overflow:hidden;  color:#000;}
+.conCard .designer .pic{overflow: hidden;display: inline-block;width: 60px;height: 60px;margin-right: 15px;border-radius: 50%;vertical-align: middle;}
+.conCard .designer .pic img{display: block;width: 100%;}
+.conCard .designer h3.cardTit{display: inline-block;vertical-align: middle; margin:0;}
+.conCard .designer h3.cardTit b{color: #666;}
+.conCard .designer .group{display: block;margin-bottom: 5px;color: #f1645c;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;}
+.conCard .designer .cardTxt{padding-left: 4px;margin-bottom: 30px;color: #666;}
+.conCard .designer .cardTxt:before{content: '';display: block;width: 50px;height: 1px;margin:20px 0;background: #c7c7c7;}
+.conCard .designer + .btnL {margin-top:20px;}
+.conCard a{width: 170px;}
+.conCard a.btnColor01{margin-right: 10px;}
+.conCard .designer .area:before{content: '';display: inline-block;width: 10px;height: 12px;margin-left: 3px;background: url('../images/ico_card_popular.png') no-repeat -35px -14px;vertical-align: top;}
+.conCard.construction .graph,
+.conCard.construction .designer {width:356px; float:left; margin-top:7px;}
+.conCard.construction .designer .pic {margin:44px 15px 44px 0;}
+.conCard.construction .graph + .designer {margin-left:50px;}
+
 
 .cardWrap .formListWrap{height: 210px;}
 .cardWrap .formListWrap01{height: 170px;}
@@ -460,4 +475,4 @@
 .my .cashTbSet ul.csList li span.csTit{float:left;}
 .my .cashTbSet ul.csList li span.csCont{float:right; text-align:right;}
 .my .cashTbSet .csBtn {width:100%; overflow:hidden;}
-.my .cashTbSet .csBtn a{width:140px; float:left; display:inline-block; margin:0 4px 4px 0;}
+.my .cashTbSet .csBtn a{min-width:48%; width:auto; float:left; display:inline-block; margin:0 4px 4px 0;}
