@@ -49,14 +49,26 @@ $(document).ready(function() {
 		
 
 		// [S] myPage 			13-마이홈즈
-		case 'mypage':
+		case 'myPage':
 			PageModuleClass = require('./pages/myPage/MyPage.js');
 			break;
 		case 'myPage-editInfo':
 			PageModuleClass = require('./pages/myPage/ProfileEdit.js');
 			break;
-		case 'myServiceDetail':
+		case 'myPage-myService':
+			PageModuleClass = require('./pages/myPage/MyService.js');
+			break;
+		case 'myPage-myServiceDetail':
 			PageModuleClass = require('./pages/myPage/MyServiceDetail.js');
+			break;
+		case 'myPage-order':
+			PageModuleClass = require('./pages/myPage/Order.js');
+			break;
+		case 'myPage-return':
+			PageModuleClass = require('./pages/myPage/Return.js');
+			break;
+		case 'myPage-point':
+			PageModuleClass = require('./pages/myPage/Point.js');
 			break;
 		// [E] myPage 			13-마이홈즈
 

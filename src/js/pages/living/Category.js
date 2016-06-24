@@ -31,7 +31,7 @@ module.exports = function() {
 				create : $.noop,
 				slide : $.noop,
 				stop : $.noop,
-				currency : '만원'
+				currency : ''
 			}
 		},
 		info : {

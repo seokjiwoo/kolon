@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
 </head>
- <body data-page-id="order">
+ <body data-page-id="myPage-order">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -24,7 +24,22 @@
 									<li><a href="">3개월</a></li>
 									<li><a href="">6개월</a></li>
 								</ul>
-								<div class="sortTermSet"><!-- datePicker --></div>
+								<div class="sortTermSet">
+									<!-- datePicker -->
+									<div class="calendar cal2 js-range-picker">
+										<span class="calInp">
+											<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-from">날짜선택</a>
+											<div class="cal-container js-picker-from"></div>
+										</span> 
+										<span class="calInp">
+											<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-to">날짜선택</a>
+											<div class="cal-container js-picker-to"></div>
+										</span>
+									</div>
+									<!--// datePicker -->
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -43,65 +58,84 @@
 					</table>
 					<div class="alignBox">
 						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
-						<!-- dropBox 
-						<ul class="drop dropOn">
-							<li><a href="#">진행상태 보기</a></li>
-							<li><a href="#">전체</a></li>
-							<li><a href="#">입금대기</a></li>
-							<li><a href="#">결제완료</a></li>
-							<li><a href="#">상품준비중</a></li>
-							<li><a href="#">배송중</a></li>
-							<li><a href="#">배송완료</a></li>
-							<li><a href="#">구매확정</a></li>
-						</ul>
+						
+						<!-- 
+							[D] dropbox - active 시 .dropOn 
+							
+							- data-prevent Flag값 입력
+							- data-prevent : a href prevent flag / 기본값 - true
+							- 선택에 따라 .on 토글
 						-->
+						<style>
+							/* 테스트 임시 구성 */
+							/*.drop a.on {color:#f1645c}*/
+						</style>
+						<ul class="drop" data-prevent="true">
+							<li><a href="#">진행상태 보기</a></li>
+							<li><a href="#" data-value="type-1">전체</a></li>
+							<li><a href="#" data-value="type-2">입금대기</a></li>
+							<li><a href="#" data-value="type-3">결제완료</a></li>
+							<li><a href="#" data-value="type-4">상품준비중</a></li>
+							<li><a href="#" data-value="type-5">배송중</a></li>
+							<li><a href="#" data-value="type-6">배송완료</a></li>
+							<li><a href="#" data-value="type-7">구매확정</a></li>
+						</ul>
 
-						<!-- dropBox Check 기능 추가 -->
-						<ul class="drop dropChk dropOn">
+						<!-- 
+							[D] dropbox 체크 타입 - active 시 .dropOn
+
+							- data-prevent Flag값 입력
+							- data-prevent : a href prevent flag / 기본값 - true
+
+							- data-all-checker 전체선택 input 객체 설정
+							- 기본값 data-all-checker 별도 지정이 없을 경우 input 객체중 첫번째 요소로 설정
+						 -->
+						<ul class="drop dropChk" style="right:150px" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li>
 								<p class="checkbox">
-									<label for="chkAll">전체</label>
-									<input type="checkbox" name="chkGroup" id="chkAll">
+									<label for="chkAll" class="on">전체</label>
+									<input type="checkbox" name="chkGroup1" id="chkAll" checked="checked" data-all-checker="true">
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk01">입금대기</label>
-									<input type="checkbox" name="chkGroup" id="chk01">
+									<label for="chk01" class="on">입금대기</label>
+									<input type="checkbox" name="chkGroup2" id="chk01" checked="checked">
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk02">결제완료</label>
-									<input type="checkbox" name="chkGroup" id="chk02">
+									<label for="chk02" class="on">결제완료</label>
+									<input type="checkbox" name="chkGroup3" id="chk02" checked="checked">
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk03" class="on">상품준비중</label>
-									<input type="checkbox" name="chkGroup" checked="checked" 
-								</p>id="chk03">
+									<input type="checkbox" name="chkGroup4" id="chk03" checked="checked">
+								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk04" class="on">배송중</label>
-									<input type="checkbox" name="chkGroup" checked="checked" 
-								</p>id="chk04">
+									<input type="checkbox" name="chkGroup5" id="chk04" checked="checked">
+								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk05" class="on">배송완료</label>
-									<input type="checkbox" name="chkGroup" checked="checked" 
-								</p>id="chk05">
+									<input type="checkbox" name="chkGroup6" id="chk05" checked="checked">
+								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk06" class="on">구매확정</label>
-									<input type="checkbox" name="chkGroup" checked="checked" 
-								</p>id="chk06">
+									<input type="checkbox" name="chkGroup7" id="chk06" checked="checked">
+								</p>
 							</li>
 						</ul>
+						
 					</div>
 					<table class="record">
 						<tr>

@@ -72,6 +72,11 @@ module.exports = function() {
 		$('.radioBox label').click(radioButtonHandler);	// radio button
 		$('.checkbox label').click(checkBoxHandler);	// checkbox
 		$('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
+		
+		// colorbox event listener 설정
+		$(document).on('cbox_complete', onCboxEventListener)
+					.on('cbox_cleanup', onCboxEventListener)
+					.on('cbox_closed', onCboxEventListener);
 	};
 	
 	/**
@@ -261,4 +266,26 @@ module.exports = function() {
 			}
 		});
 	};
+
+	// colorbox listener - colorbox 내에 공통 버튼 이벤트 설정
+	function onCboxEventListener(e) {
+		switch(e.type) {
+			case 'cbox_complete':
+				$('.radioBox label').off('click', radioButtonHandler);
+				$('.checkbox label').off('click', checkBoxHandler);
+
+				$('.radioBox label').on('click', radioButtonHandler);
+				$('.checkbox label').on('click', checkBoxHandler);
+				break;
+			case 'cbox_cleanup':
+				$('.radioBox label').off('click', radioButtonHandler);
+				$('.checkbox label').off('click', checkBoxHandler);
+
+				$('.radioBox label').on('click', radioButtonHandler);
+				$('.checkbox label').on('click', checkBoxHandler);
+				break;
+			case 'cbox_closed':
+				break;
+		}
+	}
 }

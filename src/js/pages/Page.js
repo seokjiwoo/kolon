@@ -20,7 +20,8 @@ module.exports = function() {
 
 	// 공통차트 컴포넌트 - @see html/_js/chart.html
 	var doughnutChart = require('../components/DoughnutChart.js'),
-	horizonBarChart = require('../components/HorizonBarChart.js');
+	horizonBarChart = require('../components/HorizonBarChart.js'),
+	dropDownMenu =  require('../components/DropDownMenu.js');
 	
 	return callerObj;
 	
@@ -35,6 +36,8 @@ module.exports = function() {
 		initAddressPopupButton();
 		// 공통차트 컴포넌트
 		initChart();
+
+		dropDownMenu.init();
 
 		opinionToggle();
 		initCardRadio();

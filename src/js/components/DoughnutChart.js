@@ -48,12 +48,12 @@ function DoughnutChart() {
 
 	var callerObj = {
 		init : init,
-		destory : destory,
+		destroy : destroy,
 		refresh : refresh,
 		append : append,
 		EVENT : {
 			REFRESH : 'DOUGHNUT_CHART-REFRESH',
-			DESTROY : 'DOUGHNUT_CHART-DESTORY',
+			DESTROY : 'DOUGHNUT_CHART-DESTROY',
 			INIT : 'DOUGHNUT_CHART-INIT',
 			APPEND : 'DOUGHNUT_CHART-APPEND'
 		}
@@ -92,24 +92,24 @@ function DoughnutChart() {
 
 	function setBindEvents() {
 		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
-					.on(self.EVENT.DESTROY, $.proxy(destory, self))
+					.on(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.on(self.EVENT.INIT, $.proxy(init, self))
 					.on(self.EVENT.APPEND, $.proxy(append, self));
 
 		$(self).on(self.EVENT.REFRESH, $.proxy(refresh, self))
-				.on(self.EVENT.DESTROY, $.proxy(destory, self))
+				.on(self.EVENT.DESTROY, $.proxy(destroy, self))
 				.on(self.EVENT.INIT, $.proxy(init, self))
 				.on(self.EVENT.APPEND, $.proxy(append, self));
 	}
 
 	function removeBindEvents() {
 		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
-					.off(self.EVENT.DESTROY, $.proxy(destory, self))
+					.off(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.off(self.EVENT.INIT, $.proxy(init, self))
 					.off(self.EVENT.APPEND, $.proxy(append, self));
 
 		$(self).off(self.EVENT.REFRESH, $.proxy(refresh, self))
-				.off(self.EVENT.DESTROY, $.proxy(destory, self))
+				.off(self.EVENT.DESTROY, $.proxy(destroy, self))
 				.off(self.EVENT.INIT, $.proxy(init, self))
 				.off(self.EVENT.APPEND, $.proxy(append, self));
 	}
@@ -209,13 +209,21 @@ function DoughnutChart() {
 
 		waypoint = new win.Waypoint.Inview({
 			element: container.get(0),
-			entered: function(/*direction*/) {
+			entered: function(direction) {
+				if (direction === 'up') {
+					return;
+				}
+
 				container.addClass(self.opts.cssClass.isEntered)
 						.removeClass(self.opts.cssClass.isExited);
 
 				dataGraph.transition().duration(drawOpts.graphOpts.speed).ease(drawOpts.graphOpts.easing).call(arcTween, drawOpts);
 			},
-			exited: function(/*direction*/) {
+			exited: function(direction) {
+				if (direction === 'down') {
+					return;
+				}
+				
 				container.removeClass(self.opts.cssClass.isEntered)
 						.addClass(self.opts.cssClass.isExited);
 
@@ -260,7 +268,7 @@ function DoughnutChart() {
 		});
 	}
 
-	function destory() {
+	function destroy() {
 		removeBindEvents();
 		$.each(self.waypoints, function(index, waypoint) {
 			waypoint.destroy();
@@ -275,7 +283,7 @@ function DoughnutChart() {
 	}
 
 	function refresh() {
-		destory();
+		destroy();
 		init();
 	}
 
