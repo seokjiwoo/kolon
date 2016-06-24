@@ -61,13 +61,15 @@ module.exports = function() {
 					wrap : rangePicker,
 					picker : rangePicker.find('.js-picker-from'),
 					altField : rangePicker.find('.js-alt-from'),
-					button : rangePicker.find('.js-btn-from')
+					button : rangePicker.find('.js-btn-from'),
+					minDate : null
 				},
 				to : {
 					wrap : rangePicker,
 					picker : rangePicker.find('.js-picker-to'),
 					altField : rangePicker.find('.js-alt-to'),
-					button : rangePicker.find('.js-btn-to')
+					button : rangePicker.find('.js-btn-to'),
+					maxDate : 0
 				}
 			}
 		});
