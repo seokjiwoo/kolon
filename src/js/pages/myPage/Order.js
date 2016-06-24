@@ -6,13 +6,13 @@ module.exports = function() {
 	var win = window,
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
-	util = require('../../utils/Util.js'),
 	fileName = 'myPage/Order.js';
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),
+	dropDownMenu =  require('../../components/DropDownMenu.js'),
 	callerObj = {
 		/**
 		 * 초기화
@@ -27,7 +27,29 @@ module.exports = function() {
 
 		debug.log(fileName, 'init');
 
+		setElements();
+		setBindEvents();
 		setRangePicker();
+	}
+
+	function setElements() {
+	}
+
+	function setBindEvents() {
+		$('.drop').filter(':not(.dropChk)').on(dropDownMenu.EVENT.CHANGE, onDropMenuChange);
+		$('.dropChk').on(dropDownMenu.EVENT.CHANGE, onDropCheckMenuChange);
+	}
+
+	function onDropMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropMenuChange', target, target.val(), data);
+	}
+
+	function onDropCheckMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
 	}
 
 	function setRangePicker() {
