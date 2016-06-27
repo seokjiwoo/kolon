@@ -131,10 +131,10 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 #floatingMenu li.floating04 a{background-position: right -150px;}
 #floatingMenu li .menuTit{display: block;width: 70px;height: 50px;border-radius: 25px;color: #404040;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;z-index: -1;line-height: 50px;opacity: 0;}
 #floatingMenu li .pointer{display: none;position: absolute;top:10px;right: 84px;width: 17px;height: 30px;background: url('../images/pop_pointer.png') no-repeat; z-index: -1;}
-#floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;
+#floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;box-shadow: 1px 1px 5px rgba(0,0,0,.15);
 -webkit-transition: all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-o-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-in-out;}
 #floatingToggle.opened{-ms-transform: rotate(315deg);-webkit-transform: rotate(315deg);transform: rotate(315deg);}
-#goTop{width:60px;height: 34px;margin-top:10px;padding:13px 0;background: #fff;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;font-size: 14px;text-align: center;}
+#goTop{width:60px;height: 34px;margin-top:10px;padding:13px 0;background: #fff;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;font-size: 14px;text-align: center;box-shadow: 1px 1px 5px rgba(0,0,0,.15);}
 #goTop:before{content: '';display: block;width: 25px;height:15px;margin:0 auto 2px;background:url('../images/ico_top.png') no-repeat;}
 
 .flPop{position: fixed;bottom:140px;right: 180px; width: 285px;}
