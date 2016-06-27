@@ -7,6 +7,8 @@ module.exports = function() {
 	var lnbScroller;
 	var pageId;
 
+	var topBannerShowFlag;
+
 	var callerObj = {
 		/**
 		 * SuperClass 연결
@@ -27,7 +29,8 @@ module.exports = function() {
 	
 	function init(_pageId) {
 		pageId = _pageId;
-		Super.init();
+		if (pageId == undefined) pageId = $('body').data('pageId');
+		Super.init(pageId);
 		
 		// common
 		initMenu();
@@ -147,13 +150,14 @@ module.exports = function() {
 					$('#searchWrap').animate({'top':'-177px'},250);
 				} else {
 					$(this).addClass('opened')
-					$('#searchWrap').animate({'top':'177px'},250);
+					$('#searchWrap').animate({'top':(topBannerShowFlag ? 177 : 72)+'px'},250);
 					$('.bannerClose').on('click', function(){
 						$('#searchOpen').removeClass('opened');
 						$('#searchWrap').animate({'top':'-177px'},250);
 					})
 				}
 			}
+			e.stopPropagation();
 		});
 		$(window).scroll(function () { // topMenu scroll bg
 			if ($(document).scrollTop() > 60){
@@ -179,6 +183,7 @@ module.exports = function() {
 		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함.
 
 		if (showBannerFlag) {
+			topBannerShowFlag = true;
 			$('#topBanner').show();
 			$('#closeTopBannerButton').click(hideTopBanner);
 		} else {
@@ -211,6 +216,8 @@ module.exports = function() {
 	 * 상단 배너영역 숨기기
 	 */
 	function hideTopBanner(e) {
+		topBannerShowFlag = false;
+
 		$('#topBanner').hide();
 		$('.main .container').css('padding-top','0');
 		$('.lnbWrapper').css('top', '0');
