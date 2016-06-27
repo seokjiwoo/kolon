@@ -30,61 +30,68 @@ module.exports = function() {
 	}
 
 	function setDemoDoughnut() {
-		win.console.log($('#js-last-pos'))
-		if (!$('#js-last-pos').size()) {
-			return;
-		}
 
-		var waypointOpt = {
-			offset : '100%'
-		};
-
-		$('#js-last-pos').waypoint(function(direction) {
-			if (direction === 'up') {
-				return;
+		win.Handlebars.registerHelper("ifvalue", function(conditional, options) {
+			if (conditional == options.hash.equals) {
+				return options.fn(this);
+			} else {
+				return options.inverse(this);
 			}
+		});
 
-			win.console.log(direction);
-			// $('#js-last-pos').waypoint('destroy');
-			// $('body').append($loading);
-			// $.get($('.more a').attr('href'), function(data) {
-			// var $data = $(data);
-			// $('#container').append($data.find('.article'));
-			// $loading.detach();
-			// $('.more').replaceWith($data.find('.more'));
-			// $footer.waypoint(opts);
-			// });
-		}, waypointOpt);
+		var cardWrap = $('#cardWrap'),
+		chart = $(doughnutChart);
 
-		// $('.js-doughnut-btn').on('click', function() {
-		// 	var source = $('#index-card-templates').html(),
-		// 	template = win.Handlebars.compile(source),
-		// 	data, html;
+		$('.js-doughnut-btn').on('click', function() {
+			var source = $('#index-card-templates').html(),
+			template = win.Handlebars.compile(source),
+			data, html, insertElements;
 
-		// 	data = {
-		// 		cards : [
-		// 			{ percent : 10, onScreen : false },
-		// 			{ percent : 15, onScreen : false },
-		// 			{ percent : 50, onScreen : true },
-		// 			{ percent : 25, onScreen : true }
-		// 		]
-		// 	}; 
+			data = {
+				cards : [
+					{
+						type : 'cardType01 cardSize03',
+						title : '<b>인더스트리얼</b> 욕실',
+						description : '<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
+						background : 'background-image: url(\'/images/temp24.jpg\')'
+					},
+					{
+						type : 'cardType08 cardSize02',
+						title : '목표 수익 금액 <br>달성률',
+						description : '<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
+						background : 'background-color:#f17992;',
+						percent : 10,
+						onScreen : true
+					},
+					{
+						type : 'cardType01 cardSize03',
+						title : '<b>인더스트리얼</b> 욕실',
+						description : '<p>홍길동고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
+						background : 'background-image: url(\'/images/temp24.jpg\')'
+					},
+					{
+						type : 'cardType08 cardSize02',
+						title : '목표 수익 금액 <br>달성률',
+						description : '<p>홍길동고객님, <br>목표달성까지 남은 금액은 <br>523,400 원 입니다.</p>',
+						background : 'background-color:#f17992;',
+						percent : 90,
+						onScreen : false
+					},
+				]
+			}; 
 
-		// 	html = template(data);
+			html = template(data);
 
-		// 	var insertElements = $(html);
-		// 	// win.console.log(insertElements[0], insertElements[0].toString());
-		// 	//$('#cardWrap').isotope('addItems', insertElements[0]);
-		// 	// $('#cardWrap').append(insertElements);
-		// 	$('#cardWrap').append(insertElements)
-		// 					.isotope('appended', insertElements)
-		// 					.isotope('layout');
+			insertElements = $(html);
+			cardWrap.append(insertElements)
+							.isotope('appended', insertElements)
+							.isotope('layout');
 
 
-		// 	$(doughnutChart).trigger(doughnutChart.EVENT.APPEND, {
-		// 		container : $('#cardWrap'),
-		// 		insertElements: insertElements
-		// 	});
-		// });
+			chart.trigger(doughnutChart.EVENT.APPEND, {
+				container : cardWrap,
+				insertElements: insertElements
+			});
+		});
 	}
 };
