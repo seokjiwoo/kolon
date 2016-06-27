@@ -291,6 +291,10 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .commentArea .date span:first-child{float:left;color:#999;}
 .commentArea .date span:last-child{padding-left:14px;float:right;background:url("../images/ico_heart.png") no-repeat 0 center;background-size:12px;}
 
+.periodSearch{background:#fff;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.periodSearch > a{height:58px;display:block;padding:0 15px;}
+.periodSearch > a span{display:block;padding-top:22px;font-size:15px;}
+
 @media (max-width:320px){
   .scrapListWrap ul.scrapList li img {width:140px; height:140px;}
   .scrapListWrap ul.scrapList li.on a:before {width:140px; height:140px;}
