@@ -17,6 +17,50 @@
 				</ul>
 				<div class="cardLayer">
 					<ul class="cardWrap">
+
+						<!-- [D] 테스트 임시 구성 -->
+						<style>
+							.js-graph-doughnut {position:relative;margin:0 auto 15px}
+							.js-graph-doughnut .txt-percent {position:absolute;width:100%;left:0;margin-top:55px;color:#fff;font-size:20px;line-height:1em;min-height:43px}
+							.js-graph-doughnut .js-graph-percent {font-size:32px}
+						</style>
+						<li class="cardType08 cardSize02">
+							<div class="hexagon" style="background-color:#f17992;"><!-- 배경이미지 -->
+								<div class="hexTop"><span></span></div>
+								<div class="hexBottom"><span></span></div>
+							</div>
+							<!-- card 내용 -->
+							<div class="cardCon">
+								<h2 class="cardTit">목표 수익 금액 <br>달성률</h2>
+								<div class="cardThum">
+									<div class="js-graph-doughnut"
+										data-graph-opts='{
+											"color" : {
+												"background" : "#ea5973",
+												"graph" : "#fff"
+											},
+											"attr" : {
+												"width" : "130",
+												"height" : "130"
+											},
+											"percent" : 30,
+											"speed" : 1000,
+											"onScreen" : true
+										}'>
+										<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+										<span class="txt-percent">
+											<span class="js-graph-percent"></span>%
+										</span>
+									</div>
+									<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>
+								</div>
+								<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
+							</div>
+							<a href="" class="cardRemove"></a>
+							<!-- card 내용 -->
+						</li>
+						<!--// [D] 테스트 임시 구성 -->
+
 						<li class="cardType08 cardSize02">
 							<div class="hexagon" style="background-color:#f17992;"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
@@ -335,6 +379,45 @@
 							</a>
 						</div>
 					</li>
+
+					<!-- [D] 테스트 임시 구성 -->
+					<li class="cardType08 cardSize02">
+						<div class="hexagon" style="background-color:#f17992;"><!-- 배경이미지 -->
+							<div class="hexTop"><span></span></div>
+							<div class="hexBottom"><span></span></div>
+						</div>
+						<!-- card 내용 -->
+						<div class="cardCon">
+							<h2 class="cardTit">목표 수익 금액 <br>달성률</h2>
+							<div class="cardThum">
+								<div class="js-graph-doughnut"
+									data-graph-opts='{
+										"color" : {
+											"background" : "#ea5973",
+											"graph" : "#fff"
+										},
+										"attr" : {
+											"width" : "130",
+											"height" : "130"
+										},
+										"percent" : 30,
+										"speed" : 1000,
+										"onScreen" : true
+									}'>
+									<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+									<span class="txt-percent">
+										<span class="js-graph-percent"></span>%
+									</span>
+								</div>
+								<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>
+							</div>
+							<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
+						</div>
+						<a href="" class="cardRemove"></a>
+						<!-- card 내용 -->
+					</li>
+					<!--// [D] 테스트 임시 구성 -->
+
 					<li class="cardType08 cardSize02">
 						<div class="hexagon" style="background-color:#f17992;"><!-- 배경이미지 -->
 							<div class="hexTop"><span></span></div>
@@ -505,5 +588,48 @@
 			<!-- @@include ./_template/footer.html -->
 		</div>
 	</div>
+
+<div id="js-last-pos"></div>
+<script id="index-card-templates" type="text/x-handlebars-template">
+	{{#cards}}
+	<li class="cardType08 cardSize02">
+		<div class="hexagon" style="background-color:#f17992;"><!-- 배경이미지 -->
+			<div class="hexTop"><span></span></div>
+			<div class="hexBottom"><span></span></div>
+		</div>
+		<!-- card 내용 -->
+		<div class="cardCon">
+			<h2 class="cardTit">목표 수익 금액 <br>달성률</h2>
+			<div class="cardThum">
+				<div class="js-graph-doughnut"
+					data-graph-opts='{
+						"color" : {
+							"background" : "#ea5973",
+							"graph" : "#fff"
+						},
+						"attr" : {
+							"width" : "130",
+							"height" : "130"
+						},
+						"percent" : {{percent}},
+						"speed" : 1000,
+						"onScreen" : {{percent}}
+					}'>
+					<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+				</div>
+				<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>
+			</div>
+			<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
+		</div>
+		<a href="" class="cardRemove"></a>
+		<!-- card 내용 -->
+	</li>
+	{{/cards}} 
+</script>
+
+
 </body>
 </html>
