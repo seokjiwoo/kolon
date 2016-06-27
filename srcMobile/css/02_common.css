@@ -41,15 +41,17 @@
 
 .gradeBig{display: inline-block;position: relative;width: 114px;height: 22px;background: url('../images/ico_star_big.png') no-repeat 0 -22px;background-size: 114px;}
 .gradeBig span{position: absolute;top:0;left: 0;display: block;height: 100%;background: url('../images/ico_star_big.png') no-repeat  0 0;background-size: 114px;}
-.gradeBig span.grade01{right: 91px}
-.gradeBig span.grade02{right: 69px}
-.gradeBig span.grade03{right: 46px}
-.gradeBig span.grade04{right: 23px}
-.gradeBig span.grade05{right: 0}
+
+.gradeBig span.grade01{right: 93px}
+.gradeBig span.grade02{right: 60px}
+.gradeBig span.grade03{right: 37px}
+.gradeBig span.grade04{right: 13px}
+.gradeBig span.grade05{right: -10px}
+
 .gradeBig span.grade15{right: 102px}
-.gradeBig span.grade25{right: 80px}
-.gradeBig span.grade35{right: 57px}
-.gradeBig span.grade45{right: 11px}
+.gradeBig span.grade25{right: 70px}
+.gradeBig span.grade35{right: 47px}
+.gradeBig span.grade45{right: 24px}
 
 .grade + .gradeTxt{margin-left: 5px;vertical-align:top;font-weight: bold;}
 
@@ -58,7 +60,7 @@ a.pointLink {color:#f1645c;text-decoration:underline;}
 /* tab */
 .scrollWrap{overflow-x: auto;}
 .scrollWrap li{float: left;}
-.tabType01{background: #f6f6f6;box-shadow: 0px 3px 5px rgba(0,0,0,0.1);}
+.tabType01{background: #f6f6f6;/*box-shadow: 0px 3px 5px rgba(0,0,0,0.1);*/}
 .tabType01 ul{height: 49px;overflow: hidden;}
 .tabType01 li{text-align: center;}
 .tabType01 a{position: relative;display: block;padding: 0 25px;color: #333;font-size: 13px;line-height: 49px;}
@@ -94,7 +96,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 .btnShadow{box-shadow: 0px 2px rgba(0,0,0,0.1);}
 .tag li{display: inline-block;margin: 10px 5px 0 0;}
-.tag li a{display: inline-block;height:25px;padding:0 10px;background: #fcfcfc;line-height:25px;color:#333;text-align: center;box-shadow: 0px 2px rgba(0,0,0,0.1);border-radius: 13px;}
+.tag li a{display: inline-block;height:25px;padding:0 10px;background: #fff;line-height:25px;color:#333;text-align: center;box-shadow: 0px 2px rgba(0,0,0,0.1);border-radius: 13px;}
 
 .loginSns{color: #666;border:1px solid #e3e3e3;}
 .loginSns:before{content: '';display: inline-block;height: 18px;border-right: 1px solid #c2c2c2;margin-right:20px;background: url('../images/ico_login.png') no-repeat;vertical-align: middle;}
@@ -104,6 +106,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 /* bottom fix*/
 .btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;}
 .btmFix + .container{padding-bottom: 55px;}
+.btmFix.fixwrap ul{overflow:hidden;}
+.btmFix.fixwrap ul li{width:50%;float:left;}
 
 /* form */
 .container input[type="checkbox"],
