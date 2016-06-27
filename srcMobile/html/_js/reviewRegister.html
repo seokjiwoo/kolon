@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 회원가입"} -->
+</head>
+ <body data-page-id="">
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+		<a href="" class="btnSizeB btmFix btnColor03">수정하기</a>
+		<div class="container">
+			<div class="wrap">
+				<section>
+					<div class="reviewTop">
+						<h2 class="pageTit">리뷰 쓰기</h2>
+						<a href="" class="closeBtn"><span class="hide">뒤로가기</span></a>
+					</div>
+					<div class="reviewArea">
+						<ul class="previewList reviewType">
+							<li>
+								<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+								<p class="except is-truncated">반려동물과 함께 하는 공간, 러브펫 하우스반려동물과 함께 하는 공간, 러브펫 하우스 </p>
+								<p class="op">옵션 : 25평형 추가요청상품 : 보떼 도그하우스</p>
+							</li>
+						</ul>
+						<div class="writeBox">
+							<div class="point">
+								<span>평점</span><p class="gradeBig"><span class="grade45"></span></p>
+							</div>
+							<div class="txt">
+								<textarea placeholder="리뷰를 작성해주세요"></textarea>
+							</div>
+							<div class="info">
+								<span class="pic"><input type="file" /></span>
+								<span class="count">0 <i>/ 1000</i></span>
+							</div>
+						</div>
+						<div class="tagBox">
+							<div class="txt">
+								<a href="#" class="tagBtn active close"><span>#실용적인</span></a>
+								<a href="#" class="tagBtn active close"><span>#소박한</span></a>
+								<a href="#" class="tagBtn active close"><span>#독특한</span></a>
+								<!-- 
+								<textarea placeholder="#태그를 입력해주세요."></textarea>
+								 -->
+								<style>
+									.rich-editor {width:100%;height:100px;overflow:hidden;overflow-y:auto;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999}
+									.rich-editor.is-showPlaceholder:before {position:absolute;color:#ccd6dd;content:attr(data-placeholder-default)}
+									.ui-state-focus {border: 1px solid #cccccc;background:#ededed;font-weight:normal;color: #2b2b2b}
+									.rich-editor .tagBtn:before {content:'#'}
+								</style>
+								<div class="js-editor rich-editor is-showPlaceholder" contenteditable="true" data-placeholder-default="#태그를 입력해주세요."></div>
+							</div>
+							<div class="tag">
+								<a href="#" class="tagBtn active"><span>#실용적인</span></a>
+								<a href="#" class="tagBtn"><span>#소박한</span></a>
+								<a href="#" class="tagBtn"><span>#트랜디한</span></a>
+								<a href="#" class="tagBtn"><span>#독특한</span></a>
+								<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+								<a href="#" class="tagBtn"><span>#분위기좋은</span></a>
+								<a href="#" class="tagBtn"><span>#아이들이좋아하는</span></a>
+								<a href="#" class="tagBtn"><span>#분위기좋은</span></a>
+								<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+								<a href="#" class="tagBtn"><span>#소박한</span></a>
+							</div>
+						</div>
+						<p class="reviewTxt">
+							등록된 상품리뷰는 자동으로 상품 상세화면에 노출 됩니다. <br />
+							욕설, 비방, 명예훼손, 불성실한 내용, 반복문자의 오해의 소지가 있는 내용을
+							담고 있거나 저작권/초상권 등 타인의 권리를 침해하는 이미지 사용시에는 삭제
+							될 수 있습니다. 게시글에 회원님의 이메일, 휴대폰 번호와 같은 개인 정보의
+							입력은 금지되어 있으며, 발생하는 모든 피해에 대해 홈즈는 책임지지 않습니다.
+							게시글과 관련된 저작권 침해에 대한 책임은 본인에게 있습니다.
+						</p>
+					</div>
+				</section>
+			</div>
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+
+	<script>
+		;(function(win, $) {
+			'use strict';
+
+			if ('undefined' === typeof win.vinylX) {
+				win.vinylX = {};
+			}
+
+			var NS = win.vinylX;
+
+			NS.reviewRegister = (function() {
+				var defParams = {
+					editor : '.js-editor',
+					autocompleteOpts : {
+						minLength : 0,
+						source : $.noop,
+						select : $.noop,
+						focus : function() { return false; }
+					},
+					startTyping : '태그를 입력해주세요.',
+					startTag : '#',
+					tags : [
+						'실용적인',
+						'소박한',
+						'소박한2',
+						'트랜디한',
+						'독특한',
+						'럭셔리한',
+						'분위기좋은',
+						'아이들이좋아하는'
+					],
+					tagMax : 3,
+					cssClass : {
+						isHolder : 'is-showPlaceholder'
+					}
+				};
+				return {
+					init : function(container, args) {
+						if (!(this.container = container).size()) return;
+						this.opts = $.extend({}, defParams, args);
+
+						this.setElements();
+						this.setBindEvents();
+					},
+					setElements : function() {
+						this.editor = this.container.find(this.opts.editor);
+					},
+					setBindEvents : function() {
+						var autoOpts = {
+							source : $.proxy(this.onAutoCompleteSource, this),
+							select : $.proxy(this.onAutoCompleteSelect, this)
+						},
+						autocompleteOpts = $.extend({}, this.opts.autocompleteOpts, autoOpts);
+						
+						this.editor.on('keydown keyup', $.proxy(this.setPlaceHolder, this));
+						this.editor.on('keydown', $.proxy(this.tagAutoComplete, this))
+									.autocomplete(autocompleteOpts)
+									.autocomplete('instance')._renderItem = $.proxy(this.onAutoCompleteRender, this);
+
+						this.editor.on('click', function(e) {
+							var target = $(e.target);
+
+							if (target.hasClass('tagBtn')) {
+								target.hide();
+							} else if (target.closest('.tagBtn').size()) {
+								target.closest('.tagBtn').hide();
+							}
+
+							win.console.log(target);
+						});
+					},
+					tagAutoComplete : function(e) {
+						var target = $(e.currentTarget);
+						if (e.keyCode === $.ui.keyCode.TAB && target.data('autocomplete').menu.active) {
+							e.preventDefault();
+						}
+					},
+					split : function(val) {
+						return val.split(/#/);
+					},
+					extractLast : function(term) {
+						return this.split(term).pop();
+					},
+					onAutoCompleteSource : function(request, response) {
+						var term = request.term,
+						results = [];
+
+						if (this.editor.find('.tagBtn').size() > this.opts.tagMax) {
+							alert('최대 ' + this.opts.tagMax + '개의 태그만 등록할 수 있습니다.');
+							return;
+						}
+
+						if (term.indexOf(this.opts.startTag) >= 0) {
+							term = this.extractLast(request.term);
+							if (term.length) {
+								results = $.ui.autocomplete.filter(this.opts.tags, term);
+							} else {
+								results = [this.opts.startTyping];
+							}
+						}
+
+						response(results);
+					},
+					onAutoCompleteSelect : function(e, ui) {
+						win.console.log('onAutoCompleteSelect', e, ui, ui.item, ui.item.value);
+						if (ui.item.value !== this.opts.startTyping) {
+							var self = this,
+							target = this.editor,
+							value = target.html(),
+							terms = this.split(value);
+
+							terms.pop();
+							terms.push('<a href=\'javascript:;\' class=\'tagBtn active close\' contenteditable=\'false\'><span>' + ui.item.value + '</span></a>');
+
+							target.html(terms.join(''));
+							// win.console.log(terms, terms.join(this.opts.startTag));
+							target.html(target.html() + '&nbsp;');
+							this.placeCaretAtEnd(target.get(0));
+						}
+						return false;
+					},
+					onAutoCompleteRender : function(ul, item) {
+						if (item.label !== this.opts.startTyping) {
+							return $('<li></li>').data('item.autocomplete', item)
+													.append('<a><div>' + item.label + '</div></div></a>')
+													.appendTo(ul);
+						} else {
+							return $('<li></li>').data('item.autocomplete', item)
+													.append('<a>' + item.label + '</a>')
+													.appendTo(ul);
+						}
+					},
+					placeCaretAtEnd : function(el) {
+						el.focus();
+						if ('undefined' !== typeof window.getSelection && 'undefined' !== typeof document.createRange) {
+							var range = document.createRange();
+							range.selectNodeContents(el);
+							range.collapse(false);
+						
+							var sel = window.getSelection();
+							sel.removeAllRanges();
+							sel.addRange(range);
+						} else if ('undefined' !== typeof document.body.createTextRange) {
+							var textRange = document.body.createTextRange();
+							textRange.moveToElementText(el);
+							textRange.collapse(false);
+							textRange.select();
+						}
+					},
+					setPlaceHolder : function(e) {
+						var target = $(e.currentTarget);
+
+						if (target.html() && target.html() !== '') {
+							target.removeClass(this.opts.cssClass.isHolder);
+						} else {
+							target.addClass(this.opts.cssClass.isHolder);
+						}
+					}
+				};
+			})();
+
+
+			$(function() {
+				NS.reviewRegister.init($('body'));
+			});
+		})(window, window.jQuery);
+	</script>
+
+
+</body>
+</html>
