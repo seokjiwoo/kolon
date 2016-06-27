@@ -10,13 +10,14 @@
 .user.infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
 
-.my .myMenu{float: left;width:225px;min-height: 145px;padding:0 30px;background: #f1645c; margin:60px 0 0 10px; position:relative;}
-.my .myMenu:before {content:''; border-left:60px solid transparent; border-bottom:60px solid #f1645c; position:absolute; top:-60px; left:0; z-index:0;}
-.my .myMenu:after {content:''; width:225px; height:60px; background:#f1645c; position:absolute; top:-60px; right:0; z-index:0;}
-.my .myMenu ul:before {content:''; width:225px; height:60px; background:#f1645c; position:absolute; bottom:-60px; left:0; z-index:0;}
-.my .myMenu ul:after {content:''; border-right:60px solid transparent; border-top:60px solid #f1645c; position:absolute; bottom:-60px; right:0; z-index:0;}
+.my .myMenu{float: left;width:230px;min-height: 145px;padding:0 30px;background: #f65677; margin-top:60px; position:relative;}
+.my .myMenu:before {content:''; border-left:30px solid transparent; border-bottom:60px solid #f65677; position:absolute; top:-60px; left:0; z-index:0;}
+.my .myMenu:after {content:''; width:260px; height:60px; background:#f65677; position:absolute; top:-60px; right:0; z-index:0;}
+.my .myMenu ul:before {content:''; width:260px; height:60px; background:#f65677; position:absolute; bottom:-60px; left:0; z-index:0;}
+.my .myMenu ul:after {content:''; border-right:30px solid transparent; border-top:60px solid #f65677; position:absolute; bottom:-60px; right:0; z-index:0;}
 .my .myMenu li{border-bottom: 1px solid #f1807a;}
-.my .myMenu li + li a{padding: 14px 0;}
+.my .myMenu li:first-child{position: relative;z-index: 1;margin-top: -25px;}
+.my .myMenu li a{display: block;padding:15px 0;color: #fff;}
 .my .myMenu li.on a{font-family:'RobotoM','NotoSansM', sans-serif;}
 .my .myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
 
@@ -101,7 +102,7 @@
 .timeCard .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
 .timeCard .recordPic img{display: block;width: 100%;}
 
-.timeCard .innerWrap{padding: 20px 30px;background: #fff;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+.timeCard .innerWrap{overflow: hidden;padding: 20px 30px;border:1px solid #e6e6e6;}
 .timeCard .innerWrap .name{width: 140px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
 .timeCard .innerWrap .name b{font-family:'RobotoM','NotoSansM', sans-serif;}
 .timeCard .innerWrap .myRateWrap{width: 190px;text-align: center;}
@@ -113,7 +114,7 @@
 .timeCard .innerWrap .btnFollow a.dismiss{border:1px solid #a9c700;color: #a9c700}
 .timeCard .innerWrap .btnFollow a.dismiss:after{background-image:url('../images/ico_plusG.png');}
 .timeCard .innerWrap li{display: inline-block;vertical-align: middle;}
-.timeCard .innerWrap .imgWrap{overflow: hidden;font-family:'RobotoM','NotoSansM', sans-serif;}
+.timeCard .innerWrap .imgWrap{overflow: hidden;margin-left:-10px;font-family:'RobotoM','NotoSansM', sans-serif;}
 .timeCard .innerWrap .imgWrap li{position: relative;float: left;width: 114px;height: 114px;margin-left: 10px;}
 .timeCard .innerWrap .imgWrap li:first-child{margin:0;}
 .timeCard .innerWrap .imgWrap .hoverCon{position: absolute;top: 0;left: 0;right: 0;bottom: 0;padding: 20px;background: rgba(0,0,0,0.5);color: #fff;z-index: 1;font-size: 14px;text-align: center;opacity: 0;}
@@ -150,7 +151,7 @@
 #myMsg .recordCon .newMsg span{position: absolute;top:50%;right: 0;min-width: 20px;margin-top:-15px;padding:0 10px;background: #f37972;color: #fff;line-height: 30px;border-radius: 15px;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
 
-#fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border-radius: 20px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+#fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border:1px solid #e6e6e6;color: #404040;display: block;font-family:'RobotoM','NotoSansM', sans-serif}
 #fallowing #fallowSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
 #fallowing button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
@@ -180,6 +181,7 @@
 .my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
 .my .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .my .record td{padding: 15px;}
+.my .record td a{margin-top: 6px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
 .my .record .date a{color: #f1645c;text-decoration: underline;font-family:'RobotoM','NotoSansM', sans-serif;}
@@ -192,7 +194,7 @@
 .my .record .recordInfo .producOption{color: #999}
 .my .record .recordInfo .productPrice{font-family:'RobotoB','NotoSansB', sans-serif;}
 .my .record .orderState{position: relative;}
-.my .record .orderState a{display: block;margin-top:6px;}
+.my .record .orderState a{display: block;}
 .my .record .orderState .stateTxt{position: relative;}
 .my .record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
 .my .record .orderState .stateEnd {display:block;color:#f1645c;}

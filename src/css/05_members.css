@@ -2,7 +2,8 @@
 .members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #f1645c}
 .members .pageTit:before, .members .pageTit:after{background: #fff;}
 .members .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 20px;}
-.members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;}
+.members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;line-height: 1.3em}
+.members .singleCard .subTit b{color: #00aeb9}
 .members .container .subTit .note{display: block;margin-top:8px;text-align: center;font-size: 14px;color: #666;}
 .members .singleCard .subTit.ft30{font-size: 30px !important;}
 .members .container .subTxt{font-size: 16px;color: #000;}
