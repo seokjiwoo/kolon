@@ -96,9 +96,10 @@ gulp.task('bowerBundle', function() {
 				// jQuery-ui 번들링 설정 : 사용하는 widget 만 번들링에 추가
 				'jquery-ui': {
 					'main': [
-								'ui/core.js', 'ui/widget.js', 'ui/mouse.js',		// UI Core
-								'ui/datepicker.js', 'ui/i18n/datepicker-ko.js',		// Widgets datePicker, i18n-ko - dependencies( core / widget )
-								'ui/slider.js'										// Widgets slider - dependencies( core / widget / mouse )
+								'ui/core.js', 'ui/widget.js', 'ui/mouse.js', 'ui/position.js',			// UI Core
+								'ui/datepicker.js', 'ui/i18n/datepicker-ko.js',							// Widgets datePicker, i18n-ko - dependencies( core / widget )
+								'ui/slider.js',															// Widgets slider - dependencies( core / widget / mouse )
+								'ui/autocomplete.js', 'ui/menu.js'										// Widgets autocomplate, menu - dependencies( core / widget / position )
 					],
 					'dependencies': {}
 				},
