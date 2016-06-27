@@ -19,8 +19,8 @@
 .my .myMenu li + li a{padding: 14px 0;}
 .my .myMenu li.on a{font-family:'RobotoM','NotoSansM', sans-serif;}
 .my .myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
-
-.my .singleCard{padding:20px 50px 50px 70px;}
+.my .myMenu + .singleCard {padding:20px 50px 50px 70px}
+.my .singleCard{padding:0 50px 50px}
 .my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top:0;}
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
@@ -157,12 +157,12 @@
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding:15px 0 15px 15px;}
-.recordSort{margin:30px 0;text-align: left;}
+.recordSort{margin:20px 0 30px;text-align: left;}
 .recordSort tr:first-child td{padding-bottom: 0;}
 .sortTerm{display: inline-block;}
 .recordSort li{display: inline-block;margin-left:2px;}
 .recordSort li:first-child{margin:0;}
-.recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
+.recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 38px;color: #666;}
 .recordSort a.on{background: #a9c700;border:0;color: #fff;}
 .recordSearch{display: inline-block;padding: 5px;border:1px solid #ccc;}
 .recordSearch #recordInput{width: 590px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
@@ -191,8 +191,9 @@
 .my .record .recordInfo span{display: block;}
 .my .record .recordInfo .producOption{color: #999}
 .my .record .recordInfo .productPrice{font-family:'RobotoB','NotoSansB', sans-serif;}
+.my .record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#00aeb9;font-family:'RobotoM','NotoSansM', sans-serif;border:2px solid #00aeb9;}
 .my .record .orderState{position: relative;}
-.my .record .orderState a{display: block;margin-top:6px;}
+.my .record .orderState a{display: block;margin-top:6px;font-size:13px;}
 .my .record .orderState .stateTxt{position: relative;}
 .my .record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
 .my .record .orderState .stateEnd {display:block;color:#f1645c;}
@@ -200,15 +201,15 @@
 .my .record .orderState .cancleDate{color: #f1645c;}
 .my .record .arraySide {overflow:hidden;}
 .my .record .arraySide p .my .record .arraySide p span {float:left;}
-.my .record .arraySide p span {display:block;float:right;}
+.my .record .arraySide p span {display:block;float:right;text-align:right;}
 .my .record .fontM {font-family:'RobotoM','NotoSansM', sans-serif;}
 .my .record .btnBox {overflow:hidden;text-align:center;}
-.my .record .btnBox .btnSizeS {float:left;width:80px;padding:0;margin-left:5px;}
-.my .record .btnBox .btnSizeS:first-child {margin-left:0;}
+.my .record .btnBox .btnSizeS {float:left;width:118px;padding:0;margin-left:5px;margin-bottom:5px;}
+.my .record .btnBox .btnSizeS:nth-child(odd) {margin-left:0;}
 
 .my .record.record02 {font-family:'RobotoL','NotoSansL', sans-serif;}
 .my .record.record02 th {font-family:'RobotoR','NotoSansR', sans-serif;}
-.my .record .rowspan{padding: 10px 20px}
+.my .record .rowspan{padding: 20px 20px 15px}
 .my .record .rowspan li{line-height: 1.6em;}
 .my .record .require{color: #f1645c}
 
@@ -218,14 +219,16 @@
 .my .record.record04 th, .my .record.record04 td {font-size:16px;}
 .my .record.record04 .recordDate b {margin-left:5px;text-decoration:initial;}
 
-.my .record.recordBg {margin-top:0;border-top:none;}
+.my .moreView {border-top:1px solid #999;border-bottom:1px solid #999;}
+.my .record.recordBg {margin-top:-2px;}
 .my .record.recordBg th, .my .record.recordBg td {text-align:left;}
-.my .record.recordBg th {background:#f2f4f4;}
-.my .record.recordBg td {background:#fafafa;font-family:'RobotoL','NotoSansL', sans-serif;color: #333;}
+.my .record.recordBg th {background:#f8f8f8;}
+.my .record.recordBg td {background:#fff;font-family:'RobotoL','NotoSansL', sans-serif;color: #333;}
+.my .payment {color:#f2726b;}
 
 .my .popState{display: none;position: absolute;right: 0;bottom:30px;width: 495px;padding: 38px 20px 38px;background: #fff;border:1px solid #999;z-index: 2;}
 .my .popState:after{content: '';position: absolute;bottom: -18px;right: 40px;width: 18px;height: 18px;background: url('../images/ico_pointer.png') no-repeat;}
-.my .popState li{display: inline-block;width:16%;color: #666;}
+.my .popState li{display: inline-block;width:15.5%;color: #666;}
 .my .popState li.on{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
 .my .popState .stepImg{width: 440px;height:30px;margin:0 auto 14px;background: url('../images/ico_step.png') no-repeat;}
 .my .popState .stepImg span{display: block;height: 100%;background: url('../images/ico_step_on.png') no-repeat;}
@@ -259,9 +262,10 @@
 .my .popState.popState02 .step10 span{width: 700px;}
 .my .popState.popState02 .step11 span{width: 730px;}
 
-.btnSideArray {overflow:hidden;line-height:40px;margin:20px 20px 30px 0;}
+.btnSideArray {overflow:hidden;line-height:40px;margin:20px 8px 30px 0;}
 .btnSideArray label {font-size:16px;color:#666;}
 .btnSideArray label span {color:#f1645c;}
+.btnSideArray .checkbox {margin-top:0}
 
 .my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;}
 .my .scrapTit b{color:#f1645c}
@@ -480,7 +484,7 @@
 .my .talkList .left .thumb{margin-right:15px;}
 
 .my h3.subTit + .tbMt {margin-top:20px;}
-.my .tbSet + h3.subTit {margin-top:40px;}
+.my .tbSet + h3.subTit {margin-top:30px;}
 .my .cashTbSet {width:100%;}
 .my .cashTbSet p.tit {text-align:left; font-weight:bold; color:#000;}
 .my .cashTbSet ul.csList {width:100%; overflow:hidden; margin:20px 0;}
