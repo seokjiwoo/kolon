@@ -122,8 +122,6 @@
 .members .accountArea .date + p{line-height:1.4em;margin:16px 0 16px;color:#666;}
 .members .accountArea .btn,
 .members .accountArea .snsBtn{width:150px;margin:0 auto;}
-.members .currentAccount{height:55px;display:block;margin-top:36px;text-align:center;background:#464646;color:#fff;}
-.members .currentAccount span{display:block;padding-top:14px;font-size:18px;font-family:'RobotoR','NotoSansR', sans-serif;}
 
 .members .restAccount{text-align:center;padding:25px 15px 0}
 .members .restAccount div{padding-bottom:20px;border-bottom:1px solid #ccc;}

@@ -56,10 +56,14 @@ module.exports = function() {
 		$('#editPhoneID').val(infoObject.cellPhoneNumber);		// cellPhoneNumber
 		// ( 소셜인증 )
 		$('#editName').val(infoObject.memberName);		// memberName
-		// ( 생년월일 )
+		if (infoObject.birthDate.length == 8) {
+			$('#joinBirth01').val(infoObject.birthDate.substr(0, 4));
+			$('#joinBirth02').val(infoObject.birthDate.substr(4, 2));
+			$('#joinBirth03').val(infoObject.birthDate.substr(6, 2));
+		}
 		$('#profileMobile').val(infoObject.cellPhoneNumber);	// cellPhoneNumber
 		$('#profileHomePhone').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
-		// ( 배송지주소 )
+		
 		switch(infoObject.emailReceiveYn) {
 			case 'Y': 
 				$('#agreeReceive01')[0].checked = true;

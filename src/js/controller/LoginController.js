@@ -33,7 +33,11 @@ function ClassLoginController() {
 			/**
 			 * 로그아웃
 			 */
-			logout: logout
+			logout: logout,
+			/**
+			 * 회원가입을 위한 모바일 인증번호 재발급 요청
+			 */
+			resendAuthNumber: resendAuthNumber
 		}
 		
 		return callerObj;	
@@ -43,42 +47,62 @@ function ClassLoginController() {
 	 * 로그인 or 회원가입
 	 * 서버에서 아이디가 있으면 로그인, 없으면 회원가입 처리.
 	 */
-	function login(id, pw) {
-		Super.callApi('/apis/user/login', 'POST', {
+	function login(id, pw, authNumber) {
+		var loginPostObj = {
 			"loginId": id,
 			"loginPassword": pw
-		}, function(status, result) {
+		}
+		if (authNumber != undefined) loginPostObj.cretiNumber = authNumber;
+
+		Super.callApi('/apis/user/login', 'POST', loginPostObj, function(status, result) {
 			if (status == 200) {
-				Super.callApi('/apis/me', 'GET', {}, function(status, result) {
-					if (status == 200) {
-						switch(result.status) {
-							case '200':
-								// 로그인 성공
+				switch(result.status) {
+					case '200':
+						// 로그인 성공
+						Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+							if (status == 200) {
 								model.setLoginInfo(result.data.data.myInfo);
-								break;
-							case '201':
-								// 회원가입 성공
-								alert('회원가입 성공');
-								break;
-						}
-					} else {
-						Super.handleError('login/myData', status);
-					}
-					$(callerObj).trigger('loginResult', [status, result]);
-				});
+							} else {
+								Super.handleError('login/myData', status);
+							}
+							$(callerObj).trigger('loginResult', [status, result]);
+						});
+						break;
+					case '201':
+						// 회원가입 성공
+						$(callerObj).trigger('loginResult', [status, result]);
+						break;
+				}
 			} else {
 				Super.handleError('login', result);
 				$(callerObj).trigger('loginResult', [status, result]);
 			}
 		}, false);
 	};
+
+	/**
+	 * 회원가입을 위한 모바일 인증번호 재발급 요청
+	 */
+	function resendAuthNumber(phoneNumber) {
+		Super.callApi('/apis/authorize/issue/phone', 'POST', {
+			"phoneNumber": phoneNumber
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('resendAuthNumberResult', [200, result]);
+			} else {
+				Super.handleError('resendAuthNumber', result);
+				$(callerObj).trigger('resendAuthNumberResult', [status, result]);
+			}
+		}, false);
+		// 
+	}
 	
 	/**
 	 * 로그아웃
 	 */
 	function logout() {
 		Super.callApi('/apis/user/logout', 'GET', {}, function(status, result) {
-			if (status == 200) {
+			if (status == 200 || status == 0) {
 				model.removeLoginInfo();
 			} else {
 				Super.handleError('logout', result);

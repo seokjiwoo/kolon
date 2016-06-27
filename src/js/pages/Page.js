@@ -33,6 +33,7 @@ module.exports = function() {
 		initMenu();
 		initFloating();
 		initTopBanner();
+		initAddressPopupButton();
 		// 공통차트 컴포넌트
 		initChart();
 
@@ -84,6 +85,7 @@ module.exports = function() {
 			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		} else {
 			// 로그인 상태일 때
+			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
 			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
@@ -139,7 +141,7 @@ module.exports = function() {
 					$(this).addClass('opened')
 					$('#searchWrap').animate({'top':'60px'},250);
 				}
-			}else {
+			} else {
 				if($(this).hasClass('opened')){
 					$(this).removeClass('opened');
 					$('#searchWrap').animate({'top':'-177px'},250);
@@ -190,6 +192,19 @@ module.exports = function() {
 	function initChart() {
 		doughnutChart.init();
 		horizonBarChart.init();
+	}
+
+	/**
+	 * 주소록 시스템팝업 버튼 초기화
+	 */
+	function initAddressPopupButton() {
+		$('#openAddressPopup').click(function(e) {
+			e.preventDefault();
+			
+			window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no')
+
+			e.stopPropagation();
+		});
 	}
 
 	/**
