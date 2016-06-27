@@ -23,8 +23,6 @@ $(document).ready(function() {
 		case 'member-logout':
 			PageModuleClass = require('./pages/member/Logout.js');
 			break;
-		case 'member-join':
-			PageModuleClass = require('./pages/member/Join.js');
 			break;
 		case 'member-findLoginInformation':
 			PageModuleClass = require('./pages/member/FindLoginInformation.js');
