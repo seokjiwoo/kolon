@@ -132,28 +132,50 @@
 						},
 						autocompleteOpts = $.extend({}, this.opts.autocompleteOpts, autoOpts);
 						
+						this.allowedTag = true;
+
 						this.editor.on('keydown keyup', $.proxy(this.setPlaceHolder, this));
 						this.editor.on('keydown', $.proxy(this.tagAutoComplete, this))
+									.on('click', $.proxy(this.onEditorClick, this))
 									.autocomplete(autocompleteOpts)
 									.autocomplete('instance')._renderItem = $.proxy(this.onAutoCompleteRender, this);
+					},
+					setPlaceHolder : function(e) {
+						var target = $(e.currentTarget);
 
-						this.editor.on('click', function(e) {
-							var target = $(e.target);
-
-							if (target.hasClass('tagBtn')) {
-								target.hide();
-							} else if (target.closest('.tagBtn').size()) {
-								target.closest('.tagBtn').hide();
-							}
-
-							win.console.log(target);
-						});
+						if (target.html() && target.html() !== '') {
+							target.removeClass(this.opts.cssClass.isHolder);
+						} else {
+							target.addClass(this.opts.cssClass.isHolder);
+						}
 					},
 					tagAutoComplete : function(e) {
-						var target = $(e.currentTarget);
+						var target = $(e.currentTarget),
+						editorHtml = this.editor.html();
+
 						if (e.keyCode === $.ui.keyCode.TAB && target.data('autocomplete').menu.active) {
 							e.preventDefault();
 						}
+
+						if (e.key === this.opts.startTag && this.editor.find('.tagBtn').size() >= this.opts.tagMax) {
+							alert('최대 ' + this.opts.tagMax + '개의 태그만 등록할 수 있습니다.');
+							this.allowedTag = false;
+
+							this.editor.html(editorHtml.substr(0, editorHtml.length - 1));
+							this.placeCaretAtEnd(this.editor.get(0));
+						} else {
+							this.allowedTag = true;
+						}
+					},
+					onEditorClick : function(e) {
+						var target = $(e.target);
+
+						if (target.hasClass('tagBtn')) {
+							target.hide();
+						} else if (target.closest('.tagBtn').size()) {
+							target.closest('.tagBtn').hide();
+						}
+
 					},
 					split : function(val) {
 						return val.split(/#/);
@@ -165,8 +187,7 @@
 						var term = request.term,
 						results = [];
 
-						if (this.editor.find('.tagBtn').size() > this.opts.tagMax) {
-							alert('최대 ' + this.opts.tagMax + '개의 태그만 등록할 수 있습니다.');
+						if (!this.allowedTag) {
 							return;
 						}
 
@@ -182,7 +203,6 @@
 						response(results);
 					},
 					onAutoCompleteSelect : function(e, ui) {
-						win.console.log('onAutoCompleteSelect', e, ui, ui.item, ui.item.value);
 						if (ui.item.value !== this.opts.startTyping) {
 							var self = this,
 							target = this.editor,
@@ -193,7 +213,6 @@
 							terms.push('<a href=\'javascript:;\' class=\'tagBtn active close\' contenteditable=\'false\'><span>' + ui.item.value + '</span></a>');
 
 							target.html(terms.join(''));
-							// win.console.log(terms, terms.join(this.opts.startTag));
 							target.html(target.html() + '&nbsp;');
 							this.placeCaretAtEnd(target.get(0));
 						}
@@ -225,15 +244,6 @@
 							textRange.moveToElementText(el);
 							textRange.collapse(false);
 							textRange.select();
-						}
-					},
-					setPlaceHolder : function(e) {
-						var target = $(e.currentTarget);
-
-						if (target.html() && target.html() !== '') {
-							target.removeClass(this.opts.cssClass.isHolder);
-						} else {
-							target.addClass(this.opts.cssClass.isHolder);
 						}
 					}
 				};
