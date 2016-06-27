@@ -153,7 +153,6 @@ module.exports = function() {
 						break;
 					case 1901:	// 모바일 인증번호
 						alert(response.message);
-						break;
 					case 1900:	// 모바일 가입 인증 요구
 						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
 							onOpen: function() {
@@ -164,8 +163,8 @@ module.exports = function() {
 									controller.resendAuthNumber(enteredId);
 								});
 
-								authNumberResendFlag = false;
 								controller.resendAuthNumber(enteredId);
+								authNumberResendFlag = false;
 							},
 							onSubmit: function() {
 								controller.login(enteredId, $('#inputPW').val(), $('#mobileAuthNumber').val());
