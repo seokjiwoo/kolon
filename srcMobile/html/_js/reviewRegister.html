@@ -6,7 +6,7 @@
  <body data-page-id="">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
-		<a href="" class="btnSizeB btmFix btnColor03">수정하기</a>
+		<a href="" class="btnSizeB btmFix btnColor03">등록하기</a>
 		<div class="container">
 			<div class="wrap">
 				<section>
@@ -26,8 +26,8 @@
 							<div class="point">
 								<span>평점</span><p class="gradeBig"><span class="grade45"></span></p>
 							</div>
-							<div class="txt">
-								<textarea placeholder="리뷰를 작성해주세요"></textarea>
+							<div class="txt" contenteditable>
+								<p>리뷰를 작성해주세요</p>
 							</div>
 							<div class="info">
 								<span class="pic"><input type="file" /></span>
@@ -35,20 +35,19 @@
 							</div>
 						</div>
 						<div class="tagBox">
-							<div class="txt">
+							<style>
+								.js-editor {width:100%;height:100px;overflow:hidden;overflow-y:auto;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999}
+								.js-editor.is-showPlaceholder:before {position:absolute;color:#ccd6dd;content:attr(data-placeholder-default)}
+								.js-editor .tagBtn:before {content:'#'}
+								.ui-state-focus {border: 1px solid #cccccc;background:#ededed;font-weight:normal;color: #2b2b2b}
+							</style>
+							<div class="txt js-editor is-showPlaceholder" contenteditable="true" data-placeholder-default="#태그를 입력해주세요.">
+								<!-- 
 								<a href="#" class="tagBtn active close"><span>#실용적인</span></a>
 								<a href="#" class="tagBtn active close"><span>#소박한</span></a>
 								<a href="#" class="tagBtn active close"><span>#독특한</span></a>
-								<!-- 
-								<textarea placeholder="#태그를 입력해주세요."></textarea>
-								 -->
-								<style>
-									.rich-editor {width:100%;height:100px;overflow:hidden;overflow-y:auto;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999}
-									.rich-editor.is-showPlaceholder:before {position:absolute;color:#ccd6dd;content:attr(data-placeholder-default)}
-									.ui-state-focus {border: 1px solid #cccccc;background:#ededed;font-weight:normal;color: #2b2b2b}
-									.rich-editor .tagBtn:before {content:'#'}
-								</style>
-								<div class="js-editor rich-editor is-showPlaceholder" contenteditable="true" data-placeholder-default="#태그를 입력해주세요."></div>
+								<p>#태그를 입력해주세요.</p>
+								-->
 							</div>
 							<div class="tag">
 								<a href="#" class="tagBtn active"><span>#실용적인</span></a>
@@ -86,7 +85,8 @@
 				win.vinylX = {};
 			}
 
-			var NS = win.vinylX;
+			var doc = document,
+			NS = win.vinylX;
 
 			NS.reviewRegister = (function() {
 				var defParams = {
@@ -231,16 +231,16 @@
 					},
 					placeCaretAtEnd : function(el) {
 						el.focus();
-						if ('undefined' !== typeof window.getSelection && 'undefined' !== typeof document.createRange) {
-							var range = document.createRange();
+						if ('undefined' !== typeof win.getSelection && 'undefined' !== typeof doc.createRange) {
+							var range = doc.createRange();
 							range.selectNodeContents(el);
 							range.collapse(false);
 						
-							var sel = window.getSelection();
+							var sel = win.getSelection();
 							sel.removeAllRanges();
 							sel.addRange(range);
-						} else if ('undefined' !== typeof document.body.createTextRange) {
-							var textRange = document.body.createTextRange();
+						} else if ('undefined' !== typeof doc.body.createTextRange) {
+							var textRange = doc.body.createTextRange();
 							textRange.moveToElementText(el);
 							textRange.collapse(false);
 							textRange.select();
