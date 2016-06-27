@@ -23,12 +23,11 @@ $(document).ready(function() {
 		case 'member-logout':
 			PageModuleClass = require('./pages/member/Logout.js');
 			break;
+		case 'member-passwordFind':
+			PageModuleClass = require('./pages/member/PasswordFind.js');
 			break;
-		case 'member-findLoginInformation':
-			PageModuleClass = require('./pages/member/FindLoginInformation.js');
-			break;
-		case 'member-findLoginPwReset':
-			PageModuleClass = require('./pages/member/ResetPassword.js');
+		case 'member-passwordReset':
+			PageModuleClass = require('./pages/member/PasswordReset.js');
 			break;
 
 			
@@ -37,11 +36,10 @@ $(document).ready(function() {
 			break;
 		
 
-		// [S] living
-			// 4-카테고리
-			case 'living-category':
-				PageModuleClass = require('./pages/living/Category.js');
-				break;
+		// [S] living			4-카테고리
+		case 'living-category':
+			PageModuleClass = require('./pages/living/Category.js');
+			break;
 		// [E] living
 		
 		
@@ -76,8 +74,8 @@ $(document).ready(function() {
 			break;
 		// [E] myPage 			13-마이홈즈
 
-		case 'livingService':
-			PageModuleClass = require('./pages/livingService/livingService.js');
+		case 'homeService':
+			PageModuleClass = require('./pages/homeService/homeService.js');
 			break;
 
 		// [S] order 			14-주문서 작성
