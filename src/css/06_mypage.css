@@ -87,19 +87,31 @@
 
 
 
-.timeCard .recordWrap > ul > li > a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border:1px solid #e5e5e5;vertical-align: middle;}
-.timeCard .recordCon{display: inline-block;width: 735px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
-.timeCard .recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
-.timeCard .recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
-.timeCard .recordThumb{position: relative;display: inline-block;width: 285px;height: 100%;vertical-align: middle;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;text-align: center;}
-.timeCard .recordThumb:before{content: '';display: inline-block;width: 0;height: 100%;vertical-align: middle;}
-.timeCard .recordThumb img{position: absolute;top: 0;left: 0;display: block;width: 100%;z-index: 0}
-.timeCard .recordThumb p{position: relative;z-index: 1; display: inline-block;vertical-align: middle;font-size: 14px;line-height: 1.4em;}
-.timeCard .recordThumb p b{display: block;font-size: 40px;font-family:'NotoSansM', sans-serif;}
-.timeCard .recordThumb p:before{display: block;width:25px;height: 26px;margin: 0 auto 7px;background: url('../images/ico_timeline.png') no-repeat;}
-.timeCard .recordCat{display: inline-block;margin-bottom: 10px;padding: 0 10px;border-radius: 10px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;color: #000;line-height: 20px;border:1px solid #000;}
-.timeCard .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
-.timeCard .recordPic img{display: block;width: 100%;}
+.recordWrap > ul > li > a{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border:1px solid #e5e5e5;vertical-align: middle;}
+.recordWrap h2.secTit + ul.recordList {margin-top:30px;}
+#myMsg.singleCard .recordWrap{width:100%;}
+#myMsg.singleCard .recordWrap ul.recordList {}
+#myMsg.singleCard .recordWrap ul.recordList li {width:795px; height:155px;}
+#myMsg.singleCard .recordWrap ul.recordList li + li {margin-top:20px;}
+#myMsg.singleCard .recordWrap ul.recordList li .sender {width:215px; height:155px; float:left; position:relative;}
+#myMsg.singleCard .recordWrap ul.recordList li .sender .recordPic {width:64px; height:64px; position:absolute; top:50%; left:0; margin-top:-32px;}
+#myMsg.singleCard .recordWrap ul.recordList li .sender p {padding-left:73px; height:155px; display:table-cell;}
+#myMsg.singleCard .recordWrap ul.recordList li .recordCon {width:488px; padding:0 30px; margin:0; float:right;}
+#myMsg.singleCard .recordWrap ul.recordList li .recordCon p {height:155px; padding-right:0; display:table-cell;}
+#myMsg.singleCard .recordWrap ul.recordList li .recordCon .newMsg {position:absolute; top:0; right:30px;}
+#myMsg.singleCard .recordWrap ul.recordList li .recordCon .date {position:absolute;}
+.recordCon{display: inline-block;width: 735px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
+.recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
+.recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
+.recordThumb{position: relative;display: inline-block;width: 285px;height: 100%;vertical-align: middle;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;text-align: center;}
+.recordThumb:before{content: '';display: inline-block;width: 0;height: 100%;vertical-align: middle;}
+.recordThumb img{position: absolute;top: 0;left: 0;display: block;width: 100%;z-index: 0}
+.recordThumb p{position: relative;z-index: 1; display: inline-block;vertical-align: middle;font-size: 14px;line-height: 1.4em;}
+.recordThumb p b{display: block;font-size: 40px;font-family:'NotoSansM', sans-serif;}
+.recordThumb p:before{display: block;width:25px;height: 26px;margin: 0 auto 7px;background: url('../images/ico_timeline.png') no-repeat;}
+.recordCat{display: inline-block;margin-bottom: 10px;padding: 0 10px;border-radius: 10px;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 13px;color: #000;line-height: 20px;border:1px solid #000;}
+.recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
+.recordPic img{display: block;width: 100%;}
 
 .timeCard .innerWrap{padding: 20px 30px;background: #fff;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
 .timeCard .innerWrap .name{width: 140px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
@@ -131,7 +143,6 @@
 #myTimeline .recordCon{width: 550px;}
 
 
-
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
 #myNotice .recordThumb{background: #a9c700;}
@@ -139,15 +150,17 @@
 #myNotice .coupon a img{display: block;width: 100%;}
 #myNotice #delteAll{position: absolute;top:25px;right: 20px}
 
-#myMsg.timeCard .recordWrap{float: left;width: 865px;}
+#myMsg .recordWrap{float: left;width: 865px;}
 #myMsg .sender{display: inline-block;vertical-align: middle;width: 275px;}
 #myMsg .sender p{display: inline-block;font-size: 13px;color: #666;line-height: 1.4em;vertical-align: middle;}
 #myMsg .sender p span{display: block;font-family:'RobotoM','NotoSansM', sans-serif;font-size: 16px;}
 #myMsg .sender p b{color: #f1645c}
-#myMsg.timeCard .recordCon{position: relative;width: 507px;height: 100%;padding:0 25px;background: #f8f8f8;color: #000;}
+#myMsg .recordCon{position: relative;width: 507px;height: 100%;padding:0 25px;background: #f8f8f8;color: #000;}
 #myMsg .recordCon p{display: inline-block;width: 400px;padding-right:100px;vertical-align: middle;font-size: 14px;line-height: 1.3em;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myMsg .recordCon .newMsg{position: relative;display: inline-block;height: 100%;vertical-align: middle;}
-#myMsg .recordCon .newMsg span{position: absolute;top:50%;right: 0;min-width: 20px;margin-top:-15px;padding:0 10px;background: #f37972;color: #fff;line-height: 30px;border-radius: 15px;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myMsg .recordCon .newMsg span{position: absolute;top:50%;right: 0;min-width: 20px;margin-top:-15px;padding:0 5px;background: #f37972;color: #fff;line-height: 17px;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif; font-size:14px;}
+#myMsg .recordCon .newMsg span:before {content:''; border-left:15px solid transparent; border-right:15px solid transparent; border-bottom:9px solid #f37972; position:absolute; top:-9px; right:0;}
+#myMsg .recordCon .newMsg span:after {content:''; border-left:15px solid transparent; border-right:15px solid transparent; border-top:9px solid #f37972; position:absolute; bottom:-9px; right:0;}
 #myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
 
 #fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border-radius: 20px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
@@ -428,40 +441,43 @@
 .btnRoundM .home{background-position:0 13px;}
 .btnRoundM .tell{background-position:0 -31px;}
 
+#myMsgDetail h2.secTit + .expertBox {margin-top:30px;}
 .my .msgArea{width:895px;float:left;font-size:14px;}
-.my .expertBox{height:154px;padding:0 50px;background:#fff;border-radius:10px;box-shadow:0 3px rgba(0,0,0,.1);}
+.my .expertBox{width:733px; overflow:hidden; padding:0 30px;background:#fff; border:1px solid #e5e5e5;}
 .my .expertBox:after{content:"";display:block;clear:both;}
-.my .expertBox .name{width:280px;overflow:hidden;float:left;margin-top:26px;}
-.my .expertBox .name > span{display:inline-block;float: left;}
-.my .expertBox .name > span:first-child{width:96px;height:96px;overflow:hidden;background:#fff;border-radius: 100%;}
-.my .expertBox .name > span:first-child img{width:96px;}
-.my .expertBox .name > span:first-child + span{width:162px;height:32px;margin:36px 0 0 20px;}
+.my .expertBox .name{width:217px; height:152px; display:table-cell; vertical-align:middle;}
+.my .expertBox .name > span{display:inline-block; vertical-align:middle;}
+.my .expertBox .name > span:first-child{width:64px;height:64px;overflow:hidden;background:#fff;border-radius: 100%;}
+.my .expertBox .name > span:first-child img{width:64px;}
+.my .expertBox .name > span:first-child + span{margin-left:9px;}
 .my .expertBox .name > span > span{display:block;font-size:16px;}
 .my .expertBox .name > span > span em{font-style:normal;color:#f1645c;text-transform:uppercase;}
 .my .expertBox .name > span > span:first-child,
 .my .expertBox .name > span > span:first-child + span{height:16px;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family:'RobotoR','NotoSansR',sans-serif;color:#666;}
 .my .expertBox .name > span > span:first-child + span{font-size:13px;}
-.my .expertBox .expertBtn{float:right;margin-top:55px;}
+.my .expertBox .expertBtn{height:152px; display:table-cell; vertical-align:middle;}
 .my .expertBtn .btnSizeM{min-width:168px;}
-.my .messageBox{background:#fff;border-radius:10px;box-shadow:0 3px rgba(0,0,0,.1);}
-.my .messageBox .prevMessage{height:65px;display:block;text-align:center;border-bottom:1px solid #d9d9d9;color:#333;}
+.my .messageBox{background:#fff; border:1px solid #e5e5e5; font-size:14px;}
+.my .messageBox .prevMessage{height:65px;display:block;text-align:center;border-bottom:1px solid #e5e5e5;color:#333;}
 .my .messageBox .prevMessage span{display:inline-block;margin-top:26px;padding-right:21px;background:url("../images/ico_top02.png") no-repeat right center;font-family:'NotoSansR','RobotoR', sans-serif;}
-.my .messageBox .inputField{height:70px;padding-top:30px;background:#f8f8f8;border-radius:0 0 10px 10px;text-align:center;}
-.my .messageBox .inputField .inp{position:relative;width:672px;display:inline-block;background:#fff;padding-right:30px;border:1px solid #d5d5d5;border-radius:7px}
-.my .messageBox .inputField .inp:after{position:absolute;right:0;top:1px;z-index:1;content:"";width:30px;height:40px;display:block;background:url("../images/ico_photo_upload.png") no-repeat 0 9px;
-}
-.my .messageBox .inputField .inp input[type="text"]{width:642px;margin:0;border:0;padding-left:10px;display:block;}
+.my .messageBox .inputField{height:70px;padding:30px 30px 0 20px;background:#f8f8f8;border-radius:0 0 10px 10px;}
+.my .messageBox .inputField .inp{position:relative;width:609px;display:inline-block;background:#fff;padding-right:30px;border:1px solid #d5d5d5;}
+.my .messageBox .inputField .inp:after{position:absolute;right:0;top:4px;z-index:1;content:"";width:30px;height:40px;display:block;background:url("../images/ico_image2.png") no-repeat 0 9px;}
+.my .messageBox .inputField .inp input[type="text"]{margin:0;border:0;padding-left:10px;display:block;}
 .my .messageBox .inputField .inp input[type="file"]{position:absolute;top:0;right:0;z-index:2;width:30px; height:40px;overflow:hidden;opacity:0;}
-.my .messageBox .inputField button{width:86px;height:40px;background:#999;color:#fff;border:0;border-radius:9px;font-family:'RobotoR','NotoSansR',sans-serif;}
-.my .talkList{height:690px;overflow:hidden;overflow-y:auto;padding:40px 50px;}
+.my .messageBox .inputField button{width:86px;height:40px;background:#999;color:#fff;border:0;border-radius:20px;font-family:'RobotoR','NotoSansR',sans-serif; margin-left:10px;}
+.my .talkList{height:690px;overflow:hidden;overflow-y:auto;padding:40px 30px;}
 .my .talkList > ul > li{margin-top:25px;}
 .my .talkList > ul > li *{vertical-align:top;}
 .my .talkList > ul > li:first-child{margin-top:0;}
 .my .talkList .txtbox > ul > li{margin-top:30px;}
 .my .talkList .txtbox > ul > li:first-child{margin-top:0;}
+.my .talkList .txtbox > ul > li >.txt {position:relative;}
+.my .talkList .txtbox > ul > li >.txt:before {content:''; width:15px; height:30px; background:url('../images/messageBox_bgL.png') 0 0 no-repeat; position:absolute; top:0; left:0;}
+.my .talkList .txtbox > ul > li >.txt:after {content:''; width:15px; height:30px; background:url('../images/messageBox_bgR.png') 0 0 no-repeat; position:absolute; bottom:0; right:0;}
 .my .talkList .line{position:relative;text-align:center;color:#999;margin:66px 0;}
 .my .talkList .line:before,
-.my .talkList .line:after{position:absolute;top:10px;content:"";display:inline-block;width:315px;height:1px;background:#d9d9d9;}
+.my .talkList .line:after{position:absolute;top:10px;content:"";display:inline-block;width:278px;height:1px;background:#d9d9d9;}
 .my .talkList .line:before{left:0;}
 .my .talkList .line:after{right:0;}
 .my .talkList .right:after,
@@ -469,13 +485,13 @@
 .my .talkList .txtbox{width:600px;display:inline-block;}
 .my .talkList em{display:block;font-style:normal;color:#999;}
 .my .talkList .right .txt,
-.my .talkList .left .txt{min-width:25px;max-width:560px;display:inline-block;margin-bottom:8px;padding:18px 20px;border-radius:10px;line-height:1.3em;font-family:'NotoSansR','RobotoR', sans-serif;}
+.my .talkList .left .txt{min-width:25px;max-width:560px;display:inline-block;margin-bottom:8px;padding:18px 20px;line-height:1.3em;font-family:'NotoSansR','RobotoR', sans-serif;}
 .my .talkList .thumb{width:64px;height:64px;overflow:hidden;border-radius:100%;display:inline-block;}
 .my .talkList .thumb img{width:64px;vertical-align:top;}
 .my .talkList .right{text-align:right;}
-.my .talkList .right .txt{color:#fff;background:#a9c700;text-align:left;}
+.my .talkList .right .txt{color:#fff;background-color:#a9c700;text-align:left;}
 .my .talkList .left{text-align:left;}
-.my .talkList .left .txt{color:#000;background:#f2f2f2;}
+.my .talkList .left .txt{color:#000;background-color:#f2f2f2;}
 .my .talkList .right .thumb{margin-left:15px;}
 .my .talkList .left .thumb{margin-right:15px;}
 
