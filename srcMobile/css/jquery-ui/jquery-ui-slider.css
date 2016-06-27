@@ -1,0 +1,89 @@
+/*!
+ * jQuery UI Slider 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/slider/#theming
+ */
+.ui-slider {
+	position: relative;
+	text-align: left;
+}
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 1.2em;
+	height: 1.2em;
+	cursor: default;
+	-ms-touch-action: none;
+	touch-action: none;
+}
+.ui-slider .ui-slider-range {
+	position: absolute;
+	z-index: 1;
+	font-size: .7em;
+	display: block;
+	border: 0;
+	background-position: 0 0;
+}
+
+/* support: IE8 - See #6727 */
+.ui-slider.ui-state-disabled .ui-slider-handle,
+.ui-slider.ui-state-disabled .ui-slider-range {
+	filter: inherit;
+}
+
+.ui-slider-horizontal {
+	height: .8em;
+}
+.ui-slider-horizontal .ui-slider-handle {
+	top: -.3em;
+	margin-left: -.6em;
+}
+.ui-slider-horizontal .ui-slider-range {
+	top: 0;
+	height: 100%;
+}
+.ui-slider-horizontal .ui-slider-range-min {
+	left: 0;
+}
+.ui-slider-horizontal .ui-slider-range-max {
+	right: 0;
+}
+
+.ui-slider-vertical {
+	width: .8em;
+	height: 100px;
+}
+.ui-slider-vertical .ui-slider-handle {
+	left: -.3em;
+	margin-left: 0;
+	margin-bottom: -.6em;
+}
+.ui-slider-vertical .ui-slider-range {
+	left: 0;
+	width: 100%;
+}
+.ui-slider-vertical .ui-slider-range-min {
+	bottom: 0;
+}
+.ui-slider-vertical .ui-slider-range-max {
+	top: 0;
+}
+
+.sortGraph .ui-widget-content {border-radius:5px;background:#e1e1e1;border:0;height:12px}
+.sortGraph .ui-state-default,
+.sortGraph .ui-widget-content .ui-state-default,
+.sortGraph .ui-widget-header .ui-state-default {position:absolute;display:inline-block;width:26px;height:26px;top:-7px;border:0}
+.sortGraph .ui-widget-header {background:#f1645c}
+.sortGraph .ui-slider-handle.leftBtn {background:url('../images/detail_arrow.png') 0 0 no-repeat}
+.sortGraph .ui-slider-handle.rightBtn {background:url('../images/detail_arrow.png') 0 -26px no-repeat}
+.sortGraph .slider-container {position:relative;z-index:1;padding-right:20px}
+.sortGraph .slider-wrap .graphBar {background:none !important;margin-top:-12px !important}
+.sortGraph .slider-container .graphData {width:53px; height:12px; padding:7px; background:#fff; color:#f1645c; border:1px solid #f1645c; border-radius:15px; position:absolute; top:-38px; display:inline-block; line-height:100%; font-size:13px; text-align:center;}
+.sortGraph .slider-container .graphData:after {content:''; width:11px; height:7px; margin-left:-5px; background:url('../images/detail_bg.png') 0 0 no-repeat; position:absolute; bottom:-7px; left:50%;}
+.sortGraph .slider-container .graphData.dataMin {left:0; margin-left:-23px;}
+.sortGraph .slider-container .graphData.dataMax {right:0; margin-right:-23px;}

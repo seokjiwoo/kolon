@@ -11,6 +11,12 @@ $(document).ready(function() {
 	pageId = $('body').data('pageId');
 	
 	switch(pageId) {
+		// [S] index
+		case 'index':
+			PageModuleClass = require('./pages/Index.js');
+			break;
+		// [E] index
+
 		case 'member-login':
 			PageModuleClass = require('./pages/member/Login.js');
 			break;
