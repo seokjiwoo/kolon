@@ -78,7 +78,9 @@ module.exports = function() {
 	function initMenu() {
 		if (Super.loginData == null) {
 			// 로그인 상태가 아닐 때
-			$('#topMemberInfo').remove();	
+			$('#topMemberInfo').remove();
+			$('#settingButton').remove();
+			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
 
 			// $('#profileImage').attr('src', '/images/profile.png');
 			// $('#profileName').html('<span>로그인 해주세요</span>');
