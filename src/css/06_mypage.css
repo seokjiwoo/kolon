@@ -453,8 +453,8 @@
 .my .expertBox .name > span > span{display:block;font-size:16px;}
 .my .expertBox .name > span > span em{font-style:normal;color:#f1645c;text-transform:uppercase;}
 .my .expertBox .name > span > span:first-child,
-.my .expertBox .name > span > span:first-child + span{height:16px;padding:1px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-family:'RobotoR','NotoSansR',sans-serif;color:#666;}
-.my .expertBox .name > span > span:first-child + span{font-size:13px;}
+.my .expertBox .name > span > span:first-child + span{padding:1px 0;font-family:'RobotoR','NotoSansR',sans-serif;color:#666;}
+.my .expertBox .name > span > span:first-child + span{width:131px; max-height:28px; font-size:14px;}
 .my .expertBox .expertBtn{height:152px; display:table-cell; vertical-align:middle;}
 .my .expertBtn .btnSizeM{min-width:168px;}
 .my .messageBox{background:#fff; border:1px solid #e5e5e5; font-size:14px;}
