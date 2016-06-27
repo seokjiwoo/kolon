@@ -528,4 +528,6 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #washingDetail .state .step03 span{width: 540px;}
 #washingDetail .state .step04 span{width: 720px;}
 #washingDetail .state .step05 span{width: 750px;}
-#washingDetail li:first-child{width: 11%}
+#washingDetail .stateWrap li{width:23%}
+#washingDetail .stateWrap li:first-child{width: 10%;margin-right: 5.5%;}
+#washingDetail .stateWrap li:last-child{width: 8%;margin-left: 6.5%;}
