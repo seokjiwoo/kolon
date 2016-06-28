@@ -49,6 +49,11 @@ function ClassUtils() {
 			 */
 			currencyFormat: currencyFormat,
 			/**
+			 * 값을 핸드폰 번호 양식 (xxx-xxx(x)-xxxx)으로 변환하여 반환
+			 * @param   {Number|String} enteredId - 변환할 값
+			 */
+			mobileNumberFormat: mobileNumberFormat,
+			/**
 			 * @description
 			 *  값에 comma를 찍어서 String으로 반환
 			 * @param   {Number|String} num         변환할 값
@@ -136,6 +141,10 @@ function ClassUtils() {
 
 	function currencyFormat(num) {
 		return comma(num, 3);
+	}
+
+	function mobileNumberFormat(enteredId) {
+		return enteredId.substr(0, 3)+'-'+enteredId.substr(3, enteredId.length-7)+'-'+enteredId.substr(-4, 4);
 	}
 
 	function diffDay(data) {

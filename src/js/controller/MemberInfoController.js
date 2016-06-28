@@ -34,10 +34,6 @@ function ClassMemberInfoController() {
 			 */
 			checkEmail: checkEmail,
 			/**
-			 * 회원가입
-			 */
-			joinMember: joinMember,
-			/**
 			 * 회원정보 수정
 			 */
 			editMemberInfo: editMemberInfo,
@@ -109,49 +105,20 @@ function ClassMemberInfoController() {
 	};
 	
 	/**
-	 * 회원가입 
-	 */
-	function joinMember(id, pw, name, phone, birthdate) {
-		Super.callApi('/apis/member', 'POST', {
-			"birthDate": birthdate,
-			"cellPhoneNumber": phone,
-			"loginId": id,
-			"loginPassword": pw,
-			"memberName": name,
-			"memberTerms": [
-				{
-					"termsNumber": 1
-				}
-			]
-		}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('joinResult', [200, result.status]);
-			} else {
-				Super.handleError('join', result);
-			}
-		}, false);
-	};
-	
-	/**
 	 * 회원정보 변경 
 	 */
-	function editMemberInfo(id, pw, name, phone, birthdate) {
+	function editMemberInfo(name, birthDate, phone, agreeMail, agreeSms) {
 		Super.callApi('/apis/member', 'PUT', {
-			"birthDate": birthdate,
-			"cellPhoneNumber": phone,
-			"loginId": id,
-			"loginPassword": pw,
+			"birthDate": birthDate,
+			"emailReceiveYn": agreeMail,
+			"generalPhoneNumber": phone,
 			"memberName": name,
-			"memberTerms": [
-				{
-					"termsNumber": 2
-				}
-			]
+			"smsReceiveYn": agreeSms
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('joinResult', [200, result.status]);
+				$(callerObj).trigger('editMemberInfoResult', [status, result]);
 			} else {
-				Super.handleError('join', result);
+				Super.handleError('editMemberInfo', result);
 			}
 		}, false);
 	};

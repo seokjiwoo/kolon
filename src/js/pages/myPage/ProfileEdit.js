@@ -16,8 +16,9 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var controller = require('../../controller/MemberInfoController');
-	$(controller).on('checkEmailResult', checkEmailResultHandler);
 	$(controller).on('myInfoResult', myInfoHandler);
+	$(controller).on('editMemberInfoResult', editInfoResultHandler);
+	
 	
 	var emailDuplicateFlag = false;
 	
@@ -44,7 +45,9 @@ module.exports = function() {
 		$('#joinBirth02').change(updateDateSelect);
 		updateDateSelect();
 		
-		$('#profileEditApplyButton').click(submitEditForm);
+		$('#changeEmailIdForm').submit(submitEmailEditForm);
+		$('#changePhoneIdForm').submit(submitMobileEditForm);
+		$('#changeInfoForm').submit(submitInfoEditForm);
 		/*
 		$('#joinId').change(checkEmailField);
 		$('#joinPW').change(checkPasswordField);
@@ -62,20 +65,20 @@ module.exports = function() {
 	function myInfoHandler(e, infoObject) {
 		console.log(infoObject);
 
-		$('#profileID').val(infoObject.email);		// email / loginId
-		$('#editPhoneID').val(infoObject.cellPhoneNumber);		// cellPhoneNumber
+		$('#profileID').val(infoObject.email);
+		$('#editPhoneID').val(infoObject.cellPhoneNumber);
+		$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
 		// ( 소셜인증 )
 		$('#editName').val(infoObject.memberName);		// memberName
-		if (infoObject.birthDate.length == 8) {
+		if (infoObject.birthDate != null && infoObject.birthDate.length == 8) {
 			$('#joinBirth01').val(infoObject.birthDate.substr(0, 4));
 			$('#joinBirth02').val(infoObject.birthDate.substr(4, 2));
 			$('#joinBirth03').val(infoObject.birthDate.substr(6, 2));
 		}
-		$('#profileMobile').val(infoObject.cellPhoneNumber);	// cellPhoneNumber
 		$('#profileHomePhone').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
 		
 		switch(infoObject.emailReceiveYn) {
-			case 'Y': 
+			default: 
 				$('#agreeReceive01')[0].checked = true;
 				$('label[for="agreeReceive01"]').addClass('on');
 				break;
@@ -85,25 +88,58 @@ module.exports = function() {
 				break;
 		}
 		switch(infoObject.smsReceiveYn) {
-			case 'Y':
+			default: 
 				$('#agreeReceive02')[0].checked = true;
 				$('label[for="agreeReceive02"]').addClass('on');
 				break;
 			case 'N':
 				$('#disagreeReceive02')[0].checked = true;
-				$('label[for="disgreeReceive02"]').addClass('on');
+				$('label[for="disagreeReceive02"]').addClass('on');
 				break;
 		}
-	}
+	};
+	
+	/**
+	 * 이메일 수정 진행
+	 */
+	function submitEmailEditForm(e) {
+		e.preventDefault();
+
+		var emailId = $('#profileID').val();
+
+		if (util.checkVaildEmail(emailId) == false) {
+			alert('이메일 주소를 정확하게 입력해주세요.');
+		} else {
+			alert('이메일 인증 진행 (예정)');
+		}
+		
+		e.stopPropagation();
+	};
+	
+	/**
+	 * 전화번호 수정 진행
+	 */
+	function submitMobileEditForm(e) {
+		e.preventDefault();
+
+		var phoneId = $('#editPhoneID').val();
+
+		if (util.checkValidMobileNumber(phoneId) == false) {
+			alert('10-12자리의 숫자만 입력해 주세요.');
+		} else {
+			alert('휴대폰 실명확인 진행 (예정)');
+		}
+		
+		e.stopPropagation();
+	};
 	
 	/**
 	 * 정보수정 진행
 	 */
-	function submitEditForm(e) {
+	function submitInfoEditForm(e) {
 		e.preventDefault();
 
-		var emailId = $('#profileID').val();
-		var phoneId = $('#editPhoneID').val();
+		var generalPhoneNumberRule = /^[0-9]{8,12}$/i;
 
 		var name = $('#editName').val();
 		var birthDate = $('#joinBirth01').val()+$('#joinBirth02').val()+$('#joinBirth03').val();
@@ -116,26 +152,62 @@ module.exports = function() {
 		if (age < 14) {
 			alert('만 14세 미만은 가입하실 수 없습니다.');
 			$('.birth').find('span.note').addClass('alert');
-		} else if (util.checkVaildEmail(emailId) == false) {
-			alert('이메일 주소를 정확하게 입력해주세요.');
 		} else if ($.trim(name) == '') {
 			alert('이름을 입력해 주세요.');
+			$('#editName').focus();
+		} else if ( !generalPhoneNumberRule.test($('#profileHomePhone').val()) ) {
+			alert('전화번호를 입력해 주세요.');
+			$('#profileHomePhone').focus();
 		} else {
-			//controller.joinMember(id, pw1, joinName, phone, birthDate);
-			/*
-			{
-			"birthDate": "19881122",
-			"cellPhoneNumber": "01012123434",
-			"generalPhoneNumber": "01012123434",
-			"memberName": "홍길동"
-			}
-			*/
-			//console.log(emailId, phoneId, name, birthDate, mobile, phone, agreeMail, agreeSms);
+			controller.editMemberInfo(name, birthDate, phone, agreeMail, agreeSms);
 		}
 		
 		e.stopPropagation();
 	}
 	
+	/**
+	 * 정보수정 결과 핸들링
+	 */
+	function editInfoResultHandler(e, status, response) {
+		if (status == 200) {
+			switch(response.status) {
+				case '201':
+					Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
+						location.reload(true);
+					});
+					break;
+				default:
+					Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
+					break;
+			}
+		} else {
+			Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
+		}
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * 이메일 필드 검사
 	 */
@@ -164,22 +236,6 @@ module.exports = function() {
 				break;
 			default:
 				$('#joinIdAlert').text(message);
-				emailDuplicateFlag = true;
-				break;
-		}
-	}
-	
-	/**
-	 * 회원가입 결과 핸들링
-	 */
-	function joinResultHandler(e, status) {
-		switch(status) {
-			case '200':
-				location.href = 'joinComplete.html';
-				break;
-			case '409':
-				alert('해당 커먼 계정이 이미 존재합니다.');
-				$('#joinIdAlert').text('해당 커먼 계정이 이미 존재합니다.');
 				emailDuplicateFlag = true;
 				break;
 		}

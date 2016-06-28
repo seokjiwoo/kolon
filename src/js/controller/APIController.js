@@ -41,11 +41,11 @@ module.exports = function() {
 			}
 			switch(method) {
 				case 'POST':
+				case 'PUT':
+				case 'DELETE':
 					ajaxOptions.data = JSON.stringify(data);
 					break;
 				case 'GET':
-				case 'PUT':
-				case 'DELETE':
 					// does nothing yet
 					break;
 			}
