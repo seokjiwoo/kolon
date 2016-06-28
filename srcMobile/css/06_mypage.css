@@ -291,9 +291,70 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .commentArea .date span:first-child{float:left;color:#999;}
 .commentArea .date span:last-child{padding-left:14px;float:right;background:url("../images/ico_heart.png") no-repeat 0 center;background-size:12px;}
 
-.periodSearch{background:#fff;font-family:'NotoSansR', 'RobotoR', sans-serif;}
-.periodSearch > a{height:58px;display:block;padding:0 15px;}
+.periodSearch{position:relative;background:#fff;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.periodSearch > a{position:relative;height:58px;display:block;padding:0 15px;}
 .periodSearch > a span{display:block;padding-top:22px;font-size:15px;}
+.periodSearch > a em{position:absolute;right:17px;top:24px;width:15px;height:10px;overflow:hidden;display:block;background:url("../images/ico_toggleL.png") no-repeat 0 -7px;background-size:15px;}
+.periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;width:100%;background:#fff;padding:0 15px 15px;}
+.periodSearch > a em.up{background-position:0 0;}
+.periodSearch .btnList{overflow:hidden;}
+.periodSearch .btnList li{width:19.5%;float:left;margin-left:0.5%;}
+.periodSearch .btnList li:first-child{margin-left:0;}
+.periodSearch .btnList li a{display:block;height:30px;padding: 0 12px;font-size: 13px;border:1px solid #ccc;border-radius: 15px;line-height: 30px;text-align:center;}
+.periodSearch .btnList li.acitve a{background:#adc427;border-color:#adc427;color:#fff;}
+.periodSearch .datePic{margin-top:8px;}
+.periodSearch .datePic ul{overflow:hidden;}
+.periodSearch .datePic ul li{width:48%;float:left;}
+.periodSearch .datePic ul li:last-child{float:right;}
+.periodSearch .datePic ul li:nth-child(2){width:4%;text-align:center;color:#ccc;}
+.periodSearch .datePic ul li:nth-child(2) span{display:block;padding-top:7px;}
+.periodSearch .datePic .dateInp{position:relative;padding-right:26px;display:inline-block;border:1px solid #ccc;}
+.periodSearch .datePic .dateInp input[type="text"]{border:0;}
+.periodSearch .datePic .dateInp button{position:absolute;right:10px;top:5px;border:0;width:16px;height:16px;background:url("../images/ico_cal.png") no-repeat 0 0;background-size:16px;}
+.periodSearch .searchbox{position:relative;border:1px solid #ccc;padding-right:28px;margin-top:8px;}
+.periodSearch .searchbox input[type="text"]{border:0;}
+.periodSearch .searchbox button{position:absolute;right:0;top:0;width:28px;height:28px;background:url("../images/ico_search.png") no-repeat center center;background-size:14px;border:0;}
+.periodSearch .searchbox button:before{position:absolute;left:-5px;top:6px;content:"";width:1px;height:14px;display:block;background:#ccc;}
+
+.orderState{height:80px;background:#333;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.orderState ul{overflow:hidden;padding-top:20px;}
+.orderState ul li{width:25%;float:left;color:#999;text-align:center;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:8px;}
+.orderState ul li:last-child{background-image:none;}
+.orderState ul li.active{color:#fff;}
+.orderState ul li em{display:block;margin-top:5px;font-size:20px;font-weight:bold;}
+
+.orderRow{margin-top:8px;}
+.myOrderstate{background:#fff;padding:25px 15px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.orderNum{overflow:hidden;font-size:15px;}
+.orderNum span,
+.orderNum a{display:inline-block;}
+.orderNum span{float:left;}
+.orderNum a{float:right;padding-right:12px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
+.payPrice{margin-top:5px;color:#f1645c;font-size:18px;}
+.payPrice em{font-family:'NotoSansB', 'RobotoB', sans-serif;}
+.bundle{height:20px;line-height:20px;background:#f8f8f8;text-align:center;border-bottom:#e5e5e5;color:#666;font-size:12px;}
+.productList{border-top:1px solid #666;margin-top:12px;}
+.productList > li{overflow:hidden;padding:15px 0;border-top:1px solid #666;}
+.productList > li:first-child{border-top:0;}
+.productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
+.productList .thumb img{width:100%;vertical-align:top;}
+.productList .info span{display: inline-block;line-height: 15px;padding: 0 5px;border:1px solid #999;color: #00aeb9;border-color: #00aeb9;}
+.productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;color:#333;font-size:15px;}
+.productList .productData{clear:both;}
+.productList .productData li{padding:15px 0;border-top:1px solid #ccc;}
+.productList .productData li:first-child{border-top:0;}
+.productList .productData li p{font-size:15px;line-height:1.4em;}
+.productList .productData li p.name{color:#999;}
+.productList .productData li p.name + p.count{margin-top:14px;}
+.productList .productData li p.count{text-align:right;}
+.productList .productData li p.count span{display:inline-block;}
+.productList .productData li p.count span:first-child{position:relative;padding-right:10px;}
+.productList .productData li p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
+.productList .productData li p.count span:last-child{color:#666;}
+.productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;}
+.productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;}
+.productList .cancelArea .state{display:inline-block;float:left;background:url("../images/ico_info.png") no-repeat right center;background-size:14px;padding:2px 20px 2px 0;margin-top:5px;}
+.productList .cancelArea .btnSizeS{float:right;}
 
 @media (max-width:320px){
   .scrapListWrap ul.scrapList li img {width:140px; height:140px;}

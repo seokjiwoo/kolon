@@ -43,5 +43,17 @@ module.exports = function() {
 				$(this).parent().find('.scrapMoreList, .dim').fadeToggle();
 			})
 		});
+
+		$(".periodSearch > a").on('click', function(e){ //mypage order
+			e.preventDefault();
+			var tg = $(this);
+			if( !$(".searchArea").is(":visible") ){
+				$(".searchArea").css("display","block");
+				tg.find("> em").addClass("up")
+			}else{
+				$(".searchArea").css("display","none");
+				tg.find("> em").removeClass("up")
+			}
+		});
 	}
 }
