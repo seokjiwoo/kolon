@@ -1,5 +1,6 @@
 .my .container .wrap{width: 100%;padding-top: 50px;}
 .user + .tabType01 ul{width: 1200px;margin:0 auto;}
+.stepImg, .stepImg span{background: url('../images/ico_step.png') no-repeat;}
 
 .user.infoTop .infoWrap{width:auto;}
 .user.infoTop .myRate a{color: #666}
@@ -10,17 +11,19 @@
 .user.infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
 
-.my .myMenu{float: left;width:225px;min-height: 145px;padding:0 30px;background: #f1645c; margin:60px 0 0 0; position:relative;}
-.my .myMenu:before {content:''; border-left:60px solid transparent; border-bottom:60px solid #f1645c; position:absolute; top:-60px; left:0; z-index:0;}
-.my .myMenu:after {content:''; width:225px; height:60px; background:#f1645c; position:absolute; top:-60px; right:0; z-index:0;}
-.my .myMenu ul:before {content:''; width:225px; height:60px; background:#f1645c; position:absolute; bottom:-60px; left:0; z-index:0;}
-.my .myMenu ul:after {content:''; border-right:60px solid transparent; border-top:60px solid #f1645c; position:absolute; bottom:-60px; right:0; z-index:0;}
-.my .myMenu li{border-bottom: 1px solid #f1807a;}
-.my .myMenu li + li a{padding: 14px 0;}
-.my .myMenu li.on a{font-family:'RobotoM','NotoSansM', sans-serif;}
-.my .myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
+aside.myMenu{float: left;width:230px;min-height: 145px;padding:0 30px;background: #f65677; margin-top:60px; position:relative;}
+aside.myMenu:before {content:''; border-left:30px solid transparent; border-bottom:60px solid #f65677; position:absolute; top:-60px; left:0; z-index:0;}
+aside.myMenu:after {content:''; width:260px; height:60px; background:#f65677; position:absolute; top:-60px; right:0; z-index:0;}
+aside.myMenu ul:before {content:''; width:260px; height:60px; background:#f65677; position:absolute; bottom:-60px; left:0; z-index:0;}
+aside.myMenu ul:after {content:''; border-right:30px solid transparent; border-top:60px solid #f65677; position:absolute; bottom:-60px; right:0; z-index:0;}
+aside.myMenu li{border-bottom: 1px solid #f1807a;}
+aside.myMenu li:first-child{position: relative;z-index: 1;margin-top: -25px;}
+aside.myMenu li a{display: block;padding:15px 0;color: #fff;}
+aside.myMenu li.on a{font-family:'RobotoM','NotoSansM', sans-serif;}
+aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
 
-.my .singleCard{padding:20px 50px 50px 70px;}
+.my .myMenu + .singleCard {padding:20px 50px 50px 70px}
+.my .singleCard{padding:0 50px 50px}
 .my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top:0;}
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
@@ -113,7 +116,7 @@
 .recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
 .recordPic img{display: block;width: 100%;}
 
-.timeCard .innerWrap{padding: 20px 30px;background: #fff;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+.timeCard .innerWrap{overflow: hidden;padding: 20px 30px;border:1px solid #e6e6e6;}
 .timeCard .innerWrap .name{width: 140px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
 .timeCard .innerWrap .name b{font-family:'RobotoM','NotoSansM', sans-serif;}
 .timeCard .innerWrap .myRateWrap{width: 190px;text-align: center;}
@@ -125,7 +128,7 @@
 .timeCard .innerWrap .btnFollow a.dismiss{border:1px solid #a9c700;color: #a9c700}
 .timeCard .innerWrap .btnFollow a.dismiss:after{background-image:url('../images/ico_plusG.png');}
 .timeCard .innerWrap li{display: inline-block;vertical-align: middle;}
-.timeCard .innerWrap .imgWrap{overflow: hidden;font-family:'RobotoM','NotoSansM', sans-serif;}
+.timeCard .innerWrap .imgWrap{overflow: hidden;margin-left:-10px;font-family:'RobotoM','NotoSansM', sans-serif;}
 .timeCard .innerWrap .imgWrap li{position: relative;float: left;width: 114px;height: 114px;margin-left: 10px;}
 .timeCard .innerWrap .imgWrap li:first-child{margin:0;}
 .timeCard .innerWrap .imgWrap .hoverCon{position: absolute;top: 0;left: 0;right: 0;bottom: 0;padding: 20px;background: rgba(0,0,0,0.5);color: #fff;z-index: 1;font-size: 14px;text-align: center;opacity: 0;}
@@ -163,26 +166,26 @@
 #myMsg .recordCon .newMsg span:after {content:''; border-left:15px solid transparent; border-right:15px solid transparent; border-top:9px solid #f37972; position:absolute; bottom:-9px; right:0;}
 #myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
 
-#fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border-radius: 20px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
+#fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border:1px solid #e6e6e6;color: #404040;display: block;font-family:'RobotoM','NotoSansM', sans-serif}
 #fallowing #fallowSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
 #fallowing button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding:15px 0 15px 15px;}
-.recordSort{margin:30px 0;text-align: left;}
+.recordSort{margin:20px 0 30px;text-align: left;}
 .recordSort tr:first-child td{padding-bottom: 0;}
 .sortTerm{display: inline-block;}
 .recordSort li{display: inline-block;margin-left:2px;}
 .recordSort li:first-child{margin:0;}
-.recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 40px;color: #666;}
+.recordSort a{display: inline-block;padding:0 20px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 38px;color: #666;}
 .recordSort a.on{background: #a9c700;border:0;color: #fff;}
 .recordSearch{display: inline-block;padding: 5px;border:1px solid #ccc;}
 .recordSearch #recordInput{width: 590px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
-.recordSearch button{width:35px;height:14px;font-size: 0; background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle; border-left:1px solid #d5d5d5;}
+.recordSearch button{width:33px;height:14px;font-size: 0; background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle; border-left:1px solid #d5d5d5;}
 .sortTermSet{display: inline-block;margin-left: 10px;}
 .sortTermSet .calendar {margin-right:0;padding:10px 18px;border:1px solid #ccc;}
-.sortTermSet .calendar.cal2 span.calInp input[type=text] {width:69px;}
+.sortTermSet .calendar.cal2 span.calInp input[type=text] {width:68px;}
 .sortTermSet .cal-container {z-index:3}
 
 .my .subTit{font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;}
@@ -193,6 +196,7 @@
 .my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
 .my .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .my .record td{padding: 15px;}
+.my .record td a{margin-top: 6px;}
 .my .record .recordDate{border-right: 1px solid #e1e1e1}
 .my .record .date b{color: #f1645c;}
 .my .record .date a{color: #f1645c;text-decoration: underline;font-family:'RobotoM','NotoSansM', sans-serif;}
@@ -204,8 +208,9 @@
 .my .record .recordInfo span{display: block;}
 .my .record .recordInfo .producOption{color: #999}
 .my .record .recordInfo .productPrice{font-family:'RobotoB','NotoSansB', sans-serif;}
+.my .record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#00aeb9;font-family:'RobotoM','NotoSansM', sans-serif;border:2px solid #00aeb9;}
 .my .record .orderState{position: relative;}
-.my .record .orderState a{display: block;margin-top:6px;}
+.my .record .orderState a{display: block;font-size:13px;}
 .my .record .orderState .stateTxt{position: relative;}
 .my .record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
 .my .record .orderState .stateEnd {display:block;color:#f1645c;}
@@ -213,15 +218,15 @@
 .my .record .orderState .cancleDate{color: #f1645c;}
 .my .record .arraySide {overflow:hidden;}
 .my .record .arraySide p .my .record .arraySide p span {float:left;}
-.my .record .arraySide p span {display:block;float:right;}
+.my .record .arraySide p span {display:block;float:right;text-align:right;}
 .my .record .fontM {font-family:'RobotoM','NotoSansM', sans-serif;}
 .my .record .btnBox {overflow:hidden;text-align:center;}
-.my .record .btnBox .btnSizeS {float:left;width:80px;padding:0;margin-left:5px;}
-.my .record .btnBox .btnSizeS:first-child {margin-left:0;}
+.my .record .btnBox .btnSizeS {float:left;width:118px;padding:0;margin-left:5px;margin-bottom:5px;}
+.my .record .btnBox .btnSizeS:nth-child(odd) {margin-left:0;}
 
 .my .record.record02 {font-family:'RobotoL','NotoSansL', sans-serif;}
 .my .record.record02 th {font-family:'RobotoR','NotoSansR', sans-serif;}
-.my .record .rowspan{padding: 10px 20px}
+.my .record .rowspan{padding: 20px 20px 15px}
 .my .record .rowspan li{line-height: 1.6em;}
 .my .record .require{color: #f1645c}
 
@@ -231,50 +236,57 @@
 .my .record.record04 th, .my .record.record04 td {font-size:16px;}
 .my .record.record04 .recordDate b {margin-left:5px;text-decoration:initial;}
 
-.my .record.recordBg {margin-top:0;border-top:none;}
+.my .moreView {border-top:1px solid #999;border-bottom:1px solid #999;}
+.my .record.recordBg {margin-top:-2px;}
 .my .record.recordBg th, .my .record.recordBg td {text-align:left;}
-.my .record.recordBg th {background:#f2f4f4;}
-.my .record.recordBg td {background:#fafafa;font-family:'RobotoL','NotoSansL', sans-serif;color: #333;}
+.my .record.recordBg th {background:#f8f8f8;}
+.my .record.recordBg td {background:#fff;font-family:'RobotoL','NotoSansL', sans-serif;color: #333;}
+.my .payment {color:#f2726b;}
 
-.my .popState{display: none;position: absolute;right: 0;bottom:30px;width: 495px;padding: 38px 20px 38px;background: #fff;border:1px solid #999;z-index: 2;}
+.my .popState{display: none;position: absolute;width: 495px;padding: 38px 20px 38px;right: 0;bottom:30px;background: #fff;border:1px solid #999;z-index: 2;}
 .my .popState:after{content: '';position: absolute;bottom: -18px;right: 40px;width: 18px;height: 18px;background: url('../images/ico_pointer.png') no-repeat;}
-.my .popState li{display: inline-block;width:16%;color: #666;}
-.my .popState li.on{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
-.my .popState .stepImg{width: 440px;height:30px;margin:0 auto 14px;background: url('../images/ico_step.png') no-repeat;}
-.my .popState .stepImg span{display: block;height: 100%;background: url('../images/ico_step_on.png') no-repeat;}
+.my .popState .stepImg{width: 440px;background-position:0 -150px}
+.my .popState span{background-position:0 -120px}
 
-.my .popState.popState02{right:0;}
-.my .popState.popState02:after{right:60px;}
-.my .popState.popState02{padding:40px 5px;width:793px;}
-.my .popState.popState02 li{vertical-align:top;width:8.3%;}
-.my .popState.popState02 .stepImg {width:730px;background: url('../images/ico_step02.png') no-repeat;}
-.my .popState.popState02 .stepImg span{background: url('../images/ico_step02_on.png') no-repeat;}
+.my .stateWrap .state{padding: 30px 0;}
+.my .stateWrap ul{overflow: hidden;}
+.my .stateWrap li{float: left;text-align: center;color: #666;font-size: 13px;line-height: 1.3em}
+.my .stateWrap li.on{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
+.my .stateWrap .stepImg{height:30px;margin:0 auto 14px;}
+.my .stateWrap .stepImg span{display: block;height: 100%;}
 
-.my .popState .step01 span{width: 82px;}
-.my .popState .step02 span{width: 164px;}
-.my .popState .step03 span{width: 246px;}
-.my .popState .step04 span{width: 328px;}
-.my .popState .step05 span{width: 410px;}
-.my .popState .step06 span{width: 440px;}
-.my .popState .step07 span{width: 574px;}
-.my .popState .step08 span{width: 656px;}
-.my .popState .step09 span{width: 686px;}
+.my .stateWrap .popState02:after{right:60px;}
+.my .stateWrap .popState02{padding:40px 5px;width:793px;}
+.my .stateWrap .popState02 li{vertical-align:top;width:9%;}
+.my .stateWrap .popState02 .stepImg {width:730px;background-position:0 -90px}
+.my .stateWrap .popState02 .stepImg span{background-position:0 -60px}
 
-.my .popState.popState02 .step01 span{width: 70px;}
-.my .popState.popState02 .step02 span{width: 140px;}
-.my .popState.popState02 .step03 span{width: 210px;}
-.my .popState.popState02 .step04 span{width: 280px;}
-.my .popState.popState02 .step05 span{width: 350px;}
-.my .popState.popState02 .step06 span{width: 420px;}
-.my .popState.popState02 .step07 span{width: 490px;}
-.my .popState.popState02 .step08 span{width: 560px;}
-.my .popState.popState02 .step09 span{width: 630px;}
-.my .popState.popState02 .step10 span{width: 700px;}
-.my .popState.popState02 .step11 span{width: 730px;}
+.my .stateWrap .step01 span{width: 82px;}
+.my .stateWrap .step02 span{width: 164px;}
+.my .stateWrap .step03 span{width: 246px;}
+.my .stateWrap .step04 span{width: 328px;}
+.my .stateWrap .step05 span{width: 410px;}
+.my .stateWrap .step06 span{width: 440px;}
+.my .stateWrap .step07 span{width: 574px;}
+.my .stateWrap .step08 span{width: 656px;}
+.my .stateWrap .step09 span{width: 686px;}
 
-.btnSideArray {overflow:hidden;line-height:40px;margin:20px 20px 30px 0;}
+.my .stateWrap .popState02 .step01 span{width: 69px;}
+.my .stateWrap .popState02 .step02 span{width: 139px;}
+.my .stateWrap .popState02 .step03 span{width: 209px;}
+.my .stateWrap .popState02 .step04 span{width: 279px;}
+.my .stateWrap .popState02 .step05 span{width: 349px;}
+.my .stateWrap .popState02 .step06 span{width: 419px;}
+.my .stateWrap .popState02 .step07 span{width: 489px;}
+.my .stateWrap .popState02 .step08 span{width: 559px;}
+.my .stateWrap .popState02 .step09 span{width: 629px;}
+.my .stateWrap .popState02 .step10 span{width: 699px;}
+.my .stateWrap .popState02 .step11 span{width: 730px;}
+
+.btnSideArray {overflow:hidden;line-height:40px;margin:20px 8px 30px 0;}
 .btnSideArray label {font-size:16px;color:#666;}
 .btnSideArray label span {color:#f1645c;}
+.btnSideArray .checkbox {margin-top:0}
 
 .my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;}
 .my .scrapTit b{color:#f1645c}
@@ -290,6 +302,8 @@
 .scrap .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
 .scrap .scrapPack .wrapScrap span img{width: 100%;}
 */
+#myOrder .stateWrap li{width: 16.6%;}
+
 .orderDetail .checkAgree label:before {display:inline-block;margin:0 20px;}
 
 #myInfo .reward{position: absolute;left: 0;bottom:50px;width: 100%;color: #666 ;font-size: 13px;font-family:'RobotoR','NotoSansR', sans-serif;}
@@ -349,21 +363,19 @@
 
 #serviceDetail .record th{width: 60px;}
 #serviceDetail .btnWrapR{position: relative;height: 30px;}
-#serviceDetail .btnWrapR a{position: absolute;right: 0;top:15px;}
-#serviceDetail .popState{display: block;position: static;width: auto;border:0;padding:30px 0;text-align: center;font-size: 14px;}
-#serviceDetail .popState .stepImg{width: 750px;background:url('../images/ico_step03.png') no-repeat; }
-#serviceDetail .popState .stepImg span{background: url('../images/ico_step03_on.png') no-repeat; }
-#serviceDetail .popState ul {}
-#serviceDetail .popState li{width:85px;vertical-align: middle;}
-#serviceDetail .popState .step01 span{width: 90px;}
-#serviceDetail .popState .step02 span{width: 180px;}
-#serviceDetail .popState .step03 span{width: 270px;}
-#serviceDetail .popState .step04 span{width: 360px;}
-#serviceDetail .popState .step05 span{width: 450px;}
-#serviceDetail .popState .step06 span{width: 540px;}
-#serviceDetail .popState .step07 span{width: 630px;}
-#serviceDetail .popState .step08 span{width: 720px;}
-#serviceDetail .popState .step09 span{width: 750px;}
+#serviceDetail .btnWrapR a{position: absolute;right: 0;top:4px;}
+#serviceDetail .state .stepImg{width: 750px;background-position:0 -30px;}
+#serviceDetail .state .stepImg span{background-position:0 0;}
+#serviceDetail .state li{width:11%;}
+#serviceDetail .state .step01 span{width: 90px;}
+#serviceDetail .state .step02 span{width: 180px;}
+#serviceDetail .state .step03 span{width: 270px;}
+#serviceDetail .state .step04 span{width: 360px;}
+#serviceDetail .state .step05 span{width: 450px;}
+#serviceDetail .state .step06 span{width: 540px;}
+#serviceDetail .state .step07 span{width: 630px;}
+#serviceDetail .state .step08 span{width: 720px;}
+#serviceDetail .state .step09 span{width: 750px;}
 
 .shareCon{float: right;}
 .shareCon li{display: inline-block;margin: 0 3px;}
@@ -496,7 +508,7 @@
 .my .talkList .left .thumb{margin-right:15px;}
 
 .my h3.subTit + .tbMt {margin-top:20px;}
-.my .tbSet + h3.subTit {margin-top:40px;}
+.my .tbSet + h3.subTit {margin-top:30px;}
 .my .cashTbSet {width:100%;}
 .my .cashTbSet p.tit {text-align:left; font-weight:bold; color:#000;}
 .my .cashTbSet ul.csList {width:100%; overflow:hidden; margin:20px 0;}
@@ -507,3 +519,15 @@
 .my .cashTbSet ul.csList li span.csCont{float:right; text-align:right;}
 .my .cashTbSet .csBtn {width:100%; overflow:hidden;}
 .my .cashTbSet .csBtn a{min-width:48%; width:auto; float:left; display:inline-block; margin:0 4px 4px 0;}
+
+#washingDetail .state{width: 100%;}
+#washingDetail .stepImg{width: 750px;background-position:0 -210px;}
+#washingDetail .stepImg span{background-position: 0 -180px;}
+#washingDetail .state .step01 span{width: 180px;}
+#washingDetail .state .step02 span{width: 360px;}
+#washingDetail .state .step03 span{width: 540px;}
+#washingDetail .state .step04 span{width: 720px;}
+#washingDetail .state .step05 span{width: 750px;}
+#washingDetail .stateWrap li{width:23%}
+#washingDetail .stateWrap li:first-child{width: 10%;margin-right: 5.5%;}
+#washingDetail .stateWrap li:last-child{width: 8%;margin-left: 6.5%;}

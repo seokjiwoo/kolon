@@ -18,8 +18,8 @@
 			</ul>
 			<ul class="menuList">
 				<li><a href="/newForm/">뉴폼</a></li>
-				<li><a href="/living/category.html">리빙샵</a></li>
-				<li><a href="/livingService/">리빙서비스</a></li>
+				<li><a href="/shop/">샵</a></li>
+				<li><a href="/homeService/">홈서비스</a></li>
 			</ul>
 			<ul class="menuList">
 				<li><a href="/magazine/">매거진</a></li>
@@ -28,21 +28,21 @@
 		<div class="topR">
 			<a href="/member/login.html" class="btnLogin" id="buttonLogInTop"><img src="/images/logo.png" alt="COMMON"/> 시작하기</a>
 			<div id="topMemberInfo" class="member">
-				<a href="" id='topMemberInfoAlarm' class="btnAlarm"></a>
-				<a href="" id='topMemberInfoPic' class="pic"><img src="/images/temp01.jpg" alt=""></a>
-				<a href="" id='topMemberInfoName' class="name"></a>
+				<a href="/myPage/" id='topMemberInfoAlarm' class="btnAlarm"></a>
+				<a href="/myPage/" id='topMemberInfoPic' class="pic"><img src="/images/temp01.jpg" alt=""></a>
+				<a href="/myPage/" id='topMemberInfoName' class="name"></a>
 			</div>
-			<a href="" id="searchOpen"></a>
+			<a href="#" id="searchOpen"></a>
 		</div>
 		<div class="searchWrap" id="searchWrap">
 			<div class="keyWrap recomand">
 				<div class="wrap">
 					<h3 class="keyTit">추천검색어</h3>
-					<form action="">
+					<form action="/search/result.html" method="GET">
 						<fieldset class="searchSet">
 							<legend class="hide">전체 검색</legend>
-							<label for="searchTxt" class="hide">검색어를 입력해 주세요</label>
-							<input type="text" id="searchTxt" placeholder="검색어를 입력해 주세요">
+							<label for="query" class="hide">검색어를 입력해 주세요</label>
+							<input type="text" id="query" placeholder="검색어를 입력해 주세요">
 							<button type="submit">검색</button>
 						</fieldset>
 					</form>
@@ -84,23 +84,23 @@
 	<div class='lnb' id='lnb'>
 		<div class="profile">
 			<a href="" class="close" id="profileClose"></a>
-			<a href="/myPage/profileEdit.html" class="setting"></a>
+			<a href="/myPage/profileEdit.html" class="setting" id='settingButton'></a>
 			<a href="/index.html" class="logoL"><img src="/images/logoW.png" alt="COMMON"></a>
 			<div class="pic"><img src="/images/profile.png" id="profileImage" alt=""></div> <!-- /images/temp01.jpg -->
 			<p class="profileInfo" id="profileName"><span>로그인 해주세요</span></p> <!--<span>김세환 님</span><br>dudlri@naver.com -->
 			<ul id="myMenuButtonList" class="btnList log"><!-- 로그인 전일 졍우 log class 추가 -->
-				<li class="btnList01"><a href="">알림</a></li>
-				<li class="btnList02"><a href="">팔로우</a></li>
-				<li class="btnList03"><a href="">스크랩</a></li>
-				<li class="btnList04"><a href="">마이카트<span class="count">16</span></a></li>
+				<li class="btnList01"><a href="/myPage/notice.html">알림<span class="count">16</span></a></li>
+				<li class="btnList02"><a href="/myPage/following.html">팔로잉<span class="count">16</span></a></li>
+				<li class="btnList03"><a href="/myPage/scrap.html">스크랩<span class="count">16</span></a></li>
+				<li class="btnList04"><a href="/myPage/myCart.html">마이카트<span class="count">16</span></a></li>
 			</ul>
 			<a href="/member/login.html" class="btnMy" id="btnJoinMyPage">로그인 / 회원가입</a><!-- 로그인 후 <a href="" class="btnMy btnMypage">나의 커먼</a>-->
 			<ul class="myMenu" id="myMenu">
 				<li><a href="/myPage/order.html">진행 중인 주문/배송<span class="count">16</span></a></li>
 				<li><a href="/myPage/return.html">취소/반품/교환<span class="count">16</span></a></li>
-				<li><a href="/myPage/view.html">최근 본 상품<span class="count">16</span></a></li>
+				<li><a href="/myPage/recentSeenItem.html">최근 본 상품<span class="count">16</span></a></li>
 				<li><a href="/myPage/myService.html">나의 시공중인 상품<span class="count">16</span></a></li>
-				<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>
+				<!--<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>-->
 			</ul>
 			<a href="" class="menuToggle" id="menuToggle"></a><!-- menuToggle hide/show -->
 		</div>
@@ -109,11 +109,11 @@
 			<li><a href="/rent/" class="depth01">집구하기 <b>RENT</b></a></li>
 			<li><a href="/fund/" class="depth01">투자하기 <b>FUND</b></a></li>
 			<li><a href="/newForm/" class="depth01">뉴폼 <b>NEW FORM</b></a></li>
-			<li><a href="/livingShop/" class="depth01">리빙샵 <b>SHOP</b></a></li>
-			<li><a href="/livingService/" class="depth01">리빙서비스 <b>LIVING SERVICE</b></a></li>
+			<li><a href="/shop/" class="depth01">샵 <b>SHOP</b></a></li>
+			<li><a href="/homeService/" class="depth01">홈서비스 <b>HOME SERVICE</b></a></li>
 			<li><a href="/magazine/" class="depth01">매거진 <b>MAGAZINE</b></a></li>
-			<li><a href="/QnA/" class="depth01">의견묻기</a></li>
-			<li><a href="/expert/" class="depth01">커먼전문가</a></li>
+			<li><a href="/qna/" class="depth01">의견묻기</a></li>
+			<li><a href="/manager/" class="depth01">커먼전문가</a></li>
 		</ul>
 		<a href="/member/login.html" id="buttonLogInOut" class="btnSizeM btnColor03 btnLog">로그인</a>
 		<!-- 로그인 후 <a href="" class="btnSizeM btnColor03 btnLog">로그아웃</a> -->

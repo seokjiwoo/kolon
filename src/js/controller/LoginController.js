@@ -52,7 +52,7 @@ function ClassLoginController() {
 			"loginId": id,
 			"loginPassword": pw
 		}
-		if (authNumber != undefined) loginPostObj.cretiNumber = authNumber;
+		if (authNumber != undefined) loginPostObj.certiNumber = authNumber;
 
 		Super.callApi('/apis/user/login', 'POST', loginPostObj, function(status, result) {
 			if (status == 200) {

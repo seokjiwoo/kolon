@@ -1,4 +1,7 @@
+.w71 {width:71px;}
+.w84 {width:84px;}
 .w90 {width:90px;}
+.w92 {width:92px;}
 .w160 {width:160px !important;}
 .w298 {width:298px !important;}
 .w502{width:502px !important;}
@@ -69,8 +72,19 @@
 .lyPop .record.record02 b {font-weight:normal;color:#999;}
 .record.record03 th, .my .record.record03 td {padding:20px 0;}
 .record.record03 td.recordInfo {padding:20px 0 20px 10px;}
+.record.record03 td.rowBox {border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1}
+.record.record03 td.rowBox ul {overflow:hidden;}
+.record.record03 td.rowBox li {float:left;margin-top:15px;}
+.record.record03 td.rowBox li:last-child {margin-top:0;}
 .record.record03 .recordThumb {float:right;}
-.record.record03 .orderState {padding:20px}
+.record.record03 .checkbox {margin-top:0;}
+.my .record.record03 .orderState {padding:0 6px}
+.my .record.record03 a.btnIcoMore {position:relative;text-align:left;margin-top:6px;width:45px;padding:0 20px 0 15px;font-size:13px;}
+.my .record.record03 a.btnIcoMore:after {content:'';display:block;position:absolute;top:50%;right:7px;width:15px;height:10px;margin-top:-5px;background:url(../images/btn_more_ico.png) 0 0 no-repeat}
+.my .record.record03 a.btnIcoMore.active {background:#f1645c;text-align:center;padding:0 25px 0 10px}
+.my .record.record03 a.btnIcoMore.active:after {background-position:0 -10px;right:10px;}
+
+
 .tag{height: 36px;overflow: hidden;}
 .tag li{display: inline-block;margin-left: 5px;}
 .tag li:first-child{margin:0;}

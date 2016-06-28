@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
 </head>
- <body data-page-id="myPage-myService">
+<body data-page-id="myPage-myService">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -53,7 +53,7 @@
 								<form action="">
 									<fieldset class="recordSearch">
 										<legend class="hide">시공 내역 검색</legend>
-										<input type="text" id="recordInput">
+										<input type="text" id="recordInput" title="주문내역 입력 란">
 										<label for="recordInput"></label>
 										<button type="submit">검색</button>
 									</fieldset>
@@ -157,7 +157,7 @@
 							<td>서울시 강남구<br>청담동 248</td>
 							<td>실측 후 게시</td>
 							<td class="orderState">
-								<div class="stateTxt">
+								<div class="stateTxt stateWrap">
 									<!-- @@include ../_template/pop_order_state02.html {"step":"step02", "step02":"on"} -->
 									실측/견적요청<span class="stateIcor"></span>
 								</div>
@@ -175,7 +175,7 @@
 							<td>서울시 강남구<br>청담동 248</td>
 							<td>2016.01.20</td>
 							<td class="orderState">
-								<div class="stateTxt">
+								<div class="stateTxt stateWrap">
 									<!-- @@include ../_template/pop_order_state02.html {"step":"step06", "step06":"on"} -->
 									배송완료<span class="stateIcor"></span>
 								</div>
