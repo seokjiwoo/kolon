@@ -130,6 +130,57 @@ span.price.fontS {font-size:14px;}
 .oder .record td{padding: 15px;}
 .oder .record tr.border0 td{border:0;}
 
+.homeService.oder .tbSet table th, .homeService.oder .tbSet table td {text-align:left;}
+.homeService.oder .tbSet table th {padding-left:40px;}
+.homeService.oder .tbSet table th .ico_star {color:#f1655d;}
+.homeService.oder .tbSet table td {padding:15px 20px;}
+.homeService.oder .tbSet .btnC {margin-top:30px;}
+.homeService.oder .tbSet .btnC button {width:155px;}
+.homeService.oder .tbSet dl {overflow:hidden;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;line-height:22px;}
+.homeService.oder .tbSet dt {float:left;color:#000;}
+.homeService.oder .tbSet dd {padding-left:80px;color:#666;}
+
+.homeService.oder .leftBox, .homeService.oder .leftBox .drop li {width:228px;}
+.homeService.oder .leftBox + .leftBox {margin-left:10px;}
+
+.homeService.oder .calendar {display:inline-block;width:187px;}
+.homeService.oder .calendar span.calInp input[type=text] {width:172px;}
+
+.homeService.oder .oderCont ul.homeType li.hType01 {background-position:-256px 0;}
+.homeService.oder .oderCont ul.homeType li.hType02 {background-position:-64px 0;}
+.homeService.oder .oderCont ul.homeType li.hType03 {background-position:-320px 0;}
+.homeService.oder .oderCont ul.homeType li.hType04 {background-position:-0px 0;}
+.homeService.oder .oderCont ul.homeType li .radioBox, .homeService.oder .oderCont ul.homeType li .radioBox label {display:inline-block;width:100px;}
+
+.homeService.oder .oderCont .payTab {text-align:center;border-bottom:1px solid #e8e8e8;}
+.homeService.oder .oderCont .payTab.tabWrap a {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
+.homeService.oder .oderCont .payTab.tabWrap a .labelTxt {display:inline-block;position:relative;}
+.homeService.oder .oderCont .payTab.tabWrap a .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url(../images/ico_radio.png) 0 -18px no-repeat;}
+.homeService.oder .oderCont .payTab.tabWrap .on a .labelTxt:after {background-position:0 0;}
+.homeService.oder .oderCont .arraySide {margin-bottom:18px;}
+.homeService.oder .oderCont .arraySide p {overflow:hidden;font-size:14px;color:#666;text-align:left;}
+.homeService.oder .oderCont .arraySide li {margin-top:5px;}
+.homeService.oder .oderCont .arraySide li:first-child {margin-top:13px;}
+.homeService.oder .container textarea {border-radius:0;width:838px;padding:20px;}
+
+.homeService.oder .oderCont .thumBox img {vertical-align:top}
+.homeService.oder .oderCont .gradeNum {float:right;color:#f1645c;margin-left:5px}
+.homeService.oder .oderCont .grade {float:right;background-size:70px 27px;width:70px;height:14px;background-position:0 -14px}
+.homeService.oder .oderCont .grade span {background-size:70px 27px;height:14px;background-position:0 0}
+.homeService.oder .grade span.grade01{right: 54px}
+.homeService.oder .grade span.grade02{right: 42px}
+.homeService.oder .grade span.grade03{right: 28px}
+.homeService.oder .grade span.grade04{right: 14px}
+.homeService.oder .grade span.grade05{right: 0px}
+.homeService.oder .grade span.grade15{right: 49px}
+.homeService.oder .grade span.grade25{right: 35px}
+.homeService.oder .grade span.grade35{right: 21px}
+.homeService.oder .grade span.grade45{right: 7px}
+
+.homeService.oder .oderCont.tbSet + h3.subTit {margin-top:50px;}
+.homeService.oder .subTit .subTxt {font-size:14px;color:#666;}
+.homeService.oder .underTxt {float:left;margin-top:10px;font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
+
 .oder .oderCont {width:100%; display:inline-block;}
 .oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR','RobotoR', sans-serif;}
 .oder .oderCont table.lineS th {border-bottom:1px solid #e8e8e8;}
