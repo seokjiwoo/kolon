@@ -16,8 +16,6 @@ module.exports = function() {
 	var enteredId;
 	var authNumberResendFlag = false;
 	var forceLoginFlag = false;
-
-	var phoneNumberRule = /^[0-9]{10,12}$/i;
 	
 	var callerObj = {
 		/**
@@ -93,7 +91,7 @@ module.exports = function() {
 		if (id == '' || pw == '') {
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
 		} else {
-			if (phoneNumberRule.test(id)) {
+			if (util.checkValidMobileNumber(id)) {
 				// 휴대폰 번호
 				enteredId = id;
 				controller.login(id, pw);

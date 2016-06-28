@@ -19,9 +19,6 @@ module.exports = function() {
 	$(controller).on('checkEmailResult', checkEmailResultHandler);
 	$(controller).on('myInfoResult', myInfoHandler);
 	
-	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{9,16}$/i;
-	var phoneNumberRule = /^[0-9]{10,12}$/i;
-	
 	var emailDuplicateFlag = false;
 	
 	var callerObj = {
@@ -111,7 +108,6 @@ module.exports = function() {
 		var name = $('#editName').val();
 		var birthDate = $('#joinBirth01').val()+$('#joinBirth02').val()+$('#joinBirth03').val();
 		var age = util.calculateAge(new Date($('#joinBirth01').val(), $('#joinBirth02').val(), $('#joinBirth03').val()));
-		var mobile = $('#profileMobile').val();
 		var phone = $('#profileHomePhone').val();
 		var agreeMail = $('#agreeReceive01')[0].checked ? 'Y' : 'N';
 		var agreeSms = $('#agreeReceive02')[0].checked ? 'Y' : 'N';
@@ -124,8 +120,6 @@ module.exports = function() {
 			alert('이메일 주소를 정확하게 입력해주세요.');
 		} else if ($.trim(name) == '') {
 			alert('이름을 입력해 주세요.');
-		} else if (!phoneNumberRule.test(mobile)) {
-			alert('휴대폰번호는 10-12자리의 숫자만 입력해 주세요.');
 		} else {
 			//controller.joinMember(id, pw1, joinName, phone, birthDate);
 			/*
@@ -200,7 +194,7 @@ module.exports = function() {
 		
 		if (inputValue2 != '' && inputValue1 != inputValue2) {
 			$('#joinPWAlert').text('비밀번호가 일치하지 않습니다.');
-		} else if (!passwordRule.test(inputValue1)) {
+		} else if (!util.checkValidPassword(inputValue1)) {
 			$('#joinPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
 		} else {
 			$('#joinPWAlert').text('');
@@ -212,7 +206,7 @@ module.exports = function() {
 	 */
 	function checkPhoneField(e) {
 		var inputValue = $('#joinPhone').val();
-		if (!phoneNumberRule.test(inputValue)) {
+		if (!util.checkValidMobileNumber(inputValue)) {
 			$('#joinPhoneAlert').text('10-12자리의 숫자만 입력해 주세요.');
 		} else {
 			$('#joinPhoneAlert').text('');

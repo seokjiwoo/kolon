@@ -4,7 +4,7 @@ module.exports = function() {
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
-	var passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{9,16}$/i;
+	var util = require('../../utils/Util.js');
 	
 	var memberNumber;
 	var authKey;
@@ -47,7 +47,7 @@ module.exports = function() {
 		
 		if (inputValue2 != '' && inputValue1 != inputValue2) {
 			$('#resetPWAlert').text('비밀번호가 일치하지 않습니다.');
-		} else if (!passwordRule.test(inputValue1)) {
+		} else if (!util.checkValidPassword(inputValue1)) {
 			$('#resetPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
 		} else {
 			$('#resetPWAlert').text('');

@@ -13,8 +13,6 @@ module.exports = function() {
 	var findMethod;
 	var tempId;
 	var tempAuthKey;
-
-	var phoneNumberRule = /^[0-9]{10,12}$/i;
 	
 	var callerObj = {
 		/**
@@ -61,7 +59,7 @@ module.exports = function() {
 		tempAuthKey = '';
 		var id = $.trim($('#inputId').val());
 		
-		if (phoneNumberRule.test(id)) {
+		if (util.checkValidMobileNumber(id)) {
 			// 휴대폰 번호
 			findMethod = 'phone';
 			tempId = id;
@@ -136,7 +134,7 @@ module.exports = function() {
 		
 		if (name == '') {
 			alert('이름을 입력해주세요');
-		} else if (phone == '' || !phoneNumberRule.test(phone)) {
+		} else if (phone == '' || !util.checkValidMobileNumber(phone)) {
 			alert('휴대폰번호를 입력해주세요');
 		} else {
 			infoController.authorizePhoneRequest(phone, name);

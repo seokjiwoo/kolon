@@ -28,6 +28,16 @@ function ClassUtils() {
 			 */
 			checkVaildEmail: checkVaildEmail,
 			/**
+			 * 패스워드 검증
+			 * @param {String} value - user password for validation 
+			 */
+			checkValidPassword: checkValidPassword,
+			/**
+			 * 핸드폰 번호 검증
+			 * @param {String} value - mobile phone number for validation 
+			 */
+			checkValidMobileNumber: checkValidMobileNumber,
+			/**
 			 * 생일 기준으로 만 나이 구하기
 			 * @param {Date} birthday - birthday
 			 */
@@ -76,6 +86,17 @@ function ClassUtils() {
 		value = $.trim(value);
 		var re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
 		return ((value !== '') && re.test(value));
+	}
+
+	function checkValidPassword(value) {
+		value = $.trim(value);
+		var re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{9,16}$/i;
+		return ((value !== '') && re.test(value));
+	}
+
+	function checkValidMobileNumber(value) {
+		var re = /^[0-9]{10,12}$/i;
+		return (($.trim(value) !== '') && re.test(value));
 	}
 	
 	function calculateAge(birthday) {
