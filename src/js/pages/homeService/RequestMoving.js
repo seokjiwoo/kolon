@@ -9,8 +9,10 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'homeService/RequestMoving.js';
 
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
+	var SuperClass = require('../Page.js'),
+	Super = SuperClass(),
+	DatePickerClass = require('../../components/DatePicker.js'),
+	DatePicker = DatePickerClass();
 	
 	var callerObj = {
 		/**
@@ -24,5 +26,17 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+	
+		setDatePicker();
+	}
+
+	function setDatePicker() {
+		var datePicker = $('.js-picker');
+		DatePicker.init({
+			wrap : datePicker,
+			picker : datePicker.find('.js-picker'),
+			altField : datePicker.find('.js-alt'),
+			button : datePicker.find('.js-btn'),
+		});
 	}
 };
