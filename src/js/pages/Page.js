@@ -66,7 +66,7 @@ module.exports = function() {
 			minSlides: 5,
 			maxSlides: 5
 		});
-			
+
 		// tab width depend on number of li
 		var countMenu = $('.tabType01 li').length ;
 		$('.tabType01 li').css('width',100/countMenu+'%');
@@ -457,6 +457,9 @@ module.exports = function() {
 				$(this).parent().next().css('border-top','0');
 			})
 		});
+		$('.btnDel').on('click',function(){
+			$(this).parent('.conDel').hide();
+		})
 	}
 
 	function tableHeight(){ // '/order/orderGoods.html, /order/orderService.html'주문결재 결재방법 테이블 높이

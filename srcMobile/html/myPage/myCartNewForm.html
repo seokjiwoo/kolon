@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 스크랩"} -->
+</head>
+<body data-page-id="myPage-myCart">
+	<div class="wrapper members">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+				<section>
+					<h2 class="pageTit">마이카트</h2>
+					<div class="pageTop scrapTop">
+						<p><b class="roman">340</b>개의 상품이 있습니다.  </p>
+					</div>
+					<!-- @@include ../_template/my_depth02_mycart.html {"myMenu01":"on"} -->
+					<div class="myCartWrap">
+						<div class="scrapbtnTop">
+							<form method="post" action="/">
+								<fieldset>
+									<legend>스크랩 이미지</legend>
+									<p class="checkbox checkAll">
+										<input type="checkbox" id="checkAll"/>
+										<label for="checkAll">모두 선택</label>
+									</p>
+									<p class="btnR">
+										<button><b>6</b>개 삭제</button>
+										<button>취소</button>
+									</p>
+								</fieldset> 
+							</form>
+						</div>
+						<ul class="myCartList">
+							<li>
+								<a href="#">
+									<p class="checkbox checkAll">
+										<input type="checkbox" id="checkAll"/>
+										<label for="checkAll"></label>
+									</p>
+									<p class="photo"><img src="../images/temp05.jpg" alt=""/></p>
+									<div class="cont">
+										<span>24평형</span>
+										<p>숨어있는 다이닝 스페이스 숨어있는 다이닝 스페이스 </p>
+									</div>
+									<p class=""><b>1,700,000</b>원 <a href="#" class="btnDel">삭제</a></p>
+								</a>
+							</li>
+							<li>
+								<p class="checkbox checkAll">
+									<input type="checkbox" id="checkAll"/>
+									<label for="checkAll"></label>
+								</p>
+								<a href="#">
+									<p class="photo"></p>
+									<div class="">
+										<span>24평형</span>
+										<p>숨어있는 다이닝 스페이스 숨어있는 다이닝 스페이스 </p>
+									</div>
+									<p class=""><b>1,700,000</b>원 <a href="#" class="btnDel">삭제</a></p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<!-- @@include ../_template/footer.html -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
