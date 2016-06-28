@@ -198,7 +198,7 @@
 .cardWrap .cardType09 .cardIntro2{color: #666; margin-top:10px;}
 .cardWrap .cardType09 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}
 .cardWrap .cardType09 .cardRemove{background-image: url('../images/btn_closeG.png');}
-.cardWrap .cardType09 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2; border-radius:50%;}
+/*.cardWrap .cardType09 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2; border-radius:50%;}*/
 .cardWrap .cardType09 .cardCon .btn02{background-position:-64px 0 }
 .cardWrap .cardType09 .cardCon a:hover{background-position:0 -64px; }
 .cardWrap .cardType09 .cardCon .btn02:hover{background-position:-64px -64px; }

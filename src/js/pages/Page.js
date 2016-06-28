@@ -115,10 +115,12 @@ module.exports = function() {
 		$('#btnLnb').on('click', function(e) {//lnb open
 			e.preventDefault();
 			$('#lnbWrapper').animate({'left':'0'}, 500);
+			$('#dim').show();
 		});
 		$('#profileClose').on('click', function(e) {//lnb close
 			e.preventDefault();
 			$('#lnbWrapper').animate({'left':'-285px'}, 500);
+			$('#dim').hide();
 		});
 		$('.depth01.toggle').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
@@ -152,7 +154,7 @@ module.exports = function() {
 					$('#searchWrap').animate({'top':'-177px'},250);
 				} else {
 					$(this).addClass('opened')
-					$('#searchWrap').animate({'top':(topBannerShowFlag ? 177 : 72)+'px'},250);
+					$('#searchWrap').animate({'top':(topBannerShowFlag ? 177 : 60)+'px'},250);
 					$('.bannerClose').on('click', function(){
 						$('#searchOpen').removeClass('opened');
 						$('#searchWrap').animate({'top':'-177px'},250);
@@ -233,6 +235,7 @@ module.exports = function() {
 			e.preventDefault();
 			if($(this).hasClass('opened')){
 				$(this).removeClass('opened');
+				$('.floating').css('z-index','10');
 				$('#floatingMenu').find('.menuTit').animate({'right':'3px'},50,
 				function(){
 					$('.floating04').animate({'top':'0'}, {
@@ -260,6 +263,7 @@ module.exports = function() {
 				$('#dim').stop().fadeOut(100);
 			} else {
 				$(this).addClass('opened');
+				$('.floating').css('z-index','99');
 				$('.floating04').queue('fx',[]).stop().animate({'top':'-65px'}, {
 					duration: 300, 
 					easing: 'easeOutBack',

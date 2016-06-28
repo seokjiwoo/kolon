@@ -103,7 +103,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myMsg.singleCard .recordWrap ul.recordList li .recordCon p {height:155px; padding-right:0; display:table-cell;}
 #myMsg.singleCard .recordWrap ul.recordList li .recordCon .newMsg {position:absolute; top:0; right:30px;}
 #myMsg.singleCard .recordWrap ul.recordList li .recordCon .date {position:absolute;}
-.recordCon{display: inline-block;width: 735px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
+.recordCon{display: inline-block;width: 729px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
 .recordCon .recordTxt{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
 .recordCon b{font-family:'RobotoM','NotoSansM', sans-serif;color:#000;}
 .recordThumb{position: relative;display: inline-block;width: 285px;height: 100%;vertical-align: middle;color: #fff;font-family:'RobotoR','NotoSansR', sans-serif;text-align: center;}
@@ -149,7 +149,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
 #myNotice .recordThumb{background: #a9c700;}
-#myNotice .coupon a{height: 157px;padding: 0;background:none;box-shadow: none}
+#myNotice .coupon a{height: 154px;padding: 0;background:none;border:0;}
 #myNotice .coupon a img{display: block;width: 100%;}
 #myNotice #delteAll{position: absolute;top:25px;right: 20px}
 
@@ -309,17 +309,22 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 
 .orderDetail .checkAgree label:before {display:inline-block;margin:0 20px;}
 
+#myInfo .cardWrap{margin:0;padding: 0;}
+#myInfo .cardWrap > li{overflow: visible;}
 #myInfo .reward{position: absolute;left: 0;bottom:50px;width: 100%;color: #666 ;font-size: 13px;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myInfo .reward:before{content: '';display: inline-block;width: 14px;height: 14px;margin-right: 5px;background: url('../images/ico_point.png') no-repeat;vertical-align: middle;}
-#myInfo #myIntro{background: #a9c700;color: #fff;}
+#myInfo #myIntro .hexagon{background: #a9c700;color: #fff;}
 #myInfo .cardWrap #myIntro.cardType07 .cardTit, #myInfo .cardWrap #myIntro.cardType07 .cardIntro{color: #fff;}
 #myInfo .cardWrap #myIntro.cardType07 .cardIntro:before{background: #fff;}
 #myInfo #myIntro .cardCollect li{width: 64px;height: 64px;margin-top:45px;border-radius: 50%;background: #98b300 url('../images/btn_card_my.png');}
 #myInfo #myIntro .cardCollect .collect02{background-position:-64px 0}
-#myInfo .formList li{width: 210px;margin-top: 10px;}
+#myInfo .alignBox:first-child{margin:0;}
+#myInfo .alignBox{height: 40px;margin-top: 10px;}
+#myInfo .formList li{width: 150px;border-bottom: 0;text-align: left;}
 #myInfo .formList li:first-child{margin-top:0;}
 #myInfo .formList select{width: 100%;}
-#myInfo button{display: block;width: 290px;margin:40px auto 0;}
+#myInfo .btn{width: 290px;}
+#myInfo .drop li:first-child a:after{right: -20px}
 
 #editPassword .subTit{margin-top:30px;}
 #editPassword .subTxt{display: initial;}
@@ -360,7 +365,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myResign .checkbox.listBox{overflow: hidden;border-top: 1px solid #666;}
 #myResign .checkbox li{float: left;width: 25%;margin: 10px 0}
 #myResign .subTxt{margin-top: 10px;}
-#myResign textarea{width: 1060px;height: 150px;margin: 20px 10px;padding:20px;border-radius: 10px;border:1px solid #d6d6d6;font-size: 14px;font-family:'RobotoR','NotoSansR', sans-serif;}
+#myResign textarea{width: 1060px;height: 150px;margin: 20px 10px;}
 #myResign .btn{width: 200px;margin:0 auto;}
 #myResign .btnWrap{margin-top: 40px;}
 
@@ -423,7 +428,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .cardWrap .formListWrap{height: 210px;}
 .cardWrap .formListWrap01{height: 170px;}
 .cardWrap .formListWrap:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
-.cardWrap .formListWrap .cardCollect, .cardWrap .formListWrap .formList{display: inline-block;vertical-align: middle;margin: 0;}
+.cardWrap .formListWrap .cardCollect, .cardWrap .formListWrap .formList{display: inline-block;vertical-align: middle;margin: 0;min-width: 180px;}
 
 .my .cartCont {width:100%; overflow:hidden;}
 .my h2.secTit + .cartCont {margin-top:20px;}
@@ -443,7 +448,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my .tableStyle02{text-align: left;font-family:'RobotoR','NotoSansR', sans-serif;border-top: 1px solid #e8e8e8}
 .my .tableStyle02 th{width:90px;padding:15px 35px;background: #f7f7f7;border-bottom: 1px solid #e8e8e8;color: #000;}
 .my .tableStyle02 td{padding:15px 20px;border-bottom: 1px solid #e8e8e8}
-.my .tableStyle02 .wrapScroll{display: block;width: 690px;padding:30px 20px;}
+.my .tableStyle02 .wrapScroll{display: block;width: 690px;padding:20px;}
 .my .tableStyle02 .popScroll{max-height: 440px;margin-top:0;}
 .my .tableStyle02 .popScroll img{display: block;max-width: 100%;}
 .my .tableStyle02 .bar:before{content: '';display: inline-block;width: 1px;height: 10px;margin: 0 7px;background: #999;vertical-align: middle;}
