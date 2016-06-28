@@ -354,10 +354,10 @@ module.exports = function() {
 		};
 		function showContent(tg){
 			if( !tg.hasClass("active") ){
-				tg.addClass("active").find("span").text("의견 작성하기 접기");
+				tg.addClass("active").find("span").text("접기");
 				$(opinion).stop().slideDown();
 			}else{
-				tg.removeClass("active").find("span").text("의견 작성하기");
+				tg.removeClass("active").find("span").text("의견 묻기");
 				$(opinion).stop().slideUp();
 			}
 		};

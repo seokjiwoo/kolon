@@ -177,9 +177,9 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .container select.pullSize{padding:9px 20px;border:1px solid #d6d6d6;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 
 .paper-nav{text-align:center;}
-.paper-nav a{width:10px;height:10px;display:inline-block;background:#ccc;border-radius:100%;margin-left:4px;}
+.paper-nav a{width:10px;height:11px;display:inline-block;background:url('../images/bul_hexagon.png') 0 -11px no-repeat;margin-left:4px;}
 .paper-nav a:first-child{margin-left:0;}
-.paper-nav a.active{background:#f1655d;}
+.paper-nav a.active{background-position:0 0;}
 .paper-nav a span{position:absolute;left:-99990em;top:-99990em;z-index:-1;display:inline-block;}
 
 .radioBox{position: relative;line-height: 30px;}
@@ -319,3 +319,5 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 /* myPage order.html 제목줄 옆 dropBox 레이아웃 */
 .alignBox {position:relative;line-height:40px}
 .alignBox .drop {position:absolute;top:0;right:0;z-index:1}
+.alignBox .leftBox {min-width:140px; height:40px; float:left; position:relative; display:inline-block;}/* drop밖에 감싸서 정렬 */
+.alignBox .rightBox {min-width:140px; height:40px; float:right; position:relative; display:inline-block;}
