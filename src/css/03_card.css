@@ -1,7 +1,6 @@
 .cardWrap{overflow: hidden;min-width:1220px;margin:40px -20px 0 0;z-index: 0}
-.cardWrap > li{overflow: hidden;float: left;width:285px;margin-bottom: 10px;background-color:#fff;text-align: center;color:#fefefe;background-size: 100%;background-position: center;border-radius: 10px;box-shadow: 0px 3px rgba(0,0,0,0.1);}
-.main .cardWrap > li{box-shadow: none; border-radius:0; padding-top:84px; margin-top:-83px;}
-.main .cardWrap {padding-top:83px;}
+.cardWrap > li{overflow: hidden;float: left;width:285px;padding-top:84px; margin-top:-83px;margin-bottom: 10px;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
+.cardWrap {padding-top:83px;}
 
 .cardLayer {width:100%; height:754px; padding:0 20px; position:absolute; top:0; left:0; z-index:90;}
 .cardLayer .cardWrap {width:1500px; margin:0 auto; position:relative; }
@@ -199,7 +198,7 @@
 .cardWrap .cardType09 .cardIntro2{color: #666; margin-top:10px;}
 .cardWrap .cardType09 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}
 .cardWrap .cardType09 .cardRemove{background-image: url('../images/btn_closeG.png');}
-.cardWrap .cardType09 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2; border-radius:50%;}
+/*.cardWrap .cardType09 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2; border-radius:50%;}*/
 .cardWrap .cardType09 .cardCon .btn02{background-position:-64px 0 }
 .cardWrap .cardType09 .cardCon a:hover{background-position:0 -64px; }
 .cardWrap .cardType09 .cardCon .btn02:hover{background-position:-64px -64px; }
