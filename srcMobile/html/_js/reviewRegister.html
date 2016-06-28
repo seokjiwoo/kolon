@@ -22,33 +22,29 @@
 								<p class="op">옵션 : 25평형 추가요청상품 : 보떼 도그하우스</p>
 							</li>
 						</ul>
-						<div class="writeBox">
+						<div class="writeBox js-editor-wrap">
 							<div class="point">
 								<span>평점</span><p class="gradeBig"><span class="grade45"></span></p>
 							</div>
-							<div class="txt" contenteditable>
-								<p>리뷰를 작성해주세요</p>
-							</div>
+							<style>
+								.js-editor-area {border:none;border-top:1px solid #ccc;border-radius:0}
+							</style>
+							<textarea class="txt js-editor-area" placeholder="리뷰를 작성해주세요." maxlength="10000"></textarea>
 							<div class="info">
 								<span class="pic"><input type="file" /></span>
-								<span class="count">0 <i>/ 1000</i></span>
+								<span class="count"><span class="js-txt-count">0</span> <i>/ 10000</i></span>
 							</div>
 						</div>
-						<div class="tagBox">
+						<div class="tagBox js-editor-wrap">
 							<style>
-								.js-editor {width:100%;height:100px;overflow:hidden;overflow-y:auto;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999}
-								.js-editor.is-showPlaceholder:before {position:absolute;color:#ccd6dd;content:attr(data-placeholder-default)}
-								.js-editor .tagBtn:before {content:'#'}
+								.js-editor-div {width:100%;height:100px;overflow:hidden;overflow-y:auto;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999}
+								.js-editor-div.is-showPlaceholder:before {position:absolute;color:#ccd6dd;content:attr(data-placeholder-default)}
+								.js-editor-div .tagBtn:before {content:"#"}
+								.js-editor-div .text-over {background:#fcc}
+								.js-txt-count.is-over {color:#ff0000}
 								.ui-state-focus {border: 1px solid #cccccc;background:#ededed;font-weight:normal;color: #2b2b2b}
 							</style>
-							<div class="txt js-editor is-showPlaceholder" contenteditable="true" data-placeholder-default="#태그를 입력해주세요.">
-								<!-- 
-								<a href="#" class="tagBtn active close"><span>#실용적인</span></a>
-								<a href="#" class="tagBtn active close"><span>#소박한</span></a>
-								<a href="#" class="tagBtn active close"><span>#독특한</span></a>
-								<p>#태그를 입력해주세요.</p>
-								-->
-							</div>
+							<div class="txt js-editor-div is-showPlaceholder" contenteditable="true" data-placeholder-default="#태그를 입력해주세요." maxlength="500"></div>
 							<div class="tag">
 								<a href="#" class="tagBtn active"><span>#실용적인</span></a>
 								<a href="#" class="tagBtn"><span>#소박한</span></a>
@@ -61,6 +57,11 @@
 								<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
 								<a href="#" class="tagBtn"><span>#소박한</span></a>
 							</div>
+							<!-- 
+							<div class="info">
+								<span class="count"><span class="js-txt-count">0</span> <i>/ 500</i></span>
+							</div>
+							 -->
 						</div>
 						<p class="reviewTxt">
 							등록된 상품리뷰는 자동으로 상품 상세화면에 노출 됩니다. <br />
@@ -88,9 +89,72 @@
 			var doc = document,
 			NS = win.vinylX;
 
-			NS.reviewRegister = (function() {
+			NS.review = (function() {
 				var defParams = {
-					editor : '.js-editor',
+					wrap : '.js-editor-wrap',
+					editor : '.js-editor-area', //'.js-editor-area, .js-editor-div',
+					maxCount : 1000,
+					txtCount : '.js-txt-count'
+				};
+				return {
+					init : function(container, args) {
+						if (!(this.container = container).size()) return;
+						this.opts = $.extend({}, defParams, args);
+
+						this.setElements();
+						this.setBindEvents();
+					},
+					setElements : function() {
+						this.editor = this.container.find(this.opts.editor);
+					},
+					setBindEvents : function() {
+						this.editor.on('keydown keyup change', $.proxy(this.onChangeEditor, this));
+					},
+					onChangeEditor : function(e) {
+						var target = $(e.currentTarget),
+						wrap = target.closest(this.opts.wrap),
+						count = target.val().length || target.text().length,
+						maxCount = parseInt(target.attr('maxlength'), 10) || this.opts.maxCount,
+						txtCount = wrap.find(this.opts.txtCount);
+
+						if (target.attr('contenteditable')) {
+							// contenteditable 첫키값이 ctrl 일때의 length 보정
+							if (count === 8 && (target.text().split('\n').length >= 2) && (e.ctrlKey || e.keyCode === 17)) {
+								count = 0;
+							}
+
+							// && e.type !== 'keydown' 
+							if (count > maxCount && e.type !== 'keydown' && (e.which && e.which !== $.ui.keyCode.BACKSPACE)) {
+								var overText = target.text().substr(maxCount),
+								overHtml;
+
+								if (!target.find('.text-over').size()) {
+									overHtml = '<span class=\'text-over\'>' + overText + '</span>';
+									target.html(target.html().substr(0, maxCount) + overHtml);
+									NS.reviewTag.placeCaretAtEnd(target.get(0));
+								} else {
+									target.find('.text-over').html(overText);
+								}
+							}
+						}
+
+						if (count > maxCount && (e.which && e.which !== $.ui.keyCode.BACKSPACE)) {
+							// e.preventDefault();
+							count = (maxCount - count);
+							txtCount.addClass('is-over');
+							// win.alert('최대 ' + maxCount + '글자까지 작성할 수 있습니다.');
+						} else {
+							txtCount.removeClass('is-over');
+						}
+
+						txtCount.html(count);
+					}
+				};
+			})();
+
+			NS.reviewTag = (function() {
+				var defParams = {
+					editor : '.js-editor-div',
 					autocompleteOpts : {
 						minLength : 0,
 						source : $.noop,
@@ -98,7 +162,7 @@
 						focus : function() { return false; }
 					},
 					startTyping : '태그를 입력해주세요.',
-					startTag : '#',
+					startTag : '',// '#',
 					tags : [
 						'실용적인',
 						'소박한',
@@ -134,13 +198,13 @@
 						
 						this.allowedTag = true;
 
-						this.editor.on('keydown keyup', $.proxy(this.setPlaceHolder, this));
+						this.editor.on('keydown keyup', $.proxy(this.onEditorKeyListener, this));
 						this.editor.on('keydown', $.proxy(this.tagAutoComplete, this))
 									.on('click', $.proxy(this.onEditorClick, this))
 									.autocomplete(autocompleteOpts)
 									.autocomplete('instance')._renderItem = $.proxy(this.onAutoCompleteRender, this);
 					},
-					setPlaceHolder : function(e) {
+					onEditorKeyListener : function(e) {
 						var target = $(e.currentTarget);
 
 						if (target.html() && target.html() !== '') {
@@ -148,17 +212,27 @@
 						} else {
 							target.addClass(this.opts.cssClass.isHolder);
 						}
+
+
+						if (target.autocomplete('instance').menu.active || e.type === 'keyup') {
+							return;
+						}
+
+						if (e.which && (e.which === $.ui.keyCode.ENTER) || (e.which === $.ui.keyCode.SPACE)) {
+							win.console.log('submit');
+						}
 					},
 					tagAutoComplete : function(e) {
 						var target = $(e.currentTarget),
 						editorHtml = this.editor.html();
 
-						if (e.keyCode === $.ui.keyCode.TAB && target.data('autocomplete').menu.active) {
+						if (e.which === $.ui.keyCode.TAB && (target.data('ui-autocomplete') && target.data('ui-autocomplete').menu.active)) {
 							e.preventDefault();
 						}
 
-						if (e.key === this.opts.startTag && this.editor.find('.tagBtn').size() >= this.opts.tagMax) {
-							alert('최대 ' + this.opts.tagMax + '개의 태그만 등록할 수 있습니다.');
+						// if (e.key === this.opts.startTag && this.editor.find('.tagBtn').size() >= this.opts.tagMax) {
+						if (!(e.which === $.ui.keyCode.TAB || e.which === $.ui.keyCode.BACKSPACE) && this.editor.find('.tagBtn').size() >= this.opts.tagMax) {
+							win.alert('최대 ' + this.opts.tagMax + '개의 태그만 등록할 수 있습니다.');
 							this.allowedTag = false;
 
 							this.editor.html(editorHtml.substr(0, editorHtml.length - 1));
@@ -178,7 +252,22 @@
 
 					},
 					split : function(val) {
-						return val.split(/#/);
+						var hashReg = /<[^]*>/ig,
+						hashHtml = '',
+						hasHashTag = hashReg.test(val),
+						rtn = [];
+
+						if (hasHashTag) {
+							val.replace(hashReg, function(value) {
+								hashHtml += value;
+							});
+
+							rtn = val.split(hashHtml)[1].split(/\s{1}/);
+							rtn.unshift(hashHtml);
+							return rtn;
+						}
+
+						return val.split(/\s{1}/);
 					},
 					extractLast : function(term) {
 						return this.split(term).pop();
@@ -204,8 +293,7 @@
 					},
 					onAutoCompleteSelect : function(e, ui) {
 						if (ui.item.value !== this.opts.startTyping) {
-							var self = this,
-							target = this.editor,
+							var target = this.editor,
 							value = target.html(),
 							terms = this.split(value);
 
@@ -213,7 +301,8 @@
 							terms.push('<a href=\'javascript:;\' class=\'tagBtn active close\' contenteditable=\'false\'><span>' + ui.item.value + '</span></a>');
 
 							target.html(terms.join(''));
-							target.html(target.html() + '&nbsp;');
+							// target.html(target.html() + '&nbsp;');
+							target.html(target.html() + '&nbsp;' + ' &nbsp;');
 							this.placeCaretAtEnd(target.get(0));
 						}
 						return false;
@@ -251,11 +340,11 @@
 
 
 			$(function() {
-				NS.reviewRegister.init($('body'));
+				NS.review.init($('body'));
+				NS.reviewTag.init($('body'));
 			});
 		})(window, window.jQuery);
 	</script>
-
 
 </body>
 </html>
