@@ -146,7 +146,7 @@ ul.noticeList li .text p {width:100%; line-height:130%;}
 ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute; bottom:10px; right:15px; font-size:11px; color:#999; text-align:right;}
 
 body[data-page-id=myPage-scrap] {background:#e0e0e0;}
-.scrapWrap {padding:0 15px; overflow:hidden;}
+.scrapWrap {padding:0 15px; overflow:hidden; background:#e0e0e0;}
 .scrapWrap ul.scrap {width:100%; overflow:hidden; margin-bottom:10px;}
 .scrapWrap ul.scrap li {width:100%; padding:30px 0; overflow:hidden; position:relative; background:url(../images/scrap_bg.gif) 0 100% repeat-x; background-size:2px 66px;}
 .scrapWrap ul.scrap li + li {margin-top:10px;}
@@ -177,7 +177,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .scrapWrap ul.scrap li ul.scrapMoreList li a.delBtn {width:35px; height:35px;font-size:0; overflow:hidden; background:#a9c700; border-radius:50%; display:inline-block;}
 .scrapWrap ul.scrap li ul.scrapMoreList li a.delBtn:after {border:0; background-position:0 -38px;}
 .scrapWrap ul.scrap li .dim {display:none; width:100%; height:100%; background:#000; opacity:0.5; position:absolute; top:0; left:0;}
-.scrapbtnTopR {width:100%; text-align:right; margin:10px 0;}
+.scrapbtnTopR {width:100%; text-align:right; padding:10px 0;}
 @media (max-width:320px){
 	.scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
 	.scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
@@ -188,23 +188,23 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .scrapWrap ul.scrap li.scrapBg02 {background-color:#ae66ff;}
 .scrapWrap ul.scrap li.scrapBg03 {background-color:#ffbd4a;}
 
-.scrapTop .scrapListTop {padding:8px 15px; border-top:1px solid #53babb; background:#5ccfd0; position:relative;}
-.scrapTop .scrapListTop p {width:100%; color:#fff; line-height:130%;}
-.scrapTop .scrapListTop a.scrapListMore {width:35px; height:35px; display:inline-block; font-size:0; position:absolute; top:0; right:0;}
-.scrapTop .scrapListTop a.scrapListMore:after {content:''; width:11px; height:14.5px; margin:-7.25px 0 0 0; position:absolute; top:0; right:0; display:inline-block; background:url(../images/scrap_more.png) 0 0 no-repeat; background-size:11px 49px; top:50%; right:12px;}
-.scrapTop .scrapListTop ul.sListMoreCon {padding:0 10px; display:inline-block; background:#fff; position:absolute; top:32px; right:0; box-shadow:0px 3px rgba(0,0,0,0.2); display:none; z-index:2;}
-.scrapTop .scrapListTop ul.sListMoreCon li {width:100%;}
-.scrapTop .scrapListTop ul.sListMoreCon li a {padding:16.5px 0; display:inline-block; color:#333;}
-.scrapTop .scrapListTop ul.sListMoreCon li + li {border-top:1px solid #ccc;}
-.scrapTop .scrapbtnTopR {width:100%; overflow:hidden; position:relative;}
-.scrapTop .scrapbtnTopR a:last-child {margin-right:15px;}
-.scrapTop .scrapbtnTop {width:100%; overflow:hidden; position:relative; padding:10px 0;}
-.scrapTop .scrapbtnTop .checkAll {width:80%; margin-left:15px; text-align:left; overflow:hidden;}
-.scrapTop .scrapbtnTop .btnR {width:150px; position:absolute; top:10px; right:15px; text-align:right;}
-.scrapTop .scrapbtnTop .btnR button {border:0; position:relative; color:#333; font-family:'NotoSansR', 'RobotoR', sans-serif; display:inline-block; padding:0; background:transparent;}
-.scrapTop .scrapbtnTop .btnR button b {color:#f1645c; line-height:1px;}
-.scrapTop .scrapbtnTop .btnR button + button {padding-left:15px; margin-left:15px;}
-.scrapTop .scrapbtnTop .btnR button + button:before {content:''; width:1px; height:11px; margin-top:-3px; background:#8d8d8d; position:absolute; top:50%; left:0;}
+.scrapListTop {padding:8px 15px; border-top:1px solid #53babb; background:#5ccfd0; position:relative;}
+.scrapListTop p {width:100%; color:#fff; line-height:130%;}
+.scrapListTop a.scrapListMore {width:35px; height:35px; display:inline-block; font-size:0; position:absolute; top:0; right:0;}
+.scrapListTop a.scrapListMore:after {content:''; width:11px; height:14.5px; margin:-7.25px 0 0 0; position:absolute; top:0; right:0; display:inline-block; background:url(../images/scrap_more.png) 0 0 no-repeat; background-size:11px 49px; top:50%; right:12px;}
+.scrapListTop ul.sListMoreCon {padding:0 10px; display:inline-block; background:#fff; position:absolute; top:32px; right:0; display:none; z-index:2;}
+.scrapListTop ul.sListMoreCon li {width:100%;}
+.scrapListTop ul.sListMoreCon li a {padding:16.5px 0; display:inline-block; color:#333;}
+.scrapListTop ul.sListMoreCon li + li {border-top:1px solid #ccc;}
+.scrapbtnTopR {width:100%; overflow:hidden; position:relative;}
+.scrapbtnTopR a:last-child {margin-right:15px;}
+.scrapbtnTop {width:100%; overflow:hidden; position:relative; padding:10px 0;}
+.scrapbtnTop .checkAll {width:80%; margin-left:15px; text-align:left; overflow:hidden;}
+.scrapbtnTop .btnR {width:150px; position:absolute; top:10px; right:15px; text-align:right;}
+.scrapbtnTop .btnR button {border:0; position:relative; color:#333; font-family:'NotoSansR', 'RobotoR', sans-serif; display:inline-block; padding:0; background:transparent;}
+.scrapbtnTop .btnR button b {color:#f1645c; line-height:1px;}
+.scrapbtnTop .btnR button + button {padding-left:15px; margin-left:15px;}
+.scrapbtnTop .btnR button + button:before {content:''; width:1px; height:11px; margin-top:-3px; background:#8d8d8d; position:absolute; top:50%; left:0;}
 
 .scrapListWrap {padding:0 10px; background:#e0e0e0; overflow:hidden;}
 .scrapListWrap ul.scrapList {width:100%;}
@@ -299,3 +299,12 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
   .scrapListWrap ul.scrapList li img {width:140px; height:140px;}
   .scrapListWrap ul.scrapList li.on a:before {width:140px; height:140px;}
 }
+
+ul.myCartList {padding:0 15px; background:#fff;}
+ul.myCartList li {width:100%; padding:15px 0;}
+ul.myCartList li + li {border-top:1px solid #666;}
+ul.myCartList li a {padding-left:121; display:inline-block; position:relative;}
+ul.myCartList li .cont {width:100%;}
+ul.myCartList li p.checkbox {}
+ul.myCartList li p.photo,
+ul.myCartList li p.photo img {width:78.5px; height:78.5px; }
