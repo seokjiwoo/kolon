@@ -10,6 +10,7 @@
 .w752{width:752px !important;}
 .w795{width:795px;}
 
+.mt5 {margin-top:5px;}
 .mt15 {margin-top:15px;}
 .mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
@@ -46,8 +47,8 @@
 .lyPop .popRecord.recordInfo {text-align:left;width:auto;padding:20px 20px 20px 0;}
 .lyPop .reasonCancel {padding:25px 22px 33px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
 .lyPop .reasonCancel h5 {margin-bottom:18px;font-size:15px;color:#333;}
-.lyPop .reasonCancel select {width:310px;margin-right:8px;padding:9px 10px;border:1px solid #d6d6d6;border-radius:7px;color:#999;}
-.lyPop .reasonCancel input[type="text"] {width:425px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .reasonCancel select {width:310px;margin-right:8px;}
+.lyPop .reasonCancel input[type="text"] {width:425px;padding:10px 20px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 .lyPop .table03Wrap {overflow:hidden;margin-bottom:30px;}
 .lyPop .table03Wrap .record {position:relative;float:left;width:32.66%;height:210px;margin-left:1%;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;border-bottom:none;}
 .lyPop .table03Wrap .record:first-child {margin-left:0;}
@@ -333,3 +334,8 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 /* myPage order.html 제목줄 옆 dropBox 레이아웃 */
 .alignBox {position:relative;line-height:40px}
 .alignBox .drop {position:absolute;top:0;right:0;z-index:1}
+
+
+.liBox{padding: 15px;text-align: center;border:1px solid #000;color: #000;}
+.liBox li:before{content: '';display: inline-block;width: 3px;height:3px;background: #000;margin-right: 7px;vertical-align: middle;}
+.liBox b{font-family:'RobotoM','NotoSansM', sans-serif;}

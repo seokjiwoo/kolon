@@ -27,16 +27,16 @@
 
 /* 모서리 형 팝업 */
 .popEdge #cboxLoadedContent:after, .popEdge #cboxLoadedContent:before{content: '';position: absolute;bottom: 0}
-.popEdge #cboxLoadedContent:before{left:0;right: 60px;height: 60px;background: #fff;}
-.popEdge #cboxLoadedContent:after{right: 0;width: 0;height: 0;border-top: 60px solid #fff;border-right: 60px solid transparent;}
+.popEdge #cboxLoadedContent:before{left:0;right: 30px;height: 60px;background: #fff;}
+.popEdge #cboxLoadedContent:after{right: 0;width: 0;height: 0;border-top: 60px solid #fff;border-right: 30px solid transparent;}
 .popEdge #cboxClose {display:block;position:absolute;top:0;right:0;width:80px;height:80px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center; z-index: 1}
 .popEdge #cboxClose:active {outline:0;}
-.popEdge .popTop{position: relative;margin:0 60px;height: 80px;background: #fff;z-index: 1;}
-.popEdge .popTop:before{content: '';position: absolute;top:0;left: -60px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 60px solid transparent;}
-.popEdge .popTop:after{content: '';position: absolute;right: -60px;top: 0;width: 60px;height: 60px;background: #fff;}
+.popEdge .popTop{position: relative;margin:0 30px;height: 80px;background: #fff;z-index: 1;}
+.popEdge .popTop:before{content: '';position: absolute;top:0;left: -30px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 30px solid transparent;}
+.popEdge .popTop:after{content: '';position: absolute;right: -30px;top: 0;width: 60px;height: 60px;background: #fff;}
 
 .popEdge .popTit {position: relative;top:0;line-height: 80px;text-align: center;font-size:30px;}
-.popEdge .popTit:after{content: '';position: absolute;left: -30px;right: -30px;bottom: 0;height: 1px;background: #666;}
+.popEdge .popTit:after{content: '';display: block;width: 100%;bottom: 0;height: 1px;background: #666;}
 .popEdge .popTit span.count{color:#f1645c;}
 .popEdge .subTit {font-size:20px;color:#000; }
 
@@ -64,6 +64,7 @@
 
 #popAgree01 .popCon{text-align: left;}
 
+.popCon a[class^=btnSize]{min-width: 150px;}
 .popCon input[type="text"]{width:230px; padding:10px 20px; border:1px solid #ccc;font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin:0;}
 .popCon select{padding:10px 10px; border:1px solid #ccc;color: #999;}
 .popCon fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}

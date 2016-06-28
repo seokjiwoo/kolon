@@ -11,7 +11,7 @@
 .user.infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
 
-aside.myMenu{float: left;width:225px;min-height: 145px;padding:0 30px;background: #f65677; margin-top:60px; position:relative;}
+aside.myMenu{float: left;width:225px;min-height: 145px;margin-right: 20px;padding:0 30px;background: #f65677; margin-top:60px; position:relative;}
 aside.myMenu:before {content:''; border-left:30px solid transparent; border-bottom:60px solid #f65677; position:absolute; top:-60px; left:0; z-index:0;}
 aside.myMenu:after {content:''; width:255px; height:60px; background:#f65677; position:absolute; top:-60px; right:0; z-index:0;}
 aside.myMenu ul:before {content:''; width:255px; height:60px; background:#f65677; position:absolute; bottom:-60px; left:0; z-index:0;}
@@ -22,9 +22,9 @@ aside.myMenu li a{display: block;padding:15px 0;color: #fff;}
 aside.myMenu li.on a{font-family:'RobotoM','NotoSansM', sans-serif;}
 aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;height: 13px;background: url('../images/ico_active.png') no-repeat center; margin-right:5px;vertical-align: middle;}
 
-.my .myMenu + .singleCard {padding:20px 50px 50px 70px}
+.my .myMenu + .singleCard {padding:20px 50px 50px}
 .my .singleCard{padding:0 50px 50px}
-.my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top:0;}
+.my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top: 0; }
 .my .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
 
