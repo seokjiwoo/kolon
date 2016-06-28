@@ -297,9 +297,14 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/myPage/Following.js');
 				break;
 
-			// 마이카트/뉴폼 상품 - 마이카트/샵 상품	myCart
-			case 'myPage-myCart':
-				PageModuleClass = require('./pages/myPage/MyCart.js');
+			// 마이카트/뉴폼 상품	myCartNewForm
+			case 'myPage-myCartNewForm':
+				PageModuleClass = require('./pages/myPage/MyCartNewForm.js');
+				break;
+
+			// 마이카트/샵 상품	myCartShop
+			case 'myPage-myCartShop':
+				PageModuleClass = require('./pages/myPage/MyCartShop.js');
 				break;
 
 			// 포인트	point

@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'myPage/MyCart.js';
+	fileName = 'myPage/MyCartShop.js';
 
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
