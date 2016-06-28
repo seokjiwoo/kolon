@@ -309,7 +309,7 @@ $(document).ready(function() {
 		// [E] 마이커먼 myPage
 
 		default:
-			PageModuleClass = require('./pages/pagesMobile/Page.js');
+			PageModuleClass = require('./pages/Page.js');
 			break;
 	}
 	

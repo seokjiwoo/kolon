@@ -21,7 +21,7 @@ function ClassConsole() {
 	 * @default     true
 	 * @private
 	 */
-	_isDebug = false,
+	_isDebug = true,
 	/**
 	 * @description
 	 *  url의 debug 모드용 search 값 설정
