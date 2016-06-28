@@ -310,6 +310,9 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
 .calendar.cal2 span.calInp input[type="text"] {width:80px;}
 
+table.ui-datepicker-calendar th, table.ui-datepicker-calendar td {background:#fff !important;border:none !important;text-align:center !important;padding:0 !important;width:28px !important;height:28px !important;}
+table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-calendar td.ui-datepicker-week-end a {color:#f1645c !important;}
+
 /* dropBox */
 .drop {overflow:hidden;height:38px;border:1px solid #ccc;}
 .drop li {width:138px;height:38px;border-top:1px solid #ccc;}
