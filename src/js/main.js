@@ -62,7 +62,7 @@ $(document).ready(function() {
 
 		// [S] 뉴폼 newForm
 			// 상품목록 index
-			case 'newForm-index':
+			case 'newForm':
 				PageModuleClass = require('./pages/newForm/Index.js');
 				break;
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 		// [S] 샵 shop
 			// 상품목록 index
-			case 'shop-index':
+			case 'shop':
 				PageModuleClass = require('./pages/shop/Index.js');
 				break;
 
@@ -88,7 +88,7 @@ $(document).ready(function() {
 
 		// [S] 매거진 magazine
 			// 목록 index
-			case 'magazine-index':
+			case 'magazine':
 				PageModuleClass = require('./pages/magazine/Index.js');
 				break;
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
 		// [S] 홈서비스 homeService
 			// 홈서비스 소개 index
-			case 'homeService-index':
+			case 'homeService':
 				PageModuleClass = require('./pages/homeService/Index.js');
 				break;
 
@@ -124,7 +124,7 @@ $(document).ready(function() {
 
 		// [S] 의견묻기 qna
 			// 목록 index
-			case 'qna-index':
+			case 'qna':
 				PageModuleClass = require('./pages/qna/Index.js');
 				break;
 
@@ -137,7 +137,7 @@ $(document).ready(function() {
 
 		// [S] 커먼전문가 manager
 			// 목록 index
-			case 'manager-index':
+			case 'manager':
 				PageModuleClass = require('./pages/manager/Index.js');
 				break;
 
@@ -178,7 +178,7 @@ $(document).ready(function() {
 
 		// [S] 마이커먼 myPage
 			// 마이커먼 index
-			case 'myPage-index':
+			case 'myPage':
 				PageModuleClass = require('./pages/myPage/Index.js');
 				break;
 
