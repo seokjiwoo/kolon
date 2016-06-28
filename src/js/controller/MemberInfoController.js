@@ -154,9 +154,10 @@ function ClassMemberInfoController() {
 			"loginId": id
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('checkEmailResult', [200, result.status, result.message]);
+				$(callerObj).trigger('checkEmailResult', [status, result]);
 			} else {
 				Super.handleError('checkEmail', result);
+				$(callerObj).trigger('checkEmailResult', [status, result]);
 			}
 		}, true);
 	};
