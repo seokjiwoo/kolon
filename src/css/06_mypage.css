@@ -166,9 +166,9 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myMsg .recordCon .newMsg span:after {content:''; border-left:15px solid transparent; border-right:15px solid transparent; border-top:9px solid #f37972; position:absolute; bottom:-9px; right:0;}
 #myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
 
-#fallowing fieldset{width:100%;margin-bottom: 30px;background: #fff;border:1px solid #e6e6e6;color: #404040;display: block;font-family:'RobotoM','NotoSansM', sans-serif}
-#fallowing #fallowSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
-#fallowing button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
+#following fieldset{width:100%;margin-bottom: 30px;background: #fff;border:1px solid #e6e6e6;color: #404040;display: block;font-family:'RobotoM','NotoSansM', sans-serif}
+#following #followSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
+#following button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
 .recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
