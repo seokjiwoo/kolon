@@ -55,5 +55,10 @@ module.exports = function() {
 				tg.find("> em").removeClass("up")
 			}
 		});
+
+		// mypage - 조회기간 드롭다운 영역 날짜선택
+		$("#dataPic01").datepicker();
+		$("#dataPic02").datepicker();
+
 	}
 }
