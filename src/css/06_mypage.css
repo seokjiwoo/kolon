@@ -309,7 +309,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 
 .orderDetail .checkAgree label:before {display:inline-block;margin:0 20px;}
 
-#myInfo .cardWrap{margin:0;padding: 0;}
+#myInfo .cardWrap{overflow: visible;margin:0;padding: 0;}
 #myInfo .cardWrap > li{overflow: visible;}
 #myInfo .reward{position: absolute;left: 0;bottom:50px;width: 100%;color: #666 ;font-size: 13px;font-family:'RobotoR','NotoSansR', sans-serif;}
 #myInfo .reward:before{content: '';display: inline-block;width: 14px;height: 14px;margin-right: 5px;background: url('../images/ico_point.png') no-repeat;vertical-align: middle;}

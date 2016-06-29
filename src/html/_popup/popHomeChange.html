@@ -14,11 +14,32 @@
 	<table class="record">
 		<tr>
 			<th>수거일시를 선택해주세요.<br>(수거 가능한 시간만 표시됩니다)</th>
-			<td></td>
+			<td>
+				<!-- datePicker -->
+				<div class="calendar cal2 js-range-picker">
+					<span class="calInp">
+						<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+						<a href="#" class="calBtn js-btn-from">날짜선택</a>
+						<div class="cal-container js-picker-from"></div>
+					</span> 
+				</div>
+				<!--// datePicker -->
+			</td>
 		</tr>
 		<tr>
 			<th>배달일시를 선택해주세요.<br>(배달 가능한 시간만 표시됩니다)</th>
-			<td></td>
+			<td>
+				<ul class="drop" data-prevent="true">
+					<li><a href="#">오전10:00 - 오전 11:00</a></li>
+					<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>
+					<li><a href="#" data-value="type-2">오후12:00 - 오후 01:00</a></li>
+					<li><a href="#" data-value="type-3">오후01:00 - 오후 02:00</a></li>
+					<li><a href="#" data-value="type-4">오후02:00 - 오후 03:00</a></li>
+					<li><a href="#" data-value="type-5">오후03:00 - 오후 04:00</a></li>
+					<li><a href="#" data-value="type-6">오후04:00 - 오후 05:00</a></li>
+					<li><a href="#" data-value="type-7">오후05:00 - 오후 06:00</a></li>
+				</ul>
+			</td>
 		</tr>
 	</table>
 	<p class="btnWrap"><a href="" class="btnSizeM btnColor02">변경 하기</a></p>
