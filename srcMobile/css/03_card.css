@@ -124,7 +124,7 @@
 .cardWrap .cardType10 .tag ul{margin-top:20px;}
 .cardWrap .cardType10 .tag a{overflow: hidden;width:auto;height: auto;padding: 10px 15px;margin:3px;border:1px solid #f3918b;color: #f1645c;border-radius: 17px;}
 
-.cardWrap .cardType11 .cardIntro:before{;background:#000;}
+.cardWrap .cardType11 .cardIntro:before{background:#000;}
 .cardWrap .expert .cardSub{margin-top:5px;color: #f1645c;}
 .cardWrap .expert .cardIntro{color: #666;}
 .cardWrap .expert .cardIntro:before{display: none;}

@@ -15,7 +15,7 @@
 .noBorder{border:0 !important;}
 
 legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
-.italicNum{font-family: nn, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900;}
+.italicNum{font-family: "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900;}
 
 .arrayWrap{clear: both;height: 37px;}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
