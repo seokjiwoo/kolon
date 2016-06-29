@@ -198,7 +198,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .scrapListTop ul.sListMoreCon li + li {border-top:1px solid #ccc;}
 .scrapbtnTopR {width:100%; overflow:hidden; position:relative;}
 .scrapbtnTopR a:last-child {margin-right:15px;}
-.scrapbtnTop {width:100%; overflow:hidden; position:relative; padding:10px 0;}
+.scrapbtnTop {width:100%; overflow:hidden; position:relative; padding:10px 0; background:#e0e0e0;}
 .scrapbtnTop .checkAll {width:80%; margin-left:15px; text-align:left; overflow:hidden;}
 .scrapbtnTop .btnR {width:150px; position:absolute; top:10px; right:15px; text-align:right;}
 .scrapbtnTop .btnR button {border:0; position:relative; color:#333; font-family:'NotoSansR', 'RobotoR', sans-serif; display:inline-block; padding:0; background:transparent;}
@@ -361,11 +361,66 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
   .scrapListWrap ul.scrapList li.on a:before {width:140px; height:140px;}
 }
 
+p.setTit {width:100%; overflow:hidden; text-align:center; background:#f8f8f8; border-bottom:1px solid #e5e5e5; color:#666; font-size:11px; line-height:19px;}
+.setPrice {width:100%; overflow:hidden; padding-bottom:21px; background:#e0e0e0;}
+.setPrice .setP {padding:15px; overflow:hidden; background:#f8f8f8; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
+.setPrice p {color:#333;}
+.setPrice p.setPriceTit {width:40%; float:left; }
+.setPrice p.setPriceCont {width:60%; float:right; text-align:right;}
+.setPrice p.setPriceCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:18px;}
 ul.myCartList {padding:0 15px; background:#fff;}
-ul.myCartList li {width:100%; padding:15px 0;}
-ul.myCartList li + li {border-top:1px solid #666;}
-ul.myCartList li a {padding-left:121; display:inline-block; position:relative;}
-ul.myCartList li .cont {width:100%;}
-ul.myCartList li p.checkbox {}
+ul.myCartList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}
+ul.myCartList > li + li {border-top:1px solid #666;}
+ul.myCartList li > a {padding-left:121px; display:inline-block; position:relative; font-size:15px;}
+ul.myCartList li .cont {width:100%; min-height:78.5px; overflow:hidden;}
+ul.myCartList li .cont p {font-weight:bold; color:#333; line-height:130%;}
+ul.myCartList li .cont span {padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
+ul.myCartList li .cont span + p {margin-top:8px;}
+ul.myCartList li p.checkbox {position:absolute; top:0; left:0;}
 ul.myCartList li p.photo,
 ul.myCartList li p.photo img {width:78.5px; height:78.5px; }
+ul.myCartList li p.photo {position:absolute; top:0; left:34px;}
+ul.myCartList li p.listPrice {padding:15px 30px 0 0; overflow:hidden; text-align:right; font-size:15px; color:#333; position:relative;}
+ul.myCartList li p.listPrice b {}
+ul.myCartList li p.listPrice span {width:100%; min-height:24px; display:inline-block; line-height:24px;}
+ul.myCartList li p.listPrice a.btnDel {width:25px; height:25px; font-size:0; position:absolute; bottom:0; right:0; display:inline-block;}
+ul.myCartList li p.listPrice a.btnDel:after {content:''; width:24px; height:24px; border:1px solid #ccc; background:url('../images/ico_close03.png') 50% no-repeat; background-size:11.5px 11.5px; position:absolute; top:0; left:0;}
+ul.myCartList li p.listPrice select {width:50px; height:26px; position:absolute; top:13px; left:121px;}
+ul.myCartList li p.listTxt {margin-top:12.5px; color:#999; font-size:15px;}
+ul.myCartList li .option {width:100%; overflow:hidden;}
+ul.myCartList li .option + .option {border-top:1px solid #ccc; margin-top:10px;}
+ul.myCartList li ul.priceBox {margin-top:15px; padding:15px; background:#f8f8f8;}
+ul.myCartList li ul.priceBox > li {width:100%; overflow:hidden;}
+ul.myCartList li ul.priceBox > li p {color:#333; line-height:130%;}
+ul.myCartList li ul.priceBox > li + li {margin-top:5px;}
+ul.myCartList li ul.priceBox > li.check p {color:#f1645c;}
+ul.myCartList li ul.priceBox > li.check p.priceBoxCont b {font-size:18px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
+ul.myCartList li ul.priceBox > li.check p.priceBoxTit {font-weight:bold;}
+ul.myCartList li ul.priceBox li p.priceBoxTit {width:40%; float:left;}
+ul.myCartList li ul.priceBox li p.priceBoxCont {width:60%; float:right; text-align:right;}
+ul.myCartList li ul.priceBox li p.priceBoxCont b {}
+
+.myCartInfo {padding:20px 15px; border-top:10px solid #e0e0e0; border-bottom:10px solid #e0e0e0; background:#f8f8f8;}
+.myCartInfo p.myCartInfoTit {width:100%; overflow:hidden; font-size:15px; color:#282828;}
+.myCartInfo ul.myCartInfoList {width:100%; overflow:hidden; margin-top:14px;}
+.myCartInfo ul.myCartInfoList li {padding-left:6px; line-height:130%; color:#666; font-size:13px; position:relative;}
+.myCartInfo ul.myCartInfoList li + li {margin-top:5px;}
+.myCartInfo ul.myCartInfoList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
+.myCartTotal {width:100%; overflow:hidden; position:fixed; bottom:0; left:0;}
+.myCartTotal .total{padding:20px 50px 20px 15px; border-top:1px solid #ccc; overflow:hidden; position:relative; background:#fff;}
+.myCartTotal p.totalTit {width:40%; float:left; color:#333; font-family:'NotoSansM', 'RobotoM', sans-serif; line-height:20px;}
+.myCartTotal p.totalCont {width:60%; float:right; text-align:right; color:#f1645c; font-size:15px; line-height:20px;}
+.myCartTotal .total p.totalCont b {font-size:20px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
+.myCartTotal .total a.more {width:23.5px; height:26.5px; font-size:0; margin-top:-13.25px; position:absolute; top:50%; right:15px;}
+.myCartTotal .total a.more:after {content:''; width:23.5px; height:26.5px; position:absolute; top:0; right:0; background:url('../images/btn_total.png') 0 0 no-repeat; background-size:23.5px 54px;}
+.myCartTotal .total a.more.opened:after {background-position:0 -26.5px;}
+.myCartTotal a.totalBtn {width:100%; padding:20px 0; text-align:center; background:#333; color:#fff; display:inline-block; font-size:17px; line-height:17px;}
+.myCartTotal > ul.totalList {padding:0 15px; background:#e6e6e6; border-top:1px solid #ccc;}
+.myCartTotal ul.totalList > li {width:100%; overflow:hidden; padding:20px 0;}
+.myCartTotal ul.totalList > li p.totalCont {color:#000;}
+.myCartTotal ul.totalList > li + li {border-top:1px solid #ccc;}
+.myCartTotal ul.totalList > li ul.tList {width:100%; overflow:hidden;}
+.myCartTotal ul.totalList > li ul.tList li {padding-left:8px; line-height:130%; color:#666; font-size:13px; position:relative;}
+.myCartTotal ul.totalList > li ul.tList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
+.myCartTotal ul.totalList > li ul.tList li + li {margin-top:5px;}
+.slideMore {display:none;}

@@ -103,6 +103,10 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 #loginN:before{background-position: -35px 0}
 #loginKs:before{background-position: -70px 0}
 
+/* text color */
+.pointRed {color:##f1645c;}
+.pointCyan {color:#00aeb9;}
+
 /* bottom fix*/
 .btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;}
 .btmFix + .container{padding-bottom: 55px;}
