@@ -45,7 +45,7 @@
 								.ui-state-focus {border: 1px solid #cccccc;background:#ededed;font-weight:normal;color: #2b2b2b}
 							</style>
 							<div class="txt js-editor-div is-showPlaceholder" contenteditable="true" data-placeholder-default="#태그를 입력해주세요." maxlength="500"></div>
-							<div class="tag">
+							<div class="tag js-tag-wrap">
 								<a href="#" class="tagBtn active"><span>#실용적인</span></a>
 								<a href="#" class="tagBtn"><span>#소박한</span></a>
 								<a href="#" class="tagBtn"><span>#트랜디한</span></a>
@@ -148,6 +148,177 @@
 						}
 
 						txtCount.html(count);
+					}
+				};
+			})();
+
+			NS.reviewTagSpace = (function() {
+				var defParams = {
+					editor : '.js-editor-div',
+					tagWrap : '.js-tag-wrap',
+					tag : '.tagBtn',
+					tagMax : 3,
+					hashReg : /<[^]*>/ig,
+					cssClass : {
+						isHolder : 'is-showPlaceholder',
+						active : 'active'
+					}
+				};
+				return {
+					init : function(container, args) {
+						if (!(this.container = container).size()) return;
+						this.opts = $.extend({}, defParams, args);
+
+						this.setElements();
+						this.setBindEvents();
+					},
+					setElements : function() {
+						this.editor = this.container.find(this.opts.editor);
+					},
+					setBindEvents : function() {						
+						this.allowedTag = true;
+
+						this.editor.on('keyup', $.proxy(this.tagAutoComplete, this))
+									.on('keydown keyup', $.proxy(this.onEditorKeyListener, this))
+									.on('click', $.proxy(this.onEditorClick, this));
+					},
+					onEditorKeyListener : function(e) {
+						var target = $(e.currentTarget);
+
+						if (target.html() && target.html() !== '') {
+							target.removeClass(this.opts.cssClass.isHolder);
+						} else {
+							target.addClass(this.opts.cssClass.isHolder);
+						}
+
+						if (e.type === 'keyup') {
+							// win.console.log('keyup', target.html());
+						}
+
+						// if (e.type === 'keyup') {
+						// 	return;
+						// }
+
+						// if (e.which && (e.which === $.ui.keyCode.ENTER) || (e.which === $.ui.keyCode.SPACE)) {
+						// 	win.console.log('submit');
+						// }
+					},
+					tagAutoComplete : function(e) {
+						var _this = this,
+						target = $(e.currentTarget),
+						value = target.html(),
+						terms = this.split(value),
+						insertHtml = [],
+						tempHtml = '';
+
+						if (e.which && (e.which === $.ui.keyCode.ENTER) || (e.which === $.ui.keyCode.SPACE)) {
+							win.console.log('value', value);
+							win.console.log('terms', terms);
+							$.each(terms, function(index, val) {
+								win.console.log('each', index, val);
+								if (!val || val === ' ' || val === '&nbsp;' || val === '&nbsp;&nbsp;') {
+									return;
+								}
+
+								if (_this.hasHashTag(val)) {
+									tempHtml = val;
+									if (e.which !== $.ui.keyCode.ENTER) {
+										tempHtml += '&nbsp;';
+									}
+								} else {
+									tempHtml = '<a href=\'javascript:;\' class=\'tagBtn active close\' contenteditable=\'false\'><span>' + val + '</span></a>';
+								}
+
+								insertHtml.push(tempHtml);
+							});
+
+							target.html(insertHtml.join(''));
+
+							if (e.which !== $.ui.keyCode.ENTER) {
+								target.html(target.html() + '&nbsp;');
+							}
+							// target.html(target.html() + '&nbsp;');
+							this.placeCaretAtEnd(target.get(0));
+						}
+
+
+						if (e.which && (e.which === $.ui.keyCode.ENTER)) {
+							e.preventDefault();
+							target.html(target.html() + '<br/>');
+						}
+
+						// win.console.log('keydown', target.html());
+					},
+					onEditorClick : function(e) {
+						var target = $(e.target);
+
+						if (target.hasClass('tagBtn')) {
+							target.hide();
+						} else if (target.closest('.tagBtn').size()) {
+							target.closest('.tagBtn').hide();
+						}
+
+					},
+					hasHashTag : function(val) {
+						return this.opts.hashReg.test(val);
+					},
+					split : function(val) {
+						var hashHtml = '',
+						rtn = [];
+
+						if (this.hasHashTag(val)) {
+							val.replace(this.opts.hashReg, function(value) {
+								hashHtml += value;
+							});
+
+							win.console.log('split', hashHtml, val.split(hashHtml)[1].split(/\s{1}/));
+
+							rtn = val.split(hashHtml)[1].split(/\s{1}/);
+							rtn.unshift(hashHtml);
+							return rtn;
+						}
+
+						// return val;
+						return val.split(/\s{1}/);
+					},
+					extractLast : function(term) {
+						return this.split(term).pop();
+					},
+					onAutoCompleteSource : function(request, response) {
+						var term = request.term,
+						results = [];
+
+						if (!this.allowedTag) {
+							return;
+						}
+
+						if (term.indexOf(this.opts.startTag) >= 0) {
+							term = this.extractLast(request.term);
+							if (term.length) {
+								results = $.ui.autocomplete.filter(this.opts.tags, term);
+							} else {
+								results = [this.opts.startTyping];
+							}
+						}
+
+						response(results);
+					},
+					placeCaretAtEnd : function(el) {
+						el.focus();
+						if ('undefined' !== typeof win.getSelection && 'undefined' !== typeof doc.createRange) {
+							var range = doc.createRange();
+							range.selectNodeContents(el);
+							range.collapse(false);
+						
+							var sel = win.getSelection();
+							sel.removeAllRanges();
+							sel.addRange(range);
+						} else if ('undefined' !== typeof doc.body.createTextRange) {
+							var textRange = doc.body.createTextRange();
+							textRange.moveToElementText(el);
+							textRange.collapse(false);
+							textRange.select();
+						}
 					}
 				};
 			})();
@@ -341,7 +512,7 @@
 
 			$(function() {
 				NS.review.init($('body'));
-				NS.reviewTag.init($('body'));
+				NS.reviewTagSpace.init($('body'));
 			});
 		})(window, window.jQuery);
 	</script>
