@@ -70,5 +70,9 @@ module.exports = function() {
 				$(this).parent().parent().next().css('border-top','0');
 			})
 		});
+
+		// mypage - 조회기간 드롭다운 영역 날짜선택
+		$("#dataPic01").datepicker();
+		$("#dataPic02").datepicker();
 	}
 }
