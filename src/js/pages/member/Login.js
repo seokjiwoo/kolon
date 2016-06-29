@@ -16,8 +16,6 @@ module.exports = function() {
 	var enteredId;
 	var authNumberResendFlag = false;
 	var forceLoginFlag = false;
-
-	var phoneNumberRule = /^[0-9]{10,12}$/i;
 	
 	var callerObj = {
 		/**
@@ -93,7 +91,7 @@ module.exports = function() {
 		if (id == '' || pw == '') {
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
 		} else {
-			if (phoneNumberRule.test(id)) {
+			if (util.checkValidMobileNumber(id)) {
 				// 휴대폰 번호
 				enteredId = id;
 				controller.login(id, pw);
@@ -157,7 +155,7 @@ module.exports = function() {
 						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
 							onOpen: function() {
 								$('#mobileAuthNumber').val('');
-								$('#sendedPhoneNumber').text(enteredId.substr(0, 3)+'-'+enteredId.substr(3, enteredId.length-7)+'-'+enteredId.substr(-4, 4));
+								$('#sendedPhoneNumber').text(util.mobileNumberFormat(enteredId));
 								$('#resendButton').click(function(e) {
 									authNumberResendFlag = true;
 									controller.resendAuthNumber(enteredId);

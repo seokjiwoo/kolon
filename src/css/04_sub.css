@@ -211,7 +211,7 @@
 .catSorting .catSort ul + h3.sortTit {margin-top:20px;}
 
 /* homeService index */
-body[data-page-id=livingService] {overflow-y:hidden !important;}
+body[data-page-id=homeService-index] {overflow-y:hidden !important;}
 .container.homeWrap {padding:0 0 200px;}
 .homeWrap .section0 {background:url('../images/hm_section00.jpg') center no-repeat;background-size:cover}
 .homeWrap .section1 {background:url('../images/hm_section01.jpg') center no-repeat;background-size:cover}

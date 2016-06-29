@@ -9,7 +9,7 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/Return.js';
 
-	var MyPageClass = require('./MyPage.js'),
+	var MyPageClass = require('./Index.js'),
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),

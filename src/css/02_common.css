@@ -10,6 +10,7 @@
 .w752{width:752px !important;}
 .w795{width:795px;}
 
+.mt5 {margin-top:5px;}
 .mt15 {margin-top:15px;}
 .mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
@@ -46,8 +47,8 @@
 .lyPop .popRecord.recordInfo {text-align:left;width:auto;padding:20px 20px 20px 0;}
 .lyPop .reasonCancel {padding:25px 22px 33px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
 .lyPop .reasonCancel h5 {margin-bottom:18px;font-size:15px;color:#333;}
-.lyPop .reasonCancel select {width:310px;margin-right:8px;padding:9px 10px;border:1px solid #d6d6d6;border-radius:7px;color:#999;}
-.lyPop .reasonCancel input[type="text"] {width:425px;padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
+.lyPop .reasonCancel select {width:310px;margin-right:8px;}
+.lyPop .reasonCancel input[type="text"] {width:425px;padding:10px 20px;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 .lyPop .table03Wrap {overflow:hidden;margin-bottom:30px;}
 .lyPop .table03Wrap .record {position:relative;float:left;width:32.66%;height:210px;margin-left:1%;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;border-bottom:none;}
 .lyPop .table03Wrap .record:first-child {margin-left:0;}
@@ -97,7 +98,7 @@
 .reviewObj .objTxt {float:left;margin:20px 0 0 65px;font-size:20px;color:#000;font-family:'RobotoR','NotoSansR', sans-serif;line-height:1.4}
 .pointColor01 {display:block;font-size:14px;color:#999;}
 
-textarea.pullSize {border:1px solid #d6d6d6;height:144px;padding:10px 20px;font-family:'RobotoM','NotoSansM', sans-serif;color: #999;}
+textarea.pullSize {height:144px;}
 ul.tbList3 {margin-bottom:50px}
 ul.tbList3 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-0.5px; line-height:21px; margin-top:5px;}
 ul.tbList3 li:first-child {margin-top:0;}
@@ -186,14 +187,14 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .container input[type="text"].pullSize,
 .container input[type="password"].pullSize,
-.container input[type="email"].pullSize{padding:10px 20px;border:1px solid #d6d6d6;border-radius:7px;color:#999;margin-right:0;}
+.container input[type="email"].pullSize{padding:10px 20px;border:1px solid #d6d6d6;margin-right:0;}
 .container textarea.pullSize{padding:10px 20px;border: 1px solid #d6d6d6;font-family: 'RobotoM','NotoSansM', sans-serif;color: #999;}
 .container select.pullSize{padding:9px 20px;border:1px solid #d6d6d6;font-family:'RobotoM','NotoSansM', sans-serif;color:#999;}
 
 .paper-nav{text-align:center;}
-.paper-nav a{width:10px;height:10px;display:inline-block;background:#ccc;border-radius:100%;margin-left:4px;}
+.paper-nav a{width:10px;height:11px;display:inline-block;background:url('../images/bul_hexagon.png') 0 -11px no-repeat;margin-left:4px;}
 .paper-nav a:first-child{margin-left:0;}
-.paper-nav a.active{background:#f1655d;}
+.paper-nav a.active{background-position:0 0;}
 .paper-nav a span{position:absolute;left:-99990em;top:-99990em;z-index:-1;display:inline-block;}
 
 .radioBox{position: relative;line-height: 30px;}
@@ -271,18 +272,18 @@ table tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'Noto
 
 table .optList {width:100%; overflow:hidden; margin-top:15px; text-align:left;}
 table .optList .option {width:90%; padding:5px 30px 0 0; position:relative; display:inline-block;}
-table .optList .option + .option {border-top:1px solid #d9d9d9;}
+table .optList .option + .option {border-top:1px solid #d9d9d9; margin-top:5px; }
 table .optList .option p {float:left; }
 table .optList .option p.optionTit {width:126px; padding:5px 0; text-align:left;}
 table .optList .option p.optionPrice {width:93px; padding:5px 0; text-align:right;}
 table .optList .option p.optionNum {width:97px; position:relative; float:right;}
 table .optList .option p.optionNum a,
 table .optList .option p.optionNum span {display:inline-block; float:left;}
-table .optList .option p.optionNum a {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
+table .optList .option p.optionNum a {width:0; height:0; margin:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
 table .optList .option p.optionNum a.btnMinus {left:0; background:url(../images/ico_option.png) 0 0 no-repeat;}
 table .optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
 table .optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px; text-align:center;}
-table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
+table .optList .option a.btnDel {width:0; height:0; margin:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
 
 .adrArea dl {width:100%; margin:0; overflow:hidden;}
 .adrArea dl + dl {border-top:1px solid #e8e8e8;}
@@ -295,7 +296,7 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .adrArea dl dd.adrInfo {width:311px;}
 .adrArea dl dd.adrInfo select + a {margin-left:12px;}
 .adrArea dl dd.adrCon {width:583px; text-align:left;}
-.adrArea dl dd.adrCon p + p {margin-top:6px; color:#;}
+.adrArea dl dd.adrCon p + p {margin-top:6px;}
 .adrArea dl dd.adrCon p {line-height:130%; font-family:'RobotoL', 'NotoSansL', sans-serif;}
 .adrArea dl dd.adrCon p span + span {margin-left:19px;}
 .adrArea dl dd.adrCon p b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR','RobotoR', sans-serif;}
@@ -303,12 +304,15 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 .compt .adrArea dl dd div {height:42px; display:table-cell; vertical-align:middle;}
 
 .calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; /*border-radius:7px;*/ display:inline;}
-.calendar span.calInp {width:; position:relative;}
+.calendar span.calInp {position:relative;}
 .calendar span.calInp input[type="text"] {width:200px; border:0; padding:0; font-family:'RobotoM','NotoSansM', sans-serif; color: #999; margin-right:16px;}
 .calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:1px; right:0;border:none;border-radius:0;}
 .calendar.cal2 {background:url('../images/ico_calendar_bar.png') 50% 50% no-repeat;}
 .calendar.cal2 span.calInp + span.calInp {margin-left:20px;}
 .calendar.cal2 span.calInp input[type="text"] {width:80px;}
+
+table.ui-datepicker-calendar th, table.ui-datepicker-calendar td {background:#fff !important;border:none !important;text-align:center !important;padding:0 !important;width:28px !important;height:28px !important;}
+table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-calendar td.ui-datepicker-week-end a {color:#f1645c !important;}
 
 /* dropBox */
 .drop {overflow:hidden;height:38px;border:1px solid #ccc;}
@@ -332,4 +336,12 @@ table .optList .option a.btnDel {width:0; height:0; padding:25px 25px 0 0; posit
 
 /* myPage order.html 제목줄 옆 dropBox 레이아웃 */
 .alignBox {position:relative;line-height:40px}
-.alignBox .drop {position:absolute;top:0;right:0;z-index:1}
+.alignBox .drop {position:absolute;top:0;right:0;z-index:1;background: #fff;}
+.alignBox .drop.dropOn{z-index: 3}
+.alignBox .leftBox {min-width:140px; height:40px; float:left; position:relative; display:inline-block;}/* drop밖에 감싸서 정렬 */
+.alignBox .rightBox {min-width:140px; height:40px; float:right; position:relative; display:inline-block;}
+
+
+.liBox{padding: 15px;text-align: center;border:1px solid #000;color: #000;}
+.liBox li:before{content: '';display: inline-block;width: 3px;height:3px;background: #000;margin-right: 7px;vertical-align: middle;}
+.liBox b{font-family:'RobotoM','NotoSansM', sans-serif;}

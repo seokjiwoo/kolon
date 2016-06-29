@@ -11,9 +11,9 @@
 		<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
 		<div class="wrap">
 			<!-- @@include ../_template/my_depth03_01.html {"myMenu01":"on"} -->
-			<section class="singleCard" id="myActivity">
+			<section class="singleCard" id="myOrderDetail">
 				<h2 class="secTit">주문 내역 <span class="icoTitle"></span> 주문 상세</h2>				
-				<table class="record record04" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
+				<table class="record record04 detail" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
 					<caption>주문번호 표</caption>
 					<colgroup>
 						<col style="width:114px">
@@ -148,7 +148,7 @@
 							김정현
 							<a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a>
 						</td>
-						<td class="orderState">
+						<td class="orderState stateWrap">
 							<div class="stateTxt">
 								<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
 								결제완료<span class="stateIcor"></span>
@@ -176,7 +176,7 @@
 								<li class="w90">김정현<a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a></li>
 							</ul>
 						</td>
-						<td class="orderState">
+						<td class="orderState stateWrap">
 							<div class="stateTxt">
 								<!-- @@include ../_template/pop_order_state.html {"step":"step04", "step04":"on"} -->
 								결제완료<span class="stateIcor"></span>
@@ -196,7 +196,7 @@
 							<span class="owner">쟈코모</span><br>
 							크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형<br>수량 : 1</span><span class="productPrice">1,700,000 원</span>
 						</td>
-						<td class="orderState">
+						<td class="orderState stateWrap">
 							<div class="stateTxt">
 								취소완료
 							</div>
@@ -219,7 +219,7 @@
 						<td>무료</td>
 						<td class="payment">1,600,000 원</td>
 						<td>김정현<a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a></td>
-						<td class="orderState">
+						<td class="orderState stateWrap">
 							<div class="stateTxt">
 								<!-- @@include ../_template/pop_order_state.html {"step":"step05", "step05":"on"} -->
 								상품준비중<span class="stateIcor"></span>
@@ -243,7 +243,7 @@
 						<td>무료</td>
 						<td class="payment">1,600,000 원</td>
 						<td>김정현<a href="" class="btnSizeS btnColor03 btnIcoMore active">접기</a></td>
-						<td class="orderState">
+						<td class="orderState stateWrap">
 							<div class="stateTxt">
 								<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
 								구매확정<span class="stateIcor"></span>
@@ -288,7 +288,7 @@
 						<label for="agreeAll" class="">전체 선택 <span>( 총3개)</span></label>
 					</div>
 					<div class="fl_right">
-						<button type="submit" class="btn btnSizeM btnColor02 btnShadow">취소신청</button>
+						<button type="submit" class="btn btnSizeM btnColor02">취소신청</button>
 					</div>
 				</div>
 
