@@ -172,3 +172,11 @@ a.btnDetail {padding:10px 0 0 50px; position:relative; color:#666; float:left;}
 a.btnDetail:before {content:''; width:40px; height:40px; border-radius:50%; overflow:hidden; background:url('../images/ico_DetailedMore.png') 50% 50% no-repeat #fff; position:absolute; top:0; left:0; box-shadow:0 3px rgba(0,0,0,.12);}
 
 
+.dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
+.dateChangePop .timeSet .calendar{;display: block;width:195px;margin:0 0 10px 0; }
+.dateChangePop .calendar span.calInp input[type=text]{width: 180px;color: #666;}
+.dateChangePop .alignBox{height: 40px;text-align: left;}
+.dateChangePop .alignBox .drop{width: 235px}
+.dateChangePop .drop li{width: 100%;}
+.dateChangePop, .dateChangePop #cboxWrapper, .dateChangePop #cboxLoadedContent{overflow: visible !important;}
+.dateChangePop ul.tbList3{margin-bottom: 35px;}
