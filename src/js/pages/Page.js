@@ -32,21 +32,17 @@ module.exports = function() {
 		if (pageId == undefined) pageId = $('body').data('pageId');
 		Super.init(pageId);
 		
-		// common
-		initMenu();
-		initFloating();
-		initTopBanner();
-		initAddressPopupButton();
-		// 공통차트 컴포넌트
-		initChart();
+		// 전 페이지 공용 요소 초기화
+		initMenu();			// GNB/LNB
+		initFloating();		// 플로팅버튼
+		initTopBanner();	// 상단 배너 (index만으로 빠질 수 있음)
 
-		dropDownMenu.init();
-
-		opinionToggle();
-		initCardRadio();
-		btnDel();
-		tableHeight()
-		conFirm();
+		// 일부 페이지 공용 요소 초기화
+		initChart();	// 차트 컴포넌트
+		dropDownMenu.init();	// 드롭다운 메뉴
+		initAddressPopupButton();	// 주소록 팝업버튼
+		initCardRadio();	// 개인화 수집 카드
+		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -405,8 +401,12 @@ module.exports = function() {
 		});
 	};
 	
+
+	/**
+	 * 개인화 수집 카드
+	 */
 	function initCardRadio(){	
-		$('.cardCollect label').click(function(){// 개인화 수집 카드
+		$('.cardCollect label').click(function(){
 			if ($(this).siblings('input').val() != ':checked'){			
 				$(this).parent().addClass('on');
 				$(this).parent().siblings().removeClass('on');
@@ -414,58 +414,13 @@ module.exports = function() {
 		});
 	};
 
-	// 11의견묻기_02의견묻기작성 (작성하기영역 열기,닫기)
-	function opinionToggle(){
-		var selecter = null,
-			 opinion = null;
-		function init(){
-			selecter =".opinionwrite > .toggleBtn",
-			opinion = ".opinionInput";
-			initEvent();
-		}
-		function initEvent(){
-			$(selecter).on("click", function(e){
-				e.preventDefault();
-				showContent( $(this) )
-			});
-		};
-		function showContent(tg){
-			if( !tg.hasClass("active") ){
-				tg.addClass("active").find("span").text("접기");
-				$(opinion).stop().slideDown();
-			}else{
-				tg.removeClass("active").find("span").text("의견 묻기");
-				$(opinion).stop().slideUp();
-			}
-		};
-		init();
-	};
-
-	// 마이페이지-일대일 메시지-모든메시지 삭제버튼 클릭시 실행
-	function conFirm(){
-		$("#conFirm").on("click", function(){
-			confirm("메시지내용을모두삭제하시겠습니까?\n삭제하실경우메시지내용이모두삭제되며1:1메시지목록에서도삭제됩니다.");
-		});
-	}
-
-	function btnDel(){
-		$('.optList').each(function(){ // 'myPage/cartGoods.html (배송형 상품)' option 삭제 버튼
-			$(this).find('.btnDel').click(function(){
-				$(this).parent().hide();
-			})
-			$(this).find('.option').eq(0).find('.btnDel').click(function(){
-				$(this).parent().next().css('border-top','0');
-			})
-		});
-		$('.btnDel').on('click',function(){
-			$(this).parent('.conDel').hide();
-		})
-	}
-
-	function tableHeight(){ // '/order/orderGoods.html, /order/orderService.html'주문결재 결재방법 테이블 높이
+	/**
+	 * 주문결재 페이지 테이블 높이 설정
+	 */
+	function initOrderTable() {
 		$('.pay').each(function(){
 			var tbHC = parseInt($(this).height())
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
-	}
+	};
 }

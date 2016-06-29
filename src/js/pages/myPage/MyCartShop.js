@@ -24,5 +24,18 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+
+		$('.optList').each(function(){
+			$(this).find('.btnDel').click(function(){
+				$(this).parent().hide();
+			})
+			$(this).find('.option').eq(0).find('.btnDel').click(function(){
+				$(this).parent().next().css('border-top','0');
+			})
+		});
+
+		$('.btnDel').on('click',function(){
+			$(this).parent('.conDel').hide();
+		});
 	}
 };

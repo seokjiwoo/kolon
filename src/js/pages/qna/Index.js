@@ -79,7 +79,22 @@ module.exports = function() {
 		$(doc).on(CB_EVENTS.COMPLETE, onCboxEventListener)
 				.on(CB_EVENTS.CLEANUP, onCboxEventListener)
 				.on(CB_EVENTS.CLOSED, onCboxEventListener);
+
+		$(".opinionwrite > .toggleBtn").on("click", function(e){
+			e.preventDefault();
+			showContent( $(this) );
+		});
 	}
+	
+	function showContent(tg){
+		if( !tg.hasClass("active") ){
+			tg.addClass("active").find("span").text("접기");
+			$(".opinionInput").stop().slideDown();
+		} else {
+			tg.removeClass("active").find("span").text("의견 묻기");
+			$(".opinionInput").stop().slideUp();
+		};
+	};
 
 	function onUploaderSelectedFiles(e, selectedFiles) {
 		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.SELECTED_FILES, selectedFiles);
