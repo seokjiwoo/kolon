@@ -1,0 +1,30 @@
+body[data-page-id=myPage-order] {background:#e0e0e0;}
+.orderWrap {background:#fff; padding:25px 15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.orderWrap + .orderWrap {margin-top:10px;}
+.zipCode label.btnColor03 {background:#666;}
+
+.orderInfo {border:2px solid #333;}
+.orderInfo dl {width:100%; display:inline-block; position:relative;}
+.orderInfo dl + dl {border-top:1px solid #333;}
+.orderInfo dl + dl:after {content:''; width:34px; height:39px; margin-left:-17px; background:url(../images/ico_order.png) no-repeat; background-size:34px 78px; position:absolute; top:-19.5px; left:50%; z-index:1;}
+.orderInfo dl + dl.minus:after {background-position:0 0;}
+.orderInfo dl + dl.equal:after {background-position:0 -39px;}
+.orderInfo dl dt {padding:13px 11px; background:#f8f8f8; overflow:hidden; border-bottom:1px solid #ccc;}
+.orderInfo dl dt span {width:50%; color:#666; float:left; display:inline-block;}
+.orderInfo dl dt span.orderTxt {float:right; text-align:right;}
+.orderInfo dl dd {padding:20px 10px; overflow:hidden;}
+.orderInfo dl dd + dt {border-top:1px solid #ccc;}
+.orderInfo dl dd p.price {width:100%; text-align:right; font-size:15px;}
+.orderInfo dl dd p.price b {font-size:18px;}
+.orderInfo dl dd p.price + ul.odList {margin-top:15px;}
+.orderInfo dl dd ul.odList {width:100%; overflow:hidden;}
+.orderInfo dl dd ul.odList li {padding-left:8px; position:relative; overflow:hidden;}
+.orderInfo dl dd ul.odList li + li {margin-top:5px;}
+.orderInfo dl dd ul.odList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
+.orderInfo dl dd ul.odList li p {line-height:130%; color:#666;}
+.orderInfo dl dd p.odListTit {width:40%; float:left;}
+.orderInfo dl dd p.odListCont {width:60%; float:right; text-align:right;}
+.orderInfo dl dd ul.odList.point li:before {top:15px;}
+.orderInfo dl dd ul.odList.point li p {min-height:30px; line-height:30px;}
+.orderInfo dl dd ul.odList + p.underTxt {margin-top:10px;}
+.orderInfo dl dd p.underTxt {color:#666; font-size:11px; line-height:130%;}

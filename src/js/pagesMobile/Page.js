@@ -37,6 +37,12 @@ module.exports = function() {
 			$(this).siblings('.slideCon').slideToggle();
 		});
 
+		$('.btnMore').on('click', function(e) { // common slideToggle
+			e.preventDefault();
+			$(this).toggleClass('opened');
+			$(this).parent().parent().find('.slideMore').slideToggle();
+		});
+
 		$('#mobileScrap li').each(function(){ // scrap fadeToggle
 			$(this).find('.scrapMore').on('click', function(){
 				$(this).toggleClass('opened');
@@ -54,6 +60,15 @@ module.exports = function() {
 				$(".searchArea").css("display","none");
 				tg.find("> em").removeClass("up")
 			}
+		});
+
+		$('.optList > li').each(function(){ // 상품 list option 삭제 버튼
+			$(this).find('.btnDel').click(function(){
+				$(this).parent().parent().hide();
+			})
+			$(this).find('.option').eq(0).find('.btnDel').click(function(){
+				$(this).parent().parent().next().css('border-top','0');
+			})
 		});
 	}
 }

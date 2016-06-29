@@ -44,6 +44,8 @@
 
 .tabParents{padding:0 15px;}
 .tabParents .tabSquare{border-bottom:0;}
+.tabParents.pdNon,
+.tabParents.pdNon .tabSquare {padding:0;}
 
 .previewList > li{overflow: hidden;position: relative;width: 100%;padding: 20px 0;border-top:1px solid #ccc;}
 .previewList .previewWrap{overflow: hidden;}
@@ -131,3 +133,7 @@
 .dotList .abcList{margin: 5px 0;}
 .abcList li{padding-left: 17px;}
 .abcList i{position: absolute;left: 0;top: 0;font-style: normal}
+
+/* title */
+.wrap h2.secTit {width:auto; padding-bottom:11.5px; margin-bottom:20px; font-size:18px; font-family:'NotoSansR', 'RobotoR', sans-serif; border-bottom:1px solid #666; color:#000;}
+.wrap h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
