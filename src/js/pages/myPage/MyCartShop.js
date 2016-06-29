@@ -9,8 +9,8 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/MyCartShop.js';
 
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
+	var MyPageClass = require('./Index.js'),
+	MyPage = MyPageClass();
 	
 	var callerObj = {
 		/**
@@ -22,7 +22,8 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
+		
 		debug.log(fileName, $, util);
 
 		$('.optList').each(function(){
