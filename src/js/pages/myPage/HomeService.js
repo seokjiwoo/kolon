@@ -111,8 +111,25 @@ module.exports = function() {
 	function setHomeServiceLayer() {
 		debug.log(fileName, 'setHomeServiceLayer');
 
-		self.layerDatePicker = DatePickerClass().init({
-			wrap : $('.js-picker')
+		var rangePicker = self.colorbox.find('.js-range-picker');
+		DatePicker.init({
+			type : 'range',
+			range : {
+				from : {
+					wrap : rangePicker,
+					picker : rangePicker.find('.js-picker-from'),
+					altField : rangePicker.find('.js-alt-from'),
+					button : rangePicker.find('.js-btn-from'),
+					minDate : 0
+				},
+				to : {
+					wrap : rangePicker,
+					picker : rangePicker.find('.js-picker-to'),
+					altField : rangePicker.find('.js-alt-to'),
+					button : rangePicker.find('.js-btn-to'),
+					defaultDate : +5
+				}
+			}
 		});
 
 		dropDownMenu.init({
@@ -124,8 +141,6 @@ module.exports = function() {
 		debug.log(fileName, 'destoryHomeServiceLayer');
 		
 		self.colorbox.find('.js-picker .js-picker').datepicker('destroy');
-		self.layerDatePicker = null;
-
 		$(dropDownMenu).trigger(dropDownMenu.EVENT.DESTROY);
 	}
 

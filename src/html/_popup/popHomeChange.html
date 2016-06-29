@@ -11,16 +11,16 @@
 		<li>수거/배달 일시 변경은 수거시간 기준으로 90분이 되기 전에만 가능합니다.</li>
 	</ul>
 	<h5 class="subTit">수거/배달 일시 변경</h3>
-	<table class="record timeSet">
+	<table class="record timeSet js-range-picker">
 		<tr>
 			<th>수거일시를 선택해주세요.<br>(수거 가능한 시간만 표시됩니다)</th>
 			<td>
 				<!-- datePicker -->
-				<div class="calendar js-picker">
+				<div class="calendar">
 					<span class="calInp">
-						<input type="text" title="희망 수거 날짜 입력" value="" class="js-alt" readonly="readonly"/>
-						<a href="#" class="calBtn js-btn">날짜선택</a>
-						<div class="cal-container js-picker"></div>
+						<input type="text" title="희망 수거 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+						<a href="#" class="calBtn js-btn-from">날짜선택</a>
+						<div class="cal-container js-picker-from"></div>
 					</span> 
 				</div>
 				<!--// datePicker -->
@@ -42,11 +42,11 @@
 			<th>배달일시를 선택해주세요.<br>(배달 가능한 시간만 표시됩니다)</th>
 			<td>
 				<!-- datePicker -->
-				<div class="calendar js-picker">
+				<div class="calendar">
 					<span class="calInp">
-						<input type="text" title="희망 배달 날짜 입력" value="" class="js-alt" readonly="readonly"/>
-						<a href="#" class="calBtn js-btn">날짜선택</a>
-						<div class="cal-container js-picker"></div>
+						<input type="text" title="희망 배달 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+						<a href="#" class="calBtn js-btn-to">날짜선택</a>
+						<div class="cal-container js-picker-to"></div>
 					</span> 
 				</div>
 				<!--// datePicker -->
