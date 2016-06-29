@@ -11,9 +11,6 @@ module.exports = function() {
 
 	var MyPageClass = require('./Index.js'),
 	MyPage = MyPageClass();
-
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
 	
 	var controller = require('../../controller/MemberInfoController');
 	$(controller).on('myInfoResult', myInfoHandler);
@@ -32,7 +29,6 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		// Super.init();
 		MyPage.init();
 
 		debug.log(fileName, $, util);
