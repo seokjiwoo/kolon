@@ -207,6 +207,11 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/MyServiceDetail.js');
 				break;
 
+			// 나의 활동내역 (MOBILE ONLY)	myActivity
+			case 'myPage-myActivity':
+				PageModuleClass = require('./pagesMobile/myPage/MyActivity.js');
+				break;
+
 			// 최근 본 상품 recentSeenItem
 			case 'myPage-recentSeenItem':
 				PageModuleClass = require('./pagesMobile/myPage/RecentSeenItem.js');
