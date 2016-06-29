@@ -7,6 +7,8 @@
 
 .hide, legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 
+.italicNum{font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900;}
+
 .checkAgree label{display:inline-block;font-size: 16px;color: #000;}
 .checkAgree input[type="checkbox"] {position: absolute;opacity: 0;width:25px;height:24px;margin:0;padding:0;z-index:-1}
 .checkAgree label:before{content: '';display: inline-block;width: 25px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}

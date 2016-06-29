@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 주문서작성"} -->
+</head>
+<body data-page-id="myPage-order">
+	<div class="wrapper members">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+				<section>
+					<div class="orderWrap">
+						<h2 class="secTit">주문/결제</h2>
+						<h3 class="subTit">주문 상품 / 배송 정보</h3>
+						<ul class="productList">
+							<li>
+								<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+								<div class="info">
+									<span>코오롱 글로벌</span>
+									<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+								</div>
+								<ul class="productData">
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+								</ul>
+								<!-- 결제금액 내역 -->
+								<ul class="priceBox">
+									<li>
+										<p class="priceBoxTit">할인금액</p>
+										<p class="priceBoxCont"><b>0</b> 원</p>
+									</li>
+									<li>
+										<p class="priceBoxTit">배송비</p>
+										<p class="priceBoxCont"><b>20,000</b> 원</p>
+									</li>
+									<li class="check">
+										<p class="priceBoxTit">결제금액</p>
+										<p class="priceBoxCont"><b>1,720,000</b> 원</p>
+									</li>
+								</ul>
+								<!--// 결제금액 내역 -->
+							</li>
+						</ul>
+						<!--// list -->
+					</div>
+					<fieldset class="plate selectAddress">
+						<h3 class="plateTit">수령지 정보</h3>
+						<ul class="tabWrap tabSquare">
+							<li class="on"><a href="#lastAddress">최근 주소</a></li>
+							<li><a href="#newAddress">새로 입력</a></li>
+						</ul>
+						<div class="tabCon">
+							<div id="lastAddress">
+								<select name="" id="">
+									<option value="">자택</option>
+									<option value=""></option>
+								</select>
+								<table class="formWrap mt20">
+									<tr>
+										<th>주소 별칭</th>
+										<td><input type="text"></td>
+									</tr>
+									<tr>
+										<th>받으실 분</th>
+										<td><input type="text"></td>
+									</tr>
+									<tr>
+										<th>연락처1</th>
+										<td class="phone">
+											<label for="" class="hide">연락처01</label>
+											<select name="" id="">
+												<option value="">02</option>
+											</select>
+											<label for="">연락처02</label>
+											<input type="text">
+											<label for="">연락처03</label>
+											<input type="text">
+										</td>
+									</tr>
+									<tr>
+										<th>연락처2</th>
+										<td class="phone">
+											<label for="" class="hide">연락처01</label>
+											<select name="" id="">
+												<option value="">02</option>
+											</select>
+											<label for="">연락처02</label>
+											<input type="text">
+											<label for="">연락처03</label>
+											<input type="text">
+										</td>
+									</tr>
+								</table>
+								<h4 class="partTit">수령지 주소</h4>
+								<div class="shipAddress">
+									<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode" class="btnColor03">주소검색</label><a href=""></a></p>
+									<p><input type="text"><label for="" class="hide">주소</label></p>
+									<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+								</div>
+							</div>
+						</div>
+						<h4 class="partTit">배송 시 요청 사항</h4>
+						<div class="textWrap">
+							<select name="" id="">
+								<option value="">배송 시 요청사항을 선택해 주세요</option>
+							</select>
+							<textarea name="" id="" placeholder="직접 입력"></textarea>
+							<p class="countTxt"><span>0</span>/50</p>
+						</div>
+					</fieldset>
+					<div class="plate" style="margin-bottom:119px;"><!-- 임시 style, scroll action 시 삭제 해주세요 -->
+						<h3 class="plateTit">결제 정보</h3>
+						<div class="orderInfo">
+							<dl>
+								<dt>
+									<span>주문 금액</span>
+									<span class="orderTxt">(상품금액+배송비)</span>
+								</dt>
+								<dd>
+									<p class="price"><b>1,720,000</b> 원</p>
+								</dd>
+							</dl>
+							<dl class="minus">
+								<dt><span>총 할인금액</span></dt>
+								<dd>
+									<p class="price"><b>0</b> 원</p>
+									<ul class="odList">
+										<li>
+											<p class="odListTit">기본 할인</p>
+											<p class="odListCont"><b>0</b> 원</p>
+										</li>
+										<li>
+											<p class="odListTit">포인트</p>
+											<p class="odListCont"><b>0</b> 원</p>
+										</li>
+									</ul>
+								</dd>
+								<dt><span>혜택적용 </span></dt>
+								<dd>
+									<p class="odListTit">
+										<span class="checkbox">
+											<input type="checkbox" id="checkOd"/>
+											<label for="checkOd">모두 사용</label>
+										</span>
+									</p>
+									<p class="odListCont">( 잔여 포인트    1300P )</p>
+									<ul class="odList point">
+										<li>
+											<p class="odListTit"><label for="point">포인트 사용</label></p>
+											<p class="odListCont"><input type="text" id="point" style="width:121px;"/> p</p>
+										</li>
+									</ul>
+									<p class="underTxt">포인트는  5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
+								</dd>
+							</dl>
+							<dl class="equal">
+								<dt>
+									<span>총 결제금액</span>
+								</dt>
+								<dd>
+									<p class="odListTit">기본 할인</p>
+									<p class="odListCont"><b>1,720,000</b> 원</p>
+								</dd>
+								<dt>
+									<span>구매혜택</span>
+								</dt>
+								<dd>
+									<ul class="odList">
+										<li>
+											<p class="odListTit">적립 예정 포인트</p>
+											<p class="odListCont"><b>1300</b> P</p>
+										</li>
+									</ul>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+					<div class="myCartTotal">
+						<ul class="totalList slideMore">
+							<li>
+								<p class="totalTit">총 상품금액 (3개)</p>
+								<p class="totalCont"><b>2,200,000</b> 원</p>
+							</li>
+							<li>
+								<p class="totalTit">할인금액</p>
+								<p class="totalCont"><b>- 0</b> 원</p>
+							</li>
+							<li>
+								<p class="totalTit">배송비</p>
+								<p class="totalCont"><b>40,000</b> 원</p>
+							</li>
+						</ul>
+						<div class="total">
+							<p class="totalTit">결제예정금액</p>
+							<p class="totalCont"><b>2,240,000</b> 원</p>
+							<a href="#" class="more btnMore">상세보기</a>
+						</div>
+						<a href="#" class="totalBtn">주문하기</a>
+					</div>
+					<!--// scroll 시 고정 영역 -->
+				</section>
+				<!-- @@include ../_template/footer.html -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

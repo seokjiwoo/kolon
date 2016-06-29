@@ -368,37 +368,38 @@ p.setTit {width:100%; overflow:hidden; text-align:center; background:#f8f8f8; bo
 .setPrice p.setPriceTit {width:40%; float:left; }
 .setPrice p.setPriceCont {width:60%; float:right; text-align:right;}
 .setPrice p.setPriceCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:18px;}
-ul.myCartList {padding:0 15px; background:#fff;}
-ul.myCartList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}
-ul.myCartList > li + li {border-top:1px solid #666;}
-ul.myCartList li > a {padding-left:121px; display:inline-block; position:relative; font-size:15px;}
-ul.myCartList li .cont {width:100%; min-height:78.5px; overflow:hidden;}
-ul.myCartList li .cont p {font-weight:bold; color:#333; line-height:130%;}
-ul.myCartList li .cont span {padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
-ul.myCartList li .cont span + p {margin-top:8px;}
-ul.myCartList li p.checkbox {position:absolute; top:0; left:0;}
-ul.myCartList li p.photo,
-ul.myCartList li p.photo img {width:78.5px; height:78.5px; }
-ul.myCartList li p.photo {position:absolute; top:0; left:34px;}
-ul.myCartList li p.listPrice {padding:15px 30px 0 0; overflow:hidden; text-align:right; font-size:15px; color:#333; position:relative;}
-ul.myCartList li p.listPrice b {}
-ul.myCartList li p.listPrice span {width:100%; min-height:24px; display:inline-block; line-height:24px;}
-ul.myCartList li p.listPrice a.btnDel {width:25px; height:25px; font-size:0; position:absolute; bottom:0; right:0; display:inline-block;}
-ul.myCartList li p.listPrice a.btnDel:after {content:''; width:24px; height:24px; border:1px solid #ccc; background:url('../images/ico_close03.png') 50% no-repeat; background-size:11.5px 11.5px; position:absolute; top:0; left:0;}
-ul.myCartList li p.listPrice select {width:50px; height:26px; position:absolute; top:13px; left:121px;}
-ul.myCartList li p.listTxt {margin-top:12.5px; color:#999; font-size:15px;}
-ul.myCartList li .option {width:100%; overflow:hidden;}
-ul.myCartList li .option + .option {border-top:1px solid #ccc; margin-top:10px;}
-ul.myCartList li ul.priceBox {margin-top:15px; padding:15px; background:#f8f8f8;}
-ul.myCartList li ul.priceBox > li {width:100%; overflow:hidden;}
-ul.myCartList li ul.priceBox > li p {color:#333; line-height:130%;}
-ul.myCartList li ul.priceBox > li + li {margin-top:5px;}
-ul.myCartList li ul.priceBox > li.check p {color:#f1645c;}
-ul.myCartList li ul.priceBox > li.check p.priceBoxCont b {font-size:18px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
-ul.myCartList li ul.priceBox > li.check p.priceBoxTit {font-weight:bold;}
-ul.myCartList li ul.priceBox li p.priceBoxTit {width:40%; float:left;}
-ul.myCartList li ul.priceBox li p.priceBoxCont {width:60%; float:right; text-align:right;}
-ul.myCartList li ul.priceBox li p.priceBoxCont b {}
+ul.optList {padding:0 15px; background:#fff;}
+ul.optList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}
+ul.optList > li + li {border-top:1px solid #666;}
+ul.optList li > a {padding-left:121px; display:inline-block; position:relative; font-size:15px;}
+ul.optList li .cont {width:100%; min-height:78.5px; overflow:hidden;}
+ul.optList li .cont p {font-weight:bold; color:#333; line-height:130%;}
+ul.optList li .cont span {padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
+ul.optList li .cont span + p {margin-top:8px;}
+ul.optList li p.checkbox {position:absolute; top:0; left:0;}
+ul.optList li p.photo,
+ul.optList li p.photo img {width:78.5px; height:78.5px; }
+ul.optList li p.photo {position:absolute; top:0; left:34px;}
+ul.optList li p.listPrice {padding:15px 30px 0 0; overflow:hidden; text-align:right; font-size:15px; color:#333; position:relative;}
+ul.optList li p.listPrice b {}
+ul.optList li p.listPrice span {width:100%; min-height:24px; display:inline-block; line-height:24px;}
+ul.optList li p.listPrice a.btnDel {width:25px; height:25px; font-size:0; position:absolute; bottom:0; right:0; display:inline-block;}
+ul.optList li p.listPrice a.btnDel:after {content:''; width:24px; height:24px; border:1px solid #ccc; background:url('../images/ico_close03.png') 50% no-repeat; background-size:11.5px 11.5px; position:absolute; top:0; left:0;}
+ul.optList li p.listPrice select {width:50px; height:26px; position:absolute; top:13px; left:121px;}
+ul.optList li p.listTxt {margin-top:12.5px; color:#999; font-size:15px;}
+ul.optList li .option {width:100%; overflow:hidden;}
+ul.optList li .option + .option {border-top:1px solid #ccc; margin-top:10px;}
+ul.priceBox {margin-top:15px; padding:15px; background:#f8f8f8;}
+ul.priceBox > li {width:100%; overflow:hidden;}
+ul.priceBox > li p {color:#333; line-height:130%;}
+ul.priceBox > li + li {margin-top:5px;}
+ul.priceBox > li.check p {color:#f1645c;}
+ul.priceBox > li.check p.priceBoxCont b {font-size:18px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
+ul.priceBox > li.check p.priceBoxTit {font-weight:bold;}
+ul.priceBox li p.priceBoxTit {width:40%; float:left;}
+ul.priceBox li p.priceBoxCont {width:60%; float:right; text-align:right;}
+ul.priceBox li p.priceBoxCont b {}
+ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 
 .myCartInfo {padding:20px 15px; border-top:10px solid #e0e0e0; border-bottom:10px solid #e0e0e0; background:#f8f8f8;}
 .myCartInfo p.myCartInfoTit {width:100%; overflow:hidden; font-size:15px; color:#282828;}
