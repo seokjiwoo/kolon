@@ -33,6 +33,27 @@
 .infoTop .infoBtn #btnFollow{margin-right: 10px;background:#f1645c}
 .infoTop .infoBtn #btnMsg{background: #706a69}
 
+/* myPage top change */
+.container.bgTop .infoTop .infoPic {width:177px;height:177px;border:3px solid #fef200;}
+.container.bgTop .infoTop .infoTit { font-family:'Times New Roman', sans-serif;color:#000;font-size:35px;line-height:normal;font-style:italic;font-weight:bold;}
+.container.bgTop .infoTop .infoDetail:before {display:none;}
+.container.bgTop .user.infoTop .myRate a {display:table-cell;width:116px;height:110px;background: url('../images/bg_info_top.png') no-repeat 0 0;color:#fff;font-size:14px;vertical-align:middle}
+.container.bgTop .user.infoTop .myRate.on a {background-position:0 -110px;color:#00efff;}
+.container.bgTop .user.infoTop .myRate a b {color:#fff;font-size:30px;margin-bottom:8px;}
+.container.bgTop .user.infoTop .myRate.on a b {color:#00efff;}
+.container.bgTop .user.infoTop .myRate .my {width:35px;height:35px;background-image:url(../images/ico_homeB_top.png)}
+.container.bgTop .user.infoTop .myRate.on .my {width:35px;height:35px;background-image:url(../images/ico_homeR_top.png)}
+.container.bgTop .user.infoTop .myRate.myRate06 a b {font-size:22px;}
+.container.bgTop .user.infoTop .myRate {margin:0;position:absolute;}
+.container.bgTop .user.infoTop .myRate.myRate01 {top:185px;left:518px;}
+.container.bgTop .user.infoTop .myRate.myRate02 {top:120px;left:598px;}
+.container.bgTop .user.infoTop .myRate.myRate03 {top:157px;left:693px;}
+.container.bgTop .user.infoTop .myRate.myRate04 {top:194px;left:788px;}
+.container.bgTop .user.infoTop .myRate.myRate05 {top:130px;left:868px;}
+.container.bgTop .user.infoTop .myRate.myRate06 {top:167px;left:963px;}
+.container.bgTop .user.infoTop .myRate.myRate07 {top:103px;left:1043px;}
+
+
 .colWrap{overflow: hidden;}
 .col{width:50%;float: left;}
 .singleCard{overflow: hidden;position: relative;padding-bottom: 80px;}

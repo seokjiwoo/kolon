@@ -11,6 +11,11 @@
 .user.infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
 
+/* myPage top change */
+.container.bgTop .infoTop {background:url('../images/bg_my_top.png') top center no-repeat}
+.container.bgTop .user.infoTop .infoSet {position:static;margin-top:20px}
+
+
 aside.myMenu{float: left;width:225px;min-height: 145px;margin-right: 20px;padding:0 30px;background: #f65677; margin-top:60px; position:relative;}
 aside.myMenu:before {content:''; border-left:30px solid transparent; border-bottom:60px solid #f65677; position:absolute; top:-60px; left:0; z-index:0;}
 aside.myMenu:after {content:''; width:255px; height:60px; background:#f65677; position:absolute; top:-60px; right:0; z-index:0;}

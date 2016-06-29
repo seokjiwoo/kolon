@@ -20,6 +20,7 @@
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; word-break: keep-all;}
 #cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
 #cboxLoadedContent .popScroll2 {overflow:auto; max-height:518px;}
+#cboxLoadedContent .popScroll3 {overflow:auto; max-height:470px;}
 #cboxLoadedContent p {margin-top:30px;}
 #cboxLoadedContent p:first-child {margin-top:0; }
 #cboxLoadedContent .cardCon .btnWrap{margin-top: 30px;}

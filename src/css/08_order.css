@@ -143,7 +143,7 @@ span.price.fontS {font-size:14px;}
 .homeService.oder .leftBox, .homeService.oder .leftBox .drop li {width:228px;}
 .homeService.oder .leftBox + .leftBox {margin-left:10px;}
 
-.homeService.oder .calendar {display:inline-block;width:187px;}
+.homeService.oder .calendar {display:inline-block;width:187px;line-height:normal}
 .homeService.oder .calendar span.calInp input[type=text] {width:172px;}
 
 .homeService.oder .oderCont ul.homeType li.hType01 {background-position:-256px 0;}
@@ -153,10 +153,12 @@ span.price.fontS {font-size:14px;}
 .homeService.oder .oderCont ul.homeType li .radioBox, .homeService.oder .oderCont ul.homeType li .radioBox label {display:inline-block;width:100px;}
 
 .homeService.oder .oderCont .payTab {text-align:center;border-bottom:1px solid #e8e8e8;}
-.homeService.oder .oderCont .payTab.tabWrap a {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
-.homeService.oder .oderCont .payTab.tabWrap a .labelTxt {display:inline-block;position:relative;}
-.homeService.oder .oderCont .payTab.tabWrap a .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url(../images/ico_radio.png) 0 -18px no-repeat;}
-.homeService.oder .oderCont .payTab.tabWrap .on a .labelTxt:after {background-position:0 0;}
+.homeService.oder .oderCont .payTab span {display:inline-block;}
+.homeService.oder .oderCont .payTab.tabWrap a.radioBtn {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
+.homeService.oder .oderCont .payTab.tabWrap a.radioBtn .labelTxt {display:inline-block;position:relative;}
+.homeService.oder .oderCont .payTab.tabWrap a.radioBtn + p {margin-top:14px;}
+.homeService.oder .oderCont .payTab.tabWrap a.radioBtn .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url(../images/ico_radio.png) 0 -18px no-repeat;}
+.homeService.oder .oderCont .payTab.tabWrap .on a.radioBtn .labelTxt:after {background-position:0 0;}
 .homeService.oder .oderCont .arraySide {margin-bottom:18px;}
 .homeService.oder .oderCont .arraySide p {overflow:hidden;font-size:14px;color:#666;text-align:left;}
 .homeService.oder .oderCont .arraySide li {margin-top:5px;}
@@ -164,6 +166,7 @@ span.price.fontS {font-size:14px;}
 .homeService.oder .container textarea {border-radius:0;width:838px;padding:20px;}
 
 .homeService.oder .oderCont .thumBox img {vertical-align:top}
+.homeService.oder .oderCont .thumBox + .labelTxt {margin-top:15px;}
 .homeService.oder .oderCont .gradeNum {float:right;color:#f1645c;margin-left:5px}
 .homeService.oder .oderCont .grade {float:right;background-size:70px 27px;width:70px;height:14px;background-position:0 -14px}
 .homeService.oder .oderCont .grade span {background-size:70px 27px;height:14px;background-position:0 0}
@@ -179,7 +182,8 @@ span.price.fontS {font-size:14px;}
 
 .homeService.oder .oderCont.tbSet + h3.subTit {margin-top:50px;}
 .homeService.oder .subTit .subTxt {font-size:14px;color:#666;}
-.homeService.oder .underTxt {float:left;margin-top:10px;font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
+.homeService.oder .underTxt {margin-top:10px;font-size:14px; color:#999; font-family:'NotoSansR','RobotoR', sans-serif;}
+.homeService.oder .underTxt b {color:#f1645c;}
 
 .oder .oderCont {width:100%; display:inline-block;}
 .oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR','RobotoR', sans-serif;}
