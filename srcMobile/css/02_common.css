@@ -13,11 +13,6 @@
 
 legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 
-.checkAgree label{display:inline-block;font-size: 16px;color: #000;}
-.checkAgree input[type="checkbox"] {position: absolute;opacity: 0;width:25px;height:24px;margin:0;padding:0;z-index:-1}
-.checkAgree label:before{content: '';display: inline-block;width: 25px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.checkAgree label.on:before{background-color: #a9c700}
-
 .arrayWrap{clear: both;height: 37px;}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
 .arrayWrap .arrayDrop:after{content:'';position: absolute;top: 15px;right: 10px;width:12px;height:8px;background:url('../images/ico_lnb.png') no-repeat;}
@@ -88,6 +83,9 @@ a.pointLink {color:#f1645c;text-decoration:underline;}
 
 /* button */
 .btnWrap{text-align: center;}
+.btnWrap02{overflow: hidden;}
+.btnWrap02 a{float: left;width: 49%;}
+.btnWrap02 a:first-child{margin-right: 2%;}
 a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0;text-align: center;font-weight: bold}
 .btnSizeS{height:30px;padding:0 12px;font-size: 13px;border-radius: 15px;line-height: 30px;}
 .btnSizeL{height:35px;padding:0 17px;font-size: 15px;border-radius: 20px;line-height: 35px;}
@@ -134,6 +132,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
 .checkbox {position: relative;/*margin-top:18px;*/}
+ul.checkbox{overflow: hidden;}
+.checkbox li{float: left;width: 50%;margin-top: 15px;}
 .checkbox label{font-size: 13px;color: #666;}
 .checkbox label:before{content: '';display:inline-block;width:24px;height:24px;border:1px solid #ccc;margin-right:10px;vertical-align:middle;background:#fff;}
 .checkbox label.on:before{background:#fff url('../images/ico_check.png') no-repeat center center;background-size:14px;}
@@ -146,7 +146,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .listSquare li:first-child{margin:0;}
 .listSquare li:before{content: '';position: absolute;top: 5px;left: 0;height: 2px;background: #999;}
 
-textarea{border:1px solid #d0d0d0;width: 100%;border-radius: 7px;}
+textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 
 /* popup */
 .layerPopup{background:#fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:13px;}
