@@ -12,5 +12,5 @@ caption{visibility:hidden;overflow:hidden;width:0;height:0;font-size:0;line-heig
 a{color:#666;}
 
 *, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
-.hide{overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
+.hide{visibility:hidden;overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
 .wrapper{/*background:#e0e0e0;l*/letter-spacing:-0.5px;font-size: 13px;}

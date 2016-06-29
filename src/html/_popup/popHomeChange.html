@@ -11,14 +11,58 @@
 		<li>수거/배달 일시 변경은 수거시간 기준으로 90분이 되기 전에만 가능합니다.</li>
 	</ul>
 	<h5 class="subTit">수거/배달 일시 변경</h3>
-	<table class="record">
+	<table class="record timeSet">
 		<tr>
 			<th>수거일시를 선택해주세요.<br>(수거 가능한 시간만 표시됩니다)</th>
-			<td></td>
+			<td>
+				<!-- datePicker -->
+				<div class="calendar js-picker">
+					<span class="calInp">
+						<input type="text" title="희망 수거 날짜 입력" value="" class="js-alt" readonly="readonly"/>
+						<a href="#" class="calBtn js-btn">날짜선택</a>
+						<div class="cal-container js-picker"></div>
+					</span> 
+				</div>
+				<!--// datePicker -->
+				<div class="alignBox">
+					<ul class="drop" data-prevent="true">
+						<li><a href="#">오전10:00 - 오전 11:00</a></li>
+						<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>
+						<li><a href="#" data-value="type-2">오후12:00 - 오후 01:00</a></li>
+						<li><a href="#" data-value="type-3">오후01:00 - 오후 02:00</a></li>
+						<li><a href="#" data-value="type-4">오후02:00 - 오후 03:00</a></li>
+						<li><a href="#" data-value="type-5">오후03:00 - 오후 04:00</a></li>
+						<li><a href="#" data-value="type-6">오후04:00 - 오후 05:00</a></li>
+						<li><a href="#" data-value="type-7">오후05:00 - 오후 06:00</a></li>
+					</ul>
+				</div>
+			</td>
 		</tr>
 		<tr>
 			<th>배달일시를 선택해주세요.<br>(배달 가능한 시간만 표시됩니다)</th>
-			<td></td>
+			<td>
+				<!-- datePicker -->
+				<div class="calendar js-picker">
+					<span class="calInp">
+						<input type="text" title="희망 배달 날짜 입력" value="" class="js-alt" readonly="readonly"/>
+						<a href="#" class="calBtn js-btn">날짜선택</a>
+						<div class="cal-container js-picker"></div>
+					</span> 
+				</div>
+				<!--// datePicker -->
+				<div class="alignBox">
+					<ul class="drop" data-prevent="true">
+						<li><a href="#">오전10:00 - 오전 11:00</a></li>
+						<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>
+						<li><a href="#" data-value="type-2">오후12:00 - 오후 01:00</a></li>
+						<li><a href="#" data-value="type-3">오후01:00 - 오후 02:00</a></li>
+						<li><a href="#" data-value="type-4">오후02:00 - 오후 03:00</a></li>
+						<li><a href="#" data-value="type-5">오후03:00 - 오후 04:00</a></li>
+						<li><a href="#" data-value="type-6">오후04:00 - 오후 05:00</a></li>
+						<li><a href="#" data-value="type-7">오후05:00 - 오후 06:00</a></li>
+					</ul>
+				</div>
+			</td>
 		</tr>
 	</table>
 	<p class="btnWrap"><a href="" class="btnSizeM btnColor02">변경 하기</a></p>

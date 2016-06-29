@@ -1,4 +1,3 @@
-.members .pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
 .members .pageTit:before, .members .pageTit:after{background: #fff;}
 .members .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 30px;}
 .members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;}
