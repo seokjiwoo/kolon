@@ -62,6 +62,9 @@ module.exports = function() {
 			setElements : function() {
 				this.defOpts = opts.default;
 				this.wrap = $(this.defOpts.wrap);
+
+				win.console.log('this.wrap', this.wrap);
+
 				this.altField = getJqueryElement(this.wrap, this.defOpts.altField);
 				this.button = getJqueryElement(this.wrap, this.defOpts.button);
 				this.picker = getJqueryElement(this.wrap, this.defOpts.picker);
@@ -79,8 +82,15 @@ module.exports = function() {
 				this.picker.toggleClass(opts.cssClass.SHOW_HIDE);
 
 				if (this.picker.hasClass(opts.cssClass.SHOW_HIDE)) {
-					this.wrap.off('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this));
-					this.wrap.on('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this));
+					if (wrap.closest('#colorbox').size()) {
+						var calendar = this.picker.closest('.calendar');
+						calendar.off('mousedownoutside', $.proxy(this.onPickerHide, this))
+									.on('mousedownoutside', $.proxy(this.onPickerHide, this));
+						return;
+					}
+
+					this.wrap.off('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this))
+								.on('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this));
 				}
 			},
 			onPickerHide : function(e) {
@@ -93,6 +103,7 @@ module.exports = function() {
 					}
 				}
 
+				this.picker.closest('.calendar').off('mousedownoutside', $.proxy(this.onPickerHide, this));
 				this.wrap.off('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this));
 				this.picker.removeClass(opts.cssClass.SHOW_HIDE);
 			},
@@ -100,7 +111,7 @@ module.exports = function() {
 			setDatePicker : function() {
 				debug.log(fileName, 'DefaultPicker setDatePicker', opts.type);
 
-				if (this.defOpts.onSelect === $.noop) {
+				if (!this.defOpts.onSelect || this.defOpts.onSelect === $.noop) {
 					this.defOpts.onSelect = $.proxy(this.onPickerSelect, this);
 				}
 
@@ -130,8 +141,8 @@ module.exports = function() {
 				this.fromWrap = $(this.fromOpts.wrap);
 				this.fromAltField = getJqueryElement(this.fromwrap, this.fromOpts.altField);
 				this.fromButton = getJqueryElement(this.fromwrap, this.fromOpts.button);
-				this.fromPicker = getJqueryElement(this.fromwrap, this.fromOpts.picker);
-				if (this.fromOpts.onSelect === $.noop) {
+				this.fromPicker = getJqueryElement(this.fromwrap, this.fromOpts.picker);				
+				if (!this.fromOpts.onSelect || this.fromOpts.onSelect === $.noop) {
 					this.fromOpts.onSelect = $.proxy(this.onPickerSelect, this);
 				}
 
@@ -140,7 +151,7 @@ module.exports = function() {
 				this.toAltField = getJqueryElement(this.toWrap, this.toOpts.altField);
 				this.toButton = getJqueryElement(this.toWrap, this.toOpts.button);
 				this.toPicker = getJqueryElement(this.toWrap, this.toOpts.picker);
-				if (this.toOpts.onSelect === $.noop) {
+				if (!this.toOpts.onSelect || this.toOpts.onSelect === $.noop) {
 					this.toOpts.onSelect = $.proxy(this.onPickerSelect, this);
 				}
 			},
@@ -174,6 +185,14 @@ module.exports = function() {
 				picker.toggleClass(opts.cssClass.SHOW_HIDE);
 
 				if (picker.hasClass(opts.cssClass.SHOW_HIDE)) {
+					if (wrap.closest('#colorbox').size()) {
+						var calendar = (isFrom) ? this.fromPicker.closest('.calendar') : this.toPicker.closest('.calendar');
+
+						calendar.off('mousedownoutside', $.proxy(this.onPickerHide, this))
+									.on('mousedownoutside', $.proxy(this.onPickerHide, this));
+						return;
+					}
+
 					wrap.off('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this))
 							.on('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this));
 				}
@@ -182,7 +201,8 @@ module.exports = function() {
 				debug.log(fileName, 'RangePicker onPickerHide', e);
 
 				var wrap = (this.fromPicker.is(':visible')) ? this.fromWrap : this.toWrap,
-				picker = (this.fromPicker.is(':visible')) ? this.fromPicker : this.toPicker;
+				picker = (this.fromPicker.is(':visible')) ? this.fromPicker : this.toPicker,
+				calendar = (this.fromPicker.is(':visible')) ? this.fromPicker.closest('.calendar') : this.toPicker.closest('.calendar');
 
 				if (e && e.target) {
 					var target = $(e.target);
@@ -191,12 +211,13 @@ module.exports = function() {
 					}
 				}
 
-				wrap.off('focusoutside mousedownoutside', this.onPickerHide);
+				calendar.off('mousedownoutside', $.proxy(this.onPickerHide, this));
+				wrap.off('focusoutside mousedownoutside', $.proxy(this.onPickerHide, this));
 				picker.removeClass(opts.cssClass.SHOW_HIDE);
 			},
 			// datepicker 설정
 			setDatePicker : function() {
-				debug.log(fileName, 'RangePicker setDatePicker', opts.type);
+				debug.log(fileName, 'RangePicker setDatePicker', opts.type, this.fromOpts, this.toOpts);
 
 				this.fromPicker.datepicker(this.fromOpts).data(opts.dataAttr.IS_FROM, true);
 				this.toPicker.datepicker(this.toOpts).data(opts.dataAttr.IS_FROM, false);
@@ -237,7 +258,7 @@ module.exports = function() {
 	 * Init
 	 */
 	function init(options) {
-		opts = $.extend(true, defParams, options);
+		opts = $.extend({}, defParams, options);
 
 		debug.log(fileName, 'init', opts, opts.type);
 
