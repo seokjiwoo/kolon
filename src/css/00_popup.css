@@ -2,7 +2,7 @@
     Colorbox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
-#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:6; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:99; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
 #cboxWrapper {max-width:none;}
 #cboxOverlay{position:fixed; width:100%; height:100%;background:#000;filter:alpha(opacity = 50);}
 #cboxMiddleLeft, #cboxBottomLeft{clear:left;}
@@ -15,7 +15,7 @@
 .cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
 #colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
 
-#colorbox {outline:0;z-index: 7}
+#colorbox {outline:0;z-index: 20}
 #cboxError {padding:50px; border:1px solid #ccc; }
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; word-break: keep-all;}
 #cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
@@ -55,6 +55,7 @@
 
 #colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'RobotoM','NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
+.lyPop{z-index: 99 !important;}
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
 .popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
 .popEdge .popCon.popConBg {background:url(../images/category_popup_bg.png) 100% 100% no-repeat #fff;}
