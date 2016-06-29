@@ -71,6 +71,18 @@
 .lyPop .record.record02 td {text-align:left;}
 .lyPop .record.record02 strong {font-weight:normal;color:#333;font-family:'RobotoR','NotoSansR', sans-serif;}
 .lyPop .record.record02 b {font-weight:normal;color:#999;}
+
+.lyPop .tbSet th, .lyPop .tbSet td {color:#333;}
+.lyPop .tbSet td {text-align:right;padding:15px 40px 15px 15px;}
+/* 레이어팝업 탭 버튼 */
+.lyPop .tabBox {overflow:hidden;}
+.lyPop .tabBox li {text-align:center;float:left;width:20%;}
+.lyPop .tabBox li a {display:block;height:30px;font-size:16px;color:#000;font-family:'RobotoL','NotoSansL', sans-serif;}
+.lyPop .tabBox li a.on {font-family:'RobotoR','NotoSansR', sans-serif;border-bottom:2px solid #000;}
+/* 레이어팝업 컨텐츠 영역 */
+.lyPop .tabCont {display:none;min-height:475px;}
+.lyPop .tabCont.on {display:block;}
+
 .record.record03 th, .my .record.record03 td {padding:20px 0;}
 .record.record03 td.recordInfo {padding:20px 0 20px 10px;}
 .record.record03 td.rowBox {border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1}

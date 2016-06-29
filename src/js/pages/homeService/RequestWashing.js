@@ -28,6 +28,19 @@ module.exports = function() {
 		debug.log(fileName, $, util);
 	
 		setDatePicker();
+
+		$('#buttonPop').on('click', function(e) {
+			Super.Super.htmlPopup('../../_popup/priceChart.html', 590, 'popEdge', {
+				onOpen: function() {
+					$('.tabBox a').on('click focusin',function(){
+						var idx = $('.tabBox a').index(this);
+						$('.tabBox a').removeClass('on').eq(idx).addClass('on');
+						$('.tabCont').removeClass('on').eq(idx).addClass('on');
+					});
+				}
+			});
+		});
+
 	}
 
 	function setDatePicker() {

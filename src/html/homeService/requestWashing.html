@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"이사서비스 신청"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 세탁서비스 신청"} -->
 </head>
 <body data-page-id="homeService-requestWashing">
 	<div class="wrapper oder homeService">
@@ -9,19 +9,19 @@
 		<div class="container">
 			<div class="wrap">
 			<section class="singleCard" id="myActivity">
-				<h2 class="secTit">이사서비스 신청</h2>
+				<h2 class="secTit">세탁서비스 신청</h2>
 
-				<h3 class="subTit">이사 정보</h3>
+				<h3 class="subTit">세탁 정보</h3>
 				<div class="tbSet oderCont mt20">
-					<table summary="이사 정보 표로써 이사 출발지역, 이사일, 서비스 종류의 정보가 담겨있습니다.">
-						<caption>이사 정보 표</caption>
+					<table summary="세탁 정보 표로써 서비스지역, 수거일시의 정보가 담겨있습니다.">
+						<caption>세탁 정보 표</caption>
 						<colgroup>
 							<col style="width:180px">
 							<col style="width:auto">
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="col">이사 출발 지역</th>
+								<th scope="col">서비스 지역</th>
 								<td>
 									<div class="arrayWrap alignBox">
 										<div class="leftBox">
@@ -43,162 +43,81 @@
 												<li><a href="#" data-value="type-4">강남구</a></li>
 											</ul>
 										</div>
+										<div class="leftBox">
+											<ul class="drop" data-prevent="true">
+												<li><a href="#">읍/면/동</a></li>
+												<li><a href="#" data-value="type-1">면목동</a></li>
+												<li><a href="#" data-value="type-2">논현동</a></li>
+												<li><a href="#" data-value="type-3">압구정동</a></li>
+												<li><a href="#" data-value="type-4">삼성동</a></li>
+											</ul>
+										</div>
 									</div>
-									<p class="underTxt">* 지역 목록에 나오지 않는 지역은 현재 이사서비스가 불가능한 지역입니다. 추후 지속적으로 서비스가 확장될 예정입니다.</p>
+									<p class="underTxt">* 현재 가능한 서비스 지역은 <b>강남구, 서초구, 송파구, 분당</b>입니다. 추후 서비스 지역을 확대할 계획입니다.</p>
 								</td>
 							</tr>
 							<tr>
-								<th scope="col">이사일</th>
+								<th scope="col">수거일시</th>
 								<td>
-									<!-- datePicker -->
-									<div class="calendar js-picker">
-										<span class="calInp">
-											<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
-											<a href="#" class="calBtn js-btn">날짜 선택</a>
-											<div class="cal-container js-picker"></div>
-										</span>
+									<div class="arrayWrap alignBox">
+										<div class="leftBox">
+											<!-- datePicker -->
+											<div class="calendar js-picker">
+												<span class="calInp">
+													<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn">날짜 선택</a>
+													<div class="cal-container js-picker"></div>
+												</span>
+											</div>
+											<!--// datePicker -->
+										</div>
+										<div class="leftBox">
+											<ul class="drop" data-prevent="true">
+												<li><a href="#">수거시간</a></li>
+												<li><a href="#" data-value="type-1">12:00 – 13:00</a></li>
+												<li><a href="#" data-value="type-1">13:00 – 14:00</a></li>
+												<li><a href="#" data-value="type-1">14:00 – 15:00</a></li>
+												<li><a href="#" data-value="type-1">15:00 – 16:00</a></li>
+												<li><a href="#" data-value="type-1">16:00 – 17:00</a></li>
+												<li><a href="#" data-value="type-1">17:00 – 18:00</a></li>
+												<li><a href="#" data-value="type-1">19:00 – 20:00</a></li>
+												<li><a href="#" data-value="type-1">21:00 – 22:00</a></li>
+											</ul>
+										</div>
 									</div>
-									<!--// datePicker -->
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">서비스 종류</th>
-								<td>
-									<ul class="homeType">
-										<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="hType"/><label for="hTp1">포장이사</label></span></li>
-										<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="hType"/><label for="hTp2">원룸이사</label></span></li>
-										<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="hType"/><label for="hTp3">보관이사</label></span></li>
-										<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="hType"/><label for="hTp4">사무실이사</label></span></li>
-									</ul>
+									<p class="underTxt">* 수거시점에 세탁물의 배송일시가 결정됩니다.</p>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 					<div class="btnC">
-						<button type="submit" class="btn btnSizeM btnColor02 btnShadow btnWM">이사업체 추천 요청</button>
+						<button class="btn btnSizeM btnColor02 btnWM">세탁업체 추천 요청</button>
 					</div>
 				</div>
 
-				<h3 class="subTit">추천 이사업체 선택</h3>
+				<h3 class="subTit">추천 세탁업체 선택</h3>
 				<div class="oderCont recommendBox">
 					<div class="payTab tabWrap">
 						<span class="on">
 							<a href="#" class="radioBtn">
-								<p class="thumBox"><img src="../images/thum_recommend01.jpg"></p>
-								<ul class="arraySide">
-									<li>
-										<!-- 별점 
-										grade01 -> 1.0
-										grade15 -> 1.5
-										grade01 -> 2.0
-										grade25 -> 2.5
-										grade03 -> 3.0
-										grade35 -> 3.5
-										grade04 -> 4.0
-										grade45 -> 4.5
-										grade05 -> 5.0
-										-->
-										<p>
-											가격 만족도
-											<span class="gradeNum">4.0</span>
-											<span class="grade">
-												<span class="grade04"></span>
-											</span>
-										</p>
-									</li>
-									<li>
-										<p>
-											서비스 만족도
-											<span class="gradeNum">3.5</span>
-											<span class="grade">
-												<span class="grade35"></span>
-											</span>
-										</p>
-									</li>
-								</ul>
-								<p class="labelTxt">이사의 명가</p>
+								<p class="thumBox"><img src="../images/thum_recommend04.jpg"></p>
+								<p class="labelTxt">워시온</p>
 							</a>
+							<p><button id="buttonPop" class="btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
 						</span>
 						<span class="">
 							<a href="#" class="radioBtn">
-								<p class="thumBox"><img src="../images/thum_recommend02.jpg"></p>
-								<ul class="arraySide">
-									<li>
-										<!-- 별점 
-										grade01 -> 1.0
-										grade15 -> 1.5
-										grade01 -> 2.0
-										grade25 -> 2.5
-										grade03 -> 3.0
-										grade35 -> 3.5
-										grade04 -> 4.0
-										grade45 -> 4.5
-										grade05 -> 5.0
-										-->
-										<p>
-											가격 만족도
-											<span class="gradeNum">3.0</span>
-											<span class="grade">
-												<span class="grade03"></span>
-											</span>
-										</p>
-									</li>
-									<li>
-										<p>
-											서비스 만족도
-											<span class="gradeNum">4.5</span>
-											<span class="grade">
-												<span class="grade45"></span>
-											</span>
-										</p>
-									</li>
-								</ul>
-								<p class="labelTxt">신사의 이사</p>
+								<p class="thumBox"><img src="../images/thum_recommend05.jpg"></p>
+								<p class="labelTxt">세탁특공대</p>
 							</a>
-						</span>
-						<span class="">
-							<a href="#" class="radioBtn">
-								<p class="thumBox"><img src="../images/thum_recommend03.jpg"></p>
-								<ul class="arraySide">
-									<li>
-										<!-- 별점 
-										grade01 -> 1.0
-										grade15 -> 1.5
-										grade01 -> 2.0
-										grade25 -> 2.5
-										grade03 -> 3.0
-										grade35 -> 3.5
-										grade04 -> 4.0
-										grade45 -> 4.5
-										grade05 -> 5.0
-										-->
-										<p>
-											가격 만족도
-											<span class="gradeNum">5.0</span>
-											<span class="grade">
-												<span class="grade05"></span>
-											</span>
-										</p>
-									</li>
-									<li>
-										<p>
-											서비스 만족도
-											<span class="gradeNum">2.5</span>
-											<span class="grade">
-												<span class="grade25"></span>
-											</span>
-										</p>
-									</li>
-								</ul>
-								<p class="labelTxt">이사가요</p>
-							</a>
+							<p><button class="btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
 						</span>
 					</div>
 				</div>
 
 				<h3 class="subTit">기본정보 <span class="subTxt"> * 표시는 필수입력 항목 이오니 반드시 입력해 주세요.</span></h3>
 				<div class="tbSet oderCont mt20">
-					<table summary="기본 정보 입력해표로써 이름, 휴대폰번호, 이사출발지 주소, 이사도착지 주소, 추가 요청사항 정보를 입력하도록 구성되어 있습니다.">
+					<table summary="기본 정보 입력해표로써 이름, 연락처, 주소, 추가 요청사항 정보를 입력하도록 구성되어 있습니다.">
 						<caption>기본 정보 입력 표</caption>
 						<colgroup>
 							<col style="width:180px">
@@ -212,38 +131,13 @@
 								</td>
 							</tr>
 							<tr>
-								<th scope="col"><span class="ico_star">*</span> 휴대폰번호</th>
+								<th scope="col"><span class="ico_star">*</span> 연락처</th>
 								<td>
 									<input type="text" title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
 								</td>
 							</tr>
 							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이사출발지 주소</th>
-								<td>
-									<div class="arrayWrap alignBox">
-										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">자택</a></li>
-												<li><a href="#" data-value="type-1">아파트</a></li>
-												<li><a href="#" data-value="type-2">회사</a></li>
-											</ul>
-										</div>
-										<div class="leftBox">
-											<a href="../_popupWindow/addressBook.html" id="openAddressPopup" class="btnSizeS btnColor01">새주소</a>
-										</div>
-									</div>
-									<dl>
-										<dt>- 도로명</dt>
-										<dd>서울시 강남구 학동로 56길 26</dd>
-										<dt>- 지번</dt>
-										<dd>서울시 강남구 삼성동 8-5</dd>
-										<dt>- 상세주소</dt>
-										<dd>삼성빌딩 7층</dd>
-									</dl>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이사도착지 주소</th>
+								<th scope="col"><span class="ico_star">*</span> 주소</th>
 								<td>
 									<div class="arrayWrap alignBox">
 										<div class="leftBox">
@@ -296,7 +190,7 @@
 				</div>
 
 				<div class="btnC">
-					<button type="submit" class="btn btnSizeL btnColor02 btnShadow btnWM">신청하기</button>
+					<button type="submit" class="btn btnSizeL btnColor02 btnWM">신청하기</button>
 				</div>
 				
 			</section>
