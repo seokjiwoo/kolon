@@ -23,7 +23,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
 
 .topMenu{width:100%; position:fixed; z-index:4; min-width:1240px; white-space: nowrap;}
-.topMenu .topL{width:15%; min-width:180px; height:72px; float:left;}
+.topMenu .topL{width:15%; min-width:180px; height:60px; float:left;}
 .topMenu .topL .btnLnb{width:80px; height:60px; float:left; background:url('../images/btn_menu.png') center no-repeat;}
 .topMenu .topL h1.logo{width:100px; float: left; overflow:hidden; line-height:0;}
 .topMenu .topL h1.logo a{width:100%; padding:22px 0; display:inline-block;}

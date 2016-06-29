@@ -175,7 +175,7 @@ a.btnDetail:before {content:''; width:40px; height:40px; border-radius:50%; over
 .dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
 .dateChangePop .timeSet .calendar{;display: block;width:195px;margin:0 0 10px 0; }
 .dateChangePop .calendar span.calInp input[type=text]{width: 180px;color: #666;}
-.dateChangePop .alignBox{height: 40px;text-align: left;}
+.dateChangePop .alignBox{height: 40px;text-align: left;z-index: 0}
 .dateChangePop .alignBox .drop{width: 235px}
 .dateChangePop .drop li{width: 100%;}
 .dateChangePop, .dateChangePop #cboxWrapper, .dateChangePop #cboxLoadedContent{overflow: visible !important;}

@@ -68,8 +68,8 @@ module.exports = function() {
 		});
 
 		// tab width depend on number of li
-		var countMenu = $('.tabType01 li').length ;
-		$('.tabType01 li').css('width',100/countMenu+'%');
+		var countMenu = $('.tabSplit li').length ;
+		$('.tabSplit li').css('width',100/countMenu+'%');
 	};
 	
 	/**
@@ -143,7 +143,7 @@ module.exports = function() {
 			if (searchBtn){
 				if($(this).hasClass('opened')){
 					$(this).removeClass('opened');
-					$('#searchWrap').animate({'top':'-177px'},250);
+					$('#searchWrap').animate({'top':'-167px'},250);
 				} else {
 					$(this).addClass('opened')
 					$('#searchWrap').animate({'top':'60px'},250);
@@ -151,13 +151,13 @@ module.exports = function() {
 			} else {
 				if($(this).hasClass('opened')){
 					$(this).removeClass('opened');
-					$('#searchWrap').animate({'top':'-177px'},250);
+					$('#searchWrap').animate({'top':'-167px'},250);
 				} else {
 					$(this).addClass('opened')
-					$('#searchWrap').animate({'top':(topBannerShowFlag ? 177 : 60)+'px'},250);
+					$('#searchWrap').animate({'top':(topBannerShowFlag ? 167 : 60)+'px'},250);
 					$('.bannerClose').on('click', function(){
 						$('#searchOpen').removeClass('opened');
-						$('#searchWrap').animate({'top':'-177px'},250);
+						$('#searchWrap').animate({'top':'-167px'},250);
 					})
 				}
 			}
