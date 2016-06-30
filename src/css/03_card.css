@@ -202,11 +202,13 @@
 .cardWrap .cardType09 .cardCon .btn02{background-position:-64px 0 }
 .cardWrap .cardType09 .cardCon a:hover{background-position:0 -64px; }
 .cardWrap .cardType09 .cardCon .btn02:hover{background-position:-64px -64px; }
-.cardWrap .cardType09 .share a{border:1px solid #4862a3; border-radius:50%; background: url('../images/btn_card_fb.png');}
+.cardWrap .cardType09 .share a{border:1px solid #4862a3; border-radius:50%; width:64px; height:64px; margin-top:20px; background: url('../images/btn_card_fb.png') no-repeat;}
+.cardWrap .cardType09 .share a + a{margin-left:10px;}
 .cardWrap .cardType09 .share {color: #4862a3;}
 .cardWrap .cardType09 .share .cardSub span{color: #808080;font-family: 'RobotoR','NotoSansR', sans-serif;}
 .cardWrap .cardType09 .app {color: #333;}
-.cardWrap .cardType09 .app a{background: url('../images/btn_card_app.jpg');}
+.cardWrap .cardType09 .app a{background: url('../images/btn_card_app.jpg'); width:64px; height:64px; margin-top:20px;}
+.cardWrap .cardType09 .app a + a{margin-left:10px;}
 .cardWrap .cardType09 .app .cardSub{color: #808080;}
 .cardWrap .cardType09 .tag{color: #000}
 .cardWrap .cardType09 .tag .cardIntro{color: #666;}
