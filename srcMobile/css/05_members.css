@@ -84,6 +84,8 @@
 .members .stateBox a{float:right;padding:4px 0;}
 .members .policy{margin-top:20px;padding:0 10px;letter-spacing:-1px;text-align:center;line-height:1.4em;color:#333;font-family:'RobotoR','NotoSansR', sans-serif;}
 .members .policy span{color:#00aeb9;text-decoration:underline;}
+.members .policy .btnPop {color:#00aeb9;text-decoration:underline}
+.members .btnPop{display: inline-block;margin:0;border-radius:0;background:none;padding:0}
 
 .snsList{margin-top:20px;}
 .snsList li{padding:0 30px;margin-top:6px;}
