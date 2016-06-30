@@ -167,6 +167,7 @@ module.exports = function() {
 			}
 			if ($(document).scrollLeft() > 0){
 				$('.topMenu').css('margin-left','-' + $(document).scrollLeft() + 'px');
+				$('.search .subTop').css('margin-left','-' + $(document).scrollLeft() + 'px');
 			}
 				$(window).resize(function(){
 				if ($(window).width() > 1239){
