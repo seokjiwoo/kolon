@@ -109,7 +109,7 @@ module.exports = function() {
 
 
 			// tab toggle 시 cardWrap istope 설정체크
-			if ($(tabCon).find('#cardWrap').size()) {
+			if (!$(tabCon).find('#cardWrap').size()) {
 				return;
 			}
 
