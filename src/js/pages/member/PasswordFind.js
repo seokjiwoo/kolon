@@ -90,6 +90,11 @@ module.exports = function() {
 						break;
 					case 'mail':
 						$('#findPwAuthMail').show().siblings('div').hide();
+						
+						var tempIdId = tempId.split('@');
+						var tempIdDomain = tempIdId[1].split('.');
+
+						$('#sendedEmailAddress').text(tempIdId[0].substr(0, 3)+('***@')+tempIdDomain[0].substr(0, 3)+('***.')+tempIdDomain[1]);
 						break;
 				}
 				break;
