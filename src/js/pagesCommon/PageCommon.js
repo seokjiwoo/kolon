@@ -106,8 +106,18 @@ module.exports = function() {
 			
 			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
 			$(tabCon).show().siblings().hide();
-			
-			initTabContentLayout();
+
+
+			// tab toggle 시 cardWrap istope 설정체크
+			if (!$(tabCon).find('#cardWrap').size()) {
+				return;
+			}
+
+			// ie9 istope bugfix
+			if ($('#cardWrap').data('isotope')) {
+				$('#cardWrap').isotope('destroy');
+				initTabContentLayout();
+			}			
 		});
 	};
 
