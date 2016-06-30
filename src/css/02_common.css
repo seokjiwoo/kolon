@@ -16,9 +16,9 @@
 .mt30 {margin-top:30px;}
 .mt40 {margin-top:40px;}
 
-.t_r {text-align:right}
-.t_l {text-align:left;}
-.t_c {text-align:center;}
+.t_r {text-align:right !important;}
+.t_l {text-align:left !important;}
+.t_c {text-align:center !important;}
 
 .fl_left {float:left;}
 .fl_right {float:right;}

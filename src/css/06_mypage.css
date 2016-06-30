@@ -298,18 +298,27 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 
 .my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;}
 .my .scrapTit b{color:#f1645c}
-/*.scrap .delScrap{position: absolute;right: 0;width: 54px;height: 54px;background: #fff;}
-.scrap .scrapPack li{overflow: hidden;position: relative;width: 285px;margin:10px;border-radius: 10px;}
-.scrap .scrapPack .scrapTit{height: 160px;margin:0;padding:0 40px;text-align: center;color: #fff;line-height: 1.4em;}
-.scrap .scrapPack .scrapTit h3{display: inline-block;vertical-align: middle;}
-.scrap .scrapPack .scrapTit:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
-.scrap .scrapPack .scrapTit .count{display: block;}
-.scrap .scrapPack .scrapTit .count:before{content: '';display: inline-block;width: 20px;height: 20px;margin-right: 5px;background: url('../images/btn_profile.png') -132px 0;}
-.scrap .scrapPack .wrapScrap{overflow: hidden; padding:23px;background: #fff;}
-.scrap .scrapPack .wrapScrap span{overflow: hidden;display: block;float: left;width: 114px;height: 114px;}
-.scrap .scrapPack .wrapScrap span:first-child{margin-right: 10px;}
-.scrap .scrapPack .wrapScrap span img{width: 100%;}
-*/
+.my #scrapImg .btnList{width: 60px;}
+.my #scrapImg .cardWrap{padding:0;}
+.my .scrapPack{overflow: hidden;min-width: 1220px;margin: -12px -20px 0 0;}
+.my .scrapPack li{position: relative;float: left;width: 285px;margin:20px 20px 0 0;padding-top:30px;color: #fff;font-size: 20px;}
+.my .scrapPack .packEdge{display: block;position: absolute;top: 0;left:0;width: 0;height: 0;border-bottom: 30px solid;border-left: 15px solid transparent;}
+.my .scrapPack .packTit{height: 100px;padding: 0 30px 30px;text-align: center;color: #fff;line-height: 1.3em;}
+.my .scrapPack .packTit:before{content:'';display: inline-block;width: 0;height: 100%;vertical-align: middle;margin-left: -5px;}
+.my .scrapPack .packTit:after{content: '';position: absolute;top:0;left: 15px;right: 0;height: 30px;background: inherit;}
+.my .scrapPack .packTit h3{display: inline-block;vertical-align: middle;width: 99%;word-break: keep-all;}
+.my .scrapPack .packTit .count{display: block;margin-top: 5px;}
+.my .scrapPack .packTit .count:before{content: '';display: inline-block;width: 22px;height: 22px;margin-right: 5px;background: url('../images/btn_profile.png') no-repeat; background-position: -44px 0;vertical-align: baseline;}
+.my .scrapPack .editFolder{position: absolute;right: 0;top: 0;display: block;width:45px;height: 60px;background: url('../images/btn_list.png') center no-repeat; z-index: 1}
+
+.my .scrapPack .packCon{overflow: hidden;display: block;padding: 13px 23px 3px 24px;background: #f2f2f2;}
+.my .scrapPack li:before, .my .scrapPack li:after{content: '';}
+.my .scrapPack li:after{display: block;height: 30px;margin-right: 15px;background:#f2f2f2}
+.my .scrapPack li:before{position: absolute;bottom: 0;right:0;width: 0;height: 0;border-top: 30px solid;border-right: 15px solid transparent;border-top-color: #f2f2f2;}
+.my .scrapPack .packCon span{overflow: hidden;float: left;display: block;width: 114px;height: 114px;}
+.my .scrapPack .packCon span:first-child{margin-right: 10px;}
+.my .scrapPack .packCon span img{width: 100%;}
+
 #myOrder .stateWrap li, #myOrderDetail .stateWrap li{width: 16.6%;}
 
 .orderDetail .checkAgree label:before {display:inline-block;margin:0 20px;}
