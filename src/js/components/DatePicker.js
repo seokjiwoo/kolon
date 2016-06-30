@@ -82,7 +82,7 @@ module.exports = function() {
 				this.picker.toggleClass(opts.cssClass.SHOW_HIDE);
 
 				if (this.picker.hasClass(opts.cssClass.SHOW_HIDE)) {
-					if (wrap.closest('#colorbox').size()) {
+					if (this.picker.closest('#colorbox').size()) {
 						var calendar = this.picker.closest('.calendar');
 						calendar.off('mousedownoutside', $.proxy(this.onPickerHide, this))
 									.on('mousedownoutside', $.proxy(this.onPickerHide, this));
