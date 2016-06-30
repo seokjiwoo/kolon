@@ -172,6 +172,7 @@ module.exports = function() {
 				$(window).resize(function(){
 				if ($(window).width() > 1239){
 					$('.topMenu').css('margin-left','0');
+					$('.search .subTop').css('margin-left','0');
 				}
 			})
 		});
