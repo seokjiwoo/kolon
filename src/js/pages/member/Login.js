@@ -76,6 +76,8 @@ module.exports = function() {
 		for (var key in socialAuthLoginUrl) {
 			var eachService = socialAuthLoginUrl[key];
 			$('#socialLogin-'+eachService.socialName).attr('href', eachService.authUrl);
+
+			Super.initSocialLoginPopupButton();
 		}
 	};
 

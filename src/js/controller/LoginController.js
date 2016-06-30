@@ -115,7 +115,7 @@ function ClassLoginController() {
 	 * 소셜 로그인 URL 목록
 	 */
 	function getSocialLoginUrl() {
-		Super.callApi('/apis/member/socials/authLoginUrl', 'GET', {}, function(status, result) {
+		Super.callApi('/apis/user/socials/loginUrl', 'GET', {}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('socialLoginUrlResult', [200, result.data.socialAuthLoginUrl]);
 			} else {

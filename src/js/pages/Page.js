@@ -17,7 +17,11 @@ module.exports = function() {
 		/**
 		 * 초기화
 		 */
-		init: init
+		init: init,
+		/**
+		 * 소셜로그인 버튼 초기화
+		 */
+		initSocialLoginPopupButton: initSocialLoginPopupButton
 	};
 
 	// 공통차트 컴포넌트 - @see html/_js/chart.html
@@ -211,6 +215,29 @@ module.exports = function() {
 			e.stopPropagation();
 		});
 	}
+
+	/**
+	 * 소셜로그인 시스템팝업 버튼 초기화
+	 */
+	function initSocialLoginPopupButton() {
+		$('.loginSns').click(function(e) {
+			e.preventDefault();
+			
+			window.open($(this).attr('href'), 'socialLoginPopup', 'width=600,height=550,menubar=no,status=no,toolbar=no,resizable=yes,fullscreen=no')
+
+			e.stopPropagation();
+		});
+
+		$(document).on('getSocialLoginResult', [data]);
+	}
+
+	/**
+	 * 소셜로그인 결과 핸들링
+	 */
+	function socialLoginResultHandler(e, data) {
+		alert('!!!');
+		console.log(data);
+	};
 
 	/**
 	 * 상단 배너영역 숨기기
