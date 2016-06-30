@@ -43,6 +43,10 @@
 .container.bgTop .user.infoTop .myRate.on a b {color:#00efff;}
 .container.bgTop .user.infoTop .myRate .my {width:35px;height:35px;background-image:url(../images/ico_homeB_top.png)}
 .container.bgTop .user.infoTop .myRate.on .my {width:35px;height:35px;background-image:url(../images/ico_homeR_top.png)}
+.container.bgTop .user.infoTop .myRate.myRate02 a b {position:relative;}
+.container.bgTop .user.infoTop .myRate a b .newBox {position:relative;display:inline-block;}
+.container.bgTop .user.infoTop .myRate a b .new {display:block;width:16px;height:16px;line-height:16px;position:absolute;top:50%;right:0;margin:-14px -8px 0 0;background:#fff;font-size:11px;color:#eb5f79;border-radius:50%;}
+.container.bgTop .user.infoTop .myRate a b .newBox:before, .container.bgTop .user.infoTop .myRate a b .new:before {display:none;}
 .container.bgTop .user.infoTop .myRate.myRate06 a b {font-size:22px;}
 .container.bgTop .user.infoTop .myRate {margin:0;position:absolute;}
 .container.bgTop .user.infoTop .myRate.myRate01 {top:185px;left:518px;}
