@@ -86,7 +86,7 @@ function DropDownMenu() {
 		$.each(self.drops, function() {
 			$(this).find('a').eq(0).off('click', $.proxy(onDropMenuToggle, self));
 			$(this).find('a:not(:first)').off('click', $.proxy(onDropMenuClick, self));
-			$(this).off('focusoutside mousedownoutside', $.proxy(onDropMenuClose, self));
+			$(this).off('keyupoutside mousedownoutside', $.proxy(onDropMenuClose, self));
 		});
 	}
 
@@ -102,7 +102,7 @@ function DropDownMenu() {
 		dropMenu.toggleClass(self.opts.cssClass.dropOn);
 
 		if (dropMenu.hasClass(self.opts.cssClass.dropOn)) {
-			dropMenu.one('focusoutside mousedownoutside', $.proxy(onDropMenuClose, self));
+			dropMenu.one('keyupoutside mousedownoutside', $.proxy(onDropMenuClose, self));
 		}
 	}
 
@@ -123,7 +123,7 @@ function DropDownMenu() {
 				
 		$('body').trigger(self.EVENT.CHANGE, {menu: dropMenu, values : dropMenu.val()});
 
-		dropMenu.off('focusoutside mousedownoutside', $.proxy(onDropMenuClose, self));
+		dropMenu.off('keyupoutside mousedownoutside', $.proxy(onDropMenuClose, self));
 	}
 
 	function onDropCheckChange(e) {
