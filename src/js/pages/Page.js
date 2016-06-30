@@ -203,7 +203,7 @@ module.exports = function() {
 	 * 주소록 시스템팝업 버튼 초기화
 	 */
 	function initAddressPopupButton() {
-		$('#openAddressPopup').click(function(e) {
+		$('.openAddressPopup').click(function(e) {
 			e.preventDefault();
 			
 			window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no')
