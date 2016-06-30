@@ -325,7 +325,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .orderState ul li em{display:block;margin-top:5px;font-size:20px;font-weight:bold;}
 
 .orderRow{margin-top:8px;}
-.myOrderstate{background:#fff;padding:25px 15px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.myOrderstate{background:#fff;padding:25px 15px 0;font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .orderNum{overflow:hidden;font-size:15px;}
 .orderNum span,
 .orderNum a{display:inline-block;}
