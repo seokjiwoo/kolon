@@ -1,30 +1,81 @@
 body[data-page-id=myPage-order] {background:#e0e0e0;}
-.orderWrap {background:#fff; padding:25px 15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
-.orderWrap + .orderWrap {margin-top:10px;}
-.zipCode label.btnColor03 {background:#666;}
+.order .orderWrap {background:#fff; padding:25px 15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.order .orderWrap + .orderWrap {margin-top:10px;}
+.order .zipCode label.btnColor03 {background:#666;}
 
-.orderInfo {border:2px solid #333;}
-.orderInfo dl {width:100%; display:inline-block; position:relative;}
-.orderInfo dl + dl {border-top:1px solid #333;}
-.orderInfo dl + dl:after {content:''; width:34px; height:39px; margin-left:-17px; background:url(../images/ico_order.png) no-repeat; background-size:34px 78px; position:absolute; top:-19.5px; left:50%; z-index:1;}
-.orderInfo dl + dl.minus:after {background-position:0 0;}
-.orderInfo dl + dl.equal:after {background-position:0 -39px;}
-.orderInfo dl dt {padding:13px 11px; background:#f8f8f8; overflow:hidden; border-bottom:1px solid #ccc;}
-.orderInfo dl dt span {width:50%; color:#666; float:left; display:inline-block;}
-.orderInfo dl dt span.orderTxt {float:right; text-align:right;}
-.orderInfo dl dd {padding:20px 10px; overflow:hidden;}
-.orderInfo dl dd + dt {border-top:1px solid #ccc;}
-.orderInfo dl dd p.price {width:100%; text-align:right; font-size:15px;}
-.orderInfo dl dd p.price b {font-size:18px;}
-.orderInfo dl dd p.price + ul.odList {margin-top:15px;}
-.orderInfo dl dd ul.odList {width:100%; overflow:hidden;}
-.orderInfo dl dd ul.odList li {padding-left:8px; position:relative; overflow:hidden;}
-.orderInfo dl dd ul.odList li + li {margin-top:5px;}
-.orderInfo dl dd ul.odList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
-.orderInfo dl dd ul.odList li p {line-height:130%; color:#666;}
-.orderInfo dl dd p.odListTit {width:40%; float:left;}
-.orderInfo dl dd p.odListCont {width:60%; float:right; text-align:right;}
-.orderInfo dl dd ul.odList.point li:before {top:15px;}
-.orderInfo dl dd ul.odList.point li p {min-height:30px; line-height:30px;}
-.orderInfo dl dd ul.odList + p.underTxt {margin-top:10px;}
-.orderInfo dl dd p.underTxt {color:#666; font-size:11px; line-height:130%;}
+.order .orderTit{position:relative;padding-bottom: 10px;font-size: 15px;color: #000;}
+.order .orderInfo {border:2px solid #333;}
+.order .orderInfo dl {width:100%; display:inline-block; position:relative;}
+.order .orderInfo dl + dl {border-top:1px solid #333;}
+.order .orderInfo dl + dl:after {content:''; width:34px; height:39px; margin-left:-17px; background:url(../images/ico_order.png) no-repeat; background-size:34px 78px; position:absolute; top:-19.5px; left:50%; z-index:1;}
+.order .orderInfo dl + dl.minus:after {background-position:0 0;}
+.order .orderInfo dl + dl.equal:after {background-position:0 -39px;}
+.order .orderInfo dl dt {padding:13px 11px; background:#f8f8f8; overflow:hidden; border-bottom:1px solid #ccc;}
+.order .orderInfo dl dt span {width:50%; color:#666; float:left; display:inline-block;}
+.order .orderInfo dl dt span.orderTxt {float:right; text-align:right;}
+.order .orderInfo dl dd {padding:20px 10px; overflow:hidden;}
+.order .orderInfo dl dd + dt {border-top:1px solid #ccc;}
+.order .orderInfo dl dd + dd {border-top:1px solid #e8e8e8;}
+.order .orderInfo dl dd p.price {width:100%; text-align:right; font-size:15px;}
+.order .orderInfo dl dd p.price b {font-size:18px;}
+.order .orderInfo dl dd p.price + ul.odList {margin-top:15px;}
+.order .orderInfo dl dd p.underTxt {color:#666; font-size:11px; line-height:130%;}
+.order .orderInfo dl dd.total {background:#f1645c; color:#fff;}
+.order .orderInfo dl dd.total p {font-size:15px; line-height:15px;}
+.order .orderInfo dl dd.total p.odListCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:22.5px;}
+.order .orderInfo dl dd span.point {color:#000;}
+.order .orderInfo dl dd span.point em {color:#666; font-style:normal;}
+.order .orderInfo + table.formWrap {margin-top:20px;}
+
+.order p.odListTit {width:40%; float:left;}
+.order p.odListCont {width:60%; float:right; text-align:right; line-height:130%;}
+.order p.odListCont b {margin-left:10px;}
+.order ul.odList {width:100%; overflow:hidden;}
+.order ul.odList li {padding-left:8px; position:relative; overflow:hidden;}
+.order ul.odList li + li {margin-top:5px;}
+.order ul.odList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
+.order ul.odList li p {line-height:130%; color:#666;}
+.order ul.odList.point li:before {top:15px;}
+.order ul.odList.point li p {min-height:30px; line-height:30px;}
+.order ul.odList + p.underTxt {margin-top:10px;}
+
+.order a.agreeBtn {width:100%; padding:5px 0; position:relative; display:inline-block;}
+.order a.agreeBtn:after {content:''; width:20px; height:11px; margin-top:-5.25px; position:absolute; top:50%; right:10px; background:url(../images/ico_toggleL.png) 0 -10.5px no-repeat; background-size:20px 23px;}
+.order a.agreeBtn.open:after {background-position:0 0;}
+.order .agreeCont {width:100%; padding:15px 0 10px; margin-top:15px; border-top:1px solid #e8e8e8; line-height:130%; color:#666;}
+
+.order .payTab {width:100%; padding:20px 0; border-top:1px solid #545454; overflow:hidden;}
+.order .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
+.order .payTab a {display:inline-block; color:#666;}
+.order .payTab + div div table {margin-top:0;}
+.order .payTab.tabWrap {width:100%; overflow:hidden; text-align:center;}
+.order .payTab.tabWrap span + span {margin-left:18.5px;}
+.order .payTab.tabWrap a {padding:0 0 0 21px; background:url('../images/ico_radio.png') 0 -16px no-repeat; background-size:16px 32px; display:inline-block; line-height:16px;}
+.order .payTab.tabWrap .on a {background-position:0 0;}
+.order a.deliveryBtn {width:100%; height:35px; margin-top:15px; border-radius:17.5px; color:#fff; text-align:center; background:#666; display:inline-block; vertical-align:middle; line-height:35px;}
+.order a.deliveryBtn span {padding-right:18.5px; display:inline-block; background:url(../images/ico_follow_on.png) 100% 50% no-repeat; background-size:13.5px 10px;}
+@media (max-width:320px){
+	.order .payTab.tabWrap span + span {margin-left:3px;}
+}
+.order h4.tbTit {padding:15px; font-size:13px;}
+.order .tbBox {border:1px solid #e0e0e0; padding:15px; color:#666; line-height:130%;}
+.order .tbBox ul.tbList {width:100%;}
+.order .tbBox ul.tbList li {width:100%; color:#999; font-family:'NotoSansL', 'RobotoL', sans-serif; font-size:11px; overflow:hidden; line-height:130%;}
+.order .tbBox ul.tbList li b{width:20%; color:#666; font-family:'NotoSansR', 'RobotoR', sans-serif; display:inline-block; float:left;}
+.order .tbBox ul.tbList li span {width:80%; float:left; display:inline-block;}
+.order .tbBox ul.tbList li + li {margin-top:10px;}
+
+.delivery1 .tabWrap {padding-top:0;}
+.order .formWrap + .orderTit,
+.order .tbBox + .orderTit {margin-top:20px;}
+
+.order .shipPhone {width:100%;;}
+.order .shipPhone p + p {margin-top:10px;}
+.order .shipPhone p select, 
+.order .shipPhone p input[type=text] {width:30%}
+.order .shipPhone p.inp4 input[type=text] {width:21%}
+.order .cashCheck {margin-top:10px;}
+.order ul.infoBtnWrap {width:100%; margin:20px 0; overflow:hidden;}
+.order ul.infoBtnWrap li {width:50%; float:left;}
+.order ul.infoBtnWrap li  + li p {margin-left:5px;}
+.order ul.infoBtnWrap li p a {width:100%; border-radius:17.5px;}

@@ -4,10 +4,10 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문서작성"} -->
 </head>
 <body data-page-id="myPage-order">
-	<div class="wrapper members">
+	<div class="wrapper order">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<div class="wrap">
+			<div class="wrap" style="margin-bottom:119px;"><!-- 임시 style, scroll action 시 삭제 해주세요 -->
 				<section>
 					<div class="orderWrap">
 						<h2 class="secTit">주문/결제</h2>
@@ -52,76 +52,173 @@
 								</ul>
 								<!--// 결제금액 내역 -->
 							</li>
+							<li>
+								<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+								<div class="info">
+									<span>코오롱 글로벌</span>
+									<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+								</div>
+								<ul class="productData">
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+								</ul>
+								<!-- 결제금액 내역 -->
+								<ul class="priceBox">
+									<li>
+										<p class="priceBoxTit">할인금액</p>
+										<p class="priceBoxCont"><b>0</b> 원</p>
+									</li>
+									<li>
+										<p class="priceBoxTit">배송비</p>
+										<p class="priceBoxCont"><b>20,000</b> 원</p>
+									</li>
+									<li class="check">
+										<p class="priceBoxTit">결제금액</p>
+										<p class="priceBoxCont"><b>1,720,000</b> 원</p>
+									</li>
+								</ul>
+								<!--// 결제금액 내역 -->
+							</li>
 						</ul>
 						<!--// list -->
 					</div>
 					<fieldset class="plate selectAddress">
-						<h3 class="plateTit">수령지 정보</h3>
-						<ul class="tabWrap tabSquare">
-							<li class="on"><a href="#lastAddress">최근 주소</a></li>
-							<li><a href="#newAddress">새로 입력</a></li>
-						</ul>
-						<div class="tabCon">
-							<div id="lastAddress">
-								<select name="" id="">
-									<option value="">자택</option>
-									<option value=""></option>
-								</select>
-								<table class="formWrap mt20">
-									<tr>
-										<th>주소 별칭</th>
-										<td><input type="text"></td>
-									</tr>
-									<tr>
-										<th>받으실 분</th>
-										<td><input type="text"></td>
-									</tr>
-									<tr>
-										<th>연락처1</th>
-										<td class="phone">
-											<label for="" class="hide">연락처01</label>
-											<select name="" id="">
-												<option value="">02</option>
-											</select>
-											<label for="">연락처02</label>
-											<input type="text">
-											<label for="">연락처03</label>
-											<input type="text">
-										</td>
-									</tr>
-									<tr>
-										<th>연락처2</th>
-										<td class="phone">
-											<label for="" class="hide">연락처01</label>
-											<select name="" id="">
-												<option value="">02</option>
-											</select>
-											<label for="">연락처02</label>
-											<input type="text">
-											<label for="">연락처03</label>
-											<input type="text">
-										</td>
-									</tr>
-								</table>
-								<h4 class="partTit">수령지 주소</h4>
-								<div class="shipAddress">
-									<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode" class="btnColor03">주소검색</label><a href=""></a></p>
-									<p><input type="text"><label for="" class="hide">주소</label></p>
-									<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+						<h3 class="orderTit">수령지 정보</h3>
+						<div class="payTab tabWrap">
+							<span class="on"><a href="#delivery1" class="radioBtn">단일 배송지</a></span>
+							<span><a href="#delivery2" class="radioBtn">복수 배송지</a></span>
+						</div>
+						<div class="">
+							<!-- 단일 배송지 -->
+							<div class="delivery1" id="delivery1">
+								<ul class="tabWrap tabSquare">
+									<li class="on"><a href="#lastAddress">최근 주소</a></li>
+									<li><a href="#newAddress">새로 입력</a></li>
+								</ul>
+								<div class="tabCon">
+									<div id="lastAddress">
+										<select name="" id="">
+											<option value="">자택</option>
+											<option value=""></option>
+										</select>
+										<table class="formWrap mt20">
+											<tr>
+												<th>받으실 분</th>
+												<td><input type="text"></td>
+											</tr>
+											<tr>
+												<th>연락처1</th>
+												<td class="phone">
+													<select name="" title="국번 선택">
+														<option value="">02</option>
+													</select> -
+													<input type="text" title="연락처 앞자리 입력"> -
+													<input type="text" title="연락처 뒷자리 입력">
+												</td>
+											</tr>
+											<tr>
+												<th>연락처2</th>
+												<td class="phone">
+													<select name="" title="국번 선택">
+														<option value="">02</option>
+													</select> -
+													<input type="text" title="연락처 앞자리 입력"> -
+													<input type="text" title="연락처 뒷자리 입력">
+												</td>
+											</tr>
+										</table>
+										<h4 class="partTit">수령지 주소</h4>
+										<div class="shipAddress">
+											<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
+											<p><input type="text"><label for="" class="hide">주소</label></p>
+											<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+											<p>
+												<span class="checkbox">
+													<input type="checkbox" id="checkAddress1"/>
+													<label for="checkAddress1">기본 배송지로 설정</label>
+												</span>
+											</p>
+										</div>
+									</div>
+									<div id="newAddress" style="display: none;">
+										<table class="formWrap">
+											<tr>
+												<th>주소 별칭</th>
+												<td><input type="text"></td>
+											</tr>
+											<tr>
+												<th>받으실 분</th>
+												<td><input type="text"></td>
+											</tr>
+											<tr>
+												<th>연락처1</th>
+												<td class="phone">
+													<select name="" title="국번 선택">
+														<option value="">02</option>
+													</select> -
+													<input type="text" title="연락처 앞자리 입력"> -
+													<input type="text" title="연락처 뒷자리 입력">
+												</td>
+											</tr>
+											<tr>
+												<th>연락처2</th>
+												<td class="phone">
+													<select name="" title="국번 선택">
+														<option value="">02</option>
+													</select> -
+													<input type="text" title="연락처 앞자리 입력"> -
+													<input type="text" title="연락처 뒷자리 입력">
+												</td>
+											</tr>
+										</table>
+										<h4 class="partTit">수령지 주소</h4>
+										<div class="shipAddress">
+											<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
+											<p><input type="text"><label for="" class="hide">주소</label></p>
+											<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+											<p>
+												<span class="checkbox">
+													<input type="checkbox" id="checkAddress2"/>
+													<label for="checkAddress2">기본 배송지로 설정</label>
+												</span>
+											</p>
+										</div>
+									</div>
+								</div>
+								<h4 class="partTit">배송 시 요청 사항</h4>
+								<div class="textWrap">
+									<select title="배송 시 요청사항 선택">
+										<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+										<option value="">경비실에 맡겨주세요</option>
+										<option value="">빠른 배송 부탁드립니다.</option>
+										<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+									</select>
+									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
+									<p class="countTxt"><span>0</span>/50</p>
 								</div>
 							</div>
-						</div>
-						<h4 class="partTit">배송 시 요청 사항</h4>
-						<div class="textWrap">
-							<select name="" id="">
-								<option value="">배송 시 요청사항을 선택해 주세요</option>
-							</select>
-							<textarea name="" id="" placeholder="직접 입력"></textarea>
-							<p class="countTxt"><span>0</span>/50</p>
+							<!--// 단일 배송지 -->
+							<!-- 복수 배송지 -->
+							<div class="delivery2" id="delivery2" style="display:none">
+								<a href="#" class="deliveryBtn"><span>복수 배송지 선택</span></a>
+							</div>
+							<!--// 복수 배송지 -->
 						</div>
 					</fieldset>
-					<div class="plate" style="margin-bottom:119px;"><!-- 임시 style, scroll action 시 삭제 해주세요 -->
-						<h3 class="plateTit">결제 정보</h3>
+					<div class="plate">
+						<h3 class="orderTit">결제 정보</h3>
 						<div class="orderInfo">
 							<dl>
 								<dt>
@@ -155,7 +252,9 @@
 											<label for="checkOd">모두 사용</label>
 										</span>
 									</p>
-									<p class="odListCont">( 잔여 포인트    1300P )</p>
+									<p class="odListCont"><span class="point"><em>잔여 포인트</em><b>1300</b> P</span></p>
+								</dd>
+								<dd>
 									<ul class="odList point">
 										<li>
 											<p class="odListTit"><label for="point">포인트 사용</label></p>
@@ -166,11 +265,8 @@
 								</dd>
 							</dl>
 							<dl class="equal">
-								<dt>
-									<span>총 결제금액</span>
-								</dt>
-								<dd>
-									<p class="odListTit">기본 할인</p>
+								<dd class="total">
+									<p class="odListTit">총 결제금액</p>
 									<p class="odListCont"><b>1,720,000</b> 원</p>
 								</dd>
 								<dt>
@@ -180,32 +276,286 @@
 									<ul class="odList">
 										<li>
 											<p class="odListTit">적립 예정 포인트</p>
-											<p class="odListCont"><b>1300</b> P</p>
+											<p class="odListCont"><span class="point"><b>1300</b> P</span></p>
 										</li>
 									</ul>
 								</dd>
 							</dl>
 						</div>
+						<table class="formWrap tbL">
+							<caption>개인정보 제 3자 제공 동의</caption>
+							<thead>
+								<tr>
+									<th scope="col">
+										<span class="checkbox">
+											<input type="checkbox" id="checkAgree"/>
+											<label for="checkAgree">개인정보 제 3자 제공 동의</label>
+										</span>
+									</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<a href="#" class="agreeBtn btnToggle">개인정보 제 3자 제공</a>
+										<div class="agreeCont slideCon">
+											가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. 
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<h3 class="orderTit">결제 방법</h3>
+						<div class="payTab tabWrap">
+						<form method="post" action="/">
+							<fieldset >
+								<legend>결제방법 선택</legend>
+								<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
+								<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
+								<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
+							</fieldset>
+						</form>
+					</div>
+					<div>
+						<!-- 신용카드 -->
+						<div class="pay" id="pay1">
+							<div class="oderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>신용카드 결재에 관한 카드 선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">카드선택</th>
+												<td>
+													<select title="수령지 선택">
+														<option value="" label="카드 선택" selected="selected">카드 선택</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">할부방식</th>
+												<td>
+													<select title="수령지 선택">
+														<option value="" label="일시불" selected="selected">일시불</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<h4 class="tbTit">무이자 할부적용 카드</h4>
+									<div class="tbBox">
+										<ul class="tbList">
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ12월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ 6 , 12개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 신용카드 -->
+						<!-- 무통장 입금 -->
+						<div class="pay" id="pay2" style="display:none;">
+							<div class="oderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제 안내, 현금영수증 발금신청 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">은행선택</th>
+												<td>
+													<select title="은행선택">
+														<option value="" label="은행 선택" selected="selected">은행 선택</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="bank01">입금자</label></th>
+												<td>
+													<input type="text" class="" id="bank01" value=""/>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">예금주</th>
+												<td class="t_r">예금주명</td>
+											</tr>
+											<tr>
+												<th scope="row">입금<br/>마감일</th>
+												<td class="t_r">2016. 05. 30</td>
+											</tr>
+										</tbody>
+									</table>
+									<h4 class="tbTit">결제안내</h4>
+									<div class="tbBox">
+										주문시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.
+									</div>
+									<h3 class="orderTit">현금영수증 발급 신청</h3>
+									<div class="payTab tabWrap">
+										<span class="on"><a href="#cashCt1" class="radioBtn">개인 소득 공제</a></span>
+										<span><a href="#cashCt2" class="radioBtn">사업자 지출 증빙</a></span>
+									</div>
+									<div class="">
+										<!-- 개인소득공제 -->
+										<div class="" id="cashCt1">
+											<div class="shipPhone">
+												<!-- 개인소득공제 : 휴대폰 번호 -->
+												<p>
+													<select title="소득공제 방법 선택" style="width:auto;">
+														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+														<option value="" label="현금영수증 카드">현금영수증 카드</option>
+													</select>
+												</p>
+												<p>
+													<select title="휴대폰 통신사 번호 선택">
+														<option value="" label="010" selected="selected">010</option>
+														<option value="" label=""></option>
+													</select> - 
+													<input type="text" title="휴대폰 앞자리 입력"/> - 
+													<input type="text" title="휴대폰 뒷자리 입력"/>
+												</p>
+												<!--// 개인소득공제 : 휴대폰 번호 -->
+												<!-- 개인소득공제 : 현금영수증 카드 -->
+												<!--
+												<p class="inp4">
+													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
+												</p>
+												-->
+												<!--// 개인소득공제 : 현금영수증 카드 -->
+											</div>
+											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 개인소득공제 -->
+										<!-- 사업자 지출 증빙 -->
+										<div id="cashCt2" style="display:none;">
+											<div class="shipPhone">
+												<p>
+													<input type="text" title="사업자번호 앞자리 입력"/> - 
+													<input type="text" title="사업자번호 중간자리 입력"/> - 
+													<input type="text" title="사업자번호 뒷자리 입력"/>
+												</p>
+											</div>
+											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 사업자 지출 증빙 -->
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 무통장 입금 -->
+						<!-- 실시간 계좌이체  -->
+						<div class="pay" id="pay3" style="display:none;">
+							<div class="oderTbW">
+								<form method="post" action="/">
+									<div class="tbBox">
+										<p>결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</p>
+									</div>
+									<ul class="infoBtnWrap">
+										<li><p><a href="" class="btnSizeS btnColor03">실시간 계좌이체 안내</a></p></li>
+										<li><p><a href="" class="btnSizeS btnColor03">은행별 이용시간</a></p></li>
+									</ul>
+									<h3 class="orderTit">현금영수증 발급 신청</h3>
+									<div class="payTab tabWrap">
+										<span class="on"><a href="#cashCt2_1" class="radioBtn">개인 소득 공제</a></span>
+										<span><a href="#cashCt2_2" class="radioBtn">사업자 지출 증빙</a></span>
+									</div>
+									<div class="">
+										<!-- 개인소득공제 -->
+										<div id="cashCt2_1">
+											<div class="shipPhone">
+												<!-- 개인소득공제 : 휴대폰 번호 -->
+												<p>
+													<select title="소득공제 방법 선택" style="width:auto;">
+														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+														<option value="" label="현금영수증 카드">현금영수증 카드</option>
+													</select>
+												</p>
+												<p>
+													<select title="휴대폰 통신사 번호 선택">
+														<option value="" label="010" selected="selected">010</option>
+														<option value="" label=""></option>
+													</select> - 
+													<input type="text" title="휴대폰 앞자리 입력"/> - 
+													<input type="text" title="휴대폰 뒷자리 입력"/>
+												</p>
+												<!--// 개인소득공제 : 휴대폰 번호 -->
+												<!-- 개인소득공제 : 현금영수증 카드 -->
+												<!--
+												<p class="inp4">
+													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
+												</p>
+												-->
+												<!--// 개인소득공제 : 현금영수증 카드 -->
+												<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+											</div>
+										</div>
+										<!--// 개인소득공제 -->
+										<!-- 사업자 지출 증빙 -->
+										<div id="cashCt2_2" style="display:none;">
+											<div class="shipPhone">
+												<p>
+													<input type="text" title="사업자번호 앞자리 입력"/> - 
+													<input type="text" title="사업자번호 중간자리 입력"/> - 
+													<input type="text" title="사업자번호 뒷자리 입력"/>
+												</p>
+											</div>
+											<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 사업자 지출 증빙 -->
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 실시간 계좌이체  -->
 					</div>
 					<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
 					<div class="myCartTotal">
 						<ul class="totalList slideMore">
 							<li>
 								<p class="totalTit">총 상품금액 (3개)</p>
-								<p class="totalCont"><b>2,200,000</b> 원</p>
+								<p class="totalCont"><b>1,700,000</b> 원</p>
 							</li>
 							<li>
-								<p class="totalTit">할인금액</p>
+								<p class="totalTit">총 할인금액</p>
 								<p class="totalCont"><b>- 0</b> 원</p>
 							</li>
 							<li>
+								<ul class="odList">
+									<li>
+										<p class="odListTit">기본 할인</p>
+										<p class="odListCont"><b>0</b> 원</p>
+									</li>
+									<li>
+										<p class="odListTit">포인트</p>
+										<p class="odListCont"><b>0</b> 원</p>
+									</li>
+								</ul>
+							</li>
+							<li>
 								<p class="totalTit">배송비</p>
-								<p class="totalCont"><b>40,000</b> 원</p>
+								<p class="totalCont"><b>20,000</b> 원</p>
 							</li>
 						</ul>
 						<div class="total">
 							<p class="totalTit">결제예정금액</p>
-							<p class="totalCont"><b>2,240,000</b> 원</p>
+							<p class="totalCont"><b>1,720,000</b> 원</p>
 							<a href="#" class="more btnMore">상세보기</a>
 						</div>
 						<a href="#" class="totalBtn">주문하기</a>
