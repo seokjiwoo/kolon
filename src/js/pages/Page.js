@@ -166,13 +166,11 @@ module.exports = function() {
 				$('.topMenu').css('background','none');
 			}
 			if ($(document).scrollLeft() > 0){
-				$('.topMenu').css('margin-left','-' + $(document).scrollLeft() + 'px');
-				$('.search .subTop').css('margin-left','-' + $(document).scrollLeft() + 'px');
+				$('.topMenu, .search .subTop').css('margin-left','-' + $(document).scrollLeft() + 'px');
 			}
 				$(window).resize(function(){
 				if ($(window).width() > 1239){
-					$('.topMenu').css('margin-left','0');
-					$('.search .subTop').css('margin-left','0');
+					$('.topMenu, .search .subTop').css('margin-left','0');
 				}
 			})
 		});
