@@ -19,9 +19,9 @@
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
 	position: absolute;
-	top: -5px;
-	width: 25px;
-	height: 25px;
+	top: 0;
+	width: 27px;
+	height: 27px;
 	border:none;
 	padding:0;
 }

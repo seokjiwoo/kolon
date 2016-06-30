@@ -358,7 +358,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myInfo .drop li:first-child a:after{right: -20px}
 
 #editPassword .subTit{margin-top:30px;}
-#editPassword .subTxt{display: initial;}
+#editPassword .subTxt{display:inline;}
 #editPassword .btnWrap{margin-top: 40px;}
 #editPassword .btn{width: 200px}
 
