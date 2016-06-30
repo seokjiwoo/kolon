@@ -86,7 +86,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .lnbWrapper {overflow: hidden;position: fixed;top:113px;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:110;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
 .lnb {overflow: auto;background:#fff;text-align: center;}
 .lnb .profile{position: relative;min-height:340px;padding-bottom:83px;background: #f65677 url('../images/bg_lnb.jpg') no-repeat bottom;}
-.lnb .profile .count{border-radius:10px;padding:4px 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;}
+.lnb .profile .count{height: 20px;border-radius:10px;padding:0 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;line-height: 20px;}
 .lnb .profile .close{float: left;display: block;width: 80px;height:60px;background: url('../images/btn_close.png') no-repeat center}
 .lnb .profile .setting{float: right;display: block;width: 80px;height:60px;background: url('../images/btn_set.png') no-repeat center}
 .lnb .profile .logoL{display: block;margin:0 80px;padding:17px 0;text-align: center;}
@@ -94,14 +94,15 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .lnb .profile .pic img{display: block;width: 100%;}
 .lnb .profile .profileInfo{color:#fff;font-size:13px;line-height: 1.3em}
 .lnb .profile .profileInfo span{font-size:16px;}
-.lnb .profile .btnList{margin-top:10px;font-size: 0;}
+.lnb .profile .btnList{margin-top:25px;font-size: 0;}
 .lnb .profile .btnList.log{opacity: 0.5;}
-.lnb .profile .btnList li{position: relative;display: inline-block;width:22px;height: 22px;margin:0 7px;background-image: url('../images/btn_profile.png');}
+.lnb .profile .btnList li{position: relative;display: inline-block;width:22px;height: 22px;margin:0 10px;background-image: url('../images/btn_profile.png');}
 .lnb .profile .btnList li a{display: block;width: 100%;height: 100%;}
 .lnb .profile .btnList .btnList01{background-position: 0 0;}
 .lnb .profile .btnList .btnList02{background-position: -22px 0;}
 .lnb .profile .btnList .btnList03{background-position: -44px 0;}
 .lnb .profile .btnList .btnList04{background-position: -66px 0;}
+.lnb .profile .btnList .btnList05{background-position: -88px 0;}
 .lnb .profile .btnList .count{position: absolute;top:-10px;right:-20px;background:#a11b13;}
 .lnb .profile .btnMy{display: inline-block;margin-top:20px;padding:0 30px;background:#fff;border-radius:20px;font-size:13px;font-family:'RobotoM','NotoSansM', sans-serif;text-align: center;color: #000;line-height: 40px;}
 .lnb .profile .btnMypage:after{content:'';display: inline-block;width: 20px;height: 18px;margin-left:5px;background: url('../images/ico_home.png') no-repeat;vertical-align: sub; }

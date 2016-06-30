@@ -262,3 +262,6 @@
 .cardWrap .expert .cardSub{margin-top:5px;color: #f1645c;}
 .cardWrap .expert .cardIntro{color: #666;}
 .cardWrap .expert .cardIntro:before{display: none;}
+
+.cardCon .removeScrap {position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_remove.png') center no-repeat; border-radius: 50%; z-index:4;font-size: 0;}
+
