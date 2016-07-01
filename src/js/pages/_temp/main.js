@@ -45,7 +45,7 @@ $(document).ready(function() {
 		
 		// [S] QnA 				11-의견묻기
 		case 'qna':
-			PageModuleClass = require('./pages/QnA/QnA.js');
+			PageModuleClass = require('./pages/qna/qna.js');
 			break;
 		// [E] QnA 				11-의견묻기
 		
