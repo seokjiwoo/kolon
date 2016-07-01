@@ -71,11 +71,20 @@
 								<form method="post" action="/" class="formList oderSearch">
 									<fieldset>
 										<legend class="hide">적립/사용내역 조회</legend>
-										<select title="적립/사용내역 조회" style="width:323px;">
-											<option value="" label="적립/사용내역" selected="selected">적립/사용내역</option>
-											<option value="" label=""></option>
-										</select>
-										<button type="submit" class="btn btnSizeM2 btnColor02">조회하기</button>
+										<div class="arrayWrap alignBox">
+											<div class="leftBox">
+												<ul class="drop" data-prevent="true">
+													<li><a href="#">적립/사용내역</a></li>
+													<li><a href="#" data-value="type-1">포인트 적립</a></li>
+													<li><a href="#" data-value="type-2">포인트 사용</a></li>
+													<li><a href="#" data-value="type-3">포인트 적립</a></li>
+													<li><a href="#" data-value="type-4">포인트 적립</a></li>
+												</ul>
+											</div>
+											<div class="leftBox">
+												<button class="btn btnSizeM2 btnColor02">조회하기</button>
+											</div>
+										</div>
 									</fieldset> 
 								</form>
 							</td>
