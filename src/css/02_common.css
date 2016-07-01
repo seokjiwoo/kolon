@@ -1,4 +1,4 @@
-.w71 {width:71px;}
+.w70 {width:70px;}
 .w84 {width:84px;}
 .w90 {width:90px;}
 .w92 {width:92px;}
@@ -328,10 +328,11 @@ table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-cale
 
 /* dropBox */
 .drop {overflow:hidden;height:38px;border:1px solid #ccc;}
-.drop li {width:138px;height:38px;border-top:1px solid #ccc;}
+.drop li {display:block !important;width:138px;height:38px;border-top:1px solid #ccc;}
 .drop li:first-child {color:#666;border-top:none}
 .drop li:first-child a:after {content:'';display:block;position:absolute;top:7px;right:15px;width:20px;height:20px;background:url(../images/ico_lnb.png) no-repeat;background-position:0 0;}
-.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#666;background:#fff;}
+.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#666;background:#fff;border:none;border-radius:0;}
+.drop li a.on {background:#fff;color:#666;}
 /* dropBox on 되었었을 시 dropOn class 추가 */
 .drop.dropOn {height:auto;}
 .drop.dropOn li:first-child a:after {top:10px;background-position:0 -20px;}
