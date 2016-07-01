@@ -19,10 +19,12 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
-		
-		console.log('mobile');
 
-		$('.scrollWrap').each(function(){//horizontal scroll wrap width
+		initGnb();
+		
+		$(".datePicker").datepicker();	// datepicker 초기화
+
+		$('.scrollWrap').each(function() {//horizontal scroll wrap width
 			var totalWidth = 0;
 			var margin = 0;
 			$(this).find('li').each(function(index) {
@@ -43,17 +45,17 @@ module.exports = function() {
 			$(this).parent().parent().find('.slideMore').slideToggle();
 		});
 
-		$('#mobileScrap li').each(function(){ // scrap fadeToggle
-			$(this).find('.scrapMore').on('click', function(){
+		$('#mobileScrap li').each(function() { // scrap fadeToggle
+			$(this).find('.scrapMore').on('click', function() {
 				$(this).toggleClass('opened');
 				$(this).parent().find('.scrapMoreList, .dim').fadeToggle();
 			})
 		});
 
-		$(".periodSearch > a").on('click', function(e){ //mypage order
+		$(".periodSearch > a").on('click', function(e) { //mypage order
 			e.preventDefault();
 			var tg = $(this);
-			if( !$(".searchArea").is(":visible") ){
+			if( !$(".searchArea").is(":visible") ) {
 				$(".searchArea").css("display","block");
 				tg.find("> em").addClass("up")
 			}else{
@@ -62,79 +64,100 @@ module.exports = function() {
 			}
 		});
 
-		$('.optList > li').each(function(){ // 상품 list option 삭제 버튼
-			$(this).find('.btnDel').click(function(){
+		$('.optList > li').each(function() { // 상품 list option 삭제 버튼
+			$(this).find('.btnDel').click(function() {
 				$(this).parent().parent().hide();
 			})
-			$(this).find('.option').eq(0).find('.btnDel').click(function(){
+			$(this).find('.option').eq(0).find('.btnDel').click(function() {
 				$(this).parent().parent().next().css('border-top','0');
 			})
 		});
-
-		// mypage - 조회기간 드롭다운 영역 날짜선택
-		$("#dataPic01").datepicker();
-		$("#dataPic02").datepicker();
-
-		// GNB 영역 열기
-		function gnbShow(){
-			var gnb = ".gnb",
-				 openBtn = ".gnbBtn",
-				 closeBtn = ".closeBtn",
-				 header = ".header",
-				 container = ".container",
-				 downBtn = ".downBtn",
-				 stateMenu = ".stateMenu",
-				 wHeight = $(window).height() + 150,
-				 speed = 400;
-
-			function init(){
-				initEvent();
-			}
-			function initEvent(){
-				$(openBtn).on("click", function(e){
-					e.preventDefault();
-					openMenu();
-				});
-				$(closeBtn).on("click", function(e){
-					e.preventDefault();
-					closeMenu();
-				});
-				$("body").on("click", ".dimBg", function(){
-					closeMenu();
-				});
-				$(downBtn).on("click", function(e){
-					e.preventDefault();
-					if( !$(stateMenu).is( ":visible" ) ){
-						$(stateMenu).addClass("active");
-						$(gnb).css({
-							minHeight : wHeight + 330
-						});
-					}else{
-						$(stateMenu).removeClass("active");
-						$(gnb).css({
-							minHeight : wHeight - 330
-						});
-					}
-				})
-			}
-			function openMenu(){
-				$(gnb).addClass("acitve").css({minHeight: wHeight }).stop().animate({left:0}, speed, function(){
-					$(container).addClass("fix");
-					$(header).addClass("fix");
-				});
-				$("body").append("<div class='dimBg'><div>");
-			}
-			function closeMenu(){
-				$(gnb).stop().animate({left:-300}, speed, function(){
-					$(this).removeClass("acitve");
-					$(container).removeClass("fix");
-					$(header).removeClass("fix");
-				});
-				$(".dimBg").remove();
-			}
-			init();
-		}
-		gnbShow();
-
 	}
+
+	/**
+	 * GNB 초기화
+	 */
+	function initGnb() {
+		if (Super.loginData == null) {
+			// 로그인 상태가 아닐 때
+
+			$('#myMenuButtonList').addClass('log');
+			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
+
+			// $('#profileImage').attr('src', '/images/profile.png');
+			$('#profileName').css('top', '10px').html('<span>로그인 해주세요</span>');
+			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
+			$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
+			$('#menuToggle').hide();
+		} else {
+			// 로그인 상태일 때
+			$('body').addClass('login');
+
+			$('#myMenuButtonList').removeClass('log');
+
+			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			$('#profileName').html('<em>'+Super.loginData.nickName+'</em>');
+			$('#profileMail').text(Super.loginData.email);
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>나의 커먼</span>');
+			$('#menuToggle').show();
+			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
+		};
+
+		$('#searchOpen').on('click', function(e) {
+			e.preventDefault();
+		});
+
+		$("#gnbBtn").on("click", function(e) {
+			e.preventDefault();
+			openSideMenu();
+		});
+
+		$("#closeGnbBtn").on("click", function(e) {
+			e.preventDefault();
+			closeSideMenu();
+		});
+
+		$("body").on("click", ".dimBg", function() {
+			closeSideMenu();
+		});
+
+		$("#menuToggle").on("click", function(e) {
+			e.preventDefault();
+
+			if( !$(".stateMenu").is( ":visible" ) ) {
+				$(".stateMenu").addClass("active");
+				$(".gnb").css({
+					minHeight : $(window).height() + 150 + 200
+				});
+			} else {
+				$(".stateMenu").removeClass("active");
+				$(".gnb").css({
+					minHeight : $(window).height() + 150 - 330
+				});
+			}
+		});
+	};
+
+	/**
+	 * GNB open
+	 */
+	function openSideMenu() {
+		$(".gnb").addClass("acitve").css({minHeight: $(window).height() + 150-330 }).stop().animate({left:0}, 400, function() {
+			$(".container").addClass("fix");
+			$(".header").addClass("fix");
+		});
+		$("body").append("<div class='dimBg'><div>");
+	};
+
+	/**
+	 * GNB close
+	 */
+	function closeSideMenu() {
+		$(".gnb").stop().animate({left:-300}, 400, function() {
+			$(this).removeClass("acitve");
+			$(".container").removeClass("fix");
+			$(".header").removeClass("fix");
+		});
+		$(".dimBg").remove();
+	};
 }
