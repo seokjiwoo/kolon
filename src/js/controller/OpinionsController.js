@@ -23,6 +23,10 @@ function ClassOpinionsController() {
 			 */
 			opinionsList: opinionsList,
 			/**
+			 * 의견묻기 전문가 리스트
+			 */
+			opinionsExpertList: opinionsExpertList,
+			/**
 			 * 의견묻기 스크랩 폴더 목록
 			 */
 			scrapedOpinionsList: scrapedOpinionsList,
@@ -42,12 +46,24 @@ function ClassOpinionsController() {
 	function opinionsList() {
 		Super.callApi('/apis/opinions', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('opinionsListResult', [200]);
+				$(callerObj).trigger('opinionsListResult', [status, result.data.opinions]);
 			} else {
 				Super.handleError('opinionsList', result);
+				$(callerObj).trigger('opinionsListResult', [status, result]);
 			}
-		}, false);
+		}, true);
 	};
+
+	function opinionsExpertList() {
+		Super.callApi('/apis/opinions/experts', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('opinionsExpertsListResult', [status, result.data.opinionExperts]);
+			} else {
+				Super.handleError('opinionsExpertList', result);
+				$(callerObj).trigger('opinionsExpertsListResult', [status, result]);
+			}
+		}, true);
+	}
 	
 	function scrapedOpinionsList() {
 		Super.callApi('/apis/opinions/scraps', 'GET', {}, function(status, result) {
@@ -56,7 +72,7 @@ function ClassOpinionsController() {
 			} else {
 				Super.handleError('scrapedOpinionsList', result);
 			}
-		}, false);
+		}, true);
 	};
 	
 	function postOpinion(sectionId, title, content) {

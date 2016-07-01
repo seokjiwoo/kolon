@@ -11,6 +11,10 @@ module.exports = function() {
 	imageUploader = require('../../components/ImageUploader.js'),
 	fileName = 'qna/Index.js';
 
+	var controller = require('../../controller/OpinionsController.js');
+	$(controller).on('opinionsListResult', opinionsListHandler);
+	$(controller).on('opinionsExpertsListResult', opinionsExpertsListHandler);
+
 	var opts = {
 		colorbox : {
 			target : '#colorbox',
@@ -63,6 +67,80 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
+
+		controller.opinionsExpertList();
+		controller.opinionsList();
+	}
+
+	function opinionsListHandler(e, status, result) {
+		if (status == 200) {
+			var tags = '';
+
+			for (var key in result) {
+				var eachOpinion = result[key];
+				
+				tags += '<li><div class="opinionbox">';
+				tags += '<div class="title"><p class="info"><span>'+eachOpinion.userName+'</span><span>'+eachOpinion.createDate+'</span></p></div>';
+				
+				tags += '<div class="conbox">';
+				tags += '<strong><a href="../../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="qna popEdge">';
+				tags += '<span class="it">'+eachOpinion.category+'</span>'+eachOpinion.title+'</a></strong>';
+				tags += '<div class="conboxTxt"><p class="except">'+eachOpinion.content+'</p><span class="more">더보기</span></div>';
+				tags += '<div class="commentCount">';
+				tags += '<p><span>'+eachOpinion.answerCount+'개</span> 의견 <em>미답변</em></p>';
+				tags += '<a href="#" class="btnSizeS btnColor02">의견작성</a>';
+				tags += '</div>';
+				tags += '</div>';
+
+				tags += '</div></li>';
+			}
+
+			$('#opinionList').html(tags);
+			$('.except').dotdotdot({watch:'window'});
+		} else {
+			console.log('통신에러');
+		}
+		/*
+		<li>
+			<div class="opinionbox">
+				<!-- 의견 내용 -->
+				<div class="conbox">
+					<strong><a href="../../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
+					<div class="conboxTxt">
+						<p class="except">새로 이사갈 집이    24평입니다. <br/>고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요?고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
+						</p>
+						<span class="more">더보기</span>
+					</div>
+					<div class="commentCount">
+					<p><span>0개</span> 의견 <em>미답변</em></p>
+					<a href="#" class="btnSizeS btnColor02">의견작성</a>
+					</div>
+				</div>
+				<!-- 의견 내용 -->
+			</div>
+		</li>
+		*/
+	};
+
+	function opinionsExpertsListHandler(e, status, result) {
+		if (status == 200) {
+			var tags = '';
+
+			for (var key in result) {
+				var eachExpert = result[key];
+
+				tags += '<li><span class="thumb"><img src="'+eachExpert.expertImageUrl+'" alt="" /></span>';
+				tags += '<span class="info">';
+				tags += '<strong>'+eachExpert.serviceNames+'</strong>';
+				tags += '<span><em>'+eachExpert.expertCompany+'</em> '+eachExpert.expertName+'</span>';
+				tags += '<span>'+eachExpert.content+'</span>';
+				tags += '</span></li>';
+			}
+
+			$('#expertList2').html(tags);
+		} else {
+			console.log('통신에러');
+		}
 	}
 
 	function setElements() {
