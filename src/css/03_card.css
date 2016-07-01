@@ -17,7 +17,7 @@
 .hexBottom span {background-position: center bottom;}
 .hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
-.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.65deg); position:absolute; top:126.5px; left:-19px; z-index:3; text-align:left;}
+.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.65deg); position:absolute; top:126.5px; left:-19px; z-index:5; text-align:left;}
 .cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
 .cardLine p {font-size:14px; font-style:italic; color:#fff; line-height:130%;}
 
@@ -26,12 +26,19 @@
 .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
 .cardCon:after {content:''; width:164px; height:73px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:47px; right:-11px; opacity:0.5; z-index:-1;}
 .cardCon a {display:inline-block; width:100%; height:100%;}
-.cardCon a .cardHover {display:none;}
-.cardCon a:hover .cardHover {position:absolute; top:0; left:0; display:block; z-index:4; display:block;}
-.cardCon a:hover .cardHover .cardCon {width:285px; margin:80px 0; padding:0; background:url('../images/bg_dim2.png') 0 0 repeat;}
-.cardCon a:hover .cardHover:before {content:''; width:0; border-bottom:80px solid #fd665d; border-right:143px solid transparent; border-left:143px solid transparent; position:absolute; top:0px; left:0; overflow:hidden; opacity: 0.9;}
-.cardCon a:hover .cardHover:after {content:''; width:0; border-top:80px solid #fd665d; border-right:143px solid transparent; border-left:143px solid transparent; position:absolute; bottom:0px; left:0; overflow:hidden; opacity: 0.9;}
-.cardCon a:hover .cardHover .cardCon:after {display:none;}
+
+/* 첫번째 hover */
+.cardCon .cardHover {display:none;} 
+.cardCon.cHover .cardHover {display:block; position:absolute; top:0; left:0; }
+
+/* 두번째 hover */
+.cardCon.cHover .cardHover .cardDetail {}
+.cardCon.cHover .cardHover .cardDetail.sHover {}
+
+.hoverStyle01 {background:url(../images/card_hover01.png) 0 0 no-repeat;}
+.hoverStyle02 {background:url(../images/card_hover02.png) 0 0 no-repeat;}
+.hoverStyle03 {background:url(../images/card_hover03.png) 0 0 no-repeat;}
+
 .cardCon .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2; width:auto; height:auto;}
 .cardCon .cardEnter img{display: block;}
 .cardRemove{position: absolute;top:119px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
@@ -72,9 +79,9 @@
 .cardSize01 .hexagon .hexTop
 .cardSize01 .hexagon .hexBottom {background-size:285px 330px;}
 
-.cardSize02{height:492px;}
-.cardSize02 .cardCon{height:330px;}
-.cardSize02 .hexagon{height:324.55px;}
+.cardSize02{height:503px;}
+.cardSize02 .cardCon{height:340px;}
+.cardSize02 .hexagon{height:335.55px;}
 .cardSize02 .hexagon,
 .cardSize02 .hexagon .hexTop
 .cardSize02 .hexagon .hexBottom {background-size:285px 490px;}
