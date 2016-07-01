@@ -74,5 +74,67 @@ module.exports = function() {
 		// mypage - 조회기간 드롭다운 영역 날짜선택
 		$("#dataPic01").datepicker();
 		$("#dataPic02").datepicker();
+
+		// GNB 영역 열기
+		function gnbShow(){
+			var gnb = ".gnb",
+				 openBtn = ".gnbBtn",
+				 closeBtn = ".closeBtn",
+				 header = ".header",
+				 container = ".container",
+				 downBtn = ".downBtn",
+				 stateMenu = ".stateMenu",
+				 wHeight = $(window).height() + 150,
+				 speed = 400;
+
+			function init(){
+				initEvent();
+			}
+			function initEvent(){
+				$(openBtn).on("click", function(e){
+					e.preventDefault();
+					openMenu();
+				});
+				$(closeBtn).on("click", function(e){
+					e.preventDefault();
+					closeMenu();
+				});
+				$("body").on("click", ".dimBg", function(){
+					closeMenu();
+				});
+				$(downBtn).on("click", function(e){
+					e.preventDefault();
+					if( !$(stateMenu).is( ":visible" ) ){
+						$(stateMenu).addClass("active");
+						$(gnb).css({
+							minHeight : wHeight + 330
+						});
+					}else{
+						$(stateMenu).removeClass("active");
+						$(gnb).css({
+							minHeight : wHeight - 330
+						});
+					}
+				})
+			}
+			function openMenu(){
+				$(gnb).addClass("acitve").css({minHeight: wHeight }).stop().animate({left:0}, speed, function(){
+					$(container).addClass("fix");
+					$(header).addClass("fix");
+				});
+				$("body").append("<div class='dimBg'><div>");
+			}
+			function closeMenu(){
+				$(gnb).stop().animate({left:-300}, speed, function(){
+					$(this).removeClass("acitve");
+					$(container).removeClass("fix");
+					$(header).removeClass("fix");
+				});
+				$(".dimBg").remove();
+			}
+			init();
+		}
+		gnbShow();
+
 	}
 }
