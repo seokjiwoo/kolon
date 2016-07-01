@@ -50,7 +50,7 @@ $(document).ready(function() {
 		// [E] QnA 				11-의견묻기
 		
 
-		// [S] myPage 			13-마이홈즈
+		// [S] myPage 			13-마이커먼
 		case 'myPage':
 			PageModuleClass = require('./pages/myPage/MyPage.js');
 			break;
@@ -72,7 +72,7 @@ $(document).ready(function() {
 		case 'myPage-point':
 			PageModuleClass = require('./pages/myPage/Point.js');
 			break;
-		// [E] myPage 			13-마이홈즈
+		// [E] myPage 			13-마이커먼
 
 		case 'homeService':
 			PageModuleClass = require('./pages/homeService/homeService.js');
