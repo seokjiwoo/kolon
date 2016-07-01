@@ -592,7 +592,7 @@
 <button class="js-doughnut-btn" style="position:fixed;right:0;bottom:0;z-index:100">도넛 구성 테스트</button>
 <script id="index-card-templates" type="text/x-handlebars-template">
 	{{#cards}}
-		{{#ifvalue type equals="cardType01 cardSize03"}}
+		{{#vxIF type "==" "cardType01 cardSize03"}}
 		<li class="cardType01 cardSize03">
 			<div class="cardLine">
 				<p>designer <span>compact</span></p>
@@ -627,8 +627,8 @@
 				<div class="issue"><p>Hot issue</p></div>
 			</div>
 		</li>
-		{{/ifvalue}}
-		{{#ifvalue type equals="cardType08 cardSize02"}}
+		{{/vxIF}}
+		{{#vxIF type "==" "cardType08 cardSize02"}}
 		<li class="cardType08 cardSize02">
 			<div class="hexagon" style="{{{background}}}"><!-- 배경이미지 -->
 				<div class="hexTop"><span></span></div>
@@ -664,7 +664,7 @@
 			<a href="" class="cardRemove"></a>
 			<!-- card 내용 -->
 		</li>
-		{{/ifvalue}}
+		{{/vxIF}}
 	{{/cards}} 
 </script>
 

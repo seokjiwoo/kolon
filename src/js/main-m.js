@@ -297,6 +297,11 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/ScrapImage.js');
 				break;
 
+			// 스크랩 이미지 폴더 목록	scrapFolder
+			case 'myPage-scrapFolder':
+				PageModuleClass = require('./pagesMobile/myPage/ScrapFolder.js');
+				break;
+
 			// 팔로잉	following
 			case 'myPage-following':
 				PageModuleClass = require('./pagesMobile/myPage/Following.js');

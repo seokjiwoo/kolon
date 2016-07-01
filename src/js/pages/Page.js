@@ -47,6 +47,9 @@ module.exports = function() {
 		initAddressPopupButton();	// 주소록 팝업버튼
 		initCardRadio();	// 개인화 수집 카드
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
+
+		// Handlebars setting
+		initHandlebars();
 		
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -450,4 +453,52 @@ module.exports = function() {
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
 	};
+
+
+	/**
+	 * Handlebars setting
+	 * @example
+	 	{{#vxIF @index "<" 2}}
+	 		~~~~~~~
+	 	{{/vxIF}}
+	 */
+	function initHandlebars() {
+		window.Handlebars.registerHelper("vxIF",function(v1,operator,v2,options) {
+			switch (operator)
+			{
+				case "==":
+					return (v1==v2)?options.fn(this):options.inverse(this);
+
+				case "!=":
+					return (v1!=v2)?options.fn(this):options.inverse(this);
+
+				case "===":
+					return (v1===v2)?options.fn(this):options.inverse(this);
+
+				case "!==":
+					return (v1!==v2)?options.fn(this):options.inverse(this);
+
+				case "&&":
+					return (v1&&v2)?options.fn(this):options.inverse(this);
+
+				case "||":
+					return (v1||v2)?options.fn(this):options.inverse(this);
+
+				case "<":
+					return (v1<v2)?options.fn(this):options.inverse(this);
+
+				case "<=":
+					return (v1<=v2)?options.fn(this):options.inverse(this);
+
+				case ">":
+					return (v1>v2)?options.fn(this):options.inverse(this);
+
+				case ">=":
+				 return (v1>=v2)?options.fn(this):options.inverse(this);
+
+				default:
+					return eval(""+v1+operator+v2)?options.fn(this):options.inverse(this);
+			}
+		});
+	}
 }

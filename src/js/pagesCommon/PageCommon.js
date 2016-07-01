@@ -71,13 +71,23 @@ module.exports = function() {
 
 		$('.radioBox label').click(radioButtonHandler);	// radio button
 		$('.checkbox label').click(checkBoxHandler);	// checkbox
-		$('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
+		// $('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
+		$('.btnPop').on('click', htmlPopupLinkHandler);		// basic Popup 임시 binding 처리
 		
 		// colorbox event listener 설정
 		$(document).on('cbox_complete', onCboxEventListener)
 					.on('cbox_cleanup', onCboxEventListener)
 					.on('cbox_closed', onCboxEventListener);
+
+		// btnPop 임시 - Refresh event Binding 처리
+		$('body').on('btnPop_refresh', onBtnPopRefresh);
 	};
+
+	// btnPop 임시 - Refresh event Binding 처리
+	function onBtnPopRefresh() {
+		$('.btnPop').off('click', htmlPopupLinkHandler)
+					.on('click', htmlPopupLinkHandler);
+	}
 	
 	/**
 	 * initalize radio button
