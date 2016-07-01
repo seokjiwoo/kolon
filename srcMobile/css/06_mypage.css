@@ -107,7 +107,9 @@
 #myOrder .tabCon{padding-bottom: 25px;border-bottom: 1px solid #c4c4c4;}
 .my .secTit{margin-bottom: 20px;padding-bottom: 10px;border-bottom: 1px solid #666;font-size: 18px;color: #000;}
 
-.goodsInfo li{position: relative;overflow: hidden;padding: 15px 0;border-top: 1px solid #c8c8c8}
+.goodsInfo {border-top:1px solid #666;}
+.goodsInfo li{position: relative;overflow: hidden;padding: 15px 0;}
+.goodsInfo li + li {border-top: 1px solid #c8c8c8}
 .goodsInfo .btnToggle{display: block;position: absolute;top:10px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
 .goodsInfo .btnToggle.open{background-position: 2px 5px;}
 .goodsInfo .listTit{background: #f8f8f8;padding: 15px;color: #333;line-height: 10px;border-top:0;}
@@ -116,17 +118,20 @@
 .goodsInfo .pic img{display: block;width: 100%;}
 .goodsInfo .tit{font-size: 15px;font-weight: bold;line-height: 1.2em;margin-left: 105px;}
 .goodsInfo .sub{font-size: 15px;color: #999;line-height: 1.2em;margin-left: 105px;}
-.goodsInfo .price{margin: 15px 0 0 105px;padding-top: 15px;border-top:1px solid #dbdbdb;text-align: right;font-size: 15px;color: #f1645c;}
-.goodsInfo .price b{font-size: 20px;}
-.goodsInfo .price .count{color: #999;}
+.goodsInfo .price{margin: 15px 0 0 105px;padding-top: 15px;border-top:1px solid #dbdbdb;text-align: right;font-size: 15px;color: #333;}
+.goodsInfo .price b{font-size: 15px;}
+.goodsInfo .price .count{color: #666;}
 .goodsInfo .price .count:before{content: '';display: inline-block;width: 1px;height: 14px;margin:0 8px;vertical-align: middle;background: #dcdcdc;}
 .goodsInfo .slideCon{overflow: hidden;;width: 100%;margin-top:15px;padding:15px 0;background: #f7f7f7;color: #666;line-height: 1.3em;}
 .goodsInfo .slideCon > *{float: left;width: 50%;}
-.goodsInfo .slideCon .total{border-top:1px solid #dbdbdb;}
+.goodsInfo .slideCon .total{}
 .goodsInfo .slideCon dt{padding-left: 15px;}
 .goodsInfo .slideCon dd{padding-right: 15px;text-align: right;}
-.goodsInfo .slideCon dt.total{color: #000;margin-top:10px;padding-top: 10px;}
-.goodsInfo .slideCon dd.total{color: #f1645c;margin-top:10px;padding-top: 10px;}
+.goodsInfo .slideCon dt.total{color: #f1645c; }
+.goodsInfo .slideCon dd.total{color: #f1645c;}
+.goodsInfo .slideCon dd.total b{font-family: TimesNewRoman,Times New Roman,Times,Baskerville,Georgia,sans-serif; font-style: italic; font-size:18px;}
+.goodsInfo .tit,
+.goodsInfo .sub {margin-right:20px;}
 
 .pageTop {padding:10px 60px 10px 15px; background:#f8f8f8; position:relative; color:#333; border-top:1px solid #e0e0e0;}
 .pageTop p {width:100%; line-height:130%; font-size:11px;}
@@ -137,7 +142,7 @@
 .pageTop.scrapTop + .scrollWrap {border-top:1px solid #ddd;}
 
 ul.noticeList {width:100%; border-top:1px solid #ccc;}
-ul.noticeList li {padding:0 15px; position:relative;}
+ul.noticeList li {height:79px; padding:0 15px; position:relative; overflow:hidden;}
 ul.noticeList li.on {background:#e7f8f8;}
 ul.noticeList li a {width:100%; display:inline-block; border-bottom:1px solid #ccc;}
 ul.noticeList li p.photo {width:48px; height:48px; margin-top:-24px; position:absolute; top:50%; left:15px;}
@@ -248,7 +253,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .tagBtn{height:30px;padding:0 15px;display:inline-block;background:#fff;border:1px solid #d1d1d1;border-radius:15px;margin:4px 0;}
 .tagBtn.active{background:#f1645c;border-color:#f1645c;color:#fff;}
 .tagBtn.close:after{width:12px;height:12px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_close02.png") no-repeat center center;background-size:12px;vertical-align:middle;margin-left:7px;}
-.tagBtn span{display:inline-block;padding-top:5px;}
+.tagBtn span{display:inline-block; line-height:28px;}
 .reviewTxt{line-height:1.4em;color:#999;font-family:'NotoSansR', 'RobotoR', sans-serif;margin-top:15px;padding-bottom:32px;}
 
 .userInfo{margin-top:15px;overflow:hidden;}
@@ -336,7 +341,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .payPrice em{font-family:'NotoSansB', 'RobotoB', sans-serif;}
 .bundle{height:20px;line-height:20px;background:#f8f8f8;text-align:center;border-bottom:#e5e5e5;color:#666;font-size:12px;}
 .productList{border-top:1px solid #666;margin-top:12px;}
-.productList > li{overflow:hidden;padding:15px 0;border-top:1px solid #666;}
+.productList > li{overflow:hidden;padding:15px 0;border-top:1px solid #666; position:relative;}
 .productList > li:first-child{border-top:0;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
@@ -359,6 +364,8 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
 .productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 3px;background-size:14px;}
 .productList .cancelArea .btnSizeS{float:right;}
+.productList .btnToggle{display: block;position: absolute;top:15px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
+.productList .btnToggle.open{background-position: 2px 5px;}
 
 .peopleCount{height:30px;line-height:30px;background:#f8f8f8;border-bottom:1px solid #ccc;text-align:center;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#333;}
 .peopleCount em{font-family:'NotoSansB', 'RobotoB', sans-serif;}
