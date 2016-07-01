@@ -30,15 +30,6 @@ module.exports = function() {
 	}
 
 	function setDemoDoughnut() {
-
-		win.Handlebars.registerHelper('ifvalue', function(conditional, options) {
-			if (conditional === options.hash.equals) {
-				return options.fn(this);
-			} else {
-				return options.inverse(this);
-			}
-		});
-
 		var cardWrap = $('#cardWrap'),
 		chart = $(doughnutChart);
 
