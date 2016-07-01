@@ -36,7 +36,7 @@ var plumberOption = {
 };
 
 var serverMappingPc = {
-	baseDir: './dist/html/',
+	baseDir: './dist/',
 	routes: {
 		"/css": "./dist/css",
 		"/font": "./dist/font",
@@ -46,7 +46,7 @@ var serverMappingPc = {
 };
 
 var serverMappingMobile = {
-	baseDir: './distMobile/html/',
+	baseDir: './distMobile/',
 	routes: {
 		"/css": "./distMobile/css",
 		"/images": "./distMobile/images",
@@ -70,7 +70,7 @@ gulp.task('serverMobile', function() {
 
 // 미리보기용 HTML 파일 build
 gulp.task('minifyhtml', function() {
-	return gulp.src([src+'/**/*.html', '!'+src+'/html/_template/*.html'])
+	return gulp.src([src+'/**/*.html', '!'+src+'/_template/*.html'])
 		.pipe(plumber(plumberOption)) // 빌드 과정에서 오류 발생시 gulp가 죽지않도록 예외처리
 		.pipe(newer(dist)) // dist에 있는 결과물보다 새로운 파일만 다음 단계로 진행
 		.pipe(htmlExtend({annotations: true, verbose: false})) 
