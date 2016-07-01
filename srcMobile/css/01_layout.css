@@ -29,7 +29,7 @@ a{color:#666;}
 .header .bagBtn span{padding-top:21px;text-align:center;display:block;color:#ff463b;font-weight:bold;font-size:11px;}
 
 .gnb{position:absolute;left:-300px;top:0;bottom:0;z-index:10;width:300px;height:100%;background:#fff;display:block;}
-.gnb .topArea{position:relative;/*height:192px;*/}
+.gnb .topArea{position:relative;}
 .gnb .userBox{text-align:center;padding-top:25px;background:#ff466c;}
 .gnb .userBox .thumb{width:60px;height:60px;display:inline-block;overflow:hidden;border-radius:100%}
 .gnb .userBox .thumb img{width:100%;vertical-align:top;}
@@ -37,7 +37,7 @@ a{color:#666;}
 .gnb .userBox .thumb + p{color:#fff;font-size:18px;font-weight:bold}
 .gnb .userBox .thumb + p + p{color:#ffa6b8;font-size:12px;}
 
-.gnb .myCommon{position:relative;/*left:0;right:0;bottom:-86px;*/height:86px;background:url("../images/bg_gnb.png") no-repeat 0 0;background-size:100%;text-align:center;}
+.gnb .myCommon{position:relative;height:86px;background:url("../images/bg_gnb.png") no-repeat 0 0;background-size:100%;text-align:center;}
 .gnb .myCommon .downBtn{position:absolute;left:50%;bottom:0;margin-left:-18px;width:36px;height:41px;display:block;background:url("../images/ico_down_btn.png") no-repeat 0 0;background-size:100%;}
 
 .gnb .myBtn{position:absolute;left:50%;top:203px;z-index:5;background:#ff466c;text-align:center;margin-left:-50px;width:102px;height:25px;display:inline-block;border:1px solid #fff;border-radius:17px;text-align:center;}
@@ -65,7 +65,7 @@ a{color:#666;}
 .gnb .rowMenu li:first-child{border-top:0;}
 .gnb .rowMenu li a{height:40px;line-height:40px;display:block;color:#333;font-size:14px;}
 
-.gnb .topMenu{padding:24px 15px 0;/*margin-top:24px;*/background:#ff466c;}
+.gnb .topMenu{padding:24px 15px 0;background:#ff466c;}
 .gnb .topMenu ul:after{content:"";display:block;clear:both;}
 .gnb .topMenu ul li{position:relative;width:20%;float:left;text-align:center;}
 .gnb .topMenu ul li:after{position:absolute;left:-1px;top:5px;content:"";display:block;width:1px;height:30px;background:#eb4466;}
@@ -78,7 +78,7 @@ a{color:#666;}
 
 .stateMenu{padding:50px 20px 0 20px;background:#ff466c;display:none;}
 .stateMenu.active{display:block;}
-.stateMenu ul li{border-top:1px solid #fff;}
+.stateMenu ul li{border-top:1px solid #ffb5c4;}
 .stateMenu ul li:first-child{border-top:0;}
 .stateMenu ul li:nth-child(2),
 .stateMenu ul li:nth-child(4),

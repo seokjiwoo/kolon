@@ -102,18 +102,17 @@ module.exports = function() {
 				$("body").on("click", ".dimBg", function(){
 					closeMenu();
 				});
-
 				$(downBtn).on("click", function(e){
 					e.preventDefault();
 					if( !$(stateMenu).is( ":visible" ) ){
 						$(stateMenu).addClass("active");
 						$(gnb).css({
-							minHeight : $(gnb).height() + 330
+							minHeight : wHeight + 330
 						});
 					}else{
 						$(stateMenu).removeClass("active");
 						$(gnb).css({
-							minHeight : $(gnb).height() - 330
+							minHeight : wHeight - 330
 						});
 					}
 				})
