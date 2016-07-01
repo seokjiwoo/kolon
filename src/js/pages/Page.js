@@ -181,6 +181,22 @@ module.exports = function() {
 				}
 			})
 		});
+
+		$('#cardWrap li').each(function(){ // main card hover
+			$('.cardCon').mouseover(function(){
+				$(this).addClass('cHover');
+			})
+			$('.cardCon').mouseleave(function(){
+				$(this).removeClass('cHover');
+			})
+			$('.cardDetail').mouseover(function(){
+				$(this).addClass('sHover')
+			})
+			$('.cardDetail').mouseout(function(){
+				$(this).removeClass('sHover')
+			})
+		})
+
 	};
 
 	/**

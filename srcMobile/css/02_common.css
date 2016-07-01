@@ -117,6 +117,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 /* text color */
 .pointRed {color:#f1645c;}
 .pointCyan {color:#00aeb9;}
+.underTxt {color:#666; font-size:11px; line-height:130%;}
 
 /* bottom fix*/
 .btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;}
@@ -263,12 +264,16 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .formWrap{width: 100%;margin-top:10px;border-top:1px solid #666;border-bottom: 1px solid #c4c4c4;}
 .formWrap th, .formWrap td{padding: 10px;border-top:1px solid #e8e8e8;}
 .formWrap th{width: 26%;background: #f8f8f8;color: #000;text-align: center; line-height:130%;}
+.formWrap td {line-height:130%;}
 .formWrap tr:first-child th, .formWrap tr:first-child td{border-top:0;}
 .formWrap thead th {border-bottom:1px solid #e1e1e1;}
 .formWrap.tbL th,
 .formWrap.tbL td {text-align:left;}
 .formWrap.tbL2 th {text-align:center;}
 .formWrap.tbL2 td {text-align:left;}
+.formWrap.tbR th {text-align:left;}
+.formWrap.tbR td {text-align:right;}
+.formWrap.tbR td.t_l {text-align:left;}
 .formWrap.tbC th,
 .formWrap.tbC td {text-align:center;}
 .shipAddress p{margin-top: 10px;}

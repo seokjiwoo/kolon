@@ -26,6 +26,8 @@ body[data-page-id=myPage-order] {background:#e0e0e0;}
 .order .orderInfo dl dd span.point {color:#000;}
 .order .orderInfo dl dd span.point em {color:#666; font-style:normal;}
 .order .orderInfo + table.formWrap {margin-top:20px;}
+.order table.formWrap + table.formWrap {margin-top:-1px;}
+.order table.formWrap + h3.secTit {margin-top:20px;}
 
 .order p.odListTit {width:40%; float:left;}
 .order p.odListCont {width:60%; float:right; text-align:right; line-height:130%;}
@@ -79,3 +81,11 @@ body[data-page-id=myPage-order] {background:#e0e0e0;}
 .order ul.infoBtnWrap li {width:50%; float:left;}
 .order ul.infoBtnWrap li  + li p {margin-left:5px;}
 .order ul.infoBtnWrap li p a {width:100%; border-radius:17.5px;}
+
+.complete {width:100%; overflow:hidden;}
+.complete h2.secTit {text-align:center;}
+.complete p {text-align:center; line-height:20px; padding-bottom:20px; border-bottom:1px solid #ccc;}
+.complete p b {color:#000;}
+.complete p span.pointRed {text-decoration:underline;}
+.complete p span.iconArrow {padding-left:15px; position:relative; display:inline-block;}
+.complete p span.iconArrow:before {content:''; width:10.5px; height:9.5px; margin-top:-4.525px; background:url(../images/ico_arrow.png) 0 0% no-repeat; background-size:10.5px 9.5px; position:absolute; top:50%; left:0;}
