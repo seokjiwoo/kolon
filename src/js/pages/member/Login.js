@@ -77,7 +77,7 @@ module.exports = function() {
 			var eachService = socialAuthLoginUrl[key];
 			$('#socialLogin-'+eachService.socialName).attr('href', eachService.authUrl);
 
-			Super.initSocialLoginPopupButton();
+			initSocialLoginPopupButton();
 		}
 	};
 
@@ -125,6 +125,30 @@ module.exports = function() {
 		}
 		
 		e.stopPropagation();
+	};
+
+	/**
+	 * 소셜로그인 시스템팝업 버튼 초기화
+	 */
+	function initSocialLoginPopupButton() {
+		$('.loginSns').click(function(e) {
+			e.preventDefault();
+			
+			window.open($(this).attr('href'), 'socialLoginPopup', 'width=600,height=550,menubar=no,status=no,toolbar=no,resizable=yes,fullscreen=no')
+
+			e.stopPropagation();
+		});
+
+		$(document).on('getSocialLoginResult', socialLoginResultHandler);
+	}
+
+	/**
+	 * 소셜로그인 결과 핸들링
+	 */
+	function socialLoginResultHandler(e, data) {
+		console.log('SOCIAL LOGIN RESULT HANDLER>');
+		console.log(data);
+		loginCompleteHandler(null, 200, data);
 	};
 	
 	/**
