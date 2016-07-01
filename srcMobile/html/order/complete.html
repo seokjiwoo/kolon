@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 주문서작성"} -->
+</head>
+<body data-page-id="myPage-order">
+	<div class="wrapper order">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap" style="margin-bottom:57px;"><!-- 임시 style, scroll action 시 삭제 해주세요 -->
+				<section>
+					<div class="orderWrap">
+						<div class="complete">
+							<h2 class="secTit">주문완료</h2>
+							<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 <br/>주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이홈즈 <span class="iconArrow">주문/배송에서</span>  <br/>확인하실 수 있습니다.</p>
+						</div>
+					</div>
+					<div class="orderWrap">
+						<h3 class="orderTit">결제 정보</h3>
+						<div class="orderInfo">
+							<dl class="minus">
+								<dt>
+									<span>주문 금액</span>
+									<span class="orderTxt">(상품금액+배송비)</span>
+								</dt>
+								<dd>
+									<p class="price"><b>1,720,000</b> 원</p>
+								</dd>
+							</dl>
+							<dl class="minus">
+								<dt><span>총 할인금액</span></dt>
+								<dd>
+									<p class="price"><b>0</b> 원</p>
+									<ul class="odList">
+										<li>
+											<p class="odListTit">기본 할인</p>
+											<p class="odListCont"><b>0</b> 원</p>
+										</li>
+										<li>
+											<p class="odListTit">포인트</p>
+											<p class="odListCont"><b>0</b> 원</p>
+										</li>
+									</ul>
+								</dd>
+							</dl>
+							<dl class="equal">
+								<dd class="total">
+									<p class="odListTit">총 결제금액</p>
+									<p class="odListCont"><b>1,720,000</b> 원</p>
+								</dd>
+								<dt>
+									<span>구매혜택</span>
+								</dt>
+								<dd>
+									<ul class="odList">
+										<li>
+											<p class="odListTit">적립 예정 포인트</p>
+											<p class="odListCont"><span class="point"><b>1300</b> P</span></p>
+										</li>
+									</ul>
+								</dd>
+							</dl>
+						</div>
+						<!-- 결제방법이 신용카드 인 경우 -->
+						<table class="formWrap tbR">
+							<caption>결제 방법</caption>
+							<thead>
+								<tr>
+									<th scope="col">결제 방법</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>신용카드</td>
+								</tr>
+							</tbody>
+						</table>
+						<h3 class="secTit">적립예정 포인트</h3>
+						<table class="formWrap tbR">
+							<caption>적립예정 포인트</caption>
+							<thead>
+								<tr>
+									<th scope="col">기본 적립</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>280,000 P</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="formWrap tbR">
+							<caption>적립예정 포인트</caption>
+							<thead>
+								<tr>
+									<th scope="col">적립 시점</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>구매확정 시 적립</td>
+								</tr>
+							</tbody>
+						</table>
+						<!--// 결제방법이 신용카드 인 경우 -->
+						<!-- 결제방법이 무통장 입금 인 경우 -->
+						<!-- 
+						<table class="formWrap tbR">
+							<caption>결제 방법</caption>
+							<thead>
+								<tr>
+									<th scope="col">결제 방법</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>무통장 입금</td>
+								</tr>
+							</tbody>
+						</table>
+						<h3 class="secTit">입금자 명</h3>
+						<table class="formWrap tbR">
+							<caption>입금자 명</caption>
+							<thead>
+								<tr>
+									<th scope="col">입금자 명</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>홍길동</td>
+								</tr>
+								<tr>
+									<td class="t_l"><p class="underTxt">입금자명 불일치할 경우 입금 확인이 지연됩니다.</p></td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="formWrap tbR">
+							<caption>입금계좌 정보</caption>
+							<thead>
+								<tr>
+									<th scope="col">입금계좌 정보</th>
+								<tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>XX 은행 123-456789-01-132<br/>예금주 ㈜가인인테리어</td>
+								</tr>
+								<tr>
+									<td class="t_l"><p class="underTxt">*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.</p></td>
+								</tr>
+							</tbody>
+						</table>
+						 -->
+						<!--// 결제방법이 무통장 입금 인 경우 -->
+					</div>
+					<div class="orderWrap plate">
+						<h3 class="orderTit">주문 상품 내역</h3>
+						<form action="/">
+							<ul class="goodsInfo">
+								<li>
+									<a href="" class="btnToggle"></a>
+									<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+									<h4 class="tit">[코오롱]크리스탈 샹들리에</h4>
+									<p class="sub">옵션 : 오팔 화이트 중형 / 화이트</p>
+									<p class="price"><b>1,700,000</b> 원 <span class="count">1개</span></p>
+									<dl class="slideCon">
+										<dt>할인금액</dt>
+										<dd>0 원</dd>
+										<dt>배송비</dt>
+										<dd>20,000 원</dd>
+										<dt class="total">결제금액</dt>
+										<dd class="total"><b>1,720,000 </b>원</dd>
+									</dl>
+								</li>
+								<li>
+									<a href="" class="btnToggle"></a>
+									<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+									<h4 class="tit">[코오롱]크리스탈 샹들리에</h4>
+									<p class="sub">옵션 : 오팔 화이트 중형 / 화이트</p>
+									<p class="price"><b>1,700,000</b> 원 <span class="count">1개</span></p>
+									<dl class="slideCon">
+										<dt>할인금액</dt>
+										<dd>0 원</dd>
+										<dt>배송비</dt>
+										<dd>20,000 원</dd>
+										<dt class="total">결제금액</dt>
+										<dd class="total"><b>1,720,000 </b>원</dd>
+									</dl>
+								</li>
+							</ul>
+						</form>
+					</div>
+					<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+					<div class="myCartTotal">
+						<a href="#" class="totalBtn">커먼 메인으로 이동</a>
+					</div>
+					<!--// scroll 시 고정 영역 -->
+				</section>
+				<!-- @@include ../_template/footer.html -->
+			</div>
+		</div>
+	</div>
+</body>
+</html>
