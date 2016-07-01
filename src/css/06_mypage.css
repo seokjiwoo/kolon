@@ -7,7 +7,7 @@
 .user.infoTop .myRate .my{width:20px;height: 18px;margin:0 auto 2px;background: url('../images/ico_homeB.png') no-repeat;}
 .user.infoTop .myRate.on a{color: #f1645c;}
 .user.infoTop .myRate.on a b{color: #f1645c;}
-.user.infoTop .myRate.on .my{background-image:url('../images/ico_homeR.png'); }
+.user.infoTop .myRate.on .my{background-image:url('../images/ico_home.png'); }
 .user.infoTop .infoSet{position: absolute;right: 10px;bottom: 50px;;display: block;font-size: 14px;color: #666;font-family:'RobotoR','NotoSansR', sans-serif;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 16px;height: 16px;margin-right: 10px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;}
 

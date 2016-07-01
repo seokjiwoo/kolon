@@ -8,10 +8,15 @@
 .user.infoTop .infoSet{position: absolute;right: 15px;top: 15px;;display: block;font-size: 11px;color: #666;}
 .user.infoTop .infoSet:before{content: '';display: inline-block;width: 9px;height: 9px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_set.png') no-repeat;background-size: 100%;vertical-align: top;}
 
-.timeCard{position: relative;padding: 25px 15px;text-align: center;}
+.timeCard{position: relative;padding: 25px 15px;text-align: center;background: #2c2c2c;}
 .timeCard:after{content:'';position: absolute;top:25px;left: 50%;bottom: 45px;width: 1px;background: #999;z-index: 0}
 .timeCard .recordWrap{position: relative;z-index: 1}
-.timeCard li{margin-bottom: 20px;}
+.timeCard li{position: relative;margin:0 auto 20px;}
+
+.timeCard .cardFull .hexBottom{background: #fff;z-index: 3}
+
+
+
 .timeCard .recordDate{display: inline-block;padding: 0 5px;line-height: 15px;margin-bottom: 15px; background: #999;border-radius: 15px;font-size: 11px;color: #fff;}
 .timeCard .recordTime{display: inline-block;margin-bottom: 10px;font-size:11px;color: #333;background: #e0e0e0;line-height: 14px;}
 .timeCard .recordIco{position: relative;font-size: 0;width: 48px;height: 48px;margin:0 auto;border-radius: 50%;background: url('../images/ico_timeline.png') no-repeat;background-size: 240px}
@@ -23,21 +28,14 @@
 .timeCard .recordType06 .recordIco{background-color: #f1645c;background-position:-48px 0}
 .timeCard .recordType07 .recordIco{background-color: #adc427;background-position:0 -48px}
 .timeCard .recordType08 .recordIco{background-color: #f8f8f8;background-position:0 0}
-.timeCard a{overflow: hidden;display: block;width: 100%;margin-top:-20px;background: #fff;border-radius: 8px;}
+.timeCard a{overflow: hidden;display: block;}
 .timeCard a img{display: block;width: 100%;}
-.timeCard .recordCon{height: 86px;padding:20px 13px;text-align: left;color: #666;font-size: 11px;}
+.timeCard .recordCon{position: absolute;bottom: 0;;height: 140px;text-align: center;color: #666;font-size: 13px;    z-index: 5;}
 .timeCard .recordCon > div{display: inline-block;vertical-align: middle;}
 .timeCard .recordCon:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
 .timeCard .recordCat{display: inline-block;margin-bottom: 4px;padding:0 5px;border-radius: 15px;border:1px solid #000;color: #000;line-height: 16px;font-weight: bold}
 .timeCard .recordTxt{line-height: 1.2em;}
 .timeCard .recordTxt b{color: #000;}
-.timeCard .recordThumb{height: 115px;background: #a9c700;color: #fff;font-size: 13px;}
-.timeCard .recordThumb img{display: inline-block;}
-.timeCard .recordThumb02:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -3px;vertical-align: middle;}
-.timeCard .recordThumb p{position: relative;display: inline-block;width: 90%;height: 2.5em;vertical-align: middle;line-height: 1.2em}
-.timeCard .recordThumb p:before{content: '';position: absolute;top: -16px;left: 50%;font-size:0;width: 12px;height: 14px;background: url('../images/ico_timeline.png') no-repeat -200px -130px;background-size:240px 144px;}
-.timeCard .recordType06 .recordThumb{background-color: #f1645c}
-.timeCard .recordType06 .recordThumb p:before{background-position:-228px -131px;}
 
 #myBoard .recent{padding-right: 0;}
 #myBoard .recent .more{margin-right: 15px}

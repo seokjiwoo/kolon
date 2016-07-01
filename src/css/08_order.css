@@ -76,6 +76,7 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb dl.payS.plus:after {background:url('../images/ico_order.png') 0 -80px no-repeat;}
 span.price {font-size:20px; font-family:'NotoSansR','RobotoR', sans-serif;}
 span.price b {font-family:'RobotoB','NotoSansB', sans-serif;}
+span.price b.italicNum{font-size: 30px;}
 span.price.pointRed {font-size:30px;}
 span.price.fontL {font-size:22px;}
 span.price.fontS {font-size:14px;}
@@ -113,7 +114,7 @@ span.price.fontS {font-size:14px;}
 .oder .secTit{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 30px;color: #000;}
 
 .oder .container .wrap{width: 100%; padding-top: 50px;}
-.oder .singleCard{padding: 50px;}
+.oder .singleCard{padding:0 50px;}
 .oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
 .oder h3.subTit + .oderCont .tbSet {margin-top:20px;}
 .oder h3.subTit + .oderCont .tbSet.lineN {margin-top:0;}
