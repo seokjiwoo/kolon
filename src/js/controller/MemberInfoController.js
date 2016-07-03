@@ -38,10 +38,6 @@ function ClassMemberInfoController() {
 			 */
 			editMemberInfo: editMemberInfo,
 			/**
-			 * 아이디 찾기
-			 */
-			findId: findId,
-			/**
 			 * 비밀번호 찾기 (이메일)
 			 */
 			findPasswordByMail: findPasswordByMail,
@@ -163,22 +159,6 @@ function ClassMemberInfoController() {
 	};
 	
 	/**
-	 * 아이디 찾기
-	 */
-	function findId(name, phone) {
-		Super.callApi('/apis/member/findId', 'POST', {
-			"cellPhoneNumber": phone,
-			"memberName": name
-		}, function(status, result) {
-			if (status == '200') {
-				$(callerObj).trigger('findIdResult', [result, name, phone]);
-			} else {
-				Super.handleError('findId', result);
-			}
-		}, false);
-	};
-	
-	/**
 	 * 비밀번호 찾기 (이메일)
 	 */
 	function findPasswordByMail(id) {
@@ -186,10 +166,10 @@ function ClassMemberInfoController() {
 			"email": id
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('findPwResult', [result, id]);
+				$(callerObj).trigger('findPwResult', [status, result]);
 			} else {
 				Super.handleError('findPasswordByMail', result);
-				$(callerObj).trigger('findPwResult', [result]);
+				$(callerObj).trigger('findPwResult', [status, result]);
 			}
 		}, false);
 	};
@@ -198,16 +178,38 @@ function ClassMemberInfoController() {
 	 * 비밀번호 찾기 (휴대폰)
 	 */
 	function findPasswordByPhone(id) {
-		Super.callApi('/apis/authorize/find/email', 'POST', {
-			"phoneNumber": id
-		}, function(status, result) {
+		Super.callApi('/apis/authorize/vertify?type=PASSWORD&phoneNumber='+id, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('findPwResult', [result, id]);
+				openKMCISWindow(result.data.identityUrl);
+				//$(callerObj).trigger('findPwResult', [status, result]);
 			} else {
 				Super.handleError('findPasswordByPhone', result);
-				$(callerObj).trigger('findPwResult', [result]);
+				$(callerObj).trigger('findPwResult', [status, result]);
 			}
 		}, false);
+	};
+
+	/**
+	 * 휴대폰 본인인증 팝업 오픈 (한국모바일인증)
+	 */
+	function openKMCISWindow(certInformation) {
+		if ( $('#reqKMCISForm').length != 0 ) $('#reqKMCISForm').remove();
+		$('body').append('<form id="reqKMCISForm" method="post" action="'+certInformation.reqUrl+'"><input type="hidden" name="tr_cert" value = "'+certInformation.trCert+'"><input type="hidden" name="tr_url" value = "'+certInformation.trUrl+'"></form>');
+		var UserAgent = navigator.userAgent;
+		
+		if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+			// 모바일일 경우 (변동사항 있을경우 추가 필요)
+			$('#reqKMCISForm').attr('target', '');
+		} else {
+			// 모바일이 아닐 경우
+			KMCIS_window = window.open('', 'KMCISWindow', 'width=425, height=550, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=435, top=250' );
+			if (KMCIS_window == null) {
+				alert(" ※ 화면 상단에 있는 팝업 차단 알림줄을 클릭하여 팝업을 허용해 주시기 바랍니다. \n\n※ 그 외의 브라우저의 팝업차단 기능을 사용하는 경우 팝업허용을 해주시기 바랍니다.");
+			}   
+			$('#reqKMCISForm').attr('target', 'KMCISWindow');
+		}  
+		
+		$('#reqKMCISForm').submit();
 	};
 	
 
