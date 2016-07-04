@@ -18,6 +18,12 @@ module.exports = function() {
 
 	var popupOpenHandlerFunction;
 	var popupCallbackFunction;
+
+
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
+
 	
 	var callerObj = {
 		/**
@@ -70,23 +76,12 @@ module.exports = function() {
 
 		$('.radioBox label').click(radioButtonHandler);	// radio button
 		$('.checkbox label').click(checkBoxHandler);	// checkbox
-		// $('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
 		$('.btnPop').on('click', htmlPopupLinkHandler);		// basic Popup 임시 binding 처리
 		
-		// colorbox event listener 설정
-		$(document).on('cbox_complete', onCboxEventListener)
-					.on('cbox_cleanup', onCboxEventListener)
-					.on('cbox_closed', onCboxEventListener);
-
-		// btnPop 임시 - Refresh event Binding 처리
-		$('body').on('btnPop_refresh', onBtnPopRefresh);
+		// Colorbox Complete 시점
+		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
+					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 	};
-
-	// btnPop 임시 - Refresh event Binding 처리
-	function onBtnPopRefresh() {
-		$('.btnPop').off('click', htmlPopupLinkHandler)
-					.on('click', htmlPopupLinkHandler);
-	}
 	
 	/**
 	 * initalize radio button
@@ -286,25 +281,32 @@ module.exports = function() {
 		});
 	};
 
-	// colorbox listener - colorbox 내에 공통 버튼 이벤트 설정
-	function onCboxEventListener(e) {
-		switch(e.type) {
-			case 'cbox_complete':
-				$('.radioBox label').off('click', radioButtonHandler);
-				$('.checkbox label').off('click', checkBoxHandler);
 
-				$('.radioBox label').on('click', radioButtonHandler);
-				$('.checkbox label').on('click', checkBoxHandler);
-				break;
-			case 'cbox_cleanup':
-				$('.radioBox label').off('click', radioButtonHandler);
-				$('.checkbox label').off('click', checkBoxHandler);
+	// Colorbox Complete 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxRefreshListener(e) {
+		$('.radioBox label').off('click', radioButtonHandler)
+							.on('click', radioButtonHandler);
 
-				$('.radioBox label').on('click', radioButtonHandler);
-				$('.checkbox label').on('click', checkBoxHandler);
-				break;
-			case 'cbox_closed':
-				break;
-		}
+		$('.checkbox label').off('click', checkBoxHandler)
+							.on('click', checkBoxHandler);
+
+		$('.btnPop').off('click', htmlPopupLinkHandler)
+					.on('click', htmlPopupLinkHandler);
+	}
+
+	// Colorbox Cleanup 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxDestoryListener(e) {
+		$('.radioBox label').off('click', radioButtonHandler)
+							.on('click', radioButtonHandler);
+
+		$('.checkbox label').off('click', checkBoxHandler)
+							.on('click', checkBoxHandler);
+
+		$('.btnPop').off('click', htmlPopupLinkHandler)
+					.on('click', htmlPopupLinkHandler);
 	}
 }

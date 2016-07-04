@@ -23,7 +23,10 @@ module.exports = function() {
 	// 공통차트 컴포넌트 - @see html/_js/chart.html
 	var doughnutChart = require('../components/DoughnutChart.js'),
 	horizonBarChart = require('../components/HorizonBarChart.js'),
-	dropDownMenu =  require('../components/DropDownMenu.js');
+	dropDownMenu =  require('../components/DropDownMenu.js'),
+	eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
 	
 	return callerObj;
 	
@@ -69,6 +72,11 @@ module.exports = function() {
 		// tab width depend on number of li
 		var countMenu = $('.tabSplit li').length ;
 		$('.tabSplit li').css('width',100/countMenu+'%');
+
+
+		// Colorbox Complete 시점
+		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
+					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 	};
 	
 	/**
@@ -179,21 +187,31 @@ module.exports = function() {
 		});
 
 		$('#cardWrap li').each(function(){ // main card hover
-			$('.cardCon').mouseover(function(){
-				$(this).addClass('cHover');
-			})
-			$('.cardCon').mouseleave(function(){
-				$(this).removeClass('cHover');
-			})
-			$('.cardDetail').mouseover(function(){
-				$(this).addClass('sHover')
-			})
-			$('.cardDetail').mouseout(function(){
-				$(this).removeClass('sHover')
-			})
-		})
+			$('.cardCon').on('mouseover', onCardConOver)
+							.on('mouseleave', onCardConLeave);
 
+			$('.cardDetail').on('mouseover', onCardDetailOver)
+							.on('mouseleave', onCardDetailLeave);
+		});
 	};
+
+	// main card event Listener
+		function onCardConOver() {
+			$(this).addClass('cHover');
+		}
+
+		function onCardConLeave() {
+			$(this).removeClass('cHover');
+		}
+
+		function onCardDetailOver() {
+			$(this).addClass('sHover');
+		}
+
+		function onCardDetailLeave() {
+			$(this).removeClass('sHover');
+		}
+	// main card event Listener
 
 	/**
 	 * 상단 배너영역 초기화
@@ -488,6 +506,40 @@ module.exports = function() {
 				default:
 					return eval(""+v1+operator+v2)?options.fn(this):options.inverse(this);
 			}
+		});
+	}
+
+	// Colorbox Complete 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxRefreshListener(e) {
+		$('#cardWrap li').each(function(){ // main card hover
+			$('.cardCon').off('mouseover', onCardConOver)
+							.off('mouseleave', onCardConLeave);
+
+			$('.cardDetail').off('mouseover', onCardDetailOver)
+							.off('mouseleave', onCardDetailLeave);
+		});
+
+		$('#cardWrap li').each(function(){ // main card hover
+			$('.cardCon').on('mouseover', onCardConOver)
+							.on('mouseleave', onCardConLeave);
+
+			$('.cardDetail').on('mouseover', onCardDetailOver)
+							.on('mouseleave', onCardDetailLeave);
+		});
+	}
+
+	// Colorbox Cleanup 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxDestoryListener(e) {
+		$('#cardWrap li').each(function(){ // main card hover
+			$('.cardCon').on('mouseover', onCardConOver)
+							.on('mouseleave', onCardConLeave);
+
+			$('.cardDetail').on('mouseover', onCardDetailOver)
+							.on('mouseleave', onCardDetailLeave);
 		});
 	}
 }
