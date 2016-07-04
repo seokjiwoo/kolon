@@ -23,6 +23,10 @@ function ClassMyPageController() {
 			 */
 			myInfo: myInfo,
 			/**
+			 * 마이커먼 타임라인
+			 */
+			myTimeLine: myTimeLine,
+			/**
 			 * 내 의견 묻기 목록
 			 */
 			myOpinions: myOpinions,
@@ -61,6 +65,16 @@ function ClassMyPageController() {
 		}, true);
 	};
 	
+	function myTimeLine() {
+		Super.callApi('/apis/me/timeline', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myTimeLineResult', [200, result]);
+			} else {
+				Super.handleError('myTimeLine', result);
+			}
+		}, true);
+	}
+
 	function myOpinions() {
 		Super.callApi('/apis/me/opinions', 'GET', {}, function(status, result) {
 			if (status == 200) {

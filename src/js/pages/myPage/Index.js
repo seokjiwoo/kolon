@@ -11,6 +11,9 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
 	fileName = 'myPage/Index.js';
+	
+	var controller = require('../../controller/MyPageController.js');
+	$(controller).on('myTimeLineResult', myTimeLineHandler);
 
 	var opts = {
 		colorbox : {
@@ -61,6 +64,12 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
+
+		controller.myTimeLine();
+	}
+
+	function myTimeLineHandler(e, status, result) {
+		//
 	}
 
 	function setElements() {
