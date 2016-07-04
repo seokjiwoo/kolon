@@ -124,7 +124,7 @@ function ClassScrapController() {
 	};
 
 	function addScrapFolder(folderName) {
-		Super.callApi('/apis/scraps', 'POST', {
+		Super.callApi('/apis/scraps/folders', 'POST', {
 			"folderName": folderName,
 		}, function(status, result) {
 			if (status == 200) {
@@ -137,7 +137,7 @@ function ClassScrapController() {
 	};
 
 	function editScrapFolder(folderNumber, folderName) {
-		Super.callApi('/apis/scraps/'+folderNumber, 'PUT', {
+		Super.callApi('/apis/scraps/folders/'+folderNumber, 'PUT', {
 			"folderName": folderName
 		}, function(status, result) {
 			if (status == 200) {
