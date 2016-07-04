@@ -96,7 +96,7 @@ module.exports = function() {
 			$('#myMenuButtonList').removeClass('log');
 
 			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#profileName').html('<em>'+Super.loginData.nickName+'</em>');
+			$('#profileName').html('<em>'+Super.loginData.memberName+'</em>');
 			$('#profileMail').text(Super.loginData.email);
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>나의 커먼</span>');
 			$('#menuToggle').show();

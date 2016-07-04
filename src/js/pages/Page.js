@@ -93,10 +93,10 @@ module.exports = function() {
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
 			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.nickName+' 님');
+			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
 
 			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#profileName').html('<span>'+Super.loginData.nickName+' 님</span><br>'+Super.loginData.email);
+			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+Super.loginData.email);
 			$('#myMenuButtonList').removeClass('log');
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');
 			$('#menuToggle').show();

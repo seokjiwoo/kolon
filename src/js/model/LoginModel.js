@@ -50,7 +50,7 @@ function ClassLoginModel() {
 		Cookies.set(COOKIE_NAME, {
 			memberNumber: data.memberNumber,
 			stateCode: data.memberStateCode,
-			nickName: data.nickName,
+			memberName: data.memberName,
 			email: data.email,
 			imageUrl: imageUrl
 		});
