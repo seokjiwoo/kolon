@@ -226,12 +226,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .previewList .listTit b{color: #f1645c}
 .previewList .date{font-size: 11px;color: #999;}
 .previewList .dateR{float: right;}
-.previewList .count{position: absolute;right: 0;bottom: 20px;display: inline-block;min-width: 33px;padding:0 10px;border-radius: 13px;background: #f1645c;line-height: 25px;color: #fff;font-size: 15px;text-align: center;}
-.previewList .hexagon{position: absolute;right: 0;bottom: 20px;display: inline-block;min-width: 32px;height:18px;line-height: 18px;background: #f1645c;color: #fff;font-size: 15px;text-align: center;}
-.previewList .hexagon:before,
-.previewList .hexagon:after{content: ""; position:absolute;left:0;width:0;height:0;border-left: 16px solid transparent;border-right: 16px solid transparent;}
-.previewList .hexagon:before{top:-10px;border-bottom: 10px solid #f1645c;}
-.previewList .hexagon:after{bottom:-10px;border-top: 10px solid #f1645c}
+.previewList .count{position: absolute;right: 0;bottom: 20px;display: inline-block;width: 30px;height: 33px;padding:0 10px;background: url('../images/bg_hexagon.png');background-size:250px;line-height: 33px;color: #fff;font-size: 15px;text-align: center;}
 
 .previewList .info{display: inline-block;margin-right: 5px;padding: 0 5px;/*border-radius: 8px;*/border:1px solid #999;color: #666;line-height: 15px;}
 .previewList .done .info{color: #00aeb9;border-color: #00aeb9;}

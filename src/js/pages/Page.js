@@ -53,14 +53,6 @@ module.exports = function() {
 			$('.catSort .sortCont, .btnSort').slideToggle(300);
 		});
 
-		$('#expertList').bxSlider({ //expert top slide
-			minSlides: 5,
-			maxSlides: 5,
-			pager:false,
-			slideWidth: 200,
-			slideMargin:20
-		});
-
 		$('#mainSlider').bxSlider({ //main slide
 			minSlides: 5,
 			maxSlides: 5
