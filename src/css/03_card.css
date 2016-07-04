@@ -130,7 +130,7 @@
 .cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
 .cardCon ul.check_icon li + li {margin-left:5px;}
 ul.cardWrap > li .cardCon > a.cardTxt {height:194px;}
-ul.cardWrap > li .cardCon.cHover > a.cardTxt {display:inline-block; padding-bottom:45px;}
+ul.cardWrap > li .cardCon.cHover > a.cardTxt {display:inline-block;}
 
 /* 첫번째 hover */
 ul.cardWrap > li .cardCon.cHover {position:relative;}
@@ -147,7 +147,7 @@ ul.cardWrap > li .cardCon.cHover ul.check_icon li.share a:after {background-posi
 
 
 /* 두번째 hover */
-ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore {padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:40px; left:50%; margin-left:-50px; z-index :5; display:inline-block;}
+ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore {padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:0; left:50%; margin-left:-50px; z-index :5; display:inline-block;}
 ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore:after {content:''; width:14px; height:10px; margin-top:-5px; background:url(../images/cardMore_arrow.png) -14px 0 no-repeat; position:absolute; top:50%; right:13px; display:inline-block;}
 .cardHover .cardCon ul.card_icon li.sHover {background:red;}
 .cardCon ul.check_icon li.sHover a {background:red;}
