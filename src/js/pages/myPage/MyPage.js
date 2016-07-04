@@ -54,17 +54,32 @@ module.exports = function() {
 	
 	function init(options) {
 		Super.init();
+		if (Super.Super.loginData == null) {
+			alert('로그인이 필요한 페이지입니다');
+			location.href = '/member/login.html';
+		} else {
+			debug.log(fileName, 'init', $, util);
 
-		debug.log(fileName, 'init', $, util);
+			self = callerObj;
 
-		self = callerObj;
-
-		setElements();
-		setBindEvents();
+			setElements();
+			setBindEvents();
+		}
 	}
 
 	function setElements() {
 		debug.log(fileName, 'setElements');
+
+		$('#myPageHeaderName').text(Super.Super.loginData.memberName);
+		$('#myPageHeaderId').text(Super.Super.loginData.email);
+
+		if (Super.Super.loginData.imageUrl != null) $('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
+		$('#myPageHeaderNoticeCount').html('0'); // <!-- <span class="newBox">0<span class="new">N</span></span> -->
+		$('#myPageHeaderScrapCount').html('0');
+		$('#myPageHeaderLikeCount').html('0');
+		$('#myPageHeaderFollowingCount').html('0');
+		$('#myPageHeaderPointCount').html('0');
+		$('#myPageHeaderMyCartCount').html('0');
 
 		self.colorbox = $(opts.colorbox.target);
 	}

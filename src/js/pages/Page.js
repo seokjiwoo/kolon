@@ -92,7 +92,7 @@ module.exports = function() {
 			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
-			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
 			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
 
 			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
