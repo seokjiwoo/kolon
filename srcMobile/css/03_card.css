@@ -9,7 +9,7 @@
 .hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
 .cardFull{width: 290px;}
-.cardFull .hexagon{width: 290px; height: 167.43px;}
+.cardFull .hexagon{width: 290px; height: 167.43px;margin:0 0 83.72px;background-size: auto 334.8632px;}
 .cardFull .hexTop, .cardFull .hexBottom{width: 205.06px;height: 205.06px;left: 42.47px;}
 .cardFull .hexTop{top: -102.5305px}
 .cardFull .hexBottom{bottom: -102.5305px;}
