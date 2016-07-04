@@ -23,7 +23,10 @@ module.exports = function() {
 	// 공통차트 컴포넌트 - @see html/_js/chart.html
 	var doughnutChart = require('../components/DoughnutChart.js'),
 	horizonBarChart = require('../components/HorizonBarChart.js'),
-	dropDownMenu =  require('../components/DropDownMenu.js');
+	dropDownMenu =  require('../components/DropDownMenu.js'),
+	eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
 	
 	return callerObj;
 	
@@ -69,6 +72,11 @@ module.exports = function() {
 		// tab width depend on number of li
 		var countMenu = $('.tabSplit li').length ;
 		$('.tabSplit li').css('width',100/countMenu+'%');
+
+
+		// Colorbox Complete 시점
+		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
+					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 	};
 	
 	/**
@@ -178,43 +186,51 @@ module.exports = function() {
 			})
 		});
 
-		$('#cardWrap li').each(function(){ // main card hover
-			$('.cardCon').hover(function(){
-				$(this).addClass('cHover');
-				$(this).find('.cardBgWrap .cardBg01').queue('fx',[]).animate({'opacity':'1'},{
-					duration: 0, 
-					easing: 'easeInBack',
-					complete: function(){
-						$(this).delay(100).animate({'opacity':'0'},500);
-					}
-				});
-				$(this).find('.cardBgWrap .cardBg02').queue('fx',[]).animate({'opacity':'1'},{
-					duration: 0, 
-					easing: 'easeInBack',
-					complete: function(){
-						$(this).delay(200).animate({'opacity':'0'},500);
-					}
-				});
-				$(this).find('.cardBgWrap .cardBg03').queue('fx',[]).animate({'opacity':'1'},{
-					duration: 0, 
-					easing: 'easeInBack',
-					complete: function(){
-						$(this).delay(300).animate({'opacity':'0'},500);
-					}
-				});
-			})
-			$('.cardCon').mouseleave(function(){
-				$(this).removeClass('cHover');
-			})
-			$('.cardDetail').mouseover(function(){
-				$(this).addClass('sHover')
-			})
-			$('.cardDetail').mouseout(function(){
-				$(this).removeClass('sHover')
-			})
-		})
-
+		$('#cardWrap > li').each(function(){ // main card mouseover
+			$(this).find('.cardCon').on('mouseover', onCardConOver)
+			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
+			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
+			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
+		});
 	};
+
+	// main card event Listener
+	function onCardConOver(e) {
+		if (!$(this).hasClass('cHover')) {
+			$(this).addClass('cHover');
+			$(this).find('.cardBg01').queue('fx',[]).stop().css('opacity', 1).delay(300).animate({
+				"opacity": 0
+			}, {
+				"duration": 2000,
+				"easing": "easeOutBack"
+			});
+			$(this).find('.cardBg02').queue('fx',[]).stop().css('opacity', 1).delay(200).animate({
+				"opacity": 0
+			}, {
+				"duration": 2000,
+				"easing": "easeOutBack"
+			});
+			$(this).find('.cardBg03').queue('fx',[]).stop().css('opacity', 1).delay(100).animate({
+				"opacity": 0
+			}, {
+				"duration": 2000,
+				"easing": "easeOutBack"
+			});
+		}
+	}
+
+	function onCardConLeave(e) {
+		$(this).removeClass('cHover');
+	}
+
+	function onCardDetailOver(e) {
+		$(this).addClass('sHover');
+	}
+
+	function onCardDetailLeave(e) {
+		$(this).removeClass('sHover');
+	}
+	// main card event Listener
 
 	/**
 	 * 상단 배너영역 초기화
@@ -304,7 +320,7 @@ module.exports = function() {
 					duration: 300, 
 					easing: 'easeOutBack',
 					complete: function(){
-						$(this).hover(
+						$(this).mouseover(
 							function(){
 								if($('#floatingToggle').hasClass('opened')){
 									if(!$(this).find('a').hasClass('on')){
@@ -325,7 +341,7 @@ module.exports = function() {
 					duration: 400, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).hover(
+						$(this).mouseover(
 							function(){
 								if($('#floatingToggle').hasClass('opened')){
 									if(!$(this).find('a').hasClass('on')){
@@ -346,7 +362,7 @@ module.exports = function() {
 					duration: 500, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).hover(
+						$(this).mouseover(
 							function(){
 								if($('#floatingToggle').hasClass('opened')){
 									if(!$(this).find('a').hasClass('on')){
@@ -367,7 +383,7 @@ module.exports = function() {
 					duration: 600, 
 					easing: 'easeOutBack', 
 					complete: function(){
-						$(this).hover(
+						$(this).mouseover(
 							function(){
 								if($('#floatingToggle').hasClass('opened')){
 									if(!$(this).find('a').hasClass('on')){
@@ -509,6 +525,37 @@ module.exports = function() {
 				default:
 					return eval(""+v1+operator+v2)?options.fn(this):options.inverse(this);
 			}
+		});
+	}
+
+	// Colorbox Complete 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxRefreshListener(e) {
+		$('#cardWrap > li').each(function(){ // main card mouseover
+			$(this).find('.cardCon').off('mouseover', onCardConOver)
+			$(this).find('.cardCon').off('mouseleave', onCardConLeave);
+			$(this).find('.cardDetail').off('mouseover', onCardDetailOver)
+			$(this).find('.cardDetail').off('mouseleave', onCardDetailLeave);
+		});
+
+		$('#cardWrap > li').each(function(){ // main card mouseover
+			$(this).find('.cardCon').on('mouseover', onCardConOver)
+			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
+			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
+			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
+		});
+	}
+
+	// Colorbox Cleanup 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxDestoryListener(e) {
+		$('#cardWrap > li').each(function(){ // main card mouseover
+			$(this).find('.cardCon').on('mouseover', onCardConOver)
+			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
+			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
+			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
 		});
 	}
 }

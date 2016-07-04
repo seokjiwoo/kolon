@@ -1,3 +1,5 @@
+<!-- [D] 마크업 원본 -->
+<!-- 
 <div class="popTop"><h4 class="popTit">이사갈 계획입니다. <span class="count">(20)</span></h4></div>
 <div class="popCon">
 	<div class="detailBox">
@@ -14,3 +16,344 @@
 		<a href="#"><span>6</span></a>
 	</div>
 </div>
+ -->
+
+<!-- [D] 테스트용 CSS -->
+<style>
+	.detailBox .bx-controls-direction .bx-prev {left:30px;background-position:0 0}
+	.detailBox .bx-controls-direction .bx-next {right:30px;background-position:-34px 0}
+	.detailBox .bx-controls-direction .disabled {display:none}
+
+	.detailBox .js-slider-area {height:626px;overflow:hidden}
+	.detailBox .js-slider-list {width:100%;height:100%;background:#000;background-position:center center;background-repeat:no-repeat}
+	.detailBox .js-slider-list.is-loading {background-image:url('http://desandro.github.io/imagesloaded/assets/loading.gif')}
+	.detailBox .js-slider-list.is-broken {background-image:url('http://desandro.github.io/imagesloaded/assets/broken.png');background-color:#be3730}
+	.detailBox .js-slider-list img {opacity:1}
+	.detailBox .js-slider-list.is-loading img,
+	.detailBox .js-slider-list.is-broken img {opacity:0}
+
+	.detailBox .bx-pager-item {display:inline-block;margin-left:9px;font-size:0}
+	.detailBox .bx-pager-item:first-child{margin-left:0}
+	.detailBox .bx-pager {margin-top:15px;text-align:center}
+	.detailBox .bx-pager a{width:10px;height:11px;display:inline-block;background:url('../images/bul_hexagon.png') 0 -11px no-repeat;}
+	.detailBox .bx-pager a.active{background-position:0 0;}
+</style>
+
+<!-- 
+	[D] 슬라이드
+	.js-slider-wrap 
+		.js-slider-area : 슬라이드 이미지 영역
+	!! .js- prefix 는 js상에서 셀레트용으로 구성되어 있으므로 유지해주세요.
+-->
+<!--// [D] 마크업 원본 -->
+<div class="js-photoDetailView-container js-slider-wrap"></div>
+
+<!-- 
+GET - /apis/scraps/folders/{folderNumber}
+{
+	"folders": [
+		{
+			"folderName": "string",
+			"folderNumber": 0,
+			"scrapCount": 0,
+			"scrapImages": [
+				"string"
+			]
+		}
+	],
+	"scraps": [
+		{
+			"category": "string",
+			"imageUrl": "string",
+			"magazine": {
+				"createDate": "string",
+				"subTitle": "string",
+				"title": "string"
+			},
+			"product": {
+				"price": 0,
+				"productDesc": "string",
+				"productName": "string"
+			},
+			"scrapCount": 0,
+			"scrapNumber": 0,
+			"seller": {
+				"companyName": "string",
+				"sellerImageUrl": "string",
+				"sellerName": "string"
+			},
+			"tags": [
+				"string"
+			]
+		}
+	]
+}
+ -->
+<script id="photoDetailView-templates" type="text/x-handlebars-template">
+	{{#folders}}
+	<div class="popTop"><h4 class="popTit">{{folderName}}<span class="count">({{scrapCount}})</span></h4></div>
+	<div class="popCon">
+		<div class="detailBox">
+			<ul class="imgArea js-slider-area">
+				{{#each scrapImages}}
+				<li class="js-slider-list is-loading"><img src="{{imageUrl}}" alt="{{imageTitle}}" /></li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+	{{/folders}}
+</script>
+
+<script>
+	// GET - /apis/scraps/folders/{folderNumber}
+	;(function(win, $) {
+		'use strict';
+
+		if ('undefined' === typeof win.vinylX) {
+			win.vinylX = {};
+		}
+
+		var NS = win.vinylX;
+
+		NS.reviewDetail = (function() {
+			var defParams = {
+				wrap : '.js-slider-wrap',
+				area : '.js-slider-area',
+				pager : '.js-slider-pager',
+				bxSliderOpts : {
+				},
+				cssClass : {
+					isCustomPager : 'is-custom-pager'
+				}
+			};
+			return {
+				init : function(container, args) {
+					if (!(this.container = container).size()) return;
+					this.opts = $.extend({}, defParams, args);
+					
+					this.setElements();
+					this.setBindEvents();
+				},
+				setElements : function() {
+					this.wrap = this.container.find(this.opts.wrap);
+					this.area = this.wrap.find(this.opts.area);
+				},
+				setBindEvents : function() {
+					var self = this,
+					wrap, pager, bxSliderOpts;
+
+					$.each(this.area, function() {
+						wrap = $(this).closest(self.opts.wrap);
+						pager = wrap.find(self.opts.pager);
+
+						if (pager.size()) {
+							bxSliderOpts = $.extend({}, self.opts.bxSliderOpts, {
+								pagerCustom : pager
+							});
+
+							wrap.addClass(self.opts.cssClass.isCustomPager);
+						} else {
+							bxSliderOpts = self.opts.bxSliderOpts;
+
+							wrap.removeClass(self.opts.cssClass.isCustomPager);
+						}
+
+						$(this).bxSlider(bxSliderOpts);
+					});
+				}
+			};
+		})();
+	})(window, window.jQuery);
+</script>
+
+<script>
+	;(function(win, $) {
+		'use strict';
+
+		if ('undefined' === typeof win.vinylX) {
+			win.vinylX = {};
+		}
+
+		var doc = document,
+		NS = win.vinylX;
+
+		var CB_EVENTS = {
+			COMPLETE : 'cbox_complete',
+			CLEANUP : 'cbox_cleanup',
+			CLOSED : 'cbox_closed'
+		};
+
+		NS.demoScrapFolders = (function() {
+			var defParams = {
+				templates : {
+					wrap : '.js-photoDetailView-container',
+					source : '#photoDetailView-templates'
+				},
+				colorbox : '#colorbox',
+				editFolder : {
+					wrap : 'scrapFolderEdit',
+					inp : '.js-scrapFolderEdit-inp',
+					delete : '.js-scrapFolderEdit-delete',
+					submit : '.js-scrapFolderEdit-submit'
+				},
+				newFolder : {
+					wrap : 'scrapFolderNew',
+					inp : '.js-scrapFolderNew-inp',
+					submit : '.js-scrapFolderNew-submit'
+				},
+				cssClass : {
+				},
+				dataAttr : {
+					popBtn : '[data-user-class]',
+					scrapFolderInfo : '[data-scrapfolder-info]'
+				},
+				dummyData : {}
+			};
+			return {
+				init : function(container, args) {
+					if (!(this.container = container).size()) return;
+
+					this.opts = $.extend({}, defParams, args);
+
+					this.setElements();
+					this.dummyData();
+					this.setBindEvents();
+				},
+				dummyData : function() {
+					var source = $(this.opts.templates.source).html(),
+					template = win.Handlebars.compile(source),
+					html = template(this.opts.dummyData);
+
+					this.templatesWrap.append(html);
+					$('body').trigger('btnPop_refresh');
+					this.templatesWrap.imagesLoaded()
+						.always(function( instance ) {
+							win.console.log('all images loaded');
+							NS.reviewDetail.init($('body'));
+						})
+						.done(function( instance ) {
+							win.console.log('all images successfully loaded');
+							// NS.reviewDetail.init($('body'));
+						})
+						.fail(function() {
+							win.console.log('all images loaded, at least one is broken');
+							// NS.reviewDetail.init($('body'));
+						})
+						.progress(function( instance, image ) {
+							var item = $(image.img).closest('.js-slider-list');
+
+							if (image.isLoaded) {
+								item.removeClass('is-loading');	
+							} else {
+								item.removeClass('is-loading').addClass('is-broken');
+							}
+
+							win.console.log( 'image is ' + ((image.isLoaded) ? 'loaded' : 'broken') + ' for ' + image.img.src, instance, image );
+						});
+					// NS.reviewDetail.init($('body'));
+				},
+				setElements : function() {
+					this.colorbox = this.container.find(this.opts.colorbox);
+					this.templatesWrap = this.container.find(this.opts.templates.wrap);
+					this.selPopBtnInfo = {};
+				},
+				setBindEvents : function() {
+					this.templatesWrap.on('click', this.opts.dataAttr.popBtn, $.proxy(this.onWrapPopBtnClick, this));
+
+					$(doc).on(CB_EVENTS.COMPLETE, $.proxy(this.onCboxEventListener, this))
+							.on(CB_EVENTS.CLEANUP, $.proxy(this.onCboxEventListener, this))
+							.on(CB_EVENTS.CLOSED, $.proxy(this.onCboxEventListener, this));
+				},
+				onWrapPopBtnClick : function(e) {
+					var target = $(e.target),
+					info = target.closest(this.opts.dataAttr.scrapFolderInfo).data('scrapfolder-info');
+
+					this.selPopBtnInfo = {
+						target : target,
+						info : info
+					};
+				},
+				onCboxEventListener : function(e) {
+					switch(e.type) {
+						case CB_EVENTS.COMPLETE:
+							if (this.colorbox.hasClass(this.opts.editFolder.wrap)) {
+								this.setScrapFolderEdit();
+							}
+
+							if (this.colorbox.hasClass(this.opts.newFolder.wrap)) {
+								this.setScrapFolderNew();
+							}
+							break;
+						case CB_EVENTS.CLEANUP:
+							if (this.colorbox.hasClass(this.opts.editFolder.wrap)) {
+								this.destroyScrapFolderEdit();
+							}
+							break;
+						case CB_EVENTS.CLOSED:
+							break;
+					}
+				},
+				setScrapFolderEdit : function() {
+					this.colorbox.find(this.opts.editFolder.inp).val(this.selPopBtnInfo.info.folderName);
+					this.colorbox.find(this.opts.editFolder.delete).on('click', $.proxy(function(e) {
+						e.preventDefault();
+
+						var target = $(e.target);
+						win.console.log('폴더 수정하기 - 폴더삭제', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+						// DELETE - /apis/scraps/folders/{folderNumber}
+					}, this));
+					this.colorbox.find(this.opts.editFolder.submit).on('click', $.proxy(function(e) {
+						e.preventDefault();
+
+						var target = $(e.target),
+						inp = this.colorbox.find(this.opts.editFolder.inp);
+
+						if (!inp.val() || inp.val() === ' ') {
+							win.alert('폴더명을 입력하세요.');
+							inp.focus();
+							return;
+						}
+						if (inp.val() === this.selPopBtnInfo.info.folderName) {
+							win.console.log('폴더명 동일 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+							return;
+						}
+
+						win.console.log('폴더 수정하기 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+						// PUT - /apis/scraps/folders/{folderNumber}
+						// data - folderName
+					}, this));
+				},
+				destroyScrapFolderEdit : function() {
+					if (this.colorbox.hasClass(this.opts.editFolder.wrap)) {
+						this.colorbox.find(this.opts.editFolder.delete).off('click');
+						this.colorbox.find(this.opts.editFolder.submit).off('click');
+					}
+				},
+				setScrapFolderNew : function() {
+					this.colorbox.find(this.opts.newFolder.submit).on('click', $.proxy(function(e) {
+						e.preventDefault();
+
+						var target = $(e.target),
+						inp = this.colorbox.find(this.opts.newFolder.inp);
+
+						if (!inp.val() || inp.val() === ' ') {
+							win.alert('폴더명을 입력하세요.');
+							inp.focus();
+							return;
+						}
+
+						win.console.log('새폴더 만들기 - 저장', target, this.colorbox.find(this.opts.newFolder.inp).val());
+						// POST - /apis/scraps/folders
+						// data - folderName
+					}, this));
+				}
+			};
+		})();
+
+		$(function() {
+			NS.demoScrapFolders.init($('body'), {
+				dummyData : {"folders":[{"folderName":"폴더1","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":6,"scrapImages":[{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2016/06/10/22/25/ortler-1449018_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/03/23/12/19/solda-293200_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/02/18/23/31/mountain-269547_960_720.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp111.jpg"}]}],"scraps":[{"category":"string","imageUrl":"string","magazine":{"createDate":"string","subTitle":"string","title":"string"},"product":{"price":0,"productDesc":"string","productName":"string"},"scrapCount":0,"scrapNumber":0,"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},"tags":["string"]}]}
+			});
+		});
+	})(window, window.jQuery);
+</script>

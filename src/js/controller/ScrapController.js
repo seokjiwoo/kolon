@@ -46,7 +46,7 @@ function ClassScrapController() {
 			/**
 			 * 스크랩 폴더 등록
 			 */
-			addScraFolder: addScraFolder,
+			addScrapFolder: addScrapFolder,
 			/**
 			 * 스크랩 폴더 수정
 			 */
@@ -63,10 +63,10 @@ function ClassScrapController() {
 	function scrapList(attr) {
 		Super.callApi('/apis/scraps', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('exampleResult', [status, result]);
+				$(callerObj).trigger('scrapListResult', [status, result]);
 			} else {
-				Super.handleError('example', result);
-				$(callerObj).trigger('exampleResult', [status, result]);
+				Super.handleError('scrapList', result);
+				$(callerObj).trigger('scrapListResult', [status, result]);
 			}
 		}, false);
 	};
@@ -74,10 +74,10 @@ function ClassScrapController() {
 	function scrapImageList(folderNumber) {
 		Super.callApi('/apis/scraps/folders/'+folderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('exampleResult', [status, result]);
+				$(callerObj).trigger('scrapImageListResult', [status, result]);
 			} else {
-				Super.handleError('example', result);
-				$(callerObj).trigger('exampleResult', [status, result]);
+				Super.handleError('scrapImageList', result);
+				$(callerObj).trigger('scrapImageListResult', [status, result]);
 			}
 		}, false);
 	};
@@ -124,7 +124,7 @@ function ClassScrapController() {
 	};
 
 	function addScrapFolder(folderName) {
-		Super.callApi('/apis/scraps', 'POST', {
+		Super.callApi('/apis/scraps/folders', 'POST', {
 			"folderName": folderName,
 		}, function(status, result) {
 			if (status == 200) {
@@ -137,7 +137,7 @@ function ClassScrapController() {
 	};
 
 	function editScrapFolder(folderNumber, folderName) {
-		Super.callApi('/apis/scraps/'+folderNumber, 'PUT', {
+		Super.callApi('/apis/scraps/folders/'+folderNumber, 'PUT', {
 			"folderName": folderName
 		}, function(status, result) {
 			if (status == 200) {

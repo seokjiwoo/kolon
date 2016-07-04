@@ -18,6 +18,12 @@ module.exports = function() {
 
 	var popupOpenHandlerFunction;
 	var popupCallbackFunction;
+
+
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
+
 	
 	var callerObj = {
 		/**
@@ -61,9 +67,8 @@ module.exports = function() {
 		winH = $(window).height();
 
 		Mailcheck.run({
-			domains: ['gmail.com', 'naver.com', 'hanmail.net'],
-			secondLevelDomains: ['domain', 'yetanotherdomain'],
-			topLevelDomains: ["com", "net", "org", "co.kr"]
+			domains: ['gmail.com', 'naver.com', 'nate.com', 'daum.net', 'hanmail.net', 'hotmail.com', 'yahoo.co.kr', 'dreamwiz.com', 'lycos.co.kr', 'paran.com', 'freechal.com', 'hitel.net', 'hanmir.com', 'korea.com', 'empal.com'],
+			topLevelDomains: ["com", "net", "org", "go", "kr", "co.kr", "or.kr", "go.kr", "ac.kr"]
 		});
 		
 		initTab();
@@ -71,23 +76,12 @@ module.exports = function() {
 
 		$('.radioBox label').click(radioButtonHandler);	// radio button
 		$('.checkbox label').click(checkBoxHandler);	// checkbox
-		// $('.btnPop').click(htmlPopupLinkHandler);		// basic Popup
 		$('.btnPop').on('click', htmlPopupLinkHandler);		// basic Popup 임시 binding 처리
 		
-		// colorbox event listener 설정
-		$(document).on('cbox_complete', onCboxEventListener)
-					.on('cbox_cleanup', onCboxEventListener)
-					.on('cbox_closed', onCboxEventListener);
-
-		// btnPop 임시 - Refresh event Binding 처리
-		$('body').on('btnPop_refresh', onBtnPopRefresh);
+		// Colorbox Complete 시점
+		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
+					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 	};
-
-	// btnPop 임시 - Refresh event Binding 처리
-	function onBtnPopRefresh() {
-		$('.btnPop').off('click', htmlPopupLinkHandler)
-					.on('click', htmlPopupLinkHandler);
-	}
 	
 	/**
 	 * initalize radio button
@@ -118,12 +112,12 @@ module.exports = function() {
 			$(tabCon).show().siblings().hide();
 
 
-			// tab toggle 시 cardWrap istope 설정체크
+			// tab toggle 시 cardWrap isotope 설정체크
 			if (!$(tabCon).find('#cardWrap').size()) {
 				return;
 			}
 
-			// ie9 istope bugfix
+			// ie9 isotope bugfix
 			if ($('#cardWrap').data('isotope')) {
 				$('#cardWrap').isotope('destroy');
 				initTabContentLayout();
@@ -287,25 +281,32 @@ module.exports = function() {
 		});
 	};
 
-	// colorbox listener - colorbox 내에 공통 버튼 이벤트 설정
-	function onCboxEventListener(e) {
-		switch(e.type) {
-			case 'cbox_complete':
-				$('.radioBox label').off('click', radioButtonHandler);
-				$('.checkbox label').off('click', checkBoxHandler);
 
-				$('.radioBox label').on('click', radioButtonHandler);
-				$('.checkbox label').on('click', checkBoxHandler);
-				break;
-			case 'cbox_cleanup':
-				$('.radioBox label').off('click', radioButtonHandler);
-				$('.checkbox label').off('click', checkBoxHandler);
+	// Colorbox Complete 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxRefreshListener(e) {
+		$('.radioBox label').off('click', radioButtonHandler)
+							.on('click', radioButtonHandler);
 
-				$('.radioBox label').on('click', radioButtonHandler);
-				$('.checkbox label').on('click', checkBoxHandler);
-				break;
-			case 'cbox_closed':
-				break;
-		}
+		$('.checkbox label').off('click', checkBoxHandler)
+							.on('click', checkBoxHandler);
+
+		$('.btnPop').off('click', htmlPopupLinkHandler)
+					.on('click', htmlPopupLinkHandler);
+	}
+
+	// Colorbox Cleanup 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxDestoryListener(e) {
+		$('.radioBox label').off('click', radioButtonHandler)
+							.on('click', radioButtonHandler);
+
+		$('.checkbox label').off('click', checkBoxHandler)
+							.on('click', checkBoxHandler);
+
+		$('.btnPop').off('click', htmlPopupLinkHandler)
+					.on('click', htmlPopupLinkHandler);
 	}
 }
