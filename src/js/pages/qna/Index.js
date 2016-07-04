@@ -40,7 +40,7 @@ module.exports = function() {
 				}
 			},
 			multiple : {
-				enabled : true,
+				enabled : false,
 				maxSize : 3
 			}
 		}
