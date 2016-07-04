@@ -118,12 +118,12 @@ module.exports = function() {
 			$(tabCon).show().siblings().hide();
 
 
-			// tab toggle 시 cardWrap istope 설정체크
+			// tab toggle 시 cardWrap isotope 설정체크
 			if (!$(tabCon).find('#cardWrap').size()) {
 				return;
 			}
 
-			// ie9 istope bugfix
+			// ie9 isotope bugfix
 			if ($('#cardWrap').data('isotope')) {
 				$('#cardWrap').isotope('destroy');
 				initTabContentLayout();
