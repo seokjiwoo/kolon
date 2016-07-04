@@ -178,7 +178,8 @@ module.exports = function() {
 			})
 		});
 
-			$('#cardWrap li').each(function(){ // main card hover
+
+		$('#cardWrap li').each(function(){ // main card hover
 			$('.cardCon').mouseover(function(){
 				$(this).addClass('cHover');
 			})

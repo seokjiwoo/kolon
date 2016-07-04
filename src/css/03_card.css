@@ -61,7 +61,7 @@
 /* card size 01~04 */
 .cardSize01{height:330px;}
 .cardSize01 .cardCon{height:170px;}
-.cardSize01 .hexagon{height: 164.545px;}
+.cardSize01 .hexagon{height: 163.545px;}
 .cardSize01 .hexagon,
 .cardSize01 .hexagon .hexTop
 .cardSize01 .hexagon .hexBottom {background-size:285px 330px;}
@@ -73,12 +73,12 @@
 .cardSize02 .hexagon .hexTop
 .cardSize02 .hexagon .hexBottom {background-size:285px 490px;}
 
-.cardSize03{height:656px;}
-.cardSize03 .cardCon{height:490px;}
-.cardSize03 .hexagon{height: 484.55px;}
+.cardSize03{height:679px;}
+.cardSize03 .cardCon{height:514px;}
+.cardSize03 .hexagon{height: 515.55px;}
 .cardSize03 .hexagon,
 .cardSize03 .hexagon .hexTop
-.cardSize03 .hexagon .hexBottom {background-size:285px 655px;}
+.cardSize03 .hexagon .hexBottom {background-size:285px 683px;}
 
 .cardSize04{width:590px;height:745px;}
 .cardSize04 .cardCon{height: 585px;}
@@ -91,28 +91,6 @@
 .cardSize04.cardType06 .hexTop {top: -206.5965px;}
 .cardSize04.cardType06 .hexBottom {bottom: -206.5965px;}
 
-/* card type 01~10 */
-.cardWrap .cardType01 {}
-.cardWrap .cardType01 .cardLine { background:#cde1d5;}
-.cardWrap .cardType01 .cardLine p {font-size:14px; color:#000;}
-.cardWrap .cardType01 .cardLine p span {color:#fd665d;}
-.cardWrap .cardType01 .cardLine:after {border-bottom-color:#ff6460;}
-.cardWrap .cardType01 .cardCat {color:#ff6460; font-style:italic; font-size:20px;}
-.cardWrap .cardType01 h2.cardTit {font-size:20px;}
-.cardWrap .cardType01 h2.cardTit b {display:block;}
-.cardWrap .cardType01 .cardCat:before {display:none;}
-.cardWrap .cardType01 .cardCon:after {display:none;}
-.cardWrap .cardType01 a {color:#000;}
-
-.cardWrap .cardType02 .cardLine { background:#f9b5b5;}
-.cardWrap .cardType02 .cardLine:after {border-bottom-color:#4e4c66;}
-.cardWrap .cardType02 a {color:#000;}
-.cardWrap .cardType02 .cardCat {color:#c2504f; font-style:italic; font-size:20px;}
-.cardWrap .cardType02 h2.cardTit {font-size:20px;}
-.cardWrap .cardType02 h2.cardTit b {display:block;}
-.cardWrap .cardType02 .cardCat:before {display:none;}
-.cardWrap .cardType02 a {color:#000;}
-.cardWrap .cardType02 .cardCon:after {background:#95d2cd;}
 
 /* card hover */
 .cardCon .cardHover {display:none;}
@@ -124,14 +102,30 @@
 .cardHover .cardCon ul.card_icon li:first-child a:after {left:32px;}
 .cardHover .cardCon ul.card_icon li:last-child {float:right;}
 .cardHover .cardCon ul.card_icon li:last-child a:after {background-position:-33px 0; right:32px;}
-.cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5;}
+.cardHover .worker {width:285px; margin-left:-142.5px; position:absolute; bottom:127px; left:50%;}
+.cardHover .worker .cardAuthorLike {width:100%; text-align:center;}
+.cardHover .worker .cardAuthorLike .star {}
+.cardHover .worker .cardAuthorLike .star:before{background-position:0 0}
+.cardHover .worker .cardAuthorLike span:before{content:'';display: inline-block;width: 12px;height: 13px;margin-right:7px;background:url('../images/ico_card_popular.png') no-repeat;}
+.cardHover .worker .cardAuthorLike span + span {margin-left:10px;}
+.cardHover .worker .cardAuthorLike .comt:before{background-position:-12px 0}
+.cardHover .worker .cardAuthorLike .scrap:before{background-position:-25px -10px}
+.cardHover .worker .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
+.cardHover .worker .cardAuthorPic img{display: block;width: 100%;}
+.cardHover .worker .cardAuthorInfo{padding:15px 0 20px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
+.cardHover .worker .cardAuthorInfo b{color:#fff}
+
+.cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5; text-align:right;}
 .cardCon ul.check_icon li {width:47px; display:inline-block;}
-.cardCon ul.check_icon li a {width:100%; padding:45px 0 15px; color:#000; font-size:11px; display:inline-block; position:relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
+.cardCon ul.check_icon li a {width:100%; padding:45px 0 15px; color:#000; font-size:11px; display:inline-block; position:relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold; text-align:center;}
 .cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:22px; left:15px; display:inline-block;transform: rotate(0deg);}
 .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
 .cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
-ul.cardWrap > li .cardCon > a.cardTxt {height:194px;}
+ul.cardWrap > li .cardCon > a.cardTxt {padding-bottom:45px;}
 ul.cardWrap > li .cardCon.cHover > a.cardTxt {display:inline-block;}
+ul.cardWrap > li .cardCon ul.check_icon li.text {position:relative;}
+ul.cardWrap > li .cardCon ul.check_icon li.text a span {width:39px; height:35px; margin:-16px 0 0 -19.5px; position:absolute; top:50%; left:50%; display:inline-block;}
+ul.cardWrap > li .cardCon ul.check_icon li.text a:after {display:none;}
 
 /* 첫번째 hover */
 ul.cardWrap > li .cardCon.cHover {position:relative;}
@@ -145,18 +139,71 @@ ul.cardWrap > li .cardCon.cHover .cardCon {}
 ul.cardWrap > li .cardCon.cHover ul.check_icon li a {color:#fff;}
 ul.cardWrap > li .cardCon.cHover ul.check_icon li.like a:after {background-position:0 -21px;}
 ul.cardWrap > li .cardCon.cHover ul.check_icon li.share a:after {background-position:-20px -20px;}
-
+ul.cardWrap > li .cardCon .cardTxt span.cardMore {display:none; padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:0; left:50%; margin-left:-50px; z-index :5;}
+ul.cardWrap > li .cardCon .cardTxt span.cardMore:after {content:''; width:14px; height:10px; margin-top:-5px; background:url(../images/cardMore_arrow.png) -14px 0 no-repeat; position:absolute; top:50%; right:13px; display:inline-block;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt {}
+ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardCat,
+ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardTit {display:none;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardMore {display:inline-block;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt {top:220px;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist {width:127px; padding-left:15px; position:absolute; top:265px; left:0; text-align:left;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistPic {width:64px; height:64px; margin-top:-30px; border-radius:50%; overflow:hidden;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistPic img {width:64px; height:64px;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo {margin-top:16px;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span {width:100%; display:inline-block;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.tit {font-size:14px; font-family:'RobotoL','NotoSansL', sans-serif;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.tit b {font-size:24px; line-height:29px; display:inline-block;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.adr {padding-left:12px; margin-top:15px; font-size:14px; font-family:'RobotoL','NotoSansL', sans-serif; position:relative;}
+ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.adr:before {content:''; width:8px; height:12px; margin-top:-4px; background:url(../images/ico_card_popular.png) -36px 0 no-repeat; position:absolute; top:50%; left:0;}
+ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon {width:142px; left:142px; top:270px;}
+ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon li:first-child {margin-top:30px;}
+ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt p,
+ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt h2,
+ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt p,
+ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt h2 {color:#000;}
 
 /* 두번째 hover */
-ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore {padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:0; left:50%; margin-left:-50px; z-index :5; display:inline-block;}
-ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore:after {content:''; width:14px; height:10px; margin-top:-5px; background:url(../images/cardMore_arrow.png) -14px 0 no-repeat; position:absolute; top:50%; right:13px; display:inline-block;}
+ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore {display:inline-block;}
+ul.cardWrap > li.cardType01 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
+ul.cardWrap > li.cardType01 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
+ul.cardWrap > li.cardType02 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
+ul.cardWrap > li.cardType02 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
+ul.cardWrap > li.cardType03 .cardCon .cardTxt.sHover span.cardMore {color:#f9930a;}
+ul.cardWrap > li.cardType03 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
+ul.cardWrap > li.cardType05 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
+ul.cardWrap > li.cardType05 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
+ul.cardWrap > li.cardType06 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
+ul.cardWrap > li.cardType06 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
 .cardHover .cardCon ul.card_icon li.sHover {background:red;}
 .cardCon ul.check_icon li.sHover a {background:red;}
-
 
 .hoverStyle01 {background:url(../images/card_hover01.png) 0 0 no-repeat;}
 .hoverStyle02 {background:url(../images/card_hover02.png) 0 0 no-repeat;}
 .hoverStyle03 {background:url(../images/card_hover03.png) 0 0 no-repeat;}
+.hoverStyle04 {width:285px; height:502px; background:url(../images/card_hover04.png) 0 100% no-repeat;}
+
+/* card type 01~10 */
+.cardWrap .cardType01 {}
+.cardWrap .cardType01 .cardLine { background:#cde1d5;}
+.cardWrap .cardType01 .cardLine p {font-size:14px; color:#000;}
+.cardWrap .cardType01 .cardLine p span {color:#fd665d;}
+.cardWrap .cardType01 .cardLine:after {border-bottom-color:#ff6460;}
+.cardWrap .cardType01 .cardCat {color:#ff6460; font-style:italic; font-size:20px;}
+.cardWrap .cardType01 h2.cardTit {font-size:20px;}
+.cardWrap .cardType01 h2.cardTit b {display:block;}
+.cardWrap .cardType01 .cardCat:before {display:none;}
+.cardWrap .cardType01 .cardCon:after {background:#efe7da;}
+.cardWrap .cardType01 a {color:#000;}
+
+.cardWrap .cardType02 .cardLine { background:#f9b5b5;}
+.cardWrap .cardType02 .cardLine:after {border-bottom-color:#4e4c66;}
+.cardWrap .cardType02 a {color:#000;}
+.cardWrap .cardType02 .cardCat {color:#c2504f; font-style:italic; font-size:20px;}
+.cardWrap .cardType02 h2.cardTit {font-size:20px;}
+.cardWrap .cardType02 h2.cardTit b {display:block;}
+.cardWrap .cardType02 .cardCat:before {display:none;}
+.cardWrap .cardType02 a {color:#000;}
+.cardWrap .cardType02 .cardCon:after {background:#95d2cd;}
 
 .cardWrap .cardType03 .cardLine { background:#8feddd;}
 .cardWrap .cardType03 .cardLine:after {border-bottom-color:#ff9504;}
@@ -195,22 +242,24 @@ ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore:after {content:''; width
 .cardWrap .cardType06 .cardLine {background:#f0fafc;}
 .cardWrap .cardType06 .cardLine:after {border-bottom-color:#00a7d3;}
 .cardWrap .cardType06 .cardCat {color:#fff; background-position:0 0;}
-.cardWrap .cardType06 .cardCat + h2.cardTit {margin-top:63px;}
+.cardWrap .cardType06 .cardCat + h2.cardTit {margin-top:35px;}
 .cardWrap .cardType06 h2.cardTit {color:#fff;}
 .cardWrap .cardType06 h2.cardTit b {display:block;}
-.cardWrap .cardType06 .cardCon:after {width:285px; height:492px;  transform:none; background:url(../images/card_color05.png) 0 0 no-repeat; bottom:0; right:0;}
+.cardWrap .cardType06 .cardCon:after {background-color:#77c5d9;}
 .cardWrap .cardType06 a {color:#fff;}
 
 .cardWrap .cardType07{}
-.cardWrap .cardType07 .cardCon:after {display:none;}
-.cardWrap .cardType07 .cardLine { background:#d2c0a8;}
-.cardWrap .cardType07 .cardLine:after {border-bottom-color:#bd8c7d;}
+.cardWrap .cardType07 .cardCon:after {background-color:#9a9a9c;}
+.cardWrap .cardType07 .cardLine {background:#fae6bd;}
+.cardWrap .cardType07 .cardLine:after {border-bottom-color:#705a54;}
+.cardWrap .cardType07 .cardLine p {color:#000;}
 .cardWrap .cardType07 .cardCat:before {width:12px; margin-top:-10px; background-position:-141px 0; margin-left:-5.5px;}
 .cardWrap .cardType07 h2.cardTit{color: #000; font-size:14px; text-align:left;}
 .cardWrap .cardType07 h2.cardTit b{font-size:34px; display:block; line-height:40px;}
 .cardWrap .cardType07 h2.cardTit span {margin-top:17px;color:#fff; display:inline-block;}
 .cardWrap .cardType07 .cardCat + h2.cardTit {margin-top:50px;}
 .cardWrap .cardType07 a {color:#000;}
+
 /*.cardWrap .cardType07 .cardIntro{color: #666}
 .cardWrap .cardType07 .cardIntro:before{background:#666;}
 .cardWrap .cardType07 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}*/
@@ -269,10 +318,7 @@ ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore:after {content:''; width
 .cardWrap .cardDetail:before{content:'';display: inline-block;width:0;height: 100%;vertical-align: middle;}
 .cardWrap .cardDetailWrap{display: inline-block;margin-left: -5px;vertical-align: middle;}
 */
-.cardWrap .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
-.cardWrap .cardAuthorPic img{display: block;width: 100%;}
-.cardWrap .cardAuthorInfo{padding-bottom:20px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#ccc;}
-.cardWrap .cardAuthorInfo b{color:#fff}
+
 /*
 .cardWrap .cardDetail span:before{content:'';display: inline-block;width: 12px;height: 13px;margin:0 7px;background:url('../images/ico_card_popular.png') no-repeat;}
 .cardWrap .cardDetail .comt:before{background-position:-12px 0}
