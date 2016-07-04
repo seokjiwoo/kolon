@@ -68,7 +68,7 @@ module.exports = function() {
 
 		Mailcheck.run({
 			domains: ['gmail.com', 'naver.com', 'nate.com', 'daum.net', 'hanmail.net', 'hotmail.com', 'yahoo.co.kr', 'dreamwiz.com', 'lycos.co.kr', 'paran.com', 'freechal.com', 'hitel.net', 'hanmir.com', 'korea.com', 'empal.com'],
-			topLevelDomains: ["com", "net", "org", "go", "kr", "co.kr", "or.kr", "go.kr", "ac.kr"]
+			topLevelDomains: ["com", "net", "org", "go", "kr", "co", "co.kr", "or.kr", "go.kr", "ac.kr"]
 		});
 		
 		initTab();
