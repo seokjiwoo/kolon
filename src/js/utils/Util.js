@@ -88,7 +88,15 @@ function ClassUtils() {
 			 * 브라우저 기능 지원여부 체크
 			 * @type {Function}
 			 */
-			isSupport : isSupport
+			isSupport : isSupport,
+			/**
+			 * base64 image를 multipart formdata로 변환
+			 * @param   {String} image  - base64 데이터
+			 * @param   {String} filename - 파일 이름
+			 * @param   {String} format - mime type (optional)
+			 * @return  {Object|Boolean} {content:String, headers: {'Content-Type': 'multipart/form-data; boundary='+String, 'Content-Length': Number} }
+			 */
+			makeMultipartForm: makeMultipartForm
 		};
 	}
 	
@@ -206,6 +214,63 @@ function ClassUtils() {
 				return window.FileReader;
 			})()
 		};
+	}
+
+	function makeMultipartForm(image, filename, format) {
+		if (format == undefined) {
+			var extension =  filename.toLowerCase().substr(-3);
+			switch(format) {
+				case 'peg':
+				case 'jpg':
+					format = 'image/jpg';
+					break;
+				case 'image/png':
+					format = 'image/png';
+					break;
+				case 'image/gif':
+					format = 'image/gif';
+					break;
+			}
+		} else if (filename == undefined) {
+			var extension = '';
+			switch(format) {
+				case 'image/jpeg':
+				case 'image/jpg':
+					extension = 'jpg';
+					break;
+				case 'image/png':
+					extension = 'png';
+					break;
+				case 'image/gif':
+					extension = 'gif';
+					break;
+			}
+			if (extension != '') filename = 'img'+(new Date()).getTime()+'-'+Math.floor(Math.random()*10000)+'.'+extension;
+		}
+
+		if (filename != undefined) {
+			var boundary = '----'+(new Date()).getTime();
+			var bodyString = [];
+			bodyString.push(
+				'--' + boundary,
+				'Content-Disposition: form-data; name="' + "file" + '";' + 'filename="' + filename + '"',
+				'Content-Type: ' + format,
+				'Content-Transfer-Encoding: base64', '',
+				image.substring(image.indexOf('base64,')+7)
+			);  
+			bodyString.push('--' + boundary + '--','');
+			var content = bodyString.join('\r\n');
+
+			return {
+				content: content,
+				headers: {
+					'Content-Type': 'multipart/form-data; boundary='+boundary,
+					'Content-Length': content.length
+				}
+			};
+		} else {
+			return false;
+		}
 	}
 
 }

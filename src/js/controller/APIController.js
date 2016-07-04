@@ -13,8 +13,9 @@ module.exports = function() {
 	var loadingFlag = false;
 	
 	var callerObj = {
+		API_URL: API_URL,
 		/**
-		 * 소셜 로그인 URL 목록 요청
+		 * Request AJAX call
 		 */
 		callApi: callApi,
 		/**
