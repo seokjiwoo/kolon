@@ -46,7 +46,11 @@ module.exports = function() {
 		/**
 		 * 초기화
 		 */
-		init: init
+		init: init,
+		/**
+		 * SuperClass 연결
+		 */
+		Super: Super
 	},
 	self;
 	

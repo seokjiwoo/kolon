@@ -68,7 +68,11 @@ function ClassMemberInfoController() {
 			/**
 			 * 내 정보 받아오기
 			 */
-			getMyInfo: getMyInfo
+			getMyInfo: getMyInfo,
+			/**
+			 * 회원탈퇴
+			 */
+			deleteMember: deleteMember
 		}
 		
 		return callerObj;	
@@ -313,17 +317,18 @@ function ClassMemberInfoController() {
 	/**
 	 * 회원탈퇴
 	 */
-	function deleteMember(reasonCode, reasonStatement, modifyId) {
+	function deleteMember(reasonCodes, reasonStatement) {
 		Super.callApi('/apis/member', 'DELETE', {
-			"leaveReasonCode": reasonCode,
-			"leaveReasonStatement": reasonStatement,
-			"modifyId": modifyId
+			"deleteAgreeYn": "Y",
+			"leaveAgreeYn": "Y",
+			"leaveReasonCodes": reasonCodes,
+			"leaveReasonStatement": reasonStatement
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('joinResult', [200, result.status]);
 			} else {
-				Super.handleError('join', result);
+				Super.handleError('deleteMember', result);
 			}
+			$(callerObj).trigger('deleteMemberResult', [status, result]);
 		}, false);
 	};
 	
