@@ -10,7 +10,7 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/HomeService.js';
 
-	var MyPageClass = require('./Index.js'),
+	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),

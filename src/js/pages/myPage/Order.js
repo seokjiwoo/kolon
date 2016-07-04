@@ -8,7 +8,7 @@ module.exports = function() {
 	debug = require('../../utils/Console.js'),
 	fileName = 'myPage/Order.js';
 
-	var MyPageClass = require('./Index.js'),
+	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),

@@ -9,7 +9,7 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/EditPassword.js';
 
-	var MyPageClass = require('./Index.js'),
+	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();
 	
 	var callerObj = {
