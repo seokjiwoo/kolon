@@ -122,12 +122,12 @@
 .cardHover .cardCon ul.card_icon li a {width:31px; height:32px; background:url(../images/card_icon.png) 0 0 no-repeat; display:inline-block;}
 .cardHover .cardCon ul.card_icon li:last-child {float:right;}
 .cardHover .cardCon ul.card_icon li:last-child a {background-position:-33px 0;}
-.cardCon ul.check_icon {width:164px; height:50px; transform: rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:48px; right:-15px; z-index:5;}
+.cardCon ul.check_icon {width:164px; height:50px; transform: rotate(-29.65deg); position:absolute; bottom:48px; right:-15px; z-index:5;}
 .cardCon ul.check_icon li {width:47px; float:left;}
 .cardCon ul.check_icon li a {padding-top:20px; color:#000; font-size:11px; display:inline-block; position:relative;}
-.cardCon ul.check_icon li a:after {content:''; width:20px; height:20px; margin:-10px 0 0 -10px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:0; left:50%; display:inline-block;transform: rotate(10deg) skewx(15deg);}
+.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:3px; left:15px; display:inline-block;transform: rotate(20deg);}
 .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
-.cardCon ul.check_icon li.share a:after {background-position:-23px 0;}
+.cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
 .cardCon ul.check_icon li + li {margin-left:5px;}
 ul.cardWrap > li .cardCon > a.cardTxt {height:194px;}
 ul.cardWrap > li .cardCon.cHover > a.cardTxt {display:inline-block; padding-bottom:45px;}
@@ -143,7 +143,7 @@ ul.cardWrap > li .cardCon span.cardMore {display:none;}
 ul.cardWrap > li .cardCon.cHover .cardCon {}
 ul.cardWrap > li .cardCon.cHover ul.check_icon li a {color:#fff;}
 ul.cardWrap > li .cardCon.cHover ul.check_icon li.like a:after {background-position:0 -21px;}
-ul.cardWrap > li .cardCon.cHover ul.check_icon li.share a:after {background-position:-23px -20px;}
+ul.cardWrap > li .cardCon.cHover ul.check_icon li.share a:after {background-position:-20px -20px;}
 
 
 /* µÎ¹øÂ° hover */
@@ -238,7 +238,8 @@ ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore:after {content:''; width
 .cardWrap .cardType09 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}
 .cardWrap .cardType09 .cardRemove{background-image: url('../images/btn_closeG.png');}
 /*.cardWrap .cardType09 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2; border-radius:50%;}*/
-.cardWrap .cardType09 .cardCon .btn02{background-position:-64px 0 }
+.cardWrap .cardType09 .cardCon .btn01{display:inline-block;}
+.cardWrap .cardType09 .cardCon .btn02{background-position:-64px 0; display:inline-block;}
 .cardWrap .cardType09 .cardCon a:hover{background-position:0 -64px; }
 .cardWrap .cardType09 .cardCon .btn02:hover{background-position:-64px -64px; }
 .cardWrap .cardType09 .share a{border:1px solid #4862a3; border-radius:50%; width:64px; height:64px; margin-top:20px; background: url('../images/btn_card_fb.png') no-repeat;}
