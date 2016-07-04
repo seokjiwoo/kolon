@@ -117,18 +117,19 @@
 /* card hover */
 .cardCon .cardHover {display:none;}
 .cardCon.cHover .cardHover {display:block; position:absolute; top:0; left:0; z-index:4;}
-.cardHover .cardCon ul.card_icon {width:100%; position:absolute; top:310px; left:0;}
-.cardHover .cardCon ul.card_icon li {width:31px; height:32px; margin:0 32px; float:left; font-size:0;}
-.cardHover .cardCon ul.card_icon li a {width:31px; height:32px; background:url(../images/card_icon.png) 0 0 no-repeat; display:inline-block;}
+.cardHover .cardCon ul.card_icon {width:100%; position:absolute; top:275px; left:0;}
+.cardHover .cardCon ul.card_icon li {width:50%; height:95px; float:left; font-size:0;}
+.cardHover .cardCon ul.card_icon li a {width:100%; height:100%; display:inline-block; position:relative;}
+.cardHover .cardCon ul.card_icon li a:after {content:''; width:31px; height:32px; margin-top:-16px; background:url(../images/card_icon.png) 0 0 no-repeat; display:inline-block; position:absolute; top:50%;}
+.cardHover .cardCon ul.card_icon li:first-child a:after {left:32px;}
 .cardHover .cardCon ul.card_icon li:last-child {float:right;}
-.cardHover .cardCon ul.card_icon li:last-child a {background-position:-33px 0;}
-.cardCon ul.check_icon {width:164px; height:50px; transform: rotate(-29.65deg); position:absolute; bottom:48px; right:-15px; z-index:5;}
-.cardCon ul.check_icon li {width:47px; float:left;}
-.cardCon ul.check_icon li a {padding-top:20px; color:#000; font-size:11px; display:inline-block; position:relative;}
-.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:3px; left:15px; display:inline-block;transform: rotate(20deg);}
+.cardHover .cardCon ul.card_icon li:last-child a:after {background-position:-33px 0; right:32px;}
+.cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5;}
+.cardCon ul.check_icon li {width:47px; display:inline-block;}
+.cardCon ul.check_icon li a {width:100%; padding:45px 0 15px; color:#000; font-size:11px; display:inline-block; position:relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
+.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:22px; left:15px; display:inline-block;transform: rotate(0deg);}
 .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
 .cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
-.cardCon ul.check_icon li + li {margin-left:5px;}
 ul.cardWrap > li .cardCon > a.cardTxt {height:194px;}
 ul.cardWrap > li .cardCon.cHover > a.cardTxt {display:inline-block;}
 
@@ -310,4 +311,4 @@ ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore:after {content:''; width
 
 .cardCon .removeScrap {position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_remove.png') center no-repeat; border-radius: 50%; z-index:4;font-size: 0;}
 
-/**/
+/*  */
