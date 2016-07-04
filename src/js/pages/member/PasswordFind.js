@@ -81,7 +81,7 @@ module.exports = function() {
 	/**
 	 * 비번찾기 결과 handling
 	 */
-	function findPwResultHandler(e, result, id) {
+	function findPwResultHandler(e, status, result) {
 		switch(result.status) {
 			case '200':
 				switch(findMethod) {
@@ -111,6 +111,7 @@ module.exports = function() {
 	 */
 	function requstPwAuthMailResend(e) {
 		e.preventDefault();
+		infoController.findPasswordByMail(tempId);
 		Super.Super.alertPopup('비밀번호 찾기', '인증메일이 재발송 되었습니다', '확인');
 		e.stopPropagation();
 	};
