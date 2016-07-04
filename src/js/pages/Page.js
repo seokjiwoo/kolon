@@ -171,11 +171,13 @@ module.exports = function() {
 			if ($(document).scrollLeft() > 0){
 				$('.topMenu, .search .subTop').css('margin-left','-' + $(document).scrollLeft() + 'px');
 			}
-				$(window).resize(function(){
-				if ($(window).width() > 1239){
-					$('.topMenu, .search .subTop').css('margin-left','0');
-				}
-			})
+		});
+	
+		$(window).resize(function(){
+			if ($(window).width() > 1239){
+				$('.topMenu, .search .subTop').css('margin-left','0');
+			}
+			lnbScroller.refresh();
 		});
 
 		$('#cardWrap > li').each(function(){ // main card mouseover
@@ -234,6 +236,10 @@ module.exports = function() {
 			topBannerShowFlag = true;
 			$('#topBanner').show();
 			$('#closeTopBannerButton').click(hideTopBanner);
+			$('#lnbWrapper').css({
+				"height": $(window).height()-113+'px'
+			});
+			lnbScroller.refresh();
 		} else {
 			hideTopBanner();
 		}
@@ -268,7 +274,10 @@ module.exports = function() {
 
 		$('#topBanner').hide();
 		$('.main .container').css('padding-top','0');
-		$('.lnbWrapper').css('top', '0');
+		$('#lnbWrapper').css({
+			"top": 0,
+			"height": "100%"
+		});
 	};
 	
 	/**

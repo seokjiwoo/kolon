@@ -83,7 +83,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #top .searchWrap .keyword .delAll a{color: #fff;}
 #top .searchWrap .keyword .delAll .del{background:url('../images/btn_closeW.png') no-repeat center;}
 
-.lnbWrapper {overflow: hidden;position: fixed;top:113px;bottom: 0;left: -285px;width:285px;height: 100%;background:#fff;z-index:110;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
+.lnbWrapper {overflow: hidden;position: fixed;top:113px;bottom: 0;left: -285px;width:285px;height:100%;background:#fff;z-index:110;box-shadow:0px 6px 6px rgba(0,0,0,0.12);}
 .lnb {overflow: auto;background:#fff;text-align: center;}
 .lnb .profile{position: relative;min-height:340px;padding-bottom:83px;background: #f65677 url('../images/bg_lnb.jpg') no-repeat bottom;}
 .lnb .profile .count{height: 20px;border-radius:10px;padding:0 7px;color:#fff;font-size:13px;font-family:'RobotoM',sans-serif;line-height: 20px;}
