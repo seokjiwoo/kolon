@@ -80,6 +80,8 @@ function ClassImageUploader() {
 			SELECTED_FILES : 'IMAGE_UPLOADER-SELECTED_FILES',
 			GET_SELECTED_FILES : 'IMAGE_UPLOADER-GET_SELECTED_FILES',
 			SUBMIT : 'IMAGE_UPLOADER-SUBMIT',
+			UPLOAD_SUCCESS : 'IMAGE_UPLOADER-UPLOAD_SUCCESS',
+			UPLOAD_FAILURE : 'IMAGE_UPLOADER-UPLOAD_FAILURE',
 			CANCEL : 'IMAGE_UPLOADER-CANCEL'
 		}
 	},
@@ -259,10 +261,29 @@ function ClassImageUploader() {
 			win.alert('이미지를 선택하세요.');
 			return;
 		}
-		
+		var selectedFile = self.selectedFiles[0];
+		var formData = util.makeMultipartForm(selectedFile.bs64, selectedFile.file.name);
+		console.log(self.opts);
+		var ajaxOptions = {
+			url: self.opts.api_url,
+			method: 'POST',
+			xhrFields: {
+				withCredentials: true
+			},
+			data: formData.content,
+			headers: formData.headers,
+			contentType: "multipart/form-data"
+		}
+
 		debug.info(fileName, '전송처리 단계~', getSelectedFiles());
 		debug.log(fileName, 'self.imageInfo', self.imageInfo);
 		$(self).trigger(EVENT.SUBMIT);
+
+		$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
+			$(self).trigger(EVENT.UPLOAD_SUCCESS, data.data);
+		}).fail(function(jqXHR, textStatus, errorThrown) {
+			$(self).trigger(EVENT.UPLOAD_FAILURE, jqXHR);
+		});
 	}
 	
 	function setReadFiles(files) {

@@ -6,6 +6,7 @@ module.exports = function() {
 	var win = window,
 	$ = win.jQuery,
 	doc = document,
+	APIController = require('../../controller/APIController.js'),
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
@@ -24,6 +25,7 @@ module.exports = function() {
 			popProfilePic : 'popProfilePic'
 		},
 		imageUploader : {
+			api_url : APIController().API_URL+'/apis/opinions/images',
 			flashOpts : {
 				swf : '../images/swf/imagePreview.swf',
 				id : 'imageUpoader',
@@ -87,6 +89,14 @@ module.exports = function() {
 		debug.log(fileName, 'onUploaderSubmit', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
 	}
 
+	function onUploadSuccess(e, result) {
+		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
+	}
+
+	function onUploadFailure(e, jqXHR) {
+		debug.log(fileName, 'onUploaderFailure', imageUploader.EVENT.UPLOAD_FAILURE, jqXHR);
+	}
+
 	function onUploaderCancel(e) {
 		debug.log(fileName, 'onUploaderCancel', imageUploader.EVENT.CANCEL);
 		debug.log(fileName, 'onUploaderCancel', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
@@ -102,6 +112,8 @@ module.exports = function() {
 				if (self.colorbox.hasClass(opts.cssClass.popProfilePic)) {
 					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.on(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
+									.on(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
+									.on(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure)
 									.on(imageUploader.EVENT.CANCEL, onUploaderCancel);
 
 					imageUploader.init(opts.imageUploader);
@@ -111,6 +123,8 @@ module.exports = function() {
 				if (self.colorbox.hasClass(opts.cssClass.popProfilePic)) {
 					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.off(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
+									.off(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
+									.off(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure)
 									.off(imageUploader.EVENT.CANCEL, onUploaderCancel);
 
 					imageUploader.destory();
