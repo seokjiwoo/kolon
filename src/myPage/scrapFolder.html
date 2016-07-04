@@ -331,7 +331,8 @@
 						e.preventDefault();
 
 						var target = $(e.target);
-						win.console.log('폴더 수정하기 - 폴더삭제', target);
+						win.console.log('폴더 수정하기 - 폴더삭제', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+						// DELETE - /apis/scraps/folders/{folderNumber}
 					}, this));
 					this.colorbox.find(this.opts.editFolder.submit).on('click', $.proxy(function(e) {
 						e.preventDefault();
@@ -344,8 +345,14 @@
 							inp.focus();
 							return;
 						}
+						if (inp.val() === this.selPopBtnInfo.info.folderName) {
+							win.console.log('폴더명 동일 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+							return;
+						}
 
-						win.console.log('폴더 수정하기 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val());
+						win.console.log('폴더 수정하기 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+						// PUT - /apis/scraps/folders/{folderNumber}
+						// data - folderName
 					}, this));
 				},
 				destroyScrapFolderEdit : function() {
@@ -368,6 +375,8 @@
 						}
 
 						win.console.log('새폴더 만들기 - 저장', target, this.colorbox.find(this.opts.newFolder.inp).val());
+						// POST - /apis/scraps/folders
+						// data - folderName
 					}, this));
 				}
 			};

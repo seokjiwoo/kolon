@@ -9,12 +9,15 @@
 	<div class="container bgTop">
 		<!-- @@include ../_template/my_depth01.html {"myMenu03":"on"} -->
 		<!-- @@include ../_template/my_depth02_02.html {"myMenu04":"on"} -->
+		
+		<!-- [D] 마크업 원본 -->
+		<!-- 
 		<section class="wrap" id="scrapImg">
 			<a href="scrapFolder.html" class="btnSizeS btnColor04 fl_right btnList">목록</a>
 			<h2 class="scrapTit">내 새로운 부엌을 위한 스크랩<b>(20)</b></h2>
 			<ul class="cardWrap" id="cardWrap">
 				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 						<div class="hexTop"><span></span></div>
 						<div class="hexBottom"><span></span></div>
 					</div>
@@ -25,7 +28,7 @@
 					</div>
 				</li>
 				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 						<div class="hexTop"><span></span></div>
 						<div class="hexBottom"><span></span></div>
 					</div>
@@ -36,7 +39,7 @@
 					</div>
 				</li>
 				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 						<div class="hexTop"><span></span></div>
 						<div class="hexBottom"><span></span></div>
 					</div>
@@ -47,7 +50,7 @@
 					</div>
 				</li>
 				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 						<div class="hexTop"><span></span></div>
 						<div class="hexBottom"><span></span></div>
 					</div>
@@ -58,7 +61,7 @@
 					</div>
 				</li>
 				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 						<div class="hexTop"><span></span></div>
 						<div class="hexBottom"><span></span></div>
 					</div>
@@ -68,11 +71,221 @@
 						<a href="" class="removeScrap">삭제</a>
 					</div>
 				</li>
-
+		
 			</ul>
 		</section>
+		 -->
+		<!--// [D] 마크업 원본 -->
+		<section class="wrap" id="scrapImg"></section>
 		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<script id="scrap-image-templates" type="text/x-handlebars-template">
+	{{#folders}}
+	<a href="scrapFolder.html" class="btnSizeS btnColor04 fl_right btnList">목록</a>
+	<h2 class="scrapTit">{{folderName}}<b>({{scrapCount}})</b></h2>
+	<ul class="cardWrap" id="cardWrap">
+		{{#each scrapImages}}
+		<li class="cardSize02"
+			data-scrapfolder-info='{
+				"folderName" : "{{folderName}}",
+				"folderNumber" : {{folderNumber}}
+			}'>
+			<div class="hexagon" style="background-image: url('{{imageUrl}}')"><!-- 배경이미지 -->
+				<div class="hexTop"><span></span></div>
+				<div class="hexBottom"><span></span></div>
+			</div>
+			<div class="cardCon">
+				<a href="../_popup/popPhotoDetailView.html?folderName={{folderName}}&amp;folderNumber={{folderNumber}}" class="btnPop btnPop895" data-user-class="popEdge">
+				</a>
+				<a href="../_popup/popScrapDel.html?folderName={{folderName}}&amp;folderNumber={{folderNumber}}" class="btnPop btnPop540 removeScrap" data-user-class="removeScrap popEdge">삭제</a>
+			</div>
+		</li>
+		{{/each}}
+	</ul>
+	{{/folders}} 
+</script>
+
+<script>
+	;(function(win, $) {
+		'use strict';
+
+		if ('undefined' === typeof win.vinylX) {
+			win.vinylX = {};
+		}
+
+		var doc = document,
+		NS = win.vinylX;
+
+		var CB_EVENTS = {
+			COMPLETE : 'cbox_complete',
+			CLEANUP : 'cbox_cleanup',
+			CLOSED : 'cbox_closed'
+		};
+
+		NS.demoScrapFolders = (function() {
+			var defParams = {
+				templates : {
+					wrap : '#scrapImg',
+					source : '#scrap-image-templates'
+				},
+				colorbox : '#colorbox',
+				editFolder : {
+					wrap : 'scrapFolderEdit',
+					inp : '.js-scrapFolderEdit-inp',
+					delete : '.js-scrapFolderEdit-delete',
+					submit : '.js-scrapFolderEdit-submit'
+				},
+				newFolder : {
+					wrap : 'scrapFolderNew',
+					inp : '.js-scrapFolderNew-inp',
+					submit : '.js-scrapFolderNew-submit'
+				},
+				cssClass : {
+				},
+				dataAttr : {
+					popBtn : '[data-user-class]',
+					scrapFolderInfo : '[data-scrapfolder-info]'
+				},
+				dummyData : {}
+			};
+			return {
+				init : function(container, args) {
+					if (!(this.container = container).size()) return;
+
+					this.opts = $.extend({}, defParams, args);
+
+					this.setElements();
+					this.dummyData();
+					this.setBindEvents();
+				},
+				dummyData : function() {
+					var source = $(this.opts.templates.source).html(),
+					template = win.Handlebars.compile(source),
+					html = template(this.opts.dummyData);
+
+					if (this.templatesWrap.find('#cardWrap').data('isotope')) {
+						this.templatesWrap.find('#cardWrap').isotope('destroy');
+					}
+					this.templatesWrap.append(html);
+					this.templatesWrap.find('#cardWrap')
+										.isotope({
+											itemSelector: '#cardWrap > li',
+											masonry: {
+												columnWidth: 100,
+												gutter: 1
+											}
+										});
+					$('body').trigger('btnPop_refresh');
+				},
+				setElements : function() {
+					this.colorbox = this.container.find(this.opts.colorbox);
+					this.templatesWrap = this.container.find(this.opts.templates.wrap);
+					this.selPopBtnInfo = {};
+				},
+				setBindEvents : function() {
+					this.templatesWrap.on('click', this.opts.dataAttr.popBtn, $.proxy(this.onWrapPopBtnClick, this));
+
+					$(doc).on(CB_EVENTS.COMPLETE, $.proxy(this.onCboxEventListener, this))
+							.on(CB_EVENTS.CLEANUP, $.proxy(this.onCboxEventListener, this))
+							.on(CB_EVENTS.CLOSED, $.proxy(this.onCboxEventListener, this));
+				},
+				onWrapPopBtnClick : function(e) {
+					var target = $(e.target),
+					info = target.closest(this.opts.dataAttr.scrapFolderInfo).data('scrapfolder-info');
+
+					this.selPopBtnInfo = {
+						target : target,
+						info : info
+					};
+				},
+				onCboxEventListener : function(e) {
+					switch(e.type) {
+						case CB_EVENTS.COMPLETE:
+							if (this.colorbox.hasClass(this.opts.editFolder.wrap)) {
+								this.setScrapFolderEdit();
+							}
+
+							if (this.colorbox.hasClass(this.opts.newFolder.wrap)) {
+								this.setScrapFolderNew();
+							}
+							break;
+						case CB_EVENTS.CLEANUP:
+							if (this.colorbox.hasClass(this.opts.editFolder.wrap)) {
+								this.destroyScrapFolderEdit();
+							}
+							break;
+						case CB_EVENTS.CLOSED:
+							break;
+					}
+				},
+				setScrapFolderEdit : function() {
+					this.colorbox.find(this.opts.editFolder.inp).val(this.selPopBtnInfo.info.folderName);
+					this.colorbox.find(this.opts.editFolder.delete).on('click', $.proxy(function(e) {
+						e.preventDefault();
+
+						var target = $(e.target);
+						win.console.log('폴더 수정하기 - 폴더삭제', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+						// DELETE - /apis/scraps/folders/{folderNumber}
+					}, this));
+					this.colorbox.find(this.opts.editFolder.submit).on('click', $.proxy(function(e) {
+						e.preventDefault();
+
+						var target = $(e.target),
+						inp = this.colorbox.find(this.opts.editFolder.inp);
+
+						if (!inp.val() || inp.val() === ' ') {
+							win.alert('폴더명을 입력하세요.');
+							inp.focus();
+							return;
+						}
+						if (inp.val() === this.selPopBtnInfo.info.folderName) {
+							win.console.log('폴더명 동일 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+							return;
+						}
+
+						win.console.log('폴더 수정하기 - 저장', target, this.colorbox.find(this.opts.editFolder.inp).val(), this.selPopBtnInfo, this.selPopBtnInfo.info.folderNumber);
+						// PUT - /apis/scraps/folders/{folderNumber}
+						// data - folderName
+					}, this));
+				},
+				destroyScrapFolderEdit : function() {
+					if (this.colorbox.hasClass(this.opts.editFolder.wrap)) {
+						this.colorbox.find(this.opts.editFolder.delete).off('click');
+						this.colorbox.find(this.opts.editFolder.submit).off('click');
+					}
+				},
+				setScrapFolderNew : function() {
+					this.colorbox.find(this.opts.newFolder.submit).on('click', $.proxy(function(e) {
+						e.preventDefault();
+
+						var target = $(e.target),
+						inp = this.colorbox.find(this.opts.newFolder.inp);
+
+						if (!inp.val() || inp.val() === ' ') {
+							win.alert('폴더명을 입력하세요.');
+							inp.focus();
+							return;
+						}
+
+						win.console.log('새폴더 만들기 - 저장', target, this.colorbox.find(this.opts.newFolder.inp).val());
+						// POST - /apis/scraps/folders
+						// data - folderName
+					}, this));
+				}
+			};
+		})();
+
+		$(function() {
+			NS.demoScrapFolders.init($('body'), {
+				dummyData : {"folders":[{"folderName":"폴더1","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":6,"scrapImages":[{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2016/06/10/22/25/ortler-1449018_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/03/23/12/19/solda-293200_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/02/18/23/31/mountain-269547_960_720.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]}],"scraps":[{"category":"string","imageUrl":"string","magazine":{"createDate":"string","subTitle":"string","title":"string"},"product":{"price":0,"productDesc":"string","productName":"string"},"scrapCount":0,"scrapNumber":0,"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},"tags":["string"]}]}
+			});
+		});
+	})(window, window.jQuery);
+</script>
+
+
+
 </body>
 </html>
