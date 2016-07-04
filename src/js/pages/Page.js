@@ -178,10 +178,30 @@ module.exports = function() {
 			})
 		});
 
-
 		$('#cardWrap li').each(function(){ // main card hover
-			$('.cardCon').mouseover(function(){
+			$('.cardCon').hover(function(){
 				$(this).addClass('cHover');
+				$(this).find('.cardBgWrap .cardBg01').queue('fx',[]).animate({'opacity':'1'},{
+					duration: 0, 
+					easing: 'easeInBack',
+					complete: function(){
+						$(this).delay(100).animate({'opacity':'0'},500);
+					}
+				});
+				$(this).find('.cardBgWrap .cardBg02').queue('fx',[]).animate({'opacity':'1'},{
+					duration: 0, 
+					easing: 'easeInBack',
+					complete: function(){
+						$(this).delay(200).animate({'opacity':'0'},500);
+					}
+				});
+				$(this).find('.cardBgWrap .cardBg03').queue('fx',[]).animate({'opacity':'1'},{
+					duration: 0, 
+					easing: 'easeInBack',
+					complete: function(){
+						$(this).delay(300).animate({'opacity':'0'},500);
+					}
+				});
 			})
 			$('.cardCon').mouseleave(function(){
 				$(this).removeClass('cHover');
