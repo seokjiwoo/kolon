@@ -23,6 +23,11 @@ function ClassUtils() {
 			 */
 			getUrlVar: getUrlVar,
 			/**
+			 * GET hash query 추출
+			 * @param {String} name - query var
+			 */
+			getHashVar: getHashVar,
+			/**
 			 * 이메일 주소 검증
 			 * @param {String} value - email address for validation 
 			 */
@@ -110,13 +115,31 @@ function ClassUtils() {
 		return Math.abs(ageDate.getUTCFullYear() - 1970);
 	}
 	
-	function getUrlVar(name) {
-		return getUrlVars()[name];
+	function getUrlVar(name, href) {
+		return getUrlVars(href)[name];
 	}
 	
-	function getUrlVars() {
+	function getUrlVars(href) {
+		href = href || window.location.href;
 		var vars = [], hash;
-		var hashes = window.location.href.slice(window.location.href.indexOf('?')+1).split('#')[0].split('&');
+		var hashes = href.slice(href.indexOf('?')+1).split('#')[0].split('&');
+		
+		for(var i = 0; i < hashes.length; i++) {
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+
+	function getHashVar(name, href) {
+		return getHashVars(href)[name];
+	}
+	
+	function getHashVars(href) {
+		href = href || window.location.href;
+		var vars = [], hash;
+		var hashes = href.slice(href.indexOf('#')+1).split('&');
 		
 		for(var i = 0; i < hashes.length; i++) {
 			hash = hashes[i].split('=');
