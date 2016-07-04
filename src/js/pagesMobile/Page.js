@@ -123,12 +123,10 @@ module.exports = function() {
 
 		$("#menuToggle").on("click", function(e) {
 			e.preventDefault();
-			var wh = null
 			if( !$(".hiddenMenu").is( ":visible" ) ) {
-				wh = $(window).height() + 480
 				$(".hiddenMenu").addClass("active");
 				$(".gnb").css({
-					minHeight : wh
+					minHeight : $(window).height() + 480
 				});
 			} else {
 				$(".hiddenMenu").removeClass("active");

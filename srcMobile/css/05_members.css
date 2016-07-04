@@ -98,7 +98,7 @@
 .snsBtnS.naver{background:url("../images/ico_sns.png") no-repeat 17px -40px;background-size:10px;}
 .snsBtnS.kakao{background:url("../images/ico_sns.png") no-repeat 17px -84px;background-size:10px;}
 .snsBtnM{height:35px;font-size:13px;}
-.snsBtnM span{display:block;padding-top:9px;}
+.snsBtnM span{display:block;padding-top:11px;}
 .snsBtnM:before{position:absolute;left:55px;top:11px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .snsBtnM.facebook{background:url("../images/ico_sns.png") no-repeat 26px 10px;background-size:10px;}
 .snsBtnM.naver{background:url("../images/ico_sns.png") no-repeat 26px -37px;background-size:10px;}
