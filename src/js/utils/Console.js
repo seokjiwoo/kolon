@@ -30,6 +30,8 @@ function ClassConsole() {
 	 * @private
 	 */
 	_debugParam = 'debug',
+	_debugParamFile = 'debugFiles',
+	_debugFiles = 'all',
 	_debugComment = ':: vinyl-X ::',
 	instance;
 	
@@ -79,10 +81,37 @@ function ClassConsole() {
 	/**
 	 * @description
 	 *  debugParam, debugFlag 의 설정에 따른 디버깅 유무를 판단
+	 * @example
+	 * 	http://localhost:3000/myPage/scrap.html?debug=true&debugFiles=all
 	 * @return      {boolean}
 	 */
 	function isDebugMode() {
 		return util.getUrlVar(_debugParam) || _isDebug;
+	}
+
+	/**
+	 * @description
+	 * 	_debugParamFile 에 따른 디버깅 파일항목만 log 노출
+	 * @example
+	 * 	http://localhost:3000/myPage/scrap.html?debugFiles=events/EventManager.js
+	 * @return      {boolean}
+	 */
+	function isDebugFile(fileName) {
+		var debugFiles = util.getUrlVar(_debugParamFile),
+		rtnFlag = false;
+
+		if (debugFiles) {
+			debugFiles = debugFiles.split(',');
+
+			$.map(debugFiles, function(name) {
+				if (fileName === name || 'all' === name) {
+					rtnFlag = true;
+					return false;
+				}
+			});
+		}
+
+		return rtnFlag;
 	}
 
 	/**
@@ -113,7 +142,7 @@ function ClassConsole() {
 	 * </code>
 	 */
 	function log() {
-		if(win.console && isDebugMode()) {
+		if((win.console && isDebugMode()) || (win.console && isDebugMode() && isDebugFile(arguments[0]))) {
 			var msg = Array.prototype.slice.apply(arguments);
 			msg.unshift(_debugComment);
 			win.console.log(msg);
@@ -121,7 +150,7 @@ function ClassConsole() {
 	}
 
 	function info() {
-		if(win.console && isDebugMode()) {
+		if((win.console && isDebugMode()) || (win.console && isDebugMode() && isDebugFile(arguments[0]))) {
 			var msg = Array.prototype.slice.apply(arguments);
 			msg.unshift(_debugComment);
 			win.console.info(msg);
@@ -129,7 +158,7 @@ function ClassConsole() {
 	}
 
 	function warn() {
-		if(win.console && isDebugMode()) {
+		if((win.console && isDebugMode()) || (win.console && isDebugMode() && isDebugFile(arguments[0]))) {
 			var msg = Array.prototype.slice.apply(arguments);
 			msg.unshift(_debugComment);
 			win.console.warn(msg);
