@@ -153,20 +153,20 @@
 					</ul>
 				</div>
 				<!-- 카드 모듈
-					cardType01 -> designer compact
-					cardType02 -> 부동산
-					cardType03 -> house
-					cardType04 -> handmade
-					cardType05 -> Life service
-					cardType06 -> Magazine
-					cardType07 -> Space Specialist
+					cardType01 -> 뉴폼
+					cardType02 -> 리빙몰
+					cardType03 -> 임차인
+					cardType04 -> -
+					cardType05 -> 생활서비스
+					cardType06 -> 매거진
+					cardType07 -> 전문가
 					cardType08 -> 수익률 알림형
 					cardType09 -> 라이프, 키워드, sns, app
 					cardType10 -> SPECIALIST
 
 					cardSize01 -> 285x330
-					cardSize02 -> 285x490
-					cardSize03 -> 285x655
+					cardSize02 -> 285x499
+					cardSize03 -> 285x683
 				 -->
 				<ul class="cardWrap" id="cardWrap">
 					<li class="cardType01 cardSize03">
@@ -188,10 +188,17 @@
 							<!--// card 내용 -->
 							<!-- card hover 내용 -->
 							<div class="cardHover hoverStyle01">
+								<!-- hover 효과 -->
+								<div class="cardBgWrap">
+									<p class="cardBg01"><img src="/images/card_bg01.png"></p>
+									<p class="cardBg02"><img src="/images/card_bg02.png"></p>
+									<p class="cardBg03"><img src="/images/card_bg03.png"></p>
+								</div>
+								<!--// hover 효과 -->
 								<div class="cardCon">
 									<ul class="card_icon">
-										<li class="cardDetail"><a href="#">장바구니</a></li>
-										<li class="cardDetail"><a href="#">공유</a></li>
+										<li class="cart cardDetail"><a href="#">장바구니</a></li>
+										<li class="share cardDetail"><a href="#">공유</a></li>
 									</ul>
 									<div class="worker">
 										<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
@@ -207,8 +214,10 @@
 								<li class="cardDetail like"><a href="#">23569</a></li>
 								<li class="cardDetail share"><a href="#">7542</a></li>
 							</ul>
-							<div class="upTo"><p>UP TO<em><b>50</b>%</em></p></div>
-							<div class="issue"><p>Hot issue</p></div>
+							<!-- flag -->
+							<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>
+							<div class="celeb"><p><span><b>셀럽</b>추천</p></div>
+							<!--// flag -->
 						</div>
 					</li>
 					<li class="cardType02 cardSize02">
@@ -228,15 +237,17 @@
 							<!--// card 내용 -->
 							<!-- card hover 내용 -->
 							<div class="cardHover hoverStyle02">
+								<!-- hover 효과 -->
 								<div class="cardBgWrap">
 									<p class="cardBg01"><img src="/images/card_bg01.png"></p>
 									<p class="cardBg02"><img src="/images/card_bg02.png"></p>
 									<p class="cardBg03"><img src="/images/card_bg03.png"></p>
 								</div>
+								<!--// hover 효과 -->
 								<div class="cardCon">
 									<ul class="card_icon">
-										<li class="cardDetail"><a href="#">장바구니</a></li>
-										<li class="cardDetail"><a href="#">공유</a></li>
+										<li class="cart cardDetail"><a href="#">장바구니</a></li>
+										<li class="share cardDetail"><a href="#">공유</a></li>
 									</ul>
 								</div>
 							</div>
@@ -244,8 +255,11 @@
 							<ul class="check_icon">
 								<li class="cardDetail like"><a href="#">23569</a></li>
 								<li class="cardDetail share"><a href="#">7542</a></li>
-								<li class="cardDetail"><a href="#">판매상품</a></li>
 							</ul>
+							<!-- flag -->
+							<div class="upTo"><p><span><b>20</b>개</span>한정</p></div>
+							<div class="md"><p><span><b>MD</b>추천</span></p></div>
+							<!--// flag -->
 						</div>
 					</li>
 					<li class="cardType03 cardSize02">
@@ -265,10 +279,15 @@
 							<!--// card 내용 -->
 							<!-- card hover 내용 -->
 							<div class="cardHover hoverStyle03">
+								<div class="cardBgWrap">
+									<p class="cardBg01"><img src="/images/card_bg01.png"></p>
+									<p class="cardBg02"><img src="/images/card_bg02.png"></p>
+									<p class="cardBg03"><img src="/images/card_bg03.png"></p>
+								</div>
 								<div class="cardCon">
 									<ul class="card_icon">
-										<li class="cardDetail"><a href="#">장바구니</a></li>
-										<li class="cardDetail"><a href="#">공유</a></li>
+										<li class="cart cardDetail"><a href="#">장바구니</a></li>
+										<li class="share cardDetail"><a href="#">공유</a></li>
 									</ul>
 								</div>
 							</div>
@@ -277,7 +296,10 @@
 								<li class="cardDetail like"><a href="#">23569</a></li>
 								<li class="cardDetail share"><a href="#">7542</a></li>
 							</ul>
-							<div class="celeb"><p><b>셀럽</b>추천</p></div>
+							<!-- flag -->
+							<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
+							<div class="issue"><p>Hot issue</p></div>
+							<!--// flag -->
 						</div>
 					</li>
 					<li class="cardType06 cardSize02">
@@ -298,6 +320,9 @@
 								<li class="cardDetail like"><a href="#">23569</a></li>
 								<li class="cardDetail share"><a href="#">7542</a></li>
 							</ul>
+							<!-- flag -->
+							<div class="melody"></div>
+							<!--// flag -->
 						</div>
 					</li>
 					<li class="cardType07 cardSize02">
@@ -316,7 +341,21 @@
 							<!--// card 내용 -->
 							<!-- card hover 내용 -->
 							<div class="cardHover hoverStyle04">
+								<div class="cardBgWrap">
+									<p class="cardBg01"><img src="/images/card_bg01.png"></p>
+									<p class="cardBg02"><img src="/images/card_bg02.png"></p>
+									<p class="cardBg03"><img src="/images/card_bg03.png"></p>
+								</div>
 								<div class="cardCon">
+									<div class="iHover">
+										<div class="hoverImage">
+											<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
+												<div class="imgHexTop"><span></span></div>
+												<div class="imgHexBottom"><span></span></div>
+											</div>
+											<div class="imageCon"></div>
+										</div>
+									</div>
 									<div class="specialist">
 										<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
 										<p class="specialistInfo">
@@ -325,8 +364,8 @@
 										</p>
 									</div>
 									<ul class="card_icon">
-										<li class="cardDetail"><a href="#">1:1대화</a></li>
-										<li class="cardDetail"><a href="#">공유</a></li>
+										<li class="talk cardDetail"><a href="#">1:1대화</a></li>
+										<li class="share cardDetail"><a href="#">공유</a></li>
 									</ul>
 								</div>
 							</div>
@@ -336,36 +375,9 @@
 								<li class="cardDetail text"><a href="#"><span>완료된<br>공간</span>15</a></li>
 								<li class="cardDetail like"><a href="#">23569</a></li>
 							</ul>
-						</div>
-					</li>
-					<li class="cardType04 cardSize02">
-						<div class="cardLine"><p>handmade</p></div>
-						<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
-							<div class="hexTop"><span></span></div>
-							<div class="hexBottom"><span></span></div>
-						</div>
-						<div class="cardCon">
-							<a href="#">
-								<!-- card 내용 -->
-								<h2 class="cardTit">샌드위치모던<b>페이퍼 시계</b></h2>
-								<p class="cardPrice">37,000 <span class="priceBottom">won</span></p>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover">
-									<div class="cardCon">
-										card hover 내용
-										<div class="cardDetail">
-											<div class="cardDetailWrap">
-												<span class="like">4.8</span><span class="comt">120</span>
-												<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
-												<p class="cardAuthorInfo hoverCon"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-							</a>
-							<div class="md"><p><b>MD</b>추천</p></div>
+							<!-- flag -->
+							<div class="hi"></div>
+							<!--// flag -->
 						</div>
 					</li>
 					<li class="cardType05 cardSize01">
@@ -387,6 +399,9 @@
 								<li class="cardDetail text"><a href="#"><span>완료된<br>공간</span>15</a></li>
 								<li class="cardDetail like"><a href="#">23569</a></li>
 							</ul>
+							<!-- flag -->
+							<div class="here"></div>
+							<!--// flag -->
 						</div>
 					</li>
 
@@ -488,9 +503,6 @@
 								</li>
 							</ul>
 							<button type="submit" class="cardEnter">확인</button>
-							<div class="upTo">
-								<p>UP TO<em><b>50</b>%</em></p>
-							</div>
 						</div>
 						<!--// card 내용 -->
 					</li>
@@ -634,7 +646,7 @@
 				<!--// card hover 내용 -->
 				</a>
 				<div class="upTo"><p>UP TO<em><b>50</b>%</em></p></div>
-				<div class="issue"><p>Hot issue</p></div>
+				<div class="today"><p>Hot issue</p></div>
 			</div>
 		</li>
 		{{/vxIF}}

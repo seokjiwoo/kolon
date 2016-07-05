@@ -1,5 +1,5 @@
-.cardWrap{overflow: hidden;min-width:1220px;margin:40px -20px 0 0;z-index: 0}
-.cardWrap > li{overflow: hidden;float: left;width:285px;padding-top:84px; margin-top:-83px;margin-bottom: 10px;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
+.cardWrap{min-width:1220px;margin:40px -20px 0 0;z-index: 0;}
+.cardWrap > li{overflow: hidden;float: left;width:285px;padding:84px 0; margin-top:-148px; text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
 .cardWrap {padding-top:83px;}
 
 .cardLayer {width:100%; height:754px; padding:0 20px; position:absolute; top:0; left:0; z-index:90;}
@@ -45,19 +45,31 @@
 .cardWrap p.cardPrice span.priceTop {top:0px;}
 .cardWrap p.cardPrice span.priceBottom {bottom:0px;}
 
-/* card iusse */
-.cardCon .upTo {width:144px; height:165px; background:url('../images/card_point.png') 0 0 no-repeat; position:absolute; top:-81px; left:0; z-index:4;}
-.cardCon .upTo p {padding:53px 0 0 15px; color:#fff; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; text-align:left; letter-spacing:-1px;}
-.cardCon .upTo p em{display:block;}
-.cardCon .upTo p b {font-size:50px;}
-.cardCon .issue {width:96px; height:96px; background:url('../images/card_point.png') -144px 0 no-repeat; position:absolute; top:10px; right:20px; z-index:4;}
-.cardCon .issue p {padding:32px 0 0 10px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; color:#700000; font-size:20px; font-weight:bold; text-align:left;}
-.cardCon .celeb {width:72px; height:82px; background:url('../images/card_point.png') -244px 0 no-repeat; position:absolute; top:4px; right:30px; z-index:4;}
-.cardCon .celeb p {width:39px; padding:22px 0; color:#fff; margin:0 auto; text-align:right; font-size:16px; line-height:120%; font-family:'RobotoM','NotoSansM', sans-serif;}
-.cardCon .celeb p b {display:block; color:#864e05; text-align:left;}
-.cardCon .md {width:72px; height:82px; background:url('../images/card_point.png') -321px 0 no-repeat; position:absolute; top:4px; right:30px; z-index:4;}
-.cardCon .md p {width:39px; padding:22px 0; color:#fff; margin:0 auto; text-align:right; font-size:16px; line-height:120%; font-family:'RobotoM','NotoSansM', sans-serif;}
-.cardCon .md p b {display:block; color:#8b2100; text-align:left; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight:bold; font-style:italic; font-size:20px;}
+/* card flag */
+.cardCon .today {width:96px; height:96px; background:url('../images/card_point.png') -144px 0 no-repeat; position:absolute; top:10px; right:20px; z-index:4;}
+.cardCon .today p {padding:24px 0 0 4px; text-align:center; color:#fff; font-size:16px; letter-spacing:-1px;}
+.cardCon .today p span {width:100%; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; color:#8b2100; font-weight:bold; margin:3px 0 0 10px;}
+.cardCon .today p b { font-size:26px; font-weight:bold;}
+.cardCon .upTo {width:72px; height:82px; background:url('../images/card_point.png') -244px 0 no-repeat; position:absolute; top:4px; right:30px; z-index:4;}
+.cardCon .upTo p {padding:20px 17px 0 0; color:#fff; margin:0 auto; text-align:right; font-size:16px; line-height:23px; font-family:'RobotoM','NotoSansM', sans-serif; letter-spacing:-1px;}
+.cardCon .upTo p span {width:100%; display:inline-block; color:#864e05;}
+.cardCon .upTo p b { font-size:26px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight:bold; font-style:italic; color:#8b2100;}
+.cardCon .upTo2 {width:72px; height:82px; background:url('../images/card_point.png') -321px 0 no-repeat; position:absolute; top:4px; right:30px; z-index:4;}
+.cardCon .upTo2 p {padding:20px 7px 0 0; color:#fff; margin:0 auto; text-align:right; font-size:16px; line-height:23px; font-family:'RobotoM','NotoSansM', sans-serif; letter-spacing:-1px;}
+.cardCon .upTo2 p span {width:100%; display:inline-block; color:#8b2100; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight:bold; font-style:italic;}
+.cardCon .upTo2 p b {font-size:26px; font-weight:bold;}
+.cardCon .celeb {width:94px; height:143px; background:url('../images/logo_flag01.png') 0px 0 no-repeat; position:absolute; bottom:-43px; left:2px; z-index:4;}
+.cardCon .celeb p {width:41px; margin:104px 0 0 6px; color:#fff; overflow:hidden; text-align:right; font-size:16px; line-height:18px;}
+.cardCon .celeb p b {width:100%; display:inline-block; text-align:left; color:#864e05;}
+.cardCon .md {width:89px; height:100px; background:url('../images/logo_flag02.png') 0px 0 no-repeat; position:absolute; bottom:-48px; left:2px; z-index:4;}
+.cardCon .md p {width:42px; margin:59px 0 0 8px; color:#fff; overflow:hidden; text-align:right; font-size:16px; line-height:18px; }
+.cardCon .md p b {width:100%; display:inline-block; text-align:left; color:#8b2100; font-size:20px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight:bold; font-style:italic;}
+.cardCon .issue {width:88px; height:146px; background:url('../images/logo_flag03.png') 10px 0 no-repeat; position:absolute; bottom:-18px; left:13px; z-index:4;}
+.cardCon .issue p {width:75px; margin-top:10px; color:#fff; overflow:hidden; text-align:left; color:#8b2100; font-size:20px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight:bold; font-style:italic; letter-spacing:-1px;}
+.cardCon .melody {width:87px; height:125px; background:url('../images/logo_flag05.png') 0px 0 no-repeat; position:absolute; top:-46px; right:9px; z-index:4; color:#fff;}
+.cardCon .hi {width:61px; height:98px; background:url('../images/logo_flag04.png') 0px 0 no-repeat; position:absolute; top:-46px; right:25px; z-index:4; color:#fff;}
+.cardCon .here {width:84px; height:95px; background:url('../images/logo_flag06.png') 0px 0 no-repeat; position:absolute; top:4px; right:25px; z-index:4; color:#fff;}
+
 /* card size 01~04 */
 .cardSize01{height:330px;}
 .cardSize01 .cardCon{height:170px;}
@@ -71,14 +83,14 @@
 .cardSize02 .hexagon{height:335.55px;}
 .cardSize02 .hexagon,
 .cardSize02 .hexagon .hexTop
-.cardSize02 .hexagon .hexBottom {background-size:285px 490px;}
+.cardSize02 .hexagon .hexBottom {background-size:285px 499px;}
 
 .cardSize03{height:679px;}
 .cardSize03 .cardCon{height:514px;}
-.cardSize03 .hexagon{height: 515.55px;}
+.cardSize03 .hexagon{height: 507.55px;}
 .cardSize03 .hexagon,
 .cardSize03 .hexagon .hexTop
-.cardSize03 .hexagon .hexBottom {background-size:285px 683px;}
+.cardSize03 .hexagon .hexBottom {background-size:285px 676px;}
 
 .cardSize04{width:590px;height:745px;}
 .cardSize04 .cardCon{height: 585px;}
@@ -101,7 +113,10 @@
 .cardHover .cardCon ul.card_icon li a:after {content:''; width:31px; height:32px; margin-top:-16px; background:url(../images/card_icon.png) 0 0 no-repeat; display:inline-block; position:absolute; top:50%;}
 .cardHover .cardCon ul.card_icon li:first-child a:after {left:32px;}
 .cardHover .cardCon ul.card_icon li:last-child {float:right;}
-.cardHover .cardCon ul.card_icon li:last-child a:after {background-position:-33px 0; right:32px;}
+.cardHover .cardCon ul.card_icon li:last-child a:after {right:32px;}
+.cardHover .cardCon ul.card_icon li.cart a:after P{background-position:0 0;}
+.cardHover .cardCon ul.card_icon li.share a:after {background-position:-33px 0;}
+.cardHover .cardCon ul.card_icon li.talk a:after {width:37px; background-position:-65px 0;}
 .cardHover .worker {width:285px; margin-left:-142.5px; position:absolute; bottom:127px; left:50%;}
 .cardHover .worker .cardAuthorLike {width:100%; text-align:center;}
 .cardHover .worker .cardAuthorLike .star {}
@@ -118,7 +133,7 @@
 .cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5; text-align:right;}
 .cardCon ul.check_icon li {width:47px; display:inline-block;}
 .cardCon ul.check_icon li a {width:100%; padding:45px 0 15px; color:#000; font-size:11px; display:inline-block; position:relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold; text-align:center;}
-.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:22px; left:15px; display:inline-block;transform: rotate(0deg);}
+.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:28px; left:15px; display:inline-block;transform: rotate(0deg);}
 .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
 .cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
 ul.cardWrap > li .cardCon > a.cardTxt {padding-bottom:45px;}
@@ -141,6 +156,14 @@ ul.cardWrap > li .cardCon.cHover ul.check_icon li.like a:after {background-posit
 ul.cardWrap > li .cardCon.cHover ul.check_icon li.share a:after {background-position:-20px -20px;}
 ul.cardWrap > li .cardCon .cardTxt span.cardMore {display:none; padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:0; left:50%; margin-left:-50px; z-index :5;}
 ul.cardWrap > li .cardCon .cardTxt span.cardMore:after {content:''; width:14px; height:10px; margin-top:-5px; background:url(../images/cardMore_arrow.png) -14px 0 no-repeat; position:absolute; top:50%; right:13px; display:inline-block;}
+ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt p,
+ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt h2,
+ul.cardWrap > li.cardType05 .cardCon.cHover ul.check_icon li a {color:#000;}
+ul.cardWrap > li.cardType05 .cardCon.cHover ul.check_icon li.like a:after {background-position:0 1px;}
+ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt p,
+ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt h2,
+ul.cardWrap > li.cardType06 .cardCon.cHover ul.check_icon li a {color:#fff;}
+ul.cardWrap > li.cardType06 .cardCon.cHover ul.check_icon li.like a:after {background-position:0 -21px;}
 ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt {}
 ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardCat,
 ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardTit {display:none;}
@@ -157,23 +180,37 @@ ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.adr
 ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.adr:before {content:''; width:8px; height:12px; margin-top:-4px; background:url(../images/ico_card_popular.png) -36px 0 no-repeat; position:absolute; top:50%; left:0;}
 ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon {width:142px; left:142px; top:270px;}
 ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon li:first-child {margin-top:30px;}
-ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt p,
-ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt h2,
-ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt p,
-ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt h2 {color:#000;}
+
+.iHover {width:285px; position:absolute; top:0; left:0; z-index:-1;}
+.hoverImage{width:285px; height:330px; background-size:100%; background-position:50%; position:relative;}
+.hoverImage .imageCon{width:265px; height:170px; padding:81px 10px;}
+.hoverImage .imgHexagon,
+.hoverImage .imgHexagon .imgHexTop
+.hoverImage .imgHexagon .imgHexBottom {background-size:285px 330px;}
+.imgHexagon{height: 163.545px; position: absolute;top:0;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
+.imgHexTop, .imgHexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
+.imgHexTop{top: -101.76px}
+.imgHexBottom{bottom: -101.76px;}
+.imgHexTop span,.imgHexBottom span {position: absolute;left: 0;width: 285px;height: 164.545px;transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-webkit-transform-origin: 0 0;-ms-transform-origin: 0 0;transform-origin: 0 0;background: inherit; }
+.imgHexTop span {background-position: center top;}
+.imgHexBottom span {background-position: center bottom;}
+.imgHexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
+
 
 /* µÎ¹øÂ° hover */
 ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore {display:inline-block;}
-ul.cardWrap > li.cardType01 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
-ul.cardWrap > li.cardType01 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
-ul.cardWrap > li.cardType02 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
-ul.cardWrap > li.cardType02 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
-ul.cardWrap > li.cardType03 .cardCon .cardTxt.sHover span.cardMore {color:#f9930a;}
-ul.cardWrap > li.cardType03 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
-ul.cardWrap > li.cardType05 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
-ul.cardWrap > li.cardType05 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
-ul.cardWrap > li.cardType06 .cardCon .cardTxt.sHover span.cardMore {color:#f87067;}
-ul.cardWrap > li.cardType06 .cardCon .cardTxt.sHover span.cardMore:after {background-position:0 0;}
+ul.cardWrap > li.cardType01 .cardCon .cardTxt span.cardMore {color:#f87067;}
+ul.cardWrap > li.cardType01 .cardCon .cardTxt span.cardMore:after {background-position:0 0;}
+ul.cardWrap > li.cardType02 .cardCon .cardTxt span.cardMore {color:#5e5c74;}
+ul.cardWrap > li.cardType02 .cardCon .cardTxt span.cardMore:after {background-position:-14px 0;}
+ul.cardWrap > li.cardType03 .cardCon .cardTxt span.cardMore {color:#f9930a;}
+ul.cardWrap > li.cardType03 .cardCon .cardTxt span.cardMore:after {background-position:-28px 0;}
+ul.cardWrap > li.cardType05 .cardCon .cardTxt span.cardMore {color:#3a4c62;}
+ul.cardWrap > li.cardType05 .cardCon .cardTxt span.cardMore:after {background-position:-70px 0;}
+ul.cardWrap > li.cardType06 .cardCon .cardTxt span.cardMore {color:#00a7d3;}
+ul.cardWrap > li.cardType06 .cardCon .cardTxt span.cardMore:after {background-position:-42px 0;}
+ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore {color:#a77566;}
+ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-position:-56px 0;}
 .cardHover .cardCon ul.card_icon li.sHover {background:red;}
 .cardCon ul.check_icon li.sHover a {background:red;}
 
@@ -247,6 +284,9 @@ ul.cardWrap > li.cardType06 .cardCon .cardTxt.sHover span.cardMore:after {backgr
 .cardWrap .cardType06 h2.cardTit b {display:block;}
 .cardWrap .cardType06 .cardCon:after {background-color:#77c5d9;}
 .cardWrap .cardType06 a {color:#fff;}
+.cardWrap .cardType06 .cardCon ul.check_icon li a {color:#fff;}
+.cardWrap .cardType06 .cardCon ul.check_icon li.like a:after {background-position:0 -21px;}
+.cardWrap .cardType06 .cardCon ul.check_icon li.share a:after {background-position:-20px -20px;}
 
 .cardWrap .cardType07{}
 .cardWrap .cardType07 .cardCon:after {background-color:#9a9a9c;}
