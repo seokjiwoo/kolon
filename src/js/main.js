@@ -291,6 +291,11 @@ $(document).ready(function() {
 			// 	PageModuleClass = require('./pages/myPage/ScrapFolder.js');
 			// 	break;
 
+			// 좋아요  like
+			case 'myPage-like':
+				PageModuleClass = require('./pages/myPage/Like.js');
+				break;
+
 			// 팔로잉	following
 			case 'myPage-following':
 				PageModuleClass = require('./pages/myPage/Following.js');
