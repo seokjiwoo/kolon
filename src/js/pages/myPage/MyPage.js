@@ -28,7 +28,7 @@ module.exports = function() {
 			popProfilePic : 'popProfilePic'
 		},
 		imageUploader : {
-			api_url : APIController().API_URL+'/apis/opinions/images',
+			api_url : APIController().API_URL+'/apis/member/profileImage',
 			flashOpts : {
 				swf : '../images/swf/imagePreview.swf',
 				id : 'imageUpoader',
@@ -119,6 +119,8 @@ module.exports = function() {
 
 	function onUploadSuccess(e, result) {
 		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
+		alert('프로필 사진 변경이 완료되었습니다');
+		location.reload(true);
 	}
 
 	function onUploadFailure(e, jqXHR) {
