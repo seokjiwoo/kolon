@@ -123,14 +123,8 @@ $(document).ready(function() {
 
 
 		// [S] 의견묻기 qna
-			// 목록 index
 			case 'qna':
 				PageModuleClass = require('./pages/qna/Index.js');
-				break;
-
-			// 작성 write
-			case 'qna-write':
-				PageModuleClass = require('./pages/qna/Write.js');
 				break;
 		// [E] 의견묻기 qna
 
