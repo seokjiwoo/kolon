@@ -205,7 +205,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .container {position: relative;padding:60px 0 200px;}
 .main .container {padding-top:113px;}
 .container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
-.main .container .wrap{max-width: 1500px;padding:30px 20px 0; background:url('../images/main_wrap_bg.gif') 99% 0 repeat-y; position:relative;}
+.main .container .wrap{max-width: 1500px;padding:30px 20px 0; background:url('../images/main_wrap_bg.gif') 99% 0 repeat-y; position:relative;;}
 .container .sWrap{max-width: 780px;margin: 0 auto;}
 
 .main .container .mainVisual {width:100%; max-width:1920px; margin:0 auto 40px; overflow:hidden; position:relative;z-index: 1}
