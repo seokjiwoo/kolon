@@ -1,8 +1,9 @@
 /* global $ */
 
 module.exports = function() {
-	var API_URL = 'http://uppp.oneplat.co/';
-	var CDN_URL = 'http://cdn.oneplat.co/';
+	var localFlag = (/localhost/).test(document.URL);
+	var API_URL = localFlag ? 'http://uppp.oneplat.co/' : '/api/';
+	var CDN_URL = localFlag ? 'http://cdn.oneplat.co/' : '/cdn/';
 	
 	$.ajaxSetup({
 		type: "POST"
