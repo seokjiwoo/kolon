@@ -44,11 +44,11 @@ module.exports = function() {
 	function termsListHandler(e, termsList) {
 		for (var key in termsList) {
 			var eachTerms = termsList[key];
-			switch(eachTerms.termsName) {
-				case '플랫폼이용약관':
+			switch(eachTerms.termsTypeCode) {
+				case 'DP_TERMS_TYPE_01':
 					$('#popAgree01').data('termsNumber', eachTerms.termsNumber);
 					break;
-				case '개인정보 취급방침':
+				case 'DP_TERMS_TYPE_04':
 					$('#popAgree02').data('termsNumber', eachTerms.termsNumber);
 					break;
 			}
