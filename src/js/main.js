@@ -292,10 +292,10 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/myPage/ScrapImage.js');
 				break;
 
-			// 스크랩 이미지 폴더 목록	scrapFolder
-			case 'myPage-scrapFolder':
-				PageModuleClass = require('./pages/myPage/ScrapFolder.js');
-				break;
+			// 스크랩 이미지 폴더 목록	scrapFolder - scrap 에 병합
+			// case 'myPage-scrapFolder':
+			// 	PageModuleClass = require('./pages/myPage/ScrapFolder.js');
+			// 	break;
 
 			// 팔로잉	following
 			case 'myPage-following':
