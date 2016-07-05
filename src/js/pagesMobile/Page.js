@@ -72,6 +72,19 @@ module.exports = function() {
 				$(this).parent().parent().next().css('border-top','0');
 			})
 		});
+
+		$(".portfolioArea > ul").bxSlider({ // 전문가 상세 이미지 인덱스 체크
+			pager : false,
+			onSliderLoad  : function() {
+				var max = $(this).find('li').filter(':not(.bx-clone)').size();
+				$(".portfolioArea .count").find("em").text( max );
+				$(".portfolioArea .count").find("i").text( (max-max) + 1 );
+			},
+			onSlideAfter : function($slideElement, oldIndex, newIndex){
+				$(".portfolioArea .count").find("i").text( newIndex + 1 );
+			}
+		});
+
 	}
 
 	/**
