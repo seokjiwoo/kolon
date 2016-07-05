@@ -19,6 +19,10 @@ function ClassOpinionsController() {
 	function OpinionsController() {
 		callerObj = {
 			/**
+			 * 의견 주제 코드 리스트 
+			 */
+			opinionsClass: opinionsClass,
+			/**
 			 * 의견묻기 리스트 조회
 			 */
 			opinionsList: opinionsList,
@@ -42,6 +46,17 @@ function ClassOpinionsController() {
 		
 		return callerObj;	
 	};
+
+	function opinionsClass() {
+		Super.callApi('/apis/opinions/clesses', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('opinionsClassResult', [status, result.data.opinionThemes]);
+			} else {
+				Super.handleError('opinionsClass', result);
+				$(callerObj).trigger('opinionsClassResult', [status, result]);
+			}
+		}, true);
+	}
 	
 	function opinionsList() {
 		Super.callApi('/apis/opinions', 'GET', {}, function(status, result) {
@@ -75,16 +90,12 @@ function ClassOpinionsController() {
 		}, true);
 	};
 	
-	function postOpinion(sectionId, title, content) {
+	function postOpinion(sectionId, title, content, uploadImageArray) {
 		Super.callApi('/apis/opinions', 'POST', {
-			"attachFiles": [
-				0
-			],
+			"attachFiles": uploadImageArray,
 			"content": content,
-			"opinionSectionCd": sectionId,
-			"scrapNumbers": [
-				0
-			],
+			"opinionClassNumber": sectionId,
+			"scrapNumbers": [],
 			"title": title
 		}, function(status, result) {
 			if (status == 200) {
@@ -98,8 +109,7 @@ function ClassOpinionsController() {
 	
 	function postAnswer(opinionNumber, answer) {
 		Super.callApi('/apis/opinions/'+opinionNumber+'/answer', 'POST', {
-			"answer": answer,
-			"opinionNumber": opinionNumber
+			"answer": answer
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('postAnswerResult', [200, result.data]);

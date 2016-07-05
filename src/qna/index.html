@@ -102,7 +102,7 @@
 					<div class="opinionwrite">
 						<a href="#" class="toggleBtn"><span>의견 묻기</span></a>
 						<div class="opinionInput">
-							<form method="post" action="/">
+							<form id='opinionWriteForm' method="post" action="#">
 								<fieldset>
 									<legend>의견묻기 입력 폼</legend>
 									<table class="opinionTb">
@@ -111,35 +111,28 @@
 										<tbody>
 											<tr>
 												<td colspan="2">
-													<select class="pullSize w795" title="주제선택">
-														<option value="주제를 선택해주세요">주제를 선택해주세요</option>
-														<option value="리빙서비스">리빙서비스</option>
-														<option value="중개금융서비스">중개금융서비스</option>
-														<option value="투자인사이트">투자인사이트</option>
+													<select id='opinionThemes' class="pullSize w795" title="주제선택">
+														<option value="-">주제를 선택해주세요</option>
 													</select>
 												</td>
 											</tr>
 											<tr>
 												<td colspan="2">
-													<input type="text" class="pullSize w752" placeholder="제목을  입력해주세요.  예)  카페같은 집을 꾸미고 싶어요" title="의견제목입력" />
+													<input id='opinionTitle' type="text" class="pullSize w752" placeholder="제목을 입력해주세요.  예)  카페같은 집을 꾸미고 싶어요" title="의견제목입력" />
 												</td>
 											</tr>
 											<tr>
 												<td colspan="2">
-													<textarea class="pullSize w752" placeholder="자세한 내용을 작성해 주세요." title="자세한 내용 입력"></textarea> 
+													<textarea id='opinionContent' class="pullSize w752" placeholder="자세한 내용을 작성해 주세요." title="자세한 내용 입력"></textarea> 
 												</td>
 											</tr>
 											<tr>
 												<th scope="row">첨부파일<span>(최대3장)</span></th>
 												<td>
 													<div class="fileup">
-														<input type="text" class="pullSize" style="width:458px;" placeholder="모던프렌치.JPG" title="첨부파일명" />
-														<a href="../../_popup/popAttachPictures.html" class="btnFileup btnPop btnPop590" data-user-class="qna popEdge popAttachPictures"><span>파일선택</span></a>
-														<div class="fileupList">
-															<div class="conDel">모던프렌치.jpg <a href="javascript:;" class="btnDel">삭제</a></div>
-															<div class="conDel">모던프렌치.jpg <a href="javascript:;" class="btnDel">삭제</a></div>
-															<div class="conDel">모던프렌치모던프렌치모던프렌치.jpg <a href="javascript:;" class="btnDel">삭제</a></div>
-														</div>
+														<input id='fileUpText' type="text" class="pullSize" style="width:458px;" placeholder="첨부파일" title="첨부파일명" />
+														<a id='fileUpButton' href="../../_popup/popAttachPictures.html" class="btnFileup btnPop btnPop590" data-user-class="qna popEdge popAttachPictures"><span>파일선택</span></a>
+														<div id='fileUpList' class="fileupList"></div>
 													</div>
 												</td>
 											</tr>
@@ -158,6 +151,9 @@
 											</tr>
 										</tbody>
 									</table>
+									<div style='text-align:center;margin-top:20px'>
+										<button type="submit" class='btn btnSizeM btnColor03'>작성</button>
+									</div>
 								</fieldset>
 							</form>
 						</div>
@@ -432,7 +428,7 @@
 					</div>-->
 				</section>
 				<aside class="col-right">
-					<div class="latelyOpinion">
+					<div id="myOpinion" class="latelyOpinion">
 						<h2 class="optit"><span>내가 최근에 등록한 의견</span></h2>
 						<ul>
 							<li>
@@ -464,7 +460,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="expertHelp">
+					<div id="expertRank" class="expertHelp">
 						<h2 class="optit"><span>가장 많은 도움을 준 전문가</span></h2>
 						<ul id='expertList2'>
 							<li>
@@ -498,11 +494,11 @@
 								</a>
 							</li>
 						</ul>
-						<div class="paper-nav mt30">
+						<!--<div class="paper-nav mt30">
 							<a href="#" class="active"><span>1</span></a>
 							<a href="#"><span>2</span></a>
 							<a href="#"><span>3</span></a>
-						</div>
+						</div>-->
 					</div>
 				</aside>
 			</div>

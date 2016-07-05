@@ -6,14 +6,23 @@ module.exports = function() {
 	var win = window,
 	$ = win.jQuery,
 	doc = document,
+	APIController = require('../../controller/APIController.js'),
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
 	fileName = 'qna/Index.js';
 
+	var uploadFileNumber;
+	var uploadImageArray;
+	var opinionsClassArray;
+
 	var controller = require('../../controller/OpinionsController.js');
+	$(controller).on('opinionsClassResult', opinionsClassHandler);
 	$(controller).on('opinionsListResult', opinionsListHandler);
 	$(controller).on('opinionsExpertsListResult', opinionsExpertsListHandler);
+
+	$(controller).on('postOpinionResult', postOpinionResultHandler);
+	$(controller).on('postAnswerResult', postAnswerResultHandler);
 
 	var opts = {
 		colorbox : {
@@ -28,6 +37,7 @@ module.exports = function() {
 			popAttachPictures : 'popAttachPictures'
 		},
 		imageUploader : {
+			api_url : APIController().API_URL+'/apis/opinions/images',
 			flashOpts : {
 				swf : '../images/swf/imagePreview.swf',
 				id : 'imageUpoader',
@@ -68,7 +78,26 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
+		controller.opinionsClass();
+		if (Super.Super.loginData != null) {
+			$('#myOpinion').show();
+			$('#expertRank').css('margin-top', '20px');
+		}
 		controller.opinionsExpertList();
+	}
+
+	function opinionsClassHandler(e, status, result) {
+		if (status == 200) {
+			var tags = '';
+			opinionsClassArray = new Array();
+			for (var key in result) {
+				var eachTheme = result[key];
+				tags += '<option value="'+eachTheme.opinionClassNumber+'">'+eachTheme.className+'</option>';
+				opinionsClassArray[eachTheme.opinionClassNumber] = eachTheme.className;
+			}
+			$('#opinionThemes').append(tags);
+		}
+		
 		controller.opinionsList();
 	}
 
@@ -78,13 +107,13 @@ module.exports = function() {
 
 			for (var key in result) {
 				var eachOpinion = result[key];
-				
+				console.log(eachOpinion);
 				tags += '<li><div class="opinionbox">';
 				tags += '<div class="title"><p class="info"><span>'+eachOpinion.userName+'</span><span>'+eachOpinion.createDate+'</span></p></div>';
 				
 				tags += '<div class="conbox">';
-				tags += '<strong><a href="../../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="qna popEdge">';
-				tags += '<span class="it">'+eachOpinion.category+'</span>'+eachOpinion.title+'</a></strong>';
+				tags += '<strong>';	// <a href="../../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="qna popEdge">
+				tags += '<span class="it">'+opinionsClassArray[eachOpinion.opinionClassNumber]+'</span>'+eachOpinion.title+'</strong>';	// </a></strong>
 				tags += '<div class="conboxTxt"><p class="except">'+eachOpinion.content+'</p><span class="more">더보기</span></div>';
 				tags += '<div class="commentCount">';
 				if (eachOpinion.answers.length == 0) {
@@ -114,11 +143,11 @@ module.exports = function() {
 				}
 				tags += '</ul>';
 				
-				tags += '<div class="commentInput"><form method="post" action="/"><fieldset><legend>댓글 입력 폼</legend><div class="commentTextarea">';
-				tags += '<textarea class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>';
+				tags += '<div class="commentInput"><form method="post" id="answerForm'+eachOpinion.opinionNumber+'" class="answerForm"><fieldset><legend>댓글 입력 폼</legend><div class="commentTextarea">';
+				tags += '<textarea id="answerBox'+eachOpinion.opinionNumber+'" class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>';
 				tags += '<div class="commentBtn">';
-				tags += '<div class="thumb"><span><img src="../images/temp01.jpg" alt="" /></span></div>';
-				tags += '<button class="btn confirmBtn">등록</button>';
+				tags += '<div class="thumb"><span><img src="'+Super.Super.loginData.imageUrl+'" alt="" /></span></div>';
+				tags += '<button type="submit" class="btn confirmBtn">등록</button>';
 				tags += '</div></div></fieldset></form></div>';
 
 				tags += '</div></div></li>';
@@ -126,43 +155,20 @@ module.exports = function() {
 
 			$('#opinionList').html(tags);
 
-			$('.writeCommentButton').click(function(e){
-				var pId = $(this).attr('id').substr(18);
-				$('#commentArea'+pId).addClass('showCommentInput');
-			});
+			$('.writeCommentButton').click(showCommentForm);
+			$('.answerForm').submit(answerFormSubmitHandler);
 			
 			$('.except').dotdotdot({watch:'window'});
 		} else {
 			console.log('통신에러');
 		}
-		/*
-		<li>
-			<div class="opinionbox">
-				<!-- 의견 내용 -->
-				<div class="conbox">
-					<strong><a href="../../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
-					<div class="conboxTxt">
-						<p class="except">새로 이사갈 집이    24평입니다. <br/>고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요?고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-						</p>
-						<span class="more">더보기</span>
-					</div>
-					<div class="commentCount">
-					<p><span>0개</span> 의견 <em>미답변</em></p>
-					<a href="#" class="btnSizeS btnColor02">의견작성</a>
-					</div>
-				</div>
-				<!-- 의견 내용 -->
-			</div>
-		</li>
-		*/
 	};
 
 	function opinionsExpertsListHandler(e, status, result) {
 		if (status == 200) {
 			var tags = '';
 
-
-			for (var key in result) {
+			for (var key=0; key < Math.min(3, result.length); key++) {
 				var eachExpert = result[key];
 				//if (eachExpert.expertImageUrl == null) eachExpert.expertImageUrl = '../images/temp01.jpg';
 
@@ -202,35 +208,124 @@ module.exports = function() {
 				.on(CB_EVENTS.CLEANUP, onCboxEventListener)
 				.on(CB_EVENTS.CLOSED, onCboxEventListener);
 
-		$(".opinionwrite > .toggleBtn").on("click", function(e){
-			e.preventDefault();
-			showContent( $(this) );
-		});
+		$(".opinionwrite > .toggleBtn").on("click", showWriteForm);
+		$('#opinionWriteForm').submit(writeFormSubmitHandler);
 	}
-	
-	function showContent(tg){
-		if( !tg.hasClass("active") ){
-			tg.addClass("active").find("span").text("접기");
-			$(".opinionInput").stop().slideDown();
+
+	function showCommentForm(e) {
+		e.preventDefault();
+		if (Super.Super.loginData != null) {
+			var pId = $(this).attr('id').substr(18);
+			$('#commentArea'+pId).addClass('showCommentInput');
 		} else {
-			tg.removeClass("active").find("span").text("의견 묻기");
-			$(".opinionInput").stop().slideUp();
-		};
+			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
+		}
 	};
+
+	function showWriteForm(e) {
+		e.preventDefault();
+
+		if (Super.Super.loginData != null) {
+			if (!$(this).hasClass("active")) {
+				uploadFileNumber = 0;
+				uploadImageArray = new Array();
+				$('#fileUpList').html('');
+				$('#opinionThemes').val('-');
+				$('#opinionTitle').val('');
+				$('#opinionContent').val('');
+
+				$(this).addClass("active").find("span").text("접기");
+				$(".opinionInput").stop().slideDown();
+			} else {
+				$(this).removeClass("active").find("span").text("의견 묻기");
+				$(".opinionInput").stop().slideUp();
+			};
+		} else {
+			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
+		}
+	};
+
+	function writeFormSubmitHandler(e) {
+		e.preventDefault();
+
+		if ($('#opinionThemes').val() == '-') {
+			alert('주제를 선택해주세요');
+		} else if ($.trim($('#opinionTitle').val()) == '') {
+			alert('제목을 입력해주세요');
+		} else if ($.trim($('#opinionContent').val()) == '') {
+			alert('자세한 내용을 작성해 주세요');
+		} else {
+			controller.postOpinion($('#opinionThemes').val(), $.trim($('#opinionTitle').val()), $.trim($('#opinionContent').val()), uploadImageArray);
+		}
+	};
+
+	function postOpinionResultHandler(e, status, result) {
+		if (status == 200) {
+			Super.Super.alertPopup('의견묻기', '등록이 완료되었습니다', '확인', function() {
+				location.reload(true);
+			});
+		}
+	};
+
+	function answerFormSubmitHandler(e) {
+		e.preventDefault();
+		var opinionNumber = $(this).attr('id').substr(10);
+
+		if ($.trim($('#answerBox'+opinionNumber).val()) == '') {
+			alert('내용을 작성해 주세요');
+		} else {
+			controller.postAnswer(opinionNumber, $.trim($('#answerBox'+opinionNumber).val()));
+		}
+	};
+
+	function postAnswerResultHandler(e, status, result) {
+		if (status == 200) {
+			console.log(result);
+			Super.Super.alertPopup('의견묻기', '의견이 등록되었습니다', '확인', function() {
+				location.reload(true);
+			});
+		}
+	};
+
 
 	function onUploaderSelectedFiles(e, selectedFiles) {
 		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.SELECTED_FILES, selectedFiles);
 		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
 	}
 
-	function onUploaderSubmit(e) {
-		debug.log(fileName, 'onUploaderSubmit', imageUploader.EVENT.SUBMIT);
-		debug.log(fileName, 'onUploaderSubmit', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
+	function onUploadSuccess(e, result) {
+		result = result.opinionAttachFile;
+		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
+		
+		if (uploadImageArray.length == 3) {
+			alert('이미지는 3장까지 첨부 가능합니다');
+		} else {
+			uploadImageArray.push(result);
+			$('#fileUpList').append('<div id="con'+uploadFileNumber+'" class="conDel">'+result.attachFileName+' <a href="#" id="deleteFile'+uploadFileNumber+'" data-image-url="'+result.attachFileUrl+'" class="btnDel">삭제</a></div>');
+			$('#deleteFile'+uploadFileNumber).click(function(e) {
+				e.preventDefault();
+				for (var key in uploadImageArray) {
+					var eachFile = uploadImageArray[key];
+					if (eachFile.attachFileUrl == $(this).data('imageUrl')) addr = key;
+				}
+				uploadImageArray.splice(addr, 1);
+				$('#con'+$(this).attr('id').substr(10)).remove();
+
+				$('#fileUpText').show();
+				$('#fileUpButton').show();
+			});
+
+			uploadFileNumber++;
+			if (uploadImageArray.length == 3) {
+				$('#fileUpText').hide();
+				$('#fileUpButton').hide();
+			}
+		}
+		$.colorbox.close();
 	}
 
-	function onUploaderCancel(e) {
-		debug.log(fileName, 'onUploaderCancel', imageUploader.EVENT.CANCEL);
-		debug.log(fileName, 'onUploaderCancel', imageUploader.EVENT.GET_SELECTED_FILES, $(imageUploader).triggerHandler(imageUploader.EVENT.GET_SELECTED_FILES));
+	function onUploadFailure(e, jqXHR) {
+		debug.log(fileName, 'onUploaderFailure', imageUploader.EVENT.UPLOAD_FAILURE, jqXHR);
 	}
 
 	function onCboxEventListener(e) {
@@ -242,8 +337,8 @@ module.exports = function() {
 			case CB_EVENTS.COMPLETE:
 				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
-									.on(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
-									.on(imageUploader.EVENT.CANCEL, onUploaderCancel);
+									.on(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
+									.on(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
 
 					imageUploader.init(opts.imageUploader);
 				}
@@ -251,8 +346,8 @@ module.exports = function() {
 			case CB_EVENTS.CLEANUP:
 				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
-									.off(imageUploader.EVENT.SUBMIT, onUploaderSubmit)
-									.off(imageUploader.EVENT.CANCEL, onUploaderCancel);
+									.off(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
+									.off(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
 
 					imageUploader.destory();
 				}

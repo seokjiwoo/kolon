@@ -216,8 +216,8 @@ function ClassImageUploader() {
 
 	function onHolderClick(e) {
 		e.preventDefault();
-
 		self.inpFile.trigger('click');
+		e.stopPropagation();
 	}
 
 	function onInpFileChange(e) {
