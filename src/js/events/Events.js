@@ -24,6 +24,11 @@ function Events() {
 			REFRESH : 'VX-COLORBOX_AREA-REFRESH',
 			DESTROY : 'VX-COLORBOX_AREA-DESTROY'
 		},
+		ISOTOPE : {
+			APPEND : 'VX-ISOTOPE-APPEND',
+			REFRESH : 'VX-ISOTOPE-REFRESH',
+			DESTROY : 'VX-ISOTOPE-DESTROY'
+		},
 		SCRAP : {
 			LIST : 'scrapListResult',
 			IMAGE_LIST : 'scrapImageListResult',
@@ -37,18 +42,18 @@ function Events() {
 	},
 	instance;
 
+	$.each(Events, function(index, category) {
+		var events = [];
+		$.each(category, function(index, val) {
+			events.push(val);
+		});
+		category.WILD_CARD = events.join(' ');
+	});
+
 	return {
 		getInstance: function() {
 			if (!instance) {
 				instance = Events;
-
-				$.each(Events, function(index, category) {
-					var events = [];
-					$.each(category, function(index, val) {
-						events.push(val);
-					});
-					category.WILD_CARD = events.join(' ');
-				});
 			}
 			
 			debug.log(fileName, 'getInstance', instance);
