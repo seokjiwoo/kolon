@@ -22,7 +22,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topBanner img {width:1920px; height:113px; margin-left:-960px; position:absolute; top:0; left:50%; z-index:1;}
 .topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
 
-.topMenu{width:100%; position:fixed; z-index:4; min-width:1240px; white-space: nowrap;}
+.topMenu{width:100%; position:fixed; z-index:3; min-width:1240px; white-space: nowrap;}
 .topMenu .topL{width:15%; min-width:180px; height:60px; float:left;}
 .topMenu .topL .btnLnb{width:80px; height:60px; float:left; background:url('../images/btn_menu.png') center no-repeat;}
 .topMenu .topL h1.logo{width:100px; float: left; overflow:hidden; line-height:0;}
@@ -146,7 +146,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 
 .flPop{position: fixed;bottom:140px;right: 180px; width: 285px;}
 
-#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 91;background: rgba(0,0,0,0.2);}
+#dim{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 3;background: rgba(0,0,0,0.2);}
 
 .floating .flPop{overflow: hidden;bottom:-100%;text-align: center;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 14px;}
 .floating .flPop .cardCon{height: auto;padding-top: 50px;max-height: 280px;}
