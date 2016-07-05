@@ -82,9 +82,9 @@ function ClassMemberInfoController() {
 	 * 약관 목록 받아오기
 	 */
 	function getMemberTermsList() {
-		Super.callApi('/apis/member/terms', 'GET', {}, function(status, result) {
+		Super.callApi('/apis/terms?termsSectionCode=DP_TERMS_SECTION_02', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('termsListResult', [result.data.memberTerms]);
+				$(callerObj).trigger('termsListResult', [result.data.terms]);
 			} else {
 				Super.handleError('getMemberTermsList', result);
 			}
@@ -95,9 +95,9 @@ function ClassMemberInfoController() {
 	 * 약관 본문 받아오기
 	 */
 	function getMemberTermsContent(termsNumber) {
-		Super.callApi('/apis/member/terms/'+termsNumber, 'GET', {}, function(status, result) {
+		Super.callApi('/apis/terms/'+termsNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('termsResult', [result.data.memberTerm]);
+				$(callerObj).trigger('termsResult', [result.data.term]);
 			} else {
 				Super.handleError('getMemberTermsContent', result);
 			}

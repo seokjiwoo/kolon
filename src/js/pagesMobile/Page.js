@@ -4,6 +4,9 @@ module.exports = function() {
 	var SuperClass = require('../pagesCommon/PageCommon.js');
 	var Super = SuperClass();
 	
+	var loginController = require('../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	
 	var callerObj = {
 		/**
 		 * SuperClass 연결
@@ -88,6 +91,40 @@ module.exports = function() {
 	}
 
 	/**
+	 * 내 정보 갱신 반영
+	 */
+	function myInfoResultHandler(e) {
+		if (Super.loginData != null) {
+			// 로그인 상태일 때
+			$('body').addClass('login');
+
+			$('#myMenuButtonList').removeClass('log');
+
+			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			$('#profileName').html('<em>'+Super.loginData.memberName+'</em>');
+			$('#profileMail').text(Super.loginData.email);
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>나의 커먼</span>');
+			$('#menuToggle').show();
+			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
+
+			/*
+			"myActivity": {
+				"noticeNewYn": "N",
+				"noticeCount": 1,
+				"scrapCount": 3,
+				"followCount": 3,
+				"cartCount": 5,
+				"likeCount": 1
+			}
+			*/
+			$('#menuCountOrderGoods').text(Super.loginData.myMenu.orderCount);
+			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
+			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
+			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
+		}
+	};
+
+	/**
 	 * GNB 초기화
 	 */
 	function initGnb() {
@@ -102,19 +139,7 @@ module.exports = function() {
 			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
 			$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 			$('#menuToggle').hide();
-		} else {
-			// 로그인 상태일 때
-			$('body').addClass('login');
-
-			$('#myMenuButtonList').removeClass('log');
-
-			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#profileName').html('<em>'+Super.loginData.memberName+'</em>');
-			$('#profileMail').text(Super.loginData.email);
-			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>나의 커먼</span>');
-			$('#menuToggle').show();
-			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
-		};
+		}
 
 		$('#searchOpen').on('click', function(e) {
 			e.preventDefault();

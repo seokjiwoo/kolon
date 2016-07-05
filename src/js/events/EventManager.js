@@ -11,7 +11,7 @@ function EventManager() {
 	events = require('./Events'),
 	fileName = 'events/EventManager.js';
 
-	var COLORBOX_EVENT = events.COLORBOX_EVENT,
+	var COLORBOX_EVENT = events.COLOR_BOX,
 	SCRAP_EVENT = events.SCRAP,
 	instance;
 
@@ -35,7 +35,7 @@ function EventManager() {
 		}
 
 		function setBindEvents() {
-			$(doc).on(SCRAP_EVENT.WILD_CARD, onColorBoxListener);
+			$(doc).on(COLORBOX_EVENT.WILD_CARD, onColorBoxListener);
 		}
 
 		function onColorBoxListener(e) {

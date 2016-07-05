@@ -124,7 +124,7 @@ function ClassUtils() {
 	}
 	
 	function getUrlVar(name, href) {
-		return getUrlVars(href)[name];
+		return (name) ? getUrlVars(href)[name] : getUrlVars(href);
 	}
 	
 	function getUrlVars(href) {
@@ -141,7 +141,7 @@ function ClassUtils() {
 	}
 
 	function getHashVar(name, href) {
-		return getHashVars(href)[name];
+		return (name) ? getHashVars(href)[name] : getHashVars(href);
 	}
 	
 	function getHashVars(href) {

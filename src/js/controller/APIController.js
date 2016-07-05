@@ -47,7 +47,9 @@ module.exports = function() {
 					ajaxOptions.data = JSON.stringify(data);
 					break;
 				case 'GET':
-					// does nothing yet
+					if (data !== {}) {
+						ajaxOptions.data = data;
+					}
 					break;
 			}
 			

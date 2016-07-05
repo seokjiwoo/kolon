@@ -29,28 +29,33 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		MyPage.init();
+		if (Cookies.get('profileEditAuth') == 'auth') {
+			MyPage.init();
 
-		debug.log(fileName, $, util);
-		
-		var tags = '';
-		for (var i = new Date().getFullYear()-14; i > new Date().getFullYear()-99; i--) {
-			tags += ('<option value="'+i+'">'+i+'</option>');
+			debug.log(fileName, $, util);
+			
+			var tags = '';
+			for (var i = new Date().getFullYear()-14; i > new Date().getFullYear()-99; i--) {
+				tags += ('<option value="'+i+'">'+i+'</option>');
+			}
+			$('#joinBirth01').html(tags);
+			$('#joinBirth02').change(updateDateSelect);
+			updateDateSelect();
+			
+			$('#changeEmailIdForm').submit(submitEmailEditForm);
+			$('#changePhoneIdForm').submit(submitMobileEditForm);
+			$('#changeInfoForm').submit(submitInfoEditForm);
+			/*
+			$('#joinId').change(checkEmailField);
+			$('#joinPW').change(checkPasswordField);
+			$('#joinPW02').change(checkPasswordField);
+			$('#joinPhone').change(checkPhoneField);
+			*/
+			controller.getMyInfo();
+		} else {
+			alert('잘못된 접근입니다');
+			location.href = '/';
 		}
-		$('#joinBirth01').html(tags);
-		$('#joinBirth02').change(updateDateSelect);
-		updateDateSelect();
-		
-		$('#changeEmailIdForm').submit(submitEmailEditForm);
-		$('#changePhoneIdForm').submit(submitMobileEditForm);
-		$('#changeInfoForm').submit(submitInfoEditForm);
-		/*
-		$('#joinId').change(checkEmailField);
-		$('#joinPW').change(checkPasswordField);
-		$('#joinPW02').change(checkPasswordField);
-		$('#joinPhone').change(checkPhoneField);
-		*/
-		controller.getMyInfo();
 	};
 
 	function myInfoHandler(e, infoObject) {
