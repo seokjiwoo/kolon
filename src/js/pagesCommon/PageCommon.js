@@ -22,7 +22,8 @@ module.exports = function() {
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
-	COLORBOX_EVENT = events.COLOR_BOX;
+	COLORBOX_EVENT = events.COLOR_BOX,
+	ISOTOPE_EVENT = events.ISOTOPE;
 
 	
 	var callerObj = {
@@ -81,6 +82,10 @@ module.exports = function() {
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
+
+		// isotope event
+		eventManager.on(ISOTOPE_EVENT.REFRESH, onIsotopeRefreshListener)
+					.on(ISOTOPE_EVENT.DESTROY, onIsotopeDestoryListener);
 	};
 	
 	/**
@@ -118,10 +123,7 @@ module.exports = function() {
 			}
 
 			// ie9 isotope bugfix
-			if ($('#cardWrap').data('isotope')) {
-				$('#cardWrap').isotope('destroy');
-				initTabContentLayout();
-			}			
+			eventManager.triggerHandler(ISOTOPE_EVENT.REFRESH);
 		});
 	};
 
@@ -308,5 +310,19 @@ module.exports = function() {
 
 		$('.btnPop').off('click', htmlPopupLinkHandler)
 					.on('click', htmlPopupLinkHandler);
+	}
+
+	// isotope refresh 시점
+	function onIsotopeRefreshListener(e) {
+		if ($('#cardWrap').data('isotope')) {
+			$('#cardWrap').isotope('destroy');
+		}
+		initTabContentLayout();
+	}
+
+	function onIsotopeDestoryListener(e) {
+		if ($('#cardWrap').data('isotope')) {
+			$('#cardWrap').isotope('destroy');
+		}
 	}
 }
