@@ -1,27 +1,64 @@
 .manager .portfolioArea{position:relative;}
-.manager .portfolioArea ul{}
-.manager .portfolioArea ul li{}
 .manager .portfolioArea ul li a{display:block;}
 .manager .portfolioArea ul li img{width:100%;vertical-align:top;}
-.manager .portfolioArea .count{position:absolute;left:50%;top:20px;z-index:10;margin-left:-20px;width:40px;height:16px;display:block;background:url("../images/bg_count.png") no-repeat 0 0;background-size:100%;text-align:center;}
-.manager .portfolioArea .count span{display:block;color:#fff;}
+.manager .portfolioArea .count{position:absolute;left:50%;top:20px;z-index:10;margin-left:-20px;width:40px;height:16px;line-height:16px;display:block;background:url("../images/bg_count.png") no-repeat 0 0;background-size:100%;text-align:center;color:#fff;}
+.manager .portfolioArea .count i,
+.manager .portfolioArea .count em{font-style:normal;}
 .manager .portfolioArea .bx-controls-direction .bx-prev,
 .manager .portfolioArea .bx-controls-direction .bx-next{position:absolute;top:50%;margin:-14px 0 0 0;width:20px;height:33px;display:block;background:url("../images/ico_slide_btn.png") no-repeat 0 0;background-size:100%;opacity:0.5;}
 .manager .portfolioArea .bx-controls-direction .bx-prev{left:15px;}
 .manager .portfolioArea .bx-controls-direction .bx-next{background-position:0 -33px;right:15px;}
-
 .manager .expertArea{position:relative;height:202px;padding-top:30px;background:#343434;}
 .manager .expertArea .thumb{position:absolute;left:50%;top:-60px;z-index:10;margin-left:-45px;width:90px;height:90px;display:block;overflow:hidden;border-radius:100%;}
 .manager .expertArea .thumb img{width:100%;vertical-align:top;}
 .manager .expertArea .info{color:#fff;text-align:center;}
 .manager .expertArea .info em{display:block;margin-top:16px;font-style:normal;font-size:15px;}
 .manager .expertArea .info p{color:#999;line-height:1.4em;margin-top:8px;}
-
 .manager .expertArea .fol{margin-top:16px;}
 .manager .expertArea .fol span{position:relative;display:inline-block;padding-left:17px;margin-left:25px;}
 .manager .expertArea .fol span:first-child{background:url("../images/ico_onestar.png") no-repeat 0 center;background-size:14px;margin-left:0;}
 .manager .expertArea .fol span:first-child:after{position:absolute;right:-15px;top:2px;content:"";display:block;width:1px;height:12px;background:#4f4f4f;}
-
 .manager .expertArea .fol span:last-child{background:url("../images/ico_follow.png") no-repeat 0 center;background-size:14px;}
 .manager .expertArea .btnwrap{margin-top:25px;}
 .manager .expertArea .btnwrap a{width:120px;border:1px solid #ccc;font-weight:normal;}
+.manager .plateGray{padding-top:10px;background:#e0e0e0;}
+.manager .rowArea{background:#fff;padding:25px 15px 30px;}
+.manager .rowArea .top{padding-bottom:10px;border-bottom:1px solid #333;}
+.manager .rowArea .top h2{margin-top:0;font-size:15px;}
+
+.manager .mapArea .addr{margin-top:15px;}
+.manager .mapArea .addr p:first-child{font-size:15px;}
+.manager .mapArea .addr p:last-child{margin-top:10px;color:#999;letter-spacing:-1px;}
+.manager .mapArea .map{border:1px solid #ccc;margin-top:15px;}
+.manager .mapArea .map img{width:100%;vertical-align:top;}
+.manager .expertInfo{margin-top:10px;}
+.manager .expertInfo p{line-height:1.4em;color:#666;margin-top:15px;}
+.manager .expertInfo .imageView{margin-top:25px;padding-bottom:25px;border-bottom:1px solid #ccc;}
+.manager .expertInfo .imageView img{width:100%;vertical-align:top;}
+.manager .relationTag h2{color:#666;margin-bottom:15px;}
+.manager .productArea{margin-top:10px;}
+.manager .productArea .top{overflow:hidden;}
+.manager .productArea .top h2{float:left;}
+.manager .productArea .top a{float:right;padding-right:14px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
+.manager .productArea .list li{padding:20px 0;border-top:1px solid #ccc;}
+.manager .productArea .list li:first-child{border-top:0;}
+.manager .productArea .list li > a,
+.manager .productArea .list li > a span{display:block;}
+.manager .productArea .list li > a{overflow:hidden;}
+.manager .productArea .list .thumb{width:78px;height:78px;overflow:hidden;float:left;margin-right:10px;}
+.manager .productArea .list .thumb img{width:100%;vertical-align:top;}
+.manager .productArea .list .info span{line-height:1.2em;}
+.manager .productArea .list .info span:nth-child(2){color:#999;margin-top:5px;}
+.manager .productArea .list .info span:nth-child(3){margin-top:12px;}
+.manager .productArea .list .info span:nth-child(3) em{font-style:normal;font-size:15px;font-weight:bold;}
+.manager .productArea .txt{margin-top:15px;padding:15px;background:#f8f8f8;clear:both;}
+.manager .productArea .txt p{line-height:1.4em;margin-bottom:15px;}
+
+.manager .result{height:30px;background:#f8f8f8;text-align:center;border-bottom:1px solid #ccc;}
+.manager .result span{display:block;padding-top:8px;}
+.manager .result em{font-weight:bold;}
+.manager .selectwrap{padding:10px 15px;background:#e0e0e0;}
+.manager .selectwrap ul{overflow:hidden;}
+.manager .selectwrap ul li{width:49.5%;float:left;margin-left:1%;}
+.manager .selectwrap ul li:first-child{margin-left:0;}
+.manager .selectwrap.col1 ul li{width:100%;}
