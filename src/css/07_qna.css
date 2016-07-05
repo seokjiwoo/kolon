@@ -2,6 +2,31 @@
 .myOpinion{float:right;width:895px;font-size:14px;}
 .myOpinion .opinionArea{margin-top:0;}
 
+.expert .pageTit{font-family:'RobotoL','NotoSansL', sans-serif;color: #000;font-size: 40px;background:none }
+.expert .pageTit:before, .pageTit:after{content: '';display: inline-block;width: 70px;height: 1px;background: #d9d9d9;vertical-align: middle;}
+.expert .pageTit:before{margin-right: 20px;}
+.expert .pageTit:after{margin-left: 20px;}
+
+.expert .subTop{background: url('../images/top_expert.jpg') no-repeat;background-size: cover;}
+.expert .bx-wrapper{position: relative;margin:35px auto 19px; }
+.expert .singleCard .bx-wrapper{margin-top:0;}
+.expert .bx-wrapper .bx-controls-direction a{margin-top: -70px}
+.expert .bx-wrapper .bx-controls-direction .bx-prev{left: -120px;}
+.expert .bx-wrapper .bx-controls-direction .bx-next{right: -120px;}
+.expert .pageTit{color: #fff;}
+.expert .pageTit:before, .expert .pageTit:after{background: #fff;}
+.expert .subTit b{color: #d1a181}
+
+.expertList li a{display: block;font-size: 14px;}
+.expertList .expertPic{position: relative;width:200px;height: 200px;border-radius: 50%;overflow: hidden;background: #000;}
+.expertList .expertPic img{display: block;width: 100%;}
+.expertList .expertName{margin-top:20px;color: #fff;}
+.expertList .subTit{margin-top:7px;color: #999;line-height: 1.2em;}
+.expertList .hoverTct{opacity: 0;position: absolute;top: 70px;left: 0;width: 100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #bea48d;line-height: 1.4em;font-size: 20px;}
+.expertList .hoverTct:after{content: '';display: block;width: 18px;height: 17px;margin:13px auto;background: url('../images/ico_arrowb.png') no-repeat;}
+.expertList li a:hover .expertPic img{opacity: 0.2;}
+.expertList li a:hover .hoverTct{opacity: 1}
+
 .qna{font-size:14px;}
 .qna .col-left{width:796px;float:left;}
 .qna .col-right{width:285px;float:right;}

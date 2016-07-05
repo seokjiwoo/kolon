@@ -126,15 +126,17 @@ module.exports = function() {
 		if (status == 200) {
 			var tags = '';
 
+
 			for (var key in result) {
 				var eachExpert = result[key];
+				//if (eachExpert.expertImageUrl == null) eachExpert.expertImageUrl = '../images/temp01.jpg';
 
-				tags += '<li><span class="thumb"><img src="'+eachExpert.expertImageUrl+'" alt="" /></span>';
+				tags += '<li><a href="#"><span class="thumb"><img src="'+eachExpert.expertImageUrl+'" alt="" /></span>';
 				tags += '<span class="info">';
 				tags += '<strong>'+eachExpert.serviceNames+'</strong>';
 				tags += '<span><em>'+eachExpert.expertCompany+'</em> '+eachExpert.expertName+'</span>';
 				tags += '<span>'+eachExpert.content+'</span>';
-				tags += '</span></li>';
+				tags += '</span></a></li>';
 			}
 
 			$('#expertList2').html(tags);
@@ -147,6 +149,13 @@ module.exports = function() {
 		debug.log(fileName, 'setElements');
 
 		self.colorbox = $(opts.colorbox.target);
+		$('#expertList').bxSlider({
+			minSlides: 5,
+			maxSlides: 5,
+			pager:false,
+			slideWidth: 200,
+			slideMargin:20
+		});
 	}
 
 	function setBindEvents() {
