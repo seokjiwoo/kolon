@@ -39,6 +39,10 @@ function ClassLoginController() {
 			 */
 			refreshMyInfo: refreshMyInfo,
 			/**
+			 * 비번 검증
+			 */
+			confirmPassword: confirmPassword,
+			/**
 			 * 회원가입을 위한 모바일 인증번호 재발급 요청
 			 */
 			resendAuthNumber: resendAuthNumber
@@ -97,6 +101,23 @@ function ClassLoginController() {
 			$(callerObj).trigger('myInfoResult', [status, result]);
 		});
 	}
+
+	/**
+	 * 비번 검증
+	 */
+	function confirmPassword(pw) {
+		Super.callApi('/apis/member/confirmPassword', 'POST', {
+			"password": pw
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('confirmPasswordResult', [200, result]);
+			} else {
+				Super.handleError('confirmPassword', result);
+				$(callerObj).trigger('confirmPasswordResult', [status, result]);
+			}
+		}, false);
+	}
+	
 
 	/**
 	 * 회원가입을 위한 모바일 인증번호 재발급 요청

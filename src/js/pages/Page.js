@@ -6,6 +6,7 @@ module.exports = function() {
 	
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
+	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
 	
 	var lnbScroller;
 	var pageId;
@@ -97,8 +98,30 @@ module.exports = function() {
 			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
 			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
 			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
+
+			$('.profileEditButton').click(function(e){
+				e.preventDefault();
+				closeLnbHandler();
+				Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+					onSubmit: function() {
+						loginController.confirmPassword($('#checkPw').val());
+					}
+				});
+			});
 		}
 	};
+
+	function confirmPasswordResultHandler(e, status, result) {
+		switch(status) {
+			case 200:
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/1440 });	// 1 minutes
+				location.href = '/myPage/profileEdit.html';
+				break;
+			case 400:
+				alert(result.message);
+				break;
+		}
+	}
 	
 	/**
 	 * GNB/LNB 초기화
@@ -126,20 +149,13 @@ module.exports = function() {
 			bounce: false
 		});
 
-		$('#btnLnb').on('click', function(e) {//lnb open
-			e.preventDefault();
-			$('#lnbWrapper').animate({'left':'0'}, 500);
-			$('#dim').show();
-		});
-		$('#profileClose').on('click', function(e) {//lnb close
-			e.preventDefault();
-			$('#lnbWrapper').animate({'left':'-285px'}, 500);
-			$('#dim').hide();
-		});
+		$('#btnLnb').on('click', openLnbHandler);
+		$('#profileClose').on('click', closeLnbHandler);
+		$('#dim').on('click', closeLnbHandler);
+
 		$('.depth01.toggle').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
 			$(this).siblings().slideToggle(400, function() {
-				console.log(';;;');
 				lnbScroller.refresh();
 			});
 		});
@@ -147,10 +163,10 @@ module.exports = function() {
 			e.preventDefault();
 			$(this).toggleClass('opened');
 			$('#myMenu').slideToggle(400, function() {
-				console.log(';;;');
 				lnbScroller.refresh();
 			});
 		});
+
 		$('#searchOpen').on('click', function(e) {// search drop-down
 			e.preventDefault();
 			var searchBtn = $(this).parent().parent().hasClass('bannerHide');
@@ -177,6 +193,7 @@ module.exports = function() {
 			}
 			e.stopPropagation();
 		});
+
 		$(window).scroll(function () { // topMenu scroll bg
 			if ($(document).scrollTop() > 60){
 				$('.topMenu').css('background','#fff');
@@ -201,6 +218,20 @@ module.exports = function() {
 			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
 			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
 		});
+	};
+
+	function openLnbHandler(e) {
+		e.preventDefault();
+		$('#lnbWrapper').animate({'left':'0'}, 500);
+		$('#dim').show();
+	};
+
+	function closeLnbHandler(e) {
+		if (e != undefined) e.preventDefault();
+		if (!$('#floatingToggle').hasClass('opened')) {
+			$('#lnbWrapper').animate({'left':'-285px'}, 500);
+			$('#dim').hide();
+		}
 	};
 
 	// main card event Listener
