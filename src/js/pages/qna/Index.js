@@ -87,15 +87,50 @@ module.exports = function() {
 				tags += '<span class="it">'+eachOpinion.category+'</span>'+eachOpinion.title+'</a></strong>';
 				tags += '<div class="conboxTxt"><p class="except">'+eachOpinion.content+'</p><span class="more">더보기</span></div>';
 				tags += '<div class="commentCount">';
-				tags += '<p><span>'+eachOpinion.answerCount+'개</span> 의견 <em>미답변</em></p>';
-				tags += '<a href="#" class="btnSizeS btnColor02">의견작성</a>';
+				if (eachOpinion.answers.length == 0) {
+					tags += '<p>미답변</p>';
+				} else {
+					tags += '<p><span>'+eachOpinion.answers.length+'개</span> 의견</p>';
+				}
+				tags += '<button id="writeCommentButton'+key+'" class="btn btnSizeS btnColor02 writeCommentButton">의견작성</button>';
 				tags += '</div>';
 				tags += '</div>';
 
-				tags += '</div></li>';
+				tags += '<div id="commentArea'+key+'" class="commentArea noMoreBtn">';
+				// tags += '<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>';
+				tags += '<ul>';
+				for (var answerKey in eachOpinion.answers) {
+					var eachAnswer = eachOpinion.answers[answerKey];
+
+					tags += '<li>';
+					tags += '<div class="commentName"><div class="name">';
+					tags += '<span><img src="'+eachAnswer.expertImageUrl+'" alt="" /></span>';
+					tags += '<span><span><em>'+eachAnswer.expertCompany+'</em> '+eachAnswer.expertName+'</span>';
+					tags += '<span class="except">'+eachAnswer.serviceNames.join(', ')+'</span></span>';
+					tags += '</div></div>';
+					tags += '<p class="txt">'+eachAnswer.content+'</p>';
+					tags += '<p class="date">'+eachAnswer.createDate+' <i><span>'+eachAnswer.helpCount+'</span></i></p>'; // 스마일 클릭시 도움됨 표시 - <i class="on"><span>30</span></i>
+					tags += '</li>';
+				}
+				tags += '</ul>';
+				
+				tags += '<div class="commentInput"><form method="post" action="/"><fieldset><legend>댓글 입력 폼</legend><div class="commentTextarea">';
+				tags += '<textarea class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>';
+				tags += '<div class="commentBtn">';
+				tags += '<div class="thumb"><span><img src="../images/temp01.jpg" alt="" /></span></div>';
+				tags += '<button class="btn confirmBtn">등록</button>';
+				tags += '</div></div></fieldset></form></div>';
+
+				tags += '</div></div></li>';
 			}
 
 			$('#opinionList').html(tags);
+
+			$('.writeCommentButton').click(function(e){
+				var pId = $(this).attr('id').substr(18);
+				$('#commentArea'+pId).addClass('showCommentInput');
+			});
+			
 			$('.except').dotdotdot({watch:'window'});
 		} else {
 			console.log('통신에러');

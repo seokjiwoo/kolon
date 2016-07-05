@@ -87,6 +87,8 @@
 .opinionArea{margin-top:17px; border-top:1px solid #ccc;}
 .opinionArea > ul > li {border-bottom:1px solid #ccc;}
 .opinionArea > ul > li:first-child{margin-top:0;}
+.opinionArea > ul > li:last-child{border-bottom:0;}
+.opinionArea.showCommentInput > ul > li {border-bottom:1px solid #ccc;}
 .opinionbox .title{padding:0 20px;overflow:hidden;}
 .opinionbox.no .title {background:#8e6edf;}
 .opinionbox .title p{float:left;margin-top:29px;color:#666;}
@@ -121,6 +123,7 @@
 .opinionbox.no .commentCount p span{color:#999;}
 
 .opinionbox .commentArea{width:100%; overflow:hidden; background:#f8f8f8; padding-top:30px;}
+.opinionbox .commentArea.noMoreBtn {padding-top:0}
 .opinionbox .commentArea > p{text-align:center;}
 .opinionbox .moreWrap {width:100%; text-align:center; margin-bottom:30px;}
 .opinionbox .moreBtn{width:117px;height:30px;padding-left:23px;background:#fff;border-radius:14px;display:inline-block;text-align:left; position:relative;}
@@ -152,7 +155,8 @@
 .opinionbox .txt{width:480px;float:left;margin:14px 0 0 35px;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;color:#333; font-size:14px;}
 .opinionbox .txt a {color:#333;}
 
-.opinionbox .commentInput{overflow:hidden; padding:20px;}
+.opinionbox .commentInput{overflow:hidden; padding:20px; display:none; }
+.opinionbox .showCommentInput .commentInput{ display:block; }
 .opinionbox .commentInput .thumb{width:40px;float:left;}
 .opinionbox .commentInput .thumb span{width:40px;height:40px;overflow:hidden;display:block;background:#fff;border-radius:100%;}
 .opinionbox .commentInput .thumb span img{width:40px;}
