@@ -11,6 +11,9 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
 	fileName = 'myPage/Index.js';
+	
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
 
 	var opts = {
 		colorbox : {
@@ -25,7 +28,7 @@ module.exports = function() {
 			popProfilePic : 'popProfilePic'
 		},
 		imageUploader : {
-			api_url : APIController().API_URL+'/apis/opinions/images',
+			api_url : APIController().API_URL+'/apis/member/profileImage',
 			flashOpts : {
 				swf : '../images/swf/imagePreview.swf',
 				id : 'imageUpoader',
@@ -58,6 +61,7 @@ module.exports = function() {
 	
 	function init(options) {
 		Super.init();
+
 		if (Super.Super.loginData == null) {
 			alert('로그인이 필요한 페이지입니다');
 			location.href = '/member/login.html';
@@ -74,18 +78,23 @@ module.exports = function() {
 	function setElements() {
 		debug.log(fileName, 'setElements');
 
+		self.colorbox = $(opts.colorbox.target);
+	}
+
+	function myInfoResultHandler(e) {
 		$('#myPageHeaderName').text(Super.Super.loginData.memberName);
 		$('#myPageHeaderId').text(Super.Super.loginData.email);
-
+		
 		if (Super.Super.loginData.imageUrl != null) $('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
-		$('#myPageHeaderNoticeCount').html('0'); // <!-- <span class="newBox">0<span class="new">N</span></span> -->
-		$('#myPageHeaderScrapCount').html('0');
-		$('#myPageHeaderLikeCount').html('0');
-		$('#myPageHeaderFollowingCount').html('0');
-		$('#myPageHeaderPointCount').html('0');
-		$('#myPageHeaderMyCartCount').html('0');
 
-		self.colorbox = $(opts.colorbox.target);
+		var activity = Super.Super.loginData.myActivity;
+		var notice = activity.noticeNewYn == 'Y' ? '<span class="newBox">'+activity.noticeCount+'<span class="new">N</span></span>' : activity.noticeCount
+		$('#myPageHeaderNoticeCount').html(notice);
+		$('#myPageHeaderScrapCount').html(activity.scrapCount);
+		$('#myPageHeaderLikeCount').html(activity.likeCount);
+		$('#myPageHeaderFollowingCount').html(activity.followCount);
+		$('#myPageHeaderPointCount').html('TBD');
+		$('#myPageHeaderMyCartCount').html(activity.cartCount);
 	}
 
 	function setBindEvents() {
@@ -110,6 +119,8 @@ module.exports = function() {
 
 	function onUploadSuccess(e, result) {
 		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
+		alert('프로필 사진 변경이 완료되었습니다');
+		location.reload(true);
 	}
 
 	function onUploadFailure(e, jqXHR) {

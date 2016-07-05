@@ -45,14 +45,16 @@ function ClassLoginModel() {
 	
 	function setLoginInfo(data) {
 		var imageUrl = null;
-		if (data.memberImages != null) imageUrl = data.memberImages.imageUrl;
+		if (data.myInfo.memberImages != null) imageUrl = data.myInfo.memberImages.imageUrl;
 		
 		Cookies.set(COOKIE_NAME, {
-			memberNumber: data.memberNumber,
-			stateCode: data.memberStateCode,
-			memberName: data.memberName,
-			email: data.email,
-			imageUrl: imageUrl
+			memberNumber: data.myInfo.memberNumber,
+			stateCode: data.myInfo.memberStateCode,
+			memberName: data.myInfo.memberName,
+			email: data.myInfo.email,
+			imageUrl: imageUrl,
+			myMenu: data.myMenu,
+			myActivity: data.myActivity,
 		});
 	};
 

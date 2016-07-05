@@ -2,6 +2,31 @@
 .myOpinion{float:right;width:895px;font-size:14px;}
 .myOpinion .opinionArea{margin-top:0;}
 
+.expert .pageTit{font-family:'RobotoL','NotoSansL', sans-serif;color: #000;font-size: 40px;background:none }
+.expert .pageTit:before, .pageTit:after{content: '';display: inline-block;width: 70px;height: 1px;background: #d9d9d9;vertical-align: middle;}
+.expert .pageTit:before{margin-right: 20px;}
+.expert .pageTit:after{margin-left: 20px;}
+
+.expert .subTop{background: url('../images/top_expert.jpg') no-repeat;background-size: cover;}
+.expert .bx-wrapper{position: relative;margin:35px auto 19px; }
+.expert .singleCard .bx-wrapper{margin-top:0;}
+.expert .bx-wrapper .bx-controls-direction a{margin-top: -70px}
+.expert .bx-wrapper .bx-controls-direction .bx-prev{left: -120px;}
+.expert .bx-wrapper .bx-controls-direction .bx-next{right: -120px;}
+.expert .pageTit{color: #fff;}
+.expert .pageTit:before, .expert .pageTit:after{background: #fff;}
+.expert .subTit b{color: #d1a181}
+
+.expertList li a{display: block;font-size: 14px;}
+.expertList .expertPic{position: relative;width:200px;height: 200px;border-radius: 50%;overflow: hidden;background: #000;}
+.expertList .expertPic img{display: block;width: 100%;}
+.expertList .expertName{margin-top:20px;color: #fff;}
+.expertList .subTit{margin-top:7px;color: #999;line-height: 1.2em;}
+.expertList .hoverTct{opacity: 0;position: absolute;top: 70px;left: 0;width: 100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #bea48d;line-height: 1.4em;font-size: 20px;}
+.expertList .hoverTct:after{content: '';display: block;width: 18px;height: 17px;margin:13px auto;background: url('../images/ico_arrowb.png') no-repeat;}
+.expertList li a:hover .expertPic img{opacity: 0.2;}
+.expertList li a:hover .hoverTct{opacity: 1}
+
 .qna{font-size:14px;}
 .qna .col-left{width:796px;float:left;}
 .qna .col-right{width:285px;float:right;}
@@ -62,6 +87,8 @@
 .opinionArea{margin-top:17px; border-top:1px solid #ccc;}
 .opinionArea > ul > li {border-bottom:1px solid #ccc;}
 .opinionArea > ul > li:first-child{margin-top:0;}
+.opinionArea > ul > li:last-child{border-bottom:0;}
+.opinionArea.showCommentInput > ul > li {border-bottom:1px solid #ccc;}
 .opinionbox .title{padding:0 20px;overflow:hidden;}
 .opinionbox.no .title {background:#8e6edf;}
 .opinionbox .title p{float:left;margin-top:29px;color:#666;}
@@ -96,6 +123,7 @@
 .opinionbox.no .commentCount p span{color:#999;}
 
 .opinionbox .commentArea{width:100%; overflow:hidden; background:#f8f8f8; padding-top:30px;}
+.opinionbox .commentArea.noMoreBtn {padding-top:0}
 .opinionbox .commentArea > p{text-align:center;}
 .opinionbox .moreWrap {width:100%; text-align:center; margin-bottom:30px;}
 .opinionbox .moreBtn{width:117px;height:30px;padding-left:23px;background:#fff;border-radius:14px;display:inline-block;text-align:left; position:relative;}
@@ -127,7 +155,8 @@
 .opinionbox .txt{width:480px;float:left;margin:14px 0 0 35px;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;color:#333; font-size:14px;}
 .opinionbox .txt a {color:#333;}
 
-.opinionbox .commentInput{overflow:hidden; padding:20px;}
+.opinionbox .commentInput{overflow:hidden; padding:20px; display:none; }
+.opinionbox .showCommentInput .commentInput{ display:block; }
 .opinionbox .commentInput .thumb{width:40px;float:left;}
 .opinionbox .commentInput .thumb span{width:40px;height:40px;overflow:hidden;display:block;background:#fff;border-radius:100%;}
 .opinionbox .commentInput .thumb span img{width:40px;}

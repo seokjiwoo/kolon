@@ -4,6 +4,10 @@ module.exports = function() {
 	var SuperClass = require('../pagesCommon/PageCommon.js');
 	var Super = SuperClass();
 	
+	var loginController = require('../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
+	
 	var lnbScroller;
 	var pageId;
 
@@ -70,6 +74,54 @@ module.exports = function() {
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 	};
+
+	/**
+	 * 내 정보 갱신 반영
+	 */
+	function myInfoResultHandler(e) {
+		if (Super.loginData != null) {
+			// 로그인 상태일 때
+			$('body').addClass('login');
+			$('#buttonLogInTop').remove();
+			// #topMemberInfoAlarm - ?
+			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
+			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
+
+			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+Super.loginData.email);
+			$('#myMenuButtonList').removeClass('log');
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');
+			$('#menuToggle').show();
+			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
+
+			$('#menuCountOrderGoods').text(Super.loginData.myMenu.orderCount);
+			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
+			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
+			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
+
+			$('.profileEditButton').click(function(e){
+				e.preventDefault();
+				closeLnbHandler();
+				Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+					onSubmit: function() {
+						loginController.confirmPassword($('#checkPw').val());
+					}
+				});
+			});
+		}
+	};
+
+	function confirmPasswordResultHandler(e, status, result) {
+		switch(status) {
+			case 200:
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/1440 });	// 1 minutes
+				location.href = '/myPage/profileEdit.html';
+				break;
+			case 400:
+				alert(result.message);
+				break;
+		}
+	}
 	
 	/**
 	 * GNB/LNB 초기화
@@ -87,20 +139,6 @@ module.exports = function() {
 			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
 			$('#menuToggle').hide();
 			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
-		} else {
-			// 로그인 상태일 때
-			$('body').addClass('login');
-			$('#buttonLogInTop').remove();
-			// #topMemberInfoAlarm - ?
-			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
-			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
-
-			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+Super.loginData.email);
-			$('#myMenuButtonList').removeClass('log');
-			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');
-			$('#menuToggle').show();
-			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 		}
 
 		lnbScroller = new IScroll('#lnbWrapper', {
@@ -111,20 +149,13 @@ module.exports = function() {
 			bounce: false
 		});
 
-		$('#btnLnb').on('click', function(e) {//lnb open
-			e.preventDefault();
-			$('#lnbWrapper').animate({'left':'0'}, 500);
-			$('#dim').show();
-		});
-		$('#profileClose').on('click', function(e) {//lnb close
-			e.preventDefault();
-			$('#lnbWrapper').animate({'left':'-285px'}, 500);
-			$('#dim').hide();
-		});
+		$('#btnLnb').on('click', openLnbHandler);
+		$('#profileClose').on('click', closeLnbHandler);
+		$('#dim').on('click', closeLnbHandler);
+
 		$('.depth01.toggle').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
 			$(this).siblings().slideToggle(400, function() {
-				console.log(';;;');
 				lnbScroller.refresh();
 			});
 		});
@@ -132,10 +163,10 @@ module.exports = function() {
 			e.preventDefault();
 			$(this).toggleClass('opened');
 			$('#myMenu').slideToggle(400, function() {
-				console.log(';;;');
 				lnbScroller.refresh();
 			});
 		});
+
 		$('#searchOpen').on('click', function(e) {// search drop-down
 			e.preventDefault();
 			var searchBtn = $(this).parent().parent().hasClass('bannerHide');
@@ -162,6 +193,7 @@ module.exports = function() {
 			}
 			e.stopPropagation();
 		});
+
 		$(window).scroll(function () { // topMenu scroll bg
 			if ($(document).scrollTop() > 60){
 				$('.topMenu').css('background','#fff');
@@ -186,6 +218,20 @@ module.exports = function() {
 			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
 			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
 		});
+	};
+
+	function openLnbHandler(e) {
+		e.preventDefault();
+		$('#lnbWrapper').animate({'left':'0'}, 500);
+		$('#dim').show();
+	};
+
+	function closeLnbHandler(e) {
+		if (e != undefined) e.preventDefault();
+		if (!$('#floatingToggle').hasClass('opened')) {
+			$('#lnbWrapper').animate({'left':'-285px'}, 500);
+			$('#dim').hide();
+		}
 	};
 
 	// main card event Listener
