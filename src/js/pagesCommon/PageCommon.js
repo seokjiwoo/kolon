@@ -13,6 +13,7 @@ module.exports = function() {
 	var winH;
 	var pageId;
 
+	var loginController = require('../controller/LoginController');
 	var loginDataModel = require('../model/LoginModel');
 	var loginData = loginDataModel.loginData();
 
@@ -70,6 +71,8 @@ module.exports = function() {
 			domains: ['gmail.com', 'naver.com', 'nate.com', 'daum.net', 'hanmail.net', 'hotmail.com', 'yahoo.co.kr', 'dreamwiz.com', 'lycos.co.kr', 'paran.com', 'freechal.com', 'hitel.net', 'hanmir.com', 'korea.com', 'empal.com'],
 			topLevelDomains: ["com", "net", "org", "go", "kr", "co", "co.kr", "or.kr", "go.kr", "ac.kr"]
 		});
+
+		if (loginData != null) loginController.refreshMyInfo();
 		
 		initTab();
 		initTabContentLayout();

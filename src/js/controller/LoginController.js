@@ -35,6 +35,10 @@ function ClassLoginController() {
 			 */
 			logout: logout,
 			/**
+			 * 로그인 정보 갱신
+			 */
+			refreshMyInfo: refreshMyInfo,
+			/**
 			 * 회원가입을 위한 모바일 인증번호 재발급 요청
 			 */
 			resendAuthNumber: resendAuthNumber
@@ -61,7 +65,7 @@ function ClassLoginController() {
 						// 로그인 성공
 						Super.callApi('/apis/me', 'GET', {}, function(status, result) {
 							if (status == 200) {
-								model.setLoginInfo(result.data.data.myInfo);
+								model.setLoginInfo(result.data.data);
 							} else {
 								Super.handleError('login/myData', status);
 							}
@@ -79,6 +83,20 @@ function ClassLoginController() {
 			}
 		}, false);
 	};
+
+	/**
+	 * 내 정보 갱신
+	 */
+	function refreshMyInfo() {
+		Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				model.setLoginInfo(result.data.data);
+			} else {
+				Super.handleError('login/myData', status);
+			}
+			$(callerObj).trigger('myInfoResult', [status, result]);
+		});
+	}
 
 	/**
 	 * 회원가입을 위한 모바일 인증번호 재발급 요청
