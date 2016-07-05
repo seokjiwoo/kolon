@@ -60,8 +60,8 @@ function ClassScrapController() {
 		return callerObj;	
 	};
 	
-	function scrapList(attr) {
-		Super.callApi('/apis/scraps', 'GET', {}, function(status, result) {
+	function scrapList(scrapTargetCd) {
+		Super.callApi('/apis/scraps', 'GET', { scrapTargetCd: scrapTargetCd || 'ALL' }, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('scrapListResult', [status, result]);
 			} else {
