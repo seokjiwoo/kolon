@@ -219,7 +219,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .checkbox {position: relative;margin-top:18px;}
 .checkbox label{font-family:'RobotoR','NotoSansR', sans-serif;font-size: 16px;color: #000;}
 .checkbox label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.checkbox label.on:before{background-color: #a9c700}
+.checkbox label.on:before{background-color: #00aeb9}
 
 
 .listSquare{font-family:'RobotoM','NotoSansM', sans-serif;font-size: 14px;}
