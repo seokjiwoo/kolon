@@ -7,6 +7,19 @@
 .cardLayer .cardWrap li {position:relative; background:none;}
 .cardLayer .cardWrap li + li {margin-left:10px;}
 
+.cardTitle {}
+.cardTitle .cardTitleCont {width:100%; position:relative;}
+.cardTitle .cardTitleCont .cardTitleBg {position:absolute; top:0; left:0;}
+.cardTitle.newForm {width:590px; height:716px; position:absolute; top:1292px; left:20px; background:green;}
+.cardTitle.common {width:896px; height:1064px; position:absolute; top:3034px; right:20px; background:green;}
+.cardTitle.specialist {width:1201px; height:1064px; position:absolute; top:5122px; right:20px; background:green;}
+.cardTitle.master {width:1201px; height:890px; position:absolute; top:7036px; left:20px; background:green;}
+
+.cardTitle.newForm .cardTitleCont .cardTitleBg {width:805px; height:1849px; background:url('../images/main_bg_newForm.png') 0 0 no-repeat;}
+.cardTitle.common .cardTitleCont .cardTitleBg {width:1075px; height:1537px; background:url('../images/main_bg_common.png') 0 0 no-repeat;}
+.cardTitle.specialist .cardTitleCont .cardTitleBg {width:1427px; height:1660px; background:url('../images/main_bg_specialist.png') 0 0 no-repeat;}
+.cardTitle.master .cardTitleCont .cardTitleBg {width:1006px; height:1271px; background:url('../images/main_bg_master.png') 0 0 no-repeat;}
+
 /* hexagon css */
 .hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
 .hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
@@ -300,10 +313,6 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .cardType07 .cardCat + h2.cardTit {margin-top:50px;}
 .cardWrap .cardType07 a {color:#000;}
 
-/*.cardWrap .cardType07 .cardIntro{color: #666}
-.cardWrap .cardType07 .cardIntro:before{background:#666;}
-.cardWrap .cardType07 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}*/
-
 .cardWrap .cardType08{}
 .cardWrap .cardType08 .hexagon.bg:after {background: url('/images/card_bg.png') 0 100% no-repeat #f17992; background-size:261px 148px;}
 .cardWrap .cardType08 .cardCon:after {display:none;}
@@ -316,7 +325,7 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .cardType08 a {color:#fff;}
 
 .cardWrap .cardType09 .cardCon:after {display:none;}
-.cardWrap .cardType09 .hexagon {width:283px; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
+.cardWrap .cardType09 .hexagon {width:283px; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; background:#fff;}
 .cardWrap .cardType09 .hexagon .hexTop {border-top:1px solid #e5e5e5; border-right:1px solid #e5e5e5;}
 .cardWrap .cardType09 .hexagon .hexBottom {border-left:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5;}
 .cardWrap .cardType09 a {color:#000;}
@@ -327,7 +336,6 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .cardType09 .cardIntro2{color: #666; margin-top:10px;}
 .cardWrap .cardType09 .cardEnter{bottom:40px;margin-left:-38px;padding:10px 25px;background:#999;color: #fff;font-size:14px;font-family:'RobotoR','NotoSansR', sans-serif;border:0;outline:0;border-radius: 20px;cursor: pointer;}
 .cardWrap .cardType09 .cardRemove{background-image: url('../images/btn_closeG.png');}
-/*.cardWrap .cardType09 .cardCon a{display: inline-block;width:64px;height: 64px;margin:20px 5px 0;position: relative;z-index: 2; border-radius:50%;}*/
 .cardWrap .cardType09 .cardCon .btn01{display:inline-block;}
 .cardWrap .cardType09 .cardCon .btn02{background-position:-64px 0; display:inline-block;}
 .cardWrap .cardType09 .cardCon a:hover{background-position:0 -64px; }
@@ -353,17 +361,6 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .cardType10 .cardCat:before{background-position:-84px 0}
 .cardWrap .cardType10 a {color:#000;}
 
-/*
-.cardWrap .cardDetail{position: absolute;left:0;bottom:13px;width:100%;height:130px;z-index:1;}
-.cardWrap .cardDetail:before{content:'';display: inline-block;width:0;height: 100%;vertical-align: middle;}
-.cardWrap .cardDetailWrap{display: inline-block;margin-left: -5px;vertical-align: middle;}
-*/
-
-/*
-.cardWrap .cardDetail span:before{content:'';display: inline-block;width: 12px;height: 13px;margin:0 7px;background:url('../images/ico_card_popular.png') no-repeat;}
-.cardWrap .cardDetail .comt:before{background-position:-12px 0}
-.cardWrap .cardDetail .scrap:before{background-position:-25px -10px}
-*/
 .cardWrap .cardCollect {overflow: hidden;width:148px;margin:10px auto 0;}
 .cardWrap .cardCollect li{overflow: hidden;position: relative;float: left;width:64px;height: 64px;margin:5px;font-size: 0;}
 .cardWrap .cardCollect label{display: block;width: 100%;height: 100%;cursor: pointer;background-color: #eee;border-radius: 50%;}
