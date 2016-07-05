@@ -19,7 +19,7 @@
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
 	position: absolute;
-	top: 0;
+	top: -5px;
 	width: 27px;
 	height: 27px;
 	border:none;
