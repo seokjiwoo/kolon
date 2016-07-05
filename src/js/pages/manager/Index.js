@@ -24,11 +24,21 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+		var winW = $(window).width();
+		$('#managerSlider img').css('margin-left',-(1920-winW)/2);
+		$(window).resize(function() {
+			var winW = $(window).width();
+			if (winW > 1220){
+				$('#managerSlider img').css('margin-left',-(1920-winW)/2);
+			}
+		});
 		var slider = $('#managerSlider').bxSlider({
 			pager:false,
 			nextSelector: '#sliderNext',
   			prevSelector: '#sliderPrev',
 			onSlideAfter: function (currentSlideNumber, totalSlideQty, currentSlideHtmlObject) {
+				$('#slideCon0'+(currentSlideHtmlObject)).fadeIn();
+				$(currentSlideNumber).siblings().find('.slideCon').hide();
 				switch(currentSlideHtmlObject) {
 					case 0:
 						$('.bx-prev').css('background-position','0 0');
