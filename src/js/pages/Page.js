@@ -114,12 +114,12 @@ module.exports = function() {
 		$('#btnLnb').on('click', function(e) {//lnb open
 			e.preventDefault();
 			$('#lnbWrapper').animate({'left':'0'}, 500);
-			$('#dim').show();
+			$('#dim').show().css('z-index','4');
 		});
 		$('#profileClose').on('click', function(e) {//lnb close
 			e.preventDefault();
 			$('#lnbWrapper').animate({'left':'-285px'}, 500);
-			$('#dim').hide();
+			$('#dim').hide().css('z-index','3');
 		});
 		$('.depth01.toggle').on('click', function(e) {//lnb menu drop-down
 			e.preventDefault();
