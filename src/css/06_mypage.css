@@ -480,6 +480,12 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my h2.secTit + .tbSet {margin-top:30px;}
 .my .oderSearch select + .btnSizeM2 { height:40px; margin-left:15px; font-family:'NotoSansR','RobotoR', sans-serif; font-size:14px;}
 
+#myCart table .optList{width: 70%;margin-left: 105px;margin-top: -35px;}
+#myCart table tr td .photoList{vertical-align: top;}
+.my .cartCont .price.fontL{color: #f2726b;}
+.my .cartCont .price.fontL b{font-size: 22px;}
+
+
 .my .tableStyle02{text-align: left;font-family:'RobotoR','NotoSansR', sans-serif;border-top: 1px solid #e8e8e8}
 .my .tableStyle02 th{width:90px;padding:15px 35px;background: #f7f7f7;border-bottom: 1px solid #e8e8e8;color: #000;}
 .my .tableStyle02 td{padding:15px 20px;border-bottom: 1px solid #e8e8e8}

@@ -8,21 +8,31 @@
 	<!-- @@include ../_template/menu.html -->
 	<div class="container bgTop">
 		<!-- @@include ../_template/my_depth01.html {"myMenu07":"on"} -->
-		<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
+		<div class="tabType01">
+			<ul>
+				<li class=""><a href="/myPage/myCartNewForm.html">뉴폼 상품</a></li>
+				<li class="on"><a href="/myPage/myCartShop.html">샵 상품</a></li>
+			</ul>
+		</div>
 		<div class="wrap">
-			<section class="singleCard" id="myActivity">
-				<h2 class="secTit">배송형 상품</h2>
+			<section class="singleCard" id="myCart">
+				<h2 class="secTit">샵 상품</h2>
 				<div class="cartCont">
 					<form method="post" action="/">
 						<table class="record">
 							<caption>배송형 상품에 대한 상품정보, 상품금액, 배송비, 주문금액 정보를 제공합니다.</caption>
 							<colgroup>
-								<col style="width:45%;"/><col style="width:20%;"/><col style="width:15%;"/><col style="width:20%;"/>
+								<col style="width:60%;"/>
+								<col style="width:10%;"/>
+								<col style="width:10%;"/>
+								<col style="width:7%;"/>
+								<col style="width:13%;"/>
 							</colgroup>
 							<thead>
 								<tr>
 									<th scope="col">상품정보</th>
 									<th scope="col">상품금액</th>
+									<th scope="col">할인금액</th>
 									<th scope="col">배송비</th>
 									<th scope="col">주문금액</th>
 								</tr>
@@ -39,10 +49,9 @@
 											<div class="photoList">
 												<a href="#">
 													<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-													<span class="cartInfo">
-														<em>24평</em>
+													<span class="cartInfo recordInfo">
+														<b class="owner">평코오롱 글로벌</b>
 														<span class="cartTit">[코오롱] 크리스탈 샹들리에</span>
-														<span>홈 인테리어</span>
 													</span>
 												</a>
 											</div>
@@ -59,22 +68,12 @@
 													</p>
 													<a href="#" class="btnDel">삭제</a>
 												</div>
-												<!-- 옵션 -->
-												<div class="option">
-													<p class="optionTit">모던 화이트</p>
-													<p class="optionPrice"><b>300,000</b> 원</p>
-													<p class="optionNum">
-														<a href="#" class="btnMinus">빼기</a>
-														<span class="num">1</span>
-														<a href="#" class="btnPlus">더하기</a>
-													</p>
-													<a href="#" class="btnDel">삭제</a>
-												</div>
 											</div>
 											<!--// 옵션 수량 선택 -->
 										</div>
 									</td>
 									<td><p class="price"><b>1,700,000</b> 원</p></td>
+									<td><p class="price"><b>1,000</b> 원</p></td>
 									<td>무료</td>
 									<td><p class="price fontL"><b>1,700,000</b> 원</p></td>
 								</tr>
@@ -89,10 +88,9 @@
 											<div class="photoList">
 												<a href="#">
 													<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-													<span class="cartInfo">
-														<em>24평</em>
+													<span class="cartInfo recordInfo">
+														<b class="owner">평코오롱 글로벌</b>
 														<span class="cartTit">[코오롱] 크리스탈 샹들리에</span>
-														<span>홈 인테리어</span>
 													</span>
 												</a>
 											</div>
@@ -135,6 +133,7 @@
 										</div>
 									</td>
 									<td><p class="price"><b>1,700,000</b> 원</p></td>
+									<td><p class="price"><b>1,000</b> 원</p></td>
 									<td>무료</td>
 									<td><p class="price fontL"><b>1,700,000</b> 원</p></td>
 								</tr>
@@ -147,35 +146,38 @@
 					</form>
 				</div>
 				<!-- 결제 정보 -->
-				<div class="cartCont">
-					<form method="post" action="/">
-						<div class="payTb payTbL payTb3">
-							<dl class="payS minus">
-								<dt><div>총 상품가격(2개)</div></dt>
-								<dd>
-									<div><span class="price fontS"><b>600,000</b> 원</span></div>
-								</dd>
-							</dl>
-							<dl class="payS equal">
-								<dt><div>총 배송비</div></dt>
-								<dd>
-									<div>
-										<span class="price fontS"><b>0</b> 원</span>
-									</div>
-								</dd>
-							</dl>
-							<dl class="payS">
-								<dt><div>결제예정금액</div></dt>
-								<dd>
-									<div><span class="price fontS"><b>2,602,500</b> 원</span></div>
-								</dd>
-							</dl>
-						</div>
-					</form>
+				<div class="payTb payTbL border" style="float: none;">
+					<dl class="payS minus">
+						<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
+						<dd><div><span class="price"><b>23,580,000</b> 원</span></div></dd>
+					</dl>
+					<dl class="payS equal">
+						<dt><div>총 할인가</div></dt>
+						<dd>
+							<div>
+								<ul class="tbList">
+									<li>
+										<span class="tbListTit">기본할인</span>
+										<span><b>0</b>원</span>
+									</li>
+									<li>
+										<span class="tbListTit">포인트</span>
+										<span><b>3,000</b>원</span>
+									</li>
+								</ul>
+							</div>
+						</dd>
+					</dl>
+					<dl class="payS">
+						<dt><div>총 결제금액</div></dt>
+						<dd>
+							<div><span class="price"><b class="italicNum">23,580,000</b> 원</span></div>
+						</dd>
+					</dl>
 				</div>
 				<!--// 결제 정보 -->
-				<div class="btnC">
-					<button type="submit" class="btn btnSizeL btnColor02 btnWM">결제하기</button>
+				<div class="btnC mt40">
+					<button type="submit" class="btn btnSizeL btnColor02 btnWM">주문하기</button>
 				</div>
 			</section>
 		</div>
