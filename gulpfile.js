@@ -93,6 +93,11 @@ gulp.task('bowerBundle', function() {
                     "main": ["dist/isotope.pkgd.js"],
 					"dependencies": {}
                 },
+                // isotope layout plugin - isotope-packery
+				"isotope-packery": {
+					"main": ["packery-mode.pkgd.js"],
+					"dependencies": {}
+				},
 				// jQuery-ui 번들링 설정 : 사용하는 widget 만 번들링에 추가
 				'jquery-ui': {
 					'main': [
