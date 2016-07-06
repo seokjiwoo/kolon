@@ -79,21 +79,24 @@
 .contentCard .relateTag li a{display: inline-block;padding: 20px 35px;background: #fff;border-radius: 30px;box-shadow: 0px 3px rgba(0,0,0,0.1);font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;}
 
 /* manager */
+.subTop .mask{position: absolute;top: 0;left: 0;z-index: 2}
+
 .managerList{background: #48484a;}
 .managerList .topMenu{background: #fff !important;}
-.managerList .subTop{position: absolute;top: 400px;width:100%;background:none;text-align: right;z-index: 4;}
-.managerList .wrap{overflow: visible;padding: 0;}
+.managerList .topTit{position: absolute;top: 400px;width:100%;background:none;text-align: right;z-index: 4;}
+.managerList .subTop .wrap{overflow: visible;padding: 0;}
 .managerList .subTit{margin-right: 60px;}
 .managerList .subTit b{color: #977369;}
 .managerList .pageTit{height: 120px;background-position:680px 0;}
 .managerList .bx-wrapper{width: 100%;min-height: 662px;}
 .managerList .bx-wrapper li{overflow: hidden;min-height: 662px;}
 .managerList .bx-wrapper img{display: block;height: 100%;}
-.managerList .slideCon{display: none;position: absolute;top: 50%;right: 46%;margin-top: -100px;color: #fff;}
+.managerList .slideCon{position: absolute;top:0;left: 50%;width: 600px;height: 430px;margin:120px 0 0 -460px;z-index: 5}
+.managerList .slideCon a{display: none;color: #fff;padding: 90px 0 0 300px;height: 100%;text-align: left;}
 .managerList #slideCon00{display: block;}
-.managerList .slideCon .italicNum{font-size: 50px;}
-.managerList .slideCon .subTxt{margin-top: 15px;color: #aa7d71;font-family:'RobotoL','NotoSansL', sans-serif;}
-.managerList .slideCon .name{margin-top: 5px;font-family:'RobotoT','NotoSansT', sans-serif;font-size: 66px;}
+.managerList .slideCon a .italicNum{font-size: 50px;}
+.managerList .slideCon a .subTxt{margin-top: 15px;color: #aa7d71;font-family:'RobotoL','NotoSansL', sans-serif;}
+.managerList .slideCon a .name{margin-top: 5px;font-family:'RobotoT','NotoSansT', sans-serif;font-size: 66px;}
 
 .managerList .managerPager{position: relative;width: 1220px;margin:0 auto;z-index: 3}
 .managerList .managerPager a{position: absolute;display: block;width: 174px;height: 201px;background: url('../images/manager_thumb.png') no-repeat;font-size: 0;}

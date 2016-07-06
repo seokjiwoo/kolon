@@ -37,8 +37,7 @@ module.exports = function() {
 			nextSelector: '#sliderNext',
   			prevSelector: '#sliderPrev',
 			onSlideAfter: function (currentSlideNumber, totalSlideQty, currentSlideHtmlObject) {
-				$('#slideCon0'+(currentSlideHtmlObject)).fadeIn();
-				$(currentSlideNumber).siblings().find('.slideCon').hide();
+				$('#slideCon0'+(currentSlideHtmlObject)).fadeIn().css('display','block').siblings().hide();
 				switch(currentSlideHtmlObject) {
 					case 0:
 						$('.bx-prev').css('background-position','0 0');
