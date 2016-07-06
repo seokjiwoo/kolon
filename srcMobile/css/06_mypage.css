@@ -207,10 +207,6 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .scrapWrap ul.scrap li ul.scrapMoreList li a.delBtn:after {border:0; background-position:0 -38px;}
 .scrapWrap ul.scrap li .dim {display:none; width:100%; height:100%; background:#000; opacity:0.5; position:absolute; top:0; left:0;}
 .scrapbtnTopR {width:100%; text-align:right; padding:10px 0;}
-@media (max-width:320px){
-	.scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
-	.scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
-}
 
 /* scrap color */
 .scrapWrap ul.scrap li.scrapBg01 {background-color:#5ccfd0;}
@@ -324,7 +320,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .periodSearch > a{position:relative;height:58px;display:block;padding:0 15px;}
 .periodSearch > a span{display:block;padding-top:22px;font-size:15px;}
 .periodSearch > a em{position:absolute;right:17px;top:24px;width:15px;height:10px;overflow:hidden;display:block;background:url("../images/ico_toggleL.png") no-repeat 0 -7px;background-size:15px;}
-.periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;width:100%;background:#fff;padding:0 15px 15px;}
+.periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;z-index:10;width:100%;background:#fff;padding:0 15px 15px;}
 .periodSearch > a em.up{background-position:0 0;}
 .periodSearch .btnList{overflow:hidden;}
 .periodSearch .btnList li{width:19.5%;float:left;margin-left:0.5%;}
@@ -368,7 +364,8 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
 .productList .info span{display: inline-block;line-height: 15px;padding: 0 5px;border:1px solid #999;color: #00aeb9;border-color: #00aeb9;}
-.productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;color:#333;font-size:15px;}
+.productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;}
+.productList .info p a{color:#333;}
 .productList .productData{clear:both;}
 .productList .productData li{padding:15px 0;border-top:1px solid #ccc;}
 .productList .productData li:first-child{border-top:0;}
@@ -380,12 +377,20 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .productList .productData li p.count span:first-child{position:relative;padding-right:10px;}
 .productList .productData li p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .productList .productData li p.count span:last-child{color:#666;}
-.productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;}
+.productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
 .productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;}
 .productList .cancelArea .state,
 .productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
-.productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 3px;background-size:14px;}
+.productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px;}
 .productList .cancelArea .btnSizeS{float:right;}
+.productList .workInfo{padding-top:10px;margin-top:40px;clear:both;border-top:1px solid #ccc;clear:both;}
+.productList .workInfo .addr p{line-height:1.4em;}
+.productList .workInfo .addr p:first-child + p{color:#666;}
+.productList .workInfo ul{margin-top:15px;}
+.productList .workInfo ul li{line-height:1.4em;color:#666;font-size:14px;}
+.productList .workInfo ul li span{position:relative;display:inline-block;padding-right:17px;color:#000;}
+.productList .workInfo ul li span:after{position:absolute;right:8px;top:3px;content:"";display:block;width:1px;height:10px;background:#d5d5d5;}
+
 .productList .btnToggle{display: block;position: absolute;top:15px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
 .productList .btnToggle.open{background-position: 2px 5px;}
 
@@ -485,3 +490,48 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .myCartTotal ul.totalList > li ul.tList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
 .myCartTotal ul.totalList > li ul.tList li + li {margin-top:5px;}
 .slideMore {display:none;}
+
+.my .userArea{position:relative;min-height:280px;background:#fff url("../images/bg_user_top.png") no-repeat 0 0;background-size:100%;border-top:1px solid #ade1e5;}
+.my .userArea .profile{padding:25px 15px 0 15px;}
+.my .userArea .profile:after{content:"";display:block;clear:both;}
+.my .userArea .thumb{position:relative;width:90px;float:left;margin-right:20px;}
+.my .userArea .thumb:after{position:absolute;right:-9px;top:-10px;content:"";width:42px;height:46px;display:block;background:url("../images/bg_user_thumb.png") no-repeat 0 0;background-size:100%;}
+.my .userArea .thumb span{width:90px;height:90px;overflow:hidden;display:inline-block;border:2px solid #fef200;border-radius:100%;}
+.my .userArea .thumb span img{width:100%;vertical-align:top;}
+.my .userArea .info p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
+.my .userArea .info p:first-child{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;font-size:28px;font-weight:bold;}
+.my .userArea .info p:last-child{color:#666;}
+.my .userArea .menu ul{overflow:hidden;}
+.my .userArea .menu ul li{position:absolute;text-align:center;}
+.my .userArea .menu ul li:nth-child(1){left:15px;top:187px;}
+.my .userArea .menu ul li:nth-child(2){left:74px;top:139px;}
+.my .userArea .menu ul li:nth-child(3){left:133px;top:91px;}
+.my .userArea .menu ul li:nth-child(4){left:145px;top:166px;}
+.my .userArea .menu ul li:nth-child(5){left:204px;top:118px;}
+.my .userArea .menu ul li:nth-child(6){left:263px;top:70px;}
+.my .userArea .menu ul li a{width:85px;height:80px;display:block;background:url("../images/bg_mypage_menu.png") no-repeat 0 0;background-size:100%;color:#fff;}
+.my .userArea .menu ul li a span{display:block;}
+.my .userArea .menu ul li a span:first-child{position:relative;font-size:16px;margin-top:19px;letter-spacing:-2px;display:inline-block;}
+.my .userArea .menu ul li a span:last-child{margin-top:6px;font-size:12px;}
+.my .userArea .menu ul li a span:first-child i{position:absolute;right:-9px;top:-5px;width:12px;height:12px;display:block;background:url("../images/ico_n03.png") no-repeat 0 0;background-size:100%;}
+
+.my .result{height:30px;background:#f8f8f8;border-bottom:1px solid #ccc;text-align:center;}
+.my .result em{display:block;padding-top:8px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
+.my .result em span{color:#00aeb9;}
+.my .payInfo{padding:25px 15px 0;background:#fff;}
+.my .payInfo .top{padding-bottom:10px;border-bottom:1px solid #666;}
+.my .payInfo .top h3{font-size:15px;}
+
+@media (max-width:320px){
+  .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
+  .scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
+  
+  .userArea{min-height:260px;}
+  .userArea .menu ul li a{width:75px;height:75px;display:block;background:url("../images/bg_mypage_menu.png") no-repeat 0 0;background-size:100%;color:#fff;}
+  .userArea .menu ul li:nth-child(1){left:10px;top:172px;}
+  .userArea .menu ul li:nth-child(2){left:62px;top:130px;}
+  .userArea .menu ul li:nth-child(3){left:114px;top:88px;}
+  .userArea .menu ul li:nth-child(4){left:124px;top:154px;}
+  .userArea .menu ul li:nth-child(5){left:176px;top:112px;}
+  .userArea .menu ul li:nth-child(6){left:228px;top:70px;}
+}
