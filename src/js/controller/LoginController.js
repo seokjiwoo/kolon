@@ -45,7 +45,11 @@ function ClassLoginController() {
 			/**
 			 * 회원가입을 위한 모바일 인증번호 재발급 요청
 			 */
-			resendAuthNumber: resendAuthNumber
+			resendAuthNumber: resendAuthNumber,
+			/**
+			 * 휴면 계정 활성화
+			 */
+			reuseAccount: reuseAccount
 		}
 		
 		return callerObj;	
@@ -166,6 +170,20 @@ function ClassLoginController() {
 			}
 		}, true);
 	};
+
+	/**
+	 * 휴면 계정 활성화
+	 */
+	function reuseAccount() {
+		Super.callApi('/apis/member/reuse', 'POST', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('reuseAccountResult', [200, result]);
+			} else {
+				Super.handleError('reuseAccount', result);
+				$(callerObj).trigger('reuseAccountResult', [status, result]);
+			}
+		}, false);
+	}
 	
 	/*
 	SNS 계정 로그인 결과	 GET 	  /apis/member/socials/{socialType}/login
