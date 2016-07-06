@@ -23,19 +23,19 @@
 .cardTitle.newForm .cardFlagBg {left:-207px;}
 .cardTitle.newForm .cardFlagBg.flag01 {width:140px; height:266px; top:-634px; background:url('../images/main_bg_flag01.png') 0 0 no-repeat;}
 .cardTitle.newForm .cardFlagBg.flag02 {width:488px; height:603px; bottom:-2050px; background:url('../images/main_bg_flag03.png') 0 0 no-repeat;}
-.cardTitle.common {width:896px; height:1130px; position:absolute; top:3034px; right:0;}
+.cardTitle.common {width:896px; height:1050px; position:absolute; top:3034px; right:0;}
 .cardTitle.common .cardTitleCont .cardTitleSub {width:619px; top:393px; left:0;}
 .cardTitle.common .cardTitleCont .cardTitleSub .txt {font-size:35px; text-align:right;}
 .cardTitle.common .cardFlagBg {right:-206px;}
 .cardTitle.common .cardFlagBg.flag03 {width:142px; height:255px; top:-838px; background:url('../images/main_bg_flag02.png') 0 0 no-repeat;}
-.cardTitle.specialist {width:1214px; height:1126px; position:absolute; top:5122px; right:0;}
+.cardTitle.specialist {width:1214px; height:1136px; position:absolute; top:5122px; right:0;}
 .cardTitle.specialist .cardTitleCont .cardTitleSub {width:540px; top:71px; right:0;}
 .cardTitle.specialist .cardTitleCont .cardTitleSub .txt {width:100%; height:72px;}
 .cardTitle.specialist .cardTitleCont .cardTitleSub a.more {margin-top:175px; float:right;}
 .cardTitle.specialist .cardTitleCont .photoList {width:1201px; height:1024px; position:absolute; top:19px; left:0; }
 .cardTitle.specialist .cardFlagBg {right:-206px;}
 .cardTitle.specialist .cardFlagBg.flag04 {width:141px; height:245px; bottom:-1345px; background:url('../images/main_bg_flag05.png') 0 0 no-repeat;}
-.cardTitle.master {width:1171px; height:970px; margin-top:-141px; position:absolute; top:7036px; left:20px;}
+.cardTitle.master {width:1171px; height:1020px; margin-top:-141px; position:absolute; top:7036px; left:20px;}
 .cardTitle.master .cardTitleCont .cardTitleSub {width:718px; margin-bottom:15px; top:781px; left:22px;}
 .cardTitle.master .cardTitleCont .cardTitleSub .txt {width:443px; float:left; font-size:18px;}
 .cardTitle.master .cardTitleCont .cardTitleSub .txt img {width:101px;}
