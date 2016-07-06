@@ -97,7 +97,7 @@ module.exports = function() {
 
 
 	function setBindEvents() {
-		$(controller).on(SCRAP_EVENT.WILD_CARD, onScrapControllerListener);
+		$(controller).on(SCRAP_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 
 		self.categoryMenu.on('click', onCategoryMenuClick);
@@ -198,7 +198,7 @@ module.exports = function() {
 							});
 	}
 
-	function onScrapControllerListener(e, status, response) {
+	function onControllerListener(e, status, response) {
 		var eventType = e.type,
 		dummyData = {},
 		result = response;
@@ -220,7 +220,7 @@ module.exports = function() {
 						break;
 				}
 
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayData($(self.opts.templates.all), result);
 				break;
 			case SCRAP_EVENT.IMAGE_LIST:
@@ -239,7 +239,7 @@ module.exports = function() {
 						break;
 				}
 
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayData($(self.opts.templates.images), result);
 				break;
 			case SCRAP_EVENT.ADD_SCRAP:
@@ -261,7 +261,7 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
@@ -284,7 +284,7 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
@@ -306,7 +306,7 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
@@ -329,7 +329,7 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
@@ -352,7 +352,7 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
@@ -374,7 +374,7 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
