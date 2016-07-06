@@ -34,6 +34,7 @@
     "waypoints": "^4.0.0",
     "handlebars": "^4.0.5",
     "imagesloaded": "^4.1.0",
-    "isotope-packery": "^2.0.0"
+    "isotope-packery": "^2.0.0",
+    "moment": "^2.14.1"
   }
 }

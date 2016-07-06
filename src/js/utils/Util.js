@@ -96,7 +96,13 @@ function ClassUtils() {
 			 * @param   {String} format - mime type (optional)
 			 * @return  {Object|Boolean} {content:String, headers: {'Content-Type': 'multipart/form-data; boundary='+String, 'Content-Length': Number} }
 			 */
-			makeMultipartForm: makeMultipartForm
+			makeMultipartForm: makeMultipartForm,
+			/**
+			 * @description
+			 * 	array 의 unique 값만 반환
+			 * @type {Array}
+			 */
+			arrayUnique : arrayUnique
 		};
 	}
 	
@@ -271,6 +277,13 @@ function ClassUtils() {
 		} else {
 			return false;
 		}
+	}
+
+	// @see http://stackoverflow.com/questions/1960473/unique-values-in-an-array#answer-18262186
+	function arrayUnique(arr, keepLast) {
+		return arr.filter(function(value, index, array) {
+			return keepLast ? array.indexOf(value, index + 1) < 0 : array.indexOf(value) === index;
+		});
 	}
 
 }

@@ -29,33 +29,148 @@ module.exports = function() {
 		
 		debug.log(fileName, $, util);
 
-		controller.myTimeLine();
+		// controller.myTimeLine();
+		myTimeLineHandler();
 	}
 
 	function myTimeLineHandler(e, status, result) {
-		var myCommons = result.data.myCommons,
-		diff, diffHour, diffMin, diffSec;
+		result = {
+			"status": "200",
+			"message": "ok",
+			"data": {
+				"myCommons": [{
+					"myPageTypeCode": "BM_MYPAGE_TYPE_11",
+					"myPageTypeName": "가입 인사",
+					"myPageContents": "커먼에 가입하신걸 환영합니다.",
+					"registerDateTime": "2014-06-28 00:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2015-06-29 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-01-29 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-01-30 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-02-01 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-02-15 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-02-21 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-05-01 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-06-29 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-07-01 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-07-02 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-07-05 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-07-06 10:00:00.0"
+				}, {
+					"myPageTypeCode": "BM_MYPAGE_TYPE_15",
+					"myPageTypeName": "마이카트",
+					"myPageContents": "다이닝 스페이스 상품을 장바구니에 추가하셨습니다.",
+					"registerDateTime": "2016-07-06 10:00:00.0"
+				} ]
+			}
+		};
+//moment("20160706 10:00:00", "YYYY-MM-DD HH:mm:ss").fromNow();
+		var myCommons = result.data.myCommons;
 
 		win.console.log('myCommons', myCommons);
+		
+		// 최신기록부터..
+		myCommons.reverse();
+
+		var exRecordDate = '',
+		recordDate = '',
+		list = [],
+		listIdx;
+
 		$.map(myCommons, function(value) {
-			diff = util.diffDay({
-				startDate : new Date(value.registerDateTime),
-				endDate : new Date()
-			});
+			recordDate = win.moment(value.registerDateTime).format('YYYY년 M월');
 
-			diffHour = parseInt(diff.diffTime/(1000 * 60 * 60), 10);
-			diffMin = parseInt(diff.diffTime/(1000 * 60), 10);
-			diffSec = parseInt(diff.diffTime/(1000), 10);
-
-			if (diff.diffDay) {
-				win.console.log(diff.diffDay + '일전')
-			} else if (diffHour > 0) {
-				win.console.log(diffHour + '시간전');
-			} else if (diffMin > 0) {
-				win.console.log(diffMin + '분전');
-			} else if (diffSec > 0) {
-				win.console.log(diffSec + '초전');
+			if (exRecordDate !== recordDate) {
+				list.push({
+					'recordDate' : recordDate,
+					'records' : []
+				});
+				listIdx = list.length - 1;
+				exRecordDate = recordDate;
 			}
+
+			switch(value.myPageTypeCode) {
+				case 'BM_MYPAGE_TYPE_11':
+					value.recordType = 'recordType';
+					break;
+				case 'BM_MYPAGE_TYPE_10':
+					value.recordType = 'recordType01';
+					break;
+				default:
+					value.recordType = 'recordType01';
+					break;
+			}
+
+			list[listIdx].records.push(value);
 		});
+
+		list[listIdx].records[list[listIdx].records.length - 1].isJoin = true;
+
+		var source = $('#me-timeline-templates').html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(list));
+
+		$('#myTimeline').empty()
+						.append(insertElements);
+
+		$('#myTimeline').imagesLoaded()
+							.always(function() {
+								var list = $('#myTimeline').find('[data-timeline-info]');
+								$.each(list, function(index) {
+									;(function(target, delay) {
+										win.setTimeout(function() {
+											target.addClass('has-animate');
+										}, delay);
+										target.closest('.js-timeline-wrap').addClass('has-animate');
+									})($(this),index * 200);
+								});
+							});
 	}
 };

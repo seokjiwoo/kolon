@@ -10,14 +10,16 @@
 		<!-- @@include ../_template/my_depth01.html {"myMenu05":"on"} -->
 		<section  class="wrap timeCard" id="following">
 			<h2 class="hide">마이커먼 팔로잉 리스트</h2>
-			<form action="">
+			<form class="js-search-form">
 				<fieldset>
 					<legend class="hide">팔로잉 전문가 검색</legend>
 					<label for="followSearch" class="hide">팔로잉 전문가 검색</label>
-					<input type="text" id="followSearch" placeholder="ID 혹은 소속을 입력하세요.">
-					<button type="submit">검색</button>
+					<input type="text" id="followSearch" class="js-inp" placeholder="ID 혹은 소속을 입력하세요.">
+					<button type="submit" class="js-btn">검색</button>
 				</fieldset>
 			</form>
+			<!-- [D] 마크업 원본 -->
+			<!--
 			<div class="recordWrap">
 				<ul>
 					<li>
@@ -29,8 +31,8 @@
 								<span class="myRate"><b>15</b>판매상품</span>
 							</li>
 							<li class="btnFollow">
-								<!-- 팔로잉 해제 시 --><a href="" class="btnSizeM dismiss">팔로우</a>
-								<!-- <a href="" class="btnSizeM btnColor01">팔로잉</a> -->
+								팔로잉 해제 시<a href="" class="btnSizeM dismiss">팔로우</a>
+								<a href="" class="btnSizeM btnColor01">팔로잉</a>
 							</li>
 							<li class="imgWrap">
 								<ul>
@@ -140,9 +142,94 @@
 					</li>
 				</ul>
 			</div>
+			-->
+			<!--// [D] 마크업원본 -->
+			
+			<div class="recordWrap"></div>
+
 		</section>
 		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<style>
+	.js-follow-list.has-animate {
+		opacity: 1;
+		-webkit-transform:translateY(0px);-moz-transform:translateY(0px);-ms-transform:translateY(0px);-o-transform:translateY(0px);transform:translateY(0px);
+		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+	}
+	.js-follow-list {opacity:0;-webkit-transform:translateY(50px);-moz-transform:translateY(50px);-ms-transform:translateY(50px);-o-transform:translateY(50px);transform:translateY(50px)}
+
+	.timeCard .innerWrap .btnFollow {width:245px}
+	.btnFollow .js-follow {display:none}
+	.btnFollow.is-follow .js-follow {display:inline-block}
+	.btnFollow.is-follow .js-unfollow {display:none}
+
+	.ui-autocomplete {position: absolute;top:0;left:0;cursor:default;max-height:228px;overflow-y:auto;overflow-x:hidden}
+	.ui-autocomplete .ui-menu-item {font-family:'RobotoM','NotoSansM', sans-serif;color:#999;border-top:1px solid #ccc}
+	.ui-autocomplete .ui-menu-item:first-child {border-top:none}
+	.ui-autocomplete .ui-state-focus {color:#f1645c}
+	.recordWrap [data-follow-info].is-hide {display:none}
+</style>
+
+<script id="follow-list-templates" type="text/x-handlebars-template">
+	{{!-- following-list-templates --}}
+	<ul>
+		{{#each .}}
+		<li class="js-follow-list"
+			data-follow-coperationName="{{coperationName}}"
+			data-follow-memberName="{{memberName}}"
+			data-follow-info='{
+			"coperationName" : "{{coperationName}}",
+			"memberName" : "{{memberName}}",
+			"followNumber" : {{followNumber}}
+		}'>
+			<ul class="innerWrap">
+				<li class="recordPic"><img src="{{imageFileUrl}}" alt="{{memberName}}"></li>
+
+				{{#vxIF coperationName '&&' memberName}}
+					<li class="name"><b>{{memberName}}</b><br>{{coperationName}}</li>
+				{{else}}
+					{{#if coperationName}}
+						<li class="name"><b>{{coperationName}}</b></li>
+					{{else}}
+						<li class="name"><b>{{memberName}}</b></li>
+					{{/if}}
+				{{/vxIF}}
+
+				<!-- [D] 팔로잉 .is-follow -->
+				<li class="btnFollow is-follow js-follow-btn-wrap">
+					<a href="../_popup/popFollowDismiss.html" class="btnSizeM btnColor01 btnPop btnPop540 js-follow js-follow-btn" data-user-class="followDismiss popEdge">팔로잉</a>
+					<a href="#" class="btnSizeM dismiss js-unfollow js-follow-btn">팔로우</a>
+				</li>
+				<li class="imgWrap">
+					<ul>
+						{{#each recentImages}}
+							{{#if @last}}
+								<li>
+									<a href="/expert/intro.html" class="btnColor04">확인필요-더보기</a>
+									<img src="{{imageRecentUrl}}" alt="">
+								</li>
+							{{else}}
+								{{#vxIF @index "<" 4}}
+								<li>
+									<div class="hoverCon">
+										<h3 class="imgTit">확인필요-항목없음</h3>
+										<p>확인필요-항목없음</p>
+									</div>
+									<img src="{{imageRecentUrl}}" alt="">
+								</li>
+								{{/vxIF}}
+							{{/if}}
+						{{/each}}
+					</ul>
+				</li>
+			</ul>
+		</li>
+		{{/each}}
+	</ul>
+	{{!--// following-list-templates --}}
+</script>
+
 </body>
 </html>
