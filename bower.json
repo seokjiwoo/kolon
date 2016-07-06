@@ -33,6 +33,7 @@
     "d3": "^3.5.17",
     "waypoints": "^4.0.0",
     "handlebars": "^4.0.5",
-    "imagesloaded": "^4.1.0"
+    "imagesloaded": "^4.1.0",
+    "isotope-packery": "^2.0.0"
   }
 }
