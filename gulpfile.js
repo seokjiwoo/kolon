@@ -119,6 +119,13 @@ gulp.task('bowerBundle', function() {
 				'waypoints': {
 					'main': ['lib/jquery.waypoints.js', 'lib/shortcuts/inview.js'],
 					'dependencies': {}	
+				},
+				// moment : 번들링 추가
+				// locale/ko.js 추가
+				// @see http://momentjs.com/
+				'moment': {
+					'main': ['moment.js', 'locale/ko.js'],
+					'dependencies': {}
 				}
             }
         }))
