@@ -24,7 +24,8 @@ module.exports = function() {
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
-	ISOTOPE_EVENT = events.ISOTOPE;
+	ISOTOPE_EVENT = events.ISOTOPE,
+	ALERTPOPUP_EVENT = events.ALERT_POPUP;
 
 	
 	var callerObj = {
@@ -89,6 +90,9 @@ module.exports = function() {
 		// isotope event
 		eventManager.on(ISOTOPE_EVENT.REFRESH, onIsotopeRefreshListener)
 					.on(ISOTOPE_EVENT.DESTROY, onIsotopeDestoryListener);
+
+		// alertPopup event
+		eventManager.on(ALERTPOPUP_EVENT.OPEN, onAlertPopupOpenListener);
 	};
 	
 	/**
@@ -325,9 +329,17 @@ module.exports = function() {
 		initTabContentLayout();
 	}
 
+	// isotope destory 시점
 	function onIsotopeDestoryListener(e) {
 		if ($('#cardWrap').data('isotope')) {
 			$('#cardWrap').isotope('destroy');
 		}
+	}
+
+	// alertPopup open 시점
+	// @example
+	// 	eventManager.trigger(ALERTPOPUP_EVENT.OPEN, ['ID 혹은 소속을 입력하세요.', '', '확인']);
+	function onAlertPopupOpenListener(e, title, description, buttonCaption, callback) {
+		alertPopup(title, description, buttonCaption, callback);
 	}
 }

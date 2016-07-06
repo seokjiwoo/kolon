@@ -24,6 +24,9 @@ function Events() {
 			REFRESH : 'VX-COLORBOX_AREA-REFRESH',
 			DESTROY : 'VX-COLORBOX_AREA-DESTROY'
 		},
+		ALERT_POPUP : {
+			OPEN : 'VX-ALERT_POPUP-OPEN'
+		},
 		ISOTOPE : {
 			APPEND : 'VX-ISOTOPE-APPEND',
 			REFRESH : 'VX-ISOTOPE-REFRESH',
@@ -38,6 +41,11 @@ function Events() {
 			ADD_SCRAP_FOLDER : 'addScrapFolderResult',
 			EDIT_SCRAP_FOLDER : 'editScrapFolderResult',
 			DELETE_SCRAP_FOLDER : 'deleteScrapFolderResult'
+		},
+		FOLLOWING : {
+			LIST : 'followsListResult',
+			ADD_FOLLOW : 'addFollowsResult',
+			DELETE_FOLLOW : 'deleteFollowsResult'
 		}
 	},
 	instance;
