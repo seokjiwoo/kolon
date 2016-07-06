@@ -1,6 +1,7 @@
-.subTop{position: relative;background: #fff;text-align: center;}
+.subTop{position: relative;text-align: center;}
 .subTop .wrap{padding:50px 10px;}
 .pageTit{background:url('../images/sub_title.png') no-repeat;font-size:0;}
+.subTop .mask{overflow: hidden;position: absolute;top: 0;left: 0;z-index: 2;width: 100%;min-width: 1220px;}
 .subTop .subTit{margin-top:15px;font-family:'RobotoR','NotoSansR', sans-serif;color: #999;}
 .subTop .subTit b{color: #f1645c}
 .subTop .tagList{overflow: hidden;height: 40px;margin-top:40px;}
@@ -79,25 +80,29 @@
 .contentCard .relateTag li a{display: inline-block;padding: 20px 35px;background: #fff;border-radius: 30px;box-shadow: 0px 3px rgba(0,0,0,0.1);font-size: 20px;font-family:'RobotoR','NotoSansR', sans-serif;color: #333;}
 
 /* manager */
+
+
+
 .managerList{background: #48484a;}
 .managerList .topMenu{background: #fff !important;}
-.managerList .subTop{position: absolute;top: 400px;width:100%;background:none;text-align: right;z-index: 4;}
-.managerList .wrap{overflow: visible;padding: 0;}
+.managerList .topTit{position: absolute;top: 400px;width:100%;background:none;text-align: right;z-index: 4;}
+.managerList .subTop .wrap{overflow: visible;padding: 0;}
 .managerList .subTit{margin-right: 60px;}
 .managerList .subTit b{color: #977369;}
 .managerList .pageTit{height: 120px;background-position:680px 0;}
 .managerList .bx-wrapper{width: 100%;min-height: 662px;}
 .managerList .bx-wrapper li{overflow: hidden;min-height: 662px;}
 .managerList .bx-wrapper img{display: block;height: 100%;}
-.managerList .slideCon{display: none;position: absolute;top: 50%;right: 46%;margin-top: -100px;color: #fff;}
+.managerList .slideCon{position: absolute;top:0;left: 50%;width: 600px;height: 430px;margin:120px 0 0 -460px;z-index: 5}
+.managerList .slideCon a{display: none;color: #fff;padding: 90px 0 0 300px;height: 100%;text-align: left;}
 .managerList #slideCon00{display: block;}
-.managerList .slideCon .italicNum{font-size: 50px;}
-.managerList .slideCon .subTxt{margin-top: 15px;color: #aa7d71;font-family:'RobotoL','NotoSansL', sans-serif;}
-.managerList .slideCon .name{margin-top: 5px;font-family:'RobotoT','NotoSansT', sans-serif;font-size: 66px;}
+.managerList .slideCon a .italicNum{font-size: 50px;}
+.managerList .slideCon a .subTxt{margin-top: 15px;color: #aa7d71;font-family:'RobotoL','NotoSansL', sans-serif;}
+.managerList .slideCon a .name{margin-top: 5px;font-family:'RobotoT','NotoSansT', sans-serif;font-size: 66px;}
 
 .managerList .managerPager{position: relative;width: 1220px;margin:0 auto;z-index: 3}
 .managerList .managerPager a{position: absolute;display: block;width: 174px;height: 201px;background: url('../images/manager_thumb.png') no-repeat;font-size: 0;}
-.managerList .managerPager .bx-prev{top: 70px;right: 180px;}
+.managerList .managerPager .bx-prev{top: 70px;right: 180px;background-position: -348px 0;}
 .managerList .managerPager .bx-next{top: 233px;right: 81px;background-position: -174px 0;}
 
 .managerList .tabType01 a{color: #fff;}
@@ -129,41 +134,49 @@
 
 
 /* magazine */
-.magazineCard .subTop .wrap{padding-bottom: 22px;}
-.magazineCard.cardWrap{min-width: auto;margin:0;margin-top:30px;}
-.magazineCard .magazineL, .magazine .magazineR{width:595px;height: 320px;}
-.magazineCard .magazineL{margin-right: 8px;border-radius: 10px 0 0 10px;}
-.magazineCard .magazineR{float: right;width: 295px;border-radius: 0 10px 10px 0}
-.magazineCard .magazineC{height: 156px;margin-bottom:8px;border-radius: 0;}
-.magazineCard .magazineC .cardTit{font-size: 20px;}
-.magazineCard li{position: relative;margin-bottom: 0;}
-.magazineCard li a{display: block;height: 100%;color: #fff;padding: 0 30px;}
-.magazineCard .magazineCon{display: inline-block;vertical-align: middle;}
-.magazineCard li a:before{content: '';display: inline-block;width: 0;height: 100%;margin:-5px;vertical-align: middle;}
+.magazine{background: url('../images/bg_magazine.jpg') no-repeat center top;}
+.magazine .subTop .wrap{overflow: visible;padding: 0;}
+.magazine #popularList{padding: 0;margin:0;}
+.magazine .pageTit{float: right;width: 550px;height: 140px;background-position: 0 -124px;}
+.magazine .subTop .subTit{float: right;width: 550px;text-align: left;font-size: 25px;font-family:'RobotoL','NotoSansL', sans-serif;}
+.magazine .subTop .subTit b{font-family:'RobotoM','NotoSansM', sans-serif;color: #000;}
+.magazine #popularList li{position: relative;margin-left: 20px;margin-top: 48px;padding: 0}
+.magazine .cardCon:after{display: none;}
+.magazine #popularList .hexagon{top: 0;}
+.magazine #popularList .cardSize01 .cardLine{top: 42px;}
+.magazine #popularList .cardSize04{height: 513px;height: 681px;margin-left:0;margin-top: 0;}
+.magazine .cardSize04 .cardCon:before{content:'';display: inline-block;width: 0;height: 100%;vertical-align: middle; }
+.magazine .cardSize04 .cardDetail{display: inline-block;vertical-align: middle;} 
+.magazine .cardSize04 .cardTit{font-size: 60px}
+.magazine .cardTit b{font-family:'RobotoM','NotoSansM', sans-serif;}
+.magazine #popularList .cardLine{background: rgba(168,217,226,.8)}
+.magazine #popularList .num{display:block;width: 48px;height: 26px;margin: 10px auto;padding: 15px 0;background: url('../images/bg_magazine_num.png') no-repeat;background-position: -102px -30px;text-align: center;font-size: 26px;}
+.magazine .cardWrap .recommend{font-size: 14px;}
+.magazine .cardSize04 .num{width: 98px;height: 50px;margin: 20px auto;padding: 31px 0;font-size: 50px;background-position: 0 0}
+.magazine .cardSize04 .recommend{font-size: 20px;}
+.magazine #popularList li:last-child{position: absolute;top: 610px;left: 0;margin: 0;}
+.magazine .wrap{clear: both;}
 
-.magazineCard .cardIntro{margin-top:20px;}
-.magazineCard .cardIntro:before{display: none;}
-.magazineCard .cardInfo{position: absolute;left: 0;bottom: 30px;width: 100%;text-align: center;font-size: 14px;}
-.magazineCard .magazineC .cardInfo{bottom: 20px;}
-.magazineCard .cardInfo li{display: inline-block;margin-left: 5px;}
-.magazineCard .cardInfo li:first-child{margin:0;}
-.magazineCard .cardInfo li:before{content: '';display: inline-block;width: 13px;height: 13px;margin-right: 5px;vertical-align: middle;background: url('../images/ico_card_popular.png') no-repeat;}
-.magazineCard .cardInfo li.like:before{background-position: -46px -1px;}
-.magazineCard .cardInfo li.comment:before{background-position: -12px -1px;}
-.magazineCard .cardInfo li.scrap:before{background-position: -24px 0px;}
 
-#bestKey .cardCon{color: #000;}
-#bestKey .cardDate{display: inline-block;margin-top: 15px;padding: 7px 20px;border: 1px solid #b2b2b2;border-radius: 15px;font-family: 'RobotoM', sans-serif;font-size: 16px;color: #b2b2b2;}
-#bestKey ul{margin-top:30px;padding:0 20px;}
-#bestKey li{position: relative;}
-#bestKey a{overflow: hidden;display: block;padding:10px 20px 10px 0;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;text-overflow: ellipsis;white-space: nowrap;}
-#bestKey b{color: #808080;}
-#bestKey .key13 b{color: #f1645c}
-#bestKey .key46 b{color: #a9c700}
-#bestKey span{position: absolute;top: 6px;right: 0;width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;vertical-align: middle;}
-#bestKey .up span{border-bottom: 9px solid #f1645c }
-#bestKey .down span{border-bottom: 9px solid #a9c700 }
-#bestKey .even span{top: 9px;width: 2px;height: 2px;background: #b1b1b1}
+.magazine .block{width: 590px;height: 160px;}
+.magazine .bestKey .cardTit{margin-top: 0;}
+.magazine .bestKey .cardTit span{display: block;font-size: 16px;color: #b2b2b2;line-height: 1em;}
+.magazine .bestKey li{position: relative;}
+.magazine .bestKey li:first-child b,
+.magazine .bestKey li:nth-child(2)  b,
+.magazine .bestKey li:nth-child(3)  b{color: #f1645c;}
+.magazine .bestKey li b{color: #a9c700;}
+.magazine .bestKey li:after{content:'';position: absolute;right: 0;top: 11px;}
+.magazine .bestKey li.up:after{width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-bottom: 8px solid #f1645c;}
+.magazine .bestKey li.down:after{width: 0;height: 0;border-left: 5px solid transparent;border-right: 5px solid transparent;border-top: 8px solid #a9c700;}
+.magazine .bestKey li.even:after{top: 15px;width: 10px;height: 2px;background: #b1b1b1;}
+.magazine .bestKey li a{display: block;}
+.magazine .bestKey .bx-wrapper{margin-top: 40px;padding:0 10px 0 20px;}
+.magazine .bestKey .keyword{text-align: left;font-size: 16px;color: #000;line-height: 2em}
+.magazine .bestKey .bx-controls{margin-top: 20px;}
+.magazine .bestKey .bx-pager-item{display: inline-block;width: 20px;height: 20px;font-size: 0;}
+.magazine .bestKey .bx-pager-item a{display: block;width: 100%;height: 100%;background: url('../images/bg_keyword_pager.png') center bottom;}
+.magazine .bestKey .bx-pager-item a.active{background-position: center top}
 
 /* category */
 .category .subTop {}

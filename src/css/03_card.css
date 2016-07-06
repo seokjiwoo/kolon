@@ -146,17 +146,19 @@
 .cardSize03 .hexagon .hexTop
 .cardSize03 .hexagon .hexBottom {background-size:285px 676px;}
 
-.cardSize04{width:590px;height:745px;}
-.cardSize04 .cardCon{height: 585px;}
-.cardSize04 .hexagon{height: 412.455px;background-color: #fff;}
-.cardSize04.cardType06 .cardCon{width: 570px;}
-.cardSize04.cardType06 .cardCon, .cardType11 .cardCon {color:#000;}
-.cardSize04.cardType06 .hexagon{margin: 167px 0;background-color: transparent;}
-.cardSize04.cardType06 .hexTop, .cardSize04.cardType06 .hexBottom{width: 417.19px;height: 417.19px;left: 86.40px;}
-.cardSize04.cardType06 .hexTop span, .cardSize04.cardType06 .hexBottom span{width: 590.0000px;height: 250.6366588218792px;}
-.cardSize04.cardType06 .hexTop {top: -206.5965px;}
-.cardSize04.cardType06 .hexBottom {bottom: -206.5965px;}
-
+.cardSize04{width:590px !important;}
+.cardSize04 .cardCon{width: 570px;height:514px;}
+.cardSize04 .hexagon{width:590px;height: 340.64px;margin: 170.32px 0;background-size: auto 681.2733px;}
+.cardSize04 .hexagon .hexTop,
+.cardSize04 .hexagon .hexBottom{ width: 417.19px;height: 417.19px;left: 86.40px;}
+.cardSize04 .hexagon .hexTop{top: -208.5965px;}
+.cardSize04 .hexagon .hexBottom{bottom: -208.5965px;}
+.cardSize04 .hexBottom span, .cardSize04 .hexTop span{width: 590px;height: 340.6366588218792px;
+-webkit-transform:rotate(45deg) scaleY(1.7321) translateY(-170.3183px);-ms-transform:rotate(45deg) scaleY(1.7321) translateY(-170.3183px);transform:rotate(45deg) scaleY(1.7321) translateY(-170.3183px);}
+.cardSize04 .hexagon:after {width: 590px;height: 340.6367px;}
+.cardSize04 .cardLine{width: 340px;height: 30px;top: 86px;left: -30px;}
+.cardSize04 .cardLine:after{top: 6.5px;right: -21.1px;border-bottom-width: 29.7px;border-right-width: 17.7px;border-left-width: 19.5px}
+.cardSize04 .cardLine p{font-size: 20px}
 
 /* card hover */
 .cardCon .cardHover {display:none;}

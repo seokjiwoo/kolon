@@ -31,8 +31,9 @@ module.exports = function() {
 
 		debug.log(fileName, $, util);
 		
-		$('#popularList').html('loading...');
-		controller.getListPopular();
+		// $('#popularList').html('loading...');
+		// controller.getListPopular();
+		bestKeySlide()
 	}
 
 	function popularListHandler(e, status) {
@@ -55,6 +56,14 @@ module.exports = function() {
 		}
 
 		$('#popularList').html(tags);
+	}
+	function bestKeySlide(){
+		$('#bestKeySlide').bxSlider({
+			mode: 'vertical',
+			minSlides: 5,
+			controls:false,
+			infiniteLoop:false
+		});
 	}
 
 };

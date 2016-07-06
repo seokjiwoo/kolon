@@ -3,7 +3,7 @@
 .myOpinion .opinionArea{margin-top:0;}
 
 .expert .pageTit{font-family:'RobotoL','NotoSansL', sans-serif;color: #000;font-size: 40px;background:none }
-.expert .pageTit:before, .pageTit:after{content: '';display: inline-block;width: 70px;height: 1px;background: #d9d9d9;vertical-align: middle;}
+.expert .pageTit:before{content: '';display: inline-block;width: 70px;height: 1px;background: #d9d9d9;vertical-align: middle;}
 .expert .pageTit:before{margin-right: 20px;}
 .expert .pageTit:after{margin-left: 20px;}
 
