@@ -331,11 +331,5 @@ function ClassMemberInfoController() {
 			$(callerObj).trigger('deleteMemberResult', [status, result]);
 		}, false);
 	};
-	
-	/*
-	휴면 계정 활성화		 POST		/apis/member/reuse
-	SNS 계정 연결 해제	  DELETE	 /apis/member/socials/{socialType}
-	SNS 계정 연결 			POST	   /apis/member/socials/{socialType} 
-	*/
 }
 

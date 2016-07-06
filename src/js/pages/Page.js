@@ -109,11 +109,15 @@ module.exports = function() {
 			$('.profileEditButton').click(function(e){
 				e.preventDefault();
 				closeLnbHandler();
-				Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
-					onSubmit: function() {
-						loginController.confirmPassword($('#checkPw').val());
-					}
-				});
+				if (Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+					confirmPasswordResultHandler(null, 200);
+				} else {
+					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+						onSubmit: function() {
+							loginController.confirmPassword($('#checkPw').val());
+						}
+					});
+				}
 			});
 		}
 	};

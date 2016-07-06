@@ -11,6 +11,10 @@ function ClassLoginController() {
 	
 	var model = require('../model/LoginModel');
 	
+	$(document).on('getSocialLoginResult', socialLoginResultHandler);
+
+	var socialLoginFlag;
+	
 	return {
 		getInstance: function() {
 			if (!instance) instance = LoginController();
@@ -46,6 +50,14 @@ function ClassLoginController() {
 			 * 회원가입을 위한 모바일 인증번호 재발급 요청
 			 */
 			resendAuthNumber: resendAuthNumber,
+			/**
+			 * 소셜 연결
+			 */
+			socialConnect: socialConnect,
+			/**
+			 * 소셜 연결 해제
+			 */
+			socialDisconnect: socialDisconnect,
 			/**
 			 * 휴면 계정 활성화
 			 */
@@ -93,6 +105,85 @@ function ClassLoginController() {
 				Super.handleError('login', result);
 				$(callerObj).trigger('loginResult', [status, result]);
 			}
+		}, false);
+	};
+	
+	/**
+	 * 소셜로그인 결과 핸들링
+	 * document에 trigger걸렸을 때 핸들링. trigger 함수는 html에 위치.
+	 */
+	function socialLoginResultHandler(e, socialData) {
+		console.log('SOCIAL LOGIN RESULT HANDLER>');
+		console.log(socialData);
+		
+		if (model.loginData() == null) {
+			// 로그인 상태가 아닐 때 - 로그인 or 회원가입
+			Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+				if (status == 200) {
+					socialLoginFlag = true;
+					socialConnect(socialData);
+				} else {
+					Super.handleError('login/myData', status);
+				}
+				$(callerObj).trigger('loginResult', [status, result]);
+			});
+		} else {
+			// 로그인 상태일 때 - 소셜연결
+			socialLoginFlag = false;
+			socialConnect(socialType, socialData);
+		}
+	};
+
+	function socialConnect(socialData) {
+		var socialName = '';
+		/* {
+			memberSocial: {
+				memberName: 'blah',
+				memberNumber: 'blah',
+				socialNumber: 'blah',
+				socialSectionCode: 'blah',
+				socialUniqueId: 'blah',
+			}
+		} */
+		switch(socialData.memberSocial.socialSectionCode) {
+			case 'BM_SOCIAL_SECTION_01':
+				socialName = 'fackbook'
+				break;
+			case 'BM_SOCIAL_SECTION_02':
+				socialName = 'naver'
+				break;
+			case 'BM_SOCIAL_SECTION_03':
+				socialName = 'kakao'
+				break;
+		}
+
+		Super.callApi('/apis/member/socials/'+socialName, 'POST', {
+			"socialEmail": '',
+			"socialName": socialName,
+			"socialUniqueId": socialData.memberSocial.socialUniqueId
+		}, function(status, result) {
+			if (status == 200) {
+				if (socialLoginFlag) {
+					model.setLoginInfo(result.data.data);
+				} else {
+					$(callerObj).trigger('socialConnectResult', [status, result, socialName]);
+				}
+			} else {
+				Super.handleError('login/socialConnect', status);
+				$(callerObj).trigger('socialConnectResult', [status, result, socialName]);
+			}
+		});
+	}
+	
+	function socialDisconnect(socialType) {
+		Super.callApi('/apis/member/socials/'+socialType, 'DELETE', {
+			"socialName": "fackbook"
+		}, function(status, result) {
+			if (status == 200) {
+			} else {
+				Super.handleError('socialDisconnect', result);
+			}
+			$(callerObj).trigger('socialDisconnectResult', [status, result, socialType]);
 		}, false);
 	};
 
@@ -184,9 +275,5 @@ function ClassLoginController() {
 			}
 		}, false);
 	}
-	
-	/*
-	SNS 계정 로그인 결과	 GET 	  /apis/member/socials/{socialType}/login
-	*/
 }
 

@@ -16,6 +16,7 @@ module.exports = function() {
 	var enteredId;
 	var authNumberResendFlag = false;
 	var forceLoginFlag = false;
+	var firstTryFlag = true;		// 페이지 열리고 첫 시도인지 체크 (휴대전화로 가입시도 후 페이지 새로고침 했을 때 이전 세션 때문에 인증번호 틀림 에러코드 돌아오는 문제 때문에...)
 	
 	var callerObj = {
 		/**
@@ -91,7 +92,11 @@ module.exports = function() {
 		var pw = $.trim($('#inputPW').val());
 		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
 
-		if (id == '' || pw == '') {
+		if (id == '') { 
+			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '아이디(이메일 또는 휴대폰 번호)를 입력해주세요', '확인');
+		} else if(pw == '') {
+			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '비밀번호를 입력해 주세요', '확인');
+		} else if (!util.checkValidPassword(pw)) {
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
 		} else {
 			if (util.checkValidMobileNumber(id)) {
@@ -139,17 +144,6 @@ module.exports = function() {
 
 			e.stopPropagation();
 		});
-
-		$(document).on('getSocialLoginResult', socialLoginResultHandler);
-	}
-
-	/**
-	 * 소셜로그인 결과 핸들링
-	 */
-	function socialLoginResultHandler(e, data) {
-		console.log('SOCIAL LOGIN RESULT HANDLER>');
-		console.log(data);
-		loginCompleteHandler(null, 200, data);
 	};
 	
 	/**
@@ -175,11 +169,11 @@ module.exports = function() {
 				break;
 			case 400:
 				switch(Number(response.errorCode)) {
-					case 1606:	// ID/PW
+					default:
 						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 					case 1901:	// 모바일 인증번호
-						alert(response.message);
+						if (!firstTryFlag) alert(response.message);
 					case 1900:	// 모바일 가입 인증 요구
 						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
 							onOpen: function() {
@@ -197,6 +191,7 @@ module.exports = function() {
 								controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
 							}
 						});
+						firstTryFlag = false;
 						break;
 				}
 				break;

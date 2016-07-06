@@ -16,7 +16,13 @@ module.exports = function() {
 	$(controller).on('myInfoResult', myInfoHandler);
 	$(controller).on('checkEmailResult', checkEmailResultHandler);
 	$(controller).on('editMemberInfoResult', editInfoResultHandler);
+
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
+	$(loginController).on('socialConnectResult', socialConnectResultHandler);
+	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
 	
+	var myInfoObject;
 	var emailDuplicateFlag = false;
 	
 	var callerObj = {
@@ -29,7 +35,7 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		if (Cookies.get('profileEditAuth') == 'auth') {
+		if (Cookies.get('profileEditAuth') == 'auth' || MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
 			MyPage.init();
 
 			debug.log(fileName, $, util);
@@ -52,6 +58,7 @@ module.exports = function() {
 			$('#joinPhone').change(checkPhoneField);
 			*/
 			controller.getMyInfo();
+			loginController.getSocialLoginUrl();
 		} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
@@ -59,12 +66,24 @@ module.exports = function() {
 	};
 
 	function myInfoHandler(e, infoObject) {
+		myInfoObject = infoObject;
 		console.log(infoObject);
 
 		$('#profileID').val(infoObject.email);
 		$('#editPhoneID').val(infoObject.cellPhoneNumber);
 		$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
-		// ( 소셜인증 )
+		for (var key in infoObject.socials) {
+			var eachSocialData = infoObject.socials[key];
+			switch(eachSocialData.socialName) {
+				case 'facebook':	// facebook
+				case 'naver':	// naver
+				case 'kakao':	// kakao
+					$('#socialRow_'+eachSocialData.socialName).addClass('active');
+					$('#socialInfo_'+eachSocialData.socialName).text('연결되었습니다. (이메일 : '+eachSocialData.socialEmail+')');
+					$('#socialButton_'+eachSocialData.socialName).text('연결해제');
+					break;
+			}
+		}
 		$('#editName').val(infoObject.memberName);		// memberName
 		if (infoObject.birthDate != null && infoObject.birthDate.length == 8) {
 			$('#joinBirth01').val(infoObject.birthDate.substr(0, 4));
@@ -91,6 +110,67 @@ module.exports = function() {
 			case 'N':
 				$('#disagreeReceive02')[0].checked = true;
 				$('label[for="disagreeReceive02"]').addClass('on');
+				break;
+		}
+
+		$('.socialButton').click(socialButtonClickHandler);
+	};
+	
+	/**
+	 * 소셜 로그인 URL 목록처리
+	 */
+	function socialLoginUrlResultHandler(e, status, socialAuthLoginUrl) {
+		for (var key in socialAuthLoginUrl) {
+			var eachService = socialAuthLoginUrl[key];
+			$('#socialButton_'+eachService.socialName).data('href', eachService.authUrl);
+		}
+	};
+
+	/**
+	 * 소셜연결/연결해제 클릭 핸들링 
+	 */
+	function socialButtonClickHandler(e) {
+		var socialName = $(this).attr('id').substr(13);
+
+		if ($('#socialRow_'+socialName).hasClass('active')) {
+			if (MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02" && myInfoObject.socials.length < 2) {
+				MyPage.Super.Super.alertPopup('소셜연결 해제', '하나는 남겨두셔야 하는데...', '확인');
+			} else {
+				// 소셜해제
+				loginController.socialDisconnect(socialName);
+			}
+		} else {
+			// 소셜연결
+			window.open($(this).data('href'), 'socialLoginPopup', 'width=600,height=550,menubar=no,status=no,toolbar=no,resizable=yes,fullscreen=no');
+		}
+	};
+
+	/**
+	 * 소셜연결 결과 핸들링 
+	 */
+	function socialConnectResultHandler(e, status, result, socialName) {
+		switch(socialName) {
+			case 'facebook':	// facebook
+			case 'naver':	// naver
+			case 'kakao':	// kakao
+				$('#socialRow_'+socialName).addClass('active');
+				$('#socialInfo_'+socialName).text('연결되었습니다.');
+				$('#socialButton_'+socialName).text('연결해제');
+				break;
+		}
+	};
+
+	/**
+	 * 소셜 연결해제 결과 핸들링
+	 */
+	function socialDisconnectResultHandler(e, status, result, socialName) {
+		switch(socialName) {
+			case 'facebook':	// facebook
+			case 'naver':	// naver
+			case 'kakao':	// kakao
+				$('#socialRow_'+socialName).removeClass('active');
+				$('#socialInfo_'+socialName).text('연결된 정보가 없습니다.');
+				$('#socialButton_'+socialName).text('계정연결');
 				break;
 		}
 	};
