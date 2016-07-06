@@ -200,6 +200,14 @@ module.exports = function() {
 						break;
 				}
 				break;
+			case 401:
+				switch(Number(response.errorCode)) {
+					case 1613:	// 휴면계정
+						Cookies.set('accountReuse', $('#inputName').val(), { expires: 1/1440 });	// 1 minutes
+						location.href = '/member/accountReuse.html';
+						break;
+				}
+				break;
 			default:
 				Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 				break;

@@ -24,5 +24,16 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+
+		if (Cookies.get('accountReuse') != undefined) {
+			//
+
+			$('#reuseAuth').click(function(e){
+				//
+			});
+		} else {
+			alert('잘못된 접근입니다');
+			location.href = '/';
+		}
 	}
 };
