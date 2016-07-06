@@ -2,8 +2,8 @@
 
 module.exports = function() {
 	var localFlag = (/localhost/).test(document.URL);
-	var API_URL = localFlag ? 'http://uppp.oneplat.co/' : '/';
-	var CDN_URL = localFlag ? 'http://cdn.oneplat.co/' : '/';
+	var API_URL = localFlag ? 'http://uppp.oneplat.co/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
+	var CDN_URL = localFlag ? 'http://cdn.oneplat.co/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
 	
 	$.ajaxSetup({
 		type: "POST"
