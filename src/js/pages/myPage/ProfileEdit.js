@@ -134,7 +134,7 @@ module.exports = function() {
 
 		if ($('#socialRow_'+socialName).hasClass('active')) {
 			if (MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02" && myInfoObject.socials.length < 2) {
-				MyPage.Super.Super.alertPopup('소셜연결 해제', '하나는 남겨두셔야 하는데...', '확인');
+				MyPage.Super.Super.alertPopup('', '최소 1개의 로그인 계정을 유지하셔야 합니다.', '확인');
 			} else {
 				// 소셜해제
 				loginController.socialDisconnect(socialName);
