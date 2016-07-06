@@ -89,6 +89,7 @@ module.exports = function() {
 
 		var id = $.trim($('#inputName').val());
 		var pw = $.trim($('#inputPW').val());
+		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
 
 		if (id == '' || pw == '') {
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
@@ -96,7 +97,7 @@ module.exports = function() {
 			if (util.checkValidMobileNumber(id)) {
 				// 휴대폰 번호
 				enteredId = id;
-				controller.login(id, pw);
+				controller.login(id, pw, keepLogin);
 			} else {
 				// 이메일
 				if (enteredId != $('#inputName').val()) forceLoginFlag = false;
@@ -111,11 +112,11 @@ module.exports = function() {
 								var enteredMail = enteredId.split('@');
 								Super.Super.alertPopup('메일 주소를 다시 확인해 주세요.', '입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?', '확인');
 							} else {
-								controller.login(enteredId, pw);
+								controller.login(enteredId, pw, keepLogin);
 							}
 						},
 						empty: function() {
-							controller.login(enteredId, pw);
+							controller.login(enteredId, pw, keepLogin);
 						}
 					});
 				} else {
@@ -155,6 +156,8 @@ module.exports = function() {
 	 * 로그인 or 회원가입 완료 이벤트 핸들링
 	 */
 	function loginCompleteHandler(e, status, response) {
+		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
+
 		switch(status) {
 			case 200:
 				switch(Number(response.status)) {
@@ -165,7 +168,7 @@ module.exports = function() {
 						Super.Super.alertPopup('회원가입이 완료되었습니다.', '메인화면으로 이동합니다.', '확인', function() {
 							var id = $.trim($('#inputName').val());
 							var pw = $.trim($('#inputPW').val());
-							controller.login(id, pw);
+							controller.login(id, pw, keepLogin);
 						});
 						break;
 				}
@@ -191,9 +194,17 @@ module.exports = function() {
 								authNumberResendFlag = false;
 							},
 							onSubmit: function() {
-								controller.login(enteredId, $('#inputPW').val(), $('#mobileAuthNumber').val());
+								controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
 							}
 						});
+						break;
+				}
+				break;
+			case 401:
+				switch(Number(response.errorCode)) {
+					case 1613:	// 휴면계정
+						Cookies.set('accountReuse', $('#inputName').val(), { expires: 1/1440 });	// 1 minutes
+						location.href = '/member/accountReuse.html';
 						break;
 				}
 				break;

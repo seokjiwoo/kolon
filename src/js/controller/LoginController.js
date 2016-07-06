@@ -55,12 +55,13 @@ function ClassLoginController() {
 	 * 로그인 or 회원가입
 	 * 서버에서 아이디가 있으면 로그인, 없으면 회원가입 처리.
 	 */
-	function login(id, pw, authNumber) {
+	function login(id, pw, keepLogin, authNumber) {
 		var loginPostObj = {
 			"loginId": id,
 			"loginPassword": pw
 		}
 		if (authNumber != undefined) loginPostObj.certiNumber = authNumber;
+		if (keepLogin == undefined) loginPostObj.keepLogin = 'N';
 
 		Super.callApi('/apis/user/login', 'POST', loginPostObj, function(status, result) {
 			if (status == 200) {
@@ -79,6 +80,9 @@ function ClassLoginController() {
 					case '201':
 						// 회원가입 성공
 						$(callerObj).trigger('loginResult', [status, result]);
+						break;
+					case '401':
+						//
 						break;
 				}
 			} else {
