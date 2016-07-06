@@ -166,10 +166,12 @@ module.exports = function() {
 	 */
 	function initCardLayout() {
 		$('#cardWrap').isotope({
-			itemSelector: '#cardWrap > li',
-			masonry: {
-				columnWidth: 100,
-				gutter: 1
+			itemSelector : '#cardWrap > li:not(.stamp)',
+			stamp : '#cardWrap > .stamp',
+			layoutMode : 'packery',
+			packery : {
+				columnWidth : 285,
+				gutter : 20
 			}
 		});
 	};
