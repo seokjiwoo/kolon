@@ -82,8 +82,12 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		$('#myPageHeaderName').text(Super.Super.loginData.memberName);
-		$('#myPageHeaderId').text(Super.Super.loginData.email);
+		if (Super.Super.loginData.email == null) {
+			$('#myPageHeaderId').text(Super.Super.loginData.memberName);
+		} else {
+			$('#myPageHeaderName').text(Super.Super.loginData.memberName);
+			$('#myPageHeaderId').text(Super.Super.loginData.email);
+		}
 		
 		if (Super.Super.loginData.imageUrl != null) $('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
 

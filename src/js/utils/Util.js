@@ -181,7 +181,11 @@ function ClassUtils() {
 	}
 
 	function mobileNumberFormat(enteredId) {
-		return enteredId.substr(0, 3)+'-'+enteredId.substr(3, enteredId.length-7)+'-'+enteredId.substr(-4, 4);
+		if (enteredId == undefined || enteredId == null) {
+			return '';
+		} else {
+			return enteredId.substr(0, 3)+'-'+enteredId.substr(3, enteredId.length-7)+'-'+enteredId.substr(-4, 4);
+		}
 	}
 
 	function diffDay(data) {

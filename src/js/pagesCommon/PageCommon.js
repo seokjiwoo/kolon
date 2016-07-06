@@ -222,7 +222,7 @@ module.exports = function() {
 	};
 
 	function alertPopup(title, description, buttonCaption, callback) {
-		console.log(typeof(callback));
+		//console.log(typeof(callback));
 		
 		var linkUrl;
 		var customClass;

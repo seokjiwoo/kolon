@@ -80,6 +80,8 @@ module.exports = function() {
 	 */
 	function myInfoResultHandler(e) {
 		if (Super.loginData != null) {
+			var email = Super.loginData.email == null ? '' : Super.loginData.email;
+
 			// 로그인 상태일 때
 			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
@@ -88,7 +90,7 @@ module.exports = function() {
 			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
 
 			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+Super.loginData.email);
+			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');
 			$('#menuToggle').show();
