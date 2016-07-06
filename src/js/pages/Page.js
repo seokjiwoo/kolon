@@ -98,6 +98,11 @@ module.exports = function() {
 			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
 			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
 			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
+			if (Super.loginData.myActivity.cartCount == 0) {
+				$('#menuCountCart').hide();
+			} else {
+				$('#menuCountCart').text(Super.loginData.myActivity.cartCount);
+			}
 
 			$('.profileEditButton').click(function(e){
 				e.preventDefault();
