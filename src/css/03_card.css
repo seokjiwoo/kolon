@@ -1,33 +1,41 @@
 .cardBox {width:1500px; overflow:hidden;}
-.cardWrap{min-width:1220px;margin:40px -20px 0 0;z-index: 1;}
-.cardWrap > li.card {overflow: hidden;float: left;width:285px;padding:84px 0; margin-top:-148px; text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
+.cardWrap{max-width:1520px; min-width:1220px;margin:64px auto 0;z-index: 1;}
+.cardWrap > li.card {overflow: hidden;float: left;width:285px;padding:84px 0; margin-top:-167px; text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
 .cardWrap {padding-top:83px;}
 
-.cardLayer {width:100%; height:754px; padding:0 20px; position:absolute; top:0; left:0; z-index:90;}
-.cardLayer .cardWrap {width:1500px; margin:0 auto; position:relative; }
+.cardLayer {width:100%; height:754px; position:absolute; top:0; left:0; z-index:90;}
+.cardLayer .cardWrap {width:1500px; margin:0 auto; position:relative; padding-top:167px;}
 .cardLayer .cardWrap li {position:relative; background:none;}
 .cardLayer .cardWrap li + li {margin-left:10px;}
 
-.cardTitle {}/* z-index:3; */
+.cardTitle {margin-top:-262px;}
 .cardTitle .cardTitleCont {width:100%; height:100%; position:relative;}
-.cardTitle .cardTitleCont .cardTitleBg {position:absolute; z-index:0;}
+.cardTitle .cardTitleCont .cardTitleBg,
+.cardTitle .cardTitleCont .cardFlagBg {position:absolute; z-index:0;}
 .cardTitle .cardTitleCont .cardTitleSub {overflow:hidden; position:absolute;}
 .cardTitle .cardTitleCont .cardTitleSub .txt {color:#000; font-size:18px; font-family:'RobotoT','NotoSansT', sans-serif; line-height:130%;}
 .cardTitle .cardTitleCont .cardTitleSub .txt b {font-family:'RobotoM','NotoSansM', sans-serif;}
 .cardTitle .cardTitleCont .cardTitleSub a.more {display:inline-block; padding:14px 92px 14px 0; color:#000; font-size:14px; font-family:'RobotoL','NotoSansL', sans-serif; line-height:130%; background:url('../images/main_cardMore_btn.png') 100% 50% no-repeat;}
 .cardTitle .cardTitleCont .cardTitleSub a.more b {font-family:'RobotoM','NotoSansM', sans-serif;}
-.cardTitle.newForm {width:590px; height:716px; position:absolute; top:1292px; left:20px; background:green;}
+.cardTitle.newForm {width:590px; height:716px; position:absolute; top:1292px; left:0;}
 .cardTitle.newForm .cardTitleCont .cardTitleSub {width:368px; overflow:hidden; top:352px; right:0;}
 .cardTitle.newForm .cardTitleCont .cardTitleSub .more {margin-top:66px; float:right;}
-.cardTitle.common {width:896px; height:1064px; position:absolute; top:3034px; right:20px; background:green;}
+.cardTitle.newForm .cardFlagBg {left:-207px;}
+.cardTitle.newForm .cardFlagBg.flag01 {width:140px; height:266px; top:-634px; background:url('../images/main_bg_flag01.png') 0 0 no-repeat;}
+.cardTitle.newForm .cardFlagBg.flag02 {width:488px; height:603px; bottom:-2050px; background:url('../images/main_bg_flag03.png') 0 0 no-repeat;}
+.cardTitle.common {width:896px; height:1064px; position:absolute; top:3034px; right:0;}
 .cardTitle.common .cardTitleCont .cardTitleSub {width:619px; top:393px; left:0;}
 .cardTitle.common .cardTitleCont .cardTitleSub .txt {font-size:35px; text-align:right;}
-.cardTitle.specialist {width:1201px; height:1064px; position:absolute; top:5122px; right:20px; background:green;}
+.cardTitle.common .cardFlagBg {right:-206px;}
+.cardTitle.common .cardFlagBg.flag03 {width:142px; height:255px; top:-838px; background:url('../images/main_bg_flag02.png') 0 0 no-repeat;}
+.cardTitle.specialist {width:1214px; height:1064px; position:absolute; top:5122px; right:0;}
 .cardTitle.specialist .cardTitleCont .cardTitleSub {width:540px; top:71px; right:0;}
 .cardTitle.specialist .cardTitleCont .cardTitleSub .txt {width:100%; height:72px;}
 .cardTitle.specialist .cardTitleCont .cardTitleSub a.more {margin-top:175px; float:right;}
 .cardTitle.specialist .cardTitleCont .photoList {width:1201px; height:1024px; position:absolute; top:19px; left:0; }
-.cardTitle.master {width:1201px; height:890px; position:absolute; top:7036px; left:20px; background:green;}
+.cardTitle.specialist .cardFlagBg {right:-206px;}
+.cardTitle.specialist .cardFlagBg.flag04 {width:141px; height:245px; bottom:-1345px; background:url('../images/main_bg_flag05.png') 0 0 no-repeat;}
+.cardTitle.master {width:1201px; height:890px; position:absolute; top:7036px; left:20px;}
 .cardTitle.master .cardTitleCont .cardTitleSub {width:718px; margin-bottom:15px; top:781px; left:22px;}
 .cardTitle.master .cardTitleCont .cardTitleSub .txt {width:443px; float:left; font-size:18px;}
 .cardTitle.master .cardTitleCont .cardTitleSub .txt img {width:101px;}
@@ -45,6 +53,8 @@
 .cardTitle.master .cardTitleCont dl.cardTitleForm dd + dd p {font-size:20px;}
 .cardTitle.master .cardTitleCont dl.cardTitleForm dd + dd p em {font-size:24px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;}
 .cardTitle.master .cardTitleCont dl.cardTitleForm dd a.startBtn {width:113px; height:20px; padding:46px 0; margin:18px 0 0 8px; border-radius:50%; overflow:hidden; background:#00dcfb; color:#000; display:inline-block;}
+.cardTitle.master .cardFlagBg {left:-207px;}
+.cardTitle.master .cardFlagBg.flag05 {width:177px; height:994px; top:-1387px; background:url('../images/main_bg_flag04.png') 0 0 no-repeat;}
 
 .cardTitle.newForm .cardTitleCont .cardTitleBg {width:805px; height:1849px; top:28px; right:0; background:url('../images/main_bg_newForm.png') 0 0 no-repeat;}
 .cardTitle.common .cardTitleCont .cardTitleBg {width:1075px; height:1537px; top:19px; left:65px; background:url('../images/main_bg_common.png') 0 0 no-repeat;}
@@ -68,7 +78,7 @@
 .cardCon{position:relative; z-index:4;top:0;display: block;width:265px;padding:81px 10px;color:#000;}
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
 .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
-.cardCon:after {content:''; width:164px; height:73px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:47px; right:-11px; opacity:0.5; z-index:-1;}
+.cardCon:after {content:''; width:164px; height:73px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:46px; right:-11px; opacity:0.5; z-index:-1;}
 
 .cardCon .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2; width:auto; height:auto;}
 .cardCon .cardEnter img{display: block;}
@@ -115,23 +125,23 @@
 .cardCon .here {width:84px; height:95px; background:url('../images/logo_flag06.png') 0px 0 no-repeat; position:absolute; top:4px; right:25px; z-index:4; color:#fff;}
 
 /* card size 01~04 */
-.cardSize01{height:330px;}
-.cardSize01 .cardCon{height:170px;}
-.cardSize01 .hexagon{height: 163.545px;}
+.cardSize01{height:328px;}
+.cardSize01 .cardCon{height:166px;}
+.cardSize01 .hexagon{height: 161.545px;}
 .cardSize01 .hexagon,
 .cardSize01 .hexagon .hexTop
-.cardSize01 .hexagon .hexBottom {background-size:285px 330px;}
+.cardSize01 .hexagon .hexBottom {background-size:285px 328px;}
 
-.cardSize02{height:503px;}
+.cardSize02{height:502px;}
 .cardSize02 .cardCon{height:340px;}
 .cardSize02 .hexagon{height:335.55px;}
 .cardSize02 .hexagon,
 .cardSize02 .hexagon .hexTop
-.cardSize02 .hexagon .hexBottom {background-size:285px 499px;}
+.cardSize02 .hexagon .hexBottom {background-size:285px 502px;}
 
-.cardSize03{height:679px;}
+.cardSize03{height:676px;}
 .cardSize03 .cardCon{height:514px;}
-.cardSize03 .hexagon{height: 507.55px;}
+.cardSize03 .hexagon{height: 508.55px;}
 .cardSize03 .hexagon,
 .cardSize03 .hexagon .hexTop
 .cardSize03 .hexagon .hexBottom {background-size:285px 676px;}

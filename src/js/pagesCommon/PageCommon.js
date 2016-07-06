@@ -171,7 +171,7 @@ module.exports = function() {
 			layoutMode : 'packery',
 			packery : {
 				columnWidth : 285,
-				gutter : 10
+				gutter : 20
 			}
 		});
 	};
