@@ -24,5 +24,7 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+
+		Super.Super.alertPopup('제목', '내용', '확인');
 	}
 };
