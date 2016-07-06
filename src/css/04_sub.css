@@ -158,7 +158,7 @@
 .magazine .wrap{clear: both;}
 
 
-.magazine .island{width: 590px;height: 160px;}
+.magazine .block{width: 590px;height: 160px;}
 .magazine .bestKey .cardTit{margin-top: 0;}
 .magazine .bestKey .cardTit span{display: block;font-size: 16px;color: #b2b2b2;line-height: 1em;}
 .magazine .bestKey li{position: relative;}
