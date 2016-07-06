@@ -46,11 +46,11 @@
 .popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
 #cboxLoadedContent .popHex:before{margin-right:0;}
 .popHex .cardCon{display: inline-block;padding:0 30px;width: 220px;vertical-align: middle;text-align: center;color: #000;}
-#cboxLoadedContent .popHex .popSub{margin-top: 18px;}
+#cboxLoadedContent .popHex .popSub{margin-top: 10px;}
 .popHex .popTit{line-height: 1.2em;font-size:20px;font-family:'RobotoM','NotoSansM', sans-serif;}
 .hexAlert #cboxClose{position: absolute;top:20px;left: 127px;width: 32px;height: 32px;background: url('../images/btn_closeG.png') no-repeat center;z-index: 9;border:0;font-size: 0;}
 
-#colorbox.hexAlert #cboxLoadedContent { overflow-x:hidden !important; padding:0 }
+#colorbox.hexAlert #cboxLoadedContent { overflow:hidden !important; padding:0 }
 
 /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
 
