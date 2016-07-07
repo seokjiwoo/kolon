@@ -5,212 +5,212 @@
 </head>
  <body data-page-id="myPage-return">
 	<div class="wrapper my">
-	<!-- @@include ../_template/menu.html -->
-	<div class="container bgTop">
-		<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
-		<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
-		<div class="wrap">
-			<!-- @@include ../_template/my_depth03_01.html {"myMenu02":"on"} -->
-			<section class="singleCard" id="myActivity">
-				<h2 class="secTit">교환/반품/취소 내역 조회</h2>
-				<table class="recordSort">
-					<colgroup>
-						<col style="width:130px;"/>
-						<col style="width:auto;"/>
-					</colgroup>
-					<tr>
-						<th>기간별 주문조회</th>
-						<td>
-							<ul class="sortTerm">
-								<li><a href="" class="on">1주일</a></li>
-								<li><a href="">2주일</a></li>
-								<li><a href="">1개월</a></li>
-								<li><a href="">3개월</a></li>
-								<li><a href="">6개월</a></li>
-							</ul>
-							<div class="sortTermSet">
-								<!-- datePicker -->
-								<div class="calendar cal2 js-range-picker">
-									<span class="calInp">
-										<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
-										<a href="#" class="calBtn js-btn-from">날짜선택</a>
-										<div class="cal-container js-picker-from"></div>
-									</span> 
-									<span class="calInp">
-										<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
-										<a href="#" class="calBtn js-btn-to">날짜선택</a>
-										<div class="cal-container js-picker-to"></div>
-									</span>
+		<!-- @@include ../_template/menu.html -->
+		<div class="container bgTop">
+			<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
+			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
+			<div class="wrap">
+				<!-- @@include ../_template/my_depth03_01.html {"myMenu02":"on"} -->
+				<section class="singleCard" id="myActivity">
+					<h2 class="secTit">교환/반품/취소 내역 조회</h2>
+					<table class="recordSort">
+						<colgroup>
+							<col style="width:130px;"/>
+							<col style="width:auto;"/>
+						</colgroup>
+						<tr>
+							<th>기간별 주문조회</th>
+							<td>
+								<ul class="sortTerm">
+									<li><a href="" class="on">1주일</a></li>
+									<li><a href="">2주일</a></li>
+									<li><a href="">1개월</a></li>
+									<li><a href="">3개월</a></li>
+									<li><a href="">6개월</a></li>
+								</ul>
+								<div class="sortTermSet">
+									<!-- datePicker -->
+									<div class="calendar cal2 js-range-picker">
+										<span class="calInp">
+											<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-from">날짜선택</a>
+											<div class="cal-container js-picker-from"></div>
+										</span> 
+										<span class="calInp">
+											<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-to">날짜선택</a>
+											<div class="cal-container js-picker-to"></div>
+										</span>
+									</div>
+									<!--// datePicker -->
 								</div>
-								<!--// datePicker -->
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<th>주문내역 검색</th>
-						<td>
-							<form action="">
-								<fieldset class="recordSearch">
-									<legend class="hide"></legend>
-									<input type="text" id="recordInput" title="주문내역 입력 란">
-									<label for="recordInput"></label>
-									<button type="submit">검색</button>
-								</fieldset>
-							</form>
-						</td>
-					</tr>
-				</table>
-				<div class="alignBox">					
-					<h3 class="subTit">교환/반품/취소 목록</h3>
-					<!-- 
-							[D] dropbox - active 시 .dropOn 
-							
-							- data-prevent Flag값 입력
-							- data-prevent : a href prevent flag / 기본값 - true
-							- 선택에 따라 .on 토글
-						-->
-						<style>
-							/* 테스트 임시 구성 */
-							/*.drop a.on {color:#f1645c}*/
-						</style>
-						<ul class="drop" data-prevent="true">
-							<li><a href="#">진행상태 보기</a></li>
-							<li><a href="#" data-value="type-1">전체</a></li>
-							<li><a href="#" data-value="type-2">입금대기</a></li>
-							<li><a href="#" data-value="type-3">결제완료</a></li>
-							<li><a href="#" data-value="type-4">상품준비중</a></li>
-							<li><a href="#" data-value="type-5">배송중</a></li>
-							<li><a href="#" data-value="type-6">배송완료</a></li>
-							<li><a href="#" data-value="type-7">구매확정</a></li>
-						</ul>
-
+							</td>
+						</tr>
+						<tr>
+							<th>주문내역 검색</th>
+							<td>
+								<form action="">
+									<fieldset class="recordSearch">
+										<legend class="hide"></legend>
+										<input type="text" id="recordInput" title="주문내역 입력 란">
+										<label for="recordInput"></label>
+										<button type="submit">검색</button>
+									</fieldset>
+								</form>
+							</td>
+						</tr>
+					</table>
+					<div class="alignBox">					
+						<h3 class="subTit">교환/반품/취소 목록</h3>
 						<!-- 
-							[D] dropbox 체크 타입 - active 시 .dropOn
+								[D] dropbox - active 시 .dropOn 
+								
+								- data-prevent Flag값 입력
+								- data-prevent : a href prevent flag / 기본값 - true
+								- 선택에 따라 .on 토글
+							-->
+							<style>
+								/* 테스트 임시 구성 */
+								/*.drop a.on {color:#f1645c}*/
+							</style>
+							<ul class="drop" data-prevent="true">
+								<li><a href="#">진행상태 보기</a></li>
+								<li><a href="#" data-value="type-1">전체</a></li>
+								<li><a href="#" data-value="type-2">입금대기</a></li>
+								<li><a href="#" data-value="type-3">결제완료</a></li>
+								<li><a href="#" data-value="type-4">상품준비중</a></li>
+								<li><a href="#" data-value="type-5">배송중</a></li>
+								<li><a href="#" data-value="type-6">배송완료</a></li>
+								<li><a href="#" data-value="type-7">구매확정</a></li>
+							</ul>
 
-							- data-prevent Flag값 입력
-							- data-prevent : a href prevent flag / 기본값 - true
+							<!-- 
+								[D] dropbox 체크 타입 - active 시 .dropOn
 
-							- data-all-checker 전체선택 input 객체 설정
-							- 기본값 data-all-checker 별도 지정이 없을 경우 input 객체중 첫번째 요소로 설정
-						 -->
-						<ul class="drop dropChk" style="right:150px" data-prevent="true">
-							<li><a href="#">진행상태 보기</a></li>
-							<li>
-								<p class="checkbox">
-									<label for="chkAll" class="on">전체</label>
-									<input type="checkbox" name="chkGroup1" id="chkAll" checked="checked" data-all-checker="true">
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk01" class="on">입금대기</label>
-									<input type="checkbox" name="chkGroup2" id="chk01" checked="checked">
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk02" class="on">결제완료</label>
-									<input type="checkbox" name="chkGroup3" id="chk02" checked="checked">
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk03" class="on">상품준비중</label>
-									<input type="checkbox" name="chkGroup4" id="chk03" checked="checked">
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk04" class="on">배송중</label>
-									<input type="checkbox" name="chkGroup5" id="chk04" checked="checked">
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk05" class="on">배송완료</label>
-									<input type="checkbox" name="chkGroup6" id="chk05" checked="checked">
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk06" class="on">구매확정</label>
-									<input type="checkbox" name="chkGroup7" id="chk06" checked="checked">
-								</p>
-							</li>
-						</ul>
-				</div>
-				<table class="record">
-					<tr>
-						<th>주문정보</th>
-						<th colspan="2">상품정보</th>
-						<th>판매처</th>
-						<th>수령자</th>
-						<th>신청일자</th>
-						<th>진행상태</th>
-					</tr>
-					<tr>
-						<td rowspan="3" class="recordDate">
-							<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-							<p class="total"><b>총 취소금액</b><br>3,850,000 원</p>
-						</td>
-						<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-						<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
-						</td>
-						<td>ANNA</td>
-						<td>김정현</td>
-						<td>2016.04.20</td>
-						<td class="orderState">
-							<p class="stateTxt">취소완료</p>
-							<a href="" class="btnSizeS btnColor01">취소상세</a>
-						</td>
-					</tr>
-					<tr>
-						<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-						<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
-						</td>
-						<td>ANNA</td>
-						<td>김정현</td>
-						<td>2016.04.20</td>
-						<td class="orderState">
-							<div class="stateTxt">취소신청
-							</div>
-							<a href="" class="btnSizeS btnColor01">취소상세</a>
-						</td>
-					</tr>
-					<tr>
-						<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-						<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
-						</td>
-						<td>ANNA</td>
-						<td>김정현</td>
-						<td>2016.04.20</td>
-						<td class="orderState">
-							<p>환불완료</p><p class="cancleDate">2016.04.20</p>
-							<a href="" class="btnSizeS btnColor01">취소상세</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="recordDate">
-							<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-							<p class="total">총 취소금액<br><b>3,850,000 원</b></p>
-						</td>
-						<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-						<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
-						</td>
-						<td>ANNA</td>
-						<td>김정현</td>
-						<td>2016.04.20</td>
-						<td class="orderState">
-							<div class="stateTxt">교환완료
-							</div>
-							<a href="" class="btnSizeS btnColor01">취소상세</a>
-						</td>
-					</tr>
-				</table>
-			</section>
+								- data-prevent Flag값 입력
+								- data-prevent : a href prevent flag / 기본값 - true
+
+								- data-all-checker 전체선택 input 객체 설정
+								- 기본값 data-all-checker 별도 지정이 없을 경우 input 객체중 첫번째 요소로 설정
+							 -->
+							<ul class="drop dropChk" style="right:150px" data-prevent="true">
+								<li><a href="#">진행상태 보기</a></li>
+								<li>
+									<p class="checkbox">
+										<label for="chkAll" class="on">전체</label>
+										<input type="checkbox" name="chkGroup1" id="chkAll" checked="checked" data-all-checker="true">
+									</p>
+								</li>
+								<li>
+									<p class="checkbox">
+										<label for="chk01" class="on">입금대기</label>
+										<input type="checkbox" name="chkGroup2" id="chk01" checked="checked">
+									</p>
+								</li>
+								<li>
+									<p class="checkbox">
+										<label for="chk02" class="on">결제완료</label>
+										<input type="checkbox" name="chkGroup3" id="chk02" checked="checked">
+									</p>
+								</li>
+								<li>
+									<p class="checkbox">
+										<label for="chk03" class="on">상품준비중</label>
+										<input type="checkbox" name="chkGroup4" id="chk03" checked="checked">
+									</p>
+								</li>
+								<li>
+									<p class="checkbox">
+										<label for="chk04" class="on">배송중</label>
+										<input type="checkbox" name="chkGroup5" id="chk04" checked="checked">
+									</p>
+								</li>
+								<li>
+									<p class="checkbox">
+										<label for="chk05" class="on">배송완료</label>
+										<input type="checkbox" name="chkGroup6" id="chk05" checked="checked">
+									</p>
+								</li>
+								<li>
+									<p class="checkbox">
+										<label for="chk06" class="on">구매확정</label>
+										<input type="checkbox" name="chkGroup7" id="chk06" checked="checked">
+									</p>
+								</li>
+							</ul>
+					</div>
+					<table class="record">
+						<tr>
+							<th>주문정보</th>
+							<th colspan="2">상품정보</th>
+							<th>판매처</th>
+							<th>수령자</th>
+							<th>신청일자</th>
+							<th>진행상태</th>
+						</tr>
+						<tr>
+							<td rowspan="3" class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total"><b>총 취소금액</b><br>3,850,000 원</p>
+							</td>
+							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>2016.04.20</td>
+							<td class="orderState">
+								<p class="stateTxt">취소완료</p>
+								<a href="" class="btnSizeS btnColor01">취소상세</a>
+							</td>
+						</tr>
+						<tr>
+							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>2016.04.20</td>
+							<td class="orderState">
+								<div class="stateTxt">취소신청
+								</div>
+								<a href="" class="btnSizeS btnColor01">취소상세</a>
+							</td>
+						</tr>
+						<tr>
+							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>2016.04.20</td>
+							<td class="orderState">
+								<p>환불완료</p><p class="cancleDate">2016.04.20</p>
+								<a href="" class="btnSizeS btnColor01">취소상세</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="recordDate">
+								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
+								<p class="total">총 취소금액<br><b>3,850,000 원</b></p>
+							</td>
+							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
+							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span>수량 : 1<span class="productPrice">1,700,000 원</span>
+							</td>
+							<td>ANNA</td>
+							<td>김정현</td>
+							<td>2016.04.20</td>
+							<td class="orderState">
+								<div class="stateTxt">교환완료
+								</div>
+								<a href="" class="btnSizeS btnColor01">취소상세</a>
+							</td>
+						</tr>
+					</table>
+				</section>
+			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
-		</div>
 	</div>
 </body>
 </html>

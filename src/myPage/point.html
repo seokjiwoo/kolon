@@ -5,144 +5,144 @@
 </head>
 <body data-page-id="myPage-point">
 	<div class="wrapper my">
-	<!-- @@include ../_template/menu.html -->
-	<div class="container bgTop">
-		<!-- @@include ../_template/my_depth01.html {"myMenu06":"on"} -->
-		<div class="wrap">
-			<section class="singleCard" id="myActivity">
-				<h2 class="secTit">마이 커먼 포인트</h2>
-				<div class="tbSet">
-					<table class="tbL">
-						<caption>보유포인트, 소멸예정 포인트 정보를 제공합니다.</caption>
+		<!-- @@include ../_template/menu.html -->
+		<div class="container bgTop">
+			<!-- @@include ../_template/my_depth01.html {"myMenu06":"on"} -->
+			<div class="wrap">
+				<section class="singleCard" id="myActivity">
+					<h2 class="secTit">마이 커먼 포인트</h2>
+					<div class="tbSet">
+						<table class="tbL">
+							<caption>보유포인트, 소멸예정 포인트 정보를 제공합니다.</caption>
+							<colgroup>
+								<col style="width:160px;"/>
+								<col style="width:390px;"/>
+								<col style="width:160px;"/>
+								<col style="width:390px;"/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">보유포인트</th>
+									<td><span class="price"><span class="pointRed">100,000</span> P</span></td>
+									<th scope="row">30일 이내 소멸 예정</th>
+									<td><span class="price"><span class="pointRed">0</span> P</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<h3 class="subTit">포인트 조회</h3>
+					<table class="recordSort">
+						<caption>기간별 주문조회 / 주문내역 검색 정보를 제공합니다.</caption>
 						<colgroup>
 							<col style="width:160px;"/>
-							<col style="width:390px;"/>
-							<col style="width:160px;"/>
-							<col style="width:390px;"/>
+							<col style="width:auto;"/>
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="row">보유포인트</th>
-								<td><span class="price"><span class="pointRed">100,000</span> P</span></td>
-								<th scope="row">30일 이내 소멸 예정</th>
-								<td><span class="price"><span class="pointRed">0</span> P</span></td>
+								<th scope="row" rowspan="2">조회기간</th>
+								<td>
+									<ul class="sortTerm">
+										<li><a href="" class="on">1주일</a></li>
+										<li><a href="">2주일</a></li>
+										<li><a href="">1개월</a></li>
+										<li><a href="">3개월</a></li>
+										<li><a href="">6개월</a></li>
+									</ul>
+									<div class="sortTermSet">
+										<!-- datePicker -->
+										<div class="calendar cal2 js-range-picker">
+											<span class="calInp">
+												<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+												<a href="#" class="calBtn js-btn-from">날짜선택</a>
+												<div class="cal-container js-picker-from"></div>
+											</span> 
+											<span class="calInp">
+												<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+												<a href="#" class="calBtn js-btn-to">날짜선택</a>
+												<div class="cal-container js-picker-to"></div>
+											</span>
+										</div>
+										<!--// datePicker -->
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<form method="post" action="/" class="formList oderSearch">
+										<fieldset>
+											<legend class="hide">적립/사용내역 조회</legend>
+											<div class="arrayWrap alignBox">
+												<div class="leftBox">
+													<ul class="drop" data-prevent="true">
+														<li><a href="#">적립/사용내역</a></li>
+														<li><a href="#" data-value="type-1">포인트 적립</a></li>
+														<li><a href="#" data-value="type-2">포인트 사용</a></li>
+														<li><a href="#" data-value="type-3">포인트 적립</a></li>
+														<li><a href="#" data-value="type-4">포인트 적립</a></li>
+													</ul>
+												</div>
+												<div class="leftBox">
+													<button class="btn btnSizeM2 btnColor02">조회하기</button>
+												</div>
+											</div>
+										</fieldset> 
+									</form>
+								</td>
 							</tr>
 						</tbody>
 					</table>
-				</div>
-				<h3 class="subTit">포인트 조회</h3>
-				<table class="recordSort">
-					<caption>기간별 주문조회 / 주문내역 검색 정보를 제공합니다.</caption>
-					<colgroup>
-						<col style="width:160px;"/>
-						<col style="width:auto;"/>
-					</colgroup>
-					<tbody>
-						<tr>
-							<th scope="row" rowspan="2">조회기간</th>
-							<td>
-								<ul class="sortTerm">
-									<li><a href="" class="on">1주일</a></li>
-									<li><a href="">2주일</a></li>
-									<li><a href="">1개월</a></li>
-									<li><a href="">3개월</a></li>
-									<li><a href="">6개월</a></li>
-								</ul>
-								<div class="sortTermSet">
-									<!-- datePicker -->
-									<div class="calendar cal2 js-range-picker">
-										<span class="calInp">
-											<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
-											<a href="#" class="calBtn js-btn-from">날짜선택</a>
-											<div class="cal-container js-picker-from"></div>
-										</span> 
-										<span class="calInp">
-											<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
-											<a href="#" class="calBtn js-btn-to">날짜선택</a>
-											<div class="cal-container js-picker-to"></div>
-										</span>
-									</div>
-									<!--// datePicker -->
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<form method="post" action="/" class="formList oderSearch">
-									<fieldset>
-										<legend class="hide">적립/사용내역 조회</legend>
-										<div class="arrayWrap alignBox">
-											<div class="leftBox">
-												<ul class="drop" data-prevent="true">
-													<li><a href="#">적립/사용내역</a></li>
-													<li><a href="#" data-value="type-1">포인트 적립</a></li>
-													<li><a href="#" data-value="type-2">포인트 사용</a></li>
-													<li><a href="#" data-value="type-3">포인트 적립</a></li>
-													<li><a href="#" data-value="type-4">포인트 적립</a></li>
-												</ul>
-											</div>
-											<div class="leftBox">
-												<button class="btn btnSizeM2 btnColor02">조회하기</button>
-											</div>
-										</div>
-									</fieldset> 
-								</form>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<h3 class="subTit">포인트 내역</h3>
-				<table class="record">
-					<caption>포인트 내역에 관한 날짜, 유형, 내용, 소멸예정일, 남은기간, 포인트 내역 정보를 제공합니다.</caption>
-					<colgroup>
-						<col style="width:15%;"/><col style="width:25%;"/><col style="width:25%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:10%;"/>
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">날짜</th>
-							<th scope="col">유형</th>
-							<th scope="col">내용</th>
-							<th scope="col">소멸예정일</th>
-							<th scope="col">남은기간</th>
-							<th scope="col">포인트 내역</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td rowspan="3" class="recordDate">
-								<p class="date">2016. 04. 20</p>
-							</td>
-							<td><span class="pointRed">환불</span> - 커먼</td>
-							<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
-							<td>2016.03.02</td>
-							<td>20일</td>
-							<td>-10,000</td>
-						</tr>
-						<tr>
-							<td><span class="pointRed">환불</span> - 커먼</td>
-							<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
-							<td>2016.03.02</td>
-							<td>20일</td>
-							<td>-10,000</td>
-						</tr>
-						<tr>
-							<td><span class="pointRed">환불</span> - 커먼</td>
-							<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
-							<td>2016.03.02</td>
-							<td>20일</td>
-							<td>-10,000</td>
-						</tr>
-					<tbody>
-				</table>
-				<ul class="infoOrder">
-					<li>· 포인트는 2008년 7월 9일 개정된 전자금융 시행령에 따라 최대 200만 포인트를 초과하여 보유 할 수 없습니다.</li>
-					<li>· 포인트 유효기간은 1년 입니다.</li>
-					<li>· 주문 시 포인트 사용 후 구매자 책임(단순변심 등)으로 취소/반품 시, 유효기간이 만료된 포인트는 소멸됩니다.</li>
-				</ul>
-			</section>
+					<h3 class="subTit">포인트 내역</h3>
+					<table class="record">
+						<caption>포인트 내역에 관한 날짜, 유형, 내용, 소멸예정일, 남은기간, 포인트 내역 정보를 제공합니다.</caption>
+						<colgroup>
+							<col style="width:15%;"/><col style="width:25%;"/><col style="width:25%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:10%;"/>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">날짜</th>
+								<th scope="col">유형</th>
+								<th scope="col">내용</th>
+								<th scope="col">소멸예정일</th>
+								<th scope="col">남은기간</th>
+								<th scope="col">포인트 내역</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td rowspan="3" class="recordDate">
+									<p class="date">2016. 04. 20</p>
+								</td>
+								<td><span class="pointRed">환불</span> - 커먼</td>
+								<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
+								<td>2016.03.02</td>
+								<td>20일</td>
+								<td>-10,000</td>
+							</tr>
+							<tr>
+								<td><span class="pointRed">환불</span> - 커먼</td>
+								<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
+								<td>2016.03.02</td>
+								<td>20일</td>
+								<td>-10,000</td>
+							</tr>
+							<tr>
+								<td><span class="pointRed">환불</span> - 커먼</td>
+								<td>포인트 <span class="pointRed">환불</span>(2132142151251)</td>
+								<td>2016.03.02</td>
+								<td>20일</td>
+								<td>-10,000</td>
+							</tr>
+						<tbody>
+					</table>
+					<ul class="infoOrder">
+						<li>· 포인트는 2008년 7월 9일 개정된 전자금융 시행령에 따라 최대 200만 포인트를 초과하여 보유 할 수 없습니다.</li>
+						<li>· 포인트 유효기간은 1년 입니다.</li>
+						<li>· 주문 시 포인트 사용 후 구매자 책임(단순변심 등)으로 취소/반품 시, 유효기간이 만료된 포인트는 소멸됩니다.</li>
+					</ul>
+				</section>
+			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
-		</div>
 	</div>
 </body>
 </html>
