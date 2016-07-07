@@ -45,6 +45,11 @@ module.exports = function() {
 			$(this).toggleClass('open');
 			$(this).siblings('.slideCon').slideToggle();
 		});
+		$('.searchToggle').on('click', function(e) { // common slideToggle
+			e.preventDefault();
+			$(this).toggleClass('searchOpen');
+			$(this).siblings('.searchCon').slideToggle();
+		});
 
 		$('.btnMore').on('click', function(e) { // common slideToggle
 			e.preventDefault();

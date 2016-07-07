@@ -4,7 +4,7 @@ a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
 ul, ol, li,dl,dt,dd{list-style:none;padding:0;margin:0;}
 fieldset{border:0;padding:0;margin:0;}
 h1, h2, h3, h4, h5, h6, p{margin:0;font-weight:normal;}
-input, textarea, button, select, option, {line-height:1;font-family:'NotoSansR', 'RobotoR', sans-serif;border:0;outline:0;background:none;font-size: 13px};
+input, textarea, button, select, option, {line-height:1;font-family:'NotoSansR', 'RobotoR', sans-serif;border:0;outline:0;background:none;font-size: 13px;}
 table{border-collapse:collapse;border-spacing:0;}
 img{border:none}
 textarea{resize: none;}
@@ -16,7 +16,7 @@ a{color:#666;}
 .wrapper{/*background:#e0e0e0;l*/letter-spacing:-0.5px;font-size: 13px;}
 .container{width:100%;}
 
-.header{width:100%;min-height:45px;background:#fff;}
+.header{width:100%;min-height:45px;background:#fff; position:relative;}
 .header .logo{width:78px;margin:0 auto;}
 .header .logo a{height:45px;display:block;}
 .header .logo img{width:100%;vertical-align:top;margin-top:18px;}
@@ -25,6 +25,10 @@ a{color:#666;}
 .header .bagBtn{position:absolute;top:0;height:45px;}
 .header .gnbBtn{ left:0;width:45px;background:url("../images/ico_gnb_btn.png") no-repeat center center;background-size:18px;}
 .header .searchBtn{ display:block;right:0;width:45px;background:url("../images/ico_search2.png") no-repeat 14px 15px;background-size:18px;}
+.header .searchBtn span.cancelBtn {display:none;}
+.header .searchBtn.open {z-index:10; background:none; }
+.header .searchBtn.open span.cancelBtn {width:57.5px; border:0; display:inline-block; position:absolute; top:0; right:0; text-align:center; color:#fff; font-size:15px; line-height:45px; vertical-align:middle;}
+.header .searchBtn.open span.cancelBtn:before {content:''; width:1px; height:19px; margin-top:-9.5px; background:#d84e46; position:absolute; top:50%; left:0;}
 .login .header .searchBtn{ right:34px;width:34px; }
 .header .bagBtn{ display:none;right:0;width:34px;background:url("../images/ico_bag.png") no-repeat center center;background-size:18px;}
 .header .bagBtn span{padding-top:21px;text-align:center;display:block;color:#ff463b;font-weight:bold;font-size:11px;}
@@ -33,7 +37,7 @@ a{color:#666;}
 .gnb{position:absolute;left:-300px;top:0;bottom:0;z-index:10;width:300px;height:100%;background:#fff;display:block;}
 .gnb .topArea{position:relative;}
 .gnb .userBox{text-align:center;padding-top:25px;background:#ff466c;}
-.gnb .userBox .thumb{width:60px;height:60px;display:inline-block;overflow:hidden;border-radius:100%}
+.gnb .userBox .thumb{width:60px;height:60px;display:inline-block;overflow:hidden;border-radius:100%;}
 .gnb .userBox .thumb img{width:100%;vertical-align:top;}
 .gnb .userBox p{position:relative;line-height:1.4em;}
 .gnb .userBox .thumb + p{color:#fff;font-size:18px;font-weight:bold}
@@ -104,3 +108,16 @@ a{color:#666;}
 .container.fix{position:fixed;left:0;top:45px;}
 .header.fix{position:fixed;left:0;top:0;}
 .dimBg{position:fixed;left:0;top:0;right:0;z-index:9;width:100%;height:100%;background:#000;opacity:0.5;}
+
+.searchWrap {display:none; width:100%; position:absolute; top:0; left:0; background:#f1645c; overflow:hidden; z-index:9;}
+.searchWrap .searchForm {height:45px; padding-right:57.5px; overflow:hidden; position:relative; background:url('../images/ico_search_on.png') 15px 50% no-repeat; background-size:16.5px 17px;}
+.searchWrap .searchForm p {padding:4px 39px 4px 45px; position:relative;}
+.searchWrap .searchForm p input[type=text] {width:100%; padding:5px 0; border:0; color:#fff; background:none; font-size:15px; line-height:25px; vertical-align:middle;}
+.searchWrap .searchForm p input[type=text]::-webkit-input-placeholder {color:#fff}
+.searchWrap .searchForm p button.keywordDel {width:18px; height:18px; margin-top:-9px; font-size:0; background:url('../images/ico_search_close.png') 0 0 no-repeat; background-size:18px 18px; position:absolute; top:50%; right:10px; border:0;}
+.searchWrap .searchForm button.cancelBtn {width:57.5px; border:0; background:none; display:inline-block; position:absolute; top:0; right:0; text-align:center; color:#fff; font-size:15px; line-height:45px; vertical-align:middle;}
+.searchWrap .searchForm button.cancelBtn:before {content:''; width:1px; height:19px; margin-top:-9.5px; background:#d84e46; position:absolute; top:50%; left:0;}
+.searchWrap .keyword {width:100%; background:#fff; overflow:hidden;}
+.searchWrap .keyword ul.keywordList {padding:0 15px;}
+.searchWrap .keyword ul.keywordList li {width:100%; padding:15px 0; color:#333; border-bottom:1px solid #e5e5e5;}
+.searchWrap .keyword ul.keywordList li span {color:#f1645c;}
