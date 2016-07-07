@@ -112,7 +112,7 @@ a{color:#666;}
 .searchWrap {display:none; width:100%; position:absolute; top:0; left:0; background:#f1645c; overflow:hidden; z-index:9;}
 .searchWrap .searchForm {height:45px; padding-right:57.5px; overflow:hidden; position:relative; background:url('../images/ico_search_on.png') 15px 50% no-repeat; background-size:16.5px 17px;}
 .searchWrap .searchForm p {padding:4px 39px 4px 45px; position:relative;}
-.searchWrap .searchForm p input[type=text] {width:100%; padding:10px 0; border:0; color:#fff; background:none; font-size:15px;}
+.searchWrap .searchForm p input[type=text] {width:100%; padding:5px 0; border:0; color:#fff; background:none; font-size:15px; line-height:25px; vertical-align:middle;}
 .searchWrap .searchForm p input[type=text]::-webkit-input-placeholder {color:#fff}
 .searchWrap .searchForm p button.keywordDel {width:18px; height:18px; margin-top:-9px; font-size:0; background:url('../images/ico_search_close.png') 0 0 no-repeat; background-size:18px 18px; position:absolute; top:50%; right:10px; border:0;}
 .searchWrap .searchForm button.cancelBtn {width:57.5px; border:0; background:none; display:inline-block; position:absolute; top:0; right:0; text-align:center; color:#fff; font-size:15px; line-height:45px; vertical-align:middle;}

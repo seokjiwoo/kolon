@@ -535,3 +535,6 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
   .userArea .menu ul li:nth-child(5){left:176px;top:112px;}
   .userArea .menu ul li:nth-child(6){left:228px;top:70px;}
 }
+
+.myWrap {padding:0 15px; margin-top:10px; background:#fff; overflow:hidden;}
+.myWrap .productList {margin-top:0; border-top:0;}
