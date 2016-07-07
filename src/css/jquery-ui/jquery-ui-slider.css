@@ -78,7 +78,7 @@
 .sortGraph .ui-state-default,
 .sortGraph .ui-widget-content .ui-state-default,
 .sortGraph .ui-widget-header .ui-state-default {position:absolute;display:inline-block;width:26px;height:26px;top:-7px;border:0}
-.sortGraph .ui-widget-header {background:#f1645c}
+.sortGraph .ui-widget-header {background:#f1645c;margin:0;}
 .sortGraph .ui-slider-handle.leftBtn {background:url('../images/detail_arrow.png') 0 0 no-repeat}
 .sortGraph .ui-slider-handle.rightBtn {background:url('../images/detail_arrow.png') 0 -26px no-repeat}
 .sortGraph .slider-container {position:relative;z-index:1;padding-right:20px}
