@@ -116,21 +116,25 @@ function ClassLoginController() {
 		console.log('SOCIAL LOGIN RESULT HANDLER>');
 		console.log(socialData);
 		
-		if (model.loginData() == null) {
-			// 로그인 상태가 아닐 때 - 로그인 or 회원가입
-			Super.callApi('/apis/me', 'GET', {}, function(status, result) {
-				if (status == 200) {
-					socialLoginFlag = true;
-					socialConnect(socialData);
-				} else {
-					Super.handleError('login/myData', status);
-				}
-				$(callerObj).trigger('loginResult', [status, result]);
-			});
+		if (socialData.status == 200) {
+			if (model.loginData() == null) {
+				// 로그인 상태가 아닐 때 - 로그인 or 회원가입
+				Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+					if (status == 200) {
+						socialLoginFlag = true;
+						socialConnect(socialData.data);
+					} else {
+						Super.handleError('login/myData', status);
+					}
+					$(callerObj).trigger('loginResult', [status, result]);
+				});
+			} else {
+				// 로그인 상태일 때 - 소셜연결
+				socialLoginFlag = false;
+				socialConnect(socialType, socialData.data);
+			}
 		} else {
-			// 로그인 상태일 때 - 소셜연결
-			socialLoginFlag = false;
-			socialConnect(socialType, socialData);
+			$(callerObj).trigger('loginResult', [socialData.status, socialData]);
 		}
 	};
 
