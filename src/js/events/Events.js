@@ -46,6 +46,9 @@ function Events() {
 			LIST : 'followsListResult',
 			ADD_FOLLOW : 'addFollowsResult',
 			DELETE_FOLLOW : 'deleteFollowsResult'
+		},
+		TIMELINE : {
+			LIST : 'myTimeLineResult'
 		}
 	},
 	instance;

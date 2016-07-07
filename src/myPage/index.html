@@ -9,8 +9,7 @@
 	<div class="container bgTop">
 		<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
 		<!-- @@include ../_template/my_depth02.html {"myMenu01":"on"} -->
-		
-		<section  class="wrap timeCard" id="myTimeline">
+		<section class="wrap timeCard" id="myTimeline">
 			<!-- 
 			recordType01 -> 상품 구매 기록
 			recordType02 -> 스크랩 기록
@@ -217,6 +216,12 @@
 	#myTimeline .recordWrap:last-child .recordIco:before,
 	#myTimeline .recordWrap:last-child .recordIco:after {display:none}
 
+	#myTimeline .recordWrap {background:url(../images/bg_my.png) repeat-y 21px}
+	#myTimeline .recordDate {margin:0px auto 15px 209px}
+	.timeCard .recordTime {width:195px}
+	#myTimeline li a {width:840px}
+	#myTimeline .recordCon {width:522px}
+
 	.js-timeline-list.has-animate {
 		opacity: 1;
 		-webkit-transform:translateX(0px);-moz-transform:translateX(0px);-ms-transform:translateX(0px);-o-transform:translateX(0px);transform:translateX(0px);
@@ -244,7 +249,7 @@
 						"myPageTypeCode" : "{{myPageTypeCode}}",
 						"registerDateTime" : "{{registerDateTime}}"
 				}'>
-					<h4 class="recordTime"><span class="js-date">2016.03.31</span> <b>&#8226;</b> <span class="js-fromNow">10분전</span></h4>
+					<h4 class="recordTime"><span class="js-date">{{fromDate}}</span>&nbsp;<b>&#8226;</b>&nbsp;<span class="js-fromNow">{{fromNow}}</span></h4>
 					<div class="recordIco">
 						{{#if isJoin}}
 							<img src="/images/ico_record_join.png" alt="">
