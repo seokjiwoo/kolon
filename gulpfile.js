@@ -174,9 +174,12 @@ gulp.task('fontPass', function() {
 gulp.task('minifycss', function() {
 	return gulp.src(src+'/**/*.css')
 		.pipe(plumber(plumberOption))
-		.pipe(sourcemaps.init({loadMaps: false, debug: false}))
+		.pipe(sourcemaps.init({loadMaps: true, debug: false}))
 		.pipe(cached('css'))
-		.pipe(cssnano())
+		.pipe(cssnano({
+			discardUnused: {fontFace: false},
+			zindex: false
+		}))
 		.pipe(remember('css'))
 		.pipe(concat('main.css'))
 		.pipe(sourcemaps.write('./'))
