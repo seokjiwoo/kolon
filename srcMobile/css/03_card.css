@@ -44,7 +44,7 @@
 
 #colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:99; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
 #cboxWrapper {max-width:none;}
-#cboxOverlay{position:fixed; width:100%; height:100%;background:#000;filter:alpha(opacity = 50);}
+#cboxOverlay{position:fixed; width:100%; height:100%;background:#fff;}
 #cboxMiddleLeft, #cboxBottomLeft{clear:left;}
 #cboxContent{position:relative;overflow:visible;font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
 #cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling:touch;}
@@ -58,6 +58,8 @@
 #colorbox {outline:0;z-index: 20}
 #cboxError {padding:50px; border:1px solid #ccc; }
 #cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; word-break: keep-all;}
+.lyPop-m #cboxLoadedContent {padding-bottom:0; overflow:hidden;}
+.lyPop-m .popCon { overflow:auto; }
 #cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
 #cboxLoadedContent .popScroll2 {overflow:auto; max-height:518px;}
 #cboxLoadedContent .popScroll3 {overflow:auto; max-height:470px;}
