@@ -1,5 +1,6 @@
 .cardBox {width:1500px; overflow:hidden;}
 .cardWrap{max-width:1520px; min-width:1220px;margin:64px auto 0;z-index: 1;}
+@media (max-width:1520px){.cardWrap {max-width:1220px;}}
 .cardWrap > li.card {overflow: hidden;float: left;width:285px;padding:84px 0; margin-top:-167px; text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
 .cardWrap {padding-top:83px;}
 
