@@ -112,6 +112,12 @@ module.exports = function() {
 					confirmPasswordResultHandler(null, 200);
 				} else {
 					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+						onOpen: function() {
+							$('#checkPwForm').submit(function(e){
+								e.preventDefault();
+								loginController.confirmPassword($('#checkPw').val());
+							});
+						},
 						onSubmit: function() {
 							loginController.confirmPassword($('#checkPw').val());
 						}
