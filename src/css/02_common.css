@@ -149,7 +149,7 @@ a.pointLink {color:#f1645c;text-decoration:underline;font-family:'NotoSansR', sa
 .tabType02 .on a{color: #333;}
 
 /* button */
-.btnWrap{text-align: center;}
+.btnWrap{text-align: center;clear:both;}
 a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0;font-family: 'NotoSansM', sans-serif;text-align: center;}
 
 .btnSizeS{height:30px;padding:0 20px;font-size: 14px;border-radius: 15px;line-height: 30px;}
@@ -349,7 +349,7 @@ table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-cale
 .drop.dropChk.dropOn li:first-child a:after {top:8px;background-position:0 -60px;} 
 
 /* myPage order.html 제목줄 옆 dropBox 레이아웃 */
-.alignBox {position:relative;line-height:40px}
+.alignBox {position:relative;line-height:40px;z-index: 2}
 .alignBox .drop {position:absolute;top:0;right:0;z-index:1;background: #fff;}
 .alignBox .drop.dropOn{z-index: 3}
 .alignBox .leftBox {min-width:140px; height:40px; float:left; position:relative; display:inline-block;}/* drop밖에 감싸서 정렬 */
