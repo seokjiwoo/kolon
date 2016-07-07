@@ -43,6 +43,7 @@ module.exports = function() {
 		$('#phone1').val(phoneNumber[0]);
 		$('#phone2').val(phoneNumber[1]);
 		$('#phone3').val(phoneNumber[2]);
+		$('#extraAddress').removeAttr('disabled');
 	};
 
 	function findZipCode(e) {
