@@ -12,6 +12,7 @@ module.exports = function() {
 	};
 	var winH;
 	var pageId;
+	var device;
 
 	var loginController = require('../controller/LoginController');
 	var loginDataModel = require('../model/LoginModel');
@@ -65,8 +66,9 @@ module.exports = function() {
 	
 	return callerObj;
 	
-	function init(_pageId) {
+	function init(_pageId, _device) {
 		pageId = _pageId;
+		device = _device;
 		winH = $(window).height();
 
 		Mailcheck.run({
@@ -93,6 +95,8 @@ module.exports = function() {
 
 		// alertPopup event
 		eventManager.on(ALERTPOPUP_EVENT.OPEN, onAlertPopupOpenListener);
+
+		$(window).resize(function(e) { winH = $(window).height(); });
 	};
 	
 	/**
@@ -122,7 +126,6 @@ module.exports = function() {
 			
 			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
 			$(tabCon).show().siblings().hide();
-
 
 			// tab toggle 시 cardWrap isotope 설정체크
 			if (!$(tabCon).find('#cardWrap').size()) {
@@ -250,7 +253,7 @@ module.exports = function() {
 		inline += '<p class="btnWrap"><a href="'+linkUrl+'" class="btnSizeM btnColor02 '+customClass+'">'+buttonCaption+'</a></p>';
 		inline += '</div></div>';
 
-		openPopup(inline, 280, 'hexAlert');
+		openPopup(inline, (device=='pc' ? 280 : 250), 'hexAlert');
 	};
 	
 	function openPopup(content, width, userClass) {
@@ -268,13 +271,17 @@ module.exports = function() {
 			href: popupFile,
 			html: popupContent,
 			width: width,
-			fixed: fixed,
-			className: "lyPop "+userClass,
+			height: (device=="pc" ? false : "100%"),
+			maxHeight: (device=="pc" ? false : winH+'px'),
+			fixed: (device=="pc" ? fixed : true),
+			className: "lyPop "+(device=="pc" ? "lyPop-pc " : "lyPop-m ")+userClass,
 			transition: "none",
 			speed: 0,
+			fadeOut: 0,
 			opacity: 0.5,
-			initialWidth: "0",
-			initialHeight: "0",
+			initialWidth: (device=="pc" ? false : "100%"),
+			initialHeight: (device=="pc" ? false : "100%"),
+			scrolling: false,
 			onComplete: function() {
 				$('.popClose').click(function(e) {
 					e.preventDefault();
@@ -284,10 +291,20 @@ module.exports = function() {
 					e.preventDefault();
 					popupCallbackFunction.call();
 				});
-				$('.popScroll').css('height', winH-490+'px');
-				
-				if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
-				$.colorbox.resize();
+				switch(device) {
+					case 'pc':
+						$('.popScroll').css('height', winH-490+'px');
+						if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
+						$.colorbox.resize();
+						break;
+					case 'm':
+						var contentHeight = winH-$('popTop').height()-50;
+						if ($('.fixwrap').length > 0) contentHeight -= $('.fixwrap').height();
+						$('.popCon').css('height', contentHeight+'px');
+						if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
+						$(window).resize(function(e){ $.colorbox.close(); });
+						break;
+				}
 			}
 		});
 	};

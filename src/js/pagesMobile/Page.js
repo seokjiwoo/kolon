@@ -7,6 +7,8 @@ module.exports = function() {
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
 	
+	var pageId;
+	
 	var callerObj = {
 		/**
 		 * SuperClass 연결
@@ -20,8 +22,10 @@ module.exports = function() {
 	
 	return callerObj;
 	
-	function init() {
-		Super.init();
+	function init(_pageId) {
+		pageId = _pageId;
+		if (pageId == undefined) pageId = $('body').data('pageId');
+		Super.init(_pageId, 'm');
 
 		initGnb();
 		

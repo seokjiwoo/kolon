@@ -37,7 +37,7 @@ module.exports = function() {
 	function init(_pageId) {
 		pageId = _pageId;
 		if (pageId == undefined) pageId = $('body').data('pageId');
-		Super.init(pageId);
+		Super.init(pageId, 'pc');
 		
 		// 전 페이지 공용 요소 초기화
 		initMenu();			// GNB/LNB

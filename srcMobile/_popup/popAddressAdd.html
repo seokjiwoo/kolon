@@ -1,77 +1,69 @@
-<!DOCTYPE html>
-<html lang='ko-kr'>
-<head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 회원가입"} -->
-</head>
-<body>
-	<div class="btmFix fixwrap">
-		<ul>
-			<li><a href="" class="btnSizeB btnColor03">취소</a></li>
-			<li><a href="" class="btnSizeB btnColor02">확인</a></li>
-		</ul>
+<div class="btmFix fixwrap">
+	<ul>
+		<li><a href="" class="btnSizeB btnColor03 popClose">취소</a></li>
+		<li><a href="" class="btnSizeB btnColor02">확인</a></li>
+	</ul>
+</div>
+<div class="layerPopup order">
+	<div class=popTop>
+		<h3 class="popTit">새 주소 추가</h3>
+		<a href="" class="closeBtn popClose"><span class="hide">팝업닫기</span></a>
 	</div>
-	<div class="layerPopup order">
-		<div class=popTop>
-			<h3 class="popTit">새 주소 추가</h3>
-			<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
-		</div>
-		<div class="popcon">
-			<div class="rowwrap">
-				<table class="formWrap mt0">
-					<caption>주소추가테이블</caption>
-					<colgroup>
-						<col style="width:15%" /><col style="width:85%" />
-					</colgroup>
-					<tbody>
-						<tr>
-							<th scope="row">주소 별칭</th>
-							<td><input type="text" /></td>
-						</tr>
-						<tr>
-							<th scope="row">받으실 분</th>
-							<td><input type="text" /></td>
-						</tr>
-						<tr class="phone">
-							<th scope="row">연락처1</th>
-							<td>
-								<select title="국번 선택">
-									<option value="">02</option>
-								</select>
-								-
-								<input type="text" title="연락처 앞자리 입력" />
-								-
-								<input type="text" title="연락처 뒷자리 입력" />
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">연락처2</th>
-							<td class="phone">
-								<select title="국번 선택">
-									<option value="">02</option>
-								</select>
-								-
-								<input type="text" title="연락처 앞자리 입력" />
-								-
-								<input type="text" title="연락처 뒷자리 입력" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<h4 class="partTit">주소</h4>
-				<div class="shipAddress">
-					<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
-					<p><input type="text"><label for="" class="hide">주소</label></p>
-					<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
-					<p>
-						<span class="checkbox">
-							<input type="checkbox" id="checkAddress1">
-							<label for="checkAddress1">기본 배송지로 설정</label>
-						</span>
-					</p>
-				</div>
-
+	<div class="popCon">
+		<div class="rowwrap">
+			<table class="formWrap mt0">
+				<caption>주소추가테이블</caption>
+				<colgroup>
+					<col style="width:15%" /><col style="width:85%" />
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">주소 별칭</th>
+						<td><input type="text" /></td>
+					</tr>
+					<tr>
+						<th scope="row">받으실 분</th>
+						<td><input type="text" /></td>
+					</tr>
+					<tr class="phone">
+						<th scope="row">연락처1</th>
+						<td>
+							<select title="국번 선택">
+								<option value="">02</option>
+							</select>
+							-
+							<input type="text" title="연락처 앞자리 입력" />
+							-
+							<input type="text" title="연락처 뒷자리 입력" />
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">연락처2</th>
+						<td class="phone">
+							<select title="국번 선택">
+								<option value="">02</option>
+							</select>
+							-
+							<input type="text" title="연락처 앞자리 입력" />
+							-
+							<input type="text" title="연락처 뒷자리 입력" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<h4 class="partTit">주소</h4>
+			<div class="shipAddress">
+				<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
+				<p><input type="text"><label for="" class="hide">주소</label></p>
+				<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+				<p>
+					<span class="checkbox">
+						<input type="checkbox" id="checkAddress1">
+						<label for="checkAddress1">기본 배송지로 설정</label>
+					</span>
+				</p>
 			</div>
+
 		</div>
 	</div>
-</body>
-</html>
+</div>
