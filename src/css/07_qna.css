@@ -2,7 +2,7 @@
 .myOpinion{float:right;width:895px;font-size:14px;}
 .myOpinion .opinionArea{margin-top:0;}
 
-.expert .pageTit{font-family:'RobotoL','NotoSansL', sans-serif;color: #000;font-size: 40px;background:none }
+.expert .pageTit{font-family:'NotoSansL', sans-serif;color: #000;font-size: 40px;background:none }
 .expert .pageTit:before{content: '';display: inline-block;width: 70px;height: 1px;background: #d9d9d9;vertical-align: middle;}
 .expert .pageTit:before{margin-right: 20px;}
 .expert .pageTit:after{margin-left: 20px;}
@@ -22,7 +22,7 @@
 .expertList .expertPic img{display: block;width: 100%;}
 .expertList .expertName{margin-top:20px;color: #fff;}
 .expertList .subTit{margin-top:7px;color: #999;line-height: 1.2em;}
-.expertList .hoverTct{opacity: 0;position: absolute;top: 70px;left: 0;width: 100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #bea48d;line-height: 1.4em;font-size: 20px;}
+.expertList .hoverTct{opacity: 0;position: absolute;top: 70px;left: 0;width: 100%;font-family:'NotoSansR', sans-serif;color: #bea48d;line-height: 1.4em;font-size: 20px;}
 .expertList .hoverTct:after{content: '';display: block;width: 18px;height: 17px;margin:13px auto;background: url('../images/ico_arrowb.png') no-repeat;}
 .expertList li a:hover .expertPic img{opacity: 0.2;}
 .expertList li a:hover .hoverTct{opacity: 1}
@@ -31,7 +31,7 @@
 .qna .col-left{width:796px;float:left;}
 .qna .col-right{width:285px;float:right;}
 .qna .commonPeople {width:100%; height:430px; padding-top:60px; overflow:hidden; background:url("../images/top_expert.jpg") no-repeat 50% 0 #5b5b5b;}
-.qna .commonPeople .title{text-align:center;color:#fff;font-family: 'RobotoL','NotoSansL', sans-serif;font-size:40px;}
+.qna .commonPeople .title{text-align:center;color:#fff;font-family: 'NotoSansL', sans-serif;font-size:40px;}
 .qna .commonPeople .title:before,
 .qna .commonPeople .title:after{content: '';display:inline-block;width:70px;height:1px;background:#d9d9d9;vertical-align:middle;}
 .qna .commonPeople .title:before{margin-right:20px;}
@@ -47,12 +47,12 @@
 .qna .commonPeople ul li a span{display:block;}
 .qna .commonPeople ul li a em{width:140px;height:140px;overflow:hidden;display:block;background:#bcb6b4;border-radius:100%;}
 .qna .commonPeople ul li a em img{min-width:142px;max-width:142px;vertical-align:top;}
-.qna .commonPeople ul li a strong{color:#fff;font-family:'RobotoR','NotoSansR', sans-serif;margin-top:20px;}
+.qna .commonPeople ul li a strong{color:#fff;font-family:'NotoSansR', sans-serif;margin-top:20px;}
 .qna .commonPeople ul li a span{color:#9d9d9d;margin-top:14px;line-height:18px;}
 .qna .commonPeopleCont {width:1151px; padding:0 24.5px; overflow:hidden;}
 .qna .opinionwrite{min-height:65px;}
 .qna .opinionwrite > a{position:relative;height:65px;display:block;text-align:center;color:#fff;background:#f65677;}
-.qna .opinionwrite > a > span{height:20px;margin-top:23px;display:inline-block;padding:0 30px 0 0;background:url("../images/bg_opinion_arrow.png") no-repeat right 3px;font-family:'RobotoR','NotoSansR', sans-serif;font-size:20px;}
+.qna .opinionwrite > a > span{height:20px;margin-top:23px;display:inline-block;padding:0 30px 0 0;background:url("../images/bg_opinion_arrow.png") no-repeat right 3px;font-family:'NotoSansR', sans-serif;font-size:20px;}
 .qna .opinionwrite > a.active span{background-position:right -45px;}
 
 .qna .opinionInput{padding-top:27px;display:none;}
@@ -60,8 +60,8 @@
 .qna .opinionInput table.opinionTb tbody tr th,
 .qna .opinionInput table.opinionTb tbody tr td{padding:10px 0; border-bottom:1px solid #d6d6d6;}
 .qna .opinionInput table.opinionTb tbody tr:first-child td{padding-top:0;}
-.qna .opinionInput table.opinionTb tbody tr th{font-weight:normal;font-family:'RobotoR','NotoSansR', sans-serif;font-size:14px;text-align:left; background:#f7f7f7; padding:0 14px;}
-.qna .opinionInput table.opinionTb tbody tr th span{padding-top:3px;display:block;color:#999;font-family:'RobotoL','NotoSansL', sans-serif;font-size:14px;}
+.qna .opinionInput table.opinionTb tbody tr th{font-weight:normal;font-family:'NotoSansR', sans-serif;font-size:14px;text-align:left; background:#f7f7f7; padding:0 14px;}
+.qna .opinionInput table.opinionTb tbody tr th span{padding-top:3px;display:block;color:#999;font-family:'NotoSansL', sans-serif;font-size:14px;}
 .qna .opinionInput table.opinionTb tbody tr th + td {padding:20px 14px 20px 20px;}
 .qna .opinionInput textarea.pullSize{height:144px;}
 
@@ -92,26 +92,26 @@
 .opinionbox .title{padding:0 20px;overflow:hidden;}
 .opinionbox.no .title {background:#8e6edf;}
 .opinionbox .title p{float:left;margin-top:29px;color:#666;}
-.opinionbox .title p span{font-family:'RobotoM','NotoSansM',sans-serif; font-size:14px;}
-.opinionbox .title p span:first-child + span{font-family:'RobotoL','NotoSansL',sans-serif;padding-left:5px;}
+.opinionbox .title p span{font-family:'NotoSansM',sans-serif; font-size:14px;}
+.opinionbox .title p span:first-child + span{font-family:'NotoSansL',sans-serif;padding-left:5px;}
 
 .opinionbox .conbox{padding:30px 20px;background:#fff; font-size:14px;}
 .opinionbox .conbox.round{border-bottom:1px solid #545454;}
-.opinionbox .conbox strong{font-size:20px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.opinionbox .conbox strong{font-size:20px;font-family:'NotoSansR',sans-serif;}
 .opinionbox .conbox strong span.it {padding:6px 8px; border:2px solid #00aeb9; font-size:14px; color:#00aeb9; margin-right:10px;}
 .opinionbox .conbox strong a{color:#000;}
-.opinionbox .conbox .conboxTxt > p{height:72px; margin-top:20px;color:#666;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif; position:relative;}
+.opinionbox .conbox .conboxTxt > p{height:72px; margin-top:20px;color:#666;line-height:1.3em;font-family:'NotoSansR',sans-serif; position:relative;}
 .opinionbox .conbox .conboxTxt {padding-right:80px; position:relative; overflow:hidden;}
 .opinionbox .conbox .more {position:absolute; bottom:0; right:0; padding-right:20px; font-size:14px; color:#999;}
 .opinionbox .conbox .more:after {content:''; width:13px; height:8px; margin-top:-3px; background:url("../images/ico_more.png") no-repeat 0 0; position:absolute; top:50%; right:0; display:inline-block;}
 .opinionbox .conbox .more a{display:inline-block;padding-right:22px;color:#666;}
-.opinionbox .conbox .more a span{display:block;font-size:13px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.opinionbox .conbox .more a span{display:block;font-size:13px;font-family:'NotoSansR',sans-serif;}
 .opinionbox .conbox .photoList{width:771px; overflow:hidden;margin:32px 0 0 -12px; white-space:nowrap;}
 .opinionbox .conbox .photoList li{width:245px;height:163px;overflow:hidden;float:left;background:#f2f2f2;margin:0 0 12px 12px ;}
 .opinionbox .conbox .photoList img{width:245px; height:163px;}
 
 .opinionbox .commentCount{overflow:hidden;margin-top:12px;}
-.opinionbox .commentCount p{float:left;color:#000;font-family:'RobotoR','NotoSansR',sans-serif;margin-top:7px;}
+.opinionbox .commentCount p{float:left;color:#000;font-family:'NotoSansR',sans-serif;margin-top:7px;}
 .opinionbox .commentCount p span{color:#999;}
 .opinionbox .commentCount p span.pointRed{color:#f1645c;}
 .opinionbox .commentCount p em {padding-left:10px; margin-left:8px; display:inline-block; color:#666; font-style:normal; position:relative;}
@@ -128,17 +128,17 @@
 .opinionbox .moreWrap {width:100%; text-align:center; margin-bottom:30px;}
 .opinionbox .moreBtn{width:117px;height:30px;padding-left:23px;background:#fff;border-radius:14px;display:inline-block;text-align:left; position:relative;}
 .opinionbox .moreBtn:after {content:''; width:13px; height:8px; margin-top:-4px; background:url("../images/ico_more.png") no-repeat 0 -8px; position:absolute; top:50%; right:15px; display:inline-block;}
-.opinionbox .moreBtn span{padding-top:8px;display:block;color:#000;font-family:'RobotoR','NotoSansR',sans-serif;font-size:13px;}
+.opinionbox .moreBtn span{padding-top:8px;display:block;color:#000;font-family:'NotoSansR',sans-serif;font-size:13px;}
 .opinionbox .commentArea ul {padding:0 20px;}
 .opinionbox .commentArea ul li{padding:30px 0 73px;border-bottom:1px solid #d9d9d9; overflow:hidden; position:relative;}
-.opinionbox .commentArea .date{text-align:right;color:#999; font-family:'RobotoR','NotoSansR',sans-serif; position:absolute; bottom:30px; right:30px; font-size:14px;}
+.opinionbox .commentArea .date{text-align:right;color:#999; font-family:'NotoSansR',sans-serif; position:absolute; bottom:30px; right:30px; font-size:14px;}
 .opinionbox p.opinionNum {width:100%; height:auto; overflow:hidden; font-size:14px; color:#000;}
 .opinionbox p.opinionNum b {color:#999; font-weight:normal;}
 
 .opinionbox .expert{position:relative;}
 .opinionbox .expert:after{content:"";display:block;clear:both;}
 .opinionbox i{min-width:16px;height:16px;display:inline-block;margin-left:10px; padding-right:23px;background:url("../images/ico_help.png") no-repeat right 0;font-style:normal; vertical-align:middle;}
-.opinionbox i span{color:#f1645c;display:block;font-family:'RobotoR','NotoSansR',sans-serif; vertical-align:middle;}
+.opinionbox i span{color:#f1645c;display:block;font-family:'NotoSansR',sans-serif; vertical-align:middle;}
 .opinionbox i.on {background-position:right -16px;}
 .opinionbox .commentName {width:236px;overflow:hidden;float:left;}
 .opinionbox .name{width:100%; height:64px; display:table-cell; vertical-align:middle;}
@@ -148,11 +148,11 @@
 .opinionbox .name > span:first-child + span{width:135px; margin:0 0 0 20px;}
 .opinionbox .name span > em{font-style:normal;color:#f1645c;text-transform:uppercase;}
 .opinionbox .name span > span{display:block;}
-.opinionbox .name span > span:first-child{font-family:'RobotoR','NotoSansR',sans-serif;color:#000;font-size:16px;}
+.opinionbox .name span > span:first-child{font-family:'NotoSansR',sans-serif;color:#000;font-size:16px;}
 .opinionbox .name span > span:first-child,
-.opinionbox .name span > span:first-child + span{font-family:'RobotoR','NotoSansR',sans-serif;}/*text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;*/
+.opinionbox .name span > span:first-child + span{font-family:'NotoSansR',sans-serif;}/*text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;*/
 .opinionbox .name span > span:first-child + span{max-height:28px; margin-top:3px; font-size:14px; color:#666;}
-.opinionbox .txt{width:480px;float:left;margin:14px 0 0 35px;line-height:1.3em;font-family:'RobotoR','NotoSansR',sans-serif;color:#333; font-size:14px;}
+.opinionbox .txt{width:480px;float:left;margin:14px 0 0 35px;line-height:1.3em;font-family:'NotoSansR',sans-serif;color:#333; font-size:14px;}
 .opinionbox .txt a {color:#333;}
 
 .opinionbox .commentInput{overflow:hidden; padding:20px; display:none; }
@@ -162,7 +162,7 @@
 .opinionbox .commentInput .thumb span img{width:40px;}
 
 .opinionbox .commentInput textarea.pullSize{width:562px;height:56px;float:left;margin-left:17px;}
-.opinionbox .commentInput .confirmBtn{width:86px;height:30px;background:#999;color:#fff;float:right;border:0;border-radius:20px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.opinionbox .commentInput .confirmBtn{width:86px;height:30px;background:#999;color:#fff;float:right;border:0;border-radius:20px;font-family:'NotoSansR',sans-serif;}
 .opinionbox .commentInput .commentTextarea {overflow:hidden; border:1px solid #d6d6d6; padding:18px 19px; background:#fff;}
 .opinionbox .commentInput .commentTextarea textarea.pullSize {border:0; padding:0; margin:0;}
 .opinionbox .commentInput .commentTextarea .commentBtn {width:100%; overflow:hidden;}
@@ -173,7 +173,7 @@
 .latelyOpinion ul li:first-child{border-top:0;}
 .latelyOpinion ul li a{display:block;color:#333;}
 .latelyOpinion ul li a > span{display:block;}
-.latelyOpinion ul li a > span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-size:16px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.latelyOpinion ul li a > span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;font-size:16px;font-family:'NotoSansR',sans-serif;}
 .latelyOpinion ul li a > span:first-child + span{margin-top:8px;}
 .latelyOpinion ul li a > span > span{overflow:hidden;margin-left:10px;padding-left:10px;}
 .latelyOpinion ul li a > span > span:first-child{position:relative;color:#999;margin-left:0;padding-left:0;}
@@ -186,7 +186,7 @@
 .expertHelp ul li a{display:block;overflow:hidden;color:#000;}
 .expertHelp .thumb{width:96px;height:96px;overflow:hidden;background:#ccc;border-radius:100%;display:inline-block;float:left;}
 .expertHelp .thumb img{width:96px;}
-.expertHelp .info{width:120px;float:right;display:inline-block;margin-top:14px;font-family:'RobotoR','NotoSansR',sans-serif;}
+.expertHelp .info{width:120px;float:right;display:inline-block;margin-top:14px;font-family:'NotoSansR',sans-serif;}
 .expertHelp .info strong,
 .expertHelp .info span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;line-height:1.2em;}
 .expertHelp .info strong{font-size:13px;display:block;margin-bottom:12px;line-height:1.3em;}
@@ -196,12 +196,12 @@
 
 h2.optit{position:relative;height:68px;text-align:center;}
 h2.optit:after{position:absolute;left:50%;bottom:0;content:"";display:block;width:25px;height:1px;background:#000;margin-left:-12px;}
-h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'RobotoR','NotoSansR',sans-serif;color:#000;letter-spacing:-2px;}
+h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'NotoSansR',sans-serif;color:#000;letter-spacing:-2px;}
 
 .qna .btnWrap{border-top:1px solid #e8e8e8;padding-top:30px;margin-top:30px !important;}
 .qna .picturesBox{height:302px;background:#f2f2f2 url("../images/ico_image.png") no-repeat center 82px;}
 .qna .picturesBox > div{text-align:center;}
-.qna .picturesBox > div:first-child{padding-top:152px;font-family:'RobotoR','NotoSansR',sans-serif;color:#999;}
+.qna .picturesBox > div:first-child{padding-top:152px;font-family:'NotoSansR',sans-serif;color:#999;}
 .qna .picturesBox > div:first-child + div{margin-top:30px;}
 
 .scrapBox{margin-top:20px;}
@@ -222,7 +222,7 @@ h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'RobotoR
 .detailBox a.next{position:absolute;top:300px;width:30px;height:58px;display:block;overflow:hidden;background:url("../images/ico_slide_nav.png") no-repeat;}
 .detailBox a.prev{left:30px;background-position:0 0;}
 .detailBox a.next{right:30px;background-position:-34px 0;}
-select.scrapSelect{width:530px;padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'RobotoM','NotoSansM', sans-serif;color:#666;}
+select.scrapSelect{width:530px;padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'NotoSansM', sans-serif;color:#666;}
 
 .paging {width:511px; margin:0 auto; padding:50px 0; }
 .paging a {display:inline-block; color:#666; vertical-align:top;}

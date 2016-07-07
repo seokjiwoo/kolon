@@ -1,5 +1,5 @@
 @charset "utf-8";
-@font-face {
+/*@font-face {
 	font-family:"RobotoT";
 	font-style:normal;
 	src:url("../font/Roboto-Thin.woff") format("woff");
@@ -33,7 +33,7 @@
 	src:url("../font/Roboto-Bold-webfont.woff") format("woff");
 	src:url("../font/Roboto-Bold-webfont.eot?#iefix") format("embedded-opentype"),
 	url("../font/Roboto-Bold-webfont.woff") format("woff");
-}
+}*/
 @font-face {
 	font-family:"NotoSansT";
 	font-style:normal;
