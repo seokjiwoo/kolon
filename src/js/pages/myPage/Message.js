@@ -9,6 +9,9 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/Message.js';
 
+	var controller = require('../../controller/MessageController.js');
+	$(controller).on('messageListResult', messageListHandler);
+
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();
 	
@@ -24,6 +27,25 @@ module.exports = function() {
 	function init() {
 		MyPage.init();
 		
-		debug.log(fileName, $, util);
+		// /apis/inquiries
+		controller.messageList();
+	}
+
+	function messageListHandler(e, status, result) {
+		if (status == 200) {
+			console.log(result);
+		} else {
+			MyPage.Super.Super.alertPopup('', result.message, '확인');
+
+			if (result.errorCode == '1409') {
+				console.log($('#messageListWrap'));
+				$('#messageListWrap').css({
+					textAlign: 'center',
+					marginTop: '20px',
+					padding: '200px 0',
+					background: '#eeeeee',
+				}).text(result.message);
+			}
+		}
 	}
 };
