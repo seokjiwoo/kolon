@@ -1,0 +1,31 @@
+.living .container{padding-top: 0;}
+.living .pageTit{width: 600px;height: 140px;margin-top: 20px;background-position: 0 -258px;}
+.living .subTop .wrap{overflow: visible;padding: 0 20px;}
+.living .subTop .subTit{display: inline-block;}
+.living .topTit{position: absolute;top: -240px;}
+
+.living .hexSlider{z-index: 0}
+.living .bx-wrapper{width: 100%;height: 730px;}
+.living .hexSlider .bx-controls{left: auto;right:24%;}
+.living .hexSlider li{overflow: hidden;width: 100%;}
+.living .hexSlider li > img{display: block;}
+.living .subTop .slideCon{position: absolute;z-index: 1;top: 110px;width: 100%;text-align: right;}
+.living .subTop .slideCon .catWrap{margin-bottom: 20px;}
+.living .subTop .slideCon .catWrap span{display: inline-block;vertical-align: middle;font-size: 16px;}
+.living .subTop .slideCon .catWrap .cat{position: relative;color: #c2504f;}
+.living .subTop .slideCon .catWrap .cat:after{content:'';position: absolute;bottom: 1px;left:-5px;right:-3px;height: 1px;background: #f59a9a}
+.living .subTop .slideCon .catWrap .subCat{position: relative;margin-left:15px;padding: 7px;color: #fff;background: #f59a9a;font-style: normal;-ms-transform: skew(-20deg,0deg);-webkit-transform: skew(-20deg,00deg);transform: skew(-20deg,0deg);box-shadow: 4px 4px 0px #595485}
+.living .subTop .slideCon .slideTit{font-size: 30px;font-family:'NotoSansL', sans-serif;line-height: 1.2em;} 
+.living .subTop .slideCon .subTxt{margin-top: 18px;font-size: 20px;font-family:'NotoSansL', sans-serif;}
+.living .subTop .slideCon .subTxt b{font-family:'NotoSansM', sans-serif;}
+.living .subTop .slideCon .price{margin: 30px 0;font-size: 120px;}
+.living .subTop .slideCon .price span{font-size: 20px;}
+.living .subTop .slideCon a{display: inline-block;margin-left: 15px;font-size: 14px;vertical-align: middle;}
+.living .subTop .slideCon .btnPost{color: #000;}
+.living .subTop .slideCon .btnPost:before{content:'';display: block;height: 20px;margin:0 auto 10px; background: url('../images/check_icon.png') no-repeat;}
+.living .subTop .slideCon .btnLike:before{width: 18px;}
+.living .subTop .slideCon .btnScrap:before{width: 22px;background-position: -18px 0;}
+.living .subTop .slideCon .btnMore{width: 155px;color: #595485;line-height: 40px;text-align: center;background: #a7dfd6;border-radius: 20px;font-family:'NotoSansM', sans-serif;}
+.living .subTop .slideCon .btnMore:after{content: '';display: inline-block;width: 13px;height: 10px;margin-left: 5px;background: url('../images/ico_arrowb.png') no-repeat;background-position: 0 -20px;vertical-align: middle;}
+
+.living .alignBox{z-index: 3}

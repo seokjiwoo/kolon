@@ -441,7 +441,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .conCard.visualW .designer .group {color: #fff;}
 .conCard.visualW .designer:before {content: '';display: block;width: 50px;height: 1px;margin:20px 0;background: #c7c7c7;}
 .conCard.visualW a.more{position: absolute;right: 0;bottom: 0;padding: 15px 20px;color: #fff;font-family:'NotoSansM', sans-serif;font-size: 13px; text-align:right; vertical-align:middle;}
-.conCard.visualW a.more:after{content: '';display: inline-block;width: 11px;height: 11px;margin-left: 4px;background: url('../images/ico_plusW.png') no-repeat;}
+.conCard.visualW a.more:after{content: '';display: inline-block;width: 11px;height: 11px;margin-left: 4px;background: url('../images/ico_plusW.png') no-repeat;vertical-align: middle;}
 .conCard .designer {width:100%; overflow:hidden;  color:#000;}
 .conCard .designer .pic{overflow: hidden;display: inline-block;width: 60px;height: 60px;margin-right: 15px;border-radius: 50%;vertical-align: middle;}
 .conCard .designer .pic img{display: block;width: 100%;}

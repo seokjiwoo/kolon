@@ -60,10 +60,7 @@ module.exports = function() {
 			$('.catSort .sortCont, .btnSort').slideToggle(300);
 		});
 
-		$('#mainSlider').bxSlider({ //main slide
-			minSlides: 5,
-			maxSlides: 5
-		});
+		$('#mainSlider').bxSlider();
 
 		// tab width depend on number of li
 		var countMenu = $('.tabSplit li').length ;
@@ -73,6 +70,8 @@ module.exports = function() {
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
+
+		fullSlideImg () // slide Full img 중앙정렬 
 	};
 
 	/**
@@ -596,4 +595,16 @@ module.exports = function() {
 			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
 		});
 	}
+}
+function fullSlideImg (){ // full slide img 중앙정렬
+	var winW = $(window).width();
+	if (winW > 1220){
+		$('.fullSlideImg').css('margin-left',-(1920-winW)/2);
+	}
+	$(window).resize(function() {
+		var winW = $(window).width();
+		if (winW > 1220){
+			$('.fullSlideImg').css('margin-left',-(1920-winW)/2);
+		}
+	});
 }

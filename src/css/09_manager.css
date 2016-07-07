@@ -1,0 +1,26 @@
+/* manager */
+.managerList{background: #48484a;}
+.managerList .topMenu{background: #fff !important;}
+.managerList .topTit{position: absolute;top: 400px;width:50%;right: 0;background:none;text-align: right;z-index: 4;}
+.managerList .subTop .wrap{overflow: visible;padding: 0;}
+.managerList .subTit{margin-right: 60px;}
+.managerList .subTit b{color: #977369;}
+.managerList .pageTit{height: 120px;background-position:90px 0;}
+.managerList .bx-wrapper{width: 100%;min-height: 662px;}
+.managerList .bx-wrapper li{overflow: hidden;min-height: 662px;}
+.managerList .bx-wrapper img{display: block;height: 100%;}
+.managerList .slideCon{position: absolute;top:0;left: 50%;width: 600px;height: 430px;margin:120px 0 0 -460px;z-index: 5}
+.managerList .slideCon a{display: none;color: #fff;padding: 90px 0 0 300px;height: 100%;text-align: left;}
+.managerList #slideCon00{display: block;}
+.managerList .slideCon a .italicNum{font-size: 50px;}
+.managerList .slideCon a .subTxt{margin-top: 15px;color: #aa7d71;font-family:'NotoSansL', sans-serif;}
+.managerList .slideCon a .name{margin-top: 5px;font-family:'NotoSansT', sans-serif;font-size: 66px;}
+
+.managerList .managerPager{position: relative;width: 1220px;margin:0 auto;z-index: 3}
+.managerList .managerPager a{position: absolute;display: block;width: 174px;height: 201px;background: url('../images/manager_thumb.png') no-repeat;font-size: 0;}
+.managerList .managerPager .bx-prev{top: 70px;right: 180px;background-position: -348px 0;}
+.managerList .managerPager .bx-next{top: 233px;right: 81px;background-position: -174px 0;}
+
+.managerList .tabType01 a{color: #fff;}
+.managerList .tabType01 .on a{background: none}
+.managerList .tabType01 .on a:before{content:'';position: absolute;top: 5px;left: 0;width: 100%;height: 13px;background: rgba(170,125,113,.3)}

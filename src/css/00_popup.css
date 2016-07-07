@@ -170,8 +170,8 @@ ul.popList + .btnWrap,
 .popCon .popFormLine + .btnWrap,
 .popCon .popDel + .btnWrap {margin-top:40px;}
 
-a.btnDetail {padding:10px 0 0 50px; position:relative; color:#666; float:left;}
-a.btnDetail:before {content:''; width:40px; height:40px; border-radius:50%; overflow:hidden; background:url('../images/ico_DetailedMore.png') 50% 50% no-repeat #fff; position:absolute; top:0; left:0; box-shadow:0 3px rgba(0,0,0,.12);}
+a.btnDetail {display: inline-block;padding: 0 20px;color: #000;font-size: 13px;line-height: 38px;border:1px solid #d9d9d9;}
+a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;margin-left: 20px;vertical-align: middle;background: url('../images/ico_plusW.png') no-repeat 0 -12px;}
 
 
 .dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
