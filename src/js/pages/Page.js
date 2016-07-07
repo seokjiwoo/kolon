@@ -143,6 +143,8 @@ module.exports = function() {
 			$('#settingButton').remove();
 			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
 
+			$('#menuCountCart').hide();
+			
 			// $('#profileImage').attr('src', '/images/profile.png');
 			// $('#profileName').html('<span>로그인 해주세요</span>');
 			$('#myMenuButtonList').addClass('log');
@@ -219,6 +221,7 @@ module.exports = function() {
 			if ($(window).width() > 1239){
 				$('.topMenu, .search .subTop').css('margin-left','0');
 			}
+			$('#lnbWrapper').css('height', $(window).height()-(topBannerShowFlag?113:0)+'px');
 			lnbScroller.refresh();
 		});
 
@@ -292,9 +295,6 @@ module.exports = function() {
 			topBannerShowFlag = true;
 			$('#topBanner').show();
 			$('#closeTopBannerButton').click(hideTopBanner);
-			$('#lnbWrapper').css({
-				"height": $(window).height()-113+'px'
-			});
 			lnbScroller.refresh();
 		} else {
 			hideTopBanner();

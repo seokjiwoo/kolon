@@ -263,16 +263,16 @@ module.exports = function() {
 		if (status == 200) {
 			switch(response.status) {
 				case '201':
-					Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
+					MyPage.Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
 						location.reload(true);
 					});
 					break;
 				default:
-					Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
+					MyPage.Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
 					break;
 			}
 		} else {
-			Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
+			MyPage.Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
 		}
 	};
 	
