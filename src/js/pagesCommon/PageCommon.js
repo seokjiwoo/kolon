@@ -26,7 +26,9 @@ module.exports = function() {
 	events = require('../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	ISOTOPE_EVENT = events.ISOTOPE,
-	ALERTPOPUP_EVENT = events.ALERT_POPUP;
+	ALERTPOPUP_EVENT = events.ALERT_POPUP,
+	CHECKBOX_EVENT = events.CHECK_BOX,
+	OPTIONNUM_EVENT = events.OPTION_NUM;
 
 	
 	var callerObj = {
@@ -81,9 +83,10 @@ module.exports = function() {
 		initTab();
 		initTabContentLayout();
 
-		$('.radioBox label').click(radioButtonHandler);	// radio button
-		$('.checkbox label').click(checkBoxHandler);	// checkbox
-		$('.btnPop').on('click', htmlPopupLinkHandler);		// basic Popup 임시 binding 처리
+		$('.radioBox label').on('click', radioButtonHandler); 		// radio button
+		$('.checkbox label').on('click', checkBoxHandler);			// checkbox
+		$('.btnPop').on('click', htmlPopupLinkHandler);				// basic Popup
+		$('.optionNum a.btnMinus, .optionNum a.btnPlus').on('click', optionNumHandler);	// option num
 		
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
@@ -110,10 +113,85 @@ module.exports = function() {
 	 * initalize checkbox
 	 */
 	function checkBoxHandler(e) {
-		if ($(this).siblings('input').val() != ':checked'){			
-			$(this).toggleClass('on');
+		var target = $(this),
+		hasChkGroup = target.data('chk-group'),
+		isAllChk = (target.data('chk-role') === 'chkAll'),
+		chkAll, chkGroup, chked;
+
+		// 전체선택기능
+		if (hasChkGroup) {
+			chkGroup = $('[data-chk-group=\'' + hasChkGroup + '\'');
+			chkAll = chkGroup.filter('[data-chk-role=\'chkAll\']');
+
+			// 전체선택 버튼
+			if (isAllChk) {
+				chkAll.toggleClass('on');
+				if (chkAll.hasClass('on')) {
+					chkGroup.addClass('on');
+				} else {
+					chkGroup.removeClass('on');
+				}
+				chkGroup.siblings('input').prop('checked', chkAll.hasClass('on'));
+			} else {
+			// 전체선택기능 - 그룹 체크
+				chkGroup = chkGroup.not(chkAll);
+
+				target.toggleClass('on');
+				target.siblings('input').prop('checked', target.hasClass('on'));
+
+				if (chkGroup.filter('.on').size() >= chkGroup.size()) {
+					chkAll.addClass('on');
+					chkGroup.siblings('input').prop('checked', true);
+				} else {
+					chkAll.removeClass('on');
+					chkGroup.siblings('input').prop('checked', false);
+				}
+			}
+		} else {
+		// 단일 체크 형태
+			target.toggleClass('on');
+			target.siblings('input').prop('checked', target.hasClass('on'));
 		}
+
+		chkGroup = $('[data-chk-group=\'' + hasChkGroup + '\'').not('[data-chk-role=\'chkAll\']');
+		chked = chkGroup.filter('.on');
+
+		target.trigger(CHECKBOX_EVENT.CHANGE, [chkGroup, chked]);
+		eventManager.trigger(CHECKBOX_EVENT.CHANGE, [target, chkGroup, chked]);
 	};
+
+	/**
+	 * initalize option num
+	 */
+	function optionNumHandler(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget),
+		wrap = target.closest('.optionNum'),
+		opts = wrap.data('optionnum-opts'),
+		isPlus = target.hasClass('btnPlus'),
+		num = wrap.find('.num'),
+		value = parseInt(num.html(), 10);
+
+		if (isPlus) {
+			value += 1;
+		} else {
+			value -= 1;
+		}
+
+		if (opts && (opts.max || opts.max === 0)) {
+			value = Math.min(opts.max, value);
+		}
+
+		if (opts && (opts.min || opts.min === 0)) {
+			value = Math.max(opts.min, value);
+		}
+
+		num.html(value);
+
+		wrap.val(value).trigger(OPTIONNUM_EVENT.CHANGE, [value]);
+		eventManager.trigger(OPTIONNUM_EVENT.CHANGE, [wrap, value]);
+	}
 	
 	/**
 	 * initalize page tab
@@ -322,6 +400,9 @@ module.exports = function() {
 
 		$('.btnPop').off('click', htmlPopupLinkHandler)
 					.on('click', htmlPopupLinkHandler);
+
+		$('.optionNum a.btnMinus, .optionNum a.btnPlus').off('click', optionNumHandler)
+														.on('click', optionNumHandler);
 	}
 
 	// Colorbox Cleanup 시점
@@ -336,6 +417,9 @@ module.exports = function() {
 
 		$('.btnPop').off('click', htmlPopupLinkHandler)
 					.on('click', htmlPopupLinkHandler);
+
+		$('.optionNum a.btnMinus, .optionNum a.btnPlus').off('click', optionNumHandler)
+														.on('click', optionNumHandler);
 	}
 
 	// isotope refresh 시점
