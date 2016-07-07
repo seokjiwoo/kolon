@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"주소록"} -->
 </head>
-<body class="popupWindow">
+<body class="popupWindow" data-page-id="popup-addressBook">
 <div id='cboxLoadedContent' class="orderPop popEdge">
 	<div class="popTop">
 		<h4 class="popTit">주소록</h4>
@@ -14,7 +14,9 @@
 		</div>
 		<div class="popTb">
 			<div class="popScroll2">
-				<table>
+				<table id="addressTable">
+				<script id="address-templates" type="text/x-handlebars-template">
+				{{!-- address-templates --}}
 					<caption>주소록에 관한 주소 별칭, 받으실분, 주소 및 연락처 정보를 제공합니다.</caption>
 					<colgroup>
 						<col style="width:15%;"/><col style="width:15%;"/><col style="width:55%"/><col style="width:15%;"/>
@@ -27,186 +29,29 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="basic">
-							<td><em class="">기본배송지</em><br/>자택</td>
-							<td>홍길동</td>
+					{{#each .}}
+						<tr class="{{rowClass}}">
+							<td>{{basicAddressMark}}<br/>{{addressManagementName}}</td>
+							<td>{{receiverName}}</td>
 							<td class="txtL">
-								<a href="#">
+								<a href="#" data-address-seq='{{addressSequence}}' class='selectAddress'>
 									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
+										<span><b>연락처</b>{{cellPhoneNumber}}</span>
+										<span><b>도로명</b>{{roadBaseAddress}}</span>
+										<span><b>지번</b>{{lotBaseAddress}}</span>
+										<span><b>상세 주소</b>{{detailAddress}}</span>
 									</span>
 								</a>
 							</td>
 							<td class="btnZone">
-								<a class="btnSizeS btnColor01">수정</a>
+								<a href="#" data-address-seq='{{addressSequence}}' class="btnSizeS btnColor01 editAddress">수정</a>
+								<a href="#" data-address-seq='{{addressSequence}}' class="btnSizeS btnColor03 deleteAddress">삭제</a>
 							</td>
 						</tr>
-						<tr>
-							<td>아버지</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>김교수님</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>자택</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>아버지</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>김교수님</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>김교수님</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>자택</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>아버지</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
-						<tr>
-							<td>김교수님</td>
-							<td>홍길동</td>
-							<td class="txtL">
-								<a href="#">
-									<span class="adrList">
-										<span><b>연락처</b>010-0000-0000</span>
-										<span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동)</span>
-										<span><b>지번</b>서울특별시 강남구 청담동 246</span>
-										<span><b>상세 주소</b>1003호</span>
-									</span>
-								</a>
-							</td>
-							<td class="btnZone">
-								<a href="#" class="btnSizeS btnColor01">수정</a>
-								<a href="#" class="btnSizeS btnColor03">삭제</a>
-							</td>
-						</tr>
+					{{/each}}
 					</tbody>
+				{{!--// address-templates --}}
+				</script>
 				</table>
 			</div>
 		</div>

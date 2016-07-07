@@ -317,6 +317,10 @@ $(document).ready(function() {
 				break;
 		// [E] 마이커먼 myPage
 
+		case 'popup-addressBook':
+			PageModuleClass = require('./pages/addressPopup/addressBook.js');
+			break;
+
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;

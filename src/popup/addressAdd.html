@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"주소록 추가"} -->
 </head>
-<body class="popupWindow">
+<body class="popupWindow" data-page-id="popup-addressForm">
 <div id='cboxLoadedContent' class="orderPop popEdge">
 	<div class="popTop">
 		<h4 class="popTit">주소록 추가</h4>
@@ -60,7 +60,7 @@
 					<label for="adr1">기본 배송지로 설정</label>
 				</p>
 				<div class="btnWrap">
-					<a href="#" class="btnSizeM btnColor04">취소</a>
+					<a href="javascript:history.back(-1)" class="btnSizeM btnColor04">취소</a>
 					<a href="#" class="btnSizeM btnColor02">확인</a>
 				</div>
 			</fieldset>
