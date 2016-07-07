@@ -10,13 +10,13 @@ module.exports = function() {
 	fileName = 'myPage/Following.js';
 
 	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass(),
 	controller = require('../../controller/MyPageController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	FOLLOWING_EVENT = events.FOLLOWING,
-	ALERTPOPUP_EVENT = events.ALERT_POPUP,
-	MyPage = MyPageClass();
+	ALERTPOPUP_EVENT = events.ALERT_POPUP;
 
 	// 임시 테스트 구성
 	var ApiClass = require('../../controller/APIController.js'),

@@ -9,8 +9,7 @@
 		<div class="container bgTop">
 			<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu01":"on"} -->
-			
-			<section  class="wrap timeCard" id="myTimeline">
+			<section class="wrap timeCard" id="myTimeline">
 				<!-- 
 				recordType01 -> 상품 구매 기록
 				recordType02 -> 스크랩 기록
@@ -34,6 +33,73 @@
 							<h4 class="recordTime">2016.03.31 <b>&#8226;</b> 10분전</h4>
 							<div class="recordIco">
 								<div class="recordIcoCon">상품 구매 기록</div>
+						</div>
+						<a href="">
+							<div class="recordCon">
+								<p class="recordCat">홈드레싱</p>
+								<p class="recordTxt"><b>BEAST 앨범 출시기념 100개 한정 커먼X비스트 콜라보 홈드레싱 패키지 </b>상품을 구매하셨습니다.</p>
+							</div>
+							<div class="recordThumb"><img src="/images/temp14.jpg" alt=""></div>
+						</a>
+					</li>
+					<li class="recordType09">
+						<h4 class="recordTime">2016.03.31 <b>&#8226;</b> 10분전</h4>
+						<div class="recordIco">
+							<div class="recordIcoCon">
+								배달 기록
+							</div>
+						</div>
+						<a href="">
+							<div class="recordCon">
+								<p class="recordCat">리빙아이템</p>
+								<p class="recordTxt"><b>Elastic Ball - White &amp; Beige </b>상품이 배송되었습니다.</p>
+							</div>
+							<div class="recordThumb"><img src="/images/temp14.jpg" alt=""></div>
+						</a>
+					</li>
+					<li class="recordType03">
+						<h4 class="recordTime">2016.03.31 <b>&#8226;</b> 10분전</h4>
+						<div class="recordIco">
+							<div class="recordIcoCon">
+								전문가 기록
+							</div>
+						</div>
+						<a href="">
+							<div class="recordCon">
+								<p class="recordTxt"><b>PRONAME</b> 전문가님을 Follow하셨습니다. </p>
+							</div>
+							<div class="recordThumb"><img src="/images/temp14.jpg" alt=""></div>
+						</a>
+					</li>
+					<li class="recordType04">
+						<h4 class="recordTime">2016.03.31 <b>&#8226;</b> 10분전</h4>
+						<div class="recordIco">
+							<div class="recordIcoCon">
+								문의 등록 기록
+							</div>
+						</div>
+						<a href="">
+							<div class="recordCon">
+								<p class="recordTxt">상품 문의에 댓글이 달렸습니다. </p>
+							</div>
+							<div class="recordThumb">
+								<p><b>“</b>문의하신 상품은 현재 재고가 없습니다. <br>한 달 뒤에 재입고 되오니, 재입고시 알림...</p>
+							</div>
+						</a>
+					</li>
+					<li class="recordType05">
+						<h4 class="recordTime">2016.03.31 <b>&#8226;</b> 10분전</h4>
+						<div class="recordIco">
+							<div class="recordIcoCon">
+								견적 요청 기록
+							</div>
+						</div>
+						<a href="">
+							<div class="recordCon">
+								<p class="recordTxt">Dudle 님으로 부터 <b>견적서가</b> 도착했습니다. </p>
+							</div>
+							<div class="recordThumb">
+								<p>견적금액 <br><strong>28,000,000</strong>원</p>
 							</div>
 							<a href="">
 								<div class="recordCon">
@@ -217,6 +283,12 @@
 	#myTimeline .recordWrap:last-child .recordIco:before,
 	#myTimeline .recordWrap:last-child .recordIco:after {display:none}
 
+	#myTimeline .recordWrap {background:url(../images/bg_my.png) repeat-y 21px}
+	#myTimeline .recordDate {margin:0px auto 15px 209px}
+	.timeCard .recordTime {width:195px}
+	#myTimeline li a {width:840px}
+	#myTimeline .recordCon {width:522px}
+
 	.js-timeline-list.has-animate {
 		opacity: 1;
 		-webkit-transform:translateX(0px);-moz-transform:translateX(0px);-ms-transform:translateX(0px);-o-transform:translateX(0px);transform:translateX(0px);
@@ -244,7 +316,7 @@
 						"myPageTypeCode" : "{{myPageTypeCode}}",
 						"registerDateTime" : "{{registerDateTime}}"
 				}'>
-					<h4 class="recordTime"><span class="js-date">2016.03.31</span> <b>&#8226;</b> <span class="js-fromNow">10분전</span></h4>
+					<h4 class="recordTime"><span class="js-date">{{fromDate}}</span>&nbsp;<b>&#8226;</b>&nbsp;<span class="js-fromNow">{{fromNow}}</span></h4>
 					<div class="recordIco">
 						{{#if isJoin}}
 							<img src="/images/ico_record_join.png" alt="">
@@ -266,8 +338,6 @@
 	{{/each}}
 	{{!--// me-timeline-templates --}}
 </script>
-
-
 
 </body>
 </html>
