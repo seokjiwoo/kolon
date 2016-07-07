@@ -57,7 +57,7 @@ function ClassAddressController() {
 	function getAddress(seq) {
 		Super.callApi('/apis/order/addresses/'+seq, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('addressResult', [200]);
+				$(callerObj).trigger('addressResult', [200, result.data.item]);
 			} else {
 				Super.handleError('addressList', result);
 				$(callerObj).trigger('addressResult', [status, result]);
@@ -65,44 +65,30 @@ function ClassAddressController() {
 		}, false);
 	};
 	
-	function addAddress(managementName, zipCode, lotBaseAddress, streetAddress, detailAddress, receiverName, cellPhoneNumber, fixedPhoneNumber) {
-		Super.callApi('/apis/order/addresses', 'POST', {
-			"addressSectionCode": "BM_ADDR_SECTION_01",
-			"addressManagementName": managementName,
-			"zipCode": zipCode,
-			"lotBaseAddress": lotBaseAddress,
-			"roadBaseAddress": streetAddress,
-			"detailAddress": detailAddress,
-			"receiverName": receiverName,
-			"cellPhoneNumber": cellPhoneNumber,
-			"generalPhoneNumber": fixedPhoneNumber
-		}, function(status, result) {
+	function addAddress(addressObject) {
+		// managementName, zipCode, lotBaseAddress, streetAddress, detailAddress, receiverName, cellPhoneNumber, fixedPhoneNumber
+		addressObject.addressSectionCode = "BM_ADDR_SECTION_01";
+		
+		Super.callApi('/apis/order/addresses', 'POST', addressObject, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('addressResult', [200]);
+				$(callerObj).trigger('addAddressResult', [200]);
 			} else {
-				Super.handleError('addressList', result);
-				$(callerObj).trigger('addressResult', [status, result]);
+				Super.handleError('addAddress', result);
+				$(callerObj).trigger('addAddressResult', [status, result]);
 			}
 		}, false);
 	};
 	
-	function editAddress(seq, managementName, zipCode, lotBaseAddress, streetAddress, detailAddress, receiverName, cellPhoneNumber, fixedPhoneNumber) {
-		Super.callApi('/apis/order/addresses/'+seq, 'PUT', {
-			"addressSectionCode": "BM_ADDR_SECTION_01",
-			"addressManagementName": managementName,
-			"zipCode": zipCode,
-			"lotBaseAddress": lotBaseAddress,
-			"roadBaseAddress": streetAddress,
-			"detailAddress": detailAddress,
-			"receiverName": receiverName,
-			"cellPhoneNumber": cellPhoneNumber,
-			"generalPhoneNumber": fixedPhoneNumber
-		}, function(status, result) {
+	function editAddress(seq, addressObject) {
+		// managementName, zipCode, lotBaseAddress, streetAddress, detailAddress, receiverName, cellPhoneNumber, fixedPhoneNumber
+		addressObject.addressSectionCode = "BM_ADDR_SECTION_01";
+
+		Super.callApi('/apis/order/addresses/'+seq, 'PUT', addressObject, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('addressResult', [200]);
+				$(callerObj).trigger('editAddressResult', [200]);
 			} else {
-				Super.handleError('addressList', result);
-				$(callerObj).trigger('addressResult', [status, result]);
+				Super.handleError('editAddress', result);
+				$(callerObj).trigger('editAddressResult', [status, result]);
 			}
 		}, false);
 	};

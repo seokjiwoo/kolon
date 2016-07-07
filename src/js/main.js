@@ -320,6 +320,9 @@ $(document).ready(function() {
 		case 'popup-addressBook':
 			PageModuleClass = require('./pages/addressPopup/addressBook.js');
 			break;
+		case 'popup-addressForm':
+			PageModuleClass = require('./pages/addressPopup/addressForm.js');
+			break;
 
 		default:
 			PageModuleClass = require('./pages/Page.js');

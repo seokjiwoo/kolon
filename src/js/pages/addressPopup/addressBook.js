@@ -7,6 +7,7 @@ module.exports = function() {
 	var util = require('../../utils/Util.js');
 	var controller = require('../../controller/AddressController.js');
 	$(controller).on('addressListResult', addressListHandler);
+	$(controller).on('deleteAddressResult', deleteAddressHandler);
 
 	var callerObj = {
 		/**
@@ -28,13 +29,13 @@ module.exports = function() {
 			each.basicAddressMark = '';
 			if (false) {
 				each.rowClass = 'basic';
-				each.basicAddressMark = '<em>기본배송지</em>';
+				each.basicAddressMark = '<em>기본배송지</em><br/>';
 			}
 			each.cellPhoneNumber = util.mobileNumberFormat(each.cellPhoneNumber);
 		});
 
 		var template = window.Handlebars.compile($('#address-templates').html());
-		var elements = $(template(list.items));
+		var elements = $(template(list));
 		$('#addressTable').empty().append(elements);
 
 		$('.selectAddress').click(function(e){
@@ -43,13 +44,17 @@ module.exports = function() {
 		});
 		$('.editAddress').click(function(e){
 			e.preventDefault();
-			location.href='addressAdd.html?seq='+$(this).data('addressSeq');
+			location.href='addressForm.html?seq='+$(this).data('addressSeq');
 		});
 		$('.deleteAddress').click(function(e){
 			e.preventDefault();
 			if (confirm('삭제하시겠습니까?')) {
-				console.log('delete', $(this).data('addressSeq'));
+				controller.deleteAddress($(this).data('addressSeq'));
 			}
 		});
 	};
+
+	function deleteAddressHandler(e) {
+		location.reload(true);
+	}
 }
