@@ -92,6 +92,30 @@ module.exports = function() {
 			}
 		});
 
+		$(".orderProduct .productList > li").each(function(){ // 마이페이지-주문상세
+			$(this).find(".hiddenArea").parent("li").next().css({
+				border:0,
+				paddingTop : 0
+			})
+		});
+
+		$.fn.showArea = function(){ // 마이페이지-주문상세
+			return this.each(function(){
+				var tg = $(this);
+				tg.on("click", function(e){
+					e.preventDefault();
+					if( !tg.hasClass("active") ){
+						tg.addClass("active").text("접기");
+						tg.next().stop().slideDown();
+					}else{
+						tg.removeClass("active").text("더보기")
+						tg.next().stop().slideUp();
+					}
+				})
+			})
+		}
+		$(".hiddenArea > a").showArea();
+
 	}
 
 	/**
