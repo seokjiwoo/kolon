@@ -52,6 +52,7 @@ function ClassLoginModel() {
 			stateCode: data.myInfo.memberStateCode,
 			memberName: data.myInfo.memberName,
 			email: data.myInfo.email,
+			phone: data.myInfo.cellPhoneNumber,
 			joinSectionCode: data.myInfo.joinSectionCode,
 			imageUrl: imageUrl,
 			myMenu: data.myMenu,

@@ -82,11 +82,13 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		if (Super.Super.loginData.email == null) {
+		if (Super.Super.loginData.email != null) {
+			$('#myPageHeaderId').text(Super.Super.loginData.email);
+			$('#myPageHeaderName').text(Super.Super.loginData.memberName);
+		} else if (Super.Super.loginData.phone != null) {
 			$('#myPageHeaderId').text(Super.Super.loginData.memberName);
 		} else {
-			$('#myPageHeaderName').text(Super.Super.loginData.memberName);
-			$('#myPageHeaderId').text(Super.Super.loginData.email);
+			$('#myPageHeaderId').text(Super.Super.loginData.memberName);
 		}
 		
 		if (Super.Super.loginData.imageUrl != null) $('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
