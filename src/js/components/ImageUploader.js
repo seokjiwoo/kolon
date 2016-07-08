@@ -30,8 +30,8 @@ function ClassImageUploader() {
 				y : 1
 			},
 			viewPort : {
-				width : 835,
-				height : 500
+				width : 530,
+				height : 302
 			}
 		},
 		flashOpts : {
@@ -48,6 +48,7 @@ function ClassImageUploader() {
 		cssClass : {
 			hide : 'is-hide',
 			active : 'is-active',
+			hasFile : 'has-file',
 			noFilereader : 'no-filereader'
 		},
 		multiple : {
@@ -288,7 +289,7 @@ function ClassImageUploader() {
 	
 	function setReadFiles(files) {
 		var supportFlag = true,
-		reader, bs64;
+		reader, bs64, file;
 
 		if (!self.multiple && files.length > 1 || !self.multiple && self.selectedFiles.length >= 1) {
 			win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
@@ -319,19 +320,49 @@ function ClassImageUploader() {
 
 		if (!self.multiple) {
 			files = [files[0]];
+			file = files[0];
 		}
 
-		$.each(files, function(index, curFile) {
-			(function(idx, loadFile) {
-				reader = new FileReader();
-				reader.onload = function(e) {
-					bs64 = e.target.result;
-					setSelectedFiles({ file : loadFile, bs64: bs64 });
-				};
-				reader.onerror = onError;
-				reader.readAsDataURL(loadFile);
-			})(index, curFile);
+		var _self = self;
+		self.selFile = file;
+		win.EXIF.getData(file, function() {
+			var exif = win.EXIF.getAllTags(this);
+			switch(exif.Orientation) {
+				case 3:
+					//동
+					_self.imgRotation = 180;
+					break;
+				case 6:
+					//북
+					_self.imgRotation = 90;
+					break;
+				case 8:
+					//남
+					_self.imgRotation = 270;
+					break;
+				default:
+					//서
+					_self.imgRotation = 0;
+					break;
+			}
+
+			var reader = new FileReader();
+			reader.onload = setPreviewFile;
+			reader.onerror = onError;
+			reader.readAsDataURL(file);
 		});
+
+		// $.each(files, function(index, curFile) {
+		// 	(function(idx, loadFile) {
+		// 		reader = new FileReader();
+		// 		reader.onload = function(e) {
+		// 			bs64 = e.target.result;
+		// 			setSelectedFiles({ file : loadFile, bs64: bs64 });
+		// 		};
+		// 		reader.onerror = onError;
+		// 		reader.readAsDataURL(loadFile);
+		// 	})(index, curFile);
+		// });
 
 		// input 정보 초기화
 		self.inpFile.val('');
@@ -341,8 +372,130 @@ function ClassImageUploader() {
 		win.console.warn('일시적인 장애가 발생했습니다.\n다시 시도해주세요.', e);
 	}
 
+	function setPreviewFile(e) {
+		clearPreviewFile();
+
+		self.imageInfo = e.target.result;
+
+		var imgObj = new Image(),
+		image = $('<image class=\'js-preview-img\'>');
+
+		imgObj.onload = $.proxy(function() {
+			var imgWidth = imgObj.width,
+			imgHeight = imgObj.height,
+			imgOpt = $.extend({}, self.opts.previewOpt, {}),
+			imgScale = imgOpt.scale,
+			viewPort = imgOpt.viewPort,
+			displayWidth, displayHeight,
+			tempSize;
+
+			if (imgWidth > imgHeight) {
+				// 가로형 - landscape
+				imgScale.x = viewPort.width / imgWidth;
+				imgScale.y = imgScale.x;
+				debug.log(fileName, '가로형 ', viewPort, imgScale);
+			} else if (imgHeight > imgWidth) {
+				// 세로형 - portrait
+				imgScale.y = viewPort.height / imgHeight;
+				imgScale.x = imgScale.y;
+				debug.log(fileName, '세로형 ', imgScale);
+			} else {
+				// 정방형
+				imgScale.y = viewPort.height / imgHeight;
+				imgScale.x = imgScale.y;
+				debug.log(fileName, '정방형 ', imgScale);
+			}
+
+			displayWidth = imgScale.x * imgWidth;
+			displayHeight = imgScale.y * imgHeight;
+
+
+			if (displayHeight > viewPort.height) {
+				imgScale.y = viewPort.height / displayHeight;
+				imgScale.x = imgScale.y;
+
+				displayWidth = imgScale.x * displayWidth;
+				displayHeight = imgScale.y * displayHeight;
+			}
+
+
+			debug.log(fileName, 'self.imgRotation', self.imgRotation);
+
+			image.css({
+				'width' : displayWidth,
+				'height' : displayHeight,
+				// 'margin-left' : (viewPort.width - displayWidth) / 2,
+				'margin-top' : (viewPort.height - displayHeight) / 2,
+				'transform' : 'rotate(' + self.imgRotation + 'deg)'
+			});
+			self.holder.append(image);
+
+			if (self.imgRotation === 90 || self.imgRotation === 270) {
+				imgWidth = image.width();
+				imgHeight = image.height();
+
+				if (imgWidth > imgHeight) {
+					// 가로형 - landscape
+					imgScale.x = viewPort.width / imgWidth;
+					imgScale.y = imgScale.x;
+					debug.log(fileName, '가로형 ', viewPort, imgScale);
+				} else if (imgHeight > imgWidth) {
+					// 세로형 - portrait
+					imgScale.y = viewPort.height / imgHeight;
+					imgScale.x = imgScale.y;
+					debug.log(fileName, '세로형 ', imgScale);
+				} else {
+					// 정방형
+					imgScale.y = viewPort.height / imgHeight;
+					imgScale.x = imgScale.y;
+					debug.log(fileName, '정방형 ', imgScale);
+				}
+
+				displayWidth = imgScale.x * imgWidth;
+				displayHeight = imgScale.y * imgHeight;
+
+
+				if (displayHeight > viewPort.height) {
+					imgScale.y = viewPort.height / displayHeight;
+					imgScale.x = imgScale.y;
+
+					displayWidth = imgScale.x * displayWidth;
+					displayHeight = imgScale.y * displayHeight;
+				}
+
+				displayWidth = imgScale.x * imgWidth;
+				displayHeight = imgScale.y * imgHeight;
+
+
+				if (displayHeight > viewPort.height) {
+					imgScale.y = viewPort.height / displayHeight;
+					imgScale.x = imgScale.y;
+
+					displayWidth = imgScale.x * displayWidth;
+					displayHeight = imgScale.y * displayHeight;
+				}
+
+				image.css({
+					'width' : displayWidth,
+					'height' : displayHeight,
+					// 'margin-left' : (viewPort.width - displayWidth) / 2,
+					'margin-top' : (viewPort.height - displayHeight) / 2,
+					'transform' : 'rotate(' + self.imgRotation + 'deg)'
+				});
+			}
+
+			setBtnSubmitActive();
+			setSelectedFiles({ file : self.selFile, bs64: self.imageInfo });
+		}, self);
+
+		imgObj.onerror = onError;
+		image.attr('src', self.imageInfo);
+		imgObj.src = self.imageInfo;
+	}
+
 	function setBtnSubmitActive() {
 		self.btnSubmit.addClass(self.opts.cssClass.active);
+		self.container.addClass(self.opts.cssClass.hasFile);
 	}
 
 	function getSelectedFiles() {

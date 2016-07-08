@@ -21,6 +21,7 @@ module.exports = function() {
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
+	$(loginController).on('verifyMemberResult', verifyMemberResultHandler);
 	
 	var myInfoObject;
 	var emailDuplicateFlag = false;
@@ -49,8 +50,8 @@ module.exports = function() {
 			updateDateSelect();
 			
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
-			$('#changePhoneIdForm').submit(submitMobileEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
+			$('.verifyMemberPopup').click(submitMobileEditForm);
 			/*
 			$('#joinId').change(checkEmailField);
 			$('#joinPW').change(checkPasswordField);
@@ -113,6 +114,17 @@ module.exports = function() {
 				break;
 		}
 
+		switch(infoObject.memberStateCode) {
+			case 'BM_MEM_STATE_01': // 일반 회원
+				break;
+			case 'BM_MEM_STATE_02': // 본인인증 완료 회원
+				$('#editName').attr('disabled', 'disabled');
+				$('#joinBirth01').attr('disabled', 'disabled');
+				$('#joinBirth02').attr('disabled', 'disabled');
+				$('#joinBirth03').attr('disabled', 'disabled');
+				break; 
+		}
+		
 		$('.socialButton').click(socialButtonClickHandler);
 	};
 	
@@ -208,22 +220,45 @@ module.exports = function() {
 	};
 	
 	/**
-	 * 전화번호 수정 진행
+	 * 휴대폰 수정(=실명인증) 진행
 	 */
 	function submitMobileEditForm(e) {
 		e.preventDefault();
 
-		var phoneId = $('#editPhoneID').val();
-
-		if (util.checkValidMobileNumber(phoneId) == false) {
-			alert('10-12자리의 숫자만 입력해 주세요.');
-		} else {
-			alert('휴대폰 실명확인 진행 (예정)');
-		}
+		MyPage.Super.Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
+			onOpen:function() {
+				$('#requestVerifyMemberForm').submit(function(e){
+					e.preventDefault();
+					var id = $('#verifyPhoneNumber').val();
+					if (util.checkValidMobileNumber(id)) {
+						controller.verifyMemberByPhone(id);
+					} else {
+						alert('휴대폰 번호를 정확하게 입력해주세요.');
+					}
+					e.stopPropagation();
+				});
+			}
+		});
 		
 		e.stopPropagation();
 	};
 	
+	/**
+	 * 휴대폰 실명인증 결과 핸들링
+	 */
+	function verifyMemberResultHandler(e, authData) {
+		console.log(authData);
+		switch(authData.status) {
+			case '200':
+				MyPage.Super.Super.alertPopup('본인확인이 완료되었습니다.', '이제 COMMON의 모든 서비스를 이용하실 수 있습니다.', '확인');
+				controller.getMyInfo();
+				break;
+			default:
+				MyPage.Super.Super.alertPopup('', authData.message, '확인');
+				break;
+		}
+	};
+
 	/**
 	 * 정보수정 진행
 	 */

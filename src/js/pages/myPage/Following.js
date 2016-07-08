@@ -11,17 +11,12 @@ module.exports = function() {
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
-	controller = require('../../controller/MyPageController.js'),
+	controller = require('../../controller/FollowController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	FOLLOWING_EVENT = events.FOLLOWING,
 	ALERTPOPUP_EVENT = events.ALERT_POPUP;
-
-	// 임시 테스트 구성
-	var ApiClass = require('../../controller/APIController.js'),
-	Api = ApiClass(),
-	controller = Api;
 	
 	var callerObj = {
 		/**
@@ -74,15 +69,8 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		// 임시 테스트 구성 - 팔로잉 리스트 조회
-		Api.callApi('/apis/follows', 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(controller).trigger('followsListResult', [status, result]);
-			} else {
-				Api.handleError('followsList', result);
-				$(controller).trigger('followsListResult', [status, result]);
-			}
-		}, true);
+		// 팔로우 리스트 조회
+		controller.followsList();
 	}
 
 	function setElements() {
@@ -122,21 +110,8 @@ module.exports = function() {
 		};
 
 		if (!isFollow) {
-			// 임시 테스트 구성 - 팔로우 하기
-			Api.callApi('/apis/follows', 'POST', {
-				'followTargetCode' : 'string',
-				'followTargetNumber' : info.followNumber,
-				'followTargetSectionCode' : 'string'
-			}, function(status, result) {
-				if (status == 200) {
-					$(controller).trigger('addFollowsResult', [status, result]);
-				} else {
-					Api.handleError('addFollows', result);
-					$(controller).trigger('addFollowsResult', [status, result]);
-				}
-			}, true);
-			wrap.addClass(self.opts.cssClass.isFollow);
-
+			// 팔로우 하기
+			controller.addFollows(info.followTargetCode, info.followNumber, info.followTargetSectionCode, { wrap : wrap, css : self.opts.cssClass.isFollow });
 			debug.log(fileName, 'onWrapPopBtnClick', isFollow, info);
 		}
 	}
@@ -255,15 +230,8 @@ module.exports = function() {
 	function onFollowDismiss(e) {
 		e.preventDefault();
 
-		// 임시 테스트 구성 - 팔로잉 취소
-		Api.callApi('/apis/follows/' + self.selPopBtnInfo.info.followNumber, 'DELETE', {}, function(status, result) {
-			if (status == 200) {
-				$(controller).trigger('deleteFollowsResult', [status, result]);
-			} else {
-				Api.handleError('deleteFollows', result);
-				$(controller).trigger('deleteFollowsResult', [status, result]);
-			}
-		}, true);
+		// 팔로우 삭제
+		controller.deleteFollows(self.selPopBtnInfo.info.followNumber);
 	}
 
 	function setFollowDismiss() {
@@ -281,7 +249,7 @@ module.exports = function() {
 		}
 	}
 
-	function onControllerListener(e, status, response) {
+	function onControllerListener(e, status, response, elements) {
 		var eventType = e.type,
 		dummyData = {},
 		result = response;
@@ -296,22 +264,41 @@ module.exports = function() {
 				404	Not Found
 				 */
 				switch(status) {
-					// case 200:
-					// 	break;
+					case 200:
+						break;
 					default:
+						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
 						result = dummyData;
 						break;
 				}
+
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayData(result);
 				displayFilter(result);
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
+				switch(status) {
+					case 200:
+						elements.wrap.addClass(elements.css);
+						break;
+					default:
+						win.alert('HTTP Status Code ' + status);
+						break;
+				}
+
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 			case FOLLOWING_EVENT.DELETE_FOLLOW:
-				self.selPopBtnInfo.wrap.removeClass(self.opts.cssClass.isFollow);
-				$('#cboxClose').triggerHandler('click');
+				switch(status) {
+					case 200:
+						self.selPopBtnInfo.wrap.removeClass(self.opts.cssClass.isFollow);
+						$('#cboxClose').triggerHandler('click');
+						break;
+					default:
+						win.alert('HTTP Status Code ' + status);
+						break;
+				}
+
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 		}

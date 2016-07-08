@@ -41,6 +41,11 @@ module.exports = function() {
 				},
 				contentType: "application/json"
 			}
+			/*
+			headers: {
+				"uppp_screen_width": $(window).width()
+			},
+			*/
 			switch(method) {
 				case 'POST':
 				case 'PUT':

@@ -226,6 +226,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
 						result = dummyData;
 						break;
 				}
@@ -254,6 +255,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);

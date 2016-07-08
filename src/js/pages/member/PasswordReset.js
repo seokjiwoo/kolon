@@ -5,8 +5,10 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var util = require('../../utils/Util.js');
+
+	var infoController = require('../../controller/MemberInfoController');
+	$(infoController).on('resetPasswordResult', resetPasswordResultHandler);
 	
-	var memberNumber;
 	var authKey;
 	
 	var callerObj = {
@@ -20,17 +22,12 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
-		
-		if (Cookies.getJSON('loginPwReset') == undefined) {
-			// 메일인 경우?
-			// alert('잘못된 접근입니다');
+
+		if (util.getUrlVar('key') != undefined) {
+			alert('잘못된 접근입니다');
 		} else {
-			var searchResultCookie = Cookies.getJSON('loginPwReset');
-			
-			$('#memberName').text(searchResultCookie.name);
-			$('#memberMail').text(searchResultCookie.mail);
-			memberNumber = searchResultCookie.memberNumber;
-			authKey = searchResultCookie.authKey;
+			authKey = util.getUrlVar('key');
+			$('#key').val(authKey);
 		}
 		
 		$('#resetPW').change(checkPasswordField);
@@ -58,6 +55,24 @@ module.exports = function() {
 	 * 패스워드 리셋 요청
 	 */
 	function resetPasswordHandler(e) {
-		// 비밀번호가 일치하지 않습니다.
+		var inputValue1 = $('#resetPW').val();
+		var inputValue2 = $('#resetPW02').val();
+		
+		if (inputValue2 != '' && inputValue1 != inputValue2) {
+			Super.Super.alertPopup('', '비밀번호가 일치하지 않습니다.', '확인');
+			e.preventDefault();
+			e.stopPropagation();
+		} else if (!util.checkValidPassword(inputValue1)) {
+			Super.Super.alertPopup('', '비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.', '확인');
+			e.preventDefault();
+			e.stopPropagation();
+		} else {
+			//controller.resetPassword(authKey, inputValue1);
+			// FORM SUBMIT
+		}
+	};
+
+	function resetPasswordResultHandler(e) {
+		//
 	};
 }
