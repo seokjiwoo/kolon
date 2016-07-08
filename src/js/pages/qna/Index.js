@@ -48,10 +48,6 @@ module.exports = function() {
 					filter : 'images (*.jpg, *.jpeg, *.png)',
 					type : '*.jpg;*.jpeg;*.png'
 				}
-			},
-			multiple : {
-				enabled : false,
-				maxSize : 3
 			}
 		}
 	};

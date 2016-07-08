@@ -15,7 +15,7 @@
 				</ul>
 			</div>
 			<div class="wrap">
-				<!--// [D] 마크업 원본 -->
+				<!-- [D] 마크업 원본 -->
 				<!-- 
 				<section class="singleCard" id="myCart">
 					<h2 class="secTit">샵 상품</h2>
@@ -250,8 +250,8 @@
 						<td>
 							<div class="cartChk">
 								<p class="chk checkbox">
-									<input type="checkbox" title="상품선택" id="mycartshop-list{{@index}}" checked>
-									<label for="mycartshop-list{{@index}}" class="on" data-chk-group="myCartShop"><span class="hide">선택</span></label>
+									<input type="checkbox" title="상품선택" id="myCartShop-list{{@index}}" checked>
+									<label for="myCartShop-list{{@index}}" class="on" data-cart-number="{{cartNumber}}" data-chk-group="myCartShop"><span class="hide">선택</span></label>
 								</p>
 								<div class="photoList">
 									<a href="#">
@@ -279,7 +279,7 @@
 											<span class="num">1</span>
 											<a href="#" class="btnPlus">더하기</a>
 										</p>
-										<a href="#" class="btnDel">삭제</a>
+										<a href="#" class="btnDel js-opt-delete">삭제</a>
 									</div>
 								</div>
 								<!--// 옵션 수량 선택 -->
@@ -287,7 +287,7 @@
 							</div>
 						</td>
 						<td><p class="price"><b class="js-list-price">{{productOrderPriceDesc}}</b> 원</p></td>
-						<td><p class="price"><b>{{productSalePriceDesc}}</b> 원</p></td>
+						<td><p class="price"><b>{{productDiscountSalePriceDesc}}</b> 원</p></td>
 						{{#vxIF deliveryChargeDesc "==" "0"}}
 							<td>무료</td>
 							{{else}}
@@ -302,13 +302,13 @@
 			<div class="btnG">
 				<div class="cartChk chkAll">
 					<p class="chk checkbox">
-						<input type="checkbox" id="mycartshop-list-all" checked>
-						<label for="mycartshop-list-all" class="on"
+						<input type="checkbox" id="myCartShop-list-all" checked>
+						<label for="myCartShop-list-all" class="on"
 							data-chk-role="chkAll"
 							data-chk-group="myCartShop">전체 선택 <span class="pointRed">(총<span class="js-list-size"></span>개)</span></label>
 					</p>
 				</div>
-				<a href="#" class="btnSizeS btnColor04 btnR">삭제</a>
+				<a href="#" class="btnSizeS btnColor04 btnR js-list-delete">삭제</a>
 			</div>
 		</form>
 	</div>

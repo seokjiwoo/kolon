@@ -26,6 +26,7 @@
 		private var _multipleOpts 				:Object;
 
 		public var _btnSelect 					:SimpleButton;
+		public var _preview 					:MovieClip;
 		
 		public function Main():void 
 		{
@@ -40,6 +41,7 @@
 			
 			removeEventListener( Event.ADDED_TO_STAGE, init );
 			this._btnSelect = SimpleButton( this._btnSelect );
+			this._preview = MovieClip( this._preview );
 			
 			_selFileType = Config.SEL_FILE_TYPE;
 			_multipleOpts = Config.MUTILPLE_OPTS;
@@ -153,6 +155,13 @@
 		
 		private function onFileRefLoadComplete( $e:Event ):void
 		{
+			var loader:Loader = new Loader();
+			loader.contentLoaderInfo.addEventListener( Event.COMPLETE, loadBytesComplete );
+			
+			if (!_multipleOpts.enabled) {
+				loader.loadBytes( _fileRef.data );
+			}
+			
 			var file:FileReference = FileReference( $e.target );
 			ExternalInterface.call( 'FLASH.eventCallback', 'selectedFile', {
 				file : {
@@ -164,6 +173,57 @@
 				},
 				bs64 : Base64.encodeByteArray( file.data )
 			});
+		}
+		
+		private function removeContainer():void
+		{
+			while( _preview.numChildren != 0 ) {
+				_preview.removeChild( _preview.getChildAt( _preview.numChildren - 1 ) );
+			};
+		}
+		
+		private function loadBytesComplete( $e:Event ):void
+		{
+			removeContainer();
+			
+			var loaderInfo:LoaderInfo = $e.target as LoaderInfo;
+			var viewWidth:int = stage.stageWidth;
+			var viewHeight:int = stage.stageHeight;
+			var imgWidth:Number = loaderInfo.content.width;
+			var imgHeight:Number = loaderInfo.content.height;
+			var imgScaleX:Number = 1;
+			var imgScaleY:Number = 1;
+			
+			// 가로형
+			if ( imgWidth > imgHeight ) {
+				imgScaleX = viewWidth / imgWidth;
+				imgScaleY = imgScaleX;
+			} else if ( imgHeight < imgWidth ) {
+			// 세로형
+				imgScaleY = viewHeight / imgHeight;
+				imgScaleX = imgScaleY;
+			} else {
+			// 정비율
+				imgScaleY = viewHeight / imgHeight;
+				imgScaleX = imgScaleY;
+			}
+			
+			loaderInfo.content.scaleX = imgScaleX;
+			loaderInfo.content.scaleY = imgScaleY;
+			
+			// 임시로 사이즈 강제로 지정
+			if ( loaderInfo.content.width >= viewWidth ) {
+				loaderInfo.content.width = viewWidth;
+			}
+			
+			if ( loaderInfo.content.height >= viewHeight ) {
+				loaderInfo.content.height = viewHeight;
+			}
+			
+			loaderInfo.content.x = ( viewWidth - loaderInfo.content.width ) / 2;
+			loaderInfo.content.y = ( viewHeight - loaderInfo.content.height ) / 2;
+			
+			_preview.addChild( loaderInfo.content );
 		}
 
 		private function doOnComplete():void {
