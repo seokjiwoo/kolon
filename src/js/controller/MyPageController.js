@@ -169,7 +169,7 @@ function ClassMyPageController() {
 	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
 	 */
 	function addMyCartList(myCartRequestList) {
-		Super.callApi('/apis/me/cart/' + productSectionCode, 'POST', {
+		Super.callApi('/apis/me/cart', 'POST', {
 			'myCartRequestList' : myCartRequestList
 		}, function(status, result) {
 			if (status == 200) {

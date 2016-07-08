@@ -47,7 +47,7 @@ function ClassFollowController() {
 				Super.handleError('followsList', result);
 				$(callerObj).trigger('followsListResult', [status, result]);
 			}
-		}, false);
+		}, true);
 	}
 
 	function addFollows(followTargetCode, followTargetNumber, followTargetSectionCode, elements) {
