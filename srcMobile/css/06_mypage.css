@@ -243,10 +243,10 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .scrapListWrap ul.scrapList li.on a:before {content:''; width:159px; height:159px; border:4px solid #000; position:absolute; top:0; left:0;}
 .scrapListWrap ul.scrapList li img {width:159px; height:159px;}
 
-.reviewTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;}
+.reviewTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;background:#fff;}
 .reviewTop h2{font-size:18px;}
 .reviewTop .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
-.reviewArea{padding:20px 15px 0;}
+.reviewArea{padding:20px 15px 0;background:#fff;}
 
 .writeBox{border:1px solid #ccc;margin-top:6px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .writeBox .txt{padding:14px 14px 14px;border-top:1px solid #ccc;}
@@ -403,7 +403,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .peopleCount{height:30px;line-height:30px;background:#f8f8f8;border-bottom:1px solid #ccc;text-align:center;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#333;}
 .peopleCount em{font-family:'NotoSansB', 'RobotoB', sans-serif;}
 .followSearch{padding:10px 15px;background:#e0e0e0;}
-.followList{padding:0 15px;}
+.followList{padding:0 15px;background:#fff;}
 .followList > ul > li{padding:15px 0;overflow:hidden;border-top:1px solid #ccc;}
 .followList > ul > li:first-child{border-top:0;}
 .followList .infowrap{overflow:hidden;}
