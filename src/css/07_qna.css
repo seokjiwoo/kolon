@@ -79,7 +79,7 @@
 .fileup a.btnFileup span{line-height:40px;display:block;color:#fff;font-size:13px;}
 .qna .arrayWrap{width:100%; margin-top:27px;}
 
-.opinionArea{margin-top:17px; border-top:1px solid #ccc;}
+.opinionArea{margin-top:20px; border-top:1px solid #ccc;}
 .opinionArea > ul > li {border-bottom:1px solid #ccc;}
 .opinionArea > ul > li:first-child{margin-top:0;}
 .opinionArea > ul > li:last-child{border-bottom:0;}
