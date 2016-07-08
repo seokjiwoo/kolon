@@ -296,8 +296,6 @@ module.exports = function() {
 						break;
 					default:
 						win.alert('HTTP Status Code ' + status);
-						self.selPopBtnInfo.wrap.removeClass(self.opts.cssClass.isFollow);
-						$('#cboxClose').triggerHandler('click');
 						break;
 				}
 
