@@ -13,6 +13,7 @@ function ClassConsole() {
 	'use strict';
 
 	var win = window,
+	$ = win.jQuery,
 	util = require('./Util.js'),
 	/**
 	 * @description
@@ -31,7 +32,6 @@ function ClassConsole() {
 	 */
 	_debugParam = 'debug',
 	_debugParamFile = 'debugFiles',
-	_debugFiles = 'all',
 	_debugComment = ':: vinyl-X ::',
 	instance;
 	
@@ -39,7 +39,8 @@ function ClassConsole() {
 		getInstance: function() {
 			if (!instance) instance = init();
 			return instance;
-		}
+		},
+		isDebugMode: isDebugMode
 	};
 	
 	function init() {
