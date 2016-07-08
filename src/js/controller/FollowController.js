@@ -15,12 +15,12 @@ function ClassFollowController() {
 	
 	return {
 		getInstance: function() {
-			if (!instance) instance = ExampleController();
+			if (!instance) instance = FollowController();
 			return instance;
 		}
 	};
 	
-	function ExampleController() {
+	function FollowController() {
 		callerObj = {
 			/**
 			 * 팔로우 리스트

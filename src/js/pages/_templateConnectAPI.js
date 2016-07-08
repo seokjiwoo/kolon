@@ -9,7 +9,7 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = '{{PATH}}/{{FILE_NAME}}.js';
 
-	var SuperClass = require('./Page.js'),
+	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
 	controller = require('../../controller/{{CONTROLLER}}.js'),
 	eventManager = require('../../events/EventManager'),
