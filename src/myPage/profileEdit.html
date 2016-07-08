@@ -27,16 +27,14 @@
 							<tr>
 								<th><label for="editPhoneID"><b class="require">* </b>휴대폰 번호 아이디</label></th>
 								<td>
-									<form action="#" id="changePhoneIdForm" method="POST">
-										<input type="text" value="" id="editPhoneID"><button type="submit" class="btn btnSizeM btnColor03">등록하기</button>
-									</form>
+									<input type="text" value="" id="editPhoneID" disabled="disabled"><button type="button" class="btn btnSizeM btnColor01 verifyMemberPopup">등록하기</button>
 								</td>
 							</tr>
 							<tr>
 								<th><b class="require">* </b>비밀번호</th>
 								<td>
 									<p class="inputWrap">
-										<a href="../_popup/popCheckPw.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">변경하기</a>
+										<button class='btn btnSizeM btnColor01 btnPop btnPop650' data-user-class="popEdge">변경하기</button>
 									</p>
 								</td>
 							</tr>
@@ -79,7 +77,7 @@
 									<td>
 										<p class="inputWrap">
 											<input type="text" value="홍길동" id="editName">
-											<a href="../_popup/popCheckId.html" class="btn btnSizeM btnColor01 btnPop btnPop650" data-user-class="popEdge">실명확인</a>
+											<button class='btn btnSizeM btnColor01 btnPop650 verifyMemberPopup' data-user-class="popEdge">실명확인</button>
 										</p>
 									</td>
 								</tr>
@@ -151,6 +149,21 @@
 							</table>
 						</fieldset>
 						<div class="profileInfo">
+							<h3 class="subTit">환불계좌</h3>
+							<table class="record">
+								<tr>
+									<th class="th02">입금은행</th>
+									<td class="t_l">한국은행</td>
+									<th class="th02">계좌번호</th>
+									<td class="t_l">000-000-0000000-0</td>
+									<th class="th02">예금주</th>
+									<td class="t_l">내가 건물주다</td>
+									<td><a href="" class="btnSizeM btnColor02">계좌 수정</a></td>
+								</tr>
+							</table>
+						</div>
+						<!--
+						<div class="profileInfo">
 							<h3 class="subTit">회원유형</h3>
 							<div class="profileNote">
 								<p>고객님은 현재 <b>일반회원</b>이십니다. 유료(멤버십) 회원으로 가입하셔서 더 많은 혜택을 받아보세요.</p>
@@ -176,8 +189,9 @@
 								</tr>
 							</table>
 						</div>
+						-->
 						<div class="profileInfo">
-							<h3 class="subTit">회원유형</h3>
+							<h3 class="subTit">회원탈퇴</h3>
 							<div class="profileNote">
 								<p>회원탈퇴 시 고객님의 개인정보 및 보유하고 계신 모든 혜택이 사라집니다.</p>
 								<a href="/myPage/resign.html" class="btnSizeM btnColor03">회원탈퇴신청</a>
@@ -191,9 +205,19 @@
 		<!-- @@include ../_template/footer.html -->
 	</div>
 	<script type="text/javascript">
+	/**
+	 * 외부 창 소셜 로그인 데이터 트리거 핸들링
+	 */
 	function data(data) {
         var data = JSON.parse(data);
         $(document).trigger('getSocialLoginResult', [data]);
+    }
+	/**
+	 * 외부 창 휴대폰 본인인증 데이터 트리거 핸들링
+	 */
+	function data(data) {
+        var data = JSON.parse(data);
+        $(document).trigger('getMobileAuthVerifyResult', [data]);
     }
 	</script>
 </body>

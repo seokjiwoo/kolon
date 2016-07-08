@@ -13,6 +13,7 @@ function ClassMemberInfoController() {
 	var tempAuthKey;
 
 	$(document).on('getMobileAuthPasswordFindResult', mobileAuthPasswordFindResultHandler);
+	$(document).on('getMobileAuthVerifyResult', mobileAuthVerifyResultHandler);
 	
 	return {
 		getInstance: function() {
@@ -51,6 +52,10 @@ function ClassMemberInfoController() {
 			 * 비밀번호 찾기 (휴대폰)
 			 */
 			findPasswordByPhone: findPasswordByPhone,
+			/**
+			 * 휴대폰 본인인증
+			 */
+			verifyMemberByPhone: verifyMemberByPhone,
 			/**
 			 * 비밀번호 변경
 			 */
@@ -188,10 +193,23 @@ function ClassMemberInfoController() {
 		Super.callApi('/apis/authorize/vertify?type=PASSWORD&phoneNumber='+id, 'GET', {}, function(status, result) {
 			if (status == 200) {
 				openKMCISWindow(result.data.identityUrl);
-				//$(callerObj).trigger('findPwResult', [status, result]);
 			} else {
 				Super.handleError('findPasswordByPhone', result);
 				$(callerObj).trigger('findPwResult', [status, result]);
+			}
+		}, false);
+	};
+
+	/**
+	 * 회원 실명인증 요청
+	 */
+	function verifyMemberByPhone(number) {
+		Super.callApi('/apis/authorize/vertify?type=IDENTITY&phoneNumber='+number, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				openKMCISWindow(result.data.identityUrl);
+			} else {
+				Super.handleError('verifyMemberByPhone', result);
+				$(callerObj).trigger('verifyMemberResult', [status, result]);
 			}
 		}, false);
 	};
@@ -229,6 +247,19 @@ function ClassMemberInfoController() {
 		} else {
 			Super.handleError('mobileAuthPasswordFindResultHandler', authData);
 			$(callerObj).trigger('findPwResult', [Number(authData.status), authData]);
+		}
+	};
+
+	/**
+	 * 휴대폰 본인인증 완료 (실명인증) 핸들링
+	 * document에 trigger걸렸을 때 핸들링. trigger 함수는 html에 위치.
+	 */
+	function mobileAuthVerifyResultHandler(e, authData) {
+		if (authData.status == 200) {
+			$(callerObj).trigger('verifyMemberResult', [Number(authData.status), authData]);
+		} else {
+			Super.handleError('mobileAuthVerifyResultHandler', authData);
+			$(callerObj).trigger('verifyMemberResult', [Number(authData.status), authData]);
 		}
 	};
 

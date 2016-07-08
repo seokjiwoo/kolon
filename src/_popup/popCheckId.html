@@ -2,17 +2,17 @@
 	<h4 class="popTit">실명인증</h4>
 </div>
 <div class="popCon">
-	<form method="post" action="/">
+	<form id='requestVerifyMemberForm' method="post" action="#">
 		<fieldset>
 			<legend>실명인증</legend>
 			<div class="checkPw">
 				<p class="tit">고객님의 개인정보를 보호하기 위해 실명인증을 진행합니다.</p>
 				<p>현재 고객님의 계정은 실명확인 절차를 거치지 않았습니다. <br/>계속 진행하시려면 신용평가정보를 통해 본인 실명확인을 완료해주세요.</p>
 			</div>
+			<div class="btnWrap">
+				<input id='verifyPhoneNumber' type='text' placeholder="전화번호!!! 크르릉!!" />
+				<button class="btn btnSizeM btnColor01">휴대폰 인증</button>
+			</div>
 		</fieldset>
 	</form>
-	<div class="btnWrap">
-		<a href="#" class="btnSizeM btnColor01">휴대폰 인증</a>
-		<a href="#" class="btnSizeM btnColor02">아이핀 인증</a>
-	</div>
 </div>
