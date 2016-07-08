@@ -39,6 +39,9 @@ module.exports = function() {
 				xhrFields: {
 					withCredentials: true
 				},
+				headers: {
+					"uppp_screen_width": $(window).width()
+				},
 				contentType: "application/json"
 			}
 			switch(method) {
