@@ -1,6 +1,9 @@
-/*.members{background-image: url('../images/bg_member.png');}*/
-.members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #f1645c}
-.members .pageTit:before, .members .pageTit:after{background: #fff;}
+#membersLogin{background-image: url('../images/bg_member.png');}
+
+.members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #f1645c;font-size:40px;}
+.members .pageTit:before, .members .pageTit:after{content:'';display: inline-block;width: 70px;height: 1px;vertical-align: middle; ;background: #f8b2ae;}
+.members .pageTit:before{margin-right:20px;}
+.members .pageTit:after{margin-left:20px;}
 .members .subTit{width:100%;font-family:'NotoSansR', sans-serif;color: #000;font-size: 20px;}
 .members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;line-height: 1.3em}
 .members .singleCard .subTit b{color: #00aeb9}

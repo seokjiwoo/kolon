@@ -4,7 +4,7 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 로그인"} -->
 </head>
 <body data-page-id="member-login">
-	<div class="wrapper members">
+	<div class="wrapper members" id="membersLogin">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<div class="wrap">
@@ -18,7 +18,8 @@
 					<div class="formWrap02">
 						<form id="loginForm" action="#">
 							<fieldset id="findID">
-								<legend class="subTit">회원가입과 로그인을 한 번에 하실 수 있습니다.</legend>
+								<legend class="subTit">회원가입</legend>
+								<h2 class="subTit">회원가입과 로그인을 한 번에 하실 수 있습니다.</h2>
 								<p class="inputWrap inputWrap02"><label for="inputName" class="hide">아이디</label><input type="text" id="inputName" placeholder="아이디(이메일 혹은 휴대폰 번호)를 입력하세요"></p>
 								<p class="inputWrap inputWrap02"><label for="inputPW" class="hide">비밀번호</label><input type="password" id="inputPW" placeholder="비밀번호를 입력하세요"></p>
 								<p class="checkbox saveInfo"><input type="checkbox" id="saveInfo"><label for="saveInfo">로그인 유지</label><a href="passwordFind.html">비밀번호 찾기</a></p>

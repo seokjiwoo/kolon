@@ -332,7 +332,7 @@ table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-cale
 .drop li {display:block !important;width:138px;height:38px;border-top:1px solid #ccc;}
 .drop li:first-child {color:#666;border-top:none}
 .drop li:first-child a:after {content:'';display:block;position:absolute;top:7px;right:15px;width:20px;height:20px;background:url(../images/ico_lnb.png) no-repeat;background-position:0 0;}
-.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#666;background:#fff;border:none;border-radius:0;}
+.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#000;background:#fff;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;}
 .drop li a.on {background:#fff;color:#666;}
 /* dropBox on 되었었을 시 dropOn class 추가 */
 .drop.dropOn {height:auto;}
