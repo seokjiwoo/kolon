@@ -14,25 +14,25 @@
 						<p><b class="roman">340</b>개의 상품이 있습니다.  </p>
 					</div>
 					<!-- @@include ../_template/my_depth02_mycart.html {"myMenu02":"on"} -->
-					<div class="myCartWrap">
-						<div class="scrapbtnTop">
-							<form method="post" action="/">
-								<fieldset>
-									<legend>스크랩 이미지</legend>
-									<p class="checkbox checkAll">
-										<input type="checkbox" id="checkAll"/>
-										<label for="checkAll">모두 선택</label>
-									</p>
-									<p class="btnR">
-										<button><b>6</b>개 삭제</button>
-										<button>취소</button>
-									</p>
-								</fieldset> 
-							</form>
-						</div>
-						<!-- list -->
+					<div class="scrapbtnTop">
 						<form method="post" action="/">
-							<p class="setTit">묶음 배송상품</p><!-- 묶음배송시 title -->
+							<fieldset>
+								<legend>스크랩 이미지</legend>
+								<p class="checkbox checkAll">
+									<input type="checkbox" id="checkAll"/>
+									<label for="checkAll">모두 선택</label>
+								</p>
+								<p class="btnR">
+									<button><b>6</b>개 삭제</button>
+									<button>취소</button>
+								</p>
+							</fieldset> 
+						</form>
+					</div>
+					<form method="post" action="/">
+						<p class="setTit">묶음 배송상품</p><!-- 묶음배송시 title -->
+						<div class="myWrap">
+							<!-- list -->
 							<ul class="optList">
 								<li>
 									<a href="#">
@@ -134,16 +134,17 @@
 								</li>
 								<!--// 복수형 -->
 							</ul>
-							<!-- 묶음 배송 시 가격   -->
-							<div class="setPrice" style="margin-bottom:119px;"><!-- 임시 style, scroll action 시 삭제 해주세요 -->
-								<div class="setP">
-									<p class="setPriceTit">묶음배송비</p>
-									<p class="setPriceCont"><b>40,000</b> 원</p>
-								</div>
+							<!--// list -->
+						</div>
+						<!-- 묶음 배송 시 가격   -->
+						<div class="setPrice">
+							<div class="setP">
+								<p class="setPriceTit">묶음배송비</p>
+								<p class="setPriceCont"><b>40,000</b> 원</p>
 							</div>
-							<!--// 묶음 배송 시 가격   -->
-						</form>
-						<!--// list -->
+						</div>
+						<!--// 묶음 배송 시 가격   -->
+					</form>
 						<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
 						<div class="myCartTotal">
 							<ul class="totalList slideMore">
@@ -168,7 +169,6 @@
 							<a href="#" class="totalBtn">주문하기</a>
 						</div>
 						<!--// scroll 시 고정 영역 -->
-					</div>
 				</section>
 				<!-- @@include ../_template/footer.html -->
 			</div>
