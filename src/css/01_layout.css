@@ -52,14 +52,13 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 
 #top {width:100%;}
-#top .searchWrap{position: absolute;top: -177px;left: 0;width: 100%;background: #fff;text-align: left;border-bottom: 1px solid #333;z-index: -1}
+#top .searchWrap{position: absolute;top: -177px;left: 0;width: 100%;background: rgba(255,255,255,.9);text-align: left;border-bottom: 1px solid #333;z-index: -1}
 #top .searchWrap:before{content: '';position: absolute;top: -8px;right:38px;width: 14px;height: 8px;background: url('../images/bg_search.png') no-repeat;}
 #top .searchWrap .keyWrap{overflow: hidden;padding:10px 30px;font-size:14px;}
 #top .searchWrap .wrap{max-width:1500px;}
 #top .searchWrap .keyTit{float: left;font-family:'NotoSansM', sans-serif;}
 #top .searchWrap .keyword{overflow: hidden;margin-left: 90px;}
 #top .searchWrap .keyword li{float: left;margin-left: 10px;}
-#top .searchWrap .keyword li:nth-child(2){margin:0;}
 #top .searchWrap .keyword li a{font-family:'NotoSansM', sans-serif;vertical-align: top;}
 
 #top .searchWrap .searchSet{position: relative;float: right;width: 35%;padding:5px 40px 5px 20px;background: #fff;border-radius:20px;}
@@ -76,7 +75,8 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #top .searchWrap .recently .keyword{height: 36px;margin-left:90px;}
 #top .searchWrap .recently .keyTit {color: #333;line-height: 38px;}
 #top .searchWrap .recently li{margin-bottom: 2px;border-radius: 20px;border:1px solid #d9d9d9;}
-#top .searchWrap .recently a{display: inline-block;padding: 0 14px;color: #666;line-height: 34px;}
+#top .searchWrap .recently .keyword li:nth-child(2){margin:0;}
+#top .searchWrap .recently a{display: inline-block;padding: 0 10px 0 14px;color: #666;line-height: 34px;}
 
 #top .searchWrap .keyword .del{display: inline-block;width: 30px;height: 34px;background: url('../images/btn_closeS.png') no-repeat center;vertical-align: middle;cursor: pointer;}
 #top .searchWrap .keyword .delAll{float: right;background: #999;border:0;}

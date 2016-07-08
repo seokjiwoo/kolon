@@ -1,8 +1,11 @@
 .cardBox {width:1500px; overflow:hidden;}
-.cardWrap{max-width:1520px; min-width:1220px;margin:64px auto 0;z-index: 1;}
+.cardWrap{max-width:1520px;min-width:1220px;z-index: 1;}
 @media (max-width:1520px){.cardWrap {max-width:1220px;}}
-.cardWrap > li.card {overflow: hidden;float: left;width:285px;padding:84px 0; margin-top:-167px; text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
-.cardWrap {padding-top:83px;}
+.main .cardWrap {margin:64px auto 0;padding-top:83px;}
+.cardWrap > li.card {overflow: hidden;float: left;width:285px;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
+.main .cardWrap > li.card{margin-top:-167px;padding:84px 0;}
+
+
 
 .cardLayer {width:100%; height:754px; position:absolute; top:0; left:0; z-index:90;}
 .cardLayer .cardWrap {width:1500px; margin:0 auto; position:relative; padding-top:167px;}
@@ -63,7 +66,8 @@
 .cardTitle.master .cardTitleCont .cardTitleBg {width:1006px; height:1271px; top:-274px; right:400px; background:url('../images/main_bg_master.png') 0 0 no-repeat;}
 
 /* hexagon css */
-.hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
+.hexagon{position: absolute;top:0px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
+.main .hexagon{top:85px}
 .hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
 .hexTop{top: -101.76px}
 .hexBottom{bottom: -101.76px;}
@@ -72,9 +76,10 @@
 .hexBottom span {background-position: center bottom;}
 .hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
-.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.65deg); position:absolute; top:126.5px; left:-19px; z-index:5; text-align:left;}
+.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.9deg); position:absolute; top:41.5px; left:-19px; z-index:5; text-align:left;}
+.main .cardLine{ top:126.5px;}
 .cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
-.cardLine p {font-size:14px; font-style:italic; color:#000; line-height:130%;}
+.cardLine p {letter-spacing: 0.5px;font-size:14px; font-style:italic; color:#000; line-height:130%;}
 
 .cardCon{position:relative; z-index:4;top:0;display: block;width:265px;padding:81px 10px;color:#000;}
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
@@ -86,7 +91,7 @@
 .cardRemove{position: absolute;top:119px;left: 50%;display: block;width: 30px;height: 30px;margin-left:-15px;background:url('../images/btn_close.png') no-repeat center;z-index: 2}
 .cardTit{min-height:48px; font-family:'NotoSansR', sans-serif;font-size: 34px;line-height: 1.2em;}
 .cardWrap .cardCat + .cardTit {margin-top:10px;;}
-.cardWrap .cardCat{position: relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-size: 14px; padding-top:31px; height:18px; margin-top:-22px; font-style:italic;}
+.cardWrap .cardCat{position: relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-size: 14px; padding-top:31px; height:18px; margin-top:-22px; font-style:italic;font-weight: 900;letter-spacing: 0;}
 .cardWrap .cardCat:before{content: ''; display: block;width: 28px;height:31px;margin:0 auto;background: url('/images/ico_card_type.png') 0 100% no-repeat; position:absolute; bottom:24px; left:50%; margin-left:-14px;}
 .cardWrap .cardSub{font-family:'NotoSansM', sans-serif;font-size: 20px;line-height: 1.2em;}
 .cardTit,.cardWrap .cardSub {margin-top:25px;}

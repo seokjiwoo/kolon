@@ -33,90 +33,74 @@
 						<li><a href="">커먼전문가</a></li>
 					</ul>
 				</div>
-				<!-- <div class="catSorting catSortH01">
-					<div class="wrap">
-						<div class="catSort" id="catSort01">
-							<h3 class="sortTit"><span>모든</span> 공간</h3>
-							<div class="sortCont">
-								<ul>
-									<li><a href="" class="on">모든공간</a></li>
-									<li><a href="">현관</a></li>
-									<li><a href="">거실</a></li>
-									<li><a href="">주방</a></li>
-									<li><a href="">안방</a></li>
-									<li><a href="">아이방</a></li>
-									<li><a href="">서재</a></li>
-									<li><a href="">공용욕실</a></li>
-									<li><a href="">부부욕실</a></li>
-									<li><a href="">베란다/다용도실</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="catSort" id="catSort02">
-							<h3 class="sortTit"><span>스포츠/다이어트</span> 라이프스타일</h3>
-							<div class="sortCont">
-								<ul>
-									<li><a href="" class="on">모든라이프스타일</a></li>
-									<li><a href="">자녀양육</a></li>
-									<li><a href="">건강/웰빙</a></li>
-									<li><a href="">재산증식</a></li>
-									<li><a href="">외식/음식</a></li>
-									<li><a href="">수면</a></li>
-									<li><a href="">반려동물</a></li>
-									<li><a href="">노후</a></li>
-									<li><a href="">절약</a></li>
-									<li><a href="">스포츠/다이어트</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="catSort" id="catSort03">
-							<h3 class="sortTit"><span>모든</span> 컬러</h3>
-							<div class="sortCont">
-								<ul>
-									<li><a href="" class="on">모든컬러</a></li>
-									<li><a href="" id="color01">화이트</a></li>
-									<li><a href="" id="color02">그린</a></li>
-									<li><a href="" id="color03">블랙</a></li>
-									<li><a href="" id="color04">브라운</a></li>
-									<li><a href="" id="color05">엘로우</a></li>
-									<li><a href="" id="color06">핑크</a></li>
-									<li><a href="" id="color07">오렌지</a></li>
-									<li><a href="" id="color08">블루</a></li>
-									<li><a href="" id="color09">레드</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="catSort" id="catSort04">
-							<h3 class="sortTit"><span>50평 이상 </span>평수 <span>300~2500</span>가격</h3>
-							<div class="sortCont">
-								<ul>
-									<li><a href="" class="on">모든평수</a></li>
-									<li><a href="">10평 미만</a></li>
-									<li><a href="">20평</a></li>
-									<li><a href="">30평</a></li>
-									<li><a href="">40평</a></li>
-									<li><a href="">50평 이상</a></li>
-								</ul>
-							</div>
-						</div>
-						<p class="btnSort"><a href="" id="btnReset">초기화</a><a href="" id="btnConfirm">확인</a></p>
-					</div>
-					<a href="" id="sortToggle"></a>
-				</div> -->
 			</div>
 			<div class="wrap">
-				<div class="arrayWrap">
-					<p class="searhResult"><b>100</b>개의 판매상품이 있습니다.</p>
-					<ul class="arrayDrop arrayCount">
-						<li><a href="">최신순</a></li>
-						<li><a href="">인기순</a></li>
-						<li><a href="">가격높은순</a></li>
-						<li><a href="">가격낮은순</a></li>
-						<li><a href="">스크랩 많은 순</a></li>
+				<!-- 순서구분 드랍다운 리스트 (기획서 참고)
+					전체 : 없음
+					뉴폼 : 최신순, 인기순, 가격높은순, 가격낮은순, 스크랩많은순
+					매거진: 최신순, 인기순, 스크랩많은순
+					커먼전문가: 인기순, 스크랩많은순 -->
+				<div class="alignBox">
+					<ul class="drop" data-prevent="true">
+						<li><a href="#" data-value="type-1">최신순</a></li>
+						<li><a href="#" data-value="type-2">인기순</a></li>
+						<li><a href="#" data-value="type-2">가격높은순</a></li>
+						<li><a href="#" data-value="type-2">가격낮은순</a></li>
+						<li><a href="#" data-value="type-3">스크랩 많은 순</a></li>
 					</ul>
 				</div>
+				<!-- 뉴폼 상세조건 필터 -->
+				<a href="../_popup/popDetailedMore.html" class="btnDetail btnPop btnPop895" data-user-class="categoryPop popEdge">상세조건</a>
+				<!-- 뉴폼 상세조건 필터 // -->
+				<p class="searhResult"><b>100</b>개의 판매상품이 있습니다.</p>
 				<ul class="cardWrap" id="cardWrap">
-					<!-- @@include ../_template/card.html -->
+					<li class="card cardType01 cardSize03">
+						<div class="cardLine">
+							<p class="italicNum">designer <span>compact</span></p>
+						</div>
+						<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
+							<div class="hexTop"><span></span></div>
+							<div class="hexBottom"><span></span></div>
+						</div>
+						<div class="cardCon">
+							<!-- card 내용 -->
+							<a href="#" class="cardTxt cardDetail">
+								<p class="cardCat">{ unit }</p>
+								<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
+								<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
+								<span class="cardMore">상세보기</span>
+							</a>
+							<!--// card 내용 -->
+							<!-- card hover 내용 -->
+							<div class="cardHover hoverStyle01">
+								<!-- hover 효과 -->
+								<div class="cardBgWrap">
+									<p class="cardBg01"><img src="/images/type01_card_bg01.png"></p>
+									<p class="cardBg02"><img src="/images/type01_card_bg02.png"></p>
+									<p class="cardBg03"><img src="/images/type01_card_bg03.png"></p>
+								</div>
+								<!--// hover 효과 -->
+								<div class="cardCon">
+									<ul class="card_icon">
+										<li class="cart cardDetail"><a href="#">장바구니</a></li>
+										<li class="share cardDetail"><a href="#">공유</a></li>
+									</ul>
+									<div class="worker">
+										<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
+										<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+										<div class="cardAuthorLike">
+											<span class="star">4.8</span><span class="comt">120</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// card hover 내용 -->
+							<ul class="check_icon">
+								<li class="cardDetail like"><a href="#">23569</a></li>
+								<li class="cardDetail share"><a href="#">7542</a></li>
+							</ul>
+						</div>
+					</li>
 				</ul>
 			</div>
 		</div>

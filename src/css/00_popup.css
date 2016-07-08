@@ -142,7 +142,7 @@
 .popCon .expertInfo .eCon .infoDetail .eBtn a + a {margin-left:5px;}
 .popCon .expertInfo + .popTb {margin-top:32px;}
 .popCon .popMail input[type=text] {width:67px;}
-.popCon .popMail select {width:141px;}
+.popCon .popMail select {margin-left: 5px;}
 .popCon .messageRadio {width:100%;}
 .popCon .messageRadio span.radioBox + span.radioBox {margin-left:30px;}
 .popCon .popUnderTxt {width:100%; text-align:center; color:#000;}
@@ -170,7 +170,7 @@ ul.popList + .btnWrap,
 .popCon .popFormLine + .btnWrap,
 .popCon .popDel + .btnWrap {margin-top:40px;}
 
-a.btnDetail {display: inline-block;padding: 0 20px;color: #000;font-size: 13px;line-height: 38px;border:1px solid #d9d9d9;}
+a.btnDetail {display: inline-block;padding: 0 20px;color: #000;font-size: 13px;line-height: 38px;border:1px solid #d9d9d9;font-family:'NotoSansR', sans-serif;}
 a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;margin-left: 20px;vertical-align: middle;background: url('../images/ico_plusW.png') no-repeat 0 -12px;}
 
 
@@ -182,3 +182,5 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .dateChangePop .drop li{width: 100%;}
 .dateChangePop, .dateChangePop #cboxWrapper, .dateChangePop #cboxLoadedContent{overflow: visible !important;}
 .dateChangePop ul.tbList3{margin-bottom: 35px;}
+
+.msgCat.radioBox label{margin-right: 10px;}

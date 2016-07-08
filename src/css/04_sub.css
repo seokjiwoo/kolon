@@ -2,9 +2,10 @@
 .subTop .wrap{padding:50px 10px;}
 .pageTit{background:url('../images/sub_title.png') no-repeat;font-size:0;}
 .subTop .mask{overflow: hidden;position: absolute;top: 0;left: 0;z-index: 0;width: 100%;min-width: 1220px;}
-.subTop .subTit{margin-top:15px;font-family:'NotoSansR', sans-serif;color: #999;}
+.subTop .subTit{margin-top:15px;font-family:'NotoSansL', sans-serif;color: #000;}
 .subTop .subTit b{color: #f1645c}
 .subTop .tagList{overflow: hidden;height: 40px;margin-top:40px;}
+.subTop .topTit + .tagList{padding: 0 25px;}
 .subTop .tagList li{display: inline-block;margin:0 3px;}
 .subTop .tagList li a{display: block;padding: 12px 20px;border-radius: 20px;border:1px solid #000;font-family:'NotoSansM', sans-serif;color: #000;font-size: 14px;}
 
@@ -84,7 +85,7 @@
 .search .subTop{position: fixed;top: 60px;width: 100%;min-width: 1240px;z-index: 4}
 .search .catSorting.catSortH01{top:205px;}
 .catList{width: 100%;margin-top: 18px;border-bottom: 1px solid #000}
-.catList ul{overflow: hidden;max-width:1200px;margin:0 auto;}
+.catList ul{overflow: hidden;max-width:1200px;margin:0 auto;text-align: center;}
 .catList ul li{position: relative;float: left;}
 .catList ul li.on:after{content: '';position: absolute;bottom: 0;left:0;width:100%;height: 4px;background: #000;}
 .catList ul li a{display: block;padding:20px 0;font-family:'NotoSansL', sans-serif;font-size: 20px;color: #000;}
@@ -93,14 +94,18 @@
 .searchTop{display: inline-block;margin:0 auto;padding: 10px 20px;border-radius: 35px;background: #fff;}
 .searchTop #searchTxt02{width:600px;height: 50px;padding: 0;border:0;font-family:'NotoSansL', sans-serif;color: #000;font-size: 40px;text-align: center;vertical-align: middle;}
 .searchTop button{width: 50px;height: 50px;background: url('../images/btn_searchL.png') no-repeat center;font-size: 0;border:0;vertical-align: middle;}
-.search .searhResult{display: inline-block;margin-top: 10px;font-family:'NotoSansR', sans-serif;color: #666;font-size: 16px;}
+.search .searhResult{margin-top: 10px;font-family:'NotoSansR', sans-serif;color: #666;font-size: 16px;}
 .search .searhResult b{color: #f1645c;}
+.search .cardWrap{margin-top: 25px;}
+.search .btnDetail{float: left;margin-right: 20px;}
 
 .contentCard #btnMap{display: inline-block;margin-left: 15px;padding:9px 17px;background: #999;border-radius: 15px;color: #fff;font-family:'NotoSansR', sans-serif;font-size: 13px;vertical-align: middle;}
 .contentCard .areaNote{margin-top: 25px;font-size: 14px;color: #000;line-height: 1.4em;}
 
 .search .reSearch{background: #333;}
-.search .reSearch .wrap{padding: 28px 0}
+.search .reSearch .wrap{padding: 28px 0;text-align: center;}
+.search .alignBox {float: right;width: 150px;height: 40px;}
+.search .alignBox .drop{right: auto;}
 
 /* category */
 .category .subTop {}
