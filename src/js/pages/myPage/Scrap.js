@@ -156,12 +156,13 @@ module.exports = function() {
 				break;
 			// 이미지
 			case 'images':
-				controller.scrapImageList(hashVars.folderNumber);
-				// if (hashVars.folderNumber) {
-				// 	controller.scrapImageList(hashVars.folderNumber);
-				// } else {
-				// 	controller.scrapList('IMAGE');
-				// }
+				// controller.scrapList('IMAGE');
+				// controller.scrapImageList(hashVars.folderNumber);
+				if (hashVars.folderNumber || hashVars.scrapNumber) {
+					controller.scrapImageList(hashVars.folderNumber || hashVars.scrapNumber);
+				} else {
+					controller.scrapList('IMAGE');
+				}
 				break;
 			// 모든 스크랩
 			default:
@@ -213,9 +214,10 @@ module.exports = function() {
 				404	Not Found
 				 */
 				switch(status) {
-					// case 200:
-					// 	break;
+					case 200:
+						break;
 					default:
+						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
 						result = dummyData;
 						break;
 				}
@@ -232,9 +234,10 @@ module.exports = function() {
 				404	Not Found
 				 */
 				switch(status) {
-					// case 200:
-					// 	break;
+					case 200:
+						break;
 					default:
+						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
 						result = dummyData;
 						break;
 				}
@@ -259,6 +262,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -282,6 +286,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -304,6 +309,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -327,6 +333,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -350,6 +357,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -372,6 +380,7 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
+						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
