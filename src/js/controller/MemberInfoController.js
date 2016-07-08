@@ -11,6 +11,8 @@ function ClassMemberInfoController() {
 	
 	var tempMemberNumber;
 	var tempAuthKey;
+
+	$(document).on('getMobileAuthPasswordFindResult', mobileAuthPasswordFindResultHandler);
 	
 	return {
 		getInstance: function() {
@@ -21,6 +23,10 @@ function ClassMemberInfoController() {
 	
 	function MemberInfoController() {
 		callerObj = {
+			/**
+			 * 내 정보 받아오기
+			 */
+			getMyInfo: getMyInfo,
 			/**
 			 * 회원가입 약관 목록 받아오기
 			 */
@@ -46,18 +52,6 @@ function ClassMemberInfoController() {
 			 */
 			findPasswordByPhone: findPasswordByPhone,
 			/**
-			 * 비밀번호 찾기 - 휴대폰 인증문자 보내기
-			 */
-			authorizePhoneRequest: authorizePhoneRequest,
-			/**
-			 * 비밀번호 찾기 - 휴대폰 인증문자 확인
-			 */
-			authorizePhoneConfirm: authorizePhoneConfirm,
-			/**
-			 * 비밀번호 찾기 - 이메일 인증 요청
-			 */
-			authorizeEmailRequest: authorizeEmailRequest,
-			/**
 			 * 비밀번호 변경
 			 */
 			changePassword: changePassword,
@@ -65,10 +59,6 @@ function ClassMemberInfoController() {
 			 * 비밀번호 설정
 			 */
 			resetPassword: resetPassword,
-			/**
-			 * 내 정보 받아오기
-			 */
-			getMyInfo: getMyInfo,
 			/**
 			 * 회원탈퇴
 			 */
@@ -78,6 +68,19 @@ function ClassMemberInfoController() {
 		return callerObj;	
 	};
 	
+	/**
+	 * 내 정보 받아오기
+	 */
+	function getMyInfo() {
+		Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myInfoResult', [result.data.data.myInfo]);
+			} else {
+				Super.handleError('getMyInfo', result);
+			}
+		}, false);
+	};
+
 	/**
 	 * 약관 목록 받아오기
 	 */
@@ -215,82 +218,20 @@ function ClassMemberInfoController() {
 		
 		$('#reqKMCISForm').submit();
 	};
-	
-
-	
-	/**
-	 * 비밀번호 찾기 - 휴대폰 인증문자 보내기
-	 */
-	function authorizePhoneRequest(phone, name) {
-		Super.callApi('/apis/member/authorize/phone', 'POST', {
-			"authSectionCode": "BM_AUTH_SECTION_01",
-			"cellPhoneNumber": phone,
-			"memberName": name
-		}, function(status, result) {
-			if (status == 200) {
-				console.log('> '+result.data.phoneAuthNumber);	// 임시코드. 실제 서비스에선 이게 날아오면 안 됨.
-				
-				tempMemberNumber = result.data.memberAuthorizePhone.memberNumber;
-				tempAuthKey = result.data.memberAuthorizePhone.authKey;		// 이건 phone/confirm에서 날아와야 하는 거 아닌가?
-				
-				$(callerObj).trigger('authorizePhoneRequestResult', [result, id]);
-			} else {
-				Super.handleError('authorizePhoneRequest', result);
-			}
-		}, false);
-	};
-	
-	/**
-	 * 비밀번호 찾기 - 휴대폰 인증문자 확인
-	 */
-	function authorizePhoneConfirm(authNumber) {
-		Super.callApi('/apis/member/authorize/phone/confirm', 'POST', {
-			"authNumber": authNumber,
-			"memberNumber": tempMemberNumber
-		}, function(status, result) {
-			if (status == 200) {
-				// tempAuthKey는 여기서 저장해야 할 거 같은데...
-				
-				$(callerObj).trigger('authorizePhoneConfirmResult', [result, tempAuthKey]);
-			} else {
-				Super.handleError('authorizePhoneConfirm', result);
-			}
-		}, false);
-	};
-	
-	/**
-	 * 비밀번호 찾기 - 이메일 인증 요청
-	 */
-	function authorizeEmailRequest(email) {
-		Super.callApi('/apis/member/authorize/email', 'POST', {
-			"email": email
-		}, function(status, result) {
-			if (status == 200) {
-				/* {
-					"errorCode": "string",
-					"message": "string",
-					"status": "string"
-				} */
-			} else {
-				Super.handleError('authorizePhoneConfirm', result);
-			}
-		}, false);
-	};
 
 	/**
-	 * 내 정보 받아오기
+	 * 휴대폰 본인인증 완료 (비번찾기) 핸들링
+	 * document에 trigger걸렸을 때 핸들링. trigger 함수는 html에 위치.
 	 */
-	function getMyInfo() {
-		Super.callApi('/apis/me', 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('myInfoResult', [result.data.data.myInfo]);
-			} else {
-				Super.handleError('getMyInfo', result);
-			}
-		}, false);
+	function mobileAuthPasswordFindResultHandler(e, authData) {
+		if (authData.status == 200) {
+			$(callerObj).trigger('findPwResult', [Number(authData.status), authData]);
+		} else {
+			Super.handleError('mobileAuthPasswordFindResultHandler', authData);
+			$(callerObj).trigger('findPwResult', [Number(authData.status), authData]);
+		}
 	};
-	
-	
+
 	/**
 	 * 비밀번호 재설정
 	 */

@@ -39,6 +39,9 @@
 		<!-- @@include ../_template/footer.html -->
 	</div>
 	<script type="text/javascript">
+	/**
+	 * 외부 창 소셜 로그인 데이터 트리거 핸들링 
+	 */
 	function data(data) {
         var data = JSON.parse(data);
         $(document).trigger('getSocialLoginResult', [data]);
