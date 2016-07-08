@@ -1,3 +1,4 @@
+.my{background:#e0e0e0;}
 .my .pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
 .my .conTit{padding-bottom:10px;border-bottom:1px solid #666;font-size:15px;font-weight:bold;}
 .my .conTit:after{content:"";display:block;clear:both;}
@@ -359,7 +360,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .orderNum a{display:inline-block;}
 .orderNum span{float:left;}
 .orderNum a{float:right;padding-right:12px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
-.payPrice{margin-top:5px;color:#f1645c;font-size:18px;}
+.payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;}
 .payPrice em{font-family:'NotoSansB', 'RobotoB', sans-serif;}
 .bundle{height:20px;line-height:20px;background:#f8f8f8;text-align:center;border-bottom:#e5e5e5;color:#666;font-size:12px;}
 .productList{border-top:1px solid #666;margin-top:12px;}
@@ -523,7 +524,7 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .result{height:30px;background:#f8f8f8;border-bottom:1px solid #ccc;text-align:center;}
 .my .result em{display:block;padding-top:8px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
 .my .result em span{color:#00aeb9;}
-.my .payInfo{/*padding:25px 15px 25px;*/background:#fff;}
+.my .payInfo{padding-bottom:25px;background:#fff;}
 .my .payInfo .top{padding-bottom:10px;border-bottom:1px solid #666;}
 .my .payInfo .top h3{font-size:15px;}
 
@@ -560,11 +561,11 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .orderProduct{padding-top:25px;background:#fff;}
 .my .orderProduct .top{padding:0 15px 10px;}
 .my .orderProduct .top h3{font-size:15px;}
-.my .orderProduct .allChk{padding:10px 15px;background:#464646;}
-.my .orderProduct .allChk:after{content:"";display:block;clear:both;}
-.my .orderProduct .allChk .checkbox{float:left;}
-.my .orderProduct .allChk .checkbox label{display:inline-block;margin-top:4px;color:#fff;}
-.my .orderProduct .allChk .btnSizeS{float:right;}
+.my .allChk{padding:10px 15px;background:#464646;}
+.my .allChk:after{content:"";display:block;clear:both;}
+.my .allChk .checkbox{float:left;}
+.my .allChk .checkbox label{display:inline-block;margin-top:4px;color:#fff;}
+.my .allChk .btnSizeS{float:right;}
 .my .orderProduct .productRow{padding:0 15px;}
 .my .productList.checkType{margin-top:0;border-top:0;}
 .my .productList.checkType .thumb{margin-left:30px;}
@@ -586,7 +587,6 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .hiddenArea .detailInfo dl dd span:first-child{float:left;}
 .my .hiddenArea .detailInfo dl dd span:last-child{float:right;}
 
-.deliveryArea{padding:0 15px;background:#fff;}
 .deliveryArea .productList{margin-top:0;border-top:0;}
 .deliveryInfo{padding-top:15px;border-top:1px solid #666;}
 .deliveryInfo p{padding:2px 0;}
@@ -595,7 +595,6 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .deliveryInfo p span:last-child{float:right;}
 .deliveryInfo p span a{color:#00aeb9;text-decoration:underline;}
 
-.deliveryState{padding:25px 15px 0;background:#fff;}
 .deliveryState .top{padding-bottom:10px;border-bottom: 1px solid #666;}
 .deliveryState .top h4{font-size:15px;}
 .deliveryState ul li{padding:15px 0;border-top:1px solid #666;}
@@ -645,5 +644,5 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
   .my .userArea .menu ul li:nth-child(6){left:228px;top:70px;}
 }
 
-.myWrap {padding:0 15px; margin-top:10px; background:#fff; overflow:hidden;}
+.myWrap {padding:25px 15px 0; margin-top:10px; background:#fff; overflow:hidden;}
 .myWrap .productList {margin-top:0; border-top:0;}
