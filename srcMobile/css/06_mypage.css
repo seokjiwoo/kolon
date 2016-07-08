@@ -646,4 +646,4 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 }
 
 .myWrap {padding:0 15px; margin-top:10px; background:#fff; overflow:hidden;}
-.myWrap .productList {/*margin-top:0; border-top:0;*/}
+.myWrap .productList {margin-top:0; border-top:0;}
