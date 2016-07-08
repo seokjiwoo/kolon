@@ -1,4 +1,8 @@
 .my .pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
+.my .conTit{padding-bottom:10px;border-bottom:1px solid #666;font-size:15px;font-weight:bold;}
+.my .conTit:after{content:"";display:block;clear:both;}
+.my .conTit a{float:right;padding-right: 14px;background: url("../images/ico_arrowG.png") no-repeat right 2px;background-size: 6px;font-size:13px;font-weight:normal;}
+
 .user.infoTop .myRate{margin-right: 3%;}
 .user.infoTop .myRate a{color: #666}
 .user.infoTop .myRate .my{width:20px;height: 18px;margin:0 auto 2px;background: url('../images/ico_homeB.png') no-repeat;}
@@ -364,15 +368,16 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
 .productList .info span{display: inline-block;line-height: 15px;padding: 0 5px;border:1px solid #999;color: #00aeb9;border-color: #00aeb9;}
-.productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;}
+.productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
 .productList .productData{clear:both;}
 .productList .productData li{padding:15px 0;border-top:1px solid #ccc;}
 .productList .productData li:first-child{border-top:0;}
-.productList .productData li p{font-size:15px;line-height:1.4em;}
+.productList .productData li p{line-height:1.4em;}
 .productList .productData li p.name{color:#999;}
-.productList .productData li p.name + p.count{margin-top:14px;}
-.productList .productData li p.count{text-align:right;}
+.productList .productData li p.name + p.count{margin-top:10px;}
+.productList .productData li p.count{text-align:right;font-size:15px;}
+.productList .productData li p.count select{width:68px;display:inline-block;margin-right:30px;}
 .productList .productData li p.count span{display:inline-block;}
 .productList .productData li p.count span:first-child{position:relative;padding-right:10px;}
 .productList .productData li p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
@@ -433,7 +438,7 @@ p.setTit {width:100%; overflow:hidden; text-align:center; background:#f8f8f8; bo
 .setPrice p.setPriceTit {width:40%; float:left; }
 .setPrice p.setPriceCont {width:60%; float:right; text-align:right;}
 .setPrice p.setPriceCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:18px;}
-ul.optList {padding:0 15px; background:#fff;}
+ul.optList {/*padding:0 15px;*/ background:#fff;}
 ul.optList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}
 ul.optList > li + li {border-top:1px solid #666;}
 ul.optList li > a {padding-left:121px; display:inline-block; position:relative; font-size:15px;}
@@ -518,7 +523,7 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .result{height:30px;background:#f8f8f8;border-bottom:1px solid #ccc;text-align:center;}
 .my .result em{display:block;padding-top:8px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
 .my .result em span{color:#00aeb9;}
-.my .payInfo{padding:25px 15px 25px;background:#fff;}
+.my .payInfo{/*padding:25px 15px 25px;*/background:#fff;}
 .my .payInfo .top{padding-bottom:10px;border-bottom:1px solid #666;}
 .my .payInfo .top h3{font-size:15px;}
 
@@ -561,10 +566,10 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .orderProduct .allChk .checkbox label{display:inline-block;margin-top:4px;color:#fff;}
 .my .orderProduct .allChk .btnSizeS{float:right;}
 .my .orderProduct .productRow{padding:0 15px;}
-.my .orderProduct .productRow .productList{margin-top:0;border-top:0;}
-.my .orderProduct .productRow .productList .thumb{margin-left:30px;}
-.my .orderProduct .productRow .productList li{position:relative;}
-.my .orderProduct .productRow .checkbox{position:absolute;left:0;top:15;}
+.my .productList.checkType{margin-top:0;border-top:0;}
+.my .productList.checkType .thumb{margin-left:30px;}
+.my .productList.checkType li{position:relative;}
+.my .productList.checkType .checkbox{position:absolute;left:0;top:15;}
 
 .my .hiddenArea{border-bottom:1px solid #666;}
 .my .hiddenArea > a{height:42px;line-height:42px;display:block;text-align:center;}
@@ -603,6 +608,29 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .deliveryState ul li p span:first-child{float:left;}
 .deliveryState ul li p span:last-child{float:right;}
 
+.stateInfo{padding:15px 0 15px;border-top:1px solid #666;}
+.stateInfo .top{padding-bottom:10px;}
+.stateInfo .top h4{font-size:15px;}
+.stateInfo p{padding:2px 0;color:#666;}
+.stateInfo p:after{content:"";display:block;clear:both;}
+.stateInfo p span:first-child{float:left;}
+.stateInfo p span:last-child{float:right;}
+.stateInfo ul li{margin-top:6px;}
+.stateInfo ul li:first-child{margin-top:0;}
+.stateInfo textarea{height:80px;color:#666;}
+
+.difference{padding:6px 0;border-top:1px dashed #ccc;font-size:15px;}
+.difference p{padding:5px 0;}
+.difference p:after{content:"";display:block;clear:both;}
+.difference p span:first-child{float:left;}
+.difference p span:last-child{float:right;}
+.cancelResult{padding:20px 0 0;font-size:15px;}
+
+.cautionInfo{padding:20px 15px;background:#f8f8f8;margin-top:8px;}
+.cautionInfo dl dt{margin-bottom:15px;font-size:15px;}
+.cautionInfo dl dt + dd{margin-top:0;}
+.cautionInfo dl dd{padding-left:10px;line-height:1.4em;color:#666;margin-top:4px;background:url("../images/ico_dot.png") no-repeat 4px 6px;background-size:3px;}
+
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
@@ -618,4 +646,4 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 }
 
 .myWrap {padding:0 15px; margin-top:10px; background:#fff; overflow:hidden;}
-.myWrap .productList {margin-top:0; border-top:0;}
+.myWrap .productList {/*margin-top:0; border-top:0;*/}
