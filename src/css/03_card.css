@@ -74,7 +74,7 @@
 
 .cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.65deg); position:absolute; top:126.5px; left:-19px; z-index:5; text-align:left;}
 .cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
-.cardLine p {font-size:14px; font-style:italic; color:#000; line-height:130%;}
+.cardLine p {letter-spacing: 0;font-size:14px; font-style:italic; color:#000; line-height:130%;}
 
 .cardCon{position:relative; z-index:4;top:0;display: block;width:265px;padding:81px 10px;color:#000;}
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
