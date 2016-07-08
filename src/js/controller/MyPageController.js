@@ -49,7 +49,21 @@ function ClassMyPageController() {
 			/**
 			 * 배송 조회
 			 */
-			orderTrackingInfo: orderTrackingInfo
+			orderTrackingInfo: orderTrackingInfo,
+
+
+			/**
+			 * 장바구니 리스트
+			 */
+			myCartList : myCartList,
+			/**
+			 * 장바구니 등록
+			 */
+			addMyCartList : addMyCartList,
+			/**
+			 * 장바구니 삭제
+			 */
+			deleteMyCartList : deleteMyCartList
 		}
 		
 		return callerObj;	
@@ -136,6 +150,55 @@ function ClassMyPageController() {
 	};
 
 
+
+
+	function myCartList(productSectionCode) {
+		Super.callApi('/apis/me/cart/' + productSectionCode, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myCartListResult', [status, result]);
+			} else {
+				Super.handleError('myCartList', result);
+				$(callerObj).trigger('myCartListResult', [status, result]);
+			}
+		}, false);
+	}
+
+	/**
+	 * 장바구니 등록
+	 * @param {Arrary} myCartRequestList
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
+	 */
+	function addMyCartList(myCartRequestList) {
+		Super.callApi('/apis/me/cart/' + productSectionCode, 'POST', {
+			'myCartRequestList' : myCartRequestList
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('addMyCartListResult', [status, result]);
+			} else {
+				Super.handleError('addMyCartList', result);
+				$(callerObj).trigger('addMyCartListResult', [status, result]);
+			}
+		}, false);
+	}
+
+	/**
+	 * 장바구니 삭제
+	 * @param  {Array} cartNumber
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/removeMyCartUsingDELETE
+	 */
+	function deleteMyCartList(cartNumber) {
+		Super.callApi('/apis/me/cart', 'DELETE', {
+			'cartNumber' : cartNumber
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
+			} else {
+				Super.handleError('deleteMyCartList', result);
+				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
+			}
+		}, false);
+	}
+
 	/*
     get /apis/me/orders/{orderNumber}/cancel
         취소 신청 조회 팝업
@@ -170,13 +233,6 @@ function ClassMyPageController() {
 		반품 상세 내역
 	get /apis/me/claims/{claimNumber}/returnDeny
 		반품 반려 상세 내역
-
-	get /apis/follows
-		팔로잉 리스트 조회
-	post /apis/follows
-		팔로우 하기
-	delete /apis/follows/{followNumber}
-		팔로잉 취소
 	*/
 }
 

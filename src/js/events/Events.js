@@ -48,6 +48,11 @@ function Events() {
 			EDIT_SCRAP_FOLDER : 'editScrapFolderResult',
 			DELETE_SCRAP_FOLDER : 'deleteScrapFolderResult'
 		},
+		CART : {
+			LIST : 'myCartListResult',
+			ADD : 'addMyCartListResult',
+			DELETE : 'deleteMyCartListResult'
+		},
 		FOLLOWING : {
 			LIST : 'followsListResult',
 			ADD_FOLLOW : 'addFollowsResult',
