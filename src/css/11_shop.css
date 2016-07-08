@@ -18,8 +18,8 @@
 .living .subTop .slideCon .slideTit{font-size: 30px;font-family:'NotoSansL', sans-serif;line-height: 1.2em;} 
 .living .subTop .slideCon .subTxt{margin-top: 18px;font-size: 20px;font-family:'NotoSansL', sans-serif;}
 .living .subTop .slideCon .subTxt b{font-family:'NotoSansM', sans-serif;}
-.living .subTop .slideCon .price{margin: 30px 0;font-size: 120px;}
-.living .subTop .slideCon .price span{font-size: 20px;}
+.living .subTop .slideCon .price{margin: 30px 0;font-size: 120px;letter-spacing: -5px;}
+.living .subTop .slideCon .price span{font-size: 20px;letter-spacing: 0}
 .living .subTop .slideCon a{display: inline-block;margin-left: 15px;font-size: 14px;vertical-align: middle;}
 .living .subTop .slideCon .btnPost{color: #000;}
 .living .subTop .slideCon .btnPost:before{content:'';display: block;height: 20px;margin:0 auto 10px; background: url('../images/check_icon.png') no-repeat;}
@@ -27,3 +27,5 @@
 .living .subTop .slideCon .btnScrap:before{width: 22px;background-position: -18px 0;}
 .living .subTop .slideCon .btnMore{width: 155px;color: #595485;line-height: 40px;text-align: center;background: #a7dfd6;border-radius: 20px;font-family:'NotoSansM', sans-serif;}
 .living .subTop .slideCon .btnMore:after{content: '';display: inline-block;width: 13px;height: 10px;margin-left: 5px;background: url('../images/ico_arrowb.png') no-repeat;background-position: 0 -20px;vertical-align: middle;}
+
+.living .cardWrap{padding-top: 15px;}

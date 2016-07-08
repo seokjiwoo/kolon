@@ -4,8 +4,8 @@
 .managerList .topMenu{background: #fff !important;}
 .managerList .topTit{position: absolute;top: 400px;width:50%;right: 0;background:none;text-align: right;z-index: 4;}
 .managerList .subTop .wrap{overflow: visible;padding: 0;}
-.managerList .subTit{margin-right: 60px;}
-.managerList .subTit b{color: #977369;}
+.managerList .subTit{margin-right: 60px;color: #fff;}
+.managerList .subTit b{color: #aa7d71;}
 .managerList .pageTit{height: 120px;background-position:90px 0;}
 .managerList .bx-wrapper{width: 100%;min-height: 662px;}
 .managerList .bx-wrapper li{overflow: hidden;min-height: 662px;}

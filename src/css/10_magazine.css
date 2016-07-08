@@ -5,22 +5,30 @@
 .magazine .pageTit{float: right;width: 550px;height: 135px;background-position: 0 -124px;}
 .magazine .subTop .subTit{float: right;width: 550px;margin-top: 65px;text-align: left;font-size: 25px;font-family:'NotoSansL', sans-serif;}
 .magazine .subTop .subTit b{font-family:'NotoSansM', sans-serif;color: #000;}
+
 .magazine #popularList li{position: relative;margin-left: 20px;margin-top: 48px;padding: 0}
-.magazine .cardCon:after{display: none;}
 .magazine #popularList .hexagon{top: 0;}
-.magazine #popularList .cardSize01 .cardLine{top: 42px;}
-.magazine #popularList .cardSize04{height: 681px;margin-left:0;margin-top: 0;}
-.magazine .cardSize04 .cardCon:before{content:'';display: inline-block;width: 0;height: 100%;vertical-align: middle; }
-.magazine .cardSize04 .cardDetail{display: inline-block;vertical-align: middle;} 
-.magazine .cardSize04 .cardTit{font-size: 60px}
-.magazine .cardTit b{font-family:'NotoSansM', sans-serif;}
 .magazine #popularList .cardLine{background: rgba(168,217,226,.8)}
+.magazine #popularList .cardSize04{overflow: visible;height: 681px;margin-left:0;margin-top: 0;}
+.magazine #popularList .cardSize04 .cardLine{width: 326px;top: 83px;left: -15px;}
+.magazine #popularList .cardSize04 .cardLine:before{left: -18px;content:'';position: absolute;width: 0;height: 0;border-top: 30px solid transparent;border-right: 18px solid rgba(168,217,226,.8);border-bottom: 0 solid transparent;}
+.magazine #popularList .cardSize04 .hexagon{box-shadow: 0 0 30px rgba(0,0,0,0.4);}
+.magazine #popularList .cardSize04 .hexTop, .magazine #popularList .cardSize04 .hexBottom {box-shadow: 0 0 30px rgba(0,0,0,0.4);}
+.magazine #popularList .cardSize04 .cardCon:before{content:'';display: inline-block;width: 0;height: 100%;vertical-align: middle; }
+.magazine #popularList .cardSize04 .cardDetail{display: inline-block;vertical-align: middle;} 
+.magazine #popularList .cardSize04 .cardTit{font-size: 60px;}
+.magazine #popularList .cardTit{font-family:'NotoSansL', sans-serif;}
+.magazine #popularList .cardTit b{font-family:'NotoSansM', sans-serif;}
 .magazine #popularList .num{display:block;width: 48px;height: 26px;margin: 10px auto;padding: 15px 0;background: url('../images/bg_magazine_num.png') no-repeat;background-position: -102px -30px;text-align: center;font-size: 26px;}
-.magazine .cardWrap .recommend{font-size: 14px;}
-.magazine .cardSize04 .num{width: 98px;height: 50px;margin: 20px auto;padding: 31px 0;font-size: 50px;background-position: 0 0}
-.magazine .cardSize04 .recommend{font-size: 20px;}
+.magazine #popularList .recommend{font-size: 14px;}
+.magazine #popularList .cardSize04 .recommend{font-size: 20px;}
+.magazine #popularList .cardSize04 .num{width: 98px;height: 50px;margin: 20px auto;padding: 31px 0;font-size: 50px;background-position: 0 0}
 .magazine #popularList li:last-child{position: absolute;top: 610px;left: 0;margin: 0;}
 .magazine .wrap{clear: both;}
+
+.magazine .cardWrap{padding-top: 80px;}
+.magazine .cardCon:after{display: none;}
+.magazine .cardTit b{font-family:'NotoSansM', sans-serif;}
 
 .magazine .block{width: 590px;height: 160px;}
 .magazine .bestKey .cardTit{margin-top: 0;}

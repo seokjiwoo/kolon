@@ -2,9 +2,10 @@
 .subTop .wrap{padding:50px 10px;}
 .pageTit{background:url('../images/sub_title.png') no-repeat;font-size:0;}
 .subTop .mask{overflow: hidden;position: absolute;top: 0;left: 0;z-index: 0;width: 100%;min-width: 1220px;}
-.subTop .subTit{margin-top:15px;font-family:'NotoSansR', sans-serif;color: #999;}
+.subTop .subTit{margin-top:15px;font-family:'NotoSansL', sans-serif;color: #000;}
 .subTop .subTit b{color: #f1645c}
 .subTop .tagList{overflow: hidden;height: 40px;margin-top:40px;}
+.subTop .topTit + .tagList{padding: 0 25px;}
 .subTop .tagList li{display: inline-block;margin:0 3px;}
 .subTop .tagList li a{display: block;padding: 12px 20px;border-radius: 20px;border:1px solid #000;font-family:'NotoSansM', sans-serif;color: #000;font-size: 14px;}
 
