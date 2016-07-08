@@ -9,7 +9,7 @@
 .magazine .cardCon:after{display: none;}
 .magazine #popularList .hexagon{top: 0;}
 .magazine #popularList .cardSize01 .cardLine{top: 42px;}
-.magazine #popularList .cardSize04{height: 513px;height: 681px;margin-left:0;margin-top: 0;}
+.magazine #popularList .cardSize04{height: 681px;margin-left:0;margin-top: 0;}
 .magazine .cardSize04 .cardCon:before{content:'';display: inline-block;width: 0;height: 100%;vertical-align: middle; }
 .magazine .cardSize04 .cardDetail{display: inline-block;vertical-align: middle;} 
 .magazine .cardSize04 .cardTit{font-size: 60px}

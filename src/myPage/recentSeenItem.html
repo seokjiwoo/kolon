@@ -9,13 +9,62 @@
 		<div class="container bgTop">
 			<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu05":"on"} -->
-			<section class="wrap" id="myActivity">
+			<div class="wrap" id="recentSeen">
 				<h2 class="hide">최근본상품</h2>			
 				<!-- @@include ../_template/my_depth03_03.html {"myMenu01":"on"} -->
-				<ul class="cardWrap cardWrap02" id="cardWrap">
-					<!-- @@include ../_template/card.html -->
-				</ul>
-			</section>
+				<section class="singleCard">
+					<ul class="cardWrap cardWrap02" id="cardWrap">
+						<li class="card cardType01 cardSize03">
+							<div class="cardLine">
+								<p class="italicNum">designer <span>compact</span></p>
+							</div>
+							<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
+								<div class="hexTop"><span></span></div>
+								<div class="hexBottom"><span></span></div>
+							</div>
+							<div class="cardCon">
+								<!-- card 내용 -->
+								<a href="#" class="cardTxt cardDetail">
+									<p class="cardCat">{ unit }</p>
+									<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
+									<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
+									<span class="cardMore">상세보기</span>
+								</a>
+								<!--// card 내용 -->
+								<!-- card hover 내용 -->
+								<div class="cardHover hoverStyle01">
+									<!-- hover 효과 -->
+									<div class="cardBgWrap">
+										<p class="cardBg01"><img src="/images/type01_card_bg01.png"></p>
+										<p class="cardBg02"><img src="/images/type01_card_bg02.png"></p>
+										<p class="cardBg03"><img src="/images/type01_card_bg03.png"></p>
+									</div>
+									<!--// hover 효과 -->
+									<div class="cardCon">
+										<ul class="card_icon">
+											<li class="cart cardDetail"><a href="#">장바구니</a></li>
+											<li class="share cardDetail"><a href="#">공유</a></li>
+										</ul>
+										<div class="worker">
+											<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
+											<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+											<div class="cardAuthorLike">
+												<span class="star">4.8</span><span class="comt">120</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--// card hover 내용 -->
+								<ul class="check_icon">
+									<li class="cardDetail like"><a href="#">23569</a></li>
+									<li class="cardDetail share"><a href="#">7542</a></li>
+								</ul>
+							</div>
+						</li>
+						
+					</ul>
+				</section>
+			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
