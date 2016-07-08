@@ -38,29 +38,77 @@ function Events() {
 			REFRESH : 'VX-ISOTOPE-REFRESH',
 			DESTROY : 'VX-ISOTOPE-DESTROY'
 		},
-		SCRAP : {
-			LIST : 'scrapListResult',
-			IMAGE_LIST : 'scrapImageListResult',
-			ADD_SCRAP : 'addScrapResult',
-			EDIT_SCRAP : 'editScrapResult',
-			DELETE_SCRAP : 'deleteScrapResult',
-			ADD_SCRAP_FOLDER : 'addScrapFolderResult',
-			EDIT_SCRAP_FOLDER : 'editScrapFolderResult',
-			DELETE_SCRAP_FOLDER : 'deleteScrapFolderResult'
-		},
-		CART : {
-			LIST : 'myCartListResult',
-			ADD : 'addMyCartListResult',
-			DELETE : 'deleteMyCartListResult'
-		},
-		FOLLOWING : {
-			LIST : 'followsListResult',
-			ADD_FOLLOW : 'addFollowsResult',
-			DELETE_FOLLOW : 'deleteFollowsResult'
-		},
-		TIMELINE : {
-			LIST : 'myTimeLineResult'
-		}
+
+
+		// [S] Controller Events
+			// 마이홈즈 - 타임라인
+			// @see MyPageController.js
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/my-page-controller
+			TIMELINE : {
+				// 마이커먼 리스트
+				LIST : 'myTimeLineResult'
+			},
+			// 마이홈즈 - 장바구니
+			// @see MyPageController.js
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/my-page-controller
+			CART : {
+				// 장바구니 리스트
+				LIST : 'myCartListResult',
+				// 장바구니 등록
+				ADD : 'addMyCartListResult',
+				// 장바구니 삭제
+				DELETE : 'deleteMyCartListResult'
+			},
+			// 스크랩
+			// @see ScrapController.js
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/scrap-controller
+			SCRAP : {
+				// 스크랩 목록
+				LIST : 'scrapListResult',
+				// 스크랩 목록(이미지)
+				IMAGE_LIST : 'scrapImageListResult',
+				// 스크랩 하기
+				ADD_SCRAP : 'addScrapResult',
+				// 스크랩 수정
+				EDIT_SCRAP : 'editScrapResult',
+				// 스크랩 삭제
+				DELETE_SCRAP : 'deleteScrapResult',
+				// 폴더 만들기
+				ADD_SCRAP_FOLDER : 'addScrapFolderResult',
+				// 폴더 수정
+				EDIT_SCRAP_FOLDER : 'editScrapFolderResult',
+				// 폴더 삭제
+				DELETE_SCRAP_FOLDER : 'deleteScrapFolderResult'
+			},
+			// 팔로잉
+			// @see FollowController.js
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/follow-controller
+			FOLLOWING : {
+				// 팔로우 리스트
+				LIST : 'followsListResult',
+				// 팔로우 등록
+				ADD_FOLLOW : 'addFollowsResult',
+				// 팔로우 삭제
+				DELETE_FOLLOW : 'deleteFollowsResult'
+			},
+			// ProductMockController - 상품
+			// @see ProductMockController.js
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/product-mock-controller
+			PRODUCT_MOCK : {
+				// 상품 평가및 리뷰
+				EVALS : 'productMockEvalsResult',
+				// 상품 정보
+				INFO : 'productMockInfoResult',
+				// 상품 판매자 정보
+				PARTNER_INFO : 'productMockPartnerInfoResult',
+				// 상품 미리보기
+				PREVIEW : 'productMockPreviewResult',
+				// 연관상품 리스트
+				RELATED : 'productMockRelatedResult',
+				// 상품 리뷰 상세
+				REVIEWS : 'productMockReviewsResult'
+			}
+		// [E] Controller Events
 	},
 	instance;
 
