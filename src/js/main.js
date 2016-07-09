@@ -105,11 +105,6 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/homeService/Index.js');
 				break;
 
-			// 청소 신청 requestCleaning
-			case 'homeService-requestCleaning':
-				PageModuleClass = require('./pages/homeService/RequestCleaning.js');
-				break;
-
 			// 세탁 신청 requestWashing
 			case 'homeService-requestWashing':
 				PageModuleClass = require('./pages/homeService/RequestWashing.js');
@@ -221,21 +216,6 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/myPage/MyQnA.js');
 				break;
 
-			// 내가 작성한 리뷰	review
-			case 'myPage-review':
-				PageModuleClass = require('./pages/myPage/Review.js');
-				break;
-
-			// 리뷰 작성	reviewWrite
-			case 'myPage-reviewWrite':
-				PageModuleClass = require('./pages/myPage/ReviewWrite.js');
-				break;
-
-			// 리뷰 편집	reviewEdit
-			case 'myPage-reviewEdit':
-				PageModuleClass = require('./pages/myPage/ReviewEdit.js');
-				break;
-
 			// 내 정보	profile
 			case 'myPage-profile':
 				PageModuleClass = require('./pages/myPage/Profile.js');
@@ -285,11 +265,6 @@ $(document).ready(function() {
 			case 'myPage-scrapImage':
 				PageModuleClass = require('./pages/myPage/ScrapImage.js');
 				break;
-
-			// 스크랩 이미지 폴더 목록	scrapFolder - scrap 에 병합
-			// case 'myPage-scrapFolder':
-			// 	PageModuleClass = require('./pages/myPage/ScrapFolder.js');
-			// 	break;
 
 			// 좋아요  like
 			case 'myPage-like':
