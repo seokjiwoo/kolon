@@ -134,23 +134,14 @@ function ClassMemberInfoController() {
 	/**
 	 * 비밀번호 변경
 	 */
-	function changePassword(currentPassword, newPassword) {
-		var memberNumber = 0;
-		
+	function changePassword(memberNumber, currentPassword, newPassword) {
 		Super.callApi('/apis/member/changePassword', 'PUT', {
 			"currentPassword": currentPassword,
 			"memberNumber": memberNumber,
 			"newPassword": newPassword
 		}, function(status, result) {
-			if (status == 200) {
-				/* {
-					"errorCode": "string",
-					"message": "string",
-					"status": "string"
-				} */
-			} else {
-				Super.handleError('changePassword', result);
-			}
+			if (status != 200) Super.handleError('changePassword', result);
+			$(callerObj).trigger('changePasswordResult', [status, result]);
 		}, false);
 	};
 	
