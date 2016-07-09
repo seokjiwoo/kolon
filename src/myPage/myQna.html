@@ -14,77 +14,58 @@
 				<section class="singleCard">
 					<h2 class="secTit">내 의견묻기 내역</h2>
 					<!-- list -->
-					<div class="opinionArea">
+					<div id="opinionList" class="opinionArea">
+						<script id="opinion-template" type="text/x-handlebars-template">
+						{{!-- opinion-template --}}
 						<ul>
+							{{#each .}}
 							<li>
 								<div class="opinionbox">
 									<div class="title">
 										<p class="info">
-											<span>USERNAME</span>
-											<span>2016. 03. 28</span>
+											<span>{{userName}}</span>
+											<span>{{createDate}}</span>
 										</p>
 									</div>
 									<!-- 의견 내용 -->
 									<div class="conbox">
-										<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
+										<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">{{opinionClass}}</span>{{title}}</a></strong>
 										<div class="conboxTxt">
-											<p class="except">새로 이사갈 집이    24평입니다. <br/>
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요? 
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											</p>
-											<a href="" class="more">더보기</a>
+											<p class="except">{{{content}}}</p>
+											<span class="more">더보기</span>
 										</div>
 										<!-- 사진 -->
 										<ul class="photoList">
-											<li><img src="../images/temp01.jpg" alt="" /></li>
-											<li><img src="../images/temp01.jpg" alt="" /></li>
-											<li><img src="../images/temp01.jpg" alt="" /></li>
+											{{#each images}}
+											<li><img src="{{.}}" alt="" /></li>
+											{{/each}}
 										</ul>
 										<!--// 사진 -->
 										<div class="commentCount">
-											<p><span class="pointRed">12개</span> 의견 <em class="pointBlue">답변완료</em></p>
-											 <a href="#" class="btnSizeS btnColor02">답글작성</a>
+											{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
+											<button id="writeCommentButton{{key}}" class="btn btnSizeS btnColor02 writeCommentButton">의견작성</button>
 										</div>
 									</div>
 									<!--// 의견 내용 -->
-									<div class="commentArea">
-										<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>
+									<div id="commentArea{{key}}" class="commentArea">
+										<!--<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>-->
 										<!-- 댓글 리스트 -->
 										<ul>
+											{{#each answers}}
 											<li>
-								 				<div class="commentName">
-									 				<div class="name">
-									 					<span><img src="../images/temp01.jpg" alt="" /></span>
-									 					<span>
-									 						<span><em>Wadizd</em> 홍길동</span>
-									 						<span class="except">홈인테리어	&amp;홈드레싱 홈인테리어&amp;홈드레싱 홈인테리어&amp;홈드레싱</span>
-									 					</span>
-									 				</div>
-								 				</div>
-												<p class="txt"><a href="http://www.designguild.co.kr" target="_blank"  title="새창으로 열기">www.designguild.co.kr</a> 사이트한번 보세요 원하는 스타일이 있는거 같네요.</p>
-								 				<p class="date">2016.04.25 14:04 <i class="on"><span>30</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
-								 			</li>
-											<li>
-								 				<div class="commentName">
-									 				<div class="name">
-									 					<span><img src="../images/temp01.jpg" alt="" /></span>
-									 					<span>
-									 						<span><em>Wadizd</em> 홍길동</span>
-									 						<span class="except">홈인테리어	&amp;홈드레싱 홈인테리어&amp;홈드레싱 홈인테리어&amp;홈드레싱</span>
-									 					</span>
-									 				</div>
-								 				</div>
-												<p class="txt">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 
-													받으시다면 연락처를 남겨주세요. 재입고시 문자 드리겠습니다. 그럼 확인 후 연락 
-													부탁 드립니다. 현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 
-													재입고 알림을 받으시다면 연락처를 남겨주세요. 재입고시 문자 드리겠습니다. 
-													그럼 확인 후 연락 부탁 드립니다 현재 문의하신 제품은 품절입니다. 다음 달 첫째 
-													주에 재입고 되오니, 재입고 알림을 받으시다면 연락처를 남겨주세요. 재입고시 문자 
-													드리겠습니다. 그럼 확인 후 연락 부탁 드립니다.</p>
-								 				<p class="date">2016.04.25 14:04 <i><span>30</span></i></p>
-								 			</li>
+												<div class="commentName">
+													<div class="name">
+														<span><img src="{{expertImageUrl}}" alt="" /></span>
+														<span>
+															<span><em>{{expertCompany}}</em> {{expertName}}</span>
+															<span class="except">{{serviceNames}}</span>
+														</span>
+													</div>
+												</div>
+												<p class="txt">{{{content}}}</p>
+												<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
+											</li>
+											{{/each}}
 										</ul>
 										<!--// 댓글 리스트 -->
 										<!-- 댓글 입력 폼 -->
@@ -95,7 +76,7 @@
 													<div class="commentTextarea">
 														<textarea class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>
 														<div class="commentBtn">
-															<div class="thumb"><span><img src="../images/temp01.jpg" alt="" /></span></div>
+															<div class="thumb"><span><img src="" alt="" class='myProfileImage' /></span></div>
 															<button class="confirmBtn">등록</button>
 														</div>
 													</div>
@@ -106,140 +87,10 @@
 									</div>
 								</div>
 							</li>
-							<li>
-								<div class="opinionbox">
-									<div class="title">
-										<p class="info">
-											<span>USERNAME</span>
-											<span>2016. 03. 28</span>
-										</p>
-									</div>
-									<div class="conbox">
-										<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
-										<div class="conboxTxt">
-											<p class="except">새로 이사갈 집이    24평입니다. <br/>
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요? 
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											</p>
-											<a href="" class="more">더보기</a>
-										</div>
-										<ul class="photoList">
-											<li><img src="../images/temp01.jpg" alt="" /></li>
-											<li><img src="../images/temp01.jpg" alt="" /></li>
-											<li><img src="../images/temp01.jpg" alt="" /></li>
-										</ul>
-										<div class="commentCount">
-											<p><span>0개</span> 의견 <em>미답변</em></p>
-											 <a href="#" class="btnSizeS btnColor02">답글작성</a>
-										</div>
-									</div>
-									<div class="commentArea">
-										<!-- 댓글 입력 폼 -->
-										<div class="commentInput">
-											<form method="post" action="/">
-												<fieldset>
-													<legend>댓글 입력 폼</legend>
-													<div class="commentTextarea">
-														<textarea class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>
-														<div class="commentBtn">
-															<div class="thumb"><span><img src="../images/temp01.jpg" alt="" /></span></div>
-															<button class="confirmBtn">등록</button>
-														</div>
-													</div>
-												</fieldset>
-											</form>
-										</div>
-										<!--// 댓글 입력 폼 -->
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="opinionbox">
-									<div class="title">
-										<p class="info">
-											<span>USERNAME</span>
-											<span>2016. 03. 28</span>
-										</p>
-									</div>
-									<!-- 의견 내용 -->
-									<div class="conbox">
-										<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
-										<div class="conboxTxt">
-											<p class="except">새로 이사갈 집이    24평입니다. <br/>
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요? 
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											</p>
-											<a href="" class="more">더보기</a>
-										</div>
-										<div class="commentCount">
-											<p><span>0개</span> 의견 <em>미답변</em></p>
-											 <a href="#" class="btnSizeS btnColor02">답글작성</a>
-										</div>
-									</div>
-									<!-- 의견 내용 -->
-								</div>
-							</li>
-							<li>
-								<div class="opinionbox">
-									<div class="title">
-										<p class="info">
-											<span>USERNAME</span>
-											<span>2016. 03. 28</span>
-										</p>
-									</div>
-									<!-- 의견 내용 -->
-									<div class="conbox">
-										<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
-										<div class="conboxTxt">
-											<p class="except">새로 이사갈 집이    24평입니다. <br/>
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요? 
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											</p>
-											<a href="" class="more">더보기</a>
-										</div>
-										<div class="commentCount">
-											<p><span>0개</span> 의견 <em>미답변</em></p>
-											 <a href="#" class="btnSizeS btnColor02">답글작성</a>
-										</div>
-									</div>
-									<!-- 의견 내용 -->
-								</div>
-							</li>
-							<li>
-								<div class="opinionbox">
-									<div class="title">
-										<p class="info">
-											<span>USERNAME</span>
-											<span>2016. 03. 28</span>
-										</p>
-									</div>
-									<!-- 의견 내용 -->
-									<div class="conbox">
-										<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">리빙아이템</span>이사갈 계획입니다.</a></strong>
-										<div class="conboxTxt">
-											<p class="except">새로 이사갈 집이    24평입니다. <br/>
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.  괜찮은 아이디어가 어떤게 있을까요? 
-											고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다. 괜찮은 아이디어가 어떤게 있을까요?
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											이런걸 해주는 업체가 있을까고양이랑 같이 살고 있는데 고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.
-											</p>
-											<a href="" class="more">더보기</a>
-										</div>
-										<div class="commentCount">
-											<p><span>0개</span> 의견 <em>미답변</em></p>
-											 <a href="#" class="btnSizeS btnColor02">답글작성</a>
-										</div>
-									</div>
-									<!-- 의견 내용 -->
-								</div>
-							</li>
+							{{/each}}
 						</ul>
+						{{!--// opinion-template --}}
+						</script>
 					</div>
 					<!--// list -->
 				</section>
