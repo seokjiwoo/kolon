@@ -26,8 +26,38 @@ module.exports = function() {
 
 		debug.log(fileName, 'init', $, util);
 
+		if (Super.Super.loginData == null) {
+			// 비로그인
+			initMainSlider();
+		} else {
+			// 로그인
+			initHeaderCardlist();
+		}
+
+
 		setDemoDoughnut();
 	}
+
+	/**
+	 * 상단 슬라이더 초기화. 비로그인시에만 보임.
+	 */
+	function initMainSlider() {
+		$('#headerCardList').remove();
+
+		$('#mainSlider').show();
+		$('#mainSlider').bxSlider();
+	}
+
+	/**
+	 * 상단 카드리스트 초기화. 로그인시에만 보임.
+	 */
+	function initHeaderCardlist() {
+		$('#mainSlider').remove();
+
+		$('#headerCardList').show();
+	}
+
+
 
 	function setDemoDoughnut() {
 		var cardWrap = $('#cardWrap'),

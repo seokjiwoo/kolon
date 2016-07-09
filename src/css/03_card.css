@@ -70,6 +70,7 @@
 /* hexagon css */
 .hexagon{position: absolute;top:0px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
 .main .hexagon{top:85px}
+.floating .hexagon{top:0}
 .hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
 .hexTop{top: -101.76px}
 .hexBottom{bottom: -101.76px;}

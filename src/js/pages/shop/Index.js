@@ -24,5 +24,7 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+		
+		$('#mainSlider').bxSlider();
 	}
 };
