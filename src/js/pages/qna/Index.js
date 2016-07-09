@@ -99,57 +99,25 @@ module.exports = function() {
 
 	function opinionsListHandler(e, status, result) {
 		if (status == 200) {
-			var tags = '';
-
-			for (var key in result) {
-				var eachOpinion = result[key];
-				console.log(eachOpinion);
-				tags += '<li><div class="opinionbox">';
-				tags += '<div class="title"><p class="info"><span>'+eachOpinion.userName+'</span><span>'+eachOpinion.createDate+'</span></p></div>';
-				
-				tags += '<div class="conbox">';
-				tags += '<strong>';	// <a href="../../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="qna popEdge">
-				tags += '<span class="it">'+opinionsClassArray[eachOpinion.opinionClassNumber]+'</span>'+eachOpinion.title+'</strong>';	// </a></strong>
-				tags += '<div class="conboxTxt"><p class="except">'+eachOpinion.content+'</p><span class="more">더보기</span></div>';
-				tags += '<div class="commentCount">';
-				if (eachOpinion.answers.length == 0) {
-					tags += '<p>미답변</p>';
+			var key = 0;
+			$.map(result, function(each) {
+				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
+				if (each.answers.length == 0) {
+					each.answerCount = '<p>미답변</p>';
 				} else {
-					tags += '<p><span>'+eachOpinion.answers.length+'개</span> 의견</p>';
+					each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
 				}
-				tags += '<button id="writeCommentButton'+key+'" class="btn btnSizeS btnColor02 writeCommentButton">의견작성</button>';
-				tags += '</div>';
-				tags += '</div>';
+				each.key = key;
+				console.log(each);
 
-				tags += '<div id="commentArea'+key+'" class="commentArea noMoreBtn">';
-				// tags += '<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>';
-				tags += '<ul>';
-				for (var answerKey in eachOpinion.answers) {
-					var eachAnswer = eachOpinion.answers[answerKey];
+				key++;
+			});
+			
+			var template = window.Handlebars.compile($('#opinion-template').html());
+			var elements = $(template(result));
+			$('#opinionList').empty().append(elements);
 
-					tags += '<li>';
-					tags += '<div class="commentName"><div class="name">';
-					tags += '<span><img src="'+eachAnswer.expertImageUrl+'" alt="" /></span>';
-					tags += '<span><span><em>'+eachAnswer.expertCompany+'</em> '+eachAnswer.expertName+'</span>';
-					tags += '<span class="except">'+eachAnswer.serviceNames.join(', ')+'</span></span>';
-					tags += '</div></div>';
-					tags += '<p class="txt">'+eachAnswer.content+'</p>';
-					tags += '<p class="date">'+eachAnswer.createDate+' <i><span>'+eachAnswer.helpCount+'</span></i></p>'; // 스마일 클릭시 도움됨 표시 - <i class="on"><span>30</span></i>
-					tags += '</li>';
-				}
-				tags += '</ul>';
-				
-				tags += '<div class="commentInput"><form method="post" id="answerForm'+eachOpinion.opinionNumber+'" class="answerForm"><fieldset><legend>댓글 입력 폼</legend><div class="commentTextarea">';
-				tags += '<textarea id="answerBox'+eachOpinion.opinionNumber+'" class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>';
-				tags += '<div class="commentBtn">';
-				tags += '<div class="thumb"><span><img src="'+Super.Super.loginData.imageUrl+'" alt="" /></span></div>';
-				tags += '<button type="submit" class="btn confirmBtn">등록</button>';
-				tags += '</div></div></fieldset></form></div>';
-
-				tags += '</div></div></li>';
-			}
-
-			$('#opinionList').html(tags);
+			$('.myProfileImage').attr('src', Super.Super.loginData.imageUrl);
 
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerForm').submit(answerFormSubmitHandler);
@@ -162,21 +130,9 @@ module.exports = function() {
 
 	function opinionsExpertsListHandler(e, status, result) {
 		if (status == 200) {
-			var tags = '';
-
-			for (var key=0; key < Math.min(3, result.length); key++) {
-				var eachExpert = result[key];
-				//if (eachExpert.expertImageUrl == null) eachExpert.expertImageUrl = '../images/temp01.jpg';
-
-				tags += '<li><a href="#"><span class="thumb"><img src="'+eachExpert.expertImageUrl+'" alt="" /></span>';
-				tags += '<span class="info">';
-				tags += '<strong>'+eachExpert.serviceNames+'</strong>';
-				tags += '<span><em>'+eachExpert.expertCompany+'</em> '+eachExpert.expertName+'</span>';
-				tags += '<span>'+eachExpert.content+'</span>';
-				tags += '</span></a></li>';
-			}
-
-			$('#expertList2').html(tags);
+			var template = window.Handlebars.compile($('#expert-rank-template').html());
+			var elements = $(template(result));
+			$('#expertRank').empty().append(elements);
 		} else {
 			console.log('통신에러');
 		}
