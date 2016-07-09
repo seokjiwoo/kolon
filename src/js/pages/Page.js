@@ -85,10 +85,18 @@ module.exports = function() {
 			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
-			if (Super.loginData.imageUrl != null) $('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
+			if (Super.loginData.imageUrl != null) {
+				$('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
+			} else {
+				$('#topMemberInfoPic').attr('src', '/images/profile.png');
+			}
 			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
 
-			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			if (Super.loginData.imageUrl != null) {
+				$('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			} else {
+				$('#profileImage').attr('href', '/myPage/').attr('src', '/images/profile.png');
+			}
 			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');

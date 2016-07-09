@@ -91,7 +91,11 @@ module.exports = function() {
 			$('#myPageHeaderId').text(Super.Super.loginData.memberName);
 		}
 		
-		if (Super.Super.loginData.imageUrl != null) $('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
+		if (Super.Super.loginData.imageUrl != null) {
+			$('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
+		} else {
+			$('#myPageHeaderProfilePic').attr('src', '/images/profile.png');
+		}
 
 		var activity = Super.Super.loginData.myActivity;
 		var notice = activity.noticeNewYn == 'Y' ? '<span class="newBox">'+activity.noticeCount+'<span class="new">N</span></span>' : activity.noticeCount
