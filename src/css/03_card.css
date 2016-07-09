@@ -1,11 +1,13 @@
 .cardBox {width:1500px; overflow:hidden;}
 .cardWrap{max-width:1520px;min-width:1220px;z-index: 1;}
-@media (max-width:1520px){.cardWrap {max-width:1220px;}}
 .main .cardWrap {margin:64px auto 0;padding-top:83px;}
 .cardWrap > li.card {overflow: hidden;float: left;width:285px;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
 .main .cardWrap > li.card{margin-top:-167px;padding:84px 0;}
 
-
+@media (max-width:1520px){
+	.cardWrap {max-width:1220px;}
+	.main .cardWrap.headerCard > li.card:nth-child(5) {display: none}
+}
 
 .cardLayer {width:100%; height:754px; position:absolute; top:0; left:0; z-index:90;}
 .cardLayer .cardWrap {width:1500px; margin:0 auto; position:relative; padding-top:167px;}
@@ -76,8 +78,7 @@
 .hexBottom span {background-position: center bottom;}
 .hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
-.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.9deg); position:absolute; top:41.5px; left:-19px; z-index:5; text-align:left;}
-.main .cardLine{ top:126.5px;}
+.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.9deg); position:absolute; top:43px; left:-20px; z-index:5; text-align:left;}
 .cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
 .cardLine p {letter-spacing: 0.5px;font-size:14px; font-style:italic; color:#000; line-height:130%;}
 
@@ -167,8 +168,8 @@
 .cardSize04 .cardLine p{font-size: 20px}
 
 /* card hover */
-.cardCon .cardHover {display:none;}
-.cardCon.cHover .cardHover {display:block; position:absolute; top:0; left:0; z-index:4;}
+.cardCon .cardHover { position:absolute; top:0; left:0; z-index:4; display:none; }
+.cardCon.cHover .cardHover { display:block; }
 .cardHover .cardCon ul.card_icon {width:100%; position:absolute; top:275px; left:0;}
 .cardHover .cardCon ul.card_icon li {width:50%; height:95px; float:left; font-size:0;}
 .cardHover .cardCon ul.card_icon li a {width:100%; height:100%; display:inline-block; position:relative;}
@@ -204,7 +205,7 @@ ul.cardWrap > li .cardCon ul.check_icon li.text {position:relative;}
 ul.cardWrap > li .cardCon ul.check_icon li.text a span {width:39px; height:35px; margin:-16px 0 0 -19.5px; position:absolute; top:50%; left:50%; display:inline-block;}
 ul.cardWrap > li .cardCon ul.check_icon li.text a:after {display:none;}
 
-/* ù��° hover */
+/* ù��° hover */
 ul.cardWrap > li .cardCon.cHover {position:relative;}
 ul.cardWrap > li .cardCon.cHover > a.cardTxt {width:285px; display:inline-block; margin-left:-142.5px; position:absolute; top:81px; left:50%; z-index :5;}
 ul.cardWrap > li .cardCon.cHover > a.cardTxt p,
@@ -259,7 +260,7 @@ ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon li:first-child {margin-
 .imgHexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
 
-/* �ι�° hover */
+/* �ι�° hover */
 ul.cardWrap > li .cardCon .cardTxt.sHover span.cardMore {display:inline-block;}
 ul.cardWrap > li.cardType01 .cardCon .cardTxt span.cardMore {color:#f87067;}
 ul.cardWrap > li.cardType01 .cardCon .cardTxt span.cardMore:after {background-position:0 0;}
@@ -373,6 +374,10 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .cardType08 .cardThum img{display: block;margin: 0 auto 15px;}
 .cardWrap .cardType08 a {color:#fff;}
 
+.cardWrap .cardType08 .js-graph-doughnut {position:relative;margin:0 auto 15px}
+.cardWrap .cardType08 .js-graph-doughnut .txt-percent {position:absolute;width:100%;left:0;margin-top:55px;color:#fff;font-size:20px;line-height:1em;min-height:43px}
+.cardWrap .cardType08 .js-graph-doughnut .js-graph-percent {font-size:32px}
+
 .cardWrap .cardType09 .cardCon:after {display:none;}
 .cardWrap .cardType09 .hexagon {width:283px; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; background:#fff;}
 .cardWrap .cardType09 .hexagon .hexTop {border-top:1px solid #e5e5e5; border-right:2px solid #e5e5e5;}
@@ -444,5 +449,5 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardCon .removeScrap {position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_remove.png') center no-repeat; border-radius: 50%; z-index:4;font-size: 0;}
 
 /*  */
-.cardBgWrap {position:absolute;top:0;left:0;right:0;bottom:0;z-index:5}
+.cardBgWrap {position:absolute;top:0;left:0;right:0;bottom:0;z-index:6;pointer-events:none;}
 .cardBgWrap p {position:absolute;top:0;left:0;opacity:0;}

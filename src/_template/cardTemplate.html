@@ -1,0 +1,42 @@
+<script id="index-card-templates" type="text/x-handlebars-template">
+{{#cards}}
+	<li class="card {{type}}">
+		<div class="hexagon" style="{{background}}"><!-- 배경이미지 -->
+			<div class="hexTop"><span></span></div>
+			<div class="hexBottom"><span></span></div>
+		</div>
+		<!-- card 내용 -->
+		{{#vxIF type "==" "cardType08 cardSize02"}}
+		<div class="cardCon">
+			<h2 class="cardTit">{{title}}</h2>
+			<div class="cardThum">
+				<div class="js-graph-doughnut"
+					data-graph-opts='{
+						"color" : {
+							"background" : "#ea5973",
+							"graph" : "#fff"
+						},
+						"attr" : {
+							"width" : "130",
+							"height" : "130"
+						},
+						"percent" : {{percent}},
+						"speed" : 1000,
+						"onScreen" : {{percent}}
+					}'>
+					<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+				</div>
+				{{{description}}}
+				</div>
+			</div>
+			<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
+		</div>
+		<!--<a href="" class="cardRemove"></a>-->
+		{{/vxIF}}
+		<!-- card 내용 -->
+	</li>
+{{/cards}} 
+</script>

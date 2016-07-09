@@ -257,23 +257,27 @@ module.exports = function() {
 	function onCardConOver(e) {
 		if (!$(this).hasClass('cHover')) {
 			$(this).addClass('cHover');
-			$(this).find('.cardBg01').queue('fx',[]).stop().css('opacity', 1).delay(300).animate({
+			$(this).find('.cardBgWrap').show();
+			$(this).find('.cardBg03').queue('fx',[]).stop().css('opacity', 1).delay(100).animate({
 				"opacity": 0
 			}, {
-				"duration": 2000,
+				"duration": 1000,
 				"easing": "easeOutBack"
 			});
 			$(this).find('.cardBg02').queue('fx',[]).stop().css('opacity', 1).delay(200).animate({
 				"opacity": 0
 			}, {
-				"duration": 2000,
+				"duration": 1000,
 				"easing": "easeOutBack"
 			});
-			$(this).find('.cardBg03').queue('fx',[]).stop().css('opacity', 1).delay(100).animate({
+			$(this).find('.cardBg01').queue('fx',[]).stop().css('opacity', 1).delay(300).animate({
 				"opacity": 0
 			}, {
-				"duration": 2000,
-				"easing": "easeOutBack"
+				"duration": 1000,
+				"easing": "easeOutBack",
+				complete: function() {
+					$(this).parents('.cardBgWrap').hide();
+				}
 			});
 		}
 	}
