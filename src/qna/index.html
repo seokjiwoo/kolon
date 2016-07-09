@@ -12,29 +12,23 @@
 					<p class="subTxt italicNum">specialist</p>
 					<h2 class="pageTit">커먼인들에게 물어보기</h2>
 					<p class="subTit"><b>커먼</b>과 함께합니다.<br><b>전문가의 의견</b>을 받아보세요.</p>
-					<ul class='expertList cardWrap'>
-						<li>
-							<div class="hexagon" style="background-image: url('/images/temp27.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<h3 class="expertName">김석훈 / SPACE</h3>
-						</li>
-						<li>
-							<div class="hexagon" style="background-image: url('/images/temp27.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<h3 class="expertName">김석훈 / SPACE</h3>
-						</li>
-						<li>
-							<div class="hexagon" style="background-image: url('/images/temp27.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<h3 class="expertName">김석훈 / SPACE</h3>
-						</li>
-					</ul>
+					<div class='expertList cardWrap'>
+						<ul id='expertList'>
+							<script id="experts-template" type="text/x-handlebars-template">
+							{{!-- experts-template --}}
+							{{#each experts}}
+							<li>
+								<div class="hexagon" style="background-image: url('{{imageUrl}}')"><!-- 배경이미지 -->
+									<div class="hexTop"><span></span></div>
+									<div class="hexBottom"><span></span></div>
+								</div>
+								<h3 class="expertName">{{name}} / {{companyName}}</h3>
+							</li>
+							{{/each}}
+							{{!--// experts-template --}}
+							</script>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="wrap">
@@ -173,7 +167,7 @@
 										 				</div>
 									 				</div>
 													<p class="txt">{{{content}}}</p>
-									 				<p class="date">{{createDate}} <i class="on"><span>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
+									 				<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
 									 			</li>
 												{{/each}}
 											</ul>
@@ -222,41 +216,29 @@
 					</section>
 					<aside class="col-right">
 						<div id="myOpinion" class="latelyOpinion">
+							<script id="my-opinion-template" type="text/x-handlebars-template">
+							{{!-- my-opinion-template --}}
 							<h2 class="optit"><span>내가 최근에 등록한 의견</span></h2>
 							<ul>
+								{{#each myOpinions}}
 								<li>
 									<a href="#">
-										<span>리모델링을 준비하려는데요.</span>
+										<span>{{title}}</span>
 										<span>
-											<span>2016. 03. 28</span>
-											<span><em class="pointRed">12개</em> 의견</span>
+											<span>{{createDate}}</span>
+											<span><em class="pointRed">{{answerCount}}개</em> 의견</span>
 										</span>
 									</a>
 								</li>
-								<li>
-									<a href="#">
-										<span>리모델링을 준비하려는데요.</span>
-										<span>
-											<span>2016. 03. 28</span>
-											<span><em class="pointRed">12개</em> 의견</span>
-										</span>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<span>리모델링을 준비하려는데요.</span>
-										<span>
-											<span>2016. 03. 28</span>
-											<span><em>0개</em> 의견</span>
-										</span>
-									</a>
-								</li>
+								{{/each}}
 							</ul>
+							{{!--// my-opinion-template --}}
+							</script>
 						</div>
 
 						<div id="expertRank" class="expertHelp">
-						<script id="expert-rank-template" type="text/x-handlebars-template">
-						{{!-- expert-rank-template --}}
+							<script id="expert-rank-template" type="text/x-handlebars-template">
+							{{!-- expert-rank-template --}}
 							<h2 class="optit"><span>가장 많은 도움을 준 전문가</span></h2>
 							<ul id='expertList2'>
 								{{#each .}}
@@ -270,16 +252,15 @@
 										</span>
 									</a>
 								</li>
-								
 								{{/each}}
 							</ul>
+							{{!--// expert-rank-template --}}
+							</script>
 							<!--<div class="paper-nav mt30">
 								<a href="#" class="active"><span>1</span></a>
 								<a href="#"><span>2</span></a>
 								<a href="#"><span>3</span></a>
 							</div>-->
-						{{!--// expert-rank-template --}}
-						</script>
 						</div>
 					</aside>
 				</div>

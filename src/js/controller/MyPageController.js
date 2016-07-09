@@ -35,10 +35,6 @@ function ClassMyPageController() {
 			 */
 			recentViewItems: recentViewItems,
 			/**
-			 * 내 리뷰 목록
-			 */
-			myReview: myReview,
-			/**
 			 * 주문/배송 현황 조회
 			 */
 			myOrdersList: myOrdersList,

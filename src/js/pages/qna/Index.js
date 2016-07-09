@@ -5,16 +5,11 @@ module.exports = function() {
 
 	var win = window,
 	$ = win.jQuery,
-	doc = document,
 	APIController = require('../../controller/APIController.js'),
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
 	fileName = 'qna/Index.js';
-
-	var uploadFileNumber;
-	var uploadImageArray;
-	var opinionsClassArray;
 
 	var controller = require('../../controller/OpinionsController.js');
 	$(controller).on('opinionsClassResult', opinionsClassHandler);
@@ -23,7 +18,20 @@ module.exports = function() {
 
 	$(controller).on('postOpinionResult', postOpinionResultHandler);
 	$(controller).on('postAnswerResult', postAnswerResultHandler);
+	$(controller).on('pollAnswerResult', pollAnswerResultHandler);
 
+	var expertController = require('../../controller/ExpertController.js');
+	$(expertController).on('expertListResult', expertListHandler);
+
+	var myPageController = require('../../controller/MyPageController.js');
+	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
+	
+	var uploadFileNumber;
+	var uploadImageArray;
+	var opinionsClassArray;
+
+	var pollAnswerId;
+	
 	var opts = {
 		colorbox : {
 			target : '#colorbox',
@@ -59,29 +67,34 @@ module.exports = function() {
 		 * 초기화
 		 */
 		init: init
-	},
-	self;
+	};
 	
 	return callerObj;
 	
 	function init(options) {
 		Super.init();
 
-		debug.log(fileName, 'init', $, util);
+		callerObj.colorbox = $(opts.colorbox.target);
+		$(document).on(opts.colorbox.event.COMPLETE, onCboxEventListener)
+		$(document).on(opts.colorbox.event.CLEANUP, onCboxEventListener)
+		$(document).on(opts.colorbox.event.CLOSED, onCboxEventListener);
 
-		self = callerObj;
-
-		setElements();
-		setBindEvents();
+		$(".opinionwrite > .toggleBtn").on("click", showWriteForm);
+		$('#opinionWriteForm').submit(writeFormSubmitHandler);
 
 		controller.opinionsClass();
 		if (Super.Super.loginData != null) {
 			$('#myOpinion').show();
 			$('#expertRank').css('margin-top', '20px');
+			myPageController.myOpinions();
 		}
 		controller.opinionsExpertList();
+		expertController.expertList();
 	}
 
+	/**
+	 * 의견 주제 목록 핸들링. 이거 받아온 뒤에 의견 리스트 호출해야 함.
+	 */
 	function opinionsClassHandler(e, status, result) {
 		if (status == 200) {
 			var tags = '';
@@ -97,6 +110,9 @@ module.exports = function() {
 		controller.opinionsList();
 	}
 
+	/**
+	 * 의견 리스트 핸들링
+	 */
 	function opinionsListHandler(e, status, result) {
 		if (status == 200) {
 			var key = 0;
@@ -112,7 +128,7 @@ module.exports = function() {
 
 				key++;
 			});
-			
+
 			var template = window.Handlebars.compile($('#opinion-template').html());
 			var elements = $(template(result));
 			$('#opinionList').empty().append(elements);
@@ -120,49 +136,57 @@ module.exports = function() {
 			$('.myProfileImage').attr('src', Super.Super.loginData.imageUrl);
 
 			$('.writeCommentButton').click(showCommentForm);
+			$('.answerCount').click(pollAnswer);
 			$('.answerForm').submit(answerFormSubmitHandler);
 			
 			$('.except').dotdotdot({watch:'window'});
-		} else {
-			console.log('통신에러');
 		}
 	};
 
+	/**
+	 * 상단 전문가 리스트 핸들링
+	 */
+	function expertListHandler(e, status, result) {
+		if (status == 200) {
+			var template = window.Handlebars.compile($('#experts-template').html());
+			var elements = $(template(result));
+			$('#expertList').empty().append(elements);
+
+			$('#expertList').bxSlider({
+				minSlides: 6,
+				maxSlides: 6,
+				responsive: false,
+				pager: false,
+				controls: false,
+				slideWidth: 166,
+				slideMargin: 7,
+				auto: true
+			});
+		}
+	};
+
+	/**
+	 * 가장 많은 도움을 준 전문가 리스트 핸들링
+	 */
 	function opinionsExpertsListHandler(e, status, result) {
 		if (status == 200) {
 			var template = window.Handlebars.compile($('#expert-rank-template').html());
 			var elements = $(template(result));
 			$('#expertRank').empty().append(elements);
-		} else {
-			console.log('통신에러');
 		}
-	}
+	};
 
-	function setElements() {
-		debug.log(fileName, 'setElements');
-
-		self.colorbox = $(opts.colorbox.target);
-		$('#expertList').bxSlider({
-			minSlides: 5,
-			maxSlides: 5,
-			pager:false,
-			slideWidth: 200,
-			slideMargin:20
-		});
-	}
-
-	function setBindEvents() {
-		debug.log(fileName, 'setBindEvents');
-
-		var CB_EVENTS = opts.colorbox.event;
-
-		$(doc).on(CB_EVENTS.COMPLETE, onCboxEventListener)
-				.on(CB_EVENTS.CLEANUP, onCboxEventListener)
-				.on(CB_EVENTS.CLOSED, onCboxEventListener);
-
-		$(".opinionwrite > .toggleBtn").on("click", showWriteForm);
-		$('#opinionWriteForm').submit(writeFormSubmitHandler);
-	}
+	/**
+	 * 내 의견묻기 목록 핸들링
+	 */
+	function myOpinionsHandler(e, status, result) {
+		if (status == 200) {
+			console.log(result);
+			var template = window.Handlebars.compile($('#my-opinion-template').html());
+			var elements = $(template(result));
+			$('#myOpinion').empty().append(elements);
+		}
+	};
 
 	function showCommentForm(e) {
 		e.preventDefault();
@@ -239,6 +263,22 @@ module.exports = function() {
 		}
 	};
 
+	function pollAnswer(e){
+		pollAnswerId = $(this).attr('id').substr(6);
+		if (!$(this).hasClass('on')) {
+			controller.pollAnswer(pollAnswerId);
+		}
+	};
+
+	function pollAnswerResultHandler(e, status, result) {
+		if (status == 200) {
+			var newCount = Number($('#answerCount'+pollAnswerId).text())+1;
+			$('#answerCount'+pollAnswerId).text(newCount);
+			$('#answer'+pollAnswerId).addClass('on');
+		} else {
+			alert(status+': '+result.message);
+		}
+	};
 
 	function onUploaderSelectedFiles(e, selectedFiles) {
 		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.SELECTED_FILES, selectedFiles);
@@ -287,7 +327,7 @@ module.exports = function() {
 
 		switch(e.type) {
 			case CB_EVENTS.COMPLETE:
-				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
+				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.on(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
 									.on(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
@@ -296,7 +336,7 @@ module.exports = function() {
 				}
 				break;
 			case CB_EVENTS.CLEANUP:
-				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
+				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.off(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
 									.off(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);

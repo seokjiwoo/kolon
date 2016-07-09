@@ -41,7 +41,11 @@ function ClassOpinionsController() {
 			/**
 			 * 의견묻기 답변 등록
 			 */
-			postAnswer: postAnswer
+			postAnswer: postAnswer,
+			/**
+			 * 의견묻기 답변 유용함 체크
+			 */
+			pollAnswer: pollAnswer
 		}
 		
 		return callerObj;	
@@ -115,7 +119,18 @@ function ClassOpinionsController() {
 				$(callerObj).trigger('postAnswerResult', [200, result.data]);
 			} else {
 				Super.handleError('postAnswer', result);
-				$(callerObj).trigger('postAnswerResult', [result.status]);
+				$(callerObj).trigger('postAnswerResult', [status, result]);
+			}
+		}, false);
+	};
+
+	function pollAnswer(answerNumber) {
+		Super.callApi('/apis/opinions/answers/'+answerNumber, 'POST', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('pollAnswerResult', [200, result.data]);
+			} else {
+				Super.handleError('pollAnswer', result);
+				$(callerObj).trigger('pollAnswerResult', [status, result]);
 			}
 		}, false);
 	};
