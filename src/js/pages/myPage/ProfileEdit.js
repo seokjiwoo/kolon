@@ -297,36 +297,30 @@ module.exports = function() {
 	 */
 	function changeEmailIdResultHandler(e, status, response) {
 		switch(status) {
-			case 200:
-				if (emailCertCode == null) {
-					MyPage.Super.Super.htmlPopup('../../_popup/popAuthorizeEmail.html', 590, 'popEdge', {
-						onOpen: function() {
-							$('#emailAuthNumber').val('');
-							$('#sendedAddress').text(enteredId);
-							$('#resendButton').click(function(e) {
-								authNumberResendFlag = true;
-								controller.changeEmailId(enteredId);
-							});
-							authNumberResendFlag = false;
-						},
-						onSubmit: function() {
-							controller.changeEmailId(enteredId, $('#emailAuthNumber').val());
-						}
-					});
-				} else {
-					alert(response.message);
-					$('#profileID').val(enteredId).attr('disabled', 'disabled');
-					$('#changeEmailField').hide();
-				}
+			case 200:	// 인증메일 발송 완료
+				MyPage.Super.Super.htmlPopup('../../_popup/popAuthorizeEmail.html', 590, 'popEdge', {
+					onOpen: function() {
+						$('#emailAuthNumber').val('');
+						$('#sendedAddress').text(enteredId);
+						$('#resendButton').click(function(e) {
+							authNumberResendFlag = true;
+							controller.changeEmailId(enteredId);
+						});
+						authNumberResendFlag = false;
+					},
+					onSubmit: function() {
+						controller.changeEmailId(enteredId, $('#emailAuthNumber').val());
+					}
+				});
 				break;
-			case 201:
+			case 201:	// 인증성공
 				$.colorbox.close();
 				alert(response.message);
 				$('#myPageHeaderId').text(enteredId);
 				$('#profileID').val(enteredId).attr('disabled', 'disabled');
 				$('#changeEmailField').hide();
 				break;
-			case 400:
+			case 400:	// 인증실패
 			default:
 				console.log(response);
 				alert(response.message);
