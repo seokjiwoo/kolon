@@ -42,22 +42,22 @@
 								<th scope="row" rowspan="2">조회기간</th>
 								<td>
 									<ul class="sortTerm">
-										<li><a href="" class="on">1주일</a></li>
-										<li><a href="">2주일</a></li>
-										<li><a href="">1개월</a></li>
-										<li><a href="">3개월</a></li>
-										<li><a href="">6개월</a></li>
+										<li><a href="#" class="on">1주일</a></li>
+										<li><a href="#">2주일</a></li>
+										<li><a href="#">1개월</a></li>
+										<li><a href="#">3개월</a></li>
+										<li><a href="#">6개월</a></li>
 									</ul>
 									<div class="sortTermSet">
 										<!-- datePicker -->
 										<div class="calendar cal2 js-range-picker">
 											<span class="calInp">
-												<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+												<input type="text" title="희망 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
 												<a href="#" class="calBtn js-btn-from">날짜선택</a>
 												<div class="cal-container js-picker-from"></div>
 											</span> 
 											<span class="calInp">
-												<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+												<input type="text" title="희망 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
 												<a href="#" class="calBtn js-btn-to">날짜선택</a>
 												<div class="cal-container js-picker-to"></div>
 											</span>
@@ -73,16 +73,14 @@
 											<legend class="hide">적립/사용내역 조회</legend>
 											<div class="arrayWrap alignBox">
 												<div class="leftBox">
-													<ul class="drop" data-prevent="true">
+													<ul id='typeSelect' class="drop" data-prevent="true">
 														<li><a href="#">적립/사용내역</a></li>
-														<li><a href="#" data-value="type-1">포인트 적립</a></li>
-														<li><a href="#" data-value="type-2">포인트 사용</a></li>
-														<li><a href="#" data-value="type-3">포인트 적립</a></li>
-														<li><a href="#" data-value="type-4">포인트 적립</a></li>
+														<li><a href="#" data-value="BM_POINT_TYPE_01">포인트 적립</a></li>
+														<li><a href="#" data-value="BM_POINT_TYPE_02">포인트 사용</a></li>
 													</ul>
 												</div>
 												<div class="leftBox">
-													<button class="btn btnSizeM2 btnColor02">조회하기</button>
+													<button id='searchButton' class="btn btnSizeM2 btnColor02">조회하기</button>
 												</div>
 											</div>
 										</fieldset> 

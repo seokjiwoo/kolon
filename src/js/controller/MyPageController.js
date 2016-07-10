@@ -36,6 +36,15 @@ function ClassMyPageController() {
 			recentViewItems: recentViewItems,
 
 			/**
+			 * 포인트 조회
+			 */
+			myPoints: myPoints,
+			/**
+			 * 포인트 상세
+			 */
+			pointsHistory: pointsHistory,
+
+			/**
 			 * 알림 유형 코드
 			 */
 			noticeTypeCode: noticeTypeCode,
@@ -92,12 +101,28 @@ function ClassMyPageController() {
 		}, false);
 	};
 	
-	function myReview() {
-		Super.callApi('/apis/me/reviews', 'GET', {}, function(status, result) {
+	function myPoints() {
+		Super.callApi('/apis/me/point', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('myReviewResult', [200, result]);
+				$(callerObj).trigger('myPointsResult', [200, result.data]);
 			} else {
-				Super.handleError('myReview', result);
+				Super.handleError('myPoints', result);
+				$(callerObj).trigger('myPointsResult', [status, result]);
+			}
+		}, false);
+	};
+	
+	function pointsHistory(fromDate, toDate, code) {
+		Super.callApi('/apis/me/point/history', 'GET', {
+			startDate: fromDate,
+			endDate: toDate,
+			filter: code
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('pointsHistoryResult', [200, result.data]);
+			} else {
+				Super.handleError('pointsHistory', result);
+				$(callerObj).trigger('pointsHistoryResult', [status, result]);
 			}
 		}, false);
 	};
