@@ -14,9 +14,11 @@ module.exports = function() {
 	
 	var controller = require('../../controller/MemberInfoController');
 	$(controller).on('myInfoResult', myInfoHandler);
-	$(controller).on('checkEmailResult', checkEmailResultHandler);
+	$(controller).on('changeEmailIdResult', changeEmailIdResultHandler);
 	$(controller).on('editMemberInfoResult', editInfoResultHandler);
-
+	$(controller).on('refundBankListResult', refundBankListResultHandler);
+	$(controller).on('refundDataResult', refundDataResultHandler);
+	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
@@ -25,6 +27,9 @@ module.exports = function() {
 	
 	var myInfoObject;
 	var emailDuplicateFlag = false;
+	var emailCertCode = null;
+	var enteredId;
+	var authNumberResendFlag = false;
 	
 	var callerObj = {
 		/**
@@ -36,7 +41,7 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		if (Cookies.get('profileEditAuth') == 'auth' || MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+	//	if (Cookies.get('profileEditAuth') == 'auth' || MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
 			MyPage.init();
 
 			debug.log(fileName, $, util);
@@ -52,6 +57,7 @@ module.exports = function() {
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
 			$('.verifyMemberPopup').click(submitMobileEditForm);
+			$('#changeRefundInfoButton').click(popRefundAccount);
 			/*
 			$('#joinId').change(checkEmailField);
 			$('#joinPW').change(checkPasswordField);
@@ -60,10 +66,10 @@ module.exports = function() {
 			*/
 			controller.getMyInfo();
 			loginController.getSocialLoginUrl();
-		} else {
+	/*	} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
-		}
+		}*/
 	};
 
 	function myInfoHandler(e, infoObject) {
@@ -71,6 +77,10 @@ module.exports = function() {
 		console.log(infoObject);
 
 		$('#profileID').val(infoObject.email);
+		$('#changeEmailField').hide();
+		if (infoObject.email != null) {
+			$('#profileID').attr('disabled', 'disabled');
+		}
 		$('#editPhoneID').val(infoObject.cellPhoneNumber);
 		$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
 		for (var key in infoObject.socials) {
@@ -188,32 +198,137 @@ module.exports = function() {
 	};
 	
 	/**
-	 * 이메일 수정 진행 전에 중복검사 요청
+	 * 환불정보 팝업 호출 (1) - 은행 목록 요청
 	 */
-	function submitEmailEditForm(e) {
+	function popRefundAccount(e) {
+		e.preventDefault();
+		controller.refundBankList();
+		e.stopPropagation();
+	};
+
+	/**
+	 * 환불정보 팝업 호출 (2) - 팝업 열기
+	 */
+	function refundBankListResultHandler(e, status, result) {
+		if (status == 200) {
+			MyPage.Super.Super.htmlPopup('../../_popup/popRefundAccount.html', 590, 'popEdge', {
+				onOpen: function() {
+					console.log(result.commonCodes);
+					//$('#bankCode').append(tag);
+					$('#refundAccountForm').submit(submitChangeRefundAccount);
+				},
+				onSubmit: function() {
+					$('#refundAccountForm').submit();
+				}
+			});
+		} else {
+			alert(status);
+		}
+	};
+	
+	/**
+	 * 환불정보 변경요청  
+	 */
+	function submitChangeRefundAccount(e) {
 		e.preventDefault();
 
-		var emailId = $('#profileID').val();
+		var bankCode = $('#bankCode').val();
+		var accountNumber = $('#accountNumber').val();
+		var depositorName = $('#depositorName').val();
 
-		if (util.checkVaildEmail(emailId) == false) {
-			alert('이메일 주소를 정확하게 입력해주세요.');
+		if (bankCode == '') {
+			alert('은행을 선택해 주세요');
+		} else if (!(/[0-9]+/g).test(accountNumber)) {
+			alert('계좌번호는 숫자만 입력해 주세요');
+		} else if ($.trim(depositorName) == '') {
+			alert('예금주명을 입력해 주세요');
 		} else {
-			controller.checkEmail(emailId);
-		}
+			controller.refundData(bankCode, accountNumber, depositorName);
+		} 
 		
 		e.stopPropagation();
 	};
 	
 	/**
-	 * 이메일 중복 체크 결과 핸들링 
+	 * 환불정보 변경요청 결과 핸들링
 	 */
-	function checkEmailResultHandler(e, status, response) {
+	function refundDataResultHandler(e, status, result) {
+		e.preventDefault();
+		if (status == 200) {
+			alert('등록이 완료되었습니다');
+			$.colorbox.close();
+		} else {
+			alert(result.message);
+		}
+		e.stopPropagation();
+	};
+
+	
+
+	/**
+	 * 이메일 아이디 변경요청
+	 */
+	function submitEmailEditForm(e) {
+		e.preventDefault();
+
+		var emailId = '';
+		if ($('#profileID').attr('disabled') == 'disabled') {
+			if ($('#changeEmailField').is(':visible')) emailId = $('#profileNewID').val();
+		} else {
+			emailId = $('#profileID').val();
+		}
+
+		if (emailId == '') {
+			$('#changeEmailField').show();
+		} else {
+			if (util.checkVaildEmail(emailId) == false) {
+				alert('이메일 주소를 정확하게 입력해주세요.');
+			} else {
+				enteredId = emailId;
+				emailCertCode = null;
+				controller.changeEmailId(enteredId);
+			}
+		}
+		e.stopPropagation();
+	};
+	
+	/**
+	 * 이메일 아이디 변경 결과 핸들링
+	 */
+	function changeEmailIdResultHandler(e, status, response) {
 		switch(status) {
 			case 200:
-				alert('이메일 인증 진행 (예정)');
+				if (emailCertCode == null) {
+					MyPage.Super.Super.htmlPopup('../../_popup/popAuthorizeEmail.html', 590, 'popEdge', {
+						onOpen: function() {
+							$('#emailAuthNumber').val('');
+							$('#sendedAddress').text(enteredId);
+							$('#resendButton').click(function(e) {
+								authNumberResendFlag = true;
+								controller.changeEmailId(enteredId);
+							});
+							authNumberResendFlag = false;
+						},
+						onSubmit: function() {
+							controller.changeEmailId(enteredId, $('#emailAuthNumber').val());
+						}
+					});
+				} else {
+					alert(response.message);
+					$('#profileID').val(enteredId).attr('disabled', 'disabled');
+					$('#changeEmailField').hide();
+				}
 				break;
-			case 409:
+			case 201:
+				$.colorbox.close();
+				alert(response.message);
+				$('#myPageHeaderId').text(enteredId);
+				$('#profileID').val(enteredId).attr('disabled', 'disabled');
+				$('#changeEmailField').hide();
+				break;
+			case 400:
 			default:
+				console.log(response);
 				alert(response.message);
 				break;
 		}

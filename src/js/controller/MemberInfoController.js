@@ -37,13 +37,21 @@ function ClassMemberInfoController() {
 			 */
 			getMemberTermsContent: getMemberTermsContent,
 			/**
-			 * 이메일 중복 체크
+			 * 이메일 아이디 변경
 			 */
-			checkEmail: checkEmail,
+			changeEmailId: changeEmailId,
 			/**
 			 * 회원정보 수정
 			 */
 			editMemberInfo: editMemberInfo,
+			/**
+			 * 환불 정보 수정 요청
+			 */
+			refundData: refundData,
+			/**
+			 * 환불 정보 입력용 은행 목록 요청 
+			 */
+			refundBankList: refundBankList,
 			/**
 			 * 비밀번호 찾기 (이메일)
 			 */
@@ -130,6 +138,21 @@ function ClassMemberInfoController() {
 			}
 		}, false);
 	};
+
+	/**
+	 * 이메일 아이디 변경
+	 */
+	function changeEmailId(id, certiNumber) {
+		var data = {
+			"id": id
+		};
+		if (certiNumber != undefined) data.certiNumber = certiNumber;
+
+		Super.callApi('/apis/member/id', 'POST', data, function(status, result) {
+			if (status != 200) Super.handleError('changeEmailId', result);
+			$(callerObj).trigger('changeEmailIdResult', [status, result]);
+		}, false);
+	};
 	
 	/**
 	 * 비밀번호 변경
@@ -143,22 +166,6 @@ function ClassMemberInfoController() {
 			if (status != 200) Super.handleError('changePassword', result);
 			$(callerObj).trigger('changePasswordResult', [status, result]);
 		}, false);
-	};
-	
-	/**
-	 * 이메일 중복 체크
-	 */
-	function checkEmail(id) {
-		Super.callApi('/apis/member/checkEmail', 'POST', {
-			"loginId": id
-		}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('checkEmailResult', [status, result]);
-			} else {
-				Super.handleError('checkEmail', result);
-				$(callerObj).trigger('checkEmailResult', [status, result]);
-			}
-		}, true);
 	};
 	
 	/**
@@ -252,6 +259,30 @@ function ClassMemberInfoController() {
 			Super.handleError('mobileAuthVerifyResultHandler', authData);
 			$(callerObj).trigger('verifyMemberResult', [Number(authData.status), authData]);
 		}
+	};
+
+	/**
+	 * 환불 정보 입력용 은행 목록 요청 
+	 */
+	function refundBankList() {
+		Super.callApi('/apis/codes/BM_BANK_SECTION', 'GET', {}, function(status, result) {
+			if (status != 200) Super.handleError('refundBankList', result);
+			$(callerObj).trigger('refundBankListResult', [status, result.data]);
+		}, true);
+	};
+
+	/**
+	 * 환불 정보 수정 요청
+	 */
+	function refundData(bankCode, accountNumber, depositorName) {
+		Super.callApi('/apis/codes/BM_BANK_SECTION', 'POST', {
+			"accountNumber": accountNumber,
+			"bankCode": bankCode,
+			"depositorName": depositorName
+		}, function(status, result) {
+			if (status != 200) Super.handleError('refundData', result);
+			$(callerObj).trigger('refundDataResult', [status, result]);
+		}, true);
 	};
 
 	/**
