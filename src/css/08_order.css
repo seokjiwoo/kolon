@@ -88,8 +88,8 @@ span.price.fontS {font-size:14px;}
 .payTb.border dl:first-child + dl + dl dt{background:#f1645c;}
 .payTb.border dl:first-child + dl + dl dt div,
 .payTb.border dl:first-child + dl + dl dd div{color:#fff;}
-.payTb dl.boderGray{border-color:#e5e5e5;}
-.payTb dl.boderGray:first-child{border-right:0;}
+.payTb dl.borderGray{border-color:#e5e5e5;}
+.payTb dl.borderGray:first-child{border-right:0;}
 
 .payTb.border dl dd.totalwrap,
 .payTb.border dl dd.totalwrap div{width:100% !important;}
@@ -111,197 +111,197 @@ span.price.fontS {font-size:14px;}
 .payTb.border dl ul.priceList li span.point{height:56px;line-height:56px;float:left;padding-left:44px;background:url("../images/bul_dot.png") no-repeat 34px center;}
 .payTb.border dl ul.priceList li span.point i{font-style:normal;padding-left:30px;}
 
-.oder .secTit{font-family:'NotoSansR', sans-serif;font-size: 30px;color: #000;}
+.order .secTit{font-family:'NotoSansR', sans-serif;font-size: 30px;color: #000;}
 
-.oder .container .wrap{width: 100%; padding-top: 50px;}
-.oder .singleCard{padding:0 50px;}
-.oder h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
-.oder h3.subTit + .oderCont .tbSet {margin-top:20px;}
-.oder h3.subTit + .oderCont .tbSet.lineN {margin-top:0;}
-.oder .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; /*border-radius:7px;*/ font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
-.oder .container input[type="checkbox"]{position: absolute;opacity: 0;}
-.oder .container textarea {width:743px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'NotoSansM', sans-serif; color: #999;}
-.oder .checkAgree {margin-top:18px;}
-.oder .pointCk label {display:inline-block; text-align:left; font-family:'NotoSansR', sans-serif; font-size:14px;}
-.oder .pointCk label:before{content: '';display: inline-block;width:26px; height:26px; margin-right: 10px;background: #fff url('../images/ico_checkG.png') no-repeat center;border:1px solid #d1d1d1; border-radius: 0;vertical-align: middle;text-align:center;}
-.oder .pointCk label.on:before{background:#fff url('../images/ico_checkR.png') center no-repeat;}
-.oder .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
-.oder .record th, .oder .record td {border-bottom: 1px solid #e1e1e1}
-.oder .record th{padding: 15px;background: #f8f8f8;color: #333;}
-.oder .record td{padding: 15px;}
-.oder .record tr.border0 td{border:0;}
+.order .container .wrap{width: 100%; padding-top: 50px;}
+.order .singleCard{padding:0 50px;}
+.order h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
+.order h3.subTit + .orderCont .tbSet {margin-top:20px;}
+.order h3.subTit + .orderCont .tbSet.lineN {margin-top:0;}
+.order .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; /*border-radius:7px;*/ font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
+.order .container input[type="checkbox"]{position: absolute;opacity: 0;}
+.order .container textarea {width:743px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'NotoSansM', sans-serif; color: #999;}
+.order .checkAgree {margin-top:18px;}
+.order .pointCk label {display:inline-block; text-align:left; font-family:'NotoSansR', sans-serif; font-size:14px;}
+.order .pointCk label:before{content: '';display: inline-block;width:26px; height:26px; margin-right: 10px;background: #fff url('../images/ico_checkG.png') no-repeat center;border:1px solid #d1d1d1; border-radius: 0;vertical-align: middle;text-align:center;}
+.order .pointCk label.on:before{background:#fff url('../images/ico_checkR.png') center no-repeat;}
+.order .record{width: 100%;margin-top: 20px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
+.order .record th, .order .record td {border-bottom: 1px solid #e1e1e1}
+.order .record th{padding: 15px;background: #f8f8f8;color: #333;}
+.order .record td{padding: 15px;}
+.order .record tr.border0 td{border:0;}
 
-.homeService.oder .tbSet table th, .homeService.oder .tbSet table td {text-align:left;}
-.homeService.oder .tbSet table th {padding-left:40px;}
-.homeService.oder .tbSet table th .ico_star {color:#f1655d;}
-.homeService.oder .tbSet table td {padding:15px 20px;}
-.homeService.oder .tbSet .btnC {margin-top:30px;}
-.homeService.oder .tbSet .btnC button {width:155px;}
-.homeService.oder .tbSet dl {overflow:hidden;font-size:14px;font-family:'NotoSansR', sans-serif;line-height:22px;}
-.homeService.oder .tbSet dt {float:left;color:#000;}
-.homeService.oder .tbSet dd {padding-left:80px;color:#666;}
+.homeService.order .tbSet table th, .homeService.order .tbSet table td {text-align:left;}
+.homeService.order .tbSet table th {padding-left:40px;}
+.homeService.order .tbSet table th .ico_star {color:#f1655d;}
+.homeService.order .tbSet table td {padding:15px 20px;}
+.homeService.order .tbSet .btnC {margin-top:30px;}
+.homeService.order .tbSet .btnC button {width:155px;}
+.homeService.order .tbSet dl {overflow:hidden;font-size:14px;font-family:'NotoSansR', sans-serif;line-height:22px;}
+.homeService.order .tbSet dt {float:left;color:#000;}
+.homeService.order .tbSet dd {padding-left:80px;color:#666;}
 
-.homeService.oder .leftBox, .homeService.oder .leftBox .drop li {width:228px;}
-.homeService.oder .leftBox + .leftBox {margin-left:10px;}
+.homeService.order .leftBox, .homeService.order .leftBox .drop li {width:228px;}
+.homeService.order .leftBox + .leftBox {margin-left:10px;}
 
-.homeService.oder .calendar {display:inline-block;width:187px;line-height:normal}
-.homeService.oder .calendar span.calInp input[type=text] {width:172px;}
+.homeService.order .calendar {display:inline-block;width:187px;line-height:normal}
+.homeService.order .calendar span.calInp input[type=text] {width:172px;}
 
-.homeService.oder .oderCont ul.homeType li.hType01 {background-position:-256px 0;}
-.homeService.oder .oderCont ul.homeType li.hType02 {background-position:-64px 0;}
-.homeService.oder .oderCont ul.homeType li.hType03 {background-position:-320px 0;}
-.homeService.oder .oderCont ul.homeType li.hType04 {background-position:-0px 0;}
-.homeService.oder .oderCont ul.homeType li .radioBox, .homeService.oder .oderCont ul.homeType li .radioBox label {display:inline-block;width:100px;}
+.homeService.order .orderCont ul.homeType li.hType01 {background-position:-256px 0;}
+.homeService.order .orderCont ul.homeType li.hType02 {background-position:-64px 0;}
+.homeService.order .orderCont ul.homeType li.hType03 {background-position:-320px 0;}
+.homeService.order .orderCont ul.homeType li.hType04 {background-position:-0px 0;}
+.homeService.order .orderCont ul.homeType li .radioBox, .homeService.order .orderCont ul.homeType li .radioBox label {display:inline-block;width:100px;}
 
-.homeService.oder .oderCont .payTab {text-align:center;border-bottom:1px solid #e8e8e8;}
-.homeService.oder .oderCont .payTab span {display:inline-block;}
-.homeService.oder .oderCont .payTab.tabWrap a.radioBtn {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
-.homeService.oder .oderCont .payTab.tabWrap a.radioBtn .labelTxt {display:inline-block;position:relative;}
-.homeService.oder .oderCont .payTab.tabWrap a.radioBtn + p {margin-top:14px;}
-.homeService.oder .oderCont .payTab.tabWrap a.radioBtn .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url(../images/ico_radio.png) 0 -18px no-repeat;}
-.homeService.oder .oderCont .payTab.tabWrap .on a.radioBtn .labelTxt:after {background-position:0 0;}
-.homeService.oder .oderCont .arraySide {margin-bottom:18px;}
-.homeService.oder .oderCont .arraySide p {overflow:hidden;font-size:14px;color:#666;text-align:left;}
-.homeService.oder .oderCont .arraySide li {margin-top:5px;}
-.homeService.oder .oderCont .arraySide li:first-child {margin-top:13px;}
-.homeService.oder .container textarea {border-radius:0;width:838px;padding:20px;}
+.homeService.order .orderCont .payTab {text-align:center;border-bottom:1px solid #e8e8e8;}
+.homeService.order .orderCont .payTab span {display:inline-block;}
+.homeService.order .orderCont .payTab.tabWrap a.radioBtn {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
+.homeService.order .orderCont .payTab.tabWrap a.radioBtn .labelTxt {display:inline-block;position:relative;}
+.homeService.order .orderCont .payTab.tabWrap a.radioBtn + p {margin-top:14px;}
+.homeService.order .orderCont .payTab.tabWrap a.radioBtn .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url(../images/ico_radio.png) 0 -18px no-repeat;}
+.homeService.order .orderCont .payTab.tabWrap .on a.radioBtn .labelTxt:after {background-position:0 0;}
+.homeService.order .orderCont .arraySide {margin-bottom:18px;}
+.homeService.order .orderCont .arraySide p {overflow:hidden;font-size:14px;color:#666;text-align:left;}
+.homeService.order .orderCont .arraySide li {margin-top:5px;}
+.homeService.order .orderCont .arraySide li:first-child {margin-top:13px;}
+.homeService.order .container textarea {border-radius:0;width:838px;padding:20px;}
 
-.homeService.oder .oderCont .thumBox img {vertical-align:top}
-.homeService.oder .oderCont .thumBox + .labelTxt {margin-top:15px;}
-.homeService.oder .oderCont .gradeNum {float:right;color:#f1645c;margin-left:5px}
-.homeService.oder .oderCont .grade {float:right;background-size:70px 27px;width:70px;height:14px;background-position:0 -14px}
-.homeService.oder .oderCont .grade span {background-size:70px 27px;height:14px;background-position:0 0}
-.homeService.oder .grade span.grade01{right: 54px}
-.homeService.oder .grade span.grade02{right: 42px}
-.homeService.oder .grade span.grade03{right: 28px}
-.homeService.oder .grade span.grade04{right: 14px}
-.homeService.oder .grade span.grade05{right: 0px}
-.homeService.oder .grade span.grade15{right: 49px}
-.homeService.oder .grade span.grade25{right: 35px}
-.homeService.oder .grade span.grade35{right: 21px}
-.homeService.oder .grade span.grade45{right: 7px}
+.homeService.order .orderCont .thumBox img {vertical-align:top}
+.homeService.order .orderCont .thumBox + .labelTxt {margin-top:15px;}
+.homeService.order .orderCont .gradeNum {float:right;color:#f1645c;margin-left:5px}
+.homeService.order .orderCont .grade {float:right;background-size:70px 27px;width:70px;height:14px;background-position:0 -14px}
+.homeService.order .orderCont .grade span {background-size:70px 27px;height:14px;background-position:0 0}
+.homeService.order .grade span.grade01{right: 54px}
+.homeService.order .grade span.grade02{right: 42px}
+.homeService.order .grade span.grade03{right: 28px}
+.homeService.order .grade span.grade04{right: 14px}
+.homeService.order .grade span.grade05{right: 0px}
+.homeService.order .grade span.grade15{right: 49px}
+.homeService.order .grade span.grade25{right: 35px}
+.homeService.order .grade span.grade35{right: 21px}
+.homeService.order .grade span.grade45{right: 7px}
 
-.homeService.oder .oderCont.tbSet + h3.subTit {margin-top:50px;}
-.homeService.oder .subTit .subTxt {font-size:14px;color:#666;}
-.homeService.oder .underTxt {margin-top:10px;font-size:14px; color:#999; font-family:'NotoSansR', sans-serif;}
-.homeService.oder .underTxt b {color:#f1645c;}
+.homeService.order .orderCont.tbSet + h3.subTit {margin-top:50px;}
+.homeService.order .subTit .subTxt {font-size:14px;color:#666;}
+.homeService.order .underTxt {margin-top:10px;font-size:14px; color:#999; font-family:'NotoSansR', sans-serif;}
+.homeService.order .underTxt b {color:#f1645c;}
 
-.oder .oderCont {width:100%; display:inline-block;}
-.oder .oderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR', sans-serif;}
-.oder .oderCont table.lineS th {border-bottom:1px solid #e8e8e8;}
-.oder .oderCont table.lineS td {padding:20px 30px; text-align:left; color:#666; font-family:'NotoSansR', sans-serif;}
-.oder .oderCont table.lineS th.lineL,
-.oder .oderCont table.lineS td.lineL {border-left:1px solid #e8e8e8;}
-.oder .oderCont table.lineS ul.tbList2 {width:100%;}
-.oder .oderCont table.lineS ul.tbList2 li {padding-left:8px; color:#666; line-height:23px; background-position:0 9px;}
-.oder .oderCont table.lineS ul.tbList2 li + li {margin-top:0;}
+.order .orderCont {width:100%; display:inline-block;}
+.order .orderCont .tbSet .tbSBg table td span.companyInfo + a.btnSizeS {margin-left:30px; font-family:'NotoSansR', sans-serif;}
+.order .orderCont table.lineS th {border-bottom:1px solid #e8e8e8;}
+.order .orderCont table.lineS td {padding:20px 30px; text-align:left; color:#666; font-family:'NotoSansR', sans-serif;}
+.order .orderCont table.lineS th.lineL,
+.order .orderCont table.lineS td.lineL {border-left:1px solid #e8e8e8;}
+.order .orderCont table.lineS ul.tbList2 {width:100%;}
+.order .orderCont table.lineS ul.tbList2 li {padding-left:8px; color:#666; line-height:23px; background-position:0 9px;}
+.order .orderCont table.lineS ul.tbList2 li + li {margin-top:0;}
 
-.oder .oderCont select{padding:9px 10px; border:1px solid #d6d6d6; /*border-radius:7px;*/color: #999;}
-.oder .oderCont .underTxt {font-size:14px; color:#999; font-family:'NotoSansR', sans-serif;}
-.oder .oderCont + .oderCont {margin-top:10px;}
-.oder .oderCont + h3.subTit {margin-top:39px; }
-.oder .oderCont .pay,
-.oder .oderCont .oderTbW {width:100%; display:inline-block;}
-.oder .oderCont .oderTb.lineN {border-top:0;}
-.oder .oderCont .oderTb {width:100%; display:inline-block; border-top:1px solid #545454;}
-.oder .oderCont .oderTb table tr th,
-.oder .oderCont .oderTb table tr td {border:1px solid #e8e8e8;}
-.oder .oderCont .oderTb table tr td {text-align:left;}
-.oder .oderCont .oderTb table tr th {text-align:center;}
-.oder .oderCont .oderTb + .adrArea {width:100%; overflow:hidden; border-bottom:1px solid #ccc;}
-.oder .oderCont ul.pdLt,
-.oder .oderCont p.pdLt {margin-left:20px;}
-.oder .oderCont p.pdLt a + a {margin-left:10px;;}
+.order .orderCont select{padding:9px 10px; border:1px solid #d6d6d6; /*border-radius:7px;*/color: #999;}
+.order .orderCont .underTxt {font-size:14px; color:#999; font-family:'NotoSansR', sans-serif;}
+.order .orderCont + .orderCont {margin-top:10px;}
+.order .orderCont + h3.subTit {margin-top:39px; }
+.order .orderCont .pay,
+.order .orderCont .orderTbW {width:100%; display:inline-block;}
+.order .orderCont .orderTb.lineN {border-top:0;}
+.order .orderCont .orderTb {width:100%; display:inline-block; border-top:1px solid #545454;}
+.order .orderCont .orderTb table tr th,
+.order .orderCont .orderTb table tr td {border:1px solid #e8e8e8;}
+.order .orderCont .orderTb table tr td {text-align:left;}
+.order .orderCont .orderTb table tr th {text-align:center;}
+.order .orderCont .orderTb + .adrArea {width:100%; overflow:hidden; border-bottom:1px solid #ccc;}
+.order .orderCont ul.pdLt,
+.order .orderCont p.pdLt {margin-left:20px;}
+.order .orderCont p.pdLt a + a {margin-left:10px;;}
 
-.oder .oderCont .tbHf {width:542px; float:left; display:inline-block;}
-.oder .oderCont .tbHf + .tbHf {float:right;}
-.oder .oderCont .tbHf .oderTb table {width:99.8%;}
-.oder .oderCont .tbHf .oderTb table tr th {height:42px;}
-.oder .oderCont .oderTb table tr td ul.noBul {width:100%; overflow:hidden; margin:23px 0;}
-.oder .oderCont .oderTb table tr td ul.noBul li {width:100%; font-family:'NotoSansL', sans-serif;}
-.oder .oderCont .oderTb table tr td ul.noBul li b {font-family:'NotoSansR', sans-serif;}
-.oder .oderCont .oderTb table tr td ul.noBul li + li {width:100%; margin-top:15px;}
-.oder .oderCont .oderTb table tr td ul.noBul li p.inp4 {width:100%;}
-.oder .oderCont .oderTb table tr td ul.noBul li select + p {margin-top:10px;}
-.oder .oderCont .oderTb table tr td ul.noBul li span + span {margin-left:20px;;}
-.oder .oderCont .oderTb table tr td ul.noBul li a.radioBtn {color:#666;}
-.oder .oderCont .oderTb table tr td ul.noBul li .on a.radioBtn label {color:#000;}
-.oder .oderCont .oderTb table tr td ul.noBul li a.radioBtn label:before{top:0;}
-.oder .oderCont .oderTb table tr td ul.noBul li a.radioBtn label {padding:2px 0 2px 22px; }
-.oder .oderCont .oderTb table tr td ul.noBul2 {width:100%; overflow:hidden; margin:45px 0;}
-.oder .oderCont .oderTb table tr td ul.noBul2 li {width:100%; font-family:'NotoSansR', sans-serif; font-size:13px; color:#666; line-height:20px;}
-.oder .oderCont .oderTb table tr td ul.noBul2 li b {color:#333;}
-.oder .oderCont .oderTb table tr td ul.noBul2 li + li {width:100%; margin-top:15px;}
-.oder .oderCont .oderTb table tr td ul.noBul2 li a.btnSizeS {font-family:'NotoSansR', sans-serif;}
-.oder .oderCont .oderTb table tr td div.benefits{}
-.oder .oderCont .oderTb table tr td div.benefits strong{color:#000;}
-.oder .oderCont .oderTb table tr td div.benefits p{line-height:1.4em;margin-top:10px;color:#666;}
-.oder .oderCont .oderTb table tr td div.benefits .btn{margin-top:20px;}
+.order .orderCont .tbHf {width:542px; float:left; display:inline-block;}
+.order .orderCont .tbHf + .tbHf {float:right;}
+.order .orderCont .tbHf .orderTb table {width:99.8%;}
+.order .orderCont .tbHf .orderTb table tr th {height:42px;}
+.order .orderCont .orderTb table tr td ul.noBul {width:100%; overflow:hidden; margin:23px 0;}
+.order .orderCont .orderTb table tr td ul.noBul li {width:100%; font-family:'NotoSansL', sans-serif;}
+.order .orderCont .orderTb table tr td ul.noBul li b {font-family:'NotoSansR', sans-serif;}
+.order .orderCont .orderTb table tr td ul.noBul li + li {width:100%; margin-top:15px;}
+.order .orderCont .orderTb table tr td ul.noBul li p.inp4 {width:100%;}
+.order .orderCont .orderTb table tr td ul.noBul li select + p {margin-top:10px;}
+.order .orderCont .orderTb table tr td ul.noBul li span + span {margin-left:20px;;}
+.order .orderCont .orderTb table tr td ul.noBul li a.radioBtn {color:#666;}
+.order .orderCont .orderTb table tr td ul.noBul li .on a.radioBtn label {color:#000;}
+.order .orderCont .orderTb table tr td ul.noBul li a.radioBtn label:before{top:0;}
+.order .orderCont .orderTb table tr td ul.noBul li a.radioBtn label {padding:2px 0 2px 22px; }
+.order .orderCont .orderTb table tr td ul.noBul2 {width:100%; overflow:hidden; margin:45px 0;}
+.order .orderCont .orderTb table tr td ul.noBul2 li {width:100%; font-family:'NotoSansR', sans-serif; font-size:13px; color:#666; line-height:20px;}
+.order .orderCont .orderTb table tr td ul.noBul2 li b {color:#333;}
+.order .orderCont .orderTb table tr td ul.noBul2 li + li {width:100%; margin-top:15px;}
+.order .orderCont .orderTb table tr td ul.noBul2 li a.btnSizeS {font-family:'NotoSansR', sans-serif;}
+.order .orderCont .orderTb table tr td div.benefits{}
+.order .orderCont .orderTb table tr td div.benefits strong{color:#000;}
+.order .orderCont .orderTb table tr td div.benefits p{line-height:1.4em;margin-top:10px;color:#666;}
+.order .orderCont .orderTb table tr td div.benefits .btn{margin-top:20px;}
 
-.oder .oderCont .oderTb table tr td ul.noBul .tabWrap + div {margin-top:20px;}
-.oder .oderCont .oderTb table tr.total td {height:118px;}
-.oder .oderCont .oderTb table tr td.cashH {height:240px;}
-.oder .oderCont .oderTb table tr td.pointH {height:58px;}
-.oder .oderCont .agreeBox { width:1019px; padding:40px 40px 32px; margin-top:20px; overflow:hidden; border-top:1px solid #545454; border-bottom:1px solid #e8e8e8; background:#fafafa;}
-.oder .oderCont .agreeBox .agreeCont {width:942px; height:220px; padding:38px; border:1px solid #e1e1e1; background:#fff; overflow-y:scroll;}
-.oder .oderCont .agreeBox .agreeCont p {color:#666;}
-.oder .oderCont .agreeBox .agreeCont p + p {margin-top:30px; line-height:130%;}
-.oder .oderCont .payTab {width:100%; margin-top:20px; padding:30px 0; border-top:1px solid #545454; overflow:hidden;}
-.oder .oderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
-.oder .oderCont .payTab a {margin-left:42px; display:inline-block; color:#666;}
-.oder .oderCont .payTab a + a {margin-left:32px;}
-.oder .oderCont .payTab + div div table {margin-top:0;}
-.oder .oderCont .payTab.tabWrap a {padding:1px 0 1px 23px; background:url('../images/ico_radio.png') 0 -18px no-repeat;}
-.oder .oderCont .payTab.tabWrap .on a {background-position:0 0;}
-.oder .oderCont .tabWrap a {display: inline-block; padding:0px 0 2px 23px; background:url('../images/ico_radio.png') 0 -18px no-repeat;}
-.oder .oderCont .tabWrap .on a {background-position:0 0;}
+.order .orderCont .orderTb table tr td ul.noBul .tabWrap + div {margin-top:20px;}
+.order .orderCont .orderTb table tr.total td {height:118px;}
+.order .orderCont .orderTb table tr td.cashH {height:240px;}
+.order .orderCont .orderTb table tr td.pointH {height:58px;}
+.order .orderCont .agreeBox { width:1019px; padding:40px 40px 32px; margin-top:20px; overflow:hidden; border-top:1px solid #545454; border-bottom:1px solid #e8e8e8; background:#fafafa;}
+.order .orderCont .agreeBox .agreeCont {width:942px; height:220px; padding:38px; border:1px solid #e1e1e1; background:#fff; overflow-y:scroll;}
+.order .orderCont .agreeBox .agreeCont p {color:#666;}
+.order .orderCont .agreeBox .agreeCont p + p {margin-top:30px; line-height:130%;}
+.order .orderCont .payTab {width:100%; margin-top:20px; padding:30px 0; border-top:1px solid #545454; overflow:hidden;}
+.order .orderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
+.order .orderCont .payTab a {margin-left:42px; display:inline-block; color:#666;}
+.order .orderCont .payTab a + a {margin-left:32px;}
+.order .orderCont .payTab + div div table {margin-top:0;}
+.order .orderCont .payTab.tabWrap a {padding:1px 0 1px 23px; background:url('../images/ico_radio.png') 0 -18px no-repeat;}
+.order .orderCont .payTab.tabWrap .on a {background-position:0 0;}
+.order .orderCont .tabWrap a {display: inline-block; padding:0px 0 2px 23px; background:url('../images/ico_radio.png') 0 -18px no-repeat;}
+.order .orderCont .tabWrap .on a {background-position:0 0;}
 
-.oder .oderCont .radioBtn {position:relative;}
-.oder .oderCont .radioBtn input[type="radio"] {width:18px; height:18px; margin:0; opacity:0; line-height:100%; overflow:hidden; position:absolute;}
-.oder .oderCont .radioBtn label {padding:2px 0 2px 23px; display:inline-block;}
-.oder .oderCont .radioBtn label:before {content:''; width:18px; height:18px; background:url('../images/ico_radio.png') 0 -18px no-repeat; position:absolute; top:1px; left:0; display:inline-block;}
-.oder .oderCont .on .radioBtn label {color:#000;}
-.oder .oderCont .on .radioBtn label:before {background-position:0 0;}
+.order .orderCont .radioBtn {position:relative;}
+.order .orderCont .radioBtn input[type="radio"] {width:18px; height:18px; margin:0; opacity:0; line-height:100%; overflow:hidden; position:absolute;}
+.order .orderCont .radioBtn label {padding:2px 0 2px 23px; display:inline-block;}
+.order .orderCont .radioBtn label:before {content:''; width:18px; height:18px; background:url('../images/ico_radio.png') 0 -18px no-repeat; position:absolute; top:1px; left:0; display:inline-block;}
+.order .orderCont .on .radioBtn label {color:#000;}
+.order .orderCont .on .radioBtn label:before {background-position:0 0;}
 
-.oder .oderCont ul.homeType {width:100%; overflow:hidden;}
-.oder .oderCont ul.homeType li {width:64px; padding-top:78px; float:left; background:url('../images/ico_home_type.png') 0 0 no-repeat; color:#666; font-family:'NotoSansR',  sans-serif; font-size:14px;}
-.oder .oderCont ul.homeType li + li {margin-left:71px;}
-.oder .oderCont ul.homeType li.hType01 {background-position:0 0;}
-.oder .oderCont ul.homeType li.hType02 {background-position:-64px 0;}
-.oder .oderCont ul.homeType li.hType03 {background-position:-128px 0;}
-.oder .oderCont ul.homeType li.hType04 {background-position:-192px 0;}
-.oder .oderCont ul.homeSize {width:100%; overflow:hidden;}
-.oder .oderCont ul.homeSize li {width:124px; float:left; color:#666; font-family:'NotoSansR',  sans-serif; font-size:14px;}
-.oder .oderCont ul.homeSize li + li {margin-left:10px;}
-.oder .oderCont ul.homeReason {width:100%; overflow:hidden;}
-.oder .oderCont ul.homeReason li {float:left; color:#666; font-family:'NotoSansR',  sans-serif; font-size:14px;}
-.oder .oderCont ul.homeReason li + li {margin-left:30px;}
-.oder .oderCont ul.homeReason + input[type="text"]{margin-top:20px;}
+.order .orderCont ul.homeType {width:100%; overflow:hidden;}
+.order .orderCont ul.homeType li {width:64px; padding-top:78px; float:left; background:url('../images/ico_home_type.png') 0 0 no-repeat; color:#666; font-family:'NotoSansR',  sans-serif; font-size:14px;}
+.order .orderCont ul.homeType li + li {margin-left:71px;}
+.order .orderCont ul.homeType li.hType01 {background-position:0 0;}
+.order .orderCont ul.homeType li.hType02 {background-position:-64px 0;}
+.order .orderCont ul.homeType li.hType03 {background-position:-128px 0;}
+.order .orderCont ul.homeType li.hType04 {background-position:-192px 0;}
+.order .orderCont ul.homeSize {width:100%; overflow:hidden;}
+.order .orderCont ul.homeSize li {width:124px; float:left; color:#666; font-family:'NotoSansR',  sans-serif; font-size:14px;}
+.order .orderCont ul.homeSize li + li {margin-left:10px;}
+.order .orderCont ul.homeReason {width:100%; overflow:hidden;}
+.order .orderCont ul.homeReason li {float:left; color:#666; font-family:'NotoSansR',  sans-serif; font-size:14px;}
+.order .orderCont ul.homeReason li + li {margin-left:30px;}
+.order .orderCont ul.homeReason + input[type="text"]{margin-top:20px;}
 
-.oder h2.secTit.setTitC {width:100%; text-align:center;display:inline-block; font-size:30px;}
-.oder .completeBox {width:100%; margin-top:22px; padding:65px 0; overflow:hidden; border-top:1px solid #666; border-bottom:1px solid #ccc; text-align:center;}
-.oder .completeBox p {font-size:20px; color:#666; font-family:'NotoSansR',  sans-serif; line-height:30px;}
-.oder .completeBox p.tit {font-size:30px;}
-.oder .completeBox p + p {margin-top:27px;}
-.oder .completeBox p b {color:#000;}
-.oder .completeBox p span.pointRed {text-decoration:underline;}
-.oder .completeBox + h3.subTit {margin-top:57px;}
+.order h2.secTit.setTitC {width:100%; text-align:center;display:inline-block; font-size:30px;}
+.order .completeBox {width:100%; margin-top:22px; padding:65px 0; overflow:hidden; border-top:1px solid #666; border-bottom:1px solid #ccc; text-align:center;}
+.order .completeBox p {font-size:20px; color:#666; font-family:'NotoSansR',  sans-serif; line-height:30px;}
+.order .completeBox p.tit {font-size:30px;}
+.order .completeBox p + p {margin-top:27px;}
+.order .completeBox p b {color:#000;}
+.order .completeBox p span.pointRed {text-decoration:underline;}
+.order .completeBox + h3.subTit {margin-top:57px;}
 
 .icoTitle {display:inline-block;width:10px;height:18px;background:url(../images/ico_title.png) 0 0 no-repeat;margin:0 12px;}
 
-.oder .gunboat{}
-.oder .gunboat li{margin-top:10px;position:relative;padding-left:8px;line-height:1.4em;}
-.oder .gunboat li:first-child{margin-top:0;}
-.oder .gunboat li:before{position:absolute;left:0;top:8px;width:2px;height:2px;background:#888;content:"";display:block;}
+.order .gunboat{}
+.order .gunboat li{margin-top:10px;position:relative;padding-left:8px;line-height:1.4em;}
+.order .gunboat li:first-child{margin-top:0;}
+.order .gunboat li:before{position:absolute;left:0;top:8px;width:2px;height:2px;background:#888;content:"";display:block;}
 
-.oder .tablesType01{border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
-.oder .tablesType01 table{width:100%;font-size:14px;}
-.oder .tablesType01 table tbody tr th,
-.oder .tablesType01 table tbody tr td{border-top:1px solid #e8e8e8;}
-.oder .tablesType01 table tbody tr:first-child th,
-.oder .tablesType01 table tbody tr:first-child td{border-top:0;}
-.oder .tablesType01 table tbody tr th{height:45px;padding:15px;background:#f2f4f4;color:#333;font-family:'NotoSansR',sans-serif;}
-.oder .tablesType01 table tbody tr th span{display:block;color:#666;padding-top:4px;}
-.oder .tablesType01 table tbody tr td{padding:15px;background:#fafafa;}
-.oder .tablesType01 table tbody tr td span{font-size:20px;}
-.oder .tablesType01 table tbody tr td span em{font-style:normal;font-family:'NotoSansB',  sans-serif;}
+.order .tablesType01{border-top:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8;}
+.order .tablesType01 table{width:100%;font-size:14px;}
+.order .tablesType01 table tbody tr th,
+.order .tablesType01 table tbody tr td{border-top:1px solid #e8e8e8;}
+.order .tablesType01 table tbody tr:first-child th,
+.order .tablesType01 table tbody tr:first-child td{border-top:0;}
+.order .tablesType01 table tbody tr th{height:45px;padding:15px;background:#f2f4f4;color:#333;font-family:'NotoSansR',sans-serif;}
+.order .tablesType01 table tbody tr th span{display:block;color:#666;padding-top:4px;}
+.order .tablesType01 table tbody tr td{padding:15px;background:#fafafa;}
+.order .tablesType01 table tbody tr td span{font-size:20px;}
+.order .tablesType01 table tbody tr td span em{font-style:normal;font-family:'NotoSansB',  sans-serif;}
