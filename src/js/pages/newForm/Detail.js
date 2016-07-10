@@ -11,8 +11,8 @@ module.exports = function() {
 
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
-	cartController = require('../../controller/MyPageController.js'),
-	productMockController = require('../../controller/ProductMockController.js'),
+	cartController = require('../../controller/OrderController.js'),
+	productController = require('../../controller/ProductController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
@@ -80,12 +80,12 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		productMockController.evals(self.productNumber);
-		productMockController.info(self.productNumber);
-		productMockController.partnerInfo(self.productNumber);
-		productMockController.preview(self.productNumber);
-		productMockController.related(self.productNumber);
-		productMockController.reviews(self.productNumber, self.reviewNumber);
+		productController.evals(self.productNumber);
+		productController.info(self.productNumber);
+		productController.partnerInfo(self.productNumber);
+		productController.preview(self.productNumber);
+		productController.related(self.productNumber);
+		productController.reviews(self.productNumber, self.reviewNumber);
 
 		$('.container a, .container button').on('click', function(e) {
 			e.preventDefault();
@@ -126,7 +126,7 @@ module.exports = function() {
 
 	function setBindEvents() {
 		$(cartController).on(CART_EVENT.WILD_CARD, onControllerListener);
-		$(productMockController).on(PRODUCTMOCK_EVENT.WILD_CARD, onControllerListener);
+		$(productController).on(PRODUCTMOCK_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 	}
 

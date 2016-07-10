@@ -91,22 +91,22 @@ function Events() {
 				// 팔로우 삭제
 				DELETE_FOLLOW : 'deleteFollowsResult'
 			},
-			// ProductMockController - 상품
-			// @see ProductMockController.js
+			// ProductController - 상품
+			// @see ProductController.js
 			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/product-mock-controller
 			PRODUCT_MOCK : {
 				// 상품 평가및 리뷰
-				EVALS : 'productMockEvalsResult',
+				EVALS : 'productEvalsResult',
 				// 상품 정보
-				INFO : 'productMockInfoResult',
+				INFO : 'productInfoResult',
 				// 상품 판매자 정보
-				PARTNER_INFO : 'productMockPartnerInfoResult',
+				PARTNER_INFO : 'productPartnerInfoResult',
 				// 상품 미리보기
-				PREVIEW : 'productMockPreviewResult',
+				PREVIEW : 'productPreviewResult',
 				// 연관상품 리스트
-				RELATED : 'productMockRelatedResult',
+				RELATED : 'productRelatedResult',
 				// 상품 리뷰 상세
-				REVIEWS : 'productMockReviewsResult'
+				REVIEWS : 'productReviewsResult'
 			}
 		// [E] Controller Events
 	},

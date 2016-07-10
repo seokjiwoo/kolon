@@ -19,51 +19,115 @@ function ClassOrderController() {
 	function OrderController() {
 		callerObj = {
 			/**
-			 * 예제
+			 * 장바구니 리스트
 			 */
-			example: example
+			myCartList : myCartList,
+			/**
+			 * 장바구니 등록
+			 */
+			addMyCartList : addMyCartList,
+			/**
+			 * 장바구니 삭제
+			 */
+			deleteMyCartList : deleteMyCartList,
 		}
 		
 		return callerObj;	
 	};
 	
 	/**
-	 * 예제
+	 * 장바구니 리스트
+	 * @param {String} productSectionCode
 	 */
-	function example(attr) {
-		Super.callApi('/apis/example', 'POST', {
-			"example": attr,
-		}, function(status, result) {
+	function myCartList(productSectionCode) {
+		Super.callApi('/apis/me/cart/' + productSectionCode, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('exampleResult', [200]);
+				$(callerObj).trigger('myCartListResult', [status, result]);
 			} else {
-				Super.handleError('example', result);
-				$(callerObj).trigger('exampleResult', [result.status]);
+				Super.handleError('myCartList', result);
+				$(callerObj).trigger('myCartListResult', [status, result]);
 			}
 		}, false);
-	};
+	}
 
+	/**
+	 * 장바구니 등록
+	 * @param {Arrary} myCartRequestList
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
+	 */
+	function addMyCartList(myCartRequestList) {
+		Super.callApi('/apis/me/cart', 'POST', {
+			'myCartRequestList' : myCartRequestList
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('addMyCartListResult', [status, result]);
+			} else {
+				Super.handleError('addMyCartList', result);
+				$(callerObj).trigger('addMyCartListResult', [status, result]);
+			}
+		}, false);
+	}
+
+	/**
+	 * 장바구니 삭제
+	 * @param  {Array} cartNumber
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/removeMyCartUsingDELETE
+	 */
+	function deleteMyCartList(cartNumber) {
+		Super.callApi('/apis/me/cart', 'DELETE', {
+			'cartNumber' : cartNumber
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
+			} else {
+				Super.handleError('deleteMyCartList', result);
+				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
+			}
+		}, false);
+	}
 
 	/*
-	/apis/order : 주소록
-		get /apis/order/addresses
-			주소록 목록
-		post /apis/order/addresses
-			주소록 등록
-		get /apis/order/addresses/search/{addressKeyword}
-			주소 검색
-		get /apis/order/addresses/{addressNumber}
-			주소록 단건 조회
-		put /apis/order/addresses/{addressNumber}
-			주소록 삭제
-		put /apis/order/addresses{addressNumber}
-			주소록 수정
-
 	/apis/orders : 주문서 작성
 		post /apis/orders
 			배송형 주문서 작성 페이지 조회
 		post /apis/orders/process
 			배송형 주문서 작성 처리
+	*/
+	
+	/*
+    get /apis/me/orders/{orderNumber}/cancel
+        취소 신청 조회 팝업
+    post /apis/me/orders/{orderNumber}/cancel
+        주문 취소 신청 처리
+    post /apis/me/orders/{orderNumber}/confirm
+        구매확정
+    post /apis/me/orders/{orderNumber}/exchange
+        교환 신청 처리
+    post /apis/me/orders/{orderNumber}/return
+        반품 신청 처리
+    get /apis/me/orders/{orderNumber}/review
+        상품리뷰 작성 페이지
+    post /apis/me/orders/{orderNumber}/review
+        상품리뷰 작성 처리
+
+	get /apis/me/claims
+		교환/반품/취소 목록 조회
+	get /apis/me/claims/{claimNumber}/cancelCell
+		취소 상세 내역 / 휴대폰 결제
+	get /apis/me/claims/{claimNumber}/cancelCredit
+		취소 상세 내역 / 신용카드 결제
+	get /apis/me/claims/{claimNumber}/cancelDeny
+		취소 반려 상세 내역
+	get /apis/me/claims/{claimNumber}/cancelDeposit
+		취소 상세 내역 / 무통장 입금
+	get /apis/me/claims/{claimNumber}/exchange
+		교환 상세 내역
+	get /apis/me/claims/{claimNumber}/exchangeDeny
+		교환 반려 상세 내역
+	get /apis/me/claims/{claimNumber}/return
+		반품 상세 내역
+	get /apis/me/claims/{claimNumber}/returnDeny
+		반품 반려 상세 내역
 	*/
 }
 

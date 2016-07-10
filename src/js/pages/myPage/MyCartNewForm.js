@@ -11,7 +11,7 @@ module.exports = function() {
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
-	controller = require('../../controller/MyPageController.js'),
+	controller = require('../../controller/OrderController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,

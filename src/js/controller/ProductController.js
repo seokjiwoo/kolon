@@ -1,8 +1,8 @@
 /* jshint node: true, strict: true */
 
-module.exports = ClassProductMockController().getInstance();
+module.exports = ClassProductController().getInstance();
 
-function ClassProductMockController() {
+function ClassProductController() {
 	'use strict';
 
 	var SuperClass = require('./APIController.js');
@@ -15,12 +15,12 @@ function ClassProductMockController() {
 	
 	return {
 		getInstance: function() {
-			if (!instance) instance = ProductMockController();
+			if (!instance) instance = ProductController();
 			return instance;
 		}
 	};
 	
-	function ProductMockController() {
+	function ProductController() {
 		callerObj = {
 			// 상품 평가및 리뷰
 			evals : evals,
@@ -47,10 +47,10 @@ function ClassProductMockController() {
 	function evals(productNumber) {
 		Super.callApi('/apis/products/' + productNumber + '/eval', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('productMockEvalsResult', [status, result]);
+				$(callerObj).trigger('productEvalsResult', [status, result]);
 			} else {
-				Super.handleError('productMockEvals', result);
-				$(callerObj).trigger('productMockEvalsResult', [status, result]);
+				Super.handleError('productEvals', result);
+				$(callerObj).trigger('productEvalsResult', [status, result]);
 			}
 		}, true);
 	}
@@ -65,10 +65,10 @@ function ClassProductMockController() {
 	function info(productNumber) {
 		Super.callApi('/apis/products/' + productNumber + '/info', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('productMockInfoResult', [status, result]);
+				$(callerObj).trigger('productInfoResult', [status, result]);
 			} else {
-				Super.handleError('productMockInfo', result);
-				$(callerObj).trigger('productMockInfoResult', [status, result]);
+				Super.handleError('productInfo', result);
+				$(callerObj).trigger('productInfoResult', [status, result]);
 			}
 		}, true);
 	}
@@ -82,10 +82,10 @@ function ClassProductMockController() {
 	function partnerInfo(productNumber) {
 		Super.callApi('/apis/products/' + productNumber + '/partnerInfo', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('productMockPartnerInfoResult', [status, result]);
+				$(callerObj).trigger('productPartnerInfoResult', [status, result]);
 			} else {
-				Super.handleError('productMockPartnerInfo', result);
-				$(callerObj).trigger('productMockPartnerInfoResult', [status, result]);
+				Super.handleError('productPartnerInfo', result);
+				$(callerObj).trigger('productPartnerInfoResult', [status, result]);
 			}
 		}, true);
 	}
@@ -99,10 +99,10 @@ function ClassProductMockController() {
 	function preview(productNumber) {
 		Super.callApi('/apis/products/' + productNumber + '/preview', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('productMockPreviewResult', [status, result]);
+				$(callerObj).trigger('productPreviewResult', [status, result]);
 			} else {
-				Super.handleError('productMockPreview', result);
-				$(callerObj).trigger('productMockPreviewResult', [status, result]);
+				Super.handleError('productPreview', result);
+				$(callerObj).trigger('productPreviewResult', [status, result]);
 			}
 		}, true);
 	}
@@ -116,10 +116,10 @@ function ClassProductMockController() {
 	function related(productNumber) {
 		Super.callApi('/apis/products/' + productNumber + '/related', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('productMockRelatedResult', [status, result]);
+				$(callerObj).trigger('productRelatedResult', [status, result]);
 			} else {
-				Super.handleError('productMockRelated', result);
-				$(callerObj).trigger('productMockRelatedResult', [status, result]);
+				Super.handleError('productRelated', result);
+				$(callerObj).trigger('productRelatedResult', [status, result]);
 			}
 		}, true);
 	}
@@ -134,10 +134,10 @@ function ClassProductMockController() {
 	function reviews(productNumber, reviewNumber) {
 		Super.callApi('/apis/products/' + productNumber + '/reviews/' + reviewNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('productMockReviewsResult', [status, result]);
+				$(callerObj).trigger('productReviewsResult', [status, result]);
 			} else {
-				Super.handleError('productMockReviews', result);
-				$(callerObj).trigger('productMockReviewsResult', [status, result]);
+				Super.handleError('productReviews', result);
+				$(callerObj).trigger('productReviewsResult', [status, result]);
 			}
 		}, true);
 	}

@@ -26,5 +26,7 @@ module.exports = function() {
 		debug.log(fileName, $, util);
 		
 		$('#mainSlider').bxSlider();
+
+		// http://uppp.oneplat.co/apis/products?productServiceSectionCode=PD_PROD_SVC_SECTION_01
 	}
 };

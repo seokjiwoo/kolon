@@ -47,19 +47,18 @@ function ClassMyPageController() {
 			 */
 			orderTrackingInfo: orderTrackingInfo,
 
-
 			/**
-			 * 장바구니 리스트
+			 * 알림 유형 코드
 			 */
-			myCartList : myCartList,
+			noticeTypeCode: noticeTypeCode,
 			/**
-			 * 장바구니 등록
+			 * 알림 리스트 조회
 			 */
-			addMyCartList : addMyCartList,
+			noticeList: noticeList,
 			/**
-			 * 장바구니 삭제
+			 * 알림 삭제
 			 */
-			deleteMyCartList : deleteMyCartList
+			noticeDelete: noticeDelete
 		}
 		
 		return callerObj;	
@@ -148,87 +147,54 @@ function ClassMyPageController() {
 
 
 
-	function myCartList(productSectionCode) {
-		Super.callApi('/apis/me/cart/' + productSectionCode, 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('myCartListResult', [status, result]);
-			} else {
-				Super.handleError('myCartList', result);
-				$(callerObj).trigger('myCartListResult', [status, result]);
-			}
-		}, false);
-	}
 
 	/**
-	 * 장바구니 등록
-	 * @param {Arrary} myCartRequestList
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
+	 * 알림 리스트 타입 코드 받아오기
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/common-code-controller/listCommonCodeUsingGET ? groupCode=BM_NOTICE_TYPE
 	 */
-	function addMyCartList(myCartRequestList) {
-		Super.callApi('/apis/me/cart', 'POST', {
-			'myCartRequestList' : myCartRequestList
-		}, function(status, result) {
+	function noticeTypeCode() {
+		Super.callApi('/apis/codes/BM_NOTICE_TYPE', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('addMyCartListResult', [status, result]);
+				$(callerObj).trigger('noticeTypeCodeResult', [status, result.data.commonCodes]);
 			} else {
-				Super.handleError('addMyCartList', result);
-				$(callerObj).trigger('addMyCartListResult', [status, result]);
+				Super.handleError('noticeTypeCode', result);
+				$(callerObj).trigger('noticeTypeCodeResult', [status, result]);
 			}
-		}, false);
-	}
+		}, true);
+	};
 
 	/**
-	 * 장바구니 삭제
-	 * @param  {Array} cartNumber
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/removeMyCartUsingDELETE
+	 * 알림 리스트
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/notice-controller/getNoticeListUsingGET
 	 */
-	function deleteMyCartList(cartNumber) {
-		Super.callApi('/apis/me/cart', 'DELETE', {
-			'cartNumber' : cartNumber
-		}, function(status, result) {
+	function noticeList(page, qty) {
+		Super.callApi('/apis/notices', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
+				$(callerObj).trigger('noticeListResult', [status, result.data]);
 			} else {
-				Super.handleError('deleteMyCartList', result);
-				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
+				Super.handleError('noticeList', result);
+				$(callerObj).trigger('noticeListResult', [status, result]);
 			}
-		}, false);
-	}
+		}, true);
+	};
 
-	/*
-    get /apis/me/orders/{orderNumber}/cancel
-        취소 신청 조회 팝업
-    post /apis/me/orders/{orderNumber}/cancel
-        주문 취소 신청 처리
-    post /apis/me/orders/{orderNumber}/confirm
-        구매확정
-    post /apis/me/orders/{orderNumber}/exchange
-        교환 신청 처리
-    post /apis/me/orders/{orderNumber}/return
-        반품 신청 처리
-    get /apis/me/orders/{orderNumber}/review
-        상품리뷰 작성 페이지
-    post /apis/me/orders/{orderNumber}/review
-        상품리뷰 작성 처리
+	/**
+	 * 알림 삭제
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/notice-controller/removeNoticeUsingDELETE
+	 */
+	function noticeDelete() {
+		Super.callApi('/apis/notices', 'DELETE', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('noticeDeleteResult', [status, result]);
+			} else {
+				Super.handleError('noticeDelete', result);
+				$(callerObj).trigger('noticeDeleteResult', [status, result]);
+			}
+		}, true);
+	};
 
-	get /apis/me/claims
-		교환/반품/취소 목록 조회
-	get /apis/me/claims/{claimNumber}/cancelCell
-		취소 상세 내역 / 휴대폰 결제
-	get /apis/me/claims/{claimNumber}/cancelCredit
-		취소 상세 내역 / 신용카드 결제
-	get /apis/me/claims/{claimNumber}/cancelDeny
-		취소 반려 상세 내역
-	get /apis/me/claims/{claimNumber}/cancelDeposit
-		취소 상세 내역 / 무통장 입금
-	get /apis/me/claims/{claimNumber}/exchange
-		교환 상세 내역
-	get /apis/me/claims/{claimNumber}/exchangeDeny
-		교환 반려 상세 내역
-	get /apis/me/claims/{claimNumber}/return
-		반품 상세 내역
-	get /apis/me/claims/{claimNumber}/returnDeny
-		반품 반려 상세 내역
-	*/
+
+	
+
 }
 
