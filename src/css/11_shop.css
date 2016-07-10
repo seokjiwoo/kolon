@@ -28,7 +28,7 @@
 .living .subTop .slideCon .btnMore{width: 155px;color: #595485;line-height: 40px;text-align: center;background: #a7dfd6;border-radius: 20px;font-family:'NotoSansM', sans-serif;}
 .living .subTop .slideCon .btnMore:after{content: '';display: inline-block;width: 13px;height: 10px;margin-left: 5px;background: url('../images/ico_arrowb.png') no-repeat;background-position: 0 -20px;vertical-align: middle;}
 
-.living .cardWrap{padding-top: 15px;}
+.living .cardWrap{padding-top:15px; margin-top:84px}
 
 /* newform detail */
 /* common */

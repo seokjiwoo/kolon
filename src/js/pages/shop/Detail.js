@@ -56,12 +56,12 @@ module.exports = function() {
 				var productNumber = win.prompt('queryString not Found!\n\nproductNumber 를 입력하세요', '');
 				location.href += '?productNumber=' + productNumber;
 				return;
-			}
+			}/* 리뷰는 빠졌음!!
 			if (!self.reviewNumber) {
 				var reviewNumber = win.prompt('queryString not Found!\n\nreviewNumber 를 입력하세요', '');
 				location.href += '&reviewNumber=' + reviewNumber;
 				return;
-			}
+			}*/
 		}
 		
 		setElements();
@@ -72,7 +72,7 @@ module.exports = function() {
 		productController.partnerInfo(self.productNumber);
 		productController.preview(self.productNumber);
 		productController.related(self.productNumber);
-		productController.reviews(self.productNumber, self.reviewNumber);
+		//productController.reviews(self.productNumber, self.reviewNumber);
 
 		$('.container a, .container button').on('click', function(e) {
 			e.preventDefault();
