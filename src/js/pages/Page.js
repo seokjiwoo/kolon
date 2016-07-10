@@ -29,6 +29,7 @@ module.exports = function() {
 	horizonBarChart = require('../components/HorizonBarChart.js'),
 	dropDownMenu =  require('../components/DropDownMenu.js'),
 	eventManager = require('../events/EventManager'),
+	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX;
 	
@@ -54,7 +55,6 @@ module.exports = function() {
 		initChart();	// 차트 컴포넌트
 		dropDownMenu.init();	// 드롭다운 메뉴
 		initAddressPopupButton();	// 주소록 팝업버튼
-		initCardRadio();	// 개인화 수집 카드
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
 
 		$('#sortToggle').on('click', function(e) {//category search drop-down
@@ -68,7 +68,7 @@ module.exports = function() {
 		$('.tabSplit li').css('width',100/countMenu+'%');
 
 		// Colorbox Complete 시점
-		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
+		eventManager.on(COLORBOX_EVENT.REFRESH, cardlistEventRefreshHandler)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
 		fullSlideImg(); // slide Full img 중앙정렬 
@@ -239,12 +239,7 @@ module.exports = function() {
 			lnbScroller.refresh();
 		});
 
-		$('#cardWrap > li').each(function(){ // main card mouseover
-			$(this).find('.cardCon').on('mouseover', onCardConOver)
-			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
-			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
-			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
-		});
+		cardList().initOverEffect();
 	};
 
 	function openLnbHandler(e) {
@@ -261,53 +256,11 @@ module.exports = function() {
 		}
 	};
 
-	// main card event Listener
-	function onCardConOver(e) {
-		if (!$(this).hasClass('cHover')) {
-			$(this).addClass('cHover');
-			$(this).find('.cardBgWrap').show();
-			$(this).find('.cardBg03').queue('fx',[]).stop().css('opacity', 1).delay(100).animate({
-				"opacity": 0
-			}, {
-				"duration": 1000,
-				"easing": "easeOutBack"
-			});
-			$(this).find('.cardBg02').queue('fx',[]).stop().css('opacity', 1).delay(200).animate({
-				"opacity": 0
-			}, {
-				"duration": 1000,
-				"easing": "easeOutBack"
-			});
-			$(this).find('.cardBg01').queue('fx',[]).stop().css('opacity', 1).delay(300).animate({
-				"opacity": 0
-			}, {
-				"duration": 1000,
-				"easing": "easeOutBack",
-				complete: function() {
-					$(this).parents('.cardBgWrap').hide();
-				}
-			});
-		}
-	}
-
-	function onCardConLeave(e) {
-		$(this).removeClass('cHover');
-	}
-
-	function onCardDetailOver(e) {
-		$(this).addClass('sHover');
-	}
-
-	function onCardDetailLeave(e) {
-		$(this).removeClass('sHover');
-	}
-	// main card event Listener
-
 	/**
 	 * 상단 배너영역 초기화
 	 */
 	function initTopBanner() {
-		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함.
+		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함. 쿠키라던가...
 
 		if (showBannerFlag) {
 			topBannerShowFlag = true;
@@ -351,18 +304,6 @@ module.exports = function() {
 			e.stopPropagation();
 		});
 	}
-	
-	/**
-	 * 개인화 수집 카드
-	 */
-	function initCardRadio(){	
-		$('.cardCollect label').click(function(){
-			if ($(this).siblings('input').val() != ':checked'){			
-				$(this).parent().addClass('on');
-				$(this).parent().siblings().removeClass('on');
-			}
-		});
-	};
 
 	/**
 	 * 주문결재 페이지 테이블 높이 설정
@@ -424,32 +365,15 @@ module.exports = function() {
 	// Colorbox Complete 시점
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
-	function onColorboxRefreshListener(e) {
-		$('#cardWrap > li').each(function(){ // main card mouseover
-			$(this).find('.cardCon').off('mouseover', onCardConOver)
-			$(this).find('.cardCon').off('mouseleave', onCardConLeave);
-			$(this).find('.cardDetail').off('mouseover', onCardDetailOver)
-			$(this).find('.cardDetail').off('mouseleave', onCardDetailLeave);
-		});
-
-		$('#cardWrap > li').each(function(){ // main card mouseover
-			$(this).find('.cardCon').on('mouseover', onCardConOver)
-			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
-			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
-			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
-		});
+	function cardlistEventRefreshHandler(e) {
+		cardList().initOverEffect();
 	}
 
 	// Colorbox Cleanup 시점
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
-		$('#cardWrap > li').each(function(){ // main card mouseover
-			$(this).find('.cardCon').on('mouseover', onCardConOver)
-			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
-			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
-			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
-		});
+		cardList().cleanOverEffect();
 	}
 	
 	/**

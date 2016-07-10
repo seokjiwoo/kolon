@@ -1,8 +1,6 @@
 .cardBox {width:1500px; overflow:hidden;}
-.cardWrap{max-width:1520px;min-width:1220px;z-index: 1;}
-.main .cardWrap {margin:64px auto 0;padding-top:83px;}
-.cardWrap > li.card {overflow: hidden;float: left;width:285px;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
-.main .cardWrap > li.card{margin-top:-167px;padding:84px 0;}
+.cardWrap {max-width:1520px;min-width:1220px;z-index: 1;margin:64px auto 0;padding-top:83px;}
+.cardWrap > li.card {overflow: hidden;float: left;width:285px;margin-top:-167px;padding:84px 0;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
 
 @media (max-width:1520px){
 	.cardWrap {max-width:1220px;}
@@ -68,8 +66,7 @@
 .cardTitle.master .cardTitleCont .cardTitleBg {width:1006px; height:1271px; top:-274px; right:400px; background:url('../images/main_bg_master.png') 0 0 no-repeat;}
 
 /* hexagon css */
-.hexagon{position: absolute;top:0px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
-.main .hexagon{top:85px}
+.hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
 .floating .hexagon{top:0}
 .hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
 .hexTop{top: -101.76px}
@@ -102,10 +99,10 @@
 .cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
 .cardWrap .cardThumb img{display: block;width: 100%;}
 .cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:14px auto;background: #fff}
-.cardWrap p.cardPrice {padding:10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;}
+.cardWrap p.cardPrice {padding:10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
 .cardWrap p.cardPrice span {font-size:14px; position:absolute; right:0;}
 .cardWrap p.cardPrice span.priceTop {top:0px;}
-.cardWrap p.cardPrice span.priceBottom {bottom:0px;}
+.cardWrap p.cardPrice span.priceBottom {bottom:0px; font-weight: 400}
 
 /* card flag */
 .cardCon .today {width:96px; height:96px; background:url('../images/card_point.png') -144px 0 no-repeat; position:absolute; top:10px; right:20px; z-index:4;}

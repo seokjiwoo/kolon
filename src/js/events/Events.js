@@ -95,6 +95,10 @@ function Events() {
 			// @see ProductController.js
 			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/product-controller
 			PRODUCT : {
+				// 샵 상품 목록
+				SHOP_LIST: 'shopProductListResult', 
+				// 뉴폼 상품 목록
+				NEWFORM_LIST: 'shopNewFormListResult',
 				// 상품 평가및 리뷰
 				EVALS : 'productEvalsResult',
 				// 상품 정보

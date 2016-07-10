@@ -1,12 +1,54 @@
 <script id="index-card-templates" type="text/x-handlebars-template">
 {{#cards}}
-	<li class="card {{type}}">
+	<li class="card {{cardClass}}">
 		<div class="hexagon" style="{{background}}"><!-- 배경이미지 -->
 			<div class="hexTop"><span></span></div>
 			<div class="hexBottom"><span></span></div>
 		</div>
-		<!-- card 내용 -->
-		{{#vxIF type "==" "cardType08 cardSize02"}}
+		{{#vxIF cardTypeCode "==" "PROD"}}
+		<!-- Type2: 샵 상품 cardType02 cardSize02 -->
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">handmade</p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">{ unit }</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<p class="cardPrice">{{basePrice}} <span class="priceBottom">원</span></p>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle02">
+				<div class="cardCon">
+					<ul class="card_icon">
+						<li class="cart cardDetail"><a href="#">장바구니</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="#">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="#">{{scrapCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<div class="upTo"><p><span><b>20</b>개</span>한정</p></div>
+			<div class="md"><p><span><b>MD</b>추천</span></p></div>
+			<!--// flag -->
+			<!-- hover 효과 -->
+			<div class="cardBgWrap">
+				<p class="cardBg01"><img src="/images/type02_card_bg01.png"></p>
+				<p class="cardBg02"><img src="/images/type02_card_bg02.png"></p>
+				<p class="cardBg03"><img src="/images/type02_card_bg03.png"></p>
+			</div>
+			<!--// hover 효과 -->
+		</div>
+		<!--<a href="" class="cardRemove"></a>-->
+		<!-- Type2 -->
+		{{/vxIF}}
+
+		{{#vxIF cardTypeCode "==" "GRAPH"}}
+		<!-- Type8: 그래프 cardType08 cardSize02 -->
 		<div class="cardCon">
 			<h2 class="cardTit">{{title}}</h2>
 			<div class="cardThum">
@@ -35,8 +77,8 @@
 			<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
+		<!-- Type8 -->
 		{{/vxIF}}
-		<!-- card 내용 -->
 	</li>
 {{/cards}} 
 </script>

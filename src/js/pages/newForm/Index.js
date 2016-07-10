@@ -8,7 +8,17 @@ module.exports = function() {
 	doc = document,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
+	eventManager = require('../../events/EventManager'),
+	events = require('../../events/events'),
 	fileName = 'newForm/Index.js';
+
+	var SuperClass = require('../Page.js'),
+	Super = SuperClass(),
+	cartController = require('../../controller/OrderController.js'),
+	productController = require('../../controller/ProductController.js'),
+	COLORBOX_EVENT = events.COLOR_BOX,
+	CART_EVENT = events.CART,
+	PRODUCT_EVENT = events.PRODUCT;
 
 	var opts = {
 		wrap : '.js-slider-wrap',
@@ -67,7 +77,7 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		//controller.
+		productController.newFormList();
 	}
 
 	function setElements() {
@@ -84,6 +94,21 @@ module.exports = function() {
 		$(doc).on(CB_EVENTS.COMPLETE, onCboxEventListener)
 				.on(CB_EVENTS.CLEANUP, onCboxEventListener)
 				.on(CB_EVENTS.CLOSED, onCboxEventListener);
+				
+		$(cartController).on(CART_EVENT.WILD_CARD, onControllerListener);
+		$(productController).on(PRODUCT_EVENT.WILD_CARD, onControllerListener);
+	}
+
+	function onControllerListener(e, status, response, elements) {
+		var eventType = e.type,
+		dummyData = {},
+		result = response;
+		
+		switch(eventType) {
+			case PRODUCT_EVENT.NEWFORM_LIST:
+				console.log(result);
+				break;
+		}
 	}
 
 	function onCboxEventListener(e) {

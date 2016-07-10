@@ -22,13 +22,9 @@ function ClassProductController() {
 	
 	function ProductController() {
 		callerObj = {
-			/**
-			 * 샵(=배송형 상품) 리스트
-			 */
+			// 샵(=배송형 상품) 리스트
 			shopList: shopList,
-			/**
-			 * 뉴폼(=시공형 상품) 리스트
-			 */
+			// 뉴폼(=시공형 상품) 리스트
 			newFormList: newFormList,
 			// 상품 평가및 리뷰
 			evals : evals,
@@ -47,33 +43,33 @@ function ClassProductController() {
 	}
 
 	/**
-	 * 
+	 * 샵(=배송형 상품) 리스트
 	 */
 	function shopList() {
 		Super.callApi('/apis/products/', 'GET', {
 			productServiceSectionCode: "PD_PROD_SVC_SECTION_01"
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('shopListResult', [status, result]);
+				$(callerObj).trigger('shopProductListResult', [status, result.data]);
 			} else {
 				Super.handleError('shopList', result);
-				$(callerObj).trigger('shopListResult', [status, result]);
+				$(callerObj).trigger('shopProductListResult', [status, result]);
 			}
 		}, true);
 	};
 
 	/**
-	 * 
+	 * 뉴폼(=시공형 상품) 리스트
 	 */
 	function newFormList() {
 		Super.callApi('/apis/products/', 'GET', {
 			productServiceSectionCode: "PD_PROD_SVC_SECTION_02"
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('newFormListResult', [status, result]);
+				$(callerObj).trigger('shopNewFormListResult', [status, result.data]);
 			} else {
 				Super.handleError('newFormList', result);
-				$(callerObj).trigger('newFormListResult', [status, result]);
+				$(callerObj).trigger('shopNewFormListResult', [status, result]);
 			}
 		}, true);
 	};

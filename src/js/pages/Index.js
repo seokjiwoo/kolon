@@ -7,6 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../utils/Console.js'),
 	util = require('../utils/Util.js'),
+	cardList = require('../components/CardList.js'),
 	doughnutChart = require('../components/DoughnutChart.js'),
 	fileName = 'Index.js';
 
@@ -33,6 +34,8 @@ module.exports = function() {
 			// 로그인
 			initHeaderCardlist();
 		}
+
+		cardList.init('#cardWrap');	// 카드 리스트
 
 
 		setDemoDoughnut();
@@ -71,13 +74,8 @@ module.exports = function() {
 			data = {
 				cards : [
 					{
-						type : 'cardType01 cardSize03',
-						title : '<b>인더스트리얼</b> 욕실',
-						description : '<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
-						background : 'background-image: url(\'/images/temp24.jpg\')'
-					},
-					{
-						type : 'cardType08 cardSize02',
+						cardTypeCode : 'GRAPH',
+						cardClass: 'cardType08 cardSize02',
 						title : '목표 수익 금액 <br>달성률',
 						description : '<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
 						background : 'background-color:#f17992;',
@@ -85,13 +83,8 @@ module.exports = function() {
 						onScreen : true
 					},
 					{
-						type : 'cardType01 cardSize03',
-						title : '<b>인더스트리얼</b> 욕실',
-						description : '<p>홍길동고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
-						background : 'background-image: url(\'/images/temp24.jpg\')'
-					},
-					{
-						type : 'cardType08 cardSize02',
+						cardTypeCode : 'GRAPH',
+						cardClass: 'cardType08 cardSize02',
 						title : '목표 수익 금액 <br>달성률',
 						description : '<p>홍길동고객님, <br>목표달성까지 남은 금액은 <br>523,400 원 입니다.</p>',
 						background : 'background-color:#f17992;',
@@ -99,7 +92,7 @@ module.exports = function() {
 						onScreen : false
 					},
 				]
-			}; 
+			}; // cardClass는 cardTypeCode 참조해서 이쪽이 만들어야 함. 더미니까 일단 두는 걸로.
 
 			html = template(data);
 
