@@ -34,18 +34,6 @@ function ClassMyPageController() {
 			 * 최근 본 상품 목록
 			 */
 			recentViewItems: recentViewItems,
-			/**
-			 * 주문/배송 현황 조회
-			 */
-			myOrdersList: myOrdersList,
-			/**
-			 * 주문 상세
-			 */
-			orderDetail: orderDetail,
-			/**
-			 * 배송 조회
-			 */
-			orderTrackingInfo: orderTrackingInfo,
 
 			/**
 			 * 알림 유형 코드
@@ -110,36 +98,6 @@ function ClassMyPageController() {
 				$(callerObj).trigger('myReviewResult', [200, result]);
 			} else {
 				Super.handleError('myReview', result);
-			}
-		}, false);
-	};
-	
-	function myOrdersList() {
-		Super.callApi('/apis/me/orders', 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('myOrdersListResult', [200, result]);
-			} else {
-				Super.handleError('myOrdersList', result);
-			}
-		}, false);
-	};
-	
-	function orderDetail(orderNumber) {
-		Super.callApi('/apis/me/orders/'+orderNumber, 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('orderDetailResult', [200, result]);
-			} else {
-				Super.handleError('orderDetail', result);
-			}
-		}, false);
-	};
-	
-	function orderTrackingInfo(orderNumber) {
-		Super.callApi('/apis/me/orders/'+orderNumber+'/tracking', 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('orderTrackingInfoResult', [200, result]);
-			} else {
-				Super.handleError('orderTrackingInfo', result);
 			}
 		}, false);
 	};

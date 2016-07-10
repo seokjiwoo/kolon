@@ -30,6 +30,19 @@ function ClassOrderController() {
 			 * 장바구니 삭제
 			 */
 			deleteMyCartList : deleteMyCartList,
+			
+			/**
+			 * 주문/배송 현황 조회
+			 */
+			myOrdersList: myOrdersList,
+			/**
+			 * 주문 상세
+			 */
+			orderDetail: orderDetail,
+			/**
+			 * 배송 조회
+			 */
+			orderTrackingInfo: orderTrackingInfo
 		}
 		
 		return callerObj;	
@@ -85,6 +98,36 @@ function ClassOrderController() {
 			}
 		}, false);
 	}
+	
+	function myOrdersList() {
+		Super.callApi('/apis/me/orders', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myOrdersListResult', [200, result]);
+			} else {
+				Super.handleError('myOrdersList', result);
+			}
+		}, false);
+	};
+	
+	function orderDetail(orderNumber) {
+		Super.callApi('/apis/me/orders/'+orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderDetailResult', [200, result]);
+			} else {
+				Super.handleError('orderDetail', result);
+			}
+		}, false);
+	};
+	
+	function orderTrackingInfo(orderNumber) {
+		Super.callApi('/apis/me/orders/'+orderNumber+'/tracking', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderTrackingInfoResult', [200, result]);
+			} else {
+				Super.handleError('orderTrackingInfo', result);
+			}
+		}, false);
+	};
 
 	/*
 	/apis/orders : 주문서 작성
