@@ -67,7 +67,7 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		// http://uppp.oneplat.co/apis/products?productServiceSectionCode=PD_PROD_SVC_SECTION_02
+		//controller.
 	}
 
 	function setElements() {

@@ -17,7 +17,7 @@ module.exports = function() {
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	CART_EVENT = events.CART,
-	PRODUCTMOCK_EVENT = events.PRODUCT_MOCK;
+	PRODUCT_EVENT = events.PRODUCT;
 	
 	var callerObj = {
 		/**
@@ -113,7 +113,7 @@ module.exports = function() {
 
 	function setBindEvents() {
 		$(cartController).on(CART_EVENT.WILD_CARD, onControllerListener);
-		$(productController).on(PRODUCTMOCK_EVENT.WILD_CARD, onControllerListener);
+		$(productController).on(PRODUCT_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 	}
 
@@ -168,32 +168,32 @@ module.exports = function() {
 					break;
 			// [E] CART - 장바구니
 
-			// [S] PRODUCT_MOCK - 상품
-				case PRODUCTMOCK_EVENT.EVALS:
+			// [S] PRODUCT - 상품
+				case PRODUCT_EVENT.EVALS:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-				case PRODUCTMOCK_EVENT.INFO:
+				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-				case PRODUCTMOCK_EVENT.PARTNER_INFO:
+				case PRODUCT_EVENT.PARTNER_INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-				case PRODUCTMOCK_EVENT.PREVIEW:
+				case PRODUCT_EVENT.PREVIEW:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-				case PRODUCTMOCK_EVENT.RELATED:
+				case PRODUCT_EVENT.RELATED:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-				case PRODUCTMOCK_EVENT.REVIEWS:
+				case PRODUCT_EVENT.REVIEWS:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-			// [E] PRODUCT_MOCK - 상품
+			// [E] PRODUCT - 상품
 		}
 	}
 

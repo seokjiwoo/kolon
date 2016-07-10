@@ -93,8 +93,8 @@ function Events() {
 			},
 			// ProductController - 상품
 			// @see ProductController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/product-mock-controller
-			PRODUCT_MOCK : {
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/product-controller
+			PRODUCT : {
 				// 상품 평가및 리뷰
 				EVALS : 'productEvalsResult',
 				// 상품 정보

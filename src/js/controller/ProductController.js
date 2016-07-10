@@ -22,6 +22,14 @@ function ClassProductController() {
 	
 	function ProductController() {
 		callerObj = {
+			/**
+			 * 샵(=배송형 상품) 리스트
+			 */
+			shopList: shopList,
+			/**
+			 * 뉴폼(=시공형 상품) 리스트
+			 */
+			newFormList: newFormList,
 			// 상품 평가및 리뷰
 			evals : evals,
 			// 상품 정보
@@ -39,9 +47,41 @@ function ClassProductController() {
 	}
 
 	/**
+	 * 
+	 */
+	function shopList() {
+		Super.callApi('/apis/products/', 'GET', {
+			productServiceSectionCode: "PD_PROD_SVC_SECTION_01"
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('shopListResult', [status, result]);
+			} else {
+				Super.handleError('shopList', result);
+				$(callerObj).trigger('shopListResult', [status, result]);
+			}
+		}, true);
+	};
+
+	/**
+	 * 
+	 */
+	function newFormList() {
+		Super.callApi('/apis/products/', 'GET', {
+			productServiceSectionCode: "PD_PROD_SVC_SECTION_02"
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('newFormListResult', [status, result]);
+			} else {
+				Super.handleError('newFormList', result);
+				$(callerObj).trigger('newFormListResult', [status, result]);
+			}
+		}, true);
+	};
+
+	/**
 	 * 상품 평가및 리뷰
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-mock-controller/getProductEvalUsingGET
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductEvalUsingGET
 	 * @ GET /apis/products/{productNumber}/eval
 	 */
 	function evals(productNumber) {
@@ -59,7 +99,7 @@ function ClassProductController() {
 	/**
 	 * 상품 정보
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-mock-controller/getProductInfoUsingGET
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductInfoUsingGET
 	 * @ GET /apis/products/{productNumber}/info
 	 */
 	function info(productNumber) {
@@ -76,7 +116,7 @@ function ClassProductController() {
 	/**
 	 * 상품 판매자 정보
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-mock-controller/getProductPartnerInfoUsingGET
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductPartnerInfoUsingGET
 	 * @ GET /apis/products/{productNumber}/partnerInfo
 	 */
 	function partnerInfo(productNumber) {
@@ -93,7 +133,7 @@ function ClassProductController() {
 	/**
 	 * 상품 미리보기
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-mock-controller/getProductPreviewUsingGET
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductPreviewUsingGET
 	 * @ GET /apis/products/{productNumber}/preview
 	 */
 	function preview(productNumber) {
@@ -110,7 +150,7 @@ function ClassProductController() {
 	/**
 	 * 연관상품 리스트
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-mock-controller/getProductRelatedUsingGET
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductRelatedUsingGET
 	 * @ GET /apis/products/{productNumber}/related
 	 */
 	function related(productNumber) {
@@ -128,7 +168,7 @@ function ClassProductController() {
 	 * 연관상품 리스트
 	 * @param  {Number} productNumber
 	 * @param  {Number} reviewNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-mock-controller/getProductReviewUsingGET
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductReviewUsingGET
 	 * @ GET /apis/products/{productNumber}/reviews/{reviewNumber}
 	 */
 	function reviews(productNumber, reviewNumber) {
