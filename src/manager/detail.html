@@ -7,7 +7,8 @@
 	<div class="wrapper expert">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<a href="">팔로우</a>
+			<a href="" class="js-add-follow">팔로우</a>
+			<a href="" class="js-delete-follow">팔로우 취소</a>
 			<a href="../_popup/popMessage.html" class="btnSizeM btnColor03 btnPop btnPop590 " data-user-class="orderPop popEdge">1:1 메시지</a>
 			<a href="">공유하기</a>
 			<a href="">지도보기</a>
@@ -83,7 +84,42 @@
 				</section>
 			</div> -->
 		</div>
+
+
+		<!-- [D] API 통신 - 결과화면 영역 -->
+		<div class="container js-api-result">
+			<h1>API 통신 - 결과화면 영역</h1>
+			<div>
+				<h2>POST /apis/follows 팔로우 등록</h2>
+				<div class="js-ajax-data"></div>
+				<div class="addFollowsResult"></div>
+			</div>
+			<div>
+				<h2>DELETE /apis/follows/{followNumber} 팔로우 삭제</h2>
+				<div class="js-ajax-data2"></div>
+				<div class="deleteFollowsResult"></div>
+			</div>
+		</div>
+		<!--// [D] API 통신 - 결과화면 영역 -->
+
+
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+
+<style>
+	.js-api-result {margin:20px}
+	.js-api-result h1 {border-bottom:1px #999 solid;margin-bottom:20px;padding-bottom:20px}
+	.js-api-result > div {margin-left:20px;margin-bottom:40px;padding-bottom:10px;border-bottom:1px #999 dashed}
+	.js-api-result > div h2 {color:#ff6600;}
+	.js-api-result > div > div {margin-left:20px;padding-top:10px}
+</style>
+
+<script id="manager-detail-templates" type="text/x-handlebars-template">
+	{{!-- manager-detail-templates --}}
+	{{!--// manager-detail-templates --}}
+</script>
+
+
 </body>
 </html>
