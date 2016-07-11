@@ -125,6 +125,8 @@ a{color:#666;}
 .wrap {background:#fff; overflow:hidden;}
 .wrapT {padding:25px 15px; background:#fff; overflow:hidden;}
 .wrapT + .wrapT,
+.wrapT + .myWrap,
+.myWrap + .wrapT,
 .wrapT + p.setTit{margin-top:10px;}
 .myWrap {padding:0 15px; background:#fff; overflow:hidden;}
 .myWrap + .myWrap {margin-top:10px;}
