@@ -10,10 +10,10 @@
 			<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu06":"on"} -->
 			<section class="wrap" id="myInfo">
-				<script id="personal-info-card-template" type="text/x-handlebars-template">
-				{{!-- personal-info-card-template --}}
 				<h2 class="hide">내정보</h2>
-				<ul class="cardWrap">
+				<ul id='cardWrap' class="cardWrap">
+					<script id="personal-info-card-template" type="text/x-handlebars-template">
+					{{!-- personal-info-card-template --}}
 					<li class="cardType08 cardSize02 card" id="myIntro">
 						<div class="hexagon">
 							<div class="hexTop"><span></span></div>
@@ -31,29 +31,29 @@
 						</div>
 					</li>
 					{{#each .}}
-					<li class="cardType09 cardSize02 card" id="personalCard{{cardNumber}}" data-api-url="{{apiUrl}}">
+					<li class="cardType09 cardSize02 card {{cardClass}}" id="personalCard{{cardNumber}}" data-api-url="{{apiUrl}}">
 						<div class="hexagon">
 							<div class="hexTop"><span></span></div>
 							<div class="hexBottom"><span></span></div>
 						</div>
-						<!-- card 내용 -->
+						<!-- card 내용    -->
 						<div class="cardCon">
 							<h2 class="cardTit">{{questionContents}}</h2>
 							<p class="cardIntro">고객님에 대해 알려주세요</p>
-							{{#vxIF registerTypeCode "==" "DP_CARD_REGISTER_TYPE_03"}}
+							{{#vxIF cardClass "==" "addressCard"}}
 							<div class="formListWrap">
 								<div class="formList">
-									<div class="alignBox">
+									<div class="alignBox addressDrop1">
 										<ul class="drop" data-prevent="true">
 											<li><a href="#">시/도</a></li>
 										</ul>
 									</div>
-									<div class="alignBox">
+									<div class="alignBox addressDrop2">
 										<ul class="drop" data-prevent="true">
 											<li><a href="#">시군구</a></li>
 										</ul>
 									</div>
-									<div class="alignBox">
+									<div class="alignBox addressDrop3">
 										<ul class="drop" data-prevent="true">
 											<li><a href="#">읍면동</a></li>
 										</ul>
@@ -61,10 +61,26 @@
 								</div>
 							</div>
 							{{/vxIF}}
-							{{#vxIF registerTypeCode "==" "DP_CARD_REGISTER_TYPE_04"}}
+							{{#vxIF cardClass "==" "dwellingCard"}}
+							<div class="formListWrap">
+								<div class="formList">
+									<div class="alignBox dwellingFormDrop">
+										<ul class="drop" data-prevent="true">
+											<li><a href="#">주거형태</a></li>
+										</ul>
+									</div>
+									<div class="alignBox dwellingPyeongDrop">
+										<ul class="drop" data-prevent="true">
+											<li><a href="#">평수</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							{{/vxIF}}
+							{{#vxIF cardClass "==" "selectCard"}}
 							<ul class="cardCollect">
 								{{#each myPersonalCardAnswerList}}
-								<li class="collect0{{@index}}">
+								<li class="collect0{{@index}}" data-answer-content="{{answerSequenceContent}}">
 									<input type="radio" id="pet0{{@index}}">
 									<label for="pet0{{@index}}">{{answerSequenceContent}}</label>
 								</li>
@@ -76,10 +92,10 @@
 						<!--// card 내용 -->
 					</li>
 					{{/each}}
+					{{!-- personal-info-card-template --}}
+					</script>
 				</ul>
-				<p class="btnWrap mt40"><button class="btn btnSizeL btnColor02">저장</button></p>
-				{{!-- personal-info-card-template --}}
-				</script>
+				<!--<p class="btnWrap mt40"><button class="btn btnSizeL btnColor02">저장</button></p>-->
 			</section>
 					<!--
 					<li class="cardType09 cardSize02 card">
@@ -130,27 +146,7 @@
 						<div class="cardCon">
 							<h2 class="cardTit">주거 형태는<br>어떻게 되시나요?</h2>
 							<p class="cardIntro">고객님에 대해 알려주세요</p>
-							<div class="formListWrap">
-								<div class="formList">
-									<div class="alignBox">
-										<ul class="drop" data-prevent="true">
-											<li><a href="#">이파트</a></li>
-											<li><a href="#" data-value="type-1">주택</a></li>
-											<li><a href="#" data-value="type-2">기타</a></li>
-										</ul>
-									</div>
-									<div class="alignBox">
-										<ul class="drop" data-prevent="true">
-											<li><a href="#">평수</a></li>
-											<li><a href="#" data-value="type-1">20평형 이하</a></li>
-											<li><a href="#" data-value="type-2">20평형</a></li>
-											<li><a href="#" data-value="type-3">30평형</a></li>
-											<li><a href="#" data-value="type-4">40평형</a></li>
-											<li><a href="#" data-value="type-5">50평형 이상</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							
 							<p class="reward">200포인트 지급</p>
 						</div>
 					</li>
