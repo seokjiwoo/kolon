@@ -123,6 +123,6 @@ a{color:#666;}
 .searchWrap .keyword ul.keywordList li span {color:#f1645c;}
 
 .wrap {background:#fff; overflow:hidden;}
-.wrapT {padding:25px 0 15px; background:#fff; overflow:hidden;}
+.wrapT {padding:25px 15px; background:#fff; overflow:hidden;}
 .myWrap {padding:0 15px; background:#fff; overflow:hidden;}
 .myWrap + .myWrap {margin-top:10px;}
