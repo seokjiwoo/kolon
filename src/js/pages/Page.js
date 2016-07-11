@@ -316,14 +316,14 @@ module.exports = function() {
 	};
 
 
-	/**
-	 * Handlebars setting
-	 * @example
-	 	{{#vxIF @index "<" 2}}
-	 		~~~~~~~
-	 	{{/vxIF}}
-	 */
 	function initHandlebars() {
+		/**
+		 * Handlebars setting
+		 * @example
+		 	{{#vxIF @index "<" 2}}
+		 		~~~~~~~
+		 	{{/vxIF}}
+		 */
 		window.Handlebars.registerHelper("vxIF", function(v1,operator,v2,options) {
 			switch (operator) {
 				case "==":
@@ -358,6 +358,19 @@ module.exports = function() {
 
 				default:
 					return eval(""+v1+operator+v2)?options.fn(this):options.inverse(this);
+			}
+		});
+
+		/**
+		 * Handlebars setting
+		 * @example
+	 		{{#vxModuloIF @index 3}}
+	 		~~~~~~~
+		 	{{/vxModuloIF}}
+		 */
+		window.Handlebars.registerHelper("vxModuloIF", function(index_count,mod,block) {
+			if (parseInt(index_count)%(mod) === 0) {
+				return block.fn(this);
 			}
 		});
 	}
