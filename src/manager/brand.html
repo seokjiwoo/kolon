@@ -7,11 +7,7 @@
 	<div class="wrapper brand">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<a href="" class="js-add-follow">팔로우</a>
-			<a href="" class="js-delete-follow">팔로우 취소</a>
-			<a href="">1:1 메시지</a>
-			<a href="">지도보기</a>
-			<!-- <div class="infoTop">
+			<div class="infoTop">
 				<div class="wrap colWrap">
 					<div class="col colL">
 						<div class="infoPic"><img src="/images/temp13.jpg" alt=""></div>
@@ -25,63 +21,61 @@
 						<a href="" id="sharePage">페이지 공유</a>
 						<p class="infoBtn">
 							<span id="followView" class="myRate"><b>104 </b>팔로워</span>
-							<a href="" id="btnFollow" class="btnSizeM btnColor02">팔로우</a>
+							<a href="" id="btnFollow" class="btnSizeM btnColor02 js-add-follow">팔로우</a> <!-- <a href="" class="js-delete-follow">팔로우 취소</a> -->
 							<a href="" id="btnMsg" class="btnSizeM btnColor03">1:1 메세지</a>
 						</p>
 					</div>
 					
 				</div>
 			</div>
-			<div class="tabType01 tabWrap">
+			<div class="tabType02">
 				<ul class="sWrap">
-					<li class="on"><a href="#brandInfo">브랜드 소개</a></li>
-					<li><a href="#brandList">판매상품 <span>15</span></a></li>
+					<li class="on"><a href="/manager/brand.html">브랜드 소개</a></li>
+					<li><a href="/manager/itemList.html">판매상품 <span>15</span></a></li>
 				</ul>
 			</div>
-			<div class="wrap">
-				<section class="contentCard" id="brandInfo">
-					<div class="singleCard">
-						<ul id="infoSlider">
-							<li><img src="/images/temp14.jpg" alt=""></li>
-							<li><img src="/images/temp15.jpg" alt=""></li>
-							<li><img src="/images/temp16.jpg" alt=""></li>
-						</ul>
-						<div class="sWrap" id="content">
-							<p>KGC는 라이프스타일을 고려하여 편안하고 개성있는 공간을 제공하는 인테리어 디자인 그룹입니다. <br>고객님의 감성에 YELLOW PLASTIC만의 감각을 더하여 차별화된 공간연출을 하고 있습니다. <br>기본 공간을 연출하는 인테리어위에 홈스타일링을 함께 진행을 하여 공간에 어울리는 가구, 패브릭(침구,커텐,쿠션) <br>소품 어레인지먼트 까지 총괄적으로 연출하는 디자인-허브 개념의 하이퀄리티 서비스를 제공합니다</p>
-							<h4 class="conTit">URL</h4>
-							<a href="http://www.casamiashop.com" class="url">www.casamiashop.com</a>
-						</div>
-					</div>
-					<h3 class="secTit">연관 태그</h3>
-					<ul class="relateTag">
-						<li><a href="">#엔티크</a></li>
-						<li><a href="">#모던심플</a></li>
-						<li><a href="">#자투리공간</a></li>
-						<li><a href="">#드레스룸</a></li>
-						<li><a href="">#직장인</a></li>
-						<li><a href="">#라이프스타일</a></li>
-						<li><a href="">#짜투리공간</a></li>
-						<li><a href="">#다세대</a></li>
-						<li><a href="">#내추럴</a></li>
-						<li><a href="">#1인가구</a></li>
-						<li><a href="">#싱글라이프</a></li>
-						<li><a href="">#14평</a></li>
+			<section class="contentCard" id="brandInfo">
+				<div class="singleCard">
+					<ul id="infoSlider">
+						<li><img src="/images/temp14.jpg" alt=""></li>
+						<li><img src="/images/temp15.jpg" alt=""></li>
+						<li><img src="/images/temp16.jpg" alt=""></li>
 					</ul>
-				</section>
-				<section id="brandList" style="display: none;">
-					<div class="arrayWrap">
-						<ul class="arrayDrop arrayCount">
-							<li><a href="">최신순</a></li>
-							<li><a href="">인기순</a></li>
-							<li><a href="">가격높은순</a></li>
-							<li><a href="">가격낮은순</a></li>
-							<li><a href="">스크랩 많은 순</a></li>
+					<div class="sWrap" id="content">
+						<p>KGC는 라이프스타일을 고려하여 편안하고 개성있는 공간을 제공하는 인테리어 디자인 그룹입니다. <br>고객님의 감성에 YELLOW PLASTIC만의 감각을 더하여 차별화된 공간연출을 하고 있습니다. <br>기본 공간을 연출하는 인테리어위에 홈스타일링을 함께 진행을 하여 공간에 어울리는 가구, 패브릭(침구,커텐,쿠션) <br>소품 어레인지먼트 까지 총괄적으로 연출하는 디자인-허브 개념의 하이퀄리티 서비스를 제공합니다</p>
+						<h4 class="conTit">URL</h4>
+						<a href="http://www.casamiashop.com" class="url">www.casamiashop.com</a>
+						<h3 class="secTit">연관 태그</h3>
+						<ul class="tag mt20">
+							<li><a href="">#엔티크</a></li>
+							<li><a href="">#모던심플</a></li>
+							<li><a href="">#자투리공간</a></li>
+							<li><a href="">#드레스룸</a></li>
+							<li><a href="">#직장인</a></li>
+							<li><a href="">#라이프스타일</a></li>
+							<li><a href="">#짜투리공간</a></li>
+							<li><a href="">#다세대</a></li>
+							<li><a href="">#내추럴</a></li>
+							<li><a href="">#1인가구</a></li>
+							<li><a href="">#싱글라이프</a></li>
+							<li><a href="">#14평</a></li>
 						</ul>
 					</div>
-					<ul class="cardWrap" id="cardWrap">
+				</div>
+			</section>
+			<section id="brandList" style="display: none;">
+				<div class="arrayWrap">
+					<ul class="arrayDrop arrayCount">
+						<li><a href="">최신순</a></li>
+						<li><a href="">인기순</a></li>
+						<li><a href="">가격높은순</a></li>
+						<li><a href="">가격낮은순</a></li>
+						<li><a href="">스크랩 많은 순</a></li>
 					</ul>
-				</section>
-			</div> -->
+				</div>
+				<ul class="cardWrap" id="cardWrap">
+				</ul>
+			</section>
 		</div>
 
 

@@ -62,24 +62,6 @@
 .doubleCard{width:510px;float: left;}
 .doubleCard:first-child{margin-right: 60px;}
 
-/* brand */
-.singleCard .bx-wrapper{overflow: hidden;position: relative;padding: 0 210px;border-radius: 10px 10px 0 0;z-index: 1}
-.singleCard .bx-viewport{overflow: visible !important;}
-.singleCard #infoSlider img{display: block;width: 100%;}
-.singleCard .bx-wrapper .bx-controls-direction .bx-prev{left: 80px;}
-.singleCard .bx-wrapper .bx-controls-direction .bx-next{right: 80px;}
-
-.singleCard #content{margin-top:50px;padding-bottom:20px;}
-.singleCard #content p{font-size: 16px;color: #000;line-height: 1.6em;}
-.singleCard .conTit{clear:both;margin-top:80px;font-family:'NotoSansM', sans-serif;color: #000;font-size: 20px;}
-.singleCard .url{display: block;margin-top:30px;font-size: 14px;font-family:'NotoSansL', sans-serif;color:#a9c700;}
-
-.contentCard .secTit{margin-top:60px;padding-left: 10px;font-size: 30px;color: #000;font-family:'NotoSansR', sans-serif;}
-.contentCard .relateTag{margin-top:25px;}
-.contentCard .relateTag li{display: inline-block;margin:6px 5px;}
-.contentCard .relateTag li a{display: inline-block;padding: 20px 35px;background: #fff;border-radius: 30px;box-shadow: 0px 3px rgba(0,0,0,0.1);font-size: 20px;font-family:'NotoSansR', sans-serif;color: #333;}
-
-
 /* search */
 .search .container{padding-top: 265px;}
 .search .subTop{position: fixed;top: 60px;width: 100%;min-width: 1240px;z-index: 4}

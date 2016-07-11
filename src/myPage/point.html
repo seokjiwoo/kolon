@@ -9,32 +9,30 @@
 		<div class="container bgTop">
 			<!-- @@include ../_template/my_depth01.html {"myMenu06":"on"} -->
 			<div class="wrap is-loading">
-				<section class="singleCard" id="myActivity">
+				<section class="singleCard" id="myPoint">
 					<h2 class="secTit">마이 커먼 포인트</h2>
-					<div class="tbSet">
-						<table class="tbL">
-							<caption>보유포인트, 소멸예정 포인트 정보를 제공합니다.</caption>
-							<colgroup>
-								<col style="width:160px;"/>
-								<col style="width:390px;"/>
-								<col style="width:160px;"/>
-								<col style="width:390px;"/>
-							</colgroup>
-							<!-- [D] 마크업 원본-->
-							<!-- 
-							<tbody>
-								<tr>
-									<th scope="row">보유포인트</th>
-									<td><span class="price"><span class="pointRed">100,000</span> P</span></td>
-									<th scope="row">30일 이내 소멸 예정</th>
-									<td><span class="price"><span class="pointRed">0</span> P</span></td>
-								</tr>
-							</tbody>
-							-->
-							<tbody class="js-point-summury"></tbody>
-						</table>
-					</div>
-					<h3 class="subTit">포인트 조회</h3>
+					<table class="record detail">
+						<caption>보유포인트, 소멸예정 포인트 정보를 제공합니다.</caption>
+						<colgroup>
+							<col style="width:160px;"/>
+							<col style="width:390px;"/>
+							<col style="width:160px;"/>
+							<col style="width:390px;"/>
+						</colgroup>
+						<!-- [D] 마크업 원본-->
+						<!-- 
+						<tbody>
+							<tr>
+								<th scope="row">보유포인트</th>
+								<td><span class="price"><span class="pointRed">100,000</span> P</span></td>
+								<th scope="row">30일 이내 소멸 예정</th>
+								<td><span class="price"><span class="pointRed">0</span> P</span></td>
+							</tr>
+						</tbody>
+						-->
+						<tbody class="js-point-summury"></tbody>
+					</table>
+					<h3 class="subTit mt40">포인트 조회</h3>
 					<table class="recordSort">
 						<caption>기간별 주문조회 / 주문내역 검색 정보를 제공합니다.</caption>
 						<colgroup>
@@ -43,7 +41,7 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="row" rowspan="2">조회기간</th>
+								<th rowspan="2">조회기간</th>
 								<td>
 									<ul class="sortTerm">
 										<li><a href="#" class="on">1주일</a></li>
