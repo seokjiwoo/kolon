@@ -113,6 +113,11 @@ function Events() {
 				RELATED : 'productRelatedResult',
 				// 상품 리뷰 상세
 				REVIEWS : 'productReviewsResult'
+			},
+			ORDER : {
+				ORDER_LIST : 'myOrdersListResult',
+				ORDER_DETAIL : 'orderDetailResult',
+				ORDER_TRACKING : 'orderTrackingInfoResult'
 			}
 		// [E] Controller Events
 	},
