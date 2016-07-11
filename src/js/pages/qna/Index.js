@@ -271,7 +271,6 @@ module.exports = function() {
 
 		switch(status) {
 			case 200:
-				result = dummyData;
 				break;
 			default:
 				win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
