@@ -144,6 +144,11 @@ $(document).ready(function() {
 			case 'manager-portfolio':
 				PageModuleClass = require('./pages/manager/Portfolio.js');
 				break;
+
+			// 브랜드 소개 - /manager/brand.html
+			case 'brand-intro':
+				PageModuleClass = require('./pages/manager/BrandIntro.js');
+				break;
 		// [E] 커먼전문가 manager
 
 
