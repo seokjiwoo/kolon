@@ -97,7 +97,7 @@ module.exports = function() {
 			}
 		});
 
-		$(".checkType > li").each(function(){ // 마이페이지-주문상세
+		$(".optList > li").each(function(){ // 마이페이지-주문상세
 			$(this).find(".hiddenArea").parent("li").next().css({
 				border:0,
 				paddingTop : 0
