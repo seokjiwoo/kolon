@@ -89,7 +89,9 @@ module.exports = function() {
 	function checkEmailField(e) {
 		var inputValue = $.trim($('#inputName').val());
 
-		if (util.checkVaildEmail(inputValue) == false) {
+		if (util.checkValidMobileNumber(inputValue)) {
+			$('#idAlert').text('');
+		} else if (util.checkVaildEmail(inputValue) == false) {
 			$('#idAlert').text('이메일 주소를 정확하게 입력해주세요.');
 		} else {
 			Mailcheck.run({
