@@ -26,7 +26,6 @@ module.exports = function() {
 		Super.init();
 		
 		$('.btnBackToForm').click(initForm);
-		$('#pwAuthPhone').click(initPwAuthPhoneForm);
 		$('#findPwAuthMailResendButton').click(requstPwAuthMailResend);
 		
 		$('#findPW').submit(findPwFormSubmitHandler);
