@@ -219,25 +219,36 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .tabParents.pdNon,
 .tabParents.pdNon .tabSquare {padding:0;}
 
+.selectwrap{padding:10px 15px;background:#e0e0e0;}
+.selectwrap ul{overflow:hidden;}
+.selectwrap ul li{width:49.5%;float:left;margin-left:1%;}
+.selectwrap ul li:first-child{margin-left:0;}
+.selectwrap.col1 ul li{width:100%;}
+
 .previewList > li{overflow: hidden;position: relative;width: 100%;padding: 20px 0;border-top:1px solid #ccc;}
 .previewList .previewWrap{overflow: hidden;}
 .previewList > li:first-child{border:0;}
 .previewList .pic{overflow: hidden;float: left;width: 50px;height: 50px;margin-right: 8px;border-radius: 50%;}
+.previewList .pic img{display: block;width: 50px;height: 50px;}
 .previewList .thumb{overflow: hidden;float: left;width: 78px;height: 78px;margin-right: 10px;}
-.previewList img{display: block;width: 100%;}
+.previewList .thumb img{display: block;width: 78px;height: 78px;}
 .previewList .except{max-height: 2.4em;line-height: 1.2em;display: block;}
 .previewList .listTit{margin-bottom:3px;font-size: 15px;font-weight: bold;color: #000;}
 .previewList .listTit b{color: #f1645c}
 .previewList .date{font-size: 11px;color: #999;}
 .previewList .dateR{float: right;}
 .previewList .count{position: absolute;right: 0;bottom: 20px;display: inline-block;width: 30px;height: 33px;padding:0 10px;background: url('../images/bg_hexagon.png');background-size:250px;line-height: 33px;color: #fff;font-size: 15px;text-align: center;}
+.previewList .txtWrap {width:100%; overflow:hidden;}
+.previewList .txt{margin-top:15px;padding:15px;background:#f8f8f8; overflow:hidden;}
+.previewList .txt p{width:100%; line-height:1.4em;margin-bottom:15px; }
 
 .previewList .info{display: inline-block;margin-right: 5px;padding: 0 5px;/*border-radius: 8px;*/border:1px solid #999;color: #666;line-height: 15px;}
 .previewList .done .info{color: #00aeb9;border-color: #00aeb9;}
 .previewList .count02{float: right;color:#333;font-size: 11px;}
 .previewList .count02 b{color:#f1645c;}
 .previewList .op{margin-top: 3px;font-size: 11px;color: #999;}
-
+.previewList .price {margin-top:12px;;}
+.previewList .price b {font-size:15px;}
 .previewList .reply{margin-top: 8px;background: #f8f8f8;padding: 15px;}
 .previewList .reply .except{color: #666;}
 

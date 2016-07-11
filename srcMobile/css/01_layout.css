@@ -121,3 +121,8 @@ a{color:#666;}
 .searchWrap .keyword ul.keywordList {padding:0 15px;}
 .searchWrap .keyword ul.keywordList li {width:100%; padding:15px 0; color:#333; border-bottom:1px solid #e5e5e5;}
 .searchWrap .keyword ul.keywordList li span {color:#f1645c;}
+
+.wrap {background:#fff; overflow:hidden;}
+.wrapT {padding:25px 0 15px; background:#fff; overflow:hidden;}
+.myWrap {padding:0 15px; background:#fff; overflow:hidden;}
+.myWrap + .myWrap {margin-top:10px;}
