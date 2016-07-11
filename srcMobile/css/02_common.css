@@ -5,8 +5,10 @@
 .mt20 {margin-top:20px;}
 .mt30 {margin-top:30px;}
 .mt40 {margin-top:40px;}
+.mb0 {margin-bottom:0 !important;}
 
 .pt0{padding-top:0 !important;}
+.pt25{padding-top:25px !important;}
 
 .t_r {text-align:right}
 .t_l {text-align:left;}
@@ -165,7 +167,8 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .layerPopup{background:#fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:13px;}
 .layerPopup .popTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;font-size:18px;}
 .layerPopup .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
-.layerPopup .popCon{padding-top:25px;}
+.layerPopup .popcon{padding-top:10px;}
+.layerPopup .wrapT:first-child{padding-top:0;}
 .layerPopup .popTit{font-size:18px;background:#fff;}
 .layerPopup .popScroll{height:385px;padding:0 15px;overflow-y:auto;}
 
@@ -229,6 +232,8 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .previewList .previewWrap{overflow: hidden;}
 .previewList > li:first-child{border:0;}
 .previewList > li:last-child {padding-bottom:0;}
+.previewList > li > a{position:relative;display:inline-block;}
+.previewList > li span.hexa{position:absolute;top:20px;right:0;width:25px;height:35px;line-height:29px;color:#fff;display:block;background:url("../images/bg_hexagon.png") no-repeat 0 0;background-size:100%;text-align:center;}
 .previewList .pic{overflow: hidden;float: left;width: 50px;height: 50px;margin-right: 8px;border-radius: 50%;}
 .previewList .pic img{display: block;width: 50px;height: 50px;}
 .previewList .thumb{overflow: hidden;float: left;width: 78px;height: 78px;margin-right: 10px;}
