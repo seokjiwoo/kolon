@@ -75,14 +75,21 @@
 												<tr>
 													<th scope="row">스크랩북에서 선택<span>(최대3장)</span></th>
 													<td>
-														<div class="scrapList">
+														<div id="scrapList" class="scrapList">
 															<ul>
-																<li><a href="../../_popup/popScrapAdd.html"  class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge"><span class="hide">스크랩</span></a></li>
-																<li><div class="scrapImg conDel"><img src="../images/temp01.jpg" alt="" /><a href="javascript:;" class="btnDel">이미지 삭제</a></div></li>
-																<li><div class="scrapImg conDel"><img src="../images/temp01.jpg" alt="" /><a href="javascript:;" class="btnDel">이미지 삭제</a></div></li>
-																<li><!-- <div class="scrapImg conDel"><img src="../images/temp01.jpg" alt="" /><a href="javascript:;" class="btnDel">이미지 삭제</a></div> --></li>
+																<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
 															</ul>
 														</div>
+														<script id="scrapList-template" type="text/x-handlebars-template">
+														{{!-- scrapList-template --}}
+															<ul>
+																<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+															{{#each .}}
+																<li class="js-scrap-list" data-scrap-number="{{scrapNumber}}" data-scrap-uid="{{scrapUid}}"><div class="scrapImg conDel"><img src="{{imgPath}}" alt="" /><a href="javascript:;" class="btnDel js-scrap-del">이미지 삭제</a></div></li>
+															{{/each}}
+															</ul>
+														{{!-- scrapList-template --}}
+														</script>
 													</td>
 												</tr>
 											</tbody>

@@ -15,6 +15,7 @@ module.exports = function() {
 	$(controller).on('opinionsClassResult', opinionsClassHandler);
 	$(controller).on('opinionsListResult', opinionsListHandler);
 	$(controller).on('opinionsExpertsListResult', opinionsExpertsListHandler);
+	$(controller).on('scrapedOpinionsListResult', scrapedOpinionsListHandler);
 
 	$(controller).on('postOpinionResult', postOpinionResultHandler);
 	$(controller).on('postAnswerResult', postAnswerResultHandler);
@@ -25,10 +26,17 @@ module.exports = function() {
 
 	var myPageController = require('../../controller/MyPageController.js');
 	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
+
+	var eventManager = require('../../events/EventManager'),
+	events = require('../../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
 	
 	var uploadFileNumber;
 	var uploadImageArray;
 	var opinionsClassArray;
+
+	var uploadScrapNumbers = [];
+	var uploadScrapImageArrary = [];
 
 	var pollAnswerId;
 	
@@ -42,7 +50,8 @@ module.exports = function() {
 			}
 		},
 		cssClass : {
-			popAttachPictures : 'popAttachPictures'
+			popAttachPictures : 'popAttachPictures',
+			popScrapAdd : 'popScrapAdd'
 		},
 		imageUploader : {
 			api_url : APIController().API_URL+'/apis/opinions/images',
@@ -188,6 +197,264 @@ module.exports = function() {
 		}
 	};
 
+	/**
+	 * 스크랩 북 목록 핸들링
+	 */
+	function scrapedOpinionsListHandler(e, status, result) {
+		var dummyData = {
+			"folders": [
+				{
+					"folderName": "내 새로운 부엌을 위한 스크랩0",
+					"folderNumber": 0,
+					"scrapCount": 4,
+					"scrapImages": [
+						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg"
+					]
+				},
+				{
+					"folderName": "내 새로운 부엌을 위한 스크랩1",
+					"folderNumber": 1,
+					"scrapCount": 16,
+					"scrapImages": [
+						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
+						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
+						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
+						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg"
+					]
+				},
+				{
+					"folderName": "내 새로운 부엌을 위한 스크랩2",
+					"folderNumber": 2,
+					"scrapCount": 1,
+					"scrapImages": [
+						"../images/temp01.jpg"
+					]
+				},
+				{
+					"folderName": "내 새로운 부엌을 위한 스크랩3",
+					"folderNumber": 3,
+					"scrapCount": 0,
+					"scrapImages": [
+					]
+				}
+			],
+			"opinions": [
+				{
+					"answerCount": 0,
+					"answers": [
+						{
+							"answerNumber": 0,
+							"content": "string",
+							"createDate": "string",
+							"expertCompany": "string",
+							"expertImageUrl": "string",
+							"expertName": "string",
+							"helpCount": 0,
+							"serviceNames": [
+								"string"
+							]
+						}
+					],
+					"category": "string",
+					"content": "string",
+					"createDate": "string",
+					"images": [
+						"string"
+					],
+					"opinionClassNumber": 0,
+					"opinionNumber": 0,
+					"title": "string",
+					"userName": "string"
+				}
+			]
+		};
+
+		switch(status) {
+			case 200:
+				result = dummyData;
+				break;
+			default:
+				win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
+				result = dummyData;
+				break;
+		}
+
+		var groupIdx = -1;
+		$.each(result.folders, function(index, folders) {
+			folders.scrapImagesGroups = [];
+			groupIdx = -1;
+
+			$.each(folders.scrapImages, function(index, scraps) {
+				if (index%5 === 0) {
+					folders.scrapImagesGroups.push([]);
+					groupIdx++;
+				}
+				folders.scrapImagesGroups[groupIdx].push(scraps);
+			});
+		});
+
+		var template = window.Handlebars.compile($('#scrap-add-template').html());
+		var elements = $(template(result));
+		callerObj.colorbox.find('.js-scrap-container').empty().append(elements);
+
+		eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+		eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+
+		callerObj.selScrapImgs = [];
+		setScrapAddEvents();
+
+		debug.log(fileName, 'scrapedOpinionsListHandler', status, result);
+	}
+
+	function setScrapAddEvents() {
+		var selFolder = callerObj.colorbox.find('.js-sel-folder'),
+		scrapList = callerObj.colorbox.find('.js-scrap-list'),
+		btnCancel = callerObj.colorbox.find('.js-sel-cancel'),
+		btnSubmit = callerObj.colorbox.find('.js-sel-submit');
+
+		selFolder.on('change', onScrapAddSelFolderChange);
+		scrapList.find('li').on('click', onScrapAddSelImage);
+		btnCancel.on('click', onScrapAddSelCancel);
+		btnSubmit.on('click', onScrapAddSelSubmit);
+		debug.log(fileName, 'setScrapAddEvents', selFolder);
+	}
+
+	function destoryScrapAddEvents() {
+		var selFolder = callerObj.colorbox.find('.js-sel-folder'),
+		scrapList = callerObj.colorbox.find('.js-scrap-list'),
+		btnCancel = callerObj.colorbox.find('.js-sel-cancel'),
+		btnSubmit = callerObj.colorbox.find('.js-sel-submit');
+
+		selFolder.off('change', onScrapAddSelFolderChange);
+		scrapList.find('li').off('click', onScrapAddSelImage);
+		btnCancel.off('click', onScrapAddSelCancel);
+		btnSubmit.off('click', onScrapAddSelSubmit);
+		debug.log(fileName, 'destoryScrapAddEvents');
+	}
+
+	function displayScrapList() {
+		var template = window.Handlebars.compile($('#scrapList-template').html());
+		var elements = $(template(uploadScrapImageArrary));
+
+		$('#scrapList .js-scrap-del').off('click', onScrapDelClick);
+		$('#scrapList').empty().append(elements);
+
+		eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+		eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
+
+		if (uploadScrapImageArrary.length >= 3) {
+			$('#scrapUpButton').hide();
+		} else {
+			$('#scrapUpButton').show();
+		}
+
+		uploadScrapNumbers = [];
+		$.each(uploadScrapImageArrary, function(index, info) {
+			uploadScrapNumbers.push(info.scrapNumber);
+		});
+
+		$('#scrapList .js-scrap-del').on('click', onScrapDelClick);
+
+		debug.log(fileName, 'displayScrapList', uploadScrapImageArrary, uploadScrapNumbers);
+	}
+
+	function onScrapDelClick(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget),
+		targetInfo = target.closest('.js-scrap-list'),
+		scrapUid = targetInfo.data('scrap-uid'),
+		i = uploadScrapImageArrary.length,
+		info;
+
+		while (i--) {
+			info = uploadScrapImageArrary[i];
+			if (info.scrapUid === scrapUid) {
+				uploadScrapImageArrary.splice(i, 1);
+			}
+		}
+
+		debug.log(fileName, 'onScrapDelClick', uploadScrapImageArrary, targetInfo, scrapUid);
+
+		displayScrapList();
+	}
+
+	function onScrapAddSelCancel(e) {
+		e.preventDefault();
+
+		eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
+		debug.log(fileName, 'onScrapAddSelCancel');
+	}
+
+	function onScrapAddSelSubmit(e) {
+		e.preventDefault();
+		var selecteds = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
+
+		if (selecteds >= 3) {
+			win.alert('최대 3장의 이미지를 선택하실 수 있습니다.');
+			return;
+		}
+
+		uploadScrapImageArrary = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
+
+		debug.log(fileName, 'onScrapAddSelSubmit', uploadScrapImageArrary);
+		displayScrapList();
+	}
+
+	function onScrapAddSelFolderChange(e) {
+		var folderNumber = $(this).val(),
+		scrapList = callerObj.colorbox.find('.js-scrap-list');
+
+		scrapList.removeClass('is-show');
+		scrapList.filter('[data-folder-number=\'' + folderNumber + '\']').addClass('is-show');
+
+		debug.log(fileName, 'onScrapAddSelFolderChange', folderNumber);
+	}
+
+	function onScrapAddSelImage(e) {
+		e.preventDefault();
+		
+		var target = $(e.currentTarget),
+		scrapUid = target.data('scrap-uid'),
+		selecteds = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
+
+		if (!target.hasClass('active') && selecteds.length >= 3) {
+			win.alert('최대 3장의 이미지를 선택하실 수 있습니다.');
+			return;
+		}
+
+		target.toggleClass('active');
+
+		if (target.hasClass('active')) {
+			callerObj.selScrapImgs.push({
+				target : target,
+				scrapNumber : target.data('scrap-number'),
+				scrapUid : target.data('scrap-uid'),
+				imgPath : target.data('scrap-imgpath')
+			});
+		} else {
+			var i = callerObj.selScrapImgs.length,
+			info;
+
+			while (i--) {
+				info = callerObj.selScrapImgs[i];
+				if (info.scrapUid === scrapUid) {
+					callerObj.selScrapImgs.splice(i, 1);
+				}
+			}
+		}
+
+		onScrapAddSelImageUpdate();
+	}
+
+	function onScrapAddSelImageUpdate() {
+		var selecteds = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
+
+		$.each(callerObj.selScrapImgs, function(index, info) {
+			info.target.find('.js-sel-num').text(index + 1);
+		});
+	}
+
 	function showCommentForm(e) {
 		e.preventDefault();
 		if (Super.Super.loginData != null) {
@@ -231,7 +498,13 @@ module.exports = function() {
 		} else if ($.trim($('#opinionContent').val()) == '') {
 			alert('자세한 내용을 작성해 주세요');
 		} else {
-			controller.postOpinion($('#opinionThemes').val(), $.trim($('#opinionTitle').val()), $.trim($('#opinionContent').val()), uploadImageArray);
+			controller.postOpinion(
+				$('#opinionThemes').val(),
+				$.trim($('#opinionTitle').val()),
+				$.trim($('#opinionContent').val()),
+				uploadImageArray,
+				uploadScrapNumbers
+			);
 		}
 	};
 
@@ -334,6 +607,10 @@ module.exports = function() {
 
 					imageUploader.init(opts.imageUploader);
 				}
+
+				if (callerObj.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
+					controller.scrapedOpinionsList();
+				}
 				break;
 			case CB_EVENTS.CLEANUP:
 				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
@@ -342,6 +619,10 @@ module.exports = function() {
 									.off(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
 
 					imageUploader.destory();
+				}
+
+				if (callerObj.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
+					destoryScrapAddEvents();
 				}
 				break;
 			case CB_EVENTS.CLOSED:
