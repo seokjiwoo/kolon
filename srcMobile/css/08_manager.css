@@ -57,8 +57,3 @@
 .manager .result{height:30px;background:#f8f8f8;text-align:center;border-bottom:1px solid #ccc;}
 .manager .result span{display:block;padding-top:8px;}
 .manager .result em{font-weight:bold;}
-.manager .selectwrap{padding:10px 15px;background:#e0e0e0;}
-.manager .selectwrap ul{overflow:hidden;}
-.manager .selectwrap ul li{width:49.5%;float:left;margin-left:1%;}
-.manager .selectwrap ul li:first-child{margin-left:0;}
-.manager .selectwrap.col1 ul li{width:100%;}

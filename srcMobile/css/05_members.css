@@ -94,9 +94,10 @@
 .snsBtnS{height:30px;font-size:13px;text-align:left !important;}
 .snsBtnS span{display:block;padding-top:6px;padding-left:46px;}
 .snsBtnS:before{position:absolute;left:36px;top:8px;content:"";display:block;width:1px;height:12px;background:#ccc;}
-.snsBtnS.facebook{background:url("../images/ico_sns.png") no-repeat 17px 6px;background-size:10px;}
-.snsBtnS.naver{background:url("../images/ico_sns.png") no-repeat 17px -40px;background-size:10px;}
-.snsBtnS.kakao{background:url("../images/ico_sns.png") no-repeat 17px -84px;background-size:10px;}
+.snsBtnS.facebook{background:url("../images/ico_sns.png") no-repeat 16px 7px;background-size:10px;}
+.snsBtnS.naver{background:url("../images/ico_sns.png") no-repeat 16px -40px;background-size:10px;}
+.snsBtnS.kakao{background:url("../images/ico_sns.png") no-repeat 16px -75px;background-size:10px;}
+.snsBtnS.twitter{background:url("../images/ico_sns.png") no-repeat 16px -119px;background-size:10px;}
 .snsBtnM{height:35px;font-size:13px;}
 .snsBtnM span{display:block;padding-top:11px;}
 .snsBtnM:before{position:absolute;left:55px;top:11px;content:"";display:block;width:1px;height:12px;background:#ccc;}
