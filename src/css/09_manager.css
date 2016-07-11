@@ -52,6 +52,9 @@
 .singleCard #content p{font-size: 16px;color: #000;line-height: 1.6em;}
 .singleCard .conTit{clear:both;margin-top:80px;font-family:'NotoSansM', sans-serif;color: #000;font-size: 20px;}
 .singleCard .url{display: block;margin-top:30px;font-size: 14px;font-family:'NotoSansL', sans-serif;color:#a9c700;}
+.singleCard .conTit a{margin-left: 15px;}
+.singleCard .tag{overflow: visible;}
+.singleCard .tag li{margin-bottom: 10px;}
 
 .contentCard .secTit{margin-top:60px;padding-left: 10px;font-size: 30px;color: #000;font-family:'NotoSansR', sans-serif;}
 .contentCard .relateTag{margin-top:25px;}
