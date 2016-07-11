@@ -139,15 +139,15 @@ a.pointLink {color:#f1645c;text-decoration:underline;font-family:'NotoSansR', sa
 .tabType01 li{display:inline-block;margin-left:10px;}
 .tabType01 li:first-child {margin-left:0;}
 .tabType01 a{position: relative;display: block;padding:0 15px;color: #000;font-family:'NotoSansM', sans-serif;font-size: 20px;}
-.tabType01 .on a{background: url(../images/myList_on.gif) 0 50% repeat-x;}
+.tabType01 .on a{background: url('../images/myList_on.gif') 0 50% repeat-x;}
 
-.tabType02{overflow: hidden;width:600px;margin:0 auto;border-radius: 10px 10px 0 0;border:1px solid #e3e3e3;border-bottom: 0;}
-.tabType02 li{position: relative;float: left;width: 50%;background: #f7f7f7;text-align: center;border-bottom: 2px solid #333;}
-.tabType02 .on{background: #fff;border-bottom:0;}
-.tabType02 a{display: block;width:100%;padding:15px 0;color: #666;font-family:'NotoSansM', sans-serif;font-size: 20px;}
-.tabType02 .on:before{content: '';position: absolute;top: 0;left: 0;right:0;height: 100%;border:2px solid #333;border-radius: 0 10px 0 0}
-.tabType02 .on:first-child:before{border-radius: 10px 0 0 0}
-.tabType02 .on a{color: #333;}
+.tabType02{overflow: hidden;margin:0 auto;text-align: center;border-bottom: 1px solid #000;}
+.tabType02 li{position: relative;display: inline-block;text-align: center;}
+.tabType02 .on{border-bottom: 2px solid #333;}
+.tabType02 a{display: block;padding:15px 50px;color: #000;font-family:'NotoSansL', sans-serif;font-size: 20px;}
+.tabType02 .on a{color: #333;font-family:'NotoSansM', sans-serif;}
+
+.tabType02 + .contentCard{margin-top: 60px;}
 
 /* button */
 .btnWrap{text-align: center;clear:both;}

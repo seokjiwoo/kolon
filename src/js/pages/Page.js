@@ -72,6 +72,9 @@ module.exports = function() {
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
 		fullSlideImg(); // slide Full img 중앙정렬 
+		$('#infoSlider').bxSlider({
+			pager:false
+		})
 	};
 
 	/**
