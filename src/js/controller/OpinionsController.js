@@ -87,19 +87,20 @@ function ClassOpinionsController() {
 	function scrapedOpinionsList() {
 		Super.callApi('/apis/opinions/scraps', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('scrapedOpinionsListResult', [200]);
+				$(callerObj).trigger('scrapedOpinionsListResult', [200, result.data]);
 			} else {
 				Super.handleError('scrapedOpinionsList', result);
+				$(callerObj).trigger('scrapedOpinionsListResult', [200, result.data]);
 			}
 		}, true);
 	};
 	
-	function postOpinion(sectionId, title, content, uploadImageArray) {
+	function postOpinion(sectionId, title, content, uploadImageArray, scrapNumbers) {
 		Super.callApi('/apis/opinions', 'POST', {
 			"attachFiles": uploadImageArray,
 			"content": content,
 			"opinionClassNumber": sectionId,
-			"scrapNumbers": [],
+			"scrapNumbers": scrapNumbers,
 			"title": title
 		}, function(status, result) {
 			if (status == 200) {
