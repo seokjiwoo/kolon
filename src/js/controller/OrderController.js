@@ -99,6 +99,7 @@ function ClassOrderController() {
 		}, false);
 	}
 	
+	// 주문/배송 현황 조회
 	function myOrdersList() {
 		Super.callApi('/apis/me/orders', 'GET', {}, function(status, result) {
 			if (status == 200) {
@@ -109,6 +110,7 @@ function ClassOrderController() {
 		}, false);
 	};
 	
+	// 주문/배송 - 주문상세
 	function orderDetail(orderNumber) {
 		Super.callApi('/apis/me/orders/'+orderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
@@ -119,6 +121,7 @@ function ClassOrderController() {
 		}, false);
 	};
 	
+	// 주문/배송 - 배송추적 팝업 조회
 	function orderTrackingInfo(orderNumber) {
 		Super.callApi('/apis/me/orders/'+orderNumber+'/tracking', 'GET', {}, function(status, result) {
 			if (status == 200) {

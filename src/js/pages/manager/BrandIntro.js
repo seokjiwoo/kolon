@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'manager/Detail.js';
+	fileName = 'manager/BrandIntro.js';
 
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
@@ -28,7 +28,7 @@ module.exports = function() {
 	var opts = {
 		templates : {
 			wrap : '.container',
-			template : '#newForm-detail-templates'
+			template : '#brand-intro-templates'
 		},
 		colorbox : '#colorbox',
 		cssClass : {

@@ -1,6 +1,8 @@
 <div class="popTop">
 	<h4 class="popTit">스크랩북에서 선택</h4>
 </div>
+<!-- [D] 마크업 원본 -->
+<!-- 
 <div class="popCon">
 	<select class="scrapSelect" title="스크랩북에서 선택하기">
 		<option value="내 새로운 부엌을 위한 스크랩">내 새로운 부엌을 위한 스크랩</option>
@@ -35,3 +37,51 @@
 		<button type="submit" class="btn btnSizeM btnColor02">저장</button>
 	</p>
 </div>
+ -->
+<!--// [D] 마크업 원본 -->
+<div class="popCon js-scrap-container"></div>
+
+<style>
+	.js-scrap-container .scrapBox .scroll.is-show {display:block}
+	.js-scrap-container .scrapBox .scroll {display:none}
+	.js-scrap-list .active .js-sel-num {display:block}
+	.js-scrap-list .js-sel-num {display:none}
+</style>
+
+<script id="scrap-add-template" type="text/x-handlebars-template">
+{{!-- scrap-add-template --}}
+	<select class="scrapSelect js-sel-folder" title="스크랩북에서 선택하기">
+	{{#each folders}}
+		<option value="{{folderNumber}}" data-folder-number="{{folderNumber}}">{{folderName}}</option>
+	{{/each}}
+	</select>
+
+	<div class="scrapBox">
+	{{#each folders}}
+		{{#if @first}}
+		<div class="scroll is-show js-scrap-list" data-folder-number="{{folderNumber}}">
+		{{else}}
+		<div class="scroll js-scrap-list" data-folder-number="{{folderNumber}}">
+		{{/if}}
+			{{#each scrapImagesGroups}}
+				<ul>
+				{{#each .}}
+					<li data-scrap-number="{{scrapNumber}}"
+						data-scrap-uid="{{@../index}}-{{@index}}"
+						data-scrap-imgpath="{{.}}">
+						<img src="{{.}}" /><i><span class="js-sel-num"></span></i>
+					</li>
+				{{/each}}
+				</ul>
+			{{/each}}
+		</div>
+	{{/each}}
+	</div>
+
+	<p class="btnWrap">
+		<button type="submit" class="btn btnSizeM btnColor04 js-sel-cancel">취소</button>
+		<button type="submit" class="btn btnSizeM btnColor02 js-sel-submit">저장</button>
+	</p>
+</ul>
+{{!--// scrap-add-template --}}
+</script>

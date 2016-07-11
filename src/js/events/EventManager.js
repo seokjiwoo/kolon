@@ -36,6 +36,7 @@ function EventManager() {
 
 		function setBindEvents() {
 			$(doc).on(COLORBOX_EVENT.WILD_CARD, onColorBoxListener);
+			eventElement.on(COLORBOX_EVENT.CLOSE + ' ' + COLORBOX_EVENT.RESIZE, onColorBoxCustomListener);
 		}
 
 		function onColorBoxListener(e) {
@@ -47,8 +48,26 @@ function EventManager() {
 				case COLORBOX_EVENT.CLEANUP:
 					eventElement.triggerHandler(COLORBOX_EVENT.DESTROY);
 					break;
+				case COLORBOX_EVENT.CLOSE:
+					$.colorbox.close();
+					break;
+				case COLORBOX_EVENT.RESIZE:
+					$.colorbox.resize();
+					break;
 			}
 			eventElement.triggerHandler(e);
+		}
+
+		function onColorBoxCustomListener(e) {
+			debug.log(fileName, 'onColorBoxCustomListener', e, eventElement, instance);
+			switch(e.type) {
+				case COLORBOX_EVENT.CLOSE:
+					$.colorbox.close();
+					break;
+				case COLORBOX_EVENT.RESIZE:
+					$.colorbox.resize();
+					break;
+			}
 		}
 
 		init();

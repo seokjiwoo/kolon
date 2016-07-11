@@ -292,7 +292,7 @@ module.exports = function() {
 				switch(status) {
 					case 200:
 						self.selPopBtnInfo.wrap.removeClass(self.opts.cssClass.isFollow);
-						$('#cboxClose').triggerHandler('click');
+						eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
 						break;
 					default:
 						win.alert('HTTP Status Code ' + status);

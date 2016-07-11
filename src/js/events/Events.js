@@ -22,7 +22,9 @@ function Events() {
 
 			APPEND : 'VX-COLORBOX_AREA-APPEND',
 			REFRESH : 'VX-COLORBOX_AREA-REFRESH',
-			DESTROY : 'VX-COLORBOX_AREA-DESTROY'
+			DESTROY : 'VX-COLORBOX_AREA-DESTROY',
+			CLOSE : 'VX-COLORBOX_AREA-CLOSE',
+			RESIZE : 'VX-COLORBOX_AREA-RESIZE'
 		},
 		ALERT_POPUP : {
 			OPEN : 'VX-ALERT_POPUP-OPEN'
@@ -111,6 +113,11 @@ function Events() {
 				RELATED : 'productRelatedResult',
 				// 상품 리뷰 상세
 				REVIEWS : 'productReviewsResult'
+			},
+			ORDER : {
+				ORDER_LIST : 'myOrdersListResult',
+				ORDER_DETAIL : 'orderDetailResult',
+				ORDER_TRACKING : 'orderTrackingInfoResult'
 			}
 		// [E] Controller Events
 	},

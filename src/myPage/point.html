@@ -8,7 +8,7 @@
 		<!-- @@include ../_template/menu.html -->
 		<div class="container bgTop">
 			<!-- @@include ../_template/my_depth01.html {"myMenu06":"on"} -->
-			<div class="wrap">
+			<div class="wrap is-loading">
 				<section class="singleCard" id="myActivity">
 					<h2 class="secTit">마이 커먼 포인트</h2>
 					<div class="tbSet">
@@ -20,6 +20,8 @@
 								<col style="width:160px;"/>
 								<col style="width:390px;"/>
 							</colgroup>
+							<!-- [D] 마크업 원본-->
+							<!-- 
 							<tbody>
 								<tr>
 									<th scope="row">보유포인트</th>
@@ -28,6 +30,8 @@
 									<td><span class="price"><span class="pointRed">0</span> P</span></td>
 								</tr>
 							</tbody>
+							-->
+							<tbody class="js-point-summury"></tbody>
 						</table>
 					</div>
 					<h3 class="subTit">포인트 조회</h3>
@@ -105,6 +109,8 @@
 								<th scope="col">포인트 내역</th>
 							</tr>
 						</thead>
+						<!-- [D] 마크업 원본 -->
+						<!-- 
 						<tbody>
 							<tr>
 								<td rowspan="3" class="recordDate">
@@ -131,6 +137,9 @@
 								<td>-10,000</td>
 							</tr>
 						<tbody>
+						 -->
+						<!--// [D] 마크업 원본 -->
+						<tbody class="js-point-wrap"><tbody>
 					</table>
 					<ul class="infoOrder">
 						<li>· 포인트는 2008년 7월 9일 개정된 전자금융 시행령에 따라 최대 200만 포인트를 초과하여 보유 할 수 없습니다.</li>
@@ -142,5 +151,49 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+<!-- [D] 레이아웃 틀어짐 임시 수정 -->
+<style>
+	.wrap {
+		opacity: 1;
+		-webkit-transform:translateY(0px);-moz-transform:translateY(0px);-ms-transform:translateY(0px);-o-transform:translateY(0px);transform:translateY(0px);
+		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+	}
+
+	.wrap.is-loading {
+		opacity:0;
+		-webkit-transform:translateY(50px);-moz-transform:translateY(50px);-ms-transform:translateY(50px);-o-transform:translateY(50px);transform:translateY(50px)}
+	[data-page-id="myPage-point"] .arrayWrap {min-width:auto}
+</style>
+
+<script id="point-summury-templates" type="text/x-handlebars-template">
+	{{!-- point-summury-templates --}}
+	<tr>
+		<th scope="row">보유포인트</th>
+		<td><span class="price"><span class="pointRed">{{totalPointDesc}}</span> P</span></td>
+		<th scope="row">30일 이내 소멸 예정</th>
+		<td><span class="price"><span class="pointRed">0</span> P</span></td>
+	</tr>
+	{{!--// point-summury-templates --}}
+</script>
+
+<script id="point-list-templates" type="text/x-handlebars-template">
+	{{!-- point-list-templates --}}
+	{{#each .}}
+	<tr>
+		<td rowspan="1" class="recordDate">
+			<p class="date">{{useDate}}</p>
+		</td>
+		<td><span class="pointRed">{{reason}}</span> - {{pointTypeNm}}</td>
+		<td>포인트 <span class="pointRed">{{reason}}</span>({{pointTypeCd}})</td>
+		<td>{{validDate}}</td>
+		<td>{{remainDays}}일</td>
+		<td>-{{usePointDesc}}</td>
+	</tr>
+	{{/each}}
+	{{!--// point-list-templates --}}
+</script>
+
+						
 </body>
 </html>

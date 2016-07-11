@@ -143,9 +143,9 @@ module.exports = function() {
 					.always(function( instance ) {
 						wrap.removeClass(self.opts.cssClass.isLoading);
 						reloadCarousel();
-						self.colorbox.colorbox.resize();
 						eventManager.triggerHandler(ISOTOPE_EVENT.REFRESH);
 						eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+						eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 					})
 					.progress(function( instance, image ) {
 						var item = $(image.img).closest('.js-slider-list');
@@ -192,7 +192,7 @@ module.exports = function() {
 
 			carousel = $(this).bxSlider(bxSliderOpts);
 			self.carousels.push(carousel);
-			self.colorbox.colorbox.resize();
+			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 		});
 	}
 

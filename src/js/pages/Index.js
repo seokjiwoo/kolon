@@ -35,7 +35,7 @@ module.exports = function() {
 			initHeaderCardlist();
 		}
 
-		cardList.init('#cardWrap');	// 카드 리스트
+		cardList().init('#cardWrap');	// 카드 리스트
 
 
 		setDemoDoughnut();
