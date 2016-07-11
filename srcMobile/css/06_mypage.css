@@ -269,16 +269,6 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .writeBox .thumbList ul li a{position:absolute;top:0;right:0;width:20px;height:20px;display:block;background:url("../images/bg_dim.png") repeat;}
 .writeBox .thumbList ul li a:after{width:20px;height:20px;display:block;background:url("../images/ico_close02.png") no-repeat center center;background-size:10px;content:"";}
 
-.tagBox{border:1px solid #ccc;margin-top:6px;font-family:'NotoSansR', 'RobotoR', sans-serif; overflow:hidden;}
-.tagBox .txt{padding:14px 14px 14px;}
-.tagBox .txt p{min-height:34px;font-family:'NotoSansR', 'RobotoR', sans-serif;color:#999;}
-.tagBox .tag{padding:15px;background:#f8f8f8;border-top:1px solid #ccc;}
-.tagBtn{height:30px;padding:0 15px;display:inline-block;background:#fff;border:1px solid #d1d1d1;border-radius:15px;margin:4px 0;}
-.tagBtn.active{background:#f1645c;border-color:#f1645c;color:#fff;}
-.tagBtn.close:after{width:12px;height:12px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_close02.png") no-repeat center center;background-size:12px;vertical-align:middle;margin-left:7px;}
-.tagBtn span{display:inline-block; line-height:28px;}
-.reviewTxt{line-height:1.4em;color:#999;font-family:'NotoSansR', 'RobotoR', sans-serif;margin-top:15px;padding-bottom:32px;}
-
 .userInfo{margin-top:15px;overflow:hidden;}
 .userInfo .name{float:left;}
 .userInfo .name span{position:relative;padding-right:12px;}
@@ -352,7 +342,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .orderState ul li:last-child{background-image:none;}
 .orderState ul li.active{color:#fff;}
 .orderState ul li em{display:block;margin-top:5px;font-size:20px;font-weight:bold;}
-.orderState + .myWrap{margin-top:10px;}
+.orderState + .wrapT{margin-top:10px;}
 
 .orderRow{margin-top:8px;}
 .myOrderstate{background:#fff;padding:25px 15px 0;font-family:'NotoSansR', 'RobotoR', sans-serif;}
