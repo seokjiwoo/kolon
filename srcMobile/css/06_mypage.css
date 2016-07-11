@@ -352,6 +352,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .orderState ul li:last-child{background-image:none;}
 .orderState ul li.active{color:#fff;}
 .orderState ul li em{display:block;margin-top:5px;font-size:20px;font-weight:bold;}
+.orderState + .myWrap{margin-top:10px;}
 
 .orderRow{margin-top:8px;}
 .myOrderstate{background:#fff;padding:25px 15px 0;font-family:'NotoSansR', 'RobotoR', sans-serif;}
@@ -361,7 +362,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .orderNum span{float:left;}
 .orderNum a{float:right;padding-right:12px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
 .payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;}
-.payPrice em{font-family:'NotoSansB', 'RobotoB', sans-serif;}
+.payPrice em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
 .bundle{height:20px;line-height:20px;background:#f8f8f8;text-align:center;border-bottom:#e5e5e5;color:#666;font-size:12px;}
 .productList{}
 .productList > li{overflow:hidden;padding:15px 0;border-top:1px solid #666; position:relative;}
@@ -372,7 +373,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
 .productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
 .productList .productData{clear:both;}
-.productList .productData li{padding:15px 0;border-top:1px solid #ccc;}
+.productList .productData li{padding:15px 0;border-top:1px dashed #ccc;}
 .productList .productData li:first-child{border-top:0;}
 .productList .productData li p{line-height:1.4em;}
 .productList .productData li p.name{color:#999;}
@@ -432,7 +433,7 @@ body[data-page-id=myPage-scrap] {background:#e0e0e0;}
   .scrapListWrap ul.scrapList li.on a:before {width:140px; height:140px;}
 }
 
-p.setTit {width:100%; overflow:hidden; text-align:center; background:#f8f8f8; border-bottom:1px solid #e5e5e5; color:#666; font-size:11px; line-height:19px;}
+p.setTit {width:100%; overflow:hidden; text-align:center; background:#967bee; border-bottom:1px solid #e5e5e5; color:#fff; font-size:11px; line-height:19px;}
 .setPrice {width:100%; overflow:hidden; padding-bottom:21px; background:#e0e0e0;}
 .setPrice .setP {padding:15px; overflow:hidden; background:#f8f8f8; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
 .setPrice p {color:#333;}
