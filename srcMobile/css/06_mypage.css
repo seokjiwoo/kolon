@@ -235,7 +235,7 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .scrapbtnTop .btnR button + button {padding-left:15px; margin-left:15px;}
 .scrapbtnTop .btnR button + button:before {content:''; width:1px; height:11px; margin-top:-3px; background:#8d8d8d; position:absolute; top:50%; left:0;}
 
-.scrapListWrap {padding:0 10px; background:#e0e0e0; overflow:hidden;}
+.scrapListWrap {padding:0 10px; overflow:hidden;}
 .scrapListWrap ul.scrapList {width:100%;}
 .scrapListWrap ul.scrapList li {width:50%; float:left; text-align:center;}
 .scrapListWrap ul.scrapList li a {margin:5px 5px; display:inline-block; position:relative;}
@@ -650,3 +650,29 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
   .my .userArea .menu ul li:nth-child(6){left:228px;top:70px;}
 }
 
+.snsBtnWrap {width:100%; text-align:center; margin-top:20px;}
+.snsBtnWrap a.snsBtnS {width:auto; display:inline-block; background-color:#fff;}
+.snsBtnWrap a.snsBtnS span {padding:8px 18.5px 8px 38.5px;}
+.snsBtnWrap a.snsBtnS:before {left:32px;}
+
+@media (max-width:320px){
+	.snsBtnWrap a.snsBtnS span {padding:6px 10px 6px 26px;}
+	.snsBtnS.facebook{background-position:10px 7px;}
+	.snsBtnS.naver{background-position:10px -40px;}
+	.snsBtnS.kakao{background-position:10px -75px;}
+	.snsBtnS.twitter{background-position:10px -119px;}
+	.snsBtnWrap a.snsBtnS:before {left:22px;}
+}
+
+.my .product {width:100%; height:150px; overflow:hidden; background:50% 0 no-repeat; background-size:cover; position:relative;}
+.my .product p.productTit {margin:25px 15px 10px; font-size:15px; color:#fff;}
+.my .product p.productTxt {margin:0 15px 10px;font-size:11px; color:#d2d1d1;}
+.my .product a.productMore {padding-right:15px; position:absolute; bottom:25px; right:15px; color:#fff; background:url(../images/productMore.png) 100% 50% no-repeat; background-size:10px 10px;}
+.my .designer {padding-left:57px; margin:15px 0 10px; overflow:hidden; position:relative;}
+.my .designer .pic {width:48px; height:48px; overflow:hidden; border-radius:50%; position:absolute; top:0; left:0;}
+.my .designer .pic img {width:48px; height:48px;}
+.my .designer p.name {width:100%; height:48px; overflow:hidden; font-size:18px; color:#333; vertical-align:middle; display:table-cell;}
+.my .designer p.name span.group {width:100%; display:inline-block; font-size:11px; color:#999; line-height:130%;}
+.my .designer p.name b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; color:#666;}
+.my .graphBox {margin-top:15px; padding:15px; border:1px solid #e3e3e3; overflow:hidden;}
+.my .graphBox .graph {width:100%;}

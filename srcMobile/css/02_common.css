@@ -93,6 +93,9 @@ a.pointLink {color:#f1645c;text-decoration:underline;}
 .btnWrap02{overflow: hidden;}
 .btnWrap02 a{float: left;width: 49%;}
 .btnWrap02 a:first-child{margin-right: 2%;}
+.btnWrap03 a {width:32.3%; float:left;}
+.btnWrap03 a + a {margin-left:5px;}
+.btnWrap03 a span {}
 a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0;text-align: center;}
 .btnSizeS{height:30px;padding:0 12px;font-size: 13px;border-radius: 15px;line-height: 30px;}
 .btnSizeL{height:35px;padding:0 17px;font-size: 15px;border-radius: 20px;line-height: 35px;}
@@ -105,6 +108,10 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnColor04{background:#00aeb9} /* cyan */
 .btnColor05{background:#999} /*grey*/
 .btnColor06{background:#333} /*dark grey*/
+a.btnFollow{min-width:108px;padding-right:22px; border:1px solid #adc427;border-radius:17px;color:#adc427; text-align:center; position:relative;}
+a.btnFollow:after{content:''; width:12px; height:12px; margin-top:-6px; background:url("../images/ico_follow_off.png") no-repeat 0 0;background-size:12px; position:absolute; top:50%; right:23px;}
+a.btnFollow.active{background:#adc427;color:#fff;}
+a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat 0 0;background-size:12px;}
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 
@@ -117,8 +124,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 #loginKs:before{background-position: -70px 0}
 
 /* text color */
-.pointRed {color:#f1645c;}
-.pointCyan {color:#00aeb9;}
+.pointRed {color:#f1645c !important;}
+.pointCyan {color:#00aeb9 !important;}
 .underTxt {color:#666; font-size:11px; line-height:130%;}
 
 /* bottom fix*/
