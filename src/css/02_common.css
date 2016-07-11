@@ -10,11 +10,11 @@
 .w752{width:752px !important;}
 .w795{width:795px;}
 
-.mt5 {margin-top:5px;}
-.mt15 {margin-top:15px;}
-.mt20 {margin-top:20px;}
-.mt30 {margin-top:30px;}
-.mt40 {margin-top:40px;}
+.mt5 {margin-top:5px !important;;}
+.mt15 {margin-top:15px !important;;}
+.mt20 {margin-top:20px !important;;}
+.mt30 {margin-top:30px !important;;}
+.mt40 {margin-top:40px !important;;}
 
 .t_r {text-align:right !important;}
 .t_l {text-align:left !important;}
@@ -69,7 +69,7 @@
 .btnCenter button {margin-left:5px;}
 .btnCenter button:first-child {margin-left:0;}
 
-.lyPop .record.record02 {font-family:'NotoSansL', sans-serif;color:#333;}
+.lyPop .record.record02 {color:#333;}
 .lyPop .record.record02 td {text-align:left;}
 .lyPop .record.record02 strong {font-weight:normal;color:#333;font-family:'NotoSansR', sans-serif;}
 .lyPop .record.record02 b {font-weight:normal;color:#999;}
@@ -360,3 +360,10 @@ table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-cale
 .liBox{padding: 15px;text-align: center;border:1px solid #000;color: #000;}
 .liBox li:before{content: '';display: inline-block;width: 3px;height:3px;background: #000;margin-right: 7px;vertical-align: middle;}
 .liBox b{font-family:'NotoSansM', sans-serif;}
+
+
+/* font color */
+.color01{color: #000 !important;}
+.color02{color: #333 !important;}
+.color03{color: #666 !important;}
+.color04{color: #999 !important;}

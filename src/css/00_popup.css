@@ -40,6 +40,7 @@
 .popEdge .popTit:after{content: '';display: block;width: 100%;bottom: 0;height: 1px;background: #666;}
 .popEdge .popTit span.count{color:#f1645c;}
 .popEdge .subTit {font-size:20px;color:#000; }
+.popEdge .subTit + table{margin-top: 20px !important;}
 
 /* 육각형 팝업 */
 .popHex .hexagon{background: #fff; top:0;}
@@ -58,8 +59,8 @@
 
 .lyPop{z-index: 999 !important;}
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
-.popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #666;line-height: 1.4em;font-size: 14px;background: #fff;}
-.popEdge .popCon.popConBg {background:url(../images/category_popup_bg.png) 100% 100% no-repeat #fff;}
+.popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #333;line-height: 1.4em;font-size: 14px;background: #fff;}
+.popEdge .popCon.popConBg {background:url('../images/category_popup_bg.png') 100% 100% no-repeat #fff;}
 .popCon p{margin-top:20px;}
 .popCon p:first-child{margin-top:0;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
@@ -69,10 +70,10 @@
 .popCon a[class^=btnSize]{min-width: 150px;}
 .popCon input[type="text"],
 .popCon input[type="password"]{width:230px; padding:10px 20px; border:1px solid #ccc;font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
-.popCon select{padding:10px 10px; border:1px solid #ccc;color: #999;}
+.popCon select{padding:10px 10px; border:1px solid #ccc;color: #666;font-family:'NotoSansR', sans-serif;}
 .popCon fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 .popCon textarea {width:87%;}
-.popCon h5.popSubTit {width:100%; overflow:hidden; font-size:20px; font-family:'NotoSansR', sans-serif; line-height:130%;}
+.popCon h5.popSubTit {width:100%; overflow:hidden; font-size:20px; font-family:'NotoSansR', sans-serif; line-height:130%;color: #000;}
 .popCon h5.popSubTit + .popTb,
 .popCon h5.popSubTit + .tbSet,
 .popCon .popTb + h5.popSubTit {margin-top:20px;}
@@ -96,7 +97,7 @@
 .popCon .popTb table td span.adrList span b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR', sans-serif; display:inline-block; color:#333;}
 .popCon .popTb table td.btnZone .btnSizeS + .btnSizeS {margin-top:4px;}
 .popCon .popTb + .popTb {margin-top:47px;}
-.popCon .popTb table tr td a.pointRed {color:#f1645c;}
+.popCon .popTb table tr td a.pointRed {color:#f1645c;text-decoration: underline;}
 
 .popCon .popForm {width:100%; overflow:hidden; text-align:center;}
 .popCon .popFormLine {width:100%; padding-bottom:40px; overflow:hidden; text-align:center; border-bottom:1px solid #e8e8e8;}
@@ -136,7 +137,7 @@
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress {padding-left:13px;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before {width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar {padding-left:15px;}
-.popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 0 -10px no-repeat; top:2px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 1px -10px no-repeat; top:2px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span + span {margin-left:13px;}
 .popCon .expertInfo .eCon .infoDetail .eBtn {width:53%; margin-top:10px; float:right; text-align:right;}
 .popCon .expertInfo .eCon .infoDetail .eBtn a + a {margin-left:5px;}
@@ -177,7 +178,7 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
 .dateChangePop .timeSet .calendar{display: block;width:195px;margin:0 0 10px 0; }
 .dateChangePop .calendar span.calInp input[type=text]{width: 180px;color: #666;}
-.dateChangePop .alignBox{height: 40px;text-align: left;z-index: 0}
+.dateChangePop .alignBox{height: 40px;text-align: left;z-index: 1}
 .dateChangePop .alignBox .drop{width: 235px}
 .dateChangePop .drop li{width: 100%;}
 .dateChangePop, .dateChangePop #cboxWrapper, .dateChangePop #cboxLoadedContent{overflow: visible !important;}

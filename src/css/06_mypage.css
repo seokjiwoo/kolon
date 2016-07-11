@@ -175,7 +175,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #following #followSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
 #following button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
-.recordSort{width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.recordSort{table-layout: fixed;width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding:15px 0 15px 15px;}
 .recordSort{margin:20px 0 30px;text-align: left;}
@@ -200,60 +200,58 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my .subTxt {font-size: 14px;font-family:'NotoSansR', sans-serif;color: #666;}
 .my .subTit .subTxt{margin-left: 15px;}
 
-.my .record{width: 100%;margin-top: 10px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
-.my .record th, .my .record td{border-bottom: 1px solid #e1e1e1}
-.my .record th{padding: 15px;background: #f8f8f8;color: #333;}
-.my .record td{padding: 15px;}
-.my .record td > a{margin-top: 6px;}
-.my .record .recordDate{border-right: 1px solid #e1e1e1}
-.my .record .date b{color: #f1645c;}
-.my .record .date a{color: #f1645c;text-decoration: underline;font-family:'NotoSansM', sans-serif;}
-.my .record .total{margin-top:20px;} 
-.my .record .total b{color: #999;}
-.my .record .recordThumb{overflow: hidden;width: 90px;height: 90px;background: #f8f8f8;}
-.my .record .recordThumb img{display: block;width: 100%;}
-.my .record .recordInfo{text-align: left;}
-.my .record .recordInfo span{display: block;}
-.my .record .recordInfo .producOption{color: #999}
-.my .record .recordInfo .count{color: #999}
-.my .record .recordInfo .productPrice{font-family:'NotoSansB', sans-serif;}
-.my .record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#00aeb9;font-family:'NotoSansM', sans-serif;border:2px solid #00aeb9;}
-.my .record .orderState{position: relative;}
-.my .record .orderState a{font-size:13px;}
-.my .record .btnWrap{margin-top: 5px;}
-.my .record .orderState .stateTxt{position: relative;}
-.my .record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
-.my .record .orderState .stateEnd {display:block;color:#f1645c;}
-.my .record .orderState .stateTxt:hover .popState{display: block;}
-.my .record .orderState .cancleDate{color: #f1645c;}
-.my .record .arraySide {overflow:hidden;}
-.my .record .arraySide p .my .record .arraySide p span {float:left;}
-.my .record .arraySide p span {display:block;float:right;text-align:right;}
-.my .record .fontM {font-family:'NotoSansM', sans-serif;}
-.my .record .btnBox {overflow:hidden;text-align:center;}
-.my .record .btnBox .btnSizeS {float:left;width:118px;padding:0;margin-left:5px;margin-bottom:5px;}
-.my .record .btnBox .btnSizeS:nth-child(odd) {margin-left:0;}
+.record{width: 100%;margin-top: 10px;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em;letter-spacing:-0.5px}
+.record th, .record td{border-bottom: 1px solid #e1e1e1}
+.record th{padding: 15px;background: #f8f8f8;color: #333;}
+.record td{padding: 15px;}
+.record td > a{margin-top: 6px;}
+.record .recordDate{border-right: 1px solid #e1e1e1}
+.record .date b{color: #f1645c;}
+.record .date a{color: #f1645c;text-decoration: underline;font-family:'NotoSansM', sans-serif;}
+.record .total{margin-top:20px;} 
+.record .total b{color: #999;}
+.record .recordThumb{overflow: hidden;width: 90px;height: 90px;background: #f8f8f8;}
+.record .recordThumb img{display: block;width: 100%;}
+.record .recordInfo{text-align: left;}
+.record .recordInfo span{display: block;}
+.record .recordInfo .producOption{color: #999}
+.record .recordInfo .count{color: #999}
+.record .recordInfo .productPrice{font-family:'NotoSansB', sans-serif;}
+.record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#00aeb9;font-family:'NotoSansM', sans-serif;border:2px solid #00aeb9;}
+.record .orderState{position: relative;}
+.record .orderState a{font-size:13px;}
+.record .btnWrap{margin-top: 5px;}
+.record .orderState .stateTxt{position: relative;}
+.record .orderState .stateIcor{display: inline-block;width: 14px;height: 14px;margin-left: 3px;background: url('../images/ico_info.png') no-repeat;vertical-align: top;}
+.record .orderState .stateEnd {display:block;color:#f1645c;}
+.record .orderState .stateTxt:hover .popState{display: block;}
+.record .orderState .cancleDate{color: #f1645c;}
+.record .arraySide {overflow:hidden;}
+.record .arraySide p .record .arraySide p span {float:left;}
+.record .arraySide p span {display:block;float:right;text-align:right;}
+.record .fontM {font-family:'NotoSansM', sans-serif;}
+.record .btnBox {overflow:hidden;text-align:center;}
+.record .btnBox .btnSizeS {float:left;width:118px;padding:0;margin-left:5px;margin-bottom:5px;}
+.record .btnBox .btnSizeS:nth-child(odd) {margin-left:0;}
 
-.my .record.record02 {font-family:'NotoSansL', sans-serif;}
-.my .record.record02 th {font-family:'NotoSansR', sans-serif;}
-.my .record .rowspan{padding: 20px 20px 15px}
-.my .record .rowspan li{line-height: 1.6em;}
-.my .record .require{color: #f1645c}
+.record .rowspan{padding: 20px 20px 15px}
+.record .rowspan li{line-height: 1.6em;}
+.record .require{color: #f1645c}
 
-.my .record .noList {height:52px;color:#999;}
+.record .noList {height:52px;color:#999;}
 
-.my .record.record04 {margin-top:30px;}
-.my .record.record04 th, .my .record.record04 td {font-size:16px;}
-.my .record.record04 .recordDate b {margin-left:5px;text-decoration:initial;}
+.record.record04 {margin-top:30px;}
+.record.record04 th, .record.record04 td {font-size:16px;}
+.record.record04 .recordDate b {margin-left:5px;text-decoration:initial;}
 
 .my .secTit + table{margin-top: 20px;}
-.my .record.detail th,.my .record.detail td{height: 50px;}
+.record.detail th,.record.detail td{height: 50px;}
 
 .my .moreView {border-top:1px solid #999;border-bottom:1px solid #999;}
-.my .record.recordBg {margin-top:-2px;}
-.my .record.recordBg th, .my .record.recordBg td {text-align:left;}
-.my .record.recordBg th {background:#f8f8f8;}
-.my .record.recordBg td {background:#fff;font-family:'NotoSansL', sans-serif;color: #333;}
+.record.recordBg {margin-top:-2px;}
+.record.recordBg th, .record.recordBg td {text-align:left;}
+.record.recordBg th {background:#f8f8f8;}
+.record.recordBg td {background:#fff;font-family:'NotoSansL', sans-serif;color: #333;}
 .my .payment {color:#f2726b;}
 
 .my .popState{display: none;position: absolute;width: 495px;padding: 38px 20px 38px;right: 0;bottom:30px;background: #fff;border:1px solid #999;z-index: 2;}
@@ -491,7 +489,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my .tbSet + .btnG,
 .my table + .btnG {margin-top:20px;}
 .my .cartCont + h3.subTit {margin-top:20px;}
-.my .record + .infoOrder {margin-top:31px;}
+.record + .infoOrder {margin-top:31px;}
 .my h2.secTit + .tbSet {margin-top:30px;}
 .my .orderSearch select + .btnSizeM2 { height:40px; margin-left:15px; font-family:'NotoSansR', sans-serif; font-size:14px;}
 
@@ -613,3 +611,4 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #movingDetail  .stateWrap li:last-child{width: 9%;}
 #movingDetail  .stateWrap li{width: 82%;}
 
+#myPoint .subTit + .record td{padding: 30px;}
