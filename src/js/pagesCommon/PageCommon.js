@@ -219,7 +219,6 @@ module.exports = function() {
 	 * init current tab layout
 	 */
 	function initTabContentLayout() {
-		if ($('ul').hasClass('cardWrap')) initCardLayout();
 		if ($('ul').hasClass('infoSlider')) initTabSlider();
 		$('.except').dotdotdot({watch:'window'});
 		if ($('p').hasClass('except02')) {
@@ -243,21 +242,6 @@ module.exports = function() {
 	function initTabSlider() { 
 		$('#infoSlider').bxSlider({
 			pager:false
-		});
-	};
-	
-	/**
-	 * card layout
-	 */
-	function initCardLayout() {
-		$('#cardWrap').isotope({
-			itemSelector : '#cardWrap > li:not(.stamp)',
-			stamp : '#cardWrap > .stamp',
-			layoutMode : 'packery',
-			packery : {
-				columnWidth : 285,
-				gutter : 20
-			}
 		});
 	};
 	

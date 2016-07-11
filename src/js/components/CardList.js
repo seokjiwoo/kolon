@@ -14,6 +14,11 @@ module.exports = function() {
 		 */
 		appendData: appendData,
 		/**
+		 * HTML로 바로 넣기
+		 * @param {String} tags
+		 */
+		html: html,
+		/**
 		 * 카드 오버 이펙트 초기화
 		 */
 		initOverEffect: initOverEffect,
@@ -30,9 +35,32 @@ module.exports = function() {
 	function init(wrapId) {
 		wrap = $(wrapId);
 
+		wrap.isotope({
+			itemSelector : wrapId+' > li:not(.stamp)',
+			stamp : wrapId+' > .stamp',
+			layoutMode : 'packery',
+			packery : {
+				columnWidth : 285,
+				gutter : 20
+			}
+		});
+
 		initOverEffect();
 		initCardRadio();
 	};
+
+	function html(tags) {
+		var insertElements = $(tags);
+
+		wrap.append(insertElements)
+			.isotope('appended', insertElements)
+			.isotope('layout');
+			
+		initOverEffect();
+		initCardRadio();
+
+		$(callerObj).trigger('cardAppended');
+	}
 
 	function appendData(cardListArray) {
 		$.map(cardListArray, function(each) {
@@ -60,16 +88,7 @@ module.exports = function() {
 		var source = $('#index-card-templates').html();
 		var template = window.Handlebars.compile(source);
 		var html = template(data);
-		var insertElements = $(html);
-
-		wrap.append(insertElements)
-			.isotope('appended', insertElements)
-			.isotope('layout');
-
-		initOverEffect();
-		initCardRadio();
-
-		$(callerObj).trigger('cardAppended');
+		html(html);
 	};
 
 	function initOverEffect(e) {
