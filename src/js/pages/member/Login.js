@@ -15,7 +15,6 @@ module.exports = function() {
 
 	var enteredId;
 	var authNumberResendFlag = false;
-	var forceLoginFlag = false;
 	var firstTryFlag = true;		// 페이지 열리고 첫 시도인지 체크 (휴대전화로 가입시도 후 페이지 새로고침 했을 때 이전 세션 때문에 인증번호 틀림 에러코드 돌아오는 문제 때문에...)
 	
 	var callerObj = {
@@ -33,6 +32,8 @@ module.exports = function() {
 		controller.getSocialLoginUrl();
 		memberInfoController.getMemberTermsList();
 		
+		$('#inputName').change(checkEmailField);
+		$('#inputPW').change(checkPasswordField);
 		$('#popAgree01').click(getTermsContent);
 		$('#popAgree02').click(getTermsContent);
 		$('#loginForm').submit(loginHandler);
@@ -81,6 +82,41 @@ module.exports = function() {
 			initSocialLoginPopupButton();
 		}
 	};
+	
+	/**
+	 * 이메일 필드 검사
+	 */
+	function checkEmailField(e) {
+		var inputValue = $.trim($('#inputName').val());
+
+		if (util.checkVaildEmail(inputValue) == false) {
+			$('#idAlert').text('이메일 주소를 정확하게 입력해주세요.');
+		} else {
+			Mailcheck.run({
+				email: inputValue,
+				suggested: function(suggestion) {
+					var enteredMail = inputValue.split('@');
+					$('#idAlert').html('입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?');
+				},
+				empty: function() {
+					$('#idAlert').text('');
+				}
+			});
+		}
+	};
+	
+	/**
+	 * 패스워드 필드 검사 
+	 */
+	function checkPasswordField(e) {
+		var inputValue = $('#inputPW').val();
+		
+		if (!util.checkValidPassword(inputValue)) {
+			$('#pwAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+		} else {
+			$('#pwAlert').text('');
+		}
+	};
 
 	/**
 	 * 로그인 or 회원가입 요청
@@ -105,25 +141,9 @@ module.exports = function() {
 				controller.login(id, pw, keepLogin);
 			} else {
 				// 이메일
-				if (enteredId != $('#inputName').val()) forceLoginFlag = false;
 				enteredId = $('#inputName').val();
-				
 				if (util.checkVaildEmail(enteredId)) {
-					Mailcheck.run({
-						email: enteredId,
-						suggested: function(suggestion) {
-							if (!forceLoginFlag) {
-								forceLoginFlag = true;
-								var enteredMail = enteredId.split('@');
-								Super.Super.alertPopup('메일 주소를 다시 확인해 주세요.', '입력하신 메일 주소가 혹시 '+enteredMail[0]+'@<strong>'+suggestion.domain+'</strong> 아닌가요?', '확인');
-							} else {
-								controller.login(enteredId, pw, keepLogin);
-							}
-						},
-						empty: function() {
-							controller.login(enteredId, pw, keepLogin);
-						}
-					});
+					controller.login(enteredId, pw, keepLogin);
 				} else {
 					Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
 				}

@@ -50,6 +50,8 @@
 .members .doubleCard .loginSns{width:auto;margin-top:15px;padding:0 25px;}
 .members .doubleCard .note{margin: 20px 0 40px;font-size: 14px;font-family:'NotoSansM', sans-serif;line-height: 1.3em;}
 .members .doubleCard .note a{color: #f1645c;}
+#loginForm .inputWrap { line-height:0 }
+.members .doubleCard .inputWrap .note{display:inline-block;margin: 10px 0 0 20px;color: #f1645c;}
 
 .members .saveInfo{margin-top:10px;font-family:'NotoSansR', sans-serif;color: #666;}
 .members .saveInfo label:before{content: '';display: inline-block;width: 26px;height: 26px;margin-right: 10px;border:1px solid #c8ccd6;border-radius: 50%;vertical-align: middle;}
