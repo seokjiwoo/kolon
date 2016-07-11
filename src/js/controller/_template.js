@@ -35,10 +35,10 @@ function ClassExampleController() {
 			"example": attr,
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('exampleResult', [200]);
+				$(callerObj).trigger('exampleResult', [status, result]);
 			} else {
 				Super.handleError('example', result);
-				$(callerObj).trigger('exampleResult', [result.status]);
+				$(callerObj).trigger('exampleResult', [status, result]);
 			}
 		}, false);
 	};

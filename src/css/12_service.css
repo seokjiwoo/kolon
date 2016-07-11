@@ -46,4 +46,6 @@ body[data-page-id=homeService] {overflow-y:hidden !important;}
 
 .homeWrap .textBox .hmStep {margin-top:30px;}
 .homeWrap .textBox p.hmNotice {font-size:14px;line-height:18px;}
-.homeWrap .textBox button {margin-top:50px;width:200px;}
+.homeWrap .textBox a {margin-top:50px;width:200px;}
+
+.arrayWrap {overflow:visible}

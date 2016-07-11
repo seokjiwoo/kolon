@@ -12,6 +12,8 @@
 				<h2 class="secTit">이사서비스 신청</h2>
 
 				<h3 class="subTit">이사 정보</h3>
+				<form method='POST' action='#' id='requestMovingForm'>
+					<fieldset>
 				<div class="tbSet orderCont mt20">
 					<table summary="이사 정보 표로써 이사 출발지역, 이사일, 서비스 종류의 정보가 담겨있습니다.">
 						<caption>이사 정보 표</caption>
@@ -24,23 +26,14 @@
 								<th scope="col">이사 출발 지역</th>
 								<td>
 									<div class="arrayWrap alignBox">
-										<div class="leftBox">
+										<div class="leftBox" id='addressDrop1'>
 											<ul class="drop" data-prevent="true">
 												<li><a href="#">시/도</a></li>
-												<li><a href="#" data-value="type-1">서울시</a></li>
-												<li><a href="#" data-value="type-2">전주시</a></li>
-												<li><a href="#" data-value="type-3">경주시</a></li>
-												<li><a href="#" data-value="type-4">부산시</a></li>
-												<li><a href="#" data-value="type-5">대구시</a></li>
 											</ul>
 										</div>
-										<div class="leftBox">
+										<div class="leftBox" id='addressDrop2'>
 											<ul class="drop" data-prevent="true">
 												<li><a href="#">시/군/구</a></li>
-												<li><a href="#" data-value="type-1">중랑구</a></li>
-												<li><a href="#" data-value="type-2">광진구</a></li>
-												<li><a href="#" data-value="type-3">강남구청구</a></li>
-												<li><a href="#" data-value="type-4">강남구</a></li>
 											</ul>
 										</div>
 									</div>
@@ -65,10 +58,10 @@
 								<th scope="col">서비스 종류</th>
 								<td>
 									<ul class="homeType">
-										<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="hType"/><label for="hTp1">포장이사</label></span></li>
-										<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="hType"/><label for="hTp2">원룸이사</label></span></li>
-										<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="hType"/><label for="hTp3">보관이사</label></span></li>
-										<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="hType"/><label for="hTp4">사무실이사</label></span></li>
+										<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label></span></li>
+										<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label></span></li>
+										<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label></span></li>
+										<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label></span></li>
 									</ul>
 								</td>
 							</tr>
@@ -90,7 +83,7 @@
 										<!-- 별점 
 										grade01 -> 1.0
 										grade15 -> 1.5
-										grade01 -> 2.0
+										grade02 -> 2.0
 										grade25 -> 2.5
 										grade03 -> 3.0
 										grade35 -> 3.5
@@ -124,17 +117,6 @@
 								<p class="thumBox"><img src="../images/thum_recommend02.jpg"></p>
 								<ul class="arraySide">
 									<li>
-										<!-- 별점 
-										grade01 -> 1.0
-										grade15 -> 1.5
-										grade01 -> 2.0
-										grade25 -> 2.5
-										grade03 -> 3.0
-										grade35 -> 3.5
-										grade04 -> 4.0
-										grade45 -> 4.5
-										grade05 -> 5.0
-										-->
 										<p>
 											가격 만족도
 											<span class="gradeNum">3.0</span>
@@ -161,17 +143,6 @@
 								<p class="thumBox"><img src="../images/thum_recommend03.jpg"></p>
 								<ul class="arraySide">
 									<li>
-										<!-- 별점 
-										grade01 -> 1.0
-										grade15 -> 1.5
-										grade01 -> 2.0
-										grade25 -> 2.5
-										grade03 -> 3.0
-										grade35 -> 3.5
-										grade04 -> 4.0
-										grade45 -> 4.5
-										grade05 -> 5.0
-										-->
 										<p>
 											가격 만족도
 											<span class="gradeNum">5.0</span>
@@ -206,7 +177,7 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이름</th>
+								<th scope="col"><span class="ico_star">*</span> 이름 </th>
 								<td>
 									<input type="text" title="이름 입력" placeholder="홍길동" style="width:360px;">
 								</td>
@@ -229,7 +200,7 @@
 											</ul>
 										</div>
 										<div class="leftBox">
-											<a href="../_popupWindow/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
+											<a href="/popup/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
 										</div>
 									</div>
 									<dl>
@@ -254,7 +225,7 @@
 											</ul>
 										</div>
 										<div class="leftBox">
-											<a href="../_popupWindow/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
+											<a href="/popup/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
 										</div>
 									</div>
 									<dl>
@@ -298,7 +269,8 @@
 				<div class="btnC">
 					<button type="submit" class="btn btnSizeL btnColor02 btnWM">신청하기</button>
 				</div>
-				
+					</fieldset>
+				</form>
 			</section>
 			</div>
 		</div>
