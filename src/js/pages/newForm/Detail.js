@@ -57,6 +57,15 @@ module.exports = function() {
 			$(this).parent('.socialBtn').removeClass('active');
 		});
 
+		$('.accordion li a').click(function(e){
+			e.preventDefault();
+			if ($(this).parent('li').hasClass('on')) {
+				$(this).parent('li').removeClass('on');
+			} else {
+				$(this).parent('li').removeClass('on').addClass('on');
+			}
+		});
+
 		debug.log(fileName, 'init');
 
 		self = callerObj;

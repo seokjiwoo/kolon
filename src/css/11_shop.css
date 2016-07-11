@@ -33,7 +33,14 @@
 /* newform detail */
 /* common */
 .newFormArea h3 {font-size:80px;font-weight:bold;font-style:italic;font-family:'Times New Roman', sans-serif;}
-
+.newFormArea .icoNewformTit:before {content:'';display:block;width:83px;height:75px;margin:0 auto;background:url(../images/ico_newform_tit.png) no-repeat}
+.italic {font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
+.pointPrice {color:#f1645c;}
+.alignLine {font-family:'NotoSansB', sans-serif;font-size:16px;}
+.alignLine:before, .alignLine:after {content:'';display:inline-block;width:25px;height:1px;background:#000;vertical-align:middle}
+.alignLine:before {margin-right:20px;}
+.alignLine:after {margin-left:20px;}
+.clearBox {overflow:hidden;clear:both;}
 
 /* topArea */
 .topArea .topContBox {height:900px;background: url('../images/newform_topBg.png') 50% no-repeat;background-size:cover}
@@ -98,3 +105,91 @@
 .basicArea {margin-top:200px;text-align:center;}
 /* eventBanner 있는 경우 basicArea */
 .eventBanner + .basicArea {margin-top:-68px;background:#fff}
+.floorSpace {margin-top:80px;}
+.floorSpace p {margin-top:30px;font-size:14px;}
+.floorSpace p b {font-size:20px;}
+.composition {margin-top:70px}
+.unitIco {overflow:hidden;margin-top:20px;}
+.unitIco li {display:inline-block;text-align:center;width:100px;height:115px;margin-left:7px;}
+.unitIco li:first-child {margin-left:0;}
+.unitIco li span {font-size:14px}
+.unitIco li span:before {content:'';display:block;width:55px;height:55px;margin:15px auto 0;background:url(../images/ico_unit.png) no-repeat;}
+.unitIco li.unitIco01 span:before {background-position:0 0;}
+.unitIco li.unitIco02 span:before {background-position:0 -55px;}
+.unitIco li.unitIco03 span:before {background-position:0 -110px;}
+.unitIco li.unitIco04 span:before {background-position:0 -165px;}
+.unitIco li.unitIco05 span:before {background-position:0 -220px;}
+.unitIco li.unitIco06 span:before {background-position:0 -275px;}
+.unitIco li.unitIco01.on span:before {background-position:-55px 0;}
+.unitIco li.unitIco02.on span:before {background-position:-55px -55px;}
+.unitIco li.unitIco03.on span:before {background-position:-55px -110px;}
+.unitIco li.unitIco04.on span:before {background-position:-55px -165px;}
+.unitIco li.unitIco05.on span:before {background-position:-55px -220px;}
+.unitIco li.unitIco06.on span:before {background-position:-55px -275px;}
+.unitIco li.on {background:url(../images/unitIco_bg.png) no-repeat;}
+.unitIco li.on span {color:#fff;}
+.floorPlanBox {margin-top:20px;}
+.floorPlanBox img {vertical-align:top}
+.optionBox {margin-top:75px;}
+.basicOption {overflow:hidden;margin-top:30px;}
+.basicOption li {display:inline-block;text-align:center;margin-left:40px;}
+.basicOption li:first-child {margin-left:0;}
+.basicOption li p {font-size:14px;margin-top:15px;}
+.basicOption li p.optionLeft {float:left;}
+.basicOption li p.optionRight {float:right;}
+.basicOption li:before {content:'';display:inline-block;margin:0 auto;background:url(../images/newform_option.png) no-repeat;}
+.basicOption li.basicOption01:before {width:51px;height:48px;background-position:0 center;}
+.basicOption li.basicOption02:before {width:52px;height:48px;background-position:-100px 0;}
+.basicOption li.basicOption03:before {width:165px;height:48px;background-position:0 -50px;}
+.basicOption li .basicIco {font-size:14px;}
+.basicOption li .basicIco .italic {font-size:20px;}
+.basicOption li .basicIco .italic:before {content:'';display:block;width:12px;height:14px;margin:15px auto 10px;background:url(../images/newform_option.png) no-repeat;background-position:-7px -118px;}
+.basicOption li.basicOption03 .basicIco .italic:before {width:113px;height:15px;background-position:-50px -118px;}
+.constructPrice {margin-top:70px}
+.constructPrice dl {overflow:hidden;width:400px;margin:30px auto 0;font-size:14px;}
+.constructPrice dl + dl {margin-top:15px;}
+.constructPrice dt, .constructPrice dd {float:left;display:inline-block;text-align:left;margin:0;line-height:20px;}
+.constructPrice dt {position:relative;width:90px}
+.constructPrice dt:after {content:'';display:inline-block;position:absolute;top:50%;right:0;margin-top:-6px;width:15px;height:12px;background:url(../images/newform_option.png) no-repeat;background-position:-30px -119px;}
+.constructPrice dt + dd {width:120px;margin-left:20px;}
+.constructPrice dd + dd {margin-left:20px;}
+.constructPrice .italic {font-size:20px;}
+.installment {margin-top:70px}
+.installment p {margin-top:30px;font-size:14px;}
+.installment p.pointPrice {margin-top:15px;font-size:24px;}
+.installment p.pointPrice .italic {font-size:30px;}
+
+/* conceptArea */
+.conceptArea {text-align:center;margin-top:150px;}
+.conceptArea .icoNewformTit:before {margin-bottom:70px;}
+.conceptArea .subNewformTit {margin-top:20px;font-family:'NotoSansL', sans-serif;font-size:30px;}
+.conceptArea .subNewformTit:after {content:'';display:block;width:170px;height:1px;margin:60px auto;background:#000;}
+
+/* materialArea */
+.materialArea {text-align:center;margin-top:180px;}
+.materialArea .icoNewformTit:before {margin-bottom:80px;}
+
+
+
+
+/* purchasingArea */
+.purchasingArea {text-align:center;margin-top:150px;}
+.purchasingArea h3 {font-size:50px;}
+.purchasingArea p {margin-top:10px;font-size:30px;}
+.accordion {position:relative;width:1200px;margin:60px auto 0;text-align:left;}
+.accordion:before {content: '';position: absolute;top: 0;left: 0;width: 0;height: 0;border-bottom: 60px solid #e6e6e6;border-left: 30px solid transparent;z-index: 99;background: #fff;}
+.accordion li:last-child:after {content: '';position: absolute;top: 0;right: 0;width: 0;height: 0;border-top: 60px solid #e6e6e6;border-right: 30px solid transparent;z-index: 99;background: #fff;}
+.accordion li {position:relative;height:60px;line-height:60px;margin-top:1px;}
+.accordion li:first-child {margin-top:0;}
+.accordion li a {display:block;position:relative;width:100%;background:#e6e6e6;width:1115px;padding:0 30px 0 55px;font-size:20px;font-family:'NotoSansL', sans-serif;color:#000;}
+.accordion li a:after {content:'';display:block;position:absolute;top:50%;right:30px;margin-top:-5px;width:16px;height:10px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
+.accordion li.on a:after {background-position:0 0;}
+.accordion li.on {height:auto;}
+.accordion li.on .accordCon {display:block;}
+.accordion .accordCon {display:none;padding:40px 60px;}
+.accordion .accordCon li {margin-top:30px;height:auto;font-size:14px;line-height:normal;}
+.accordion .accordCon li:first-child {margin-top:0px;}
+.accordion .accordCon li:last-child {display:none;}
+.accordion .accordCon li p {font-size:14px;margin-top:5px;color:#666;line-height:22px;font-family:'NotoSansR', sans-serif;}
+.accordion .accordCon li strong {font-family:'NotoSansB', sans-serif;}
+
