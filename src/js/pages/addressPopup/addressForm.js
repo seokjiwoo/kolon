@@ -10,6 +10,9 @@ module.exports = function() {
 	$(controller).on('addAddressResult', addAddressResultHandler);
 	$(controller).on('editAddressResult', editAddressResultHandler); 
 	
+	var SuperClass = require('../../pagesCommon/PageCommon.js'),
+	Super = SuperClass();
+
 	var seq;
 
 	var callerObj = {
@@ -22,6 +25,8 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
+		Super.init();
+
 		if (util.getUrlVar('seq') != undefined) {
 			seq = util.getUrlVar('seq');
 			controller.getAddress(seq);
@@ -76,7 +81,8 @@ module.exports = function() {
 		e.preventDefault();
 
 		var phoneNumber = String($('#phone1').val())+$('#phone2').val()+$('#phone3').val();
-
+		var addressSectionCode = $('#basicAddrFlag').hasClass('on') ? 'BM_ADDR_SECTION_02' : 'BM_ADDR_SECTION_03';
+		
 		if ($.trim($('#adrName1').val()) == '') {
 			alert('주소 별칭을 입력해 주세요');
 		} else if ($.trim($('#adrName2').val()) == '') {
@@ -95,7 +101,8 @@ module.exports = function() {
 				"roadBaseAddress": $('#roadAddress').val(),
 				"detailAddress": $('#extraAddress').val(),
 				"receiverName": $('#adrName2').val(),
-				"cellPhoneNumber": phoneNumber
+				"cellPhoneNumber": phoneNumber,
+				"addressSectionCode": addressSectionCode
 			}
 
 			if (seq == -1) {
@@ -112,6 +119,7 @@ module.exports = function() {
 		} else {
 			alert(status+': '+result.message);
 		}
+		window.opener.refreshAddressData();
 		location.href = 'addressBook.html';
 	};
 
@@ -121,6 +129,7 @@ module.exports = function() {
 		} else {
 			alert(status+': '+result.message);
 		}
+		window.opener.refreshAddressData();
 		location.href = 'addressBook.html';
 	};
 }

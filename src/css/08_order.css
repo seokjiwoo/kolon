@@ -308,3 +308,5 @@ span.price.fontS {font-size:14px;}
 .order .tablesType01 table tbody tr td{padding:15px;background:#fafafa;}
 .order .tablesType01 table tbody tr td span{font-size:20px;}
 .order .tablesType01 table tbody tr td span em{font-style:normal;font-family:'NotoSansB',  sans-serif;}
+
+.orderCont.tbSet .alignBox { z-index:unset }

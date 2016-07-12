@@ -24,13 +24,13 @@
 									<tr>
 										<th scope="col">이름 </th>
 										<td>
-											<input type="text" title="이름 입력" placeholder="홍길동" style="width:360px;">
+											<input type="text" id='name' title="이름 입력" placeholder="홍길동" style="width:360px;">
 										</td>
 									</tr>
 									<tr>
 										<th scope="col">연락처</th>
 										<td>
-											<input type="text" title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
+											<input type="text" id='phoneNumber' title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
 										</td>
 									</tr>
 									<tr>
@@ -38,24 +38,13 @@
 										<td>
 											<div class="arrayWrap alignBox">
 												<div class="leftBox">
-													<ul class="drop" data-prevent="true">
-														<li><a href="#">자택</a></li>
-														<li><a href="#" data-value="type-1">아파트</a></li>
-														<li><a href="#" data-value="type-2">회사</a></li>
-													</ul>
+													<ul id="originAddressDrop" class="drop" data-prevent="true"><li><a href="#">선택해 주세요</a></li></ul>
 												</div>
 												<div class="leftBox">
-													<a href="/popup/addressBook.html" class="btnSizeM btnColor01 openAddressPopup">새주소</a>
+													<a href="/popup/addressBook.html" id='book-origin' class="btnSizeM btnColor01 openAddressPopup">새주소</a>
 												</div>
 											</div>
-											<dl>
-												<dt>- 도로명</dt>
-												<dd>서울시 강남구 학동로 56길 26</dd>
-												<dt>- 지번</dt>
-												<dd>서울시 강남구 삼성동 8-5</dd>
-												<dt>- 상세주소</dt>
-												<dd>삼성빌딩 7층</dd>
-											</dl>
+											<dl id='originAddress'></dl>
 										</td>
 									</tr>
 									<tr>
@@ -63,24 +52,13 @@
 										<td>
 											<div class="arrayWrap alignBox">
 												<div class="leftBox">
-													<ul class="drop" data-prevent="true">
-														<li><a href="#">자택</a></li>
-														<li><a href="#" data-value="type-1">아파트</a></li>
-														<li><a href="#" data-value="type-2">회사</a></li>
-													</ul>
+													<ul id="targetAddressDrop" class="drop" data-prevent="true"><li><a href="#">선택해 주세요</a></li></ul>
 												</div>
 												<div class="leftBox">
-													<a href="/popup/addressBook.html" class="btnSizeM btnColor01 openAddressPopup">새주소</a>
+													<a href="/popup/addressBook.html" id='book-target' class="btnSizeM btnColor01 openAddressPopup">새주소</a>
 												</div>
 											</div>
-											<dl>
-												<dt>- 도로명</dt>
-												<dd>서울시 강남구 학동로 56길 26</dd>
-												<dt>- 지번</dt>
-												<dd>서울시 강남구 삼성동 8-5</dd>
-												<dt>- 상세주소</dt>
-												<dd>삼성빌딩 7층</dd>
-											</dl>
+											<dl id='targetAddress'></dl>
 										</td>
 									</tr>
 								</tbody>
@@ -109,13 +87,19 @@
 									</tr>
 									<tr>
 										<th scope="col">서비스 종류</th>
-										<td>
+										<td class="inputWrap radioBox">
+											<!--
 											<ul class="homeType">
 												<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label></span></li>
 												<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label></span></li>
 												<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label></span></li>
 												<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label></span></li>
 											</ul>
+											-->
+											<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label>
+											<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label>
+											<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label>
+											<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label>
 										</td>
 									</tr>
 								</tbody>
@@ -220,7 +204,7 @@
 						</div>
 						<h3 class="subTit">추가 요청사항 (선택)</h3>
 						<div class="tbSet orderCont mt20">
-							<textarea class="mt20 pullSize" cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
+							<textarea id='additionalComments' class="mt20 pullSize" cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
 						</div>
 						<h3 class="subTit">개인정보 제 3자 제공 동의</h3>
 						<div class="orderCont">
@@ -250,5 +234,20 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+	<script type="text/javascript">
+	/**
+	 * 주소 목록 갱신 트리거 핸들링 
+	 */
+	function refreshAddressData() {
+        $(document).trigger('refreshAddressData');
+    }
+	/**
+	 * 주소 선택 데이터 트리거 핸들링 
+	 */
+	function selectAddressData(data) {
+        var data = JSON.parse(data);
+        $(document).trigger('selectAddressData', [data]);
+    }
+	</script>
 </body>
 </html>

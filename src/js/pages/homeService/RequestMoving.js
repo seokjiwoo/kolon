@@ -15,9 +15,19 @@ module.exports = function() {
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass();
 
-	var controller = require('../../controller/LivingServiceController.js');
-	$(controller).on('movingAddressListResult', movingAddressListHandler);
-	$(controller).on('movingCompanyListResult', movingCompanyListHandler);
+	var controller = require('../../controller/HomeServiceController.js');
+	//$(controller).on('movingAddressListResult', movingAddressListHandler);
+	//$(controller).on('movingCompanyListResult', movingCompanyListHandler);
+
+	var addressController = require('../../controller/AddressController.js');
+	$(addressController).on('addressListResult', addressListHandler);
+	var addressArray;
+	var originAddress;
+	var targetAddress;
+	var addressBookTarget;
+
+	$(document).on('refreshAddressData', refreshAddressDataHandler);
+	$(document).on('selectAddressData', selectAddressDataHandler);
 	
 	var callerObj = {
 		/**
@@ -34,7 +44,8 @@ module.exports = function() {
 	
 		setDatePicker();
 
-		controller.movingAddressList();
+		refreshAddressDataHandler();
+		/*controller.movingAddressList();
 
 		$('#addressDrop1').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			controller.movingAddressList(data.values[0]);
@@ -42,6 +53,17 @@ module.exports = function() {
 
 		$('#addressDrop2').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			controller.movingCompanyList(data.values[0]);
+		});*/
+		$('#requestMovingForm').submit(requestMovingSubmit);
+		$('#originAddressDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+			setAddress('origin', data.values[0]);
+		});
+		$('#targetAddressDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+			setAddress('target', data.values[0]);
+		});
+		$('.openAddressPopup').click(function(e) {
+			addressBookTarget = $(this).attr('id').substr(5);
+			console.log( $(this).attr('id').substr(5) );
 		});
 	}
 
@@ -55,7 +77,7 @@ module.exports = function() {
 		});
 	};
 
-	function movingAddressListHandler(e, status, result) {
+	/*function movingAddressListHandler(e, status, result) {
 		if (result.sidoList != undefined) {
 			var tags = '<ul class="drop" data-prevent="true"><li><a href="#">시/도</a></li>';
 			for (var key in result.sidoList) {
@@ -79,13 +101,79 @@ module.exports = function() {
 		}
 
 		DropDownMenu.refresh();
-	};
+	};*/
 
-	function movingCompanyListHandler(e, status, result) {
+	/*function movingCompanyListHandler(e, status, result) {
 		if (status == 200) {
 			//
 		} else {
 			alert('/apis/living/moving/company/ - '+status+':'+result.message);
+		}
+	};*/
+
+	function refreshAddressDataHandler(e) {
+		addressController.addressList();
+	};
+
+	function addressListHandler(e, status, list) {
+		var tags1 = '<li><a id="originLabel" href="#">선택해 주세요</a></li>';
+		var tags2 = '<li><a id="targetLabel" href="#">선택해 주세요</a></li>';
+		addressArray = new Array();
+		$.map(list.items, function(each) {
+			addressArray[each.addressSequence] = each;
+			tags1 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
+			tags2 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
+		});
+		$('#originAddressDrop').html(tags1);
+		$('#targetAddressDrop').html(tags2);
+
+		$('#originAddress').html('');
+		$('#targetAddress').html(''); 
+											
+		DropDownMenu.refresh();
+	};
+
+	function setAddress(addressType, seq) {
+		var addressObject = addressArray[seq];
+		$('#'+addressType+'Address').html('<dt>- 도로명</dt><dd>'+addressObject.roadBaseAddress+'</dd><dt>- 지번</dt><dd>'+addressObject.lotBaseAddress+'</dd><dt>- 상세주소</dt><dd>'+addressObject.detailAddress+'</dd>');
+		switch(addressType) {
+			case 'origin': originAddress = addressObject; break;
+			case 'target': targetAddress = addressObject; break; 
+		}
+	}
+
+	function selectAddressDataHandler(e, seq) {
+		setAddress(addressBookTarget, seq);
+		$('#'+addressBookTarget+'Label').text(addressArray[seq].addressManagementName);
+	};
+
+	function requestMovingSubmit(e) {
+		e.preventDefault();
+		var requestTargetName = $('#name').val();
+		var requestTargetContact = $('#phoneNumber').val();
+		var movingTypeCode = $(':radio[name="hTp"]:checked').val();
+		var comment = $('#additionalComments').val();
+ 
+		if (requestTargetName == '') {
+			alert('이름을 입력해 주세요');
+		} else if (requestTargetContact == '') {
+			alert('연락처를 입력해 주세요');
+		} else if (movingTypeCode == undefined) {
+			alert('서비스 종류를 선택해 주세요');
+		} else {
+			var movingService = {
+				"movingDate": moment($('.js-picker').datepicker('getDate')).format('YYYYMMDD'),
+				"movingTypeCode": movingTypeCode
+			}
+			var livingService = {
+				"addRequestContents": comment,
+				"companyNumber": 0,
+				"requestTargetContact": requestTargetContact,
+				"requestTargetName": requestTargetName,
+				"serviceSectionCode": "LS_SERVICE_TYPE_01",
+				"termsNumber": 0
+			}
+			controller.requestMoving(originAddress, targetAddress, movingService, livingService);
 		}
 	}
 };
