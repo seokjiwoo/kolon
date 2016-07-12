@@ -160,6 +160,8 @@ function DropDownMenu() {
 					checks.eq(0).prop('checked', true);
 					labels.eq(0).addClass(self.opts.cssClass.active);
 				}
+			} else {
+				target.siblings('label').addClass(self.opts.cssClass.active);
 			}
 		} else {
 			if (hasAllChecker.size()) {
