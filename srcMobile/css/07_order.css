@@ -88,7 +88,7 @@
 .complete p span.iconArrow {padding-left:15px; position:relative; display:inline-block;}
 .complete p span.iconArrow:before {content:''; width:10.5px; height:9.5px; margin-top:-4.525px; background:url(../images/ico_arrow.png) 0 0% no-repeat; background-size:10.5px 9.5px; position:absolute; top:50%; left:0;}
 
-.order .addressList {width:100%; overflow:hidden; border-top:1px solid #ccc; margin-top:15px;}
+.order .addressList {width:100%; overflow:hidden;}
 .order .addressList li {width:100%; padding:20px 0 13px; border-bottom:1px solid #ccc; overflow:hidden;}
 .order .addressList li p {line-height:130%;}
 .order .addressList li p.addressTit {color:#999; font-size:15px;}
@@ -105,3 +105,27 @@
 .order .addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
 .order .formWrap + .underTxtMark {margin-top:14.5px;}
 .order .underTxtMark + h3.conTit {margin-top:25px;}
+
+ul.orderDetailList {width:100%; overflow:hidden;}
+ul.orderDetailList li {padding:15px 0; border-bottom:1px solid #ccc;}
+ul.orderDetailList li p {width:100%; overflow:hidden; color:#333; font-size:15px; line-height:130%;}
+ul.orderDetailList li p.detailTxt {font-size:13px; color:#666;}
+ul.orderDetailList li p > b {width:20%; float:left; display:inline-block; font-weight:normal;}
+ul.orderDetailList li p > span {width:80%; float:right; display:inline-block; text-align:right;}
+ul.orderDetailList li p + p {margin-top:9px;}
+
+ul.reserInfo {width:100%; overflow:hidden;}
+ul.reserInfo li {padding:15px 0;}
+ul.reserInfo li + li {border-top:1px dashed #ccc;}
+ul.reserInfo li p.tit {color:#333;}
+ul.reserInfo li .reserCont {width:100%; overflow:hidden; margin-top:10px;}
+ul.reserInfo li .reserCont p {width:50%; float:left;}
+ul.reserInfo li .reserCont p span.dateInp {margin-right:15px; border:1px solid #ccc;}
+ul.reserInfo li .reserCont p span.dateInp input.datePicker {width:100%;}
+ul.reserInfo li .reserCont p select {width:99.8%;}
+ul.reserInfo li .reserCont p.date {width:99.8%; border:1px solid #ccc;}
+ul.reserInfo li .reserCont p.date span.dateInp {width:50%; float:left; display:inline-block; margin:0; border:0;}
+ul.reserInfo li .reserCont p.date span.dateInp em {display:inline-block;}
+ul.reserInfo li .reserCont p.date span.dateInp + span.dateInp em {padding-left:10px; position:relative;}
+ul.reserInfo li .reserCont p.date span.dateInp + span.dateInp em:before {content:'';width:7px; height:1px; background:#ccc; position:absolute; top:50%; left:0;}
+ul.reserInfo li p.underTxt {margin-top:10px;}
