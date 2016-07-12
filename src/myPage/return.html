@@ -49,96 +49,76 @@
 						<tr>
 							<th>주문내역 검색</th>
 							<td>
-								<form action="">
+								<form method="post" action="/" class="js-order-search">
 									<fieldset class="recordSearch">
 										<legend class="hide"></legend>
-										<input type="text" id="recordInput" title="주문내역 입력 란">
+										<input type="text" id="recordInput" class="js-inp" title="주문내역 입력 란">
 										<label for="recordInput"></label>
-										<button type="submit">검색</button>
+										<button type="submit js-submit">검색</button>
 									</fieldset>
 								</form>
 							</td>
 						</tr>
 					</table>
-					<div class="alignBox">					
-						<h3 class="subTit">교환/반품/취소 목록</h3>
+					<div class="alignBox">
+						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
 						<!-- 
-								[D] dropbox - active 시 .dropOn 
-								
-								- data-prevent Flag값 입력
-								- data-prevent : a href prevent flag / 기본값 - true
-								- 선택에 따라 .on 토글
-							-->
-							<style>
-								/* 테스트 임시 구성 */
-								/*.drop a.on {color:#f1645c}*/
-							</style>
-							<ul class="drop" data-prevent="true">
-								<li><a href="#">진행상태 보기</a></li>
-								<li><a href="#" data-value="type-1">전체</a></li>
-								<li><a href="#" data-value="type-2">입금대기</a></li>
-								<li><a href="#" data-value="type-3">결제완료</a></li>
-								<li><a href="#" data-value="type-4">상품준비중</a></li>
-								<li><a href="#" data-value="type-5">배송중</a></li>
-								<li><a href="#" data-value="type-6">배송완료</a></li>
-								<li><a href="#" data-value="type-7">구매확정</a></li>
-							</ul>
+							[D] dropbox 체크 타입 - active 시 .dropOn
 
-							<!-- 
-								[D] dropbox 체크 타입 - active 시 .dropOn
+							- data-prevent Flag값 입력
+							- data-prevent : a href prevent flag / 기본값 - true
 
-								- data-prevent Flag값 입력
-								- data-prevent : a href prevent flag / 기본값 - true
-
-								- data-all-checker 전체선택 input 객체 설정
-								- 기본값 data-all-checker 별도 지정이 없을 경우 input 객체중 첫번째 요소로 설정
-							 -->
-							<ul class="drop dropChk" style="right:150px" data-prevent="true">
-								<li><a href="#">진행상태 보기</a></li>
-								<li>
-									<p class="checkbox">
-										<label for="chkAll" class="on">전체</label>
-										<input type="checkbox" name="chkGroup1" id="chkAll" checked="checked" data-all-checker="true">
-									</p>
-								</li>
-								<li>
-									<p class="checkbox">
-										<label for="chk01" class="on">입금대기</label>
-										<input type="checkbox" name="chkGroup2" id="chk01" checked="checked">
-									</p>
-								</li>
-								<li>
-									<p class="checkbox">
-										<label for="chk02" class="on">결제완료</label>
-										<input type="checkbox" name="chkGroup3" id="chk02" checked="checked">
-									</p>
-								</li>
-								<li>
-									<p class="checkbox">
-										<label for="chk03" class="on">상품준비중</label>
-										<input type="checkbox" name="chkGroup4" id="chk03" checked="checked">
-									</p>
-								</li>
-								<li>
-									<p class="checkbox">
-										<label for="chk04" class="on">배송중</label>
-										<input type="checkbox" name="chkGroup5" id="chk04" checked="checked">
-									</p>
-								</li>
-								<li>
-									<p class="checkbox">
-										<label for="chk05" class="on">배송완료</label>
-										<input type="checkbox" name="chkGroup6" id="chk05" checked="checked">
-									</p>
-								</li>
-								<li>
-									<p class="checkbox">
-										<label for="chk06" class="on">구매확정</label>
-										<input type="checkbox" name="chkGroup7" id="chk06" checked="checked">
-									</p>
-								</li>
-							</ul>
+							- data-all-checker 전체선택 input 객체 설정
+							- 기본값 data-all-checker 별도 지정이 없을 경우 input 객체중 첫번째 요소로 설정
+						 -->
+						<ul class="drop dropChk" data-prevent="true">
+							<li><a href="#">진행상태 보기</a></li>
+							<li>
+								<p class="checkbox">
+									<label for="chkAll" class="on">전체</label>
+									<input type="checkbox" name="SL_ORDER_STATE" id="chkAll" checked data-all-checker="true">
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk01" class="on">입금대기</label>
+									<input type="checkbox" name="SL_ORDER_STATE_01" id="chk01" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk02" class="on">결제완료</label>
+									<input type="checkbox" name="SL_ORDER_STATE_02" id="chk02" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk03" class="on">상품준비중</label>
+									<input type="checkbox" name="SL_ORDER_STATE_03" id="chk03" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk04" class="on">배송중</label>
+									<input type="checkbox" name="SL_ORDER_STATE_04" id="chk04" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk05" class="on">배송완료</label>
+									<input type="checkbox" name="SL_ORDER_STATE_05" id="chk05" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk06" class="on">구매확정</label>
+									<input type="checkbox" name="SL_ORDER_STATE_06" id="chk06" checked>
+								</p>
+							</li>
+						</ul>						
 					</div>
+					<!-- [D] 마크업 원본 -->
+					<!-- 
 					<table class="record">
 						<tr>
 							<th>주문정보</th>
@@ -207,10 +187,94 @@
 							</td>
 						</tr>
 					</table>
+					-->
+					<!--// [D] 마크업 원본 -->
+
+					<table class="record js-order-wrap"></table>
+
 				</section>
 			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+
+<style>
+	/* 리스트 수량이 적었을때, 진행보기 상태 필터 영역확보를 위함 */
+	.singleCard {min-height:550px}
+</style>
+
+<script id="order-list-templates" type="text/x-handlebars-template">
+	<tr>
+		<th>주문정보</th>
+		<th colspan="2">상품정보</th>
+		<th>판매처</th>
+		<th>수령자</th>
+		<th>배송비</th>
+		<th>진행상태</th>
+	</tr>
+	{{#each orders}}
+		<tr data-order-info='{
+				"orderNumber" : "{{orderNumber}}",
+				"orderProductSequence" : "{{orderProductSequence}}",
+				"deliveryNumber" : "{{deliveryNumber}}"
+			}'>
+			<td rowspan="{{listOrderItems.length}}" class="recordDate">
+				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+				<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
+			</td>
+		{{#each listOrderItems}}
+			{{#vxIF @index "!==" 0}}
+			<tr data-order-info='{
+				"orderNumber" : "{{../orderNumber}}",
+				"orderProductSequence" : "{{../orderProductSequence}}",
+				"deliveryNumber" : "{{../deliveryNumber}}"
+			}'>
+			{{/vxIF}}
+				<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
+				{{#if optionName}}
+					<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+					</td>
+				{{else}}
+					<td class="recordInfo">{{productName}}<span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+					</td>
+				{{/if}}
+				<td>{{../sellerName}}</td>
+				<td>{{../receiverName}}</td>
+				<td>{{deliveryFee}}</td>
+				<td class="orderState stateWrap">
+					{{#vxSwitch deliveryStateCode}}
+					<div class="stateTxt">
+						{{#vxCase "SL_ORDER_STATE_07" break=true}}
+							<div class="stateTxt">
+								<a href="" class="btnSizeS btnColor01">취소상세</a>
+							</div>
+						{{/vxCase}}
+						{{#vxCase "SL_ORDER_STATE_08" break=true}}
+							<div class="stateTxt">
+								<a href="../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderReturnDetail">반품상세</a>
+							</div>
+						{{/vxCase}}
+						{{#vxCase "SL_ORDER_STATE_09" break=true}}
+							<div class="stateTxt">
+								<a href="../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderChangeDetail">교환상세</a>
+							</div>
+						{{/vxCase}}
+						{{#vxCase "SL_ORDER_STATE_10" break=true}}
+							<div class="stateTxt">
+								<a href="" class="btnSizeS btnColor01">재배송</a>
+							</div>
+						{{/vxCase}}
+					{{/vxSwitch}}
+				</td>
+			{{#vxIF @index "!==" 0}}
+			</tr>
+			{{/vxIF}}
+		{{/each}}
+		</tr>
+	{{/each}}
+</script>
+
+
 </body>
 </html>

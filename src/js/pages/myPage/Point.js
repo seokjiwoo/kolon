@@ -203,6 +203,7 @@ module.exports = function() {
 					break;
 			}
 			$('.js-picker-to').datepicker('setDate', moment().format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 		});
 	};

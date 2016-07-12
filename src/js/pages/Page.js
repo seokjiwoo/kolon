@@ -376,6 +376,53 @@ module.exports = function() {
 				return block.fn(this);
 			}
 		});
+
+
+		//@see https://github.com/wycats/handlebars.js/issues/927
+		window.Handlebars.registerHelper("vxSwitch", function(value, options) {
+			this._switch_value_ = value;
+			var html = options.fn(this);
+			delete this._switch_value_;
+			return html;
+		});
+
+		//@see https://github.com/wycats/handlebars.js/issues/927
+		window.Handlebars.registerHelper("vxCase", function(value, options) {
+			var args = Array.prototype.slice.call(arguments);
+			var options    = args.pop();
+			var caseValues = args;
+
+			if (this._switch_break_ || caseValues.indexOf(this._switch_value_) === -1) {
+				return '';
+			} else {
+				if (options.hash.break === true) {
+				this._switch_break_ = true;
+			}
+				return options.fn(this);
+			}
+		});
+
+		//@see https://github.com/wycats/handlebars.js/issues/927
+		window.Handlebars.registerHelper("vxDefault", function(options) {
+			if (!this._switch_break_) {
+				return options.fn(this);
+			}
+		});
+
+		//@see http://jsfiddle.net/mpetrovich/wMmHS/
+		//@example {{vxMath @index "+" 1}}
+		window.Handlebars.registerHelper("vxMath", function(lvalue, operator, rvalue, options) {
+			lvalue = parseFloat(lvalue);
+			rvalue = parseFloat(rvalue);
+
+			return {
+			"+": lvalue + rvalue,
+			"-": lvalue - rvalue,
+			"*": lvalue * rvalue,
+			"/": lvalue / rvalue,
+			"%": lvalue % rvalue
+			}[operator];
+		});
 	}
 
 	// Colorbox Complete 시점

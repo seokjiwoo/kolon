@@ -11,8 +11,8 @@
 			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
 			<div class="wrap">
 				<!-- @@include ../_template/my_depth03_01.html {"myMenu01":"on"} -->
-				<section class="singleCard" id="myOrderDetail">
-					<h2 class="secTit">주문 내역 <span class="icoTitle"></span> 주문 상세</h2>				
+				<section class="singleCard js-detail-wrap" id="myOrderDetail">
+					<!-- <h2 class="secTit">주문 내역 <span class="icoTitle"></span> 주문 상세</h2>				
 					<table class="record record04 detail" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
 						<caption>주문번호 표</caption>
 						<colgroup>
@@ -26,7 +26,7 @@
 							</td>
 						</tr>
 					</table>
-
+					
 					<h3 class="subTit mt40">결제정보</h3>
 					<table class="record record02" summary="결제정보 표로써 주문금액, 할인금액, 배송비, 총 결제금액, 결제방법 정보가 담겨있습니다.">
 						<caption>결제정보 표</caption>
@@ -86,7 +86,7 @@
 							<td class="t_r"><span class="fontM">2,600,000 원</span></td>
 						</tr>
 					</table>
-
+					
 					<h3 class="subTit mt40">주문자 정보</h3>
 					<table class="record record02" summary="주문자 정보 표로써 주문자 정보, 신청일, 이메일 주소 정보가 담겨있습니다.">
 						<caption>주문자 정보 표</caption>
@@ -107,7 +107,7 @@
 							<td class="t_l">kolon1234@gmail.com</td>
 						</tr>
 					</table>
-
+					
 					<h3 class="subTit mt40">주문상품</h3>
 					<table class="record record03" summary="주문상품 표로써 상품정보, 판매처, 수령자, 배송비, 할인금액, 결제금액, 진행상태 정보가 담겨있습니다.">
 						<caption>주문상품 표</caption>
@@ -150,7 +150,7 @@
 							</td>
 							<td class="orderState stateWrap">
 								<div class="stateTxt">
-									<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
+									@@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"}
 									결제완료<span class="stateIcor"></span>
 								</div>
 								<a href="#popOrder02" class="btnSizeS btnColor01">취소신청</a>
@@ -178,7 +178,7 @@
 							</td>
 							<td class="orderState stateWrap">
 								<div class="stateTxt">
-									<!-- @@include ../_template/pop_order_state.html {"step":"step04", "step04":"on"} -->
+									@@include ../_template/pop_order_state.html {"step":"step04", "step04":"on"}
 									결제완료<span class="stateIcor"></span>
 								</div>
 								<a href="#popOrder02" class="btnSizeS btnColor01">취소신청</a>
@@ -221,7 +221,7 @@
 							<td>김정현<a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a></td>
 							<td class="orderState stateWrap">
 								<div class="stateTxt">
-									<!-- @@include ../_template/pop_order_state.html {"step":"step05", "step05":"on"} -->
+									@@include ../_template/pop_order_state.html {"step":"step05", "step05":"on"}
 									상품준비중<span class="stateIcor"></span>
 								</div>
 								<a href="#popOrder02" class="btnSizeS btnColor01">주문취소</a>
@@ -245,7 +245,7 @@
 							<td>김정현<a href="" class="btnSizeS btnColor03 btnIcoMore active">접기</a></td>
 							<td class="orderState stateWrap">
 								<div class="stateTxt">
-									<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+									@@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"}
 									구매확정<span class="stateIcor"></span>
 								</div>
 							</td>
@@ -280,7 +280,7 @@
 							</tr>
 						</table>
 					</div>
-
+					
 					<div class="btnSideArray">
 						<div class="fl_left checkAgree checkbox">
 							<input type="checkbox" id="agreeAll">
@@ -290,14 +290,261 @@
 							<button type="submit" class="btn btnSizeM btnColor02">취소신청</button>
 						</div>
 					</div>
-
+					
 					<ul class="infoOrder">
 						<li>· 교환이나 반품을 원하시는 고객님은 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
-					</ul>
+					</ul> -->
 				</section>
 			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+
+<script id="order-detail-templates" type="text/x-handlebars-template">
+	<h2 class="secTit">주문 내역 <span class="icoTitle"></span> 주문 상세</h2>				
+	<table class="record record04 detail" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
+		<caption>주문번호 표</caption>
+		<colgroup>
+			<col style="width:114px">
+			<col style="width:auto">
+		</colgroup>
+		<tr>
+			<th class="t_l">주문정보</th>
+			<td class="recordDate t_l">
+				<p class="date">{{orderDate}}<b>{{orderNumber}}</b></p>
+			</td>
+		</tr>
+	</table>
+
+	<h3 class="subTit mt40">결제정보</h3>
+	<table class="record record02" summary="결제정보 표로써 주문금액, 할인금액, 배송비, 총 결제금액, 결제방법 정보가 담겨있습니다.">
+		<caption>결제정보 표</caption>
+		<colgroup>
+			<col style="width:114px">
+			<col style="width:283px">
+			<col style="width:114px">
+			<col style="width:284px">
+		</colgroup>
+		<tr>
+			<th class="t_l h50">주문 금액</th>
+			<td class="t_r"><span class="fontM">{{totalPaymentPriceDesc}} 원</span></td>
+			<th rowspan="4" class="t_l">결제 방법</th>
+			<td rowspan="4" class="t_l rowspan">
+				<p class="fontM">API 구조 확인 필요</p>
+			</td>
+		</tr>
+		<tr>
+			<th class="t_l">배송비</th>
+			<td class="t_l">
+				<ul class="arraySide">
+					<li>
+						<p>기본 할인<span class="fontM">- {{discountPriceDesc}} 원</span></p>
+					</li>
+				</ul>
+			</td>
+		</tr>
+		<tr>
+			<th class="t_l">할인 금액</th>
+			<td class="t_r"><span class="fontM">{{discountPriceDesc}} 원</span></td>
+		</tr>
+		<tr>
+			<th class="t_l">총 결제금액</th>
+			<td class="t_r"><span class="fontM">{{totalPaymentPriceDesc}} 원</span></td>
+		</tr>
+	</table>
+
+	<h3 class="subTit mt40">주문자 정보</h3>
+	<table class="record record02" summary="주문자 정보 표로써 주문자 정보, 신청일, 이메일 주소 정보가 담겨있습니다.">
+		<caption>주문자 정보 표</caption>
+		<colgroup>
+			<col style="width:114px">
+			<col style="width:auto">
+			<col style="width:114px">
+			<col style="width:auto">
+		</colgroup>
+		<tr>
+			<th class="t_l">주문자 정보</th>
+			<td colspan="3" class="t_l">{{ordererName}}</td>
+		</tr>
+		<tr>
+			<th class="t_l">연락처</th>
+			<td class="t_l">{{cellPhoneNum}}</td>
+			<th>이메일 주소</th>
+			<td class="t_l">{{ordererEmail}}</td>
+		</tr>
+	</table>
+
+	<h3 class="subTit mt40">주문상품</h3>
+	<table class="record record03" summary="주문상품 표로써 상품정보, 판매처, 수령자, 배송비, 할인금액, 결제금액, 진행상태 정보가 담겨있습니다.">
+		<caption>주문상품 표</caption>
+		<colgroup>
+			<col style="width:65px">
+			<col style="width:90px">
+			<col style="width:200px">
+			<col style="width:84px">
+			<col style="width:71px">
+			<col style="width:93px">
+			<col style="width:90px">
+			<col style="width:103px">
+		</colgroup>
+		<tr>
+			<th colspan="3">상품정보</th>
+			<th>할인금액</th>
+			<th>배송비</th>
+			<th>결제금액</th>
+			<th>수령자</th>
+			<th>진행상태</th>
+		</tr>
+		{{#each listOrderItems}}
+		<tr>
+			<td>
+				<p class="checkAgree checkbox">
+					<input type="checkbox" title="상품선택" id="orderDetail-list{{@index}}" checked>
+					<label for="orderDetail-list{{@index}}" class="on"
+							data-order-number="{{../orderNumber}}" data-chk-group="orderDetail"><span class="hide">선택</span></label>
+				</p>
+			</td>
+			<td class="w90"><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
+			<td class="recordInfo">
+				<span class="owner">{{sellerName}}</span><br>
+				{{#if optionName}}
+					{{productName}}<span class="producOption">옵션 : {{optionName}}<br>수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+				{{else}}
+					<span class="productPrice">{{itemPriceDesc}} 원</span>
+				{{/if}}
+			</td>
+			<td>{{discountPriceDesc}}원</td>
+			{{#if deliveryFee}}
+				<td>{{deliveryFeeDesc}}</td>
+			{{else}}
+				<td>{{deliveryFee}}</td>
+			{{/if}}
+			<td class="payment">{{itemPriceDesc}} 원</td>
+			<td>
+				{{receiverName}}
+				<!-- <a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a> -->
+			</td>
+			<td class="orderState stateWrap">
+				{{#vxSwitch deliveryStateCode}}
+					{{#vxCase "SL_ORDER_STATE_01" break=true}}
+						<div class="stateTxt">
+							<!-- @@include ../_template/pop_order_state.html {"step":"step01", "step01":"on"} -->
+							입금대기<span class="stateIcor"></span>
+						</div>
+						<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_02" break=true}}
+						<div class="stateTxt">
+							<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
+							결제완료<span class="stateIcor"></span>
+						</div>
+						<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_03" break=true}}
+						<div class="stateTxt">
+							<!-- @@include ../_template/pop_order_state.html {"step":"step03", "step03":"on"} -->
+							상품준비중<span class="stateIcor"></span>
+						</div>
+						<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_04" break=true}}
+						<div class="stateTxt">
+							<!-- @@include ../_template/pop_order_state.html {"step":"step04", "step04":"on"} -->
+							배송중<span class="stateIcor"></span>
+						</div>
+						<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_05" break=true}}
+						<div class="stateTxt">
+							<!-- @@include ../_template/pop_order_state.html {"step":"step05", "step05":"on"} -->
+							배송완료<span class="stateIcor"></span>
+						</div>
+						<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
+						<div class="btnWrap"><a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a></div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_06" break=true}}
+						<div class="stateTxt">
+							<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+							구매확정<span class="stateIcor"></span>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_07" break=true}}
+						<div class="stateTxt">
+							<a href="" class="btnSizeS btnColor01">취소상세</a>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_08" break=true}}
+						<div class="stateTxt">
+							<a href="../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderReturnDetail">반품상세</a>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_09" break=true}}
+						<div class="stateTxt">
+							<a href="../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderChangeDetail">교환상세</a>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_10" break=true}}
+						<div class="stateTxt">
+							<a href="" class="btnSizeS btnColor01">재배송</a>
+						</div>
+					{{/vxCase}}
+				{{/vxSwitch}}
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+	<div class="moreView">
+		<table class="record recordBg" summary="주문자 정보 표로써 받으실 분, 주소, 연락처1, 연락처2, 요청사항 정보가 담겨있습니다.">
+			<caption>주문자 정보 표</caption>
+			<colgroup>
+				<col style="width:114px">
+				<col style="width:auto">
+				<col style="width:114px">
+				<col style="width:auto">
+			</colgroup>
+			<tr>
+				<th>받으실 분</th>
+				<td colspan="3">{{receiverName}}</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td colspan="3">{{receiverRoadBaseAddress}}</td>
+			</tr>
+			<tr>
+				<th>연락처 1</th>
+				<td>{{receiverTel1}}</td>
+				<th>연락처 2</th>
+				<td>{{receiverTel2}}</td>
+			</tr>
+			<tr>
+				<th>요청사항</th>
+				<td colspan="3">{{deliveryRequestMemo}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="btnSideArray">
+		<div class="fl_left checkAgree checkbox">
+			<input type="checkbox" id="orderDetail-list-all">
+			<label for="orderDetail-list-all" class="on"
+							data-chk-role="chkAll"
+							data-chk-group="orderDetail">전체 선택 <span>( 총{{listOrderItems.length}}개)</span></label>
+		</div>
+		<div class="fl_right">
+			<button type="submit" class="btn btnSizeM btnColor02 js-btn js-order-cancel"
+				data-order-info='{
+					"orderNumber" : "{{orderNumber}}",
+					"orderProductSequence" : "{{orderProductSequence}}",
+					"deliveryNumber" : "{{deliveryNumber}}"
+				}'>취소신청</button>
+		</div>
+	</div>
+
+	<ul class="infoOrder">
+		<li>· 교환이나 반품을 원하시는 고객님은 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
+	</ul>
+</script>
+
 </body>
 </html>

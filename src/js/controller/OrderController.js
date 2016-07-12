@@ -36,13 +36,74 @@ function ClassOrderController() {
 			 */
 			myOrdersList: myOrdersList,
 			/**
-			 * 주문 상세
+			 * 교환/반품/취소 조회
+			 */
+			myCancelList: myCancelList,
+			/**
+			 * 주문/배송 - 주문상세
 			 */
 			orderDetail: orderDetail,
 			/**
-			 * 배송 조회
+			 * 취소 신청 조회 팝업
 			 */
-			orderTrackingInfo: orderTrackingInfo
+			cancelDetail: cancelDetail,
+			/**
+			 * 주문 취소 신청 처리
+			 */
+			orderCancel: orderCancel,
+			/**
+			 * 구매확정
+			 */
+			orderConfirm: orderConfirm,
+			/**
+			 * 교환 신청 처리
+			 */
+			orderExchange: orderExchange,
+			/**
+			 * 반품 신청 처리
+			 */
+			orderReturn: orderReturn,
+			/**
+			 * 주문/배송 - 배송추적 팝업 조회
+			 */
+			orderTrackingInfo: orderTrackingInfo,
+
+			/**
+			 * 교환/반품/취소 목록 조회
+			 */
+			myClaimsList: myClaimsList,
+			/**
+			 * 취소 상세 내역 / 휴대폰 결제
+			 */
+			claimsCell: claimsCell,
+			/**
+			 * 취소 상세 내역 / 신용카드 결제
+			 */
+			claimsCredit: claimsCredit,
+			/**
+			 * 취소 반려 상세 내역
+			 */
+			claimsDeny: claimsDeny,
+			/**
+			 * 취소 상세 내역 / 무통장 입금
+			 */
+			claimsDeposit: claimsDeposit,
+			/**
+			 * 교환 상세 내역
+			 */
+			claimsExchange: claimsExchange,
+			/**
+			 * 교환 반려 상세 내역
+			 */
+			claimsExchangeDeny: claimsExchangeDeny,
+			/**
+			 * 반품 상세 내역
+			 */
+			claimsReturn: claimsReturn,
+			/**
+			 * 반품 반려 상세 내역
+			 */
+			claimsReturnDeny: claimsReturnDeny
 		}
 		
 		return callerObj;	
@@ -100,34 +161,355 @@ function ClassOrderController() {
 	}
 	
 	// 주문/배송 현황 조회
-	function myOrdersList() {
-		Super.callApi('/apis/me/orders', 'GET', {}, function(status, result) {
+	function myOrdersList(startDate, endDate, keyword, deliveryStateCode) {
+		Super.callApi('/apis/me/orders', 'GET', {
+			'startDate' : startDate,
+			'endDate' : endDate,
+			'keyword' : keyword || '',
+			'deliveryStateCode' : deliveryStateCode || ''
+		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('myOrdersListResult', [200, result]);
+				$(callerObj).trigger('myOrdersListResult', [status, result]);
 			} else {
 				Super.handleError('myOrdersList', result);
+				$(callerObj).trigger('myOrdersListResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 교환/반품/취소 조회
+	function myCancelList(startDate, endDate, keyword, deliveryStateCode) {
+		Super.callApi('/apis/me/orders/cancel/list', 'GET', {
+			'startDate' : startDate,
+			'endDate' : endDate,
+			'keyword' : keyword || '',
+			'deliveryStateCode' : deliveryStateCode || ''
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myCancelListResult', [status, result]);
+			} else {
+				Super.handleError('myCancelsList', result);
+				$(callerObj).trigger('myCancelListResult', [status, result]);
 			}
 		}, false);
 	};
 	
 	// 주문/배송 - 주문상세
-	function orderDetail(orderNumber) {
+	function orderDetail(orderNumber, type) {
 		Super.callApi('/apis/me/orders/'+orderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('orderDetailResult', [200, result]);
+				$(callerObj).trigger('orderDetailResult', [status, result, type]);
 			} else {
 				Super.handleError('orderDetail', result);
+				$(callerObj).trigger('orderDetailResult', [status, result, type]);
 			}
 		}, false);
 	};
-	
-	// 주문/배송 - 배송추적 팝업 조회
-	function orderTrackingInfo(orderNumber) {
-		Super.callApi('/apis/me/orders/'+orderNumber+'/tracking', 'GET', {}, function(status, result) {
+
+	// 취소 신청 조회 팝업
+	// cancelList / productNumber|optionNumber 순으로 입력 
+	// 복수개일경우 , (콤마)로 구분
+	// ex: 2|3,5|6 
+	// 5|6
+	function cancelDetail(orderNumber, cancelList) {
+		Super.callApi('/apis/me/orders/' + orderNumber + '/cancel', 'GET', {
+			'cancelList' : cancelList
+		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('orderTrackingInfoResult', [200, result]);
+				$(callerObj).trigger('cancelDetailResult', [status, result]);
+			} else {
+				Super.handleError('cancelDetail', result);
+				$(callerObj).trigger('cancelDetailResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 주문 취소 신청 처리
+	// POST /apis/me/orders/{orderNumber}/cancel
+	/*
+	{
+		"claim": {
+			"accountAuthDatetime": "2016-04-01",
+			"accountAuthYn": "Y",
+			"addDeliveryChargeTotal": 0,
+			"claimDeliveryChargeTotal": 0,
+			"claimReasonCode": "string",
+			"claimReasonStatement": "string",
+			"claimTypeCode": "string",
+			"orderNumber": 0,
+			"refundAccountNumber": 0,
+			"refundBankCode": "string",
+			"refundDepositorName": "string"
+		},
+		"items": [
+			{
+				"addDeliveryCharge": 0,
+				"claimDeliveryCharge": 0,
+				"claimNumber": 0,
+				"claimProcessDatetime": "string",
+				"claimProcessQuantity": 0,
+				"claimProductAmount": 0,
+				"claimRequestQuantity": 0,
+				"claimStateCode": "string",
+				"claimStateReason": "string",
+				"deliveryChargePaymentCode": "string",
+				"orderNumber": 0,
+				"orderProductSequence": "string"
+			}
+		]
+	}
+	 */
+	function orderCancel(orderNumber, claim, items) {
+		Super.callApi('/apis/me/orders/'+orderNumber + '/cancel', 'POST', {
+			'claim' : claim,
+			'items' : items
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderCancelResult', [status, result]);
+			} else {
+				Super.handleError('orderCancel', result);
+				$(callerObj).trigger('orderCancelResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 구매확정
+	function orderConfirm(orderNumber, orderProductSequence) {
+		Super.callApi('/apis/me/orders/' + orderNumber + '/confirm/', 'POST', {
+			'orderProductSequence' : orderProductSequence
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderConfirmResult', [status, result]);
+			} else {
+				Super.handleError('orderConfirm', result);
+				$(callerObj).trigger('orderConfirmResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 교환 신청 처리
+	/*
+	{
+		"claim": {
+			"accountAuthDatetime": "2016-04-01",
+			"accountAuthYn": "Y",
+			"addDeliveryChargeTotal": 0,
+			"claimDeliveryChargeTotal": 0,
+			"claimReasonCode": "string",
+			"claimReasonStatement": "string",
+			"claimTypeCode": "string",
+			"orderNumber": 0,
+			"refundAccountNumber": 0,
+			"refundBankCode": "string",
+			"refundDepositorName": "string"
+		},
+		"items": [
+			{
+				"addDeliveryCharge": 0,
+				"claimDeliveryCharge": 0,
+				"claimNumber": 0,
+				"claimProcessDatetime": "string",
+				"claimProcessQuantity": 0,
+				"claimProductAmount": 0,
+				"claimRequestQuantity": 0,
+				"claimStateCode": "string",
+				"claimStateReason": "string",
+				"deliveryChargePaymentCode": "string",
+				"orderNumber": 0,
+				"orderProductSequence": "string"
+			}
+		]
+	}
+	 */
+	function orderExchange(orderNumber, claim, items) {
+		Super.callApi('/apis/me/orders/' + orderNumber + '/exchange', 'POST', {
+			'claim' : claim,
+			'items' : items
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderExchangeResult', [status, result]);
+			} else {
+				Super.handleError('orderExchange', result);
+				$(callerObj).trigger('orderExchangeResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 반품 신청 처리
+	/*
+	{
+		"claim": {
+			"accountAuthDatetime": "2016-04-01",
+			"accountAuthYn": "Y",
+			"addDeliveryChargeTotal": 0,
+			"claimDeliveryChargeTotal": 0,
+			"claimReasonCode": "string",
+			"claimReasonStatement": "string",
+			"claimTypeCode": "string",
+			"orderNumber": 0,
+			"refundAccountNumber": 0,
+			"refundBankCode": "string",
+			"refundDepositorName": "string"
+		},
+		"items": [
+			{
+				"addDeliveryCharge": 0,
+				"claimDeliveryCharge": 0,
+				"claimNumber": 0,
+				"claimProcessDatetime": "string",
+				"claimProcessQuantity": 0,
+				"claimProductAmount": 0,
+				"claimRequestQuantity": 0,
+				"claimStateCode": "string",
+				"claimStateReason": "string",
+				"deliveryChargePaymentCode": "string",
+				"orderNumber": 0,
+				"orderProductSequence": "string"
+			}
+		]
+	}
+	 */
+	function orderReturn(orderNumber, claim, items) {
+		Super.callApi('/apis/me/orders/' + orderNumber + '/return', 'POST', {
+			'claim' : claim,
+			'items' : items
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderReturnResult', [status, result]);
+			} else {
+				Super.handleError('orderReturn', result);
+				$(callerObj).trigger('orderReturnResult', [status, result]);
+			}
+		}, false);
+	};
+
+
+	// 주문/배송 - 배송추적 팝업 조회
+	function orderTrackingInfo(orderNumber, orderProductSequence, deliveryNumber, orderNumber) {
+		Super.callApi('/apis/me/orders/' + orderNumber + '/tracking', 'GET', {
+			'orderProductSequence' : orderProductSequence,
+			'deliveryNumber' : deliveryNumber,
+			'orderNumber' : orderNumber
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('orderTrackingInfoResult', [status, result]);
 			} else {
 				Super.handleError('orderTrackingInfo', result);
+				$(callerObj).trigger('orderTrackingInfoResult', [status, result]);
+			}
+		}, false);
+	};
+
+
+	// 교환/반품/취소 목록 조회
+	function myClaimsList(startDate, endDate, keyword, deliveryStateCode) {
+		Super.callApi('/apis/me/claims', 'GET', {
+			'startDate' : startDate,
+			'endDate' : endDate,
+			'keyword' : keyword || '',
+			'deliveryStateCode' : deliveryStateCode || ''
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myClaimsListResult', [status, result]);
+			} else {
+				Super.handleError('myClaimsList', result);
+				$(callerObj).trigger('myClaimsListResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 취소 상세 내역 / 휴대폰 결제
+	function claimsCell(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/cancelCell', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsCellResult', [status, result]);
+			} else {
+				Super.handleError('claimsCell', result);
+				$(callerObj).trigger('claimsCellResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 취소 상세 내역 / 휴대폰 결제
+	function claimsCredit(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/cancelCredit', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsCreditResult', [status, result]);
+			} else {
+				Super.handleError('claimsCredit', result);
+				$(callerObj).trigger('claimsCreditResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 취소 반려 상세 내역
+	function claimsDeny(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/cancelDeny', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsDenyResult', [status, result]);
+			} else {
+				Super.handleError('claimsDeny', result);
+				$(callerObj).trigger('claimsDenyResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 취소 상세 내역 / 무통장 입금
+	function claimsDeposit(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/cancelDeposit', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsDepositResult', [status, result]);
+			} else {
+				Super.handleError('claimsDeposit', result);
+				$(callerObj).trigger('claimsDepositResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 교환 상세 내역
+	function claimsExchange(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/exchange', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsExchangeResult', [status, result]);
+			} else {
+				Super.handleError('claimsExchange', result);
+				$(callerObj).trigger('claimsExchangeResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 교환 반려 상세 내역
+	function claimsExchangeDeny(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/exchangeDeny', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsExchangeDenyResult', [status, result]);
+			} else {
+				Super.handleError('claimsExchangeDeny', result);
+				$(callerObj).trigger('claimsExchangeDenyResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 반품 상세 내역
+	function claimsReturn(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/return', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsReturnResult', [status, result]);
+			} else {
+				Super.handleError('claimsReturn', result);
+				$(callerObj).trigger('claimsReturnResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 반품 반려 상세 내역
+	function claimsReturnDeny(claimNumber) {
+		Super.callApi('/apis/me/claims/' + claimNumber + '/returnDeny', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('claimsReturnDenyResult', [status, result]);
+			} else {
+				Super.handleError('claimsReturn', result);
+				$(callerObj).trigger('claimsReturnDenyResult', [status, result]);
 			}
 		}, false);
 	};
@@ -156,24 +538,6 @@ function ClassOrderController() {
     post /apis/me/orders/{orderNumber}/review
         상품리뷰 작성 처리
 
-	get /apis/me/claims
-		교환/반품/취소 목록 조회
-	get /apis/me/claims/{claimNumber}/cancelCell
-		취소 상세 내역 / 휴대폰 결제
-	get /apis/me/claims/{claimNumber}/cancelCredit
-		취소 상세 내역 / 신용카드 결제
-	get /apis/me/claims/{claimNumber}/cancelDeny
-		취소 반려 상세 내역
-	get /apis/me/claims/{claimNumber}/cancelDeposit
-		취소 상세 내역 / 무통장 입금
-	get /apis/me/claims/{claimNumber}/exchange
-		교환 상세 내역
-	get /apis/me/claims/{claimNumber}/exchangeDeny
-		교환 반려 상세 내역
-	get /apis/me/claims/{claimNumber}/return
-		반품 상세 내역
-	get /apis/me/claims/{claimNumber}/returnDeny
-		반품 반려 상세 내역
 	*/
 }
 
