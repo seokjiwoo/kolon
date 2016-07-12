@@ -13,9 +13,7 @@
 					<h3 class="conTit">주문 상품 / 배송 정보</h3>
 					<!-- list -->
 					<ul class="productList">
-						<!-- 묶음 배송 상품일 경우-->
-						<li class="productTit"><span>묶음 배송상품</span></li>
-						<!-- 묶음 배송 상품일 경우-->
+						<li class="productTit"><span>묶음 배송상품</span></li><!-- 묶음 배송 상품일 경우-->
 						<li>
 							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
 							<div class="info">
@@ -100,7 +98,7 @@
 					<!-- 묶음 배송 상품일 경우-->
 				</div>
 				<div class="wrapT">
-					<fieldset class="plate selectAddress">
+					<fieldset class="selectAddress">
 						<h3 class="conTit">수령지 정보</h3>
 						<div class="payTab tabWrap">
 							<span class="on"><a href="#delivery1" class="radioBtn">단일 배송지</a></span>
@@ -110,9 +108,10 @@
 							<!-- 단일 배송지 -->
 							<div class="delivery1" id="delivery1">
 								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
+								<!-- 등록된 주소가 있는 경우 -->
 								<ul class="addressList">
 									<li>
-										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></a></span><span class="pointRed">기본 주소</span></p>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></span><span class="pointRed">기본 주소</span></p>
 										<div class="addressCont">
 											<p><b>주문자</b><span>홍길동</span></p>
 											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
@@ -124,7 +123,7 @@
 										</div>
 									</li>
 									<li>
-										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></a></span><span class="pointGreen">최근 주소</span></p>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></span><span class="pointGreen">최근 주소</span></p>
 										<div class="addressCont">
 											<p><b>주문자</b><span>홍길동</span></p>
 											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
@@ -136,7 +135,7 @@
 										</div>
 									</li>
 									<li>
-										<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></a></span></p>
+										<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></span></p>
 										<div class="addressCont">
 											<p><b>주문자</b><span>홍길동</span></p>
 											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
@@ -147,51 +146,13 @@
 											<a href="#" class="btnSizeS btnColor05">삭제</a>
 										</div>
 									</li>
+									<!-- 등록된 주소가 없는 경우 -->
+									<li>
+										<div class="addressNon">등록된 주소가 없습니다.<br/>수령할 주소를 등록해주세요.</div>
+									</li>
+									<!--// 등록된 주소가 없는 경우 -->
 								</ul>
-								<div id="newAddress" style="display: none;">
-									<table class="formWrap">
-										<tr>
-											<th>주소 별칭</th>
-											<td><input type="text"></td>
-										</tr>
-										<tr>
-											<th>받으실 분</th>
-											<td><input type="text"></td>
-										</tr>
-										<tr>
-											<th>연락처1</th>
-											<td class="phone">
-												<select name="" title="국번 선택">
-													<option value="">02</option>
-												</select> -
-												<input type="text" title="연락처 앞자리 입력"> -
-												<input type="text" title="연락처 뒷자리 입력">
-											</td>
-										</tr>
-										<tr>
-											<th>연락처2</th>
-											<td class="phone">
-												<select name="" title="국번 선택">
-													<option value="">02</option>
-												</select> -
-												<input type="text" title="연락처 앞자리 입력"> -
-												<input type="text" title="연락처 뒷자리 입력">
-											</td>
-										</tr>
-									</table>
-									<h4 class="partTit">수령지 주소</h4>
-									<div class="shipAddress">
-										<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
-										<p><input type="text"><label for="" class="hide">주소</label></p>
-										<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
-										<p>
-											<span class="checkbox">
-												<input type="checkbox" id="checkAddress2"/>
-												<label for="checkAddress2">기본 배송지로 설정</label>
-											</span>
-										</p>
-									</div>
-								</div>
+								<!--// 등록된 주소가 있는 경우 -->
 								<h4 class="partTit">배송 시 요청 사항</h4>
 								<div class="textWrap">
 									<select title="배송 시 요청사항 선택">
@@ -305,14 +266,15 @@
 				<div class="wrapT" style="margin-bottom:100px;">
 					<h3 class="conTit">결제 방법</h3>
 					<div class="payTab tabWrap">
-					<form method="post" action="/">
-						<fieldset >
-							<legend>결제방법 선택</legend>
-							<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-							<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
-							<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
-						</fieldset>
-					</form>
+						<form method="post" action="/">
+							<fieldset >
+								<legend>결제방법 선택</legend>
+								<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
+								<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
+								<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
+							</fieldset>
+						</form>
+					</div>
 					<div>
 						<!-- 신용카드 -->
 						<div class="pay" id="pay1">
@@ -457,14 +419,12 @@
 						<div class="pay" id="pay3" style="display:none;">
 							<div class="orderTbW">
 								<form method="post" action="/">
-									<div class="tbBox">
-										<p>결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</p>
-									</div>
+									<div class="underTxtMark">결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</div>
 									<ul class="infoBtnWrap">
 										<li><p><a href="" class="btnSizeS btnColor03">실시간 계좌이체 안내</a></p></li>
 										<li><p><a href="" class="btnSizeS btnColor03">은행별 이용시간</a></p></li>
 									</ul>
-									<h3 class="orderTit">현금영수증 발급 신청</h3>
+									<h3 class="conTit">현금영수증 발급 신청</h3>
 									<div class="payTab tabWrap">
 										<span class="on"><a href="#cashCt2_1" class="radioBtn">개인 소득 공제</a></span>
 										<span><a href="#cashCt2_2" class="radioBtn">사업자 지출 증빙</a></span>

@@ -163,8 +163,8 @@ ul.checkbox{overflow: hidden;}
 .checkbox label:before{content: '';display:inline-block;width:25px;height:25px;border-radius:50%; margin-right:10px;vertical-align:middle; background:url('../images/ico_follow_on.png') center no-repeat #ccc; background-size:13px 9px}
 .checkbox label.on:before{background-color:#00aeb9;}
 .checkAll label {color:#333; font-size:13px;}
-.checkAll label:before{background:url('../images/ico_checkBox.png') no-repeat center center #fff; background-size:14px; color:#333;}
-.checkAll label.on:before{background:url('../images/ico_checkBox_on.png') no-repeat center center #fff; background-size:14px;}
+.checkAll label:before{content: '';display:inline-block;width:25px;height:25px;border-radius:50%; margin-right:10px;vertical-align:middle; background:url('../images/ico_follow_on.png') center no-repeat #ccc; background-size:13px 9px; color:#333;}
+.checkAll label.on:before{background-color:#00aeb9;}
 
 .listSquare{font-size: 14px;}
 .listSquare li{position: relative;margin-top:8px;padding-left: 10px;line-height: 1.3em;}
@@ -302,6 +302,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .formWrap.tbR td.t_l {text-align:left;}
 .formWrap.tbC th,
 .formWrap.tbC td {text-align:center;}
+.formWrap td.infoTd {border-top:1px dashed #ccc; color:#999; text-align:left; font-size:12px;}
 .shipAddress p{margin-top: 10px;}
 .zipCode{position: relative;padding-right: 100px;}
 .zipCode a{position: absolute;left: 0;bottom: 0;right: 0;top:0;}

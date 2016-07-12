@@ -589,20 +589,24 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .productList.checkType li{position:relative;}
 .my .productList.checkType .checkbox{position:absolute;left:0;top:15;}
 
-.my .hiddenArea{position:relative;/*border-bottom:1px solid #ccc;*/margin-bottom:15px;}
-.my .hiddenArea > a{height:42px;line-height:42px;display:block;text-align:center;}
-.my .hiddenArea > a:after{width:20px;height:9px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:100%;margin-left:4px;}
-.my .hiddenArea > a.active:after{background-position:0 0;}
-.my .hiddenArea .detailInfo{padding:0 15px;background:#f8f8f8;display:none;border-top:1px solid #ccc;}
-.my .hiddenArea .detailInfo.active{display:block;}
-.my .hiddenArea .detailInfo dl{padding:15px 0 15px;border-top:1px solid #ccc;}
-.my .hiddenArea .detailInfo dl:first-child{border-top:0;}
-.my .hiddenArea .detailInfo dl dt{margin-bottom:10px;font-size:15px;}
-.my .hiddenArea .detailInfo dl dd{padding:2px 0;}
-.my .hiddenArea .detailInfo dl dd:after{content:"";display:block;clear:both;}
-.my .hiddenArea .detailInfo dl dd span{color:#666;}
-.my .hiddenArea .detailInfo dl dd span:first-child{float:left;}
-.my .hiddenArea .detailInfo dl dd span:last-child{float:right;}
+.hiddenArea{position:relative;/*border-bottom:1px solid #ccc;*/margin-bottom:15px;}
+.hiddenArea > a{height:42px;line-height:42px;display:block;text-align:center;}
+.hiddenArea > a:after{width:20px;height:9px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:100%;margin-left:4px;}
+.hiddenArea > a.active:after{background-position:0 0;}
+.hiddenArea .detailInfo{padding:0 15px;background:#f8f8f8;display:none;border-top:1px solid #ccc;}
+.hiddenArea .detailInfo.active{display:block;}
+.hiddenArea .detailInfo dl{padding:15px 0 15px;border-top:1px solid #ccc;}
+.hiddenArea .detailInfo dl:first-child{border-top:0;}
+.hiddenArea .detailInfo dl dt{margin-bottom:10px;font-size:15px;}
+.hiddenArea .detailInfo dl dd{padding:2px 0;}
+.hiddenArea .detailInfo dl dd:after{content:"";display:block;clear:both;}
+.hiddenArea .detailInfo dl dd span{color:#666;}
+.hiddenArea .detailInfo dl dd span:first-child{float:left;}
+.hiddenArea .detailInfo dl dd span:last-child{float:right;}
+.hiddenArea ul.priceBox {padding:0 0 15px 0;}
+.hiddenArea ul.priceBox + dl {border-top:1px dashed #ccc;}
+.productList .hiddenArea {margin-bottom:0;}
+.productList .hiddenArea > a {height:24px; line-height:24px;}
 
 .deliveryArea .productList{margin-top:0;border-top:0;}
 .deliveryInfo{padding-top:15px;border-top:1px solid #666;}

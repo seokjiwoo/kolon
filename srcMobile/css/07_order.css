@@ -46,12 +46,12 @@
 
 .order .payTab {width:100%; padding:20px 0; overflow:hidden;}
 .order .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
-.order .payTab a {display:inline-block; color:#666;}
+.order .payTab a {display:inline-block; color:#999;}
 .order .payTab + div div table {margin-top:0;}
 .order .payTab.tabWrap {width:100%; overflow:hidden; text-align:center;}
 .order .payTab.tabWrap span + span {margin-left:18.5px;}
 .order .payTab.tabWrap a {padding:0 0 0 21px; background:url('../images/ico_radio.png') 0 -16px no-repeat; background-size:16px 32px; display:inline-block; line-height:16px;}
-.order .payTab.tabWrap .on a {background-position:0 0;}
+.order .payTab.tabWrap .on a {background-position:0 0; color:#000;}
 .order a.deliveryBtn {width:100%; height:35px; margin-top:15px; border-radius:17.5px; color:#fff; text-align:center; background:#666; display:inline-block; vertical-align:middle; line-height:35px;}
 .order a.deliveryBtn span {padding-right:18.5px; display:inline-block; background:url(../images/ico_follow_on.png) 100% 50% no-repeat; background-size:13.5px 10px;}
 @media (max-width:320px){
@@ -82,9 +82,9 @@
 
 .complete {width:100%; overflow:hidden;}
 .complete h2.secTit {text-align:center;}
-.complete p {text-align:center; line-height:20px; padding-bottom:20px; border-bottom:1px solid #ccc;}
+.complete p {text-align:center; line-height:20px;}
 .complete p b {color:#000;}
-.complete p span.pointRed {text-decoration:underline;}
+.complete p span.pointRed {text-decoration:underline; font-weight:bold;}
 .complete p span.iconArrow {padding-left:15px; position:relative; display:inline-block;}
 .complete p span.iconArrow:before {content:''; width:10.5px; height:9.5px; margin-top:-4.525px; background:url(../images/ico_arrow.png) 0 0% no-repeat; background-size:10.5px 9.5px; position:absolute; top:50%; left:0;}
 
@@ -102,5 +102,6 @@
 .order .addressList li .addressCont p span {display:inline-block;}
 .order .addressList li .addressCont p b {width:20%; color:#666; float:left; font-weight:normal;}
 .order .addressList li .addressCont p span {width:80%; color:#333; float:right; text-align:right;}
-
+.order .addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
 .order .formWrap + .underTxtMark {margin-top:14.5px;}
+.order .underTxtMark + h3.conTit {margin-top:25px;}
