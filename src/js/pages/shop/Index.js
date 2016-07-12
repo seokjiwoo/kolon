@@ -45,7 +45,7 @@ module.exports = function() {
 	function setElements() {
 		cardList = CardList();
 		$(cardList).on('cardAppended', cardAppendedHandler);
-		cardList.init('#cardWrap');
+		cardList.init();
 
 		$('#mainSlider').bxSlider();
 	}

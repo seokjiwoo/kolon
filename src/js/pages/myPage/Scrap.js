@@ -25,6 +25,9 @@ module.exports = function() {
 	},
 	self;
 
+	var CardList = require('../../components/CardList.js');
+	var cardList;
+
 	var opts = {
 		container : '.container',
 		categoryMenu : '.tabType01 a',
@@ -75,6 +78,9 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
+
+		cardList = CardList();
+		cardList.init();
 
 		// controller Method
 		// scrapList(attr) - 스크랩 카드 목록

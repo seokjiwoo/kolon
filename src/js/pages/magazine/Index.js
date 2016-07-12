@@ -12,6 +12,9 @@ module.exports = function() {
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
+	var CardList = require('../../components/CardList.js');
+	var cardList;
+	
 	var model = require('../../model/CardListModel.js');
 	
 	var controller = require('../../controller/MagazineController');
@@ -30,6 +33,9 @@ module.exports = function() {
 		Super.init();
 
 		debug.log(fileName, $, util);
+
+		cardList = CardList();
+		cardList.init();	// 카드 리스트
 		
 		// $('#popularList').html('loading...');
 		// controller.getListPopular();
