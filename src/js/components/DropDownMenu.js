@@ -9,6 +9,10 @@ function DropDownMenu() {
 	debug = require('../utils/Console.js'),
 	fileName = 'compoents/DropDownMenu.js';
 
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+
 	var opts = {
 		wrap : 'body',
 		dropMenus : '.drop',
@@ -27,11 +31,7 @@ function DropDownMenu() {
 		init : init,
 		refresh : refresh,
 		destroy : destroy,
-		EVENT : {
-			REFRESH : 'DROP_DOWN_MENU-REFRESH',
-			DESTROY : 'DROP_DOWN_MENU-DESTROY',
-			CHANGE : 'DROP_DOWN_MENU-CHANGE'
-		}
+		EVENT : DROPDOWNMENU_EVENT
 	},
 	instance, self;
 	
@@ -60,7 +60,7 @@ function DropDownMenu() {
 	}
 
 	function setBindEvents() {
-		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
+		eventManager.on(self.EVENT.REFRESH, $.proxy(refresh, self))
 					.on(self.EVENT.DESTROY, $.proxy(destroy, self));
 
 		$(self).on(self.EVENT.REFRESH, $.proxy(refresh, self))
@@ -77,7 +77,7 @@ function DropDownMenu() {
 	}
 
 	function removeBindEvents() {
-		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
+		eventManager.off(self.EVENT.REFRESH, $.proxy(refresh, self))
 					.off(self.EVENT.DESTROY, $.proxy(destroy, self));
 
 		$(self).off(self.EVENT.REFRESH, $.proxy(refresh, self))
@@ -121,7 +121,7 @@ function DropDownMenu() {
 				.val([target.data('value')])
 				.trigger(self.EVENT.CHANGE, {menu: dropMenu, values : dropMenu.val()});
 				
-		$('body').trigger(self.EVENT.CHANGE, {menu: dropMenu, values : dropMenu.val()});
+		eventManager.trigger(self.EVENT.CHANGE, {menu: dropMenu, values : dropMenu.val()});
 
 		dropMenu.off('keyupoutside mousedownoutside', $.proxy(onDropMenuClose, self));
 	}
@@ -134,6 +134,7 @@ function DropDownMenu() {
 		labels = dropCheckMenu.find('label'),
 		idx = checks.index(target),
 		isChecked = target.prop('checked');
+
 
 		// 전체선택 토글 처리
 		if ((hasAllChecker.size() && target.data(self.opts.dataAttr.allChecker)) || (!hasAllChecker.size() && idx === 0)) {
@@ -149,11 +150,12 @@ function DropDownMenu() {
 		}
 
 		// input 요소 선택에 따른 '전체선택' 활성화처리
-		if (target.prop('checked')) {
+		if (isChecked) {
 			if (checks.size() - checks.filter(':checked').size() === 1) {
 				if (hasAllChecker.size()) {
 					hasAllChecker.prop('checked', true);
 					hasAllChecker.siblings('label').addClass(self.opts.cssClass.active);
+					target.siblings('label').addClass(self.opts.cssClass.active);
 				} else {
 					checks.eq(0).prop('checked', true);
 					labels.eq(0).addClass(self.opts.cssClass.active);
@@ -163,6 +165,7 @@ function DropDownMenu() {
 			if (hasAllChecker.size()) {
 				hasAllChecker.prop('checked', false);
 				hasAllChecker.siblings('label').removeClass(self.opts.cssClass.active);
+				target.siblings('label').removeClass(self.opts.cssClass.active);
 			} else {
 				checks.eq(0).prop('checked', false);
 				labels.eq(0).removeClass(self.opts.cssClass.active);
@@ -178,7 +181,7 @@ function DropDownMenu() {
 			values.push($(this).attr('name'));
 		});
 
-		$('body').trigger(self.EVENT.CHANGE, {menu: dropCheckMenu, values : values});
+		eventManager.trigger(self.EVENT.CHANGE, {menu: dropCheckMenu, values : values});
 		dropCheckMenu.val(values)
 					.trigger(self.EVENT.CHANGE, {menu: dropCheckMenu, values : values});
 	}
