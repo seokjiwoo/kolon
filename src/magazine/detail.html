@@ -6,24 +6,113 @@
 <body data-page-id="magazine-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
-		<div class="container">
-			<a href="">[스크랩]</a>
-			<a href="">[좋아요]</a><br>
-			<a href="">[페이스북 공유]</a>
-			<a href="">[트위터 공유]</a>
-			<a href="">[카카오스토리 공유]</a>
-			<a href="">[핀터레스트 공유]</a>
-			<a href="">[URL 복사]</a><br>
-			<a href="/shop/detail.html">상품 상세보기</a>
-			<ul class="tag">
-				<li><a href="">태그1</a></li>
-				<li><a href="">태그2</a></li>
-				<li><a href="">태그3</a></li>
-				<li><a href="">태그4</a></li>
-				<li><a href="">태그5</a></li>
+		<!-- 상단 배너 -->
+		<div class="detailArea magazineTop topArea">
+			
+		    <div class="topContBox" style="background-image:url('../images/magazine_topBg.png')">
+		    	<div class="topCont subTop">
+			    	<ul class="tagList">
+						<li><a href="#">2016.06.20</a></li>
+					</ul>
+
+				    <h3><span>야행성 부부의 호텔같은 집</span></h3>
+				    <p class="infoSub">호텔같이 편안하면서도 개성있는 아파트 패키지 </p>
+				    <p>by 박실장 <span>KOLON GLOBAL</span></p>
+
+					<div class="newFormBtn shopBtn">
+				  		<ul class="subBtn">
+				  			<li class="subBtn01">
+				  				<a href="#">
+				  					<span class="hide">좋아요</span>
+				  					<span class="countNum">12,213</span>
+				  				</a>
+				  			</li>
+				  			<li class="subBtn02">
+				  				<a href="#">
+				  					<span class="hide">스크랩</span>
+				  					<span class="countNum">12,213</span>
+				  				</a>
+				  			</li>
+				  			<li>
+				  				<span class="socialBtn">
+				  					<a href="#" class="socialBtnOpen">
+				  						<span class="hide">공유하기</span>
+				  					</a>
+				  					<a href="#" class="socialBtn01">
+				  						<span class="hide">페이스북</span>
+				  					</a>
+						            <a href="#" class="socialBtn02">
+						            	<span class="hide">트위터</span>
+						            </a>
+						            <a href="#" class="socialBtn03">
+						            	<span class="hide">카카오스토리</span>
+						            </a>
+						            <a href="#" class="socialBtn04">
+						            	<span class="hide">핀터레스트</span>
+						            </a>
+						            <a href="#" class="socialBtn05">
+						            	<span class="hide">URL복사</span>
+						            </a>
+						            <a href="#" class="socialBtnClose">
+						            	<span class="hide">닫기</span>
+						            </a>
+				  				</span>
+				  			</li>
+				  		</ul>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- // 상단 배너 -->
+
+		<!-- 이벤트 베너 -->
+		<div class="detailArea eventBanner">
+			<a href="#" style="background-image:url('../images/eventBanner_left.png')"></a>
+			<a href="#" style="background-image:url('../images/eventBanner_right.png')"></a>
+		</div>
+		<!-- // 이벤트 베너 -->
+
+		<!-- 태그 영역 -->
+		<div class="detailArea tagArea">
+			<h3>Tag</h3>
+			<ul>
+				<li><a href="#">#짜투리공간</a></li>
+				<li><a href="#">#내추럴모던</a></li>
+				<li><a href="#">#동선이좋은공간</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#라이프스타일</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#동선이좋은공간</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#라이프스타일</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#반려동물</a></li>
 			</ul>
 		</div>
+		<!-- // 태그 영역 -->
+
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+<script>
+	$(function() {
+		$('.socialBtnOpen').click(function(e){
+			e.preventDefault();
+			if ($(this).parent('.socialBtn').hasClass('active')) {
+				$(this).parent('.socialBtn').removeClass('active');
+			} else {
+				$(this).parent('.socialBtn').removeClass('active').addClass('active');
+			}
+		});
+		$('.socialBtnClose').click(function(e){
+			e.preventDefault();
+			$(this).parent('.socialBtn').removeClass('active');
+		});
+	});
+</script>
 </body>
 </html>

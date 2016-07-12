@@ -7,9 +7,9 @@
 	<div class="wrapper category">
 	<!-- @@include ../_template/menu.html -->
 		<!-- 상단 배너 -->
-		<div class="newFormArea topArea">
+		<div class="detailArea topArea">
 			
-		    <div class="topContBox">
+		    <div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
 		    	<div class="topCont subTop">
 			    	<ul class="tagList">
 						<li><a href="#">NewForm</a></li>
@@ -92,14 +92,14 @@
 		<!-- // 상단 배너 -->
 
 		<!-- 이벤트 베너 -->
-		<div class="newFormArea eventBanner">
+		<div class="detailArea eventBanner">
 			<a href="#" style="background-image:url('../images/eventBanner_left.png')"></a>
 			<a href="#" style="background-image:url('../images/eventBanner_right.png')"></a>
 		</div>
 		<!-- // 이벤트 베너 -->
 		
 		<!-- 기본 정보 -->
-		<div class="newFormArea basicArea">
+		<div class="detailArea basicArea">
 			<h3>Basics Info</h3>
 			<div class="floorSpace">
 				<h4 class="alignLine">기준평형</h4>
@@ -167,7 +167,7 @@
 		<!-- // 기본 정보 -->
 
 		<!-- 컨셉 영역, 이미지 스크랩 가능 -->
-		<div class="newFormArea conceptArea">
+		<div class="detailArea conceptArea">
 			<h3 class="icoNewformTit">Compact but enough</h3>
 			<p class="subNewformTit">신혼부부의 셀렘을 영원히 간직할 둘만의 공간</p>
 			<p><img src="../images/compact_detail.png"></p>
@@ -175,62 +175,93 @@
 		<!-- // 컨셉 영역, 이미지 스크랩 가능 -->
 
 		<!-- 자재영역 -->
-		<div class="newFormArea materialArea">
+		<div class="detailArea materialArea">
 			<h3 class="icoNewformTit"><span class="hide">Material Board</span></h3>
 			<p><img src="../images/material_board.png"></p>
 		</div>
 		<!-- // 자재영역 -->
 
 		<!-- 유닛상품영역 -->
-		<div class="newFormArea unitArea">
+		<div class="detailArea unitArea">
 			
 		</div>
 		<!-- // 유닛상품영역 -->
 		
 		<!-- 모아보기 영역 -->
-		<div class="newFormArea viewGather">
+		<div class="detailArea viewGather">
 			
 		</div>
 		<!-- // 모아보기 영역 -->
 		
 		<!-- VR  페이지 연결 영역 -->
-		<div class="newFormArea vrArea">
+		<div class="detailArea vrArea">
 			
 		</div>
 		<!-- // VR  페이지 연결 영역 -->
 
 		<!-- 패키지 영역 -->
-		<div class="newFormArea packageArea">
+		<div class="detailArea packageArea">
 			
 		</div>
 		<!-- // 패키지 영역 -->
 
 		<!-- 태그 영역 -->
-		<div class="newFormArea tagArea">
-			
+		<div class="detailArea tagArea">
+			<h3>Tag</h3>
+			<ul>
+				<li><a href="#">#짜투리공간</a></li>
+				<li><a href="#">#내추럴모던</a></li>
+				<li><a href="#">#동선이좋은공간</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#라이프스타일</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#동선이좋은공간</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#라이프스타일</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#반려동물</a></li>
+			</ul>
 		</div>
 		<!-- // 태그 영역 -->
 
 		<!-- 추천 패키지 영역 -->
-		<div class="newFormArea rePackageArea">
+		<div class="detailArea rePackageArea">
 			
 		</div>
 		<!-- // 추천 패키지 영역 -->
 
 		<!-- 추천 리빙 영역 -->
-		<div class="newFormArea reLivingArea">
+		<div class="detailArea reLivingArea">
 			
 		</div>
 		<!-- // 추천 리빙 영역 -->
 
 		<!-- 판매자안내 영역 -->
-		<div class="newFormArea sellerArea">
-			
+		<div class="detailArea sellerArea">
+			<!-- <div class="sellerInfo">
+				<h3><img src="../images/seller_tit.png"></h3>
+				<p class="sellerPhoto"><img src="../images/seller_photo.png"></p>
+				<div class="sellerCont">
+					<h4>박실장</h4>
+					<p>KOLON GLOBAL<span>서울시 마포구 서교동</span></p>
+					<ul>
+						<li><a href="#" class="btn btnSizeM btnColor01">자세히보기</a></li>
+						<li><a href="#" class="btn btnSizeM btnColor01">팔로우</a></li>
+						<li><a href="#" class="btn btnSizeM btnColor01">1:1 메시지</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sellerCard">
+				
+			</div> -->
 		</div>
 		<!-- // 판매자안내 영역 -->
 
 		<!-- 구매정보 영역 -->
-		<div class="newFormArea purchasingArea">
+		<div class="detailArea purchasingArea">
 			<h3>Purchasing Information</h3>
 			<p>구매정보</p>
 			<ul class="accordion">
@@ -337,8 +368,6 @@
 			</ul>
 		</div>
 		<!-- // 구매정보 영역 -->
-	</div>
-	<!-- @@include ../_template/footer.html -->
 
 		<!-- [D] API 통신 - 결과화면 영역 -->
 		<div class="container js-api-result">

@@ -392,16 +392,18 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myInfoEdit .btnWrap{margin-top: 40px;}
 #myInfoEdit .btnWrap .btn{width: 200px;margin:0 10px;}
 
-.lyPop .refundAccount {padding:25px 22px 33px;margin-bottom:30px;border-bottom:1px solid #e1e1e1;}
-.lyPop .refundAccount table tr th,
+.lyPop .refundAccount {margin-bottom:30px;}
+.lyPop .refundAccount table tr th { text-align:left; padding:10px 0 10px 40px; border-bottom:1px solid #e1e1e1; }
 .lyPop .refundAccount table tr td { padding:10px; border-bottom:1px solid #e1e1e1 }
 .lyPop .refundAccount table tr:first-child th,
 .lyPop .refundAccount table tr:first-child td { border-top:1px solid #666666 }
-.lyPop .refundAccount table tr:last-child th,
-.lyPop .refundAccount table tr:last-child td { border-bottom:1px solid #666666 }
 .lyPop .refundAccount table tr th { width:200px; background-color: #f8f8f8 }
 .lyPop .refundAccount select,
 .lyPop .refundAccount input[type="text"] {width:310px;padding:10px 20px;font-family:'NotoSansM', sans-serif; color:#999;}
+.lyPop .refundAccount .alignBox {height:40px;}
+.lyPop .refundAccount .alignBox .drop {right:0;left:0;}
+.lyPop .refundAccount .alignBox .drop li {width:100%;}
+.lyPop .refundAccount .alignBox .drop li a {color:#666;}
 
 #myResign .subTit{margin-top: 35px;}
 #myResign .listTit{margin-top: 20px;padding: 0 20px;background: #f7f7f7;border-top: 1px solid #333;border-bottom: 1px solid #e8e8e8;line-height: 70px;font-size: 16px;color: #000;font-family:'NotoSansM', sans-serif;}
