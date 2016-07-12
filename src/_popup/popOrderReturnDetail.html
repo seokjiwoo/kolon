@@ -3,13 +3,15 @@
 </div>
 <div class="popCon">
 	<h3 class="subTit">반품 신청정보</h3>
-	<table class="record record02">
+	
+	<table class="record record02 js-return-detail">
+		<!-- 
 		<colgroup>
-            <col style="width:186px">
+			<col style="width:186px">
 			<col style="width:auto">
 			<col style="width:186px">
 			<col style="width:auto">
-        </colgroup>
+		</colgroup>
 		<tr>
 			<th>신청일</th>
 			<td><strong>2016.05.03 / 16:07:15</strong></td>
@@ -20,16 +22,17 @@
 			<th>반품신청 사유/책임</th>
 			<td colspan="3">사진으로 봤던 것보다 예쁘지 않아서 반품하고 싶어요 <strong>- 구매자</strong></td>
 		</tr>
+		 -->
 	</table>
-
+<!-- 
 	<h3 class="subTit mt40">반품 정보</h3>
 	<table class="record record02">
 		<colgroup>
-            <col style="width:186px">
+			<col style="width:186px">
 			<col style="width:auto">
 			<col style="width:186px">
 			<col style="width:auto">
-        </colgroup>
+		</colgroup>
 		<tr>
 			<th>반품방법</th>
 			<td>택배발송</td>
@@ -95,12 +98,32 @@
 			</td>
 		</tr>
 	</table>
-
+ -->
 	<ul class="tbList3 mt30">
 		<li>상세 문의는 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
 	</ul>
 	
 	<div class="btnCenter">
-		<button type="submit" class="btn btnSizeM btnColor02">확인</button>
+		<button type="submit" class="btn btnSizeM btnColor02 popClose">확인</button>
 	</div>
 </div>
+
+
+<script id="return-detail-templates" type="text/x-handlebars-template">
+	<colgroup>
+		<col style="width:186px">
+		<col style="width:auto">
+		<col style="width:186px">
+		<col style="width:auto">
+	</colgroup>
+	<tr>
+		<th>신청일</th>
+		<td><strong>{{requestDate}}</strong></td>
+		<th>반품 완료일</th>
+		<td><strong>{{completeDate}}</strong></td>
+	</tr>
+	<tr>								
+		<th>반품신청 사유/책임</th>
+		<td colspan="3">{{claimDesc}} <strong>- 구매자</strong></td>
+	</tr>
+</script>
