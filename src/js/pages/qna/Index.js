@@ -135,6 +135,8 @@ module.exports = function() {
 				each.key = key;
 				console.log(each);
 
+				//registeredHelpYn $('#answer'+pollAnswerId).addClass('on');
+
 				key++;
 			});
 

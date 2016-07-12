@@ -78,11 +78,11 @@
 							</div>
 							{{/vxIF}}
 							{{#vxIF cardClass "==" "selectCard"}}
-							<ul class="cardCollect">
+							<ul class="cardCollect" data-question-number="{{questionNumber}}">
 								{{#each myPersonalCardAnswerList}}
-								<li class="collect0{{@index}}" data-answer-content="{{answerSequenceContent}}">
-									<input type="radio" id="pet0{{@index}}">
-									<label for="pet0{{@index}}">{{answerSequenceContent}}</label>
+								<li id="answerCollect0{{../questionNumber}}-{{answerSequence}}" class="collect collect0{{@index}}" data-answer-content="{{answerSequence}}">
+									<input type="radio" id="answer0{{../questionNumber}}-{{answerSequence}}">
+									<label for="answer0{{../questionNumber}}-{{answerSequence}}">{{answerSequenceContent}}</label>
 								</li>
 								{{/each}}
 							</ul>

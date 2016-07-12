@@ -102,7 +102,17 @@ module.exports = function() {
 			$('#joinBirth03').val(infoObject.birthDate.substr(6, 2));
 		}
 		$('#profileHomePhone').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
-		
+	
+		if (infoObject.memberRefundAccount != null) {
+			$('#refundBankName').text(infoObject.memberRefundAccount.bankName);  
+			$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
+			$('#refundName').text(infoObject.memberRefundAccount.depositorName);
+		} else {
+			$('#refundBankName').text('');  
+			$('#refundAccount').text('');
+			$('#refundName').text('');
+		}
+
 		switch(infoObject.emailReceiveYn) {
 			default: 
 				$('#agreeReceive01')[0].checked = true;

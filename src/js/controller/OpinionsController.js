@@ -52,7 +52,7 @@ function ClassOpinionsController() {
 	};
 
 	function opinionsClass() {
-		Super.callApi('/apis/opinions/clesses', 'GET', {}, function(status, result) {
+		Super.callApi('/apis/opinions/classes', 'GET', {}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('opinionsClassResult', [status, result.data.opinionThemes]);
 			} else {

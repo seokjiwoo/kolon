@@ -140,6 +140,7 @@ module.exports = function() {
 			if (util.checkValidMobileNumber(id)) {
 				// 휴대폰 번호
 				enteredId = id;
+				firstTryFlag = true;
 				controller.login(id, pw, keepLogin);
 			} else {
 				// 이메일

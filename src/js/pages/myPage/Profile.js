@@ -50,6 +50,7 @@ module.exports = function() {
 			//console.log(each);
 
 			if (each.questionContents == undefined) each.questionContents = each.cardName;
+			//if (each.questionNumber == undefined) each.questionNumber = 0;
 			switch(each.registerTypeCode) {
 				case "DP_CARD_REGISTER_TYPE_03":
 					switch(each.apiUrl.split('/').pop()) {
@@ -66,6 +67,7 @@ module.exports = function() {
 					break;
 				case "DP_CARD_REGISTER_TYPE_04":
 					each.cardClass = 'selectCard';
+					if (each.memberAnswerYn == 'Y') selectedItems[each.cardNumber] = each.myPersonalServeyMemberAnswerList;
 					break;
 			}
 		});
@@ -74,15 +76,39 @@ module.exports = function() {
 		cardList.html(template(result));
 
 		DropDownMenu.init();
-		initAddressCard();
+		initSelectCard();
 		initDwellingCard();
+		initAddressCard();
+	};
+
+	function initSelectCard() {
+		$('.selectCard').each(function(idx){
+			var selectedItem = selectedItems[$(this).attr('id').substr(12)];
+			if (selectedItem != undefined) {
+				var question = $(this).find('.cardCollect').data().questionNumber
+				var answer = selectedItem[0].answerSequence;
+
+				console.log('#answerCollect0'+question+'-'+answer);
+				$('#answerCollect0'+question+'-'+answer).addClass('on');
+			}
+		});
 
 		$('.cardCollect > li').click(function(e){
 			e.preventDefault();
-			console.log( $(this).data().answerContent );
+
+			var cardTarget = $(e.target.parentNode.parentNode.parentNode.parentNode);
+			var cardId = cardTarget.attr('id').substr(12);
+			var questionNumber = cardTarget.find('.cardCollect').data().questionNumber;
+
+			controller.answer(cardId, 'BM_PERSONAL_TYPE_03', {
+				"personalAnswer": {
+					"answerSequences": [ $(this).data().answerContent ],
+					"questionNumber": questionNumber
+				}
+			});
 			e.stopPropagation();
 		});
-	};
+	}
 
 	function initDwellingCard() {
 		$('.dwellingCard').each(function(idx){
@@ -107,10 +133,6 @@ module.exports = function() {
 
 			if (selectedItems[cardId].dwellingFormCode != undefined && selectedItems[cardId].dwellingPyeongCode != undefined) {
 				controller.answer(cardId, 'BM_PERSONAL_TYPE_02', {
-					"personalAnswer": {
-						"answerSequences": [0],
-						"questionNumber": cardId,
-					},
 					"personalDwelling": selectedItems[cardId]
 				});
 			}
@@ -174,12 +196,7 @@ module.exports = function() {
 			var cardId = cardTarget.attr('id').substr(12);
 			selectedItems[cardId].dong = data.values[0];
 
-			// BM_PERSONAL_TYPE_02: 주거, BM_PERSONAL_TYPE_03: 나머지 응답
 			controller.answer(cardId, 'BM_PERSONAL_TYPE_01', {
-				"personalAnswer": {
-					"answerSequences": [0],
-					"questionNumber": cardId,
-				},
 				"personalRegion": selectedItems[cardId]
 			});
 		});
@@ -228,6 +245,8 @@ module.exports = function() {
 		if (status == 200) {
 			alert('답변이 등록되었습니다');
 			location.reload(true);
+		} else {
+			alert(status+': '+result.message);
 		}
 	};
 };
