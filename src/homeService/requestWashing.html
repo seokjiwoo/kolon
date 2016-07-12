@@ -11,7 +11,7 @@
 			<section class="singleCard" id="myActivity">
 				<h2 class="secTit">세탁서비스 신청</h2>
 
-				<h3 class="subTit">세탁 정보</h3>
+				<h3 class="subTit">서비스 신청자 정보 (필수)</h3>
 				<div class="tbSet orderCont mt20">
 					<table summary="세탁 정보 표로써 서비스지역, 수거일시의 정보가 담겨있습니다.">
 						<caption>세탁 정보 표</caption>
@@ -21,36 +21,40 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="col">서비스 지역</th>
+								<th scope="col">이름</th>
+								<td>
+									<input type="text" title="이름 입력" placeholder="홍길동" style="width:360px;">
+								</td>
+							</tr>
+							<tr>
+								<th scope="col">연락처</th>
+								<td>
+									<input type="text" title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="subTit">세탁 정보 (필수)</span></h3>
+					<table class="record" summary="기본 정보 입력해표로써 이름, 연락처, 주소, 추가 요청사항 정보를 입력하도록 구성되어 있습니다.">
+						<caption>기본 정보 입력 표</caption>
+						<colgroup>
+							<col style="width:180px">
+							<col style="width:auto">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="col">주소</th>
 								<td>
 									<div class="arrayWrap alignBox">
 										<div class="leftBox">
 											<ul class="drop" data-prevent="true">
-												<li><a href="#">시/도</a></li>
-												<li><a href="#" data-value="type-1">서울시</a></li>
-												<li><a href="#" data-value="type-2">전주시</a></li>
-												<li><a href="#" data-value="type-3">경주시</a></li>
-												<li><a href="#" data-value="type-4">부산시</a></li>
-												<li><a href="#" data-value="type-5">대구시</a></li>
+												<li><a href="#">자택</a></li>
+												<li><a href="#" data-value="type-1">아파트</a></li>
+												<li><a href="#" data-value="type-2">회사</a></li>
 											</ul>
 										</div>
 										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">시/군/구</a></li>
-												<li><a href="#" data-value="type-1">중랑구</a></li>
-												<li><a href="#" data-value="type-2">광진구</a></li>
-												<li><a href="#" data-value="type-3">강남구청구</a></li>
-												<li><a href="#" data-value="type-4">강남구</a></li>
-											</ul>
-										</div>
-										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">읍/면/동</a></li>
-												<li><a href="#" data-value="type-1">면목동</a></li>
-												<li><a href="#" data-value="type-2">논현동</a></li>
-												<li><a href="#" data-value="type-3">압구정동</a></li>
-												<li><a href="#" data-value="type-4">삼성동</a></li>
-											</ul>
+											<a href="../_popupWindow/addressBook.html" class="btnSizeM btnColor01 openAddressPopup">새주소</a>
 										</div>
 									</div>
 									<p class="underTxt">* 현재 가능한 서비스 지역은 <b>강남구, 서초구, 송파구, 분당</b>입니다. 추후 서비스 지역을 확대할 계획입니다.</p>
@@ -94,11 +98,10 @@
 						<button class="btn btnSizeM btnColor02 btnWM">세탁업체 추천 요청</button>
 					</div>
 				</div>
-
 				<h3 class="subTit">추천 세탁업체 선택</h3>
 				<div class="orderCont recommendBox">
 					<div class="payTab tabWrap">
-						<span class="on">
+						<span class="on best">
 							<a href="#" class="radioBtn">
 								<p class="thumBox"><img src="../images/thum_recommend04.jpg"></p>
 								<p class="labelTxt">워시온</p>
@@ -112,65 +115,12 @@
 							</a>
 							<p><button class="btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
 						</span>
+					</div>					
+					<h3 class="subTit">추가 요청사항 (선택)</h3>
+					<div class="tbSet orderCont mt20">
+						<textarea class="mt20 pullSize" cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
 					</div>
-				</div>
-
-				<h3 class="subTit">기본정보 <span class="subTxt"> * 표시는 필수입력 항목 이오니 반드시 입력해 주세요.</span></h3>
-				<div class="tbSet orderCont mt20">
-					<table summary="기본 정보 입력해표로써 이름, 연락처, 주소, 추가 요청사항 정보를 입력하도록 구성되어 있습니다.">
-						<caption>기본 정보 입력 표</caption>
-						<colgroup>
-							<col style="width:180px">
-							<col style="width:auto">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이름</th>
-								<td>
-									<input type="text" title="이름 입력" placeholder="홍길동" style="width:360px;">
-								</td>
-							</tr>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 연락처</th>
-								<td>
-									<input type="text" title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
-								</td>
-							</tr>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 주소</th>
-								<td>
-									<div class="arrayWrap alignBox">
-										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">자택</a></li>
-												<li><a href="#" data-value="type-1">아파트</a></li>
-												<li><a href="#" data-value="type-2">회사</a></li>
-											</ul>
-										</div>
-										<div class="leftBox">
-											<a href="../_popupWindow/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
-										</div>
-									</div>
-									<dl>
-										<dt>- 도로명</dt>
-										<dd>서울시 강남구 학동로 56길 26</dd>
-										<dt>- 지번</dt>
-										<dd>서울시 강남구 삼성동 8-5</dd>
-										<dt>- 상세주소</dt>
-										<dd>삼성빌딩 7층</dd>
-									</dl>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">추가 요청사항</th>
-								<td>
-									<textarea cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				
+				</div>				
 				<h3 class="subTit">개인정보 제 3자 제공 동의</h3>
 				<div class="orderCont">
 					<div class="agreeBox">
