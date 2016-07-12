@@ -4,7 +4,7 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 마이커먼"} -->
 </head>
 <body data-page-id="">
-	<div class="wrapper my">
+	<div class="wrapper my order">
 		<!-- @@include ../_template/menu.html -->
 
 		<!-- 하단고정버튼 -->
@@ -623,6 +623,123 @@
 				</div>
 				<!--// 테이블 -->
 
+				<!-- 라디오형 탭 -->
+				<div class="wrapT">
+					<fieldset class="plate selectAddress">
+						<h3 class="conTit">수령지 정보</h3>
+						<div class="payTab tabWrap">
+							<span class="on"><a href="#delivery1" class="radioBtn">단일 배송지</a></span>
+							<span><a href="#delivery2" class="radioBtn">복수 배송지</a></span>
+						</div>
+						<div class="">
+							<!-- 단일 배송지 -->
+							<div class="delivery1" id="delivery1">
+								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
+								<ul class="addressList">
+									<li>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></a></span><span class="pointRed">기본 주소</span></p>
+										<div class="addressCont">
+											<p><b>주문자</b><span>홍길동</span></p>
+											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
+											<p><b>연락처</b><span>010-1234-5678</span></p>
+										</div>
+										<div class="btnwrap">
+											<a href="#" class="btnSizeS btnColor05">수정</a>
+											<a href="#" class="btnSizeS btnColor05">삭제</a>
+										</div>
+									</li>
+									<li>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></a></span><span class="pointGreen">최근 주소</span></p>
+										<div class="addressCont">
+											<p><b>주문자</b><span>홍길동</span></p>
+											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+											<p><b>연락처</b><span>010-1234-5678</span></p>
+										</div>
+										<div class="btnwrap">
+											<a href="#" class="btnSizeS btnColor05">수정</a>
+											<a href="#" class="btnSizeS btnColor05">삭제</a>
+										</div>
+									</li>
+									<li>
+										<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></a></span></p>
+										<div class="addressCont">
+											<p><b>주문자</b><span>홍길동</span></p>
+											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+											<p><b>연락처</b><span>010-1234-5678</span></p>
+										</div>
+										<div class="btnwrap">
+											<a href="#" class="btnSizeS btnColor05">수정</a>
+											<a href="#" class="btnSizeS btnColor05">삭제</a>
+										</div>
+									</li>
+								</ul>
+								<div id="newAddress" style="display: none;">
+									<table class="formWrap">
+										<tr>
+											<th>주소 별칭</th>
+											<td><input type="text"></td>
+										</tr>
+										<tr>
+											<th>받으실 분</th>
+											<td><input type="text"></td>
+										</tr>
+										<tr>
+											<th>연락처1</th>
+											<td class="phone">
+												<select name="" title="국번 선택">
+													<option value="">02</option>
+												</select> -
+												<input type="text" title="연락처 앞자리 입력"> -
+												<input type="text" title="연락처 뒷자리 입력">
+											</td>
+										</tr>
+										<tr>
+											<th>연락처2</th>
+											<td class="phone">
+												<select name="" title="국번 선택">
+													<option value="">02</option>
+												</select> -
+												<input type="text" title="연락처 앞자리 입력"> -
+												<input type="text" title="연락처 뒷자리 입력">
+											</td>
+										</tr>
+									</table>
+									<h4 class="partTit">수령지 주소</h4>
+									<div class="shipAddress">
+										<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
+										<p><input type="text"><label for="" class="hide">주소</label></p>
+										<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+										<p>
+											<span class="checkbox">
+												<input type="checkbox" id="checkAddress2"/>
+												<label for="checkAddress2">기본 배송지로 설정</label>
+											</span>
+										</p>
+									</div>
+								</div>
+								<h4 class="partTit">배송 시 요청 사항</h4>
+								<div class="textWrap">
+									<select title="배송 시 요청사항 선택">
+										<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+										<option value="">경비실에 맡겨주세요</option>
+										<option value="">빠른 배송 부탁드립니다.</option>
+										<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+									</select>
+									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
+									<p class="countTxt"><span>0</span>/50</p>
+								</div>
+							</div>
+							<!--// 단일 배송지 -->
+							<!-- 복수 배송지 -->
+							<div class="delivery2" id="delivery2" style="display:none">
+								<a href="#" class="deliveryBtn"><span>복수 배송지 선택</span></a>
+							</div>
+							<!--// 복수 배송지 -->
+						</div>
+					</fieldset>
+				</div>
+				<!--// 라디오형 탭 -->
+
 				<!-- 평점 -->
 				<div class="myWrap">
 					<p class="grade">
@@ -636,8 +753,10 @@
 				<!-- 평점 -->
 					<div style="color:green; line-height:130%; margin-bottom:10px;">* text color
 						<p>.pointRed : <span  style="color:#f1645c;">#f1645c</span></p>
-						<p>.pointCyan : <span  style="color:#00aeb9;">#00aeb9</span></p><br/>
-						<p>주석글 <span  style="color:#666; font-size:11px; line-height:130%;">.underTxt</span></p>
+						<p>.pointCyan : <span  style="color:#00aeb9;">#00aeb9</span></p>
+						<p>.pointGreen : <span  style="color:#adc427;">#adc427</span></p><br/>
+						<p>주석글 <span class="underTxt">.underTxt</span></p>
+						<p>주석글2 <span class="underTxtMark">.underTxtMark</span></p>
 					</div>
 				</div>
 				<!-- 하단 안내 -->

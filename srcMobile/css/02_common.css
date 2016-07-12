@@ -128,7 +128,10 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 /* text color */
 .pointRed {color:#f1645c !important;}
 .pointCyan {color:#00aeb9 !important;}
+.pointGreen {color:#adc427 !important;}
 .underTxt {color:#666; font-size:11px; line-height:130%;}
+.underTxtMark {padding-left:20px; color:#666; font-size:11px; line-height:130%; position:relative; text-align:left;}
+.underTxtMark:before {content:''; width:14.5px; height:14.5px; border-radius:50%; background:url('../images/ico_qMark.png') center no-repeat #999; background-size:5px 9px; position:absolute; top:0; left:0;}
 
 /* bottom fix*/
 .btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;}
@@ -149,16 +152,16 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}
-.radioBox label:before{content: '';display: inline-block;height: 18px;margin-right:5px;background: url('../images/ico_radio.png') no-repeat;vertical-align: middle;}
-.radioBox label.on:before{background-position: 0 -18px;}
+.radioBox label:before{content: '';display: inline-block; width:16px; height: 16px;margin-right:5px;background: url('../images/ico_radio.png') 0 0 no-repeat;vertical-align: middle; background-size: 16px 32px;}
+.radioBox label.on:before{background-position: 0 -16px;}
 
 .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
 .checkbox {position: relative;/*margin-top:18px;*/}
 ul.checkbox{overflow: hidden;}
 .checkbox li{float: left;width: 50%;margin-top: 15px;}
 .checkbox label{font-size: 13px;color: #666;}
-.checkbox label:before{content: '';display:inline-block;width:24px;height:24px;border:1px solid #ccc;margin-right:10px;vertical-align:middle;background:#fff;}
-.checkbox label.on:before{background:#fff url('../images/ico_check.png') no-repeat center center;background-size:14px;}
+.checkbox label:before{content: '';display:inline-block;width:25px;height:25px;border-radius:50%; margin-right:10px;vertical-align:middle; background:url('../images/ico_follow_on.png') center no-repeat #ccc; background-size:13px 9px}
+.checkbox label.on:before{background-color:#00aeb9;}
 .checkAll label {color:#333; font-size:13px;}
 .checkAll label:before{background:url('../images/ico_checkBox.png') no-repeat center center #fff; background-size:14px; color:#333;}
 .checkAll label.on:before{background:url('../images/ico_checkBox_on.png') no-repeat center center #fff; background-size:14px;}
@@ -284,7 +287,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 
 .slideCon{display: none;}
 
-.formWrap{width: 100%;margin-top:10px;border-top:1px solid #666;border-bottom: 1px solid #c4c4c4;}
+.formWrap{width: 100%;margin-top:20px;border-top:1px solid #666;border-bottom: 1px solid #e8e8e8;}
 .formWrap th, .formWrap td{padding: 10px;border-top:1px solid #e8e8e8;}
 .formWrap th{width: 26%;background: #f8f8f8;color: #000;text-align: center; line-height:130%;}
 .formWrap td {line-height:130%;}
@@ -303,11 +306,11 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
 .zipCode{position: relative;padding-right: 100px;}
 .zipCode a{position: absolute;left: 0;bottom: 0;right: 0;top:0;}
 .zipCode label{position: absolute;top: 0;right: 0;padding:0 20px;;background: #666;border-radius: 15px;font-size: 13px; line-height:30px;color: #fff;}
-.partTit{margin-top: 20px;font-size: 12px;color: #000;}
+.partTit{margin-top: 20px;font-size: 15px;color: #1a1a1a; font-weight:bold;}
 
-.textWrap{margin-top: 10px;padding:15px 10px;border-top: 1px solid #666;border-bottom: 1px solid #c4c4c4;background: #f8f8f8;}
+.textWrap{margin-top: 10px;padding:15px 10px;border-top: 1px solid #666;border-bottom: 1px solid #c4c4c4; position:relative;}
 .textWrap textarea{width: 100%;min-height: 90px;margin-top: 10px;padding: 10px;font-size: 13px;}
-.textWrap .countTxt{margin-top:7px;text-align: right;color: #666;}
+.textWrap .countTxt{margin-top:7px;text-align: right;color: #666; position:absolute; bottom:25px; right:20px; background:#fff;}
 .textWrap .countTxt span{color: #999}
 
 .tb01{width: 100%;border-bottom: 1px solid #d1d1d1;line-height: 1.3em;}
