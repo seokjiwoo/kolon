@@ -647,6 +647,50 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .cautionInfo dl dt + dd{margin-top:0;}
 .cautionInfo dl dd{padding-left:10px;line-height:1.4em;color:#666;margin-top:4px;background:url("../images/ico_dot.png") no-repeat 4px 6px;background-size:3px;}
 
+.returnInfo01{margin-top:10px;font-size:15px;}
+.returnInfo01 ul{padding-bottom:15px;border-bottom:1px solid #ccc;}
+.returnInfo01 ul li{margin-top:10px;}
+.returnInfo01 ul li:first-child{margin-top:0;}
+.returnInfo01 ul li:after{content:"";display:block;clear:both;}
+.returnInfo01 ul li span:first-child{float:left;}
+.returnInfo01 ul li span:last-child{float:right;}
+.returnInfo01 ul li span em{position:relative;font-style:normal;padding-right:16px;} 
+.returnInfo01 ul li span em:after{position:absolute;top:5px;right:10px;content:"";width:1px;height:10px;background:#a0a0a0;display:block;}
+.returnInfo01 dl.infowrap01{margin-top:15px;}
+.returnInfo01 dl.infowrap01 dd{padding:15px;background:#f8f8f8;line-height:1.4em;margin-top:10px;font-size:13px;color:#666;}
+.returnInfo01 dl.infowrap01 dd span{display:block;color:#00aeb9;}
+.returnInfo01 dl.infowrap02{margin-top:15px;}
+.returnInfo01 dl.infowrap02 dt{margin-bottom:10px;}
+.returnInfo01 dl.infowrap02 dd{margin-top:5px;}
+.returnInfo01 dl.infowrap02 dd:after{content:"";display:block;clear:both;}
+.returnInfo01 dl.infowrap02 dd span,
+.returnInfo01 dl.infowrap02 dd p{color:#666;font-size:13px;}
+.returnInfo01 dl.infowrap02 dd span:first-child{float:left;}
+.returnInfo01 dl.infowrap02 dd span:last-child{float:right;}
+.returnInfo01 dl.infowrap02 dd p{line-height:1.4em;}
+.returnInfo01 div.infowrap03:after{content:"";display:block;clear:both}
+.returnInfo01 div.infowrap03 span:first-child{float:left;}
+.returnInfo01 div.infowrap03 span:last-child{float:right;}
+
+.payArea{border-bottom:1px solid #666;}
+.payArea .date{height:44px;line-height:44px;border-bottom:1px solid #e1e1e1;background:#f8f8f8;border-top:1px solid #666;text-align:center;font-size:15px;}
+.payArea dl{padding:15px 0;border-top:1px dashed #ccc;font-size:15px;}
+.payArea dl dt{margin-bottom:10px;}
+.payArea dl dt:after,
+.payArea dl dd:after{content:"";display:block;clear:both;}
+.payArea dl dt span:first-child,
+.payArea dl dd span:first-child{float:left;}
+.payArea dl dt span:last-child,
+.payArea dl dd span:last-child{float:right;}
+.payArea dl dd{line-height:1.4em;font-size:13px;color:#666;}
+.payArea .date + dl{border-top:0;}
+.payArea .cancelNum{padding:15px 0;font-size:15px;}
+.payArea .cancelNum:after{content:"";display:block;clear:both;}
+.payArea .cancelNum span:first-child{float:left;}
+.payArea .cancelNum span:last-child{float:right;}
+.questionBox{padding:15px 15px 30px;background:#e0e0e0;color:#666;}
+.questionBox p{padding-left:20px;background:url("../images/ico_info.png") no-repeat 0 1px;background-size:15px;line-height:1.4em;}
+
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
