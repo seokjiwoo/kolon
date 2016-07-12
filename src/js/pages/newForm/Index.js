@@ -20,6 +20,9 @@ module.exports = function() {
 	CART_EVENT = events.CART,
 	PRODUCT_EVENT = events.PRODUCT;
 
+	var CardList = require('../../components/CardList.js');
+	var cardList;
+
 	var opts = {
 		wrap : '.js-slider-wrap',
 		colorbox : {
@@ -84,6 +87,7 @@ module.exports = function() {
 		debug.log(fileName, 'setElements');
 
 		self.colorbox = $(opts.colorbox.target);
+		$('#mainSlider').bxSlider();
 	}
 
 	function setBindEvents() {
