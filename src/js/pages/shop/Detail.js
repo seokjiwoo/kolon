@@ -74,7 +74,7 @@ module.exports = function() {
 		productController.related(self.productNumber);
 		//productController.reviews(self.productNumber, self.reviewNumber);
 
-		$('.container a, .container button').on('click', function(e) {
+		$('.wrapper a, .wrapper button').on('click', function(e) {
 			e.preventDefault();
 
 			var target = $(e.currentTarget);
