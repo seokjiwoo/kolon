@@ -3,7 +3,7 @@
 .order .zipCode label.btnColor03 {background:#666;}
 
 .order .orderInfo {border:4px solid #333; margin-top:15px;}
-.order .orderInfo dl {width:100%; display:inline-block; position:relative;}
+.order .orderInfo dl {width:100%; position:relative;}
 .order .orderInfo dl + dl {border-top:1px solid #333;}
 .order .orderInfo dl + dl:after {content:''; width:34px; height:39px; margin-left:-17px; background:url(../images/ico_order.png) no-repeat; background-size:34px 78px; position:absolute; top:-19.5px; left:50%; z-index:1;}
 .order .orderInfo dl + dl.minus:after {background-position:0 0;}

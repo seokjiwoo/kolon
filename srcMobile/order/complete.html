@@ -7,7 +7,8 @@
 	<div class="wrapper order">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<section>
+			<!-- 배송형 주문완료 -->
+			<section style="display:none;">
 				<h2 class="pageTit">주문완료</h2>
 				<div class="wrapT">
 					<div class="complete">
@@ -53,7 +54,7 @@
 							<dd>
 								<ul class="odList">
 									<li>
-										<p class="conTit">적립 예정 포인트</p>
+										<p class="odListTit">적립 예정 포인트</p>
 										<p class="odListCont"><span class="point"><b>1300</b> P</span></p>
 									</li>
 								</ul>
@@ -301,6 +302,305 @@
 				</div>
 				<!--// scroll 시 고정 영역 -->
 			</section>
+			<!--// 배송형 주문완료 -->
+			<!-- 시공형 주문완료 -->
+			<section>
+				<h2 class="pageTit">주문완료</h2>
+				<div class="wrapT">
+					<div class="complete">
+						<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 <br/>주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 <span class="iconArrow">시공 중인 상품에서</span><br/>확인하실 수 있습니다.</p>
+					</div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 정보</h3>
+					<div class="orderInfo">
+						<dl class="minus">
+							<dt><span>견적 금액</span></dt>
+							<dd>
+								<p class="price"><b>2,000,000</b> 원</p>
+							</dd>
+						</dl>
+						<dl class="minus">
+							<dt><span>총 할인금액</span></dt>
+							<dd>
+								<p class="price"><b>0</b> 원</p>
+								<ul class="odList">
+									<li>
+										<p class="odListTit">기본 할인</p>
+										<p class="odListCont"><b>0</b> 원</p>
+									</li>
+									<li>
+										<p class="odListTit">포인트</p>
+										<p class="odListCont"><b>0</b> 원</p>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="minus">
+							<dt><span>선결제 금액/할부금액</span></dt>
+							<dd>
+								<p class="price"><b>0</b> 원</p>
+								<ul class="odList">
+									<li>
+										<p class="odListTit">선결제</p>
+										<p class="odListCont"><b>300,000</b> 원</p>
+									</li>
+									<li>
+										<p class="odListTit">할부(24개월)</p>
+										<p class="odListCont"><b>10,000,000</b> 원</p>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="equal">
+							<dd class="total">
+								<p class="odListTit">총 결제금액</p>
+								<p class="odListCont"><b>1,380,000</b> 원</p>
+							</dd>
+						</dl>
+					</div>
+					<!-- 결제방법이 신용카드 인 경우 -->
+					<table class="formWrap tbR">
+						<caption>결제 방법</caption>
+						<thead>
+							<tr>
+								<th scope="col">결제 방법</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>신용카드</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="partTit">적립예정 포인트</h3>
+					<table class="formWrap tbR">
+						<caption>적립예정 포인트</caption>
+						<thead>
+							<tr>
+								<th scope="col">기본 적립</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>280,000 P</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="formWrap tbR">
+						<caption>적립예정 포인트</caption>
+						<thead>
+							<tr>
+								<th scope="col">적립 시점</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>구매확정 시 적립</td>
+							</tr>
+						</tbody>
+					</table>
+					<!--// 결제방법이 신용카드 인 경우 -->
+					<!-- 결제방법이 무통장 입금 인 경우 -->
+					<!--
+					<table class="formWrap tbR">
+						<caption>결제 방법</caption>
+						<thead>
+							<tr>
+								<th scope="col">결제 방법</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>무통장 입금</td>
+							</tr>
+						</tbody>
+					</table>
+					<h3 class="secTit">입금자 명</h3>
+					<table class="formWrap tbR">
+						<caption>입금자 명</caption>
+						<thead>
+							<tr>
+								<th scope="col">입금자 명</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>홍길동</td>
+							</tr>
+							<tr>
+								<td class="infoTd">입금자명 불일치할 경우 입금 확인이 지연됩니다.</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="formWrap tbR">
+						<caption>입금계좌 정보</caption>
+						<thead>
+							<tr>
+								<th scope="col">입금계좌 정보</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>XX 은행 123-456789-01-132<br/>예금주 ㈜가인인테리어</td>
+							</tr>
+							<tr>
+								<td class="infoTd">주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.</td>
+							</tr>
+						</tbody>
+					</table>
+					-->
+					<!--// 결제방법이 무통장 입금 인 경우 -->
+				</div>
+				<div class="wrapT plate">
+					<h3 class="conTit">주문 상품 내역</h3>
+					<form action="/">
+						<ul class="productList">
+							<li>
+								<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+								<div class="info">
+									<span>코오롱 글로벌</span>
+									<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+								</div>
+								<ul class="productData">
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+								</ul>
+								<!-- 결제금액 내역 -->
+								<div class="hiddenArea">
+									<a href="">더보기</a>
+									<div class="detailInfo">
+										<ul class="priceBox">
+											<li>
+												<p class="priceBoxTit">할인금액</p>
+												<p class="priceBoxCont"><b>0</b> 원</p>
+											</li>
+											<li>
+												<p class="priceBoxTit">배송비</p>
+												<p class="priceBoxCont"><b>20,000</b> 원</p>
+											</li>
+											<li class="check">
+												<p class="priceBoxTit">결제금액</p>
+												<p class="priceBoxCont"><b>1,720,000</b> 원</p>
+											</li>
+										</ul>
+										<dl>
+											<dt>수령자 정보</dt>
+											<dd>
+												<span>받는 사람</span>
+												<span>홍길동</span>
+											</dd>
+											<dd>
+												<span>주소</span>
+												<span>서울시 강남구 삼성동 8-5</span>
+											</dd>
+											<dd>
+												<span>휴대폰 번호</span>
+												<span>010-1234-5678</span>
+											</dd>
+											<dd>
+												<span>일반 전화번호</span>
+												<span>02-567-8901</span>
+											</dd>
+											<dd>
+												<span>요청사항</span>
+												<span>도착 전에 연락 부탁 드립니다.</span>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<!--// 결제금액 내역 -->
+							</li>
+							<li>
+								<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+								<div class="info">
+									<span>코오롱 글로벌</span>
+									<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+								</div>
+								<ul class="productData">
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+									<li>
+										<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+										<p class="count">
+											<span><em>1,700,000</em>원</span>
+											<span>1 개</span>
+										</p>
+									</li>
+								</ul>
+								<!-- 결제금액 내역 -->
+								<div class="hiddenArea">
+									<a href="">더보기</a>
+									<div class="detailInfo">
+										<ul class="priceBox">
+											<li>
+												<p class="priceBoxTit">할인금액</p>
+												<p class="priceBoxCont"><b>0</b> 원</p>
+											</li>
+											<li>
+												<p class="priceBoxTit">배송비</p>
+												<p class="priceBoxCont"><b>20,000</b> 원</p>
+											</li>
+											<li class="check">
+												<p class="priceBoxTit">결제금액</p>
+												<p class="priceBoxCont"><b>1,720,000</b> 원</p>
+											</li>
+										</ul>
+										<dl>
+											<dt>수령자 정보</dt>
+											<dd>
+												<span>받는 사람</span>
+												<span>홍길동</span>
+											</dd>
+											<dd>
+												<span>주소</span>
+												<span>서울시 강남구 삼성동 8-5</span>
+											</dd>
+											<dd>
+												<span>휴대폰 번호</span>
+												<span>010-1234-5678</span>
+											</dd>
+											<dd>
+												<span>일반 전화번호</span>
+												<span>02-567-8901</span>
+											</dd>
+											<dd>
+												<span>요청사항</span>
+												<span>도착 전에 연락 부탁 드립니다.</span>
+											</dd>
+										</dl>
+									</div>
+								</div>
+								<!--// 결제금액 내역 -->
+							</li>
+						</ul>
+					</form>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">주문하신 상품과 어울리는 상품</h3>
+					card type
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">주문하신 상품과 어울리는 인테리어</h3>
+					card type
+				</div>
+				<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+				<div class="myCartTotal">
+					<a href="#" class="totalBtn">커먼 메인으로 이동</a>
+				</div>
+				<!--// scroll 시 고정 영역 -->
+			</section>
+			<!--// 시공형 주문완료 -->
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
