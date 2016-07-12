@@ -27,6 +27,7 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	ISOTOPE_EVENT = events.ISOTOPE,
 	ALERTPOPUP_EVENT = events.ALERT_POPUP,
+	HTMLPOPUP_EVENT = events.HTML_POPUP,
 	CHECKBOX_EVENT = events.CHECK_BOX,
 	OPTIONNUM_EVENT = events.OPTION_NUM;
 
@@ -94,6 +95,9 @@ module.exports = function() {
 
 		// alertPopup event
 		eventManager.on(ALERTPOPUP_EVENT.OPEN, onAlertPopupOpenListener);
+
+		// htmlPopup event
+		eventManager.on(HTMLPOPUP_EVENT.OPEN, onHtmlPopupOpenListener);
 
 		$(window).resize(function(e) { winH = $(window).height(); });
 	};
@@ -412,5 +416,26 @@ module.exports = function() {
 	// 	eventManager.trigger(ALERTPOPUP_EVENT.OPEN, ['ID 혹은 소속을 입력하세요.', '', '확인']);
 	function onAlertPopupOpenListener(e, title, description, buttonCaption, callback) {
 		alertPopup(title, description, buttonCaption, callback);
+	}
+
+	// htmlPopup open 시점
+	/* @example
+		eventManager.trigger(HTMLPOPUP_EVENT.OPEN, [
+			'../../_popup/popOrderCancelRequest.html',
+			590,
+			'popEdge',
+			{
+				onOpen: function() {
+					window.console.log('onOpen');
+				},
+				onSubmit: function() {
+					window.console.log('onSubmit, popCallback');
+					eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
+				}
+			}
+		]);
+	*/
+	function onHtmlPopupOpenListener(e, src, width, userClass, handlerObject) {
+		htmlPopup(src, width, userClass, handlerObject);
 	}
 }
