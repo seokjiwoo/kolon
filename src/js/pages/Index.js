@@ -74,7 +74,7 @@ module.exports = function() {
 			data = {
 				cards : [
 					{
-						cardTypeCode : 'GRAPH',
+						cardTypeCode : 'DP_CARD_TYPE_05',
 						cardClass: 'cardType08 cardSize02',
 						title : '목표 수익 금액 <br>달성률',
 						description : '<p>김현주고객님, <br>목표달성까지 남은 금액은 <br>500,000 원 입니다.</p>',
@@ -83,7 +83,7 @@ module.exports = function() {
 						onScreen : true
 					},
 					{
-						cardTypeCode : 'GRAPH',
+						cardTypeCode : 'DP_CARD_TYPE_05',
 						cardClass: 'cardType08 cardSize02',
 						title : '목표 수익 금액 <br>달성률',
 						description : '<p>홍길동고객님, <br>목표달성까지 남은 금액은 <br>523,400 원 입니다.</p>',
