@@ -29,6 +29,9 @@ function Events() {
 		ALERT_POPUP : {
 			OPEN : 'VX-ALERT_POPUP-OPEN'
 		},
+		HTML_POPUP : {
+			OPEN : 'VX-HTML_POPUP-OPEN'
+		},
 		CHECK_BOX : {
 			CHANGE : 'VX-CHECK_BOX-CHANGE'
 		},
@@ -131,10 +134,49 @@ function Events() {
 				// 상품 리뷰 상세
 				REVIEWS : 'productReviewsResult'
 			},
+			// OrderController - 주문조회
+			// @see OrderController.js
+			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/me-order-controller
 			ORDER : {
+				// 주문/배송 현황 조회
 				ORDER_LIST : 'myOrdersListResult',
+				// 주문/배송 - 주문상세
 				ORDER_DETAIL : 'orderDetailResult',
-				ORDER_TRACKING : 'orderTrackingInfoResult'
+				// 구매확정
+				ORDER_CONFIRM : 'orderConfirmResult',
+				// 주문/배송 - 배송추적 팝업 조회
+				ORDER_TRACKING : 'orderTrackingInfoResult',
+				// 주문 취소 신청 처리
+				ORDER_CANCEL : 'orderCancelResult',
+				// 교환 신청 처리
+				ORDER_EXCHANGE : 'orderExchangeResult',
+				// 반품 신청 처리
+				ORDER_RETURN : 'orderReturnResult',
+
+				// 교환/반품/취소 조회
+				CANCEL_LIST : 'myCancelListResult',
+				// 취소 신청 조회 팝업
+				CANCEL_DETAIL : 'cancelDetailResult',
+			},
+			CLAIMS : {
+				// 교환/반품/취소 목록 조회
+				LIST : 'myClaimsListResult',
+				// 취소 상세 내역 / 휴대폰 결제
+				CELL : 'claimsCellResult',
+				// 취소 상세 내역 / 신용카드 결제
+				CREDIT : 'claimsCreditResult',
+				// 취소 반려 상세 내역
+				DENY : 'claimsDenyResult',
+				// 취소 상세 내역 / 무통장 입금
+				DEPOSIT : 'claimsDepositResult',
+				// 교환 상세 내역
+				EXCHANGE : 'claimsExchangeResult',
+				// 교환 반려 상세 내역
+				EXCHANGE_DENY : 'claimsExchangeDenyResult',
+				// 반품 상세 내역
+				RETURN : 'claimsReturnResult',
+				// 반품 반려 상세 내역
+				RETURN_DENY : 'claimsReturnDenyResult'
 			}
 		// [E] Controller Events
 	},
