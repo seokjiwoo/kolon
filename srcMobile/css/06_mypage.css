@@ -1,7 +1,7 @@
-.my, .order{background:#e0e0e0;}
+.my{background:#e0e0e0;}
 .my .pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
-.conTit{padding-bottom:10px;border-bottom:2px solid #666;font-size:15px;font-weight:bold;}
-.conTit:after{content:"";display:block;clear:both;}
+.my .conTit{padding-bottom:10px;border-bottom:1px solid #666;font-size:15px;font-weight:bold;}
+.my .conTit:after{content:"";display:block;clear:both;}
 .my .conTit a{float:right;padding-right: 14px;background: url("../images/ico_arrowG.png") no-repeat right 2px;background-size: 6px;font-size:13px;font-weight:normal;}
 .my .pageTit + .myWrap{margin-top:10px;}
 
@@ -345,6 +345,8 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .orderState ul li:last-child{background-image:none;}
 .orderState ul li.active{color:#fff;}
 .orderState ul li em{display:block;margin-top:5px;font-size:20px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
+.orderState ul li p{position:relative;display:inline-block;}
+.orderState ul li p i{position:absolute;right:-7px;top:2px;width:6px;height:6px;background:url("../images/ico_n.png") no-repeat 0 0;background-size:100%;}
 .orderState + .wrapT{margin-top:10px;}
 
 .orderRow{margin-top:8px;}
@@ -354,17 +356,16 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .orderNum a{display:inline-block;}
 .orderNum span{float:left;}
 .orderNum a{float:right;padding-right:12px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
-.payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;}
+.payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;font-weight:bold;}
 .payPrice em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
 .bundle{height:20px;line-height:20px;background:#f8f8f8;text-align:center;border-bottom:#e5e5e5;color:#666;font-size:12px;}
+.homeTxt{padding-bottom:12px;border-bottom:1px solid #666;margin-top:10px;font-weight:bold;font-size:15px;}
 .productList{}
 .productList > li{overflow:hidden;padding:15px 0;border-top:1px solid #666; position:relative;}
 .productList > li:first-child{border-top:0;}
-.productList > li.productTit {width:100%; border-top:0; background:#f8f8f8;}
-.productList > li.productTit + li {border-top:1px solid #e1e1e1;}
-.productList > li.productTit span {padding:0 17.5px; color:#333; display:inline-block;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
+.productList .info + .cancelArea{margin-top:44px;}
 .productList .info span{padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
 .productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
@@ -381,7 +382,7 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .productList .productData li p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .productList .productData li p.count span:last-child{color:#666;}
 .productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
-.productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;}
+.productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;clear:both;}
 .productList .cancelArea .state,
 .productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
 .productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px;}
@@ -478,9 +479,9 @@ ul.optList .cancelArea + a{margin-top:15px;}
 
 ul.priceBox {margin-top:15px; padding:15px; background:#f8f8f8;}
 ul.priceBox > li {width:100%; overflow:hidden;}
-ul.priceBox > li p {color:#333; line-height:130%; font-family:'NotoSansM', 'RobotoM', sans-serif;}
+ul.priceBox > li p {color:#333; line-height:130%;}
 ul.priceBox > li + li {margin-top:5px;}
-ul.priceBox > li.check p {color:#f1645c; }
+ul.priceBox > li.check p {color:#f1645c;}
 ul.priceBox > li.check p.priceBoxCont b {font-size:18px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
 ul.priceBox > li.check p.priceBoxTit {font-weight:bold;}
 ul.priceBox li p.priceBoxTit {width:40%; float:left;}
@@ -507,8 +508,7 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .myCartTotal > ul.totalList {padding:0 15px; background:#e6e6e6; border-top:1px solid #ccc;}
 .myCartTotal ul.totalList > li {width:100%; overflow:hidden; padding:20px 0;}
 .myCartTotal ul.totalList > li p.totalCont {color:#000;}
-.myCartTotal ul.totalList > li + li {border-top:1px solid #999;}
-.myCartTotal ul.totalList > li.point {border-top:1px dashed #999;}
+.myCartTotal ul.totalList > li + li {border-top:1px solid #ccc;}
 .myCartTotal ul.totalList > li ul.tList {width:100%; overflow:hidden;}
 .myCartTotal ul.totalList > li ul.tList li {padding-left:8px; line-height:130%; color:#666; font-size:13px; position:relative;}
 .myCartTotal ul.totalList > li ul.tList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
@@ -566,10 +566,10 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .payment p:first-child{padding-bottom:10px;color:#333;font-size:15px;}
 .my .payment p span:first-child{float:left;}
 .my .payment p span:last-child{float:right;}
-.btnwrap{margin-top:18px;}
-.btnwrap a.btnSizeS{width:49%;}
-.btnwrap a.btnSizeS:first-child,
-.btnwrap a.btnSizeS:first-child + a.btnSizeS{margin-bottom:6px;}
+.my .btnwrap{margin-top:18px;}
+.my .btnwrap a.btnSizeS{width:49%;}
+.my .btnwrap a.btnSizeS:first-child,
+.my .btnwrap a.btnSizeS:first-child + a.btnSizeS{margin-bottom:6px;}
 .my .orders p{padding:5px 0;font-size:15px;}
 .my .orders p:after{content:"";display:block;clear:both;}
 .my .orders p:first-child{margin-top:5px;}
@@ -694,7 +694,7 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .payArea .cancelNum span:first-child{float:left;}
 .payArea .cancelNum span:last-child{float:right;}
 .questionBox{padding:15px 15px 30px;background:#e0e0e0;color:#666;}
-.questionBox p{padding-left:20px;background:url("../images/ico_info.png") no-repeat 0 1px;background-size:15px;line-height:1.4em;}
+.questionBox p{padding-left:20px;background:url("../images/ico_info.png") no-repeat 0 2px;background-size:15px;line-height:1.4em;}
 
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
