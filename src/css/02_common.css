@@ -32,7 +32,7 @@
 .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
 .checkAgree label.on:before{background-color: #a9c700}
 
-.arrayWrap{max-width:1520px; min-width:1220px; height: 40px; overflow:hidden; margin:0 auto;}
+.arrayWrap{max-width:1520px;height: 40px; overflow:hidden; margin:0 auto;}
 .formList .arrayWrap{ overflow:visible; }
 @media (max-width:1520px){.arrayWrap {max-width:1220px;}}
 .arrayWrap .arrayDrop{position: relative;overflow: hidden;display: inline-block;height: 37px;border-radius: 10px;background:#fff;box-shadow:0px 3px rgba(0,0,0,0.12)}
@@ -161,11 +161,17 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnSizeL{height:60px;font-size: 20px;border-radius: 30px;line-height: 60px;}
 
 .btnColor01{background:#a9c700} /*green*/
+.btnColor01:hover{background:#9fbb00} /*green*/
 .btnColor02{background:#f1645c} /*red*/
+.btnColor02:hover{background:#f05149} /*red*/
 .btnColor03{background:#999} /*light grey*/
+.btnColor03:hover{background:#686868} /*light grey*/
 .btnColor04{background:#666} /*dark grey*/
+.btnColor04:hover{background:#464646} /*dark grey*/
 .btnColor05{background:#1a1a1a} /*black*/
+.btnColor05:hover{background:#454545} /*black*/
 .btnColor06{background:#00aeb9} /*dark green*/
+.btnColor06:hover{background:#00a3ae} /*dark green*/
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 .btnShadow{box-shadow: 0px 2px rgba(0,0,0,0.1);}
@@ -221,7 +227,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 
 .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
 .checkbox {position: relative;margin-top:18px;}
-.checkbox label{font-family:'NotoSansR', sans-serif;font-size: 16px;color: #000;}
+.checkbox label{font-family:'NotoSansR', sans-serif;font-size: 16px;color: #000;cursor:pointer}
 .checkbox label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
 .checkbox label.on:before{background-color: #00aeb9}
 
@@ -247,7 +253,7 @@ table tr td.txtL {text-align:left !important;}
 .tbSet table.tbL tr td {text-align:left;}
 .tbSet table.tbLThC tr th {text-align:center;}
 .tbSet table.tbLThC tr td {text-align:left; color:#333;}
-.tbSet table th{padding: 15px;background: #f8f8f8;color: #333; font-family:'NotoSansR', sans-serif;}
+.tbSet table th{table-layout: fixed;padding: 15px;background: #f8f8f8;color: #333; font-family:'NotoSansR', sans-serif;}
 .tbSet table tbody tr + tr th {border-top:1px solid #e8e8e8;}
 .tbSet table td{padding:15px;}
 .tbSet table tr + tr td {border-top:1px solid #e8e8e8;}

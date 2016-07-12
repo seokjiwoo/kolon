@@ -9,8 +9,11 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'manager/Index.js';
 
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
+	var SuperClass = require('../Page.js'),
+	Super = SuperClass();
+
+	var CardList = require('../../components/CardList.js');
+	var cardList;
 	
 	var callerObj = {
 		/**
@@ -24,6 +27,12 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
+
+		cardList = CardList();
+		cardList.init();	// 카드 리스트
+
+		win.console.log('cardList', cardList);
+
 		var slider = $('#managerSlider').bxSlider({
 			pager:false,
 			nextSelector: '#sliderNext',

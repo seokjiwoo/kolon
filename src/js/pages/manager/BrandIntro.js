@@ -69,11 +69,11 @@ module.exports = function() {
 		}
 
 		$('.container a, .container button').on('click', function(e) {
-			e.preventDefault();
-
 			var target = $(e.currentTarget);
 
 			if (target.hasClass('js-add-follow')) {
+				e.preventDefault();
+
 				var data = {
 					"followTargetCode": self.followTargetCode,
 					"followTargetNumber": self.followTargetNumber,
@@ -83,10 +83,10 @@ module.exports = function() {
 				$('.js-ajax-data').html('ajax 전송 data : ' + JSON.stringify(data));
 				followController.addFollows(data);
 			} else if (target.hasClass('js-delete-follow')) {
+				e.preventDefault();
+				
 				$('.js-ajax-data2').html('ajax 전송 data : ' + JSON.stringify(self.followTargetNumber));
 				followController.deleteFollows(self.followTargetNumber);
-			} else {
-				win.alert('"팔로우" 버튼을 클릭하세요.');
 			}
 		});
 		

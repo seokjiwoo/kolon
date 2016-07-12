@@ -64,6 +64,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #top .searchWrap .searchSet{position: relative;float: right;width: 35%;padding:5px 40px 5px 20px;background: #fff;border-radius:20px;}
 #top .searchWrap .searchSet input[type="text"]{border:0;}
 #top .searchWrap #searchTxt{width: 100%;border:0;height: 28px;line-height: 28px;}
+#top .searchWrap .searchSet input{width: 100%;}
 #top .searchWrap button{position: absolute;top:0;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/btn_search02.png') no-repeat center;border:0;}
 
 #top .searchWrap .recomand{background: #333;}
@@ -128,6 +129,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 
 .floating{position: fixed;bottom: 70px;right: 40px;z-index:4;}
 .floating a{display: block;border-radius: 50%;}
+.floating .hexagon{top:0 !important;}
 
 #floatingMenu{position: relative;}
 #floatingMenu li{position: absolute;top:1px;right: 5px;width: 50px;height: 50px;border-radius: 25px;box-shadow: 1px 1px 5px rgba(0,0,0,0.15);background:  #fff ;font-size: 13px;}

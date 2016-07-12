@@ -13,6 +13,10 @@ function DoughnutChart() {
 	debug = require('../utils/Console.js'),
 	fileName = 'compoents/HorizonBarChart.js';
 
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	HORIZONBARCHART_EVENT = events.HORIZONBAR_CHART;
+
 	var opts = {
 		wrap : 'body',
 		graphs : '.js-graph-horizonbar',
@@ -39,12 +43,7 @@ function DoughnutChart() {
 		destroy : destroy,
 		refresh : refresh,
 		append : append,
-		EVENT : {
-			REFRESH : 'HORIZON_BAR_CHART-REFRESH',
-			DESTROY : 'HORIZON_BAR_CHART-DESTROY',
-			INIT : 'HORIZON_BAR_CHART-INIT',
-			APPEND : 'HORIZON_BAR_CHART-APPEND'
-		}
+		EVENT : HORIZONBARCHART_EVENT
 	},
 	instance, self;
 	
@@ -74,7 +73,7 @@ function DoughnutChart() {
 	}
 
 	function setBindEvents() {
-		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
+		eventManager.on(self.EVENT.REFRESH, $.proxy(refresh, self))
 					.on(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.on(self.EVENT.INIT, $.proxy(init, self))
 					.on(self.EVENT.APPEND, $.proxy(append, self));
@@ -86,7 +85,7 @@ function DoughnutChart() {
 	}
 
 	function removeBindEvents() {
-		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
+		eventManager.off(self.EVENT.REFRESH, $.proxy(refresh, self))
 					.off(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.off(self.EVENT.INIT, $.proxy(init, self))
 					.off(self.EVENT.APPEND, $.proxy(append, self));

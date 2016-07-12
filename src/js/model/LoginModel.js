@@ -54,6 +54,7 @@ function ClassLoginModel() {
 			email: data.myInfo.email,
 			phone: data.myInfo.cellPhoneNumber,
 			joinSectionCode: data.myInfo.joinSectionCode,
+			savingPoint: data.myInfo.savingPoint,
 			imageUrl: imageUrl,
 			myMenu: data.myMenu,
 			myActivity: data.myActivity,

@@ -25,6 +25,9 @@ module.exports = function() {
 	},
 	self;
 
+	var CardList = require('../../components/CardList.js');
+	var cardList;
+
 	var opts = {
 		container : '.container',
 		cardWrap : '#cardWrap',
@@ -70,6 +73,9 @@ module.exports = function() {
 
 		self = callerObj;
 		self.opts = opts;
+
+		cardList = CardList();
+		cardList.init();
 
 		setElements();
 		setBindEvents();

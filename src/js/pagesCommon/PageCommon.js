@@ -92,10 +92,6 @@ module.exports = function() {
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
-		// isotope event
-		eventManager.on(ISOTOPE_EVENT.REFRESH, onIsotopeRefreshListener)
-					.on(ISOTOPE_EVENT.DESTROY, onIsotopeDestoryListener);
-
 		// alertPopup event
 		eventManager.on(ALERTPOPUP_EVENT.OPEN, onAlertPopupOpenListener);
 
@@ -116,7 +112,12 @@ module.exports = function() {
 		var target = $(this),
 		hasChkGroup = target.data('chk-group'),
 		isAllChk = (target.data('chk-role') === 'chkAll'),
+		isDropDown = target.closest('.drop, .dropChk').size(),
 		chkAll, chkGroup, chked;
+
+		if (isDropDown) {
+			return;
+		}
 
 		// 전체선택기능
 		if (hasChkGroup) {
@@ -404,21 +405,6 @@ module.exports = function() {
 
 		$('.optionNum a.btnMinus, .optionNum a.btnPlus').off('click', optionNumHandler)
 														.on('click', optionNumHandler);
-	}
-
-	// isotope refresh 시점
-	function onIsotopeRefreshListener(e) {
-		if ($('#cardWrap').data('isotope')) {
-			$('#cardWrap').isotope('destroy');
-		}
-		initTabContentLayout();
-	}
-
-	// isotope destory 시점
-	function onIsotopeDestoryListener(e) {
-		if ($('#cardWrap').data('isotope')) {
-			$('#cardWrap').isotope('destroy');
-		}
 	}
 
 	// alertPopup open 시점

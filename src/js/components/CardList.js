@@ -3,6 +3,10 @@
 module.exports = function() {
 	var util = require('../utils/Util.js');
 
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	ISOTOPE_EVENT = events.ISOTOPE;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -26,18 +30,22 @@ module.exports = function() {
 		 * 카드 오버 이펙트 삭제
 		 */
 		cleanOverEffect: cleanOverEffect,
+		refresh : refresh,
+		destory : destory
 	};
 	
 	return callerObj;
 
-	var wrap;
+	var wrap,
+	_wrapId;
 	
 	function init(wrapId) {
-		wrap = $(wrapId);
+		_wrapId = wrapId || '#cardWrap';
+		wrap = $(_wrapId);
 
 		wrap.isotope({
-			itemSelector : wrapId+' > li:not(.stamp)',
-			stamp : wrapId+' > .stamp',
+			itemSelector : _wrapId + ' > li:not(.stamp)',
+			stamp : _wrapId + ' > .stamp',
 			layoutMode : 'packery',
 			packery : {
 				columnWidth : 285,
@@ -45,9 +53,28 @@ module.exports = function() {
 			}
 		});
 
+		// isotope event
+		eventManager.off(ISOTOPE_EVENT.REFRESH, refresh)
+					.off(ISOTOPE_EVENT.DESTROY, destory);
+
+		eventManager.on(ISOTOPE_EVENT.REFRESH, refresh)
+					.on(ISOTOPE_EVENT.DESTROY, destory);
+
 		initOverEffect();
 		initCardRadio();
 	};
+
+	function refresh() {
+		destory();
+		init(_wrapId);
+	}
+
+	function destory() {
+		if (wrap.data('isotope')) {
+			wrap.isotope('destroy');
+			cleanOverEffect();
+		}
+	}
 
 	function html(tags) {
 		var insertElements = $(tags);
@@ -63,9 +90,22 @@ module.exports = function() {
 	}
 
 	function appendData(cardListArray) {
+		/*
+		DP_CARD_TYPE_01: 매거진
+		DP_CARD_TYPE_02: 뉴폼 상품
+		DP_CARD_TYPE_03: 샵 상품
+		DP_CARD_TYPE_04: 개인화 설정
+		DP_CARD_TYPE_05: 알림
+		DP_CARD_TYPE_06: 기능 (검색/연결/소개)
+		DP_CARD_TYPE_07: 전문가
+		DP_CARD_TYPE_08: 홈서비스
+		DP_CARD_TYPE_09: 엔하우징
+		*/
 		$.map(cardListArray, function(each) {
 			switch(each.cardTypeCode) {
 				case 'PROD':
+					each.cardTypeCode = 'DP_CARD_TYPE_03';
+				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
 					each.background = each.cardImageUrl == undefined ? "background:#eeeeee" : "background-image:url('"+each.cardImageUrl+"')";
 					
@@ -87,16 +127,17 @@ module.exports = function() {
 
 		var source = $('#index-card-templates').html();
 		var template = window.Handlebars.compile(source);
-		var html = template(data);
-		html(html);
+		var tags = template(data);
+
+		html(tags);
 	};
 
 	function initOverEffect(e) {
 		cleanOverEffect(e);
 
 		$('#cardWrap > li').each(function(){ // main card mouseover
-			$(this).find('.cardCon').on('mouseover', onCardConOver)
-			$(this).find('.cardCon').on('mouseleave', onCardConLeave);
+			$(this).on('mouseover', onCardConOver)
+			$(this).on('mouseleave', onCardConLeave);
 			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
 			$(this).find('.cardDetail').on('mouseleave', onCardDetailLeave);
 		});
@@ -104,8 +145,8 @@ module.exports = function() {
 
 	function cleanOverEffect(e) {
 		$('#cardWrap > li').each(function(){ // main card mouseover
-			$(this).find('.cardCon').off('mouseover', onCardConOver)
-			$(this).find('.cardCon').off('mouseleave', onCardConLeave);
+			$(this).off('mouseover', onCardConOver)
+			$(this).off('mouseleave', onCardConLeave);
 			$(this).find('.cardDetail').off('mouseover', onCardDetailOver)
 			$(this).find('.cardDetail').off('mouseleave', onCardDetailLeave);
 		});
@@ -114,6 +155,7 @@ module.exports = function() {
 	function onCardConOver(e) {
 		if (!$(this).hasClass('cHover')) {
 			$(this).addClass('cHover');
+			/*
 			$(this).find('.cardBgWrap').show();
 			$(this).find('.cardBg03').queue('fx',[]).stop().css('opacity', 1).delay(100).animate({
 				"opacity": 0
@@ -136,6 +178,7 @@ module.exports = function() {
 					$(this).parents('.cardBgWrap').hide();
 				}
 			});
+			*/
 		}
 	};
 

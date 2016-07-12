@@ -14,6 +14,10 @@ function DoughnutChart() {
 	util = require('../utils/Util.js'),
 	fileName = 'compoents/DoughnutChart.js';
 
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	DOUGHNUTCHART_EVENT = events.DOUGHNUT_CHART;
+
 	var opts = {
 		wrap : 'body',
 		svgName : 'd3-graph-doughnut',
@@ -51,12 +55,7 @@ function DoughnutChart() {
 		destroy : destroy,
 		refresh : refresh,
 		append : append,
-		EVENT : {
-			REFRESH : 'DOUGHNUT_CHART-REFRESH',
-			DESTROY : 'DOUGHNUT_CHART-DESTROY',
-			INIT : 'DOUGHNUT_CHART-INIT',
-			APPEND : 'DOUGHNUT_CHART-APPEND'
-		}
+		EVENT : DOUGHNUTCHART_EVENT
 	},
 	instance, self;
 	
@@ -91,7 +90,7 @@ function DoughnutChart() {
 	}
 
 	function setBindEvents() {
-		$('body').on(self.EVENT.REFRESH, $.proxy(refresh, self))
+		eventManager.on(self.EVENT.REFRESH, $.proxy(refresh, self))
 					.on(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.on(self.EVENT.INIT, $.proxy(init, self))
 					.on(self.EVENT.APPEND, $.proxy(append, self));
@@ -103,7 +102,7 @@ function DoughnutChart() {
 	}
 
 	function removeBindEvents() {
-		$('body').off(self.EVENT.REFRESH, $.proxy(refresh, self))
+		eventManager.off(self.EVENT.REFRESH, $.proxy(refresh, self))
 					.off(self.EVENT.DESTROY, $.proxy(destroy, self))
 					.off(self.EVENT.INIT, $.proxy(init, self))
 					.off(self.EVENT.APPEND, $.proxy(append, self));

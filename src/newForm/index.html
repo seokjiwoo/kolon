@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 뉴폼"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 샵"} -->
 </head>
 <body data-page-id="newForm">
-	<div class="wrapper category">
+	<div class="wrapper productList">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<div class="subTop">
+				<div class="hexSlider">
+					<ul id="mainSlider">
+						<li>
+							<div class="wrap">
+								<div class="slideCon">
+									<p class="catWrap italicNum"><span class="cat">{ Kitchen }</span><span class="subCat">Handmade</span></p>
+									<h3 class="slideTit">햇빛이 쨍쨍 뜨거운 여름!<br>가족을 찾아 떠나는 도리와 시원하게 보내세요~</h3>
+									<p class="subTxt">[Disney] 도리를 찾아서 <b>Glass Cup</b></p>
+									<p class="price italicNum">37,000<span> won</span></p>
+									<a href="" class="btnPost btnLike italicNum">123456</a>
+									<a href="" class="btnPost btnScrap italicNum">111111</a>
+									<a href="" class="btnMore">상세보기</a>
+								</div>
+							</div>
+							<img src="/images/temp26.jpg" alt="" class="fullSlideImg"/>
+						</li>
+						<li><img src="/images/temp26.jpg" alt="" class="fullSlideImg"/></li>
+						<li><img src="/images/temp26.jpg" alt="" class="fullSlideImg"/></li>
+						<li><img src="/images/temp26.jpg" alt="" class="fullSlideImg"/></li>
+					</ul>
+				</div>
 				<div class="wrap">
-					<h2 class="pageTit">공간을 고치다</h2>
-					<p class="subTit"><b>100</b>개의 홈인테리어 시공형 상품이 있습니다.</p>
+					<div class="topTit">
+						<p class="subTit">공간을 고치다 <b>100</b>개의 상품이 있습니다.</p>
+						<h2 class="pageTit">newform</h2>
+					</div>
 					<ul class="tagList">
 						<li><a href="">#모던프렌치</a></li>
 						<li><a href="">#북유럽</a></li>
@@ -35,12 +58,14 @@
 						<li><a href="#" data-value="type-3">스크랩 많은 순</a></li>
 					</ul>
 				</div>
-				<a href="../_popup/popDetailedMore.html" class="btnDetail btnPop btnPop895" data-user-class="categoryPop popEdge">상세조건</a>
+				<a href="../_popup/popDetailedMore02.html" class="btnDetail btnPop btnPop895" data-user-class="categoryPop popEdge">상세조건</a>
 				<ul class="cardWrap" id="cardWrap">
+					<!-- 카드 형태는 cardTemplate.html 참조 -->
 				</ul>
 			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<!-- @@include ../_template/cardTemplate.html -->
 </body>
 </html>

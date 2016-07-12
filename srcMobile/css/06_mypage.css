@@ -325,14 +325,14 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .periodSearch .btnList li:first-child{margin-left:0;}
 .periodSearch .btnList li a{display:block;height:30px;padding: 0 12px;font-size: 13px;border:1px solid #ccc;border-radius: 15px;line-height: 30px;text-align:center;}
 .periodSearch .btnList li.acitve a{background:#adc427;border-color:#adc427;color:#fff;}
-.periodSearch .datePic{margin-top:8px;}
-.periodSearch .datePic ul{overflow:hidden;}
-.periodSearch .datePic ul li{width:49%;float:left;}
-.periodSearch .datePic ul li:last-child{float:right;}
-.periodSearch .datePic ul li:nth-child(2){width:2%;text-align:center;color:#ccc;}
-.periodSearch .datePic ul li:nth-child(2) span{display:block;padding-top:7px;}
-.periodSearch .datePic .dateInp{position:relative;display:block;border:1px solid #ccc;}
-.periodSearch .datePic .dateInp input[type="text"]{border:0;background:url("../images/ico_cal.png") no-repeat right 5px;background-size:26px;}
+.datePic{margin-top:8px;}
+.datePic ul{overflow:hidden;}
+.datePic ul li{width:49%;float:left;}
+.datePic ul li:last-child{float:right;}
+.datePic ul li:nth-child(2){width:2%;text-align:center;color:#ccc;}
+.datePic ul li:nth-child(2) span{display:block;padding-top:7px;}
+.datePic .dateInp{position:relative;display:block;border:1px solid #ccc;}
+.datePic .dateInp input[type="text"]{border:0;background:url("../images/ico_cal.png") no-repeat right 5px;background-size:26px;}
 .my .searchbox{position:relative;border:1px solid #ccc;padding-right:28px;margin-top:8px;background:#fff;}
 .my .searchbox input[type="text"]{border:0;}
 .my .searchbox button{position:absolute;right:0;top:0;width:28px;height:28px;background:url("../images/ico_search.png") no-repeat center center;background-size:14px;border:0;}
@@ -345,6 +345,8 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .orderState ul li:last-child{background-image:none;}
 .orderState ul li.active{color:#fff;}
 .orderState ul li em{display:block;margin-top:5px;font-size:20px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
+.orderState ul li p{position:relative;display:inline-block;}
+.orderState ul li p i{position:absolute;right:-7px;top:2px;width:6px;height:6px;background:url("../images/ico_n.png") no-repeat 0 0;background-size:100%;}
 .orderState + .wrapT{margin-top:10px;}
 
 .orderRow{margin-top:8px;}
@@ -354,14 +356,16 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .orderNum a{display:inline-block;}
 .orderNum span{float:left;}
 .orderNum a{float:right;padding-right:12px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
-.payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;}
+.payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;font-weight:bold;}
 .payPrice em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
 .bundle{height:20px;line-height:20px;background:#f8f8f8;text-align:center;border-bottom:#e5e5e5;color:#666;font-size:12px;}
+.homeTxt{padding-bottom:12px;border-bottom:1px solid #666;margin-top:10px;font-weight:bold;font-size:15px;}
 .productList{}
 .productList > li{overflow:hidden;padding:15px 0;border-top:1px solid #666; position:relative;}
 .productList > li:first-child{border-top:0;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
+.productList .info + .cancelArea{margin-top:44px;}
 .productList .info span{padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
 .productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
@@ -378,7 +382,7 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .productList .productData li p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .productList .productData li p.count span:last-child{color:#666;}
 .productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
-.productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;}
+.productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;clear:both;}
 .productList .cancelArea .state,
 .productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
 .productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px;}
@@ -483,6 +487,7 @@ ul.priceBox > li.check p.priceBoxTit {font-weight:bold;}
 ul.priceBox li p.priceBoxTit {width:40%; float:left;}
 ul.priceBox li p.priceBoxCont {width:60%; float:right; text-align:right;}
 ul.priceBox li p.priceBoxCont b {}
+ul.priceBox li p.priceBoxCont span.underTxt {width:100%; display:inline-block; text-align:right; color:#666; font-size:12px;}
 ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 
 .myCartInfo {padding:20px 15px; border-top:10px solid #e0e0e0; border-bottom:10px solid #e0e0e0; background:#f8f8f8;}
@@ -585,20 +590,24 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .productList.checkType li{position:relative;}
 .my .productList.checkType .checkbox{position:absolute;left:0;top:15;}
 
-.my .hiddenArea{position:relative;/*border-bottom:1px solid #ccc;*/margin-bottom:15px;}
-.my .hiddenArea > a{height:42px;line-height:42px;display:block;text-align:center;}
-.my .hiddenArea > a:after{width:20px;height:9px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:100%;margin-left:4px;}
-.my .hiddenArea > a.active:after{background-position:0 0;}
-.my .hiddenArea .detailInfo{padding:0 15px;background:#f8f8f8;display:none;border-top:1px solid #ccc;}
-.my .hiddenArea .detailInfo.active{display:block;}
-.my .hiddenArea .detailInfo dl{padding:15px 0 15px;border-top:1px solid #ccc;}
-.my .hiddenArea .detailInfo dl:first-child{border-top:0;}
-.my .hiddenArea .detailInfo dl dt{margin-bottom:10px;font-size:15px;}
-.my .hiddenArea .detailInfo dl dd{padding:2px 0;}
-.my .hiddenArea .detailInfo dl dd:after{content:"";display:block;clear:both;}
-.my .hiddenArea .detailInfo dl dd span{color:#666;}
-.my .hiddenArea .detailInfo dl dd span:first-child{float:left;}
-.my .hiddenArea .detailInfo dl dd span:last-child{float:right;}
+.hiddenArea{position:relative;/*border-bottom:1px solid #ccc;*/margin-bottom:15px;}
+.hiddenArea > a{height:42px;line-height:42px;display:block;text-align:center;}
+.hiddenArea > a:after{width:20px;height:9px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:100%;margin-left:4px;}
+.hiddenArea > a.active:after{background-position:0 0;}
+.hiddenArea .detailInfo{padding:0 15px;background:#f8f8f8;display:none;border-top:1px solid #ccc;}
+.hiddenArea .detailInfo.active{display:block;}
+.hiddenArea .detailInfo dl{padding:15px 0 15px;border-top:1px solid #ccc;}
+.hiddenArea .detailInfo dl:first-child{border-top:0;}
+.hiddenArea .detailInfo dl dt{margin-bottom:10px;font-size:15px;}
+.hiddenArea .detailInfo dl dd{padding:2px 0;}
+.hiddenArea .detailInfo dl dd:after{content:"";display:block;clear:both;}
+.hiddenArea .detailInfo dl dd span{color:#666;}
+.hiddenArea .detailInfo dl dd span:first-child{float:left;}
+.hiddenArea .detailInfo dl dd span:last-child{float:right;}
+.hiddenArea ul.priceBox {padding:0 0 15px 0;}
+.hiddenArea ul.priceBox + dl {border-top:1px dashed #ccc;}
+.productList .hiddenArea {margin-bottom:0;}
+.productList .hiddenArea > a {height:24px; line-height:24px;}
 
 .deliveryArea .productList{margin-top:0;border-top:0;}
 .deliveryInfo{padding-top:15px;border-top:1px solid #666;}
@@ -643,6 +652,50 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .cautionInfo dl dt + dd{margin-top:0;}
 .cautionInfo dl dd{padding-left:10px;line-height:1.4em;color:#666;margin-top:4px;background:url("../images/ico_dot.png") no-repeat 4px 6px;background-size:3px;}
 
+.returnInfo01{margin-top:10px;font-size:15px;}
+.returnInfo01 ul{padding-bottom:15px;border-bottom:1px solid #ccc;}
+.returnInfo01 ul li{margin-top:10px;}
+.returnInfo01 ul li:first-child{margin-top:0;}
+.returnInfo01 ul li:after{content:"";display:block;clear:both;}
+.returnInfo01 ul li span:first-child{float:left;}
+.returnInfo01 ul li span:last-child{float:right;}
+.returnInfo01 ul li span em{position:relative;font-style:normal;padding-right:16px;} 
+.returnInfo01 ul li span em:after{position:absolute;top:5px;right:10px;content:"";width:1px;height:10px;background:#a0a0a0;display:block;}
+.returnInfo01 dl.infowrap01{margin-top:15px;}
+.returnInfo01 dl.infowrap01 dd{padding:15px;background:#f8f8f8;line-height:1.4em;margin-top:10px;font-size:13px;color:#666;}
+.returnInfo01 dl.infowrap01 dd span{display:block;color:#00aeb9;}
+.returnInfo01 dl.infowrap02{margin-top:15px;}
+.returnInfo01 dl.infowrap02 dt{margin-bottom:10px;}
+.returnInfo01 dl.infowrap02 dd{margin-top:5px;}
+.returnInfo01 dl.infowrap02 dd:after{content:"";display:block;clear:both;}
+.returnInfo01 dl.infowrap02 dd span,
+.returnInfo01 dl.infowrap02 dd p{color:#666;font-size:13px;}
+.returnInfo01 dl.infowrap02 dd span:first-child{float:left;}
+.returnInfo01 dl.infowrap02 dd span:last-child{float:right;}
+.returnInfo01 dl.infowrap02 dd p{line-height:1.4em;}
+.returnInfo01 div.infowrap03:after{content:"";display:block;clear:both}
+.returnInfo01 div.infowrap03 span:first-child{float:left;}
+.returnInfo01 div.infowrap03 span:last-child{float:right;}
+
+.payArea{border-bottom:1px solid #666;}
+.payArea .date{height:44px;line-height:44px;border-bottom:1px solid #e1e1e1;background:#f8f8f8;border-top:1px solid #666;text-align:center;font-size:15px;}
+.payArea dl{padding:15px 0;border-top:1px dashed #ccc;font-size:15px;}
+.payArea dl dt{margin-bottom:10px;}
+.payArea dl dt:after,
+.payArea dl dd:after{content:"";display:block;clear:both;}
+.payArea dl dt span:first-child,
+.payArea dl dd span:first-child{float:left;}
+.payArea dl dt span:last-child,
+.payArea dl dd span:last-child{float:right;}
+.payArea dl dd{line-height:1.4em;font-size:13px;color:#666;}
+.payArea .date + dl{border-top:0;}
+.payArea .cancelNum{padding:15px 0;font-size:15px;}
+.payArea .cancelNum:after{content:"";display:block;clear:both;}
+.payArea .cancelNum span:first-child{float:left;}
+.payArea .cancelNum span:last-child{float:right;}
+.questionBox{padding:15px 15px 30px;background:#e0e0e0;color:#666;}
+.questionBox p{padding-left:20px;background:url("../images/ico_info.png") no-repeat 0 2px;background-size:15px;line-height:1.4em;}
+
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
@@ -683,3 +736,5 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .my .designer p.name b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; color:#666;}
 .my .graphBox {margin-top:15px; padding:15px; border:1px solid #e3e3e3; overflow:hidden;}
 .my .graphBox .graph {width:100%;}
+
+.addressBtnWrap {padding-bottom:15px; border-bottom:1px solid #ccc;}

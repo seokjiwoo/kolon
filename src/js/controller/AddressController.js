@@ -66,9 +66,6 @@ function ClassAddressController() {
 	};
 	
 	function addAddress(addressObject) {
-		// managementName, zipCode, lotBaseAddress, streetAddress, detailAddress, receiverName, cellPhoneNumber, fixedPhoneNumber
-		addressObject.addressSectionCode = "BM_ADDR_SECTION_01";
-		
 		Super.callApi('/apis/order/addresses', 'POST', addressObject, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addAddressResult', [200]);
@@ -80,9 +77,6 @@ function ClassAddressController() {
 	};
 	
 	function editAddress(seq, addressObject) {
-		// managementName, zipCode, lotBaseAddress, streetAddress, detailAddress, receiverName, cellPhoneNumber, fixedPhoneNumber
-		addressObject.addressSectionCode = "BM_ADDR_SECTION_01";
-
 		Super.callApi('/apis/order/addresses/'+seq, 'PUT', addressObject, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('editAddressResult', [200]);

@@ -5,7 +5,7 @@
 			<div class="hexTop"><span></span></div>
 			<div class="hexBottom"><span></span></div>
 		</div>
-		{{#vxIF cardTypeCode "==" "PROD"}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
 		<!-- Type2: 샵 상품 cardType02 cardSize02 -->
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">handmade</p></div>
@@ -35,19 +35,12 @@
 			<div class="upTo"><p><span><b>20</b>개</span>한정</p></div>
 			<div class="md"><p><span><b>MD</b>추천</span></p></div>
 			<!--// flag -->
-			<!-- hover 효과 -->
-			<div class="cardBgWrap">
-				<p class="cardBg01"><img src="/images/type02_card_bg01.png"></p>
-				<p class="cardBg02"><img src="/images/type02_card_bg02.png"></p>
-				<p class="cardBg03"><img src="/images/type02_card_bg03.png"></p>
-			</div>
-			<!--// hover 효과 -->
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
 		<!-- Type2 -->
 		{{/vxIF}}
 
-		{{#vxIF cardTypeCode "==" "GRAPH"}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_05"}}
 		<!-- Type8: 그래프 cardType08 cardSize02 -->
 		<div class="cardCon">
 			<h2 class="cardTit">{{{title}}}</h2>

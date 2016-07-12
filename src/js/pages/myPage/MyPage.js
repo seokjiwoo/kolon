@@ -103,7 +103,7 @@ module.exports = function() {
 		$('#myPageHeaderScrapCount').html(activity.scrapCount);
 		$('#myPageHeaderLikeCount').html(activity.likeCount);
 		$('#myPageHeaderFollowingCount').html(activity.followCount);
-		$('#myPageHeaderPointCount').html('TBD');
+		$('#myPageHeaderPointCount').html(Super.Super.loginData.savingPoint);
 		$('#myPageHeaderMyCartCount').html(activity.cartCount);
 	}
 

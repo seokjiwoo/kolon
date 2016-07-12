@@ -11,6 +11,9 @@ module.exports = function() {
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();
+
+	var CardList = require('../../components/CardList.js');
+	var cardList;
 	
 	var callerObj = {
 		/**
@@ -23,6 +26,10 @@ module.exports = function() {
 	
 	function init() {
 		MyPage.init();
+
+
+		cardList = CardList();
+		cardList.init();
 		
 		debug.log(fileName, $, util);
 	}
