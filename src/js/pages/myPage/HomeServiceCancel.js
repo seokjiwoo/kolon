@@ -27,8 +27,37 @@ module.exports = function() {
 
 		debug.log(fileName, 'init');
 
-		setRangePicker();
+		initRangePicker();
 	}
+
+	function initRangePicker() {
+		setRangePicker();
+
+		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
+		$('.sortTerm li a').click(function(e) {
+			e.preventDefault();
+			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');
+			switch($(this).text()) {
+				case '1주일':
+					$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
+					break;
+				case '2주일':
+					$('.js-picker-from').datepicker('setDate', moment().subtract(14, 'days').format('YYYY-MM-DD'));
+					break;
+				case '1개월':
+					$('.js-picker-from').datepicker('setDate', moment().subtract(1, 'months').format('YYYY-MM-DD'));
+					break;
+				case '3개월':
+					$('.js-picker-from').datepicker('setDate', moment().subtract(3, 'months').format('YYYY-MM-DD'));
+					break;
+				case '6개월':
+					$('.js-picker-from').datepicker('setDate', moment().subtract(6, 'months').format('YYYY-MM-DD'));
+					break;
+			}
+			$('.js-picker-to').datepicker('setDate', moment().format('YYYY-MM-DD'));
+			e.stopPropagation();
+		});
+	};
 
 	function setRangePicker() {
 		var rangePicker = $('.js-range-picker');

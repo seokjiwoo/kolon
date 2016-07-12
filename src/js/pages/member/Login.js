@@ -172,7 +172,7 @@ module.exports = function() {
 	 * 로그인 or 회원가입 완료 이벤트 핸들링
 	 */
 	function loginCompleteHandler(e, status, response) {
-		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
+		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
 		switch(status) {
 			case 200:
