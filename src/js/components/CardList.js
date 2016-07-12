@@ -3,6 +3,10 @@
 module.exports = function() {
 	var util = require('../utils/Util.js');
 
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	ISOTOPE_EVENT = events.ISOTOPE;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -26,18 +30,22 @@ module.exports = function() {
 		 * 카드 오버 이펙트 삭제
 		 */
 		cleanOverEffect: cleanOverEffect,
+		refresh : refresh,
+		destory : destory
 	};
 	
 	return callerObj;
 
-	var wrap;
+	var wrap,
+	_wrapId;
 	
 	function init(wrapId) {
-		wrap = $(wrapId);
+		_wrapId = wrapId || '#cardWrap';
+		wrap = $(_wrapId);
 
 		wrap.isotope({
-			itemSelector : wrapId+' > li:not(.stamp)',
-			stamp : wrapId+' > .stamp',
+			itemSelector : _wrapId + ' > li:not(.stamp)',
+			stamp : _wrapId + ' > .stamp',
 			layoutMode : 'packery',
 			packery : {
 				columnWidth : 285,
@@ -45,9 +53,28 @@ module.exports = function() {
 			}
 		});
 
+		// isotope event
+		eventManager.off(ISOTOPE_EVENT.REFRESH, refresh)
+					.off(ISOTOPE_EVENT.DESTROY, destory);
+
+		eventManager.on(ISOTOPE_EVENT.REFRESH, refresh)
+					.on(ISOTOPE_EVENT.DESTROY, destory);
+
 		initOverEffect();
 		initCardRadio();
 	};
+
+	function refresh() {
+		destory();
+		init(_wrapId);
+	}
+
+	function destory() {
+		if (wrap.data('isotope')) {
+			wrap.isotope('destroy');
+			cleanOverEffect();
+		}
+	}
 
 	function html(tags) {
 		var insertElements = $(tags);
@@ -87,8 +114,9 @@ module.exports = function() {
 
 		var source = $('#index-card-templates').html();
 		var template = window.Handlebars.compile(source);
-		var html = template(data);
-		html(html);
+		var tags = template(data);
+
+		html(tags);
 	};
 
 	function initOverEffect(e) {
