@@ -120,7 +120,7 @@ span.price.fontS {font-size:14px;}
 .order h3.subTit + .orderCont .tbSet.lineN {margin-top:0;}
 .order .container input[type="text"]{width:230px; padding:10px 20px; border:1px solid #d6d6d6; /*border-radius:7px;*/ font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
 .order .container input[type="checkbox"]{position: absolute;opacity: 0;}
-.order .container textarea {width:743px; padding:10px 20px; border:1px solid #d6d6d6; border-radius:7px; font-family:'NotoSansM', sans-serif; color: #999;}
+.order .container textarea {padding:10px 20px; border:1px solid #d6d6d6;font-family:'NotoSansM', sans-serif; color: #999;}
 .order .checkAgree {margin-top:18px;}
 .order .pointCk label {display:inline-block; text-align:left; font-family:'NotoSansR', sans-serif; font-size:14px;}
 .order .pointCk label:before{content: '';display: inline-block;width:26px; height:26px; margin-right: 10px;background: #fff url('../images/ico_checkG.png') no-repeat center;border:1px solid #d1d1d1; border-radius: 0;vertical-align: middle;text-align:center;}
@@ -131,6 +131,7 @@ span.price.fontS {font-size:14px;}
 .order .record td{padding: 15px;}
 .order .record tr.border0 td{border:0;}
 
+.homeService .subTit{padding-top:29px;font-size: 20px;font-family:'NotoSansR', sans-serif;}
 .homeService.order .tbSet table th, .homeService.order .tbSet table td {text-align:left;}
 .homeService.order .tbSet table th {padding-left:40px;}
 .homeService.order .tbSet table th .ico_star {color:#f1655d;}
@@ -143,6 +144,7 @@ span.price.fontS {font-size:14px;}
 
 .homeService.order .leftBox, .homeService.order .leftBox .drop li {width:228px;}
 .homeService.order .leftBox + .leftBox {margin-left:10px;}
+.homeService.order .leftBox + .leftBox .btnSizeM{min-width:100px;}
 
 .homeService.order .calendar {display:inline-block;width:187px;line-height:normal}
 .homeService.order .calendar span.calInp input[type=text] {width:172px;}
@@ -154,17 +156,18 @@ span.price.fontS {font-size:14px;}
 .homeService.order .orderCont ul.homeType li .radioBox, .homeService.order .orderCont ul.homeType li .radioBox label {display:inline-block;width:100px;}
 
 .homeService.order .orderCont .payTab {text-align:center;border-bottom:1px solid #e8e8e8;}
-.homeService.order .orderCont .payTab span {display:inline-block;}
+.homeService.order .orderCont .payTab span {position: relative;display:inline-block;}
+.homeService.order .orderCont .payTab span.best:before{position: absolute;top: -12px;left: 15px;z-index: 1;content:'Best';width: 41px;height: 35px;padding-top: 14px;color: #fff;font-size: 16px;background: url('../images/card_point.png') no-repeat;background-position:-350px -116px;font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900}
 .homeService.order .orderCont .payTab.tabWrap a.radioBtn {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
 .homeService.order .orderCont .payTab.tabWrap a.radioBtn .labelTxt {display:inline-block;position:relative;}
 .homeService.order .orderCont .payTab.tabWrap a.radioBtn + p {margin-top:14px;}
-.homeService.order .orderCont .payTab.tabWrap a.radioBtn .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url(../images/ico_radio.png) 0 -18px no-repeat;}
+.homeService.order .orderCont .payTab.tabWrap a.radioBtn .labelTxt:after {content:'';display:inline-block;position:absolute;top:0;left:-22px;width:18px;height:18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;}
 .homeService.order .orderCont .payTab.tabWrap .on a.radioBtn .labelTxt:after {background-position:0 0;}
 .homeService.order .orderCont .arraySide {margin-bottom:18px;}
 .homeService.order .orderCont .arraySide p {overflow:hidden;font-size:14px;color:#666;text-align:left;}
 .homeService.order .orderCont .arraySide li {margin-top:5px;}
 .homeService.order .orderCont .arraySide li:first-child {margin-top:13px;}
-.homeService.order .container textarea {border-radius:0;width:838px;padding:20px;}
+.homeService.order .container textarea {width: 1058px;border-radius:0;padding:20px;}
 
 .homeService.order .orderCont .thumBox img {vertical-align:top}
 .homeService.order .orderCont .thumBox + .labelTxt {margin-top:15px;}
@@ -305,3 +308,5 @@ span.price.fontS {font-size:14px;}
 .order .tablesType01 table tbody tr td{padding:15px;background:#fafafa;}
 .order .tablesType01 table tbody tr td span{font-size:20px;}
 .order .tablesType01 table tbody tr td span em{font-style:normal;font-family:'NotoSansB',  sans-serif;}
+
+.orderCont.tbSet .alignBox { z-index:unset }

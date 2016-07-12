@@ -4,7 +4,7 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 마이커먼"} -->
 </head>
 <body data-page-id="">
-	<div class="wrapper my">
+	<div class="wrapper my order">
 		<!-- @@include ../_template/menu.html -->
 
 		<!-- 하단고정버튼 -->
@@ -116,6 +116,8 @@
 					</div>
 					<div style="color:green; line-height:130%; margin-bottom:10px;">* 본문 타이틀 : h3.conTit</div>
 					<h3 class="conTit">배송상태 <a href="">전체보기</a></h3>
+					<div style="color:green; line-height:130%; margin-bottom:10px;">* border-bottom 없는 타이틀 : h3.partTit</div>
+					<h3 class="partTit">라인 없는 타이틀</h4>
 					<div style="color:green; line-height:130%; margin-bottom:10px;">* 배경있는 타이틀 : h4.boxTit</div>
 					<h4 class="boxTit">일반회원<span class="fl_r">연회비 무료</span></h4>
 				</div>
@@ -169,6 +171,7 @@
 					<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
 					<div style="color:green; line-height:130%; margin-bottom:10px;">* 상품리스트 : .productList</div>
 					<ul class="productList">
+						<li class="productTit"><span>묶음 배송상품</span></li><!-- 주문서 묶음 배송상품 -->
 						<li>
 							<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
 							<div class="info">
@@ -242,6 +245,53 @@
 								</li>
 							</ul>
 							<!--// 결제금액 내역 -->
+						</li>
+						<li>
+							<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
+							<div class="info">
+								<span>코오롱 글로벌</span>
+								<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
+							</div>
+						</li>
+						<li>
+							<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
+							<div class="info">
+								<span>코오롱 글로벌</span>
+								<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
+							</div>
+							<ul class="productData">
+								<li>
+									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+									<p class="count">
+										<span><em>1,700,000</em>원</span>
+										<span>1 개</span>
+									</p>
+								</li>
+							</ul>
+							<!-- 결제금액 내역 -->
+							<ul class="priceBox">
+								<li>
+									<p class="priceBoxTit">할인금액</p>
+									<p class="priceBoxCont"><b>0</b> 원</p>
+								</li>
+								<li>
+									<p class="priceBoxTit">배송비</p>
+									<p class="priceBoxCont"><b>20,000</b> 원</p>
+								</li>
+								<li class="check">
+									<p class="priceBoxTit">결제금액</p>
+									<p class="priceBoxCont"><b>1,720,000</b> 원</p>
+								</li>
+							</ul>
+							<!--// 결제금액 내역 -->
+							<!-- 주문서 묶음 배송 상품일 경우 - 묶음 배송비 -->
+							<ul class="priceBox">
+								<li>
+									<p class="priceBoxTit">묶음 배송비</p>
+									<p class="priceBoxCont"><b>4,000</b> 원</p>
+								</li>
+							</ul>
+							<!-- // 주문서 묶음 배송 상품일 경우 - 묶음 배송비 -->
 						</li>
 						<li>
 							<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
@@ -620,8 +670,143 @@
 							</tr>
 						</tbody>
 					</table>
+					<table class="formWrap tbR">
+						<caption>입금계좌 정보</caption>
+						<thead>
+							<tr>
+								<th scope="col">입금계좌 정보</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>XX 은행 123-456789-01-132<br/>예금주 ㈜가인인테리어</td>
+							</tr>
+							<tr>
+								<td class="infoTd">주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				<!--// 테이블 -->
+
+				<!-- 라디오형 탭 -->
+				<div class="wrapT">
+					<fieldset class="plate selectAddress">
+						<h3 class="conTit">수령지 정보</h3>
+						<div class="payTab tabWrap">
+							<span class="on"><a href="#delivery1" class="radioBtn">단일 배송지</a></span>
+							<span><a href="#delivery2" class="radioBtn">복수 배송지</a></span>
+						</div>
+						<div class="">
+							<!-- 단일 배송지 -->
+							<div class="delivery1" id="delivery1">
+								<div class="addressBtnWrap">
+									<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
+								</div>
+								<ul class="addressList">
+									<li>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></a></span><span class="pointRed">기본 주소</span></p>
+										<div class="addressCont">
+											<p><b>주문자</b><span>홍길동</span></p>
+											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
+											<p><b>연락처</b><span>010-1234-5678</span></p>
+										</div>
+										<div class="btnwrap">
+											<a href="#" class="btnSizeS btnColor05">수정</a>
+											<a href="#" class="btnSizeS btnColor05">삭제</a>
+										</div>
+									</li>
+									<li>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></a></span><span class="pointGreen">최근 주소</span></p>
+										<div class="addressCont">
+											<p><b>주문자</b><span>홍길동</span></p>
+											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+											<p><b>연락처</b><span>010-1234-5678</span></p>
+										</div>
+										<div class="btnwrap">
+											<a href="#" class="btnSizeS btnColor05">수정</a>
+											<a href="#" class="btnSizeS btnColor05">삭제</a>
+										</div>
+									</li>
+									<li>
+										<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></a></span></p>
+										<div class="addressCont">
+											<p><b>주문자</b><span>홍길동</span></p>
+											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+											<p><b>연락처</b><span>010-1234-5678</span></p>
+										</div>
+										<div class="btnwrap">
+											<a href="#" class="btnSizeS btnColor05">수정</a>
+											<a href="#" class="btnSizeS btnColor05">삭제</a>
+										</div>
+									</li>
+								</ul>
+								<div id="newAddress" style="display: none;">
+									<table class="formWrap">
+										<tr>
+											<th>주소 별칭</th>
+											<td><input type="text"></td>
+										</tr>
+										<tr>
+											<th>받으실 분</th>
+											<td><input type="text"></td>
+										</tr>
+										<tr>
+											<th>연락처1</th>
+											<td class="phone">
+												<select name="" title="국번 선택">
+													<option value="">02</option>
+												</select> -
+												<input type="text" title="연락처 앞자리 입력"> -
+												<input type="text" title="연락처 뒷자리 입력">
+											</td>
+										</tr>
+										<tr>
+											<th>연락처2</th>
+											<td class="phone">
+												<select name="" title="국번 선택">
+													<option value="">02</option>
+												</select> -
+												<input type="text" title="연락처 앞자리 입력"> -
+												<input type="text" title="연락처 뒷자리 입력">
+											</td>
+										</tr>
+									</table>
+									<h4 class="partTit">수령지 주소</h4>
+									<div class="shipAddress">
+										<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
+										<p><input type="text"><label for="" class="hide">주소</label></p>
+										<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
+										<p>
+											<span class="checkbox">
+												<input type="checkbox" id="checkAddress2"/>
+												<label for="checkAddress2">기본 배송지로 설정</label>
+											</span>
+										</p>
+									</div>
+								</div>
+								<h4 class="partTit">배송 시 요청 사항</h4>
+								<div class="textWrap">
+									<select title="배송 시 요청사항 선택">
+										<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+										<option value="">경비실에 맡겨주세요</option>
+										<option value="">빠른 배송 부탁드립니다.</option>
+										<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+									</select>
+									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
+									<p class="countTxt"><span>0</span>/50</p>
+								</div>
+							</div>
+							<!--// 단일 배송지 -->
+							<!-- 복수 배송지 -->
+							<div class="delivery2" id="delivery2" style="display:none">
+								<a href="#" class="deliveryBtn"><span>복수 배송지 선택</span></a>
+							</div>
+							<!--// 복수 배송지 -->
+						</div>
+					</fieldset>
+				</div>
+				<!--// 라디오형 탭 -->
 
 				<!-- 평점 -->
 				<div class="myWrap">
@@ -636,8 +821,10 @@
 				<!-- 평점 -->
 					<div style="color:green; line-height:130%; margin-bottom:10px;">* text color
 						<p>.pointRed : <span  style="color:#f1645c;">#f1645c</span></p>
-						<p>.pointCyan : <span  style="color:#00aeb9;">#00aeb9</span></p><br/>
-						<p>주석글 <span  style="color:#666; font-size:11px; line-height:130%;">.underTxt</span></p>
+						<p>.pointCyan : <span  style="color:#00aeb9;">#00aeb9</span></p>
+						<p>.pointGreen : <span  style="color:#adc427;">#adc427</span></p><br/>
+						<p>주석글 <span class="underTxt">.underTxt</span></p>
+						<p>주석글2 <span class="underTxtMark">.underTxtMark</span></p>
 					</div>
 				</div>
 				<!-- 하단 안내 -->
@@ -649,7 +836,46 @@
 					</ul>
 				</div>
 				<!-- // 하단 안내 -->
-				
+				<!-- 시공지 정보 -->
+				<div class="wrapT">
+					<h3 class="conTit">시공지 정보</h3>
+					<ul class="addressList">
+						<li>
+							<div class="addressCont">
+								<p><b>받으실 분</b><span>홍길동</span></p>
+								<p><b>연락처</b><span>010-1234-5678</span></p>
+								<p><b>주소</b><span>서울시 강남구 삼성동 8-5<br>미래 아파트 111동 123호<br>79㎡/24PY</span></p>
+								<p><b>예상기간</b><span>2016. 04. 17 - 05.02 (16일)</span></p>
+								<p><b>시공업체</b><span>김석우  |  (주)가인인테리어</span></p>
+								<p><span><a href="#" class="btnSizeS btnColor03">시공업체보기</a></span></p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!--// 시공지 정보 -->
+				<!-- 견적 상세정보 -->
+				<div class="wrapT">
+					<h3 class="conTit">시공 견적 상세 정보</h3>
+					<ul class="orderDetailList">
+						<li>
+							<p><b>도배</b><span>홍길동</span></p>
+							<p class="detailTxt">LG, DID, 대동,대우 등의 실크벽지, 초배시공</p>
+						</li>
+						<li>
+							<p><b>바닥재</b><span class="price"><b>670,000</b> 원</span></p>
+							<p class="detailTxt">LG. 한화, 고려 등의 중 보행용 바닥재</p>
+						</li>
+						<li>
+							<p><b>거실확장</b><span class="price"><b>3,300,000</b> 원</span></p>
+							<p class="detailTxt">철거,바닥난방,조형공사,단열작업,전기</p>
+						</li>
+						<li>
+							<p><b>붙박이장</b><span class="price"><b>1,320,000</b> 원</span></p>
+							<p class="detailTxt">멤브레인류도어, 내부수납, 메이커 제품</p>
+						</li>
+					</ul>
+				</div>
+				<!--// 견적 상세정보 -->
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>

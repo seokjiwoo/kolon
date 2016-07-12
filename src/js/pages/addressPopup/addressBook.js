@@ -27,7 +27,7 @@ module.exports = function() {
 			console.log(each);
 			each.rowClass = '';
 			each.basicAddressMark = '';
-			if (false) {
+			if (each.addressSectionCode == 'BM_ADDR_SECTION_02') {
 				each.rowClass = 'basic';
 				each.basicAddressMark = '<em>기본배송지</em><br/>';
 			}
@@ -41,6 +41,8 @@ module.exports = function() {
 		$('.selectAddress').click(function(e){
 			e.preventDefault();
 			console.log('select', $(this).data('addressSeq'));
+			window.opener.selectAddressData($(this).data('addressSeq'));
+			window.close();
 		});
 		$('.editAddress').click(function(e){
 			e.preventDefault();
@@ -56,5 +58,7 @@ module.exports = function() {
 
 	function deleteAddressHandler(e) {
 		location.reload(true);
-	}
+	};
+
+	//
 }

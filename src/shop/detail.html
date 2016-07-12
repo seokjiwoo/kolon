@@ -6,59 +6,197 @@
 <body data-page-id="shop-detail">
 	<div class="wrapper category">
 	<!-- @@include ../_template/menu.html -->
-		<div class="container">
-			<div style="border:1px solid red; padding:20px;">
-				<h3>[페이지상단]</h3>
-				<a href="#" class="js-add-card">마이카트</a>
-				<a href="#" class="js-add-card">구매하기</a>
-				<div style="background:#ededed; padding:10px; overflow:hidden;">
-					<button>스크랩</button>
-					<button>좋아요</button>
-					<br/>
-					<a href="#">sns공유</a>
-					<!-- sns공유 누르면 보이는 영역 -->
-					<div class="">
-						<button>페이스북</button>
-						<button>트위터</button>
-						<button>카카오스토리</button>
-						<button>핀터레스트</button>
-						<button>URL복사</button>
-					</div>
-					<!--// sns공유 누르면 보이는 영역 -->
-				</div>
-			</div>
-			<!-- 상품 상세화면 tab -->
-			<div style="border:1px solid #blue;">
-				<div style="background:#ededed; margin:20px 0;">
-					<h3>[상품정보]</h3>
-					<p>card type</p>
-				</div>
-				<div style="background:#ededed; margin:20px 0;">
-					<h3>[판매자 정보]</h3>
-					<a href="#">주소(지도페이지로 이동버튼)</a>
-					<a href="#">자세히보기</a>
-					<button>팔로우</button>
-					<a href="../_popup/popMessage.html" class="btnPop btnPop540" data-user-class="orderPop popEdge">1:1 메시지</a>
-				</div>
-				<div style="background:#ededed; margin:20px 0;">
-					<h3>[구매정보]</h3>
-					<p>버튼없음</p>
-				</div>
-				<h3>[상품정보]</h3>
-				<br/>
-			</div>
-			<!--// 상품 상세화면 -->
+		<!-- 상단 배너 -->
+		<div class="detailArea shopTop topArea">
+			
+		    <div class="topContBox" style="background-image:url('../images/shop_topBg.png')">
+		    	<div class="topCont subTop">
+			    	<ul class="tagList">
+						<li><a href="#">shop</a></li>
+						<li><a href="#">Handmade</a></li>
+						<li><a href="#">의자</a></li>
+					</ul>
 
-			<!-- 옵션선택 영역 (fixed) -->
-			<div style="background:#ddd;">
-				<h3>[옵션선택 영역 (fixed)]</h3>
-				<a href="#">옵션선택</a>
-				<button>좋아요</button>
-				<a href="#" class="js-add-card">마이카트</a>
-				<a href="#" class="js-add-card">구매하기</a>
+				    <h3><span>한정수량 70조 특가</span>GOOFY stool</h3>
+				    <p class="infoSub">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
+				    <p>by 박실장 <span>KOLON GLOBAL</span></p>
+
+				    <ul class="unitPrice">
+				    	<li>
+				    		<h4>배송비 주문시 결제 3,000won</h4>
+				    		<p>165,000<b>원</b><span class="discount">10<i>%</i></span></p>
+				    		<p class="salePrice">150,000<b>원</b></p>
+				    	</li>
+				    </ul>
+					
+					<div class="newFormBtn shopBtn">
+						<div class="bigBtnBox">
+							<a href="#" class="js-add-card bigBtn">마이카트</a>
+				  			<a href="#" class="js-add-card bigBtn">구매하기</a>
+				  		</div>
+				  		<ul class="subBtn">
+				  			<li class="subBtn01">
+				  				<a href="#">
+				  					<span class="hide">좋아요</span>
+				  					<span class="countNum">12,213</span>
+				  				</a>
+				  			</li>
+				  			<li class="subBtn02">
+				  				<a href="#">
+				  					<span class="hide">스크랩</span>
+				  					<span class="countNum">12,213</span>
+				  				</a>
+				  			</li>
+				  			<li>
+				  				<span class="socialBtn">
+				  					<a href="#" class="socialBtnOpen">
+				  						<span class="hide">공유하기</span>
+				  					</a>
+				  					<a href="#" class="socialBtn01">
+				  						<span class="hide">페이스북</span>
+				  					</a>
+						            <a href="#" class="socialBtn02">
+						            	<span class="hide">트위터</span>
+						            </a>
+						            <a href="#" class="socialBtn03">
+						            	<span class="hide">카카오스토리</span>
+						            </a>
+						            <a href="#" class="socialBtn04">
+						            	<span class="hide">핀터레스트</span>
+						            </a>
+						            <a href="#" class="socialBtn05">
+						            	<span class="hide">URL복사</span>
+						            </a>
+						            <a href="#" class="socialBtnClose">
+						            	<span class="hide">닫기</span>
+						            </a>
+				  				</span>
+				  			</li>
+				  		</ul>
+					</div>
+					<div class="cardCon">
+						<div class="upTo2">
+							<p>기간한정<span><b>20</b>%</span></p>
+						</div>
+					</div>
+				</div>
 			</div>
-			<!--// 옵션선택 영역 -->
+
 		</div>
+		<!-- // 상단 배너 -->
+
+		<!-- 이벤트 베너 -->
+		<div class="detailArea eventBanner">
+			<a href="#" style="background-image:url('../images/eventBanner_left.png')"></a>
+			<a href="#" style="background-image:url('../images/eventBanner_right.png')"></a>
+		</div>
+		<!-- // 이벤트 베너 -->
+
+		<!-- 태그 영역 -->
+		<div class="detailArea tagArea">
+			<h3>Tag</h3>
+			<ul>
+				<li><a href="#">#짜투리공간</a></li>
+				<li><a href="#">#내추럴모던</a></li>
+				<li><a href="#">#동선이좋은공간</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#라이프스타일</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#동선이좋은공간</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#라이프스타일</a></li>
+				<li><a href="#">#반려동물</a></li>
+				<li><a href="#">#헌집줄게새집다오</a></li>
+				<li><a href="#">#반려동물</a></li>
+			</ul>
+		</div>
+		<!-- // 태그 영역 -->
+
+		<!-- 구매정보 영역 -->
+		<div class="detailArea purchasingArea">
+			<h3>Purchasing Information</h3>
+			<p>구매정보</p>
+			<ul class="accordion">
+				<li>
+					<a href="">배송안내</a>
+					<div class="accordCon">
+						<ul>
+							<li>
+								<strong>서비스 문의 방법</strong>
+								<p>고객센터에 문의해 주시기 바랍니다.</p>
+							</li>
+							<li>
+								<strong>취소/환불 가능시점</strong>
+								<p>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. </p>
+							</li>
+							<li>
+								<strong>취소/환불 불가사유</strong>
+								<p>다음의 경우에는 불가합니다. 가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나 취급부주의로 인한 파손/고장/오염된 경우</p>
+							</li>
+							<li>
+								<strong>참고사항</strong>
+								<p>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다. <br> 
+								기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다. 일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이 지역은 2~3일 가량 배송일정이 늦어질 <br> 
+								수 있습니다. 고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발 한 후 왕복 배송비는 고객님 부담입니다</p>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="on">
+					<a href="">교환/반품/취소 등 안내</a>
+					<div class="accordCon">
+						<ul>
+							<li>
+								<strong>서비스 문의 방법</strong>
+								<p>고객센터에 문의해 주시기 바랍니다.</p>
+							</li>
+							<li>
+								<strong>취소/환불 가능시점</strong>
+								<p>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. </p>
+							</li>
+							<li>
+								<strong>취소/환불 불가사유</strong>
+								<p>다음의 경우에는 불가합니다. 가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나 취급부주의로 인한 파손/고장/오염된 경우</p>
+							</li>
+							<li>
+								<strong>참고사항</strong>
+								<p>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다. <br> 
+								기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다. 일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이 지역은 2~3일 가량 배송일정이 늦어질 <br> 
+								수 있습니다. 고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발 한 후 왕복 배송비는 고객님 부담입니다</p>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<a href="">A/S안내</a>
+					<div class="accordCon">
+						<ul>
+							<li>
+								<strong>서비스 문의 방법</strong>
+								<p>고객센터에 문의해 주시기 바랍니다.</p>
+							</li>
+							<li>
+								<strong>취소/환불 가능시점</strong>
+								<p>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. </p>
+							</li>
+							<li>
+								<strong>취소/환불 불가사유</strong>
+								<p>다음의 경우에는 불가합니다. 가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나 취급부주의로 인한 파손/고장/오염된 경우</p>
+							</li>
+							<li>
+								<strong>참고사항</strong>
+								<p>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다. <br> 
+								기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다. 일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이 지역은 2~3일 가량 배송일정이 늦어질 <br> 
+								수 있습니다. 고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발 한 후 왕복 배송비는 고객님 부담입니다</p>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!-- // 구매정보 영역 -->
 
 		<!-- [D] API 통신 - 결과화면 영역 -->
 		<div class="container js-api-result">
@@ -109,6 +247,32 @@
 <script id="shop-detail-templates" type="text/x-handlebars-template">
 	{{!-- shop-detail-templates --}}
 	{{!--// shop-detail-templates --}}
+</script>
+
+<script>
+	$(function() {
+		$('.socialBtnOpen').click(function(e){
+			e.preventDefault();
+			if ($(this).parent('.socialBtn').hasClass('active')) {
+				$(this).parent('.socialBtn').removeClass('active');
+			} else {
+				$(this).parent('.socialBtn').removeClass('active').addClass('active');
+			}
+		});
+		$('.socialBtnClose').click(function(e){
+			e.preventDefault();
+			$(this).parent('.socialBtn').removeClass('active');
+		});
+
+		$('.accordion li a').click(function(e){
+			e.preventDefault();
+			if ($(this).parent('li').hasClass('on')) {
+				$(this).parent('li').removeClass('on');
+			} else {
+				$(this).parent('li').removeClass('on').addClass('on');
+			}
+		});
+	});
 </script>
 
 </body>

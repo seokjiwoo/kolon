@@ -37,10 +37,10 @@ module.exports = function() {
 	function resignHandler(e) {
 		e.preventDefault();
 
-		if ($('#agree01').prop('checked') && $('#agree02').prop('checked')) {
+		if ($('#agreeBox01').hasClass('on') && $('#agreeBox02').hasClass('on')) {
 			var reasonCodes = new Array();
 			$('#reasonList li').each(function(index) {
-				if ($(this).find('input').prop('checked')) {
+				if ($(this).find('label').hasClass('on')) {
 					reasonCodes.push('BM_LEAVE_REASON_'+$(this).find('input').attr('id').substr(6));
 				}
 			});

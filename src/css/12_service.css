@@ -21,7 +21,6 @@ body[data-page-id=homeService] {overflow-y:hidden !important;}
 .homeWrap .textBoxWrap {position:absolute;top:50%;left:50%;margin-left:85px;margin-top:-275px;}
 .homeWrap .textBoxWrap .textBox {display:none;}
 .homeWrap .textBox h1 {font-size:55px;line-height:66px;font-family:'NotoSansT', sans-serif;}
-.homeWrap .section3 .textBox h1 {letter-spacing:-10px}
 .homeWrap .textBox h1 span {display:block;font-family:'NotoSansB', sans-serif;text-shadow:3px 4px 1px #fff}
 .homeWrap .textBox p {margin-top:20px;line-height:20px;}
 .homeWrap .textBox ul {overflow:hidden;margin-top:40px}

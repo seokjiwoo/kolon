@@ -8,17 +8,23 @@
 		<li>정보 입력 또는 수정일로부터 1년간 환불 기록이 없을 경우, 금융정보 보호 정책에 따라 등록된 환불계좌 정보는 삭제 됩니다.</li>
 		<li>환불계좌는 본인명의 계좌만 등록/변경 가능합니다. 예금주 명과 회원정보의 성명이 다른 경우는 등록/변경되지 않습니다.</li>
 	</ul>
-	<h5>환불계좌 변경</h5>
+	<h5 class="popSubTit mt40">환불계좌 변경</h5>
 	<form id='refundAccountForm' action="#" method="post">
-		<fieldset class="refundAccount">
+		<fieldset class="refundAccount mt20">
 			<table>
 				<caption>환불계좌 변경</caption>
 				<tr>
 					<th>은행명</th>
 					<td>
-						<select id='bankCode' title="은행명">
-							<option value="defalut">선택하세요</option>
-						</select>
+						<div class="alignBox">
+							<ul class="drop" data-prevent="true">
+								<li><a href="#">선택하세요</a></li>
+								<li><a href="#" data-value="type-1">우리은행</a></li>
+								<li><a href="#" data-value="type-2">하나은행</a></li>
+								<li><a href="#" data-value="type-3">신한은행</a></li>
+								<li><a href="#" data-value="type-4">제일은행</a></li>
+							</ul>
+						</div>
 					</td>
 				</tr>
 				<tr>

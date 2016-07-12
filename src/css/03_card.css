@@ -1,8 +1,6 @@
 .cardBox {width:1500px; overflow:hidden;}
-.cardWrap{max-width:1520px;min-width:1220px;z-index: 1;}
-.main .cardWrap {margin:64px auto 0;padding-top:83px;}
-.cardWrap > li.card {overflow: hidden;float: left;width:285px;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
-.main .cardWrap > li.card{margin-top:-167px;padding:84px 0;}
+.cardWrap {max-width:1520px;min-width:1220px;z-index: 1;margin:64px auto 0;padding-top:83px;}
+.cardWrap > li.card {overflow: hidden;float: left;width:285px;margin-top:-167px;padding:84px 0;text-align: center;color:#fefefe;background-size: 100%;background-position: center;}
 
 @media (max-width:1520px){
 	.cardWrap {max-width:1220px;}
@@ -68,8 +66,8 @@
 .cardTitle.master .cardTitleCont .cardTitleBg {width:1006px; height:1271px; top:-274px; right:400px; background:url('../images/main_bg_master.png') 0 0 no-repeat;}
 
 /* hexagon css */
-.hexagon{position: absolute;top:0px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
-.main .hexagon{top:85px}
+.hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
+.floating .hexagon{top:0}
 .hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
 .hexTop{top: -101.76px}
 .hexBottom{bottom: -101.76px;}
@@ -82,7 +80,7 @@
 .cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
 .cardLine p {letter-spacing: 0.5px;font-size:14px; font-style:italic; color:#000; line-height:130%;}
 
-.cardCon{position:relative; z-index:4;top:0;display: block;width:265px;padding:81px 10px;color:#000;}
+.cardCon{ position:relative; z-index:4;top:0;display: block;width:265px;padding:81px 10px;color:#000; }
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
 .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
 .cardCon:after {content:''; width:164px; height:73px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:46px; right:-11px; opacity:0.5; z-index:-1;}
@@ -101,10 +99,11 @@
 .cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
 .cardWrap .cardThumb img{display: block;width: 100%;}
 .cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:14px auto;background: #fff}
-.cardWrap p.cardPrice {padding:10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;}
+.cardWrap p.cardPrice {padding:10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
 .cardWrap p.cardPrice span {font-size:14px; position:absolute; right:0;}
 .cardWrap p.cardPrice span.priceTop {top:0px;}
-.cardWrap p.cardPrice span.priceBottom {bottom:0px;}
+.cardWrap p.cardPrice span.priceBottom {bottom:0px; font-weight: 400}
+
 
 /* card flag */
 .cardCon .today {width:96px; height:96px; background:url('../images/card_point.png') -144px 0 no-repeat; position:absolute; top:10px; right:20px; z-index:4;}
@@ -168,8 +167,18 @@
 .cardSize04 .cardLine p{font-size: 20px}
 
 /* card hover */
-.cardCon .cardHover { position:absolute; top:0; left:0; z-index:4; display:none; }
-.cardCon.cHover .cardHover { display:block; }
+.cardCon { animation-duration:0.4s; animation-timing-function:linear; /*transition:0.4s; transition-timing-function:linear; transform:rotateY(0);*/ }
+.cHover .cardCon { animation-name:flip;/*transform:rotateY(180deg);*/ }
+.cardCon .cardHover { position:absolute; top:0; left:0; z-index:4; display:none; transition:0.4s; transition-timing-function:linear; transform:rotateY(180deg) }
+.cHover .cardCon .cardHover { display:block; transform:rotateY(0) }
+.hexagon { transition:0; transition-timing-function:linear; transform:rotateY(0); }
+.cHover .hexagon { transition:0.4s; transition-timing-function:linear; transform:rotateY(180deg) }
+@keyframes flip {
+    0%   { transform:rotateY(0); }
+    50%  { transform:rotateY(90deg); }
+    100% { transform:rotateY(0); }
+}
+
 .cardHover .cardCon ul.card_icon {width:100%; position:absolute; top:275px; left:0;}
 .cardHover .cardCon ul.card_icon li {width:50%; height:95px; float:left; font-size:0;}
 .cardHover .cardCon ul.card_icon li a {width:100%; height:100%; display:inline-block; position:relative;}
@@ -200,49 +209,49 @@
 .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
 .cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
 ul.cardWrap > li .cardCon > a.cardTxt {padding-bottom:45px;}
-ul.cardWrap > li .cardCon.cHover > a.cardTxt {display:inline-block;}
+ul.cardWrap > li.cHover .cardCon > a.cardTxt {display:inline-block;}
 ul.cardWrap > li .cardCon ul.check_icon li.text {position:relative;}
 ul.cardWrap > li .cardCon ul.check_icon li.text a span {width:39px; height:35px; margin:-16px 0 0 -19.5px; position:absolute; top:50%; left:50%; display:inline-block;}
 ul.cardWrap > li .cardCon ul.check_icon li.text a:after {display:none;}
 
 /* ù��° hover */
-ul.cardWrap > li .cardCon.cHover {position:relative;}
-ul.cardWrap > li .cardCon.cHover > a.cardTxt {width:285px; display:inline-block; margin-left:-142.5px; position:absolute; top:81px; left:50%; z-index :5;}
-ul.cardWrap > li .cardCon.cHover > a.cardTxt p,
-ul.cardWrap > li .cardCon.cHover > a.cardTxt h2 {color:#fff;}
-ul.cardWrap > li .cardCon.cHover .cardCon {color:#fff;}
-ul.cardWrap > li .cardCon.cHover .cardCon:after {display:none;}
+ul.cardWrap > li.cHover .cardCon {position:relative;}
+ul.cardWrap > li.cHover .cardCon > a.cardTxt {width:285px; display:inline-block; margin-left:-142.5px; position:absolute; top:81px; left:50%; z-index :5;}
+ul.cardWrap > li.cHover .cardCon > a.cardTxt p,
+ul.cardWrap > li.cHover .cardCon > a.cardTxt h2 {color:#fff;}
+ul.cardWrap > li.cHover .cardCon .cardCon {color:#fff;}
+ul.cardWrap > li.cHover .cardCon .cardCon:after {display:none;}
 ul.cardWrap > li .cardCon span.cardMore {display:none;}
-ul.cardWrap > li .cardCon.cHover .cardCon {}
-ul.cardWrap > li .cardCon.cHover ul.check_icon li a {color:#fff;}
-ul.cardWrap > li .cardCon.cHover ul.check_icon li.like a:after {background-position:0 -21px;}
-ul.cardWrap > li .cardCon.cHover ul.check_icon li.share a:after {background-position:-20px -20px;}
+ul.cardWrap > li.cHover .cardCon .cardCon {}
+ul.cardWrap > li.cHover .cardCon ul.check_icon li a {color:#fff;}
+ul.cardWrap > li.cHover .cardCon ul.check_icon li.like a:after {background-position:0 -21px;}
+ul.cardWrap > li.cHover .cardCon ul.check_icon li.share a:after {background-position:-20px -20px;}
 ul.cardWrap > li .cardCon .cardTxt span.cardMore {display:none; padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:0; left:50%; margin-left:-50px; z-index :5;}
 ul.cardWrap > li .cardCon .cardTxt span.cardMore:after {content:''; width:14px; height:10px; margin-top:-5px; background:url(../images/cardMore_arrow.png) -14px 0 no-repeat; position:absolute; top:50%; right:13px; display:inline-block;}
-ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt p,
-ul.cardWrap > li.cardType05 .cardCon.cHover .cardTxt h2,
-ul.cardWrap > li.cardType05 .cardCon.cHover ul.check_icon li a {color:#000;}
-ul.cardWrap > li.cardType05 .cardCon.cHover ul.check_icon li.like a:after {background-position:0 1px;}
-ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt p,
-ul.cardWrap > li.cardType06 .cardCon.cHover .cardTxt h2,
-ul.cardWrap > li.cardType06 .cardCon.cHover ul.check_icon li a {color:#fff;}
-ul.cardWrap > li.cardType06 .cardCon.cHover ul.check_icon li.like a:after {background-position:0 -21px;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt {}
-ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardCat,
-ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardTit {display:none;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt .cardMore {display:inline-block;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .cardTxt {top:220px;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist {width:127px; padding-left:15px; position:absolute; top:265px; left:0; text-align:left;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistPic {width:64px; height:64px; margin-top:-30px; border-radius:50%; overflow:hidden;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistPic img {width:64px; height:64px;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo {margin-top:16px;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span {width:100%; display:inline-block;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.tit {font-size:14px; font-family:'NotoSansL', sans-serif;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.tit b {font-size:24px; line-height:29px; display:inline-block;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.adr {padding-left:12px; margin-top:15px; font-size:14px; font-family:'NotoSansL', sans-serif; position:relative;}
-ul.cardWrap > li.cardType07 .cardCon.cHover .specialist .specialistInfo span.adr:before {content:''; width:8px; height:12px; margin-top:-4px; background:url(../images/ico_card_popular.png) -36px 0 no-repeat; position:absolute; top:50%; left:0;}
-ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon {width:142px; left:142px; top:270px;}
-ul.cardWrap > li.cardType07 .cardCon.cHover ul.card_icon li:first-child {margin-top:30px;}
+ul.cardWrap > li.cardType05.cHover .cardCon .cardTxt p,
+ul.cardWrap > li.cardType05.cHover .cardCon .cardTxt h2,
+ul.cardWrap > li.cardType05.cHover .cardCon ul.check_icon li a {color:#000;}
+ul.cardWrap > li.cardType05.cHover .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
+ul.cardWrap > li.cardType06.cHover .cardCon .cardTxt p,
+ul.cardWrap > li.cardType06.cHover .cardCon .cardTxt h2,
+ul.cardWrap > li.cardType06.cHover .cardCon ul.check_icon li a {color:#fff;}
+ul.cardWrap > li.cardType06.cHover .cardCon ul.check_icon li.like a:after {background-position:0 -21px;}
+ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt {}
+ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt .cardCat,
+ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt .cardTit {display:none;}
+ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt .cardMore {display:inline-block;}
+ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt {top:220px;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist {width:127px; padding-left:15px; position:absolute; top:265px; left:0; text-align:left;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistPic {width:64px; height:64px; margin-top:-30px; border-radius:50%; overflow:hidden;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistPic img {width:64px; height:64px;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo {margin-top:16px;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span {width:100%; display:inline-block;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.tit {font-size:14px; font-family:'NotoSansL', sans-serif;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.tit b {font-size:24px; line-height:29px; display:inline-block;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.adr {padding-left:12px; margin-top:15px; font-size:14px; font-family:'NotoSansL', sans-serif; position:relative;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.adr:before {content:''; width:8px; height:12px; margin-top:-4px; background:url(../images/ico_card_popular.png) -36px 0 no-repeat; position:absolute; top:50%; left:0;}
+ul.cardWrap > li.cardType07.cHover .cardCon ul.card_icon {width:142px; left:142px; top:270px;}
+ul.cardWrap > li.cardType07.cHover .cardCon ul.card_icon li:first-child {margin-top:30px;}
 
 .iHover {width:285px; position:absolute; top:0; left:0; z-index:-1;}
 .hoverImage{width:285px; height:330px; background-size:100%; background-position:50%; position:relative;}

@@ -8,267 +8,225 @@
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<div class="wrap">
-			<section class="singleCard" id="myActivity">
+			<section class="singleCard" id="requestMoving">
 				<h2 class="secTit">이사서비스 신청</h2>
-
-				<h3 class="subTit">이사 정보</h3>
+				<h3 class="subTit">서비스 신청자 정보 (필수)</h3>
 				<form method='POST' action='#' id='requestMovingForm'>
 					<fieldset>
-				<div class="tbSet orderCont mt20">
-					<table summary="이사 정보 표로써 이사 출발지역, 이사일, 서비스 종류의 정보가 담겨있습니다.">
-						<caption>이사 정보 표</caption>
-						<colgroup>
-							<col style="width:180px">
-							<col style="width:auto">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="col">이사 출발 지역</th>
-								<td>
-									<div class="arrayWrap alignBox">
-										<div class="leftBox" id='addressDrop1'>
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">시/도</a></li>
+						<div class="tbSet orderCont mt20">
+							<table summary="기본 정보 입력해표로써 이름, 휴대폰번호, 이사출발지 주소, 이사도착지 주소, 추가 요청사항 정보를 입력하도록 구성되어 있습니다.">
+								<caption>기본 정보 입력 표</caption>
+								<colgroup>
+									<col style="width:180px">
+									<col style="width:auto">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="col">이름 </th>
+										<td>
+											<input type="text" id='name' title="이름 입력" placeholder="홍길동" style="width:360px;">
+										</td>
+									</tr>
+									<tr>
+										<th scope="col">연락처</th>
+										<td>
+											<input type="text" id='phoneNumber' title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
+										</td>
+									</tr>
+									<tr>
+										<th scope="col">이사출발지 주소</th>
+										<td>
+											<div class="arrayWrap alignBox">
+												<div class="leftBox">
+													<ul id="originAddressDrop" class="drop" data-prevent="true"><li><a href="#">선택해 주세요</a></li></ul>
+												</div>
+												<div class="leftBox">
+													<a href="/popup/addressBook.html" id='book-origin' class="btnSizeM btnColor01 openAddressPopup">새주소</a>
+												</div>
+											</div>
+											<dl id='originAddress'></dl>
+										</td>
+									</tr>
+									<tr>
+										<th scope="col">이사도착지 주소</th>
+										<td>
+											<div class="arrayWrap alignBox">
+												<div class="leftBox">
+													<ul id="targetAddressDrop" class="drop" data-prevent="true"><li><a href="#">선택해 주세요</a></li></ul>
+												</div>
+												<div class="leftBox">
+													<a href="/popup/addressBook.html" id='book-target' class="btnSizeM btnColor01 openAddressPopup">새주소</a>
+												</div>
+											</div>
+											<dl id='targetAddress'></dl>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<h3 class="subTit">이사 정보 (필수)</h3>
+							<table class="record" summary="이사 정보 표로써 이사일, 서비스 종류의 정보가 담겨있습니다.">
+								<caption>이사 정보 표</caption>
+								<colgroup>
+									<col style="width:180px">
+									<col style="width:auto">
+								</colgroup>
+								<tbody>
+									<tr>
+										<th scope="col">이사일</th>
+										<td>
+											<!-- datePicker -->
+											<div class="calendar js-picker">
+												<span class="calInp">
+													<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn">날짜 선택</a>
+													<div class="cal-container js-picker"></div>
+												</span>
+											</div>
+											<!--// datePicker -->
+										</td>
+									</tr>
+									<tr>
+										<th scope="col">서비스 종류</th>
+										<td class="inputWrap radioBox">
+											<!--
+											<ul class="homeType">
+												<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label></span></li>
+												<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label></span></li>
+												<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label></span></li>
+												<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label></span></li>
 											</ul>
-										</div>
-										<div class="leftBox" id='addressDrop2'>
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">시/군/구</a></li>
-											</ul>
-										</div>
-									</div>
-									<p class="underTxt">* 지역 목록에 나오지 않는 지역은 현재 이사서비스가 불가능한 지역입니다. 추후 지속적으로 서비스가 확장될 예정입니다.</p>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">이사일</th>
-								<td>
-									<!-- datePicker -->
-									<div class="calendar js-picker">
-										<span class="calInp">
-											<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
-											<a href="#" class="calBtn js-btn">날짜 선택</a>
-											<div class="cal-container js-picker"></div>
-										</span>
-									</div>
-									<!--// datePicker -->
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">서비스 종류</th>
-								<td>
-									<ul class="homeType">
-										<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label></span></li>
-										<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label></span></li>
-										<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label></span></li>
-										<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label></span></li>
-									</ul>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="btnC">
-						<button type="submit" class="btn btnSizeM btnColor02 btnWM">이사업체 추천 요청</button>
-					</div>
-				</div>
-
-				<h3 class="subTit">추천 이사업체 선택</h3>
-				<div class="orderCont recommendBox">
-					<div class="payTab tabWrap">
-						<span class="on">
-							<a href="#" class="radioBtn">
-								<p class="thumBox"><img src="../images/thum_recommend01.jpg"></p>
-								<ul class="arraySide">
-									<li>
-										<!-- 별점 
-										grade01 -> 1.0
-										grade15 -> 1.5
-										grade02 -> 2.0
-										grade25 -> 2.5
-										grade03 -> 3.0
-										grade35 -> 3.5
-										grade04 -> 4.0
-										grade45 -> 4.5
-										grade05 -> 5.0
-										-->
-										<p>
-											가격 만족도
-											<span class="gradeNum">4.0</span>
-											<span class="grade">
-												<span class="grade04"></span>
-											</span>
-										</p>
-									</li>
-									<li>
-										<p>
-											서비스 만족도
-											<span class="gradeNum">3.5</span>
-											<span class="grade">
-												<span class="grade35"></span>
-											</span>
-										</p>
-									</li>
-								</ul>
-								<p class="labelTxt">이사의 명가</p>
-							</a>
-						</span>
-						<span class="">
-							<a href="#" class="radioBtn">
-								<p class="thumBox"><img src="../images/thum_recommend02.jpg"></p>
-								<ul class="arraySide">
-									<li>
-										<p>
-											가격 만족도
-											<span class="gradeNum">3.0</span>
-											<span class="grade">
-												<span class="grade03"></span>
-											</span>
-										</p>
-									</li>
-									<li>
-										<p>
-											서비스 만족도
-											<span class="gradeNum">4.5</span>
-											<span class="grade">
-												<span class="grade45"></span>
-											</span>
-										</p>
-									</li>
-								</ul>
-								<p class="labelTxt">신사의 이사</p>
-							</a>
-						</span>
-						<span class="">
-							<a href="#" class="radioBtn">
-								<p class="thumBox"><img src="../images/thum_recommend03.jpg"></p>
-								<ul class="arraySide">
-									<li>
-										<p>
-											가격 만족도
-											<span class="gradeNum">5.0</span>
-											<span class="grade">
-												<span class="grade05"></span>
-											</span>
-										</p>
-									</li>
-									<li>
-										<p>
-											서비스 만족도
-											<span class="gradeNum">2.5</span>
-											<span class="grade">
-												<span class="grade25"></span>
-											</span>
-										</p>
-									</li>
-								</ul>
-								<p class="labelTxt">이사가요</p>
-							</a>
-						</span>
-					</div>
-				</div>
-
-				<h3 class="subTit">기본정보 <span class="subTxt"> * 표시는 필수입력 항목 이오니 반드시 입력해 주세요.</span></h3>
-				<div class="tbSet orderCont mt20">
-					<table summary="기본 정보 입력해표로써 이름, 휴대폰번호, 이사출발지 주소, 이사도착지 주소, 추가 요청사항 정보를 입력하도록 구성되어 있습니다.">
-						<caption>기본 정보 입력 표</caption>
-						<colgroup>
-							<col style="width:180px">
-							<col style="width:auto">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이름 </th>
-								<td>
-									<input type="text" title="이름 입력" placeholder="홍길동" style="width:360px;">
-								</td>
-							</tr>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 휴대폰번호</th>
-								<td>
-									<input type="text" title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
-								</td>
-							</tr>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이사출발지 주소</th>
-								<td>
-									<div class="arrayWrap alignBox">
-										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">자택</a></li>
-												<li><a href="#" data-value="type-1">아파트</a></li>
-												<li><a href="#" data-value="type-2">회사</a></li>
-											</ul>
-										</div>
-										<div class="leftBox">
-											<a href="/popup/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
-										</div>
-									</div>
-									<dl>
-										<dt>- 도로명</dt>
-										<dd>서울시 강남구 학동로 56길 26</dd>
-										<dt>- 지번</dt>
-										<dd>서울시 강남구 삼성동 8-5</dd>
-										<dt>- 상세주소</dt>
-										<dd>삼성빌딩 7층</dd>
-									</dl>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col"><span class="ico_star">*</span> 이사도착지 주소</th>
-								<td>
-									<div class="arrayWrap alignBox">
-										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">자택</a></li>
-												<li><a href="#" data-value="type-1">아파트</a></li>
-												<li><a href="#" data-value="type-2">회사</a></li>
-											</ul>
-										</div>
-										<div class="leftBox">
-											<a href="/popup/addressBook.html" class="btnSizeS btnColor01 openAddressPopup">새주소</a>
-										</div>
-									</div>
-									<dl>
-										<dt>- 도로명</dt>
-										<dd>서울시 강남구 학동로 56길 26</dd>
-										<dt>- 지번</dt>
-										<dd>서울시 강남구 삼성동 8-5</dd>
-										<dt>- 상세주소</dt>
-										<dd>삼성빌딩 7층</dd>
-									</dl>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">추가 요청사항</th>
-								<td>
-									<textarea cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				
-				<h3 class="subTit">개인정보 제 3자 제공 동의</h3>
-				<div class="orderCont">
-					<div class="agreeBox">
-						<div class="agreeCont">
-							<p>가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. </p>
-							<p>나. 회사는 개인정보를 수집·이용목적 이외에 다른 용도로 이를 이용하거나 이용자의 동의 없이 제3자에게 이를 제공하지 않습니다. </p>
-							<p>다. 회사는 다음과 같은 목적으로 개인정보를 수집하여 이용할 수 있습니다. 다만, 전자상거래 등에서의 소비자보호에 관한 법률, 국세기본법, 전자금융거래법 등 관련법령에 따라 주민등록번호 및 은행계좌번호의 수집</p>
-							<p>가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. </p>
-							<p>나. 회사는 개인정보를 수집·이용목적 이외에 다른 용도로 이를 이용하거나 이용자의 동의 없이 제3자에게 이를 제공하지 않습니다. </p>
-							<p>다. 회사는 다음과 같은 목적으로 개인정보를 수집하여 이용할 수 있습니다. 다만, 전자상거래 등에서의 소비자보호에 관한 법률, 국세기본법, 전자금융거래법 등 관련법령에 따라 주민등록번호 및 은행계좌번호의 수집</p>
+											-->
+											<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label>
+											<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label>
+											<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label>
+											<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="btnC">
+								<a href="" class="btnSizeM btnColor02 btnWM">이사업체 추천 요청</a>
+							</div>
 						</div>
-						<p class="checkAgree checkbox">
-							<input type="checkbox" id="agree01">
-							<label for="agree01">개인정보 제 3자 제공에 동의합니다.</label>
-						</p>
-					</div>
-				</div>
+						<h3 class="subTit">추천 이사업체 선택</h3>
+						<div class="orderCont recommendBox">
+							<div class="payTab tabWrap">
+								<span class="on best">
+									<a href="#" class="radioBtn">
+										<p class="thumBox"><img src="../images/thum_recommend01.jpg"></p>
+										<ul class="arraySide">
+											<li>
+												<!-- 별점 
+												grade01 -> 1.0
+												grade15 -> 1.5
+												grade02 -> 2.0
+												grade25 -> 2.5
+												grade03 -> 3.0
+												grade35 -> 3.5
+												grade04 -> 4.0
+												grade45 -> 4.5
+												grade05 -> 5.0
+												-->
+												<p>
+													가격 만족도
+													<span class="gradeNum">4.0</span>
+													<span class="grade">
+														<span class="grade04"></span>
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													서비스 만족도
+													<span class="gradeNum">3.5</span>
+													<span class="grade">
+														<span class="grade35"></span>
+													</span>
+												</p>
+											</li>
+										</ul>
+										<p class="labelTxt">이사의 명가</p>
+									</a>
+								</span>
+								<span class="">
+									<a href="#" class="radioBtn">
+										<p class="thumBox"><img src="../images/thum_recommend02.jpg"></p>
+										<ul class="arraySide">
+											<li>
+												<p>
+													가격 만족도
+													<span class="gradeNum">3.0</span>
+													<span class="grade">
+														<span class="grade03"></span>
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													서비스 만족도
+													<span class="gradeNum">4.5</span>
+													<span class="grade">
+														<span class="grade45"></span>
+													</span>
+												</p>
+											</li>
+										</ul>
+										<p class="labelTxt">신사의 이사</p>
+									</a>
+								</span>
+								<span class="">
+									<a href="#" class="radioBtn">
+										<p class="thumBox"><img src="../images/thum_recommend03.jpg"></p>
+										<ul class="arraySide">
+											<li>
+												<p>
+													가격 만족도
+													<span class="gradeNum">5.0</span>
+													<span class="grade">
+														<span class="grade05"></span>
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													서비스 만족도
+													<span class="gradeNum">2.5</span>
+													<span class="grade">
+														<span class="grade25"></span>
+													</span>
+												</p>
+											</li>
+										</ul>
+										<p class="labelTxt">이사가요</p>
+									</a>
+								</span>
+							</div>
+						</div>
+						<h3 class="subTit">추가 요청사항 (선택)</h3>
+						<div class="tbSet orderCont mt20">
+							<textarea id='additionalComments' class="mt20 pullSize" cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
+						</div>
+						<h3 class="subTit">개인정보 제 3자 제공 동의</h3>
+						<div class="orderCont">
+							<div class="agreeBox">
+								<div class="agreeCont">
+									<p>가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. </p>
+									<p>나. 회사는 개인정보를 수집·이용목적 이외에 다른 용도로 이를 이용하거나 이용자의 동의 없이 제3자에게 이를 제공하지 않습니다. </p>
+									<p>다. 회사는 다음과 같은 목적으로 개인정보를 수집하여 이용할 수 있습니다. 다만, 전자상거래 등에서의 소비자보호에 관한 법률, 국세기본법, 전자금융거래법 등 관련법령에 따라 주민등록번호 및 은행계좌번호의 수집</p>
+									<p>가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. </p>
+									<p>나. 회사는 개인정보를 수집·이용목적 이외에 다른 용도로 이를 이용하거나 이용자의 동의 없이 제3자에게 이를 제공하지 않습니다. </p>
+									<p>다. 회사는 다음과 같은 목적으로 개인정보를 수집하여 이용할 수 있습니다. 다만, 전자상거래 등에서의 소비자보호에 관한 법률, 국세기본법, 전자금융거래법 등 관련법령에 따라 주민등록번호 및 은행계좌번호의 수집</p>
+								</div>
+								<p class="checkAgree checkbox">
+									<input type="checkbox" id="agree01">
+									<label for="agree01">개인정보 제 3자 제공에 동의합니다.</label>
+								</p>
+							</div>
+						</div>
 
-				<div class="btnC">
-					<button type="submit" class="btn btnSizeL btnColor02 btnWM">신청하기</button>
-				</div>
+						<div class="btnC">
+							<button type="submit" class="btn btnSizeL btnColor02 btnWM">신청하기</button>
+						</div>
 					</fieldset>
 				</form>
 			</section>
@@ -276,5 +234,20 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+	<script type="text/javascript">
+	/**
+	 * 주소 목록 갱신 트리거 핸들링 
+	 */
+	function refreshAddressData() {
+        $(document).trigger('refreshAddressData');
+    }
+	/**
+	 * 주소 선택 데이터 트리거 핸들링 
+	 */
+	function selectAddressData(data) {
+        var data = JSON.parse(data);
+        $(document).trigger('selectAddressData', [data]);
+    }
+	</script>
 </body>
 </html>

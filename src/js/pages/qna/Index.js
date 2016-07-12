@@ -568,6 +568,7 @@ module.exports = function() {
 			$('#fileUpList').append('<div id="con'+uploadFileNumber+'" class="conDel">'+result.attachFileName+' <a href="#" id="deleteFile'+uploadFileNumber+'" data-image-url="'+result.attachFileUrl+'" class="btnDel">삭제</a></div>');
 			$('#deleteFile'+uploadFileNumber).click(function(e) {
 				e.preventDefault();
+				var addr;
 				for (var key in uploadImageArray) {
 					var eachFile = uploadImageArray[key];
 					if (eachFile.attachFileUrl == $(this).data('imageUrl')) addr = key;
