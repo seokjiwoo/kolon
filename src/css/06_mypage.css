@@ -371,7 +371,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my table.formList .birth > div{margin:0;}
 #myInfoEdit input[type="text"]:disabled{background: #f7f7f7;}
 #myInfoEdit td{color: #666}
-#myInfoEdit .account button{border:0;color: #fff;background: #465f8d;line-height: 0}
+#myInfoEdit .account button{border:0;color: #fff; line-height: 0}
 #myInfoEdit .account .active button{border:1px solid #a9c700;color: #a9c700;background: none}
 #myInfoEdit .account td{color: #999}
 #myInfoEdit .account td:first-child{font-size: 0;}

@@ -259,11 +259,12 @@ module.exports = function() {
 	function openLnbHandler(e) {
 		e.preventDefault();
 		setLnbSize();
+		if ($('#floatingToggle').hasClass('opened')) floatMenu.toggleFloatMenu();
 		$('#lnbWrapper').animate({'left':'0'}, 500);
 		$('#dim').show().css('z-index','4');
 	};
 
-	function closeLnbHandler(e) {
+	function closeLnbHandler(e) { 
 		if (e != undefined) e.preventDefault();
 		if (!$('#floatingToggle').hasClass('opened')) {
 			$('#lnbWrapper').animate({'left':'-285px'}, 500);

@@ -5,7 +5,11 @@ module.exports = function() {
 		/**
 		 * 초기화
 		 */
-		init: init
+		init: init,
+		/**
+		 * 플로팅메뉴 열고닫기
+		 */
+		toggleFloatMenu: toggleFloatMenu
 	};
 	
 	return callerObj;
@@ -31,9 +35,9 @@ module.exports = function() {
 	 * floating menu drop-down
 	 */
 	function toggleFloatMenu(e) {
-		e.preventDefault();
-		if ($(this).hasClass('opened')) {
-			$(this).removeClass('opened');
+		if (e != undefined) e.preventDefault();
+		if ($('#floatingToggle').hasClass('opened')) {
+			$('#floatingToggle').removeClass('opened');
 			$('#floatingMenu').find('.menuTit').animate({'right':'3px'},50,
 			function(){
 				$('.floating04').animate({'top':'0'}, {
@@ -60,7 +64,7 @@ module.exports = function() {
 			});
 			$('#dim').stop().fadeOut(100);
 		} else {
-			$(this).addClass('opened');
+			$('#floatingToggle').addClass('opened');
 			$('.floating04').queue('fx',[]).stop().animate({'top':'-65px'}, {
 				duration: 300, 
 				easing: 'easeOutBack',
