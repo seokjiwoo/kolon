@@ -696,6 +696,10 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .questionBox{padding:15px 15px 30px;background:#e0e0e0;color:#666;}
 .questionBox p{padding-left:20px;background:url("../images/ico_info.png") no-repeat 0 2px;background-size:15px;line-height:1.4em;}
 
+.estimateArea{padding:25px 15px 25px;background:#f8f8f8;}
+.estimateArea .profile{}
+.estimateArea .profile{}
+
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}
