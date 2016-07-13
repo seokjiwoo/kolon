@@ -1,5 +1,4 @@
 .productList .container{padding-top: 0;}
-.productList .pageTit{width: 600px;height: 140px;margin-top: 20px;background-position: 0 -258px;}
 .productList .subTop .wrap{overflow: visible;padding: 0 20px;}
 .productList .subTop .subTit{display: inline-block;}
 .productList .topTit{position: absolute;top: -240px;}
@@ -12,13 +11,12 @@
 .productList .subTop .slideCon{position: absolute;z-index: 1;top: 110px;width: 100%;text-align: right;}
 .productList .subTop .slideCon .catWrap{margin-bottom: 20px;}
 .productList .subTop .slideCon .catWrap span{display: inline-block;vertical-align: middle;font-size: 16px;}
-.productList .subTop .slideCon .catWrap .cat{position: relative;color: #c2504f;}
-.productList .subTop .slideCon .catWrap .cat:after{content:'';position: absolute;bottom: 1px;left:-5px;right:-3px;height: 1px;background: #f59a9a}
-.productList .subTop .slideCon .catWrap .subCat{position: relative;margin-left:15px;padding: 7px;color: #fff;background: #f59a9a;font-style: normal;-ms-transform: skew(-20deg,0deg);-webkit-transform: skew(-20deg,00deg);transform: skew(-20deg,0deg);box-shadow: 4px 4px 0px #595485}
-.productList .subTop .slideCon .slideTit{font-size: 30px;font-family:'NotoSansL', sans-serif;line-height: 1.2em;} 
-.productList .subTop .slideCon .subTxt{margin-top: 18px;font-size: 20px;font-family:'NotoSansL', sans-serif;}
+.productList .subTop .slideCon .catWrap .cat{position: relative;}
+.productList .subTop .slideCon .catWrap .cat:after{content:'';position: absolute;bottom: 1px;left:-5px;right:-3px;height: 1px;}
+.productList .subTop .slideCon .catWrap .subCat{position: relative;min-width: 70px;margin-left:15px;padding: 7px 12px;text-align: center;font-style: normal;-ms-transform: skew(-20deg,0deg);-webkit-transform: skew(-20deg,00deg);transform: skew(-20deg,0deg);}
+.productList .subTop .slideCon .subTxt{margin: 18px 0 30px;line-height: 1.2em;font-size: 20px;font-family:'NotoSansL', sans-serif;}
 .productList .subTop .slideCon .subTxt b{font-family:'NotoSansM', sans-serif;}
-.productList .subTop .slideCon .price{margin: 30px 0;font-size: 120px;letter-spacing: -5px;}
+.productList .subTop .slideCon .price{margin-bottom:30px;font-size: 120px;letter-spacing: -5px;}
 .productList .subTop .slideCon .price span{font-size: 20px;letter-spacing: 0}
 .productList .subTop .slideCon a{display: inline-block;margin-left: 15px;font-size: 14px;vertical-align: middle;}
 .productList .subTop .slideCon .btnPost{color: #000;}
@@ -26,9 +24,26 @@
 .productList .subTop .slideCon .btnLike:before{width: 18px;}
 .productList .subTop .slideCon .btnScrap:before{width: 22px;background-position: -18px 0;}
 .productList .subTop .slideCon .btnMore{width: 155px;color: #595485;line-height: 40px;text-align: center;background: #a7dfd6;border-radius: 20px;font-family:'NotoSansM', sans-serif;}
-.productList .subTop .slideCon .btnMore:after{content: '';display: inline-block;width: 13px;height: 10px;margin-left: 5px;background: url('../images/ico_arrowb.png') no-repeat;background-position: 0 -20px;vertical-align: middle;}
+.productList .subTop .slideCon .btnMore:after{content: '';display: inline-block;width: 13px;height: 10px;margin-left: 5px;background: url('../images/cardMore_arrow.png') no-repeat;vertical-align: middle;}
 
-.productList .cardWrap{padding-top:15px; margin-top:84px}
+.shop .pageTit{width: 600px;height: 136px;margin-top: 20px;background-position: 0 -258px;}
+.shop .subTop .slideCon .slideTit{font-size: 30px;font-family:'NotoSansL', sans-serif;line-height: 1.2em;} 
+.shop .subTop .slideCon .catWrap .cat{color: #c2504f;}
+.shop .subTop .slideCon .catWrap .cat:after{background: #f59a9a}
+.shop .subTop .slideCon .catWrap .subCat{color: #fff;background: #f59a9a;box-shadow: 4px 4px 0px #595485}
+.shop .subTop .slideCon .btnMore{color: #595485;background: #a7dfd6;}
+.shop .subTop .slideCon .btnMore:after{background-position: -84px 0;}
+
+.newform .pageTit{width: 600px;height: 140px;background-position: 0 -395px;}
+.newform .subTop .slideCon .slideTit{font-size: 50px;font-family:'NotoSansL', sans-serif;line-height: 1.1em;} 
+.newform .subTop .slideCon .slideTit .italicNum{font-size: 70px;letter-spacing: -2px;}
+.newform .subTop .slideCon .catWrap .cat{color: #fa7169;}
+.newform .subTop .slideCon .catWrap .cat:after{background: #f59a9a}
+.newform .subTop .slideCon .catWrap .subCat{color: #000;background: #a7dfd6;box-shadow: 4px 4px 0px #ff6460}
+.newform .subTop .slideCon .btnMore{color: #fff;background: #fa7169;}
+.newform .subTop .slideCon .btnMore:after{background-position:-98px 0;}
+
+.productList .cardWrap{overflow: hidden;margin-top:15px;}
 
 /* shop detail */
 .detailArea h3 span {display:block;font-size:60px;font-family:'NotoSansT', sans-serif;font-weight:normal;font-style:normal;}

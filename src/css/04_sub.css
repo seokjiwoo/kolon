@@ -29,11 +29,11 @@
 .myRate{display: inline-block;margin-right: 25px;color: #666;font-family:'NotoSansR', sans-serif;vertical-align: middle;text-align: center;line-height: 1.3em;font-size: 16px;}
 .myRate b{display: block;color: #000;font-family:'NotoSansM', sans-serif;}
 .infoTop .infoBtn a{width: 170px;font-family:'NotoSansR', sans-serif;}
-.infoTop .infoBtn #btnFollow{margin-right: 10px;background:#f1645c}
-.infoTop .infoBtn #btnMsg{background: #706a69}
+.infoTop .infoBtn #btnFollow{margin-right: 10px;}
 
 /* myPage top change */
 .container.bgTop .infoTop .infoPic {width:177px;height:177px;border:3px solid #fef200;}
+.container.bgTop .infoTop .infoPic a{display: block;width: 100%;height: 100%;}
 .container.bgTop .infoTop .infoTit { font-family:'Times New Roman', sans-serif;color:#000;font-size:35px;line-height:normal;font-style:italic;font-weight:bold;}
 .container.bgTop .infoTop .infoDetail:before {display:none;}
 .container.bgTop .user.infoTop .myRate a {display:table-cell;width:116px;height:110px;background: url('../images/bg_info_top.png') no-repeat 0 0;color:#fff;font-size:14px;vertical-align:middle}
@@ -78,8 +78,7 @@
 .searchTop button{width: 50px;height: 50px;background: url('../images/btn_searchL.png') no-repeat center;font-size: 0;border:0;vertical-align: middle;}
 .search .searhResult{margin-top: 10px;font-family:'NotoSansR', sans-serif;color: #666;font-size: 16px;}
 .search .searhResult b{color: #f1645c;}
-.search .cardWrap{margin-top: 25px;}
-.search .btnDetail{float: left;margin-right: 20px;}
+.search .btnDetail{float: left;margin-right: 20px;position: relative;z-index: 1;}
 
 .contentCard #btnMap{display: inline-block;margin-left: 15px;padding:9px 17px;background: #999;border-radius: 15px;color: #fff;font-family:'NotoSansR', sans-serif;font-size: 13px;vertical-align: middle;}
 .contentCard .areaNote{margin-top: 25px;font-size: 14px;color: #000;line-height: 1.4em;}
@@ -115,8 +114,8 @@
 .catSorting .catSort .sortCont ul li #color10:before{background:#ffc814;}
 .catSorting .catSort .sortCont ul li #color11:before{background:#9ccc66;}
 .catSorting .catSort .sortCont ul li #color12:before{background:#48c7ff;}
-.catSorting.catSortH02 .catSort {width:292px;min-height: 550px;}
-.catSorting.catSortH02 .wrap {width:876px; overflow:hidden; position:relative; padding:0; margin:-42px 0 0 -21px;}
+.catSorting.catSortH02 .catSort {width:292px;}
+.catSorting.catSortH02 .wrap {width:876px; overflow:hidden; position:relative;min-height: 550px;padding:0; margin:-42px 0 0 -21px;}
 .catSorting.catSortH02 .wrap:before,
 .catSorting.catSortH02 .wrap:after {content:''; width:1px; height:100%; position:absolute; top:80px; background:#d9d9d9;}
 .catSorting.catSortH02 .wrap:before {left:292px;}
@@ -138,8 +137,6 @@
 #cboxLoadedContent .catSorting p.btnSort{width:100%; overflow:hidden; text-align:center; margin-top:0;}
 .catSorting.catSortH01 .btnSort {clear: both;display: none;}
 .catSorting .btnSort a{display: inline-block;width: 140px;margin:30px 8px 0;padding:12px 0;color: #fff;font-family:'NotoSansM', sans-serif;border-radius: 20px;}
-.catSorting .btnSort #btnReset{background:#666; }
-.catSorting .btnSort #btnConfirm{background: #f1645c;}
 .catSorting #sortToggle{position: absolute;left: 50%;bottom:-20px;width: 40px;height: 40px;margin-left: -20px;background: #bfbfbf;border-radius: 50%;box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
 	-webkit-transition: all 0.1s ease-in-out;-moz-transition:all 0.1s ease-in-out;-o-transition:all 0.1s ease-in-out;-ms-transition:all 0.1s ease-in-out;}
 .catSorting #sortToggle:after{content: '';position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 1;background: url('../images/ico_toggleW.png') no-repeat center}

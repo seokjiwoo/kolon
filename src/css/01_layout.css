@@ -25,7 +25,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topMenu{width:100%; position:fixed; z-index:3; min-width:1240px; white-space: nowrap;}
 .topMenu .topL{width:15%; min-width:180px; height:60px; float:left;}
 .topMenu .topL .btnLnb{width:80px; height:60px; float:left; background:url('../images/btn_menu.png') center no-repeat;}
-.topMenu .topL h1.logo{width:100px; float: left; overflow:hidden; line-height:0;}
+.topMenu .topL h1.logo{width:106px; float: left; overflow:hidden; line-height:0;}
 .topMenu .topL h1.logo a{width:100%; padding:22px 0; display:inline-block;}
 .topMenu .menu{width:65%; min-width:765px; height:60px; overflow:hidden; float:left; text-align:center;}
 .topMenu .menu ul.menuList {height:60px; display:inline-block;}
@@ -35,7 +35,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topMenu .menu ul.menuList li + li {margin-left:39px;}
 .topMenu .menu ul.menuList li a{display:block; padding:22px 0; font-family:'NotoSansB', sans-serif; color:#333; font-size:16px; font-weight:bold;}
 .topMenu .menu ul.menuList li a em.point {color:#f84b40;}
-.topMenu .menu ul.menuList:last-child li a {color:#00aeb9;}
+.topMenu .menu ul.menuList:last-child li a {color:#00a6d2;}
 @media (max-width:1310px){.topMenu .menu ul.menuList li + li {margin-left:20px;}}
 
 .topMenu .topR{width:20%; min-width:236px; height:60px; text-align:right; font-size: 14px; float:right; position:relative;}
@@ -49,7 +49,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topMenu .topR .member .name{font-family:'NotoSansR', sans-serif;color: #737373;}
 .topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
 .topMenu .topR .member .pic img{width: 100%;}
-.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #a9c700 url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
+.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #465f8d url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
 
 #top {width:100%;}
 #top .searchWrap{position: absolute;top: -177px;left: 0;width: 100%;background: rgba(255,255,255,.9);text-align: left;border-bottom: 1px solid #333;z-index: -1}
@@ -65,7 +65,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #top .searchWrap .searchSet input[type="text"]{border:0;}
 #top .searchWrap #searchTxt{width: 100%;border:0;height: 28px;line-height: 28px;}
 #top .searchWrap .searchSet input{width: 100%;}
-#top .searchWrap button{position: absolute;top:0;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/btn_search02.png') no-repeat center;border:0;}
+#top .searchWrap button{position: absolute;top:0;right: 3px;width:40px;height:30px;font-size:0;background: url('../images/btn_searchN.png') no-repeat center;border:0;}
 
 #top .searchWrap .recomand{background: #333;}
 #top .searchWrap .recomand .wrap{padding: 0;}
@@ -140,7 +140,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #floatingMenu li.floating04 a{background-position: right -150px;}
 #floatingMenu li .menuTit{display: block;width: 70px;height: 50px;border-radius: 25px;color: #404040;font-family:'NotoSansM', sans-serif;text-align: center;z-index: -1;line-height: 50px;opacity: 0;}
 #floatingMenu li .pointer{display: none;position: absolute;top:10px;right: 84px;width: 17px;height: 30px;background: url('../images/pop_pointer.png') no-repeat; z-index: -1;}
-#floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #a9c700 url('../images/btn_floating.png') no-repeat center;box-shadow: 1px 1px 5px rgba(0,0,0,.15);
+#floatingToggle{position: relative;z-index: 5;display: block;width: 60px;height: 60px;background: #465f8d url('../images/btn_floating.png') no-repeat center;box-shadow: 1px 1px 5px rgba(0,0,0,.15);
 -webkit-transition: all 0.4s ease-in-out;-moz-transition:all 0.4s ease-in-out;-o-transition:all 0.4s ease-in-out;-ms-transition:all 0.4s ease-in-out;}
 #floatingToggle.opened{-ms-transform: rotate(315deg);-webkit-transform: rotate(315deg);transform: rotate(315deg);}
 #goTop{width:60px;height: 34px;margin-top:10px;padding:13px 0;background: #fff;font-family:'NotoSansM', sans-serif;color:#999;font-size: 14px;text-align: center;box-shadow: 1px 1px 5px rgba(0,0,0,.15);}
@@ -160,11 +160,11 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .floating .flPop .popTit.italicNum{font-size: 34px;}
 .floating .flPop .popSub{margin-top:10px;color: #000;line-height: 1.3em}
 .floating .flPop .popCon .productInfo{margin-bottom:15px;color: #666;line-height: 1.1em}
-.floating .flPop .popCon .productInfo b{color: #f1645c;text-decoration: underline;}
+.floating .flPop .popCon .productInfo b{color: #b08967;text-decoration: underline;}
 .floating .flPop .popCon .phoneWrp{margin-bottom: 10px;}
 .floating .flPop .popCon .phoneWrp select{width: 65px;padding: 8px;}
-.floating .flPop .popCon .phoneWrp input[type="text"]{width: 45px;margin:0 5px 0 3px;padding:8px 7px;vertical-align: middle;}
-.floating .flPop .popSubmit{width:130px;padding: 10px 20px;border-radius: 20px;background: #f1645c;font-family:'NotoSansR', sans-serif;color: #fff;font-size: 14px;border:0;outline: 0;cursor: pointer;}
+.floating .flPop .popCon .phoneWrp input[type="text"]{width: 45px;margin:0 5px 0 3px;padding:9px 7px;vertical-align: top;}
+.floating .flPop .popSubmit{width:130px;padding: 10px 20px;border-radius: 20px;background: #465f8d;font-family:'NotoSansR', sans-serif;color: #fff;font-size: 14px;border:0;outline: 0;cursor: pointer;}
 .floating .flPop .note{margin-top:18px;color: #999;line-height: 1.3em}
 .floating .flPop .note b{color: #f1645c}
 
@@ -189,14 +189,14 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #flShare li.sns03 a{background-position: -128px 0}
 #flShare .shareLink p{border:1px solid #000;padding:5px;display: inline-block;border-radius: 5px;}
 #flShare .shareLink input{margin:0;background: none;border:0;width:137px;height: 25px;padding:0 5px;font-family:'NotoSansM', sans-serif;color:#666;}
-#flShare .shareLink button{margin:0;padding: 0;background: none;border:0;font-family:'NotoSansM', sans-serif;color:#f1645c;}
+#flShare .shareLink button{margin:0;padding: 0;background: none;border:0;font-family:'NotoSansM', sans-serif;color:#465f8d;}
 
 #flQna .popIco:after{display: none;}
 #flQna .cardCon{max-height: 230px;padding-top: 90px;}
-#flQna .searchQna{position: absolute;top:110px;left: 30px;padding:5px;border:1px solid #f1645c;font-size: 14px;z-index: 3}
+#flQna .searchQna{position: absolute;top:110px;left: 30px;padding:5px;border:1px solid #465f8d;font-size: 14px;z-index:5}
 #flQna .searchQna input{width: 130px;height: 20px;padding: 0 10px;vertical-align: middle;border:0;font-family:'NotoSansR', sans-serif;}
 #flQna .searchQna label{display: inline-block;font-size: 0;width:1px;height: 15px;background: #d5d5d5;vertical-align: middle;}
-#flQna .searchQna button{width: 35px;height: 25px;font-size: 0;background:url('../images/btn_search.png') no-repeat center;border:0;outline: 0;border-radius: 0;vertical-align: middle;}
+#flQna .searchQna button{width: 35px;height: 25px;font-size: 0;background:url('../images/btn_searchN.png') no-repeat center;border:0;outline: 0;border-radius: 0;vertical-align: middle;}
 #flQna .resultQna {text-align: left;}
 #flQna .resultQna .resultTit{padding-left: 10px;font-family:'NotoSansM', sans-serif;font-size: 14px;color: #000;}
 #flQna .resultQna ul{overflow-y: auto;overflow-x: hidden;max-height: 210px;margin-top:10px;}

@@ -28,7 +28,7 @@
 .managerList .tabType01 .on a:before{content:'';position: absolute;top: 5px;left: 0;width: 100%;height: 13px;background: rgba(170,125,113,.3)}
 
 .managerList .serchPro{;position:relative;width: 1220px;margin:0 auto;z-index: 2}
-.managerList .serchPro li{position: absolute;left: 772px;top: -85px;}
+.managerList .serchPro li{position: absolute;left: 772px;top: 125px;}
 .managerList .serchPro .hexagon{background: #aa7d71;}
 .managerList .serchPro .cardCon{padding-top: 55px;}
 .managerList .serchPro .cardCon:after{display: none;}
@@ -51,7 +51,7 @@
 .singleCard #content{margin-top:50px;padding-bottom:20px;}
 .singleCard #content p{font-size: 16px;color: #000;line-height: 1.6em;}
 .singleCard .conTit{clear:both;margin-top:80px;font-family:'NotoSansM', sans-serif;color: #000;font-size: 20px;}
-.singleCard .url{display: block;margin-top:30px;font-size: 14px;font-family:'NotoSansL', sans-serif;color:#a9c700;}
+.singleCard .url{display: block;margin-top:30px;font-size: 14px;font-family:'NotoSansL', sans-serif;color:#b08967;}
 .singleCard .conTit a{margin-left: 15px;}
 .singleCard .tag{overflow: visible;}
 .singleCard .tag li{margin-bottom: 10px;}

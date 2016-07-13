@@ -150,8 +150,20 @@ module.exports = function() {
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
 			$('.answerForm').submit(answerFormSubmitHandler);
-			
-			$('.except').dotdotdot({watch:'window'});
+			$('.except02').dotdotdot({
+				after: 'a.more',
+				watch:'window',
+				callback:function(){
+					$('.more').on('click', function(e) { // more slideDown
+						e.preventDefault();
+						$(this).parent('p').siblings('.slideCon').slideDown();
+						$(this).parent('.except02').trigger('destroy').css('height','auto').find('a').remove();
+					});					
+					if (!$('.except02').hasClass('is-truncated')) {
+						$(this).find('.more').remove();
+					}
+				}
+			});
 		}
 	};
 
