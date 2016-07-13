@@ -27,6 +27,47 @@
 		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
 		<!-- Type1 -->
+
+		<!-- Type2: 샵 상품 cardType01 cardSize03 -->
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_02"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">designer <span>compact</span></p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">{ unit }</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<p class="cardPrice">{{basePrice}} <span class="priceBottom">원 / 평</span></p>
+				<span class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle01">
+				<div class="cardCon">
+					<ul class="card_icon">
+						<li class="cart cardDetail"><a href="#">장바구니</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+					<div class="worker">
+						<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
+						<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+						<div class="cardAuthorLike">
+							<span class="star">4.8</span><span class="comt">120</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="#">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="#">{{scrapCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>
+			<div class="celeb"><p><span><b>셀럽</b>추천</p></div>
+			<!--// flag -->
+		</div>
+		{{/vxIF}}
+		<!-- Type2 -->
 		
 		<!-- Type3: 샵 상품 cardType02 cardSize02 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
@@ -37,7 +78,7 @@
 				<p class="cardCat">{ unit }</p>
 				<h2 class="cardTit">{{cardName}}</h2>
 				<p class="cardPrice">{{basePrice}} <span class="priceBottom">원</span></p>
-				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+				<span class="cardMore">상세보기</span>
 			</a>
 			<!--// card 내용 -->
 			<!-- card hover 내용 -->

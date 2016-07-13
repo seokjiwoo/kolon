@@ -110,6 +110,10 @@ module.exports = function() {
 					each.cardClass = 'cardType06 cardSize02';
 					each.detailUrl = "/magazine/detail.html?articleNumber="+each.cardNumber;
 					break;
+				case 'DP_CARD_TYPE_02':
+					each.cardClass = 'cardType01 cardSize03';
+					each.detailUrl = "/newForm/detail.html?productNumber="+each.cardNumber;
+					break;
 				case 'PROD':
 					each.cardTypeCode = 'DP_CARD_TYPE_03';
 				case 'DP_CARD_TYPE_03':

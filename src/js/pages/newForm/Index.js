@@ -86,6 +86,10 @@ module.exports = function() {
 	function setElements() {
 		debug.log(fileName, 'setElements');
 
+		cardList = CardList();
+		$(cardList).on('cardAppended', cardAppendedHandler);
+		cardList.init();	// 카드 리스트
+
 		self.colorbox = $(opts.colorbox.target);
 		$('#mainSlider').bxSlider();
 	}
@@ -221,4 +225,7 @@ module.exports = function() {
 		});
 	}
 
+	function cardAppendedHandler(e) {
+		console.log('카드 이벤트 설정?');
+	};
 };
