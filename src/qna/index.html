@@ -63,7 +63,7 @@
 													</td>
 												</tr>
 												<tr>
-													<th scope="row">첨부파일<span>(최대3장)</span></th>
+													<th scope="row">사진첨부<span>(최대3장)</span></th>
 													<td>
 														<div class="fileup">
 															<input id='fileUpText' type="text" class="pullSize" style="width:458px;" placeholder="첨부파일" title="첨부파일명" readonly="readonly"/>
@@ -153,11 +153,11 @@
 											<!--// 사진 -->
 											<div class="commentCount">
 												{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
-												<button id="writeCommentButton{{key}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
+												<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
 											</div>
 										</div>
 										<!--// 의견 내용 -->
-										<div id="commentArea{{key}}" class="commentArea">
+										<div id="commentArea{{opinionNumber}}" class="commentArea">
 											<!--<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>-->
 											<!-- 댓글 리스트 -->
 											<ul>
@@ -168,7 +168,7 @@
 										 					<span><img src="{{expertImageUrl}}" alt="" /></span>
 										 					<span>
 										 						<span><em>{{expertCompany}}</em> {{expertName}}</span>
-										 						<span class="except">{{serviceNames}}</span>
+										 						<span class="except">{{answererSectionCodeName}}</span>
 										 					</span>
 										 				</div>
 									 				</div>
@@ -180,11 +180,11 @@
 											<!--// 댓글 리스트 -->
 											<!-- 댓글 입력 폼 -->
 											<div class="commentInput">
-												<form method="post" action="/">
+												<form method="post" action="#" id="answerForm{{opinionNumber}}" class='answerForm'>
 													<fieldset>
-														<legend>댓글 입력 폼</legend>
+														<legend>의견 입력 폼</legend>
 														<div class="commentTextarea">
-															<textarea class="pullSize" style="width:99%;" placeholder="댓글을 입력해주세요." title="댓글입력"></textarea>
+															<textarea class="pullSize" id='answerBox{{opinionNumber}}' style="width:99%;" placeholder="의견을 남겨주세요." title="의견입력"></textarea>
 															<div class="commentBtn">
 																<div class="thumb"><span><img src="" alt="" class='myProfileImage' /></span></div>
 																<button class="confirmBtn">등록</button>
@@ -224,7 +224,7 @@
 						<div id="myOpinion" class="latelyOpinion">
 							<script id="my-opinion-template" type="text/x-handlebars-template">
 							{{!-- my-opinion-template --}}
-							<h2 class="optit"><span>내가 최근에 등록한 의견</span></h2>
+							<h2 class="optit"><a href='/myPage/myQnA.html'><span>내가 최근에 등록한 의견</span></a></h2>
 							<ul>
 								{{#each myOpinions}}
 								<li>

@@ -84,7 +84,7 @@ function ClassMyPageController() {
 	function myOpinions() {
 		Super.callApi('/apis/me/opinions', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('myOpinionsResult', [200, result.data]);
+				$(callerObj).trigger('myOpinionsResult', [200, result.data.myOpinions]);
 			} else {
 				Super.handleError('myOpinions', result);
 			}

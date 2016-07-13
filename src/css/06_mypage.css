@@ -150,7 +150,6 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myTimeline li a{display: inline-block;width: 868px;}
 #myTimeline .recordCon{width: 550px;}
 
-
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
 #myNotice .recordThumb{background: #a9c700;}

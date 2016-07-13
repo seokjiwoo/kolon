@@ -79,7 +79,7 @@ module.exports = function() {
 		console.log('ERROR ON', callerId, result);
 		if (result != undefined) {
 			if (result.status == '401' && result.errorCode == '1603') {
-				alert('세션이 만료되었습니다. 다시 로그인해 주세요.');
+				alert('로그인이 필요한 페이지입니다.');
 				location.href = '/member/logout.html';
 			}
 		}
