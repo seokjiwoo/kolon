@@ -130,24 +130,24 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/manager/Index.js');
 				break;
 
-			// 전문가/브랜드 소개 detail
+			// 전문가 소개 detail
 			case 'manager-detail':
 				PageModuleClass = require('./pages/manager/Detail.js');
 				break;
 
-			// 전문가/브랜드 판매상품 itemList
+			// 전문가 판매상품 itemList
 			case 'manager-itemList':
 				PageModuleClass = require('./pages/manager/ItemList.js');
 				break;
 
-			// 완료된 공간 portfolio
-			case 'manager-portfolio':
-				PageModuleClass = require('./pages/manager/Portfolio.js');
-				break;
-
-			// 브랜드 소개 - /manager/brand.html
+			// 브랜드 소개
 			case 'brand-intro':
 				PageModuleClass = require('./pages/manager/BrandIntro.js');
+				break;
+
+			// 브랜드 판매상품
+			case 'brand-itemList':
+				PageModuleClass = require('./pages/manager/BrandItemList.js');
 				break;
 		// [E] 커먼전문가 manager
 

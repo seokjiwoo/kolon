@@ -3,52 +3,73 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 브랜드"} -->
 </head>
-<body data-page-id="brand-goods">
+<body data-page-id="brand-itemList">
 	<div class="wrapper brand">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
+			<div class='js-manager-brand-wrap'>
+			<script id="manager-brand-templates" type="text/x-handlebars-template">
+			{{!-- manager-brand-templates --}}
 			<div class="infoTop">
 				<div class="wrap colWrap">
 					<div class="col colL">
-						<div class="infoPic"><img src="/images/temp13.jpg" alt=""></div>
+						<div class="infoPic"><img src="{{imageUrl}}" alt=""></div>
 						<div class="infoWrap">
-							<h2 class="infoTit">까사미아까사미아까사미아까사미아까사미아까사미아까사미아</h2>
-							<p class="infoDetail"><span class="area">경기도 상록구 사동</span><span class="star">4.5</span></p>
-							<p class="infoSub">시공을 전문적으로하는 건축전문기업입니다.시공을 전문적으로하는 건축전문기업입니다.시공을 전문적으로하는 건축전문기업입니다.</p>
+							<h2 class="infoTit">{{companyName}}</h2>
+							{{!-- 평점 evalScore TBD --}}
+							<!-- <p class="infoDetail"><span class="area">{{roadBaseAddr}}</span><span class="star">{{evalScore}}</span></p> -->
+							{{!--// 평점 evalScore TBD --}}
+							<p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span></p>
+							<p class="infoSub">{{intro}}</p>
 						</div>
 					</div>
 					<div class="col colR">
 						<a href="" id="sharePage">페이지 공유</a>
 						<p class="infoBtn">
-							<span id="followView" class="myRate"><b>104 </b>팔로워</span>
-							<a href="" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a> <!-- <a href="" class="js-delete-follow">팔로우 취소</a> -->
-							<a href="" id="btnMsg" class="btnSizeM btnColor03">1:1 메세지</a>
+							<span id="followView" class="myRate"><b>104 </b>팔로워 - API 항목 필요</span>
+							<a href="#" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a>
+							<a href="../_popup/popMessage.html" id="btnMsg" class="btnSizeM btnColor03 btnPop btnPop590" data-user-class="orderPop popEdge popMessage">1:1 메세지</a>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="tabType02">
 				<ul class="sWrap">
-					<li><a href="/manager/brand.html">브랜드 소개</a></li>
-					<li class="on"><a href="/manager/brandItemList.html">판매상품 <span>15</span></a></li>
+					<li><a href="/manager/brand.html?expertNumber={{expertNum}}">브랜드 소개</a></li>
+					<li class="on"><a href="/manager/brandItemList.html?expertNumber={{expertNum}}">판매상품 <span>{{countProduct}}</span></a></li>
 				</ul>
 			</div>
-			<section class="wrap" id="brandList">
+			{{!--// manager-brand-templates --}}
+			</script>
+			</div>
+			<section id="brandList">
 				<div class="alignBox">
 					<ul class="drop" data-prevent="true">
-						<li><a href="#" data-value="type-1">최신순</a></li>
-						<li><a href="#" data-value="type-2">인기순</a></li>
-						<li><a href="#" data-value="type-2">가격 높은 순 </a></li>
-						<li><a href="#" data-value="type-2">가격 낮은 순 </a></li>
-						<li><a href="#" data-value="type-3">스크랩 많은 순</a></li>
+						<li><a href="#">최신순</a></li>
+						<li><a href="#" data-value="PD_OPTION_SORT_01" class="on">최신순</a></li>
+						<li><a href="#" data-value="PD_OPTION_SORT_02">인기순</a></li>
+						<li><a href="#" data-value="PD_OPTION_SORT_05">가격높은순</a></li>
+						<li><a href="#" data-value="PD_OPTION_SORT_04">가격낮은순</a></li>
+						<li><a href="#" data-value="PD_OPTION_SORT_03">스크랩 많은 순</a></li>
 					</ul>
 				</div>
+				<!-- 
+				<div class="arrayWrap">
+					<ul class="arrayDrop arrayCount">
+						<li><a href="#">최신순</a></li>
+						<li><a href="#">인기순</a></li>
+						<li><a href="#">가격높은순</a></li>
+						<li><a href="#">가격낮은순</a></li>
+						<li><a href="#">스크랩 많은 순</a></li>
+					</ul>
+				</div>
+				-->
 				<ul class="cardWrap" id="cardWrap">
 				</ul>
 			</section>
-		</div>	
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<!-- @@include ../_template/cardTemplate.html -->
 </body>
 </html>

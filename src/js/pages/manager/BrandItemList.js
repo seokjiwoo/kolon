@@ -73,9 +73,11 @@ module.exports = function() {
 		setBtnsEvents();
 
 		cardList = CardList();
+		cardList.init();	// 카드 리스트
 		$(cardList).on('cardAppended', cardAppendedHandler);
 
 		expertsController.brand(self.expertNumber);
+		expertsController.brandProducts(self.expertNumber, 'PD_OPTION_SORT_01');
 	}
 
 	function cardAppendedHandler(e) {
