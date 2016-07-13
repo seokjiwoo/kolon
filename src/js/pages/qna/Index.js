@@ -126,16 +126,17 @@ module.exports = function() {
 		if (status == 200) {
 			var key = 0;
 			$.map(result, function(each) {
+				each.key = key;
 				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
 				if (each.answers.length == 0) {
 					each.answerCount = '<p>미답변</p>';
 				} else {
 					each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
 				}
-				each.key = key;
+				$.map(each.answers, function(eachAnswers) {
+					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
+				});
 				console.log(each);
-
-				//registeredHelpYn $('#answer'+pollAnswerId).addClass('on');
 
 				key++;
 			});
