@@ -12,6 +12,9 @@ module.exports = function() {
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
+	var controller = require('../../controller/MagazineController');
+	$(controller).on('magazineInfoResult', getDetailHandler);
+	
 	var callerObj = {
 		/**
 		 * 초기화
@@ -23,6 +26,12 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
-		debug.log(fileName, $, util);
-	}
+		
+		var articleNumber = util.getUrlVar().articleNumber;
+		controller.info(articleNumber);
+	};
+
+	function getDetailHandler(e, status, result) {
+		console.log(result);
+	};
 };

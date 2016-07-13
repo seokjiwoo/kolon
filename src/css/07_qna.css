@@ -97,7 +97,7 @@
 .opinionbox .conbox strong a{color:#000;}
 .opinionbox .conbox .conboxTxt > p{height:72px; margin-top:20px;color:#666;line-height:1.3em;font-family:'NotoSansR',sans-serif; position:relative;}
 .opinionbox .conbox .conboxTxt {padding-right:80px; position:relative; overflow:hidden;}
-.opinionbox .conbox .more {position:absolute; bottom:0; right:0; padding-right:20px; font-size:14px; color:#999;}
+.opinionbox .conbox .more {position:absolute; bottom:0; right:-70px; padding-right:20px; font-size:14px; color:#999;}
 .opinionbox .conbox .more:after {content:''; width:13px; height:8px; margin-top:-3px; background:url("../images/ico_more.png") no-repeat 0 0; position:absolute; top:50%; right:0; display:inline-block;}
 .opinionbox .conbox .more a{display:inline-block;padding-right:22px;color:#666;}
 .opinionbox .conbox .more a span{display:block;font-size:13px;font-family:'NotoSansR',sans-serif;}
@@ -117,7 +117,7 @@
 .opinionbox.no .commentCount p {font-size:14px;}
 .opinionbox.no .commentCount p span{color:#999;}
 
-.opinionbox .commentArea{width:100%; overflow:hidden; background:#f8f8f8; padding-top:30px;}
+.opinionbox .commentArea{width:100%; overflow:hidden; background:#f8f8f8;}
 .opinionbox .commentArea.noMoreBtn {padding-top:0}
 .opinionbox .commentArea > p{text-align:center;}
 .opinionbox .moreWrap {width:100%; text-align:center; margin-bottom:30px;}

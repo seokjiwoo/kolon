@@ -63,35 +63,7 @@ function ClassHomeServiceController() {
 	};
 
 	function requestMoving(startAddress, arriveAddress, movingService, livingService) {
-		/* {
-			"arriveAddress": {
-				"addressSectionCode": "string",
-				"detailAddress": "string",
-				"lotBaseAddress": "string",
-				"roadBaseAddress": "string",
-				"zipCode": "string"
-			},
-			"livingService": {
-				"addRequestContents": "string",
-				"companyNumber": 0,
-				"requestTargetContact": "string",
-				"requestTargetName": "string",
-				"serviceSectionCode": "string",
-				"termsNumber": 0
-			},
-			"movingService": {
-				"movingDate": "2016-07-12T10:14:44.025Z",
-				"movingTypeCode": "string"
-			},
-			"startAddress": {
-				"addressSectionCode": "string",
-				"detailAddress": "string",
-				"lotBaseAddress": "string",
-				"roadBaseAddress": "string",
-				"zipCode": "string"
-			}
-		} */
-		Super.callApi('/apis/living/moving/company/'+regionCode, 'POST', {
+		Super.callApi('/apis/living/moving', 'POST', {
 			"startAddress": startAddress,
 			"arriveAddress": arriveAddress,
 			"movingService": movingService,

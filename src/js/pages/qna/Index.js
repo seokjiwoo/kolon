@@ -21,8 +21,8 @@ module.exports = function() {
 	$(controller).on('postAnswerResult', postAnswerResultHandler);
 	$(controller).on('pollAnswerResult', pollAnswerResultHandler);
 
-	var expertController = require('../../controller/ExpertController.js');
-	$(expertController).on('expertListResult', expertListHandler);
+	var expertController = require('../../controller/ExpertsController.js');
+	$(expertController).on('expertsListResult', expertListHandler);
 
 	var myPageController = require('../../controller/MyPageController.js');
 	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
@@ -126,16 +126,17 @@ module.exports = function() {
 		if (status == 200) {
 			var key = 0;
 			$.map(result, function(each) {
+				each.key = key;
 				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
 				if (each.answers.length == 0) {
 					each.answerCount = '<p>미답변</p>';
 				} else {
 					each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
 				}
-				each.key = key;
+				$.map(each.answers, function(eachAnswers) {
+					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
+				});
 				console.log(each);
-
-				//registeredHelpYn $('#answer'+pollAnswerId).addClass('on');
 
 				key++;
 			});
@@ -149,8 +150,20 @@ module.exports = function() {
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
 			$('.answerForm').submit(answerFormSubmitHandler);
-			
-			$('.except').dotdotdot({watch:'window'});
+			$('.except02').dotdotdot({
+				after: 'a.more',
+				watch:'window',
+				callback:function(){
+					$('.more').on('click', function(e) { // more slideDown
+						e.preventDefault();
+						$(this).parent('p').siblings('.slideCon').slideDown();
+						$(this).parent('.except02').trigger('destroy').css('height','auto').find('a').remove();
+					});					
+					if (!$('.except02').hasClass('is-truncated')) {
+						$(this).find('.more').remove();
+					}
+				}
+			});
 		}
 	};
 

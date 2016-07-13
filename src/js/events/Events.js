@@ -10,6 +10,9 @@ function Events() {
 	fileName = 'events/Events.js';
 
 	var Events = {
+		MEMBER_INFO : {
+			IS_LOGIN : 'VX-MEMBER_INFO-IS_LOGIN'
+		},
 		// @see http://www.jacklmoore.com/colorbox/
 		COLOR_BOX : {
 			OPEN : 'cbox_open',
@@ -60,9 +63,48 @@ function Events() {
 			INIT : 'VX-HORIZON_BAR_CHART-INIT',
 			APPEND : 'VX-HORIZON_BAR_CHART-APPEND'
 		},
-
+		INFO_SLIDER : {
+			REFRESH : 'VX-INFO_SLIDER-REFRESH',
+			DESTROY : 'VX-INFO_SLIDER-DESTROY',
+		},
 
 		// [S] Controller Events
+			// Magazine - 메거진
+			// @see MagazineController.js
+			MAGAZINE : {				
+				// 매거진 리스트
+				LIST : 'magazineListResult',
+				// 매거진 정보
+				INFO : 'magazineInfoResult',
+				// 매거진 좋아요
+				LIKES : 'magazineLikesResult',
+				// 에디터의 다른 매거진 카드 리스트
+				OTHERS : 'magazineOthersResult',
+				// 매거진 에디터 정보
+				PARTNERINFO : 'magazinePartnerInfoResult',
+				// 추천 상품 카드 리스트
+				PRODUCTS : 'magazineProductsResult',
+				// 추천 매거진 카드 리스트
+				RECOMMEND : 'magazineRecommendResult'
+			},
+			// Experts - 전문가
+			// @see ExpertsController.js
+			EXPERTS : {
+				// 전문가 전체 목록
+				LIST : 'expertsListResult',
+				// 전문가 이름 조회
+				NAME : 'expertsNameResult',
+				// 전문가 상세 조회
+				DETAIL : 'expertsDetailResult',
+				// 브랜드 상세
+				BRAND : 'expertsBrandResult',
+				// 브랜드 판매상품 조회
+				BRANDPRODUCTS : 'expertsBrandProductsResult',
+				// 전문가 판매상품
+				PRODUCTS : 'expertsProductsResult',
+				// 전문가 판매상품 필터 아이템 리스트
+				PRODUCTSFILTER : 'expertsProductsFilterResult'
+			},
 			// 마이홈즈 - 타임라인
 			// @see MyPageController.js
 			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/my-page-controller
@@ -157,6 +199,17 @@ function Events() {
 				CANCEL_LIST : 'myCancelListResult',
 				// 취소 신청 조회 팝업
 				CANCEL_DETAIL : 'cancelDetailResult',
+
+
+				// OrderController - 주문서 작성
+				// @see OrderController.js
+				// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/me-order-controller
+					// 배송형 주문서 작성 페이지 조회
+					ORDERS_INFO : 'myOrdersInfoResult',
+					// hash_String 취득(EncryptData)
+					ORDERS_GET_HASH : 'ordersGetHashStrResult',
+					// 배송형 주문서 작성 페이지 처리(결제)
+					ORDERS_PROCESS : 'ordersProcessResult'
 			},
 			CLAIMS : {
 				// 교환/반품/취소 목록 조회

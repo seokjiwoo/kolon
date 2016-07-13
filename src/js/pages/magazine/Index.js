@@ -18,7 +18,7 @@ module.exports = function() {
 	var model = require('../../model/CardListModel.js');
 	
 	var controller = require('../../controller/MagazineController');
-	$(controller).on('getListPopularResult', popularListHandler);
+	$(controller).on('magazineListResult', getListHandler);
 
 	var callerObj = {
 		/**
@@ -35,34 +35,17 @@ module.exports = function() {
 		debug.log(fileName, $, util);
 
 		cardList = CardList();
+		$(cardList).on('cardAppended', cardAppendedHandler);
 		cardList.init();	// 카드 리스트
 		
-		// $('#popularList').html('loading...');
-		// controller.getListPopular();
-		bestKeySlide()
-	}
+		controller.list();
+		bestKeySlide();
+	};
 
-	function popularListHandler(e, status) {
-		var classOrder = new Array('magazineL', 'magazineR', 'magazineC', 'magazineC');
-		var listData = model.topFixedList();
+	function getListHandler(e, status, result) {
+		cardList.appendData(result.magazineCards);
+	};
 
-		var tags = '';
-		for (var key in listData) {
-			var eachData = listData[key];
-			tags += '<li class="'+classOrder[key]+'" style="background:#eeeeee url(\''+eachData.imageUrl+'\')">';
-			tags += '<a href=""><div class="magazineCon">';	// eachData.magazineNumber
-			tags += '<h3 class="cardTit">'+eachData.title+'</h3>';
-			tags += '<p class="cardIntro">'+eachData.description+'</p>';
-			tags += '</div></a>';
-			tags += '<ul class="cardInfo">';
-			tags += '<li class="like">'+'?'+'</li>';
-			tags += '<li class="comment">'+'?'+'</li>';
-			tags += '<li class="scrap">'+eachData.scrapCount+'</li>';
-			tags += '</ul></li>';
-		}
-
-		$('#popularList').html(tags);
-	}
 	function bestKeySlide(){
 		$('#bestKeySlide').bxSlider({
 			mode: 'vertical',
@@ -70,6 +53,9 @@ module.exports = function() {
 			controls:false,
 			infiniteLoop:false
 		});
-	}
+	};
 
+	function cardAppendedHandler(e) {
+		console.log('카드 이벤트 설정?');
+	};
 };

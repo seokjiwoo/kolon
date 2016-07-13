@@ -14,6 +14,9 @@ module.exports = function() {
 
 	var CardList = require('../../components/CardList.js');
 	var cardList;
+
+	var controller = require('../../controller/ExpertsController.js');
+	$(controller).on('expertsListResult', expertListHandler);
 	
 	var callerObj = {
 		/**
@@ -29,9 +32,8 @@ module.exports = function() {
 		debug.log(fileName, $, util);
 
 		cardList = CardList();
+		$(cardList).on('cardAppended', cardAppendedHandler);
 		cardList.init();	// 카드 리스트
-
-		win.console.log('cardList', cardList);
 
 		var slider = $('#managerSlider').bxSlider({
 			pager:false,
@@ -55,5 +57,15 @@ module.exports = function() {
 				}
 			}
 		});
+
+		controller.list();
 	}
+
+	function expertListHandler(e, status, result) {
+		cardList.appendData(result.experts);
+	};
+
+	function cardAppendedHandler(e) {
+		console.log('카드 이벤트 설정?');
+	};
 }

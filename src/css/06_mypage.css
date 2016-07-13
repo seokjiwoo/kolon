@@ -29,7 +29,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 
 .my .myMenu + .singleCard {padding:20px 50px 50px}
 .my .singleCard{padding:0 50px 50px}
-.my .cardWrap02{float: left;width: 910px;min-width: 0;margin-top: 0; }
+.my .cardWrap02{float: left;width: 910px;min-width: 0;}
 .my .secTit{font-family:'NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
 
@@ -184,7 +184,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .recordSort li{display: inline-block;margin-left:2px;}
 .recordSort li:first-child{margin:0;}
 .recordSort a{display: inline-block;padding:0 17px;border-radius: 20px;border:1px solid #d1d1d1;font-size: 14px;line-height: 38px;color: #666;}
-.recordSort a.on{background: #a9c700;border:0;color: #fff; padding:0 18px;}
+.recordSort a.on{background: #46608e;border:0;color: #fff; padding:0 18px;}
 .recordSearch{display: inline-block;padding: 5px;border:1px solid #ccc;}
 .recordSearch #recordInput{width: 590px;height: 28px;padding: 0;line-height: 28px;font-size:13px;color: #666;border:0;} 
 .recordSearch button{width:33px;height:14px;font-size: 0; background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle; border-left:1px solid #d5d5d5;}
@@ -217,7 +217,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .record .recordInfo .producOption{color: #999}
 .record .recordInfo .count{color: #999}
 .record .recordInfo .productPrice{font-family:'NotoSansB', sans-serif;}
-.record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#00aeb9;font-family:'NotoSansM', sans-serif;border:2px solid #00aeb9;}
+.record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#b08967;font-family:'NotoSansM', sans-serif;border:2px solid #b08967;}
 .record .orderState{position: relative;}
 .record .orderState a{font-size:13px;}
 .record .btnWrap{margin-top: 5px;}
@@ -371,7 +371,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my table.formList .birth > div{margin:0;}
 #myInfoEdit input[type="text"]:disabled{background: #f7f7f7;}
 #myInfoEdit td{color: #666}
-#myInfoEdit .account button{border:0;color: #fff;background: #a9c700;line-height: 0}
+#myInfoEdit .account button{border:0;color: #fff;background: #465f8d;line-height: 0}
 #myInfoEdit .account .active button{border:1px solid #a9c700;color: #a9c700;background: none}
 #myInfoEdit .account td{color: #999}
 #myInfoEdit .account td:first-child{font-size: 0;}

@@ -25,6 +25,8 @@ module.exports = function() {
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
 	$(loginController).on('verifyMemberResult', verifyMemberResultHandler);
 	
+	var DropDownMenu = require('../../components/DropDownMenu.js');
+
 	var myInfoObject;
 	var emailDuplicateFlag = false;
 	var emailCertCode = null;
@@ -223,8 +225,12 @@ module.exports = function() {
 		if (status == 200) {
 			MyPage.Super.Super.htmlPopup('../../_popup/popRefundAccount.html', 590, 'popEdge', {
 				onOpen: function() {
-					console.log(result.commonCodes);
-					//$('#bankCode').append(tag);
+					var tags = '<li><a href="#">선택하세요</a></li>';
+					for (var key in result.bankCodes) {
+						tags += '<li><a href="#" data-value="'+result.bankCodes[key].code+'">'+result.bankCodes[key].bankName+'</a></li>';
+					}
+					$('#refundBankDrop').html(tags);
+					DropDownMenu.refresh();
 					$('#refundAccountForm').submit(submitChangeRefundAccount);
 				},
 				onSubmit: function() {
@@ -242,7 +248,7 @@ module.exports = function() {
 	function submitChangeRefundAccount(e) {
 		e.preventDefault();
 
-		var bankCode = $('#bankCode').val();
+		var bankCode = $('#refundBankDrop').val();
 		var accountNumber = $('#accountNumber').val();
 		var depositorName = $('#depositorName').val();
 
@@ -253,7 +259,7 @@ module.exports = function() {
 		} else if ($.trim(depositorName) == '') {
 			alert('예금주명을 입력해 주세요');
 		} else {
-			controller.refundData(bankCode, accountNumber, depositorName);
+			controller.refundData(bankCode[0], accountNumber, depositorName);
 		} 
 		
 		e.stopPropagation();

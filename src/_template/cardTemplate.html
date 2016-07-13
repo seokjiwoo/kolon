@@ -5,8 +5,31 @@
 			<div class="hexTop"><span></span></div>
 			<div class="hexBottom"><span></span></div>
 		</div>
+		<!-- Type1: 매거진 cardType06 cardSize02 -->
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_01"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">diy interior</p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">Magazine</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="#">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="#">{{scrapCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<div class="melody"></div>
+			<!--// flag -->
+		</div>
+		<!--<a href="" class="cardRemove"></a>-->
+		{{/vxIF}}
+		<!-- Type1 -->
+		
+		<!-- Type3: 샵 상품 cardType02 cardSize02 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
-		<!-- Type2: 샵 상품 cardType02 cardSize02 -->
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">handmade</p></div>
 			<!-- card 내용 -->
@@ -37,11 +60,11 @@
 			<!--// flag -->
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
-		<!-- Type2 -->
 		{{/vxIF}}
+		<!-- Type3 -->
 
+		<!-- Type5: 그래프 cardType08 cardSize02 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_05"}}
-		<!-- Type8: 그래프 cardType08 cardSize02 -->
 		<div class="cardCon">
 			<h2 class="cardTit">{{{title}}}</h2>
 			<div class="cardThum">
@@ -70,8 +93,57 @@
 			<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
-		<!-- Type8 -->
 		{{/vxIF}}
+		<!-- Type5 -->
+
+		<!-- Type7: 전문가 cardType08 cardSize02 -->
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_07"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">space specialist</p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt">
+				<p class="cardCat">{{typeName}}</p>
+				<h2 class="cardTit">{{summaryIntro}}<b>{{name}}</b><span>{{companyWebsiteUrl}}</span></h2>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle04">
+				<div class="cardCon">
+					<div class="iHover">
+						<div class="hoverImage">
+							<div class="imgHexagon" style="{{background}}"><!-- hover 배경이미지 -->
+								<div class="imgHexTop"><span></span></div>
+								<div class="imgHexBottom"><span></span></div>
+							</div>
+							<div class="imageCon"></div>
+						</div>
+					</div>
+					<div class="specialist">
+						<div class="specialistPic"><img src="{{imageUrl}}" alt=""></div>
+						<p class="specialistInfo">
+							<span class="tit"><b>{{name}}</b>{{companyWebsiteUrl}}</span>
+							<span class="adr">{{serviceArea}}</span>
+						</p>
+					</div>
+					<ul class="card_icon">
+						<li class="talk cardDetail"><a href="#">1:1대화</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail text"><a href="#"><span>판매<br>상품</span>{{countProduct}}</a></li>
+				<li class="cardDetail text"><a href="#"><span>완료된<br>공간</span>{{countView}}</a></li>
+				<li class="cardDetail like"><a href="#">{{likeCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<div class="hi"></div>
+			<!--// flag -->
+		</div>
+		{{/vxIF}}
+		<!-- Type7 -->
 	</li>
 {{/cards}} 
 </script>

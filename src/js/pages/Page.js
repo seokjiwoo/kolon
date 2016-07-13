@@ -31,7 +31,9 @@ module.exports = function() {
 	eventManager = require('../events/EventManager'),
 	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
-	COLORBOX_EVENT = events.COLOR_BOX;
+	COLORBOX_EVENT = events.COLOR_BOX,
+	MEMBERINFO_EVENT = events.MEMBER_INFO,
+	INFOSLIDER_EVENT = events.INFO_SLIDER;
 	
 	var FloatMenu = require('../components/FloatingMenu.js'),
 	floatMenu = FloatMenu();
@@ -56,6 +58,7 @@ module.exports = function() {
 		dropDownMenu.init();	// 드롭다운 메뉴
 		initAddressPopupButton();	// 주소록 팝업버튼
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
+		initInfoSlider();	// #infoSlider bxSlider
 
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -71,11 +74,25 @@ module.exports = function() {
 		eventManager.on(COLORBOX_EVENT.REFRESH, cardlistEventRefreshHandler)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
+		// MeberInfo event Listener
+		eventManager.on(MEMBERINFO_EVENT.WILD_CARD, onMemberInfoHandler);
+
+		// info slider event Listener
+		eventManager.on(INFOSLIDER_EVENT.REFRESH, infoSliderRefreshHandler)
+					.on(INFOSLIDER_EVENT.DESTROY, infoSliderDestoryhHandler);
+
+
 		fullSlideImg(); // slide Full img 중앙정렬 
-		$('#infoSlider').bxSlider({
-			pager:false
-		})
+
 	};
+
+	function initInfoSlider() {
+		if (!$('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').bxSlider({
+				pager:false
+			});
+		}
+	}
 
 	/**
 	 * 내 정보 갱신 반영
@@ -437,6 +454,35 @@ module.exports = function() {
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
 		cardList().cleanOverEffect();
+	}
+
+	// MeberInfo event Listener
+	// @see Events.js#Events.MEMBER_INFO
+	// @example
+	// 	var isLogin = eventManager.triggerHandler(MEMBERINFO_EVENT.IS_LOGIN);
+	function onMemberInfoHandler(e) {
+		var type = e.type;
+
+		switch(type) {
+			// 로그인 유무 체크
+			case MEMBERINFO_EVENT.IS_LOGIN:
+				return (Super.loginData) ? true : false;
+				break;
+		}
+	}
+
+	function infoSliderRefreshHandler(e) {
+		if ($('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').data('bxSlider').reloadSlider();
+		} else {
+			initInfoSlider();
+		}
+	}
+
+	function infoSliderDestoryhHandler(e) {
+		if ($('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').data('bxSlider').destroySlider();
+		}
 	}
 	
 	/**

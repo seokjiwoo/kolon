@@ -127,7 +127,7 @@
 .popCon .expertInfo .eCon .infoWrap {width:100%; overflow:hidden; position:relative;}
 .popCon .expertInfo .eCon .infoWrap p {line-height:130%;}
 .popCon .expertInfo .eCon .infoWrap p.infoTit {font-size:30px; font-family:'NotoSansR', sans-serif; color:#000;}
-#cboxLoadedContent .popCon .expertInfo .eCon .infoWrap p.infoId {margin-top:5px; font-size:16px;  font-family:'NotoSansL', sans-serif; color:#666;}
+#cboxLoadedContent .popCon .expertInfo .eCon .infoWrap p.infoId {margin-top:5px; font-size:16px;  font-family:'NotoSansL', sans-serif; color:#666;line-height: 4.4em;}
 .popCon .expertInfo .eCon .infoWrap a.expertMore {width:99px; height:28px; padding:0 15px; border:1px solid #999; border-radius:13px; position:absolute; top:0; right:0; display:inline-block; line-height:28px; font-size:14px; text-align:center; color:#666;  font-family:'NotoSansR', sans-serif;}
 .popCon .expertInfo .eCon .infoDetail {width:100%; min-height:40px; overflow:hidden; position:relative;}
 .popCon .expertInfo .eCon .infoDetail:before {content:''; width:50px; height:1px; background:#c7c7c7; position:absolute; top:0; left:0; display:inline-block;}

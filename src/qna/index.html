@@ -140,10 +140,9 @@
 										</div>
 										<!-- 의견 내용 -->
 										<div class="conbox">
-											<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">{{opinionClass}}</span>{{title}}</a></strong>
+											<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">{{category}}</span>{{title}}</a></strong>
 											<div class="conboxTxt">
-												<p class="except">{{{content}}}</p>
-												<span class="more">더보기</span>
+												<p class="except02">{{{content}}} <a href="" class="more">더보기</a></p>
 											</div>
 											<!-- 사진 -->
 											<ul class="photoList">
@@ -154,7 +153,7 @@
 											<!--// 사진 -->
 											<div class="commentCount">
 												{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
-												<button id="writeCommentButton{{key}}" class="btn btnSizeS btnColor02 writeCommentButton">의견작성</button>
+												<button id="writeCommentButton{{key}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
 											</div>
 										</div>
 										<!--// 의견 내용 -->
@@ -174,7 +173,7 @@
 										 				</div>
 									 				</div>
 													<p class="txt">{{{content}}}</p>
-									 				<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
+									 				<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount {{answerCountClass}}'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
 									 			</li>
 												{{/each}}
 											</ul>
