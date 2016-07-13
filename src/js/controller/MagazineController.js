@@ -25,10 +25,6 @@ function ClassMagazineController() {
 	function MagazineController() {
 		callerObj = {
 			/**
-			 * 인기 매거진 리스트
-			 */
-			getListPopular: getListPopular,
-			/**
 			 * 매거진 리스트
 			 */
 			list : list,
@@ -61,29 +57,15 @@ function ClassMagazineController() {
 		return callerObj;	
 	}
 
-	function getListPopular() {
-		Super.callApi('/apis/magazines/popular', 'GET', {}, function(status, result) {
-			if (status == 200) {
-				model.topFixedList(result.data.magazines);
-				$(callerObj).trigger('getListPopularResult', [200]);
-			} else {
-				Super.handleError('getListPopular', result);
-				$(callerObj).trigger('getListPopularResult', [result.status]);
-			}
-		}, true);
-	}
-
-
 	//	매거진 리스트
 	//	GET /apis/magazines
 	function list() {
 		Super.callApi('/apis/magazines', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				// model.topFixedList(result.data.magazines);
-				$(callerObj).trigger('magazineListResult', [result.status]);
+				$(callerObj).trigger('magazineListResult', [status, result.data]);
 			} else {
 				Super.handleError('magazineList', result);
-				$(callerObj).trigger('magazineListResult', [result.status]);
+				$(callerObj).trigger('magazineListResult', [status, result]);
 			}
 		}, true);
 	}
@@ -93,10 +75,10 @@ function ClassMagazineController() {
 	function info(magazineNumber) {
 		Super.callApi('/apis/magazines/' + magazineNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('magazineInfoResult', [result.status]);
+				$(callerObj).trigger('magazineInfoResult', [status, result]);
 			} else {
 				Super.handleError('magazineInfo', result);
-				$(callerObj).trigger('magazineInfoResult', [result.status]);
+				$(callerObj).trigger('magazineInfoResult', [status, result]);
 			}
 		}, true);
 	}
@@ -106,10 +88,10 @@ function ClassMagazineController() {
 	function likes(magazineNumber) {
 		Super.callApi('/apis/magazines/' + magazineNumber + '/likes', 'POST', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('magazineLikesResult', [result.status]);
+				$(callerObj).trigger('magazineLikesResult', [status, result]);
 			} else {
 				Super.handleError('magazineLikes', result);
-				$(callerObj).trigger('magazineLikesResult', [result.status]);
+				$(callerObj).trigger('magazineLikesResult', [status, result]);
 			}
 		}, true);
 	}
@@ -119,10 +101,10 @@ function ClassMagazineController() {
 	function others(magazineNumber) {
 		Super.callApi('/apis/magazines/' + magazineNumber + '/others', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('magazineOthersResult', [result.status]);
+				$(callerObj).trigger('magazineOthersResult', [status, result]);
 			} else {
 				Super.handleError('magazineOthers', result);
-				$(callerObj).trigger('magazineOthersResult', [result.status]);
+				$(callerObj).trigger('magazineOthersResult', [status, result]);
 			}
 		}, true);
 	}
@@ -132,10 +114,10 @@ function ClassMagazineController() {
 	function partnerInfo(magazineNumber) {
 		Super.callApi('/apis/magazines/' + magazineNumber + '/partnerInfo', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('magazinePartnerInfoResult', [result.status]);
+				$(callerObj).trigger('magazinePartnerInfoResult', [status, result]);
 			} else {
 				Super.handleError('magazinePartnerInfo', result);
-				$(callerObj).trigger('magazinePartnerInfoResult', [result.status]);
+				$(callerObj).trigger('magazinePartnerInfoResult', [status, result]);
 			}
 		}, true);
 	}
@@ -145,10 +127,10 @@ function ClassMagazineController() {
 	function products(magazineNumber) {
 		Super.callApi('/apis/magazines/' + magazineNumber + '/products', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('magazineProductsResult', [result.status]);
+				$(callerObj).trigger('magazineProductsResult', [status, result]);
 			} else {
 				Super.handleError('magazineProducts', result);
-				$(callerObj).trigger('magazineProductsResult', [result.status]);
+				$(callerObj).trigger('magazineProductsResult', [status, result]);
 			}
 		}, true);
 	}
@@ -158,10 +140,10 @@ function ClassMagazineController() {
 	function recommend(magazineNumber) {
 		Super.callApi('/apis/magazines/' + magazineNumber + '/recommend', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('magazineRecommendResult', [result.status]);
+				$(callerObj).trigger('magazineRecommendResult', [status, result]);
 			} else {
 				Super.handleError('magazineRecommend', result);
-				$(callerObj).trigger('magazineRecommendResult', [result.status]);
+				$(callerObj).trigger('magazineRecommendResult', [status, result]);
 			}
 		}, true);
 	}

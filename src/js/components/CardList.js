@@ -101,14 +101,19 @@ module.exports = function() {
 		DP_CARD_TYPE_08: 홈서비스
 		DP_CARD_TYPE_09: 엔하우징
 		*/
+
 		$.map(cardListArray, function(each) {
+			each.background = each.cardImageUrl != undefined ? "background:#eeeeee" : "background:#eeeeee url('"+each.cardImageUrl+"')";
+
 			switch(each.cardTypeCode) {
+				case 'DP_CARD_TYPE_01':
+					each.cardClass = 'cardType06 cardSize02';
+					each.detailUrl = "/magazine/detail.html?articleNumber="+ each.cardNumber;
+					break;
 				case 'PROD':
 					each.cardTypeCode = 'DP_CARD_TYPE_03';
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
-					each.background = each.cardImageUrl == undefined ? "background:#eeeeee" : "background-image:url('"+each.cardImageUrl+"')";
-					
 					each.detailUrl = "/shop/detail.html?productNumber="+ each.cardNumber;
 					break;
 			}
@@ -116,7 +121,6 @@ module.exports = function() {
 			if (each.basePrice != undefined) each.basePrice = util.currencyFormat(each.basePrice);
 			if (each.salePrice != undefined) each.salePrice = util.currencyFormat(each.salePrice);
 			if (each.discountPrice != undefined) each.discountPrice = util.currencyFormat(each.discountPrice);
-			
 
 			console.log(each);
 		});
@@ -153,33 +157,7 @@ module.exports = function() {
 	};
 
 	function onCardConOver(e) {
-		if (!$(this).hasClass('cHover')) {
-			$(this).addClass('cHover');
-			/*
-			$(this).find('.cardBgWrap').show();
-			$(this).find('.cardBg03').queue('fx',[]).stop().css('opacity', 1).delay(100).animate({
-				"opacity": 0
-			}, {
-				"duration": 1000,
-				"easing": "easeOutBack"
-			});
-			$(this).find('.cardBg02').queue('fx',[]).stop().css('opacity', 1).delay(200).animate({
-				"opacity": 0
-			}, {
-				"duration": 1000,
-				"easing": "easeOutBack"
-			});
-			$(this).find('.cardBg01').queue('fx',[]).stop().css('opacity', 1).delay(300).animate({
-				"opacity": 0
-			}, {
-				"duration": 1000,
-				"easing": "easeOutBack",
-				complete: function() {
-					$(this).parents('.cardBgWrap').hide();
-				}
-			});
-			*/
-		}
+		if (!$(this).hasClass('cHover')) $(this).addClass('cHover');
 	};
 
 	function onCardConLeave(e) {
@@ -187,7 +165,7 @@ module.exports = function() {
 	};
 
 	function onCardDetailOver(e) {
-		$(this).addClass('sHover');
+		if (!$(this).hasClass('sHover')) $(this).addClass('sHover');
 	};
 
 	function onCardDetailLeave(e) {

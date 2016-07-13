@@ -5,8 +5,31 @@
 			<div class="hexTop"><span></span></div>
 			<div class="hexBottom"><span></span></div>
 		</div>
+		<!-- Type1: 매거진 cardType06 cardSize02 -->
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_01"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">diy interior</p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">Magazine</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="#">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="#">{{scrapCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<div class="melody"></div>
+			<!--// flag -->
+		</div>
+		<!--<a href="" class="cardRemove"></a>-->
+		{{/vxIF}}
+		<!-- Type1 -->
+		
+		<!-- Type3: 샵 상품 cardType02 cardSize02 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
-		<!-- Type2: 샵 상품 cardType02 cardSize02 -->
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">handmade</p></div>
 			<!-- card 내용 -->
@@ -37,11 +60,11 @@
 			<!--// flag -->
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
-		<!-- Type2 -->
 		{{/vxIF}}
+		<!-- Type3 -->
 
+		<!-- Type5: 그래프 cardType08 cardSize02 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_05"}}
-		<!-- Type8: 그래프 cardType08 cardSize02 -->
 		<div class="cardCon">
 			<h2 class="cardTit">{{{title}}}</h2>
 			<div class="cardThum">
@@ -70,8 +93,8 @@
 			<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
-		<!-- Type8 -->
 		{{/vxIF}}
+		<!-- Type5 -->
 	</li>
 {{/cards}} 
 </script>
