@@ -251,19 +251,14 @@ module.exports = function() {
 			}
 		});
 	
-		$(window).resize(function(){
-			if ($(window).width() > 1239){
-				$('.topMenu, .search .subTop').css('margin-left','0');
-			}
-			$('#lnbWrapper').css('height', $(window).height()-(topBannerShowFlag?113:0)+'px');
-			lnbScroller.refresh();
-		});
+		$(window).resize(setLnbSize);
 
 		cardList().initOverEffect();
 	};
 
 	function openLnbHandler(e) {
 		e.preventDefault();
+		setLnbSize();
 		$('#lnbWrapper').animate({'left':'0'}, 500);
 		$('#dim').show().css('z-index','4');
 	};
@@ -274,6 +269,14 @@ module.exports = function() {
 			$('#lnbWrapper').animate({'left':'-285px'}, 500);
 			$('#dim').hide().css('z-index','3');
 		}
+	};
+
+	function setLnbSize(e) {
+		if ($(window).width() > 1239){
+			$('.topMenu, .search .subTop').css('margin-left','0');
+		}
+		$('#lnbWrapper').css('height', $(window).height()-(topBannerShowFlag?113:0)+'px');
+		lnbScroller.refresh();
 	};
 
 	/**
