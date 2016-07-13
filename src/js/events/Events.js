@@ -66,6 +66,23 @@ function Events() {
 
 
 		// [S] Controller Events
+			// Magazine - 메거진
+			MAGAZINE : {				
+				// 매거진 리스트
+				LIST : 'magazineListResult',
+				// 매거진 정보
+				INFO : 'magazineInfoResult',
+				// 매거진 좋아요
+				LIKES : 'magazineLikesResult',
+				// 에디터의 다른 매거진 카드 리스트
+				OTHERS : 'magazineOthersResult',
+				// 매거진 에디터 정보
+				PARTNERINFO : 'magazinePartnerInfoResult',
+				// 추천 상품 카드 리스트
+				PRODUCTS : 'magazineProductsResult',
+				// 추천 매거진 카드 리스트
+				RECOMMEND : 'magazineRecommendResult'
+			},
 			// 마이홈즈 - 타임라인
 			// @see MyPageController.js
 			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/my-page-controller
