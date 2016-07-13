@@ -236,13 +236,13 @@ module.exports = function() {
 				case CART_EVENT.ADD:
 					switch (status) {
 						case 200:
-							break;
-						default:
 							// 옵션 유무에 따라 인터렉션 달라짐 - ppt114
 							// 옵션이 없을 경우 confirm '선택하신 상품을 마이커먼에 담았습니다. 바로 확인 하시겠습니까?';
 							if (win.confirm('선택하신 상품을 마이커먼에 담았습니다.\n바로 확인 하시겠습니까?')) {
 								location.href = '/myPage/';
 							}
+							break;
+						default:
 							break;
 					}
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
