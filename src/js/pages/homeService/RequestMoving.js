@@ -179,7 +179,7 @@ module.exports = function() {
 			alert('서비스 업체를 선택해 주세요');
 		} else {
 			var movingService = {
-				"movingDate": moment($('.js-picker').datepicker('getDate')).format('YYYYMMDD'),
+				"movingDate": moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'),
 				"movingTypeCode": movingTypeCode
 			}
 			var livingService = {
