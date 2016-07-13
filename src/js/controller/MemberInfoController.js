@@ -265,7 +265,7 @@ function ClassMemberInfoController() {
 	 * 환불 정보 입력용 은행 목록 요청 
 	 */
 	function refundBankList() {
-		Super.callApi('/apis/codes/BM_BANK_SECTION', 'GET', {}, function(status, result) {
+		Super.callApi('/apis/codes/bank', 'GET', {}, function(status, result) {
 			if (status != 200) Super.handleError('refundBankList', result);
 			$(callerObj).trigger('refundBankListResult', [status, result.data]);
 		}, true);
@@ -275,7 +275,7 @@ function ClassMemberInfoController() {
 	 * 환불 정보 수정 요청
 	 */
 	function refundData(bankCode, accountNumber, depositorName) {
-		Super.callApi('/apis/codes/BM_BANK_SECTION', 'POST', {
+		Super.callApi('/apis/member/refundAccount', 'POST', {
 			"accountNumber": accountNumber,
 			"bankCode": bankCode,
 			"depositorName": depositorName
