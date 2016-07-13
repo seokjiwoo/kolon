@@ -30,7 +30,7 @@
 .checkAgree label{display:inline-block;font-family:'NotoSansR', sans-serif;font-size: 16px;color: #000;}
 .checkAgree input[type="checkbox"] {position: absolute;opacity: 0;width:24px;height:24px;margin:0;padding:0;z-index:-1}
 .checkAgree label:before{content: '';display: inline-block;width: 24px;height: 24px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.checkAgree label.on:before{background-color: #a9c700}
+.checkAgree label.on:before{background-color: #465f8d}
 
 .arrayWrap{max-width:1520px;height: 40px; overflow:hidden; margin:0 auto;}
 .formList .arrayWrap{ overflow:visible; }
@@ -160,8 +160,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnSizeM2 {height:40px; padding:0 20px; font-size: 14px;border-radius: 20px;line-height: 40px;}
 .btnSizeL{height:60px;font-size: 20px;border-radius: 30px;line-height: 60px;}
 
-.btnColor01{background:#a9c700} /*green*/
-.btnColor01:hover{background:#9fbb00} /*green*/
+.btnColor01{background:#465f8d} /*green*/
+.btnColor01:hover{background:#3b5c9a} /*green*/
 .btnColor02{background:#f1645c} /*red*/
 .btnColor02:hover{background:#f05149} /*red*/
 .btnColor03{background:#999} /*light grey*/
@@ -170,8 +170,8 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnColor04:hover{background:#464646} /*dark grey*/
 .btnColor05{background:#1a1a1a} /*black*/
 .btnColor05:hover{background:#454545} /*black*/
-.btnColor06{background:#00aeb9} /*dark green*/
-.btnColor06:hover{background:#00a3ae} /*dark green*/
+.btnColor06{background:#b08967} /* brown */
+.btnColor06:hover{background:#b27947}
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 .btnShadow{box-shadow: 0px 2px rgba(0,0,0,0.1);}
@@ -229,7 +229,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .checkbox {position: relative;margin-top:18px;}
 .checkbox label{font-family:'NotoSansR', sans-serif;font-size: 16px;color: #000;cursor:pointer}
 .checkbox label:before{content: '';display: inline-block;width: 24px;height: 24px;margin-right: 10px;background: #ccc url('../images/ico_check.png') no-repeat center;border-radius: 50%;vertical-align: middle;}
-.checkbox label.on:before{background-color: #00aeb9}
+.checkbox label.on:before{background-color: #465f8d}
 
 
 .listSquare{font-family:'NotoSansM', sans-serif;font-size: 14px;}

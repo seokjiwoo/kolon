@@ -36,6 +36,7 @@
 
 .newform .pageTit{width: 600px;height: 140px;background-position: 0 -395px;}
 .newform .subTop .slideCon .slideTit{font-size: 50px;font-family:'NotoSansL', sans-serif;line-height: 1.1em;} 
+.newform .subTop .slideCon .slideTit .italicNum{font-size: 70px;letter-spacing: -2px;}
 .newform .subTop .slideCon .catWrap .cat{color: #fa7169;}
 .newform .subTop .slideCon .catWrap .cat:after{background: #f59a9a}
 .newform .subTop .slideCon .catWrap .subCat{color: #000;background: #a7dfd6;box-shadow: 4px 4px 0px #ff6460}
