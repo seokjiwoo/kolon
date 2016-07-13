@@ -124,9 +124,7 @@ module.exports = function() {
 	 */
 	function opinionsListHandler(e, status, result) {
 		if (status == 200) {
-			var key = 0;
 			$.map(result, function(each) {
-				each.key = key;
 				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
 				if (each.answers.length == 0) {
 					each.answerCount = '<p>미답변</p>';
@@ -134,11 +132,10 @@ module.exports = function() {
 					each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
 				}
 				$.map(each.answers, function(eachAnswers) {
+					if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 				});
-				console.log(each);
-
-				key++;
+				//console.log(each);
 			});
 
 			var template = window.Handlebars.compile($('#opinion-template').html());

@@ -20,6 +20,7 @@ module.exports = function() {
 	function logoutResultHandler(e, status) {
 		switch(status) {
 			case 200:
+			case 401:
 				//alert('로그아웃 성공');
 				location.href = '/';
 				break;

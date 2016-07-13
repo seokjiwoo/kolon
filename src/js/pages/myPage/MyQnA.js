@@ -14,7 +14,6 @@ module.exports = function() {
 	
 	var controller = require('../../controller/OpinionsController.js');
 	$(controller).on('opinionsClassResult', opinionsClassHandler);
-	// $(controller).on('opinionsListResult', myOpinionsHandler);
 	$(controller).on('postAnswerResult', postAnswerResultHandler);
 	$(controller).on('pollAnswerResult', pollAnswerResultHandler);
 
@@ -56,7 +55,6 @@ module.exports = function() {
 			$('#opinionThemes').append(tags);
 		}
 		
-		//controller.opinionsList();
 		myPageController.myOpinions();
 	}
 
@@ -65,8 +63,6 @@ module.exports = function() {
 	 */
 	function myOpinionsHandler(e, status, result) {
 		if (status == 200) {
-			var key = 0;
-			
 			if (result.length > 0) {
 				$.map(result, function(each) {
 					each.opinionClass = opinionsClassArray[each.opinionClassNumber];
@@ -75,9 +71,10 @@ module.exports = function() {
 					} else {
 						each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
 					}
-					each.key = key;
-
-					key++;
+					$.map(each.answers, function(eachAnswers) {
+						if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
+						if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
+					});
 				});
 
 				var template = window.Handlebars.compile($('#opinion-template').html());
@@ -90,7 +87,20 @@ module.exports = function() {
 			$('.answerCount').click(pollAnswer);
 			$('.answerForm').submit(answerFormSubmitHandler);
 			
-			$('.except').dotdotdot({watch:'window'});
+			$('.except').dotdotdot({
+				after: 'a.more',
+				watch: 'window',
+				callback:function(){
+					$('.more').on('click', function(e) { // more slideDown
+						e.preventDefault();
+						$(this).parent('p').siblings('.slideCon').slideDown();
+						$(this).parent('.except').trigger('destroy').css('height','auto').find('a').remove();
+					});					
+					if (!$('.except').hasClass('is-truncated')) {
+						$(this).find('.more').remove();
+					}
+				}
+			});
 		}
 	};
 
