@@ -103,7 +103,20 @@ function ClassOrderController() {
 			/**
 			 * 반품 반려 상세 내역
 			 */
-			claimsReturnDeny: claimsReturnDeny
+			claimsReturnDeny: claimsReturnDeny,
+			/**
+			 * 배송형 주문서 작성 페이지 조회
+			 */
+			myOrdersInfo: myOrdersInfo,
+			/**
+			 * hash_String 취득(EncryptData)
+			 */
+			ordersGetHashStr: ordersGetHashStr,
+			/**
+			 * 배송형 주문서 작성 페이지 처리(결제)
+			 */
+			ordersProcess: ordersProcess
+
 		}
 		
 		return callerObj;	
@@ -513,6 +526,69 @@ function ClassOrderController() {
 			}
 		}, false);
 	};
+
+
+	/**
+	 * 배송형 주문서 작성 페이지 조회
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
+	 "products": [
+		{
+			"orderOptionNumber": "67",
+			"productNumber": "1001",
+			"quantity": 2
+		}
+	]
+	 */
+	function myOrdersInfo(products) {
+		Super.callApi('/apis/orders', 'POST', {
+			'products' : products
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myOrdersInfoResult', [status, result]);
+			} else {
+				Super.handleError('myOrdersInfo', result);
+				$(callerObj).trigger('myOrdersInfoResult', [status, result]);
+			}
+		}, true);
+	}
+
+	/**
+	 * hash_String 취득(EncryptData)
+	 * @param  {String} ediDate [yyyyMMddHHmmss - 전문 생성일시]
+	 * @param  {String} price   [description - 결제 금액(최종 결제 금액)]
+	 */
+	function ordersGetHashStr(ediDate, price) {
+		Super.callApi('/apis/orders/getHashString', 'GET', {
+			'ediDate' : ediDate,
+			'price' : price
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersGetHashStrResult', [status, result]);
+			} else {
+				Super.handleError('ordersGetHashStr', result);
+				$(callerObj).trigger('ordersGetHashStrResult', [status, result]);
+			}
+		}, true);
+	}
+
+	/**
+	 * 배송형 주문서 작성 페이지 처리(결제)
+	 * @param  {String} products   [주문 상품 목록( 상품번호 | 주문옵션 번호| 수량| 주소 수번| 배송요청 메모 ) 형태로 입력, ',' 로 구분]
+	 * @param  {String} usingPoint [결제 금액(최종 결제 금액)]
+	 */
+	function ordersProcess(products, usingPoint) {
+		Super.callApi('/apis/orders/process', 'POST', {
+			'products' : products,
+			'usingPoint' : usingPoint
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersProcessResult', [status, result]);
+			} else {
+				Super.handleError('ordersProcess', result);
+				$(callerObj).trigger('ordersProcessResult', [status, result]);
+			}
+		}, true);
+	}
 
 	/*
 	/apis/orders : 주문서 작성
