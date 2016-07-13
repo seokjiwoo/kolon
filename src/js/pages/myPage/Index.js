@@ -59,8 +59,7 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 		
-		// controller.myTimeLine();
-		onControllerListener({type:TIMELINE_EVENT.LIST});
+		controller.myTimeLine();
 	}
 
 	function setElements() {
@@ -168,20 +167,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case TIMELINE_EVENT.LIST:
-				dummyData = {"status":"200","message":"ok","data":{"myCommons":[{"myPageTypeCode":"BM_MYPAGE_TYPE_11","myPageTypeName":"가입 인사","myPageContents":"커먼에 가입하신걸 환영합니다.","registerDateTime":"2014-06-28 00:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2015-06-29 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-01-29 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-01-30 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-02-01 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-02-15 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-02-21 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-05-01 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-06-29 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-01 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-02 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-05 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-06 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-06 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-07 10:00:00.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-07 10:35:10.0"},{"myPageTypeCode":"BM_MYPAGE_TYPE_15","myPageTypeName":"마이카트","myPageContents":"다이닝 스페이스 상품을 장바구니에 추가하셨습니다.","registerDateTime":"2016-07-07 11:42:10.0"}]}};
-
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					// case 200:
-					// 	break;
-					default:
-						result = dummyData;
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
 				displayData(result);
 				setFromNowUpdate();
