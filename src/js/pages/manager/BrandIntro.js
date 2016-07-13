@@ -12,10 +12,19 @@ module.exports = function() {
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
 	followController = require('../../controller/FollowController.js'),
+	expertsController = require('../../controller/ExpertsController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
+	messagePopup = require('../../components/MessagePopup.js'),
+	dropDownMenu =  require('../../components/DropDownMenu.js'),
 	COLORBOX_EVENT = events.COLOR_BOX,
-	FOLLOWING_EVENT = events.FOLLOWING;
+	EXPERTS_EVENT = events.EXPERTS,
+	FOLLOWING_EVENT = events.FOLLOWING,
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+
+	var CardList = require('../../components/CardList.js');
+	var cardList;
 	
 	var callerObj = {
 		/**
@@ -27,8 +36,8 @@ module.exports = function() {
 
 	var opts = {
 		templates : {
-			wrap : '.container',
-			template : '#brand-intro-templates'
+			wrap : '.js-manager-brand-wrap',
+			template : '#manager-brand-templates'
 		},
 		colorbox : '#colorbox',
 		cssClass : {
@@ -46,53 +55,32 @@ module.exports = function() {
 		self = callerObj;
 		self.opts = opts;
 
-		self.followTargetCode = util.getUrlVar().followTargetCode;
-		self.followTargetNumber = util.getUrlVar().followTargetNumber;
-		self.followTargetSectionCode = util.getUrlVar().followTargetSectionCode;
+		self.urlVar = util.getUrlVar();
+		self.followTargetCode = self.urlVar.followTargetCode;
+		self.followTargetNumber = self.urlVar.followTargetNumber;
+		self.followTargetSectionCode = self.urlVar.followTargetSectionCode;
+		self.expertNumber = self.urlVar.expertNumber;
 
-		if (debug.isDebugMode()) {
-			if (!self.followTargetCode) {
-				var followTargetCode = win.prompt('queryString not Found!\n\nfollowTargetCode 를 String 입력하세요', '');
-				location.href += '?followTargetCode=' + followTargetCode;
-				return;
-			}
-			if (!self.followTargetNumber) {
-				var followTargetNumber = win.prompt('queryString not Found!\n\nfollowTargetNumber 를 Number 입력하세요', '');
-				location.href += '&followTargetNumber=' + followTargetNumber;
-				return;
-			}
-			if (!self.followTargetSectionCode) {
-				var followTargetSectionCode = win.prompt('queryString not Found!\n\nfollowTargetSectionCode 를 String 입력하세요', '');
-				location.href += '&followTargetSectionCode=' + followTargetSectionCode;
-				return;
-			}
+		if (!self.expertNumber) {
+			var expertNumber = win.prompt('queryString not Found!\n\nexpertNumber 를 Number 입력하세요', '');
+			location.href += '?expertNumber=' + expertNumber;
+			return;
 		}
-
-		$('.container a, .container button').on('click', function(e) {
-			var target = $(e.currentTarget);
-
-			if (target.hasClass('js-add-follow')) {
-				e.preventDefault();
-
-				var data = {
-					"followTargetCode": self.followTargetCode,
-					"followTargetNumber": self.followTargetNumber,
-					"followTargetSectionCode": self.followTargetSectionCode
-				};
-
-				$('.js-ajax-data').html('ajax 전송 data : ' + JSON.stringify(data));
-				followController.addFollows(data);
-			} else if (target.hasClass('js-delete-follow')) {
-				e.preventDefault();
-				
-				$('.js-ajax-data2').html('ajax 전송 data : ' + JSON.stringify(self.followTargetNumber));
-				followController.deleteFollows(self.followTargetNumber);
-			}
-		});
 		
 		setElements();
 		setBindEvents();
+
+		setBtnsEvents();
+
+		cardList = CardList();
+		$(cardList).on('cardAppended', cardAppendedHandler);
+
+		expertsController.brand(self.expertNumber);
 	}
+
+	function cardAppendedHandler(e) {
+		console.log('카드 이벤트 설정?');
+	};
 
 	function setElements() {
 		self.templatesWrap = $(self.opts.templates.wrap);
@@ -102,8 +90,67 @@ module.exports = function() {
 	}
 
 	function setBindEvents() {
+		$(expertsController).on(EXPERTS_EVENT.WILD_CARD, onControllerListener);
 		$(followController).on(FOLLOWING_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
+	}
+
+	function setBtnsEvents() {
+		destroyBtnsEvents();
+		$('#btnFollow').on('click', onFollowListener);
+		$('#brandList .drop').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
+	}
+
+	function onDropCheckMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		cardList.removeAllData();
+		expertsController.brandProducts(self.expertNumber, target.val().join(''));
+		// getOrderList(self.searchInp.val(), data.values.join(','));
+	}
+
+	function onFollowListener(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget);
+
+		if (target.hasClass('js-add-follow')) {
+			followController.addFollows({
+				'followTargetCode' : self.followTargetCode,
+				'followTargetNumber' : self.followTargetNumber,
+				'followTargetSectionCode' : self.followTargetSectionCode
+			});
+		} else if (target.hasClass('js-delete-follow')) {
+			followController.deleteFollows(self.followTargetNumber);
+		}
+	}
+
+	function destroyBtnsEvents() {
+	}
+	
+
+	// Handlebars 마크업 템플릿 구성
+	function displayData(data, template, templatesWrap) {
+		template = template || self.template;
+		templatesWrap = templatesWrap || self.templatesWrap;
+
+		var source = self.template.html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
+
+		templatesWrap.empty()
+							.addClass(self.opts.cssClass.isLoading)
+							.append(insertElements);
+
+		templatesWrap.imagesLoaded()
+							.always(function() {
+								templatesWrap.removeClass(self.opts.cssClass.isLoading);
+								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(INFOSLIDER_EVENT.REFRESH);
+								eventManager.triggerHandler(DROPDOWNMENU_EVENT.REFRESH);
+								setBtnsEvents();
+							});
 	}
 
 	function onControllerListener(e, status, response, elements) {
@@ -112,9 +159,23 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
+			case EXPERTS_EVENT.BRAND:
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				displayData(result.data.brand);
+
+				cardList.init();	// 카드 리스트
+				expertsController.brandProducts(self.expertNumber, 'PD_OPTION_SORT_01');
+				break;
+			case EXPERTS_EVENT.BRAND_PRODUCTS:
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				cardList.appendData(result.data.products);
+				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
 					case 200:
+						$('#btnFollow').removeClass('js-add-follow')
+										.addClass('js-delete-follow')
+										.text('팔로잉');
 						break;
 					default:
 						win.alert('HTTP Status Code ' + status);
@@ -122,12 +183,13 @@ module.exports = function() {
 				}
 
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
-				$('.' + eventType).html(JSON.stringify(response));
 				break;
 			case FOLLOWING_EVENT.DELETE_FOLLOW:
 				switch(status) {
 					case 200:
+						$('#btnFollow').removeClass('js-delete-follow')
+										.addClass('js-add-follow')
+										.text('팔로우');
 						break;
 					default:
 						win.alert('HTTP Status Code ' + status);
@@ -144,8 +206,14 @@ module.exports = function() {
 	function onColorBoxAreaListener(e) {
 		switch(e.type) {
 			case COLORBOX_EVENT.COMPLETE:
+				if (self.colorbox.hasClass('popMessage')) {
+					messagePopup.init('', self.expertNumber);
+				}
 				break;
 			case COLORBOX_EVENT.CLEANUP:
+				if (self.colorbox.hasClass('popMessage')) {
+					messagePopup.destroy();
+				}
 				break;
 		}
 	}

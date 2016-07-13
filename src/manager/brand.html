@@ -6,8 +6,8 @@
 <body data-page-id="brand-intro">
 	<div class="wrapper brand">
 		<!-- @@include ../_template/menu.html -->
-		<div class="container">
-			<div class="infoTop">
+		<div class="container js-manager-brand-wrap">
+			<!-- <div class="infoTop">
 				<div class="wrap colWrap">
 					<div class="col colL">
 						<div class="infoPic"><img src="/images/temp13.jpg" alt=""></div>
@@ -21,7 +21,7 @@
 						<a href="" id="sharePage">페이지 공유</a>
 						<p class="infoBtn">
 							<span id="followView" class="myRate"><b>104 </b>팔로워</span>
-							<a href="" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a> <!-- <a href="" class="js-delete-follow">팔로우 취소</a> -->
+							<a href="" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a> <a href="" class="js-delete-follow">팔로우 취소</a>
 							<a href="" id="btnMsg" class="btnSizeM btnColor03">1:1 메세지</a>
 						</p>
 					</div>
@@ -75,43 +75,100 @@
 				</div>
 				<ul class="cardWrap" id="cardWrap">
 				</ul>
-			</section>
+			</section> -->
 		</div>
-
-
-		<!-- [D] API 통신 - 결과화면 영역 -->
-		<div class="container js-api-result">
-			<h1>API 통신 - 결과화면 영역</h1>
-			<div>
-				<h2>POST /apis/follows 팔로우 등록</h2>
-				<div class="js-ajax-data"></div>
-				<div class="addFollowsResult"></div>
-			</div>
-			<div>
-				<h2>DELETE /apis/follows/{followNumber} 팔로우 삭제</h2>
-				<div class="js-ajax-data2"></div>
-				<div class="deleteFollowsResult"></div>
-			</div>
-		</div>
-		<!--// [D] API 통신 - 결과화면 영역 -->
-
 
 		<!-- @@include ../_template/footer.html -->
 	</div>
 
 
-<style>
-	.js-api-result {margin:20px}
-	.js-api-result h1 {border-bottom:1px #999 solid;margin-bottom:20px;padding-bottom:20px}
-	.js-api-result > div {margin-left:20px;margin-bottom:40px;padding-bottom:10px;border-bottom:1px #999 dashed}
-	.js-api-result > div h2 {color:#ff6600;}
-	.js-api-result > div > div {margin-left:20px;padding-top:10px}
-</style>
-
-<script id="brand-intro-templates" type="text/x-handlebars-template">
-	{{!-- brand-intro-templates --}}
-	{{!--// brand-intro-templates --}}
+<script id="manager-brand-templates" type="text/x-handlebars-template">
+	{{!-- manager-brand-templates --}}
+	<div class="infoTop">
+		<div class="wrap colWrap">
+			<div class="col colL">
+				<div class="infoPic"><img src="{{imageUrl}}" alt=""></div>
+				<div class="infoWrap">
+					<h2 class="infoTit">{{companyName}}</h2>
+					{{!-- 평점 evalScore TBD --}}
+					<!-- <p class="infoDetail"><span class="area">{{roadBaseAddr}}</span><span class="star">{{evalScore}}</span></p> -->
+					{{!--// 평점 evalScore TBD --}}
+					<p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span></p>
+					<p class="infoSub">{{intro}}</p>
+				</div>
+			</div>
+			<div class="col colR">
+				<a href="" id="sharePage">페이지 공유</a>
+				<p class="infoBtn">
+					<span id="followView" class="myRate"><b>104 </b>팔로워 - API 항목 필요</span>
+					<a href="#" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a>
+					<a href="../_popup/popMessage.html" id="btnMsg" class="btnSizeM btnColor03 btnPop btnPop590" data-user-class="orderPop popEdge popMessage">1:1 메세지</a>
+				</p>
+			</div>
+			
+		</div>
+	</div>
+	<div class="tabType02">
+		<ul class="sWrap">
+			<li class="on"><a href="/manager/brand.html?expertNumber={{expertNum}}">브랜드 소개</a></li>
+			<li><a href="/manager/brandItemList.html?expertNumber={{expertNum}}">판매상품 <span>{{countProduct}}</span></a></li>
+		</ul>
+	</div>
+	<section class="contentCard" id="brandInfo">
+		<div class="singleCard">
+			{{#if portfolios}}
+				<ul id="infoSlider">
+					{{#each portfolios}}
+					<li><img src="{{.}}" alt="포트폴리오 {{vxMath @index '+' 1}}"></li>
+					{{/each}}
+				</ul>
+			{{/if}}
+			<div class="sWrap" id="content">
+				<p>{{summaryIntro}}</p>
+				{{#if companyWebsiteUrl}}
+					<h4 class="conTit">URL</h4>
+					<a href="{{companyWebsiteUrl}}" target="_blank" class="url">{{companyWebsiteUrl}}</a>
+				{{/if}}
+				{{#if listTags}}
+					<h3 class="secTit">연관 태그</h3>
+					<ul class="tag mt20">
+						{{#if listTags}}
+						<li><a href="/search/result.html?query={{.}}">#{{.}}</a></li>
+						{{/if}}
+					</ul>
+				{{/if}}
+			</div>
+		</div>
+	</section>
+	<section id="brandList">
+		<div class="alignBox">
+			<ul class="drop" data-prevent="true">
+				<li><a href="#">최신순</a></li>
+				<li><a href="#" data-value="PD_OPTION_SORT_01" class="on">최신순</a></li>
+				<li><a href="#" data-value="PD_OPTION_SORT_02">인기순</a></li>
+				<li><a href="#" data-value="PD_OPTION_SORT_05">가격높은순</a></li>
+				<li><a href="#" data-value="PD_OPTION_SORT_04">가격낮은순</a></li>
+				<li><a href="#" data-value="PD_OPTION_SORT_03">스크랩 많은 순</a></li>
+			</ul>
+		</div>
+		<!-- 
+		<div class="arrayWrap">
+			<ul class="arrayDrop arrayCount">
+				<li><a href="#">최신순</a></li>
+				<li><a href="#">인기순</a></li>
+				<li><a href="#">가격높은순</a></li>
+				<li><a href="#">가격낮은순</a></li>
+				<li><a href="#">스크랩 많은 순</a></li>
+			</ul>
+		</div>
+		 -->
+		<ul class="cardWrap" id="cardWrap">
+		</ul>
+	</section>
+	{{!--// manager-brand-templates --}}
 </script>
+
+<!-- @@include ../_template/cardTemplate.html -->
 
 </body>
 </html>

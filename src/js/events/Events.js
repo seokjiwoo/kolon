@@ -89,7 +89,7 @@ function Events() {
 				// 에디터의 다른 매거진 카드 리스트
 				OTHERS : 'magazineOthersResult',
 				// 매거진 에디터 정보
-				PARTNERINFO : 'magazinePartnerInfoResult',
+				PARTNER_INFO : 'magazinePartnerInfoResult',
 				// 추천 상품 카드 리스트
 				PRODUCTS : 'magazineProductsResult',
 				// 추천 매거진 카드 리스트
@@ -107,11 +107,11 @@ function Events() {
 				// 브랜드 상세
 				BRAND : 'expertsBrandResult',
 				// 브랜드 판매상품 조회
-				BRANDPRODUCTS : 'expertsBrandProductsResult',
+				BRAND_PRODUCTS : 'expertsBrandProductsResult',
 				// 전문가 판매상품
 				PRODUCTS : 'expertsProductsResult',
 				// 전문가 판매상품 필터 아이템 리스트
-				PRODUCTSFILTER : 'expertsProductsFilterResult'
+				PRODUCTS_FILTER : 'expertsProductsFilterResult'
 			},
 			// 마이홈즈 - 타임라인
 			// @see MyPageController.js
