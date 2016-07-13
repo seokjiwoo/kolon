@@ -104,7 +104,16 @@ module.exports = function() {
 				"personalAnswer": {
 					"answerSequences": [ $(this).data().answerContent ],
 					"questionNumber": questionNumber
-				}
+				},
+				"personalDwelling": {
+					"dwellingFormCode": "",
+					"dwellingPyeongCode": ""
+				},
+				"personalRegion": {
+					"dong": "",
+					"sido": "",
+					"sigungu": ""
+				} 
 			});
 			e.stopPropagation();
 		});
@@ -133,7 +142,16 @@ module.exports = function() {
 
 			if (selectedItems[cardId].dwellingFormCode != undefined && selectedItems[cardId].dwellingPyeongCode != undefined) {
 				controller.answer(cardId, 'BM_PERSONAL_TYPE_02', {
-					"personalDwelling": selectedItems[cardId]
+					"personalAnswer": {
+						"answerSequences": [],
+						"questionNumber": 0
+					},
+					"personalDwelling": selectedItems[cardId],
+					"personalRegion": {
+						"dong": "",
+						"sido": "",
+						"sigungu": ""
+					} 
 				});
 			}
 		});
@@ -197,6 +215,14 @@ module.exports = function() {
 			selectedItems[cardId].dong = data.values[0];
 
 			controller.answer(cardId, 'BM_PERSONAL_TYPE_01', {
+				"personalAnswer": {
+					"answerSequences": [],
+					"questionNumber": 0
+				},
+				"personalDwelling": {
+					"dwellingFormCode": "",
+					"dwellingPyeongCode": ""
+				},
 				"personalRegion": selectedItems[cardId]
 			});
 		});
