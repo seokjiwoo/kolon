@@ -240,6 +240,14 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .scrapListWrap ul.scrapList li.on a:before {content:''; width:159px; height:159px; border:4px solid #000; position:absolute; top:0; left:0;}
 .scrapListWrap ul.scrapList li img {width:159px; height:159px;}
 
+.messageProfile{text-align:center;margin-top:20px;font-size:18px;}
+.messageProfile .thumb{width:48px;height:48px;display:inline-block;overflow:hidden;border-radius:100%;}
+.messageProfile .thumb img{width:100%;}
+.messageProfile p span{display:block;}
+.messageProfile p span:last-child{margin-top:5px;color:#f1645c;}
+.messageInput{text-align:left;}
+.messageInput textarea{height:150px;border:0;}
+
 .reviewTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;background:#fff;}
 .reviewTop h2{font-size:18px;}
 .reviewTop .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
@@ -652,6 +660,7 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .returnInfo01 ul li{margin-top:10px;}
 .returnInfo01 ul li:first-child{margin-top:0;}
 .returnInfo01 ul li:after{content:"";display:block;clear:both;}
+.returnInfo01 ul li span{letter-spacing:-1px;}
 .returnInfo01 ul li span:first-child{float:left;}
 .returnInfo01 ul li span:last-child{float:right;}
 .returnInfo01 ul li span em{position:relative;font-style:normal;padding-right:16px;} 
@@ -691,9 +700,33 @@ ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 .questionBox{padding:15px 15px 30px;background:#e0e0e0;color:#666;}
 .questionBox p{padding-left:20px;background:url("../images/ico_info.png") no-repeat 0 2px;background-size:15px;line-height:1.4em;}
 
-.estimateArea{padding:25px 15px 25px;background:#f8f8f8;}
-.estimateArea .profile{}
-.estimateArea .profile{}
+.estimateArea{padding:25px 15px 25px;background:#f8f8f8;border-bottom:1px solid #e0e0e0;}
+.estimateArea .profile{overflow:hidden;}
+.estimateArea .profile .thumb{width:48px;height:48px;overflow:hidden;float:left;border-radius:100%;margin-right:10px;}
+.estimateArea .profile .thumb img{width:100%;}
+.estimateArea .profile .info{margin-top:5px;}
+.estimateArea .profile .info span{display:block;}
+.estimateArea .profile .info span:first-child{font-size:18px;}
+.estimateArea .profile .info span:last-child{color:#999;margin-top:5px;}
+.estimateArea .adr{position:relative;padding-left:10px;margin-top:20px;}
+.estimateArea .adr:after{position:absolute;left:11px;top:-11px;content:"";width:25px;height:1px;display:block;background:#c7c7c7;}
+.estimateArea .adr span{display:inline-block;color:#666;}
+.estimateArea .adr span:first-child{padding-left:12px;background:url("../images/ico_map.png") no-repeat 0 center;background-size:9px;}
+.estimateArea .adr span:last-child{padding-left:15px;background:url("../images/ico_onestar.png") no-repeat 0 center;background-size:12px;margin-left:5px;}
+.estimateArea .pid{margin-top:15px;}
+.estimateArea .pid .btnSizeS{width:32%;}
+.returnInfo01 .totalPrice{border-bottom:0;}
+
+.estList{border-bottom:1px solid #666;font-size:15px;}
+.estList li{padding:15px 0;border-top:1px solid #ccc;}
+.estList li:first-child{border-top:0;}
+.estList li p{}
+.estList li p:after{content:"";display:block;clear:both;}
+.estList li p:first-child span{}
+.estList li p:first-child span:first-child{float:left;}
+.estList li p:first-child span:last-child{float:right;}
+.estList li p:first-child + p{}
+.estList li p:last-child{margin-top:10px;color:#666;}
 
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}

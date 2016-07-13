@@ -1,3 +1,4 @@
+.manager{background:#e0e0e0;}
 .manager .portfolioArea{position:relative;}
 .manager .portfolioArea ul li a{display:block;}
 .manager .portfolioArea ul li img{width:100%;vertical-align:top;}
@@ -8,14 +9,15 @@
 .manager .portfolioArea .bx-controls-direction .bx-next{position:absolute;top:50%;margin:-14px 0 0 0;width:20px;height:33px;display:block;background:url("../images/ico_slide_btn.png") no-repeat 0 0;background-size:100%;opacity:0.5;}
 .manager .portfolioArea .bx-controls-direction .bx-prev{left:15px;}
 .manager .portfolioArea .bx-controls-direction .bx-next{background-position:0 -33px;right:15px;}
-.manager .expertArea{position:relative;height:202px;padding-top:30px;background:#343434;}
+.manager .expertArea{position:relative;height:202px;padding-top:30px;background:#343434;margin-bottom:10px;}
 .manager .expertArea .thumb{position:absolute;left:50%;top:-60px;z-index:10;margin-left:-45px;width:90px;height:90px;display:block;overflow:hidden;border-radius:100%;}
 .manager .expertArea .thumb img{width:100%;vertical-align:top;}
 .manager .expertArea .info{color:#fff;text-align:center;}
 .manager .expertArea .info em{display:block;margin-top:16px;font-style:normal;font-size:15px;}
+.manager .expertArea .info em i{display:block;color:#f1dfba;font-style:normal;margin-top:5px;}
 .manager .expertArea .info p{color:#999;line-height:1.4em;margin-top:8px;}
 .manager .expertArea .fol{margin-top:16px;}
-.manager .expertArea .fol span{position:relative;display:inline-block;padding-left:17px;margin-left:25px;}
+.manager .expertArea .fol span{position:relative;display:inline-block;padding-left:17px;margin-left:25px;font-style:italic;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;}
 .manager .expertArea .fol span:first-child{background:url("../images/ico_onestar.png") no-repeat 0 center;background-size:14px;margin-left:0;}
 .manager .expertArea .fol span:first-child:after{position:absolute;right:-15px;top:2px;content:"";display:block;width:1px;height:12px;background:#4f4f4f;}
 .manager .expertArea .fol span:last-child{background:url("../images/ico_follow.png") no-repeat 0 center;background-size:14px;}
@@ -51,8 +53,8 @@
 .manager .productArea .list .info span:nth-child(2){color:#999;margin-top:5px;}
 .manager .productArea .list .info span:nth-child(3){margin-top:12px;}
 .manager .productArea .list .info span:nth-child(3) em{font-style:normal;font-size:15px;font-weight:bold;}
-.manager .productArea .txt{margin-top:15px;padding:15px;background:#f8f8f8;clear:both;}
-.manager .productArea .txt p{line-height:1.4em;margin-bottom:15px;}
+.manager .previewList .txt{margin-top:15px;padding:15px;background:#f8f8f8;clear:both;}
+.manager .previewList .txt p{line-height:1.4em;margin-bottom:15px;}
 
 .manager .result{height:30px;background:#f8f8f8;text-align:center;border-bottom:1px solid #ccc;}
 .manager .result span{display:block;padding-top:8px;}
