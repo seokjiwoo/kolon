@@ -1,3 +1,4 @@
+.order{background:#e0e0e0;}
 .order .orderWrap {background:#fff; padding:25px 15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .order .orderWrap + .orderWrap {margin-top:10px;}
 .order .zipCode label.btnColor03 {background:#666;}
