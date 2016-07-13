@@ -325,7 +325,7 @@ table .optList .option a.btnDel {width:0; height:0; margin:0; padding:25px 25px 
 .compt .adrArea dl dd {width:85%; font-family: 'NotoSansL', sans-serif;}
 .compt .adrArea dl dd div {height:42px; display:table-cell; vertical-align:middle;}
 
-.calendar {width:215px; padding:10px 20px; margin-right:11px; border:1px solid #d6d6d6; /*border-radius:7px;*/ display:inline;}
+.calendar {width:215px; padding:9px 20px; margin-right:11px; border:1px solid #d6d6d6; /*border-radius:7px;*/ display:inline;}
 .calendar span.calInp {position:relative;display:inline-block;}
 .calendar span.calInp input[type="text"] {width:200px; border:0; padding:0; font-family:'NotoSansM', sans-serif; color: #999; margin-right:16px;}
 .calendar a.calBtn {width:0; height:0; padding:16px 16px 0 0; background:url('../images/ico_calendar.png') 0 0 no-repeat; display:inline-block; overflow:hidden; position:absolute; top:1px; right:0;border:none;border-radius:0;}
@@ -335,6 +335,7 @@ table .optList .option a.btnDel {width:0; height:0; margin:0; padding:25px 25px 
 
 table.ui-datepicker-calendar th, table.ui-datepicker-calendar td {background:#fff !important;border:none !important;text-align:center !important;padding:0 !important;width:28px !important;height:28px !important;}
 table.ui-datepicker-calendar th.ui-datepicker-week-end, table.ui-datepicker-calendar td.ui-datepicker-week-end a {color:#f1645c !important;}
+table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:#fff !important;}
 
 /* dropBox */
 .drop {overflow:hidden;height:38px;border:1px solid #ccc;}

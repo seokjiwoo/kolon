@@ -326,8 +326,15 @@
 					</div>
 					<a href="#">
 						<div class="recordCon">
+							<span class="logo"></span>
 							<p class="recordCat">{{myPageTypeName}}</p>
-							<p class="recordTxt">{{myPageContents}}</p>
+							{{!-- 가입 인사 예외 처리 --}}
+							{{#if @../last}}
+								<p class="recordTxt"><span class="logo"></span>{{myPageContents}}</p>
+							{{else}}
+								<p class="recordTxt">{{myPageContents}}</p>
+							{{/if}}
+							{{!--// 가입 인사 예외 처리 --}}
 						</div>
 						<div class="recordThumb"><img src="/images/temp14.jpg" alt=""></div>
 					</a>

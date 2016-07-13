@@ -10,6 +10,9 @@ function Events() {
 	fileName = 'events/Events.js';
 
 	var Events = {
+		MEMBER_INFO : {
+			IS_LOGIN : 'VX-MEMBER_INFO-IS_LOGIN'
+		},
 		// @see http://www.jacklmoore.com/colorbox/
 		COLOR_BOX : {
 			OPEN : 'cbox_open',
@@ -157,6 +160,17 @@ function Events() {
 				CANCEL_LIST : 'myCancelListResult',
 				// 취소 신청 조회 팝업
 				CANCEL_DETAIL : 'cancelDetailResult',
+
+
+				// OrderController - 주문서 작성
+				// @see OrderController.js
+				// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/me-order-controller
+					// 배송형 주문서 작성 페이지 조회
+					ORDERS_INFO : 'myOrdersInfoResult',
+					// hash_String 취득(EncryptData)
+					ORDERS_GET_HASH : 'ordersGetHashStrResult',
+					// 배송형 주문서 작성 페이지 처리(결제)
+					ORDERS_PROCESS : 'ordersProcessResult'
 			},
 			CLAIMS : {
 				// 교환/반품/취소 목록 조회

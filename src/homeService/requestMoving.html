@@ -88,118 +88,65 @@
 									<tr>
 										<th scope="col">서비스 종류</th>
 										<td class="inputWrap radioBox">
-											<!--
-											<ul class="homeType">
-												<li class="hType01"><span class="radioBox"><input type="radio" id="hTp1" name="hTp1" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label></span></li>
-												<li class="hType02"><span class="radioBox"><input type="radio" id="hTp2" name="hTp2" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label></span></li>
-												<li class="hType03"><span class="radioBox"><input type="radio" id="hTp3" name="hTp3" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label></span></li>
-												<li class="hType04"><span class="radioBox"><input type="radio" id="hTp4" name="hTp4" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label></span></li>
-											</ul>
-											-->
-											<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1">포장이사</label>
-											<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2">원룸이사</label>
-											<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3">보관이사</label>
-											<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4">사무실이사</label>
+											<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1" class="htype htype01"><span>포장이사</span></label>
+											<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2" class="htype htype02"><span>원룸이사</span></label>
+											<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3" class="htype htype03"><span>보관이사</span></label>
+											<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4" class="htype htype04"><span>사무실이사</span></label>
 										</td>
 									</tr>
 								</tbody>
 							</table>
 							<div class="btnC">
-								<a href="" class="btnSizeM btnColor02 btnWM">이사업체 추천 요청</a>
+								<a href="" class="btnSizeM btnColor01 btnWM">이사업체 추천 요청</a>
 							</div>
 						</div>
 						<h3 class="subTit">추천 이사업체 선택</h3>
 						<div class="orderCont recommendBox">
-							<div class="payTab tabWrap">
-								<span class="on best">
-									<a href="#" class="radioBtn">
-										<p class="thumBox"><img src="../images/thum_recommend01.jpg"></p>
-										<ul class="arraySide">
-											<li>
-												<!-- 별점 
-												grade01 -> 1.0
-												grade15 -> 1.5
-												grade02 -> 2.0
-												grade25 -> 2.5
-												grade03 -> 3.0
-												grade35 -> 3.5
-												grade04 -> 4.0
-												grade45 -> 4.5
-												grade05 -> 5.0
-												-->
-												<p>
-													가격 만족도
-													<span class="gradeNum">4.0</span>
-													<span class="grade">
-														<span class="grade04"></span>
-													</span>
-												</p>
-											</li>
-											<li>
-												<p>
-													서비스 만족도
-													<span class="gradeNum">3.5</span>
-													<span class="grade">
-														<span class="grade35"></span>
-													</span>
-												</p>
-											</li>
-										</ul>
-										<p class="labelTxt">이사의 명가</p>
-									</a>
-								</span>
-								<span class="">
-									<a href="#" class="radioBtn">
-										<p class="thumBox"><img src="../images/thum_recommend02.jpg"></p>
-										<ul class="arraySide">
-											<li>
-												<p>
-													가격 만족도
-													<span class="gradeNum">3.0</span>
-													<span class="grade">
-														<span class="grade03"></span>
-													</span>
-												</p>
-											</li>
-											<li>
-												<p>
-													서비스 만족도
-													<span class="gradeNum">4.5</span>
-													<span class="grade">
-														<span class="grade45"></span>
-													</span>
-												</p>
-											</li>
-										</ul>
-										<p class="labelTxt">신사의 이사</p>
-									</a>
-								</span>
-								<span class="">
-									<a href="#" class="radioBtn">
-										<p class="thumBox"><img src="../images/thum_recommend03.jpg"></p>
-										<ul class="arraySide">
-											<li>
-												<p>
-													가격 만족도
-													<span class="gradeNum">5.0</span>
-													<span class="grade">
-														<span class="grade05"></span>
-													</span>
-												</p>
-											</li>
-											<li>
-												<p>
-													서비스 만족도
-													<span class="gradeNum">2.5</span>
-													<span class="grade">
-														<span class="grade25"></span>
-													</span>
-												</p>
-											</li>
-										</ul>
-										<p class="labelTxt">이사가요</p>
-									</a>
-								</span>
+							<div id="companyListWrap" class="payTab tabWrap">
+								이사정보를 먼저 입력하시고, “이사업체 추천요청”을 누르시면,<br /> 
+								최적의 이사업체를 추천해 드립니다.
+								<script id="moving-company-templates" type="text/x-handlebars-template">
+								{{!-- moving-comapny-templates --}}
+									{{#each .}}
+									<span class="" data-company-number="{{companyNumber}}">
+										<a href="#" class="radioBtn">
+											<p class="thumBox"><img src="{{companyLogoImageUrl}}"></p>
+											<!-- <ul class="arraySide">
+												<li>
+													별점 
+													grade01 -> 1.0
+													grade15 -> 1.5
+													grade02 -> 2.0
+													grade25 -> 2.5
+													grade03 -> 3.0
+													grade35 -> 3.5
+													grade04 -> 4.0
+													grade45 -> 4.5
+													grade05 -> 5.0
+													<p>
+														가격 만족도
+														<span class="gradeNum">4.0</span>
+														<span class="grade">
+															<span class="grade04"></span>
+														</span>
+													</p>
+												</li>
+												<li>
+													<p>
+														서비스 만족도
+														<span class="gradeNum">3.5</span>
+														<span class="grade">
+															<span class="grade35"></span>
+														</span>
+													</p>
+												</li>
+											</ul> -->
+											<p class="labelTxt">{{companyName}}</p>
+										</a>
+									</span>
+									{{/each}}
+								{{!--// moving-comapny-templates --}}
+								</script>
 							</div>
 						</div>
 						<h3 class="subTit">추가 요청사항 (선택)</h3>

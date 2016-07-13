@@ -103,7 +103,11 @@
 
 <script id="scrap-images-templates" type="text/x-handlebars-template">
 	<a href="/myPage/scrap.html#category=images&amp;folderName={{folderName}}&amp;folderNumber={{folderNumber}}" class="btnSizeS btnColor04 fl_right btnList">목록</a>
-	<h2 class="scrapTit">{{folderName}}<b>({{scrapCount}})</b></h2>
+	{{#folders}}
+		{{#if @first}}
+		<h2 class="scrapTit">{{folderName}}<b>({{scrapCount}})</b></h2>
+		{{/if}}
+	{{/folders}}
 	<ul class="cardWrap" id="cardWrap">
 	{{#folders}}
 		{{#each scrapImages}}
