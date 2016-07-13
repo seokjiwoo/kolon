@@ -108,13 +108,19 @@ module.exports = function() {
 			switch(each.cardTypeCode) {
 				case 'DP_CARD_TYPE_01':
 					each.cardClass = 'cardType06 cardSize02';
-					each.detailUrl = "/magazine/detail.html?articleNumber="+ each.cardNumber;
+					each.detailUrl = "/magazine/detail.html?articleNumber="+each.cardNumber;
 					break;
 				case 'PROD':
 					each.cardTypeCode = 'DP_CARD_TYPE_03';
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
-					each.detailUrl = "/shop/detail.html?productNumber="+ each.cardNumber;
+					each.detailUrl = "/shop/detail.html?productNumber="+each.cardNumber;
+					break;
+				default:
+					each.cardTypeCode = 'DP_CARD_TYPE_07';
+				case 'DP_CARD_TYPE_07':
+					each.cardClass = 'cardType07 cardSize02';
+					each.detailUrl = "/manager/detail.html?expertNum="+each.expertNum;
 					break;
 			}
 

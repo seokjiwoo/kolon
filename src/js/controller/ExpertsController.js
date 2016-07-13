@@ -60,7 +60,7 @@ function ClassExpertsController() {
 	function list() {
 		Super.callApi('/apis/experts', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('expertsListResult', [status, result]);
+				$(callerObj).trigger('expertsListResult', [status, result.data]);
 			} else {
 				Super.handleError('expertsList', result);
 				$(callerObj).trigger('expertsListResult', [status, result]);

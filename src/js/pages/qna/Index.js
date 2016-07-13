@@ -21,8 +21,8 @@ module.exports = function() {
 	$(controller).on('postAnswerResult', postAnswerResultHandler);
 	$(controller).on('pollAnswerResult', pollAnswerResultHandler);
 
-	var expertController = require('../../controller/ExpertController.js');
-	$(expertController).on('expertListResult', expertListHandler);
+	var expertController = require('../../controller/ExpertsController.js');
+	$(expertController).on('expertsListResult', expertListHandler);
 
 	var myPageController = require('../../controller/MyPageController.js');
 	$(myPageController).on('myOpinionsResult', myOpinionsHandler);

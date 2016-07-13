@@ -95,6 +95,55 @@
 		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
 		<!-- Type5 -->
+
+		<!-- Type7: 전문가 cardType08 cardSize02 -->
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_07"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">space specialist</p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt">
+				<p class="cardCat">{{typeName}}</p>
+				<h2 class="cardTit">{{summaryIntro}}<b>{{name}}</b><span>{{companyWebsiteUrl}}</span></h2>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle04">
+				<div class="cardCon">
+					<div class="iHover">
+						<div class="hoverImage">
+							<div class="imgHexagon" style="{{background}}"><!-- hover 배경이미지 -->
+								<div class="imgHexTop"><span></span></div>
+								<div class="imgHexBottom"><span></span></div>
+							</div>
+							<div class="imageCon"></div>
+						</div>
+					</div>
+					<div class="specialist">
+						<div class="specialistPic"><img src="{{imageUrl}}" alt=""></div>
+						<p class="specialistInfo">
+							<span class="tit"><b>{{name}}</b>{{companyWebsiteUrl}}</span>
+							<span class="adr">{{serviceArea}}</span>
+						</p>
+					</div>
+					<ul class="card_icon">
+						<li class="talk cardDetail"><a href="#">1:1대화</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail text"><a href="#"><span>판매<br>상품</span>{{countProduct}}</a></li>
+				<li class="cardDetail text"><a href="#"><span>완료된<br>공간</span>{{countView}}</a></li>
+				<li class="cardDetail like"><a href="#">{{likeCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<div class="hi"></div>
+			<!--// flag -->
+		</div>
+		{{/vxIF}}
+		<!-- Type7 -->
 	</li>
 {{/cards}} 
 </script>
