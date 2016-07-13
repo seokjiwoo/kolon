@@ -1,9 +1,4 @@
 .my{background:#e0e0e0;}
-.my .pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
-.my .conTit{padding-bottom:10px;border-bottom:1px solid #666;font-size:15px;font-weight:bold;}
-.my .conTit:after{content:"";display:block;clear:both;}
-.my .conTit a{float:right;padding-right: 14px;background: url("../images/ico_arrowG.png") no-repeat right 2px;background-size: 6px;font-size:13px;font-weight:normal;}
-.my .pageTit + .myWrap{margin-top:10px;}
 
 .user.infoTop .myRate{margin-right: 3%;}
 .user.infoTop .myRate a{color: #666}
