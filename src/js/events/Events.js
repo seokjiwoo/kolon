@@ -63,10 +63,14 @@ function Events() {
 			INIT : 'VX-HORIZON_BAR_CHART-INIT',
 			APPEND : 'VX-HORIZON_BAR_CHART-APPEND'
 		},
-
+		INFO_SLIDER : {
+			REFRESH : 'VX-INFO_SLIDER-REFRESH',
+			DESTROY : 'VX-INFO_SLIDER-DESTROY',
+		},
 
 		// [S] Controller Events
 			// Magazine - 메거진
+			// @see MagazineController.js
 			MAGAZINE : {				
 				// 매거진 리스트
 				LIST : 'magazineListResult',
@@ -82,6 +86,24 @@ function Events() {
 				PRODUCTS : 'magazineProductsResult',
 				// 추천 매거진 카드 리스트
 				RECOMMEND : 'magazineRecommendResult'
+			},
+			// Experts - 전문가
+			// @see ExpertsController.js
+			EXPERTS : {
+				// 전문가 전체 목록
+				LIST : 'expertsListResult',
+				// 전문가 이름 조회
+				NAME : 'expertsNameResult',
+				// 전문가 상세 조회
+				DETAIL : 'expertsDetailResult',
+				// 브랜드 상세
+				BRAND : 'expertsBrandResult',
+				// 브랜드 판매상품 조회
+				BRANDPRODUCTS : 'expertsBrandProductsResult',
+				// 전문가 판매상품
+				PRODUCTS : 'expertsProductsResult',
+				// 전문가 판매상품 필터 아이템 리스트
+				PRODUCTSFILTER : 'expertsProductsFilterResult'
 			},
 			// 마이홈즈 - 타임라인
 			// @see MyPageController.js
