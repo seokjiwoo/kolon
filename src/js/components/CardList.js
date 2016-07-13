@@ -124,7 +124,7 @@ module.exports = function() {
 					each.cardTypeCode = 'DP_CARD_TYPE_07';
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';
-					each.detailUrl = "/manager/detail.html?expertNum="+each.expertNum;
+					each.detailUrl = "/manager/detail.html?expertNumber="+each.expertNum;
 					break;
 			}
 
