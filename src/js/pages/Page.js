@@ -31,7 +31,8 @@ module.exports = function() {
 	eventManager = require('../events/EventManager'),
 	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
-	COLORBOX_EVENT = events.COLOR_BOX;
+	COLORBOX_EVENT = events.COLOR_BOX,
+	MEMBERINFO_EVENT = events.MEMBER_INFO;
 	
 	var FloatMenu = require('../components/FloatingMenu.js'),
 	floatMenu = FloatMenu();
@@ -70,6 +71,9 @@ module.exports = function() {
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, cardlistEventRefreshHandler)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
+
+		// MeberInfo event Listener
+		eventManager.on(MEMBERINFO_EVENT.WILD_CARD, onMemberInfoHandler);
 
 		fullSlideImg(); // slide Full img 중앙정렬 
 		$('#infoSlider').bxSlider({
@@ -437,6 +441,21 @@ module.exports = function() {
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
 		cardList().cleanOverEffect();
+	}
+
+	// MeberInfo event Listener
+	// @see Events.js#Events.MEMBER_INFO
+	// @example
+	// 	var isLogin = eventManager.triggerHandler(MEMBERINFO_EVENT.IS_LOGIN);
+	function onMemberInfoHandler(e) {
+		var type = e.type;
+
+		switch(type) {
+			// 로그인 유무 체크
+			case MEMBERINFO_EVENT.IS_LOGIN:
+				return (Super.loginData) ? true : false;
+				break;
+		}
 	}
 	
 	/**
