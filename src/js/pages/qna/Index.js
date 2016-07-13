@@ -285,7 +285,7 @@ module.exports = function() {
 			folders.scrapImagesGroups = [];
 			groupIdx = -1;
 
-			$.each(folders.scrapImages, function(index, scraps) {
+			$.each(folders.opinionScrapList, function(index, scraps) {
 				if (index%5 === 0) {
 					folders.scrapImagesGroups.push([]);
 					groupIdx++;

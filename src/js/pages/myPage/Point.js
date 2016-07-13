@@ -35,6 +35,7 @@ module.exports = function() {
 		initRangePicker();
 
 		controller.myPoints();
+		controller.pointsHistory(moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'), moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'), 'BM_POINT_STMT_SECTION');
 		
 		$('#typeSelect').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			historyCode = data.values[0];
@@ -51,65 +52,29 @@ module.exports = function() {
 
 	function myPointsResultHandler(e, status, result) {
 		var dummyData = {
-			"point": [
-				{
-					"cancelPoint": "1",
-					"memberNumber": "1",
-					"pointTypeCd": "BM_POINT_TYPE_01",
-					"pointTypeNm": "유형이름",
-					"reason": "포인트 제공 사유",
-					"remainDays": "1",
-					"remainPoint": "1000",
-					"savingDate": "2016.07.05",
-					"savingPoint": "1",
-					"useDate": "2016.07.11",
-					"usePoint": "1000",
-					"validDate": "2016.07.05"
-				},
-				{
-					"cancelPoint": "1",
-					"memberNumber": "1",
-					"pointTypeCd": "BM_POINT_TYPE_01",
-					"pointTypeNm": "유형이름",
-					"reason": "포인트 제공 사유",
-					"remainDays": "1",
-					"remainPoint": "2000",
-					"savingDate": "2016.07.09",
-					"savingPoint": "1",
-					"useDate": "2016.07.10",
-					"usePoint": "100",
-					"validDate": "2016.07.09"
+			"status": "200",
+			"message": "ok",
+			"data": {
+				"point": {
+					"savingPoint": "0",
+					"savingPointIn30": "0"
 				}
-			]
+			}
 		}
 
 		switch(status) {
 			case 200:
-				if (!result.point) {
-					win.alert('HTTP Status Code ' + status + ' - 데이터 없음. DummyData 구조 설정');
-					result = dummyData;
-				}
 				break;
 			default:
-				win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-				result = dummyData;
 				break;
 		}
 
-		var totalPoint = 0;
-		$.each(result.point, function(index, point) {
-			totalPoint += parseInt(point.remainPoint, 10);
-			point.usePointDesc = util.currencyFormat(parseInt(point.usePoint,10));
-		});
-		result.totalPoint = totalPoint;
-		result.totalPointDesc = util.currencyFormat(totalPoint);
-
-		console.log(result.point);	// null ....
+		result.point.savingPointDesc = util.currencyFormat(parseInt(result.point.savingPoint, 10));
+		result.point.savingPointIn30Desc = util.currencyFormat(parseInt(result.point.savingPointIn30, 10));
 
 		debug.log(fileName, 'myPointsResultHandler', result);
 
-		displayData(result.point);
-		displaySummaryData(result);
+		displaySummaryData(result.point);
 	};
 
 	function pointsHistoryResultHandler(e, status, result) {
@@ -134,14 +99,8 @@ module.exports = function() {
 
 		switch(status) {
 			case 200:
-				if (!result.history) {
-					win.alert('HTTP Status Code ' + status + ' - 데이터 없음. DummyData 구조 설정');
-					result = dummyData;
-				}
 				break;
 			default:
-				win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-				result = dummyData;
 				break;
 		}
 
@@ -149,16 +108,14 @@ module.exports = function() {
 			point.usePointDesc = util.currencyFormat(parseInt(point.usePoint,10));
 		});
 
-		console.log(result.history); // null ......
-
 		debug.log(fileName, 'pointsHistoryResultHandler', result);
 
-		displayData(result.history, true);
+		displayHistoryData(result.history);
 		
 	};
 
 	// Handlebars 마크업 템플릿 구성
-	function displayData(data, isHistory) {
+	function displayHistoryData(data) {
 		var source = $('#point-list-templates').html(),
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));
