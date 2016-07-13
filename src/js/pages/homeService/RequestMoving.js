@@ -17,7 +17,8 @@ module.exports = function() {
 
 	var controller = require('../../controller/HomeServiceController.js');
 	//$(controller).on('movingAddressListResult', movingAddressListHandler);
-	//$(controller).on('movingCompanyListResult', movingCompanyListHandler);
+	$(controller).on('movingCompanyListResult', movingCompanyListHandler);
+	$(controller).on('requestMovingResult', requestMovingResultHandler);
 
 	var addressController = require('../../controller/AddressController.js');
 	$(addressController).on('addressListResult', addressListHandler);
@@ -103,13 +104,21 @@ module.exports = function() {
 		DropDownMenu.refresh();
 	};*/
 
-	/*function movingCompanyListHandler(e, status, result) {
+	function movingCompanyListHandler(e, status, result) {
 		if (status == 200) {
-			//
+			var template = window.Handlebars.compile($('#moving-company-templates').html());
+			var elements = $(template(result.livingCompanyList));
+			$('#companyListWrap').empty().append(elements);
+			
+			$('.tabWrap a').on('click', function(e) {// common tab
+				e.preventDefault();
+				var tabBtn = $(this);
+				$(tabBtn).parent().addClass('on').siblings().removeClass('on');
+			});
 		} else {
 			alert('/apis/living/moving/company/ - '+status+':'+result.message);
 		}
-	};*/
+	};
 
 	function refreshAddressDataHandler(e) {
 		addressController.addressList();
@@ -137,8 +146,14 @@ module.exports = function() {
 		var addressObject = addressArray[seq];
 		$('#'+addressType+'Address').html('<dt>- 도로명</dt><dd>'+addressObject.roadBaseAddress+'</dd><dt>- 지번</dt><dd>'+addressObject.lotBaseAddress+'</dd><dt>- 상세주소</dt><dd>'+addressObject.detailAddress+'</dd>');
 		switch(addressType) {
-			case 'origin': originAddress = addressObject; break;
-			case 'target': targetAddress = addressObject; break; 
+			case 'origin': 
+			console.log(addressObject);
+				originAddress = addressObject;
+				controller.movingCompanyList('4100000000');		// addressObject.zipCode
+				break;
+			case 'target':
+				targetAddress = addressObject;
+				break; 
 		}
 	}
 
@@ -153,13 +168,15 @@ module.exports = function() {
 		var requestTargetContact = $('#phoneNumber').val();
 		var movingTypeCode = $(':radio[name="hTp"]:checked').val();
 		var comment = $('#additionalComments').val();
- 
+		
 		if (requestTargetName == '') {
 			alert('이름을 입력해 주세요');
 		} else if (requestTargetContact == '') {
 			alert('연락처를 입력해 주세요');
 		} else if (movingTypeCode == undefined) {
 			alert('서비스 종류를 선택해 주세요');
+		} else if ($('#companyListWrap').find('.on').data() == undefined ) {
+			alert('서비스 업체를 선택해 주세요');
 		} else {
 			var movingService = {
 				"movingDate": moment($('.js-picker').datepicker('getDate')).format('YYYYMMDD'),
@@ -167,13 +184,22 @@ module.exports = function() {
 			}
 			var livingService = {
 				"addRequestContents": comment,
-				"companyNumber": 0,
+				"companyNumber": $('#companyListWrap').find('.on').data().companyNumber,
 				"requestTargetContact": requestTargetContact,
 				"requestTargetName": requestTargetName,
 				"serviceSectionCode": "LS_SERVICE_TYPE_01",
 				"termsNumber": 0
 			}
 			controller.requestMoving(originAddress, targetAddress, movingService, livingService);
+		}
+	}
+
+	function requestMovingResultHandler(e, status, result) {
+		if (status == 200) {
+			alert('신청이 완료 되었습니다. 업체에서 확인 후 빠른 시간 내에 연락 드리겠습니다.');
+			location.href = '/homeService/#move';
+		} else {
+			alert(status+': '+result.message);
 		}
 	}
 };
