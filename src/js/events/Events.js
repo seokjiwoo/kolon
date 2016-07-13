@@ -69,6 +69,14 @@ function Events() {
 		},
 
 		// [S] Controller Events
+			// Message - 메세지
+			// @see MessageController.js
+			MESSAGE : {
+				LIST : 'messageListResult',
+				INQUIRIES : 'messageInquiriesResult',
+				INQUIRIES_IMAGES : 'messageInquiriesImagesResult',
+				INQUIRIES_DETAIL : 'messageInquiriesDetailResult'
+			},
 			// Magazine - 메거진
 			// @see MagazineController.js
 			MAGAZINE : {				
