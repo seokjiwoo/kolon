@@ -7,32 +7,41 @@
 	<div class="wrapper expert">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
+			<div class='js-manager-detail-wrap'>
+			<script id="manager-detail-templates" type="text/x-handlebars-template">
+			{{!-- manager-detail-templates --}}
 			<div class="infoTop">
 				<div class="wrap colWrap">
 					<div class="col colL">
-						<div class="infoPic"><img src="/images/temp01.jpg" alt=""></div>
+						<div class="infoPic"><img src="{{imageUrl}}" alt=""></div>
 						<div class="infoWrap">
-							<h2 class="infoTit">김석훈</h2>
-							<p class="infoId">the1stpenguin</p>
-							<p class="infoDetail"><span class="area">경기도 상록구 사동</span><span class="star">4.5</span></p>
-							<p class="infoSub">시공을 전문적으로하는 건축전문기업입니다.시공을 전문적으로하는 건축전문기업입니다.시공을 전문적으로하는 건축전문기업입니다.</p>
+							<h2 class="infoTit">{{name}}</h2>
+							<p class="infoId">{{companyName}}</p>
+							{{!-- 평점 evalScore TBD --}}
+							<!-- <p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span><span class="star">{{evalScore}}</span></p> -->
+							{{!--// 평점 evalScore TBD --}}
+							<p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span></p>
+							<p class="infoSub">{{intro}}</p>
 						</div>
 					</div>
 					<div class="col colR">
-						<a href="" id="sharePage">페이지 공유</a>
+						<a href="#" id="sharePage">페이지 공유</a>
 						<p class="infoBtn">
-							<span id="followView" class="myRate"><b>104 </b>팔로워</span>
-							<a href="" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a> <!-- <a href="" class="js-delete-follow">팔로우 취소</a> -->
-							<a href="../_popup/popMessage.html" class="btnSizeM btnColor03 btnPop btnPop590" data-user-class="orderPop popEdge">1:1 메세지</a>
+							<span id="followView" class="myRate"><b>104 </b>팔로워 - API 항목 필요</span>
+							<a href="#" id="btnFollow" class="btnSizeM btnColor02 js-add-follow">팔로우</a>
+							<a href="../_popup/popMessage.html" class="btnSizeM btnColor03 btnPop btnPop590" data-user-class="orderPop popEdge popMessage">1:1 메세지</a>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="tabType02">
 				<ul class="sWrap">
-					<li><a href="/manager/brand.html">브랜드 소개</a></li>
-					<li class="on"><a href="/manager/itemList.html">판매상품 <span>15</span></a></li>
+					<li><a href="/manager/detail.html?expertNumber={{expertNum}}">디자이너 소개</a></li>
+					<li class="on"><a href="/manager/itemList.html?expertNumber={{expertNum}}">판매상품 <span>{{countProduct}}</span></a></li>
 				</ul>
+			</div>
+			{{!--// manager-item-templates --}}
+			</script>
 			</div>
 			<section class="wrap" id="brandList">
 				<div class="alignBox">
@@ -52,5 +61,6 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<!-- @@include ../_template/cardTemplate.html -->
 </body>
 </html>
