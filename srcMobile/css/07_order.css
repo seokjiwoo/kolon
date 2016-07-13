@@ -18,10 +18,12 @@
 .order .orderInfo dl dd p.price {width:100%; text-align:right; font-size:15px;}
 .order .orderInfo dl dd p.price b {font-size:18px;}
 .order .orderInfo dl dd p.price + ul.odList {margin-top:15px;}
-.order .orderInfo dl dd p.underTxt {color:#666; font-size:11px; line-height:130%;}
-.order .orderInfo dl dd.total {background:#f1645c; color:#fff;}
+.order .orderInfo dl dd p.underTxt {color:#9d9d9d; font-size:11px; line-height:130%;}
+.order .orderInfo dl dd.total {background:#f1645c; color:#fff; position:relative;}
 .order .orderInfo dl dd.total p {font-size:15px; line-height:15px;}
+.order .orderInfo dl dd.total p.odListCont {width:200px; margin-top:-9px; position:absolute; top:50%; right:10px;}
 .order .orderInfo dl dd.total p.odListCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:22.5px;}
+.order .orderInfo dl dd.total p span {width:100%; font-size:12px; display:inline-block;}
 .order .orderInfo dl dd span.point {color:#000; line-height:17px;}
 .order .orderInfo dl dd span.point em {color:#666; font-style:normal;}
 .order .orderInfo + table.formWrap {margin-top:20px;}
@@ -30,6 +32,7 @@
 
 .order p.odListTit {width:40%; float:left;}
 .order p.odListCont {width:60%; float:right; text-align:right; line-height:130%;}
+.order p.odListCont input[type=text] {font-weight:bold; color:#000;}
 .order p.odListCont b {margin-left:10px;}
 .order ul.odList {width:100%; overflow:hidden;}
 .order ul.odList li {padding-left:8px; position:relative; overflow:hidden;}
@@ -116,17 +119,35 @@ ul.orderDetailList li p > span {width:80%; float:right; display:inline-block; te
 ul.orderDetailList li p + p {margin-top:9px;}
 
 ul.reserInfo {width:100%; overflow:hidden;}
-ul.reserInfo li {padding:15px 0;}
-ul.reserInfo li + li {border-top:1px dashed #ccc;}
-ul.reserInfo li p.tit {color:#333;}
-ul.reserInfo li .reserCont {width:100%; overflow:hidden; margin-top:10px;}
-ul.reserInfo li .reserCont p {width:50%; float:left;}
-ul.reserInfo li .reserCont p span.dateInp {margin-right:15px; border:1px solid #ccc;}
-ul.reserInfo li .reserCont p span.dateInp input.datePicker {width:100%;}
-ul.reserInfo li .reserCont p select {width:99.8%;}
-ul.reserInfo li .reserCont p.date {width:99.8%; border:1px solid #ccc;}
-ul.reserInfo li .reserCont p.date span.dateInp {width:50%; float:left; display:inline-block; margin:0; border:0;}
-ul.reserInfo li .reserCont p.date span.dateInp em {display:inline-block;}
-ul.reserInfo li .reserCont p.date span.dateInp + span.dateInp em {padding-left:10px; position:relative;}
-ul.reserInfo li .reserCont p.date span.dateInp + span.dateInp em:before {content:'';width:7px; height:1px; background:#ccc; position:absolute; top:50%; left:0;}
-ul.reserInfo li p.underTxt {margin-top:10px;}
+ul.reserInfo > li {padding:15px 0;}
+ul.reserInfo > li + li {border-top:1px dashed #ccc;}
+ul.reserInfo > li p.tit {color:#333; line-height:130%;}
+ul.reserInfo > li:last-child {padding-bottom:0;}
+ul.reserInfo > li .reserCont {width:100%; overflow:hidden; margin-top:10px;}
+ul.reserInfo > li .reserCont p {width:50%; float:left;}
+ul.reserInfo > li .reserCont p span.dateInp {margin-right:15px; border:1px solid #ccc;}
+ul.reserInfo > li .reserCont p span.dateInp input.datePicker {width:100%;}
+ul.reserInfo > li .reserCont p select {width:99.8%;}
+ul.reserInfo > li .reserCont p.date {width:99.8%; border:1px solid #ccc;}
+ul.reserInfo > li .reserCont p.date span.dateInp {width:50%; float:left; display:inline-block; margin:0; border:0;}
+ul.reserInfo > li .reserCont p.date span.dateInp em {display:inline-block;}
+ul.reserInfo > li .reserCont p.date span.dateInp + span.dateInp em {padding-left:10px; position:relative;}
+ul.reserInfo > li .reserCont p.date span.dateInp + span.dateInp em:before {content:'';width:7px; height:1px; background:#ccc; position:absolute; top:50%; left:0;}
+ul.reserInfo > li .reserCont select + textarea {margin-top:10px;}
+ul.reserInfo > li p.underTxt {margin-top:10px; vertical-align:middle;}
+ul.reserInfo > li .reserText {width:100%; text-align:right; color:#666; line-height:130%; margin-top:10px;}
+ul.reserInfo > li .reserText p + p {margin-top:10px;}
+ul.reserInfo > li .reserBox {margin-top:10px; padding:15px; background:#f8f8f8; color:#666; line-height:130%;}
+ul.reserInfo > li .reserBox + p.tit {margin-top:15px;}
+ul.reserInfo > li p.reserTxt {width:100%; overflow:hidden; line-height:130%;}
+ul.reserInfo > li p.reserTxt + p.reserTxt {margin-top:10px;}
+ul.reserInfo > li p.reserTxt b {width:40%; float:left; display:inline-block; font-weight:normal;}
+ul.reserInfo > li p.reserTxt span {width:60%; float:right; text-align:right; display:inline-block;}
+
+.order ul.homeType {width:100%; overflow:hidden;}
+.order ul.homeType li {width:25%; padding:66px 0 0; float:left; position:relative; text-align:center; color:#666; font-size:12px;;}
+.order ul.homeType li:before {content:''; width:61px; height:69px; margin-left:-30.5px; background:url(../images/ico_home_type.png) no-repeat; background-size:61px 278px; position:absolute;top:0; left:50%; }
+.order ul.homeType li.hType01:before {background-position:50% 0;}
+.order ul.homeType li.hType02:before {background-position:50% -69px;}
+.order ul.homeType li.hType03:before {background-position:50% -139px;}
+.order ul.homeType li.hType04:before {background-position:50% -208px;}

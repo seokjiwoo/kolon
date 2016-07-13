@@ -474,27 +474,34 @@ ul.optList .cancelArea + a{margin-top:15px;}
 
 ul.priceBox {margin-top:15px; padding:15px; background:#f8f8f8;}
 ul.priceBox > li {width:100%; overflow:hidden;}
-ul.priceBox > li p {color:#333; line-height:130%;}
+ul.priceBox > li p {color:#666; line-height:130%;}
 ul.priceBox > li + li {margin-top:5px;}
 ul.priceBox > li.check p {color:#f1645c;}
 ul.priceBox > li.check p.priceBoxCont b {font-size:18px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
 ul.priceBox > li.check p.priceBoxTit {font-weight:bold;}
 ul.priceBox li p.priceBoxTit {width:40%; float:left;}
 ul.priceBox li p.priceBoxCont {width:60%; float:right; text-align:right;}
+ul.priceBox li p.priceBoxCont span {width:100%; display:inline-block; font-size:12px;}
 ul.priceBox li p.priceBoxCont b {}
-ul.priceBox li p.priceBoxCont span.underTxt {width:100%; display:inline-block; text-align:right; color:#666; font-size:12px;}
+ul.priceBox li p.priceBoxCont span.underTxt {text-align:right; color:#666; font-size:12px;}
 ul.productList li ul.productData + ul.priceBox {margin-top:0;}
 
 .myCartInfo {padding:20px 15px; border-top:10px solid #e0e0e0; border-bottom:10px solid #e0e0e0; background:#f8f8f8;}
 .myCartInfo p.myCartInfoTit {width:100%; overflow:hidden; font-size:15px; color:#282828;}
-.myCartInfo ul.myCartInfoList {width:100%; overflow:hidden; margin-top:14px;}
-.myCartInfo ul.myCartInfoList li {padding-left:6px; line-height:130%; color:#666; font-size:13px; position:relative;}
-.myCartInfo ul.myCartInfoList li + li {margin-top:5px;}
-.myCartInfo ul.myCartInfoList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
+.myCartInfo p.myCartInfoTit + ul.myCartInfoList {margin-top:14px;}
+ul.myCartInfoList {width:100%; overflow:hidden;}
+ul.myCartInfoList li {padding-left:6px; line-height:130%; color:#666; font-size:13px; position:relative;}
+ul.myCartInfoList li + li {margin-top:5px;}
+ul.myCartInfoList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
+table ul.myCartInfoList {padding:5px 0;}
+table ul.myCartInfoList li {color:#999;}
 .myCartTotal {width:100%; overflow:hidden; position:fixed; bottom:0; left:0; z-index:4;}
 .myCartTotal .total{padding:20px 50px 20px 15px; border-top:1px solid #ccc; overflow:hidden; position:relative; background:#fff;}
 .myCartTotal p.totalTit {width:40%; float:left; color:#333; font-family:'NotoSansM', 'RobotoM', sans-serif; line-height:20px; font-size:15px;}
+.myCartTotal p.totalTit span {width:100%; display:inline-block; font-size:12px; color:#999;}
 .myCartTotal p.totalCont {width:60%; float:right; text-align:right; color:#f1645c; font-size:15px; line-height:20px;}
+.myCartTotal .tota p.totalTit {width:100%;}
+.myCartTotal .total p.totalCont {width:200px; margin-top:-12px; position:absolute; top:50%; right:45px;}
 .myCartTotal .total p.totalCont b {font-size:20px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
 .myCartTotal .total a.more {width:23.5px; height:26.5px; font-size:0; margin-top:-13.25px; position:absolute; top:50%; right:15px;}
 .myCartTotal .total a.more:after {content:''; width:23.5px; height:26.5px; position:absolute; top:0; right:0; background:url('../images/btn_total.png') 0 0 no-repeat; background-size:23.5px 54px;}
