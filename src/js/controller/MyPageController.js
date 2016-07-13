@@ -109,7 +109,7 @@ function ClassMyPageController() {
 				Super.handleError('myPoints', result);
 				$(callerObj).trigger('myPointsResult', [status, result]);
 			}
-		}, false);
+		}, true);
 	};
 	
 	function pointsHistory(fromDate, toDate, code) {
@@ -124,7 +124,7 @@ function ClassMyPageController() {
 				Super.handleError('pointsHistory', result);
 				$(callerObj).trigger('pointsHistoryResult', [status, result]);
 			}
-		}, false);
+		}, true);
 	};
 
 
