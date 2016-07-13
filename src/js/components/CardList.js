@@ -18,6 +18,10 @@ module.exports = function() {
 		 */
 		appendData: appendData,
 		/**
+		 * 데이터 전부 삭제
+		 */
+		removeAllData: removeAllData,
+		/**
 		 * HTML로 바로 넣기
 		 * @param {String} tags
 		 */
@@ -145,6 +149,13 @@ module.exports = function() {
 
 		html(tags);
 	};
+
+	function removeAllData() {
+		while (wrap.data('isotope').items.length) {
+			wrap.isotope('remove', wrap.data('isotope').items[0].element);
+		}
+		$(callerObj).trigger('cardRemoveAll');
+	}
 
 	function initOverEffect(e) {
 		cleanOverEffect(e);
