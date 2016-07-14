@@ -339,11 +339,12 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 
 /* dropBox */
 .drop {overflow:hidden;height:38px;border:1px solid #ccc;}
-.drop li {display:block !important;width:138px;height:38px;border-top:1px solid #ccc;}
+.drop li {display:block ;width:138px;height:38px;border-top:1px solid #ccc;}
 .drop li:first-child {color:#666;border-top:none}
 .drop li:first-child a:after {content:'';display:block;position:absolute;top:7px;right:15px;width:20px;height:20px;background:url(../images/ico_lnb.png) no-repeat;background-position:0 0;}
 .drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#000;background:#fff;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;}
-.drop li a.on {background:#fff;color:#666;}
+.drop li a.on {position: relative;background:#fff;color:#465f8d;}
+.drop li a.on:after{content: '';display: inline-block;width: 20px;height: 20px;border: none;position: absolute;top: 10px;right: 10px;background: url(../images/ico_lnb.png) no-repeat;background-position: 0 -40px;}
 /* dropBox on 되었었을 시 dropOn class 추가 */
 .drop.dropOn {height:auto;}
 .drop.dropOn li:first-child a:after {top:10px;background-position:0 -20px;}
@@ -353,8 +354,8 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .drop.dropChk li label {display:block;width:100%;font-size:13px;color:#999;}
 .drop.dropChk .checkbox {display:block;height:40px;margin-top:0;}
 .drop.dropChk .checkbox label:before {content:'';display:inline-block;width:20px;height:20px;border:none;border-radius:0;margin-right:0;visibility:hidden;position:absolute;top:10px;right:0;}
-.drop.dropChk .checkbox label.on {color:#f1645c;}
-.drop.dropChk .checkbox label.on:before {visibility:visible;background:url(../images/ico_lnb.png) no-repeat;background-position:0 -40px;}
+.drop.dropChk .checkbox label.on {color:#465f8d;}
+.drop.dropChk .checkbox label.on:before {visibility:visible;background:url('../images/ico_lnb.png') no-repeat;background-position:0 -40px;}
 /* dropBox check 기능 있으면서 on되었을 시 dropChk class 추가 */
 .drop.dropChk.dropOn li:first-child a:after {top:8px;background-position:0 -60px;} 
 
@@ -374,6 +375,14 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .dropScroll .dropToggle:after{content: '';display: block;position: absolute;top: 7px;right: 15px;width: 20px;height: 20px;background: url('../images/ico_lnb.png') no-repeat;background-position: 0 0;}
 .dropScroll .drop{top: 40px;height: auto;border-top: 0;}
 .dropScroll .drop li:first-child a:after{display: none;}
+
+.alignBox .dropExpand{overflow: visible;width: 290px;width: 140px;height:0;border-width: 0;}
+.alignBox .dropExpand li{display: none;float: left;border:0;height: 41px;background: none}
+.alignBox .dropExpand li:first-child{display: block;position: absolute;top: -39px;right: -1px;height: 38px;border:1px solid #ccc;}
+.alignBox .dropExpand a{background: none;line-height: 40px;}
+.alignBox .dropExpand.dropOn{display: block;width: 414px;height: auto;background: url('../images/bg_drop.jpg') repeat;border-width: 1px;border-bottom: 0;}
+.alignBox .dropExpand.dropOn li{display: block;}
+.alignBox .dropExpand.dropOn li:first-child{top: -40px;right: -2px;}
 
 /* font color */
 .color01{color: #000 !important;}
