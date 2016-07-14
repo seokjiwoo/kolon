@@ -54,6 +54,26 @@
 							/* 테스트 임시 구성 */
 							.js-drop-color a.on {color:#f1645c}
 						</style>
+						<!-- 내부 스크롤 -->
+						<div class="dropScroll">
+							<div class="dropList">
+								<a href="#" class="dropToggle">진행상태 보기</a>
+								<ul class="drop" data-prevent="true">
+									<li><a href="#" data-value="type-1">전체</a></li>
+									<li><a href="#" data-value="type-2">입금대기</a></li>
+									<li><a href="#" data-value="type-3">결제완료</a></li>
+									<li><a href="#" data-value="type-4">상품준비중</a></li>
+									<li><a href="#" data-value="type-5">배송중</a></li>
+									<li><a href="#" data-value="type-6">배송완료</a></li>
+									<li><a href="#" data-value="type-7">구매확정</a></li>
+									<li><a href="#" data-value="type-3">결제완료</a></li>
+									<li><a href="#" data-value="type-4">상품준비중</a></li>
+									<li><a href="#" data-value="type-5">배송중</a></li>
+									<li><a href="#" data-value="type-6">배송완료</a></li>
+									<li><a href="#" data-value="type-7">구매확정</a></li>
+								</ul>
+							</div>
+						</div>
 						<ul class="drop" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li><a href="#" data-value="type-1">전체</a></li>
@@ -180,7 +200,7 @@
 						</ul>
 
 						<!-- [D] TEST data-all-checker 기본값 -->
-						<ul class="drop dropChk" style="right:600px" data-prevent="true">
+						<ul class="drop dropChk" style="top:50px;right:450px" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li>
 								<p class="checkbox">
