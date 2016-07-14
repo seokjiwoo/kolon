@@ -15,175 +15,6 @@
 				</ul>
 			</div>
 			<div class="wrap">
-				<!-- [D] 마크업 원본 -->
-				<!-- 
-				<section class="singleCard" id="myCart">
-					<h2 class="secTit">샵 상품</h2>
-					<div class="cartCont">
-						<form method="post" action="/">
-							<table class="record">
-								<caption>배송형 상품에 대한 상품정보, 상품금액, 배송비, 주문금액 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:54%;"/>
-									<col style="width:11%;"/>
-									<col style="width:11%;"/>
-									<col style="width:10%;"/>
-									<col style="width:14%;"/>
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">상품정보</th>
-										<th scope="col">상품금액</th>
-										<th scope="col">할인금액</th>
-										<th scope="col">배송비</th>
-										<th scope="col">주문금액</th>
-									</tr>
-								</thead>
-								<tbody>
-									반복영역
-									<tr>
-										<td>
-											<div class="cartChk">
-												<p class="chk checkbox">
-													<input type="checkbox" title="상품선택" id="sel01" value=""/>
-													<label for="sel01"><span class="hide">선택</span></label>
-												</p>
-												<div class="photoList">
-													<a href="#">
-														<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-														<span class="cartInfo recordInfo">
-															<b class="owner">평코오롱 글로벌</b>
-															<span class="cartTit">[코오롱] 크리스탈 샹들리에</span>
-														</span>
-													</a>
-												</div>
-												옵션 수량 선택
-												<div class="optList">
-													옵션
-													<div class="option">
-														<p class="optionTit">모던 화이트</p>
-														<p class="optionPrice"><b>300,000</b> 원</p>
-														<p class="optionNum">
-															<a href="#" class="btnMinus">빼기</a>
-															<span class="num">1</span>
-															<a href="#" class="btnPlus">더하기</a>
-														</p>
-														<a href="#" class="btnDel">삭제</a>
-													</div>
-												</div>
-												// 옵션 수량 선택
-											</div>
-										</td>
-										<td><p class="price"><b>1,700,000</b> 원</p></td>
-										<td><p class="price"><b>1,000</b> 원</p></td>
-										<td>무료</td>
-										<td><p class="price fontL red"><b>1,700,000</b> 원</p></td>
-									</tr>
-									// 반복영역
-									<tr>
-										<td>
-											<div class="cartChk">
-												<p class="chk checkbox">
-													<input type="checkbox" title="상품선택" id="sel02" value=""/>
-													<label for="sel02"><span class="hide">선택</span></label>
-												</p>
-												<div class="photoList">
-													<a href="#">
-														<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-														<span class="cartInfo recordInfo">
-															<b class="owner">평코오롱 글로벌</b>
-															<span class="cartTit">[코오롱] 크리스탈 샹들리에</span>
-														</span>
-													</a>
-												</div>
-												옵션 수량 선택
-												<div class="optList">
-													옵션
-													<div class="option">
-														<p class="optionTit">모던 화이트</p>
-														<p class="optionPrice"><b>300,000</b> 원</p>
-														<p class="optionNum">
-															<a href="#" class="btnMinus">빼기</a>
-															<span class="num">1</span>
-															<a href="#" class="btnPlus">더하기</a>
-														</p>
-														<a href="#" class="btnDel">삭제</a>class:btnDel click시 hide
-													</div>
-													옵션
-													<div class="option">
-														<p class="optionTit">모던 화이트</p>
-														<p class="optionPrice"><b>300,000</b> 원</p>
-														<p class="optionNum">
-															<a href="#" class="btnMinus">빼기</a>
-															<span class="num">1</span>
-															<a href="#" class="btnPlus">더하기</a>
-														</p>
-														<a href="#" class="btnDel">삭제</a>
-													</div>
-													<div class="option">
-														<p class="optionTit">모던 화이트</p>
-														<p class="optionPrice"><b>300,000</b> 원</p>
-														<p class="optionNum">
-															<a href="#" class="btnMinus">빼기</a>
-															<span class="num">1</span>
-															<a href="#" class="btnPlus">더하기</a>
-														</p>
-														<a href="#" class="btnDel">삭제</a>
-													</div>
-												</div>
-												// 옵션 수량 선택
-											</div>
-										</td>
-										<td><p class="price"><b>1,700,000</b> 원</p></td>
-										<td><p class="price"><b>1,000</b> 원</p></td>
-										<td>무료</td>
-										<td><p class="price fontL red"><b>1,700,000</b> 원</p></td>
-									</tr>
-								</tbody>
-							</table>
-							<div class="btnG">
-								<div class="cartChk chkAll"><p class="chk checkbox"><input type="checkbox" id="chkAll" value=""/><label for="chkAll">전체 선택 <span class="pointRed">(총3개)</span></label></p></div>
-								<a href="#" class="btnSizeS btnColor04 btnR">삭제</a>
-							</div>
-						</form>
-					</div>
-					결제 정보
-					<div class="payTb payTbL border" style="float: none;">
-						<dl class="payS minus">
-							<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
-							<dd><div><span class="price"><b>23,580,000</b> 원</span></div></dd>
-						</dl>
-						<dl class="payS equal">
-							<dt><div>총 할인가</div></dt>
-							<dd>
-								<div>
-									<ul class="tbList">
-										<li>
-											<span class="tbListTit">기본할인</span>
-											<span><b>0</b>원</span>
-										</li>
-										<li>
-											<span class="tbListTit">포인트</span>
-											<span><b>3,000</b>원</span>
-										</li>
-									</ul>
-								</div>
-							</dd>
-						</dl>
-						<dl class="payS">
-							<dt><div>총 결제금액</div></dt>
-							<dd>
-								<div><span class="price"><b class="italicNum">23,580,000</b> 원</span></div>
-							</dd>
-						</dl>
-					</div>
-					// 결제 정보
-					<div class="btnC mt40">
-						<button type="submit" class="btn btnSizeL btnColor02 btnWM">주문하기</button>
-					</div>
-				</section>
-				 -->
-				<!--// [D] 마크업 원본 -->
 
 				<section class="singleCard" id="myCart"></section>
 
@@ -209,7 +40,7 @@
 	.singleCard.is-loading .btnC {opacity:0;-webkit-transform:translateY(50px);-moz-transform:translateY(50px);-ms-transform:translateY(50px);-o-transform:translateY(50px);transform:translateY(50px)}
 </style>
 <script id="myCartShop-list-templates" type="text/x-handlebars-template">
-	{{!-- myCartShop-list-templates --}}
+{{!-- myCartShop-list-templates --}}
 
 	<h2 class="secTit">샵 상품</h2>
 	<div class="cartCont">
@@ -233,123 +64,136 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#each .}}
-					<!-- list -->
-					<tr class="js-myCartShop-list"
-						data-list-info='{
-							"cartNumber" : {{cartNumber}},
-							"memberNumber" : {{memberNumber}},
-							"deliveryCharge" : {{deliveryCharge}},
-							"producerType" : "{{producerType}}",
-							"productDiscountSalePrice" : {{productDiscountSalePrice}},
-							"productNumber" : {{productNumber}},
-							"productOrderPrice" : {{productOrderPrice}},
-							"productQuantity" : {{productQuantity}},
-							"productSalePrice" : {{productSalePrice}}
-					}'>
-						<td>
-							<div class="cartChk">
-								<p class="chk checkbox">
-									<input type="checkbox" title="상품선택" id="myCartShop-list{{@index}}" checked>
-									<label for="myCartShop-list{{@index}}" class="on" data-cart-number="{{cartNumber}}" data-chk-group="myCartShop"><span class="hide">선택</span></label>
-								</p>
-								<div class="photoList">
-									<a href="#">
-										<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
-										<span class="cartInfo recordInfo">
-											<b class="owner">{{producerType}}</b>
-											<span class="cartTit">{{productName}}</span>
-										</span>
-									</a>
-								</div>
-								{{#vxIF optionUseYn "==" "Y"}}
-								<!-- 옵션 수량 선택 -->
-								<div class="optList">
-									<!-- 옵션 -->
-									<div class="option">
-										<p class="optionTit">{{orderOptionName}}</p>
-										<p class="optionPrice"><b>확인필요</b> 원</p>
-										<!-- [D] 최대수량 -->
-										<p class="optionNum"
-											data-optionnum-opts='{
-											"max" : 5,
-											"min" : 1
-										}'>
-											<a href="#" class="btnMinus">빼기</a>
-											<span class="num">1</span>
-											<a href="#" class="btnPlus">더하기</a>
-										</p>
-										<a href="#" class="btnDel js-opt-delete">삭제</a>
+					{{!-- 데이터 유무에 따른 화면 처리 --}}
+					{{#if length}}
+						{{#each .}}
+						<!-- list -->
+						<tr class="js-myCartShop-list"
+							data-list-info='{
+								"cartNumber" : {{cartNumber}},
+								"memberNumber" : {{memberNumber}},
+								"deliveryCharge" : {{deliveryCharge}},
+								"producerType" : "{{producerType}}",
+								"productDiscountSalePrice" : {{productDiscountSalePrice}},
+								"productNumber" : {{productNumber}},
+								"productOrderPrice" : {{productOrderPrice}},
+								"productQuantity" : {{productQuantity}},
+								"productSalePrice" : {{productSalePrice}}
+						}'>
+							<td>
+								<div class="cartChk">
+									<p class="chk checkbox">
+										<input type="checkbox" title="상품선택" id="myCartShop-list{{@index}}" checked>
+										<label for="myCartShop-list{{@index}}" class="on" data-cart-number="{{cartNumber}}" data-chk-group="myCartShop"><span class="hide">선택</span></label>
+									</p>
+									<div class="photoList">
+										<a href="#">
+											<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
+											<span class="cartInfo recordInfo">
+												<b class="owner">{{producerType}}</b>
+												<span class="cartTit">{{productName}}</span>
+											</span>
+										</a>
 									</div>
+									{{#vxIF optionUseYn "==" "Y"}}
+									<!-- 옵션 수량 선택 -->
+									<div class="optList">
+										<!-- 옵션 -->
+										<div class="option">
+											<p class="optionTit">{{orderOptionName}}</p>
+											<p class="optionPrice"><b>확인필요</b> 원</p>
+											<!-- [D] 최대수량 -->
+											<p class="optionNum"
+												data-optionnum-opts='{
+												"max" : 5,
+												"min" : 1
+											}'>
+												<a href="#" class="btnMinus">빼기</a>
+												<span class="num">1</span>
+												<a href="#" class="btnPlus">더하기</a>
+											</p>
+											<a href="#" class="btnDel js-opt-delete">삭제</a>
+										</div>
+									</div>
+									<!--// 옵션 수량 선택 -->
+									{{/vxIF}}
 								</div>
-								<!--// 옵션 수량 선택 -->
-								{{/vxIF}}
-							</div>
-						</td>
-						<td><p class="price"><b class="js-list-price">{{productOrderPriceDesc}}</b> 원</p></td>
-						<td><p class="price"><b>{{productDiscountSalePriceDesc}}</b> 원</p></td>
-						{{#vxIF deliveryChargeDesc "==" "0"}}
-							<td>무료</td>
-							{{else}}
-							<td>{{deliveryChargeDesc}} 원</td>
-						{{/vxIF}}
-						<td><p class="price fontL red"><b class="js-list-totalPrice"></b> 원</p></td>
-					</tr>
-					{{/each}}
-					<!--// 반복영역 -->
+							</td>
+							<td><p class="price"><b class="js-list-price">{{productOrderPriceDesc}}</b> 원</p></td>
+							<td><p class="price"><b>{{productDiscountSalePriceDesc}}</b> 원</p></td>
+							{{#vxIF deliveryChargeDesc "==" "0"}}
+								<td>무료</td>
+								{{else}}
+								<td>{{deliveryChargeDesc}} 원</td>
+							{{/vxIF}}
+							<td><p class="price fontL red"><b class="js-list-totalPrice"></b> 원</p></td>
+						</tr>
+						{{/each}}
+						<!--// 반복영역 -->
+					{{else}}
+						{{!-- 데이터 유무에 따른 화면 처리 --}}
+						<tr>
+							<td colspan="5">샵 상품 데이터가 없습니다.</td>
+						</tr>
+					{{/if}}
 				</tbody>
 			</table>
-			<div class="btnG">
-				<div class="cartChk chkAll">
-					<p class="chk checkbox">
-						<input type="checkbox" id="myCartShop-list-all" checked>
-						<label for="myCartShop-list-all" class="on"
-							data-chk-role="chkAll"
-							data-chk-group="myCartShop">전체 선택 <span class="pointRed">(총<span class="js-list-size"></span>개)</span></label>
-					</p>
+			{{!-- 데이터 유무에 따른 화면 처리 --}}
+			{{#if length}}
+				<div class="btnG">
+					<div class="cartChk chkAll">
+						<p class="chk checkbox">
+							<input type="checkbox" id="myCartShop-list-all" checked>
+							<label for="myCartShop-list-all" class="on"
+								data-chk-role="chkAll"
+								data-chk-group="myCartShop">전체 선택 <span class="pointRed">(총<span class="js-list-size"></span>개)</span></label>
+						</p>
+					</div>
+					<a href="#" class="btnSizeS btnColor04 btnR js-list-delete">삭제</a>
 				</div>
-				<a href="#" class="btnSizeS btnColor04 btnR js-list-delete">삭제</a>
-			</div>
+			{{/if}}
 		</form>
 	</div>
 	<!-- 결제 정보 -->
-	<div class="payTb payTbL border js-myCartShop-orderInfo" style="float: none;">
-		<dl class="payS minus">
-			<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
-			<dd><div><span class="price"><b class="js-orderInfo-price"></b> 원</span></div></dd>
-		</dl>
-		<dl class="payS equal">
-			<dt><div>총 할인가</div></dt>
-			<dd>
-				<div>
-					<ul class="tbList">
-						<li>
-							<span class="tbListTit">기본할인</span>
-							<span><b class="js-dicount-price">0</b>원</span>
-						</li>
-						<!-- 
-						<li>
-							<span class="tbListTit">확인필요 - 포인트</span>
-							<span><b>0</b>원</span>
-						</li>
-						 -->
-					</ul>
-				</div>
-			</dd>
-		</dl>
-		<dl class="payS">
-			<dt><div>총 결제금액</div></dt>
-			<dd>
-				<div><span class="price"><b class="italicNum js-orderInfo-totalPrice"></b> 원</span></div>
-			</dd>
-		</dl>
-	</div>
-	<!--// 결제 정보 -->
-	<div class="btnC mt40">
-		<button type="submit" class="btn btnSizeL btnColor02 btnWM js-myCartShop-submit">주문하기</button>
-	</div>
-
-	{{!--// myCartShop-list-templates --}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if length}}
+		<div class="payTb payTbL border js-myCartShop-orderInfo" style="float: none;">
+			<dl class="payS minus">
+				<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
+				<dd><div><span class="price"><b class="js-orderInfo-price"></b> 원</span></div></dd>
+			</dl>
+			<dl class="payS equal">
+				<dt><div>총 할인가</div></dt>
+				<dd>
+					<div>
+						<ul class="tbList">
+							<li>
+								<span class="tbListTit">기본할인</span>
+								<span><b class="js-dicount-price">0</b>원</span>
+							</li>
+							<!-- 
+							<li>
+								<span class="tbListTit">확인필요 - 포인트</span>
+								<span><b>0</b>원</span>
+							</li>
+							 -->
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<dl class="payS">
+				<dt><div>총 결제금액</div></dt>
+				<dd>
+					<div><span class="price"><b class="italicNum js-orderInfo-totalPrice"></b> 원</span></div>
+				</dd>
+			</dl>
+		</div>
+		<!--// 결제 정보 -->
+		<div class="btnC mt40">
+			<button type="submit" class="btn btnSizeL btnColor02 btnWM js-myCartShop-submit">주문하기</button>
+		</div>
+	{{/if}}
+{{!--// myCartShop-list-templates --}}
 </script>
 
 </body>

@@ -155,12 +155,14 @@ module.exports = function() {
 	}
 
 	function displayData(data) {
-		$.map(data, function(item) {
-			item.deliveryChargeDesc = util.currencyFormat(item.deliveryCharge);
-			item.productDiscountSalePriceDesc = util.currencyFormat(item.productDiscountSalePrice);
-			item.productOrderPriceDesc = util.currencyFormat(item.productOrderPrice);
-			item.productSalePriceDesc = util.currencyFormat(item.productSalePrice);
-		});
+		if (data.myCarts) {
+			$.map(data.myCarts, function(myCarts) {
+				myCarts.deliveryChargeDesc = util.currencyFormat(myCarts.deliveryCharge);
+				myCarts.productDiscountSalePriceDesc = util.currencyFormat(myCarts.productDiscountSalePrice);
+				myCarts.productOrderPriceDesc = util.currencyFormat(myCarts.productOrderPrice);
+				myCarts.productSalePriceDesc = util.currencyFormat(myCarts.productSalePrice);
+			});
+		}
 
 		var source = self.template.html(),
 		template = win.Handlebars.compile(source),
@@ -181,13 +183,10 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case CART_EVENT.LIST:
-				dummyData = [{"cartNumber":0,"criteriaPyeong":"string","deliveryCharge":0,"discountSetupYn":"N","memberNumber":0,"optionUseYn":"string","orderOptionName":"string","orderOptionNumber":0,"producerType":"string","productDiscountSalePrice":1000,"productImageUrl":"/images/temp09.jpg","productName":"productName - [코오롱] 크리스탈 샹들리에0","productNumber":0,"productOrderPrice":100000,"productQuantity":1,"productSalePrice":0},{"cartNumber":1,"criteriaPyeong":"string","deliveryCharge":1000,"discountSetupYn":"string","memberNumber":0,"optionUseYn":"Y","orderOptionName":"orderOptionName - 모던 화이트","orderOptionNumber":0,"producerType":"string","productDiscountSalePrice":0,"productImageUrl":"/images/temp09.jpg","productName":"productName - [코오롱] 크리스탈 샹들리에1","productNumber":0,"productOrderPrice":100000,"productQuantity":5,"productSalePrice":1000},{"cartNumber":2,"criteriaPyeong":"string","deliveryCharge":0,"discountSetupYn":"string","memberNumber":0,"optionUseYn":"Y","orderOptionName":"orderOptionName - 모던 화이트","orderOptionNumber":0,"producerType":"string","productDiscountSalePrice":0,"productImageUrl":"/images/temp09.jpg","productName":"productName - [코오롱] 크리스탈 샹들리에2","productNumber":0,"productOrderPrice":100000,"productQuantity":1,"productSalePrice":0}];
-
 				/*
 				401	Unauthorized
 				403	Forbidden
@@ -197,12 +196,11 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
 						break;
 				}
+
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result);
+				displayData(result.data);
 				displayUpdate();
 				setDeleteEvents();
 				break;
