@@ -34,7 +34,7 @@
 			<div class="cardLine"><p class="italicNum">designer <span>compact</span></p></div>
 			<!-- card 내용 -->
 			<a href="{{detailUrl}}" class="cardTxt cardDetail">
-				<p class="cardCat">{ unit }</p>
+				<p class="cardCat">{ {{productType}} }</p>
 				<h2 class="cardTit">{{cardName}}</h2>
 				<p class="cardPrice">{{basePrice}} <span class="priceBottom">원 / 평</span></p>
 				<span class="cardMore">상세보기</span>
@@ -50,9 +50,9 @@
 					<div class="worker">
 						<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
 						<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
-						<div class="cardAuthorLike">
+						<!--<div class="cardAuthorLike">
 							<span class="star">4.8</span><span class="comt">120</span>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 			<div class="cardLine"><p class="italicNum">handmade</p></div>
 			<!-- card 내용 -->
 			<a href="{{detailUrl}}" class="cardTxt cardDetail">
-				<p class="cardCat">{ unit }</p>
+				<p class="cardCat">{ {{productType}} }</p>
 				<h2 class="cardTit">{{cardName}}</h2>
 				<p class="cardPrice">{{basePrice}} <span class="priceBottom">원</span></p>
 				<span class="cardMore">상세보기</span>
