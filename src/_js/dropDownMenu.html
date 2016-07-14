@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 나의 활동내역"} -->
 </head>
-<body data-page-id="myPage-order">
+<body data-page-id="myPage-order-test">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -53,7 +53,36 @@
 						<style>
 							/* 테스트 임시 구성 */
 							.js-drop-color a.on {color:#f1645c}
+
+							.dropScroll .scrollWrap {position:relative;display:none;max-height:190px;height:100%;overflow:hidden;border:1px solid #ccc;border-top:none}
+							.dropScroll.is-show .scrollWrap{display:block}
+
+							.scrollWrap .dropList {position:absolute;width:100%;z-index:1;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+							.scrollWrap .dropList .drop {position:relative;top:0;border:none}
+							.scrollWrap .dropList .drop li:last-child {border-bottom:none}
 						</style>
+						<!-- 내부 스크롤 -->
+						<div class="dropScroll">
+							<a href="#" class="dropToggle">진행상태 보기</a>
+							<div class="scrollWrap" data-prevent="true">
+								<div class="dropList">
+									<ul class="drop">
+										<li><a href="#" data-value="type-1">전체</a></li>
+										<li><a href="#" data-value="type-2">입금대기</a></li>
+										<li><a href="#" data-value="type-3">결제완료</a></li>
+										<li><a href="#" data-value="type-4">상품준비중</a></li>
+										<li><a href="#" data-value="type-5">배송중</a></li>
+										<li><a href="#" data-value="type-6">배송완료</a></li>
+										<li><a href="#" data-value="type-7">구매확정</a></li>
+										<li><a href="#" data-value="type-3">결제완료</a></li>
+										<li><a href="#" data-value="type-4">상품준비중</a></li>
+										<li><a href="#" data-value="type-5">배송중</a></li>
+										<li><a href="#" data-value="type-6">배송완료</a></li>
+										<li><a href="#" data-value="type-7">구매확정</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 						<ul class="drop" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li><a href="#" data-value="type-1">전체</a></li>
@@ -180,7 +209,7 @@
 						</ul>
 
 						<!-- [D] TEST data-all-checker 기본값 -->
-						<ul class="drop dropChk" style="right:600px" data-prevent="true">
+						<ul class="drop dropChk" style="top:50px;right:450px" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li>
 								<p class="checkbox">
@@ -235,5 +264,113 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+
+<script>
+	;(function(win, $) {
+		'use strict';
+
+		if ('undefined' === typeof win.vinylX) {
+			win.vinylX = {};
+		}
+
+		var NS = win.vinylX;
+
+		NS.dropScroll = (function() {
+			var defParams = {
+				wrap : '.dropScroll',
+				toggler : '.dropToggle',
+				iScroll : {
+					target : '.scrollWrap',
+					list : '.dropList',
+					items : '.dropList > ul > li > a',
+					opts : {
+						scrollbars: true,
+						mouseWheel: true,
+						fadeScrollbars: false,
+						bounce: false
+					}
+				},
+				cssClass : {
+					isShow : 'is-show'
+				}
+			};
+			return {
+				init : function(container, args) {
+					if (!(this.container = container).size()) return;
+
+					this.opts = $.extend({}, defParams, args);
+
+					this.setElements();
+					this.setBindEvents();
+					this.setIscroll();
+				},
+				setElements : function() {
+					this.wrap = this.container.find(this.opts.wrap);
+					this.toggler = this.wrap.find(this.opts.toggler);
+
+					this.iScrolls = [];
+					this.iScrollsTrg = this.wrap.find(this.opts.iScroll.target);
+					this.iScrollsItems = this.iScrollsTrg.find(this.opts.iScroll.items);
+				},
+				setBindEvents : function() {
+					this.toggler.on('click', $.proxy(this.onTogglerClick, this));
+					this.iScrollsItems.on('click', $.proxy(this.onItemsClick, this));
+				},
+				onTogglerClick : function(e) {
+					e.preventDefault();
+					var target = $(e.currentTarget),
+					wrap = target.closest(this.opts.wrap),
+					iScroll = wrap.data('iscroll');
+
+					wrap.toggleClass(this.opts.cssClass.isShow);
+
+					if (!wrap.hasClass(this.opts.cssClass.isShow)) return;
+
+					if (iScroll) iScroll.refresh();
+					wrap.one('keyupoutside mousedownoutside', $.proxy(this.onWrapClose, this));
+					wrap.on('mousewheel', $.proxy(this.onWheelPrevent, this));
+				},
+				onItemsClick : function(e) {
+					e.preventDefault();
+					var target = $(e.currentTarget),
+					wrap = target.closest(this.opts.wrap),
+					toggler = wrap.find(this.opts.toggler);
+
+					toggler.text(target.text());
+
+					wrap.off('keyupoutside mousedownoutside', $.proxy(this.onWrapClose, this))
+						.off('mousewheel', $.proxy(this.onWheelPrevent, this));
+
+					wrap.removeClass(this.opts.cssClass.isShow)
+							.val(target.data('value'))
+							.trigger('VX-DROP_SCROLL-CHANGE', {menu: wrap, values : wrap.val()});
+				},
+				onWrapClose : function(e) {
+					var target = $(e.currentTarget);
+					target.removeClass(this.opts.cssClass.isShow);
+				},
+				onWheelPrevent : function(e) {
+					e.preventDefault();
+				},
+				setIscroll : function() {
+					var _this = this,
+					iScroll;
+
+					$.each(this.iScrollsTrg, function() {
+						iScroll = new win.IScroll($(this).get(0), _this.opts.iScroll.opts);
+						$(this).closest(_this.opts.wrap).data('iscroll', iScroll);
+						_this.iScrolls.push(iScroll);
+					});
+				}
+			};
+		})();
+
+		$(function() {
+			NS.dropScroll.init($('body'));
+		});
+	})(window, window.jQuery);
+</script>
+
 </body>
 </html>

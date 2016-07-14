@@ -207,13 +207,10 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case SCRAP_EVENT.LIST:
-				dummyData={"folders":[{"folderName":"folder0","folderNumber":0,"scrapCount":0,"scrapImages":["string"]},{"folderName":"folder1","folderNumber":1,"scrapCount":0,"scrapImages":["string"]}],"scraps":[{"category":"string","imageUrl":"string","scrapCount":0,"scrapNumber":0,"tags":["string"],"magazine":{"createDate":"string","subTitle":"string","title":"string"}},{"category":"string","imageUrl":"string","scrapCount":0,"scrapNumber":0,"tags":["string"],"product":{"price":0,"productDesc":"string","productName":"string"}},{"category":"string","imageUrl":"string","scrapCount":0,"scrapNumber":0,"tags":["string"],"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},}]};
-
 				/*
 				401	Unauthorized
 				403	Forbidden
@@ -223,8 +220,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
 						break;
 				}
 
@@ -232,8 +227,6 @@ module.exports = function() {
 				displayData($(self.opts.templates.all), result);
 				break;
 			case SCRAP_EVENT.IMAGE_LIST:
-				dummyData = {"folders":[{"folderName":"폴더1","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":0,"scrapImages":[]},{"folderName":"폴더2","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":5,"scrapImages":[{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]},{"folderName":"폴더3","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":10,"scrapImages":[{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]},{"folderName":"폴더3","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":1,"scrapImages":[{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]}],"scraps":[{"category":"string","imageUrl":"string","magazine":{"createDate":"string","subTitle":"string","title":"string"},"product":{"price":0,"productDesc":"string","productName":"string"},"scrapCount":0,"scrapNumber":0,"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},"tags":["string"]}]};
-
 				/*
 				401	Unauthorized
 				403	Forbidden
@@ -243,8 +236,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
 						break;
 				}
 
@@ -268,7 +259,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -292,7 +282,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -315,7 +304,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -339,7 +327,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -363,7 +350,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -386,7 +372,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

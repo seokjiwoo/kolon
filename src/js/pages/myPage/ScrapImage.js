@@ -146,14 +146,14 @@ module.exports = function() {
 			setCarousel();
 
 			wrap.imagesLoaded()
-					.always(function( instance ) {
+					.always(function() {
 						wrap.removeClass(self.opts.cssClass.isLoading);
 						reloadCarousel();
 						eventManager.triggerHandler(ISOTOPE_EVENT.REFRESH);
 						eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 						eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 					})
-					.progress(function( instance, image ) {
+					.progress(function(instance, image) {
 						var item = $(image.img).closest('.js-slider-list');
 
 						if (image.isLoaded) {
@@ -216,13 +216,10 @@ module.exports = function() {
 
 	function onScrapControllerListener(e, status, response) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case SCRAP_EVENT.IMAGE_LIST:
-				dummyData = {"folders":[{"folderName":"폴더1","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":0,"scrapImages":[]},{"folderName":"폴더2","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":5,"scrapImages":[{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]},{"folderName":"폴더3","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":10,"scrapImages":[{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]},{"folderName":"폴더3","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":1,"scrapImages":[{"imageTitle":"string","imageUrl":"../images/temp11.jpg"}]}],"scraps":[{"category":"string","imageUrl":"string","magazine":{"createDate":"string","subTitle":"string","title":"string"},"product":{"price":0,"productDesc":"string","productName":"string"},"scrapCount":0,"scrapNumber":0,"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},"tags":["string"]}]};
-
 				/*
 				401	Unauthorized
 				403	Forbidden
@@ -232,8 +229,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
 						break;
 				}
 
@@ -261,7 +256,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
