@@ -237,7 +237,7 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .scrapListWrap ul.scrapList {width:100%;}
 .scrapListWrap ul.scrapList li {width:50%; float:left; text-align:center;}
 .scrapListWrap ul.scrapList li a {margin:5px 5px; display:inline-block; position:relative;}
-.scrapListWrap ul.scrapList li.on a:before {content:''; width:159px; height:159px; border:4px solid #000; position:absolute; top:0; left:0;}
+.scrapListWrap ul.scrapList li.on a:before {content:''; width:159px; height:159px; border:4px solid #000; position:absolute; top:0; left:0;box-sizing: border-box;}
 .scrapListWrap ul.scrapList li img {width:159px; height:159px;}
 
 .messageProfile{text-align:center;margin-top:20px;font-size:18px;}
@@ -321,7 +321,7 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .periodSearch > a{position:relative;height:58px;display:block;padding:0 15px;}
 .periodSearch > a span{display:block;padding-top:22px;font-size:15px;}
 .periodSearch > a em{position:absolute;right:17px;top:24px;width:15px;height:10px;overflow:hidden;display:block;background:url("../images/ico_toggleL.png") no-repeat 0 -7px;background-size:15px;}
-.periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;z-index:10;width:100%;background:#fff;padding:0 15px 15px;}
+.periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;z-index:10;width:100%;background:#fff;padding:0 15px 15px;box-sizing: border-box;}
 .periodSearch > a em.up{background-position:0 0;}
 .periodSearch .btnList{overflow:hidden;}
 .periodSearch .btnList li{width:19.5%;float:left;margin-left:0.5%;}
@@ -335,7 +335,7 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .datePic ul li:nth-child(2){width:2%;text-align:center;color:#ccc;}
 .datePic ul li:nth-child(2) span{display:block;padding-top:7px;}
 .datePic .dateInp{position:relative;display:block;border:1px solid #ccc;}
-.datePic .dateInp input[type="text"]{border:0;background:url("../images/ico_cal.png") no-repeat right 5px;background-size:26px;}
+.datePic .dateInp input[type="text"]{border:0;background:url("../images/ico_cal.png") no-repeat right 5px;background-size:26px;box-sizing: border-box;}
 .my .searchbox{position:relative;border:1px solid #ccc;padding-right:28px;margin-top:8px;background:#fff;}
 .my .searchbox input[type="text"]{border:0;}
 .my .searchbox button{position:absolute;right:0;top:0;width:28px;height:28px;background:url("../images/ico_search.png") no-repeat center center;background-size:14px;border:0;}
@@ -458,7 +458,7 @@ ul.optList li p.listPrice {padding:10px 30px 0 0; overflow:hidden; text-align:ri
 ul.optList li p.listPrice b {}
 ul.optList li p.listPrice span {width:100%; min-height:24px; display:inline-block; line-height:24px;}
 ul.optList li p.listPrice a.btnDel {width:25px; height:25px; font-size:0; position:absolute; bottom:0; right:0; display:inline-block;}
-ul.optList li p.listPrice a.btnDel:after {content:''; width:24px; height:24px; border:1px solid #ccc; background:url('../images/ico_close03.png') 50% no-repeat; background-size:11.5px 11.5px; position:absolute; top:0; left:0;}
+ul.optList li p.listPrice a.btnDel:after {content:''; width:24px; height:24px; border:1px solid #ccc; background:url('../images/ico_close03.png') 50% no-repeat; background-size:11.5px 11.5px; position:absolute; top:0; left:0;box-sizing: border-box;}
 ul.optList li p.listPrice select {width:50px; height:26px; position:absolute; top:8px; left:121px;}
 ul.optList li p.listTxt {margin-top:12.5px; color:#999; font-size:13px;}
 ul.optList li .option {width:100%; overflow:hidden;}
@@ -578,6 +578,8 @@ table ul.myCartInfoList li {color:#999;}
 .my .payment p span:last-child{float:right;}
 .my .btnwrap{margin-top:18px;}
 .my .btnwrap a.btnSizeS{width:49%;}
+.my .btnwrap.col3{text-align:center;}
+.my .btnwrap.col3 a.btnSizeS{width:24%;}
 .my .btnwrap a.btnSizeS:first-child,
 .my .btnwrap a.btnSizeS:first-child + a.btnSizeS{margin-bottom:6px;}
 .my .orders p{padding:5px 0;font-size:15px;}
@@ -753,6 +755,32 @@ table ul.myCartInfoList li {color:#999;}
 .emailInfoBox .inp p:last-child span:last-child{color:#f1645c;}
 .emailInfoBox .btnarea{margin-top:20px;}
 .emailInfoBox .btnarea .btnSizeS{width:100px;}
+
+.serviceList{margin-top:10px;}
+.serviceList li{padding:15px 0;border-top:1px solid #ccc;}
+.serviceList li .top{position:relative;}
+.serviceList li .top:after{content:"";display:block;clear:both;}
+.serviceList li .top em{float:left;font-style:normal;font-size:15px;}
+.serviceList li .top .btnSizeS{position:absolute;right:0;top:-10px;}
+.serviceList li p{margin-top:10px;color:#666;font-size:13px;}
+.serviceList li:last-child{padding-bottom:0;}
+.serviceList li p:after{content:"";display:block;clear:both;}
+.serviceList li p span:first-child{float:left;}
+.serviceList li p span:last-child{float:right}
+
+.frequency{padding-top:25px;font-size:15px;}
+.frequency dl{padding-bottom:15px;border-bottom:1px solid #ccc;}
+.frequency dl dt{margin:15px 0 10px;}
+.frequency dl dd{line-height:1.4em;color:#666;font-size:13px;}
+.frequency p{padding-left:20px;margin-top:15px;line-height:1.4em;background:url("../images/ico_info.png") no-repeat 0 2px;background-size:14px;font-size:13px;color:#666;}
+
+.dateChange > ul > li{padding:15px 0;border-top:1px solid #666;}
+.dateChange > ul > li:first-child{border-top:0;}
+.dateChange > ul > li > ul > li{margin-top:6px;}
+.dateChange > ul > li > ul > li:first-child{margin-top:0;}
+.dateChange > ul > li > ul > li p{line-height:1.4em;}
+.dateChange > ul > li > ul > li p:first-child{font-size:15px;}
+.dateChange > ul > li > ul > li p:last-child{font-size:13px;color:#666;}
 
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
