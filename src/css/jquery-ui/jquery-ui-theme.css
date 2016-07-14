@@ -72,7 +72,7 @@
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-	background:#00aeb9;
+	background:#465f8d;
 	color:#fff;
 	border:none;
 }
@@ -91,7 +91,7 @@
 	width:26px;
 	height:26px;
 	line-height:26px;
-	border: 1px solid #00aeb9;
+	border: 1px solid #465f8d;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,
@@ -99,7 +99,7 @@
 	width:26px;
 	height:26px;
 	line-height:26px;
-	border: 1px solid #00aeb9;
+	border: 1px solid #465f8d;
 	
 }
 .ui-state-error,
