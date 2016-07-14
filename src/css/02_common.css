@@ -372,7 +372,7 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .dropScroll{overflow: hidden;position: relative;width: 140px;height: 352px;}
 .dropScroll .dropToggle{display: block;padding: 0 15px;border:1px solid #ccc;font-size: 13px;color: #000;background: #fff;font-family: 'NotoSansR',sans-serif;line-height: 38px;}
 .dropScroll .dropToggle:after{content: '';display: block;position: absolute;top: 7px;right: 15px;width: 20px;height: 20px;background: url('../images/ico_lnb.png') no-repeat;background-position: 0 0;}
-.dropScroll .drop{top: 40px;border-top: 0;}
+.dropScroll .drop{top: 40px;height: auto;border-top: 0;}
 .dropScroll .drop li:first-child a:after{display: none;}
 
 /* font color */
