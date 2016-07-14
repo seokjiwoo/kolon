@@ -18,134 +18,10 @@
 						<button type="submit" class="js-btn">검색</button>
 					</fieldset>
 				</form>
-				<!-- [D] 마크업 원본 -->
-				<!--
-				<div class="recordWrap">
-					<ul>
-						<li>
-							<ul class="innerWrap">
-								<li class="recordPic"><img src="/images/temp01.jpg" alt=""></li>
-								<li class="name"><b>DESIGN NAME</b><br>KOLON GLOBAL</li>
-								<li class="myRateWrap">
-									<span class="myRate"><b>104</b>팔로잉</span>
-									<span class="myRate"><b>15</b>판매상품</span>
-								</li>
-								<li class="btnFollow">
-									팔로잉 해제 시<a href="" class="btnSizeM dismiss">팔로우</a>
-									<a href="" class="btnSizeM btnColor01">팔로잉</a>
-								</li>
-								<li class="imgWrap">
-									<ul>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li><a href="/expert/intro.html" class="btnColor04">더보기</a><img src="/images/temp01.jpg" alt=""></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul class="innerWrap">
-								<li class="recordPic"><img src="/images/temp01.jpg" alt=""></li>
-								<li class="name"><b>DESIGN NAME</b><br>KOLON GLOBAL</li>
-								<li class="myRateWrap">
-									<span class="myRate"><b>104</b>팔로잉</span>
-									<span class="myRate"><b>15</b>판매상품</span>
-								</li>
-								<li class="btnFollow">
-									<a href="" class="btnSizeM btnColor01">팔로잉</a>
-								</li>
-								<li class="imgWrap">
-									<ul>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li><a href="/expert/intro.html" class="btnColor04">더보기</a><img src="/images/temp01.jpg" alt=""></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<ul class="innerWrap">
-								<li class="recordPic"><img src="/images/temp01.jpg" alt=""></li>
-								<li class="name"><b>DESIGN NAME</b><br>KOLON GLOBAL</li>
-								<li class="myRateWrap">
-									<span class="myRate"><b>104</b>팔로잉</span>
-									<span class="myRate"><b>15</b>판매상품</span>
-								</li>
-								<li class="btnFollow">
-									<a href="" class="btnSizeM btnColor01">팔로잉</a>
-								</li>
-								<li class="imgWrap">
-									<ul>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li>
-											<div class="hoverCon">
-												<h3 class="imgTit">MAGAZINE</h3>
-												<p>1등하는 아이들의 생활 공간</p>
-											</div>
-											<img src="/images/temp01.jpg" alt="">
-										</li>
-										<li><a href="/expert/intro.html" class="btnColor04">더보기</a><img src="/images/temp01.jpg" alt=""></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				-->
-				<!--// [D] 마크업원본 -->
-				
-				<div class="recordWrap"></div>
+
+				<!-- [D] #follow-list-templates - wrap -->
+				<div class="recordWrap js-follow-list-wrap"></div>
+				<!--// [D] #follow-list-templates - wrap -->
 
 			</section>
 		</div>
@@ -169,13 +45,15 @@
 	.ui-autocomplete .ui-menu-item {font-family:'RobotoM','NotoSansM', sans-serif;color:#999;border-top:1px solid #ccc}
 	.ui-autocomplete .ui-menu-item:first-child {border-top:none}
 	.ui-autocomplete .ui-state-focus {color:#f1645c}
-	.recordWrap [data-follow-info].is-hide {display:none}
+	.js-follow-list-wrap [data-follow-info].is-hide {display:none}
 </style>
 
 <script id="follow-list-templates" type="text/x-handlebars-template">
-	{{!-- following-list-templates --}}
+{{!-- following-list-templates --}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if follows}}
 	<ul>
-		{{#each .}}
+		{{#each follows}}
 		<li class="js-follow-list"
 			data-follow-coperationName="{{coperationName}}"
 			data-follow-memberName="{{memberName}}"
@@ -230,7 +108,11 @@
 		</li>
 		{{/each}}
 	</ul>
-	{{!--// following-list-templates --}}
+	{{else}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+		<p>팔로잉 데이터가 없습니다.</p>
+	{{/if}}
+{{!--// following-list-templates --}}
 </script>
 
 </body>

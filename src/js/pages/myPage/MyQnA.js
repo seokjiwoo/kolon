@@ -76,11 +76,12 @@ module.exports = function() {
 						if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 					});
 				});
-
-				var template = window.Handlebars.compile($('#opinion-template').html());
-				var elements = $(template(result));
-				$('#opinionList').empty().append(elements);
 			}
+
+			var template = window.Handlebars.compile($('#opinion-template').html());
+			var elements = $(template(result));
+			$('#opinionList').empty().append(elements);
+				
 			$('.myProfileImage').attr('src', MyPage.Super.Super.loginData.imageUrl);
 
 			$('.writeCommentButton').click(showCommentForm);

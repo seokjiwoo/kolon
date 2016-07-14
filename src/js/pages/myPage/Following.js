@@ -35,7 +35,7 @@ module.exports = function() {
 			btn : '.js-btn'
 		},
 		templates : {
-			wrap : '.recordWrap',
+			wrap : '.js-follow-list-wrap',
 			template : '#follow-list-templates'
 		},
 		colorbox : '#colorbox',
@@ -176,7 +176,7 @@ module.exports = function() {
 					isVisible = true;
 				}
 			} else {
-				if (info.coperationName.indexOf(str) != -1 || info.memberName.indexOf(str) != -1) {
+				if (info.coperationName.indexOf(str) !== -1 || info.memberName.indexOf(str) !== -1) {
 					isVisible = true;	
 				}
 			}
@@ -195,7 +195,7 @@ module.exports = function() {
 			eventManager.trigger(ALERTPOPUP_EVENT.OPEN, ['해당 항목이 없습니다.', '', '확인', function() {
 				self.templatesWrap.find(self.opts.dataAttr.followInfo).removeClass(self.opts.cssClass.isHide);
 				self.searchInp.val('');
-				$('#cboxClose').triggerHandler('click');
+				eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
 			}]);
 		} else {
 			$.each(list, function(index) {
@@ -212,7 +212,7 @@ module.exports = function() {
 	function displayFilter(data) {
 		var availableTags = [];
 
-		$.map(data, function(item) {
+		$.map(data.follows, function(item) {
 			availableTags.push(item.coperationName);
 			availableTags.push(item.memberName);
 		});
@@ -251,30 +251,21 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response, elements) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case FOLLOWING_EVENT.LIST:
-				dummyData = [{"coperationName":"KOLON GLOBAL0","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"memberName1","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"KOLON GLOBAL2","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"memberName2","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"KOLON GLOBAL3","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"memberName3","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"KOLON GLOBAL0","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"memberName1","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"KOLON GLOBAL2","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"memberName2","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"},{"coperationName":"KOLON GLOBAL3","followNumber":0,"imageFileUrl":"/images/temp01.jpg","memberName":"memberName3","memberNumber":0,"recentImages":[{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"},{"createDateTime":"string","imageRecentUrl":"/images/temp01.jpg"}],"summaryIntro":"string"}];
-
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
 				switch(status) {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
 						break;
 				}
 
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result);
-				displayFilter(result);
+				
+				displayData(result.data);
+				displayFilter(result.data);
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
@@ -282,7 +273,6 @@ module.exports = function() {
 						elements.wrap.addClass(elements.css);
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 
@@ -295,7 +285,6 @@ module.exports = function() {
 						eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 
