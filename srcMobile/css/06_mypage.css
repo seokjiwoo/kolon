@@ -727,13 +727,32 @@ table ul.myCartInfoList li {color:#999;}
 .estList{border-bottom:1px solid #666;font-size:15px;}
 .estList li{padding:15px 0;border-top:1px solid #ccc;}
 .estList li:first-child{border-top:0;}
-.estList li p{}
 .estList li p:after{content:"";display:block;clear:both;}
-.estList li p:first-child span{}
 .estList li p:first-child span:first-child{float:left;}
 .estList li p:first-child span:last-child{float:right;}
-.estList li p:first-child + p{}
 .estList li p:last-child{margin-top:10px;color:#666;}
+
+.passInfowrap{text-align:center;line-height:1.4em;font-size:15px;}
+.passInfowrap div{padding:15px;background:#e8f8f9;margin-top:20px;}
+.passInfowrap div span{display:block;}
+.passInfowrap div span:last-child{color:#00aeb9;}
+.passInfowrap div + p{margin-top:10px;}
+.passInfowrap input[type="password"]{box-sizing:border-box;}
+.passInfowrap .btnSizeS{width:140px;margin-top:20px;}
+
+.emailInfoBox{text-align:center;}
+.emailInfoBox .txt{padding-bottom:20px;border-bottom:1px solid #ccc;font-size:15px;}
+.emailInfoBox .txt p{line-height:1.4em;}
+.emailInfoBox .txt p:first-child span{color:#00aeb9;}
+.emailInfoBox .txt p:last-child{margin-top:10px;color:#666;font-size:13px;}
+.emailInfoBox .inp{margin-top:20px;}
+.emailInfoBox .inp input[type="text"]{box-sizing:border-box;}
+.emailInfoBox .inp p:last-child{margin-top:5px;color:#999;font-size:13px;}
+.emailInfoBox .inp p:last-child span:first-child{position:relative;padding-right:5px;letter-spacing:-1px;}
+.emailInfoBox .inp p:last-child span:first-child:after{position:absolute;right:-1px;top:5px;width:1px;height:10px;background:#e7e7e7;content:"";display:block;}
+.emailInfoBox .inp p:last-child span:last-child{color:#f1645c;}
+.emailInfoBox .btnarea{margin-top:20px;}
+.emailInfoBox .btnarea .btnSizeS{width:100px;}
 
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
