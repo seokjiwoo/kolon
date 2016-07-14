@@ -131,8 +131,10 @@ module.exports = function() {
 		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
 
 		if (id == '') { 
+			$('#idAlert').text('아이디(이메일 또는 휴대폰 번호)를 입력해주세요.');
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '아이디(이메일 또는 휴대폰 번호)를 입력해주세요', '확인');
 		} else if(pw == '') {
+			$('#pwAlert').text('비밀번호를 입력해 주세요.');
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '비밀번호를 입력해 주세요', '확인');
 		} else if (!util.checkValidPassword(pw)) {
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
@@ -148,6 +150,7 @@ module.exports = function() {
 				if (util.checkVaildEmail(enteredId)) {
 					controller.login(enteredId, pw, keepLogin);
 				} else {
+					$('#idAlert').text('아이디(이메일 또는 휴대폰 번호)를 입력해주세요.');
 					Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
 				}
 			}

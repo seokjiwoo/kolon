@@ -119,7 +119,7 @@ module.exports = function() {
 			}
 			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
-			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('마이커먼');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 

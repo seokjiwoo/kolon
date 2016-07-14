@@ -126,12 +126,14 @@ module.exports = function() {
 		if (status == 200) {
 			$.map(result, function(each) {
 				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
+				each.content = each.content.replace(/\n/, '<br />');
 				if (each.answers.length == 0) {
 					each.answerCount = '<p>미답변</p>';
 				} else {
 					each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
 				}
 				$.map(each.answers, function(eachAnswers) {
+					eachAnswers.content = eachAnswers.content.replace(/\n/, '<br />');
 					if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 				});
