@@ -45,17 +45,37 @@
 
 .productList .cardWrap{overflow: hidden;margin-top:15px;}
 
-/* shop detail */
-.detailArea h3 span {display:block;font-size:60px;font-family:'NotoSansT', sans-serif;font-weight:normal;font-style:normal;}
-.shopTop.detailArea h3 {font-size:70px;}
-.shopTop.topArea .topContBox .unitPrice {margin-top:100px;}
-
-/* magazine detail */
-.magazineTop.detailArea h3 span {font-size:80px;font-family:'NotoSansL', sans-serif;}
 
 
-/* newform detail */
-/* common */
+
+
+/* detail common */
+/* 상단 tab common */
+.detailTopTab {position:fixed;top:60px;left:0;right:0;z-index:5;background:#858585;}
+.detailTopTab .topTabWrap {overflow:hidden;width:1200px;margin:0 auto;}
+.detailTopTab ul, .detailTopTab .socialTopBtn {float:left;overflow:hidden;}
+.detailTopTab ul li {float:left;text-align:center;border-right:1px solid #fff;}
+.detailTopTab ul li a {display:block;width:304px;height:40px;line-height:40px;color:#fff;font-size:16px;font-family:'NotoSansM', sans-serif;}
+.detailTopTab ul li.on {background:#000}
+.detailTopTab ul li.on a {color:#fff;}
+.detailTopTab ul li:first-child {border-left:1px solid #fff;}
+.detailTopTab ul li:first-child a {width:294px;}
+.detailTopTab ul li.on:first-child {border-left:none;}
+.detailTopTab ul li.on:first-child a {width:295px;}
+.detailTopTab .socialTopBtn {text-align:right;width:276px;height:40px;padding:0 9px;}
+.detailTopTab .socialTopBtn .hoverSocialBtn {display:inline-block;margin-top:5px;width:30px;height:30px;background: url('../images/ico_newform.png') 0 -60px no-repeat}
+.detailTopTab .socialTopBtn .hoverSocialBtn a {display:none;}
+.detailTopTab .socialTopBtn .hoverSocialBtn:hover {width:auto;margin-top:0;background:none;}
+.detailTopTab .socialTopBtn .hoverSocialBtn:hover a {display:inline-block;}
+.socialTopBtn a {display:inline-block;margin-top:5px;width:30px;height:30px;padding:0;background: url('../images/ico_newform.png') no-repeat}
+.socialTopBtn .socialBtn01 {background-position:0 -0px;}
+.socialTopBtn .socialBtn02 {background-position:0 -30px;}
+.socialTopBtn .socialBtn03 {background-position:0 -90px;}
+.socialTopBtn .socialBtn04 {background-position:0 -120px;}
+.socialTopBtn .socialBtn05 {background-position:0 -150px;}
+.socialTopBtn .socialBtn06 {background-position:0 -180px;}
+.socialTopBtn .socialBtn07 {background-position:0 -210px;}
+
 .detailArea h3 {font-size:80px;font-weight:bold;font-style:italic;font-family:'Times New Roman', sans-serif;}
 .detailArea .icoNewformTit:before {content:'';display:block;width:83px;height:75px;margin:0 auto;background:url(../images/ico_newform_tit.png) no-repeat}
 .italic {font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
@@ -66,6 +86,20 @@
 .alignLine:after {margin-left:20px;}
 .clearBox {overflow:hidden;clear:both;}
 
+
+
+
+
+/* shop detail */
+.detailArea h3 span {display:block;font-size:60px;font-family:'NotoSansT', sans-serif;font-weight:normal;font-style:normal;}
+.shopTop.detailArea h3 {font-size:70px;}
+.shopTop.topArea .topContBox .unitPrice {margin-top:100px;}
+
+/* magazine detail */
+.magazineTop.detailArea h3 span {font-size:80px;font-family:'NotoSansL', sans-serif;}
+
+
+/* newform detail */
 /* topArea */
 .topArea .topContBox {height:900px;background-position:top center;background-repeat:no-repeat;}
 .topArea .topContBox .topCont {width:1140px;height:780px;margin:0 auto;padding-top:120px;color:#000;font-family:'NotoSansR' sans-serif;}
