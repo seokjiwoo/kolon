@@ -98,7 +98,7 @@ module.exports = function() {
 			myPageController.myOpinions();
 		}
 		controller.opinionsExpertList();
-		expertController.expertList();
+		expertController.list();
 	}
 
 	/**
