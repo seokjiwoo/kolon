@@ -45,9 +45,13 @@ function ClassProductController() {
 	/**
 	 * 샵(=배송형 상품) 리스트
 	 */
-	function shopList() {
+	function shopList(order, page) {
+		if (!order) order = 'newest';		// newest:최신순/scrap:스크랩순/like:좋아요순
+		// page, size는 나중에 정의 필요
+
 		Super.callApi('/apis/products/', 'GET', {
-			productServiceSectionCode: "PD_PROD_SVC_SECTION_01"
+			productServiceSectionCode: "PD_PROD_SVC_SECTION_01",
+			order: order
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('shopProductListResult', [status, result.data]);
@@ -61,9 +65,13 @@ function ClassProductController() {
 	/**
 	 * 뉴폼(=시공형 상품) 리스트
 	 */
-	function newFormList() {
+	function newFormList(order, page) {
+		if (!order) order = 'newest';		// newest:최신순/scrap:스크랩순/like:좋아요순
+		// page, size는 나중에 정의 필요
+
 		Super.callApi('/apis/products/', 'GET', {
-			productServiceSectionCode: "PD_PROD_SVC_SECTION_02"
+			productServiceSectionCode: "PD_PROD_SVC_SECTION_02",
+			order: order
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('shopNewFormListResult', [status, result.data]);
