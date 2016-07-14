@@ -211,11 +211,11 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .record .total b{color: #999;}
 .record .recordThumb{overflow: hidden;width: 90px;height: 90px;background: #f8f8f8;}
 .record .recordThumb img{display: block;width: 100%;}
-.record .recordInfo{text-align: left;}
+.record .recordInfo{text-align: left;color: #333;}
 .record .recordInfo span{display: block;}
-.record .recordInfo .producOption{color: #999}
-.record .recordInfo .count{color: #999}
-.record .recordInfo .productPrice{font-family:'NotoSansB', sans-serif;}
+.record .recordInfo .productTit{margin-bottom: 3px;color: #000;font-size: 16px;font-family:'NotoSansM', sans-serif;line-height: 1.2em;}
+.record .recordInfo .productPrice{font-family:'NotoSansM', sans-serif;}
+.record .recordInfo .productPrice + .producOption{margin-top: 10px;}
 .record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#b08967;font-family:'NotoSansM', sans-serif;border:2px solid #b08967;}
 .record .orderState{position: relative;}
 .record .orderState a{font-size:13px;}
@@ -295,7 +295,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 
 .btnSideArray {overflow:hidden;line-height:40px;margin:20px 8px 30px 0;}
 .btnSideArray label {font-size:16px;color:#666;}
-.btnSideArray label span {color:#f1645c;}
+.btnSideArray label span {color:#b08967;}
 .btnSideArray .checkbox {margin-top:0}
 
 .my .scrapTit{margin-bottom:20px;color:#000;font-size: 20px;font-family:'NotoSansR', sans-serif;}

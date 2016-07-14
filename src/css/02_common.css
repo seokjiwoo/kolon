@@ -101,6 +101,9 @@
 .my .record.record03 a.btnIcoMore.active {background:#f1645c;text-align:center;padding:0 25px 0 10px}
 .my .record.record03 a.btnIcoMore.active:after {background-position:0 -10px;right:10px;}
 
+.record.record04 td{border-bottom: 0;border-top: 1px solid #e1e1e1;}
+.record.record04 .total td{border-top:1px solid #000;color: #000; }
+.record.record04 .total .sum{color: #f2655c}
 
 .tag{height: 36px;overflow: hidden;}
 .tag li{display: inline-block;margin-left: 5px;}
@@ -153,7 +156,7 @@ a.pointLink {color:#f1645c;text-decoration:underline;font-family:'NotoSansR', sa
 
 /* button */
 .btnWrap{text-align: center;clear:both;}
-a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0;font-family: 'NotoSansM', sans-serif;text-align: center;}
+a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0;font-family: 'NotoSansR', sans-serif;text-align: center;}
 
 .btnSizeS{height:30px;padding:0 20px;font-size: 14px;border-radius: 15px;line-height: 30px;}
 .btnSizeM{height:40px;min-width:140px;font-size: 14px;border-radius: 20px;line-height: 40px;}
@@ -339,11 +342,12 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 
 /* dropBox */
 .drop {overflow:hidden;height:38px;border:1px solid #ccc;}
-.drop li {display:block !important;width:138px;height:38px;border-top:1px solid #ccc;}
+.drop li {display:block ;width:138px;height:38px;border-top:1px solid #ccc;}
 .drop li:first-child {color:#666;border-top:none}
 .drop li:first-child a:after {content:'';display:block;position:absolute;top:7px;right:15px;width:20px;height:20px;background:url(../images/ico_lnb.png) no-repeat;background-position:0 0;}
-.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#000;background:#fff;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;}
-.drop li a.on {background:#fff;color:#666;}
+.drop li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#666;background:#fff;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;}
+.drop li a.on {position: relative;background:#fff;color:#465f8d;}
+.drop li a.on:after{content: '';display: inline-block;width: 20px;height: 20px;border: none;position: absolute;top: 10px;right: 10px;background: url(../images/ico_lnb.png) no-repeat;background-position: 0 -40px;}
 /* dropBox on 되었었을 시 dropOn class 추가 */
 .drop.dropOn {height:auto;}
 .drop.dropOn li:first-child a:after {top:10px;background-position:0 -20px;}
@@ -353,8 +357,8 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .drop.dropChk li label {display:block;width:100%;font-size:13px;color:#999;}
 .drop.dropChk .checkbox {display:block;height:40px;margin-top:0;}
 .drop.dropChk .checkbox label:before {content:'';display:inline-block;width:20px;height:20px;border:none;border-radius:0;margin-right:0;visibility:hidden;position:absolute;top:10px;right:0;}
-.drop.dropChk .checkbox label.on {color:#f1645c;}
-.drop.dropChk .checkbox label.on:before {visibility:visible;background:url(../images/ico_lnb.png) no-repeat;background-position:0 -40px;}
+.drop.dropChk .checkbox label.on {color:#465f8d;}
+.drop.dropChk .checkbox label.on:before {visibility:visible;background:url('../images/ico_lnb.png') no-repeat;background-position:0 -40px;}
 /* dropBox check 기능 있으면서 on되었을 시 dropChk class 추가 */
 .drop.dropChk.dropOn li:first-child a:after {top:8px;background-position:0 -60px;} 
 
@@ -365,14 +369,36 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .alignBox .leftBox {min-width:140px; height:40px; float:left; position:relative; display:inline-block;}/* drop밖에 감싸서 정렬 */
 .alignBox .rightBox {min-width:140px; height:40px; float:right; position:relative; display:inline-block;}
 
-
 .liBox{padding: 15px;text-align: center;border:1px solid #000;color: #000;}
 .liBox li:before{content: '';display: inline-block;width: 3px;height:3px;background: #000;margin-right: 7px;vertical-align: middle;}
 .liBox b{font-family:'NotoSansM', sans-serif;}
 
+.dropScroll{overflow: hidden;position: relative;width: 140px;height: 352px;}
+.dropScroll .dropToggle{display: block;padding: 0 15px;border:1px solid #ccc;font-size: 13px;color: #000;background: #fff;font-family: 'NotoSansR',sans-serif;line-height: 38px;}
+.dropScroll .dropToggle:after{content: '';display: block;position: absolute;top: 7px;right: 15px;width: 20px;height: 20px;background: url('../images/ico_lnb.png') no-repeat;background-position: 0 0;}
+.dropScroll .drop{top: 40px;height: auto;border-top: 0;}
+.dropScroll .drop li:first-child a:after{display: none;}
+
+.alignBox .dropExpand{overflow: visible;width: 290px;width: 140px;height:0;border-width: 0;}
+.alignBox .dropExpand li{display: none;float: left;border:0;height: 41px;background: none}
+.alignBox .dropExpand li:first-child{display: block;position: absolute;top: 0;right: -1px;height: 38px;border:1px solid #ccc;}
+.alignBox .dropExpand li:nth-child(2){float: none}
+.alignBox .dropExpand a{background: none;line-height: 40px;}
+.alignBox .dropExpand.dropOn{top:39px;display: block;width: 414px;height: auto;background: url('../images/bg_drop.jpg') repeat;border-width: 1px;border-bottom: 0;}
+.alignBox .dropExpand.dropOn li{display: block;}
+.alignBox .dropExpand.dropOn li:first-child{top: -40px;right: -2px;}
 
 /* font color */
 .color01{color: #000 !important;}
 .color02{color: #333 !important;}
 .color03{color: #666 !important;}
 .color04{color: #999 !important;}
+.color05{color: #f2655c !important;}/* red */
+
+
+.dlBasic{position: relative;text-align: left;}
+.dlBasic dt{position: absolute;}
+.dlBasic dd{margin-left: 70px;}
+.dlBasic dt:first-child, .dlBasic dd:first-child{margin:0;}
+.dlBasic dt{clear: left;}
+.dlBasic dt:after{content:'';display: inline-block;width: 1px;height: 10px;margin-left: 10px;background: #ccc;vertical-align: middle;}

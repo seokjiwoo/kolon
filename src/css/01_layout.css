@@ -4,7 +4,7 @@ a{text-decoration:none;}
 a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
 ul, ol, li{list-style:none;padding:0;margin:0;}
 fieldset{border:0;padding:0;margin:0;}
-h1, h2, h3, h4, h5, h6, p{margin:0;font-weight:normal;}
+h1, h2, h3, h4, h5, h6, p, th{margin:0;font-weight:normal;}
 input, textarea, button, select, option, {line-height:1;font-family:'NotoSansL', sans-serif;border:0;outline:0;background:none}
 b,strong{font-weight:normal;}
 table{border-collapse:collapse;border-spacing:0;}
@@ -49,7 +49,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topMenu .topR .member .name{font-family:'NotoSansR', sans-serif;color: #737373;}
 .topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
 .topMenu .topR .member .pic img{width: 100%;}
-.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: #465f8d url('../images/ico_alarm.png') no-repeat center;border-radius: 50%;}
+.topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: url('../images/ico_alarm.png') no-repeat center;}
 
 #top {width:100%;}
 #top .searchWrap{position: absolute;top: -177px;left: 0;width: 100%;background: rgba(255,255,255,.9);text-align: left;border-bottom: 1px solid #333;z-index: -1}
