@@ -365,14 +365,19 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .alignBox .leftBox {min-width:140px; height:40px; float:left; position:relative; display:inline-block;}/* drop밖에 감싸서 정렬 */
 .alignBox .rightBox {min-width:140px; height:40px; float:right; position:relative; display:inline-block;}
 
-
 .liBox{padding: 15px;text-align: center;border:1px solid #000;color: #000;}
 .liBox li:before{content: '';display: inline-block;width: 3px;height:3px;background: #000;margin-right: 7px;vertical-align: middle;}
 .liBox b{font-family:'NotoSansM', sans-serif;}
 
+.dropScroll{overflow: hidden;position: relative;width: 140px;height: 352px;}
+.dropScroll .dropToggle{display: block;padding: 0 15px;border:1px solid #ccc;font-size: 13px;color: #000;background: #fff;font-family: 'NotoSansR',sans-serif;line-height: 38px;}
+.dropScroll .dropToggle:after{content: '';display: block;position: absolute;top: 7px;right: 15px;width: 20px;height: 20px;background: url('../images/ico_lnb.png') no-repeat;background-position: 0 0;}
+.dropScroll .drop{top: 40px;border-top: 0;}
+.dropScroll .drop li:first-child a:after{display: none;}
 
 /* font color */
 .color01{color: #000 !important;}
 .color02{color: #333 !important;}
 .color03{color: #666 !important;}
 .color04{color: #999 !important;}
+
