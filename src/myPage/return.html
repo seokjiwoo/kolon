@@ -11,8 +11,8 @@
 			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
 			<div class="wrap">
 				<!-- @@include ../_template/my_depth03_01.html {"myMenu02":"on"} -->
-				<section class="singleCard" id="myActivity">
-					<h2 class="secTit">교환/반품/취소 내역 조회</h2>
+				<section class="singleCard" id="myReturn">
+					<h2 class="secTit">교환/반품/취소 조회</h2>
 					<table class="recordSort">
 						<colgroup>
 							<col style="width:130px;"/>
@@ -61,7 +61,7 @@
 						</tr>
 					</table>
 					<div class="alignBox">
-						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+						<h3 class="subTit">교환/반품/취소 목록</h3>
 						<!-- 
 							[D] dropbox 체크 타입 - active 시 .dropOn
 
@@ -71,7 +71,7 @@
 							- data-all-checker 전체선택 input 객체 설정
 							- 기본값 data-all-checker 별도 지정이 없을 경우 input 객체중 첫번째 요소로 설정
 						 -->
-						<ul class="drop dropChk" data-prevent="true">
+						<ul class="drop dropChk dropExpand" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li>
 								<p class="checkbox">
@@ -81,41 +81,77 @@
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk01" class="on">입금대기</label>
+									<label for="chk01" class="on">교환신청</label>
 									<input type="checkbox" name="SL_ORDER_STATE_01" id="chk01" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk02" class="on">결제완료</label>
+									<label for="chk02" class="on">반품신청</label>
 									<input type="checkbox" name="SL_ORDER_STATE_02" id="chk02" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk03" class="on">상품준비중</label>
+									<label for="chk03" class="on">취소신청</label>
 									<input type="checkbox" name="SL_ORDER_STATE_03" id="chk03" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk04" class="on">배송중</label>
+									<label for="chk04" class="on">교환반려</label>
 									<input type="checkbox" name="SL_ORDER_STATE_04" id="chk04" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk05" class="on">배송완료</label>
+									<label for="chk05" class="on">반품반려</label>
 									<input type="checkbox" name="SL_ORDER_STATE_05" id="chk05" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk06" class="on">구매확정</label>
+									<label for="chk06" class="on">취소반려</label>
 									<input type="checkbox" name="SL_ORDER_STATE_06" id="chk06" checked>
 								</p>
 							</li>
-						</ul>						
+							<li>
+								<p class="checkbox">
+									<label for="chk07" class="on">교환승인</label>
+									<input type="checkbox" name="SL_ORDER_STATE_07" id="chk07" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk08" class="on">환불완료</label>
+									<input type="checkbox" name="SL_ORDER_STATE_08" id="chk08" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk09" class="on">취소완료</label>
+									<input type="checkbox" name="SL_ORDER_STATE_09" id="chk09" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk10" class="on">교환신청 취소</label>
+									<input type="checkbox" name="SL_ORDER_STATE_10" id="chk10" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk11" class="on">환불신청 취소</label>
+									<input type="checkbox" name="SL_ORDER_STATE_11" id="chk11" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk12" class="on">취소신청 취소</label>
+									<input type="checkbox" name="SL_ORDER_STATE_12" id="chk12" checked>
+								</p>
+							</li>
+						</ul>
 					</div>
 					<!-- [D] 마크업 원본 -->
 					<!-- 
@@ -205,10 +241,17 @@
 </style>
 
 <script id="order-list-templates" type="text/x-handlebars-template">
+	<colgroup>
+		<col style="width:120px;"/>
+		<col style="width:110px;"/>
+		<col style="width:245px;"/>
+		<col style="width:110px;"/>
+		<col style="width:100px;"/> 
+		<col style="width:110px;"/> 
+	</colgroup>
 	<tr>
 		<th>주문정보</th>
 		<th colspan="2">상품정보</th>
-		<th>판매처</th>
 		<th>수령자</th>
 		<th>배송비</th>
 		<th>진행상태</th>
@@ -221,7 +264,7 @@
 			}'>
 			<td rowspan="{{listOrderItems.length}}" class="recordDate">
 				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
-				<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
+				<p class="total"><b>환불금액</b><br>{{totalPaymentPriceDesc}} 원</p>
 			</td>
 		{{#each listOrderItems}}
 			{{#vxIF @index "!==" 0}}
@@ -233,13 +276,11 @@
 			{{/vxIF}}
 				<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
 				{{#if optionName}}
-					<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-					</td>
+					<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span></td>
 				{{else}}
-					<td class="recordInfo">{{productName}}<span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+					<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
 					</td>
 				{{/if}}
-				<td>{{../sellerName}}</td>
 				<td>{{../receiverName}}</td>
 				<td>{{deliveryFee}}</td>
 				<td class="orderState stateWrap">

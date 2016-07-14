@@ -67,6 +67,7 @@
 
 #popAgree01 .popCon{text-align: left;}
 
+.popCon .popTxt{color: #999;}
 .popCon a[class^=btnSize]{min-width: 150px;}
 .popCon input[type="text"],
 .popCon input[type="password"]{width:230px; padding:10px 20px; border:1px solid #ccc;font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
@@ -123,15 +124,14 @@
 .popCon .expertInfo {width:100%; overflow:hidden;}
 .popCon .expertInfo .ePic {width:180px; height:180px; margin-left:15px; border-radius:50%; overflow:hidden; float:left;}
 .popCon .expertInfo .ePic img {width:180px; height:180px;}
-.popCon .expertInfo .eCon {width:583px; float:left; overflow:hidden; padding:30px 0; margin-left:40px;}
+.popCon .expertInfo .eCon {float:left; overflow:hidden;width:583px;margin-left:40px;padding: 12px 0;}
 .popCon .expertInfo .eCon .infoWrap {width:100%; overflow:hidden; position:relative;}
 .popCon .expertInfo .eCon .infoWrap p {line-height:130%;}
 .popCon .expertInfo .eCon .infoWrap p.infoTit {font-size:30px; font-family:'NotoSansR', sans-serif; color:#000;}
-#cboxLoadedContent .popCon .expertInfo .eCon .infoWrap p.infoId {margin-top:5px; font-size:16px;  font-family:'NotoSansL', sans-serif; color:#666;line-height: 4.4em;}
-.popCon .expertInfo .eCon .infoWrap a.expertMore {width:99px; height:28px; padding:0 15px; border:1px solid #999; border-radius:13px; position:absolute; top:0; right:0; display:inline-block; line-height:28px; font-size:14px; text-align:center; color:#666;  font-family:'NotoSansR', sans-serif;}
+#cboxLoadedContent .popCon .expertInfo .eCon .infoWrap .infoId {font-size:16px; font-family:'NotoSansL', sans-serif; color:#666;}
+.popCon .expertInfo .eCon a.expertMore {border:1px solid #b08967;color:#b08967;}
 .popCon .expertInfo .eCon .infoDetail {width:100%; min-height:40px; overflow:hidden; position:relative;}
-.popCon .expertInfo .eCon .infoDetail:before {content:''; width:50px; height:1px; background:#c7c7c7; position:absolute; top:0; left:0; display:inline-block;}
-.popCon .expertInfo .eCon .infoDetail .eTxt {width:47%; margin-top:20px; min-height:40px; float:left;}
+.popCon .expertInfo .eCon .infoDetail:before {content:''; display:block;width:50px; height:1px;margin: 10px 0 15px;background:#c7c7c7; }
 .popCon .expertInfo .eCon .infoDetail .eTxt span {font-family:'NotoSansL', sans-serif; display:inline-block; position:relative;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span:before {content:''; display:inline-block; position:absolute;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress {padding-left:13px;}
@@ -139,7 +139,7 @@
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar {padding-left:15px;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 1px -10px no-repeat; top:2px; left:0;}
 .popCon .expertInfo .eCon .infoDetail .eTxt span + span {margin-left:13px;}
-.popCon .expertInfo .eCon .infoDetail .eBtn {width:53%; margin-top:10px; float:right; text-align:right;}
+.popCon .expertInfo .eCon .infoDetail .eBtn {margin-top:20px;}
 .popCon .expertInfo .eCon .infoDetail .eBtn a + a {margin-left:5px;}
 .popCon .expertInfo + .popTb {margin-top:32px;}
 .popCon .popMail input[type=text] {width:67px;}

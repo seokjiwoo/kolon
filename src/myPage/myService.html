@@ -138,11 +138,18 @@
 					</div>
 					<table class="record record03" summary="시공 상품 목록 표로써 주문번호, 상품정보, 판매처, 시공지, 완공일, 진행상태 정보가 담겨있습니다.">
 						<caption>시공상품 목록 표</caption>
+						<colgroup>
+							<col style="width:100px;"/>
+							<col style="width:110px;"/>
+							<col style="width:215px;"/>
+							<col style="width:110px;"/>
+							<col style="width:100px;"/> 
+							<col style="width:160px;"/> 
+						</colgroup>
 						<tr>
 							<th>주문번호</th>
 							<th colspan="2">상품정보</th>
 							<th>판매처</th>
-							<th>시공지</th>
 							<th>완공일</th>
 							<th>진행상태</th>
 						</tr>
@@ -151,9 +158,8 @@
 								<p class="date">2016.04.20<br><a href="myServiceDetail.html">2345865</a></p>
 							</td>
 							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">[인테리어 패키지] 모노<br>화이트 스타일 욕실<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="productPrice">38,700,000 원</span>
+							<td class="recordInfo"><span class="owner">에코인테리어</span><br>[인테리어 패키지] <span class="productTit">모노 화이트 스타일 욕실</span><span class="producOption">옵션 : 오팔 화이트 중형</span><span class="productPrice">38,700,000 원</span>
 							</td>
-							<td>에코인테리어</td>
 							<td>서울시 강남구<br>청담동 248</td>
 							<td>실측 후 게시</td>
 							<td class="orderState">
@@ -161,7 +167,7 @@
 									<!-- @@include ../_template/pop_order_state02.html {"step":"step02", "step02":"on"} -->
 									실측/견적요청<span class="stateIcor"></span>
 								</div>
-								<a href="../../_popup/popOrderCancelDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">요청취소</a>
+								<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">실측/견적 요청취소</a>
 							</td>
 						</tr>
 						<tr>
@@ -169,9 +175,8 @@
 								<p class="date">2016.04.20<br><a href="myServiceDetail.html">2345865</a></p>
 							</td>
 							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">[아이방 패키지]비스트<br>콜라보레이션 룸<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="productPrice">12,500,000 원</span>
+							<td class="recordInfo"><span class="owner">(주)공간</span><br>[아이방 패키지]<span class="productTit">비스트 콜라보레이션 룸</span><span class="producOption">옵션 : 오팔 화이트 중형</span><span class="productPrice">12,500,000 원</span>
 							</td>
-							<td>(주)공간</td>
 							<td>서울시 강남구<br>청담동 248</td>
 							<td>2016.01.20</td>
 							<td class="orderState">
@@ -179,7 +184,7 @@
 									<!-- @@include ../_template/pop_order_state02.html {"step":"step06", "step06":"on"} -->
 									배송완료<span class="stateIcor"></span>
 								</div>
-								<a href="" class="btnSizeS btnColor01">현황확인</a>
+								<a href="" class="btnSizeS btnColor01">시공 현황 확인</a>
 							</td>
 						</tr>
 						<!-- 시공 내역이 없는경우 -->
