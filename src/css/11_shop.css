@@ -76,6 +76,56 @@
 .socialTopBtn .socialBtn06 {background-position:0 -180px;}
 .socialTopBtn .socialBtn07 {background-position:0 -210px;}
 
+/* 하단 tab common */
+.detailBottomTab {position:fixed;bottom:0;left:0;right:0;z-index:5;}
+.detailBottomTab .bottomTabWrap {overflow:hidden;background:#000;font-size:14px;}
+.detailBottomTab .bottomTabWrap + .bottomTabWrap {background:#fff;border-bottom:2px solid #000;}
+.detailBottomTab .bottomTabWrap .optionBar {width:1200px;height:54px;margin:0 auto;}
+
+.barLeft {float:left;line-height:54px;}
+.barRight {float:right;line-height:1.8}
+.barLeft a {display:block;color:#fff;}
+.barLeft a span {position:relative;display:inline-block;margin-right:10px;width:28px;height:28px;background:#333;border-radius:50%;vertical-align:middle}
+.barLeft a span:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-5px 0 0 -7px;width:15px;height:10px;background:url('../images/btn_more_ico.png') 0 0 no-repeat;}
+.barRight .allPrice {display:inline-block;font-size:16px;color:#f84b40;font-family:'NotoSansR', sans-serif;vertical-align:middle}
+.barRight .allPrice span {font-size:30px;font-style:italic;}
+.barRight a {display:inline-block;position:relative;display:inline-block;width:40px;height:40px;background:#4d4d4d;border-radius:50%;vertical-align:middle}
+.barRight a:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-15px 0 0 -15px;width:30px;height:30px;background: url(../images/ico_newform.png) 0 0 no-repeat;}
+.barRight a.bigBtn03 {text-align:center;width:140px;height:40px;line-height:40px;background-image:none;background:#4d4d4d;border-radius:40px;color:#fff;}
+.barRight a.bigBtn03:before {display:none;}
+.barRight a.bigBtn03 + .bigBtn03 {background:#f1645c;}
+.barRight .allPrice + a {margin-left:20px;}
+.barRight a + .bigBtn03 {margin-left:7px;}
+.barRight a.bigBtn03 + .bigBtn03 {margin-left:5px;}
+
+.detailBottomTab .bottomTabWrap .activeOption {padding:40px 30px;width:1140px;margin:0 auto;font-family:'NotoSansR', sans-serif;}
+.detailBottomTab .bottomTabWrap .activeOption:after {content:'';display:block;clear:both;}
+.activeOption .activeLeft {float:left;width:555px;}
+.activeOption .activeRight {float:right;width:555px;margin-top:30px;color:#333;}
+.activeOption .activeLeft h4 {font-size:30px;}
+.activeOption .activeLeft .choiceTitInfo {margin:10px 0 20px;font-size:16px;}
+.activeOption .drop {border:1px solid #000;}
+.activeOption .drop + .drop {margin-top:10px;}
+.activeOption .drop li {width:100%;border-top:1px solid #000;}
+.activeOption .drop li:first-child {position:relative;border-top:none;}
+.activeOption .drop li:first-child a:after {width:16px;height:10px;top:14px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
+.activeOption .drop.dropOn li:first-child a:after {background-position:0 0}
+
+.activeOption .optionList li {overflow:hidden;padding:12px 0;border-bottom:1px solid #b2b2b2;}
+.activeOption .optionList li .optionInfo, .activeOption .allPriceBox .allPriceLeft {float:left;}
+.activeOption .optionList li .optionControl, .activeOption .allPriceBox .allPriceRight {float:right;}
+.activeOption .optionList li .optionInfo p, .activeOption .optionList li .optionControl p {display:inline-block;vertical-align: middle;}
+.activeOption .optionList li .optionControl span {font-family:'NotoSansB', sans-serif;}
+.activeOption .allPriceBox {margin-top:15px;font-size:16px;font-family:'NotoSansM', sans-serif;}
+.activeOption .allPriceBox span {margin-left:30px;font-family:'NotoSansR', sans-serif;}
+.activeOption .allPriceBox .allPriceLeft {color:#46608e;}
+.activeOption .allPriceBox .allPriceRight {color:#f1645c;}
+.activeOption .allPriceBox .allPriceRight span {font-size:30px;font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
+.activeOption .allPriceBox .allPriceRight b {font-size:16px;font-weight:normal;font-style:normal;font-family:'NotoSansR', sans-serif;}
+.activeOption .cancelOption {position:relative;display:inline-block;margin-left:18px;width:25px;height:25px;background:#666;border-radius:50%;vertical-align: middle;}
+.activeOption .cancelOption:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-6px 0 0 -5px;width:11px;height:11px;background:url(../images/btn_closeW.png) no-repeat;}
+
+
 .detailArea h3 {font-size:80px;font-weight:bold;font-style:italic;font-family:'Times New Roman', sans-serif;}
 .detailArea .icoNewformTit:before {content:'';display:block;width:83px;height:75px;margin:0 auto;background:url(../images/ico_newform_tit.png) no-repeat}
 .italic {font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
@@ -242,8 +292,8 @@
 .purchasingArea h3 {font-size:50px;}
 .purchasingArea p {margin-top:10px;font-size:30px;}
 .accordion {position:relative;width:1200px;margin:60px auto 0;text-align:left;}
-.accordion:before {content: '';position: absolute;top: 0;left: 0;width: 0;height: 0;border-bottom: 60px solid #e6e6e6;border-left: 30px solid transparent;z-index: 99;background: #fff;}
-.accordion li:last-child:after {content: '';position: absolute;top: 0;right: 0;width: 0;height: 0;border-top: 60px solid #e6e6e6;border-right: 30px solid transparent;z-index: 99;background: #fff;}
+.accordion:before {content: '';position: absolute;top: 0;left: 0;width: 0;height: 0;border-bottom: 60px solid #e6e6e6;border-left: 30px solid transparent;z-index:3;background: #fff;}
+.accordion li:last-child:after {content: '';position: absolute;top: 0;right: 0;width: 0;height: 0;border-top: 60px solid #e6e6e6;border-right: 30px solid transparent;z-index:3;background: #fff;}
 .accordion li {position:relative;height:60px;line-height:60px;margin-top:1px;}
 .accordion li:first-child {margin-top:0;}
 .accordion li a {display:block;position:relative;width:100%;background:#e6e6e6;width:1115px;padding:0 30px 0 55px;font-size:20px;font-family:'NotoSansL', sans-serif;color:#000;}
