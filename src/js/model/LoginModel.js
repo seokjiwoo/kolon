@@ -48,7 +48,6 @@ function ClassLoginModel() {
 		if (data.myInfo.memberImages != null) imageUrl = data.myInfo.memberImages.imageUrl;
 		
 		Cookies.set(COOKIE_NAME, {
-			memberNumber: data.myInfo.memberNumber,
 			stateCode: data.myInfo.memberStateCode,
 			memberName: data.myInfo.memberName,
 			email: data.myInfo.email,

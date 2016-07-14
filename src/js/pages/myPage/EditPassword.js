@@ -70,7 +70,7 @@ module.exports = function() {
 			alert('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
 			$('#newPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
 		} else {
-			controller.changePassword(MyPage.Super.Super.loginData.memberNumber, pw0, pw1);
+			controller.changePassword(pw0, pw1);
 		}
 		
 		e.stopPropagation();
