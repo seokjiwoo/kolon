@@ -30,8 +30,8 @@ module.exports = function() {
 
 	var opts = {
 		templates : {
-			wrap : '.js-order-wrap',
-			template : '#order-list-templates'
+			wrap : '.js-return-list-wrap',
+			template : '#return-list-templates'
 		},
 		colorbox : '#colorbox',
 		cssClass : {
@@ -44,7 +44,7 @@ module.exports = function() {
 			altTo : '.js-alt-to'
 		},
 		search : {
-			wrap : '.js-order-search',
+			wrap : '.js-return-search',
 			inp : '.js-inp',
 			submit : '.js-submit',
 		},
@@ -265,9 +265,8 @@ module.exports = function() {
 		});
 	}
 
-	function onControllerListener(e, status, response/*, elements*/) {
+	function onControllerListener(e, status, response) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
@@ -281,7 +280,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 
@@ -309,7 +307,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 
@@ -327,7 +324,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 

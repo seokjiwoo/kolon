@@ -16,6 +16,7 @@ module.exports = function() {
 	Super = SuperClass(),
 	cartController = require('../../controller/OrderController.js'),
 	productController = require('../../controller/ProductController.js'),
+	DropDownMenu = require('../../components/DropDownMenu.js'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	CART_EVENT = events.CART,
 	PRODUCT_EVENT = events.PRODUCT;
@@ -57,6 +58,8 @@ module.exports = function() {
 		}
 	};
 
+	var listOrder = 'newest';
+
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
 	callerObj = {
@@ -80,7 +83,12 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		productController.newFormList();
+		productController.shopList(listOrder);			// newest:최신순/scrap:스크랩순/like:좋아요순
+		$('#orderDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+			cardList.removeAllData();
+			listOrder = data.values[0];
+			productController.shopList(listOrder);
+		});
 	}
 
 	function setElements() {

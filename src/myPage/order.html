@@ -54,7 +54,7 @@
 										<legend class="hide"></legend>
 										<input type="text" id="recordInput" class="js-inp" title="주문내역 입력 란">
 										<label for="recordInput"></label>
-										<button type="submit js-submit">검색</button>
+										<button type="submit" class="js-submit">검색</button>
 									</fieldset>
 								</form>
 							</td>
@@ -117,150 +117,10 @@
 							</li>
 						</ul>						
 					</div>
-					<!-- [D] 마크업 원본 -->
-					<!-- 
-					<table class="record">
-						<tr>
-							<th>주문정보</th>
-							<th colspan="2">상품정보</th>
-							<th>판매처</th>
-							<th>수령자</th>
-							<th>배송비</th>
-							<th>진행상태</th>
-						</tr>
-						<tr>
-							<td class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
-							</td>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<div class="stateTxt">
-									@@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"}
-									배송완료<span class="stateIcor"></span>
-								</div>
-								<a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">배송추적</a>
-							</td>
-						</tr>
-						<tr>
-							<td rowspan="3" class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total"><b>총 결제금액</b><br>3,850,000 원</p>
-							</td>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<div class="stateTxt">
-									@@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"}
-									결제완료<span class="stateIcor"></span>
-								</div>
-								<div class="btnWrap"><a href="../../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">교환상세</a></div>
-								<div class="btnWrap"><a href="../../_popup/popOrderChangeHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">교환반려</a></div>
-							</td>
-						</tr>
-						<tr>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<div class="stateTxt">
-									@@include ../_template/pop_order_state.html {"step":"step03", "step03":"on"}
-									상품준비중<span class="stateIcor"></span>
-								</div>
-								<div class="btnWrap"><a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소신청</a></div>
-							</td>
-						</tr>
-						<tr>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<p>취소완료</p><p class="cancleDate">2016.04.20</p>
-								<div class="btnWrap"><a href="../../_popup/popOrderCancelDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소상세</a></div>
-								<div class="btnWrap"><a href="../../_popup/popOrderCancelHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소반려</a></div>
-							</td>
-						</tr>
-						<tr>
-							<td class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
-							</td>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<div class="stateTxt">
-									@@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"}
-									배송완료<span class="stateIcor"></span>
-								</div>
-								<div class="btnWrap"><a href="../../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">반품상세</a></div>
-<<<<<<< HEAD
-							</td>
-						</tr>
-						<tr>
-							<td class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
-							</td>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<div class="stateTxt">
-									@@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"}
-									배송완료<span class="stateIcor"></span>
-								</div>
-								<a href="../../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">반품상세</a>
-							</td>
-						</tr>
-						<tr>
-							<td class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total">총 결제금액<br><b>3,850,000 원</b></p>
-							</td>
-							<td><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>무료배송</td>
-							<td class="orderState stateWrap">
-								<div class="stateTxt">
-									@@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"}
-									배송완료<span class="stateIcor"></span>
-								</div>
-								<a href="../../_popup/popOrderCancelHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">취소반려</a>
-=======
-								<a href="../../_popup/popOrderReturnHold.html" class="btnSizeS btnColor01 btnPop btnPop895" data-user-class="my popEdge">반품반려</a>
->>>>>>> 12f82cb6234a948d8d7ccd3f920ab0bfb1c118b4
-							</td>
-						</tr>
-					</table>
-					-->
-					<!--// [D] 마크업 원본 -->
 
-					<table class="record js-order-wrap"></table>
+					<!-- [D] #order-list-templates - wrap -->
+					<table class="record js-order-list-wrap"></table>
+					<!--// [D] #order-list-templates - wrap -->
 					
 				</section>
 			</div>
@@ -274,6 +134,7 @@
 </style>
 
 <script id="order-list-templates" type="text/x-handlebars-template">
+{{!-- order-list-templates --}}
 	<tr>
 		<th>주문정보</th>
 		<th colspan="2">상품정보</th>
@@ -282,85 +143,93 @@
 		<th>배송비</th>
 		<th>진행상태</th>
 	</tr>
-	<tr data-order-info='{
-			"orderNumber" : "{{orderNumber}}",
-			"orderProductSequence" : "{{orderProductSequence}}",
-			"deliveryNumber" : "{{deliveryNumber}}"
-		}'>
-		<td rowspan="{{listOrderItems.length}}" class="recordDate">
-			<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
-			<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
-		</td>
-	{{#each listOrderItems}}
-		{{#vxIF @index "!==" 0}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if listOrderItems.length}}
 		<tr data-order-info='{
-			"orderNumber" : "{{../orderNumber}}",
-			"orderProductSequence" : "{{../orderProductSequence}}",
-			"deliveryNumber" : "{{../deliveryNumber}}"
-		}'>
-		{{/vxIF}}
-			<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
-			{{#if optionName}}
-				<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-				</td>
-			{{else}}
-				<td class="recordInfo">{{productName}}<span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-				</td>
-			{{/if}}
-			<td>{{sellerName}}</td>
-			<td>{{receiverName}}</td>
-			<td>{{deliveryFee}}</td>
-			<td class="orderState stateWrap">
-				{{#vxSwitch deliveryStateCode}}
-					{{#vxCase "SL_ORDER_STATE_01" break=true}}
-						<div class="stateTxt">
-							<!-- @@include ../_template/pop_order_state.html {"step":"step01", "step01":"on"} -->
-							입금대기<span class="stateIcor"></span>
-						</div>
-						<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
-					{{/vxCase}}
-					{{#vxCase "SL_ORDER_STATE_02" break=true}}
-						<div class="stateTxt">
-							<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
-							결제완료<span class="stateIcor"></span>
-						</div>
-						<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
-					{{/vxCase}}
-					{{#vxCase "SL_ORDER_STATE_03" break=true}}
-						<div class="stateTxt">
-							<!-- @@include ../_template/pop_order_state.html {"step":"step03", "step03":"on"} -->
-							상품준비중<span class="stateIcor"></span>
-						</div>
-						<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
-					{{/vxCase}}
-					{{#vxCase "SL_ORDER_STATE_04" break=true}}
-						<div class="stateTxt">
-							<!-- @@include ../_template/pop_order_state.html {"step":"step04", "step04":"on"} -->
-							배송중<span class="stateIcor"></span>
-						</div>
-						<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
-					{{/vxCase}}
-					{{#vxCase "SL_ORDER_STATE_05" break=true}}
-						<div class="stateTxt">
-							<!-- @@include ../_template/pop_order_state.html {"step":"step05", "step05":"on"} -->
-							배송완료<span class="stateIcor"></span>
-						</div>
-						<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
-						<div class="btnWrap"><a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a></div>
-					{{/vxCase}}
-					{{#vxCase "SL_ORDER_STATE_06" break=true}}
-						<div class="stateTxt">
-							<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
-							구매확정<span class="stateIcor"></span>
-						</div>
-					{{/vxCase}}
-				{{/vxSwitch}}
+				"orderNumber" : "{{orderNumber}}",
+				"orderProductSequence" : "{{orderProductSequence}}",
+				"deliveryNumber" : "{{deliveryNumber}}"
+			}'>
+			<td rowspan="{{listOrderItems.length}}" class="recordDate">
+				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+				<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
 			</td>
-		{{#vxIF @index "!==" 0}}
+			{{#each listOrderItems}}
+				{{#vxIF @index "!==" 0}}
+				<tr data-order-info='{
+					"orderNumber" : "{{../orderNumber}}",
+					"orderProductSequence" : "{{../orderProductSequence}}",
+					"deliveryNumber" : "{{../deliveryNumber}}"
+				}'>
+				{{/vxIF}}
+					<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
+					{{#if optionName}}
+						<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+						</td>
+					{{else}}
+						<td class="recordInfo">{{productName}}<span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+						</td>
+					{{/if}}
+					<td>{{sellerName}}</td>
+					<td>{{receiverName}}</td>
+					<td>{{deliveryFee}}</td>
+					<td class="orderState stateWrap">
+						{{#vxSwitch deliveryStateCode}}
+							{{#vxCase "SL_ORDER_STATE_01" break=true}}
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step01", "step01":"on"} -->
+									입금대기<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+							{{/vxCase}}
+							{{#vxCase "SL_ORDER_STATE_02" break=true}}
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
+									결제완료<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+							{{/vxCase}}
+							{{#vxCase "SL_ORDER_STATE_03" break=true}}
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step03", "step03":"on"} -->
+									상품준비중<span class="stateIcor"></span>
+								</div>
+								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+							{{/vxCase}}
+							{{#vxCase "SL_ORDER_STATE_04" break=true}}
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step04", "step04":"on"} -->
+									배송중<span class="stateIcor"></span>
+								</div>
+								<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
+							{{/vxCase}}
+							{{#vxCase "SL_ORDER_STATE_05" break=true}}
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step05", "step05":"on"} -->
+									배송완료<span class="stateIcor"></span>
+								</div>
+								<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
+								<div class="btnWrap"><a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a></div>
+							{{/vxCase}}
+							{{#vxCase "SL_ORDER_STATE_06" break=true}}
+								<div class="stateTxt">
+									<!-- @@include ../_template/pop_order_state.html {"step":"step06", "step06":"on"} -->
+									구매확정<span class="stateIcor"></span>
+								</div>
+							{{/vxCase}}
+						{{/vxSwitch}}
+					</td>
+				{{#vxIF @index "!==" 0}}
+				</tr>
+				{{/vxIF}}
+			{{/each}}
+	{{else}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+		<tr>
+			<td colspan="7">주문/배송 내역이 없습니다.</td>
 		</tr>
-		{{/vxIF}}
-	{{/each}}
-	</tr>
+	{{/if}}
+{{!--// order-list-templates --}}
 </script>
 
 </body>

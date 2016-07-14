@@ -30,7 +30,7 @@ module.exports = function() {
 
 	var opts = {
 		templates : {
-			wrap : '.js-order-wrap',
+			wrap : '.js-order-list-wrap',
 			template : '#order-list-templates'
 		},
 		colorbox : '#colorbox',
@@ -60,9 +60,6 @@ module.exports = function() {
 
 		self = callerObj;
 		self.opts = opts;
-
-		self.isDebug = true;
-		self.isFilter = false;
 
 		setElements();
 		setBindEvents();
@@ -110,6 +107,7 @@ module.exports = function() {
 		self.search.on('submit', function(e) {
 			e.preventDefault();
 		});
+
 		self.searchSubmit.on('click', onSearch);
 		self.searchInp.on('keydown', onSearch);
 
@@ -203,8 +201,10 @@ module.exports = function() {
 	}
 
 	function onSearch(e) {
-		if (e.type === 'keydown' && e.which !== $.ui.keyCode.ENTER) {
-			return;
+		if (e.type === 'keydown') {
+			if (e.which !== $.ui.keyCode.ENTER) {
+				return;
+			}
 		}
 
 		e.preventDefault();
@@ -214,6 +214,7 @@ module.exports = function() {
 			self.searchInp.val('').focus();
 			return;
 		}
+
 		getOrderList(self.searchInp.val());
 	}
 
@@ -266,19 +267,12 @@ module.exports = function() {
 		});
 	}
 
-	function onControllerListener(e, status, response/*, elements*/) {
+	function onControllerListener(e, status, response) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_LIST:
-				dummyData = {"cellPhoneNum":"string","discountPrice":0,"generalPhoneNum":"string","listOrderItems":[{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_01","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"},{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_02","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"},{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_03","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"},{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_04","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"},{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_05","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"},{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_06","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"}],"optionNumber":"string","orderCancelCode":"string","orderCencelDesc":"string","orderDate":"string","orderNumber":0,"ordererEmail":"string","ordererId":"string","ordererName":"string","productNumber":"string","receiverName":"string","sellerId":"string","sellerName":"string","totalPaymentPrice":0,"totalPrice":0};
-				if (self.isDebug && self.isFilter) {
-					dummyData = {"cellPhoneNum":"string","discountPrice":0,"generalPhoneNum":"string","listOrderItems":[{"deliveryAddressNumber":"string","deliveryFee":"string","deliveryNumber":"string","deliveryState":"string","deliveryStateCode":"SL_ORDER_STATE_01","discountPrice":0,"itemCount":0,"itemPrice":0,"optionName":"string","optionNumber":"string","orderItemReceiver":{"addrSeq":"string","addressManagementName":"string","deliveryAddressNumber":"string","deliveryRequestMemo":"string","receiverDetailAddress":"string","receiverLotBaseAddress":"string","receiverName":"string","receiverRoadBaseAddress":"string","receiverTel1":"string","receiverTel2":"string","zipCode":"string"},"orderProductSequence":"string","paymentPrice":0,"productImageUrl":"../images/temp09.jpg","productName":"string","productNumber":"string","receiverName":"string","sellerName":"string","sellerNumber":"string"}],"optionNumber":"string","orderCancelCode":"string","orderCencelDesc":"string","orderDate":"string","orderNumber":0,"ordererEmail":"string","ordererId":"string","ordererName":"string","productNumber":"string","receiverName":"string","sellerId":"string","sellerName":"string","totalPaymentPrice":0,"totalPrice":0};
-				}
-				self.isFilter = !self.isFilter;
-
 				/*
 				401	Unauthorized
 				403	Forbidden
@@ -288,7 +282,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 
@@ -308,9 +301,9 @@ module.exports = function() {
 				switch(status) {
 					case 200:
 						window.alert('구매가 확정되었습니다.');
+						location.reload();
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -321,7 +314,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -332,7 +324,6 @@ module.exports = function() {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

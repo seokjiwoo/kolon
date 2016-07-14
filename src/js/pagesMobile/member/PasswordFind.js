@@ -30,7 +30,6 @@ module.exports = function() {
 		$('#pwAuthPhone').click(initPwAuthPhoneForm);
 		$('#findPwAuthPhoneRequestButton').click(requestPhoneAuthNumber);
 		$('#findPwAuthPhoneConfirmButton').click(confirmPhoneAuthNumber);
-		$('#findPwAuthPhoneCompleteButton').click(completePhoneAuthNumber);
 		$('#findPwAuthMailResendButton').click(requstPwAuthMailResend);
 		
 		$('#findPW').submit(findPwFormSubmitHandler);
@@ -184,24 +183,5 @@ module.exports = function() {
 				alert(result.message);
 				break;
 		}
-	};
-	
-	/**
-	 * 휴대전화 인증 완료
-	 */
-	function completePhoneAuthNumber(e) {
-		e.preventDefault();
-		if (tempAuthKey == '') {
-			alert('휴대폰 인증을 진행해 주세요.');
-		} else {
-			Cookies.set('loginPwReset', {
-				memberNumber: tempMemberNumber,
-				name: tempName,
-				mail: tempId,
-				authKey: tempAuthKey
-			}, { expires: 1/288 });	// 1/288	// 5 minutes
-			location.href = 'findLoginPwReset.html';
-		}
-		e.stopPropagation();
 	};
 }

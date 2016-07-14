@@ -491,6 +491,7 @@ function ClassImageUploader() {
 		imgObj.onerror = onError;
 		image.attr('src', self.imageInfo);
 		imgObj.src = self.imageInfo;
+		$('.js-upload-container .js-msg').text('');
 	}
 
 	function setBtnSubmitActive() {

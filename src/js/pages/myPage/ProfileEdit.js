@@ -82,8 +82,12 @@ module.exports = function() {
 		$('#changeEmailField').hide();
 		if (infoObject.email != null) {
 			$('#profileID').attr('disabled', 'disabled');
+			$('#changeIdButton').text('등록하기');
 		}
 		$('#editPhoneID').val(infoObject.cellPhoneNumber);
+		if (infoObject.cellPhoneNumber != null) {
+			$('#changePhoneButton').text('등록하기');
+		}
 		$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
 		for (var key in infoObject.socials) {
 			var eachSocialData = infoObject.socials[key];

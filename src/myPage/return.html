@@ -49,12 +49,12 @@
 						<tr>
 							<th>주문내역 검색</th>
 							<td>
-								<form method="post" action="/" class="js-order-search">
+								<form method="post" action="/" class="js-return-search">
 									<fieldset class="recordSearch">
 										<legend class="hide"></legend>
 										<input type="text" id="recordInput" class="js-inp" title="주문내역 입력 란">
 										<label for="recordInput"></label>
-										<button type="submit js-submit">검색</button>
+										<button type="submit" class="js-submit">검색</button>
 									</fieldset>
 								</form>
 							</td>
@@ -153,80 +153,10 @@
 							</li>
 						</ul>
 					</div>
-					<!-- [D] 마크업 원본 -->
-					<!-- 
-					<table class="record">
-						<tr>
-							<th>주문정보</th>
-							<th colspan="2">상품정보</th>
-							<th>판매처</th>
-							<th>수령자</th>
-							<th>신청일자</th>
-							<th>진행상태</th>
-						</tr>
-						<tr>
-							<td rowspan="3" class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total"><b>환불금액</b><br>3,850,000 원</p>
-							</td>
-							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>2016.04.20</td>
-							<td class="orderState">
-								<p class="stateTxt">취소완료</p>
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</td>
-						</tr>
-						<tr>
-							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>2016.04.20</td>
-							<td class="orderState">
-								<div class="stateTxt">취소신청
-								</div>
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</td>
-						</tr>
-						<tr>
-							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>2016.04.20</td>
-							<td class="orderState">
-								<p>환불완료</p><p class="cancleDate">2016.04.20</p>
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</td>
-						</tr>
-						<tr>
-							<td class="recordDate">
-								<p class="date">2016.04.20<br><a href="orderDetail.html">2345865</a></p>
-								<p class="total"><b>환불금액</b><br>3,850,000 원</p>
-							</td>
-							<td><div class="recordThumb"><img src="/images/temp09.jpg" alt=""></div></td>
-							<td class="recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="count">수량 : 1</span><span class="productPrice">1,700,000 원</span>
-							</td>
-							<td>ANNA</td>
-							<td>김정현</td>
-							<td>2016.04.20</td>
-							<td class="orderState">
-								<div class="stateTxt">교환완료
-								</div>
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</td>
-						</tr>
-					</table>
-					-->
-					<!--// [D] 마크업 원본 -->
-
-					<table class="record js-order-wrap"></table>
+					
+					<!-- [D] #return-list-templates - wrap -->
+					<table class="record js-return-list-wrap"></table>
+					<!-- [D] #return-list-templates - wrap -->
 
 				</section>
 			</div>
@@ -240,7 +170,8 @@
 	.singleCard {min-height:550px}
 </style>
 
-<script id="order-list-templates" type="text/x-handlebars-template">
+<script id="return-list-templates" type="text/x-handlebars-template">
+{{!-- return-list-templates --}}
 	<colgroup>
 		<col style="width:120px;"/>
 		<col style="width:110px;"/>
@@ -256,29 +187,31 @@
 		<th>배송비</th>
 		<th>진행상태</th>
 	</tr>
-	{{#each orders}}
-		<tr data-order-info='{
-				"orderNumber" : "{{orderNumber}}",
-				"orderProductSequence" : "{{orderProductSequence}}",
-				"deliveryNumber" : "{{deliveryNumber}}"
-			}'>
-			<td rowspan="{{listOrderItems.length}}" class="recordDate">
-				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
-				<p class="total"><b>환불금액</b><br>{{totalPaymentPriceDesc}} 원</p>
-			</td>
-		{{#each listOrderItems}}
-			{{#vxIF @index "!==" 0}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if orders.length}}
+		{{#each orders}}
+			<tr data-order-info='{
+					"orderNumber" : "{{orderNumber}}",
+					"orderProductSequence" : "{{orderProductSequence}}",
+					"deliveryNumber" : "{{deliveryNumber}}"
+				}'>
+				<td rowspan="{{listOrderItems.length}}" class="recordDate">
+					<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+					<p class="total"><b>환불금액</b><br>{{totalPaymentPriceDesc}} 원</p>
+				</td>
+				{{#each listOrderItems}}
+					{{#vxIF @index "!==" 0}}
 			<tr data-order-info='{
 				"orderNumber" : "{{../orderNumber}}",
 				"orderProductSequence" : "{{../orderProductSequence}}",
 				"deliveryNumber" : "{{../deliveryNumber}}"
 			}'>
-			{{/vxIF}}
+					{{/vxIF}}
 				<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
 				{{#if optionName}}
-					<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span></td>
+						<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span></td>
 				{{else}}
-					<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+						<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
 					</td>
 				{{/if}}
 				<td>{{../receiverName}}</td>
@@ -308,12 +241,19 @@
 						{{/vxCase}}
 					{{/vxSwitch}}
 				</td>
-			{{#vxIF @index "!==" 0}}
+					{{#vxIF @index "!==" 0}}
 			</tr>
-			{{/vxIF}}
+					{{/vxIF}}
+				{{/each}}
+			</tr>
 		{{/each}}
+	{{else}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+		<tr>
+			<td colspan="7">교환/반품/취소 내역이 없습니다.</td>
 		</tr>
-	{{/each}}
+	{{/if}}
+{{!--// return-list-templates --}}
 </script>
 
 

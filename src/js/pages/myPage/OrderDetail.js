@@ -29,7 +29,7 @@ module.exports = function() {
 
 	var opts = {
 		templates : {
-			wrap : '.js-detail-wrap',
+			wrap : '.js-order-detail-wrap',
 			template : '#order-detail-templates'
 		},
 		colorbox : '#colorbox',
@@ -218,11 +218,6 @@ module.exports = function() {
 		}
 	}
 
-	function testResult() {
-		win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
-	}
-
 	function destroyColoboxEvevnts() {
 	}
 
@@ -245,81 +240,27 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response, type) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_DETAIL:
-				dummyData = {
-					"cellPhoneNum": "string",
-					"discountPrice": 0,
-					"generalPhoneNum": "string",
-					"listOrderItems": [
-						{
-							"deliveryAddressNumber": "string",
-							"deliveryFee": "string",
-							"deliveryNumber": "string",
-							"deliveryState": "string",
-							"deliveryStateCode": "string",
-							"discountPrice": 0,
-							"itemCount": 0,
-							"itemPrice": 0,
-							"optionName": "string",
-							"optionNumber": "string",
-							"orderItemReceiver": {
-								"addrSeq": "string",
-								"addressManagementName": "string",
-								"deliveryAddressNumber": "string",
-								"deliveryRequestMemo": "string",
-								"receiverDetailAddress": "string",
-								"receiverLotBaseAddress": "string",
-								"receiverName": "string",
-								"receiverRoadBaseAddress": "string",
-								"receiverTel1": "string",
-								"receiverTel2": "string",
-								"zipCode": "string"
-							},
-							"orderProductSequence": "string",
-							"paymentPrice": 0,
-							"productImageUrl": "string",
-							"productName": "string",
-							"productNumber": "string",
-							"receiverName": "string",
-							"sellerName": "string",
-							"sellerNumber": "string"
-						}
-					],
-					"optionNumber": "string",
-					"orderCancelCode": "string",
-					"orderCencelDesc": "string",
-					"orderDate": "string",
-					"orderNumber": 0,
-					"ordererEmail": "string",
-					"ordererId": "string",
-					"ordererName": "string",
-					"productNumber": "string",
-					"receiverName": "string",
-					"sellerId": "string",
-					"sellerName": "string",
-					"totalPaymentPrice": 0,
-					"totalPrice": 0
-				};
-
 				switch(status) {
 					case 200:
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 
-				result = dummyData;
+				if (result && !result.data) {
+					displayData([], type);
+					return;
+				}
 
-				result.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.totalPaymentPrice, 10));
-				result.discountPriceDesc = util.currencyFormat(parseInt(result.discountPriceDesc, 10));
+				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
+				result.data.discountPriceDesc = util.currencyFormat(parseInt(result.data.discountPriceDesc, 10));
 
-				if (result.listOrderItems) {
-					$.each(result.listOrderItems, function(index, listOrderItems) {
+				if (result.data.listOrderItems) {
+					$.each(result.data.listOrderItems, function(index, listOrderItems) {
 						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
 						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
 						listOrderItems.deliveryFeeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFee, 10));
@@ -327,7 +268,7 @@ module.exports = function() {
 				}
 
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
-				displayData(result, type);
+				displayData(result.data, type);
 				break;
 
 			case ORDER_EVENT.ORDER_CANCEL:
@@ -337,7 +278,6 @@ module.exports = function() {
 						location.reload();
 						break;
 					default:
-						win.alert('HTTP Status Code ' + status);
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);

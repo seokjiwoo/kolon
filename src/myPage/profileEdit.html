@@ -20,7 +20,7 @@
 								<th><label for="profileID"><b class="require">* </b>이메일 아이디</label></th>
 								<td>
 									<form action="#" id="changeEmailIdForm" method="POST">
-										<input type="email" value="" id="profileID"><button type="submit" class="btn btnSizeM btnColor01">변경하기</button>
+										<input type="email" value="" id="profileID"><button id='changeIdButton' type="submit" class="btn btnSizeM btnColor01">변경하기</button>
 										<div id='changeEmailField'>
 											<input type="text" value="" id="profileNewID" placeholder="변경할 이메일 주소를 입력해주세요"><button type="submit" class="btn btnSizeM btnColor01">인증메일 전송</button>
 										</div>
@@ -30,7 +30,7 @@
 							<tr>
 								<th><label for="editPhoneID"><b class="require">* </b>휴대폰 번호 아이디</label></th>
 								<td>
-									<input type="text" value="" id="editPhoneID" disabled="disabled"><button type="button" class="btn btnSizeM btnColor01 verifyMemberPopup">변경하기</button>
+									<input type="text" value="" id="editPhoneID" disabled="disabled"><button id='changePhoneButton' type="button" class="btn btnSizeM btnColor01 verifyMemberPopup">변경하기</button>
 								</td>
 							</tr>
 							<tr>
@@ -81,7 +81,7 @@
 									<td>
 										<p class="inputWrap">
 											<input type="text" value="홍길동" id="editName">
-											<button class='btn btnSizeM btnColor01 btnPop650 verifyMemberPopup' data-user-class="popEdge">실명확인</button>
+											<button class='btn btnSizeM btnColor01 btnPop650 verifyMemberPopup' data-user-class="popEdge">본인확인</button>
 										</p>
 									</td>
 								</tr>

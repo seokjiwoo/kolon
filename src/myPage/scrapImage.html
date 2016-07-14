@@ -9,72 +9,7 @@
 	<div class="container bgTop">
 		<!-- @@include ../_template/my_depth01.html {"myMenu03":"on"} -->
 		<!-- @@include ../_template/my_depth02_02.html {"myMenu04":"on"} -->
-		
-		<!-- [D] 마크업 원본 -->
-		<!-- 
-		<section class="wrap" id="scrapImg">
-			<a href="scrapFolder.html" class="btnSizeS btnColor04 fl_right btnList">목록</a>
-			<h2 class="scrapTit">내 새로운 부엌을 위한 스크랩<b>(20)</b></h2>
-			<ul class="cardWrap" id="cardWrap">
-				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
-						<div class="hexTop"><span></span></div>
-						<div class="hexBottom"><span></span></div>
-					</div>
-					<div class="cardCon">
-						<a href="../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="popEdge">
-						</a>
-						<a href="" class="removeScrap">삭제</a>
-					</div>
-				</li>
-				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
-						<div class="hexTop"><span></span></div>
-						<div class="hexBottom"><span></span></div>
-					</div>
-					<div class="cardCon">
-						<a href="../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="popEdge">
-						</a>
-						<a href="" class="removeScrap">삭제</a>
-					</div>
-				</li>
-				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
-						<div class="hexTop"><span></span></div>
-						<div class="hexBottom"><span></span></div>
-					</div>
-					<div class="cardCon">
-						<a href="../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="popEdge">
-						</a>
-						<a href="" class="removeScrap">삭제</a>
-					</div>
-				</li>
-				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
-						<div class="hexTop"><span></span></div>
-						<div class="hexBottom"><span></span></div>
-					</div>
-					<div class="cardCon">
-						<a href="../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="popEdge">
-						</a>
-						<a href="" class="removeScrap">삭제</a>
-					</div>
-				</li>
-				<li class="cardSize02">
-					<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
-						<div class="hexTop"><span></span></div>
-						<div class="hexBottom"><span></span></div>
-					</div>
-					<div class="cardCon">
-						<a href="../_popup/popPhotoDetailView.html" class="btnPop btnPop895" data-user-class="popEdge">
-						</a>
-						<a href="" class="removeScrap">삭제</a>
-					</div>
-				</li>
-		
-			</ul>
-		</section>
-		 -->
+
 		<!--// [D] 마크업 원본 -->
 		<section class="wrap" id="scrapImg"></section>
 		</div>
@@ -103,32 +38,38 @@
 
 <script id="scrap-images-templates" type="text/x-handlebars-template">
 	<a href="/myPage/scrap.html#category=images&amp;folderName={{folderName}}&amp;folderNumber={{folderNumber}}" class="btnSizeS btnColor04 fl_right btnList">목록</a>
-	{{#folders}}
-		{{#if @first}}
-		<h2 class="scrapTit">{{folderName}}<b>({{scrapCount}})</b></h2>
-		{{/if}}
-	{{/folders}}
-	<ul class="cardWrap" id="cardWrap">
-	{{#folders}}
-		{{#each scrapImages}}
-		<li class="cardSize02 js-card-list"
-			data-scrapfolder-info='{
-				"folderName" : "{{../folderName}}",
-				"folderNumber" : {{../folderNumber}},
-				"scrapCount" : {{../scrapCount}}
-			}'>
-			<div class="hexagon" style="background-image: url('{{imageUrl}}')"><!-- 배경이미지 -->
-				<div class="hexTop"><span></span></div>
-				<div class="hexBottom"><span></span></div>
-			</div>
-			<div class="cardCon">
-				<a href="../_popup/popPhotoDetailView.html?folderName={{../folderName}}&amp;folderNumber={{../folderNumber}}" class="btnPop btnPop895" data-user-class="scrapFolderImages popEdge">click area</a>
-				<a href="../_popup/popScrapDel.html?folderName={{../folderName}}&amp;folderNumber={{../folderNumber}}" class="btnPop btnPop540 removeScrap" data-user-class="scrapFolderRemove popEdge">삭제</a>
-			</div>
-		</li>
-		{{/each}}
-	{{/folders}} 
-	</ul>
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if folders.length}}
+		{{#folders}}
+			{{#if @first}}
+			<h2 class="scrapTit">{{folderName}}<b>({{scrapCount}})</b></h2>
+			{{/if}}
+		{{/folders}}
+		<ul class="cardWrap" id="cardWrap">
+		{{#folders}}
+			{{#each scrapImages}}
+			<li class="cardSize02 js-card-list"
+				data-scrapfolder-info='{
+					"folderName" : "{{../folderName}}",
+					"folderNumber" : {{../folderNumber}},
+					"scrapCount" : {{../scrapCount}}
+				}'>
+				<div class="hexagon" style="background-image: url('{{imageUrl}}')"><!-- 배경이미지 -->
+					<div class="hexTop"><span></span></div>
+					<div class="hexBottom"><span></span></div>
+				</div>
+				<div class="cardCon">
+					<a href="../_popup/popPhotoDetailView.html?folderName={{../folderName}}&amp;folderNumber={{../folderNumber}}" class="btnPop btnPop895" data-user-class="scrapFolderImages popEdge">click area</a>
+					<a href="../_popup/popScrapDel.html?folderName={{../folderName}}&amp;folderNumber={{../folderNumber}}" class="btnPop btnPop540 removeScrap" data-user-class="scrapFolderRemove popEdge">삭제</a>
+				</div>
+			</li>
+			{{/each}}
+		{{/folders}} 
+		</ul>
+	{{else}}
+		{{!-- 데이터 유무에 따른 화면 처리 --}}
+		<p>데이터가 없습니다.</p>
+	{{/if}}
 </script>
 
 <!-- @@include ../_template/cardTemplate.html -->

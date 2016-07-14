@@ -117,15 +117,15 @@ module.exports = function() {
 				case 'DP_CARD_TYPE_02':
 					each.cardClass = 'cardType01 cardSize03';
 					each.detailUrl = "/newForm/detail.html?productNumber="+each.cardNumber;
+					each.productType = each.productType.toLowerCase();
 					break;
 				case 'PROD':
 					each.cardTypeCode = 'DP_CARD_TYPE_03';
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
 					each.detailUrl = "/shop/detail.html?productNumber="+each.cardNumber;
+					each.productType = each.productType.toLowerCase();
 					break;
-				default:
-					each.cardTypeCode = 'DP_CARD_TYPE_07';
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';
 					each.detailUrl = "/manager/detail.html?expertNumber="+each.expertNum;

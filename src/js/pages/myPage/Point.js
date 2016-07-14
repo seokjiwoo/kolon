@@ -35,33 +35,30 @@ module.exports = function() {
 		initRangePicker();
 
 		controller.myPoints();
-		controller.pointsHistory(moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'), moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'), 'BM_POINT_STMT_SECTION');
+		controller.pointsHistory(
+			win.moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'),
+			win.moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'),
+			'BM_POINT_STMT_SECTION'
+		);
 		
 		$('#typeSelect').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			historyCode = data.values[0];
 		});
 		$('#searchButton').click(function(e) {
 			e.preventDefault();
-			if (historyCode == '') {
-				alert('적립/사용내역 중 하나를 선택해 주세요');
+			if (historyCode === '') {
+				win.alert('적립/사용내역 중 하나를 선택해 주세요');
 			} else {
-				controller.pointsHistory(moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'), moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'), historyCode);
+				controller.pointsHistory(
+					win.moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'),
+					win.moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'),
+					historyCode
+				);
 			}
 		});
-	};
+	}
 
 	function myPointsResultHandler(e, status, result) {
-		var dummyData = {
-			"status": "200",
-			"message": "ok",
-			"data": {
-				"point": {
-					"savingPoint": "0",
-					"savingPointIn30": "0"
-				}
-			}
-		}
-
 		switch(status) {
 			case 200:
 				break;
@@ -75,28 +72,9 @@ module.exports = function() {
 		debug.log(fileName, 'myPointsResultHandler', result);
 
 		displaySummaryData(result.point);
-	};
+	}
 
 	function pointsHistoryResultHandler(e, status, result) {
-		var dummyData = {
-			"history": [
-				{
-					"cancelPoint": "1",
-					"memberNumber": "1",
-					"pointTypeCd": "BM_POINT_TYPE_01",
-					"pointTypeNm": "유형이름",
-					"reason": "포인트 제공 사유",
-					"remainDays": "1",
-					"remainPoint": "1000",
-					"savingDate": "2016.07.05",
-					"savingPoint": "1",
-					"useDate": "2016.07.11",
-					"usePoint": "1000",
-					"validDate": "2016.07.05"
-				}
-			]
-		}
-
 		switch(status) {
 			case 200:
 				break;
@@ -112,7 +90,7 @@ module.exports = function() {
 
 		displayHistoryData(result.history);
 		
-	};
+	}
 
 	// Handlebars 마크업 템플릿 구성
 	function displayHistoryData(data) {
@@ -138,32 +116,32 @@ module.exports = function() {
 	function initRangePicker() {
 		setRangePicker();
 
-		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
+		$('.js-picker-from').datepicker('setDate', win.moment().subtract(7, 'days').format('YYYY-MM-DD'));
 		$('.sortTerm li a').click(function(e) {
 			e.preventDefault();
 			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');
 			switch($(this).text()) {
 				case '1주일':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(7, 'days').format('YYYY-MM-DD'));
 					break;
 				case '2주일':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(14, 'days').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(14, 'days').format('YYYY-MM-DD'));
 					break;
 				case '1개월':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(1, 'months').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(1, 'months').format('YYYY-MM-DD'));
 					break;
 				case '3개월':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(3, 'months').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(3, 'months').format('YYYY-MM-DD'));
 					break;
 				case '6개월':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(6, 'months').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(6, 'months').format('YYYY-MM-DD'));
 					break;
 			}
-			$('.js-picker-to').datepicker('setDate', moment().format('YYYY-MM-DD'));
-			$('.js-picker-to').datepicker('option', 'minDate', moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 		});
-	};
+	}
 
 	function setRangePicker() {
 		var rangePicker = $('.js-range-picker');
@@ -186,5 +164,5 @@ module.exports = function() {
 				}
 			}
 		});
-	};
+	}
 };

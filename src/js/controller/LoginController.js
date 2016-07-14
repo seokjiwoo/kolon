@@ -143,7 +143,6 @@ function ClassLoginController() {
 		/* {
 			memberSocial: {
 				memberName: 'blah',
-				memberNumber: 'blah',
 				socialNumber: 'blah',
 				socialSectionCode: 'blah',
 				socialUniqueId: 'blah',

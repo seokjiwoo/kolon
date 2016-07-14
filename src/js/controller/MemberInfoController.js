@@ -157,10 +157,9 @@ function ClassMemberInfoController() {
 	/**
 	 * 비밀번호 변경
 	 */
-	function changePassword(memberNumber, currentPassword, newPassword) {
+	function changePassword(currentPassword, newPassword) {
 		Super.callApi('/apis/member/changePassword', 'PUT', {
 			"currentPassword": currentPassword,
-			"memberNumber": memberNumber,
 			"newPassword": newPassword
 		}, function(status, result) {
 			if (status != 200) Super.handleError('changePassword', result);
@@ -289,11 +288,8 @@ function ClassMemberInfoController() {
 	 * 비밀번호 재설정
 	 */
 	function resetPassword(authKey, newPassword) {
-		var memberNumber = 0;
-		
 		Super.callApi('/apis/member/resetPassword', 'PUT', {
 			"authKey": authKey,
-			"memberNumber": memberNumber,
 			"newPassword": newPassword
 		}, function(status, result) {
 			if (status == 200) {

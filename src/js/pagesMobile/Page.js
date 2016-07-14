@@ -136,7 +136,7 @@ module.exports = function() {
 			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
 			$('#profileName').html('<em>'+Super.loginData.memberName+'</em>');
 			$('#profileMail').text(Super.loginData.email);
-			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>나의 커먼</span>');
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>마이커먼</span>');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 

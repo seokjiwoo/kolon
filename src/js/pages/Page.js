@@ -82,6 +82,10 @@ module.exports = function() {
 					.on(INFOSLIDER_EVENT.DESTROY, infoSliderDestoryhHandler);
 
 
+		// info slider event Listener
+		eventManager.on(INFOSLIDER_EVENT.REFRESH, onWindowPopupRefresh)
+					.on(INFOSLIDER_EVENT.DESTROY, onWindowPopupDestory);
+
 		fullSlideImg(); // slide Full img 중앙정렬 
 
 	};
@@ -119,7 +123,7 @@ module.exports = function() {
 			}
 			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
-			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('나의 커먼');
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('마이커먼');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
@@ -320,13 +324,16 @@ module.exports = function() {
 
 	/**
 	 * 주소록 시스템팝업 버튼 초기화
+	 * 시스텝 팝업 설정
 	 */
 	function initAddressPopupButton() {
-		$('.openAddressPopup').click(function(e) {
-			e.preventDefault();
-			window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
-			e.stopPropagation();
-		});
+		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
+	}
+
+	function onWindowPopupHandler(e) {
+		e.preventDefault();
+		window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
+		e.stopPropagation();
 	}
 
 	/**
@@ -487,6 +494,15 @@ module.exports = function() {
 		if ($('#infoSlider').data('bxSlider')) {
 			$('#infoSlider').data('bxSlider').destroySlider();
 		}
+	}
+
+	function onWindowPopupRefresh(e) {
+		onWindowPopupDestory();
+		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
+	}
+
+	function onWindowPopupDestory(e) {
+		$('.openAddressPopup, .openWindowPopup').off('click', onWindowPopupHandler);
 	}
 	
 	/**

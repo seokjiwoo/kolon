@@ -24,11 +24,11 @@ module.exports = function() {
 	self;
 
 	var opts = {
-		timelineWrap : '.js-timeline-wrap',
+		timelineContainer : '.js-timeline-container',
 		fromNow : '.js-fromNow',
 		templates : {
-			wrap : '.timeCard',
-			template : '#me-timeline-templates'
+			wrap : '.js-timeline-list-wrap',
+			template : '#my-timeline-templates'
 		},
 		dateFormat : {
 			recordDate : 'YYYY년 M월',
@@ -95,11 +95,42 @@ module.exports = function() {
 
 	// Handlebars 마크업 템플릿 구성
 	function displayData(data) {
-		var myCommons = data.data.myCommons,
+		var myCommons = data.myCommons,
 		exRecordDate = '',
 		recordDate = '',
 		list = [],
 		listIdx;
+
+		var source,
+		template,
+		insertElements;
+
+		// 데이터가 없을 경우
+		if (!myCommons.length) {
+			source = self.template.html();
+			template = win.Handlebars.compile(source);
+			insertElements = $(template(list));
+
+			self.templatesWrap.empty()
+								.addClass(self.opts.cssClass.isLoading)
+								.append(insertElements);
+
+			self.templatesWrap.imagesLoaded()
+								.always(function() {
+									self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+
+									var timelines = self.templatesWrap.find(self.opts.dataAttr.timelineInfo);
+									$.each(timelines, function(index) {
+										;(function(target, delay) {
+											win.setTimeout(function() {
+												target.addClass(self.opts.cssClass.hasAnimate);
+											}, delay);
+											target.closest(self.opts.timelineContainer).addClass(self.opts.cssClass.hasAnimate);
+										})($(this),index * 200);
+									});
+								});
+			return;
+		}
 		
 		// 최신기록부터..
 		myCommons.reverse();
@@ -136,8 +167,8 @@ module.exports = function() {
 
 		list[listIdx].records[list[listIdx].records.length - 1].isJoin = true;
 
-		var source = self.template.html(),
-		template = win.Handlebars.compile(source),
+		source = self.template.html();
+		template = win.Handlebars.compile(source);
 		insertElements = $(template(list));
 
 		self.templatesWrap.empty()
@@ -154,7 +185,7 @@ module.exports = function() {
 										win.setTimeout(function() {
 											target.addClass(self.opts.cssClass.hasAnimate);
 										}, delay);
-										target.closest(self.opts.timelineWrap).addClass(self.opts.cssClass.hasAnimate);
+										target.closest(self.opts.timelineContainer).addClass(self.opts.cssClass.hasAnimate);
 									})($(this),index * 200);
 								});
 							});
@@ -162,13 +193,20 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response) {
 		var eventType = e.type,
-		dummyData = {},
 		result = response;
 
 		switch(eventType) {
 			case TIMELINE_EVENT.LIST:
+				switch(status) {
+					case 200:
+						break;
+					default:
+						break;
+				}
+
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
-				displayData(result);
+				
+				displayData(result.data);
 				setFromNowUpdate();
 				break;
 		}
