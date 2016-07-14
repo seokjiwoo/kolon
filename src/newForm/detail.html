@@ -6,6 +6,30 @@
 <body data-page-id="newForm-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
+		<!-- detail 상단 탭 -->
+		<div class="detailTopTab">
+			<div class="topTabWrap">
+				<ul>
+					<li class="on"><a href="">상품정보</a></li>
+					<li><a href="">디자이너정보</a></li>
+					<li><a href="">구매정보</a></li>
+				</ul>
+				<div class="socialTopBtn">
+					<a href="#" class="socialBtn01"><span class="hide">좋아요</span></a>
+					<a href="#" class="socialBtn02"><span class="hide">스크랩</span></a>
+					<span class="hoverSocialBtn">
+						<span class="hide">공유하기</span>
+						<a href="#" class="socialBtn03"><span class="hide">페이스북</span></a>
+						<a href="#" class="socialBtn04"><span class="hide">트위터</span></a>
+						<a href="#" class="socialBtn05"><span class="hide">핀터레스트</span></a>
+						<a href="#" class="socialBtn06"><span class="hide">카카오스토리</span></a>
+						<a href="#" class="socialBtn07"><span class="hide">URL복사</span></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- // detail 상단 탭 -->
+
 		<!-- 상단 배너 -->
 		<div class="detailArea topArea">
 		    <div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
@@ -64,10 +88,10 @@
 						            	<span class="hide">트위터</span>
 						            </a>
 						            <a href="#" class="socialBtn03">
-						            	<span class="hide">카카오스토리</span>
+						            	<span class="hide">핀터레스트</span>
 						            </a>
 						            <a href="#" class="socialBtn04">
-						            	<span class="hide">핀터레스트</span>
+						            	<span class="hide">카카오스토리</span>
 						            </a>
 						            <a href="#" class="socialBtn05">
 						            	<span class="hide">URL복사</span>
@@ -239,9 +263,10 @@
 		<!-- // 추천 리빙 영역 -->
 
 		<!-- 판매자안내 영역 -->
-		<div class="detailArea sellerArea">
+		<div class="detailArea sellerArea" style="height:1000px">
+			<h3><img src="../images/seller_tit.png"></h3>
 			<!-- <div class="sellerInfo">
-				<h3><img src="../images/seller_tit.png"></h3>
+				
 				<p class="sellerPhoto"><img src="../images/seller_photo.png"></p>
 				<div class="sellerCont">
 					<h4>박실장</h4>
@@ -367,6 +392,78 @@
 			</ul>
 		</div>
 		<!-- // 구매정보 영역 -->
+
+
+		<!-- detail 하단 탭 -->
+		<div class="detailBottomTab">
+			<div class="bottomTabWrap">
+				<div class="optionBar">
+					<div class="barLeft">
+						<a href="" class="optionBtn"><span></span>옵션 선택</a>
+					</div>
+					<div class="barRight">
+						<span class="allPrice"><span>27,000,000</span> 원</span>
+						<a href="#"><span class="hide">좋아요</span></a>
+						<a href="#" class="js-add-card bigBtn03">마이카트</a>
+						<a href="#" class="js-add-card bigBtn03">구매하기</a>
+					</div>
+				</div>
+			</div>
+			<div class="bottomTabWrap">
+				<div class="activeOption">
+					<div class="activeLeft">
+						<form method="" id='' action="#">
+							<fieldset>
+								<legend>선택 상품 정보 및 옵션 선택</legend>
+								<h4>Compat But Enough Wedding</h4>
+								<p class="choiceTitInfo">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
+								<ul class="drop dropOn dropOnUp" data-prevent="true">
+									<li><a href="#">옵션 선택</a></li>
+									<li><a href="#">하하하하</a></li>
+									<li><a href="#">반갑습니다.</a></li>
+								</ul>
+							</fieldset>
+						</form>
+					</div>
+					<div class="activeRight">
+						<form method="" id='' action="#">
+							<fieldset>
+								<legend>선택 상품 옵션 확인</legend>
+								<ul class="optionList">
+									<li>
+										<div class="optionInfo">
+											<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
+										</div>
+										<div class="optionControl">
+											<p class="individualPrice"><span>300,000</span> 원</p>
+											<a href="" class="cancelOption"><span class="hide">제거</span></a>
+										</div>
+									</li>
+									<li>
+										<div class="optionInfo">
+											<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
+										</div>
+										<div class="optionControl">
+											<p class="individualPrice"><span>300,000</span> 원</p>
+											<a href="" class="cancelOption"><span class="hide">제거</span></a>
+										</div>
+									</li>
+								</ul>
+								<div class="allPriceBox">
+									<div class="allPriceLeft">
+										<p>배송비<span>주문시 결제 3,000<b>원</b></span></p>
+									</div>
+									<div class="allPriceRight">
+										<p>총합계<span>30,000,000<b>원</b></span></p>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>				
+			</div>
+		</div>
+		<!-- // detail 하단 탭 -->
 
 		<!-- [D] API 통신 - 결과화면 영역 -->
 		<div class="container js-api-result">
