@@ -1,0 +1,101 @@
+<div class="popTop">
+	<h4 class="popTit">1:1 메시지</h4>
+</div>
+<div class="popCon js-message-popup" style="padding-top: 19px;">
+	<form method="post" action="/" class="js-message-form">
+		<fieldset>
+			<legend>1:1 메시지</legend>
+			<div class="popTb">
+				<p>내용</p>
+				<textarea title="자세한 내용을 작성해 주세요."
+							placeholder="자세한 내용을 작성해 주세요."
+							cols="50" rows="5"
+							maxlength="1000"
+							class="js-message-inp"></textarea>
+				
+				<p>파일첨부 : <a href="#">파일선택</a></p>
+				파일선택 버튼 클릭시 아래 사진첨부 팝업 내용
+				<div style="width:300px; overflow:hidden; background:#ededed;">
+					<p>사진첨부 팝업 : [찾아보기]를 클릭하여 파일을 선택하거나 아래 상자에 파일 경로를 입력해주세요.</p>
+					<input type="file"/>
+					<input type="text"/>
+					<button>첨부</button>
+				</div>
+				<!-- // 파일선택 버튼 클릭시 아래 사진첨부 팝업 내용 -->
+				
+				<p>스크랩북에서 선택</p>
+				<a href="#">[+]</a>
+				스크랩북에서 선택 클릭시 아래 폴더 선택 이미지 선택 팝업
+				<div style="width:300px; overflow:hidden; background:#ededed;">
+					<select title="폴더선택">
+						<option value="" selected="selected">폴더 선택</option>
+						<option value="">내 새로운 부엌을 위한 스크랩</option>
+					</select>
+					<a href="#"><img src="images/temp09.jpg" alt=""/></a>
+					<a href="#"><img src="images/temp09.jpg" alt=""/></a>
+					<button>저장</button>
+				</div>
+				<!-- // 스크랩북에서 선택 클릭시 아래 폴더 선택 이미지 선택 팝업 -->
+				
+			</div>
+			<p class="popUnderTxt">주고 받은 메시지는 마이커먼 &gt; 내 활동 &gt; 1:1 메시지에서 확인하실 수 있습니다. </p>
+		</fieldset>
+	</form>
+	<div class="btnWrap">
+		<a href="#" class="btnSizeM btnColor02 js-message-submit">보내기</a>
+	</div>
+</div>
+<!-- (old : 20160708 인경 주석처리)
+<div class="popCon">
+	<form method="post" action="/">
+		<fieldset>
+			<legend>1:1 메시지</legend>
+			<div class="popTb">
+				<table class="tbL">
+					<caption>1:1 메시지에 관한 문의 유형, 내용, 답변수신 메일 정보를 제공합니다.</caption>
+					<colgroup>
+						<col style="width:25%;"/><col style="75%"/>
+					</colgroup>
+					<tbody>
+						<tr>
+							<th scope="row">문의유형</th>
+							<td>
+								<div class="messageRadio">
+									<p class="radioBox msgCat">
+										<input type="radio" name="meg" value="" id="meg01"/><label for="meg01">상품</label>
+										<input type="radio" name="meg" value="" id="meg02"/><label for="meg02">배송</label>
+										<input type="radio" name="meg" value="" id="meg03"/><label for="meg03">기타</label>
+									</p>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">내용</th>
+							<td>
+								<textarea cols="50" rows="5" title="자세한 내용을 작성해 주세요." placeholder="자세한 내용을 작성해 주세요."></textarea>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">답변수신 메일</th>
+							<td>
+								<div class="popMail">
+									<input type="text" title="메일 아이디 입력" placeholder="kolon"/> @ 
+									<input type="text" title="메일 계정 입력" placeholder="kolon.net"/>
+									<select name="" title="메일 계정 선택">
+										<option value="" selected="selected">직접입력</option>
+										<option value=""></option>
+									</select>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<p class="popUnderTxt">1:1 메시지 답변이 완료되면 등록한 <span class="pointRed">이메일</span>로 알려드리겠습니다.</p>
+		</fieldset>
+	</form>
+	<div class="btnWrap">
+		<a href="#" class="btnSizeM btnColor02">등록하기</a>
+	</div>
+</div>
+-->
