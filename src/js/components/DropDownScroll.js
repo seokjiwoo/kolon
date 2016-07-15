@@ -14,12 +14,12 @@ function DropDownScroll() {
 	DROPDOWNSCROLL_EVENT = events.DROPDOWN_SCROLL;
 
 	var opts = {
-		wrap : '.dropScroll',
+		wrap : '.dropScroll, .dropScrollEx',
 		toggler : '.dropToggle',
 		iScroll : {
-			target : '.scrollWrap',
-			list : '.dropList',
-			items : '.dropList > ul > li > a',
+			target : '.scrollWrap, scrollWrapEx',
+			list : '.dropList, .dropListEx',
+			items : '.dropList > ul > li > a, .dropListEx > ul > li > a',
 			opts : {
 				scrollbars: true,
 				mouseWheel: true,
