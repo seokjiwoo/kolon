@@ -43,10 +43,11 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-	//	if (Cookies.get('profileEditAuth') == 'auth' || MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+		if (Cookies.get('profileEditAuth') == 'auth') {
 			MyPage.init();
 
-			debug.log(fileName, $, util);
+			controller.getMyInfo();
+			loginController.getSocialLoginUrl();
 			
 			var tags = '';
 			for (var i = new Date().getFullYear()-14; i > new Date().getFullYear()-99; i--) {
@@ -60,98 +61,95 @@ module.exports = function() {
 			$('#changeInfoForm').submit(submitInfoEditForm);
 			$('.verifyMemberPopup').click(submitMobileEditForm);
 			$('#changeRefundInfoButton').click(popRefundAccount);
-			/*
-			$('#joinId').change(checkEmailField);
-			$('#joinPW').change(checkPasswordField);
-			$('#joinPW02').change(checkPasswordField);
-			$('#joinPhone').change(checkPhoneField);
-			*/
-			controller.getMyInfo();
-			loginController.getSocialLoginUrl();
-	/*	} else {
+		} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
-		}*/
+		}
 	};
 
 	function myInfoHandler(e, infoObject) {
 		myInfoObject = infoObject;
 		console.log(infoObject);
 
-		$('#profileID').val(infoObject.email);
-		$('#changeEmailField').hide();
-		if (infoObject.email != null) {
-			$('#profileID').attr('disabled', 'disabled');
-			$('#changeIdButton').text('등록하기');
-		}
-		$('#editPhoneID').val(infoObject.cellPhoneNumber);
-		if (infoObject.cellPhoneNumber != null) {
-			$('#changePhoneButton').text('등록하기');
-		}
-		$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
-		for (var key in infoObject.socials) {
-			var eachSocialData = infoObject.socials[key];
-			switch(eachSocialData.socialName) {
-				case 'facebook':	// facebook
-				case 'naver':	// naver
-				case 'kakao':	// kakao
-					$('#socialRow_'+eachSocialData.socialName).addClass('active');
-					$('#socialInfo_'+eachSocialData.socialName).text('연결되었습니다. (이메일 : '+eachSocialData.socialEmail+')');
-					$('#socialButton_'+eachSocialData.socialName).text('연결해제');
+		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
+			$('#profileID').val(infoObject.email);
+			$('#changeEmailField').hide();
+			if (infoObject.email != null) {
+				$('#profileID').attr('disabled', 'disabled');
+				$('#changeIdButton').text('등록하기');
+			}
+			$('#editPhoneID').val(infoObject.cellPhoneNumber);
+			if (infoObject.cellPhoneNumber != null) {
+				$('#changePhoneButton').text('등록하기');
+			}
+			$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
+			for (var key in infoObject.socials) {
+				var eachSocialData = infoObject.socials[key];
+				switch(eachSocialData.socialName) {
+					case 'facebook':	// facebook
+					case 'naver':	// naver
+					case 'kakao':	// kakao
+						$('#socialRow_'+eachSocialData.socialName).addClass('active');
+						$('#socialInfo_'+eachSocialData.socialName).text('연결되었습니다. (이메일 : '+eachSocialData.socialEmail+')');
+						$('#socialButton_'+eachSocialData.socialName).text('연결해제');
+						break;
+				}
+			}
+			$('#editName').val(infoObject.memberName);		// memberName
+			if (infoObject.birthDate != null && infoObject.birthDate.length == 8) {
+				$('#joinBirth01').val(infoObject.birthDate.substr(0, 4));
+				$('#joinBirth02').val(infoObject.birthDate.substr(4, 2));
+				$('#joinBirth03').val(infoObject.birthDate.substr(6, 2));
+			}
+			$('#profileHomePhone').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
+		
+			if (infoObject.memberRefundAccount != null) {
+				$('#refundBankName').text(infoObject.memberRefundAccount.bankName);  
+				$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
+				$('#refundName').text(infoObject.memberRefundAccount.depositorName);
+			} else {
+				$('#refundBankName').text('');  
+				$('#refundAccount').text('');
+				$('#refundName').text('');
+			}
+
+			switch(infoObject.emailReceiveYn) {
+				default: 
+					$('#agreeReceive01')[0].checked = true;
+					$('label[for="agreeReceive01"]').addClass('on');
+					break;
+				case 'N': 
+					$('#disagreeReceive01')[0].checked = true;
+					$('label[for="disagreeReceive01"]').addClass('on');
 					break;
 			}
-		}
-		$('#editName').val(infoObject.memberName);		// memberName
-		if (infoObject.birthDate != null && infoObject.birthDate.length == 8) {
-			$('#joinBirth01').val(infoObject.birthDate.substr(0, 4));
-			$('#joinBirth02').val(infoObject.birthDate.substr(4, 2));
-			$('#joinBirth03').val(infoObject.birthDate.substr(6, 2));
-		}
-		$('#profileHomePhone').val(infoObject.generalPhoneNumber);		// generalPhoneNumber
-	
-		if (infoObject.memberRefundAccount != null) {
-			$('#refundBankName').text(infoObject.memberRefundAccount.bankName);  
-			$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
-			$('#refundName').text(infoObject.memberRefundAccount.depositorName);
+			switch(infoObject.smsReceiveYn) {
+				default: 
+					$('#agreeReceive02')[0].checked = true;
+					$('label[for="agreeReceive02"]').addClass('on');
+					break;
+				case 'N':
+					$('#disagreeReceive02')[0].checked = true;
+					$('label[for="disagreeReceive02"]').addClass('on');
+					break;
+			}
+
+			switch(infoObject.memberStateCode) {
+				case 'BM_MEM_STATE_01': // 일반 회원
+					break;
+				case 'BM_MEM_STATE_02': // 본인인증 완료 회원
+					$('#editName').attr('disabled', 'disabled');
+					$('#joinBirth01').attr('disabled', 'disabled');
+					$('#joinBirth02').attr('disabled', 'disabled');
+					$('#joinBirth03').attr('disabled', 'disabled');
+					break; 
+			}
+			
+			$('.socialButton').click(socialButtonClickHandler);
 		} else {
-			$('#refundBankName').text('');  
-			$('#refundAccount').text('');
-			$('#refundName').text('');
+			alert('잘못된 접근입니다');
+			location.href = '/';
 		}
-
-		switch(infoObject.emailReceiveYn) {
-			default: 
-				$('#agreeReceive01')[0].checked = true;
-				$('label[for="agreeReceive01"]').addClass('on');
-				break;
-			case 'N': 
-				$('#disagreeReceive01')[0].checked = true;
-				$('label[for="disagreeReceive01"]').addClass('on');
-				break;
-		}
-		switch(infoObject.smsReceiveYn) {
-			default: 
-				$('#agreeReceive02')[0].checked = true;
-				$('label[for="agreeReceive02"]').addClass('on');
-				break;
-			case 'N':
-				$('#disagreeReceive02')[0].checked = true;
-				$('label[for="disagreeReceive02"]').addClass('on');
-				break;
-		}
-
-		switch(infoObject.memberStateCode) {
-			case 'BM_MEM_STATE_01': // 일반 회원
-				break;
-			case 'BM_MEM_STATE_02': // 본인인증 완료 회원
-				$('#editName').attr('disabled', 'disabled');
-				$('#joinBirth01').attr('disabled', 'disabled');
-				$('#joinBirth02').attr('disabled', 'disabled');
-				$('#joinBirth03').attr('disabled', 'disabled');
-				break; 
-		}
-		
-		$('.socialButton').click(socialButtonClickHandler);
 	};
 	
 	/**

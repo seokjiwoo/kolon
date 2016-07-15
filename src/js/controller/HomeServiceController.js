@@ -51,8 +51,10 @@ function ClassHomeServiceController() {
 	/**
 	 * 이사 서비스 업체검색
 	 */
-	function movingCompanyList(regionCode) {
-		Super.callApi('/apis/living/moving/company/'+regionCode, 'GET', {}, function(status, result) {
+	function movingCompanyList(date, regionCode) {
+		Super.callApi('/apis/living/moving/company/'+regionCode, 'GET', {
+			movingDate: date
+		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('movingCompanyListResult', [status, result.data]);
 			} else {

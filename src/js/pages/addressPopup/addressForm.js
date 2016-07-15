@@ -45,6 +45,7 @@ module.exports = function() {
 		$('#jibunAddress').text(data.lotBaseAddress);
 		$('#roadAddress').val(data.roadBaseAddress);
 		$('#extraAddress').val(data.detailAddress);
+		$('#regionCode').val(data.regionCode);
 		$('#phone1').val(phoneNumber[0]);
 		$('#phone2').val(phoneNumber[1]);
 		$('#phone3').val(phoneNumber[2]);
@@ -64,6 +65,7 @@ module.exports = function() {
 				$('#roadAddress').val(data.roadAddress);
 				$('#extraAddress').val(extraRoadAddr);
 				$('#jibunAddress').text(data.jibunAddress);
+				$('#regionCode').val(data.bcode);
 
 				$('#extraAddress').removeAttr('disabled');
 				$('#findZipCode').hide();
@@ -97,6 +99,7 @@ module.exports = function() {
 			var addressObject = {
 				"addressManagementName": $('#adrName1').val(),
 				"zipCode": $('#zipCode').val(),
+				"regionCode": $('#regionCode').val(),
 				"lotBaseAddress": $('#jibunAddress').text(),
 				"roadBaseAddress": $('#roadAddress').val(),
 				"detailAddress": $('#extraAddress').val(),

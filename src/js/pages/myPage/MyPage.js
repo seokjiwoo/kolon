@@ -69,8 +69,6 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
-
-		
 	}
 
 	function setElements() {
