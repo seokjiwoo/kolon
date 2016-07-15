@@ -62,10 +62,10 @@
 							.scrollWrap .dropList .drop li:last-child {border-bottom:none}
 						</style>
 						<!-- 내부 스크롤 -->
-						<div class="dropScroll">
-							<a href="#" class="dropToggle">진행상태 보기</a>
-							<div class="scrollWrap" data-prevent="true">
-								<div class="dropList">
+						<div class="dropScroll js-drop-scroll">
+							<a href="#" class="dropToggle js-toggler">진행상태 보기</a>
+							<div class="scrollWrap js-scroll-wrap" data-prevent="true">
+								<div class="dropList js-list">
 									<ul class="drop">
 										<li><a href="#" data-value="type-1">전체</a></li>
 										<li><a href="#" data-value="type-2">입금대기</a></li>
@@ -326,11 +326,11 @@
 											<h4>Compat But Enough Wedding</h4>
 											<p class="choiceTitInfo">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
 											
-												<div class="dropUp dropUpOn dropScrollEx">
-													<a href="#" class="dropToggle">옵션 선택</a>
+												<div class="dropUp dropUpOn dropScrollEx js-drop-scroll">
+													<a href="#" class="dropToggle js-toggler">옵션 선택</a>
 													<!-- [D] active 시에 .dropUpCon outHeight 수치를 top으로 설정 -->
-													<div class="scrollWrapEx">
-														<div class="dropListEx">
+													<div class="scrollWrapEx js-scroll-wrap">
+														<div class="dropListEx js-list">
 															<ul class="dropUpCon" data-prevent="true">
 																<li><a href="#" data-value="type-1">전체</a></li>
 																<li><a href="#" data-value="type-2">입금대기</a></li>
@@ -563,12 +563,12 @@
 
 		NS.dropScroll = (function() {
 			var defParams = {
-				wrap : '.dropScroll, .dropScrollEx',
-				toggler : '.dropToggle',
+				wrap : '.js-drop-scroll',
+				toggler : '.js-toggler',
 				iScroll : {
-					target : '.scrollWrap, scrollWrapEx',
-					list : '.dropList, .dropListEx',
-					items : '.dropList > ul > li > a, .dropListEx > ul > li > a',
+					target : '.js-scroll-wrap',
+					list : '.js-list',
+					items : '.js-list > ul > li > a',
 					opts : {
 						scrollbars: true,
 						mouseWheel: true,
