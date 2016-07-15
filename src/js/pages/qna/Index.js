@@ -98,7 +98,7 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		var loginData = loginDataModel.loginData();
+		loginData = loginDataModel.loginData();
 
 		controller.opinionsClass();
 		if (loginData != null) {
