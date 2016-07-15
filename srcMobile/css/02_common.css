@@ -134,7 +134,8 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 .underTxtMark:before {content:''; width:14.5px; height:14.5px; border-radius:50%; background:url('../images/ico_qMark.png') center no-repeat #999; background-size:5px 9px; position:absolute; top:0; left:0;}
 
 /* bottom fix*/
-.btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;font-size:18px !important;}
+.btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;}
+.btmFix a{font-size:18px !important;}
 .btmFix + .container{padding-bottom: 55px;}
 .btmFix + .layerPopup{padding-bottom: 55px;}
 .btmFix.fixwrap ul{overflow:hidden;}
