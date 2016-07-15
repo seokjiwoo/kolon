@@ -121,10 +121,11 @@
 
 .activeOption .optionScroll {position:relative;max-height:150px;overflow:hidden}
 .activeOption .optionScrollWrap {position:absolute;left:0;top:0;right:0}
-.has-iscroll .activeOption .optionScrollWrap {right:13px}
-.has-iscroll .activeOption .allPriceBox {margin-right:13px;}
+.activeOption .has-iscroll .optionScrollWrap {right:13px}
+.activeOption .has-iscroll .allPriceBox {margin-right:13px;}
 /*.activeOption .optionList {max-height:150px;overflow-y:auto;}*/
 .activeOption .optionList li {overflow:hidden;padding:12px 0;border-bottom:1px solid #b2b2b2;}
+
 .activeOption .optionList li .optionInfo, .activeOption .allPriceBox .allPriceLeft {float:left;}
 .activeOption .optionList li .optionControl, .activeOption .allPriceBox .allPriceRight {float:right;}
 .activeOption .optionList li .optionInfo p, .activeOption .optionList li .optionControl p {display:inline-block;vertical-align: middle;}
