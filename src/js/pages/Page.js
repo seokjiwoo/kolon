@@ -27,7 +27,8 @@ module.exports = function() {
 	// 공통차트 컴포넌트 - @see html/_js/chart.html
 	var doughnutChart = require('../components/DoughnutChart.js'),
 	horizonBarChart = require('../components/HorizonBarChart.js'),
-	dropDownMenu =  require('../components/DropDownMenu.js'),
+	dropDownMenu = require('../components/DropDownMenu.js'),
+	dropDownScroll = require('../components/DropDownScroll.js'),
 	eventManager = require('../events/EventManager'),
 	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
@@ -56,6 +57,7 @@ module.exports = function() {
 		initTopBanner();	// 상단 배너 (index만 사용, 공용요소 LNB때문에 이쪽에 위치)
 		initChart();	// 차트 컴포넌트
 		dropDownMenu.init();	// 드롭다운 메뉴
+		dropDownScroll.init();		// 드롭다운스크롤 메뉴
 		initAddressPopupButton();	// 주소록 팝업버튼
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
 		initInfoSlider();	// #infoSlider bxSlider
