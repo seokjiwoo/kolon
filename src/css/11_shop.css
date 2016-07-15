@@ -110,13 +110,11 @@
 /* dropBox Up */
 .dropUp + .dropUp {margin-top:10px;}
 .dropUp {position:relative;height:38px;border:1px solid #000;}
-.dropUp > a {display:block;width:523px;height:38px;padding:0 15px;font-size:13px;line-height:38px;color:#000;position:relative;}
+.dropUp > a {display:block;width:525px;height:38px;padding:0 15px;font-size:13px;line-height:38px;color:#000;position:relative;}
 .dropUp > a:after {content:'';display:block;position:absolute;top:15px;right:15px;width:16px;height:10px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
 .dropUp.dropUpOn > a:after {background-position:0 0;}
-/*.dropUp .dropUpCon {position:absolute;top:0;left:-1px;right:-1px;z-index:-1}
-.dropUp.dropUpOn .dropUpCon {top:-80px;z-index:2}*/
-.dropUpCon li {display:block ;height:39px;border:1px solid #000;border-bottom:0;background:#fff;}
-.dropUpCon li:last-child {border-bottom:1px solid #000;}
+.scrollWrapEx {position:absolute;top:-191px;left:-1px;right:-1px;overflow:hidden;max-height:190px}
+.dropUpCon li {display:block ;height:39px;border:1px solid #000;border-bottom:none;background:#fff;}
 .dropUpCon li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#000;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;background:#fff;}
 
 
