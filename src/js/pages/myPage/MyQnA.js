@@ -20,9 +20,9 @@ module.exports = function() {
 	var myPageController = require('../../controller/MyPageController.js');
 	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
 
-	var loginController = require('../controller/LoginController');
+	var loginController = require('../../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
-	var loginDataModel = require('../model/LoginModel');
+	var loginDataModel = require('../../model/LoginModel');
 	var loginData;
 
 	var opinionsClassArray;
@@ -64,7 +64,7 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler() {
-		loginData = loginDataModel().loginData;
+		loginData = loginDataModel.loginData();
 		$('.myProfileImage').attr('src', loginData.imageUrl);
 	}
 

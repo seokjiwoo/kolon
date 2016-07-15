@@ -31,9 +31,9 @@ module.exports = function() {
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX;
 
-	var loginController = require('../controller/LoginController');
+	var loginController = require('../../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
-	var loginDataModel = require('../model/LoginModel');
+	var loginDataModel = require('../../model/LoginModel');
 	var loginData;
 	
 	var uploadFileNumber;
@@ -98,7 +98,7 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		var loginData = loginDataModel().loginData;
+		var loginData = loginDataModel.loginData();
 
 		controller.opinionsClass();
 		if (loginData != null) {

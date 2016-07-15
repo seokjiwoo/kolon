@@ -37,7 +37,7 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		var loginData = loginDataModel().loginData;
+		var loginData = loginDataModel.loginData();
 		if (loginData == null) {
 			// 비로그인
 			initMainSlider();

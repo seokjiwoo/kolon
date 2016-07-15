@@ -171,7 +171,7 @@ module.exports = function() {
 		var socialName = $(this).attr('id').substr(13);
 
 		if ($('#socialRow_'+socialName).hasClass('active')) {
-			if (MyPage.Super.Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02" && myInfoObject.socials.length < 2) {
+			if (myInfoObject.joinSectionCode == "BM_JOIN_SECTION_02" && myInfoObject.socials.length < 2) {
 				MyPage.Super.Super.alertPopup('', '최소 1개의 로그인 계정을 유지하셔야 합니다.', '확인');
 			} else {
 				// 소셜해제

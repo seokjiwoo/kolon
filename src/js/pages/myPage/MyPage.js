@@ -14,7 +14,7 @@ module.exports = function() {
 	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
-	var loginDataModel = require('../model/LoginModel');
+	var loginDataModel = require('../../model/LoginModel');
 
 	var opts = {
 		colorbox : {
@@ -80,7 +80,7 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		var loginData = loginDataModel().loginData;
+		var loginData = loginDataModel.loginData();
 
 		if (loginData == null) {
 			alert('로그인이 필요한 페이지입니다');

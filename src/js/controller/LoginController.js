@@ -202,7 +202,7 @@ function ClassLoginController() {
 			} else {
 				Super.handleError('refreshMyInfo', status);
 			}
-
+			
 			$(callerObj).trigger('myInfoResult', [status, result]);
 		});
 	}
