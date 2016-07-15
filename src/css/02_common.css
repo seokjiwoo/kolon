@@ -295,20 +295,20 @@ table tr td .photoList span.cartInfo em {padding:5px 8px; margin-bottom:9px; bor
 table tr td .photoList span.cartInfo span {width:100%; font-size:14px; color:#999; display:inline-block; font-family:'NotoSansL', sans-serif;}
 table tr td .photoList span.cartInfo span.cartTit {color:#000; font-family:'NotoSansR', sans-serif;}
 
-table .optList {width:100%; overflow:hidden; margin-top:15px; text-align:left;}
-table .optList .option {width:90%; padding:5px 30px 0 0; position:relative; display:inline-block;}
-table .optList .option + .option {border-top:1px solid #d9d9d9; margin-top:5px; }
-table .optList .option p {float:left; }
-table .optList .option p.optionTit {width:126px; padding:5px 0; text-align:left;}
-table .optList .option p.optionPrice {width:93px; padding:5px 0; text-align:right;}
-table .optList .option p.optionNum {width:97px; position:relative; float:right;}
-table .optList .option p.optionNum a,
-table .optList .option p.optionNum span {display:inline-block; float:left;}
-table .optList .option p.optionNum a {width:0; height:0; margin:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
-table .optList .option p.optionNum a.btnMinus {left:0; background:url(../images/ico_option.png) 0 0 no-repeat;}
-table .optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
-table .optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px; text-align:center;}
-table .optList .option a.btnDel {width:0; height:0; margin:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
+.optList {width:100%; overflow:hidden; margin-top:15px; text-align:left;}
+.optList .option {width:90%; padding:5px 30px 0 0; position:relative; display:inline-block;}
+.optList .option + .option {border-top:1px solid #d9d9d9; margin-top:5px; }
+.optList .option p {float:left; }
+.optList .option p.optionTit {width:126px; padding:5px 0; text-align:left;}
+.optList .option p.optionPrice {width:93px; padding:5px 0; text-align:right;}
+.optList .option p.optionNum {width:97px; position:relative; float:right;}
+.optList .option p.optionNum a,
+.optList .option p.optionNum span {display:inline-block; float:left;}
+.optList .option p.optionNum a {width:0; height:0; margin:0; padding:25px 25px 0 0; position:absolute; top:0; overflow:hidden;}
+.optList .option p.optionNum a.btnMinus {left:0; background:url(../images/ico_option.png) 0 0 no-repeat;}
+.optList .option p.optionNum a.btnPlus {right:0; background:url(../images/ico_option.png) -25px 0 no-repeat;}
+.optList .option p.optionNum span.num {width:91px; height:16px; padding:4px 0; border:1px solid #ccc; border-radius:13px; text-align:center;}
+.optList .option a.btnDel {width:0; height:0; margin:0; padding:25px 25px 0 0; position:absolute; top:5px; right:0; overflow:hidden; background:url(../images/ico_option.png) 100% 0 no-repeat;}
 
 .adrArea dl {width:100%; margin:0; overflow:hidden;}
 .adrArea dl + dl {border-top:1px solid #e8e8e8;}

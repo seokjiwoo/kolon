@@ -18,7 +18,12 @@ module.exports = function() {
 			button : '.js-btn',						// show/hide button : className or jQuery Element
 			dateFormat : 'yy.mm.dd',				// DateFormat : 2016.06.14
 			minDate : 0,							// 선택 일자는 ' 금일 ' 이후로만 선택되도록 설정
-			onSelect : $.noop 						// 일자 선택시 callback 설정
+			onSelect : $.noop, 						// 일자 선택시 callback 설정
+			changeYear: true,
+			changeMonth: true,
+			onChangeMonthYear: function(year, month, inst) {
+				//
+			}
 		},
 		range : {
 			from : {
@@ -28,7 +33,9 @@ module.exports = function() {
 				button : '.js-btn-from',
 				dateFormat : 'yy.mm.dd',
 				minDate : 0,
-				onSelect : $.noop
+				onSelect : $.noop,
+				changeYear: true,
+				changeMonth: true
 			},
 			to : {
 				wrap : '.js-range-picker',
@@ -37,7 +44,9 @@ module.exports = function() {
 				button : '.js-btn-to',
 				dateFormat : 'yy.mm.dd',
 				defaultDate : +30,
-				onSelect : $.noop
+				onSelect : $.noop,
+				changeYear: true,
+				changeMonth: true
 			}
 		},
 		cssClass : {
@@ -114,7 +123,6 @@ module.exports = function() {
 				if (!this.defOpts.onSelect || this.defOpts.onSelect === $.noop) {
 					this.defOpts.onSelect = $.proxy(this.onPickerSelect, this);
 				}
-
 				this.picker.datepicker(this.defOpts);
 			},
 			// 일자 선택 callback

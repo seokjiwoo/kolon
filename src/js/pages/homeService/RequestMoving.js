@@ -55,6 +55,7 @@ module.exports = function() {
 		$('#addressDrop2').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			controller.movingCompanyList(data.values[0]);
 		});*/
+		$('#getCompanyListButton').click(requestMovingCompany);
 		$('#requestMovingForm').submit(requestMovingSubmit);
 		$('#originAddressDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			setAddress('origin', data.values[0]);
@@ -147,9 +148,8 @@ module.exports = function() {
 		$('#'+addressType+'Address').html('<dt>- 도로명</dt><dd>'+addressObject.roadBaseAddress+'</dd><dt>- 지번</dt><dd>'+addressObject.lotBaseAddress+'</dd><dt>- 상세주소</dt><dd>'+addressObject.detailAddress+'</dd>');
 		switch(addressType) {
 			case 'origin': 
-			console.log(addressObject);
 				originAddress = addressObject;
-				controller.movingCompanyList('4100000000');		// addressObject.zipCode
+				//
 				break;
 			case 'target':
 				targetAddress = addressObject;
@@ -160,6 +160,15 @@ module.exports = function() {
 	function selectAddressDataHandler(e, seq) {
 		setAddress(addressBookTarget, seq);
 		$('#'+addressBookTarget+'Label').text(addressArray[seq].addressManagementName);
+	};
+
+	function requestMovingCompany(e) {
+		e.preventDefault();
+		if (originAddress == undefined) {
+			alert('서비스 지역을 선택해 주세요');
+		} else {
+			controller.movingCompanyList(moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'), addressObject.regionCode);
+		}
 	};
 
 	function requestMovingSubmit(e) {

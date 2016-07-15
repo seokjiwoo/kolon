@@ -14,6 +14,7 @@ module.exports = function() {
 	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../../model/LoginModel');
 
 	var opts = {
 		colorbox : {
@@ -61,18 +62,13 @@ module.exports = function() {
 	
 	function init(options) {
 		Super.init();
+		
+		debug.log(fileName, 'init', $, util);
 
-		if (Super.Super.loginData == null) {
-			alert('로그인이 필요한 페이지입니다');
-			location.href = '/member/login.html';
-		} else {
-			debug.log(fileName, 'init', $, util);
+		self = callerObj;
 
-			self = callerObj;
-
-			setElements();
-			setBindEvents();
-		}
+		setElements();
+		setBindEvents();
 	}
 
 	function setElements() {
@@ -82,29 +78,34 @@ module.exports = function() {
 	}
 
 	function myInfoResultHandler(e) {
-		if (Super.Super.loginData.email != null) {
-			$('#myPageHeaderId').text(Super.Super.loginData.email);
-			$('#myPageHeaderName').text(Super.Super.loginData.memberName);
-		} else if (Super.Super.loginData.phone != null) {
-			$('#myPageHeaderId').text(Super.Super.loginData.memberName);
-		} else {
-			$('#myPageHeaderId').text(Super.Super.loginData.memberName);
-		}
-		
-		if (Super.Super.loginData.imageUrl != null) {
-			$('#myPageHeaderProfilePic').attr('src', Super.Super.loginData.imageUrl);
-		} else {
-			$('#myPageHeaderProfilePic').attr('src', '/images/profile.png');
-		}
+		var loginData = loginDataModel.loginData();
 
-		var activity = Super.Super.loginData.myActivity;
-		var notice = activity.noticeNewYn == 'Y' ? '<span class="newBox">'+activity.noticeCount+'<span class="new">N</span></span>' : activity.noticeCount
-		$('#myPageHeaderNoticeCount').html(notice);
-		$('#myPageHeaderScrapCount').html(activity.scrapCount);
-		$('#myPageHeaderLikeCount').html(activity.likeCount);
-		$('#myPageHeaderFollowingCount').html(activity.followCount);
-		$('#myPageHeaderPointCount').html(Super.Super.loginData.savingPoint);
-		$('#myPageHeaderMyCartCount').html(activity.cartCount);
+		if (loginData == null) {
+			alert('로그인이 필요한 페이지입니다');
+			location.href = '/member/login.html';
+		} else {
+			if (loginData.email != null) {
+				$('#myPageHeaderId').text(loginData.email);
+				$('#myPageHeaderName').text(loginData.memberName);
+			} else {
+				$('#myPageHeaderId').text(loginData.memberName);
+			}
+			
+			if (loginData.imageUrl != null) {
+				$('#myPageHeaderProfilePic').attr('src', loginData.imageUrl);
+			} else {
+				$('#myPageHeaderProfilePic').attr('src', '/images/profile.png');
+			}
+
+			var activity = loginData.myActivity;
+			var notice = activity.noticeNewYn == 'Y' ? '<span class="newBox">'+activity.noticeCount+'<span class="new">N</span></span>' : activity.noticeCount
+			$('#myPageHeaderNoticeCount').html(notice);
+			$('#myPageHeaderScrapCount').html(activity.scrapCount);
+			$('#myPageHeaderLikeCount').html(activity.likeCount);
+			$('#myPageHeaderFollowingCount').html(activity.followCount);
+			$('#myPageHeaderPointCount').html(loginData.savingPoint);
+			$('#myPageHeaderMyCartCount').html(activity.cartCount);
+		}
 	}
 
 	function setBindEvents() {

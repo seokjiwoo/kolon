@@ -19,13 +19,13 @@ function ClassLoginModel() {
 	};
 	
 	function LoginModel() {
-		if (Cookies.getJSON(COOKIE_NAME) == undefined) {
+		/*if (Cookies.getJSON(COOKIE_NAME) == undefined) {
 			loginFlag = false;
 			loginData = null;
 		} else {
 			loginFlag = true;
 			loginData = Cookies.getJSON(COOKIE_NAME);
-		}
+		}*/
 
 		callerObj = {
 			loginFlag: function() { return loginFlag; },
@@ -44,10 +44,12 @@ function ClassLoginModel() {
 	};
 	
 	function setLoginInfo(data) {
+		loginFlag = true;
+
 		var imageUrl = null;
 		if (data.myInfo.memberImages != null) imageUrl = data.myInfo.memberImages.imageUrl;
 		
-		Cookies.set(COOKIE_NAME, {
+		loginData = {
 			stateCode: data.myInfo.memberStateCode,
 			memberName: data.myInfo.memberName,
 			email: data.myInfo.email,
@@ -57,11 +59,12 @@ function ClassLoginModel() {
 			imageUrl: imageUrl,
 			myMenu: data.myMenu,
 			myActivity: data.myActivity,
-		});
+		};
 	};
 
 	function removeLoginInfo() {
-		Cookies.remove(COOKIE_NAME);
+		loginFlag = false;
+		loginData = null;
 	};
 }
 

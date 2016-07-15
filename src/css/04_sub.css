@@ -10,6 +10,7 @@
 .subTop .tagList li a{display: block;padding: 12px 20px;border-radius: 20px;border:1px solid #000;font-family:'NotoSansM', sans-serif;color: #000;font-size: 14px;}
 
 .infoTop{position: relative;background: #fff;color: #666;}
+.infoTop .area a{color: #666}
 .infoTop .infoPic{display: inline-block;overflow: hidden;width: 178px;height: 178px;border-radius: 50%;border:1px solid #d9d9d9;vertical-align: middle;}
 .infoTop .infoPic img{display: block;width: 100%;}
 .infoTop .infoWrap{display: inline-block;width:375px;margin-left:40px;vertical-align: middle;}
