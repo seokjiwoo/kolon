@@ -330,9 +330,52 @@ module.exports = function() {
 		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
 	}
 
+	/**
+	 * onWindowPopupHandler
+	 * @example
+	 <a href="/popup/popMessage.html" class="btnSizeM btnColor03 openWindowPopup"
+		data-winpop-opts='{
+		"name" : "messagePopup",
+		"height" : 900
+		}'>1:1 메세지</a>
+	 */
 	function onWindowPopupHandler(e) {
 		e.preventDefault();
-		window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
+
+		var opts = {
+			name : 'addressPopup',
+			left : null,
+			top : null,
+			width : 770,
+			height : 730,
+			menubar : 'no',
+			status : 'no',
+			resizable : 'no',
+			fullscreen : 'no'
+		},
+		target = $(e.currentTarget),
+		href = target.attr('href'),
+		dataOpts = target.data('winpop-opts'),
+		optStr = '',
+		winPopup;
+
+		opts = $.extend({}, opts, dataOpts);
+
+		opts.left 	= opts.left || (window.screen.width/2 - opts.width/2);
+		opts.top 	= opts.top || (window.screen.height/2 - opts.height/2);
+
+		$.map(opts, function(value, key) {
+			optStr += key + '=' + value + ',';
+		});
+
+		winPopup = window.open(href, opts.name, optStr);
+		// window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
+
+		if (!winPopup) {
+			window.alert('팝업 차단기능 혹은 팝업차단 프로그램이 동작중입니다.\n팝업 차단 기능을 해제한 후 다시 시도하세요.');
+			return;
+		}
+
 		e.stopPropagation();
 	}
 
