@@ -1,0 +1,117 @@
+.magazineMain {background:url(../images/magazine_header_bg.gif) 50% 0 no-repeat; background-size:360px 930px;}
+.magazineMain .header .gnbBtn {}
+.magazineMain .magazineWrap {width:100%; overflow:hidden;}
+.magazineMain .magazineWrap .magazineVisual {width:100%; overflow:hidden; padding-bottom:168px; position:relative;}
+.magazineMain .magazineWrap .magazineVisual:after {content:''; width:61px; height:112px; background:url(../images/magazine_flag.png) 0 0 no-repeat; background-size:61px 112px; position:absolute; bottom:22px; right:0; z-index:5;}
+.magazineMain .magazineVisual h3.mTit {margin:29px auto 14px;}
+.magazineMain .magazineVisual h3.mTit,
+.magazineMain .magazineVisual h3.mTit img {width:246.5px; height:76px;}
+.magazineMain .magazineVisual .magazineSlide {width:300px; height:350px; padding-top:87px; overflow:hidden; margin:-87px auto; position:relative;}
+.magazineMain .magazineVisual .magazineSlide:before,
+.magazineMain .magazineVisual .magazineSlide:after {content:''; width:300px; height:87px; position:absolute; left:0; z-index:4;}
+.magazineMain .magazineVisual .magazineSlide:before {top:87px;}
+.magazineMain .magazineVisual .magazineSlide:after {bottom:0;}
+.magazineMain .magazineVisual .magazineSlide.mSlide01:before {background:url(../images/magazine_slide01_top_bg.png) 0 0 no-repeat; background-size:300px 87px;}
+.magazineMain .magazineVisual .magazineSlide.mSlide01:after {background:url(../images/magazine_slide01_bottom_bg.png) 0 0 no-repeat; background-size:300px 87px;}
+.magazineMain .magazineVisual .magazineSlide.mSlide02:before {background:url(../images/magazine_slide02_top_bg.png) 0 0 no-repeat; background-size:300px 87px;}
+.magazineMain .magazineVisual .magazineSlide.mSlide02:after {background:url(../images/magazine_slide02_bottom_bg.png) 0 0 no-repeat; background-size:300px 87px;}
+.magazineMain .magazineVisual .magazineSlide ul.mSlide li {width:300px; height:350px; background:0 0 no-repeat; background-size:300px 350px; text-align:center;}
+.magazineMain .magazineVisual .melody {width:48px; height:68.5px; background:url('../images/logo_flag05.png') 0px 0 no-repeat; background-size:48px 68.5px; position:absolute; top:87px; right:28px; z-index:4; color:#fff;}
+.magazineMain .magazineVisual .best {width:70.5px; height:79px; background:url('../images/magazine_slide_flag.png') 0 0 no-repeat; position:absolute; top:86px; left:45px; z-index:4; background-size:70.5px 79px;}
+.magazineMain .magazineVisual .best p {width:50px; margin-top:20px; text-align:center;  color:#fff; font-size:8px; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:18px;}
+.magazineMain .magazineVisual .best span.num {width:100%; font-size:20px; display:inline-block;}
+.magazineMain .magazineSlide ul.mSlide li span.mark {margin-top:58.5px; display:inline-block;}
+.magazineMain .magazineSlide ul.mSlide li span.mark,
+.magazineMain .magazineSlide ul.mSlide li span.mark img {width:56.5px; height:66px;}
+.magazineMain .magazineSlide ul.mSlide li p {margin-top:8px; color:#fff;}
+.magazineMain .magazineSlide ul.mSlide li p.mSubTit {font-size:12px;}
+.magazineMain .magazineSlide ul.mSlide li p.mTit {font-size:23px; line-height:27px;}
+.magazineMain .magazineSlide.mSlide02 ul.mSlide li p.mSubTit {margin-top:108px;}
+.magazineMain .magazineSlide .bx-wrapper {position:relative;}
+.magazineMain .magazineSlide .bx-controls {width:100%; height:13px; position:absolute; bottom:59px; left:0px; overflow:hidden; text-align:center; z-index:6;}
+.magazineMain .magazineSlide .bx-controls .bx-pager-item {width:10.5px; height:12px; display:inline-block; vertical-align:top; line-height:0; margin:0 3px;}
+.magazineMain .magazineSlide .bx-controls .bx-pager-item a {width:10.5px; height:12px; font-size:0; background:url(../images/magazine_slide_btn.png) -11px 0 no-repeat; background-size:21.5px 12px; display:inline-block; vertical-align:top;}
+.magazineMain .magazineSlide .bx-controls .bx-pager-item a.active {background-position:0 0;}
+.magazineMain .magazineCont {width:100%; overflow:hidden; margin-top:-63px; background:url(../images/magazine_cont_bg.png) 50% 0 repeat-y; background-size:360px 819.5px;}
+.magazineMain .allMagazine {width:300px; margin:0 auto; overflow:hidden;}
+.magazineMain .allMagazine h4.mTit {font-size:12px; color:#999; text-align:center;}
+.magazineMain .allMagazine h4.mTit b {width:100%; line-height:33px; font-size:27px; color:#393939; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; display:inline-block;}
+.magazineMain .allMagazine ul.magazineSelect {width:100%; margin-top:23px; overflow:hidden;}
+.magazineMain .allMagazine ul.magazineSelect li {width:50%; float:left;}
+.magazineMain .allMagazine ul.magazineSelect li:first-child .mzSelect {margin-right:5px;}
+.magazineMain .allMagazine ul.magazineSelect li:last-child .mzSelect {margin-left:5px;}
+
+.magazine {}
+.magazine .magazineIntro {width:100%; position:relative; overflow:hidden;}
+.magazine .magazineIntro p.mzIntroBg,
+.magazine .magazineIntro p.mzIntroBg img {width:auto; max-width:100%;}
+.magazine .magazineIntro dl.mzIntro {padding:50px 30px; position:absolute; top:0; left:0;}
+.magazine .magazineIntro dl.mzIntro dt,
+.magazine .magazineIntro dl.mzIntro dd {color:#fff;}
+.magazine .magazineIntro dl.mzIntro dt {width:100%; font-size:27px; line-height:32.5px;}
+.magazine .magazineIntro dl.mzIntro dd {width:100%; font-size:13px;}
+.magazine .magazineIntro dl.mzIntro dd > p {margin-top:10px;}
+.magazine .magazineIntro dl.mzIntro dd .profile {padding-left:58px; overflow:hidden; margin-top:23px; position:relative;}
+.magazine .magazineIntro dl.mzIntro dd .profile p.photo,
+.magazine .magazineIntro dl.mzIntro dd .profile p.photo img {width:48px; height:48px;}
+.magazine .magazineIntro dl.mzIntro dd .profile p.photo {overflow:hidden; border-radius:50%; position:absolute; top:0; left:0;}
+.magazine .magazineIntro dl.mzIntro dd .profile .worker {width:100%; min-height:48px; padding:6px 0; overflow:hidden;}
+.magazine .magazineIntro dl.mzIntro dd .profile .worker > p + p {margin-top:6px;}
+.magazine .magazineIntro dl.mzIntro dd .profile .worker p.date {opacity:0.5;}
+.magazine .magazineIntro .mzBtn {width:100%; text-align:center; overflow:hidden; vertical-align:middle; position:absolute; bottom:17px; left:0;}
+.magazine .magazineIntro .mzBtn a {height:14px;padding:9px 40.5px 9px 12.5px; font-size:13px; display:inline-block; border-radius:15px; background:#999; color:#fff; position:relative; vertical-align:middle;}
+.magazine .magazineIntro .mzBtn a:after {content:''; position:absolute; top:50%; right:12.5px; background:url(../images/magazine_mzBtn.png) no-repeat; background-size:47.5px 17px;}
+.magazine .magazineIntro .mzBtn a.like {line-height:14px;}
+.magazine .magazineIntro .mzBtn a.like:after {width:16.5px; height:15px; margin-top:-7px; background-position:0 0;}
+.magazine .magazineIntro .mzBtn a.scrap { line-height:14px;}
+.magazine .magazineIntro .mzBtn a.scrap:after {width:16px; height:17px; margin-top:-8.5px; background-position:-16.5px 0;}
+.magazine .magazineIntro .mzBtn a.share {width:30px; height:30px; padding:0; font-size:13px; font-size:0;}
+.magazine .magazineIntro .mzBtn a.share:after {width:15px; height:16px; margin:-8.5px -7.5px 0 0; font-size:0; background-position:-33.5px 0; right:50%;}
+.magazine .magazineIntro .mzMore {width:136.5px; height:171.5px; font-size:0; position:absolute; top:234px; right:0;background:url(../images/magazineIntro_more.png) 0 0 no-repeat; background-size:136.5px 171.5px;}
+.magazine .magazineDetail {width:100%; position:relative; overflow:hidden;}
+.magazine .magazineDetail .mzDetail,
+.magazine .magazineDetail .mzDetail img {width:auto; max-width:100%;}
+.magazine .magazineDetail .mzMore {width:32.5px; height:35px; position:absolute; }
+.magazine .magazineDetail .mzMore a {width:32.5px; height:35px; display:inline-block; font-size:0; background:url(../images/magazine_more.png) 0 0 no-repeat; background-size:32.5px 35px;}
+.magazine .magazineDetail .mzMore a.open {background:url(../images/magazine_more_on.png) 0 0 no-repeat; background-size:32.5px 35px;}
+.magazine .magazineDetail .mzMore .mzMoreTxt {width:100px; height:50px; background:#fff; position:absolute; top:45px; left:2px; z-index:1;}
+.magazine .magazineDetail .mzMore.mzMore1 {top:102px; left:85px;}
+.magazine .magazineDetail .mzMore.mzMore2 {top:42.5px; right:94px;}
+.magazine .magazineDetail .mzMore.mzMore3 {top:170.5px; left:144px;}
+.magazine .magazineDetail .mzMore.mzMore4 {bottom:48px; left:68px;}
+.magazine .magazineDetail .mzMore.mzMore5 {bottom:57.5px; right:87px;}
+.magazine .mzDetailWrap {padding:19px 15px 0;}
+.magazine .mzDetailWrap dl.mzRoom {width:100%; overflow:hidden;}
+.magazine .mzDetailWrap dl.mzRoom dt {width:100%; font-size:20px; color:#3f3f3f; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
+.magazine .mzDetailWrap dl.mzRoom dd {width:100%; overflow:hidden; color:#666; margin-top:10px;  line-height:130%;}
+.magazine .mzDetailWrap dl.mzProduct {width:100%; margin-top:15px; overflow:hidden;}
+.magazine .mzDetailWrap dl.mzProduct dt {color:#000;}
+.magazine .mzDetailWrap dl.mzProduct dd {padding-right:98px; color:#999; font-size:12px; line-height:130%; margin-top:4.5px; position:relative;}
+.magazine .mzDetailWrap dl.mzProduct dd .productInfo {width:100%; overflow:hidden;}
+.magazine .mzDetailWrap dl.mzProduct dd a.ptInfoBtn {width:80px; height:25px; overflow:hidden; border-radius:10.5px; background:#666; color:#fff; display:inline-block; vertical-align:middle; line-height:25px; font-size:12px; text-align:center; position:absolute; top:0; right:0;}
+.magazine .mzDetailWrap .magazineBar {width:100%; margin-top:13px; padding:17.5px 0; border-top:1px solid #ccc; overflow:hidden; position:relative; float:left; line-height:16px; vertical-align:middle;}
+.magazine .mzDetailWrap .magazineBar a.mzList {width:13.5px; height:13.5px; margin-right:9px; font-size:0; background:url(../images/icon_app.png) 0 0 no-repeat; background-size:13.5px 13.5px; display:inline-block; float:left;}
+.magazine .mzDetailWrap .magazineBar span {color:#333; font-size:14px; display:inline-block;}
+.magazine .mzDetailWrap .magazineBar a.mzReply {width:20px; display:inline-block; padding-left:17px; color:#333; font-size:14px; text-align:right; background:url(../images/ico_talk.png) 0 50% no-repeat; background-size:16.5px 14.5px; position:absolute; top:17.5px; right:0;}
+
+.manager {background:url(../images/specialist_bg.png) 0 0 repeat-y #2c2c2c;}
+.manager .specialistVisual {width:100%; overflow:hidden; padding-bottom:102px; position:relative;}
+.manager .specialistVisual .specialistSlide {width:100%; padding-top:87px; margin:-87px auto; position:relative;}
+.manager .specialistVisual .specialistSlide:after {content:''; width:100%; height:150px; position:absolute; bottom:0; left:0; z-index:4; background:url(../images/specialistSlide_bg.png) 0 0 no-repeat; background-size:100%;}
+.manager .specialistVisual .specialistSlide ul.spSlide {}
+.manager .specialistVisual .specialistSlide ul.spSlide li {}
+.manager .specialistVisual .specialistSlide ul.spSlide li img {width:auto; max-width:100%;}
+.manager h3.spTit {width:239.5px; height:81px; position:absolute; bottom:40px; right:15px; z-index:5;}
+.manager h3.spTit img {width:auto; max-width:100%;}
+.manager .specialistSlide .bx-wrapper {position:relative;}
+.manager .specialistSlide .bx-pager {width:100%; height:13px; position:absolute; bottom:-14px; left:0px; overflow:hidden; text-align:center; z-index:6;}
+.manager .specialistSlide .bx-pager .bx-pager-item {width:10.5px; height:12px; display:inline-block; vertical-align:top; line-height:0; margin:0 3px;}
+.manager .specialistSlide .bx-pager .bx-pager-item a {width:10.5px; height:12px; font-size:0; background:url(../images/magazine_slide_btn.png) -11px 0 no-repeat; background-size:21.5px 12px; display:inline-block; vertical-align:top;}
+.manager .specialistSlide .bx-pager .bx-pager-item a.active {background-position:0 0;}
+.manager .specialistSlide .bx-prev {width:13.5px; height:12px; font-size:0; background:url(../images/specialistSlide_arrowBtn.png) 0 0 no-repeat; background-size:29px 12px; display:inline-block; margin-top:-6px; position:absolute; top:50%; left:0;}
+.manager .specialistSlide .bx-next {width:13.5px; height:12px; font-size:0; background:url(../images/specialistSlide_arrowBtn.png) -16px 0 no-repeat; background-size:29px 12px; display:inline-block; margin-top:-6px; position:absolute; top:50%; right:0;}
+.specialistSearch{padding:10px 15px;}
+.specialistSearch .searchbox,
+.specialistSearch .searchbox input[type=text] {background:#2c2c2c;}
+.specialistSelect {margin:0 auto; overflow:hidden; padding-right:10px; background:url(../images/specialistSelect_arrow.png) 100% 50% no-repeat; background-size:10.5px 6px;}
+.specialistSelect select {text-align:center; color:#fff; border:0;-webkit-appearance: none; -moz-appearance: none; appearance: none; background:#2c2c2c;}

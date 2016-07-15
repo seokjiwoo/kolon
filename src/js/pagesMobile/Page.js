@@ -121,6 +121,16 @@ module.exports = function() {
 		}
 		$(".hiddenArea > a").showArea();
 
+		$('.mSlide').bxSlider({ //magazine slide
+			controls:false
+		});
+
+		$('.spSlide').bxSlider({ //magazine slide
+			controls:true
+		});
+
+			
+
 	}
 
 	/**
