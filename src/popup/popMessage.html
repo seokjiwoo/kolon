@@ -1,101 +1,72 @@
-<div class="popTop">
-	<h4 class="popTit">1:1 메시지</h4>
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 1:1 메시지"} -->
+</head>
+<body class="popupWindow qna" data-page-id="popup-message">
+
+<div class="parentDatas" style="display:none">
+	<!-- @@include ../_template/menu.html -->
+	<!-- @@include ../_template/footer.html -->
 </div>
-<div class="popCon js-message-popup" style="padding-top: 19px;">
-	<form method="post" action="/" class="js-message-form">
-		<fieldset>
-			<legend>1:1 메시지</legend>
-			<div class="popTb">
-				<p>내용</p>
-				<textarea title="자세한 내용을 작성해 주세요."
-							placeholder="자세한 내용을 작성해 주세요."
-							cols="50" rows="5"
-							maxlength="1000"
-							class="js-message-inp"></textarea>
-				
-				<p>파일첨부 : <a href="#">파일선택</a></p>
-				파일선택 버튼 클릭시 아래 사진첨부 팝업 내용
-				<div style="width:300px; overflow:hidden; background:#ededed;">
-					<p>사진첨부 팝업 : [찾아보기]를 클릭하여 파일을 선택하거나 아래 상자에 파일 경로를 입력해주세요.</p>
-					<input type="file"/>
-					<input type="text"/>
-					<button>첨부</button>
-				</div>
-				<!-- // 파일선택 버튼 클릭시 아래 사진첨부 팝업 내용 -->
-				
-				<p>스크랩북에서 선택</p>
-				<a href="#">[+]</a>
-				스크랩북에서 선택 클릭시 아래 폴더 선택 이미지 선택 팝업
-				<div style="width:300px; overflow:hidden; background:#ededed;">
-					<select title="폴더선택">
-						<option value="" selected="selected">폴더 선택</option>
-						<option value="">내 새로운 부엌을 위한 스크랩</option>
-					</select>
-					<a href="#"><img src="images/temp09.jpg" alt=""/></a>
-					<a href="#"><img src="images/temp09.jpg" alt=""/></a>
-					<button>저장</button>
-				</div>
-				<!-- // 스크랩북에서 선택 클릭시 아래 폴더 선택 이미지 선택 팝업 -->
-				
-			</div>
-			<p class="popUnderTxt">주고 받은 메시지는 마이커먼 &gt; 내 활동 &gt; 1:1 메시지에서 확인하실 수 있습니다. </p>
-		</fieldset>
-	</form>
-	<div class="btnWrap">
-		<a href="#" class="btnSizeM btnColor02 js-message-submit">보내기</a>
+
+<div id='cboxLoadedContent' class="orderPop popEdge">
+	<div class="popTop">
+		<h4 class="popTit">1:1 메시지</h4>
 	</div>
-</div>
-<!-- (old : 20160708 인경 주석처리)
-<div class="popCon">
-	<form method="post" action="/">
-		<fieldset>
-			<legend>1:1 메시지</legend>
-			<div class="popTb">
-				<table class="tbL">
-					<caption>1:1 메시지에 관한 문의 유형, 내용, 답변수신 메일 정보를 제공합니다.</caption>
-					<colgroup>
-						<col style="width:25%;"/><col style="75%"/>
-					</colgroup>
+	<div class="popCon js-message-popup">
+		<form class="js-message-form" method="post" action="#">
+			<fieldset>
+				<legend>1:1 메시지</legend>
+				<table class="opinionTb">
+					<caption>1:1 메시지 테이블 자세한 내용입력, 첨부파일, 스크랩북항목으로 구성되어 있습니다</caption>
+					<colgroup><col style="width:141px"><col style="width:auto"></colgroup>
 					<tbody>
 						<tr>
-							<th scope="row">문의유형</th>
+							<td colspan="2">
+								<textarea class="pullSize w752 js-message-inp" title="자세한 내용을 작성해 주세요." placeholder="자세한 내용을 작성해 주세요." cols="50" rows="5" maxlength="1000"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">사진첨부<span>(최대3장)</span></th>
 							<td>
-								<div class="messageRadio">
-									<p class="radioBox msgCat">
-										<input type="radio" name="meg" value="" id="meg01"/><label for="meg01">상품</label>
-										<input type="radio" name="meg" value="" id="meg02"/><label for="meg02">배송</label>
-										<input type="radio" name="meg" value="" id="meg03"/><label for="meg03">기타</label>
-									</p>
+								<div class="fileup">
+									<input id='fileUpText' type="text" class="pullSize" style="width:458px;" placeholder="첨부파일" title="첨부파일명" readonly="readonly"/>
+									<a id='fileUpButton' href="../../_popup/popAttachPictures.html" class="btnFileup btnPop btnPop590" data-user-class="qna popEdge popAttachPictures"><span>파일선택</span></a>
+									<div id='fileUpList' class="fileupList"></div>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<th scope="row">내용</th>
+							<th scope="row">스크랩북에서 선택<span>(최대3장)</span></th>
 							<td>
-								<textarea cols="50" rows="5" title="자세한 내용을 작성해 주세요." placeholder="자세한 내용을 작성해 주세요."></textarea>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">답변수신 메일</th>
-							<td>
-								<div class="popMail">
-									<input type="text" title="메일 아이디 입력" placeholder="kolon"/> @ 
-									<input type="text" title="메일 계정 입력" placeholder="kolon.net"/>
-									<select name="" title="메일 계정 선택">
-										<option value="" selected="selected">직접입력</option>
-										<option value=""></option>
-									</select>
+								<div id="scrapList" class="scrapList">
+									<ul>
+										<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+									</ul>
 								</div>
+								<script id="scrapList-template" type="text/x-handlebars-template">
+								{{!-- scrapList-template --}}
+									<ul>
+										<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+									{{#each .}}
+										<li class="js-scrap-list" data-scrap-number="{{scrapNumber}}" data-scrap-uid="{{scrapUid}}"><div class="scrapImg conDel"><img src="{{imgPath}}" alt="" /><a href="javascript:;" class="btnDel js-scrap-del">이미지 삭제</a></div></li>
+									{{/each}}
+									</ul>
+								{{!-- scrapList-template --}}
+								</script>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-			</div>
-			<p class="popUnderTxt">1:1 메시지 답변이 완료되면 등록한 <span class="pointRed">이메일</span>로 알려드리겠습니다.</p>
-		</fieldset>
-	</form>
-	<div class="btnWrap">
-		<a href="#" class="btnSizeM btnColor02">등록하기</a>
+				<div class="btnWrap">
+					<p class="popUnderTxt">주고 받은 메시지는 마이커먼 &gt; 내 활동 &gt; 1:1 메시지에서 확인하실 수 있습니다.</p>
+					<br>
+					<a href="#" class="btnSizeM btnColor02 js-message-submit">보내기</a>
+				</div>
+			</fieldset>
+		</form>
 	</div>
 </div>
--->
+</body>
+</html>
