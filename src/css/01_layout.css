@@ -21,6 +21,8 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topBanner:after {content:''; width:100%; height:10px; background:url('../images/bg_topBanner.png') 0 0 repeat-x; position:absolute; bottom:0; left:0; z-index:2;}
 .topBanner img {width:1920px; height:113px; margin-left:-960px; position:absolute; top:0; left:50%; z-index:1;}
 .topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
+.topBanner .checkbox{z-index: 9;float: right;margin:50px 120px 0 0;}
+.topBanner .checkbox input{position: absolute;opacity: 0;top: 0;left: -20px;}
 
 .topMenu{width:100%; position:fixed; z-index:4; min-width:1240px; white-space: nowrap;}
 .topMenu .topL{width:15%; min-width:180px; height:60px; float:left;}
