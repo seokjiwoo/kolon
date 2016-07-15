@@ -396,7 +396,7 @@
 
 		<!-- detail 하단 탭 -->
 		<div class="detailBottomTab">
-			<div class="bottomTabWrap">
+			<div class="bottomTabWrap active">
 				<div class="optionBar">
 					<div class="barLeft">
 						<a href="" class="optionBtn"><span></span>옵션 선택</a>
@@ -409,7 +409,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="bottomTabWrap">
+			<div class="bottomTabWrap active">
 				<div class="activeOption">
 					<div class="activeLeft">
 						<form method="" id='' action="#">
@@ -417,11 +417,39 @@
 								<legend>선택 상품 정보 및 옵션 선택</legend>
 								<h4>Compat But Enough Wedding</h4>
 								<p class="choiceTitInfo">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
-								<ul class="drop dropOn dropOnUp" data-prevent="true">
-									<li><a href="#">옵션 선택</a></li>
-									<li><a href="#">하하하하</a></li>
-									<li><a href="#">반갑습니다.</a></li>
-								</ul>
+								
+									<div class="dropUp dropUpOn">
+										<a href="#">옵션 선택</a>
+										<ul class="dropUpCon" data-prevent="true">
+											<li><a href="#">하하하하</a></li>
+											<li><a href="#">반갑습니다.</a></li>
+										</ul>	
+									</div>
+								
+
+
+								<!-- <div class="dropScroll">
+									<a href="#" class="dropToggle">진행상태 보기</a>
+									<div class="scrollWrap" data-prevent="true">
+										<div class="dropList">
+											<ul class="drop">
+												<li><a href="#" data-value="type-1">전체</a></li>
+												<li><a href="#" data-value="type-2">입금대기</a></li>
+												<li><a href="#" data-value="type-3">결제완료</a></li>
+												<li><a href="#" data-value="type-4">상품준비중</a></li>
+												<li><a href="#" data-value="type-5">배송중</a></li>
+												<li><a href="#" data-value="type-6">배송완료</a></li>
+												<li><a href="#" data-value="type-7">구매확정</a></li>
+												<li><a href="#" data-value="type-3">결제완료</a></li>
+												<li><a href="#" data-value="type-4">상품준비중</a></li>
+												<li><a href="#" data-value="type-5">배송중</a></li>
+												<li><a href="#" data-value="type-6">배송완료</a></li>
+												<li><a href="#" data-value="type-7">구매확정</a></li>
+											</ul>
+										</div>
+									</div>
+								</div> -->
+								
 							</fieldset>
 						</form>
 					</div>
@@ -445,6 +473,23 @@
 										</div>
 										<div class="optionControl">
 											<p class="individualPrice"><span>300,000</span> 원</p>
+											<!-- 옵션 수량 선택 -->
+											<div class="optList">
+												<!-- 옵션 -->
+												<div class="option">
+													<!-- [D] 최대수량 -->
+													<p class="optionNum"
+														data-optionnum-opts='{
+														"max" : 5,
+														"min" : 1
+													}'>
+														<a href="#" class="btnMinus">빼기</a>
+														<span class="num">1</span>
+														<a href="#" class="btnPlus">더하기</a>
+													</p>
+												</div>
+											</div>
+											<!--// 옵션 수량 선택 -->
 											<a href="" class="cancelOption"><span class="hide">제거</span></a>
 										</div>
 									</li>
