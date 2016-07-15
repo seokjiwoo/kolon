@@ -206,7 +206,7 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 #flQna .resultQna li a{display: block;padding: 15px 10px;color: #666;box-shadow:none;}
 #flQna .resultQna li:first-child{border:0;}
 
-.container {position: relative;padding:60px 0 200px;z-index: 0}
+.container {position: relative;padding:60px 0 0;z-index: 0}
 .main .container {padding-top:113px;}
 .container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
 .main .container .wrap{max-width: 2025px;padding:30px 0 0; background:url('../images/main_wrap_bg2.gif') 75.5% 8px repeat-y; position:relative; }/*overflow:visible;*/

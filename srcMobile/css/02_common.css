@@ -171,7 +171,7 @@ ul.checkbox{overflow: hidden;}
 .listSquare li:first-child{margin:0;}
 .listSquare li:before{content: '';position: absolute;top: 5px;left: 0;height: 2px;background: #999;}
 
-textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;}
+textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-box;}
 
 /* popup */
 .layerPopup{background:#fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:13px;}
