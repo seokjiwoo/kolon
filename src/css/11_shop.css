@@ -78,15 +78,17 @@
 
 /* 하단 tab common */
 .detailBottomTab {position:fixed;bottom:0;left:0;right:0;z-index:5;}
-.detailBottomTab .bottomTabWrap {overflow:hidden;background:#000;font-size:14px;}
-.detailBottomTab .bottomTabWrap + .bottomTabWrap {background:#fff;border-bottom:2px solid #000;}
+.detailBottomTab .bottomTabWrap {background:#000;font-size:14px;}
+.detailBottomTab .bottomTabWrap + .bottomTabWrap {display:none;background:#fff;border-bottom:2px solid #000;}
+.detailBottomTab .bottomTabWrap + .bottomTabWrap.active {display:block;}
+.detailBottomTab .bottomTabWrap.active .barLeft a span:before {background-position:0 0}
 .detailBottomTab .bottomTabWrap .optionBar {width:1200px;height:54px;margin:0 auto;}
 
 .barLeft {float:left;line-height:54px;}
 .barRight {float:right;line-height:1.8}
 .barLeft a {display:block;color:#fff;}
 .barLeft a span {position:relative;display:inline-block;margin-right:10px;width:28px;height:28px;background:#333;border-radius:50%;vertical-align:middle}
-.barLeft a span:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-5px 0 0 -7px;width:15px;height:10px;background:url('../images/btn_more_ico.png') 0 0 no-repeat;}
+.barLeft a span:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-5px 0 0 -7px;width:15px;height:10px;background:url('../images/btn_more_ico.png') 0 -10px no-repeat;}
 .barRight .allPrice {display:inline-block;font-size:16px;color:#f84b40;font-family:'NotoSansR', sans-serif;vertical-align:middle}
 .barRight .allPrice span {font-size:30px;font-style:italic;}
 .barRight a {display:inline-block;position:relative;display:inline-block;width:40px;height:40px;background:#4d4d4d;border-radius:50%;vertical-align:middle}
@@ -104,24 +106,40 @@
 .activeOption .activeRight {float:right;width:555px;margin-top:30px;color:#333;}
 .activeOption .activeLeft h4 {font-size:30px;}
 .activeOption .activeLeft .choiceTitInfo {margin:10px 0 20px;font-size:16px;}
-.activeOption .drop {border:1px solid #000;}
-.activeOption .drop + .drop {margin-top:10px;}
-.activeOption .drop li {width:100%;border-top:1px solid #000;}
-.activeOption .drop li:first-child {position:relative;border-top:none;}
-.activeOption .drop li:first-child a:after {width:16px;height:10px;top:14px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
-.activeOption .drop.dropOn li:first-child a:after {background-position:0 0}
 
+/* dropBox Up */
+.dropUp + .dropUp {margin-top:10px;}
+.dropUp {position:relative;height:38px;border:1px solid #000;}
+.dropUp > a {display:block;width:525px;height:38px;padding:0 15px;font-size:13px;line-height:38px;color:#000;position:relative;}
+.dropUp > a:after {content:'';display:block;position:absolute;top:15px;right:15px;width:16px;height:10px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
+.dropUp.is-show > a:after {background-position:0 0}
+.dropScrollEx.is-show .scrollWrapEx {display:block}
+.scrollWrapEx {position:absolute;top:-192px;border-top:1px solid #000;left:-1px;right:-1px;overflow:hidden;max-height:190px;display:none}
+.dropUpCon li {display:block;height:39px;border:1px solid #000;border-bottom:none;background:#fff;}
+.dropUpCon li:first-child {border-top:none}
+.dropUpCon li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#000;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;background:#fff;}
+
+.activeOption .optionScroll {position:relative;max-height:150px;overflow:hidden}
+.activeOption .optionScrollWrap {position:absolute;left:0;top:0;right:0}
+.activeOption .has-iscroll .optionScrollWrap {right:13px}
+.activeOption .has-iscroll .allPriceBox {margin-right:13px;}
+/*.activeOption .optionList {max-height:150px;overflow-y:auto;}*/
 .activeOption .optionList li {overflow:hidden;padding:12px 0;border-bottom:1px solid #b2b2b2;}
+
 .activeOption .optionList li .optionInfo, .activeOption .allPriceBox .allPriceLeft {float:left;}
 .activeOption .optionList li .optionControl, .activeOption .allPriceBox .allPriceRight {float:right;}
 .activeOption .optionList li .optionInfo p, .activeOption .optionList li .optionControl p {display:inline-block;vertical-align: middle;}
 .activeOption .optionList li .optionControl span {font-family:'NotoSansB', sans-serif;}
-.activeOption .allPriceBox {margin-top:15px;font-size:16px;font-family:'NotoSansM', sans-serif;}
+.activeOption .optionList li .optionControl .optList {display:inline-block;margin:-1px 0 -1px 20px;width:auto;vertical-align:middle}
+.activeOption .optionList li .optionControl .optList .option {padding:0;width:auto;}
+.activeOption .allPriceBox {overflow:hidden;margin-top:15px;font-size:16px;font-family:'NotoSansM', sans-serif;}
 .activeOption .allPriceBox span {margin-left:30px;font-family:'NotoSansR', sans-serif;}
-.activeOption .allPriceBox .allPriceLeft {color:#46608e;}
+.activeOption .allPriceBox .allPriceLeft {margin-top:10px;color:#46608e;}
 .activeOption .allPriceBox .allPriceRight {color:#f1645c;}
 .activeOption .allPriceBox .allPriceRight span {font-size:30px;font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
 .activeOption .allPriceBox .allPriceRight b {font-size:16px;font-weight:normal;font-style:normal;font-family:'NotoSansR', sans-serif;}
+
+.activeOption .optionList li .optionControl .optList + .cancelOption {margin-left:2px}
 .activeOption .cancelOption {position:relative;display:inline-block;margin-left:18px;width:25px;height:25px;background:#666;border-radius:50%;vertical-align: middle;}
 .activeOption .cancelOption:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-6px 0 0 -5px;width:11px;height:11px;background:url(../images/btn_closeW.png) no-repeat;}
 

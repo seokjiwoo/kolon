@@ -19,7 +19,6 @@
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
 	position: absolute;
-	top: -5px;
 	width: 27px;
 	height: 27px;
 	border:none;
@@ -47,15 +46,22 @@
 	margin-top: -7px;
 }
 .ui-datepicker .ui-datepicker-title {
+	vertical-align: middle;
 	text-align: center;
+	font-size: 0.7em;
 }
 .ui-datepicker .ui-datepicker-title select {
-	font-size: 1em;
-	margin: 1px 0;
+	vertical-align: middle;
+	color: #000000;
+	margin: 0;
+	padding: 0;
 }
-.ui-datepicker select.ui-datepicker-month,
 .ui-datepicker select.ui-datepicker-year {
-	width: 45%;
+	width: 30%;
+}
+.ui-datepicker select.ui-datepicker-month {
+	width: 25%;
+	margin-left: 0.5em;
 }
 .ui-datepicker table {
 	width: 100%;

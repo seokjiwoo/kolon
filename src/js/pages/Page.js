@@ -8,6 +8,8 @@ module.exports = function() {
 	$(loginController).on('myInfoResult', myInfoResultHandler);
 	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
 	
+	var loginDataModel = require('../model/LoginModel');
+	
 	var lnbScroller;
 	var pageId;
 
@@ -27,7 +29,8 @@ module.exports = function() {
 	// 공통차트 컴포넌트 - @see html/_js/chart.html
 	var doughnutChart = require('../components/DoughnutChart.js'),
 	horizonBarChart = require('../components/HorizonBarChart.js'),
-	dropDownMenu =  require('../components/DropDownMenu.js'),
+	dropDownMenu = require('../components/DropDownMenu.js'),
+	dropDownScroll = require('../components/DropDownScroll.js'),
 	eventManager = require('../events/EventManager'),
 	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
@@ -56,6 +59,7 @@ module.exports = function() {
 		initTopBanner();	// 상단 배너 (index만 사용, 공용요소 LNB때문에 이쪽에 위치)
 		initChart();	// 차트 컴포넌트
 		dropDownMenu.init();	// 드롭다운 메뉴
+		dropDownScroll.init();		// 드롭다운스크롤 메뉴
 		initAddressPopupButton();	// 주소록 팝업버튼
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
 		initInfoSlider();	// #infoSlider bxSlider
@@ -102,45 +106,50 @@ module.exports = function() {
 	 * 내 정보 갱신 반영
 	 */
 	function myInfoResultHandler(e) {
-		if (Super.loginData != null) {
-			var email = Super.loginData.email == null ? '' : Super.loginData.email;
+		var loginData = loginDataModel.loginData();
+
+		if (loginData != null) {
+			var email = loginData.email == null ? '' : loginData.email;
 
 			// 로그인 상태일 때
 			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
-			if (Super.loginData.imageUrl != null) {
-				$('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
+			$('#topMemberInfo').show();
+			$('#settingButton').show();
+
+			if (loginData.imageUrl != null) {
+				$('#topMemberInfoPic').attr('src', loginData.imageUrl);
 			} else {
 				$('#topMemberInfoPic').attr('src', '/images/profile.png');
 			}
-			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
+			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName+' 님');
 
-			if (Super.loginData.imageUrl != null) {
-				$('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			if (loginData.imageUrl != null) {
+				$('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
 			} else {
 				$('#profileImage').attr('href', '/myPage/').attr('src', '/images/profile.png');
 			}
-			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+email);
+			$('#profileName').html('<span>'+loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('마이커먼');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
-			$('#menuCountOrderGoods').text(Super.loginData.myMenu.orderCount);
-			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
-			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
-			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
-			if (Super.loginData.myActivity.cartCount == 0) {
+			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount);
+			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount);
+			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount);
+			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount);
+			if (loginData.myActivity.cartCount == 0) {
 				$('#menuCountCart').hide();
 			} else {
-				$('#menuCountCart').text(Super.loginData.myActivity.cartCount);
+				$('#menuCountCart').text(loginData.myActivity.cartCount);
 			}
 
 			$('.profileEditButton').click(function(e){
 				e.preventDefault();
 				closeLnbHandler();
-				if (Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+				if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
 					confirmPasswordResultHandler(null, 200);
 				} else {
 					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
@@ -156,6 +165,20 @@ module.exports = function() {
 					});
 				}
 			});
+		} else {
+			// 로그인 상태가 아닐 때
+			$('#topMemberInfo').remove();
+			$('#settingButton').remove();
+			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
+
+			$('#menuCountCart').hide();
+			
+			// $('#profileImage').attr('src', '/images/profile.png');
+			// $('#profileName').html('<span>로그인 해주세요</span>');
+			$('#myMenuButtonList').addClass('log');
+			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
+			$('#menuToggle').hide();
+			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		}
 	};
 
@@ -175,21 +198,10 @@ module.exports = function() {
 	 * GNB/LNB 초기화
 	 */
 	function initMenu() {
-		if (Super.loginData == null) {
-			// 로그인 상태가 아닐 때
-			$('#topMemberInfo').remove();
-			$('#settingButton').remove();
-			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
-
-			$('#menuCountCart').hide();
-			
-			// $('#profileImage').attr('src', '/images/profile.png');
-			// $('#profileName').html('<span>로그인 해주세요</span>');
-			$('#myMenuButtonList').addClass('log');
-			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
-			$('#menuToggle').hide();
-			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
-		}
+		// 로그인 상태가 아닐 때
+		$('#topMemberInfo').hide();
+		$('#settingButton').hide();
+		$('#menuToggle').hide();
 
 		lnbScroller = new IScroll('#lnbWrapper', {
 			click: true, 
@@ -199,6 +211,7 @@ module.exports = function() {
 			bounce: false
 		});
 
+		$('#lnbWrapper').on('mousewheel DOMMouseScroll', function(e){ return false; });
 		$('#btnLnb').on('click', openLnbHandler);
 		$('#profileClose').on('click', closeLnbHandler);
 		$('#dim').on('click', closeLnbHandler);
@@ -330,9 +343,52 @@ module.exports = function() {
 		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
 	}
 
+	/**
+	 * onWindowPopupHandler
+	 * @example
+	 <a href="/popup/popMessage.html" class="btnSizeM btnColor03 openWindowPopup"
+		data-winpop-opts='{
+		"name" : "messagePopup",
+		"height" : 900
+		}'>1:1 메세지</a>
+	 */
 	function onWindowPopupHandler(e) {
 		e.preventDefault();
-		window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
+
+		var opts = {
+			name : 'addressPopup',
+			left : null,
+			top : null,
+			width : 770,
+			height : 730,
+			menubar : 'no',
+			status : 'no',
+			resizable : 'no',
+			fullscreen : 'no'
+		},
+		target = $(e.currentTarget),
+		href = target.attr('href'),
+		dataOpts = target.data('winpop-opts'),
+		optStr = '',
+		winPopup;
+
+		opts = $.extend({}, opts, dataOpts);
+
+		opts.left 	= opts.left || (window.screen.width/2 - opts.width/2);
+		opts.top 	= opts.top || (window.screen.height/2 - opts.height/2);
+
+		$.map(opts, function(value, key) {
+			optStr += key + '=' + value + ',';
+		});
+
+		winPopup = window.open(href, opts.name, optStr);
+		// window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
+
+		if (!winPopup) {
+			window.alert('팝업 차단기능 혹은 팝업차단 프로그램이 동작중입니다.\n팝업 차단 기능을 해제한 후 다시 시도하세요.');
+			return;
+		}
+
 		e.stopPropagation();
 	}
 
@@ -477,7 +533,7 @@ module.exports = function() {
 		switch(type) {
 			// 로그인 유무 체크
 			case MEMBERINFO_EVENT.IS_LOGIN:
-				return (Super.loginData) ? true : false;
+				return (loginDataModel.loginData()) ? true : false;
 				break;
 		}
 	}

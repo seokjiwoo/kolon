@@ -6,6 +6,8 @@ module.exports = function() {
 	
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../model/LoginModel');
+	var loginData;
 	
 	var pageId;
 	
@@ -127,43 +129,27 @@ module.exports = function() {
 	 * 내 정보 갱신 반영
 	 */
 	function myInfoResultHandler(e) {
-		if (Super.loginData != null) {
+		loginData = loginDataModel.loginData();
+
+		if (loginData != null) {
 			// 로그인 상태일 때
 			$('body').addClass('login');
 
 			$('#myMenuButtonList').removeClass('log');
 
-			if (Super.loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
-			$('#profileName').html('<em>'+Super.loginData.memberName+'</em>');
-			$('#profileMail').text(Super.loginData.email);
+			if (loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
+			$('#profileName').html('<em>'+loginData.memberName+'</em>');
+			$('#profileMail').text(loginData.email);
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>마이커먼</span>');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
-			/*
-			"myActivity": {
-				"noticeNewYn": "N",
-				"noticeCount": 1,
-				"scrapCount": 3,
-				"followCount": 3,
-				"cartCount": 5,
-				"likeCount": 1
-			}
-			*/
-			$('#menuCountOrderGoods').text(Super.loginData.myMenu.orderCount);
-			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
-			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
-			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
-		}
-	};
-
-	/**
-	 * GNB 초기화
-	 */
-	function initGnb() {
-		if (Super.loginData == null) {
+			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount);
+			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount);
+			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount);
+			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount);
+		} else {
 			// 로그인 상태가 아닐 때
-
 			$('#myMenuButtonList').addClass('log');
 			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
 
@@ -173,7 +159,12 @@ module.exports = function() {
 			$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 			$('#menuToggle').hide();
 		}
+	};
 
+	/**
+	 * GNB 초기화
+	 */
+	function initGnb() {
 		$('#searchOpen').on('click', function(e) {
 			e.preventDefault();
 		});

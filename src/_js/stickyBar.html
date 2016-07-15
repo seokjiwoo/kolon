@@ -3,10 +3,9 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 뉴폼"} -->
 </head>
-<body data-page-id="newForm-detail">
+<body data-page-id="newForm-detail-test">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
-
 		<!-- 상단 배너 -->
 		<div class="detailArea topArea">
 		    <div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
@@ -102,12 +101,14 @@
 		<style>
 			.js-sticky-bar {position:relative;top:0;left:0;right:0;z-index:5;background:#858585}
 			.js-sticky-bar.is-fixed {position:fixed;top:60px}
+
+			.detailBottomTab {display:none}
 		</style>
 		<div class="detailTopTab js-sticky-bar">
 			<div class="topTabWrap">
 				<ul class="js-sticky-list">
 					<!-- [D] 활성화시 li.on -->
-					<li class="on"><a href="#ProductArea">상품정보</a></li>
+					<li><a href="#ProductArea">상품정보</a></li>
 					<li><a href="#SellerArea">디자이너정보</a></li>
 					<li><a href="#PurchasingArea">구매정보</a></li>
 				</ul>
@@ -126,7 +127,104 @@
 			</div>
 		</div>
 		<!-- // detail 상단 탭 -->
-		
+
+		<script>
+			;(function(win, $) {
+				'use strict';
+
+				if ('undefined' === typeof win.vinylX) {
+					win.vinylX = {};
+				}
+
+				var NS = win.vinylX;
+
+				NS.stickyBar = (function() {
+					var defParams = {
+						stickyBar : {
+							wrap : '.js-sticky-bar',
+							list : '.js-sticky-list'
+						},
+						cssClass : {
+							isFixed : 'is-fixed'
+						},
+						duration : 400,
+						marginPos : 0
+					};
+					return {
+						init : function(container, args) {
+							if (!(this.container = container).size()) return;
+
+							this.opts = $.extend({}, defParams, args);
+
+							this.setElements();
+							this.setBindEvents();
+
+							this.onScrollListener();
+						},
+						setElements : function() {
+							this.stickyBar = this.container.find(this.opts.stickyBar.wrap);
+							this.stickyBarList = this.stickyBar.find(this.opts.stickyBar.list);
+							this.orgPos = this.stickyBar.offset().top - this.stickyBar.outerHeight();
+							this.headerHeight = $('#top').find('.topMenu').outerHeight() + this.opts.marginPos;
+						},
+						setBindEvents : function() {
+							$(win).on('scroll', $.proxy(this.onScrollListener, this))
+									.on('resize', $.proxy(this.onResizeListener, this));
+
+							this.stickyBarList.find('a').on('click', $.proxy(this.onStickyClick, this));
+						},
+						onStickyClick : function(e) {
+							e.preventDefault();
+
+							var target = $(e.currentTarget),
+							activeTrg = $($(target).attr('href')),
+							activePos;
+
+							if (activeTrg.size()) {
+								activePos = activeTrg.offset().top - this.stickyBar.outerHeight() - this.headerHeight;
+
+								$('html, body').animate({scrollTop : activePos}, this.opts.duration);
+							}
+						},
+						onScrollListener : function() {
+							var _this = this,
+							winTop = $(win).scrollTop(),
+							checkPos = this.orgPos - this.headerHeight;
+
+							if (winTop >= checkPos) {
+								this.stickyBar.addClass(this.opts.cssClass.isFixed);
+							} else {
+								this.stickyBar.removeClass(this.opts.cssClass.isFixed);
+							}
+
+							$.each(this.stickyBarList.find('a'), function() {
+								var target = $($(this).attr('href')),
+								targetPos;
+
+								if (!target.size()) {
+									return;
+								}
+
+								targetPos = (target.offset().top - _this.stickyBar.outerHeight()) - _this.headerHeight;
+
+								if (winTop >= targetPos) {
+									$(this).parent().addClass('on');
+									$(this).parent().siblings().removeClass('on');
+								}
+							});
+						},
+						onResizeListener : function() {
+							this.onScrollListener();
+						}
+					};
+				})();
+
+				$(function() {
+					NS.stickyBar.init($('body'));
+				});
+			})(window, window.jQuery);
+		</script>
+
 		<!-- 기본 정보 -->
 		<div id="ProductArea" class="detailArea basicArea">
 			<h3>Basics Info</h3>
@@ -402,11 +500,10 @@
 
 		<!-- detail 하단 탭 -->
 		<div class="detailBottomTab">
-			<!-- [D] 활성화시 .active -->
 			<div class="bottomTabWrap">
 				<div class="optionBar">
 					<div class="barLeft">
-						<a href="#" class="optionBtn js-option-open"><span></span>옵션 선택</a>
+						<a href="" class="optionBtn"><span></span>옵션 선택</a>
 					</div>
 					<div class="barRight">
 						<span class="allPrice"><span>27,000,000</span> 원</span>
@@ -424,208 +521,38 @@
 								<legend>선택 상품 정보 및 옵션 선택</legend>
 								<h4>Compat But Enough Wedding</h4>
 								<p class="choiceTitInfo">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
-								
-									<div class="dropUp dropUpOn dropScrollEx js-drop-scroll">
-										<a href="#" class="dropToggle js-toggler">옵션 선택</a>
-										<!-- [D] active 시에 .dropUpCon outHeight 수치를 top으로 설정 -->
-										<div class="scrollWrapEx js-scroll-wrap">
-											<div class="dropListEx js-list">
-												<ul class="dropUpCon" data-prevent="true">
-													<li><a href="#" data-value="type-1">전체</a></li>
-													<li><a href="#" data-value="type-2">입금대기</a></li>
-													<li><a href="#" data-value="type-3">결제완료</a></li>
-													<li><a href="#" data-value="type-4">상품준비중</a></li>
-													<li><a href="#" data-value="type-5">배송중</a></li>
-													<li><a href="#" data-value="type-6">배송완료</a></li>
-													<li><a href="#" data-value="type-7">구매확정</a></li>
-													<li><a href="#" data-value="type-3">결제완료</a></li>
-													<li><a href="#" data-value="type-4">상품준비중</a></li>
-													<li><a href="#" data-value="type-5">배송중</a></li>
-													<li><a href="#" data-value="type-6">배송완료</a></li>
-													<li><a href="#" data-value="type-7">구매확정</a></li>
-												</ul>	
-											</div>
-										</div>
-									</div>
+								<ul class="drop dropOn dropOnUp" data-prevent="true">
+									<li><a href="#">옵션 선택</a></li>
+									<li><a href="#">하하하하</a></li>
+									<li><a href="#">반갑습니다.</a></li>
+								</ul>
 							</fieldset>
 						</form>
 					</div>
-					<!-- [D] 옵션 iscroll 적용시 .has-iscroll -->
 					<div class="activeRight">
 						<form method="" id='' action="#">
 							<fieldset>
 								<legend>선택 상품 옵션 확인</legend>
-								<div class="optionScroll">
-									<div class="optionScrollWrap">
-										<ul class="optionList">
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<!-- 옵션 수량 선택 -->
-													<div class="optList">
-														<!-- 옵션 -->
-														<div class="option">
-															<!-- [D] 최대수량 -->
-															<p class="optionNum"
-																data-optionnum-opts='{
-																"max" : 5,
-																"min" : 1
-															}'>
-																<a href="#" class="btnMinus">빼기</a>
-																<span class="num">1</span>
-																<a href="#" class="btnPlus">더하기</a>
-															</p>
-														</div>
-													</div>
-													<!--// 옵션 수량 선택 -->
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<!-- 옵션 수량 선택 -->
-													<div class="optList">
-														<!-- 옵션 -->
-														<div class="option">
-															<!-- [D] 최대수량 -->
-															<p class="optionNum"
-																data-optionnum-opts='{
-																"max" : 5,
-																"min" : 1
-															}'>
-																<a href="#" class="btnMinus">빼기</a>
-																<span class="num">1</span>
-																<a href="#" class="btnPlus">더하기</a>
-															</p>
-														</div>
-													</div>
-													<!--// 옵션 수량 선택 -->
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<!-- 옵션 수량 선택 -->
-													<div class="optList">
-														<!-- 옵션 -->
-														<div class="option">
-															<!-- [D] 최대수량 -->
-															<p class="optionNum"
-																data-optionnum-opts='{
-																"max" : 5,
-																"min" : 1
-															}'>
-																<a href="#" class="btnMinus">빼기</a>
-																<span class="num">1</span>
-																<a href="#" class="btnPlus">더하기</a>
-															</p>
-														</div>
-													</div>
-													<!--// 옵션 수량 선택 -->
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<!-- 옵션 수량 선택 -->
-													<div class="optList">
-														<!-- 옵션 -->
-														<div class="option">
-															<!-- [D] 최대수량 -->
-															<p class="optionNum"
-																data-optionnum-opts='{
-																"max" : 5,
-																"min" : 1
-															}'>
-																<a href="#" class="btnMinus">빼기</a>
-																<span class="num">1</span>
-																<a href="#" class="btnPlus">더하기</a>
-															</p>
-														</div>
-													</div>
-													<!--// 옵션 수량 선택 -->
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<!-- 옵션 수량 선택 -->
-													<div class="optList">
-														<!-- 옵션 -->
-														<div class="option">
-															<!-- [D] 최대수량 -->
-															<p class="optionNum"
-																data-optionnum-opts='{
-																"max" : 5,
-																"min" : 1
-															}'>
-																<a href="#" class="btnMinus">빼기</a>
-																<span class="num">1</span>
-																<a href="#" class="btnPlus">더하기</a>
-															</p>
-														</div>
-													</div>
-													<!--// 옵션 수량 선택 -->
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-											<li>
-												<div class="optionInfo">
-													<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-												</div>
-												<div class="optionControl">
-													<p class="individualPrice"><span>300,000</span> 원</p>
-													<!-- 옵션 수량 선택 -->
-													<div class="optList">
-														<!-- 옵션 -->
-														<div class="option">
-															<!-- [D] 최대수량 -->
-															<p class="optionNum"
-																data-optionnum-opts='{
-																"max" : 5,
-																"min" : 1
-															}'>
-																<a href="#" class="btnMinus">빼기</a>
-																<span class="num">1</span>
-																<a href="#" class="btnPlus">더하기</a>
-															</p>
-														</div>
-													</div>
-													<!--// 옵션 수량 선택 -->
-													<a href="" class="cancelOption"><span class="hide">제거</span></a>
-												</div>
-											</li>
-										</ul>
-									</div>
-								</div>
+								<ul class="optionList">
+									<li>
+										<div class="optionInfo">
+											<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
+										</div>
+										<div class="optionControl">
+											<p class="individualPrice"><span>300,000</span> 원</p>
+											<a href="" class="cancelOption"><span class="hide">제거</span></a>
+										</div>
+									</li>
+									<li>
+										<div class="optionInfo">
+											<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
+										</div>
+										<div class="optionControl">
+											<p class="individualPrice"><span>300,000</span> 원</p>
+											<a href="" class="cancelOption"><span class="hide">제거</span></a>
+										</div>
+									</li>
+								</ul>
 								<div class="allPriceBox">
 									<div class="allPriceLeft">
 										<p>배송비<span>주문시 결제 3,000<b>원</b></span></p>
