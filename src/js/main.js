@@ -304,6 +304,10 @@ $(document).ready(function() {
 			PageModuleClass = require('./pages/addressPopup/addressForm.js');
 			break;
 
+		case 'popup-message':
+			PageModuleClass = require('./pages/messagePopup/message.js');
+			break;
+
 		default:
 			PageModuleClass = require('./pages/Page.js');
 			break;
