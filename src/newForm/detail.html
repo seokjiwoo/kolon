@@ -6,29 +6,6 @@
 <body data-page-id="newForm-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
-		<!-- detail 상단 탭 -->
-		<div class="detailTopTab">
-			<div class="topTabWrap">
-				<ul>
-					<li class="on"><a href="">상품정보</a></li>
-					<li><a href="">디자이너정보</a></li>
-					<li><a href="">구매정보</a></li>
-				</ul>
-				<div class="socialTopBtn">
-					<a href="#" class="socialBtn01"><span class="hide">좋아요</span></a>
-					<a href="#" class="socialBtn02"><span class="hide">스크랩</span></a>
-					<span class="hoverSocialBtn">
-						<span class="hide">공유하기</span>
-						<a href="#" class="socialBtn03"><span class="hide">페이스북</span></a>
-						<a href="#" class="socialBtn04"><span class="hide">트위터</span></a>
-						<a href="#" class="socialBtn05"><span class="hide">핀터레스트</span></a>
-						<a href="#" class="socialBtn06"><span class="hide">카카오스토리</span></a>
-						<a href="#" class="socialBtn07"><span class="hide">URL복사</span></a>
-					</span>
-				</div>
-			</div>
-		</div>
-		<!-- // detail 상단 탭 -->
 
 		<!-- 상단 배너 -->
 		<div class="detailArea topArea">
@@ -120,9 +97,38 @@
 			<a href="#" style="background-image:url('../images/eventBanner_right.png')"></a>
 		</div>
 		<!-- // 이벤트 베너 -->
+
+		<!-- detail 상단 탭 -->
+		<style>
+			.js-sticky-bar {position:relative;top:0;left:0;right:0;z-index:5;background:#858585}
+			.js-sticky-bar.is-fixed {position:fixed;top:60px}
+		</style>
+		<div class="detailTopTab js-sticky-bar">
+			<div class="topTabWrap">
+				<ul class="js-sticky-list">
+					<!-- [D] 활성화시 li.on -->
+					<li class="on"><a href="#ProductArea">상품정보</a></li>
+					<li><a href="#SellerArea">디자이너정보</a></li>
+					<li><a href="#PurchasingArea">구매정보</a></li>
+				</ul>
+				<div class="socialTopBtn">
+					<a href="#" class="socialBtn01"><span class="hide">좋아요</span></a>
+					<a href="#" class="socialBtn02"><span class="hide">스크랩</span></a>
+					<span class="hoverSocialBtn">
+						<span class="hide">공유하기</span>
+						<a href="#" class="socialBtn03"><span class="hide">페이스북</span></a>
+						<a href="#" class="socialBtn04"><span class="hide">트위터</span></a>
+						<a href="#" class="socialBtn05"><span class="hide">핀터레스트</span></a>
+						<a href="#" class="socialBtn06"><span class="hide">카카오스토리</span></a>
+						<a href="#" class="socialBtn07"><span class="hide">URL복사</span></a>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- // detail 상단 탭 -->
 		
 		<!-- 기본 정보 -->
-		<div class="detailArea basicArea">
+		<div id="ProductArea" class="detailArea basicArea">
 			<h3>Basics Info</h3>
 			<div class="floorSpace">
 				<h4 class="alignLine">기준평형</h4>
@@ -263,7 +269,7 @@
 		<!-- // 추천 리빙 영역 -->
 
 		<!-- 판매자안내 영역 -->
-		<div class="detailArea sellerArea" style="height:1000px">
+		<div id="SellerArea" class="detailArea sellerArea" style="height:1000px">
 			<h3><img src="../images/seller_tit.png"></h3>
 			<!-- <div class="sellerInfo">
 				
@@ -285,7 +291,7 @@
 		<!-- // 판매자안내 영역 -->
 
 		<!-- 구매정보 영역 -->
-		<div class="detailArea purchasingArea">
+		<div id="PurchasingArea" class="detailArea purchasingArea">
 			<h3>Purchasing Information</h3>
 			<p>구매정보</p>
 			<ul class="accordion">
@@ -396,10 +402,11 @@
 
 		<!-- detail 하단 탭 -->
 		<div class="detailBottomTab">
-			<div class="bottomTabWrap active">
+			<!-- [D] 활성화시 .active -->
+			<div class="bottomTabWrap">
 				<div class="optionBar">
 					<div class="barLeft">
-						<a href="" class="optionBtn"><span></span>옵션 선택</a>
+						<a href="#" class="optionBtn js-option-open"><span></span>옵션 선택</a>
 					</div>
 					<div class="barRight">
 						<span class="allPrice"><span>27,000,000</span> 원</span>
@@ -409,7 +416,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="bottomTabWrap active">
+			<div class="bottomTabWrap">
 				<div class="activeOption">
 					<div class="activeLeft">
 						<form method="" id='' action="#">
@@ -418,11 +425,11 @@
 								<h4>Compat But Enough Wedding</h4>
 								<p class="choiceTitInfo">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
 								
-									<div class="dropUp dropUpOn dropScrollEx">
-										<a href="#" class="dropToggle">옵션 선택</a>
+									<div class="dropUp dropUpOn dropScrollEx js-drop-scroll">
+										<a href="#" class="dropToggle js-toggler">옵션 선택</a>
 										<!-- [D] active 시에 .dropUpCon outHeight 수치를 top으로 설정 -->
-										<div class="scrollWrapEx">
-											<div class="dropListEx">
+										<div class="scrollWrapEx js-scroll-wrap">
+											<div class="dropListEx js-list">
 												<ul class="dropUpCon" data-prevent="true">
 													<li><a href="#" data-value="type-1">전체</a></li>
 													<li><a href="#" data-value="type-2">입금대기</a></li>
@@ -440,147 +447,10 @@
 											</div>
 										</div>
 									</div>
-									<script>
-									;(function(win, $) {
-										'use strict';
-
-										if ('undefined' === typeof win.vinylX) {
-											win.vinylX = {};
-										}
-
-										var NS = win.vinylX;
-
-										NS.dropScroll = (function() {
-											var defParams = {
-												wrap : '.dropScrollEx',
-												toggler : '.dropToggle',
-												iScroll : {
-													target : '.scrollWrapEx',
-													list : '.dropListEx',
-													items : '.dropListEx > ul > li > a',
-													opts : {
-														scrollbars: true,
-														mouseWheel: true,
-														fadeScrollbars: false,
-														bounce: false
-													}
-												},
-												cssClass : {
-													isShow : 'is-show'
-												}
-											};
-											return {
-												init : function(container, args) {
-													if (!(this.container = container).size()) return;
-
-													this.opts = $.extend({}, defParams, args);
-
-													this.setElements();
-													this.setBindEvents();
-													this.setIscroll();
-												},
-												setElements : function() {
-													this.wrap = this.container.find(this.opts.wrap);
-													this.toggler = this.wrap.find(this.opts.toggler);
-
-													this.iScrolls = [];
-													this.iScrollsTrg = this.wrap.find(this.opts.iScroll.target);
-													this.iScrollsItems = this.iScrollsTrg.find(this.opts.iScroll.items);
-												},
-												setBindEvents : function() {
-													this.toggler.on('click', $.proxy(this.onTogglerClick, this));
-													this.iScrollsItems.on('click', $.proxy(this.onItemsClick, this));
-												},
-												onTogglerClick : function(e) {
-													e.preventDefault();
-													var target = $(e.currentTarget),
-													wrap = target.closest(this.opts.wrap),
-													iScroll = wrap.data('iscroll');
-
-													wrap.toggleClass(this.opts.cssClass.isShow);
-
-													if (!wrap.hasClass(this.opts.cssClass.isShow)) return;
-
-													if (iScroll) iScroll.refresh();
-													wrap.one('keyupoutside mousedownoutside', $.proxy(this.onWrapClose, this));
-													wrap.on('mousewheel', $.proxy(this.onWheelPrevent, this));
-												},
-												onItemsClick : function(e) {
-													e.preventDefault();
-													var target = $(e.currentTarget),
-													wrap = target.closest(this.opts.wrap),
-													toggler = wrap.find(this.opts.toggler);
-
-													toggler.text(target.text());
-
-													wrap.off('keyupoutside mousedownoutside', $.proxy(this.onWrapClose, this))
-														.off('mousewheel', $.proxy(this.onWheelPrevent, this));
-
-													wrap.removeClass(this.opts.cssClass.isShow)
-															.val(target.data('value'))
-															.trigger('VX-DROP_SCROLL-CHANGE', {menu: wrap, values : wrap.val()});
-												},
-												onWrapClose : function(e) {
-													var target = $(e.currentTarget);
-													target.removeClass(this.opts.cssClass.isShow);
-												},
-												onWheelPrevent : function(e) {
-													e.preventDefault();
-												},
-												setIscroll : function() {
-													var _this = this,
-													iScroll;
-
-													$.each(this.iScrollsTrg, function() {
-														iScroll = new win.IScroll($(this).get(0), _this.opts.iScroll.opts);
-														$(this).closest(_this.opts.wrap).data('iscroll', iScroll);
-														_this.iScrolls.push(iScroll);
-													});
-												}
-											};
-										})();
-
-										$(function() {
-											NS.dropScroll.init($('body'));
-
-											$('.optionScroll').height($('.optionList').height());
-											new IScroll('.optionScroll', {
-												scrollbars: true,
-												mouseWheel: true,
-												fadeScrollbars: false,
-												bounce: false
-											});
-										});
-									})(window, window.jQuery);
-								</script>
-								
-
-
-								<!-- <div class="dropScroll">
-									<a href="#" class="dropToggle">진행상태 보기</a>
-									<div class="scrollWrap" data-prevent="true">
-										<div class="dropList">
-											<ul class="drop">
-												<li><a href="#" data-value="type-1">전체</a></li>
-												<li><a href="#" data-value="type-2">입금대기</a></li>
-												<li><a href="#" data-value="type-3">결제완료</a></li>
-												<li><a href="#" data-value="type-4">상품준비중</a></li>
-												<li><a href="#" data-value="type-5">배송중</a></li>
-												<li><a href="#" data-value="type-6">배송완료</a></li>
-												<li><a href="#" data-value="type-7">구매확정</a></li>
-												<li><a href="#" data-value="type-3">결제완료</a></li>
-												<li><a href="#" data-value="type-4">상품준비중</a></li>
-												<li><a href="#" data-value="type-5">배송중</a></li>
-												<li><a href="#" data-value="type-6">배송완료</a></li>
-												<li><a href="#" data-value="type-7">구매확정</a></li>
-											</ul>
-										</div>
-									</div>
-								</div> -->
-								
 							</fieldset>
 						</form>
 					</div>
+					<!-- [D] 옵션 iscroll 적용시 .has-iscroll -->
 					<div class="activeRight">
 						<form method="" id='' action="#">
 							<fieldset>
