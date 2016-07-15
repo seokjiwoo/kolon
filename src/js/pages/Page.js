@@ -199,6 +199,7 @@ module.exports = function() {
 			bounce: false
 		});
 
+		$('#lnbWrapper').on('mousewheel DOMMouseScroll', function(e){ return false; });
 		$('#btnLnb').on('click', openLnbHandler);
 		$('#profileClose').on('click', closeLnbHandler);
 		$('#dim').on('click', closeLnbHandler);
