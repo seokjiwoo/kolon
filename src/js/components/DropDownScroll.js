@@ -67,11 +67,11 @@ function DropDownScroll() {
 	}
 
 	function setBindEvents() {
-		eventManager.on(self.EVENT.REFRESH, $.proxy(refresh, self))
-					.on(self.EVENT.DESTROY, $.proxy(destroy, self));
+		eventManager.on(DROPDOWNSCROLL_EVENT.REFRESH, $.proxy(refresh, self))
+					.on(DROPDOWNSCROLL_EVENT.DESTROY, $.proxy(destroy, self));
 
-		$(self).on(self.EVENT.REFRESH, $.proxy(refresh, self))
-				.on(self.EVENT.DESTROY, $.proxy(destroy, self));
+		$(self).on(DROPDOWNSCROLL_EVENT.REFRESH, $.proxy(refresh, self))
+				.on(DROPDOWNSCROLL_EVENT.DESTROY, $.proxy(destroy, self));
 
 		self.toggler.on('click', $.proxy(onTogglerClick, self));
 		self.iScrollsItems.on('click', $.proxy(onItemsClick, self));
@@ -126,11 +126,11 @@ function DropDownScroll() {
 	}
 
 	function removeBindEvents() {
-		eventManager.off(self.EVENT.REFRESH, $.proxy(refresh, self))
-					.off(self.EVENT.DESTROY, $.proxy(destroy, self));
+		eventManager.off(DROPDOWNSCROLL_EVENT.REFRESH, $.proxy(refresh, self))
+					.off(DROPDOWNSCROLL_EVENT.DESTROY, $.proxy(destroy, self));
 
-		$(self).off(self.EVENT.REFRESH, $.proxy(refresh, self))
-				.off(self.EVENT.DESTROY, $.proxy(destroy, self));
+		$(self).off(DROPDOWNSCROLL_EVENT.REFRESH, $.proxy(refresh, self))
+				.off(DROPDOWNSCROLL_EVENT.DESTROY, $.proxy(destroy, self));
 
 		self.toggler.off('click', $.proxy(onTogglerClick, self));
 		self.iScrollsItems.off('click', $.proxy(onItemsClick, self));
