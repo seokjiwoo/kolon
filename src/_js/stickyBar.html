@@ -107,9 +107,10 @@
 		<div class="detailTopTab js-sticky-bar">
 			<div class="topTabWrap">
 				<ul class="js-sticky-list">
-					<li class="on"><a href="">상품정보</a></li>
-					<li><a href="">디자이너정보</a></li>
-					<li><a href="">구매정보</a></li>
+					<!-- [D] 활성화시 li.on -->
+					<li><a href="#ProductArea">상품정보</a></li>
+					<li><a href="#SellerArea">디자이너정보</a></li>
+					<li><a href="#PurchasingArea">구매정보</a></li>
 				</ul>
 				<div class="socialTopBtn">
 					<a href="#" class="socialBtn01"><span class="hide">좋아요</span></a>
@@ -139,10 +140,15 @@
 
 				NS.stickyBar = (function() {
 					var defParams = {
-						stickyBar : '.js-sticky-bar',
+						stickyBar : {
+							wrap : '.js-sticky-bar',
+							list : '.js-sticky-list'
+						},
 						cssClass : {
 							isFixed : 'is-fixed'
-						}
+						},
+						duration : 400,
+						marginPos : 0
 					};
 					return {
 						init : function(container, args) {
@@ -156,22 +162,56 @@
 							this.onScrollListener();
 						},
 						setElements : function() {
-							this.stickyBar = this.container.find(this.opts.stickyBar);
+							this.stickyBar = this.container.find(this.opts.stickyBar.wrap);
+							this.stickyBarList = this.stickyBar.find(this.opts.stickyBar.list);
 							this.orgPos = this.stickyBar.offset().top - this.stickyBar.outerHeight();
+							this.headerHeight = $('#top').find('.topMenu').outerHeight() + this.opts.marginPos;
 						},
 						setBindEvents : function() {
 							$(win).on('scroll', $.proxy(this.onScrollListener, this))
 									.on('resize', $.proxy(this.onResizeListener, this));
+
+							this.stickyBarList.find('a').on('click', $.proxy(this.onStickyClick, this));
+						},
+						onStickyClick : function(e) {
+							e.preventDefault();
+
+							var target = $(e.currentTarget),
+							activeTrg = $($(target).attr('href')),
+							activePos;
+
+							if (activeTrg.size()) {
+								activePos = activeTrg.offset().top - this.stickyBar.outerHeight() - this.headerHeight;
+
+								$('html, body').animate({scrollTop : activePos}, this.opts.duration);
+							}
 						},
 						onScrollListener : function() {
-							var winTop = $(win).scrollTop(),
-							checkPos = this.orgPos - $('#top').find('.topMenu').outerHeight();
+							var _this = this,
+							winTop = $(win).scrollTop(),
+							checkPos = this.orgPos - this.headerHeight;
 
 							if (winTop >= checkPos) {
 								this.stickyBar.addClass(this.opts.cssClass.isFixed);
 							} else {
 								this.stickyBar.removeClass(this.opts.cssClass.isFixed);
 							}
+
+							$.each(this.stickyBarList.find('a'), function() {
+								var target = $($(this).attr('href')),
+								targetPos;
+
+								if (!target.size()) {
+									return;
+								}
+
+								targetPos = (target.offset().top - _this.stickyBar.outerHeight()) - _this.headerHeight;
+
+								if (winTop >= targetPos) {
+									$(this).parent().addClass('on');
+									$(this).parent().siblings().removeClass('on');
+								}
+							});
 						},
 						onResizeListener : function() {
 							this.onScrollListener();

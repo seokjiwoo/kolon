@@ -11,6 +11,7 @@ module.exports = function() {
 
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
+	stickyBar = require('../../components/StickyBar.js'),
 	cartController = require('../../controller/OrderController.js'),
 	productController = require('../../controller/ProductController.js'),
 	eventManager = require('../../events/EventManager'),
@@ -89,6 +90,8 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
+		stickyBar.init();
+
 		productController.evals(self.productNumber);
 		productController.info(self.productNumber);
 		productController.partnerInfo(self.productNumber);
@@ -96,7 +99,22 @@ module.exports = function() {
 		productController.related(self.productNumber);
 		productController.reviews(self.productNumber, self.reviewNumber);
 
-		$('.container a, .container button').on('click', function(e) {
+		$('.optionScroll').height($('.optionList').height());
+		if ($('.optionList').find('li').size() > 3) {
+			$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
+			$('.optionScroll').on('mousewheel', function(e) {
+				e.preventDefault();
+				win.console.log('mousewheel');
+			});
+		}
+		self.optionIScroll = new win.IScroll('.optionScroll', {
+			scrollbars: true,
+			mouseWheel: true,
+			fadeScrollbars: false,
+			bounce: false
+		});
+
+		$('.js-add-card, .js-option-open').on('click', function(e) {
 			e.preventDefault();
 
 			var target = $(e.currentTarget);
@@ -119,9 +137,19 @@ module.exports = function() {
 				];
 				$('.js-ajax-data').html('ajax 전송 data : ' + JSON.stringify(data));
 				cartController.addMyCartList(data);
-			} else {
-				win.alert('"마이카트" / "구매하기" 버튼을 클릭하세요.');
+				
+				$('.detailBottomTab .bottomTabWrap').addClass('active');
 			}
+
+			if (target.hasClass('js-option-open')) {
+				$('.detailBottomTab .bottomTabWrap').toggleClass('active');
+			}
+
+			if ($('.detailBottomTab .bottomTabWrap').hasClass('active')) {
+				$('.optionScroll').height($('.optionList').height());
+				self.optionIScroll.refresh();
+			}
+
 		});
 	}
 
