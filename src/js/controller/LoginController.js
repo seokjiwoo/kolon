@@ -194,12 +194,15 @@ function ClassLoginController() {
 	 * 내 정보 갱신
 	 */
 	function refreshMyInfo() {
-		Super.callApi('/apis/me', 'GET', {}, function(status, result) {
+		Super.callApi('/apis/me/simple', 'GET', {}, function(status, result) {
 			if (status == 200) {
 				model.setLoginInfo(result.data.data);
+			} else if (status == 401) {
+				model.removeLoginInfo();
 			} else {
-				Super.handleError('login/myData', status);
+				Super.handleError('refreshMyInfo', status);
 			}
+
 			$(callerObj).trigger('myInfoResult', [status, result]);
 		});
 	}

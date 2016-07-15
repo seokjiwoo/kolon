@@ -20,6 +20,11 @@ module.exports = function() {
 	var myPageController = require('../../controller/MyPageController.js');
 	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
 
+	var loginController = require('../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../model/LoginModel');
+	var loginData;
+
 	var opinionsClassArray;
 	var pollAnswerId;
 
@@ -58,6 +63,11 @@ module.exports = function() {
 		myPageController.myOpinions();
 	}
 
+	function myInfoResultHandler() {
+		loginData = loginDataModel().loginData;
+		$('.myProfileImage').attr('src', loginData.imageUrl);
+	}
+
 	/**
 	 * 내 의견묻기 목록 핸들링
 	 */
@@ -84,8 +94,6 @@ module.exports = function() {
 			var template = window.Handlebars.compile($('#opinion-template').html());
 			var elements = $(template(result));
 			$('#opinionList').empty().append(elements);
-				
-			$('.myProfileImage').attr('src', MyPage.Super.Super.loginData.imageUrl);
 
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
@@ -110,7 +118,7 @@ module.exports = function() {
 
 	function showCommentForm(e) {
 		e.preventDefault();
-		if (MyPage.Super.Super.loginData != null) {
+		if (loginData != null) {
 			var pId = $(this).attr('id').substr(18);
 			$('#commentArea'+pId).addClass('showCommentInput');
 		} else {

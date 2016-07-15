@@ -15,12 +15,12 @@ module.exports = function() {
 	var device;
 
 	var loginController = require('../controller/LoginController');
+	$(loginController).on('refreshMyInfo', loginDataHandler);
 	var loginDataModel = require('../model/LoginModel');
-	var loginData = loginDataModel.loginData();
-
+	var loginData;
+	
 	var popupOpenHandlerFunction;
 	var popupCallbackFunction;
-
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
@@ -79,7 +79,7 @@ module.exports = function() {
 			topLevelDomains: ["com", "net", "org", "go", "kr", "co", "co.kr", "or.kr", "go.kr", "ac.kr"]
 		});
 
-		if (loginData != null) loginController.refreshMyInfo();
+		loginController.refreshMyInfo();
 		
 		initTab();
 		initTabContentLayout();
@@ -100,6 +100,10 @@ module.exports = function() {
 		eventManager.on(HTMLPOPUP_EVENT.OPEN, onHtmlPopupOpenListener);
 
 		$(window).resize(function(e) { winH = $(window).height(); });
+	};
+
+	function loginDataHandler(e, status, result) {
+		loginData = loginDataModel.loginData();
 	};
 	
 	/**

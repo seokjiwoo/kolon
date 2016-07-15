@@ -11,6 +11,10 @@ module.exports = function() {
 	doughnutChart = require('../components/DoughnutChart.js'),
 	fileName = 'Index.js';
 
+	var loginController = require('../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../model/LoginModel');
+
 	var SuperClass = require('./Page.js'),
 	Super = SuperClass(),
 	callerObj = {
@@ -27,19 +31,21 @@ module.exports = function() {
 
 		debug.log(fileName, 'init', $, util);
 
-		if (Super.Super.loginData == null) {
+		cardList().init('#cardWrap');	// 카드 리스트
+
+		setDemoDoughnut();
+	}
+
+	function myInfoResultHandler(e) {
+		var loginData = loginDataModel().loginData;
+		if (loginData == null) {
 			// 비로그인
 			initMainSlider();
 		} else {
 			// 로그인
 			initHeaderCardlist();
 		}
-
-		cardList().init('#cardWrap');	// 카드 리스트
-
-
-		setDemoDoughnut();
-	}
+	};
 
 	/**
 	 * 상단 슬라이더 초기화. 비로그인시에만 보임.

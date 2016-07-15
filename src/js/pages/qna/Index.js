@@ -30,6 +30,11 @@ module.exports = function() {
 	var eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX;
+
+	var loginController = require('../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../model/LoginModel');
+	var loginData;
 	
 	var uploadFileNumber;
 	var uploadImageArray;
@@ -90,9 +95,13 @@ module.exports = function() {
 
 		$(".opinionwrite > .toggleBtn").on("click", showWriteForm);
 		$('#opinionWriteForm').submit(writeFormSubmitHandler);
+	}
+
+	function myInfoResultHandler(e) {
+		var loginData = loginDataModel().loginData;
 
 		controller.opinionsClass();
-		if (Super.Super.loginData != null) {
+		if (loginData != null) {
 			$('#myOpinion').show();
 			$('#expertRank').css('margin-top', '20px');
 			myPageController.myOpinions();
@@ -144,7 +153,7 @@ module.exports = function() {
 			var elements = $(template(result));
 			$('#opinionList').empty().append(elements);
 
-			$('.myProfileImage').attr('src', Super.Super.loginData.imageUrl);
+			$('.myProfileImage').attr('src', loginData.imageUrl);
 
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
@@ -470,7 +479,7 @@ module.exports = function() {
 
 	function showCommentForm(e) {
 		e.preventDefault();
-		if (Super.Super.loginData != null) {
+		if (loginData != null) {
 			var pId = $(this).attr('id').substr(18);
 			$('#commentArea'+pId).addClass('showCommentInput');
 		} else {
@@ -481,7 +490,7 @@ module.exports = function() {
 	function showWriteForm(e) {
 		e.preventDefault();
 
-		if (Super.Super.loginData != null) {
+		if (loginData != null) {
 			if (!$(this).hasClass("active")) {
 				uploadFileNumber = 0;
 				uploadImageArray = new Array();

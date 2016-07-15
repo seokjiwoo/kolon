@@ -8,6 +8,8 @@ module.exports = function() {
 	$(loginController).on('myInfoResult', myInfoResultHandler);
 	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
 	
+	var loginDataModel = require('../model/LoginModel');
+	
 	var lnbScroller;
 	var pageId;
 
@@ -102,45 +104,50 @@ module.exports = function() {
 	 * 내 정보 갱신 반영
 	 */
 	function myInfoResultHandler(e) {
-		if (Super.loginData != null) {
-			var email = Super.loginData.email == null ? '' : Super.loginData.email;
+		var loginData = loginDataModel.loginData();
+
+		if (loginData != null) {
+			var email = loginData.email == null ? '' : loginData.email;
 
 			// 로그인 상태일 때
 			$('body').addClass('login');
 			$('#buttonLogInTop').remove();
 			// #topMemberInfoAlarm - ?
-			if (Super.loginData.imageUrl != null) {
-				$('#topMemberInfoPic').attr('src', Super.loginData.imageUrl);
+			$('#topMemberInfo').show();
+			$('#settingButton').show();
+
+			if (loginData.imageUrl != null) {
+				$('#topMemberInfoPic').attr('src', loginData.imageUrl);
 			} else {
 				$('#topMemberInfoPic').attr('src', '/images/profile.png');
 			}
-			$('#topMemberInfoName').attr('href', '/myPage/').text(Super.loginData.memberName+' 님');
+			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName+' 님');
 
-			if (Super.loginData.imageUrl != null) {
-				$('#profileImage').attr('href', '/myPage/').attr('src', Super.loginData.imageUrl);
+			if (loginData.imageUrl != null) {
+				$('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
 			} else {
 				$('#profileImage').attr('href', '/myPage/').attr('src', '/images/profile.png');
 			}
-			$('#profileName').html('<span>'+Super.loginData.memberName+' 님</span><br>'+email);
+			$('#profileName').html('<span>'+loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
 			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').text('마이커먼');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
-			$('#menuCountOrderGoods').text(Super.loginData.myMenu.orderCount);
-			$('#menuCountCancelGoods').text(Super.loginData.myMenu.claimCount);
-			$('#menuCountRecentViewItem').text(Super.loginData.myMenu.recentCount);
-			$('#menuCountOrderNewform').text(Super.loginData.myMenu.contractorCount);
-			if (Super.loginData.myActivity.cartCount == 0) {
+			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount);
+			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount);
+			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount);
+			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount);
+			if (loginData.myActivity.cartCount == 0) {
 				$('#menuCountCart').hide();
 			} else {
-				$('#menuCountCart').text(Super.loginData.myActivity.cartCount);
+				$('#menuCountCart').text(loginData.myActivity.cartCount);
 			}
 
 			$('.profileEditButton').click(function(e){
 				e.preventDefault();
 				closeLnbHandler();
-				if (Super.loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+				if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
 					confirmPasswordResultHandler(null, 200);
 				} else {
 					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
@@ -156,6 +163,20 @@ module.exports = function() {
 					});
 				}
 			});
+		} else {
+			// 로그인 상태가 아닐 때
+			$('#topMemberInfo').remove();
+			$('#settingButton').remove();
+			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
+
+			$('#menuCountCart').hide();
+			
+			// $('#profileImage').attr('src', '/images/profile.png');
+			// $('#profileName').html('<span>로그인 해주세요</span>');
+			$('#myMenuButtonList').addClass('log');
+			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
+			$('#menuToggle').hide();
+			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		}
 	};
 
@@ -175,21 +196,10 @@ module.exports = function() {
 	 * GNB/LNB 초기화
 	 */
 	function initMenu() {
-		if (Super.loginData == null) {
-			// 로그인 상태가 아닐 때
-			$('#topMemberInfo').remove();
-			$('#settingButton').remove();
-			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
-
-			$('#menuCountCart').hide();
-			
-			// $('#profileImage').attr('src', '/images/profile.png');
-			// $('#profileName').html('<span>로그인 해주세요</span>');
-			$('#myMenuButtonList').addClass('log');
-			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
-			$('#menuToggle').hide();
-			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
-		}
+		// 로그인 상태가 아닐 때
+		$('#topMemberInfo').hide();
+		$('#settingButton').hide();
+		$('#menuToggle').hide();
 
 		lnbScroller = new IScroll('#lnbWrapper', {
 			click: true, 
@@ -478,7 +488,7 @@ module.exports = function() {
 		switch(type) {
 			// 로그인 유무 체크
 			case MEMBERINFO_EVENT.IS_LOGIN:
-				return (Super.loginData) ? true : false;
+				return (loginDataModel.loginData()) ? true : false;
 				break;
 		}
 	}
