@@ -398,7 +398,7 @@ function ClassOrderController() {
 
 
 	// 주문/배송 - 배송추적 팝업 조회
-	function orderTrackingInfo(orderNumber, orderProductSequence, deliveryNumber, orderNumber) {
+	function orderTrackingInfo(orderNumber, orderProductSequence, deliveryNumber) {
 		Super.callApi('/apis/me/orders/' + orderNumber + '/tracking', 'GET', {
 			'orderProductSequence' : orderProductSequence,
 			'deliveryNumber' : deliveryNumber,
@@ -416,7 +416,7 @@ function ClassOrderController() {
 
 	// 교환/반품/취소 목록 조회
 	function myClaimsList(startDate, endDate, keyword, deliveryStateCode) {
-		Super.callApi('/apis/me/claims', 'GET', {
+		Super.callApi('/apis/me/orders/cancel/list', 'GET', {
 			'startDate' : startDate,
 			'endDate' : endDate,
 			'keyword' : keyword || '',

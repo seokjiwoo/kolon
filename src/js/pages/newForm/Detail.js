@@ -72,19 +72,19 @@ module.exports = function() {
 		self = callerObj;
 		self.opts = opts;
 		self.productNumber = util.getUrlVar().productNumber;
-		self.reviewNumber = util.getUrlVar().reviewNumber;
+		//self.reviewNumber = util.getUrlVar().reviewNumber;
 
 		if (debug.isDebugMode()) {
 			if (!self.productNumber) {
 				var productNumber = win.prompt('queryString not Found!\n\nproductNumber 를 입력하세요', '');
 				location.href += '?productNumber=' + productNumber;
 				return;
-			}
+			}/*
 			if (!self.reviewNumber) {
 				var reviewNumber = win.prompt('queryString not Found!\n\nreviewNumber 를 입력하세요', '');
 				location.href += '&reviewNumber=' + reviewNumber;
 				return;
-			}
+			}*/
 		}
 		
 		setElements();
@@ -92,12 +92,12 @@ module.exports = function() {
 
 		stickyBar.init();
 
-		productController.evals(self.productNumber);
+		//productController.evals(self.productNumber);
 		productController.info(self.productNumber);
 		productController.partnerInfo(self.productNumber);
 		productController.preview(self.productNumber);
 		productController.related(self.productNumber);
-		productController.reviews(self.productNumber, self.reviewNumber);
+		//productController.reviews(self.productNumber, self.reviewNumber);
 
 		$('.optionScroll').height($('.optionList').height());
 		if ($('.optionList').find('li').size() > 3) {
@@ -114,12 +114,12 @@ module.exports = function() {
 			bounce: false
 		});
 
-		$('.js-add-card, .js-option-open').on('click', function(e) {
+		$('.js-add-cart, .js-option-open').on('click', function(e) {
 			e.preventDefault();
 
 			var target = $(e.currentTarget);
 
-			if (target.hasClass('js-add-card')) {
+			if (target.hasClass('js-add-cart')) {
 				var data = [
 					{
 						"myCartAddCompositions": [

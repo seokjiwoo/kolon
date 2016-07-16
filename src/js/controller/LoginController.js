@@ -180,7 +180,7 @@ function ClassLoginController() {
 	
 	function socialDisconnect(socialType) {
 		Super.callApi('/apis/member/socials/'+socialType, 'DELETE', {
-			"socialName": "fackbook"
+			"socialName": socialType
 		}, function(status, result) {
 			if (status == 200) {
 			} else {

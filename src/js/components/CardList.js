@@ -107,7 +107,7 @@ module.exports = function() {
 		*/
 
 		$.map(cardListArray, function(each) {
-			each.background = each.cardImageUrl != undefined ? "background:#eeeeee" : "background:#eeeeee url('"+each.cardImageUrl+"')";
+			each.background = each.cardImageUrl == undefined ? "background:#eeeeee" : "background:url('"+each.cardImageUrl+"')";
 
 			switch(each.cardTypeCode) {
 				case 'DP_CARD_TYPE_01':
@@ -117,14 +117,14 @@ module.exports = function() {
 				case 'DP_CARD_TYPE_02':
 					each.cardClass = 'cardType01 cardSize03';
 					each.detailUrl = "/newForm/detail.html?productNumber="+each.cardNumber;
-					each.productType = each.productType.toLowerCase();
+					each.productType = each.productTypeCodeName.toLowerCase();
 					break;
 				case 'PROD':
 					each.cardTypeCode = 'DP_CARD_TYPE_03';
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
 					each.detailUrl = "/shop/detail.html?productNumber="+each.cardNumber;
-					each.productType = each.productType.toLowerCase();
+					each.productType = each.productTypeCodeName.toLowerCase();
 					break;
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';
@@ -136,7 +136,7 @@ module.exports = function() {
 			if (each.salePrice != undefined) each.salePrice = util.currencyFormat(each.salePrice);
 			if (each.discountPrice != undefined) each.discountPrice = util.currencyFormat(each.discountPrice);
 
-			console.log(each);
+			//console.log(each);
 		});
 
 		var data = {
