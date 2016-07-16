@@ -180,6 +180,8 @@ function Events() {
 				EVALS : 'productEvalsResult',
 				// 상품 정보
 				INFO : 'productInfoResult',
+				// 상품 옵션 정보,
+				OPTIONS : 'productOptionsResult',
 				// 상품 판매자 정보
 				PARTNER_INFO : 'productPartnerInfoResult',
 				// 상품 미리보기

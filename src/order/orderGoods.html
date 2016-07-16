@@ -13,12 +13,12 @@
 					<!-- 주문 상품 / 배송 정보 -->
 					<h3 class="subTit">주문 상품 / 배송 정보</h3>
 					<div class="orderCont">
-						<div class="payTab tabWrap">
+						<div id='deliveryTab' class="payTab tabWrap">
 							<span class="on"><a href="#delivery1" class="radioBtn">단일 배송지</a></span>
 							<span><a href="#delivery2" class="radioBtn">복수 배송지</a></span>
 						</div>
 						<!-- 단일 배송지 -->
-						<div>
+						<div id='addressFormWrapper'>
 							<div class="delivery1" id="delivery1">
 								<script id="order-delivery1-templates" type="text/x-handlebars-template">
 								{{!-- order-delivery1-templates --}}
@@ -46,7 +46,7 @@
 													</a>
 												</div>
 											</td>
-											<td>(판매자명)</td>
+											<td>{{saleMemberName}}</td>
 											<td><b>{{productOptionPrice}}</b> 원</td>
 											<td><b>{{quantity}}</b></td>
 											<td><b>{{deliveryCharge}}</b> 원</td>
@@ -123,7 +123,7 @@
 													</a>
 												</div>
 											</td>
-											<td>(판매자명)</td>
+											<td>{{saleMemberName}}</td>
 											<td><b>{{productOptionPrice}}</b> 원</td>
 											<td><b>{{quantity}}</b></td>
 											<td><b>{{deliveryCharge}}</b> 원</td>

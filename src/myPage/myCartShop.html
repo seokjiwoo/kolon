@@ -15,33 +15,13 @@
 				</ul>
 			</div>
 			<div class="wrap">
-
 				<section class="singleCard" id="myCart"></section>
-
 			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
-
-<style>
-	.singleCard .cartCont,
-	.singleCard .js-myCartShop-orderInfo,
-	.singleCard .btnC {
-		opacity: 1;
-		-webkit-transform:translateY(0px);-moz-transform:translateY(0px);-ms-transform:translateY(0px);-o-transform:translateY(0px);transform:translateY(0px);
-		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
-	}
-
-	.singleCard .js-myCartShop-orderInfo {-webkit-transition-delay:250ms;transition-delay:250ms}
-	.singleCard .btnC {-webkit-transition-delay:500ms;transition-delay:500ms}
-
-	.singleCard.is-loading .cartCont,
-	.singleCard.is-loading .js-myCartShop-orderInfo,
-	.singleCard.is-loading .btnC {opacity:0;-webkit-transform:translateY(50px);-moz-transform:translateY(50px);-ms-transform:translateY(50px);-o-transform:translateY(50px);transform:translateY(50px)}
-</style>
 <script id="myCartShop-list-templates" type="text/x-handlebars-template">
 {{!-- myCartShop-list-templates --}}
-
 	<h2 class="secTit">샵 상품</h2>
 	<div class="cartCont">
 		<form class="js-myCartShop-form" method="post" action="/">
@@ -71,15 +51,13 @@
 						<tr class="js-myCartShop-list"
 							data-list-info='{
 								"cartNumber" : {{cartNumber}},
-								"memberNumber" : {{memberNumber}},
 								"deliveryCharge" : {{deliveryCharge}},
 								"producerType" : "{{producerType}}",
-								"productDiscountSalePrice" : {{productDiscountSalePrice}},
 								"productNumber" : {{productNumber}},
-								"productOrderPrice" : {{productOrderPrice}},
 								"productQuantity" : {{productQuantity}},
-								"productSalePrice" : {{productSalePrice}}
-						}'>
+								"basePrice" : {{basePrice}},
+								"salePrice" : {{salePrice}}
+							}'>
 							<td>
 								<div class="cartChk">
 									<p class="chk checkbox">
@@ -101,15 +79,11 @@
 										<!-- 옵션 -->
 										<div class="option">
 											<p class="optionTit">{{orderOptionName}}</p>
-											<p class="optionPrice"><b>확인필요</b> 원</p>
+											<p class="optionPrice"><b>{{salePrice}}</b> 원</p>
 											<!-- [D] 최대수량 -->
-											<p class="optionNum"
-												data-optionnum-opts='{
-												"max" : 5,
-												"min" : 1
-											}'>
+											<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
 												<a href="#" class="btnMinus">빼기</a>
-												<span class="num">1</span>
+												<span class="num">{{productQuantity}}</span>
 												<a href="#" class="btnPlus">더하기</a>
 											</p>
 											<a href="#" class="btnDel js-opt-delete">삭제</a>
@@ -119,8 +93,8 @@
 									{{/vxIF}}
 								</div>
 							</td>
-							<td><p class="price"><b class="js-list-price">{{productOrderPriceDesc}}</b> 원</p></td>
-							<td><p class="price"><b>{{productDiscountSalePriceDesc}}</b> 원</p></td>
+							<td><p class="price"><b class="js-list-price">{{basePriceDesc}}</b> 원</p></td>
+							<td><p class="price"><b>{{salePriceDesc}}</b> 원</p></td>
 							{{#vxIF deliveryChargeDesc "==" "0"}}
 								<td>무료</td>
 								{{else}}
@@ -195,6 +169,5 @@
 	{{/if}}
 {{!--// myCartShop-list-templates --}}
 </script>
-
 </body>
 </html>

@@ -76,29 +76,9 @@ module.exports = function() {
 		if (Cookies.getJSON('instantOrder') == undefined) {
 			//
 		} else {
-			orderData = Cookies.getJSON('instantOrder');
-			//console.log(orderData);
+			orderProductArray = Cookies.getJSON('instantOrder');
+			//console.log(orderProductArray);
 			//Cookies.remove('instantOrder');
-			
-			if (orderData.myCartAddCompositions.length == 0) {
-				// 옵션 없음
-				var eachOrder = {
-					"productNumber": orderData.productNumber,
-					"orderOptionNumber": 0,
-					"quantity": orderData.productQuantity
-				};
-				orderProductArray.push(eachOrder);
-			} else {
-				for (var optKey in orderData.myCartAddCompositions) {
-					var eachOption = orderData.myCartAddCompositions[optKey];
-					var eachOrder = {
-						"productNumber": orderData.productNumber,
-						"orderOptionNumber": eachOption.orderOptionNumber,
-						"quantity": eachOption.addCompositionProductQuantity
-					};
-					orderProductArray.push(eachOrder);
-				}
-			}
 			controller.myOrdersInfo(orderProductArray);
 		}
 	}
@@ -123,7 +103,14 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDERS_INFO:
+				console.log(result.common.data);
 				displayData(result.common.data);
+				if (result.common.data.products.length == 1) {
+					$('#deliveryTab').hide();
+					$('#addressFormWrapper').css('margin-top', '20px');
+					$('#delivery1').show();
+					$('#delivery2').hide();
+				}
 
 				refreshAddressDataHandler();
 				$('.addressSelect').change(function(e){

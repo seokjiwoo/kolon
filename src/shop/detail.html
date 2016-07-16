@@ -142,16 +142,12 @@
 								<h4>{{productName}}</h4>
 								<p class="choiceTitInfo"><!--작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지--></p>
 								{{#each criteriaOptions}}
-									<div class="dropUp dropUpOn dropScrollEx js-drop-scroll optionListDrop">
+									<div class="dropUp dropUpOn dropScrollEx js-drop-scroll optionListDrop" id='optionsDrop{{@index}}'>
 										<a href="#" class="dropToggle js-toggler">{{criteriaOptionName}}</a>
 										<!-- [D] active 시에 .dropUpCon outHeight 수치를 top으로 설정 -->
 										<div class="scrollWrapEx js-scroll-wrap">
 											<div class="dropListEx js-list">
-												<ul class="dropUpCon" data-prevent="true">
-													{{#each options}}
-													<li><a href="#" data-value="{{@../index}}-{{orderOptionNumber}}">{{optionName}} ({{price}}원)</a></li>
-													{{/each}}
-												</ul>	
+												<ul class="dropUpCon" data-prevent="true" id='optionsDrop{{@index}}Con'></ul>
 											</div>
 										</div>
 									</div>
@@ -187,6 +183,14 @@
 		</div>
 		<!-- // detail 하단 탭 -->
 
+		<script id="detail-options-templates" type="text/x-handlebars-template">
+		{{!-- detail-options-templates --}}
+		{{#each .}}
+		<li><a href="#" data-value="{{optionLevel}}-{{@index}}">{{optionName}} {{priceTag}}</a></li>
+		{{/each}}
+		{{!--// detail-options-templates --}}
+		</script>
+
 		<script id="detail-selected-options-templates" type="text/x-handlebars-template">
 		{{!-- detail-selected-options-templates --}}
 		{{#each .}}
@@ -200,7 +204,7 @@
 					<div class="option">
 						<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
 							<a href="#" class="btnMinus">빼기</a>
-							<span class="num">1</span>
+							<span class="num">{{optionQuantity}}</span>
 							<a href="#" class="btnPlus">더하기</a>
 						</p>
 					</div>
@@ -364,10 +368,6 @@
 				<h2>- POST /apis/me/cart 장바구니 등록</h2>
 				<div class="js-ajax-data"></div>
 				<div class="addMyCartListResult"></div>
-			</div>
-			<div>
-				<h2>- GET /apis/products/{productNumber}/info 상품 정보</h2>
-				<div class="productInfoResult"></div>
 			</div>
 			<div>
 				<h2>- GET /apis/products/{productNumber}/partnerInfo 상품 판매자 정보</h2>
