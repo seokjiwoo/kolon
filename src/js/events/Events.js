@@ -224,6 +224,8 @@ function Events() {
 				// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/me-order-controller
 					// 배송형 주문서 작성 페이지 조회
 					ORDERS_INFO : 'myOrdersInfoResult',
+					// 주문완료
+					ORDERS_COMPLETE : 'ordersCompleteResult',
 					// hash_String 취득(EncryptData)
 					ORDERS_GET_HASH : 'ordersGetHashStrResult',
 					// 배송형 주문서 작성 페이지 처리(결제)
