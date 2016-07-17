@@ -168,7 +168,6 @@ function DropDownScroll() {
 	}
 
 	function refresh() {
-		win.console.info('refresh');
 		destroy();
 		init();
 	}
