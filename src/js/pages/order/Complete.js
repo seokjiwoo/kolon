@@ -16,6 +16,10 @@ module.exports = function() {
 	events = require('../../events/events'),
 	ORDER_EVENT = events.ORDER,
 	COLORBOX_EVENT = events.COLOR_BOX;
+
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../../model/LoginModel');
 	
 	var callerObj = {
 		/**
@@ -52,7 +56,8 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		controller.ordersComplete(self.orderNumber);
+		// myInfoResultHandler - 호출후 실행하는 형태 구성
+		// controller.ordersComplete(self.orderNumber);
 	}
 
 	function setElements() {
@@ -124,7 +129,9 @@ module.exports = function() {
 						break;
 				}
 
-				// result.data.vxOrderNumber = self.orderNumber;
+				result.data.vxMemberName = self.memberName;
+				result.data.vxOrderNumber = self.orderNumber;
+				result.data.vxOrderDate = win.moment(new Date()).format('YYYY년 MM월 DD일');
 
 				result.data.savingSchedPointDesc = util.currencyFormat(result.data.savingSchedPoint, 10);
 				result.data.paymentInfo.orderPriceDesc = util.currencyFormat(result.data.paymentInfo.orderPrice, 10);
@@ -146,4 +153,18 @@ module.exports = function() {
 				break;
 		}
 	}
+
+
+	function myInfoResultHandler(e) {
+		var loginData = loginDataModel.loginData();
+
+		if (loginData == null) {
+			alert('로그인이 필요한 페이지입니다');
+			location.href = '/member/login.html';
+		} else {
+			self.memberName = loginData.memberName;
+			controller.ordersComplete(self.orderNumber);
+		}
+	}
+
 };
