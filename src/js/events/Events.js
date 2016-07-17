@@ -77,6 +77,10 @@ function Events() {
 		},
 
 		// [S] Controller Events
+			// Opinions - 의견묻기
+			OPINIONS : {
+				SCRAPED_LIST : 'scrapedOpinionsListResult'
+			},
 			// Message - 메세지
 			// @see MessageController.js
 			MESSAGE : {

@@ -72,7 +72,7 @@ function ClassMessageController() {
 	 */
 	function inquiries(contents, inquiryAttachFileRequest, productNumber, saleMemberNumber) {
 		Super.callApi('/apis/inquiries', 'POST', {
-			'contents': 'string',
+			'contents': contents,
 			'inquiryAttachFileRequest': inquiryAttachFileRequest,
 			'productNumber': productNumber,
 			'saleMemberNumber': saleMemberNumber

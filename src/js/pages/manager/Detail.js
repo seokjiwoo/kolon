@@ -15,7 +15,6 @@ module.exports = function() {
 	expertsController = require('../../controller/ExpertsController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
-	messagePopup = require('../../components/MessagePopup.js'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	EXPERTS_EVENT = events.EXPERTS,
 	FOLLOWING_EVENT = events.FOLLOWING,
@@ -174,14 +173,8 @@ module.exports = function() {
 	function onColorBoxAreaListener(e) {
 		switch(e.type) {
 			case COLORBOX_EVENT.COMPLETE:
-				if (self.colorbox.hasClass('popMessage')) {
-					messagePopup.init('', self.expertNumber);
-				}
 				break;
 			case COLORBOX_EVENT.CLEANUP:
-				if (self.colorbox.hasClass('popMessage')) {
-					messagePopup.destroy();
-				}
 				break;
 		}
 	}
