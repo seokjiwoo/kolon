@@ -140,7 +140,11 @@ module.exports = function() {
 				} else {
 					chkGroup.removeClass('on');
 				}
-				chkGroup.siblings('input').prop('checked', chkAll.hasClass('on'));
+				if (chkAll.hasClass('on')) {
+					chkGroup.siblings('input').prop('checked', 'checked');
+				} else {
+					chkGroup.siblings('input').removeProp('checked');
+				}
 			} else {
 			// 전체선택기능 - 그룹 체크
 				chkGroup = chkGroup.not(chkAll);
@@ -150,16 +154,20 @@ module.exports = function() {
 
 				if (chkGroup.filter('.on').size() >= chkGroup.size()) {
 					chkAll.addClass('on');
-					chkGroup.siblings('input').prop('checked', true);
+					chkGroup.siblings('input').prop('checked', 'checked');
 				} else {
 					chkAll.removeClass('on');
-					chkGroup.siblings('input').prop('checked', false);
+					chkGroup.siblings('input').removeProp('checked');
 				}
 			}
 		} else {
 		// 단일 체크 형태
-			target.toggleClass('on');
-			target.siblings('input').prop('checked', target.hasClass('on'));
+			if (!target.siblings('input').attr('disabled')) target.toggleClass('on');
+			if (target.hasClass('on')) {
+				target.siblings('input').prop('checked', 'checked');
+			} else {
+				target.siblings('input').removeProp('checked');
+			}
 		}
 
 		chkGroup = $('[data-chk-group=\'' + hasChkGroup + '\'').not('[data-chk-role=\'chkAll\']');

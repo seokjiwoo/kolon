@@ -82,7 +82,7 @@ module.exports = function() {
 				switch(findMethod) {
 					case 'phone':
 						//location.href = result.data.redirectUrl;
-						location.href = '/member/passwordReset.html?key='+result.data.redirectUrl.split('=')[1];
+						location.href = '/authorize/password?key='+result.data.redirectUrl.split('=')[1];
 						break;
 					case 'mail':
 						$('#findPwAuthMail').show().siblings('div').hide();
