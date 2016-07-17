@@ -295,6 +295,9 @@ module.exports = function() {
 		win.VX_G_RECAPTCHA_CALL_BACK = VX.G_RECAPTCHA.CALL_BACK;
 
 		eventManager.on(RECAPTCHA_EVENT.CALL_BACK, function() {
+			if (recaptchaWidget) {
+				return;
+			}
 			recaptchaWidget = win.grecaptcha.render('vxrecaptcha', {
 				'sitekey' : '6Le4NyUTAAAAAB8tcMLMcftsItykhlcIBq4vtMhq',
 				'size' : 'normal',
