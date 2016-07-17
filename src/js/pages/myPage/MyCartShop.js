@@ -18,6 +18,9 @@ module.exports = function() {
 	OPTIONNUM_EVENT = events.OPTION_NUM,
 	CHECKBOX_EVENT = events.CHECK_BOX,
 	CART_EVENT = events.CART;
+	
+	var loginController = require('../../controller/LoginController');
+	var loginDataModel = require('../../model/LoginModel');
 
 	var orderData;
 	
@@ -215,8 +218,14 @@ module.exports = function() {
 				setDeleteEvents();
 
 				$('#js-myCartShop-submit').click(function(e){
-					Cookies.set('instantOrder', orderData);
-					location.href = '/order/orderGoods.html';
+					var loginData = loginDataModel.loginData();
+
+					if (loginData.stateCode == 'BM_MEM_STATE_01') {
+						$(document).trigger('verifyMember');
+					} else {
+						Cookies.set('instantOrder', orderData);
+						location.href = '/order/orderGoods.html';
+					}
 				});
 				break;
 			case CART_EVENT.DELETE:

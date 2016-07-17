@@ -23,7 +23,6 @@ module.exports = function() {
 	MEMBERINFO_EVENT = events.MEMBER_INFO;
 	
 	var loginController = require('../../controller/LoginController');
-	$(loginController).on('myInfoResult', myInfoResultHandler);
 	var loginDataModel = require('../../model/LoginModel');
  
  	var criteriaOptionCount;
@@ -199,17 +198,11 @@ module.exports = function() {
 		}
 	}
 
-	function myInfoResultHandler(e) {
-		//
-	}
-
 	function addCart() {
 		var loginData = loginDataModel.loginData();
 
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
-		} else if (Super.Super.loginData.stateCode == 'BM_MEM_STATE_01') {
-			$(document).trigger('verifyMember');
 		} else {
 			var cartData = orderData.concat();
 			$.map(cartData, function(each) {
@@ -228,7 +221,7 @@ module.exports = function() {
 		
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
-		} else if (Super.Super.loginData.stateCode == 'BM_MEM_STATE_01') {
+		} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
 			$(document).trigger('verifyMember');
 		} else {
 			Cookies.set('instantOrder', orderData);
