@@ -14,7 +14,9 @@ module.exports = function() {
 	
 	var controller = require('../../controller/MemberInfoController');
 	$(controller).on('deleteMemberResult', resignResponseHandler);
-	$(controller).on('logoutResult', logoutResultHandler);
+
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('logoutResult', logoutResultHandler);
 	
 	var callerObj = {
 		/**
@@ -63,7 +65,7 @@ module.exports = function() {
 	function resignResponseHandler(e, status, result) {
 		if (status == 200) {
 			MyPage.Super.Super.alertPopup('탈퇴가 완료되였습니다', result.message, '닫기', function() {
-				controller.logout();
+				loginController.logout();
 			});
 		} else {
 			MyPage.Super.Super.alertPopup('탈퇴에 실패하였습니다', result.message, '닫기');
