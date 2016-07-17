@@ -207,16 +207,6 @@ module.exports = function() {
 			case 400:
 				switch(Number(response.errorCode)) {
 					default:
-						eventManager.trigger(
-							ALERTPOPUP_EVENT.OPEN,
-							[
-								'로그인/회원가입이 제한되었습니다.',
-								'정보보호 및 스팸 방지를 위하여 아래의 \'로봇이 아닙니다\'를 클릭해주세요.',
-								'확인'
-							]
-						);
-						setRecaptcha();
-						return
 						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 					case 1901:	// 모바일 인증번호
