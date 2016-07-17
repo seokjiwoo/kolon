@@ -177,6 +177,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnColor06:hover{background:#b27947}
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
+.btnborder02{border:1px solid #000;color: #000;} /*border black*/
 .btnShadow{box-shadow: 0px 2px rgba(0,0,0,0.1);}
 
 .loginSns{font-family:'NotoSansR', sans-serif;color: #666;border:1px solid #e3e3e3;}
