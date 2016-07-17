@@ -41,6 +41,10 @@
 
 .managerList #cardWrap{padding-top: 75px;}
 .managerList #cardWrap > li:nth-child(3) .hi{display:none }
+
+.managerList footer{background: #333;}
+.managerList footer .ftR h2{color: #999;}
+
 /* brand */
 .singleCard .bx-wrapper{overflow: visible !important;position: relative;width:795px;z-index: 1;margin: 0 auto;}
 .singleCard .bx-viewport{overflow: visible !important;}

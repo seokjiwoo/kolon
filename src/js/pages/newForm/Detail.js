@@ -151,6 +151,22 @@ module.exports = function() {
 			}
 
 		});
+		$('#sellerCard').bxSlider({
+			pager:false,
+			slideMargin: 10,
+			minSlides: 2,
+			maxSlides: 2,
+			slideWidth: 285
+		});
+		$.each($('.slider04'), function(){
+			$(this).bxSlider({
+				pager:false,
+				slideMargin: 10,
+				minSlides: 4,
+				maxSlides: 4,
+				slideWidth: 285
+			});
+		})
 	}
 
 	function setElements() {

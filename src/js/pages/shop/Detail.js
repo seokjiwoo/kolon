@@ -74,6 +74,22 @@ module.exports = function() {
 		//productController.preview(self.productNumber);
 		productController.related(self.productNumber);
 		//productController.reviews(self.productNumber, self.reviewNumber);
+		$('#sellerCard').bxSlider({
+			pager:false,
+			slideMargin: 10,
+			minSlides: 2,
+			maxSlides: 2,
+			slideWidth: 285
+		});
+		$.each($('.slider04'), function(){
+			$(this).bxSlider({
+				pager:false,
+				slideMargin: 10,
+				minSlides: 4,
+				maxSlides: 4,
+				slideWidth: 285
+			});
+		})
 	}
 
 	function setElements() {

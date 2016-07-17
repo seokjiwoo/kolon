@@ -46,10 +46,9 @@
 .productList .cardWrap{overflow: hidden;margin-top:15px;}
 
 
-
-
-
 /* detail common */
+.productDetail footer{padding-bottom: 54px}
+
 /* 상단 tab common */
 .detailTopTab {position:fixed;top:60px;left:0;right:0;z-index:5;background:#858585;}
 .detailTopTab .topTabWrap {overflow:hidden;width:1200px;margin:0 auto;}
@@ -77,7 +76,7 @@
 .socialTopBtn .socialBtn07 {background-position:0 -210px;}
 
 /* 하단 tab common */
-.detailBottomTab {position:fixed;bottom:0;left:0;right:0;z-index:5;}
+.detailBottomTab {position:fixed;bottom:0;left:0;right:0;z-index:4;}
 .detailBottomTab .bottomTabWrap {background:#000;font-size:14px;}
 .detailBottomTab .bottomTabWrap + .bottomTabWrap {display:none;background:#fff;border-bottom:2px solid #000;}
 .detailBottomTab .bottomTabWrap + .bottomTabWrap.active {display:block;}
@@ -145,6 +144,7 @@
 
 
 .detailArea h3 {font-size:80px;font-weight:bold;font-style:italic;font-family:'Times New Roman', sans-serif;}
+h3.sTit{font-size:50px;}
 .detailArea .icoNewformTit:before {content:'';display:block;width:83px;height:75px;margin:0 auto;background:url(../images/ico_newform_tit.png) no-repeat}
 .italic {font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
 .pointPrice {color:#f1645c;}
@@ -155,13 +155,21 @@
 .clearBox {overflow:hidden;clear:both;}
 
 
-
-
-
 /* shop detail */
+.detailArea{text-align: center;}
 .detailArea h3 span {display:block;font-size:60px;font-family:'NotoSansT', sans-serif;font-weight:normal;font-style:normal;}
 .shopTop.detailArea h3 {font-size:70px;}
 .shopTop.topArea .topContBox .unitPrice {margin-top:100px;}
+
+.productDetail .cardSlider .bx-wrapper{position:relative;height: 600px;overflow: hidden;}
+.productDetail .cardSlider .cardWrap{width: 100%;min-width:100%;max-width:none;}
+.productDetail .cardSlider li{margin-bottom: 50px;}
+.productDetail .cardSlider .bx-controls{position: absolute;z-index: 1;top: 0;right:0}
+.productDetail .cardSlider .bx-controls a{display: inline-block;width: 41px;height: 41px;position: static;background: url('../images/detail_arrow.png') no-repeat;}
+.productDetail .cardSlider .bx-controls .bx-prev{margin-right: 10px;background-position: -69px 0}
+.productDetail .cardSlider .bx-controls .bx-next{background-position: -69px -41px}
+.productDetail .detailArea .subTit{margin-top: 10px;font-size: 30px;}
+.productDetail .detailArea .subTit:after{content:'';display: block;width: 100px;height: 1px;background: #000;margin:50px auto 0; }
 
 /* magazine detail */
 .magazineTop.detailArea h3 span {font-size:80px;font-family:'NotoSansL', sans-serif;}
@@ -255,7 +263,7 @@
 .unitIco li.unitIco04.on span:before {background-position:-55px -165px;}
 .unitIco li.unitIco05.on span:before {background-position:-55px -220px;}
 .unitIco li.unitIco06.on span:before {background-position:-55px -275px;}
-.unitIco li.on {background:url(../images/unitIco_bg.png) no-repeat;}
+.unitIco li.on {background:url('../images/unitIco_bg.png') no-repeat;}
 .unitIco li.on span {color:#fff;}
 .floorPlanBox {margin-top:20px;}
 .floorPlanBox img {vertical-align:top}
@@ -301,7 +309,6 @@
 
 /* tagArea */
 .tagArea {text-align:center;margin-top:150px;padding:60px 0 100px;background:#f5f5f5}
-.tagArea h3 {font-size:50px;}
 .tagArea ul {margin:20px auto 0;width:1000px;}
 .tagArea ul li {display:inline-block;margin:20px 25px 0;}
 .tagArea ul li a {font-size:14px;color:#333;}
@@ -317,7 +324,7 @@
 .accordion li {position:relative;height:60px;line-height:60px;margin-top:1px;}
 .accordion li:first-child {margin-top:0;}
 .accordion li a {display:block;position:relative;width:100%;background:#e6e6e6;width:1115px;padding:0 30px 0 55px;font-size:20px;font-family:'NotoSansL', sans-serif;color:#000;}
-.accordion li a:after {content:'';display:block;position:absolute;top:50%;right:30px;margin-top:-5px;width:16px;height:10px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
+.accordion li a:after {content:'';display:block;position:absolute;top:50%;right:30px;margin-top:-5px;width:16px;height:10px;background:url('../images/ico_toggleB.png') 0 -10px no-repeat;}
 .accordion li.on a:after {background-position:0 0;}
 .accordion li.on {height:auto;}
 .accordion li.on .accordCon {display:block;}
@@ -328,3 +335,36 @@
 .accordion .accordCon li p {font-size:14px;margin-top:5px;color:#666;line-height:22px;font-family:'NotoSansR', sans-serif;}
 .accordion .accordCon li strong {font-family:'NotoSansB', sans-serif;}
 
+
+/* seller */
+.sellerArea{height: 700px;padding-top:50px;background:#f5f5f5 url('../images/bg_seller.jpg') center no-repeat;}
+.sellerArea .wrap{overflow: hidden;}
+.sellerArea .wrap > div{float: left;width: 50%;}
+.sellerArea .sellerInfo{position: relative;}
+.sellerArea .sellerTit{width: 340px;height: 112px;margin-left:100px;margin-bottom:-32px;background: url('../images/seller_tit.png') no-repeat;}
+.sellerArea .sellerCont{position: absolute;left: 400px;top: 270px;width: 190px;text-align: center;}
+.sellerArea .sellerCont h4{font-size: 30px;margin-bottom: 10px;}
+.sellerArea .sellerCon p{font-size: 14px;line-height: 1.2em;}
+.sellerArea .sellerCont a{margin-top: 5px;min-width: 120px;}
+.sellerArea .sellerCont ul:before{content: '';display: block;width:40px;height: 1px;background: #000;margin:30px auto; }
+
+.sellerArea .sellerProduct{position: relative;text-align: center;z-index: 0}
+.sellerArea .sellerProduct h5{position: relative;display: inline-block;padding:0 90px;font-size: 30px;text-align: center;}
+.sellerArea .sellerProduct h5:before,.sellerArea .sellerProduct h5:after{content:'';position:absolute;width: 60px;height: 40px;background: url('../images/seller_tit.png') no-repeat;}
+.sellerArea .sellerProduct h5:before{top:0;left:0;background-position: 0 -115px}
+.sellerArea .sellerProduct h5:after{border:0;right: 0;background-position: -57px -114px}
+
+.productDetail #SellerArea .cardWrap li{width: 285px !important}
+.productDetail #SellerArea .cardSlider .bx-controls{top:30px;left: 50%;right: auto;margin-left: -46px;}
+.productDetail #SellerArea .cardSlider .bx-controls .bx-prev{margin-right: 10px;background-position: -27px 0}
+.productDetail #SellerArea .cardSlider .bx-controls .bx-next{background-position: -27px -41px}
+
+/* recommend */
+.detailArea.recommend{padding-top: 150px;text-align: center;}
+.detailArea.recommend + .recommend{padding-bottom: 140px;}
+
+/* packageArea */
+.packageArea{background: url('../images/bg_relate.jpg') no-repeat center top;}
+.packageArea .icoNewformTit{margin-bottom: 75px;}
+.packageArea .cardWrap{overflow: hidden;margin: 0;padding: 0;}
+.packageArea .cardWrap li{position: relative;margin:10px;}
