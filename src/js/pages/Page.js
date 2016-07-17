@@ -31,12 +31,14 @@ module.exports = function() {
 	horizonBarChart = require('../components/HorizonBarChart.js'),
 	dropDownMenu = require('../components/DropDownMenu.js'),
 	dropDownScroll = require('../components/DropDownScroll.js'),
+	snsShare = require('../components/SnsShare.js'),
 	eventManager = require('../events/EventManager'),
 	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
-	INFOSLIDER_EVENT = events.INFO_SLIDER;
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	WINDOWOPENER_EVENT = events.WINDOW_OPENER;
 	
 	var FloatMenu = require('../components/FloatingMenu.js'),
 	floatMenu = FloatMenu();
@@ -60,6 +62,7 @@ module.exports = function() {
 		initChart();	// 차트 컴포넌트
 		dropDownMenu.init();	// 드롭다운 메뉴
 		dropDownScroll.init();		// 드롭다운스크롤 메뉴
+		snsShare.init();			// snsshare 메뉴
 		initAddressPopupButton();	// 주소록 팝업버튼
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
 		initInfoSlider();	// #infoSlider bxSlider
@@ -75,7 +78,7 @@ module.exports = function() {
 		$('.tabSplit li').css('width',100/countMenu+'%');
 
 		// Colorbox Complete 시점
-		eventManager.on(COLORBOX_EVENT.REFRESH, cardlistEventRefreshHandler)
+		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
 		// MeberInfo event Listener
@@ -344,6 +347,7 @@ module.exports = function() {
 	 */
 	function initAddressPopupButton() {
 		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
+		eventManager.on(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
 
 	/**
@@ -355,7 +359,7 @@ module.exports = function() {
 		"height" : 900
 		}'>1:1 메세지</a>
 	 */
-	function onWindowPopupHandler(e) {
+	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
 
 		var opts = {
@@ -370,8 +374,8 @@ module.exports = function() {
 			fullscreen : 'no'
 		},
 		target = $(e.currentTarget),
-		href = target.attr('href'),
-		dataOpts = target.data('winpop-opts'),
+		href = href || target.attr('href'),
+		dataOpts = opts || target.data('winpop-opts'),
 		optStr = '',
 		winPopup;
 
@@ -515,8 +519,9 @@ module.exports = function() {
 	// Colorbox Complete 시점
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
-	function cardlistEventRefreshHandler(e) {
+	function onColorboxRefreshListener(e) {
 		cardList().initOverEffect();
+		snsShare.refresh();
 	}
 
 	// Colorbox Cleanup 시점
@@ -558,10 +563,12 @@ module.exports = function() {
 	function onWindowPopupRefresh(e) {
 		onWindowPopupDestory();
 		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
+		eventManager.on(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
 
 	function onWindowPopupDestory(e) {
 		$('.openAddressPopup, .openWindowPopup').off('click', onWindowPopupHandler);
+		eventManager.off(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
 	
 	/**
