@@ -342,10 +342,10 @@ module.exports = function() {
 					optionsHandler(result.data.options);
 					break;
 				case PRODUCT_EVENT.PARTNER_INFO:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
-
-					displayData(result.data.partner, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
+					//debug.log(fileName, 'onControllerListener', eventType, status, response);
+					//$('.' + eventType).html(JSON.stringify(result.data.partner));
+					console.log( $('#info-partner-template') );
+					displayData(result.data.partner, $('#info-partner-template'), $('.js-info-partner-wrap'));
 					break;
 				case PRODUCT_EVENT.PREVIEW:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);

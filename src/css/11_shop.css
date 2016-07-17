@@ -178,7 +178,7 @@ h3.sTit{font-size:50px;}
 /* newform detail */
 /* topArea */
 .topArea .topContBox {height:900px;background-position:top center;background-repeat:no-repeat;}
-.topArea .topContBox .topCont {width:1140px;height:780px;margin:0 auto;padding-top:120px;color:#000;font-family:'NotoSansR' sans-serif;}
+.topArea .topContBox .topCont {width:1140px;height:780px;margin:0 auto;padding-top:120px;color:#000;font-family:'NotoSansR' sans-serif;text-align:left;}
 .topArea .topContBox .topCont.subTop .tagList {margin-top:0;}
 .topArea .topContBox .topCont h3 {margin-top:10px;}
 .topArea .topContBox .topCont .infoSub {margin-top:20px;font-size:20px;}
