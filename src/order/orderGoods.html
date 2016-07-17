@@ -326,6 +326,17 @@ function chkPayType() {
 															<td>
 																<select title="할부방식 선택" style="width:148px;" id='quotaSelect'>
 																	<option value="00" label="일시불" selected="selected">일시불</option>
+																	<option value="02" label="2개월">2개월</option>
+																	<option value="03" label="3개월">3개월</option>
+																	<option value="04" label="4개월">4개월</option>
+																	<option value="05" label="5개월">5개월</option>
+																	<option value="06" label="6개월">6개월</option>
+																	<option value="07" label="7개월">7개월</option>
+																	<option value="08" label="8개월">8개월</option>
+																	<option value="09" label="9개월">9개월</option>
+																	<option value="10" label="10개월">10개월</option>
+																	<option value="11" label="11개월">11개월</option>
+																	<option value="12" label="12개월">12개월</option>
 																</select>
 															</td>
 														</tr>
@@ -403,19 +414,19 @@ function chkPayType() {
 										<div class="tbHf">
 											<div class="tbSet orderTb lineN tbHV">
 												<table>
-													<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제 안내, 현금영수증 발금신청 정보를 제공합니다.</caption>
+													<caption>무통장 입금 결제에 관한 결제 안내를 제공합니다.</caption>
 													<colgroup>
 														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
-														<tr>
+														<!--<tr>
 															<th scope="row">입금은행</th>
 															<td>
 																<select title="은행선택" style="width:148px;" id='bankSelect'>
 																	<option value="" label="은행 선택" selected="selected">은행 선택</option>
 																</select>
 															</td>
-														</tr>
+														</tr>-->
 														<tr>
 															<th scope="row">결제안내</th>
 															<td>
@@ -432,7 +443,7 @@ function chkPayType() {
 										<div class="tbHf">
 											<div class="tbSet02 tbHV">
 												<table>
-													<caption>신용카드 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
+													<caption>무통장 입금 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
 													<colgroup>
 														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
@@ -507,7 +518,7 @@ function chkPayType() {
 										<div class="tbHf">
 											<div class="tbSet02 tbHV">
 												<table>
-													<caption>신용카드 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
+													<caption>실시간 계좌이체 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
 													<colgroup>
 														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
@@ -575,30 +586,30 @@ function chkPayType() {
 	<input type="hidden" name="BuyerAddr" id="BuyerAddr" value="">	<!-- 주소 -->
 	<input type="hidden" name="BuyerTel" id="BuyerTel" value=""/> <!-- 전화번호 -->
 	<input type="hidden" name="GoodsCnt" id="GoodsCnt" value="">	<!-- 상품 갯수 -->
-	<input type="hidden" name="MID" value="nictest00m"/> <!-- 상점아이디 -->
 
 	<input type="hidden" name="PayMethod" id="PayMethod" value="CARD" />	<!-- 결재수단 (CARD/BANK/VBANK) --> 
 
 	<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
-	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00">		<!-- 할부개월수 (00, 01, 02, ....) -->
+	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00" />		<!-- 할부개월수 (00, 01, 02, ....) -->
 
 	<!-- 은행 코드? -->
 
-	<input type="hidden" name="UserIP" id="UserIP" value="request.getRemoteAddr()">
-	<input type="hidden" name="MallIP" id="MallIP" value="inet.getHostAddress()">
+	<input type="hidden" name="MID" id="MID" value="">
+	<input type="hidden" name="UserIP" id="UserIP" value="">
+	<input type="hidden" name="MallIP" id="MallIP" value="">
 	<input type="hidden" name="TransType" value="0">
 	<input type="hidden" name="OptionList" value="">
 	<input type="hidden" name="VbankExpDate" id="VbankExpDate" value="VbankExpDate"> 
 	<input type="hidden" name="MallUserID" value=""> 
 	<input type="hidden" name="SUB_ID" value="">
 	<input type="hidden" name="GoodsCl" value="">
-	<input type="hidden" name="EncodeParameters" value="CardNo,CardExpire,CardPwd"/>
+	<input type="hidden" name="EncodeParameters" value="CardNo,CardExpire,CardPwd">
 	<input type="hidden" name="EdiDate" id="EdiDate" value="ediDate">
-	<input type="hidden" name="EncryptData" id="EncryptData" value="hash_String" >
+	<input type="hidden" name="EncryptData" id="EncryptData" value="hash_String">
 	<input type="hidden" name="SocketYN" value="Y">
 	<input type="hidden" name="TrKey" value="">
 	<input type="hidden" name="SkinType" value="blue">
-	<input type="hidden" name="redirectUrl" value="/order/orderComplete.html"/>
+	<input type="hidden" name="redirectUrl" value="/order/complete.html">
 </form>
 
 <script type="text/javascript">

@@ -84,7 +84,9 @@ module.exports = function() {
 		var orderProductArray = new Array();
 
 		if (Cookies.getJSON('instantOrder') == undefined) {
-			//
+			alert('잘못된 접근입니다.');
+			//Cookies.remove('instantOrder');
+			location.href='/';
 		} else {
 			orderProductArray = Cookies.getJSON('instantOrder');
 			$.map(orderProductArray, function(eachCartItem) {
@@ -207,18 +209,18 @@ module.exports = function() {
 				}
 				$('#cardSelect').html(cardSelectTag);
 
-				var bankSelectTag = '<option value="" label="은행 선택" selected="selected">은행 선택</option>';
+				/* var bankSelectTag = '<option value="" label="은행 선택" selected="selected">은행 선택</option>';
 				for (var key in data.banks) {
 					var eachCard = data.banks[key];
 					bankSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.bankName+'">'+eachCard.bankName+'</option>';
 				}
-				$('#bankSelect').html(bankSelectTag);
+				$('#bankSelect').html(bankSelectTag); */
 
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
 				});
 
-				$('#MID').val('nictest00m');
+				$('#MID').val(data.pgInfo.mid);
 				$("#MallIP").val(data.pgInfo.mallIp);
 				$("#UserIP").val(data.pgInfo.userIp);
 				$("#EdiDate").val(data.pgInfo.ediDate);
@@ -234,31 +236,6 @@ module.exports = function() {
 				$('#SelectQuota').val('00'); // 할부개월수
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
-
-				/*
-				<input type="hidden" name="usingPoint" id="usingPoint" value="" /> <!-- 사용할 포인트 -->
-				<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
-				<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->
-				<input type="hidden" name="Moid" id="Moid" value=""/> <!-- 주문번호 -->
-				<input type="hidden" name="GoodsCnt" id="GoodsCnt" value="">	<!-- 상품 갯수 -->
-
-				<input type="hidden" name="products" id="products" value="1001|67|2|1|빠른배송 ㄲㅅ" /> <!-- 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) -->
-
-				<input type="hidden" name="BuyerName" id="BuyerName" value=""/> <!-- 이름 -->
-				<input type="hidden" name="BuyerEmail" id="BuyerEmail" value=""/> <!-- 이메일 -->
-				<input type="hidden" name="BuyerTel" id="BuyerTel" value=""/> <!-- 전화번호 -->
-				<input type="hidden" name="BuyerAddr" id="BuyerAddr" value="">	<!-- 주소 -->
-
-				<input type="hidden" name="PayMethod" id="PayMethod" value="CARD" />	<!-- 결재수단 () --> 
-
-				<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
-				<input type="hidden" name="SelectQuota" id="SelectQuota" value="00">		<!-- 할부개월수 (00, 01, 02, ....) -->
-
-				<!-- 은행 코드? -->
-				
-				<input type="hidden" name="MID" value="nictest00m"/> <!-- 상점아이디 -->
-				*/
-				
 				$('.requestPaymentButton').click(getHashString);
 				break;
 		}
@@ -268,10 +245,14 @@ module.exports = function() {
 		loginData = loginDataModel.loginData();
 		console.log(loginData);
 		$('#BuyerName').val(loginData.memberName);
-	}
+		if (loginData.phone == null) {
+			$('#BuyerTel').val(loginData.phone);
+			alert('본인인증이 필요한 페이지입니다.');
+			//Cookies.remove('instantOrder');
+			location.href='/';
+		}
+	};
 
-	
-	// 최종 HashString 을 만들어서 호출한 이후 결제창 오픈 . 
 	function getHashString(e) {
 		var usingPoint = parseInt($("#usingPoint").val());
 		if (isNaN(usingPoint)) usingPoint = 0;
@@ -287,12 +268,24 @@ module.exports = function() {
 				($('#delivery1').is(':visible') ? selectedOneAddress : selectedMultiAddress[key]),
 				encodeURI( $('#messageField-'+(key+1)).val() )
 			);
+			if (!eachOrderArray[3]) {
+				alert('배송지를 지정해 주세요.');
+				return;
+			}
 			productsArray.push(eachOrderArray.join('|'));
 		}
 		
 		$('#products').val(productsArray.join(','));
 		switch($('#PayMethod').val()) {
 			case 'CARD':
+				if ($('#cardSelect').val() == '') {
+					alert('카드를 지정해 주세요.');
+					return;
+				}
+				if ($('#SelectQuota').val() == '') {
+					alert('할부개월수를 지정해 주세요.');
+					return;
+				}
 				$('#SelectCardCode').val($('#cardSelect').val()); 	// 카드회사 번호
 				$('#SelectQuota').val($('#quotaSelect').val()); 	// 할부개월수
 				break;
@@ -309,10 +302,10 @@ module.exports = function() {
 				goPay(document.payForm);
 			},
 			error : function(xhr, status, error) {
-				alert("에러발생");
+				Super.Super.alertPopup('결재에 실패하였습니다', status+': '+error, '확인');
 			}
 		});
-	}
+	};
 
 	// Handlebars 마크업 템플릿 구성
 	function displayData(data) {
@@ -342,8 +335,7 @@ module.exports = function() {
 		template = win.Handlebars.compile(source);
 		insertElements = $(template(data.paymentInfo));
 		$('#paymentForm1').empty().append(insertElements);
-		
-	}
+	};
 
 	function onColorBoxAreaListener(e) {
 		switch(e.type) {
@@ -352,12 +344,7 @@ module.exports = function() {
 			case COLORBOX_EVENT.CLEANUP:
 				break;
 		}
-	}
-
-
-
-
-	
+	};
 
 	function refreshAddressDataHandler(e) {
 		addressController.addressList();
@@ -386,7 +373,7 @@ module.exports = function() {
 			var orderOrder = Number(addressNum.split('-')[1]);
 			selectedMultiAddress[orderOrder] = seq;
 		}
-	}
+	};
 
 	function selectAddressDataHandler(e, seq) {
 		console.log(addressBookTarget, seq);

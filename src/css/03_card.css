@@ -68,22 +68,22 @@
 /* hexagon css */
 .hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
 .floating .hexagon{top:0}
-.hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
+.hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);-ms-transform: scaleY(0.57735) rotate(-45deg);}
 .hexTop{top: -101.76px}
 .hexBottom{bottom: -101.76px;}
-.hexTop span,.hexBottom span {position: absolute;left: 0;width: 285px;height: 164.545px;transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-webkit-transform-origin: 0 0;-ms-transform-origin: 0 0;transform-origin: 0 0;background: inherit; }
+.hexTop span,.hexBottom span {position: absolute;left: 0;width: 285px;height: 164.545px;transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-ms-transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-webkit-transform-origin: 0 0;-ms-transform-origin: 0 0;transform-origin: 0 0;background: inherit; }
 .hexTop span {background-position: center top;}
 .hexBottom span {background-position: center bottom;}
 .hexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
 
-.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.9deg); position:absolute; top:42px; left:-18px; z-index:5; text-align:left;}
-.cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg);}
+.cardLine {width:163px; height:20px; padding-left:15px; transform:rotate(-29.9deg); -ms-transform:rotate(-29.9deg); position:absolute; top:42px; left:-18px; z-index:5; text-align:left;}
+.cardLine:after {content:''; width:0; position:absolute; top:4.5px; right:-15.1px; border-bottom:21.7px solid; border-right:12.7px solid transparent; border-left:12.5px solid transparent; transform:rotate(120deg); -ms-transform:rotate(120deg);}
 .cardLine p {letter-spacing: 0.5px;font-size:14px; font-style:italic; color:#000; line-height:130%;}
 
 .cardCon{ position:relative; z-index:4;top:0;display: block;width:265px;padding:81px 10px;color:#000; }
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
 .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
-.cardCon:after {content:''; width:164px; height:73px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:46px; right:-11px; opacity:0.5; z-index:-1;}
+.cardCon:after {content:''; width:164px; height:73px; transform:rotate(-29.65deg) skewx(-30deg); -ms-transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:46px; right:-11px; opacity:0.5; z-index:-1;}
 
 .cardCon .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2; width:auto; height:auto;}
 .cardCon .cardEnter img{display: block;}
@@ -202,10 +202,10 @@
 .cardHover .worker .cardAuthorInfo{padding:15px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
 .cardHover .worker .cardAuthorInfo b{color:#fff}
 
-.cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5; text-align:right;}
+.cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); -ms-transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5; text-align:right;}
 .cardCon ul.check_icon li {width:47px; display:inline-block;}
 .cardCon ul.check_icon li a {width:100%; padding:45px 0 15px; color:#000; font-size:11px; display:inline-block; position:relative; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold; text-align:center;}
-.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:28px; left:15px; display:inline-block;transform: rotate(0deg);}
+.cardCon ul.check_icon li a:after {content:''; width:19px; height:20px; margin:-10px 0 0 2px; background:url(../images/check_icon.png) 0 0 no-repeat; position:absolute; top:28px; left:15px; display:inline-block;transform: rotate(0deg);-ms-transform: rotate(0deg);}
 .cardCon ul.check_icon li.like a:after {background-position:0 1px;}
 .cardCon ul.check_icon li.share a:after {background-position:-20px 0;}
 ul.cardWrap > li .cardCon > a.cardTxt {padding-bottom:45px;}
@@ -260,10 +260,10 @@ ul.cardWrap > li.cardType07.cHover .cardCon ul.card_icon li:first-child {margin-
 .hoverImage .imgHexagon .imgHexTop
 .hoverImage .imgHexagon .imgHexBottom {background-size:285px 330px;}
 .imgHexagon{height: 163.545px; position: absolute;top:0;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
-.imgHexTop, .imgHexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);}
+.imgHexTop, .imgHexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);-ms-transform: scaleY(0.57735) rotate(-45deg);}
 .imgHexTop{top: -101.76px}
 .imgHexBottom{bottom: -101.76px;}
-.imgHexTop span,.imgHexBottom span {position: absolute;left: 0;width: 285px;height: 164.545px;transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-webkit-transform-origin: 0 0;-ms-transform-origin: 0 0;transform-origin: 0 0;background: inherit; }
+.imgHexTop span,.imgHexBottom span {position: absolute;left: 0;width: 285px;height: 164.545px;transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-ms-transform: rotate(45deg) scaleY(1.73205) translateY(-82.2724px);-webkit-transform-origin: 0 0;-ms-transform-origin: 0 0;transform-origin: 0 0;background: inherit; }
 .imgHexTop span {background-position: center top;}
 .imgHexBottom span {background-position: center bottom;}
 .imgHexagon:after {content:'';position: absolute;top: 0px;left: 0;width: 100%;height: 100%; z-index: 2;background: inherit;}
@@ -283,8 +283,8 @@ ul.cardWrap > li.cardType06 .cardCon .cardTxt span.cardMore {color:#00a7d3;}
 ul.cardWrap > li.cardType06 .cardCon .cardTxt span.cardMore:after {background-position:-42px 0;}
 ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore {color:#a77566;}
 ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-position:-56px 0;}
-.cardHover .cardCon ul.card_icon li.sHover {background:red;}
-.cardCon ul.check_icon li.sHover a {background:red;}
+/*.cardHover .cardCon ul.card_icon li.sHover {background:red;}
+.cardCon ul.check_icon li.sHover a {background:red;}*/
 
 .hoverStyle01 {background:url(../images/card_hover01.png) 0 0 no-repeat;}
 .hoverStyle02 {background:url(../images/card_hover02.png) 0 0 no-repeat;}

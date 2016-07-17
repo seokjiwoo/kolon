@@ -18,12 +18,12 @@ module.exports = function() {
 	$(controller).on('editMemberInfoResult', editInfoResultHandler);
 	$(controller).on('refundBankListResult', refundBankListResultHandler);
 	$(controller).on('refundDataResult', refundDataResultHandler);
+	$(controller).on('verifyMemberResult', verifyMemberResultHandler);
 	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
-	$(loginController).on('verifyMemberResult', verifyMemberResultHandler);
 	
 	var eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
@@ -353,39 +353,8 @@ module.exports = function() {
 	 */
 	function submitMobileEditForm(e) {
 		e.preventDefault();
-
-		MyPage.Super.Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
-			onOpen:function() {
-				$('#requestVerifyMemberForm').submit(function(e){
-					e.preventDefault();
-					var id = $('#verifyPhoneNumber').val();
-					if (util.checkValidMobileNumber(id)) {
-						controller.verifyMemberByPhone(id);
-					} else {
-						alert('휴대폰 번호를 정확하게 입력해주세요.');
-					}
-					e.stopPropagation();
-				});
-			}
-		});
-		
+		$(document).trigger('verifyMember');
 		e.stopPropagation();
-	};
-	
-	/**
-	 * 휴대폰 실명인증 결과 핸들링
-	 */
-	function verifyMemberResultHandler(e, authData) {
-		console.log(authData);
-		switch(authData.status) {
-			case '200':
-				MyPage.Super.Super.alertPopup('본인확인이 완료되었습니다.', '이제 COMMON의 모든 서비스를 이용하실 수 있습니다.', '확인');
-				controller.getMyInfo();
-				break;
-			default:
-				MyPage.Super.Super.alertPopup('', authData.message, '확인');
-				break;
-		}
 	};
 
 	/**

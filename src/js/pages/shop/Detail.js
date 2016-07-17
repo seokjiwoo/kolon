@@ -198,6 +198,8 @@ module.exports = function() {
 	function addCart() {
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
+		} else if (Super.Super.loginData.stateCode == 'BM_MEM_STATE_01') {
+			$(document).trigger('verifyMember');
 		} else {
 			var cartData = orderData.concat();
 			$.map(cartData, function(each) {
@@ -214,6 +216,8 @@ module.exports = function() {
 	function orderGoods() {
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
+		} else if (Super.Super.loginData.stateCode == 'BM_MEM_STATE_01') {
+			$(document).trigger('verifyMember');
 		} else {
 			Cookies.set('instantOrder', orderData);
 			location.href = '/order/orderGoods.html';

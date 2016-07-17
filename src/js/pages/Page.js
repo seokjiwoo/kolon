@@ -37,9 +37,14 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	INFOSLIDER_EVENT = events.INFO_SLIDER;
+
+	var memberInfoController = require('../controller/MemberInfoController');
+	$(memberInfoController).on('verifyMemberResult', verifyMemberResultHandler);
 	
 	var FloatMenu = require('../components/FloatingMenu.js'),
 	floatMenu = FloatMenu();
+	
+	$(document).on('verifyMember', requestVerifyMember);
 
 	return callerObj;
 	
@@ -403,6 +408,45 @@ module.exports = function() {
 			var tbHC = parseInt($(this).height())
 			$(this).find('.tbHV table').css('height',tbHC);
 		})
+	};
+	
+	/**
+	 * 휴대폰 수정(=실명인증) 진행
+	 */
+	function requestVerifyMember() {
+		e.preventDefault();
+
+		Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
+			onOpen:function() {
+				$('#requestVerifyMemberForm').submit(function(e){
+					e.preventDefault();
+					var id = $('#verifyPhoneNumber').val();
+					if (util.checkValidMobileNumber(id)) {
+						memberInfoController.verifyMemberByPhone(id);
+					} else {
+						alert('휴대폰 번호를 정확하게 입력해주세요.');
+					}
+					e.stopPropagation();
+				});
+			}
+		});
+		
+		e.stopPropagation();
+	};
+	
+	/**
+	 * 휴대폰 실명인증 결과 핸들링
+	 */
+	function verifyMemberResultHandler(e, authData) {
+		switch(authData.status) {
+			case '200':
+				Super.alertPopup('본인확인이 완료되었습니다.', '이제 COMMON의 모든 서비스를 이용하실 수 있습니다.', '확인');
+				memberInfoController.getMyInfo();
+				break;
+			default:
+				Super.alertPopup('', authData.message, '확인');
+				break;
+		}
 	};
 
 
