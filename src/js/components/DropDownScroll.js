@@ -35,7 +35,8 @@ function DropDownScroll() {
 	var callerObj = {
 		init : init,
 		refresh : refresh,
-		destroy : destroy
+		destroy : destroy,
+		EVENT : DROPDOWNSCROLL_EVENT
 	},
 	instance, self;
 	

@@ -8,43 +8,71 @@
 	<!-- @@include ../_template/menu.html -->
 		<!-- 상단 배너 -->
 		<div class="detailArea shopTop topArea js-detail-info-wrap">
-			<!-- 
-			<div class="topContBox" style="background-image:url('../images/shop_topBg.png')">
+			<script id="detail-info-templates" type="text/x-handlebars-template">
+			{{!-- detail-info-templates --}}
+			<div class="topContBox" style="background-image:url('{{productImageUrl}}')">
 				<div class="topCont subTop">
 					<ul class="tagList">
-						<li><a href="#">shop</a></li>
-						<li><a href="#">Handmade</a></li>
-						<li><a href="#">의자</a></li>
+						{{!-- 서비스분류 --}}
+							{{#vxSwitch productServiceSectionCode}}
+								{{#vxCase "PD_PROD_SVC_SECTION_01" break="true"}}
+								<li><a href="#">Shop</a></li>
+								{{/vxCase}}
+								{{#vxCase "PD_PROD_SVC_SECTION_02" break="true"}}
+								<li><a href="#">NewForm</a></li>
+								{{/vxCase}}
+							{{/vxSwitch}}
+						{{!-- 서비스분류 --}}
+
+						{{!-- 생산자유형 --}}
+							{{#vxSwitch producerTypeCode}}
+								{{#vxDefault}}
+								<li><a href="#">{{producerTypeCodeName}}</a></li>
+								{{/vxDefault}}
+							{{/vxSwitch}}
+						{{!-- 생산자유형 --}}
+
+						{{!-- 상품분류 최하위 --}}
+							{{#vxSwitch productTypeCode}}
+								{{#vxDefault}}
+								<li><a href="#">{{productTypeCodeName}}</a></li>
+								{{/vxDefault}}
+							{{/vxSwitch}}
+						{{!-- 상품분류 최하위 --}}
 					</ul>
 
-					<h3><span>한정수량 70조 특가</span>GOOFY stool</h3>
-					<p class="infoSub">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
-					<p>by 박실장 <span>KOLON GLOBAL</span></p>
+					<h3>{{productName}}</h3>
+					<!--<p class="infoSub">{{productName}}</p>-->
+					<div class="js-detail-partner-wrap"></div>
 
 					<ul class="unitPrice">
 						<li>
-							<h4>배송비 주문시 결제 3,000won</h4>
-							<p>165,000<b>원</b><span class="discount">10<i>%</i></span></p>
-							<p class="salePrice">150,000<b>원</b></p>
+							<h4>배송비 / API - 확인 필요</h4>
+							{{#vxIF discountSetupYn "==" "Y"}}
+								<p>{{basePriceDesc}}<b>원</b><span class="discount">할인률 / API - 확인 필요<i>%</i></span></p>
+								<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
+							{{else}}
+								<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
+							{{/vxIF}}
 						</li>
 					</ul>
 					
 					<div class="newFormBtn shopBtn">
 						<div class="bigBtnBox">
-							<a href="#" class="js-add-card bigBtn">마이카트</a>
+							<a href="#" class="js-add-cart bigBtn">마이카트</a>
 							<a href="#" class="js-prd-buy bigBtn">구매하기</a>
 						</div>
 						<ul class="subBtn">
 							<li class="subBtn01">
 								<a href="#">
 									<span class="hide">좋아요</span>
-									<span class="countNum">12,213</span>
+									<span class="countNum">{{likeCount}}</span>
 								</a>
 							</li>
 							<li class="subBtn02">
 								<a href="#">
 									<span class="hide">스크랩</span>
-									<span class="countNum">12,213</span>
+									<span class="countNum">{{scrapCount}}</span>
 								</a>
 							</li>
 							<li>
@@ -76,43 +104,178 @@
 					</div>
 					<div class="cardCon">
 						<div class="upTo2">
-							<p>기간한정<span><b>20</b>%</span></p>
+							<p>기간한정 / API - 확인 필요</p>
+							<!-- <p>기간한정<span><b>20</b>%</span></p> -->
 						</div>
 					</div>
 				</div>
 			</div>
-			-->
+			{{!--// detail-info-templates --}}
+			</script>
 		</div>
 		<!-- // 상단 배너 -->
+		
+		<!-- detail 하단 탭 -->
+		<div class="detailBottomTab" id='criteria-options-wrap'>
+			<script id="detail-criteria-options-templates" type="text/x-handlebars-template">
+			{{!-- detail-criteria-options-templates --}}
+			<!-- [D] 활성화시 .active -->
+			<div class="bottomTabWrap">
+				<div class="optionBar">
+					<div class="barLeft">
+						<a href="#" class="optionBtn js-option-open"><span></span>옵션 선택</a>
+					</div>
+					<div class="barRight">
+						<span class="allPrice"><span>{{basePriceDesc}}</span> 원</span>
+						<a href="#"><span class="hide">좋아요</span></a>
+						<a href="#" class="js-add-cart bigBtn03">마이카트</a>
+						<a href="#" class="js-prd-buy bigBtn03">구매하기</a>
+					</div>
+				</div>
+			</div>
+			<div class="bottomTabWrap">
+				<div class="activeOption">
+					<div class="activeLeft">
+						<form method="" id='' action="#">
+							<fieldset>
+								<legend>선택 상품 정보 및 옵션 선택</legend>
+								<h4>{{productName}}</h4>
+								<p class="choiceTitInfo"><!--작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지--></p>
+								{{#each criteriaOptions}}
+									<div class="dropUp dropUpOn dropScrollEx js-drop-scroll optionListDrop" id='optionsDrop{{@index}}'>
+										<a href="#" class="dropToggle js-toggler">{{criteriaOptionName}}</a>
+										<!-- [D] active 시에 .dropUpCon outHeight 수치를 top으로 설정 -->
+										<div class="scrollWrapEx js-scroll-wrap">
+											<div class="dropListEx js-list">
+												<ul class="dropUpCon" data-prevent="true" id='optionsDrop{{@index}}Con'></ul>
+											</div>
+										</div>
+									</div>
+								{{/each}}
+							</fieldset>
+						</form>
+					</div>
+					<!-- [D] 옵션 iscroll 적용시 .has-iscroll -->
+					<div class="activeRight">
+						<form method="" id='' action="#">
+							<fieldset>
+								<legend>선택 상품 옵션 확인</legend>
+								<div class="optionScroll">
+									<div class="optionScrollWrap">
+										<ul class="optionList" id='selectedOptionList'></ul>
+									</div>
+								</div>
+								<div class="allPriceBox">
+									<div class="allPriceLeft">
+										<p>배송비<span>주문시 결제 0<b>원</b></span></p>
+									</div>
+									<div class="allPriceRight">
+										<p>총합계<span id='totalOptionsPrice'>{{basePriceDesc}}<b>원</b></span></p>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>				
+			</div>
+			{{!--// detail-criteria-options-templates --}}
+			</script>
+		</div>
+		<!-- // detail 하단 탭 -->
+
+		<script id="detail-options-templates" type="text/x-handlebars-template">
+		{{!-- detail-options-templates --}}
+		{{#each .}}
+		<li><a href="#" data-value="{{optionLevel}}-{{@index}}">{{optionName}} {{priceTag}}</a></li>
+		{{/each}}
+		{{!--// detail-options-templates --}}
+		</script>
+
+		<script id="detail-selected-options-templates" type="text/x-handlebars-template">
+		{{!-- detail-selected-options-templates --}}
+		{{#each .}}
+		<li>
+			<div class="optionInfo">
+				<p>{{name}}</p>
+			</div>
+			<div class="optionControl">
+				<p class="individualPrice"><span>{{price}}</span> 원</p>
+				<div class="optList">
+					<div class="option">
+						<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
+							<a href="#" class="btnMinus">빼기</a>
+							<span class="num">{{optionQuantity}}</span>
+							<a href="#" class="btnPlus">더하기</a>
+						</p>
+					</div>
+				</div>
+				<a href="#" class="cancelOption" data-option-num='{{orderOptionNumber}}'><span class="hide">제거</span></a>
+			</div>
+		</li>
+		{{/each}}
+		{{!-- detail-selected-options-templates --}}
+		</script>
 
 		<!-- 이벤트 베너 -->
 		<div class="detailArea eventBanner js-detail-events-wrap">
+			<span href="#" style="background-image:url('../images/eventBanner_left_blank.png')"></span>
+			<span href="#" style="background-image:url('../images/eventBanner_right_blank.png')"></span>
+			<script id="detail-events-templates" type="text/x-handlebars-template">
+				{{!-- detail-events-templates --}}
+				{{#each .}}
+					<a href="#" style="background-image:url('../images/eventBanner_left.png')">이벤트 / API - 확인 필요</a>
+				{{/each}}
+				{{!--// detail-events-templates --}}
+			</script>
 		</div>
 		<!-- // 이벤트 베너 -->
 
+		<!-- 상품 상세설명 -->
+		<div class="detailArea shop-detail-description-wrap">
+			<script id="shop-detail-description-templates" type="text/x-handlebars-template">
+				{{!-- shop-detail-templates --}}
+				<span>{{productDesc}}</span>
+				{{!--// shop-detail-templates --}}
+			</script>
+		</div>
+		<!-- // 상품 상세설명 -->
+
 		<!-- 태그 영역 -->
 		<div class="detailArea tagArea js-detail-tags-wrap">
-			<!-- 
 			<h3>Tag</h3>
-			<ul>
-				<li><a href="#">#짜투리공간</a></li>
-				<li><a href="#">#내추럴모던</a></li>
-				<li><a href="#">#동선이좋은공간</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#라이프스타일</a></li>
-				<li><a href="#">#반려동물</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#반려동물</a></li>
-				<li><a href="#">#동선이좋은공간</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#라이프스타일</a></li>
-				<li><a href="#">#반려동물</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#반려동물</a></li>
-			</ul>
-			 -->
+			<script id="detail-tags-templates" type="text/x-handlebars-template">
+				{{!-- detail-tags-templates --}}
+				<ul>
+					{{#each .}}
+					<li><a href="#">태그 / API - 확인 필요</a></li>
+					{{/each}}
+				</ul>
+				{{!--// detail-tags-templates --}}
+			</script>
 		</div>
 		<!-- // 태그 영역 -->
+
+		<!-- 판매자안내 영역 -->
+		<div id="SellerArea" class="detailArea sellerArea" style="height:1000px">
+			<h3><img src="../images/seller_tit.png"></h3>
+			<!-- <div class="sellerInfo">
+				
+				<p class="sellerPhoto"><img src="../images/seller_photo.png"></p>
+				<div class="sellerCont">
+					<h4>박실장</h4>
+					<p>KOLON GLOBAL<span>서울시 마포구 서교동</span></p>
+					<ul>
+						<li><a href="#" class="btn btnSizeM btnColor01">자세히보기</a></li>
+						<li><a href="#" class="btn btnSizeM btnColor01">팔로우</a></li>
+						<li><a href="#" class="btn btnSizeM btnColor01">1:1 메시지</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sellerCard">
+				
+			</div> -->
+		</div>
+		<!-- // 판매자안내 영역 -->
 
 		<!-- 구매정보 영역 -->
 		<div class="detailArea purchasingArea">
@@ -207,35 +370,18 @@
 				<div class="addMyCartListResult"></div>
 			</div>
 			<div>
-				<h2>- GET /apis/products/{productNumber}/eval 상품 평가및 리뷰</h2>
-				<div class="productEvalsResult"></div>
-			</div>
-			<div>
-				<h2>- GET /apis/products/{productNumber}/info 상품 정보</h2>
-				<div class="productInfoResult"></div>
-			</div>
-			<div>
 				<h2>- GET /apis/products/{productNumber}/partnerInfo 상품 판매자 정보</h2>
 				<div class="productPartnerInfoResult"></div>
-			</div>
-			<div>
-				<h2>- GET /apis/products/{productNumber}/preview 상품 미리보기</h2>
-				<div class="productPreviewResult">404 API 삭제된듯..</div>
 			</div>
 			<div>
 				<h2>- GET /apis/products/{productNumber}/related 연관상품 리스트</h2>
 				<div class="productRelatedResult"></div>
 			</div>
-			<!-- <div>
-				<h2>- GET /apis/products/{productNumber}/reviews/{reviewNumber} 상품 리뷰 상세</h2>
-				<div class="productReviewsResult"></div>
-			</div> -->
 		</div>
 		<!--// [D] API 통신 - 결과화면 영역 -->
 
 		<!-- @@include ../_template/footer.html -->
 	</div>
-
 <style>
 	.js-api-result {margin:20px}
 	.js-api-result h1 {border-bottom:1px #999 solid;margin-bottom:20px;padding-bottom:20px}
@@ -244,141 +390,12 @@
 	.js-api-result > div > div {margin-left:20px;padding-top:10px}
 </style>
 
-<script id="shop-detail-templates" type="text/x-handlebars-template">
-	{{!-- shop-detail-templates --}}
-	{{!--// shop-detail-templates --}}
-</script>
-
-<script id="detail-info-templates" type="text/x-handlebars-template">
-	{{!-- detail-info-templates --}}
-	<div class="topContBox" style="background-image:url('{{productImageUrl}}')">
-		<div class="topCont subTop">
-			<ul class="tagList">
-				{{!-- 서비스분류 --}}
-					{{#vxSwitch productServiceSectionCode}}
-						{{#vxCase "PD_PROD_SVC_SECTION_01" break="true"}}
-						<li><a href="#">shop</a></li>
-						{{/vxCase}}
-						{{#vxCase "PD_PROD_SVC_SECTION_02" break="true"}}
-						<li><a href="#">NewForm</a></li>
-						{{/vxCase}}
-					{{/vxSwitch}}
-				{{!-- 서비스분류 --}}
-
-				{{!-- 생산자유형 --}}
-					{{#vxSwitch producerTypeCode}}
-						{{#vxDefault}}
-						<li><a href="#">{{producerTypeCode}} 생산자유형 / API - 확인 필요</a></li>
-						{{/vxDefault}}
-					{{/vxSwitch}}
-				{{!-- 생산자유형 --}}
-
-				{{!-- 상품분류 최하위 --}}
-					{{#vxSwitch productTypeCode}}
-						{{#vxDefault}}
-						<li><a href="#">{{productTypeCode}} 상품분류 / API - 확인 필요</a></li>
-						{{/vxDefault}}
-					{{/vxSwitch}}
-				{{!-- 상품분류 최하위 --}}
-			</ul>
-
-			<h3>{{{productDesc}}}</h3>
-			<p class="infoSub">{{productName}}</p>
-			<div class="js-detail-partner-wrap"></div>
-
-			<ul class="unitPrice">
-				<li>
-					<h4>배송비 / API - 확인 필요</h4>
-					{{#vxIF discountSetupYn "==" "Y"}}
-						<p>{{basePriceDesc}}<b>원</b><span class="discount">할인률 / API - 확인 필요<i>%</i></span></p>
-						<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
-					{{else}}
-						<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
-					{{/vxIF}}
-				</li>
-			</ul>
-			
-			<div class="newFormBtn shopBtn">
-				<div class="bigBtnBox">
-					<a href="#" class="js-add-card bigBtn">마이카트</a>
-					<a href="#" class="js-prd-buy bigBtn">구매하기</a>
-				</div>
-				<ul class="subBtn">
-					<li class="subBtn01">
-						<a href="#">
-							<span class="hide">좋아요</span>
-							<span class="countNum">{{likeCount}}</span>
-						</a>
-					</li>
-					<li class="subBtn02">
-						<a href="#">
-							<span class="hide">스크랩</span>
-							<span class="countNum">{{scrapCount}}</span>
-						</a>
-					</li>
-					<li>
-						<span class="socialBtn">
-							<a href="#" class="socialBtnOpen">
-								<span class="hide">공유하기</span>
-							</a>
-							<a href="#" class="socialBtn01">
-								<span class="hide">페이스북</span>
-							</a>
-							<a href="#" class="socialBtn02">
-								<span class="hide">트위터</span>
-							</a>
-							<a href="#" class="socialBtn03">
-								<span class="hide">카카오스토리</span>
-							</a>
-							<a href="#" class="socialBtn04">
-								<span class="hide">핀터레스트</span>
-							</a>
-							<a href="#" class="socialBtn05">
-								<span class="hide">URL복사</span>
-							</a>
-							<a href="#" class="socialBtnClose">
-								<span class="hide">닫기</span>
-							</a>
-						</span>
-					</li>
-				</ul>
-			</div>
-			<div class="cardCon">
-				<div class="upTo2">
-					<p>기간한정 / API - 확인 필요</p>
-					<!-- <p>기간한정<span><b>20</b>%</span></p> -->
-				</div>
-			</div>
-		</div>
-	</div>
-	{{!--// detail-info-templates --}}
-</script>
-
 <script id="detail-partner-templates" type="text/x-handlebars-template">
 	{{#if company}}
 		<p>by {{partnerName}} <span>{{company}}</span>  / 마크업 대응 필요</p>
 	{{else}}
 		<p>by {{partnerName}} / 마크업 대응 필요</p>
 	{{/if}}
-</script>
-
-<script id="detail-events-templates" type="text/x-handlebars-template">
-	{{!-- detail-events-templates --}}
-	{{#each .}}
-		<a href="#" style="background-image:url('../images/eventBanner_left.png')">이벤트 / API - 확인 필요</a>
-	{{/each}}
-	{{!--// detail-events-templates --}}
-</script>
-
-<script id="detail-tags-templates" type="text/x-handlebars-template">
-	{{!-- detail-tags-templates --}}
-	<h3>Tag</h3>
-	<ul>
-		{{#each .}}
-		<li><a href="#">태그 / API - 확인 필요</a></li>
-		{{/each}}
-	</ul>
-	{{!--// detail-tags-templates --}}
 </script>
 
 </body>

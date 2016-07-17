@@ -15,7 +15,20 @@ module.exports = function() {
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
 	ORDER_EVENT = events.ORDER;
+
+	var addressController = require('../../controller/AddressController.js');
+	$(addressController).on('addressListResult', addressListHandler);
+	var addressArray;
+	var originAddress;
+	var targetAddress;
+	var addressBookTarget;
+
+	$(document).on('refreshAddressData', refreshAddressDataHandler);
+	$(document).on('selectAddressData', selectAddressDataHandler);
+
+	var orderData;
 	
 	var callerObj = {
 		/**
@@ -28,11 +41,11 @@ module.exports = function() {
 	var opts = {
 		templates : {
 			delivery1 : {
-				wrap : '.delivery1',
+				wrap : '#delivery1',
 				template : '#order-delivery1-templates',
 			},
 			delivery2 : {
-				wrap : '.delivery2',
+				wrap : '#delivery2',
 				template : '#order-delivery2-templates',	
 			},
 			wrap : '.test',
@@ -54,40 +67,20 @@ module.exports = function() {
 
 		self = callerObj;
 		self.opts = opts;
-
-
-		self.productNumber = util.getUrlVar().productNumber;
-		self.orderOptionNumber = util.getUrlVar().orderOptionNumber;
-		self.quantity = util.getUrlVar().quantity;
-
-		if (!self.productNumber) {
-			var productNumber = win.prompt('queryString not Found!\n\nproductNumber 를 입력하세요', '');
-			location.href += '?productNumber=' + productNumber;
-			return;
-		}
-
-		if (!self.orderOptionNumber) {
-			var orderOptionNumber = win.prompt('queryString not Found!\n\norderOptionNumber 를 입력하세요', '');
-			location.href += '&orderOptionNumber=' + orderOptionNumber;
-			return;
-		}
-
-		if (!self.quantity) {
-			var quantity = win.prompt('queryString not Found!\n\nquantity 를 입력하세요', '');
-			location.href += '&quantity=' + quantity;
-			return;
-		}
-
+		
 		setElements();
 		setBindEvents();
+		
+		var orderProductArray = new Array();
 
-		controller.myOrdersInfo([
-			{
-				'productNumber': self.productNumber,
-				'orderOptionNumber': self.orderOptionNumber,
-				'quantity': self.quantity
-			}
-		]);
+		if (Cookies.getJSON('instantOrder') == undefined) {
+			//
+		} else {
+			orderProductArray = Cookies.getJSON('instantOrder');
+			//console.log(orderProductArray);
+			//Cookies.remove('instantOrder');
+			controller.myOrdersInfo(orderProductArray);
+		}
 	}
 
 	function setElements() {
@@ -103,6 +96,42 @@ module.exports = function() {
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 	}
 
+	function onControllerListener(e, status, response) {
+		var eventType = e.type,
+		dummyData = {},
+		result = response;
+
+		switch(eventType) {
+			case ORDER_EVENT.ORDERS_INFO:
+				console.log(result.common.data);
+				displayData(result.common.data);
+				if (result.common.data.products.length == 1) {
+					$('#deliveryTab').hide();
+					$('#addressFormWrapper').css('margin-top', '20px');
+					$('#delivery1').show();
+					$('#delivery2').hide();
+				}
+
+				refreshAddressDataHandler();
+				$('.addressSelect').change(function(e){
+					setAddress($(this).attr('id').substr(14), $(this).val());
+				});
+				$('.messageSelect').change(function(e){
+					if ($(this).val() != '-') {
+						$('#messageField-'+$(this).attr('id').substr(14)).val( $(this).val() );
+					}
+				});
+				$('.messageField').change(function(e){
+					$('#messageSelect-'+$(this).attr('id').substr(13)).val('-');
+				});
+				$('.openAddressPopup').click(function(e) {
+					addressBookTarget = $(this).attr('id').substr(12);
+					console.log($(this).attr('id').substr(12));
+				});
+				break;
+		}
+	}
+
 	// Handlebars 마크업 템플릿 구성
 	function displayData(data) {
 		var delivery1 = self.opts.templates.delivery1,
@@ -113,128 +142,19 @@ module.exports = function() {
 		template = win.Handlebars.compile(source);
 		insertElements = $(template(data));
 
-		$(delivery1.wrap).empty()
-							.append(insertElements)
-							.imagesLoaded()
-							.always(function() {
-								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
-							});
-
+		$(delivery1.wrap).empty().append(insertElements).imagesLoaded().always(function() {
+			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+			eventManager.triggerHandler(INFOSLIDER_EVENT.REFRESH);
+		});
 
 		source = $(delivery2.template).html();
 		template = win.Handlebars.compile(source);
 		insertElements = $(template(data));
 		
-		$(delivery2.wrap).empty()
-							.append(insertElements)
-							.imagesLoaded()
-							.always(function() {
-								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
-							});
-	}
-
-	function onControllerListener(e, status, response) {
-		var eventType = e.type,
-		dummyData = {},
-		result = response;
-
-		switch(eventType) {
-			case ORDER_EVENT.ORDERS_INFO:
-				dummyData = {
-					"addresses": [
-						{
-							"addressManagementName": "회사",
-							"addressSectionCode": "BM_ADDR_SECTION_01",
-							"addressSectionCodeName": "회원주소",
-							"addressSequence": 1,
-							"cellPhoneNumber": "01012344321",
-							"detailAddress": "1202호",
-							"generalPhoneNumber": "021231234",
-							"lotBaseAddress": "서울시 종로구 운니동 98-78번지 가든타워",
-							"memberNumber": 1,
-							"receiverName": "홍길동",
-							"roadBaseAddress": "서울시 종로구 율곡로 84",
-							"zipCode": "123456"
-						}
-					],
-					"banks": [
-						{
-							"bankName": "한국은행",
-							"code": "001"
-						}
-					],
-					"cards": [
-						{
-							"cardCompanyName": "비씨",
-							"code": "01"
-						}
-					],
-					"orderNumber": "string",
-					"paymentInfo": {
-						"leftPoint": "1050",
-						"savingPoint": "1300",
-						"totalDiscountPrice": "200000",
-						"totalOrderPrice": "1500000",
-						"totalPaymentPrice": "1300000"
-					},
-					"pgInfo": {
-						"buyerAddr": "string",
-						"buyerEmail": "string",
-						"buyerName": "string",
-						"buyerTel": "string",
-						"ediDate": "20160708235011",
-						"encodeParameters": "string",
-						"encryptData": "string",
-						"goodsCl": "string",
-						"goodsCnt": "string",
-						"goodsName": "string",
-						"mallIp": "111.222.121.212",
-						"mallUserID": "string",
-						"mid": "string",
-						"moid": "string",
-						"optionList": "string",
-						"socketYN": "string",
-						"sub_ID": "string",
-						"trKey": "string",
-						"userIp": "1.2.3.4",
-						"vbankExpDate": "string"
-					},
-					"products": [
-						{
-							"deliveryCharge": 2500,
-							"discountPrice": 400000,
-							"orderOptionName": "화이트 우드무늬",
-							"orderOptionNum": 654,
-							"paymentPrice": 2600000,
-							"pointInfo": "PD_POINT_PAY_METHOD_01:10.00:5000",
-							"productImageUrl": "http://uppp.oneplat.net/img/iiii.jpg",
-							"productName": "테이블",
-							"productNumber": 5,
-							"productOptionPrice": 1500000,
-							"productPrice": 3000000,
-							"quantity": 2
-						}
-					]
-				};
-
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						// win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
-						break;
-				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result);
-				break;
-		}
+		$(delivery2.wrap).empty().append(insertElements).imagesLoaded().always(function() {
+			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+			eventManager.triggerHandler(INFOSLIDER_EVENT.REFRESH);
+		});
 	}
 
 	function onColorBoxAreaListener(e) {
@@ -245,4 +165,45 @@ module.exports = function() {
 				break;
 		}
 	}
+
+
+
+
+	
+
+	function refreshAddressDataHandler(e) {
+		addressController.addressList();
+	};
+
+	function addressListHandler(e, status, list) {
+		var tags = '<option value="-" label="선택해 주세요" selected="selected">선택해 주세요</option>';
+		
+		addressArray = new Array();
+		$.map(list.items, function(each) {
+			addressArray[each.addressSequence] = each;
+			tags += '<option value="'+each.addressSequence+'" label="'+each.addressManagementName+'">'+each.addressManagementName+'</option>';
+		});
+		$('.addressSelect').html(tags);
+	};
+
+	function setAddress(addressNum, seq) {
+		var addressObject = addressArray[seq];
+		$('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
+		
+		/*switch(addressNum) {
+			case 'origin': 
+				originAddress = addressObject;
+				//
+				break;
+			case 'target':
+				targetAddress = addressObject;
+				break; 
+		}*/
+	}
+
+	function selectAddressDataHandler(e, seq) {
+		console.log(addressBookTarget, seq);
+		setAddress(addressBookTarget, seq);
+		$('#addressSelect-'+addressBookTarget).val(seq);
+	};
 };

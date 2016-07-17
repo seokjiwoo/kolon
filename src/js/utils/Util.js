@@ -68,6 +68,13 @@ function ClassUtils() {
 			comma: comma,
 			/**
 			 * @description
+			 *  값의 comma 제거
+			 * @param   {String} num         변환할 값
+			 * @return  {Number}
+			 */
+			removeComma: removeComma,
+			/**
+			 * @description
 			 * 	시작일 ~ 종료일 D-day 반환
 			 * @return {Object}  {startTime: Number, endTime: Number, diffTime: Number, diffDay: Number}
 			 */
@@ -175,6 +182,10 @@ function ClassUtils() {
 		}
 		return arr.join('');
 	}
+	
+	function removeComma(num) {
+		return Number(num.replace(/,/, ''));
+	}
 
 	function currencyFormat(num) {
 		return comma(num, 3);
@@ -229,15 +240,15 @@ function ClassUtils() {
 	function makeMultipartForm(image, filename, format) {
 		if (format == undefined) {
 			var extension =  filename.toLowerCase().substr(-3);
-			switch(format) {
+			switch(extension) {
 				case 'peg':
 				case 'jpg':
 					format = 'image/jpg';
 					break;
-				case 'image/png':
+				case 'png':
 					format = 'image/png';
 					break;
-				case 'image/gif':
+				case 'gif':
 					format = 'image/gif';
 					break;
 			}
@@ -263,7 +274,7 @@ function ClassUtils() {
 			var bodyString = [];
 			bodyString.push(
 				'--' + boundary,
-				'Content-Disposition: form-data; name="' + "file" + '";' + 'filename="' + filename + '"',
+				'Content-Disposition: form-data; name="' + "file" + '"; ' + 'filename="' + filename + '"',
 				'Content-Type: ' + format,
 				'Content-Transfer-Encoding: base64', '',
 				image.substring(image.indexOf('base64,')+7)

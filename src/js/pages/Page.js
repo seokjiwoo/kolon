@@ -304,10 +304,13 @@ module.exports = function() {
 		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함. 쿠키라던가...
 
 		if (showBannerFlag) {
+			/*
 			topBannerShowFlag = true;
 			$('#topBanner').show();
 			$('#closeTopBannerButton').click(hideTopBanner);
 			lnbScroller.refresh();
+			*/
+			hideTopBanner();
 		} else {
 			hideTopBanner();
 		}

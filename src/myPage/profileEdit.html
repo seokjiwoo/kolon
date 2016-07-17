@@ -219,7 +219,7 @@
 	/**
 	 * 외부 창 휴대폰 본인인증 데이터 트리거 핸들링
 	 */
-	function memberVerifyData(data) {
+	function memberVerify(data) {
         var data = JSON.parse(data);
         $(document).trigger('getMobileAuthVerifyResult', [data]);
     }

@@ -27,6 +27,10 @@ function ClassOrderController() {
 			 */
 			addMyCartList : addMyCartList,
 			/**
+			 * 장바구니 개수 업데이트
+			 */
+			updateMyCartList : updateMyCartList,
+			/**
 			 * 장바구니 삭제
 			 */
 			deleteMyCartList : deleteMyCartList,
@@ -143,9 +147,7 @@ function ClassOrderController() {
 	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
 	 */
 	function addMyCartList(myCartRequestList) {
-		Super.callApi('/apis/me/cart', 'POST', {
-			'myCartRequestList' : myCartRequestList
-		}, function(status, result) {
+		Super.callApi('/apis/me/cart', 'POST', myCartRequestList, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addMyCartListResult', [status, result]);
 			} else {
@@ -154,6 +156,24 @@ function ClassOrderController() {
 			}
 		}, false);
 	}
+
+	/**
+	 * 장바구니 수량 변경
+	 * @param {Arrary} myCartRequestList
+	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPUT
+	 */
+	function updateMyCartList(productNumber, myCartRequestList) {
+		Super.callApi('/apis/me/cart/'+productNumber, 'PUT', myCartRequestList, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('updateMyCartListResult', [status, result]);
+			} else {
+				Super.handleError('updateMyCartList', result);
+				$(callerObj).trigger('updateMyCartListResult', [status, result]);
+			}
+		}, false);
+	}
+
+	
 
 	/**
 	 * 장바구니 삭제
@@ -398,7 +418,7 @@ function ClassOrderController() {
 
 
 	// 주문/배송 - 배송추적 팝업 조회
-	function orderTrackingInfo(orderNumber, orderProductSequence, deliveryNumber, orderNumber) {
+	function orderTrackingInfo(orderNumber, orderProductSequence, deliveryNumber) {
 		Super.callApi('/apis/me/orders/' + orderNumber + '/tracking', 'GET', {
 			'orderProductSequence' : orderProductSequence,
 			'deliveryNumber' : deliveryNumber,
@@ -416,7 +436,7 @@ function ClassOrderController() {
 
 	// 교환/반품/취소 목록 조회
 	function myClaimsList(startDate, endDate, keyword, deliveryStateCode) {
-		Super.callApi('/apis/me/claims', 'GET', {
+		Super.callApi('/apis/me/orders/cancel/list', 'GET', {
 			'startDate' : startDate,
 			'endDate' : endDate,
 			'keyword' : keyword || '',

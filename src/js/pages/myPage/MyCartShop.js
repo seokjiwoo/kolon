@@ -66,7 +66,7 @@ module.exports = function() {
 		setBindEvents();
 
 		// myCartShop 리스트 조회
-		var productSectionCode = 'PD_PROD_TYPE_01';
+		var productSectionCode = 'PD_PROD_SVC_SECTION_01';
 		controller.myCartList(productSectionCode);
 	}
 
@@ -89,8 +89,10 @@ module.exports = function() {
 		$('.optList').each(function(){
 			$(this).find('.js-opt-delete').click(function(e) {
 				e.preventDefault();
+				/*
 				eventManager.trigger(OPTIONNUM_EVENT.CHANGE, [$(this).parent(), 0]);
 				$(this).closest('.optList').remove();
+				*/
 			});
 		});
 
@@ -120,6 +122,12 @@ module.exports = function() {
 
 		target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
 		displayUpdate();
+
+		controller.updateMyCartList(info.productNumber, {
+			"orderOptionNumber": target.data().optionNum,
+			"optionQuantity": value,
+			"productQuantity": value
+		});
 	}
 
 	function onCheckBoxChange(e, target, chkGroup, chked) {
@@ -135,34 +143,37 @@ module.exports = function() {
 		var list = chked || self.templatesWrap.find(self.opts.cartList.wrap),
 		orderInfo = self.templatesWrap.find(self.opts.cartOrderInfo.wrap),
 		info = {},
-		value = 0,
-		productDeliverValue = 0,
-		discountValue = 0;
+		value1 = 0,
+		value2 = 0,
+		totalBaseValue = 0,
+		discountValue = 0,
+		totalSaleValue = 0;
 
 		$.each(list, function() {
 			info = $(this).data('list-info');
-			value = (info.productOrderPrice * info.productQuantity) + info.deliveryCharge - info.productDiscountSalePrice;
+			value1 = (info.basePrice * info.productQuantity) + info.deliveryCharge;
+			value2 = (info.salePrice * info.productQuantity) + info.deliveryCharge;
 
-			$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value));
+			totalBaseValue += value1;
+			discountValue += (info.basePrice-info.salePrice)*info.productQuantity;
+			totalSaleValue += value2;
+
+			$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
 			$(this).find(self.opts.optionNum).html(info.productQuantity);
-			discountValue += info.productDiscountSalePrice;
-			productDeliverValue += (info.productOrderPrice * info.productQuantity) + info.deliveryCharge;
 		});
 
-		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(productDeliverValue));
+		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalBaseValue));
 		orderInfo.find(self.opts.cartOrderInfo.discount).html(util.currencyFormat(discountValue));
-		orderInfo.find(self.opts.cartOrderInfo.totalPrice).html(util.currencyFormat(productDeliverValue - discountValue));
+		orderInfo.find(self.opts.cartOrderInfo.totalPrice).html(util.currencyFormat(totalSaleValue));
 	}
 
 	function displayData(data) {
-		if (data.myCarts) {
-			$.map(data.myCarts, function(myCarts) {
-				myCarts.deliveryChargeDesc = util.currencyFormat(myCarts.deliveryCharge);
-				myCarts.productDiscountSalePriceDesc = util.currencyFormat(myCarts.productDiscountSalePrice);
-				myCarts.productOrderPriceDesc = util.currencyFormat(myCarts.productOrderPrice);
-				myCarts.productSalePriceDesc = util.currencyFormat(myCarts.productSalePrice);
-			});
-		}
+		$.map(data, function(eachCartItem) {
+			if (eachCartItem.deliveryCharge == null) eachCartItem.deliveryCharge = 0;
+			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
+			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
+			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
+		});
 
 		var source = self.template.html(),
 		template = win.Handlebars.compile(source),
@@ -187,44 +198,12 @@ module.exports = function() {
 
 		switch(eventType) {
 			case CART_EVENT.LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result.data);
+				displayData(result.data.myCarts);
 				displayUpdate();
 				setDeleteEvents();
 				break;
 			case CART_EVENT.DELETE:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				 */
-				/*
-				204	No Content
-				401	Unauthorized
-				403	Forbidden
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						win.alert('HTTP Status Code ' + status);
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				testResult();
 				break;
@@ -232,7 +211,6 @@ module.exports = function() {
 	}
 
 	function testResult() {
-		win.alert('임시처리 결과처리 - location.reload');
 		win.location.reload();
 	}
 

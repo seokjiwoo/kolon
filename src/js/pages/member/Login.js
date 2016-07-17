@@ -112,12 +112,12 @@ module.exports = function() {
 	 */
 	function checkPasswordField(e) {
 		var inputValue = $('#inputPW').val();
-		
+		/*
 		if (!util.checkValidPassword(inputValue)) {
 			$('#pwAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
 		} else {
 			$('#pwAlert').text('');
-		}
+		}*/
 	};
 
 	/**
@@ -136,8 +136,6 @@ module.exports = function() {
 		} else if(pw == '') {
 			$('#pwAlert').text('비밀번호를 입력해 주세요.');
 			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '비밀번호를 입력해 주세요', '확인');
-		} else if (!util.checkValidPassword(pw)) {
-			Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '올바른 아이디와 비밀번호를 입력해주세요.', '확인');
 		} else {
 			if (util.checkValidMobileNumber(id)) {
 				// 휴대폰 번호

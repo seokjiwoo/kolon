@@ -37,7 +37,9 @@ function ClassProductController() {
 			// 연관상품 리스트
 			related : related,
 			// 연관상품 리스트
-			reviews : reviews
+			reviews : reviews,
+			// 다중옵션 리스트
+			options : options
 		};		
 		return callerObj;
 	}
@@ -113,6 +115,34 @@ function ClassProductController() {
 			} else {
 				Super.handleError('productInfo', result);
 				$(callerObj).trigger('productInfoResult', [status, result]);
+			}
+		}, true);
+	}
+
+
+	/**
+	 * 다중옵션 상품 옵션
+	 * @param  {Number} criteriaOptionCount
+	 * @param  {Number} optionLevel
+	 * @param  {Array} optionValueArray
+	 * @see  https://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductOptionValuesUsingGET
+	 * @ GET /apis/products/{productNumber}/options
+	 */
+	function options(productNumber, criteriaOptionCount, optionLevel, optionValueArray) {
+		var optionValues = {
+			"criteriaOptionCount": criteriaOptionCount,
+			"optionLevel": optionLevel
+		}
+		for (var i = 0; i < optionLevel; i++) {
+			optionValues["optionValue"+(i+1)] = optionValueArray[i];
+		}
+		console.log(optionValues);
+		Super.callApi('/apis/products/' + productNumber + '/options', 'GET', optionValues, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('productOptionsResult', [status, result]);
+			} else {
+				Super.handleError('productOptions', result);
+				$(callerObj).trigger('productOptionsResult', [status, result]);
 			}
 		}, true);
 	}
