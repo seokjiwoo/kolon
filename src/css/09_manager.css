@@ -40,7 +40,7 @@
 .managerList .serchPro button{width: 225px;background: #000;color: #fff;font-family:'NotoSansL', sans-serif;line-height: 40px;border:0;outline: 0;}
 
 .managerList #cardWrap{padding-top: 75px;}
-
+.managerList #cardWrap > li:nth-child(3) .hi{display:none }
 /* brand */
 .singleCard .bx-wrapper{overflow: visible !important;position: relative;width:795px;z-index: 1;margin: 0 auto;}
 .singleCard .bx-viewport{overflow: visible !important;}
