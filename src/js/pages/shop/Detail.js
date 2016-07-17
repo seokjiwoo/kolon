@@ -284,7 +284,6 @@ module.exports = function() {
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
 					
-					$('.optionScroll').height($('.optionList').height());
 					if (!optionsUseFlag) {
 						var oneOptionData = [{
 							"productNumber": self.productNumber,
@@ -298,16 +297,8 @@ module.exports = function() {
 						totalQty = 1;
 						$('.cancelOption').hide();
 					}
-					if ($('.optionList').find('li').size() > 3) {
-						$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
-					}
-					self.optionIScroll = new win.IScroll('.optionScroll', {
-						scrollbars: true,
-						mouseWheel: true,
-						fadeScrollbars: false,
-						bounce: false
-					});
-					$('.optionScroll').on('mousewheel DOMMouseScroll', function(e){ return false; });
+
+					optionsDisplay();
 
 					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
 					$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
@@ -340,6 +331,35 @@ module.exports = function() {
 		}
 	}
 
+	function optionsDisplay() {
+		$('.optionScroll').height($('.optionList').height());
+		if ($('.optionList').find('li').size() > 3) {
+			$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
+		} else {
+			$('.optionScroll').closest('.activeRight').removeClass('has-iscroll');
+		}
+
+		if (!self.optionIScroll) {
+			self.optionIScroll = new win.IScroll('.optionScroll', {
+				scrollbars: true,
+				mouseWheel: true,
+				fadeScrollbars: false,
+				bounce: false
+			});
+
+			$('.activeOption .activeRight').on('mousewheel DOMMouseScroll', function(e) {
+				var target = $(e.target),
+				isScrollArea = target.hasClass('.optionScroll') || target.closest('.optionScroll').size();
+
+				if (isScrollArea) {
+					e.preventDefault();
+				}
+			});
+		} else {
+			self.optionIScroll.refresh();
+		}
+	}
+
 	function optionsHandler(options) {
 		if (options.length == 1) {
 			// 단일옵션 or 최종선택.
@@ -361,8 +381,7 @@ module.exports = function() {
 			}
 
 			displayData(orderData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
-			$('.optionScroll').height($('.optionList').height());
-			self.optionIScroll.refresh();
+			optionsDisplay();
 
 			$('.cancelOption').click(optionRemoveHandler);
 			
@@ -428,8 +447,7 @@ module.exports = function() {
 		}
 
 		displayData(orderData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
-		$('.optionScroll').height($('.optionList').height());
-		self.optionIScroll.refresh();
+		optionsDisplay();
 
 		$('.cancelOption').click(optionRemoveHandler);
 		
