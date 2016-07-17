@@ -37,6 +37,7 @@
     "isotope-packery": "^2.0.0",
     "moment": "^2.14.1",
     "exif-js": "^2.1.1",
-    "jquery-form": "^3.46.0"
+    "jquery-form": "^3.46.0",
+    "zeroclipboard": "^2.2.0"
   }
 }
