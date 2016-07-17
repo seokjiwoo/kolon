@@ -72,6 +72,9 @@ function Events() {
 			REFRESH : 'VX-INFO_SLIDER-REFRESH',
 			DESTROY : 'VX-INFO_SLIDER-DESTROY',
 		},
+		RECAPTCHA : {
+			CALL_BACK : 'VX-G_RECAPTCHA-CALL_BACK'
+		},
 
 		// [S] Controller Events
 			// Message - 메세지

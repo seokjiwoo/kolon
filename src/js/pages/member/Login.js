@@ -1,6 +1,16 @@
 /* global $ */
 
 module.exports = function() {
+
+
+	var win = window,
+	$ = win.jQuery,
+	eventManager = require('../../events/EventManager'),
+	events = require('../../events/events'),
+	ALERTPOPUP_EVENT = events.ALERT_POPUP,
+	RECAPTCHA_EVENT = events.RECAPTCHA;
+
+
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 
@@ -17,6 +27,9 @@ module.exports = function() {
 	var authNumberResendFlag = false;
 	var firstTryFlag = true;		// 페이지 열리고 첫 시도인지 체크 (휴대전화로 가입시도 후 페이지 새로고침 했을 때 이전 세션 때문에 인증번호 틀림 에러코드 돌아오는 문제 때문에...)
 	
+	// recaptcha widget ID
+	var recaptchaWidget;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -194,6 +207,16 @@ module.exports = function() {
 			case 400:
 				switch(Number(response.errorCode)) {
 					default:
+						eventManager.trigger(
+							ALERTPOPUP_EVENT.OPEN,
+							[
+								'로그인/회원가입이 제한되었습니다.',
+								'정보보호 및 스팸 방지를 위하여 아래의 \'로봇이 아닙니다\'를 클릭해주세요.',
+								'확인'
+							]
+						);
+						setRecaptcha();
+						return
 						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 					case 1901:	// 모바일 인증번호
@@ -225,6 +248,17 @@ module.exports = function() {
 						Cookies.set('accountReuse', $('#inputName').val(), { expires: 1/1440 });	// 1 minutes
 						location.href = '/member/accountReuse.html';
 						break;
+					case 1614: 	// recaptcha 설정
+						eventManager.trigger(
+							ALERTPOPUP_EVENT.OPEN,
+							[
+								'로그인/회원가입이 제한되었습니다.',
+								'정보보호 및 스팸 방지를 위하여 아래의 \'로봇이 아닙니다\'를 클릭해주세요.',
+								'확인'
+							]
+						);
+						setRecaptcha();
+						break;
 				}
 				break;
 			default:
@@ -247,4 +281,41 @@ module.exports = function() {
 				break;
 		}
 	};
+
+	// recaptcha 설정
+	function setRecaptcha() {
+		if (recaptchaWidget && win.grecaptcha) {
+			win.grecaptcha.reset(recaptchaWidget);
+			return;
+		}
+
+		if ('undefined' === typeof win.VX) {
+			win.VX = {};
+		}
+
+		var NS = win.VX,
+		tag;
+
+		NS.G_RECAPTCHA = {
+			CALL_BACK : function() {
+				eventManager.triggerHandler(RECAPTCHA_EVENT.CALL_BACK);
+			}
+		};
+
+		win.VX_G_RECAPTCHA_CALL_BACK = VX.G_RECAPTCHA.CALL_BACK;
+
+		eventManager.on(RECAPTCHA_EVENT.CALL_BACK, function() {
+			recaptchaWidget = win.grecaptcha.render('vxrecaptcha', {
+				'sitekey' : '6Le4NyUTAAAAAB8tcMLMcftsItykhlcIBq4vtMhq',
+				'size' : 'normal',
+				'theme' : 'light'
+			});
+		});
+
+		tag = $('<script></script>');
+		tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
+		$('head').append(tag);
+
+	}
+		
 }
