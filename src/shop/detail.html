@@ -64,38 +64,38 @@
 						</div>
 						<ul class="subBtn">
 							<li class="subBtn01">
-								<a href="#">
+								<a href="#" class="js-add-like" data-product-number="{{productNumber}}" data-product-like="{{productServiceSectionCode}}">
 									<span class="hide">좋아요</span>
 									<span class="countNum">{{likeCount}}</span>
 								</a>
 							</li>
 							<li class="subBtn02">
-								<a href="#">
+								<a href="#" class="js-add-scrap" data-product-number="{{productNumber}}" data-product-like="{{productServiceSectionCode}}">
 									<span class="hide">스크랩</span>
 									<span class="countNum">{{scrapCount}}</span>
 								</a>
 							</li>
 							<li>
-								<span class="socialBtn">
-									<a href="#" class="socialBtnOpen">
+								<span class="socialBtn js-social-wrap">
+									<a href="#" class="socialBtnOpen js-open">
 										<span class="hide">공유하기</span>
 									</a>
-									<a href="#" class="socialBtn01">
+									<a href="#" class="socialBtn01" data-share-sns="facebook">
 										<span class="hide">페이스북</span>
 									</a>
-									<a href="#" class="socialBtn02">
+									<a href="#" class="socialBtn02" data-share-sns="twitter">
 										<span class="hide">트위터</span>
 									</a>
-									<a href="#" class="socialBtn03">
-										<span class="hide">카카오스토리</span>
-									</a>
-									<a href="#" class="socialBtn04">
+									<a href="#" class="socialBtn03" data-share-sns="pinterest">
 										<span class="hide">핀터레스트</span>
 									</a>
-									<a href="#" class="socialBtn05">
+									<a href="#" class="socialBtn04" data-share-sns="kakaostory">
+										<span class="hide">카카오스토리</span>
+									</a>
+									<a href="#" class="socialBtn05" data-share-sns="url">
 										<span class="hide">URL복사</span>
 									</a>
-									<a href="#" class="socialBtnClose">
+									<a href="#" class="socialBtnClose js-close">
 										<span class="hide">닫기</span>
 									</a>
 								</span>
@@ -127,7 +127,7 @@
 					</div>
 					<div class="barRight">
 						<span class="allPrice"><span>{{basePriceDesc}}</span> 원</span>
-						<a href="#"><span class="hide">좋아요</span></a>
+						<a href="#" class="js-add-like" data-product-number="{{productNumber}}" data-product-like="{{productServiceSectionCode}}"><span class="hide">좋아요</span></a>
 						<a href="#" class="js-add-cart bigBtn03">마이카트</a>
 						<a href="#" class="js-prd-buy bigBtn03">구매하기</a>
 					</div>
@@ -879,34 +879,8 @@
 		</div>
 		<!-- // 구매정보 영역 -->
 
-		<!-- [D] API 통신 - 결과화면 영역 -->
-		<div class="container js-api-result">
-			<h1>API 통신 - 결과화면 영역</h1>
-			<div>
-				<h2>- POST /apis/me/cart 장바구니 등록</h2>
-				<div class="js-ajax-data"></div>
-				<div class="addMyCartListResult"></div>
-			</div>
-			<div>
-				<h2>- GET /apis/products/{productNumber}/partnerInfo 상품 판매자 정보</h2>
-				<div class="productPartnerInfoResult"></div>
-			</div>
-			<div>
-				<h2>- GET /apis/products/{productNumber}/related 연관상품 리스트</h2>
-				<div class="productRelatedResult"></div>
-			</div>
-		</div>
-		<!--// [D] API 통신 - 결과화면 영역 -->
-
 		<!-- @@include ../_template/footer.html -->
 	</div>
-<style>
-	.js-api-result {margin:20px}
-	.js-api-result h1 {border-bottom:1px #999 solid;margin-bottom:20px;padding-bottom:20px}
-	.js-api-result > div {margin-left:20px;margin-bottom:40px;padding-bottom:10px;border-bottom:1px #999 dashed}
-	.js-api-result > div h2 {color:#ff6600;}
-	.js-api-result > div > div {margin-left:20px;padding-top:10px}
-</style>
 
 <script id="detail-partner-templates" type="text/x-handlebars-template">
 	{{#if company}}

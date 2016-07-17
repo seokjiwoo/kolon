@@ -108,30 +108,15 @@ module.exports = function() {
 	}
 
 	function setBtnsEvents() {
-		$('.socialBtnOpen').on('click', onSocialOpenListener);
-		$('.socialBtnClose').on('click', onSocialCloseListener);
 		$('.accordion li a').on('click', onAccordionListener);
 
-		$('.wrapper .js-add-cart, .wrapper .js-prd-buy').on('click', onCartBuyListener);
+		$('.wrapper .js-add-cart, .wrapper .js-prd-buy, .wrapper .js-add-like, .wrapper .js-add-scrap').on('click', onCartBuyListener);
 	}
 
 	function destoryBtnsEvents() {
-		$('.socialBtnOpen').off('click', onSocialOpenListener);
-		$('.socialBtnClose').off('click', onSocialCloseListener);
 		$('.accordion li a').off('click', onAccordionListener);
 
-		$('.wrapper .js-add-cart, .wrapper .js-prd-buy').off('click', onCartBuyListener);
-	}
-
-	function onSocialOpenListener(e) {
-		e.preventDefault();
-
-		var target = $(e.currentTarget);
-		if (target.parent('.socialBtn').hasClass('active')) {
-			target.parent('.socialBtn').removeClass('active');
-		} else {
-			target.parent('.socialBtn').removeClass('active').addClass('active');
-		}
+		$('.wrapper .js-add-cart, .wrapper .js-prd-buy, .wrapper .js-add-like, .wrapper .js-add-scrap').off('click', onCartBuyListener);
 	}
 
 	function onSocialCloseListener(e) {
@@ -171,6 +156,16 @@ module.exports = function() {
 				$('.optionScroll').height($('.optionList').height());
 				self.optionIScroll.refresh();
 			}
+			return;
+		}
+
+		if (target.hasClass('js-add-like')) {
+			productController.likes(target.data('product-number'), target.data('product-like'));
+			return;
+		}
+
+		if (target.hasClass('js-add-scrap')) {
+			// productController.likes(target.data('product-number'), target.data('product-like'));
 			return;
 		}
 
@@ -321,6 +316,18 @@ module.exports = function() {
 
 					productController.options(self.productNumber, criteriaOptionCount, 0, selectedOptions);
 					productController.partnerInfo(self.productNumber);
+					break;
+				case PRODUCT_EVENT.LIKES:
+					switch(status) {
+						case 200:
+							win.alert('해당 상품을 \'좋아요\' 하였습니다.');
+							location.reload();
+							break;
+						default:
+							win.alert(status + ' , ' + result.errorCode + ' , ' + result.message);
+							break;
+					}
+					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					break;
 				case PRODUCT_EVENT.OPTIONS:
 					optionsHandler(result.data.options);
