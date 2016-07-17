@@ -153,7 +153,7 @@ module.exports = function() {
 			var elements = $(template(result));
 			$('#opinionList').empty().append(elements);
 
-			$('.myProfileImage').attr('src', loginData.imageUrl);
+			if (loginData != null) $('.myProfileImage').attr('src', loginData.imageUrl);
 
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
