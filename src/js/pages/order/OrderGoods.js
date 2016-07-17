@@ -25,6 +25,9 @@ module.exports = function() {
 	var targetAddress;
 	var addressBookTarget;
 
+	var pointLimit;
+	var baseTotalPrice;
+
 	$(document).on('refreshAddressData', refreshAddressDataHandler);
 	$(document).on('selectAddressData', selectAddressDataHandler);
 
@@ -77,7 +80,9 @@ module.exports = function() {
 			//
 		} else {
 			orderProductArray = Cookies.getJSON('instantOrder');
-			//console.log(orderProductArray);
+			$.map(orderProductArray, function(eachCartItem) {
+				eachCartItem.quantity = eachCartItem.productQuantity;
+			});
 			//Cookies.remove('instantOrder');
 			controller.myOrdersInfo(orderProductArray);
 		}
@@ -103,7 +108,21 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDERS_INFO:
+				result.common.data.paymentInfo.leftPoint = 10000;
+
+				baseTotalPrice = Number(result.common.data.paymentInfo.totalPaymentPrice);
+				pointLimit = Number(result.common.data.paymentInfo.leftPoint);
+				
+				var totalDeliveryCharge = 0;
+				$.each(result.common.data.products, function(key, value) {
+					//result.common.data.paymentInfo[key+'Desc'] = util.currencyFormat(value);
+					totalDeliveryCharge += value.deliveryCharge;
+				});
+				$.each(result.common.data.paymentInfo, function(key, value) {
+					result.common.data.paymentInfo[key+'Desc'] = util.currencyFormat(value);
+				});
 				console.log(result.common.data);
+
 				displayData(result.common.data);
 				if (result.common.data.products.length == 1) {
 					$('#deliveryTab').hide();
@@ -128,6 +147,45 @@ module.exports = function() {
 					addressBookTarget = $(this).attr('id').substr(12);
 					console.log($(this).attr('id').substr(12));
 				});
+
+				if (pointLimit < 5000) {
+					$('#pointCk01').attr('disabled', 'disabled');
+					$('#pointWt').attr('disabled', 'disabled');
+				}
+				$('#pointWt').change(function(e){
+					var newValue = Number($('#pointWt').val());
+					if (newValue < 5000) {
+						alert('포인트는 최하 5000포인트부터 사용가능합니다.');
+						$('#pointWt').val('');
+						$('.usedPoint').text('0');
+						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
+					} else if (newValue > pointLimit) {
+						alert('사용 가능한 포인트를 초과합니다. 다시 입력해주세요.');
+						$('#pointWt').val('');
+						$('.usedPoint').text('0');
+						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
+					} else {
+						$('.usedPoint').text(util.currencyFormat(newValue));
+						$('.totalPrice').text(util.currencyFormat(baseTotalPrice-newValue));
+					}
+				});
+				$('#useAllPointCheck').click(function(e){
+					if (!$('#pointCk01').prop('checked')) {
+						$('#pointWt').val(pointLimit);
+						$('.usedPoint').text(pointLimit);
+						$('.totalPrice').text(util.currencyFormat(baseTotalPrice-pointLimit));
+					} else {
+						$('#pointWt').val('');
+						$('.usedPoint').text('0');
+						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
+					}
+				});
+
+				$('.basePrice').text(util.currencyFormat(result.common.data.paymentInfo.totalPaymentPrice-totalDeliveryCharge));
+				$('.basicDiscount').text(result.common.data.paymentInfo.totalDiscountPriceDesc);
+				$('.usedPoint').text('0');
+				$('.handlingPrice').text(util.currencyFormat(totalDeliveryCharge));
+				$('.totalPrice').text(result.common.data.paymentInfo.totalPaymentPriceDesc);
 				break;
 		}
 	}
@@ -155,6 +213,12 @@ module.exports = function() {
 			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 			eventManager.triggerHandler(INFOSLIDER_EVENT.REFRESH);
 		});
+
+		source = $('#order-payment-templates').html();
+		template = win.Handlebars.compile(source);
+		insertElements = $(template(data.paymentInfo));
+		$('#paymentForm1').empty().append(insertElements);
+		
 	}
 
 	function onColorBoxAreaListener(e) {

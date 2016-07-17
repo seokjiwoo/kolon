@@ -192,63 +192,65 @@
 					</div>
 					<!-- 결제 정보 -->
 					<h3 class="subTit">결제 정보</h3>
-					<div class="orderCont">
-						<form method="post" action="/">
-							<div class="payTb payTbL border">
-								<dl class="payS minus">
-									<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
-									<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
-								</dl>
-								<dl class="payS equal">
-									<dt><div>총 할인가</div></dt>
-									<dd>
-										<div>
-											<ul class="tbList">
-												<li>
-													<span class="tbListTit">기본할인</span>
-													<span><b>10,000</b>원</span>
-												</li>
-												<li>
-													<span class="tbListTit">포인트</span>
-													<span><b>3,000</b>원</span>
-												</li>
-											</ul>
-										</div>
-									</dd>
-								</dl>
-								<dl class="payS">
-									<dt><div>총 결제금액</div></dt>
-									<dd>
-										<div><span class="price"><b class="italicNum">2,602,500</b> 원</span></div>
-									</dd>
-								</dl>
-							</div>
-							<div class="payTb payTbR">
-								<dl class="payL payHL borderGray">
-									<dt><div>혜택 적용</div></dt>
-									<dd>
-										<div>
-											<ul class="pointBul">
-												<li><p class="tbBul"><label for="pointWt">포인트 사용</label><input type="text" style="width:111px;" id="pointWt" value=""/> p</p></li>
-												<li><p class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""/><label for="pointCk01">모두사용 ( 잔여 포인트 :  <b class="pointRed">0</b> p )</label></p></li>
-											</ul>
-											<p class="underTxt">포인트는 5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
-										</div>
-									</dd>
-								</dl>
-								<dl class="payS payHL borderGray">
-									<dt><div>구매 혜택</div></dt>
-									<dd>
-										<div>
-											<ul class="giveList">
-												<li>적립 예정 <br/>포인트</li>
-												<li class="pc"><b>1,300</b> p</li>
-											</ul>
-										</div>
-									</dd>
-								</dl>
-							</div>
-						</form>
+					<div class="orderCont" id='paymentForm1'>
+						<script id="order-payment-templates" type="text/x-handlebars-template">
+						{{!-- order-payment-templates --}}
+						<div class="payTb payTbL border">
+							<dl class="payS minus">
+								<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
+								<dd><div><span class="price"><b>{{totalOrderPriceDesc}}</b> 원</span></div></dd>
+							</dl>
+							<dl class="payS equal">
+								<dt><div>총 할인가</div></dt>
+								<dd>
+									<div>
+										<ul class="tbList">
+											<li>
+												<span class="tbListTit">기본할인</span>
+												<span><b>{{totalDiscountPriceDesc}}</b>원</span>
+											</li>
+											<li>
+												<span class="tbListTit">포인트</span>
+												<span><b class='usedPoint'>0</b>원</span>
+											</li>
+										</ul>
+									</div>
+								</dd>
+							</dl>
+							<dl class="payS">
+								<dt><div>총 결제금액</div></dt>
+								<dd>
+									<div><span class="price"><b class="italicNum totalPrice">{{totalPaymentPriceDesc}}</b> 원</span></div>
+								</dd>
+							</dl>
+						</div>
+						<div class="payTb payTbR">
+							<dl class="payL payHL borderGray">
+								<dt><div>혜택 적용</div></dt>
+								<dd>
+									<div>
+										<ul class="pointBul">
+											<li><p class="tbBul"><label for="pointWt">포인트 사용</label><input type="text" style="width:111px;" id="pointWt" value=""/> p</p></li>
+											<li><p id='useAllPointCheck' class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""/><label for="pointCk01">모두사용 ( 잔여 포인트 :  <b class="pointRed">{{leftPointDesc}}</b> p )</label></p></li>
+										</ul>
+										<p class="underTxt">포인트는 5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
+									</div>
+								</dd>
+							</dl>
+							<dl class="payS payHL borderGray">
+								<dt><div>구매 혜택</div></dt>
+								<dd>
+									<div>
+										<ul class="giveList">
+											<li>적립 예정 <br/>포인트</li>
+											<li class="pc"><b>{{savingPointDesc}}</b> p</li>
+										</ul>
+									</div>
+								</dd>
+							</dl>
+						</div>
+						{{!--// order-payment-templates --}}
+						</script>
 					</div>
 					<!--// 결제 정보 -->
 					<!-- 결제 방법 -->
@@ -321,9 +323,9 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">주문금액</th>
+															<th scope="row">상품금액</th>
 															<td class="txtR">
-																<span class="price"><b>2,602,500</b> 원</span>
+																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
 														</tr>
 														<tr>
@@ -332,23 +334,23 @@
 																<ul class="tbList">
 																	<li>
 																		<span class="tbListTit">기본할인</span>
-																		<span class="price"><b>-10,000</b> 원</span>
+																		<span class="price">-<b class='basicDiscount'></b> 원</span>
 																	</li>
 																	<li>
 																		<span class="tbListTit">포인트</span>
-																		<span class="price"><b>-0</b> P</span>
+																		<span class="price">-<b class='usedPoint'></b> P</span>
 																	</li>
 																</ul>
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b>0</b> 원</span></td>
+															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
 														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
 															<td class="txtR">
-																<span class="price pointRed"><b class="italicNum">2,600,000</b> 원</span>
+																<span class="price pointRed"><b class="italicNum totalPrice"></b> 원</span>
 															</td>
 														</tr>
 													</tbody>
@@ -473,34 +475,34 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">주문금액</th>
+															<th scope="row">상품금액</th>
 															<td class="txtR">
-																<span class="price"><b>2,602,500</b> 원</span>
+																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
-														</tr>
+														</tr> 
 														<tr>
 															<th scope="row">할인금액</th>
 															<td>
 																<ul class="tbList">
 																	<li>
 																		<span class="tbListTit">기본할인</span>
-																		<span class="price"><b>-10,000</b> 원</span>
+																		<span class="price">-<b class='basicDiscount'></b> 원</span>
 																	</li>
 																	<li>
 																		<span class="tbListTit">포인트</span>
-																		<span class="price"><b>-0</b> P</span>
+																		<span class="price">-<b class='usedPoint'></b> P</span>
 																	</li>
 																</ul>
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b>0</b> 원</span></td>
+															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
 														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
 															<td class="txtR">
-																<span class="price pointRed"><b class="italicNum">2,600,000</b> 원</span>
+																<span class="price pointRed"><b class="italicNum totalPrice"></b> 원</span>
 															</td>
 														</tr>
 													</tbody>
@@ -607,9 +609,9 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">주문금액</th>
+															<th scope="row">상품금액</th>
 															<td class="txtR">
-																<span class="price"><b>2,602,500</b> 원</span>
+																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
 														</tr>
 														<tr>
@@ -618,23 +620,23 @@
 																<ul class="tbList">
 																	<li>
 																		<span class="tbListTit">기본할인</span>
-																		<span class="price"><b>-10,000</b> 원</span>
+																		<span class="price">-<b class='basicDiscount'></b> 원</span>
 																	</li>
 																	<li>
 																		<span class="tbListTit">포인트</span>
-																		<span class="price"><b>-0</b> P</span>
+																		<span class="price">-<b class='usedPoint'></b> P</span>
 																	</li>
 																</ul>
 															</td>
 														</tr>
 														<tr>
 															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b>0</b> 원</span></td>
+															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
 														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
 															<td class="txtR">
-																<span class="price pointRed"><b class="italicNum">2,600,000</b> 원</span>
+																<span class="price pointRed"><b class="italicNum totalPrice"></b> 원</span>
 															</td>
 														</tr>
 													</tbody>

@@ -12,7 +12,7 @@
 
 .qna .expertList{margin-top: 30px;text-align: center;}
 .qna .expertList li{position: relative;display: inline-block;width: 166px;padding-top: 180px;}
-.qna .expertList li .hexagon{width: 166px; height: 95.84px;margin: 47.92px 0;;background-size: auto 191.6803px;}
+.qna .expertList li .hexagon{top:0;width: 166px; height: 95.84px;margin: 47.92px 0;;background-size: auto 191.6803px;}
 .qna .expertList li .hexTop, .expertList li .hexBottom{width: 117.38px;height: 117.38px;left: 24.31px;}
 .qna .expertList li .hexTop{top: -58.6899px;}
 .qna .expertList li .hexBottom{bottom: -58.6899px;}

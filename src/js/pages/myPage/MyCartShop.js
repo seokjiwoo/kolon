@@ -19,6 +19,8 @@ module.exports = function() {
 	CHECKBOX_EVENT = events.CHECK_BOX,
 	CART_EVENT = events.CART;
 
+	var orderData;
+	
 	var callerObj = {
 		/**
 		 * 초기화
@@ -140,6 +142,8 @@ module.exports = function() {
 	}
 
 	function displayUpdate(chked) {
+		orderData = new Array();
+		
 		var list = chked || self.templatesWrap.find(self.opts.cartList.wrap),
 		orderInfo = self.templatesWrap.find(self.opts.cartOrderInfo.wrap),
 		info = {},
@@ -160,6 +164,13 @@ module.exports = function() {
 
 			$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
 			$(this).find(self.opts.optionNum).html(info.productQuantity);
+
+			orderData.push({
+				"productNumber": info.productNumber,
+				"orderOptionNumber": info.optionNumber,
+				"productQuantity": info.productQuantity,
+				"optionQuantity": info.productQuantity,
+			});
 		});
 
 		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalBaseValue));
@@ -202,6 +213,11 @@ module.exports = function() {
 				displayData(result.data.myCarts);
 				displayUpdate();
 				setDeleteEvents();
+
+				$('#js-myCartShop-submit').click(function(e){
+					Cookies.set('instantOrder', orderData);
+					location.href = '/order/orderGoods.html';
+				});
 				break;
 			case CART_EVENT.DELETE:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

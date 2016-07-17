@@ -54,6 +54,7 @@
 								"deliveryCharge" : {{deliveryCharge}},
 								"producerType" : "{{producerType}}",
 								"productNumber" : {{productNumber}},
+								"optionNumber" : {{orderOptionNumber}},
 								"productQuantity" : {{productQuantity}},
 								"basePrice" : {{basePrice}},
 								"salePrice" : {{salePrice}}
@@ -164,7 +165,7 @@
 		</div>
 		<!--// 결제 정보 -->
 		<div class="btnC mt40">
-			<button type="submit" class="btn btnSizeL btnColor02 btnWM js-myCartShop-submit">주문하기</button>
+			<button type="button" id='js-myCartShop-submit' class="btn btnSizeL btnColor02 btnWM">주문하기</button>
 		</div>
 	{{/if}}
 {{!--// myCartShop-list-templates --}}
