@@ -79,6 +79,11 @@ function ClassLoginController() {
 		if (authNumber != undefined) loginPostObj.certiNumber = authNumber;
 		if (keepLogin == undefined) loginPostObj.keepLogin = 'N';
 
+		// recaptcha
+		if (window.VX_G_RECAPTCHA_CALL_BACK && window.grecaptcha) {
+			loginPostObj.recaptcha = window.grecaptcha.getResponse();
+		}
+
 		Super.callApi('/apis/user/login', 'POST', loginPostObj, function(status, result) {
 			if (status == 200) {
 				switch(result.status) {

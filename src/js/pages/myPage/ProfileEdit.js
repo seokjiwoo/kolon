@@ -25,7 +25,9 @@ module.exports = function() {
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
 	$(loginController).on('verifyMemberResult', verifyMemberResultHandler);
 	
-	var DropDownMenu = require('../../components/DropDownMenu.js');
+	var eventManager = require('../../events/EventManager'),
+	events = require('../../events/events'),
+	DROPDOWNSCROLL_EVENT = events.DROPDOWN_SCROLL;
 
 	var myInfoObject;
 	var emailDuplicateFlag = false;
@@ -227,12 +229,12 @@ module.exports = function() {
 		if (status == 200) {
 			MyPage.Super.Super.htmlPopup('../../_popup/popRefundAccount.html', 590, 'popEdge', {
 				onOpen: function() {
-					var tags = '<li><a href="#">선택하세요</a></li>';
+					var tags = '';
 					for (var key in result.bankCodes) {
 						tags += '<li><a href="#" data-value="'+result.bankCodes[key].code+'">'+result.bankCodes[key].bankName+'</a></li>';
 					}
 					$('#refundBankDrop').html(tags);
-					DropDownMenu.refresh();
+					eventManager.triggerHandler(DROPDOWNSCROLL_EVENT.REFRESH);
 					$('#refundAccountForm').submit(submitChangeRefundAccount);
 				},
 				onSubmit: function() {
@@ -250,7 +252,7 @@ module.exports = function() {
 	function submitChangeRefundAccount(e) {
 		e.preventDefault();
 
-		var bankCode = $('#refundBankDrop').val();
+		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').val();
 		var accountNumber = $('#accountNumber').val();
 		var depositorName = $('#depositorName').val();
 

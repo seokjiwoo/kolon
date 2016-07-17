@@ -113,7 +113,7 @@
 .dropUp > a:after {content:'';display:block;position:absolute;top:15px;right:15px;width:16px;height:10px;background:url(../images/ico_toggleB.png) 0 -10px no-repeat;}
 .dropUp.is-show > a:after {background-position:0 0}
 .dropScrollEx.is-show .scrollWrapEx {display:block}
-.scrollWrapEx {position:absolute;top:-192px;border-top:1px solid #000;left:-1px;right:-1px;overflow:hidden;max-height:190px;display:none}
+.scrollWrapEx {position:absolute;border-top:1px solid #000;left:-1px;right:-1px;overflow:hidden;max-height:199px;display:none}
 .dropUpCon li {display:block;height:39px;border:1px solid #000;border-bottom:none;background:#fff;}
 .dropUpCon li:first-child {border-top:none}
 .dropUpCon li a {display:block;line-height:38px;padding:0 15px;font-size:13px;color:#000;border:none;border-radius:0;font-family:'NotoSansR', sans-serif;background:#fff;}
