@@ -92,13 +92,31 @@ function DropDownScroll() {
 		e.preventDefault();
 		var target = $(e.currentTarget),
 		wrap = target.closest(self.opts.wrap),
-		iScroll = wrap.data('iscroll');
+		iScroll = wrap.data('iscroll'),
+		scrollWrap = wrap.find(self.opts.iScroll.target),
+		container = wrap.find('.dropUpCon');
 
 		wrap.toggleClass(self.opts.cssClass.isShow);
 
 		if (!wrap.hasClass(self.opts.cssClass.isShow)) return;
 
 		if (iScroll) iScroll.refresh();
+
+		if (container.size()) {
+			var maxHeight = parseInt(scrollWrap.css('max-height'), 10),
+			conHeight = container.outerHeight(),
+			borderSize = 2,
+			setPos;
+
+			if (conHeight > maxHeight) {
+				setPos = maxHeight + borderSize;
+			} else {
+				setPos = conHeight + borderSize;
+			}
+
+			scrollWrap.css({top : -setPos});
+		}
+
 		wrap.one('keyupoutside mousedownoutside', $.proxy(onWrapClose, self));
 		wrap.on('mousewheel', $.proxy(onWheelPrevent, self));
 	}
