@@ -21,6 +21,10 @@ module.exports = function() {
 	PRODUCT_EVENT = events.PRODUCT,
 	OPTIONNUM_EVENT = events.OPTION_NUM,
 	MEMBERINFO_EVENT = events.MEMBER_INFO;
+	
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../../model/LoginModel');
  
  	var criteriaOptionCount;
 	var optionsUseFlag;
@@ -195,7 +199,13 @@ module.exports = function() {
 		}
 	}
 
+	function myInfoResultHandler(e) {
+		//
+	}
+
 	function addCart() {
+		var loginData = loginDataModel.loginData();
+
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
 		} else if (Super.Super.loginData.stateCode == 'BM_MEM_STATE_01') {
@@ -214,6 +224,8 @@ module.exports = function() {
 	};
 
 	function orderGoods() {
+		var loginData = loginDataModel.loginData();
+		
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
 		} else if (Super.Super.loginData.stateCode == 'BM_MEM_STATE_01') {

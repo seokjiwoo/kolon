@@ -18,7 +18,7 @@ module.exports = function() {
 	$(controller).on('editMemberInfoResult', editInfoResultHandler);
 	$(controller).on('refundBankListResult', refundBankListResultHandler);
 	$(controller).on('refundDataResult', refundDataResultHandler);
-	$(controller).on('verifyMemberResult', verifyMemberResultHandler);
+	//$(controller).on('verifyMemberResult', verifyMemberResultHandler);
 	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);

@@ -245,8 +245,9 @@ module.exports = function() {
 		loginData = loginDataModel.loginData();
 		console.log(loginData);
 		$('#BuyerName').val(loginData.memberName);
-		if (loginData.phone == null) {
+		if (loginData.phone != null) {
 			$('#BuyerTel').val(loginData.phone);
+		} else {
 			alert('본인인증이 필요한 페이지입니다.');
 			//Cookies.remove('instantOrder');
 			location.href='/';
@@ -254,6 +255,10 @@ module.exports = function() {
 	};
 
 	function getHashString(e) {
+		if (!$('#agree01cb').hasClass('on')) {
+			alert('개인정보 제 3자 제공에 동의해 주세요.');
+			return;
+		}
 		var usingPoint = parseInt($("#usingPoint").val());
 		if (isNaN(usingPoint)) usingPoint = 0;
 		var paymentPrice = baseTotalPrice - usingPoint;
@@ -266,7 +271,7 @@ module.exports = function() {
 				product.orderOptionNum,
 				product.quantity,
 				($('#delivery1').is(':visible') ? selectedOneAddress : selectedMultiAddress[key]),
-				encodeURI( $('#messageField-'+(key+1)).val() )
+				encodeURI( $('#messageField-'+(Number(key)+1)).val() )
 			);
 			if (!eachOrderArray[3]) {
 				alert('배송지를 지정해 주세요.');

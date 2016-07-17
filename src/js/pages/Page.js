@@ -3,7 +3,8 @@
 module.exports = function() {
 	var SuperClass = require('../pagesCommon/PageCommon.js');
 	var Super = SuperClass();
-	
+
+	var util = require('../utils/Util.js');	
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
 	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
@@ -413,7 +414,7 @@ module.exports = function() {
 	/**
 	 * 휴대폰 수정(=실명인증) 진행
 	 */
-	function requestVerifyMember() {
+	function requestVerifyMember(e) {
 		e.preventDefault();
 
 		Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
@@ -438,8 +439,8 @@ module.exports = function() {
 	 * 휴대폰 실명인증 결과 핸들링
 	 */
 	function verifyMemberResultHandler(e, authData) {
-		switch(authData.status) {
-			case '200':
+		switch(Number(authData.status)) {
+			case 200:
 				Super.alertPopup('본인확인이 완료되었습니다.', '이제 COMMON의 모든 서비스를 이용하실 수 있습니다.', '확인');
 				memberInfoController.getMyInfo();
 				break;
