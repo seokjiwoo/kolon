@@ -140,7 +140,18 @@
 										</div>
 										<!-- 의견 내용 -->
 										<div class="conbox">
-											<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">{{category}}</span>{{title}}</a></strong>
+											<strong>
+												<a href="../../_popup/popPhotoDetailView.html"
+													class="btnPop btnPop895"
+													data-user-class="qna popEdge popPhotoDetailView opinionNumber{{opinionNumber}}"
+													data-opinion-info='{
+														"opinionNumber" : "{{opinionNumber}}",
+														"opinionImages" : "{{images}}",
+														"title" : "{{title}}"
+													}'>
+													<span class="it">{{category}}</span>{{title}}
+												</a>
+											</strong>
 											<div class="conboxTxt">
 												<p class="except02">{{{content}}} <a href="" class="more">더보기</a></p>
 											</div>

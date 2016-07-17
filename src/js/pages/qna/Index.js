@@ -71,6 +71,20 @@ module.exports = function() {
 					type : '*.jpg;*.jpeg;*.png'
 				}
 			}
+		},
+		carousel : {
+			wrap : '.js-slider-wrap',
+			area : '.js-slider-area',
+			pager : '.js-slider-pager',
+			bxSliderOpts : {
+			},
+			cssClass : {
+				isCustomPager : 'is-custom-pager'
+			}
+		},
+		templates : {
+			carouselWrap : '.js-scrapCarousel-container',
+			carousel : '#scrap-carousel-templates'
 		}
 	};
 
@@ -81,17 +95,23 @@ module.exports = function() {
 		 * 초기화
 		 */
 		init: init
-	};
+	},
+	self;
 	
 	return callerObj;
 	
 	function init(options) {
 		Super.init();
 
-		callerObj.colorbox = $(opts.colorbox.target);
-		$(document).on(opts.colorbox.event.COMPLETE, onCboxEventListener)
-		$(document).on(opts.colorbox.event.CLEANUP, onCboxEventListener)
-		$(document).on(opts.colorbox.event.CLOSED, onCboxEventListener);
+		self = callerObj;
+		self.opts = opts;
+
+		self.colorbox = $(opts.colorbox.target);
+		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
+
+		self.isCarouselMode = false;
+		self.carousels = [];
+		self.selPopBtnInfo = {};
 
 		$(".opinionwrite > .toggleBtn").on("click", showWriteForm);
 		$('#opinionWriteForm').submit(writeFormSubmitHandler);
@@ -146,14 +166,15 @@ module.exports = function() {
 					if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 				});
-				//console.log(each);
 			});
 
 			var template = window.Handlebars.compile($('#opinion-template').html());
 			var elements = $(template(result));
 			$('#opinionList').empty().append(elements);
 
-			if (loginData != null) $('.myProfileImage').attr('src', loginData.imageUrl);
+			if (loginData && loginData.imageUrl) {
+				$('.myProfileImage').attr('src', loginData.imageUrl);
+			}
 
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
@@ -162,16 +183,35 @@ module.exports = function() {
 				after: 'a.more',
 				watch:'window',
 				callback:function(){
-					$('.more').on('click', function(e) { // more slideDown
+					$(this).find('.more').on('click', function(e) { // more slideDown
 						e.preventDefault();
-						$(this).parent('p').siblings('.slideCon').slideDown();
-						$(this).parent('.except02').trigger('destroy').css('height','auto').find('a').remove();
-					});					
-					if (!$('.except02').hasClass('is-truncated')) {
+						var wrap = $(this).closest('.except02');
+
+						wrap.siblings('.slideCon').slideDown();
+
+						wrap.trigger('destroy')
+							.css('height','auto')
+							.find('a')
+							.remove();
+					});
+
+					if (!$(this).hasClass('is-truncated')) {
 						$(this).find('.more').remove();
 					}
 				}
 			});
+
+			$('[data-opinion-info]').on('click', function(e) {
+				var target = $(e.currentTarget),
+				info = target.data('opinion-info');
+
+				self.selPopBtnInfo = {
+					target : target,
+					info : info
+				};
+			});
+
+			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 		}
 	};
 
@@ -185,8 +225,8 @@ module.exports = function() {
 			$('#expertList').empty().append(elements);
 
 			$('#expertList').bxSlider({
-				minSlides: 6,
-				maxSlides: 6,
+				minSlides: 5,
+				maxSlides: 5,
 				responsive: false,
 				pager: false,
 				controls: false,
@@ -213,7 +253,6 @@ module.exports = function() {
 	 */
 	function myOpinionsHandler(e, status, result) {
 		if (status == 200) {
-			console.log(result);
 			var template = window.Handlebars.compile($('#my-opinion-template').html());
 			var elements = $(template(result));
 			$('#myOpinion').empty().append(elements);
@@ -224,80 +263,10 @@ module.exports = function() {
 	 * 스크랩 북 목록 핸들링
 	 */
 	function scrapedOpinionsListHandler(e, status, result) {
-		var dummyData = {
-			"folders": [
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩0",
-					"folderNumber": 0,
-					"scrapCount": 4,
-					"scrapImages": [
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg"
-					]
-				},
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩1",
-					"folderNumber": 1,
-					"scrapCount": 16,
-					"scrapImages": [
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg"
-					]
-				},
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩2",
-					"folderNumber": 2,
-					"scrapCount": 1,
-					"scrapImages": [
-						"../images/temp01.jpg"
-					]
-				},
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩3",
-					"folderNumber": 3,
-					"scrapCount": 0,
-					"scrapImages": [
-					]
-				}
-			],
-			"opinions": [
-				{
-					"answerCount": 0,
-					"answers": [
-						{
-							"answerNumber": 0,
-							"content": "string",
-							"createDate": "string",
-							"expertCompany": "string",
-							"expertImageUrl": "string",
-							"expertName": "string",
-							"helpCount": 0,
-							"serviceNames": [
-								"string"
-							]
-						}
-					],
-					"category": "string",
-					"content": "string",
-					"createDate": "string",
-					"images": [
-						"string"
-					],
-					"opinionClassNumber": 0,
-					"opinionNumber": 0,
-					"title": "string",
-					"userName": "string"
-				}
-			]
-		};
-
 		switch(status) {
 			case 200:
 				break;
 			default:
-				win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-				result = dummyData;
 				break;
 		}
 
@@ -317,7 +286,7 @@ module.exports = function() {
 
 		var template = window.Handlebars.compile($('#scrap-add-template').html());
 		var elements = $(template(result));
-		callerObj.colorbox.find('.js-scrap-container').empty().append(elements);
+		self.colorbox.find('.js-scrap-container').empty().append(elements);
 
 		eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 		eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
@@ -329,10 +298,10 @@ module.exports = function() {
 	}
 
 	function setScrapAddEvents() {
-		var selFolder = callerObj.colorbox.find('.js-sel-folder'),
-		scrapList = callerObj.colorbox.find('.js-scrap-list'),
-		btnCancel = callerObj.colorbox.find('.js-sel-cancel'),
-		btnSubmit = callerObj.colorbox.find('.js-sel-submit');
+		var selFolder = self.colorbox.find('.js-sel-folder'),
+		scrapList = self.colorbox.find('.js-scrap-list'),
+		btnCancel = self.colorbox.find('.js-sel-cancel'),
+		btnSubmit = self.colorbox.find('.js-sel-submit');
 
 		selFolder.on('change', onScrapAddSelFolderChange);
 		scrapList.find('li').on('click', onScrapAddSelImage);
@@ -342,10 +311,10 @@ module.exports = function() {
 	}
 
 	function destoryScrapAddEvents() {
-		var selFolder = callerObj.colorbox.find('.js-sel-folder'),
-		scrapList = callerObj.colorbox.find('.js-scrap-list'),
-		btnCancel = callerObj.colorbox.find('.js-sel-cancel'),
-		btnSubmit = callerObj.colorbox.find('.js-sel-submit');
+		var selFolder = self.colorbox.find('.js-sel-folder'),
+		scrapList = self.colorbox.find('.js-scrap-list'),
+		btnCancel = self.colorbox.find('.js-sel-cancel'),
+		btnSubmit = self.colorbox.find('.js-sel-submit');
 
 		selFolder.off('change', onScrapAddSelFolderChange);
 		scrapList.find('li').off('click', onScrapAddSelImage);
@@ -425,7 +394,7 @@ module.exports = function() {
 
 	function onScrapAddSelFolderChange(e) {
 		var folderNumber = $(this).val(),
-		scrapList = callerObj.colorbox.find('.js-scrap-list');
+		scrapList = self.colorbox.find('.js-scrap-list');
 
 		scrapList.removeClass('is-show');
 		scrapList.filter('[data-folder-number=\'' + folderNumber + '\']').addClass('is-show');
@@ -551,7 +520,6 @@ module.exports = function() {
 
 	function postAnswerResultHandler(e, status, result) {
 		if (status == 200) {
-			console.log(result);
 			Super.Super.alertPopup('의견묻기', '의견이 등록되었습니다', '확인', function() {
 				location.reload(true);
 			});
@@ -616,14 +584,115 @@ module.exports = function() {
 		debug.log(fileName, 'onUploaderFailure', imageUploader.EVENT.UPLOAD_FAILURE, jqXHR);
 	}
 
-	function onCboxEventListener(e) {
-		debug.log(fileName, 'onCboxEventListener', e.type);
 
-		var CB_EVENTS = opts.colorbox.event;
+	function setCarousel() {
+		var wrap, pager, bxSliderOpts, carousel;
+
+		$.each(self.colorbox.find(self.opts.carousel.area), function() {
+			wrap = $(this).closest(self.opts.carousel.wrap);
+			pager = wrap.find(self.opts.carousel.pager);
+
+			if (pager.size()) {
+				bxSliderOpts = $.extend({}, self.opts.carousel.bxSliderOpts, {
+					pagerCustom : pager
+				});
+
+				wrap.addClass(self.opts.carousel.cssClass.isCustomPager);
+			} else {
+				bxSliderOpts = self.opts.carousel.bxSliderOpts;
+
+				wrap.removeClass(self.opts.carousel.cssClass.isCustomPager);
+			}
+
+			carousel = $(this).bxSlider(bxSliderOpts);
+			self.carousels.push(carousel);
+			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+		});
+	}
+
+	function reloadCarousel() {
+		$.map(self.carousels, function(carousel) {
+			carousel.reloadSlider();
+		});
+	}
+
+	function destroyCarousel() {
+		$.map(self.carousels, function(carousel) {
+			carousel.destroySlider();
+		});
+	}
+
+	function setColoboxFolder() {
+		if (self.colorbox.hasClass('popPhotoDetailView')) {
+			self.isCarouselMode = true;
+			self.carousels = [];
+
+			var list = self.selPopBtnInfo.info.opinionImages.split(','),
+			data = {
+				'folders' : {
+					'folderName' : self.selPopBtnInfo.info.title,
+					'scrapCount' : list.length,
+					'scrapImages' : []
+				}
+			};
+
+			$.map(list, function(images) {
+				data.folders.scrapImages.push({
+					'imageUrl' : images,
+					'imageTitle' : ''
+				});
+			});
+
+			var wrap = $(self.opts.templates.carouselWrap),
+			templates = $(self.opts.templates.carousel),
+			source = templates.html(),
+			template = win.Handlebars.compile(source),
+			insertElements = $(template(data));
+
+			wrap.empty()
+				.addClass(self.opts.cssClass.isLoading)
+				.append(insertElements);
+
+			setCarousel();
+
+			wrap.imagesLoaded()
+					.always(function() {
+						wrap.removeClass(self.opts.cssClass.isLoading);
+						reloadCarousel();
+						eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+						eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+					})
+					.progress(function(instance, image) {
+						var item = $(image.img).closest('.js-slider-list');
+
+						if (image.isLoaded) {
+							item.removeClass('is-loading');	
+						} else {
+							item.removeClass('is-loading').addClass('is-broken');
+						}
+					});
+		}
+
+		debug.log(fileName, 'setColoboxFolder');
+	}
+
+	function destroyColoboxFolder() {
+		if (self.colorbox.hasClass('popPhotoDetailView')) {
+			self.isCarouselMode = false;
+			destroyCarousel();
+			self.carousels = [];
+			self.selPopBtnInfo = {};
+		}
+
+		debug.log(fileName, 'setColoboxFolder');
+	}
+
+	function onColorBoxAreaListener(e) {
+		debug.log(fileName, 'onColorBoxAreaListener', e.type);
 
 		switch(e.type) {
-			case CB_EVENTS.COMPLETE:
-				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
+			case COLORBOX_EVENT.COMPLETE:
+				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.on(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
 									.on(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
@@ -631,12 +700,16 @@ module.exports = function() {
 					imageUploader.init(opts.imageUploader);
 				}
 
-				if (callerObj.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
+				if (self.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
 					controller.scrapedOpinionsList();
 				}
+
+				if (self.colorbox.hasClass('popPhotoDetailView')) {
+					setColoboxFolder();
+				}
 				break;
-			case CB_EVENTS.CLEANUP:
-				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
+			case COLORBOX_EVENT.CLEANUP:
+				if (self.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
 					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.off(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
 									.off(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
@@ -644,11 +717,9 @@ module.exports = function() {
 					imageUploader.destory();
 				}
 
-				if (callerObj.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
+				if (self.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
 					destoryScrapAddEvents();
 				}
-				break;
-			case CB_EVENTS.CLOSED:
 				break;
 		}
 	}
