@@ -32,6 +32,17 @@ module.exports = function() {
 	};
 
 	function getDetailHandler(e, status, result) {
-		console.log(result);
+		var magazineData = result.data.magazine;
+		console.log(magazineData);
+
+		renderData(magazineData, '#top-cont-templates', '#top-cont-wrap', true);
+		renderData(magazineData, '#description-templates', '#description-wrap', true);
+	};
+
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
 	};
 };

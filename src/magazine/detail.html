@@ -7,30 +7,31 @@
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
 		<!-- 상단 배너 -->
-		<div class="detailArea magazineTop topArea">
-			
-		    <div class="topContBox" style="background-image:url('../images/magazine_topBg.png')">
+		<div class="detailArea magazineTop topArea" id='top-cont-wrap'>
+			<script id="top-cont-templates" type="text/x-handlebars-template">
+			{{!-- top-cont-box-templates --}}
+			<div class="topContBox" style="background-image:url('{{mainImageUrl}}')">
 		    	<div class="topCont subTop">
 			    	<ul class="tagList">
-						<li><a href="#">2016.06.20</a></li>
+						<li><a href="#">{{createDate}}</a></li>
 					</ul>
 
-				    <h3><span>야행성 부부의 호텔같은 집</span></h3>
-				    <p class="infoSub">호텔같이 편안하면서도 개성있는 아파트 패키지 </p>
-				    <p>by 박실장 <span>KOLON GLOBAL</span></p>
+				    <h3><span>{{magazineTitle}}</span></h3>
+				    <p class="infoSub">{{magazineDesc}}</p>
+				    <!--<p>by 박실장 <span>KOLON GLOBAL</span></p>-->
 
 					<div class="newFormBtn shopBtn">
 				  		<ul class="subBtn">
 				  			<li class="subBtn01">
 				  				<a href="#">
 				  					<span class="hide">좋아요</span>
-				  					<span class="countNum">12,213</span>
+				  					<span class="countNum">{{likeCount}}</span>
 				  				</a>
 				  			</li>
 				  			<li class="subBtn02">
 				  				<a href="#">
 				  					<span class="hide">스크랩</span>
-				  					<span class="countNum">12,213</span>
+				  					<span class="countNum">{{scrapCount}}</span>
 				  				</a>
 				  			</li>
 				  			<li>
@@ -62,16 +63,27 @@
 					</div>
 				</div>
 			</div>
-
+			{{!--// top-cont-templates --}}
+			</script>
 		</div>
 		<!-- // 상단 배너 -->
 
 		<!-- 이벤트 베너 -->
 		<div class="detailArea eventBanner">
-			<a href="#" style="background-image:url('../images/eventBanner_left.png')"></a>
-			<a href="#" style="background-image:url('../images/eventBanner_right.png')"></a>
+			<span style="background-image:url('../images/eventBanner_left_blank.png')"></span>
+			<span style="background-image:url('../images/eventBanner_right_blank.png')"></span>
 		</div>
 		<!-- // 이벤트 베너 -->
+
+		<!-- 본문 -->
+		<div class="detailArea" id='description-wrap'>
+			<script id="description-templates" type="text/x-handlebars-template">
+				{{!-- description-templates --}}
+				 <span>{{{magazineContents}}}</span>
+				{{!--// description-templates --}}
+			</script>
+		</div>
+		<!-- // 본문 -->
 
 		<!-- 태그 영역 -->
 		<div class="detailArea tagArea">
