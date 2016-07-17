@@ -649,8 +649,6 @@ module.exports = function() {
 			template = win.Handlebars.compile(source),
 			insertElements = $(template(data));
 
-			win.console.log(data.folders.scrapImages);
-
 			wrap.empty()
 				.addClass(self.opts.cssClass.isLoading)
 				.append(insertElements);
