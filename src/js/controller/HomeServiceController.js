@@ -52,7 +52,7 @@ function ClassHomeServiceController() {
 	 * 이사 서비스 업체검색
 	 */
 	function movingCompanyList(date, regionCode) {
-		Super.callApi('/apis/living/moving/company/'+regionCode, 'GET', {
+		Super.callApi('/apis/living/moving/'+regionCode+'/company/', 'GET', {
 			movingDate: date
 		}, function(status, result) {
 			if (status == 200) {

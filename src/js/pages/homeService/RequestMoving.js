@@ -149,7 +149,6 @@ module.exports = function() {
 		switch(addressType) {
 			case 'origin': 
 				originAddress = addressObject;
-				//
 				break;
 			case 'target':
 				targetAddress = addressObject;
@@ -167,7 +166,7 @@ module.exports = function() {
 		if (originAddress == undefined) {
 			alert('서비스 지역을 선택해 주세요');
 		} else {
-			controller.movingCompanyList(moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'), addressObject.regionCode);
+			controller.movingCompanyList(moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'), originAddress.regionCode);
 		}
 	};
 
