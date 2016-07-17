@@ -274,7 +274,7 @@ function ClassUtils() {
 			var bodyString = [];
 			bodyString.push(
 				'--' + boundary,
-				'Content-Disposition: form-data; name="' + "file" + '";' + 'filename="' + filename + '"',
+				'Content-Disposition: form-data; name="' + "file" + '"; ' + 'filename="' + filename + '"',
 				'Content-Type: ' + format,
 				'Content-Transfer-Encoding: base64', '',
 				image.substring(image.indexOf('base64,')+7)

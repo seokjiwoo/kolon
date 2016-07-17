@@ -153,7 +153,8 @@ function ClassImageUploader() {
 
 		$(flashAddCallBack).on(FB_EVENT.SELECTED_OVER_SIZE, function(e, selectedSize) {
 			if (!self.multiple && selectedSize >= 1) {
-				win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+				//win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+				clearPreviewFile();
 				return;
 			}
 
@@ -262,9 +263,31 @@ function ClassImageUploader() {
 			win.alert('이미지를 선택하세요.');
 			return;
 		}
+		
+		debug.info(fileName, '전송처리 단계~', getSelectedFiles());
+		debug.log(fileName, 'self.imageInfo', self.imageInfo);
+		$(self).trigger(EVENT.SUBMIT);
+
+		$('#imageForm').attr('action', self.opts.api_url);
+		$('#imageForm').ajaxSubmit({
+			url: self.opts.api_url,
+			method: 'POST',
+			xhrFields: {
+				withCredentials: true
+			},
+			beforeSubmit: function(data, form, option) {
+				console.log(data, form, option);
+				return true;
+			}, success: function(response, status) {
+				$(self).trigger(EVENT.UPLOAD_SUCCESS, response.data);
+			}, error: function() {
+				$(self).trigger(EVENT.UPLOAD_FAILURE);
+			}                               
+		});
+		/*
 		var selectedFile = self.selectedFiles[0];
 		var formData = util.makeMultipartForm(selectedFile.bs64, selectedFile.file.name);
-		console.log(self.opts);
+		
 		var ajaxOptions = {
 			url: self.opts.api_url,
 			method: 'POST',
@@ -284,7 +307,7 @@ function ClassImageUploader() {
 			$(self).trigger(EVENT.UPLOAD_SUCCESS, data.data);
 		}).fail(function(jqXHR, textStatus, errorThrown) {
 			$(self).trigger(EVENT.UPLOAD_FAILURE, jqXHR);
-		});
+		});*/
 	}
 	
 	function setReadFiles(files) {
@@ -292,7 +315,8 @@ function ClassImageUploader() {
 		reader, bs64, file;
 
 		if (!self.multiple && files.length > 1 || !self.multiple && self.selectedFiles.length >= 1) {
-			win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+			//win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+			clearPreviewFile();
 			return;
 		}
 
@@ -365,7 +389,7 @@ function ClassImageUploader() {
 		// });
 
 		// input 정보 초기화
-		self.inpFile.val('');
+		//self.inpFile.val('');
 	}
 	
 	function onError(e) {
@@ -505,8 +529,8 @@ function ClassImageUploader() {
 
 	function setSelectedFiles(info) {
 		if (!self.multiple && self.selectedFiles.length >= 1) {
-			win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
-			return;
+			//win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+			clearPreviewFile();
 		}
 
 		if (self.multiple && self.selectedFiles.length >= self.opts.multiple.maxSize) {
@@ -525,7 +549,7 @@ function ClassImageUploader() {
 			self.holder.find('.js-preview-img').remove();
 		}
 		// input 정보 초기화
-		self.inpFile.val('');
+		//self.inpFile.val('');
 		self.selectedFiles = [];
 	}
 

@@ -47,7 +47,7 @@ function ClassLoginModel() {
 		loginFlag = true;
 
 		var imageUrl = null;
-		if (data.myInfo.memberImages != null) imageUrl = data.myInfo.memberImages.imageUrl;
+		if (data.myInfo.imageUrl != null) imageUrl = data.myInfo.imageUrl;
 		
 		loginData = {
 			stateCode: data.myInfo.memberStateCode,
