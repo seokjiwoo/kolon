@@ -107,7 +107,7 @@ module.exports = function() {
 		*/
 
 		$.map(cardListArray, function(each) {
-			each.background = each.cardImageUrl == undefined ? "background:#eeeeee" : "background:url('"+each.cardImageUrl+"')";
+			each.background = each.cardImageUrl == undefined ? "" : "background-image:url('"+each.cardImageUrl+"');";
 
 			switch(each.cardTypeCode) {
 				case 'DP_CARD_TYPE_01':
@@ -129,6 +129,7 @@ module.exports = function() {
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';
 					each.detailUrl = "/manager/detail.html?expertNumber="+each.expertNum;
+					each.background += 'background-color:#c6b19e;';
 					break;
 			}
 
