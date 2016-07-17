@@ -16,10 +16,24 @@
 				<tr>
 					<th>은행명</th>
 					<td>
+						<style>
+							/* 테스트 임시 구성 */
+							.dropScroll .scrollWrap {position:relative;display:none;max-height:190px;height:100%;overflow:hidden;border:1px solid #ccc;border-top:none}
+							.dropScroll.is-show .scrollWrap{display:block}
+
+							.scrollWrap .dropList {position:absolute;width:100%;z-index:1;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+							.scrollWrap .dropList .drop {position:relative;top:0;border:none}
+							.scrollWrap .dropList .drop li:last-child {border-bottom:none}
+						</style>
 						<div class="alignBox">
-							<ul class="drop" data-prevent="true" id='refundBankDrop'>
-								<li><a href="#">선택하세요</a></li>
-							</ul>
+							<div class="dropScroll js-drop-scroll" style="width:100%">
+								<a href="#" class="dropToggle js-toggler">선택하세요</a>
+								<div class="scrollWrap js-scroll-wrap" data-prevent="true">
+									<div class="dropList js-list">
+										<ul class="drop" id="refundBankDrop"></ul>
+									</div>
+								</div>
+							</div>
 						</div>
 					</td>
 				</tr>
