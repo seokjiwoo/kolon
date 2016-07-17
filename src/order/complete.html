@@ -8,674 +8,598 @@
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<div class="wrap">
-				<section class="singleCard" id="myActivity">
-					<h2 class="secTit setTitC">주문완료</h2>
-				<!--배송형 상품 주문 완료  -->
-					<div class="completeBox">
-						<p class="tit"><b>선택하신 상품의 주문/결제가 완료되었습니다.</b></p>
-						<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 주문/배송에서 확인하실 수 있습니다.</p>
-					</div>
-					<!-- 결제 정보 -->
-					<h3 class="subTit">결제 정보</h3>
-					<div class="orderCont">
-						<div class="payTb payTbL border">
-							<dl class="payS minus">
-								<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
-								<dd><div><span class="price"><b>23,580,000</b> 원</span></div></dd>
-							</dl>
-							<dl class="payS equal">
-								<dt><div>총 할인금액</div></dt>
-								<dd>
-									<div>
-										<ul class="tbList">
-											<li>
-												<span class="tbListTit">기본할인</span>
-												<span><b>0</b>원</span>
-											</li>
-											<!-- <li>
-												<span class="tbListTit">포인트</span>
-												<span><b>3,000</b>원</span>
-											</li> -->
-										</ul>
-									</div>
-								</dd>
-							</dl>
-							<dl class="payS">
-								<dt><div>총 결제금액</div></dt>
-								<dd>
-									<div><span class="price"><b class="italicNum">23,580,000</b> 원</span></div>
-								</dd>
-							</dl>
-						</div>
-					</div>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="tbLThC">
-								<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공 합니다.</caption>
-								<colgroup>
-									<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">결제방법</th>
-										<td>무통장입금</td>
-										<th scope="row">입금자명</th>
-										<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
-									</tr>
-									<tr>
-										<th scope="row">입금계좌 정보</th>
-										<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!--// 결제 정보 -->
-					<h3 class="subTit">적립예정 포인트</h3>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="tbLThC">
-								<caption>적립예정 포인트에 관한 기본, 적립시점, 구매확정 시 적립 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">기본 적립</th>
-										<td><span class="pointRed">235,800</span> P</td>
-										<th scope="row">적립 시점</th>
-										<td>구매확정 시 적립</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!-- 주문상품내역 -->
-					<h3 class="subTit">주문상품내역</h3>
-					<div class="orderCont">
-						<div class="delivery2">
-							<form method="post" action="/">
-								<div class="compt">
-									<table class="record">
-										<caption>주문상품내역에 관한 상품정보, 상품금액, 수량, 판매자, 할인금액, 결제금액, 배송비 정보를 제공합니다.</caption>
-										<colgroup>
-											<col style="width:34%;"/><col style="width:13%;"/><col style="width:7%;"/><col style="width:13%;"/><col style="width:10%;"/><col style="width:13%;"/><col style="width:10%;"/>
-										</colgroup>
-										<thead>
-											<tr>
-												<th scope="col">상품정보</th>
-												<th scope="col">상품금액</th>
-												<th scope="col">수량</th>
-												<th scope="col">판매자</th>
-												<th scope="col">할인금액</th>
-												<th scope="col">결제금액</th>
-												<th scope="col">배송비</th>
-											</tr>
-										</thead>
-										<tbody>
-											<!-- 반복영역 -->
-											<tr>
-												<td>
-													<div class="photoList">
-														<a href="#">
-															<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-															<span class="cartInfo">
-																<span class="cartTit">브리티쉬 스타일 인테리어 빈티지 틴액자 </span>
-																<span>옵션 : : 60x120 우드</span>
-															</span>
-														</a>
-													</div>
-												</td>
-												<td><b>1,700,000</b> 원</td>
-												<td><b>1</b></td>
-												<td>ANNA</td>
-												<td><b>10,000</b> 원</td>
-												<td><b>1,690,000</b> 원</td>
-												<td>무료</td>
-											</tr>
-											<!-- 수령지 / 배송요청사항 -->
-											<tr>
-												<td colspan="7" class="adrArea">
-													<dl>
-														<dt>수령지 정보</dt>
-														<dd class="adrCon">
-															<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-															<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="7" class="adrArea">
-													<dl>
-														<dt>배송 시 요청사항</dt>
-														<dd>
-															<div>
-																부재 시 핸드폰으로 연락바랍니다.
-															</div>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<!--// 수령지 / 배송요청사항 -->
-											<!--// 반복영역 -->
-											<tr>
-												<td>
-													<div class="photoList">
-														<a href="#">
-															<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-															<span class="cartInfo">
-																<span class="cartTit">크리스탈 샹들리에</span>
-																<span>옵션 : 120x120 라운드 타입</span>
-															</span>
-														</a>
-													</div>
-												</td>
-												<td><b>1,690,000</b> 원</td>
-												<td><b>1</b></td>
-												<td>ANNA</td>
-												<td><b>-10,000</b> 원</td>
-												<td><b>1,720,000</b> 원</td>
-												<td>무료</td>
-											</tr>
-											<!-- 수령지 / 배송요청사항 -->
-											<tr>
-												<td colspan="7" class="adrArea">
-													<dl>
-														<dt>수령지 정보</dt>
-														<dd class="adrCon">
-															<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-															<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="7" class="adrArea">
-													<dl>
-														<dt>배송 시 요청사항</dt>
-														<dd>
-															<div>
-																부재 시 핸드폰으로 연락바랍니다.
-															</div>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="photoList">
-														<a href="#">
-															<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-															<span class="cartInfo">
-																<span class="cartTit">[에이스침대] BMA 1120-S CA등급/SS(슈퍼싱글사이즈)</span>
-																<span>옵션 : 트윈 화이트</span>
-															</span>
-														</a>
-													</div>
-												</td>
-												<td><b>900,000</b> 원</td>
-												<td><b>1</b></td>
-												<td></td>
-												<td><b>0</b> 원</td>
-												<td><b>90,000</b> 원</td>
-												<td>무료</td>
-											</tr>
-											<!-- 수령지 / 배송요청사항 -->
-											<tr>
-												<td colspan="7" class="adrArea">
-													<dl>
-														<dt>수령지 정보</dt>
-														<dd class="adrCon">
-															<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-															<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="7" class="adrArea">
-													<dl>
-														<dt>배송 시 요청사항</dt>
-														<dd>
-															<div>
-																부재 시 핸드폰으로 연락바랍니다.
-															</div>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!--// 주문상품내역 -->
-				<!-- 배송형 상품 주문 완료  -->
 
-				<!-- 시공형 상품 선결제 완료  -->
-				<div style="display:none"><!-- 숨김 -->
-					<div class="completeBox">
-						<p class="tit"><b>선택하신 상품의 선결제 및 실측 요청 완료되었습니다.</b></p>
-						<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 주문/배송에서 확인하실 수 있습니다.</p>
-					</div>
-					<!-- 결제 정보 -->
-					<h3 class="subTit">결제 정보</h3>
-					<div class="orderCont">
-						<form method="post" action="/">
-							<div class="payTb payTbL border">
-								<dl class="payS minus">
-									<dt><div>상품금액</div></dt>
-									<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
-								</dl>
-								<dl class="payS equal">
-									<dt><div>할인금액</div></dt>
-									<dd>
-										<div>
-											<ul class="tbList">
-												<li>
-													<span class="tbListTit">기본할인</span>
-													<span><b>10,000</b>원</span>
-												</li>
-												<!-- <li>
-													<span class="tbListTit">포인트</span>
-													<span><b>3,000</b>원</span>
-												</li> -->
-											</ul>
-										</div>
-									</dd>
-								</dl>
-								<dl class="payS">
-									<!-- <dt><div>총 결제금액</div></dt> -->
-									<dd class="totalwrap">
-										<div>
-											<ul class="totalList">
-												<li>
-													<em>시공예정금액</em>
-													<span class="price"><b>1,720,000</b> 원</span>
-												</li>
-												<li>
-													<em>선결제금액(10%)</em>
-													<span class="price"><b>172,000</b> 원</span>
-												</li>
-											</ul>
-										</div>
-									</dd>
-								</dl>
-							</div>
-						</form>
-					</div>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="tbLThC">
-								<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">결제방법</th>
-										<td>무통장입금</td>
-										<th scope="row">입금자명</th>
-										<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
-									</tr>
-									<tr>
-										<th scope="row">입금계좌 정보</th>
-										<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!--// 결제 정보 -->
-					<h3 class="subTit">적립예정 포인트</h3>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="tbLThC">
-								<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정시 정립 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">기본 적립</th>
-										<td><span class="pointRed">235,800</span> P</td>
-										<th scope="row">적립 시점</th>
-										<td>구매확정 시 적립</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!-- 주문상품내역 -->
-					<h3 class="subTit">주문상품내역</h3>
-					<div class="orderCont">
-						<div class="delivery2">
-							<form method="post" action="/">
-								<div class="compt">
-									<table class="record">
-										<caption>주문상품내역에 관한 상품정보, 상품금액, 판매자, 할인금액, 시공예정 금액 정보를 제공합니다.</caption>
-										<colgroup>
-											<col style="width:42%;"/><col style="width:15%;"/><col style="width:13%;"/><col style="width:15%;"/><col style="width:15%;"/>
-										</colgroup>
-										<thead>
-											<tr>
-												<th scope="col">상품정보</th>
-												<th scope="col">상품금액</th>
-												<th scope="col">판매자</th>
-												<th scope="col">할인금액</th>
-												<th scope="col">시공예정 금액</th>
-											</tr>
-										</thead>
-										<tbody>
-											<!--  반복영역 -->
-											<tr>
-												<td>
-													<div class="photoList">
-														<a href="#">
-															<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-															<span class="cartInfo">
-																<span class="cartTit">KG X 비스트 콜라보레이션 아이방 패키지</span>
-															</span>
-														</a>
-													</div>
-												</td>
-												<td><b>2,000,000</b> 원</td>
-												<td>ANNA</td>
-												<td><b>- 280,000</b> 원</td>
-												<td><b>1,720,000</b> 원</td>
-											</tr>
-											<!--// 반복영역 -->
-											<tr>
-												<td>
-													<div class="photoList">
-														<a href="#">
-															<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-															<span class="cartInfo">
-																<span class="cartTit">크리스탈 샹들리에</span>
-															</span>
-														</a>
-													</div>
-												</td>
-												<td><b>2,000,000</b> 원</td>
-												<td>ANNA</td>
-												<td><b>- 280,000</b> 원</td>
-												<td><b>1,720,000</b> 원</td>
-											</tr>
-											<!-- 시공지 / 배송요청사항 -->
-											<tr>
-												<td colspan="5" class="adrArea">
-													<dl>
-														<dt>시공지 정보</dt>
-														<dd class="adrCon">
-															<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-															<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="5" class="adrArea">
-													<dl>
-														<dt>배송 시 요청사항</dt>
-														<dd>
-															<div>
-																부재 시 핸드폰으로 연락바랍니다.
-															</div>
-														</dd>
-													</dl>
-												</td>
-											</tr>
-											<!--// 수령지 / 배송요청사항 -->
-										</tbody>
-									</table>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!--// 주문상품내역 -->
-				</div>
-				<!-- 시공형 상품 선결제 완료  -->
+				<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
 
-				<!-- 시공형 상품 잔금결제 완료 -->
-				<div style="display:none"><!-- 숨김 -->
-					<div class="completeBox">
-						<p class="tit"><b>선택하신 상품의 결제 및 계약이 완료되었습니다.</b></p>
-						<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 시공 중인 상품에서 확인하실 수 있습니다.</p>
-					</div>
-					<!-- 결제 정보 -->
-					<h3 class="subTit">결제 정보</h3>
-						<div class="orderCont">
-							<div class="payTb payTbL border">
-								<dl class="payS minus">
-									<dt><div>견적금액</div></dt>
-									<dd><div><span class="price"><b>32,000,000</b> 원</span></div></dd>
-								</dl>
-								<dl class="payS equal">
-									<dd class="pricewrap">
-										<div>
-											<ul class="priceList">
-												<li>
-													<em>선결제금액</em>
-													<span class="price"><b>300,000</b> 원</span>
-												</li>
-												<li>
-													<em>총 할인금액</em>
-													<span class="point">포인트 <i>0P</i></span>
-												</li>
-											</ul>
-										</div>
-									</dd>
-								</dl>
-								<dl class="payS">
-									<dt><div>총 결제금액</div></dt>
-									<dd>
-										<div><span class="price"><b>31,700,000</b> 원</span></div>
-									</dd>
-								</dl>
-							</div>
-						</div>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="tbLThC">
-								<caption>결제방법에 관한 결제방법, 입금자명, 입금계좌 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">결제방법</th>
-										<td>무통장입금</td>
-										<th scope="row">입금자명</th>
-										<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
-									</tr>
-									<tr>
-										<th scope="row">입금계좌 정보</th>
-										<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!--// 결제 정보 -->
-					<h3 class="subTit">적립예정 포인트</h3>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="tbLThC">
-								<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정 시 적립에 관한 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
-								</colgroup>
-								<tbody>
-									<tr>
-										<th scope="row">기본 적립</th>
-										<td><span class="pointRed">235,800</span> P</td>
-										<th scope="row">적립 시점</th>
-										<td>구매확정 시 적립</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<!-- 주문상품내역 -->
-					<h3 class="subTit">주문상품내역</h3>
-					<div class="orderCont">
-						<div class="delivery1">
-							<div class="">
-								<table class="record">
-									<caption>주문상품내역</caption>
-									<colgroup>
-										<col style="width:35%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:14%;"/><col style="width:13%;"/><col style="width:13%;"/>
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col">상품정보</th>
-											<th scope="col">상품금액</th>
-											<th scope="col">판매자</th>
-											<th scope="col">실측 후 금액</th>
-											<th scope="col">할인금액</th>
-											<th scope="col">선결제금액</th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- 반복영역 -->
-										<tr>
-											<td>
-												<div class="photoList">
-													<a href="#">
-														<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-														<span class="cartInfo">
-															<span class="cartTit">비스트 콜라보레이션 <br/>아이방 패키지</span>
-														</span>
-													</a>
-												</div>
-											</td>
-											<td><b>1,700,000</b> 원</td>
-											<td>ANNA</td>
-											<td><b>1,720,000</b> 원<br/>(실측 : +20,000 원)</td>
-											<td><b>- 120,000</b> 원</td>
-											<td><b>1,720,000</b> 원</td>
-										</tr>
-										<!--// 반복영역 -->
-										<tr>
-											<td>
-												<div class="photoList">
-													<a href="#">
-														<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-														<span class="cartInfo">
-															<span class="cartTit">비스트 콜라보레이션 <br/>아이방 패키지</span>
-														</span>
-													</a>
-												</div>
-											</td>
-											<td><b>1,700,000</b> 원</td>
-											<td>ANNA</td>
-											<td><b>1,720,000</b> 원<br/>(실측 : +20,000 원)</td>
-											<td><b>- 120,000</b> 원</td>
-											<td><b>1,720,000</b> 원</td>
-										</tr>
-									</tbody>
-								</table>
-								<div class="tbSBg tbSet">
-									<table class="">
-										<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
-										<colgroup>
-											<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row">시공대상</th>
-												<td>서울 서초구 반포동 아파트 79㎡</td>
-												<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
-												<td><span class="price"><b>34,400,000</b>원</span></td>
-											</tr>
-											<tr>
-												<th scope="row">예상기간</th>
-												<td>2016. 04. 17 ~ 05.02 (16일)</td>
-												<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
-												<td rowspan="2"><span class="price"><b>32,000,000</b>원</span></td>
-											</tr>
-											<tr>
-												<th scope="row">시공업체</th>
-												<td>
-													<span class="companyInfo">김석우  |  (주)가인인테리어</span>
-													<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-					<h3 class="subTit">시공견적 상세정보</h3>
-					<div class="orderCont">
-						<div class="tbSet">
-							<table class="lineS">
-								<caption>시공 견적 상세 정보에 관한 항목, 견적, 시공 상세, 포함사항 정보를 제공합니다.</caption>
-								<colgroup>
-									<col style="width:12%;"/><col style="width:13%;"/><col style="width:33%;"/><col style="width:42%;"/>
-								</colgroup>
-								<thead>
-									<tr>
-										<th scope="col">항목</th>
-										<th scope="col">견적</th>
-										<th scope="col">시공 상세</th>
-										<th scope="col" class="lineL">포함사항</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>도배</td>
-										<td class="txtR">1,300,000원</td>
-										<td>LG, DID, 대동,대우 등의 실크벽지, 초배시공</td>
-										<td rowspan="5" class="lineL">
-											<ul class="tbList2">
-												<li>고객요청시 무료방문견적 및 상세 견적서 제공</li>
-												<li>고객요청시 3D 디자인시안 무료 제공 (계약전-유료)</li>
-												<li>고객과 협의 없이 계약서 상 기재된 자재 미사용시 차액 3배 지불 </li>
-												<li>시공업체 잘못으로 계약서 상 시공기간 초과시 손해금액 배상</li>
-												<li>계약서 상 추가금액에 특약이 없을 시 <br/>어떠한 경우에도 계약금액 외 추가금액 요구 불가</li>
-												<li>시공완료일 부터 12개월 이내 부실시공으로 인한 하자발생시 A/S.</li>
-											</ul>
-										</td>
-									</tr>
-									<tr>
-										<td>바닥재</td>
-										<td class="txtR">670,000원</td>
-										<td>LG. 한화, 고려 등의 중보행용 바닥재</td>
-									</tr>
-									<tr>
-										<td>거실확장</td>
-										<td class="txtR">3,300,000원</td>
-										<td>철거,바닥난방,조형공사,단열작업,전기</td>
-									</tr>
-									<tr>
-										<td>거실욕실</td>
-										<td class="txtR">2,600,000원</td>
-										<td>철거,방수,벽천정목공사,타일,욕조or샤워부스</td>
-									</tr>
-									<tr>
-										<td>싱크대</td>
-										<td class="txtR">2,300,000원</td>
-										<td>멤브도어,친환경목대,스텐볼,후드,수전</td>
-									</tr>
-								</tbody>
-							</table>
-							
-						</div>
-					</div>
-					<!--// 주문상품내역 -->
-				</div>
-				<!-- 시공형 상품 잔금결제 완료 -->
-					<div class="btnC">
-						<button type="submit" class="btn btnSizeL btnColor02 btnWL">커먼 메인으로 이동</button>
-					</div>
-				</section>
 			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+
+
+<script id="order-complete-templates" type="text/x-handlebars-template">
+	{{!-- order-complete-templates --}}
+	<h2 class="secTit setTitC">주문완료</h2>
+	<!--배송형 상품 주문 완료  -->
+	<div class="completeBox">
+		<p class="tit"><b>선택하신 상품의 주문/결제가 완료되었습니다.</b></p>
+		<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 주문/배송에서 확인하실 수 있습니다.</p>
+	</div>
+	<!-- 결제 정보 -->
+	<h3 class="subTit">결제 정보</h3>
+	<div class="orderCont">
+		<div class="payTb payTbL border">
+			<dl class="payS minus">
+				<dt><div>주문금액<br/>(상품가 + 배송비)</div></dt>
+				<dd><div><span class="price"><b>{{paymentInfo.orderPriceDesc}}</b> 원</span></div></dd>
+			</dl>
+			<dl class="payS equal">
+				<dt><div>총 할인금액</div></dt>
+				<dd>
+					<div>
+						<ul class="tbList">
+							<li>
+								<span class="tbListTit">기본할인</span>
+								<span><b>{{paymentInfo.discountPrice}}</b>원</span>
+							</li>
+							<!-- <li>
+								<span class="tbListTit">포인트</span>
+								<span><b>3,000</b>원</span>
+							</li> -->
+						</ul>
+					</div>
+				</dd>
+			</dl>
+			<dl class="payS">
+				<dt><div>총 결제금액</div></dt>
+				<dd>
+					<div><span class="price"><b class="italicNum">{{paymentInfo.totalPaymentPriceDesc}}</b> 원</span></div>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공 합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">결제방법</th>
+						<td>무통장입금</td>
+						<th scope="row">입금자명</th>
+						<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
+					</tr>
+					<tr>
+						<th scope="row">입금계좌 정보</th>
+						<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!--// 결제 정보 -->
+	<h3 class="subTit">적립예정 포인트</h3>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>적립예정 포인트에 관한 기본, 적립시점, 구매확정 시 적립 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">기본 적립</th>
+						<td><span class="pointRed">{{savingSchedPointDesc}}</span> P</td>
+						<th scope="row">적립 시점</th>
+						<td>구매확정 시 적립</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- 주문상품내역 -->
+	<h3 class="subTit">주문상품내역</h3>
+	<div class="orderCont">
+		<div class="delivery2">
+			<form method="post" action="/">
+				<div class="compt">
+					<table class="record">
+						<caption>주문상품내역에 관한 상품정보, 상품금액, 수량, 판매자, 할인금액, 결제금액, 배송비 정보를 제공합니다.</caption>
+						<colgroup>
+							<col style="width:34%;"/><col style="width:13%;"/><col style="width:7%;"/><col style="width:13%;"/><col style="width:10%;"/><col style="width:13%;"/><col style="width:10%;"/>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">상품정보</th>
+								<th scope="col">상품금액</th>
+								<th scope="col">수량</th>
+								<th scope="col">판매자</th>
+								<th scope="col">할인금액</th>
+								<th scope="col">결제금액</th>
+								<th scope="col">배송비</th>
+							</tr>
+						</thead>
+						<tbody>
+							{{#each listOrderItem}}
+								<!-- 반복영역 -->
+								<tr>
+									<td>
+										<div class="photoList">
+											<a href="#">
+												<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+												<span class="cartInfo">
+													<span class="cartTit">브리티쉬 스타일 인테리어 빈티지 틴액자 </span>
+													<span>옵션 : : 60x120 우드</span>
+												</span>
+											</a>
+										</div>
+									</td>
+									<td><b>1,700,000</b> 원</td>
+									<td><b>1</b></td>
+									<td>ANNA</td>
+									<td><b>10,000</b> 원</td>
+									<td><b>1,690,000</b> 원</td>
+									<td>무료</td>
+								</tr>
+								<!-- 수령지 / 배송요청사항 -->
+								<tr>
+									<td colspan="7" class="adrArea">
+										<dl>
+											<dt>수령지 정보</dt>
+											<dd class="adrCon">
+												<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
+												<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
+											</dd>
+										</dl>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="7" class="adrArea">
+										<dl>
+											<dt>배송 시 요청사항</dt>
+											<dd>
+												<div>
+													부재 시 핸드폰으로 연락바랍니다.
+												</div>
+											</dd>
+										</dl>
+									</td>
+								</tr>
+								<!--// 수령지 / 배송요청사항 -->
+								<!--// 반복영역 -->
+							{{/each}}
+						</tbody>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!--// 주문상품내역 -->
+	<!-- 배송형 상품 주문 완료  -->
+	<div class="btnC">
+		<button type="submit" class="btn btnSizeL btnColor02 btnWL">커먼 메인으로 이동</button>
+	</div>
+	{{!--// order-complete-templates --}}
+</script>
+
+<!-- 시공형 상품 선결제 완료  -->
+<!-- <div style="display:none">숨김
+	<div class="completeBox">
+		<p class="tit"><b>선택하신 상품의 선결제 및 실측 요청 완료되었습니다.</b></p>
+		<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 주문/배송에서 확인하실 수 있습니다.</p>
+	</div>
+	결제 정보
+	<h3 class="subTit">결제 정보</h3>
+	<div class="orderCont">
+		<form method="post" action="/">
+			<div class="payTb payTbL border">
+				<dl class="payS minus">
+					<dt><div>상품금액</div></dt>
+					<dd><div><span class="price"><b>1,700,000</b> 원</span></div></dd>
+				</dl>
+				<dl class="payS equal">
+					<dt><div>할인금액</div></dt>
+					<dd>
+						<div>
+							<ul class="tbList">
+								<li>
+									<span class="tbListTit">기본할인</span>
+									<span><b>10,000</b>원</span>
+								</li>
+								<li>
+									<span class="tbListTit">포인트</span>
+									<span><b>3,000</b>원</span>
+								</li>
+							</ul>
+						</div>
+					</dd>
+				</dl>
+				<dl class="payS">
+					<dt><div>총 결제금액</div></dt>
+					<dd class="totalwrap">
+						<div>
+							<ul class="totalList">
+								<li>
+									<em>시공예정금액</em>
+									<span class="price"><b>1,720,000</b> 원</span>
+								</li>
+								<li>
+									<em>선결제금액(10%)</em>
+									<span class="price"><b>172,000</b> 원</span>
+								</li>
+							</ul>
+						</div>
+					</dd>
+				</dl>
+			</div>
+		</form>
+	</div>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">결제방법</th>
+						<td>무통장입금</td>
+						<th scope="row">입금자명</th>
+						<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
+					</tr>
+					<tr>
+						<th scope="row">입금계좌 정보</th>
+						<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	// 결제 정보
+	<h3 class="subTit">적립예정 포인트</h3>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정시 정립 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">기본 적립</th>
+						<td><span class="pointRed">235,800</span> P</td>
+						<th scope="row">적립 시점</th>
+						<td>구매확정 시 적립</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	주문상품내역
+	<h3 class="subTit">주문상품내역</h3>
+	<div class="orderCont">
+		<div class="delivery2">
+			<form method="post" action="/">
+				<div class="compt">
+					<table class="record">
+						<caption>주문상품내역에 관한 상품정보, 상품금액, 판매자, 할인금액, 시공예정 금액 정보를 제공합니다.</caption>
+						<colgroup>
+							<col style="width:42%;"/><col style="width:15%;"/><col style="width:13%;"/><col style="width:15%;"/><col style="width:15%;"/>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">상품정보</th>
+								<th scope="col">상품금액</th>
+								<th scope="col">판매자</th>
+								<th scope="col">할인금액</th>
+								<th scope="col">시공예정 금액</th>
+							</tr>
+						</thead>
+						<tbody>
+							반복영역
+							<tr>
+								<td>
+									<div class="photoList">
+										<a href="#">
+											<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+											<span class="cartInfo">
+												<span class="cartTit">KG X 비스트 콜라보레이션 아이방 패키지</span>
+											</span>
+										</a>
+									</div>
+								</td>
+								<td><b>2,000,000</b> 원</td>
+								<td>ANNA</td>
+								<td><b>- 280,000</b> 원</td>
+								<td><b>1,720,000</b> 원</td>
+							</tr>
+							// 반복영역
+							<tr>
+								<td>
+									<div class="photoList">
+										<a href="#">
+											<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+											<span class="cartInfo">
+												<span class="cartTit">크리스탈 샹들리에</span>
+											</span>
+										</a>
+									</div>
+								</td>
+								<td><b>2,000,000</b> 원</td>
+								<td>ANNA</td>
+								<td><b>- 280,000</b> 원</td>
+								<td><b>1,720,000</b> 원</td>
+							</tr>
+							시공지 / 배송요청사항
+							<tr>
+								<td colspan="5" class="adrArea">
+									<dl>
+										<dt>시공지 정보</dt>
+										<dd class="adrCon">
+											<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
+											<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
+										</dd>
+									</dl>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="5" class="adrArea">
+									<dl>
+										<dt>배송 시 요청사항</dt>
+										<dd>
+											<div>
+												부재 시 핸드폰으로 연락바랍니다.
+											</div>
+										</dd>
+									</dl>
+								</td>
+							</tr>
+							// 수령지 / 배송요청사항
+						</tbody>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+	// 주문상품내역
+</div> -->
+<!-- 시공형 상품 선결제 완료  -->
+
+<!-- 시공형 상품 잔금결제 완료 -->
+<!-- <div style="display:none">숨김
+	<div class="completeBox">
+		<p class="tit"><b>선택하신 상품의 결제 및 계약이 완료되었습니다.</b></p>
+		<p><b>홍길동</b> 고객님께서 2016년 05월 12일에 주문하신 주문번호는 <span class="pointRed">8315783</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 시공 중인 상품에서 확인하실 수 있습니다.</p>
+	</div>
+	결제 정보
+	<h3 class="subTit">결제 정보</h3>
+		<div class="orderCont">
+			<div class="payTb payTbL border">
+				<dl class="payS minus">
+					<dt><div>견적금액</div></dt>
+					<dd><div><span class="price"><b>32,000,000</b> 원</span></div></dd>
+				</dl>
+				<dl class="payS equal">
+					<dd class="pricewrap">
+						<div>
+							<ul class="priceList">
+								<li>
+									<em>선결제금액</em>
+									<span class="price"><b>300,000</b> 원</span>
+								</li>
+								<li>
+									<em>총 할인금액</em>
+									<span class="point">포인트 <i>0P</i></span>
+								</li>
+							</ul>
+						</div>
+					</dd>
+				</dl>
+				<dl class="payS">
+					<dt><div>총 결제금액</div></dt>
+					<dd>
+						<div><span class="price"><b>31,700,000</b> 원</span></div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>결제방법에 관한 결제방법, 입금자명, 입금계좌 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">결제방법</th>
+						<td>무통장입금</td>
+						<th scope="row">입금자명</th>
+						<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
+					</tr>
+					<tr>
+						<th scope="row">입금계좌 정보</th>
+						<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	// 결제 정보
+	<h3 class="subTit">적립예정 포인트</h3>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정 시 적립에 관한 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">기본 적립</th>
+						<td><span class="pointRed">235,800</span> P</td>
+						<th scope="row">적립 시점</th>
+						<td>구매확정 시 적립</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	주문상품내역
+	<h3 class="subTit">주문상품내역</h3>
+	<div class="orderCont">
+		<div class="delivery1">
+			<div class="">
+				<table class="record">
+					<caption>주문상품내역</caption>
+					<colgroup>
+						<col style="width:35%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:14%;"/><col style="width:13%;"/><col style="width:13%;"/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col">상품정보</th>
+							<th scope="col">상품금액</th>
+							<th scope="col">판매자</th>
+							<th scope="col">실측 후 금액</th>
+							<th scope="col">할인금액</th>
+							<th scope="col">선결제금액</th>
+						</tr>
+					</thead>
+					<tbody>
+						반복영역
+						<tr>
+							<td>
+								<div class="photoList">
+									<a href="#">
+										<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+										<span class="cartInfo">
+											<span class="cartTit">비스트 콜라보레이션 <br/>아이방 패키지</span>
+										</span>
+									</a>
+								</div>
+							</td>
+							<td><b>1,700,000</b> 원</td>
+							<td>ANNA</td>
+							<td><b>1,720,000</b> 원<br/>(실측 : +20,000 원)</td>
+							<td><b>- 120,000</b> 원</td>
+							<td><b>1,720,000</b> 원</td>
+						</tr>
+						// 반복영역
+						<tr>
+							<td>
+								<div class="photoList">
+									<a href="#">
+										<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+										<span class="cartInfo">
+											<span class="cartTit">비스트 콜라보레이션 <br/>아이방 패키지</span>
+										</span>
+									</a>
+								</div>
+							</td>
+							<td><b>1,700,000</b> 원</td>
+							<td>ANNA</td>
+							<td><b>1,720,000</b> 원<br/>(실측 : +20,000 원)</td>
+							<td><b>- 120,000</b> 원</td>
+							<td><b>1,720,000</b> 원</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="tbSBg tbSet">
+					<table class="">
+						<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
+						<colgroup>
+							<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">시공대상</th>
+								<td>서울 서초구 반포동 아파트 79㎡</td>
+								<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
+								<td><span class="price"><b>34,400,000</b>원</span></td>
+							</tr>
+							<tr>
+								<th scope="row">예상기간</th>
+								<td>2016. 04. 17 ~ 05.02 (16일)</td>
+								<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
+								<td rowspan="2"><span class="price"><b>32,000,000</b>원</span></td>
+							</tr>
+							<tr>
+								<th scope="row">시공업체</th>
+								<td>
+									<span class="companyInfo">김석우  |  (주)가인인테리어</span>
+									<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<h3 class="subTit">시공견적 상세정보</h3>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="lineS">
+				<caption>시공 견적 상세 정보에 관한 항목, 견적, 시공 상세, 포함사항 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:12%;"/><col style="width:13%;"/><col style="width:33%;"/><col style="width:42%;"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">항목</th>
+						<th scope="col">견적</th>
+						<th scope="col">시공 상세</th>
+						<th scope="col" class="lineL">포함사항</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>도배</td>
+						<td class="txtR">1,300,000원</td>
+						<td>LG, DID, 대동,대우 등의 실크벽지, 초배시공</td>
+						<td rowspan="5" class="lineL">
+							<ul class="tbList2">
+								<li>고객요청시 무료방문견적 및 상세 견적서 제공</li>
+								<li>고객요청시 3D 디자인시안 무료 제공 (계약전-유료)</li>
+								<li>고객과 협의 없이 계약서 상 기재된 자재 미사용시 차액 3배 지불 </li>
+								<li>시공업체 잘못으로 계약서 상 시공기간 초과시 손해금액 배상</li>
+								<li>계약서 상 추가금액에 특약이 없을 시 <br/>어떠한 경우에도 계약금액 외 추가금액 요구 불가</li>
+								<li>시공완료일 부터 12개월 이내 부실시공으로 인한 하자발생시 A/S.</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td>바닥재</td>
+						<td class="txtR">670,000원</td>
+						<td>LG. 한화, 고려 등의 중보행용 바닥재</td>
+					</tr>
+					<tr>
+						<td>거실확장</td>
+						<td class="txtR">3,300,000원</td>
+						<td>철거,바닥난방,조형공사,단열작업,전기</td>
+					</tr>
+					<tr>
+						<td>거실욕실</td>
+						<td class="txtR">2,600,000원</td>
+						<td>철거,방수,벽천정목공사,타일,욕조or샤워부스</td>
+					</tr>
+					<tr>
+						<td>싱크대</td>
+						<td class="txtR">2,300,000원</td>
+						<td>멤브도어,친환경목대,스텐볼,후드,수전</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+	</div>
+	// 주문상품내역
+</div> -->
+<!-- 시공형 상품 잔금결제 완료 -->
+
 </body>
 </html>

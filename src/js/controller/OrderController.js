@@ -113,6 +113,10 @@ function ClassOrderController() {
 			 */
 			myOrdersInfo: myOrdersInfo,
 			/**
+			 * 주문완료
+			 */
+			ordersComplete: ordersComplete,
+			/**
 			 * hash_String 취득(EncryptData)
 			 */
 			ordersGetHashStr: ordersGetHashStr,
@@ -568,6 +572,18 @@ function ClassOrderController() {
 			} else {
 				Super.handleError('myOrdersInfo', result);
 				$(callerObj).trigger('myOrdersInfoResult', [status, result]);
+			}
+		}, true);
+	}
+
+	// 주문완료
+	function ordersComplete(orderNumber) {
+		Super.callApi('/apis/orders/complete/' + orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			} else {
+				Super.handleError('ordersComplete', result);
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
 			}
 		}, true);
 	}
