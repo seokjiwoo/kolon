@@ -118,6 +118,8 @@
 .pointColor01 {display:block;font-size:14px;color:#999;}
 
 textarea.pullSize {height:144px;}
+ul.tbList4 > li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#666; letter-spacing:-0.5px; line-height:1.2em;font-family:'NotoSansL', sans-serif;}
+ul.tbList4 a{color: #333;}
 ul.tbList3 {margin-bottom:50px}
 ul.tbList3 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-0.5px; line-height:21px; margin-top:5px;}
 ul.tbList3 li:first-child {margin-top:0;}

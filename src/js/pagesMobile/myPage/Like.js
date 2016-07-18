@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'myPage/HomeServiceDetail.js';
+	fileName = 'myPage/Like.js';
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();

@@ -9,7 +9,8 @@
 	<div class="container">
 		<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
 		<!-- @@include ../_template/my_depth02.html {"myMenu01":"on"} -->
-		<section  class="timeCard" id="myTimeline">
+
+		<section class="timeCard js-timeline-list-wrap" id="myTimeline">
 			<!-- 
 			recordType01 -> 상품 구매 기록
 			recordType02 -> 스크랩 기록
@@ -20,6 +21,8 @@
 			recordType07 -> 후기/리뷰 등록 기록
 			recordType08 -> 가입 환영 메시지
 			-->
+			<!-- [D] 마크업 원본 -->
+			<!--
 			<h2 class="hide">마이커먼 타임라인</h2>
 			<div class="recordWrap">
 				<ul>
@@ -33,7 +36,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp01.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -54,7 +57,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp01.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -75,7 +78,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-color:#adc427"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-color:#adc427">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -101,7 +104,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp01.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -121,7 +124,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp01.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -141,7 +144,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp01.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -162,7 +165,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp01.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -182,7 +185,7 @@
 									<div class="hexBottom"><span></span></div>
 								</div>
 							</div>
-							<div class="hexagon" style="background-image: url('/images/bg_welcome.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/bg_welcome.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
@@ -195,9 +198,136 @@
 					</li>
 				</ul>
 			</div>
+			-->
+			<!--// [D] 마크업 원본 -->
 		</section>
 		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+
+<style>
+	.js-timeline-list.has-animate {
+		opacity: 1;
+		-webkit-transform:translateY(0px);-moz-transform:translateY(0px);-ms-transform:translateY(0px);-o-transform:translateY(0px);transform:translateY(0px);
+		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+	}
+	.js-timeline-list {opacity:0;-webkit-transform:translateY(50px);-moz-transform:translateY(50px);-ms-transform:translateY(50px);-o-transform:translateY(50px);transform:translateY(50px)}
+
+	.js-timeline-container.has-animate {
+		opacity: 1;
+		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+	}
+	.js-timeline-container {opacity:1}
+</style>
+
+<script id="my-timeline-templates" type="text/x-handlebars-template">
+{{!-- my-timeline-templates --}}
+	<h2 class="hide">마이커먼 타임라인</h2>
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if length}}
+		{{#each .}}
+			<div class="recordWrap js-timeline-container">
+				<ul>
+					{{#each records}}
+					{{#vxSwitch myPageTypeCode}}
+						{{!-- 상품 구매 기록 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_12" break=true}}
+						<li class="recordType01 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+
+						{{!-- 스크랩 기록 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_13" break=true}}
+						<li class="recordType02 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+
+						{{!-- 문의 등록 기록 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_02" break=true}}
+						<li class="recordType03 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+
+						{{!-- 견적 요청 기록 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_07" break=true}}
+						<li class="recordType04 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+
+						{{!-- 1:1 메시지 기록 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_01" break=true}}
+						<li class="recordType05 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+
+						{{!-- 후기/리뷰 등록 기록 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_04" "BM_MYPAGE_TYPE_03" break=true}}
+						<li class="recordType06 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+
+						{{!-- 가입 환영 메시지 --}}
+						{{#vxCase "BM_MYPAGE_TYPE_11" break=true}}
+						<li class="recordType08 js-timeline-list"
+							data-timeline-info='{
+								"myPageTypeCode" : "{{myPageTypeCode}}",
+								"registerDateTime" : "{{registerDateTime}}"
+						}'>
+						{{/vxCase}}
+					{{/vxSwitch}}
+							{{#if @../first}}
+							<h3 class="recordDate italicNum">{{../recordDate}} <span>month</span></h3>
+							{{/if}}
+							<h4 class="recordTime"><span class="italicNum js-date">{{fromDate}}</span>&nbsp;<span class="js-fromNow">{{fromNow}}</span></h4>
+							<a href="#" class="cardFull">
+								<div class="recordIco">
+									<div class="hexagon">
+										<div class="hexTop"><span></span></div>
+										<div class="hexBottom"><span></span></div>
+									</div>
+								</div>
+								<div class="hexagon" style="background-image: url('/images/temp01.jpg')"><!-- 배경이미지 -->
+									<div class="hexTop"><span></span></div>
+									<div class="hexBottom"><span></span></div>
+								</div>
+								<div class="recordCon">
+									<div>
+										<p class="recordCat">{{myPageTypeName}}</p>
+										<p class="recordTxt">{{myPageContents}}</p>
+									</div>
+								</div>
+							</a>
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+		{{/each}}
+	{{else}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+		<p>마이커먼 데이터가 없습니다.</p>
+	{{/if}}
+{{!--// my-timeline-templates --}}
+</script>
+
+
 </body>
 </html>

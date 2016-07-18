@@ -246,9 +246,12 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/myPage/HomeService.js');
 				break;
 
-			// 홈서비스 내역 상세/세탁 - 홈서비스 내역 상세/이사	homeServiceDetail
-			case 'myPage-homeServiceDetail':
-				PageModuleClass = require('./pages/myPage/HomeServiceDetail.js');
+			// 홈서비스 내역 상세/세탁 - 홈서비스 내역 상세/이사
+			case 'myPage-homeServiceMoving':
+				PageModuleClass = require('./pages/myPage/HomeServiceMoving.js');
+				break;
+			case 'myPage-homeServiceWashing':
+				PageModuleClass = require('./pages/myPage/HomeServiceWashing.js');
 				break;
 
 			// 홈서비스 취소내역 조회	homeServiceCancel

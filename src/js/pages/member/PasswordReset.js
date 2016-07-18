@@ -62,17 +62,15 @@ module.exports = function() {
 			Super.Super.alertPopup('', '비밀번호가 일치하지 않습니다.', '확인');
 			e.preventDefault();
 			e.stopPropagation();
-		} else if (!util.checkValidPassword(inputValue1)) {
-			Super.Super.alertPopup('', '비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.', '확인');
-			e.preventDefault();
-			e.stopPropagation();
 		} else {
 			//controller.resetPassword(authKey, inputValue1);
 			// FORM SUBMIT
 		}
 	};
 
-	function resetPasswordResultHandler(e) {
-		//
+	function resetPasswordResultHandler(e, status, result) {
+		Super.Super.alertPopup('비밀번호 재설정', result.message, '확인', function(e){
+			if (status == 200) location.href='/member/login.html';
+		});
 	};
 }

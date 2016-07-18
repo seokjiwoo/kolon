@@ -14,6 +14,10 @@ function ClassLoginController() {
 	$(document).on('getSocialLoginResult', socialLoginResultHandler);
 
 	var socialLoginFlag;
+
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	ALERTPOPUP_EVENT = events.ALERT_POPUP;
 	
 	return {
 		getInstance: function() {
@@ -34,6 +38,10 @@ function ClassLoginController() {
 			 * @param {String} pw - user password
 			 */
 			login: login,
+			/**
+			 * Not a robot
+			 */
+			notarobot: notarobot,
 			/**
 			 * 로그아웃
 			 */
@@ -81,7 +89,18 @@ function ClassLoginController() {
 
 		// recaptcha
 		if (window.VX_G_RECAPTCHA_CALL_BACK && window.grecaptcha) {
-			loginPostObj.recaptcha = window.grecaptcha.getResponse();
+			if (!window.grecaptcha.getResponse()) {
+				eventManager.trigger(
+					ALERTPOPUP_EVENT.OPEN,
+					[
+						'로그인/회원가입이 제한되었습니다.',
+						'정보보호 및 스팸 방지를 위하여 아래의 \'로봇이 아닙니다\'를 클릭해주세요.',
+						'확인'
+					]
+				);
+				return;
+			}
+			loginPostObj.recaptcha = window.grecaptcha.VX_RECAPTCHA_DATA;
 		}
 
 		Super.callApi('/apis/user/login', 'POST', loginPostObj, function(status, result) {
@@ -111,6 +130,17 @@ function ClassLoginController() {
 				$(callerObj).trigger('loginResult', [status, result]);
 			}
 		}, false);
+	};
+
+	function notarobot() {
+		Super.callApi('/apis/authorize/notarobot', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('notarobotResult', [status, result]);
+			} else {
+				Super.handleError('notarobot', result);
+				$(callerObj).trigger('notarobotResult', [status, result]);
+			}
+		}, true);
 	};
 	
 	/**

@@ -24,13 +24,13 @@
 									<tr>
 										<th scope="col">이름 </th>
 										<td>
-											<input type="text" id='name' title="이름 입력" placeholder="홍길동" style="width:360px;">
+											<input type="text" id='name' title="이름 입력" value="" style="width:360px;">
 										</td>
 									</tr>
 									<tr>
 										<th scope="col">연락처</th>
 										<td>
-											<input type="text" id='phoneNumber' title="휴대폰번호 입력" placeholder="01012345678" style="width:360px;">
+											<input type="text" id='phoneNumber' title="휴대폰번호 입력" value="" style="width:360px;">
 										</td>
 									</tr>
 									<tr>
@@ -166,7 +166,7 @@
 								</div>
 								<p class="checkAgree checkbox">
 									<input type="checkbox" id="agree01">
-									<label for="agree01">개인정보 제 3자 제공에 동의합니다.</label>
+									<label for="agree01" id="agree01lb">개인정보 제 3자 제공에 동의합니다.</label>
 								</p>
 							</div>
 						</div>
@@ -181,20 +181,5 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
-	<script type="text/javascript">
-	/**
-	 * 주소 목록 갱신 트리거 핸들링 
-	 */
-	function refreshAddressData() {
-        $(document).trigger('refreshAddressData');
-    }
-	/**
-	 * 주소 선택 데이터 트리거 핸들링 
-	 */
-	function selectAddressData(data) {
-        var data = JSON.parse(data);
-        $(document).trigger('selectAddressData', [data]);
-    }
-	</script>
 </body>
 </html>
