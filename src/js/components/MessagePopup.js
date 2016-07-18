@@ -10,38 +10,28 @@ function ClassMessagePopup() {
 	debug = require('../utils/Console.js'),
 	util = require('../utils/Util.js'),
 	imageUploader = require('./ImageUploader.js'),
-	fileName = 'qna/Index.js';
+	fileName = 'components/MessagePopup.js';
 
-	var controller = require('../controller/OpinionsController.js');
-	$(controller).on('opinionsClassResult', opinionsClassHandler);
-	$(controller).on('opinionsListResult', opinionsListHandler);
-	$(controller).on('opinionsExpertsListResult', opinionsExpertsListHandler);
-	$(controller).on('scrapedOpinionsListResult', scrapedOpinionsListHandler);
-
-	$(controller).on('postOpinionResult', postOpinionResultHandler);
-	$(controller).on('postAnswerResult', postAnswerResultHandler);
-	$(controller).on('pollAnswerResult', pollAnswerResultHandler);
-
-	var expertController = require('../controller/ExpertsController.js');
-	$(expertController).on('expertsListResult', expertListHandler);
-
-	var myPageController = require('../controller/MyPageController.js');
-	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
-
-	var eventManager = require('../events/EventManager'),
+	var opinionsController = require('../controller/OpinionsController.js'),
+	messageController = require('../controller/MessageController.js'),
+	eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
+	MESSAGE_EVENT = events.MESSAGE,
+	OPINIONS_EVENT = events.OPINIONS,
 	COLORBOX_EVENT = events.COLOR_BOX;
 	
-	var uploadFileNumber;
-	var uploadImageArray = [];
-	var opinionsClassArray;
-
-	var uploadScrapNumbers = [];
-	var uploadScrapImageArrary = [];
-
-	var pollAnswerId;
+	var uploadImageArray = [],
+	uploadScrapNumbers = [],
+	uploadScrapImageArrary = [],
+	uploadFileNumber;
 	
 	var opts = {
+		wrap : '.js-message-popup',
+		message : {
+			form : '.js-message-form',
+			inp : '.js-message-inp',
+			submit : '.js-message-submit'
+		},
 		colorbox : {
 			target : '#colorbox',
 			event : {
@@ -55,18 +45,7 @@ function ClassMessagePopup() {
 			popScrapAdd : 'popScrapAdd'
 		},
 		imageUploader : {
-			api_url : APIController().API_URL+'/apis/opinions/images',
-			flashOpts : {
-				swf : '../images/swf/imagePreview.swf',
-				id : 'imageUpoader',
-				width : '100%',
-				height : '100%',
-				wmode : 'transparent',
-				filterOpt : {
-					filter : 'images (*.jpg, *.jpeg, *.png)',
-					type : '*.jpg;*.jpeg;*.png'
-				}
-			}
+			api_url : APIController().API_URL + '/apis/inquiries/images'
 		}
 	};
 
@@ -85,150 +64,68 @@ function ClassMessagePopup() {
 	};
 	
 	function init(options) {
-		callerObj.colorbox = $(opts.colorbox.target);
-		$(document).on(opts.colorbox.event.COMPLETE, onCboxEventListener)
-		$(document).on(opts.colorbox.event.CLEANUP, onCboxEventListener)
-		$(document).on(opts.colorbox.event.CLOSED, onCboxEventListener);
+		debug.log(fileName, $, util);
 
-		$(".opinionwrite > .toggleBtn").on("click", showWriteForm);
-		$('#opinionWriteForm').submit(writeFormSubmitHandler);
+		self = callerObj;
+		self.opts = $.extend({}, opts, options);
 
-		controller.opinionsClass();
-		controller.opinionsExpertList();
-		expertController.list();
+		self.productNumber = util.getUrlVar().productNumber;
+		self.saleMemberNumber = util.getUrlVar().saleMemberNumber;
+
+		setElements();
+		setBindEvents();
+	}
+
+	function setElements() {
+		self.colorbox = $(self.opts.colorbox.target);
+		self.msgForm = $(self.opts.message.form);
+		self.msgInp = self.msgForm.find(self.opts.message.inp);
+		self.msgSubmit = self.msgForm.find(self.opts.message.submit);
+	}
+
+	function setBindEvents() {
+		self.msgForm.on('submit', onSubmitPrevent);
+		self.msgSubmit.on('click', onSubmitListener);
+
+		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
+		$(opinionsController).on(OPINIONS_EVENT.WILD_CARD, onControllerListener);
+		$(messageController).on(MESSAGE_EVENT.WILD_CARD, onControllerListener);
+	}
+
+	function onSubmitPrevent(e) {
+		e.preventDefault();
+	}
+
+	function onSubmitListener(e) {
+		e.preventDefault();
+		
+		if (!self.msgInp.val()) {
+			win.alert('자세한 내용을 작성해 주세요.');
+			return;
+		}
+
+		messageController.inquiries(
+			self.msgInp.val(),
+			uploadImageArray,
+			self.productNumber,
+			self.saleMemberNumber
+		);
 	}
 
 	function destroy() {
-		removeBindEvents();
 	}
 
 	function refresh() {
 	}
 
 	/**
-	 * 의견 주제 목록 핸들링. 이거 받아온 뒤에 의견 리스트 호출해야 함.
-	 */
-	function opinionsClassHandler(e, status, result) {
-		if (status == 200) {
-			var tags = '';
-			opinionsClassArray = new Array();
-			for (var key in result) {
-				var eachTheme = result[key];
-				tags += '<option value="'+eachTheme.opinionClassNumber+'">'+eachTheme.className+'</option>';
-				opinionsClassArray[eachTheme.opinionClassNumber] = eachTheme.className;
-			}
-			$('#opinionThemes').append(tags);
-		}
-		
-		controller.opinionsList();
-	}
-
-	/**
-	 * 의견 리스트 핸들링
-	 */
-	function opinionsListHandler(e, status, result) {
-		
-	};
-
-	/**
-	 * 상단 전문가 리스트 핸들링
-	 */
-	function expertListHandler(e, status, result) {
-		
-	};
-
-	/**
-	 * 가장 많은 도움을 준 전문가 리스트 핸들링
-	 */
-	function opinionsExpertsListHandler(e, status, result) {
-		
-	};
-
-	/**
-	 * 내 의견묻기 목록 핸들링
-	 */
-	function myOpinionsHandler(e, status, result) {
-		
-	};
-
-	/**
 	 * 스크랩 북 목록 핸들링
 	 */
 	function scrapedOpinionsListHandler(e, status, result) {
-		var dummyData = {
-			"folders": [
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩0",
-					"folderNumber": 0,
-					"scrapCount": 4,
-					"scrapImages": [
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg"
-					]
-				},
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩1",
-					"folderNumber": 1,
-					"scrapCount": 16,
-					"scrapImages": [
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg",
-						"../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg", "../images/temp01.jpg"
-					]
-				},
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩2",
-					"folderNumber": 2,
-					"scrapCount": 1,
-					"scrapImages": [
-						"../images/temp01.jpg"
-					]
-				},
-				{
-					"folderName": "내 새로운 부엌을 위한 스크랩3",
-					"folderNumber": 3,
-					"scrapCount": 0,
-					"scrapImages": [
-					]
-				}
-			],
-			"opinions": [
-				{
-					"answerCount": 0,
-					"answers": [
-						{
-							"answerNumber": 0,
-							"content": "string",
-							"createDate": "string",
-							"expertCompany": "string",
-							"expertImageUrl": "string",
-							"expertName": "string",
-							"helpCount": 0,
-							"serviceNames": [
-								"string"
-							]
-						}
-					],
-					"category": "string",
-					"content": "string",
-					"createDate": "string",
-					"images": [
-						"string"
-					],
-					"opinionClassNumber": 0,
-					"opinionNumber": 0,
-					"title": "string",
-					"userName": "string"
-				}
-			]
-		};
-
 		switch(status) {
 			case 200:
 				break;
 			default:
-				win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-				result = dummyData;
 				break;
 		}
 
@@ -248,7 +145,7 @@ function ClassMessagePopup() {
 
 		var template = window.Handlebars.compile($('#scrap-add-template').html());
 		var elements = $(template(result));
-		callerObj.colorbox.find('.js-scrap-container').empty().append(elements);
+		self.colorbox.find('.js-scrap-container').empty().append(elements);
 
 		eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 		eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
@@ -260,10 +157,10 @@ function ClassMessagePopup() {
 	}
 
 	function setScrapAddEvents() {
-		var selFolder = callerObj.colorbox.find('.js-sel-folder'),
-		scrapList = callerObj.colorbox.find('.js-scrap-list'),
-		btnCancel = callerObj.colorbox.find('.js-sel-cancel'),
-		btnSubmit = callerObj.colorbox.find('.js-sel-submit');
+		var selFolder = self.colorbox.find('.js-sel-folder'),
+		scrapList = self.colorbox.find('.js-scrap-list'),
+		btnCancel = self.colorbox.find('.js-sel-cancel'),
+		btnSubmit = self.colorbox.find('.js-sel-submit');
 
 		selFolder.on('change', onScrapAddSelFolderChange);
 		scrapList.find('li').on('click', onScrapAddSelImage);
@@ -273,10 +170,10 @@ function ClassMessagePopup() {
 	}
 
 	function destoryScrapAddEvents() {
-		var selFolder = callerObj.colorbox.find('.js-sel-folder'),
-		scrapList = callerObj.colorbox.find('.js-scrap-list'),
-		btnCancel = callerObj.colorbox.find('.js-sel-cancel'),
-		btnSubmit = callerObj.colorbox.find('.js-sel-submit');
+		var selFolder = self.colorbox.find('.js-sel-folder'),
+		scrapList = self.colorbox.find('.js-scrap-list'),
+		btnCancel = self.colorbox.find('.js-sel-cancel'),
+		btnSubmit = self.colorbox.find('.js-sel-submit');
 
 		selFolder.off('change', onScrapAddSelFolderChange);
 		scrapList.find('li').off('click', onScrapAddSelImage);
@@ -355,8 +252,8 @@ function ClassMessagePopup() {
 	}
 
 	function onScrapAddSelFolderChange(e) {
-		var folderNumber = $(this).val(),
-		scrapList = callerObj.colorbox.find('.js-scrap-list');
+		var folderNumber = $(e.currentTarget).val(),
+		scrapList = self.colorbox.find('.js-scrap-list');
 
 		scrapList.removeClass('is-show');
 		scrapList.filter('[data-folder-number=\'' + folderNumber + '\']').addClass('is-show');
@@ -401,110 +298,10 @@ function ClassMessagePopup() {
 	}
 
 	function onScrapAddSelImageUpdate() {
-		var selecteds = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
-
 		$.each(callerObj.selScrapImgs, function(index, info) {
 			info.target.find('.js-sel-num').text(index + 1);
 		});
 	}
-
-	function showCommentForm(e) {
-		e.preventDefault();
-		if (Super.Super.loginData != null) {
-			var pId = $(this).attr('id').substr(18);
-			$('#commentArea'+pId).addClass('showCommentInput');
-		} else {
-			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
-		}
-	};
-
-	function showWriteForm(e) {
-		e.preventDefault();
-
-		if (Super.Super.loginData != null) {
-			if (!$(this).hasClass("active")) {
-				uploadFileNumber = 0;
-				uploadImageArray = new Array();
-				$('#fileUpList').html('');
-				$('#opinionThemes').val('-');
-				$('#opinionTitle').val('');
-				$('#opinionContent').val('');
-
-				$(this).addClass("active").find("span").text("접기");
-				$(".opinionInput").stop().slideDown();
-			} else {
-				$(this).removeClass("active").find("span").text("의견 묻기");
-				$(".opinionInput").stop().slideUp();
-			};
-		} else {
-			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
-		}
-	};
-
-	function writeFormSubmitHandler(e) {
-		e.preventDefault();
-
-		if ($('#opinionThemes').val() == '-') {
-			alert('주제를 선택해주세요');
-		} else if ($.trim($('#opinionTitle').val()) == '') {
-			alert('제목을 입력해주세요');
-		} else if ($.trim($('#opinionContent').val()) == '') {
-			alert('자세한 내용을 작성해 주세요');
-		} else {
-			controller.postOpinion(
-				$('#opinionThemes').val(),
-				$.trim($('#opinionTitle').val()),
-				$.trim($('#opinionContent').val()),
-				uploadImageArray,
-				uploadScrapNumbers
-			);
-		}
-	};
-
-	function postOpinionResultHandler(e, status, result) {
-		if (status == 200) {
-			Super.Super.alertPopup('의견묻기', '등록이 완료되었습니다', '확인', function() {
-				location.reload(true);
-			});
-		}
-	};
-
-	function answerFormSubmitHandler(e) {
-		e.preventDefault();
-		var opinionNumber = $(this).attr('id').substr(10);
-
-		if ($.trim($('#answerBox'+opinionNumber).val()) == '') {
-			alert('내용을 작성해 주세요');
-		} else {
-			controller.postAnswer(opinionNumber, $.trim($('#answerBox'+opinionNumber).val()));
-		}
-	};
-
-	function postAnswerResultHandler(e, status, result) {
-		if (status == 200) {
-			console.log(result);
-			Super.Super.alertPopup('의견묻기', '의견이 등록되었습니다', '확인', function() {
-				location.reload(true);
-			});
-		}
-	};
-
-	function pollAnswer(e){
-		pollAnswerId = $(this).attr('id').substr(6);
-		if (!$(this).hasClass('on')) {
-			controller.pollAnswer(pollAnswerId);
-		}
-	};
-
-	function pollAnswerResultHandler(e, status, result) {
-		if (status == 200) {
-			var newCount = Number($('#answerCount'+pollAnswerId).text())+1;
-			$('#answerCount'+pollAnswerId).text(newCount);
-			$('#answer'+pollAnswerId).addClass('on');
-		} else {
-			alert(status+': '+result.message);
-		}
-	};
 
 	function onUploaderSelectedFiles(e, selectedFiles) {
 		debug.log(fileName, 'onUploaderSelectedFiles', imageUploader.EVENT.SELECTED_FILES, selectedFiles);
@@ -512,11 +309,11 @@ function ClassMessagePopup() {
 	}
 
 	function onUploadSuccess(e, result) {
-		result = result.opinionAttachFile;
+		result = result.reviewAttachFile;
 		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
 		
 		if (uploadImageArray.length == 3) {
-			alert('이미지는 3장까지 첨부 가능합니다');
+			win.alert('이미지는 3장까지 첨부 가능합니다');
 		} else {
 			uploadImageArray.push(result);
 			$('#fileUpList').append('<div id="con'+uploadFileNumber+'" class="conDel">'+result.attachFileName+' <a href="#" id="deleteFile'+uploadFileNumber+'" data-image-url="'+result.attachFileUrl+'" class="btnDel">삭제</a></div>');
@@ -547,27 +344,54 @@ function ClassMessagePopup() {
 		debug.log(fileName, 'onUploaderFailure', imageUploader.EVENT.UPLOAD_FAILURE, jqXHR);
 	}
 
-	function onCboxEventListener(e) {
-		debug.log(fileName, 'onCboxEventListener', e.type);
+	function onControllerListener(e, status, response) {
+		var eventType = e.type,
+		dummyData = {},
+		result = response;
 
-		var CB_EVENTS = opts.colorbox.event;
+		switch(eventType) {
+			case OPINIONS_EVENT.SCRAPED_LIST:
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				scrapedOpinionsListHandler(e, status, response);
+				break;
+			case MESSAGE_EVENT.INQUIRIES:
+				switch(status) {
+					case 200:
+						win.alert('메세지를 정상적으로 전송하였습니다.');
+						win.close();
+						break;
+					default:
+						win.alert(status + ' , ' + response.errorCode + ' , ' + response.message);
+						win.close();
+						break;
+				}
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				break;
+			default:
+				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				break;
+		}
+	}
+
+	function onColorBoxAreaListener(e) {
+		debug.log(fileName, 'onColorBoxAreaListener', e.type);
 
 		switch(e.type) {
-			case CB_EVENTS.COMPLETE:
-				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
+			case COLORBOX_EVENT.COMPLETE:
+				if (self.colorbox.hasClass(self.opts.cssClass.popAttachPictures)) {
 					$(imageUploader).on(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.on(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
 									.on(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
 
-					imageUploader.init(opts.imageUploader);
+					imageUploader.init(self.opts.imageUploader);
 				}
 
-				if (callerObj.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
-					controller.scrapedOpinionsList();
+				if (self.colorbox.hasClass(self.opts.cssClass.popScrapAdd)) {
+					opinionsController.scrapedOpinionsList();
 				}
 				break;
-			case CB_EVENTS.CLEANUP:
-				if (callerObj.colorbox.hasClass(opts.cssClass.popAttachPictures)) {
+			case COLORBOX_EVENT.CLEANUP:
+				if (self.colorbox.hasClass(self.opts.cssClass.popAttachPictures)) {
 					$(imageUploader).off(imageUploader.EVENT.SELECTED_FILES, onUploaderSelectedFiles)
 									.off(imageUploader.EVENT.UPLOAD_SUCCESS, onUploadSuccess)
 									.off(imageUploader.EVENT.UPLOAD_FAILURE, onUploadFailure);
@@ -575,12 +399,10 @@ function ClassMessagePopup() {
 					imageUploader.destory();
 				}
 
-				if (callerObj.colorbox.hasClass(opts.cssClass.popScrapAdd)) {
+				if (self.colorbox.hasClass(self.opts.cssClass.popScrapAdd)) {
 					destoryScrapAddEvents();
 				}
 				break;
-			case CB_EVENTS.CLOSED:
-				break;
 		}
 	}
-};
+}

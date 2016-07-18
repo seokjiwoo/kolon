@@ -30,6 +30,8 @@ function ClassProductController() {
 			evals : evals,
 			// 상품 정보
 			info : info,
+			// 상품 좋아요
+			likes : likes,
 			// 상품 판매자 정보
 			partnerInfo : partnerInfo,
 			// 상품 미리보기
@@ -115,6 +117,25 @@ function ClassProductController() {
 			} else {
 				Super.handleError('productInfo', result);
 				$(callerObj).trigger('productInfoResult', [status, result]);
+			}
+		}, true);
+	}
+
+	/**
+	 * 상품 좋아요
+	 * @param  {Number} productNumber
+	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductInfoUsingGET
+	 * @ POST /apis/products/{productNumber}/likes
+	 */
+	function likes(productNumber, productSvcCode) {
+		Super.callApi('/apis/products/' + productNumber + '/likes', 'POST', {
+			'productSvcCode' : productSvcCode
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('productLikesResult', [status, result]);
+			} else {
+				Super.handleError('productLikes', result);
+				$(callerObj).trigger('productLikesResult', [status, result]);
 			}
 		}, true);
 	}

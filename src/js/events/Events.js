@@ -72,11 +72,18 @@ function Events() {
 			REFRESH : 'VX-INFO_SLIDER-REFRESH',
 			DESTROY : 'VX-INFO_SLIDER-DESTROY',
 		},
+		WINDOW_OPENER : {
+			OPEN : 'VX-WINDOW_OPENER-OPEN'
+		},
 		RECAPTCHA : {
 			CALL_BACK : 'VX-G_RECAPTCHA-CALL_BACK'
 		},
 
 		// [S] Controller Events
+			// Opinions - 의견묻기
+			OPINIONS : {
+				SCRAPED_LIST : 'scrapedOpinionsListResult'
+			},
 			// Message - 메세지
 			// @see MessageController.js
 			MESSAGE : {
@@ -183,6 +190,8 @@ function Events() {
 				EVALS : 'productEvalsResult',
 				// 상품 정보
 				INFO : 'productInfoResult',
+				// 상품 좋아요
+				LIKES : 'productLikesResult',
 				// 상품 옵션 정보,
 				OPTIONS : 'productOptionsResult',
 				// 상품 판매자 정보

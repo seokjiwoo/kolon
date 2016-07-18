@@ -43,7 +43,7 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		messagePopup.init('', 1);
+		messagePopup.init();
 	}
 
 	function setElements() {
