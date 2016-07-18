@@ -261,7 +261,7 @@ module.exports = function() {
 	};
 
 	function onRecaptchaHandler(e, status, response) {
-		recaptchaData = status.data;
+		recaptchaData = response.data;
 		setRecaptcha();
 	}
 
@@ -306,7 +306,7 @@ module.exports = function() {
 			if (recaptchaWidget) {
 				return;
 			}
-			win.grecaptcha.VX_RECAPTCHA_DATA = recaptchaData;
+			win.grecaptcha.VX_RECAPTCHA_DATA = recaptchaData.recaptcha;
 			recaptchaWidget = win.grecaptcha.render('vxrecaptcha', {
 				'sitekey' : '6Le4NyUTAAAAAB8tcMLMcftsItykhlcIBq4vtMhq',
 				'size' : 'normal',
