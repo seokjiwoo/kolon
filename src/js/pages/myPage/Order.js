@@ -9,8 +9,8 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/Order.js';
 
-	var SuperClass = require('../Page.js'),
-	Super = SuperClass(),
+	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),
 	controller = require('../../controller/OrderController.js'),
@@ -54,7 +54,7 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
 		
 		debug.log(fileName, $, util, controller, eventManager, events, COLORBOX_EVENT);
 
@@ -136,26 +136,99 @@ module.exports = function() {
 	}
 
 	// Handlebars 마크업 템플릿 구성
-	function displayData(data) {
-		var source = self.template.html(),
+	function displayData(data, type) {
+		var _template = self.template,
+		_templatesWrap = self.templatesWrap;
+
+		if (type === 'COLOR_BOX') {
+			_template = self.colorbox.find('#cancel-request-templates');
+			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
+		}
+
+		var source = _template.html(),
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));
 
-		self.templatesWrap.empty()
+		_templatesWrap.empty()
 							.addClass(self.opts.cssClass.isLoading)
 							.append(insertElements);
 
-		self.templatesWrap.imagesLoaded()
+		_templatesWrap.imagesLoaded()
 							.always(function() {
-								self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 							});
-	}
 
+		if (type === 'COLOR_BOX') {
+			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
+				e.preventDefault();
+
+				var forms = self.colorbox.find('.js-cancel-form'),
+				isValid = false,
+				cancelType, cancelReson;
+
+				$.each(forms, function() {
+					cancelType = $(this).find('.js-type').val();
+					cancelReson = $(this).find('.js-inp').val();
+					if (cancelType && cancelReson) {
+						isValid = true;
+					} else {
+						isValid = false;
+						return false;
+					}
+				});
+
+				if (!isValid) {
+					win.alert('취소 사유를 선택/입력 해주세요.');
+					return;
+				}
+
+				$.each(forms, function() {
+					cancelType = $(this).find('.js-type').val();
+					cancelReson = $(this).find('.js-inp').val();
+
+					controller.orderCancel(
+						self.selPopBtnInfo.info.orderNumber,
+						{
+							"accountAuthDatetime": "2016-04-01",
+							"accountAuthYn": "Y",
+							"addDeliveryChargeTotal": 0,
+							"claimDeliveryChargeTotal": 0,
+							"claimReasonCode": cancelType,
+							"claimReasonStatement": "string",
+							"claimTypeCode": "string",
+							"orderNumber": 0,
+							"refundAccountNumber": 0,
+							"refundBankCode": "string",
+							"refundDepositorName": cancelReson
+						},
+						[
+							{
+								"addDeliveryCharge": 0,
+								"claimDeliveryCharge": 0,
+								"claimNumber": 0,
+								"claimProcessDatetime": "string",
+								"claimProcessQuantity": 0,
+								"claimProductAmount": 0,
+								"claimRequestQuantity": 0,
+								"claimStateCode": "string",
+								"claimStateReason": "string",
+								"deliveryChargePaymentCode": "string",
+								"orderNumber": 0,
+								"orderProductSequence": "string"
+							}
+						]
+					);
+				});
+			});
+		}
+	}
 	function setColoboxEvevnts() {
 		// 취소신청
 		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			controller.orderDetail(self.selPopBtnInfo.info.orderNumber);
+			controller.orderDetail(self.selPopBtnInfo.info.orderNumber, 'COLOR_BOX');
 		}
 
 		// 배송추적
@@ -267,9 +340,10 @@ module.exports = function() {
 		});
 	}
 
-	function onControllerListener(e, status, response) {
+	function onControllerListener(e, status, response, type) {
 		var eventType = e.type,
-		result = response;
+		result = response,
+		localFlag = (/localhost/).test(document.URL);
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_LIST:
@@ -285,16 +359,23 @@ module.exports = function() {
 						break;
 				}
 
-				result.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.totalPaymentPrice, 10));
+				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
 
-				if (result.listOrderItems) {
-					$.each(result.listOrderItems, function(index, val) {
-						val.itemPriceDesc = util.currencyFormat(parseInt(val.itemPrice, 10));
+				if (result.data.listOrderItems) {
+					$.each(result.data.listOrderItems, function(index, orderItems) {
+						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
+						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
+						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
+						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
+
+						if (localFlag) {
+							orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
+						}
 					});
 				}
 
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result);
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				displayData(result.data);
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
@@ -316,7 +397,25 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
+
+				if (result && !result.data) {
+					displayData([], type);
+					return;
+				}
+
+				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
+				result.data.discountPriceDesc = util.currencyFormat(parseInt(result.data.discountPriceDesc, 10));
+
+				if (result.data.listOrderItems) {
+					$.each(result.data.listOrderItems, function(index, listOrderItems) {
+						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
+						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
+						listOrderItems.deliveryFreeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFree, 10));
+					});
+				}
+
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				displayData(result.data, type);
 				break;
 
 			case ORDER_EVENT.ORDER_TRACKING:

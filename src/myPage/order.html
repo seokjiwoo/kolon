@@ -146,35 +146,35 @@
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 	{{#if listOrderItems.length}}
 		<tr data-order-info='{
-				"orderNumber" : "{{orderNumber}}",
-				"orderProductSequence" : "{{orderProductSequence}}",
-				"deliveryNumber" : "{{deliveryNumber}}"
+				"orderNumber" : "{{listOrderItems.[0].orderNumber}}",
+				"deliveryChargePaymentCode" : "{{listOrderItems.[0].deliveryChargePaymentCode}}",
+				"deliveryNumber" : "{{listOrderItems.[0].deliveryNumber}}"
 			}'>
 			<td rowspan="{{listOrderItems.length}}" class="recordDate">
-				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{listOrderItems.[0].orderNumber}}">{{listOrderItems.[0].orderNumber}}</a></p>
 				<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
 			</td>
 			{{#each listOrderItems}}
 				{{#vxIF @index "!==" 0}}
 				<tr data-order-info='{
-					"orderNumber" : "{{../orderNumber}}",
-					"orderProductSequence" : "{{../orderProductSequence}}",
-					"deliveryNumber" : "{{../deliveryNumber}}"
+					"orderNumber" : "{{orderNumber}}",
+					"deliveryChargePaymentCode" : "{{deliveryChargePaymentCode}}",
+					"deliveryNumber" : "{{deliveryNumber}}"
 				}'>
 				{{/vxIF}}
 					<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
-					{{#if optionName}}
-						<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+					{{#if orderOptionName}}
+						<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 						</td>
 					{{else}}
-						<td class="recordInfo">{{productName}}<span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+						<td class="recordInfo">{{productName}}<span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 						</td>
 					{{/if}}
-					<td>{{sellerName}}</td>
+					<td>{{saleMemberName}}</td>
 					<td>{{receiverName}}</td>
-					<td>{{deliveryFee}}</td>
+					<td>{{deliveryChargeDesc}}</td>
 					<td class="orderState stateWrap">
-						{{#vxSwitch deliveryStateCode}}
+						{{#vxSwitch orderStateCode}}
 							{{#vxCase "SL_ORDER_STATE_01" break=true}}
 								<div class="stateTxt">
 									<!-- @@include ../_template/pop_order_state.html {"step":"step01", "step01":"on"} -->
