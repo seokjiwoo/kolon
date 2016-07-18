@@ -182,11 +182,16 @@ module.exports = function() {
 	}
 
 	function displayData(data) {
+		var localFlag = (/localhost/).test(document.URL);
 		$.map(data, function(eachCartItem) {
 			if (eachCartItem.deliveryCharge == null) eachCartItem.deliveryCharge = 0;
 			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
 			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
 			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
+
+			if (localFlag) {
+				eachCartItem.productImageUrl = 'https://dev.koloncommon.com' + eachCartItem.productImageUrl;
+			}
 		});
 
 		var source = self.template.html(),
