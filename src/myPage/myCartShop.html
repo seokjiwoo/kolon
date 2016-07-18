@@ -170,15 +170,5 @@
 	{{/if}}
 {{!--// myCartShop-list-templates --}}
 </script>
-
-<script type="text/javascript">
-/**
- * 외부 창 휴대폰 본인인증 데이터 트리거 핸들링
- */
-function memberVerify(data) {
-	var data = JSON.parse(data);
-	$(document).trigger('getMobileAuthVerifyResult', [data]);
-}
-</script>
 </body>
 </html>

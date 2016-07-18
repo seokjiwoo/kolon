@@ -181,20 +181,5 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
-	<script type="text/javascript">
-	/**
-	 * 주소 목록 갱신 트리거 핸들링 
-	 */
-	function refreshAddressData() {
-        $(document).trigger('refreshAddressData');
-    }
-	/**
-	 * 주소 선택 데이터 트리거 핸들링 
-	 */
-	function selectAddressData(data) {
-        var data = JSON.parse(data);
-        $(document).trigger('selectAddressData', [data]);
-    }
-	</script>
 </body>
 </html>
