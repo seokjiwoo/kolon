@@ -263,7 +263,7 @@ module.exports = function() {
 					$.each(result.data.listOrderItems, function(index, listOrderItems) {
 						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
 						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
-						listOrderItems.deliveryFeeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFee, 10));
+						listOrderItems.deliveryFreeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFree, 10));
 					});
 				}
 
