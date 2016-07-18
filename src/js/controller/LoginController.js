@@ -133,7 +133,7 @@ function ClassLoginController() {
 	};
 
 	function notarobot() {
-		Super.callApi('/apis/user/login/notarobot', 'GET', {}, function(status, result) {
+		Super.callApi('/apis/authorize/notarobot', 'GET', {}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('notarobotResult', [status, result]);
 			} else {

@@ -261,12 +261,6 @@ module.exports = function() {
 	};
 
 	function onRecaptchaHandler(e, status, response) {
-		switch(status) {
-			case 200:
-				break;
-			default:
-				break;
-		}
 		recaptchaData = status.data;
 		setRecaptcha();
 	}
