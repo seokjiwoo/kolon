@@ -15,8 +15,8 @@ function ClassLoginController() {
 
 	var socialLoginFlag;
 
-	var eventManager = require('../../events/EventManager'),
-	events = require('../../events/events'),
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
 	ALERTPOPUP_EVENT = events.ALERT_POPUP;
 	
 	return {
