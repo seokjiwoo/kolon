@@ -1,0 +1,59 @@
+.serviceTop {position:relative;text-align:center;background:url('../images/homeservice_top.jpg') no-repeat 0 0;background-size: 100% 100%;}
+.serviceTop h2 {padding-top:22px;font-size:16px;}
+.serviceTop h3 {width:230px;margin:10px auto 0;font-size:27px;line-height:33px;}
+.serviceTop h3 span {display:block;font-family:'NotoSansT', sans-serif;}
+.serviceTop h3 i, .serviceTop h3 b {font-family:'NotoSansM', sans-serif;font-style:normal}
+.serviceTop h3 b {display:block;text-align:right;font-weight:normal;}
+.serviceTop h3 img {margin-top:5px;width:201px;}
+.serviceTop p {text-align:left;margin:18px 0 0 50%;font-size:11px;color:#333;font-family:'NotoSansL', sans-serif;}
+.serviceTop ul {overflow:hidden;padding:40px 43px 95px;width:100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
+.serviceTop ul li {float:left;width:50%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
+.serviceTop ul li:nth-child(odd) {padding-right:9px;}
+.serviceTop ul li:nth-child(even) {padding-left:9px;}
+.serviceTop ul li img {width:100%;}
+.serviceTop .commonLogoTit {margin:0;position:absolute;bottom:0;left:45px;right:0;height:67px;background:url('../images/common_logo_tit.png') no-repeat 0 0;background-size:54px 67px}
+.serviceTop .commonLogoTit span {display:inline-block;text-align:center;position:absolute;bottom:15px;left:50px;width:193px;padding:5px 0;font-size:11px;color:#fff;background:url('../images/common_txt_bg.png') no-repeat 0 0;background-size:193px 20px;}
+
+.serviceConBox {padding:30px 30px 38px;background:url('../images/serviceM_con_bg.png') no-repeat 0 0;background-size:100%;}
+.serviceConBox h3 {font-size:27px;color:#1a1a1a;}
+.serviceConBox h3 span {display:block;font-family:'NotoSansB', sans-serif;}
+.serviceConBox p {margin-top:13px;font-size:11px;color:#666;line-height:14px}
+.serviceConBox p.serviceCon {margin-top:30px;}
+.serviceConBox p.serviceCon img {width:100%;vertical-align:top}
+.serviceConBox p.serviceCon + .serviceCon {margin-top:0;}
+.starIco {overflow:hidden;margin-top:19px;}
+.starIco li {position:relative;padding-left:7px;font-size:12px;color:#999;line-height:1.4}
+.starIco li:before {content:'*';display:inline-block;position:absolute;top:0;left:0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
