@@ -22,7 +22,7 @@ module.exports = function() {
 			changeYear: true,
 			changeMonth: true,
 			onChangeMonthYear: function(year, month, inst) {
-				//
+				$('#'+inst.id).trigger('onChangeMonthYear', [year, month]);
 			}
 		},
 		range : {

@@ -14,8 +14,12 @@ module.exports = function() {
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),
-	dropDownMenu =  require('../../components/DropDownMenu.js'),
-	callerObj = {
+	dropDownMenu =  require('../../components/DropDownMenu.js');
+
+	var controller = require('../../controller/HomeServiceController.js');
+	$(controller).on('homeServiceOrderListResult', listHandler);
+
+	var callerObj = {
 		/**
 		 * 초기화
 		 */
@@ -48,6 +52,8 @@ module.exports = function() {
 		setElements();
 		initRangePicker();
 		setBindEvents();
+
+		refreshListCritica();
 	}
 
 	function setElements() {
@@ -79,8 +85,18 @@ module.exports = function() {
 					break;
 			}
 			$('.js-picker-to').datepicker('setDate', moment().format('YYYY-MM-DD'));
+			
+			refreshListCritica();
 			e.stopPropagation();
 		});
+	};
+
+	function refreshListCritica(e) {
+		if (e != undefined) e.preventDefault();
+		var fromDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
+		var toDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
+		controller.homeServiceOrderList($('#recordInput').val(), fromDate, toDate);
+		if (e != undefined) e.stopPropagation();
 	};
 
 	function setRangePicker() {
@@ -104,7 +120,7 @@ module.exports = function() {
 				}
 			}
 		});
-	}
+	};
 
 	function setBindEvents() {
 		debug.log(fileName, 'setBindEvents');
@@ -114,6 +130,8 @@ module.exports = function() {
 		$(doc).on(CB_EVENTS.COMPLETE, onCboxEventListener)
 				.on(CB_EVENTS.CLEANUP, onCboxEventListener)
 				.on(CB_EVENTS.CLOSED, onCboxEventListener);
+		
+		$('#searchButton').click(refreshListCritica);
 	}
 
 	function onCboxEventListener(e) {
@@ -173,4 +191,31 @@ module.exports = function() {
 		$(dropDownMenu).trigger(dropDownMenu.EVENT.DESTROY);
 	}
 
+	function listHandler(e, status, result) {
+		$.map(result.livingRequestHistoryList, function(each) {
+			each.createDate = moment(each.createDateTime).format('YYYY. MM. DD');
+			switch(each.serviceSectionCode) {
+				case 'LS_SERVICE_TYPE_01':
+					switch(each.statusCode) {
+						case "LS_MOVING_STATE_01": 
+						case "LS_MOVING_STATE_02": each.paymentStatus = '실측 후 견적 안내 및 계약 진행'; break;
+						case "LS_MOVING_STATE_03": 
+						case "LS_MOVING_STATE_04": each.paymentStatus = '업체와 협의 중'; break;
+						case "LS_MOVING_STATE_05": 
+						case "LS_MOVING_STATE_06": each.paymentStatus = '결제완료'; break;
+						case "LS_MOVING_STATE_07": each.paymentStatus = ''; break;
+					}
+					break;
+			}
+		});
+		console.log(result);
+		renderData(result, '#homeservice-list-templates', '#homeservice-wrap', true);
+	};
+
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
+	};
 };

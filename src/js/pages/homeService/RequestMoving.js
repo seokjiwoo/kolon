@@ -16,7 +16,7 @@ module.exports = function() {
 	DatePicker = DatePickerClass();
 
 	var controller = require('../../controller/HomeServiceController.js');
-	//$(controller).on('movingAddressListResult', movingAddressListHandler);
+	$(controller).on('movingDateListResult', movingDateListHandler);
 	$(controller).on('movingCompanyListResult', movingCompanyListHandler);
 	$(controller).on('requestMovingResult', requestMovingResultHandler);
 
@@ -26,6 +26,12 @@ module.exports = function() {
 	var originAddress;
 	var targetAddress;
 	var addressBookTarget;
+	
+	var mCode;
+	
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../../model/LoginModel');
 
 	$(document).on('refreshAddressData', refreshAddressDataHandler);
 	$(document).on('selectAddressData', selectAddressDataHandler);
@@ -69,14 +75,44 @@ module.exports = function() {
 		});
 	}
 
+	function myInfoResultHandler() {
+		var loginData = loginDataModel.loginData();
+		
+		if (loginData == null) {
+			alert('로그인이 필요한 페이지입니다.');
+			location.href = '/member/login.html';
+		} else {
+			$('#name').val(loginData.memberName);
+			$('#phoneNumber').val(loginData.phone);
+		}
+	}
+
 	function setDatePicker() {
 		var datePicker = $('.js-picker');
+
 		DatePicker.init({
 			wrap : datePicker,
 			picker : datePicker.find('.js-picker'),
 			altField : datePicker.find('.js-alt'),
-			button : datePicker.find('.js-btn'),
+			button : datePicker.find('.js-btn')
 		});
+
+		$('.js-picker .js-alt').click(function() {
+			if ($('#moveDate').hasClass('cal-show')) {
+				mCode = moment($('#moveDate').datepicker('getDate')).format('YYYYMM');
+				//controller.movingDateList(originAddress.regionCode, mCode);
+			}
+		});
+		$('#moveDate').datepicker("option", "onChangeMonthYear", function(year, month, inst) {
+			mCode = String(year);
+			mCode += (month < 10 ? '0'+month : month);
+			//controller.movingDateList(originAddress.regionCode, mCode);
+		});
+		//$( "#moveDate" ).datepicker( "option", "disabled", true );
+	};
+
+	function movingDateListHandler(e, status, result) {
+		console.log(result)
 	};
 
 	/*function movingAddressListHandler(e, status, result) {
@@ -149,6 +185,7 @@ module.exports = function() {
 		switch(addressType) {
 			case 'origin': 
 				originAddress = addressObject;
+				//$( "#moveDate" ).datepicker( "option", "disabled", false );
 				break;
 			case 'target':
 				targetAddress = addressObject;
@@ -185,7 +222,11 @@ module.exports = function() {
 			alert('서비스 종류를 선택해 주세요');
 		} else if ($('#companyListWrap').find('.on').data() == undefined ) {
 			alert('서비스 업체를 선택해 주세요');
+		} else if (!$('#agree01lb').hasClass('on')) {
+			alert('개인정보 제 3자 제공에 동의해 주세요');
 		} else {
+			originAddress.addressSectionCode = 'LS_ADDR_SECTION_01';
+			targetAddress.addressSectionCode = 'LS_ADDR_SECTION_02'; 
 			var movingService = {
 				"movingDate": moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'),
 				"movingTypeCode": movingTypeCode
