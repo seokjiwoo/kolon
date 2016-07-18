@@ -48,7 +48,8 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topMenu .topR .member{padding: 10px 0;}
 .login .topMenu .topR .member{display:inline-block; padding:0; vertical-align:top; margin:10px 70px 0 0;}
 .topMenu .topR .member a{display: inline-block;vertical-align: middle;}
-.topMenu .topR .member .name{font-family:'NotoSansR', sans-serif;color: #737373;}
+.topMenu .topR .member .name{margin-left:5px;font-family:'NotoSansR', sans-serif;color: #737373;}
+.topMenu .topR .member .name span{display: inline-block;margin-right:5px;max-width: 70px;overflow: hidden;text-overflow: ellipsis;}
 .topMenu .topR .member .pic{overflow:hidden;width: 40px;height: 40px;border-radius:50%;}
 .topMenu .topR .member .pic img{width: 100%;}
 .topMenu .topR .member .btnAlarm{overflow: hidden;display: inline-block;width: 40px;height: 40px;margin-left:10px;background: url('../images/ico_alarm.png') no-repeat center;}

@@ -132,7 +132,7 @@ module.exports = function() {
 			} else {
 				$('#topMemberInfoPic').attr('src', '/images/profile.png');
 			}
-			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName+' 님');
+			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName);
 
 			if (loginData.imageUrl != null) {
 				$('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
