@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 검색결과"} -->
+</head>
+<body data-page-id="search-result">
+	<div class="wrapper search">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<section>
+				<!-- 검색영역 -->
+				<div class="subTop">
+					<div class="searchWrap">
+						<form method="post" action="/">
+							<fieldset>
+								<legend>통합검색</legend>
+								<div class="searchForm">
+									<p><input type="text" id="keyword" title="검색어 입력" name="keyword" placeholder="검색어 입력" value=""><button class="keywordDel">입력 내용 삭제</button></p>
+								</div>
+								<!-- 검색 키워드 -->
+								<!-- 
+								<div class="keyword">
+									<ul class="keywordList">
+										<li><a href="#"><span>북유럽</span> 침실</a></li>
+										<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+										<li><a href="#"><span>북유럽</span> 소품</a></li>
+										<li><a href="#"><span>북유럽</span> 침실</a></li>
+										<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+										<li><a href="#"><span>북유럽</span> 소품</a></li>
+										<li><a href="#"><span>북유럽</span> 침실</a></li>
+										<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+										<li><a href="#"><span>북유럽</span> 소품</a></li>
+										<li><a href="#"><span>북유럽</span> 침실</a></li>
+										<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+										<li><a href="#"><span>북유럽</span> 소품</a></li>
+									</ul>
+								</div>
+								 -->
+								<!--// 검색 키워드 -->
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<!--// 검색영역 -->
+				<!-- @@include ../_template/my_depth02_result.html {"myMenu01":"on"} -->
+				<div class="">
+					<div class="searchDetail">
+						<div class="searchDetailWrap">
+							<form method="post" action="/">
+								<fieldset>
+									<legend>검색결과 조건 정렬 선택</legend>
+									<p class="sdTit">총 <b>150</b>개 상품</p>
+									<a href="../_popup/popDetailedMore.html" class="btnPop detailBtn" data-user-class="pop">상세조건</a><!-- 뉴폼 상세조건 필터 -->
+									<div class="selectBox">
+										<select name="" title="검색결과 정렬 선택" class="">
+											<option value="" selected="selected">최신순</option>
+											<option value="">인기순</option>
+											<option value="">가격높은순</option>
+											<option value="">가격낮은순</option>
+											<option value="">스크랩 많은 순</option>
+										</select>
+									</div>
+								</fieldset> 
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+	<!-- 테스트용 임시 -->
+	<script language="javascript" type="text/javascript">
+	;(function(win, $) {
+		'use strict';
+		$(function() {
+			var _wrapId = '.cardWrap',
+			wrap = $(_wrapId);
+
+			wrap.isotope({
+				itemSelector : _wrapId + ' > li:not(.stamp)',
+				stamp : _wrapId + ' > .stamp',
+				layoutMode : 'packery',
+				packery : {
+					columnWidth : 145,
+					gutter : 10
+				}
+			});
+		});
+	})(window, window.jQuery);
+	</script>
+	<!--// 테스트용 임시 -->
+</body>
+</html>

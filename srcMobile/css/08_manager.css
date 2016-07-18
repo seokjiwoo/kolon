@@ -79,5 +79,7 @@
 .specialistSearch{padding:10px 15px;}
 .specialistSearch .searchbox,
 .specialistSearch .searchbox input[type=text] {background:#2c2c2c;}
-.specialistSelect {margin:0 auto; overflow:hidden; padding-right:10px; background:url(../images/specialistSelect_arrow.png) 100% 50% no-repeat; background-size:10.5px 6px;}
-.specialistSelect select {text-align:center; color:#fff; border:0;-webkit-appearance: none; -moz-appearance: none; appearance: none; background:#2c2c2c;}
+.specialistSelect {width:auto; display:inline-block; position:relative;}
+.specialistSelect:after {content:''; width:10.5px; height:6px; margin-top:-3px; background:url(../images/specialistSelect_arrow.png) 0 0 no-repeat; background-size:10.5px 6px; position:absolute; top:50%; right:0px; z-index:0;}
+.specialistSelect select {width:auto; padding-right:20px; text-align:center; color:#fff; border:0;-webkit-appearance: none; -moz-appearance: none; appearance: none; background:transparent;}
+.allMagazine {text-align:center;}

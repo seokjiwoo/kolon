@@ -32,6 +32,8 @@ a{color:#666;}
 .header .searchBtn.open span.cancelBtn {width:57.5px; border:0; display:inline-block; position:absolute; top:0; right:0; text-align:center; color:#fff; font-size:15px; line-height:45px; vertical-align:middle;}
 .header .searchBtn.open span.cancelBtn:before {content:''; width:1px; height:19px; margin-top:-9.5px; background:#d84e46; position:absolute; top:50%; left:0;}
 .login .header .searchBtn{ right:34px;width:34px; }
+.header .searchBtn.open,
+.login .header .searchBtn.open {right:0;}
 .header .bagBtn{ display:none;right:0;width:34px;background:url("../images/ico_bag.png") no-repeat center center;background-size:18px;}
 .header .bagBtn span{padding-top:21px;text-align:center;display:block;color:#ff463b;font-weight:bold;font-size:11px;}
 .login .header .bagBtn{ display:block; }
