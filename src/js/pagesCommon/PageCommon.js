@@ -84,6 +84,9 @@ module.exports = function() {
 		initTab();
 		initTabContentLayout();
 
+		// Handlebars setting
+		initHandlebars();
+
 		$('.radioBox label').on('click', radioButtonHandler); 		// radio button
 		$('.checkbox label').on('click', checkBoxHandler);			// checkbox
 		$('.btnPop').on('click', htmlPopupLinkHandler);				// basic Popup
@@ -339,6 +342,7 @@ module.exports = function() {
 		var popupFile = false;
 		var popupContent = false;
 		var fixed = (userClass.indexOf('absolutePosition') != -1);
+		var isPC = (device === 'pc');
 		
 		if (content.indexOf('.html') != -1) {
 			popupFile = content;
@@ -350,16 +354,16 @@ module.exports = function() {
 			href: popupFile,
 			html: popupContent,
 			width: width,
-			height: (device=="pc" ? false : "100%"),
-			maxHeight: (device=="pc" ? false : winH+'px'),
-			fixed: (device=="pc" ? fixed : true),
-			className: "lyPop "+(device=="pc" ? "lyPop-pc " : "lyPop-m ")+userClass,
+			height: (isPC ? false : "80%"),
+			maxHeight: (isPC ? false : winH+'px'),
+			fixed: (isPC ? fixed : true),
+			className: "lyPop " + (isPC ? "lyPop-pc " : "lyPop-m ") + userClass,
 			transition: "none",
 			speed: 0,
 			fadeOut: 0,
 			opacity: 0.5,
-			initialWidth: (device=="pc" ? false : "100%"),
-			initialHeight: (device=="pc" ? false : "100%"),
+			initialWidth: (isPC ? false : '100%'),
+			initialHeight: (isPC ? false : '100%'),
 			scrolling: false,
 			onComplete: function() {
 				$('.popClose').click(function(e) {
@@ -449,5 +453,111 @@ module.exports = function() {
 	*/
 	function onHtmlPopupOpenListener(e, src, width, userClass, handlerObject) {
 		htmlPopup(src, width, userClass, handlerObject);
+	}
+
+	function initHandlebars() {
+		/**
+		 * Handlebars setting
+		 * @example
+		 	{{#vxIF @index "<" 2}}
+		 		~~~~~~~
+		 	{{/vxIF}}
+		 */
+		window.Handlebars.registerHelper("vxIF", function(v1,operator,v2,options) {
+			switch (operator) {
+				case "==":
+					return (v1==v2)?options.fn(this):options.inverse(this);
+
+				case "!=":
+					return (v1!=v2)?options.fn(this):options.inverse(this);
+
+				case "===":
+					return (v1===v2)?options.fn(this):options.inverse(this);
+
+				case "!==":
+					return (v1!==v2)?options.fn(this):options.inverse(this);
+
+				case "&&":
+					return (v1&&v2)?options.fn(this):options.inverse(this);
+
+				case "||":
+					return (v1||v2)?options.fn(this):options.inverse(this);
+
+				case "<":
+					return (v1<v2)?options.fn(this):options.inverse(this);
+
+				case "<=":
+					return (v1<=v2)?options.fn(this):options.inverse(this);
+
+				case ">":
+					return (v1>v2)?options.fn(this):options.inverse(this);
+
+				case ">=":
+					return (v1>=v2)?options.fn(this):options.inverse(this);
+
+				default:
+					return eval(""+v1+operator+v2)?options.fn(this):options.inverse(this);
+			}
+		});
+
+		/**
+		 * Handlebars setting
+		 * @example
+	 		{{#vxModuloIF @index 3}}
+	 		~~~~~~~
+		 	{{/vxModuloIF}}
+		 */
+		window.Handlebars.registerHelper("vxModuloIF", function(index_count,mod,block) {
+			if (parseInt(index_count)%(mod) === 0) {
+				return block.fn(this);
+			}
+		});
+
+
+		//@see https://github.com/wycats/handlebars.js/issues/927
+		window.Handlebars.registerHelper("vxSwitch", function(value, options) {
+			this._switch_value_ = value;
+			var html = options.fn(this);
+			delete this._switch_value_;
+			return html;
+		});
+
+		//@see https://github.com/wycats/handlebars.js/issues/927
+		window.Handlebars.registerHelper("vxCase", function(value, options) {
+			var args = Array.prototype.slice.call(arguments);
+			var options    = args.pop();
+			var caseValues = args;
+
+			if (this._switch_break_ || caseValues.indexOf(this._switch_value_) === -1) {
+				return '';
+			} else {
+				if (options.hash.break === true) {
+				this._switch_break_ = true;
+			}
+				return options.fn(this);
+			}
+		});
+
+		//@see https://github.com/wycats/handlebars.js/issues/927
+		window.Handlebars.registerHelper("vxDefault", function(options) {
+			if (!this._switch_break_) {
+				return options.fn(this);
+			}
+		});
+
+		//@see http://jsfiddle.net/mpetrovich/wMmHS/
+		//@example {{vxMath @index "+" 1}}
+		window.Handlebars.registerHelper("vxMath", function(lvalue, operator, rvalue, options) {
+			lvalue = parseFloat(lvalue);
+			rvalue = parseFloat(rvalue);
+
+			return {
+			"+": lvalue + rvalue,
+			"-": lvalue - rvalue,
+			"*": lvalue * rvalue,
+			"/": lvalue / rvalue,
+			"%": lvalue % rvalue
+			}[operator];
+		});
 	}
 }

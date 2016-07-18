@@ -288,19 +288,12 @@ function ClassMemberInfoController() {
 	 * 비밀번호 재설정
 	 */
 	function resetPassword(authKey, newPassword) {
-		Super.callApi('/apis/member/resetPassword', 'PUT', {
-			"authKey": authKey,
-			"newPassword": newPassword
+		Super.callApi('/apis/member/resetPassword', 'POST', {
+			"key": authKey,
+			"passwd": newPassword
 		}, function(status, result) {
-			if (status == 200) {
-				/* {
-					"errorCode": "string",
-					"message": "string",
-					"status": "string"
-				} */
-			} else {
-				Super.handleError('resetPassword', result);
-			}
+			if (status != 200) Super.handleError('resetPassword', result);
+			$(callerObj).trigger('resetPasswordResult', [status, result]);
 		}, false);
 	};
 	

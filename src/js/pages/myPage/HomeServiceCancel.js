@@ -12,8 +12,12 @@ module.exports = function() {
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
-	DatePicker = DatePickerClass(),
-	callerObj = {
+	DatePicker = DatePickerClass();
+	
+	var controller = require('../../controller/HomeServiceController.js');
+	$(controller).on('homeServiceOrderListResult', listHandler);
+
+	var callerObj = {
 		/**
 		 * 초기화
 		 */
@@ -25,9 +29,12 @@ module.exports = function() {
 	function init() {
 		MyPage.init();
 
-		debug.log(fileName, 'init');
+		self = callerObj;
 
 		initRangePicker();
+		setBindEvents();
+
+		refreshListCritica();
 	}
 
 	function initRangePicker() {
@@ -55,8 +62,18 @@ module.exports = function() {
 					break;
 			}
 			$('.js-picker-to').datepicker('setDate', moment().format('YYYY-MM-DD'));
+			
+			refreshListCritica();
 			e.stopPropagation();
 		});
+	};
+
+	function refreshListCritica(e) {
+		if (e != undefined) e.preventDefault();
+		var fromDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
+		var toDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
+		controller.homeServiceCancelList($('#recordInput').val(), fromDate, toDate);
+		if (e != undefined) e.stopPropagation();
 	};
 
 	function setRangePicker() {
@@ -80,5 +97,60 @@ module.exports = function() {
 				}
 			}
 		});
+	};
+
+	function setBindEvents() {
+		$('#searchButton').click(refreshListCritica);
 	}
+
+	function setHomeServiceLayer() {
+		debug.log(fileName, 'setHomeServiceLayer');
+
+		var rangePicker = self.colorbox.find('.js-range-picker');
+		DatePicker.init({
+			type : 'range',
+			range : {
+				from : {
+					wrap : rangePicker,
+					picker : rangePicker.find('.js-picker-from'),
+					altField : rangePicker.find('.js-alt-from'),
+					button : rangePicker.find('.js-btn-from'),
+					minDate : 0
+				},
+				to : {
+					wrap : rangePicker,
+					picker : rangePicker.find('.js-picker-to'),
+					altField : rangePicker.find('.js-alt-to'),
+					button : rangePicker.find('.js-btn-to'),
+					defaultDate : +5
+				}
+			}
+		});
+
+		dropDownMenu.init({
+			wrap : self.colorbox
+		});
+	}
+
+	function destoryHomeServiceLayer() {
+		debug.log(fileName, 'destoryHomeServiceLayer');
+		
+		self.colorbox.find('.js-picker .js-picker').datepicker('destroy');
+		$(dropDownMenu).trigger(dropDownMenu.EVENT.DESTROY);
+	}
+
+	function listHandler(e, status, result) {
+		$.map(result.livingRequestHistoryList, function(each) {
+			each.createDate = moment(each.createDateTime).format('YYYY. MM. DD');
+		});
+		
+		renderData(result, '#homeservice-list-templates', '#homeservice-wrap', true);
+	};
+
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
+	};
 };

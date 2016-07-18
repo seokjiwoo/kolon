@@ -18,6 +18,8 @@ module.exports = function() {
 	$(controller).on('loginResult', loginCompleteHandler);
 	$(controller).on('resendAuthNumberResult', resendAuthNumberHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
+	$(controller).on('notarobotResult', onRecaptchaHandler);
+
 	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
 	$(memberInfoController).on('termsResult', termsContentHandler);
@@ -28,7 +30,8 @@ module.exports = function() {
 	var firstTryFlag = true;		// 페이지 열리고 첫 시도인지 체크 (휴대전화로 가입시도 후 페이지 새로고침 했을 때 이전 세션 때문에 인증번호 틀림 에러코드 돌아오는 문제 때문에...)
 	
 	// recaptcha widget ID
-	var recaptchaWidget;
+	var recaptchaWidget,
+	recaptchaData;
 
 	var callerObj = {
 		/**
@@ -247,7 +250,7 @@ module.exports = function() {
 								'확인'
 							]
 						);
-						setRecaptcha();
+						controller.notarobot();
 						break;
 				}
 				break;
@@ -256,6 +259,11 @@ module.exports = function() {
 				break;
 		}
 	};
+
+	function onRecaptchaHandler(e, status, response) {
+		recaptchaData = response.data;
+		setRecaptcha();
+	}
 
 	/**
 	 * 인증번호 재발송 이벤트 핸들링
@@ -298,6 +306,7 @@ module.exports = function() {
 			if (recaptchaWidget) {
 				return;
 			}
+			win.grecaptcha.VX_RECAPTCHA_DATA = recaptchaData.recaptcha;
 			recaptchaWidget = win.grecaptcha.render('vxrecaptcha', {
 				'sitekey' : '6Le4NyUTAAAAAB8tcMLMcftsItykhlcIBq4vtMhq',
 				'size' : 'normal',

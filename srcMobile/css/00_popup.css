@@ -1,0 +1,187 @@
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:99; overflow:hidden; -webkit-transform:translate3d(0,0,0);}
+#cboxWrapper {max-width:none;}
+#cboxOverlay{position:fixed; width:100%; height:100%;background:#000;filter:alpha(opacity = 50);}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;overflow:visible;font-family:'NotoSansR', sans-serif;color:#000;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling:touch;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+#colorbox {outline:0;z-index: 20}
+#cboxError {padding:50px; border:1px solid #ccc; }
+#cboxLoadedContent {position: relative;padding-bottom: 60px;line-height:1.4em;font-size:14px; word-break: keep-all;}
+#cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
+#cboxLoadedContent .popScroll2 {overflow:auto; max-height:518px;}
+#cboxLoadedContent .popScroll3 {overflow:auto; max-height:470px;}
+#cboxLoadedContent p {margin-top:30px;}
+#cboxLoadedContent p:first-child {margin-top:0; }
+#cboxLoadedContent .cardCon .btnWrap{margin-top: 30px;}
+#cboxLoadedContent .cardCon {height: auto;}
+
+/* 모서리 형 팝업 */
+.popEdge #cboxLoadedContent:after, .popEdge #cboxLoadedContent:before{content: '';position: absolute;bottom: 0}
+.popEdge #cboxLoadedContent:before{left:0;right: 30px;height: 60px;background: #fff;}
+.popEdge #cboxLoadedContent:after{right: 0;width: 0;height: 0;border-top: 60px solid #fff;border-right: 30px solid transparent;}
+.popEdge #cboxClose {display:block;position:absolute;top:0;right:0;width:80px;height:80px;border:0;padding:0;text-indent:-9999px;background:url('../images/btn_closeG.png') no-repeat center; z-index: 1}
+.popEdge #cboxClose:active {outline:0;}
+.popEdge .popTop{position: relative;margin:0 30px;height: 80px;background: #fff;z-index: 1;}
+.popEdge .popTop:before{content: '';position: absolute;top:0;left: -30px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 30px solid transparent;}
+.popEdge .popTop:after{content: '';position: absolute;right: -30px;top: 0;width: 60px;height: 60px;background: #fff;}
+
+.popEdge .popTit {position: relative;top:0;line-height: 80px;text-align: center;font-size:30px;}
+.popEdge .popTit:after{content: '';display: block;width: 100%;bottom: 0;height: 1px;background: #666;}
+.popEdge .popTit span.count{color:#f1645c;}
+.popEdge .subTit {font-size:20px;color:#000; }
+.popEdge .subTit + table{margin-top: 20px !important;}
+
+/* 육각형 팝업 */
+.popHex .hexagon{background: #fff; top:0;}
+.popHex:before{content: '';display: inline-block;width: 0;height: 100%;margin-right: -5px;vertical-align: middle;}
+#cboxLoadedContent .popHex:before{margin-right:0;}
+.popHex .cardCon{display: inline-block;padding:0 30px;width: 220px;vertical-align: middle;text-align: center;color: #000;}
+#cboxLoadedContent .popHex .popSub{margin-top: 10px;}
+.popHex .popTit{line-height: 1.2em;font-size:20px;font-family:'NotoSansM', sans-serif;}
+.hexAlert #cboxClose{position: absolute;top:20px;left: 127px;width: 32px;height: 32px;background: url('../images/btn_closeG.png') no-repeat center;z-index: 9;border:0;font-size: 0;}
+
+#colorbox.hexAlert #cboxLoadedContent { overflow:hidden !important; padding:0 }
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+
+#colorbox .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+.lyPop{z-index: 999 !important;}
+.wrapper .lyPop .subTit{font-size: 20px;color: #000;}
+.popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #333;line-height: 1.4em;font-size: 14px;background: #fff;}
+.popEdge .popCon.popConBg {background:url('../images/category_popup_bg.png') 100% 100% no-repeat #fff;}
+.popCon p{margin-top:20px;}
+.popCon p:first-child{margin-top:0;}
+.btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+
+#popAgree01 .popCon{text-align: left;}
+
+.popCon .popTxt{color: #999;}
+.popCon a[class^=btnSize]{min-width: 150px;}
+.popCon input[type="text"],
+.popCon input[type="password"]{width:230px; padding:10px 20px; border:1px solid #ccc;font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
+.popCon select{padding:10px 10px; border:1px solid #ccc;color: #666;font-family:'NotoSansR', sans-serif;}
+.popCon fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
+.popCon textarea {width:87%;}
+.popCon h5.popSubTit {width:100%; overflow:hidden; font-size:20px; font-family:'NotoSansR', sans-serif; line-height:130%;color: #000;}
+.popCon h5.popSubTit + .popTb,
+.popCon h5.popSubTit + .tbSet,
+.popCon .popTb + h5.popSubTit {margin-top:20px;}
+.popCon .popBtnS {width:110px; height:40px; background:#999; color:#fff; border-radius:7px; overflow:hidden; display:inline-block; line-height:40px; text-align:center; outline:0; border:0;}
+.popCon .tbSet.mtNon {margin-top:-31px;}
+
+.popCon .popTb {width:100%; display:inline-block; border-top:1px solid #545454;}
+.popCon .popTb table{width:100%; border-bottom:1px solid #ccc; font-family:'NotoSansR', sans-serif; font-size: 14px; text-align: center; line-height: 1.2em}
+.popCon .popTb table.tbL td {text-align:left;}
+.popCon .popTb table.tbL td.txtC {text-align:center;}
+.popCon .popTb table tr.basic td {background:#fefff5;}
+.popCon .popTb table tr th {padding:15px; background:#f8f8f8; color:#333; font-family:'NotoSansR', sans-serif;}
+.popCon .popTb table tr td {padding:15px; border-top:1px solid #e1e1e1;}
+.popCon .popTb table tbody tr th {border-bottom:1px solid #e1e1e1;}
+.popCon .popTb table td + td {border-left:1px solid #e1e1e1;}
+.popCon .popTb table td a {min-width:0;color:#333;}
+.popCon .popTb table td a.btnSizeS {color:#fff;}
+.popCon .popTb table td em {padding:5px 8px; margin-bottom:6px; border:1px solid #333; border-radius:15px; text-align:center; color:#333; font-style:normal; display:inline-block; line-height:98%; font-size:12px;}
+.popCon .popTb table td span.adrList {width:100%; display:inline-block;}
+.popCon .popTb table td span.adrList span {width:100%; display:inline-block; font-family:'NotoSansL', sans-serif; color:#333;}
+.popCon .popTb table td span.adrList span b {padding-right:5px; margin-right:5px; background:url('../images/bul_bar.png') 100% 50% no-repeat; font-family:'NotoSansR', sans-serif; display:inline-block; color:#333;}
+.popCon .popTb table td.btnZone .btnSizeS + .btnSizeS {margin-top:4px;}
+.popCon .popTb + .popTb {margin-top:47px;}
+.popCon .popTb table tr td a.pointRed {color:#f1645c;text-decoration: underline;}
+
+.popCon .popForm {width:100%; overflow:hidden; text-align:center;}
+.popCon .popFormLine {width:100%; padding-bottom:40px; overflow:hidden; text-align:center; border-bottom:1px solid #e8e8e8;}
+.popCon .popFormLine select + button,
+.popCon .popFormLine input[type=text] + button {margin-left:5px;}
+.popCon .popDel {width:100%; overflow:hidden; text-align:center;}
+.popCon .popDel p {font-size:16px; color:#666;}
+.popCon .titList {width:100%; overflow:hidden; padding:25px 0 40px;}
+.popCon .titList p.tit {width:12%; float:left; color:#999; text-align:center;}
+.popCon .titList ul.popList {width:88%; float:left;}
+.popCon ul.addressForm {width:100%; overflow:hidden;}
+.popCon ul.addressForm li + li {margin-top:10px;}
+.popCon .adrBtnG {width:100%; overflow:hidden; margin-bottom:10px;}
+.popCon .adrBtnG .infoTxt {font-size:14px; font-family:'NotoSansL', sans-serif; display:inline-block;}
+.popCon .adrBtnG a.btnSizeM + .infoTxt {margin-left:10px;}
+.popCon .underTxt {font-size:14px; color:#999; font-family:'NotoSansR', sans-serif;}
+.popCon input + .underTxt {width:100%; margin-top:10px; display:inline-block;}
+.popCon .searchBtnM {width:90px; height:40px; font-size:14px; border-radius:20px; line-height:40px;}
+.popCon .checkbox + .btnWrap,
+.popCon .popTb + .btnWrap {margin-top:24px;}
+.popCon .checkPw {width:100%; text-align:center; margin-bottom:20px}
+.popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR', sans-serif;}
+.popCon .expertInfo {width:100%; overflow:hidden;}
+.popCon .expertInfo .ePic {width:180px; height:180px; margin-left:15px; border-radius:50%; overflow:hidden; float:left;}
+.popCon .expertInfo .ePic img {width:180px; height:180px;}
+.popCon .expertInfo .eCon {float:left; overflow:hidden;width:583px;margin-left:40px;padding: 12px 0;}
+.popCon .expertInfo .eCon .infoWrap {width:100%; overflow:hidden; position:relative;}
+.popCon .expertInfo .eCon .infoWrap p {line-height:130%;}
+.popCon .expertInfo .eCon .infoWrap p.infoTit {font-size:30px; font-family:'NotoSansR', sans-serif; color:#000;}
+#cboxLoadedContent .popCon .expertInfo .eCon .infoWrap .infoId {font-size:16px; font-family:'NotoSansL', sans-serif; color:#666;}
+.popCon .expertInfo .eCon a.expertMore {border:1px solid #b08967;color:#b08967;}
+.popCon .expertInfo .eCon .infoDetail {width:100%; min-height:40px; overflow:hidden; position:relative;}
+.popCon .expertInfo .eCon .infoDetail:before {content:''; display:block;width:50px; height:1px;margin: 10px 0 15px;background:#c7c7c7; }
+.popCon .expertInfo .eCon .infoDetail .eTxt span {font-family:'NotoSansL', sans-serif; display:inline-block; position:relative;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span:before {content:''; display:inline-block; position:absolute;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress {padding-left:13px;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eAddress:before {width:10px; height:16px; background:url('../images/ico_card_popular.png') -35px -10px no-repeat; top:1px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eStar {padding-left:15px;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span.eStar:before {width:13px; height:14px; background:url('../images/ico_card_popular.png') 1px -10px no-repeat; top:2px; left:0;}
+.popCon .expertInfo .eCon .infoDetail .eTxt span + span {margin-left:13px;}
+.popCon .expertInfo .eCon .infoDetail .eBtn {margin-top:20px;}
+.popCon .expertInfo .eCon .infoDetail .eBtn a + a {margin-left:5px;}
+.popCon .expertInfo + .popTb {margin-top:32px;}
+.popCon .popMail input[type=text] {width:67px;}
+.popCon .popMail select {margin-left: 5px;}
+.popCon .messageRadio {width:100%;}
+.popCon .messageRadio span.radioBox + span.radioBox {margin-left:30px;}
+.popCon .popUnderTxt {width:100%; text-align:center; color:#000;}
+.popCon .popUnderTxt span.pointRed {color:#f1645c;}
+.popCon .popSearch {width:100%; overflow:hidden; text-align:center; margin-bottom:10px;}
+.popTop.popTopp02 {height:60px;}
+.popCon.popCon02 {padding:10px 30px 0;margin-top:0;text-align:center;letter-spacing:-.5px}
+.popCon.popCon02 h4 {font-size:20px;color:#000;font-family: 'NotoSansM', sans-serif;}
+.popCon.popCon02 p {margin-top:18px;font-size:16px;color:#333;}
+.popCon.popCon02 .CertificationNum {margin-top:18px;}
+.popCon.popCon02 .CertificationNum input[type=text] {width:248px;border:1px solid #ccc;}
+.popCon.popCon02 .CertificationNum button {margin-left:6px;width:110px;height:40px;line-height:40px;font-size:13px;color:#fff;background:#999;border-radius:5px;border:none;letter-spacing:-.5px}
+.popCon.popCon02 .btnWrap {margin-top:30px;}
+.popCon .btnWrap button + button,
+.popCon .btnWrap a + a {margin-left:6px;}
+
+ul.popList {width:100%; overflow:hidden;}
+ul.popList li span b {font-family: 'NotoSansB', sans-serif;}
+ul.popList li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-1px;}
+ul.popList li + li {margin-top:5px;}
+ul.popList + .btnWrap,
+.popCon form + .btnWrap,
+.popCon .tbSet + .btnWrap,
+.popCon .popForm + .btnWrap,
+.popCon .popFormLine + .btnWrap,
+.popCon .popDel + .btnWrap {margin-top:40px;}
+
+a.btnDetail {display: inline-block;padding: 0 20px;color: #000;font-size: 13px;line-height: 38px;border:1px solid #d9d9d9;font-family:'NotoSansR', sans-serif;}
+a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;margin-left: 20px;vertical-align: middle;background: url('../images/ico_plusW.png') no-repeat 0 -12px;}
+
+
+.dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
+.dateChangePop .timeSet .calendar{display: block;width:195px;margin:0 0 10px 0; }
+.dateChangePop .calendar span.calInp input[type=text]{width: 180px;color: #666;}
+.dateChangePop .alignBox{height: 40px;text-align: left;z-index: 1}
+.dateChangePop .alignBox .drop{width: 235px}
+.dateChangePop .drop li{width: 100%;}
+.dateChangePop, .dateChangePop #cboxWrapper, .dateChangePop #cboxLoadedContent{overflow: visible !important;}
+.dateChangePop ul.tbList3{margin-bottom: 35px;}
+
+.msgCat.radioBox label{margin-right: 10px;}

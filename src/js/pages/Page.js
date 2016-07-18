@@ -60,9 +60,6 @@ module.exports = function() {
 		initMenu();			// GNB/LNB
 		floatMenu.init();		// 플로팅버튼
 
-		// Handlebars setting
-		initHandlebars();
-
 		// 일부 페이지 공용 요소 초기화
 		initTopBanner();	// 상단 배너 (index만 사용, 공용요소 LNB때문에 이쪽에 위치)
 		initChart();	// 차트 컴포넌트
@@ -132,7 +129,7 @@ module.exports = function() {
 			} else {
 				$('#topMemberInfoPic').attr('src', '/images/profile.png');
 			}
-			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName+' 님');
+			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName);
 
 			if (loginData.imageUrl != null) {
 				$('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
@@ -453,113 +450,6 @@ module.exports = function() {
 				break;
 		}
 	};
-
-
-	function initHandlebars() {
-		/**
-		 * Handlebars setting
-		 * @example
-		 	{{#vxIF @index "<" 2}}
-		 		~~~~~~~
-		 	{{/vxIF}}
-		 */
-		window.Handlebars.registerHelper("vxIF", function(v1,operator,v2,options) {
-			switch (operator) {
-				case "==":
-					return (v1==v2)?options.fn(this):options.inverse(this);
-
-				case "!=":
-					return (v1!=v2)?options.fn(this):options.inverse(this);
-
-				case "===":
-					return (v1===v2)?options.fn(this):options.inverse(this);
-
-				case "!==":
-					return (v1!==v2)?options.fn(this):options.inverse(this);
-
-				case "&&":
-					return (v1&&v2)?options.fn(this):options.inverse(this);
-
-				case "||":
-					return (v1||v2)?options.fn(this):options.inverse(this);
-
-				case "<":
-					return (v1<v2)?options.fn(this):options.inverse(this);
-
-				case "<=":
-					return (v1<=v2)?options.fn(this):options.inverse(this);
-
-				case ">":
-					return (v1>v2)?options.fn(this):options.inverse(this);
-
-				case ">=":
-					return (v1>=v2)?options.fn(this):options.inverse(this);
-
-				default:
-					return eval(""+v1+operator+v2)?options.fn(this):options.inverse(this);
-			}
-		});
-
-		/**
-		 * Handlebars setting
-		 * @example
-	 		{{#vxModuloIF @index 3}}
-	 		~~~~~~~
-		 	{{/vxModuloIF}}
-		 */
-		window.Handlebars.registerHelper("vxModuloIF", function(index_count,mod,block) {
-			if (parseInt(index_count)%(mod) === 0) {
-				return block.fn(this);
-			}
-		});
-
-
-		//@see https://github.com/wycats/handlebars.js/issues/927
-		window.Handlebars.registerHelper("vxSwitch", function(value, options) {
-			this._switch_value_ = value;
-			var html = options.fn(this);
-			delete this._switch_value_;
-			return html;
-		});
-
-		//@see https://github.com/wycats/handlebars.js/issues/927
-		window.Handlebars.registerHelper("vxCase", function(value, options) {
-			var args = Array.prototype.slice.call(arguments);
-			var options    = args.pop();
-			var caseValues = args;
-
-			if (this._switch_break_ || caseValues.indexOf(this._switch_value_) === -1) {
-				return '';
-			} else {
-				if (options.hash.break === true) {
-				this._switch_break_ = true;
-			}
-				return options.fn(this);
-			}
-		});
-
-		//@see https://github.com/wycats/handlebars.js/issues/927
-		window.Handlebars.registerHelper("vxDefault", function(options) {
-			if (!this._switch_break_) {
-				return options.fn(this);
-			}
-		});
-
-		//@see http://jsfiddle.net/mpetrovich/wMmHS/
-		//@example {{vxMath @index "+" 1}}
-		window.Handlebars.registerHelper("vxMath", function(lvalue, operator, rvalue, options) {
-			lvalue = parseFloat(lvalue);
-			rvalue = parseFloat(rvalue);
-
-			return {
-			"+": lvalue + rvalue,
-			"-": lvalue - rvalue,
-			"*": lvalue * rvalue,
-			"/": lvalue / rvalue,
-			"%": lvalue % rvalue
-			}[operator];
-		});
-	}
 
 	// Colorbox Complete 시점
 	// @see EventManager.js#onColorBoxListener
