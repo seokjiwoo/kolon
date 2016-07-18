@@ -9,8 +9,11 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/RecentSeenItem.js';
 
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
+	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass();
+
+	var CardList = require('../../components/CardList.js');
+	var cardList;
 	
 	var callerObj = {
 		/**
@@ -22,7 +25,12 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
+
+
+		cardList = CardList();
+		cardList.init();
+		
 		debug.log(fileName, $, util);
 	}
 };

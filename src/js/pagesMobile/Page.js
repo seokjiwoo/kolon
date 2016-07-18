@@ -30,8 +30,6 @@ module.exports = function() {
 		Super.init(_pageId, 'm');
 
 		initGnb();
-		
-		$(".datePicker").datepicker();	// datepicker 초기화
 
 		$('.scrollWrap').each(function() {//horizontal scroll wrap width
 			var totalWidth = 0;

@@ -7,10 +7,10 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'myPage/MyActivity.js';
+	fileName = 'myPage/Like.js';
 
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
+	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass();
 	
 	var callerObj = {
 		/**
@@ -22,7 +22,8 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
+		
 		debug.log(fileName, $, util);
 	}
 };
