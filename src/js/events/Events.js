@@ -80,6 +80,11 @@ function Events() {
 		},
 
 		// [S] Controller Events
+			// Login - 로그인
+			// @see LoginController.js
+			LOGIN : {
+				NOT_A_ROBOT : 'notarobotResult'
+			},
 			// Opinions - 의견묻기
 			OPINIONS : {
 				SCRAPED_LIST : 'scrapedOpinionsListResult'
