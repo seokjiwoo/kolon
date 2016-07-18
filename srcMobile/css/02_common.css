@@ -110,7 +110,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnColor04{background:#00aeb9} /* cyan */
 .btnColor05{background:#999} /*grey*/
 .btnColor06{background:#333} /*dark grey*/
-a.btnFollow{min-width:108px;padding-right:22px; border:1px solid #adc427;border-radius:17px;color:#adc427; text-align:center; position:relative;}
+a.btnFollow{min-width:108px;padding-right:22px; border:1px solid #adc427;border-radius:17px;color:#adc427; text-align:center; position:relative; background:#fff;}
 a.btnFollow:after{content:''; width:12px; height:12px; margin-top:-6px; background:url("../images/ico_follow_off.png") no-repeat 0 0;background-size:12px; position:absolute; top:50%; right:23px;}
 a.btnFollow.active{background:#adc427;color:#fff;}
 a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat 0 0;background-size:12px;}

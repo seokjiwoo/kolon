@@ -78,10 +78,10 @@
 #cboxLoadedContent .cardCon {height: auto;}
 */
 /* card style */
-.cardBox {width:1500px; overflow:hidden;}
+.popCard {width:100%; overflow:hidden; padding-bottom:15px;}
 .cardWrap {width:300px; z-index: 1;margin:0 auto 0;padding-top:83px;}
 .cardWrap > li.card {max-width:145px;overflow: hidden;float: left;margin-top:-84px;padding:42px 0;text-align: center;color:#fefefe;background-size: 100%;background-position: center; position:relative;}
-.cardWrap > li.card .hexagon {max-width:145px;}
+.cardWrap > li.card .hexagon {max-width:145px; top:42px; margin:42px 0;}
 
 @media (max-width:1520px){
 	.cardWrap {max-width:1220px;}
@@ -300,7 +300,7 @@ ul.cardWrap > li.cardType05.cHover .cardCon ul.check_icon li.like a:after {backg
 ul.cardWrap > li.cardType06.cHover .cardCon .cardTxt p,
 ul.cardWrap > li.cardType06.cHover .cardCon .cardTxt h2,
 ul.cardWrap > li.cardType06.cHover .cardCon ul.check_icon li a {color:#fff;}
-ul.cardWrap > li.cardType06.cHover .cardCon ul.check_icon li.like a:after {background-position:0 -21px;}
+ul.cardWrap > li.cardType06.cHover .cardCon ul.check_icon li.like a:after {background-position:0 -10px;}
 ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt {}
 ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt .cardCat,
 ul.cardWrap > li.cardType07.cHover .cardCon .cardTxt .cardTit {display:none;}

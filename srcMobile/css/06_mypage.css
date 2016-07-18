@@ -237,9 +237,9 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .scrapListWrap ul.scrapList {width:100%;}
 .scrapListWrap ul.scrapList li {width:50%; float:left; text-align:center;}
 .scrapListWrap ul.scrapList li a {margin:5px 5px; display:inline-block; position:relative;}
-.scrapListWrap ul.scrapList li.on a:before {content:''; width:159px; height:159px; border:4px solid #000; position:absolute; top:0; left:0;box-sizing: border-box;}
+.scrapListWrap ul.scrapList li.on a:before {content:''; width:159px; height:159px; border:4px solid #f1645c; position:absolute; top:0; left:0;box-sizing: border-box;}
 .scrapListWrap ul.scrapList li img {width:159px; height:159px;}
-
+.layerPopup .scrapListWrap {padding:15px 0;}
 .messageProfile{text-align:center;margin-top:20px;font-size:18px;}
 .messageProfile .thumb{width:48px;height:48px;display:inline-block;overflow:hidden;border-radius:100%;}
 .messageProfile .thumb img{width:100%;}
@@ -557,26 +557,26 @@ table ul.myCartInfoList li {color:#999;}
 .my .payInfo .top{padding-bottom:10px;border-bottom:1px solid #666;}
 .my .payInfo .top h3{font-size:15px;}
 
-.my .priceView{margin-top:2px;}
-.my .priceView p{padding:8px 0;font-size:15px;}
-.my .priceView p:after{content:"";display:block;clear:both;}
-.my .priceView p span:first-child{float:left;}
-.my .priceView p span:last-child{float:right;}
-.my .priceView p:nth-child(3),
-.my .priceView p:nth-child(4){padding:2px 0;color:#666;font-size:13px;}
-.my .priceView p:nth-child(5){padding:10px 0;}
-.my .totalPrice{padding:15px 0;border-top:1px dashed #ccc;border-bottom:1px solid #666;font-size:15px;}
-.my .totalPrice:after{content:"";display:block;clear:both;}
-.my .totalPrice span{color:#f1645c;}
-.my .totalPrice span:first-child{float:left;}
-.my .totalPrice span:last-child{float:right;}
-.my .totalPrice span:last-child em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-size:18px;font-weight:bold;}
-.my .payment{padding-top:20px;}
-.my .payment p{padding:3px 0;color:#666;}
-.my .payment p:after{content:"";display:block;clear:both;}
-.my .payment p:first-child{padding-bottom:10px;color:#333;font-size:15px;}
-.my .payment p span:first-child{float:left;}
-.my .payment p span:last-child{float:right;}
+.priceView{margin-top:2px;}
+.priceView p{padding:8px 0;font-size:15px;}
+.priceView p:after{content:"";display:block;clear:both;}
+.priceView p span:first-child{float:left;}
+.priceView p span:last-child{float:right;}
+.priceView p:nth-child(3),
+.priceView p:nth-child(4){padding:2px 0;color:#666;font-size:13px;}
+.priceView p:nth-child(5){padding:10px 0;}
+.totalPrice{padding:15px 0;border-top:1px dashed #ccc;border-bottom:1px solid #666;font-size:15px;}
+.totalPrice:after{content:"";display:block;clear:both;}
+.totalPrice span{color:#f1645c;}
+.totalPrice span:first-child{float:left;}
+.totalPrice span:last-child{float:right;}
+.totalPrice span:last-child em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-size:18px;font-weight:bold;}
+.payment{padding-top:20px;}
+.payment p{padding:3px 0;color:#666;}
+.payment p:after{content:"";display:block;clear:both;}
+.payment p:first-child{padding-bottom:10px;color:#333;font-size:15px;}
+.payment p span:first-child{float:left;}
+.payment p span:last-child{float:right;}
 .my .btnwrap{margin-top:18px;}
 .my .btnwrap a.btnSizeS{width:49%;}
 .my .btnwrap.col3{text-align:center;}
@@ -588,7 +588,6 @@ table ul.myCartInfoList li {color:#999;}
 .my .orders p:first-child{margin-top:5px;}
 .my .orders p span:first-child{float:left;}
 .my .orders p span:last-child{float:right;}
-
 .my .orderProduct{padding-top:25px;background:#fff;}
 .my .orderProduct .top{padding:0 15px 10px;}
 .my .orderProduct .top h3{font-size:15px;}
