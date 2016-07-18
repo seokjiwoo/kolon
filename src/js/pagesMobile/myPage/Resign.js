@@ -9,8 +9,14 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/Resign.js';
 
-	var SuperClass = require('../Page.js');
-	var Super = SuperClass();
+	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass();
+	
+	var controller = require('../../controller/MemberInfoController');
+	$(controller).on('deleteMemberResult', resignResponseHandler);
+
+	var loginController = require('../../controller/LoginController');
+	$(loginController).on('logoutResult', logoutResultHandler);
 	
 	var callerObj = {
 		/**
@@ -22,7 +28,51 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
+		
 		debug.log(fileName, $, util);
+
+		$('#resignForm').submit(resignHandler);
 	}
+
+
+	function resignHandler(e) {
+		e.preventDefault();
+
+		if ($('#agreeBox01').hasClass('on') && $('#agreeBox02').hasClass('on')) {
+			var reasonCodes = new Array();
+			$('#reasonList li').each(function(index) {
+				if ($(this).find('label').hasClass('on')) {
+					reasonCodes.push('BM_LEAVE_REASON_'+$(this).find('input').attr('id').substr(6));
+				}
+			});
+
+			var reasonStatement = $('#reasonStatement').val();
+
+			if (reasonCodes.length == 0) {
+				MyPage.Super.Super.alertPopup('탈퇴에 실패하였습니다', '회원탈퇴 사유를 1개 이상 체크해주세요.', '닫기');
+			} else {
+				console.log(reasonCodes, reasonStatement);
+				controller.deleteMember(reasonCodes, reasonStatement);
+			}
+		} else {
+			MyPage.Super.Super.alertPopup('탈퇴에 실패하였습니다', '탈퇴 동의를 하셔야 탈퇴하실 수 있습니다.', '닫기');
+		}
+		
+		e.stopPropagation();
+	};
+
+	function resignResponseHandler(e, status, result) {
+		if (status == 200) {
+			MyPage.Super.Super.alertPopup('탈퇴가 완료되였습니다', result.message, '닫기', function() {
+				loginController.logout();
+			});
+		} else {
+			MyPage.Super.Super.alertPopup('탈퇴에 실패하였습니다', result.message, '닫기');
+		}
+	};
+	
+	function logoutResultHandler(e, status) {
+		location.href = '/';
+	};
 };

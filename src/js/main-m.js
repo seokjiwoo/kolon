@@ -105,11 +105,6 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/homeService/Index.js');
 				break;
 
-			// 청소 신청 requestCleaning
-			case 'homeService-requestCleaning':
-				PageModuleClass = require('./pagesMobile/homeService/RequestCleaning.js');
-				break;
-
 			// 세탁 신청 requestWashing
 			case 'homeService-requestWashing':
 				PageModuleClass = require('./pagesMobile/homeService/RequestWashing.js');
@@ -123,14 +118,8 @@ $(document).ready(function() {
 
 
 		// [S] 의견묻기 qna
-			// 목록 index
 			case 'qna':
 				PageModuleClass = require('./pagesMobile/qna/Index.js');
-				break;
-
-			// 작성 write
-			case 'qna-write':
-				PageModuleClass = require('./pagesMobile/qna/Write.js');
 				break;
 		// [E] 의견묻기 qna
 
@@ -141,19 +130,24 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/manager/Index.js');
 				break;
 
-			// 전문가/브랜드 소개 detail
+			// 전문가 소개 detail
 			case 'manager-detail':
 				PageModuleClass = require('./pagesMobile/manager/Detail.js');
 				break;
 
-			// 전문가/브랜드 판매상품 itemList
+			// 전문가 판매상품 itemList
 			case 'manager-itemList':
 				PageModuleClass = require('./pagesMobile/manager/ItemList.js');
 				break;
 
-			// 완료된 공간 portfolio
-			case 'manager-portfolio':
-				PageModuleClass = require('./pagesMobile/manager/Portfolio.js');
+			// 브랜드 소개
+			case 'brand-intro':
+				PageModuleClass = require('./pagesMobile/manager/BrandIntro.js');
+				break;
+
+			// 브랜드 판매상품
+			case 'brand-itemList':
+				PageModuleClass = require('./pagesMobile/manager/BrandItemList.js');
 				break;
 		// [E] 커먼전문가 manager
 
@@ -207,11 +201,6 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/MyServiceDetail.js');
 				break;
 
-			// 나의 활동내역 (MOBILE ONLY)	myActivity
-			case 'myPage-myActivity':
-				PageModuleClass = require('./pagesMobile/myPage/MyActivity.js');
-				break;
-
 			// 최근 본 상품 recentSeenItem
 			case 'myPage-recentSeenItem':
 				PageModuleClass = require('./pagesMobile/myPage/RecentSeenItem.js');
@@ -230,21 +219,6 @@ $(document).ready(function() {
 			// 내 의견묻기	myQnA
 			case 'myPage-myQnA':
 				PageModuleClass = require('./pagesMobile/myPage/MyQnA.js');
-				break;
-
-			// 내가 작성한 리뷰	review
-			case 'myPage-review':
-				PageModuleClass = require('./pagesMobile/myPage/Review.js');
-				break;
-
-			// 리뷰 작성	reviewWrite
-			case 'myPage-reviewWrite':
-				PageModuleClass = require('./pagesMobile/myPage/ReviewWrite.js');
-				break;
-
-			// 리뷰 편집	reviewEdit
-			case 'myPage-reviewEdit':
-				PageModuleClass = require('./pagesMobile/myPage/ReviewEdit.js');
 				break;
 
 			// 내 정보	profile
@@ -297,9 +271,9 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/ScrapImage.js');
 				break;
 
-			// 스크랩 이미지 폴더 목록	scrapFolder
-			case 'myPage-scrapFolder':
-				PageModuleClass = require('./pagesMobile/myPage/ScrapFolder.js');
+			// 좋아요  like
+			case 'myPage-like':
+				PageModuleClass = require('./pagesMobile/myPage/Like.js');
 				break;
 
 			// 팔로잉	following
@@ -307,9 +281,14 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/Following.js');
 				break;
 
-			// 마이카트/뉴폼 상품 - 마이카트/샵 상품	myCart
-			case 'myPage-myCart':
-				PageModuleClass = require('./pagesMobile/myPage/MyCart.js');
+			// 마이카트/뉴폼 상품	myCartNewForm
+			case 'myPage-myCartNewForm':
+				PageModuleClass = require('./pagesMobile/myPage/MyCartNewForm.js');
+				break;
+
+			// 마이카트/샵 상품	myCartShop
+			case 'myPage-myCartShop':
+				PageModuleClass = require('./pagesMobile/myPage/MyCartShop.js');
 				break;
 
 			// 포인트	point
@@ -317,6 +296,17 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/Point.js');
 				break;
 		// [E] 마이커먼 myPage
+
+		case 'popup-addressBook':
+			PageModuleClass = require('./pagesMobile/addressPopup/addressBook.js');
+			break;
+		case 'popup-addressForm':
+			PageModuleClass = require('./pagesMobile/addressPopup/addressForm.js');
+			break;
+
+		case 'popup-message':
+			PageModuleClass = require('./pagesMobile/messagePopup/message.js');
+			break;
 
 		default:
 			PageModuleClass = require('./pagesMobile/Page.js');
