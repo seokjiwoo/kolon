@@ -139,18 +139,33 @@ module.exports = function() {
 	 * 내 정보 갱신 반영
 	 */
 	function myInfoResultHandler(e) {
-		loginData = loginDataModel.loginData();
+		var loginData = loginDataModel.loginData();
 
 		if (loginData != null) {
+			var email = loginData.email == null ? '' : loginData.email;
+
 			// 로그인 상태일 때
 			$('body').addClass('login');
+			$('#buttonLogInTop').remove();
+			// #topMemberInfoAlarm - ?
+			$('#topMemberInfo').show();
+			$('#settingButton').show();
 
+			if (loginData.imageUrl != null) {
+				$('#topMemberInfoPic').attr('src', loginData.imageUrl);
+			} else {
+				$('#topMemberInfoPic').attr('src', '/images/profile.png');
+			}
+			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName+' 님');
+
+			if (loginData.imageUrl != null) {
+				$('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
+			} else {
+				$('#profileImage').attr('href', '/myPage/').attr('src', '/images/profile.png');
+			}
+			$('#profileName').html('<span>'+loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');
-
-			if (loginData.imageUrl != null) $('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
-			$('#profileName').html('<em>'+loginData.memberName+'</em>');
-			$('#profileMail').text(loginData.email);
-			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').html('<span>마이커먼</span>');
+			$('#btnJoinMyPage').attr('href', '/myPage/').addClass('btnMypage').find('span').text('마이커먼');
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
@@ -158,16 +173,45 @@ module.exports = function() {
 			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount);
 			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount);
 			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount);
+			if (loginData.myActivity.cartCount == 0) {
+				$('#menuCountCart').hide();
+			} else {
+				$('#menuCountCart').text(loginData.myActivity.cartCount);
+			}
+
+			$('.profileEditButton').click(function(e){
+				e.preventDefault();
+				closeLnbHandler();
+				if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+					confirmPasswordResultHandler(null, 200);
+				} else {
+					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+						onOpen: function() {
+							$('#checkPwForm').submit(function(e){
+								e.preventDefault();
+								loginController.confirmPassword($('#checkPw').val());
+							});
+						},
+						onSubmit: function() {
+							loginController.confirmPassword($('#checkPw').val());
+						}
+					});
+				}
+			});
 		} else {
 			// 로그인 상태가 아닐 때
-			$('#myMenuButtonList').addClass('log');
+			$('#topMemberInfo').remove();
+			$('#settingButton').remove();
 			$('#myMenuButtonList li a').attr('href', '#').css('pointer-events', 'none');
 
+			$('#menuCountCart').hide();
+			
 			// $('#profileImage').attr('src', '/images/profile.png');
-			$('#profileName').css('top', '10px').html('<span>로그인 해주세요</span>');
+			// $('#profileName').html('<span>로그인 해주세요</span>');
+			$('#myMenuButtonList').addClass('log');
 			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
-			$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 			$('#menuToggle').hide();
+			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		}
 	};
 
