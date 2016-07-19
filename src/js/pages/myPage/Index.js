@@ -147,18 +147,6 @@ module.exports = function() {
 				exRecordDate = recordDate;
 			}
 
-			switch(value.myPageTypeCode) {
-				case 'BM_MYPAGE_TYPE_11':
-					value.recordType = 'recordType';
-					break;
-				case 'BM_MYPAGE_TYPE_10':
-					value.recordType = 'recordType01';
-					break;
-				default:
-					value.recordType = 'recordType01';
-					break;
-			}
-
 			value.fromDate = win.moment(value.registerDateTime).format(self.opts.dateFormat.fromDate);
 			value.fromNow = getFromNow(value.registerDateTime);
 
