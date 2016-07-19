@@ -78,3 +78,5 @@
 .members .accountList .accountSummary p b{color: #333}
 .members .accountList .btn{float: right;width:160px;}
 .members .accountList .loginSns:before{width:25px;margin-right: 10px;}
+
+#passwordResetForm fieldset legend.subTit { position:relative;display:block;top:0;left:0;visibility:visible;padding-bottom:50px }
