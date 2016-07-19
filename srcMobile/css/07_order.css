@@ -43,10 +43,10 @@
 .order ul.odList.point li p {min-height:30px; line-height:30px;}
 .order ul.odList + p.underTxt {margin-top:10px;}
 
-.order a.agreeBtn {width:100%; padding:5px 0; position:relative; display:inline-block;}
-.order a.agreeBtn:after {content:''; width:20px; height:11px; margin-top:-5.25px; position:absolute; top:50%; right:10px; background:url(../images/ico_toggleL.png) 0 -10.5px no-repeat; background-size:20px 23px;}
-.order a.agreeBtn.open:after {background-position:0 0;}
-.order .agreeCont {width:100%; padding:15px 0 10px; margin-top:15px; border-top:1px solid #e8e8e8; line-height:130%; color:#666;}
+a.agreeBtn {width:100%; padding:5px 0; position:relative; display:inline-block;}
+a.agreeBtn:after {content:''; width:20px; height:11px; margin-top:-5.25px; position:absolute; top:50%; right:10px; background:url(../images/ico_toggleL.png) 0 -10.5px no-repeat; background-size:20px 23px;}
+a.agreeBtn.open:after {background-position:0 0;}
+.agreeCont {width:100%; padding:15px 0 10px; margin-top:15px; border-top:1px solid #e8e8e8; line-height:130%; color:#666;}
 
 .order .payTab {width:100%; padding:20px 0; overflow:hidden;}
 .order .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}

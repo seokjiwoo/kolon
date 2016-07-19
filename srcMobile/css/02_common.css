@@ -362,6 +362,8 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 .conTit:after{content:"";display:block;clear:both;}
 .conTit a{float:right;padding-right: 14px;background: url("../images/ico_arrowG.png") no-repeat right 2px;background-size: 6px;font-size:13px;font-weight:normal;}
 .pageTit + .myWrap{margin-top:10px;}
+.conSubTit {font-size:13px;color:#333;font-family:'NotoSansR', sans-serif;}
+.upLineDot {padding-top:15px;margin-top:20px;border-top:1px dotted #ccc;}
 
 h2.secTit {width:auto; padding-bottom:11.5px; margin-bottom:20px; font-size:18px; font-family:'NotoSansR', 'RobotoR', sans-serif; border-bottom:1px solid #666; color:#000;}
 h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
