@@ -6,8 +6,18 @@
 <body data-page-id="">
 	<div class="wrapper my">
 		<!-- @@include ../_template/menu.html -->
+		<div class="btmFix fixwrap">
+			<ul>
+				<li><a href="" class="btnSizeB btnColor02 popClose">취소</a></li>
+				<li><a href="" class="btnSizeB btnColor03 popClose">확인</a></li>
+			</ul>
+		</div>
 		<div class="container">
 			<section>
+				<div class="editArea">
+					<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
+					<div><a href="" class="btnSizeS btnColor03">편집</a></div>
+				</div>
 				<div class="wrapT">
 					<h3 class="conTit noBorder">계정정보</h3>
 					<table class="formWrap mt0">
@@ -48,7 +58,7 @@
 								<td>
 									<ul class="inAalign">
 										<li><p>kolon34@gmail.com</p></li>
-										<li> <a href="" class="btnSizeS btnColor03">해제</a></li>
+										<li><a href="" class="btnSizeS btnColor03">해제</a></li>
 									</ul>
 								</td>
 							</tr>
@@ -79,10 +89,10 @@
 							<tr>
 								<th scope="col">이름</th>
 								<td>
-									<ul class="inAalign">
-										<li><p>홍길동</p></li>
-										<li><a href="" class="check">본인확인</a></li>
-									</ul>
+									<div class="nameConfirm">
+										<span></span>
+										<a href="" class="check">본인확인</a>
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -122,6 +132,41 @@
 						</tbody>
 					</table>
 					<p class="limitTxt">* 본인확인을 하지 않으면 서비스 이용에 제한이 있을 수 있습니다.</p>
+					<h3 class="conTit noBorder mt30">기본 배송지 정보</h3>
+					<div class="addrInfo">
+						<ul class="inAalign">
+							<li><input type="text" /></li>
+							<li><a href="" class="btnSizeS btnColor03">주소검색</a></li>
+						</ul>
+						<p><input type="text" /></p>
+						<p><input type="text" /></p>
+						<p><a href="#" class="btnColor04 btnSizeL btnSizeW btn">주소록 관리</a></p>
+					</div>
+				</div>
+				<div class="emailCheck">
+					<h3 class="conTit noBorder">이메일 및 SMS 수신 여부</h3>
+					<ul>
+						<li>
+							<ul class="myCartInfoList">
+								<li>공지 및 마케팅 메일/행사, 이벤트, 세일 정보 SMS를 수신 동의하시면 커먼에서 제공하는 다양한 정보를 미리 안내 받으실 수 있습니다.</li>
+								<li>수신 동의 여부와 상관 없이 주문, 결제, 배송, 취소, 비밀번호 변경등에 대한 정보는 발송 됩니다.</li>
+							</ul>
+						</li>
+						<li>
+							<span>공지 및 마케팅 메일 수신</span>
+							<div>
+								<span class="radioBox"><input type="radio" name="g1" id="rd01"><label for="rd01">수신</label></span>
+								<span class="radioBox"><input type="radio" name="g1" id="rd02"><label for="rd02">수신거부</label></span>
+							</div>
+						</li>
+						<li>
+							<span>행사, 이벤트 정보 SMS 수신</span>
+							<div>
+								<span class="radioBox"><input type="radio" name="" id="rd03"><label for="rd03">수신</label></span>
+								<span class="radioBox"><input type="radio" name="" id="rd04"><label for="rd04">수신거부</label></span>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</section>
 			<!-- @@include ../_template/footer.html -->
