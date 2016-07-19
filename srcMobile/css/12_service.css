@@ -1,3 +1,5 @@
+.homeService-request {background:#e0e0e0;}
+
 .serviceTop {position:relative;text-align:center;background:url('../images/homeservice_top.jpg') no-repeat 0 0;background-size: 100% 100%;}
 .serviceTop h2 {padding-top:22px;font-size:16px;}
 .serviceTop h3 {width:230px;margin:10px auto 0;font-size:27px;line-height:33px;}
@@ -26,13 +28,25 @@
 .starIco li {position:relative;padding-left:7px;font-size:12px;color:#999;line-height:1.4}
 .starIco li:before {content:'*';display:inline-block;position:absolute;top:0;left:0;}
 
-.serviceConBox.washingCon {background:url('../images/serviceW_con_bg.png') no-repeat 0 0;background-size:100%;}
-
-
-
-
-
-
+.serviceConBox.washingCon {display:none;background:url('../images/serviceW_con_bg.png') no-repeat 0 0;background-size:100%;}
+.homeService-request .btnwrap a.btnSizeS {width:49%;}
+.homeService-request .radioBox{overflow:hidden;}
+.homeService-request .htype {position:relative;text-align:center;float:left;width:25%;color:#666;font-size:12px;}
+.homeService-request .htype:last-child {margin-right:0;}
+.homeService-request .htype span {margin-left:7px;}
+.homeService-request .htype04 span {margin-left:15px;}
+.homeService-request .htype:after{content: '';display: inline-block;position:absolute;bottom:5px;left:8px;width: 18px;height: 18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;vertical-align: middle;}
+.homeService-request .htype.on:after{background-position: 0 0;}
+.homeService-request .htype:before {content:'';display:block;width:61px;height:69px;margin:0 auto 5px;background:url('../images/ico_home_type.png') 0 0 no-repeat;background-size:61px 417px;}
+.homeService-request .htype01:before, .homeService-request .radioBox label.htype01.on:before {background-position:50% -279px;}
+.homeService-request .htype02:before, .homeService-request .radioBox label.htype02.on:before {background-position:50% -69px;}
+.homeService-request .htype03:before, .homeService-request .radioBox label.htype03.on:before {background-position:50% -349px;}
+.homeService-request .htype04:before, .homeService-request .radioBox label.htype04.on:before {background-position:50% 0;}
+@media (max-width:375px){
+	.homeService-request .htype {font-size:11px;}
+	.homeService-request .htype:after {left:0;}
+	.homeService-request .htype04 span {margin-left:17px;}
+}
 
 
 

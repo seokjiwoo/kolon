@@ -3,6 +3,7 @@
 .mt0 {margin-top:0 !important;}
 .mt15 {margin-top:15px;}
 .mt20 {margin-top:20px;}
+.mt25 {margin-top:25px;}
 .mt30 {margin-top:30px;}
 .mt40 {margin-top:40px;}
 .mb0 {margin-bottom:0 !important;}
@@ -91,12 +92,11 @@ a.pointLink {color:#f1645c;text-decoration:underline;}
 .tabType03 .on a{color: #000;}
 .tabType03 .on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #a9c700}
 
-.tabType03Fix {background: #f6f6f6; border-bottom:1px solid #ccc;}
-.tabType03Fix ul{height: 49px;overflow: hidden;}
-.tabType03Fix li{float:left;width:33.33%;text-align: center;}
+.tabType03Fix {overflow:hidden;background: #f6f6f6; border-bottom:1px solid #ccc;}
+.tabType03Fix span{display:block;float:left;width:33.33%;background: #f6f6f6;text-align: center;height: 49px;overflow: hidden;}
 .tabType03Fix a{position: relative;display: block;padding: 0 25px;color: #666;font-size: 13px;line-height: 49px;}
-.tabType03Fix .on a{color: #1a1a1a;}
-.tabType03Fix .on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #a9c700}
+.tabType03Fix span.on a{color: #1a1a1a;}
+.tabType03Fix span.on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #a9c700}
 
 /* button */
 .btnWrap{text-align: center;}
@@ -138,8 +138,10 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 .pointCyan {color:#00aeb9 !important;}
 .pointGreen {color:#adc427 !important;}
 .underTxt {color:#666; font-size:11px; line-height:130%;}
-.underTxtMark {padding-left:20px; color:#666; font-size:11px; line-height:130%; position:relative; text-align:left;}
+.underTxtMark {display:block;padding-left:20px; color:#666; font-size:11px; line-height:130%; position:relative; text-align:left;}
 .underTxtMark:before {content:''; width:14.5px; height:14.5px; border-radius:50%; background:url('../images/ico_qMark.png') center no-repeat #999; background-size:5px 9px; position:absolute; top:0; left:0;}
+/* text color box */
+.pointBox {padding:10px;background:#f8f8f8;}
 
 /* bottom fix*/
 .btmFix{position: fixed;bottom: 0;left: 0;right: 0;z-index: 1;text-align: center;}
@@ -152,7 +154,7 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 /* form */
 .container input[type="checkbox"],
 .layerPopup input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
-.container input[type="text"], .container input[type="password"], .container input[type="email"],select, .layerPopup input[type="text"],.layerPopup input[type="password"]{width:100%;padding: 5px;border:1px solid #d1d1d1; /*border-radius: 7px;*/color: #999;font-size: 13px;line-height: 18px;}
+.container input[type="text"], .container input[type="password"], .container input[type="email"],select, .layerPopup input[type="text"],.layerPopup input[type="password"]{width:100%;padding: 5px;border:1px solid #d1d1d1; /*border-radius: 7px;*/color: #999;font-size: 13px;line-height: 18px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
 
 .phone select{width: 30%;}
 .phone input[type="text"]{width: 28%;}
@@ -468,3 +470,22 @@ p.setTit {width:100%; overflow:hidden; text-align:center; background:#f8f8f8; bo
 .tagBtn.close:after{width:12px;height:12px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_close02.png") no-repeat center center;background-size:12px;vertical-align:middle;margin-left:7px;}
 .tagBtn span{display:inline-block; line-height:28px;}
 .reviewTxt{line-height:1.4em;color:#999;font-family:'NotoSansR', 'RobotoR', sans-serif;margin-top:15px;padding-bottom:32px;}
+
+/* 수령지 정보 */
+.addressList {width:100%; overflow:hidden;}
+.addressList li {width:100%; padding:20px 0 13px; border-bottom:1px solid #ccc; overflow:hidden;}
+.addressList li p {line-height:130%;}
+.addressList li p.addressTit {color:#999; font-size:15px;}
+.addressList li p.addressTit.base {color:#000;}
+.addressList li p.addressTit span + span {padding-left:10px; margin-left:10px; position:relative;}
+.addressList li p.addressTit span + span:before {content:''; width:1px; height:13px; margin-top:-6.5px; background:#ccc; position:absolute; top:50%; left:0;}
+.addressList li p.addressTit + .addressCont {margin-top:20px;}
+.addressList li .addressCont p {font-size:15px; overflow:hidden; }
+.addressList li .addressCont p + p {margin-top:9px;} 
+.addressList li .addressCont p b,
+.addressList li .addressCont p span {display:inline-block;}
+.addressList li .addressCont p b {width:20%; color:#666; float:left; font-weight:normal;}
+.addressList li .addressCont p span {width:80%; color:#333; float:right; text-align:right;}
+.addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
+.formWrap + .underTxtMark {margin-top:14.5px;}
+.underTxtMark + h3.conTit {margin-top:25px;}

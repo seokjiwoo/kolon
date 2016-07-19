@@ -4,50 +4,89 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문.배송 조회"} -->
 </head>
 <body data-page-id="homeService-requestMoving">
-	<div class="wrapper homeService">
+	<div class="wrapper homeService-request">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<div class="serviceTop">
-				<h2 class="italic">home service</h2>
-				<h3>
-					<span>고민하지 마세요</span>
-					<img src="../images/txt_common.png"><i>이</i>
-					<b>찾아드립니다.</b>
-				</h3>
-				<p>
-					실제 이용하신 고객님들의<br>
-					서비스/가격 만족도 <b>BIG DATA</b>를<br>
-					분석하여 최적의 업체를<br> 
-					추천해드립니다
-				</p>
-				<ul class="serviceStep">
-					<li><img src="../images/serviceM_step01.png"></li>
-					<li><img src="../images/serviceM_step02.png"></li>
-					<li><img src="../images/serviceM_step03.png"></li>
-					<li><img src="../images/serviceM_step04.png"></li>
-				</ul>
-				<p class="commonLogoTit">
-					<span>지금 바로 서비스를 선택하세요!</span>
-				</p>
+			<h2 class="pageTit">이사서비스 신청</h2>
+
+			<div class="wrapT">
+				<h3 class="conTit">서비스 신청자 정보 ( 필수)</h3>
+				<table class="formWrap">
+					<tbody>
+						<tr>
+							<th>연락처</th>
+							<td><input type="text" placeholder="홍길동"></td>
+						</tr>
+						<tr>
+							<th>이름</th>
+							<td class="phone">
+								<select name="" title="국번 선택">
+									<option value="">02</option>
+								</select> -
+								<input type="text" title="연락처 앞자리 입력"> -
+								<input type="text" title="연락처 뒷자리 입력">
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<!-- @@include ../_template/my_depth02_homeService.html {"myMenu01":"on"} -->
-			<div class="serviceConBox">
-				<h3>휴일처럼 편안한 <br><span>이사서비스</span></h3>
-				<p>이사 준비부터 입주까지 한번에 해결!<br>
-				합리적인 가격과 실속 있는 서비스로 찾아 뵙겠습니다.</p>
-				<p class="serviceCon serviceCon01"><img src="../images/serviceM_con01.png"></p>
-				<p class="serviceCon serviceCon02"><img src="../images/serviceM_con02.png"></p>
-				<ul class="starIco">
+			
+			<div class="wrapT">
+				<h3 class="conTit">이사 출발 지역 (필수)</h3>
+				<div class="addressBtnWrap mt15">
+					<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
+					<p class="mt15"><span class="underTxtMark">주문 시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.</span></p>
+				</div>
+				<ul class="addressList">
 					<li>
-						이사 비용은 방문 견적시 정확한 견적을 확인하실 수 있습니다! <br>
-						방문 견적 서비스는 무료로 진행되오니, <br>
-						꼭 방문 견적으로 정확한 견적을 알아보세요.
+						<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></a></span><span class="pointRed">기본 주소</span></p>
+						<div class="addressCont">
+							<p><b>주문자</b><span>홍길동</span></p>
+							<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
+							<p><b>연락처</b><span>010-1234-5678</span></p>
+						</div>
+						<p class="pointRed pointBox mt15">서비스 가능 지역입니다.</p>
+						<div class="btnwrap mt15">
+							<a href="#" class="btnSizeS btnColor05">수정</a>
+							<a href="#" class="btnSizeS btnColor05">삭제</a>
+						</div>
+					</li>
+					<li>
+						<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></a></span><span class="pointGreen">최근 주소</span></p>
+						<div class="addressCont">
+							<p><b>주문자</b><span>홍길동</span></p>
+							<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+							<p><b>연락처</b><span>010-1234-5678</span></p>
+						</div>
+					</li>
+					<li>
+						<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></a></span></p>
+						<div class="addressCont">
+							<p><b>주문자</b><span>홍길동</span></p>
+							<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+							<p><b>연락처</b><span>010-1234-5678</span></p>
+						</div>
 					</li>
 				</ul>
+				<h3 class="conTit mt25">이사 도착지 주소 ( 필수)</h3>
+				<div class="addressBtnWrap mt15">
+					<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
+				</div>
 			</div>
-			<!-- 하단 고정 버튼 -->
-			<div class="btmFix"><a href="" class="btnSizeB btnColor03 popClose">서비스 신청하기</a></div>
-			
+
+			<div class="wrapT">
+				<h3 class="conTit">이사 정보(필수)</h3>
+				<div class="radioBox">
+					<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1" class="htype htype01"><span>포장이사</span></label>
+					<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2" class="htype htype02"><span>원룸이사</span></label>
+					<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3" class="htype htype03"><span>보관이사</span></label>
+					<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4" class="htype htype04"><span>사무실이사</span></label>
+				</div>
+			</div>
+
+
+
+
 			<!-- @@include ../_template/footer.html -->
 		</div>
 		
