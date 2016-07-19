@@ -108,7 +108,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myMsg.singleCard .recordWrap ul.recordList li .recordCon p {height:155px; padding-right:0; display:table-cell;}
 #myMsg.singleCard .recordWrap ul.recordList li .recordCon .newMsg {position:absolute; top:0; right:30px;}
 #myMsg.singleCard .recordWrap ul.recordList li .recordCon .date {position:absolute;}
-.recordCon{display: inline-block;width: 729px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
+.recordCon{display: inline-block;width: 733px;margin-right: -3px;padding-right: 30px;vertical-align: middle;}
 .recordCon .recordTxt{font-family:'NotoSansR', sans-serif;font-size: 16px;color: #666;line-height: 1.2em}
 .recordCon b{font-family:'NotoSansM', sans-serif;color:#000;}
 .recordThumb{position: relative;display: inline-block;width: 285px;height: 100%;vertical-align: middle;color: #fff;font-family:'NotoSansR', sans-serif;text-align: center;}
@@ -118,8 +118,11 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .recordThumb p b{display: block;font-size: 40px;font-family:'NotoSansM', sans-serif;}
 .recordThumb p:before{display: block;width:25px;height: 26px;margin: 0 auto 7px;background: url('../images/ico_timeline.png') no-repeat;}
 .recordCat{display: inline-block;margin-bottom: 10px;padding: 0 10px;border-radius: 10px;font-family:'NotoSansM', sans-serif;font-size: 13px;color: #000;line-height: 20px;border:1px solid #000;}
-.recordPic{overflow: hidden;display: inline-block;width: 96px;height: 96px;margin-right:20px;border-radius: 50%;vertical-align: middle;}
-.recordPic img{display: block;width: 100%;}
+.recordDay{display: inline-block;width: 96px;height: 51px;margin-right:20px;padding:30px 0;vertical-align: middle;background: url('../images/ico_timeline.png') no-repeat -100px -200px;text-align: center;font-size: 14px;color: #000;}
+.recordDay .italicNum{font-size: 35px;line-height:1.2em;}
+.recordDay.sat{color:#3364ba}
+.recordDay.sun{color:#ee4339}
+.timeCard .time{margin-top: 5px;font-size: 14px;color: #666;}
 
 .timeCard .innerWrap{overflow: hidden;padding: 20px 30px;border:1px solid #e6e6e6;}
 .timeCard .innerWrap .name{width: 140px;font-family:'NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
@@ -150,12 +153,31 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myTimeline li a{display: inline-block;width: 868px;}
 #myTimeline .recordCon{width: 550px;}
 
+#myNotice .recordWrap{text-align: center;}
+#myNotice .recordWrap > ul > li{display: block;overflow: hidden;height: 155px;padding-left:30px;background: #fff;border:1px solid #e5e5e5;vertical-align: middle;}l > li 
 #myNotice .recordWrap{margin-bottom:20px;text-align: center;}
 #myNotice .recordDate{margin-bottom: 20px;}
-#myNotice .recordThumb{background: #a9c700;}
+#myNotice .recordWrap li.coupon{padding-left: 0;}
 #myNotice .coupon a{height: 154px;padding: 0;background:none;border:0;}
 #myNotice .coupon a img{display: block;width: 100%;}
 #myNotice #deleteAll{position: absolute;top:25px;right: 20px}
+#myNotice .recordCon .recordTxt a{color: #465f8d;text-decoration: underline;}
+
+#myNotice li .recordThumb:before{width: 100px;height: 100px;margin: 30px auto 0;background: url('../images/ico_timeline.png') no-repeat;}
+#myNotice .type01 .recordThumb{background-color: #65bfe5;}
+#myNotice .type01 .recordThumb:before{background-position: -380px 0;}
+#myNotice .type02 .recordThumb{background-color: #000;}
+#myNotice .type02 .recordThumb:before{background-position: -180px 0;}
+#myNotice .type03 .recordThumb{background-color: #a5abb5;}
+#myNotice .type03 .recordThumb:before{background-position: -290px -90px;}
+#myNotice .type04 .recordThumb{background-color: #f5814e;}
+#myNotice .type04 .recordThumb:before{background-position: -180px -90px}
+#myNotice .type05 .recordThumb{background-color: #f5814e;}
+#myNotice .type05 .recordThumb:before{background-position: -180px -90px}
+#myNotice .type06 .recordThumb{background-color: #f5814e;}
+#myNotice .type06 .recordThumb:before{background-position: -180px -90px;}
+#myNotice .type07 .recordThumb{background-color: #adc427;}
+#myNotice .type07 .recordThumb:before{background-position: -380px 0;}
 
 #myMsg .recordWrap{float: left;width: 865px;}
 #myMsg .sender{display: inline-block;vertical-align: middle;width: 275px;}
