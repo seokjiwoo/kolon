@@ -34,18 +34,18 @@
 	</div>
 
 <style>
-	.js-timeline-list-wrap .recordWrap:last-child {padding-bottom:0}
-	.js-timeline-list-wrap .recordWrap:last-child > ul {height:157px}
-	.js-timeline-list-wrap .recordWrap:last-child .recordIco {vertical-align:middle}
-	.js-timeline-list-wrap .recordWrap:last-child .recordIco:before,
-	.js-timeline-list-wrap .recordWrap:last-child .recordIco:after {display:none}
+	.js-timeline-list-wrap .js-timeline-container:last-child .js-timeline-list:last-child {margin-bottom:-30px}
+	.js-timeline-list-wrap .js-timeline-container:last-child .js-timeline-list:last-child .recordIco {vertical-align:middle}
+	.js-timeline-list-wrap .js-timeline-container:last-child .js-timeline-list:last-child .recordIco:before,
+	.js-timeline-list-wrap .js-timeline-container:last-child .js-timeline-list:last-child .recordIco:after {display:none}
 
-	.js-timeline-list-wrap .recordWrap {background:url(../images/bg_my.png) repeat-y 21px}
-	.js-timeline-list-wrap .recordDate {margin:0px auto 15px 209px}
-	.js-timeline-list-wrap li a {width:840px}
-	.js-timeline-list-wrap .recordCon {width:522px}
+	.js-timeline-list-wrap .js-timeline-list .recordWrap {background:url(../images/bg_my.png) repeat-y 21px}
+	.js-timeline-list-wrap .js-timeline-list .recordDate {margin:0px auto 15px 209px}
+	#myTimeline.js-timeline-list-wrap .js-timeline-list a {width:840px}
+	#myTimeline.js-timeline-list-wrap .js-timeline-list .recordCon {width:524px}
 
-	.timeCard .recordTime {width:195px}
+	.js-timeline-list-wrap .recordTime {width:195px}
+	.js-timeline-list-wrap .recordIco {margin-left:-9px}
 
 	.js-timeline-list.has-animate {
 		opacity: 1;
@@ -71,11 +71,70 @@
 			<h3 class="recordDate">{{recordDate}}</h3>
 			<ul>
 				{{#each records}}
-					<li class="js-timeline-list {{recordType}}"
-						data-timeline-info='{
-							"myPageTypeCode" : "{{myPageTypeCode}}",
-							"registerDateTime" : "{{registerDateTime}}"
-					}'>
+					{{#vxSwitch myPageTypeCode}}
+						{{!-- 상품 구매 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_12' break=true}}
+						<li class="js-timeline-list recordType01" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 스크랩 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_13' break=true}}
+						<li class="js-timeline-list recordType02" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 문의 등록 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_02' break=true}}
+						<li class="js-timeline-list recordType04" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 견적 요청 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_07' break=true}}
+						<li class="js-timeline-list recordType05" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 1:1 메시지 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_01' break=true}}
+						<li class="js-timeline-list recordType06" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 후기/리뷰 등록 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_04' break=true}}
+						<li class="js-timeline-list recordType07" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 가입 환영 메시지 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_11' break=true}}
+						<li class="js-timeline-list recordType08" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 배달 기록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_05' break=true}}
+						<li class="js-timeline-list recordType09" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+						{{#vxCase 'BM_MYPAGE_TYPE_06' break=true}}
+						<li class="js-timeline-list recordType09" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 상품 구매 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_12' break=true}}
+						<li class="js-timeline-list recordType10" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 상품 시공 타임라인 등록 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_09' break=true}}
+						<li class="js-timeline-list recordType11" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 상품 시공 시작 --}}
+						{{#vxCase 'BM_MYPAGE_TYPE_08' break=true}}
+						<li class="js-timeline-list recordType12" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxCase}}
+
+						{{!-- 전문가 기록 --}}
+						{{#vxDefault break=true}}
+						<li class="js-timeline-list recordType03" data-timeline-info='{"myPageTypeCode":"{{myPageTypeCode}}","registerDateTime":"{{registerDateTime}}"}'>
+						{{/vxDefault}}
+					{{/vxSwitch}}
 						<h4 class="recordTime"><span class="js-date">{{fromDate}}</span>&nbsp;<b>&#8226;</b>&nbsp;<span class="js-fromNow">{{fromNow}}</span></h4>
 						<div class="recordIco">
 							{{#if isJoin}}

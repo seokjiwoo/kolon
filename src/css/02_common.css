@@ -377,11 +377,12 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .liBox li:before{content: '';display: inline-block;width: 3px;height:3px;background: #000;margin-right: 7px;vertical-align: middle;}
 .liBox b{font-family:'NotoSansM', sans-serif;}
 
-.dropScroll{overflow: hidden;position: relative;width: 140px;height: 352px;}
+.dropScroll{position: relative;width: 140px;height: 40px;}
 .dropScroll .dropToggle{display: block;padding: 0 15px;border:1px solid #ccc;font-size: 13px;color: #000;background: #fff;font-family: 'NotoSansR',sans-serif;line-height: 38px;}
 .dropScroll .dropToggle:after{content: '';display: block;position: absolute;top: 7px;right: 15px;width: 20px;height: 20px;background: url('../images/ico_lnb.png') no-repeat;background-position: 0 0;}
 .dropScroll .drop{top: 40px;height: auto;border-top: 0;}
 .dropScroll .drop li:first-child a:after{display: none;}
+.dropScroll .scrollWrap{height: 314px}
 
 .alignBox .dropExpand{overflow: visible;width: 290px;width: 140px;height:0;border-width: 0;}
 .alignBox .dropExpand li{display: none;float: left;border:0;height: 41px;background: none}

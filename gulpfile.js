@@ -21,6 +21,7 @@ var buffer = require('vinyl-buffer');
 var browserSync = require('browser-sync').create();
 var browserify = require('browserify');
 var childProcess = require('child_process');
+var autoprefixer = require('gulp-autoprefixer');
 
 var src;
 var dist;
@@ -176,6 +177,7 @@ gulp.task('minifycss', function() {
 		.pipe(plumber(plumberOption))
 		.pipe(sourcemaps.init({loadMaps: true, debug: false}))
 		.pipe(cached('css'))
+		.pipe(autoprefixer())
 		.pipe(cssnano({
 			discardUnused: {fontFace: false},
 			zindex: false

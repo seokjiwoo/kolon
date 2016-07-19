@@ -157,11 +157,11 @@
 .opinionbox .commentInput .thumb span{width:40px;height:40px;overflow:hidden;display:block;background:#fff;border-radius:100%;}
 .opinionbox .commentInput .thumb span img{width:40px;}
 
-.opinionbox .commentInput textarea.pullSize{width:562px;height:56px;float:left;margin-left:17px;}
-.opinionbox .commentInput .confirmBtn{width:86px;height:30px;background:#999;color:#fff;float:right;border:0;border-radius:20px;font-family:'NotoSansR',sans-serif;}
+.opinionbox .commentInput textarea.pullSize{width:562px;height:56px;margin-left:17px;}
+.opinionbox .commentInput .confirmBtn{width:86px;height:30px;margin-top:5px;background:#999;color:#fff;float:right;border:0;border-radius:20px;font-family:'NotoSansR',sans-serif;}
 .opinionbox .commentInput .commentTextarea {overflow:hidden; border:1px solid #d6d6d6; padding:18px 19px; background:#fff;}
 .opinionbox .commentInput .commentTextarea textarea.pullSize {border:0; padding:0; margin:0;}
-.opinionbox .commentInput .commentTextarea .commentBtn {width:100%; overflow:hidden;}
+.opinionbox .commentInput .commentTextarea .commentBtn {width:100%; overflow:hidden;margin-top: 10px;}
 .opinionbox .commentInput .commentTextarea .commentBtn .thumb{float:left;}
 
 .latelyOpinion{height:323px;padding:0 30px;background:#fff;border:1px solid #e6e6e6;display:none;}

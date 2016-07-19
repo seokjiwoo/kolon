@@ -170,7 +170,7 @@ span.price.fontS {font-size:14px;}
 .homeService.order .leftBox, .homeService.order .leftBox .drop li {width:228px;}
 .homeService.order .leftBox .drop li a {padding:0 20px;color:#999;}
 .homeService.order .leftBox + .leftBox {margin-left:10px;}
-.homeService.order .leftBox + .leftBox .btnSizeM{min-width:100px;}
+.homeService.order .leftBox .btnSizeM{min-width:100px;}
 
 .homeService.order .calendar {display:inline-block;width:187px;line-height:normal}
 .homeService.order .calendar span.calInp input[type=text] {width:172px;}
@@ -187,7 +187,7 @@ span.price.fontS {font-size:14px;}
 .homeService.order .orderCont .htype03:before {background-position:-320px 0;}
 .homeService.order .orderCont .htype04:before {background-position:-0px 0;}
 
-.homeService.order .orderCont .payTab {text-align:center;border-bottom:1px solid #e8e8e8;}
+.homeService.order .orderCont .payTab {line-height: 1.2em;text-align:center;border-bottom:1px solid #e8e8e8;}
 .homeService.order .orderCont .payTab span {position: relative;display:inline-block;}
 .homeService.order .orderCont .payTab span.best:before{position: absolute;top: -12px;left: 15px;z-index: 1;content:'Best';width: 41px;height: 35px;padding-top: 14px;color: #fff;font-size: 16px;background: url('../images/card_point.png') no-repeat;background-position:-350px -116px;font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900}
 .homeService.order .orderCont .payTab.tabWrap a.radioBtn {background:none;margin:0 35px;padding:0;text-align:center;font-size:14px;color:#000;}
@@ -248,7 +248,7 @@ span.price.fontS {font-size:14px;}
 .order .orderCont p.pdLt {margin-left:20px;}
 .order .orderCont p.pdLt a + a {margin-left:10px;;}
 
-.order .orderCont .tbHf {width:542px; float:left; display:inline-block;}
+.order .orderCont .tbHf {width:49%; float:left; display:inline-block;}
 .order .orderCont .tbHf + .tbHf {float:right;}
 .order .orderCont .tbHf .orderTb table {width:99.8%;}
 .order .orderCont .tbHf .orderTb table tr th {height:42px;}
@@ -341,4 +341,4 @@ span.price.fontS {font-size:14px;}
 .order .tablesType01 table tbody tr td span{font-size:20px;}
 .order .tablesType01 table tbody tr td span em{font-style:normal;font-family:'NotoSansB',  sans-serif;}
 
-.orderCont.tbSet .alignBox { z-index:unset }
+.orderCont.tbSet .alignBox { z-index:auto }

@@ -43,10 +43,10 @@
 .order ul.odList.point li p {min-height:30px; line-height:30px;}
 .order ul.odList + p.underTxt {margin-top:10px;}
 
-.order a.agreeBtn {width:100%; padding:5px 0; position:relative; display:inline-block;}
-.order a.agreeBtn:after {content:''; width:20px; height:11px; margin-top:-5.25px; position:absolute; top:50%; right:10px; background:url(../images/ico_toggleL.png) 0 -10.5px no-repeat; background-size:20px 23px;}
-.order a.agreeBtn.open:after {background-position:0 0;}
-.order .agreeCont {width:100%; padding:15px 0 10px; margin-top:15px; border-top:1px solid #e8e8e8; line-height:130%; color:#666;}
+a.agreeBtn {width:100%; padding:5px 0; position:relative; display:inline-block;}
+a.agreeBtn:after {content:''; width:20px; height:11px; margin-top:-5.25px; position:absolute; top:50%; right:10px; background:url(../images/ico_toggleL.png) 0 -10.5px no-repeat; background-size:20px 23px;}
+a.agreeBtn.open:after {background-position:0 0;}
+.agreeCont {width:100%; padding:15px 0 10px; margin-top:15px; border-top:1px solid #e8e8e8; line-height:130%; color:#666;}
 
 .order .payTab {width:100%; padding:20px 0; overflow:hidden;}
 .order .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
@@ -106,6 +106,8 @@
 .order .addressList li .addressCont p span {display:inline-block;}
 .order .addressList li .addressCont p b {width:20%; color:#666; float:left; font-weight:normal;}
 .order .addressList li .addressCont p span {width:80%; color:#333; float:right; text-align:right;}
+.order .addressList li .btnwrap {width:100%; overflow:hidden; margin-top:18px;}
+.order .addressList li .btnwrap a.btnSizeS {width:49%; margin-bottom:6px;}
 .order .addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
 .order .formWrap + .underTxtMark {margin-top:14.5px;}
 .order .underTxtMark + h3.conTit {margin-top:25px;}
@@ -146,7 +148,7 @@ ul.reserInfo > li p.reserTxt span {width:60%; float:right; text-align:right; dis
 
 .order ul.homeType {width:100%; overflow:hidden;}
 .order ul.homeType li {width:25%; padding:66px 0 0; float:left; position:relative; text-align:center; color:#666; font-size:12px;;}
-.order ul.homeType li:before {content:''; width:61px; height:69px; margin-left:-30.5px; background:url(../images/ico_home_type.png) no-repeat; background-size:61px 278px; position:absolute;top:0; left:50%; }
+.order ul.homeType li:before {content:''; width:61px; height:69px; margin-left:-30.5px; background:url(../images/ico_home_type.png) no-repeat; background-size:61px 417px; position:absolute;top:0; left:50%; }
 .order ul.homeType li.hType01:before {background-position:50% 0;}
 .order ul.homeType li.hType02:before {background-position:50% -69px;}
 .order ul.homeType li.hType03:before {background-position:50% -139px;}

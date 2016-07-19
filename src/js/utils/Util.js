@@ -109,7 +109,13 @@ function ClassUtils() {
 			 * 	array 의 unique 값만 반환
 			 * @type {Array}
 			 */
-			arrayUnique : arrayUnique
+			arrayUnique : arrayUnique,
+			/**
+			 * @description
+			 * 	로컬 환경 체크 : localhost || 192.168 ~ && :3000
+			 * @type {Boolean}
+			 */
+			isLocal : isLocal
 		};
 	}
 	
@@ -299,6 +305,10 @@ function ClassUtils() {
 		return arr.filter(function(value, index, array) {
 			return keepLast ? array.indexOf(value, index + 1) < 0 : array.indexOf(value) === index;
 		});
+	}
+
+	function isLocal() {
+		return (/localhost/).test(location.host) || (location.host.indexOf('192.168.') > -1 && location.port === '3000');
 	}
 
 }

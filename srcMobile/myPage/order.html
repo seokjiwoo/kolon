@@ -9,13 +9,7 @@
 		<div class="container">
 			<!-- @@include ../_template/my_depth01.html -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
-			
-			<!-- [D] 임시 구성 -->
-			<style>
-				.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
-				.datePic ul {overflow:visible;height:30px}
-				.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
-			</style>
+
 			<section>
 				<div class="tabParents">
 					<ul class="tabSquare">
@@ -29,7 +23,7 @@
 						<em><i></i></em>
 					</a>
 					<div class="searchArea">
-						<ul class="btnList">
+						<ul class="btnList js-sort-date">
 							<li class="acitve"><a href="#">1주일</a></li>
 							<li><a href="#">2주일</a></li>
 							<li><a href="#">1개월</a></li>
@@ -55,306 +49,332 @@
 								</li>
 							</ul>
 						</div>
-						<div class="searchbox">
-							<input type="text" placeholder="검색어를 입력해주세요" />
-							<button><span class="hide">검색</span></button>
+						<div class="searchbox js-order-search">
+							<input type="text" class="js-inp" placeholder="검색어를 입력해주세요" />
+							<button class="js-submit"><span class="hide">검색</span></button>
 						</div>
 					</div>
-				</div>
-				<div class="orderState">
-					<ul>
-						<li class="active">
-							<p>입금/결제</p>
-							<em>3</em>
-						</li>
-						<li>
-							<p>상품준비</p>
-							<em>0</em>
-						</li>
-						<li>
-							<p>배송</p>
-							<em>5</em>
-						</li>
-						<li>
-							<p>구매확정</p>
-							<em>12</em>
-						</li>
-					</ul>
-				</div>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="#">2354754</a>
-					</p>
-					<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="state">발송준비중</a>
-								<a href="" class="btnSizeS btnColor01">취소신청</a>
-							</div>
-						</li>
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="state">발송준비중</a>
-								<a href="" class="btnSizeS btnColor01">취소신청</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="#">2354754</a>
-					</p>
-					<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="state">발송준비중</a>
-								<a href="" class="btnSizeS btnColor01">취소신청</a>
-							</div>
-						</li>
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="state">배송완료</a>
-								<a href="" class="btnSizeS btnColor01">구매확정</a>
-								<a href="" class="btnSizeS btnColor03">배송배송배추적</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<p class="setTit">묶음배송</p>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="#">2354754</a>
-					</p>
-					<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="state">구매확정</a>
-								<a href="" class="btnSizeS btnColor01">상품리뷰작성</a>
-							</div>
-						</li>
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="state">구매확정</a>
-								<a href="" class="btnSizeS btnColor01">상품리뷰작성</a>
-							</div>
-						</li>
-					</ul>
 				</div>
 			</section>
 
 
 			<!-- [D] #order-list-templates - wrap -->
-			<table class="record js-order-list-wrap"></table>
+			<div class="js-order-list-wrap"></div>
 			<!--// [D] #order-list-templates - wrap -->
+
+			<!-- 
+			<div class="wrapT">
+				<p class="orderNum">
+					<span>2016.04.27</span>
+					<a href="#">2354754</a>
+				</p>
+				<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
+				<ul class="productList">
+					<li>
+						<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+						<div class="info">
+							<span>코오롱 글로벌</span>
+							<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							<a href="" class="state">발송준비중</a>
+							<a href="" class="btnSizeS btnColor01">취소신청</a>
+						</div>
+					</li>
+					<li>
+						<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+						<div class="info">
+							<span>코오롱 글로벌</span>
+							<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							<a href="" class="state">발송준비중</a>
+							<a href="" class="btnSizeS btnColor01">취소신청</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="wrapT">
+				<p class="orderNum">
+					<span>2016.04.27</span>
+					<a href="#">2354754</a>
+				</p>
+				<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
+				<ul class="productList">
+					<li>
+						<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+						<div class="info">
+							<span>코오롱 글로벌</span>
+							<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							<a href="" class="state">발송준비중</a>
+							<a href="" class="btnSizeS btnColor01">취소신청</a>
+						</div>
+					</li>
+					<li>
+						<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+						<div class="info">
+							<span>코오롱 글로벌</span>
+							<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							<a href="" class="state">배송완료</a>
+							<a href="" class="btnSizeS btnColor01">구매확정</a>
+							<a href="" class="btnSizeS btnColor03">배송배송배추적</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<p class="setTit">묶음배송</p>
+			<div class="wrapT">
+				<p class="orderNum">
+					<span>2016.04.27</span>
+					<a href="#">2354754</a>
+				</p>
+				<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
+				<ul class="productList">
+					<li>
+						<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+						<div class="info">
+							<span>코오롱 글로벌</span>
+							<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							<a href="" class="state">구매확정</a>
+							<a href="" class="btnSizeS btnColor01">상품리뷰작성</a>
+						</div>
+					</li>
+					<li>
+						<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+						<div class="info">
+							<span>코오롱 글로벌</span>
+							<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+							<li>
+								<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+								<p class="count">
+									<span><em>1,700,000</em>원</span>
+									<span>1 개</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							<a href="" class="state">구매확정</a>
+							<a href="" class="btnSizeS btnColor01">상품리뷰작성</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			 -->			
 
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
 
-
+<!-- [D] 임시 구성 -->
 <style>
+	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
+	.datePic ul {overflow:visible;height:30px}
+	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
+	.orderState a[data-filter] {display:inline-block;color:#999}
 	/* 리스트 수량이 적었을때, 진행보기 상태 필터 영역확보를 위함 */
 	.singleCard {min-height:550px}
 </style>
 
 <script id="order-list-templates" type="text/x-handlebars-template">
 {{!-- order-list-templates --}}
-	<tr>
-		<th>주문정보</th>
-		<th colspan="2">상품정보</th>
-		<th>판매처</th>
-		<th>수령자</th>
-		<th>배송비</th>
-		<th>진행상태</th>
-	</tr>
+	<div class="orderState js-order-filter">
+		<ul>
+			{{#with vxOrderStateCodes}}
+			<li class="active">
+				<a href="javascript:;" class="js-filter" data-filter="SL_ORDER_STATE_01,SL_ORDER_STATE_02">
+					<p>입금/결제</p>
+					<em>{{vxMath SL_ORDER_STATE_01 "+" SL_ORDER_STATE_02}}</em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_ORDER_STATE_03">
+					<p>상품준비</p>
+					<em>{{SL_ORDER_STATE_03}}</em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_ORDER_STATE_04,SL_ORDER_STATE_05">
+					<p>배송</p>
+					<em>{{vxMath SL_ORDER_STATE_04 "+" SL_ORDER_STATE_05}}</em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_ORDER_STATE_06">
+					<p>구매확정</p>
+					<em>{{SL_ORDER_STATE_06}}</em>
+				</a>
+			</li>
+			{{/with}}
+		</ul>
+	</div>
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 	{{#if listOrderItems.length}}
-		<tr data-order-info='{
+		{{#each listOrderItems}}
+		<div class="wrapT"
+			data-order-info='{
 				"orderNumber" : "{{orderNumber}}",
 				"orderProductSequence" : "{{orderProductSequence}}",
 				"deliveryNumber" : "{{deliveryNumber}}"
 			}'>
-			<td rowspan="{{listOrderItems.length}}" class="recordDate">
-				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
-				<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
-			</td>
-			{{#each listOrderItems}}
-				{{#vxIF @index "!==" 0}}
-				<tr data-order-info='{
-					"orderNumber" : "{{../orderNumber}}",
-					"orderProductSequence" : "{{../orderProductSequence}}",
-					"deliveryNumber" : "{{../deliveryNumber}}"
-				}'>
-				{{/vxIF}}
-					<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
-					{{#if optionName}}
-						<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-						</td>
-					{{else}}
-						<td class="recordInfo">{{productName}}<span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-						</td>
-					{{/if}}
-					<td>{{sellerName}}</td>
-					<td>{{receiverName}}</td>
-					<td>{{deliveryFee}}</td>
-					<td class="orderState stateWrap">
-						{{#vxSwitch deliveryStateCode}}
+			<p class="orderNum">
+				<span>{{orderDate}}</span>
+				<a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a>
+			</p>
+			<p class="payPrice">결제금액 <em>{{vxTotalPaymentPriceDesc}}</em> 원</p>
+			<ul class="productList">
+				<li>
+					<a href="javascript:;" class="thumb"><img src="{{productImageUrl}}" alt="" /></a>
+					<div class="info">
+						<span>{{saleMemberName}}</span>
+						<p><a href="javascript:;">{{productName}}</a></p>
+					</div>
+					<ul class="productData">
+						<li>
+							{{#if orderOptionName}}
+							<p class="name">{{orderOptionName}}</p>
+							{{/if}}
+							<p class="count">
+								<span><em>{{productOptionPriceDesc}}</em>원</span>
+								<span>{{orderQuantity}} 개</span>
+							</p>
+						</li>
+					</ul>
+					<div class="cancelArea">
+						{{#vxSwitch orderStateCode}}
+							{{!-- 입금대기 --}}
 							{{#vxCase "SL_ORDER_STATE_01" break=true}}
-								<div class="stateTxt">
-									입금대기<span class="stateIcor"></span>
-								</div>
+								<a href="javascript:;" class="state">발송준비중</a>
 								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
 							{{/vxCase}}
+
+							{{!-- 결제완료 --}}
 							{{#vxCase "SL_ORDER_STATE_02" break=true}}
-								<div class="stateTxt">
-									결제완료<span class="stateIcor"></span>
-								</div>
+								<a href="javascript:;" class="state">결제완료</a>
 								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
 							{{/vxCase}}
+
+							{{!-- 상품준비 --}}
 							{{#vxCase "SL_ORDER_STATE_03" break=true}}
-								<div class="stateTxt">
-									상품준비중<span class="stateIcor"></span>
-								</div>
+								<a href="javascript:;" class="state">상품준비중</a>
 								<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
 							{{/vxCase}}
+
+							{{!-- 배송중 --}}
 							{{#vxCase "SL_ORDER_STATE_04" break=true}}
-								<div class="stateTxt">
-									배송중<span class="stateIcor"></span>
-								</div>
-								<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
+								<a href="javascript:;" class="state">배송중</a>
+								<a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a>
 							{{/vxCase}}
+
+							{{!-- 배송완료 --}}
 							{{#vxCase "SL_ORDER_STATE_05" break=true}}
-								<div class="stateTxt">
-									배송완료<span class="stateIcor"></span>
-								</div>
-								<div class="btnWrap"><a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
-								<div class="btnWrap"><a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a></div>
+								<a href="javascript:;" class="state">배송완료</a>
+								<a href="../../_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a>
+								<a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a>
 							{{/vxCase}}
+
+							{{!-- 구매확정 --}}
 							{{#vxCase "SL_ORDER_STATE_06" break=true}}
-								<div class="stateTxt">
-									구매확정<span class="stateIcor"></span>
-								</div>
+								<a href="javascript:;" class="state">구매확정</a>
+							{{/vxCase}}
+
+							{{!-- 주문취소 --}}
+							{{#vxCase "SL_ORDER_STATE_07" break=true}}
+							{{/vxCase}}
+
+							{{!-- 반품 --}}
+							{{#vxCase "SL_ORDER_STATE_08" break=true}}
+							{{/vxCase}}
+
+							{{!-- 교환 --}}
+							{{#vxCase "SL_ORDER_STATE_09" break=true}}
+							{{/vxCase}}
+
+							{{!-- 재배송 --}}
+							{{#vxCase "SL_ORDER_STATE_10" break=true}}
 							{{/vxCase}}
 						{{/vxSwitch}}
-					</td>
-				{{#vxIF @index "!==" 0}}
-				</tr>
-				{{/vxIF}}
-			{{/each}}
+					</div>
+				</li>
+			</ul>
+		</div>
+		{{/each}}
 	{{else}}
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
-		<tr>
-			<td colspan="7" class="noList">주문/배송 내역이 없습니다.</td>
-		</tr>
+		<div class="wrapT">
+			<p>주문/배송 내역이 없습니다.</p>
+		</div>
 	{{/if}}
 {{!--// order-list-templates --}}
 </script>

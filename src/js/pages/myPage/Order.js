@@ -342,8 +342,7 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response, type) {
 		var eventType = e.type,
-		result = response,
-		localFlag = (/localhost/).test(document.URL);
+		result = response;
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_LIST:
@@ -368,9 +367,12 @@ module.exports = function() {
 						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
 						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
 
-						if (localFlag) {
+						if (util.isLocal()) {
 							orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
 						}
+
+						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
+						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
 					});
 				}
 
