@@ -3,17 +3,17 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 교환˙반품.취소 조회"} -->
 </head>
-<body data-page-id="myPage-order">
+<body data-page-id="myPage-return">
 	<div class="wrapper my">
-	<!-- @@include ../_template/menu.html -->
+		<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<!-- @@include ../_template/my_depth01.html -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
-			<section id="">
+			<section>
 				<div class="tabParents">
 					<ul class="tabSquare">
-						<li><a href="#writeReview">주문.배송 조회</a></li>
-						<li class="on"><a href="#writtenReview">교환˙반품.취소 조회</a></li>
+						<li><a href="/myPage/order.html">주문.배송 조회</a></li>
+						<li class="on"><a href="/myPage/return.html">교환˙반품.취소 조회</a></li>
 					</ul>
 				</div>
 				<div class="periodSearch">
@@ -22,34 +22,44 @@
 						<em><i></i></em>
 					</a>
 					<div class="searchArea">
-						<ul class="btnList">
-							<li class="acitve"><a href="#">1주일</a></li>
+						<ul class="btnList js-sort-date">
+							<li><a href="#">1주일</a></li>
 							<li><a href="#">2주일</a></li>
-							<li><a href="#">1개월</a></li>
+							<li class="js-default"><a href="#">1개월</a></li>
 							<li><a href="#">3개월</a></li>
 							<li><a href="#">6개월</a></li>
 						</ul>
-						<div class="datePic">
+						<div class="datePic js-range-picker">
 							<ul>
 								<li>
 									<span class="dateInp">
-										<input type="text" value="2016.04.20" id="datePic01" class='datePicker' />
+										<input type="text" value="" title="희망 시공 시작 날짜 입력" class="datePicker js-alt-from" readonly="readonly"/>
+										<a href="#" class="calBtn js-btn-from">날짜선택</a>
+										<div class="cal-container js-picker-from"></div>
 									</span> 
 								</li>
 								<li><span>-</span></li>
 								<li>
 									<span class="dateInp">
-										<input type="text" value="2016.04.20" id="datePic02" class='datePicker' />
+										<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="datePicker js-alt-to" readonly="readonly"/>
+										<a href="#" class="calBtn js-btn-to">날짜선택</a>
+										<div class="cal-container js-picker-to"></div>
 									</span>
 								</li>
 							</ul>
 						</div>
-						<div class="searchbox">
-							<input type="text" placeholder="검색어를 입력해주세요" />
-							<button><span class="hide">검색</span></button>
+						<div class="searchbox js-order-search">
+							<input type="text" class="js-inp" placeholder="검색어를 입력해주세요" />
+							<button class="js-submit"><span class="hide">검색</span></button>
 						</div>
 					</div>
 				</div>
+				
+				<!-- [D] #return-list-templates - wrap -->
+				<div class="js-return-list-wrap"></div>
+				<!-- [D] #return-list-templates - wrap -->
+				
+				<!-- 
 				<div class="wrapT">
 					<p class="orderNum">
 						<span>2016.04.27</span>
@@ -163,9 +173,95 @@
 					</ul>
 				</div>
 				<p class="setPriceGray">환불완료일자  2016.04.20</p>
+				 -->
+
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+
+
+<!-- [D] 임시 구성 -->
+<style>
+	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
+	.datePic ul {overflow:visible;height:30px}
+	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
+	.orderState a[data-filter] {display:inline-block;color:#999}
+</style>
+
+<script id="return-list-templates" type="text/x-handlebars-template">
+{{!-- return-list-templates --}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if orders.length}}
+		{{#each orders}}
+		<div class="wrapT"
+			data-order-info='{
+				"orderNumber" : "{{orderNumber}}",
+				"orderProductSequence" : "{{orderProductSequence}}",
+				"deliveryNumber" : "{{deliveryNumber}}"
+			}'>
+			<p class="orderNum">
+				<span>{{orderDate}}</span>
+				<a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a>
+			</p>
+			<p class="payPrice">환불금액 <em>{{vxTotalPaymentPriceDesc}}</em> 원</p>
+			<ul class="productList">
+				<li>
+					<a href="javascript:;" class="thumb"><img src="{{productImageUrl}}" alt="" /></a>
+					<div class="info">
+						<span>{{saleMemberName}}</span>
+						<p><a href="javascript:;">{{productName}}</a></p>
+					</div>
+					<ul class="productData">
+						<li>
+							{{#if optionName}}
+							<p class="name">{{optionName}}</p>
+							{{/if}}
+							<p class="count">
+								<span><em>{{itemPriceDesc}}</em>원</span>
+								<span>{{itemCount}} 개</span>
+							</p>
+						</li>
+					</ul>
+					<div class="cancelArea">
+						{{#vxSwitch deliveryStateCode}}
+							{{!-- 주문취소 --}}
+							{{#vxCase "SL_ORDER_STATE_07" break=true}}
+								<a href="" class="btnSizeS btnColor01">취소상세</a>
+							{{/vxCase}}
+
+							{{!-- 반품 --}}
+							{{#vxCase "SL_ORDER_STATE_08" break=true}}
+								<a href="../../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderReturnDetail">반품상세</a>
+							{{/vxCase}}
+
+							{{!-- 교환 --}}
+							{{#vxCase "SL_ORDER_STATE_09" break=true}}
+								<a href="../../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderChangeDetail">교환상세</a>
+							{{/vxCase}}
+
+							{{!-- 재배송 --}}
+							{{#vxCase "SL_ORDER_STATE_10" break=true}}
+								<a href="javascript:;" class="state">재배송</a>
+							{{/vxCase}}
+						{{/vxSwitch}}
+					</div>
+					{{!-- 문서상 - 확인필요 표시되어 있음 --}}
+					<!-- <p class="setPriceGray">환불완료일자  2016.04.20</p> -->
+				</li>
+			</ul>
+		</div>
+		{{/each}}
+	{{else}}
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+		<div class="wrapT">
+			<p>교환/반품/취소 내역이 없습니다.</p>
+		</div>
+	{{/if}}
+{{!--// return-list-templates --}}
+</script>
+
+
 </body>
 </html>
