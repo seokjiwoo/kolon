@@ -276,8 +276,7 @@ module.exports = function() {
 
 	function onControllerListener(e, status, response) {
 		var eventType = e.type,
-		result = response,
-		localFlag = (/localhost/).test(document.URL);
+		result = response;
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_LIST:
@@ -293,7 +292,8 @@ module.exports = function() {
 						break;
 				}
 
-				// 입금/결제, 상품준비, 배송, 구매확정 - 수량관리용
+				// 임시구성 - 입금/결제, 상품준비, 배송, 구매확정 - 수량관리용
+				// API 제공 필요
 				result.data.vxOrderStateCodes = {
 					'SL_ORDER_STATE_01' : 0,
 					'SL_ORDER_STATE_02' : 0,
@@ -320,7 +320,7 @@ module.exports = function() {
 							result.data.vxOrderStateCodes[orderItems.orderStateCode] = 1;
 						}
 
-						if (localFlag) {
+						if (util.isLocal()) {
 							orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
 						}
 
