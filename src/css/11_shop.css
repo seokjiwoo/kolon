@@ -47,6 +47,7 @@
 
 
 /* detail common */
+.productDetail .container{padding-top: 0;}
 .productDetail footer{padding-bottom: 54px}
 
 /* 상단 tab common */

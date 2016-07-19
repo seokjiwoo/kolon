@@ -17,8 +17,7 @@ module.exports = function() {
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
-	ORDER_EVENT = events.ORDER,
-	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+	ORDER_EVENT = events.ORDER;
 	
 	var callerObj = {
 		/**
@@ -48,7 +47,8 @@ module.exports = function() {
 			inp : '.js-inp',
 			submit : '.js-submit',
 		},
-		dateFormat : 'YYYYMMDD'
+		dateFormat : 'YYYYMMDD',
+		orderFilter : '.js-order-filter .js-filter'
 	};
 	
 	return callerObj;
@@ -73,8 +73,8 @@ module.exports = function() {
 		deliveryStateCode = deliveryStateCode || '';
 
 		controller.myOrdersList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			'', //win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
+			'', //win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
 			keyword,
 			deliveryStateCode
 		);
@@ -102,8 +102,6 @@ module.exports = function() {
 		$(controller).on(ORDER_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 
-		$('.dropChk').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
-
 		self.search.on('submit', function(e) {
 			e.preventDefault();
 		});
@@ -112,6 +110,8 @@ module.exports = function() {
 		self.searchInp.on('keydown', onSearch);
 
 		self.templatesWrap.on('click', '.js-btn', onWrapPopBtnClick);
+
+		$(self.opts.orderFilter).on('click', onFilterChange);
 	}
 
 	function onWrapPopBtnClick(e) {
@@ -148,6 +148,10 @@ module.exports = function() {
 		self.templatesWrap.imagesLoaded()
 							.always(function() {
 								self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+
+								$(self.opts.orderFilter).off('click', onFilterChange);
+								$(self.opts.orderFilter).on('click', onFilterChange);
+
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 							});
 	}
@@ -193,11 +197,14 @@ module.exports = function() {
 		}
 	}
 
-	function onDropCheckMenuChange(e, data) {
-		var target = $(e.target);
+	function onFilterChange(e) {
+		e.preventDefault();
+		
+		var target = $(e.currentTarget),
+		values = target.data('filter');
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getOrderList(self.searchInp.val(), data.values.join(','));
+		debug.log(fileName, 'onFilterChange', values);
+		getOrderList(self.searchInp.val(), values);
 	}
 
 	function onSearch(e) {
@@ -239,9 +246,9 @@ module.exports = function() {
 			}
 		});
 
-		$('.sortTerm li a').click(function(e) {
+		$('.js-sort-date li').click(function(e) {
 			e.preventDefault();
-			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');
+			$(this).addClass('acitve').siblings('li').removeClass('acitve');
 			switch($(this).text()) {
 				case '1주일':
 					$('.js-picker-from').datepicker('setDate', win.moment().subtract(7, 'days').format('YYYY-MM-DD'));
@@ -285,16 +292,46 @@ module.exports = function() {
 						break;
 				}
 
-				result.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.totalPaymentPrice, 10));
+				// 임시구성 - 입금/결제, 상품준비, 배송, 구매확정 - 수량관리용
+				// API 제공 필요
+				result.data.vxOrderStateCodes = {
+					'SL_ORDER_STATE_01' : 0,
+					'SL_ORDER_STATE_02' : 0,
+					'SL_ORDER_STATE_03' : 0,
+					'SL_ORDER_STATE_04' : 0,
+					'SL_ORDER_STATE_05' : 0,
+					'SL_ORDER_STATE_06' : 0,
+					'SL_ORDER_STATE_07' : 0,
+					'SL_ORDER_STATE_08' : 0,
+					'SL_ORDER_STATE_09' : 0,
+					'SL_ORDER_STATE_10' : 0,
+				};
 
-				if (result.listOrderItems) {
-					$.each(result.listOrderItems, function(index, val) {
-						val.itemPriceDesc = util.currencyFormat(parseInt(val.itemPrice, 10));
+				if (result.data.listOrderItems) {
+					$.each(result.data.listOrderItems, function(index, orderItems) {
+						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
+						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
+						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
+						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
+
+						if (result.data.vxOrderStateCodes[orderItems.orderStateCode]) {
+							result.data.vxOrderStateCodes[orderItems.orderStateCode] += 1;
+						} else {
+							result.data.vxOrderStateCodes[orderItems.orderStateCode] = 1;
+						}
+
+						if (util.isLocal()) {
+							orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
+						}
+
+						// 총 결제 금액
+						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
+						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
 					});
 				}
 
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result);
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				displayData(result.data);
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
