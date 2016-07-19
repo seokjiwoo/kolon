@@ -17,8 +17,7 @@ module.exports = function() {
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
-	CLAIMS_EVENT = events.CLAIMS,
-	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+	CLAIMS_EVENT = events.CLAIMS;
 	
 	var callerObj = {
 		/**
@@ -48,7 +47,8 @@ module.exports = function() {
 			inp : '.js-inp',
 			submit : '.js-submit',
 		},
-		dateFormat : 'YYYYMMDD'
+		dateFormat : 'YYYYMMDD',
+		orderFilter : '.js-order-filter .js-filter'
 	};
 	
 	return callerObj;
@@ -67,8 +67,6 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 		setRangePicker();
-
-		getClaimsList();
 	}
 
 	function getClaimsList(keyword, deliveryStateCode) {
@@ -105,8 +103,6 @@ module.exports = function() {
 		$(controller).on(CLAIMS_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 
-		$('.dropChk').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
-
 		self.search.on('submit', function(e) {
 			e.preventDefault();
 		});
@@ -114,6 +110,8 @@ module.exports = function() {
 		self.searchInp.on('keydown', onSearch);
 
 		self.templatesWrap.on('click', '.js-btn', onWrapPopBtnClick);
+
+		$(self.opts.orderFilter).on('click', onFilterChange);
 	}
 
 	function onWrapPopBtnClick(e) {
@@ -153,6 +151,10 @@ module.exports = function() {
 		templatesWrap.imagesLoaded()
 							.always(function() {
 								templatesWrap.removeClass(self.opts.cssClass.isLoading);
+
+								$(self.opts.orderFilter).off('click', onFilterChange);
+								$(self.opts.orderFilter).on('click', onFilterChange);
+
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 							});
@@ -194,11 +196,14 @@ module.exports = function() {
 		}
 	}
 
-	function onDropCheckMenuChange(e, data) {
-		var target = $(e.target);
+	function onFilterChange(e) {
+		e.preventDefault();
+		
+		var target = $(e.currentTarget),
+		values = target.data('filter');
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getClaimsList(self.searchInp.val(), data.values.join(','));
+		debug.log(fileName, 'onFilterChange', values);
+		getClaimsList(self.searchInp.val(), values);
 	}
 
 	function onSearch(e) {
@@ -237,9 +242,10 @@ module.exports = function() {
 			}
 		});
 
-		$('.sortTerm li a').click(function(e) {
+		$('.js-sort-date li').click(function(e) {
 			e.preventDefault();
-			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');
+			$(this).addClass('acitve').siblings('li').removeClass('acitve');
+
 			switch($(this).text()) {
 				case '1주일':
 					$('.js-picker-from').datepicker('setDate', win.moment().subtract(7, 'days').format('YYYY-MM-DD'));
@@ -263,6 +269,8 @@ module.exports = function() {
 
 			getClaimsList();
 		});
+
+		$('.js-sort-date li.js-default').trigger('click');
 	}
 
 	function onControllerListener(e, status, response) {
