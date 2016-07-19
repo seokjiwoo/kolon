@@ -20,6 +20,10 @@ module.exports = function() {
 	var navi;
 	var naviMarginLeft;
 	
+	var loginController = require('../../controller/LoginController');
+	var loginDataModel = require('../../model/LoginModel');
+	var loginData;
+	
 	var callerObj = {
 		/**
 		 * 초기화
@@ -62,6 +66,16 @@ module.exports = function() {
 
 		onScrollListener();
 		$(window).on('scroll resize', onScrollListener);
+
+		$('#requestMoving').click(function(e){
+			e.preventDefault();
+			loginData = loginDataModel.loginData();
+			if (loginData.stateCode == 'BM_MEM_STATE_01') {
+				$(document).trigger('verifyMember');
+			} else {
+				location.href = 'requestMoving.html';
+			}
+		});
 	}
 
 	function onScrollListener() {

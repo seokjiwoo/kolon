@@ -90,56 +90,39 @@ module.exports = function() {
 	function setDatePicker() {
 		var datePicker = $('.js-picker');
 
-		DatePicker.init({
+		DatePicker.init({default:{
 			wrap : datePicker,
 			picker : datePicker.find('.js-picker'),
 			altField : datePicker.find('.js-alt'),
-			button : datePicker.find('.js-btn')
-		});
+			button : datePicker.find('.js-btn'),
+			dateFormat : 'yy.mm.dd',
+			minDate: 2,
+			onSelect : $.noop,
+			changeYear: true,
+			changeMonth: true,
+			disabled: true,
+			showOn: "off",
+			onChangeMonthYear: function(year, month, inst) {
+				mCode = String(year);
+				mCode += (month < 10 ? '0'+month : month);
+				controller.movingDateList(originAddress.regionCode, mCode);
+			}
+		}});
+		$('#moveDate').addClass('disabled');
 
-		$('.js-picker .js-alt').click(function() {
-			if ($('#moveDate').hasClass('cal-show')) {
+		$('.js-picker .js-alt').click(function(e) {
+			if ($('#moveDate').hasClass('disabled')) {
+				alert("이사 출발지를 먼저 선택해주세요");
+			} else if ($('#moveDate').hasClass('cal-show')) {
 				mCode = moment($('#moveDate').datepicker('getDate')).format('YYYYMM');
-				//controller.movingDateList(originAddress.regionCode, mCode);
+				controller.movingDateList(originAddress.regionCode, mCode);
 			}
 		});
-		$('#moveDate').datepicker("option", "onChangeMonthYear", function(year, month, inst) {
-			mCode = String(year);
-			mCode += (month < 10 ? '0'+month : month);
-			//controller.movingDateList(originAddress.regionCode, mCode);
-		});
-		//$( "#moveDate" ).datepicker( "option", "disabled", true );
 	};
 
 	function movingDateListHandler(e, status, result) {
-		console.log(result)
+		console.log(result);
 	};
-
-	/*function movingAddressListHandler(e, status, result) {
-		if (result.sidoList != undefined) {
-			var tags = '<ul class="drop" data-prevent="true"><li><a href="#">시/도</a></li>';
-			for (var key in result.sidoList) {
-				var each = result.sidoList[key];
-				tags += '<li><a href="#" data-value="'+each.regionCode+'">'+each.sidoName+'</a></li>';
-			}
-			tags += '</ul>';
-
-			$('#addressDrop1').html(tags);
-		} else if (result.sigunguList != undefined) {
-			console.log(result.sigunguList);
-
-			var tags = '<ul class="drop" data-prevent="true"><li><a href="#">시군구</a></li>';
-			for (var key in result.sigunguList) {
-				var each = result.sigunguList[key];
-				tags += '<li><a href="#" data-value="'+each.regionCode+'">'+each.sigunguName+'</a></li>';
-			}
-			tags += '</ul>';
-
-			$('#addressDrop2').html(tags);
-		}
-
-		DropDownMenu.refresh();
-	};*/
 
 	function movingCompanyListHandler(e, status, result) {
 		if (status == 200) {
@@ -162,21 +145,29 @@ module.exports = function() {
 	};
 
 	function addressListHandler(e, status, list) {
-		var tags1 = '<li><a id="originLabel" href="#">선택해 주세요</a></li>';
-		var tags2 = '<li><a id="targetLabel" href="#">선택해 주세요</a></li>';
-		addressArray = new Array();
-		$.map(list.items, function(each) {
-			addressArray[each.addressSequence] = each;
-			tags1 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
-			tags2 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
-		});
-		$('#originAddressDrop').html(tags1);
-		$('#targetAddressDrop').html(tags2);
+		if (list.items.length == 0) {
+			$('#originAddressDrop').parent().hide();
+			$('#targetAddressDrop').parent().hide();
+		} else {
+			$('#originAddressDrop').parent().show();
+			$('#targetAddressDrop').parent().show();
 
-		$('#originAddress').html('');
-		$('#targetAddress').html(''); 
-											
-		DropDownMenu.refresh();
+			var tags1 = '<li><a id="originLabel" href="#">선택해 주세요</a></li>';
+			var tags2 = '<li><a id="targetLabel" href="#">선택해 주세요</a></li>';
+			addressArray = new Array();
+			$.map(list.items, function(each) {
+				addressArray[each.addressSequence] = each;
+				tags1 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
+				tags2 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
+			});
+			$('#originAddressDrop').html(tags1);
+			$('#targetAddressDrop').html(tags2);
+
+			$('#originAddress').html('');
+			$('#targetAddress').html(''); 
+												
+			DropDownMenu.refresh();
+		}
 	};
 
 	function setAddress(addressType, seq) {
@@ -185,7 +176,8 @@ module.exports = function() {
 		switch(addressType) {
 			case 'origin': 
 				originAddress = addressObject;
-				//$( "#moveDate" ).datepicker( "option", "disabled", false );
+				$('#moveDate').removeClass('disabled');
+				$("#moveDate").datepicker("option", "disabled", false);
 				break;
 			case 'target':
 				targetAddress = addressObject;
@@ -200,8 +192,19 @@ module.exports = function() {
 
 	function requestMovingCompany(e) {
 		e.preventDefault();
-		if (originAddress == undefined) {
+		
+		var requestTargetName = $('#name').val();
+		var requestTargetContact = $('#phoneNumber').val();
+		var movingTypeCode = $(':radio[name="hTp"]:checked').val();
+		
+		if (requestTargetName == '') {
+			alert('이름을 입력해 주세요');
+		} else if (requestTargetContact == '') {
+			alert('연락처를 입력해 주세요');
+		} else if (originAddress == undefined) {
 			alert('서비스 지역을 선택해 주세요');
+		} else if (movingTypeCode == undefined) {
+			alert('서비스 종류를 선택해 주세요');
 		} else {
 			controller.movingCompanyList(moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'), originAddress.regionCode);
 		}

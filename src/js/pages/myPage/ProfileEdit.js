@@ -21,6 +21,7 @@ module.exports = function() {
 	//$(controller).on('verifyMemberResult', verifyMemberResultHandler);
 	
 	var loginController = require('../../controller/LoginController');
+	$(loginController).on('loginResult', socialConnectFailHandler);
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
@@ -196,6 +197,13 @@ module.exports = function() {
 				$('#socialButton_'+socialName).text('연결해제');
 				break;
 		}
+	};
+
+	/**
+	 * 소셜연결 실패 핸들링 
+	 */
+	function socialConnectFailHandler(e, status, result) {
+		if (status == '401') MyPage.Super.Super.alertPopup('', result.message, '확인');
 	};
 
 	/**

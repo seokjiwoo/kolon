@@ -455,15 +455,16 @@ module.exports = function() {
 	function onDeleteScrap(e) {
 		e.preventDefault();
 
-		var target = $(e.target),
+		var target = $(e.target);
 		// 스크랩 유무에 따른 - 문구 처리
+		/*
 		message = '해당 카드를 삭제하시겠습니까?',
 		isAllow = win.confirm(message);
 
 		if (!isAllow) {
 			return;
 		}
-
+		*/
 		debug.log(fileName, 'onDeleteScrap', target, self.selPopBtnInfo);
 		controller.deleteScrap(self.selPopBtnInfo.info.scrapNumber);
 	}

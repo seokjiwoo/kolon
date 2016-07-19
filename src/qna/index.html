@@ -112,106 +112,17 @@
 									<li><a href="#" data-value="type-4">가격낮은순</a></li>
 									<li><a href="#" data-value="type-5">스크랩 많은 순</a></li>
 								</ul>
-							</div>
-							<div class="rightBox">
-								<ul class="drop" data-prevent="true">
-									<li><a href="#">최신순</a></li>
-									<li><a href="#" data-value="type-1">최신순</a></li>
-									<li><a href="#" data-value="type-2">인기순</a></li>
-									<li><a href="#" data-value="type-3">가격높은순</a></li>
-									<li><a href="#" data-value="type-4">가격낮은순</a></li>
-									<li><a href="#" data-value="type-5">스크랩 많은 순</a></li>
-								</ul>
 							</div>-->
+							<div class="rightBox">
+								<ul id='alignDrop' class="drop" data-prevent="true">
+									<li><a href="#" data-value="newest">최신순</a></li>
+									<li><a href="#" data-value="answer">의견많은순</a></li>
+								</ul>
+							</div>
 						</div>
 						<!-- list -->
 						<div id='opinionList' class="opinionArea">
-							<script id="opinion-template" type="text/x-handlebars-template">
-							{{!-- opinion-template --}}
-							<ul>
-								{{#each .}}
-								<li>
-									<div class="opinionbox">
-										<div class="title">
-											<p class="info">
-												<span>{{userName}}</span>
-												<span>{{createDate}}</span>
-											</p>
-										</div>
-										<!-- 의견 내용 -->
-										<div class="conbox">
-											<strong>
-												<a href="../../_popup/popPhotoDetailView.html"
-													class="btnPop btnPop895"
-													data-user-class="qna popEdge popPhotoDetailView opinionNumber{{opinionNumber}}"
-													data-opinion-info='{
-														"opinionNumber" : "{{opinionNumber}}",
-														"opinionImages" : "{{images}}",
-														"title" : "{{title}}"
-													}'>
-													<span class="it">{{category}}</span>{{title}}
-												</a>
-											</strong>
-											<div class="conboxTxt">
-												<p class="except02">{{{content}}} <a href="" class="more">더보기</a></p>
-											</div>
-											<!-- 사진 -->
-											<ul class="photoList">
-												{{#each images}}
-												<li><img src="{{.}}" alt="" /></li>
-												{{/each}}
-											</ul>
-											<!--// 사진 -->
-											<div class="commentCount">
-												{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
-												<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
-											</div>
-										</div>
-										<!--// 의견 내용 -->
-										<div id="commentArea{{opinionNumber}}" class="commentArea">
-											<!--<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>-->
-											<!-- 댓글 리스트 -->
-											<ul>
-												{{#each answers}}
-												<li>
-									 				<div class="commentName">
-										 				<div class="name">
-										 					<span><img src="{{expertImageUrl}}" alt="" /></span>
-										 					<span>
-										 						<span><em>{{expertCompany}}</em> {{expertName}}</span>
-										 						<span class="except">{{answererSectionCodeName}}</span>
-										 					</span>
-										 				</div>
-									 				</div>
-													<p class="txt">{{{content}}}</p>
-									 				<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount {{answerCountClass}}'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
-									 			</li>
-												{{/each}}
-											</ul>
-											<!--// 댓글 리스트 -->
-											<!-- 댓글 입력 폼 -->
-											<div class="commentInput">
-												<form method="post" action="#" id="answerForm{{opinionNumber}}" class='answerForm'>
-													<fieldset>
-														<legend>의견 입력 폼</legend>
-														<div class="commentTextarea">
-															<textarea class="pullSize" id='answerBox{{opinionNumber}}' style="width:99%;" placeholder="의견을 남겨주세요." title="의견입력"></textarea>
-															<div class="commentBtn">
-																<div class="thumb"><span><img src="" alt="" class='myProfileImage' /></span></div>
-																<button class="confirmBtn">등록</button>
-															</div>
-														</div>
-													</fieldset>
-												</form>
-											</div>
-											<!--// 댓글 입력 폼 -->
-										</div>
-									</div>
-								</li>
-								{{/each}}
-							</ul>
-							{{!--// opinion-template --}}
-							</script>
+							
 						</div>
 						<!--// list -->
 						<!--<div class="paging">
@@ -237,7 +148,7 @@
 							{{!-- my-opinion-template --}}
 							<h2 class="optit"><a href='/myPage/myQnA.html'><span>내가 최근에 등록한 의견</span></a></h2>
 							<ul>
-								{{#each myOpinions}}
+								{{#each .}}
 								<li>
 									<a href="#">
 										<span>{{title}}</span>
@@ -285,5 +196,89 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<script id="opinion-template" type="text/x-handlebars-template">
+{{!-- opinion-template --}}
+<ul>
+	{{#each .}}
+	<li>
+		<div class="opinionbox">
+			<div class="title">
+				<p class="info">
+					<span>{{userName}}</span>
+					<span>{{createDate}}</span>
+				</p>
+			</div>
+			<!-- 의견 내용 -->
+			<div class="conbox">
+				<strong><span class="it">{{category}}</span>{{title}}</strong>
+				<div class="conboxTxt">
+					<p class="except02">{{{content}}} <a href="" class="more">더보기</a></p>
+				</div>
+				<!-- 사진 -->
+				<a href="../../_popup/popPhotoDetailView.html"
+						class="btnPop btnPop895"
+						data-user-class="qna popEdge popPhotoDetailView opinionNumber{{opinionNumber}}"
+						data-opinion-info='{
+							"opinionNumber" : "{{opinionNumber}}",
+							"opinionImages" : "{{images}}",
+							"title" : "{{title}}"
+						}'>
+				<ul class="photoList">
+					{{#each images}}
+					<li><img src="{{.}}" alt="" /></li>
+					{{/each}}
+				</ul>
+				</a>
+				<!--// 사진 -->
+				<div class="commentCount">
+					{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
+					<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
+				</div>
+			</div>
+			<!--// 의견 내용 -->
+			<div id="commentArea{{opinionNumber}}" class="commentArea">
+				<!--<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>-->
+				<!-- 댓글 리스트 -->
+				<ul>
+					{{#each answers}}
+					<li>
+						<div class="commentName">
+							<div class="name">
+								<span><img src="{{answererImageUrl}}" alt="" /></span>
+								<span>
+									<span><em>{{expertCompany}}</em> {{expertName}}</span>
+									<span class="except">{{answererSectionCodeName}}</span>
+								</span>
+							</div>
+						</div>
+						<p class="txt">{{{content}}}</p>
+						<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount {{answerCountClass}}'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
+					</li>
+					{{/each}}
+				</ul>
+				<!--// 댓글 리스트 -->
+				<!-- 댓글 입력 폼 -->
+				<div class="commentInput">
+					<form method="post" action="#" id="answerForm{{opinionNumber}}" class='answerForm'>
+						<fieldset>
+							<legend>의견 입력 폼</legend>
+							<div class="commentTextarea">
+								<textarea class="pullSize" id='answerBox{{opinionNumber}}' style="width:99%;" placeholder="의견을 남겨주세요." title="의견입력"></textarea>
+								<div class="commentBtn">
+									<div class="thumb"><span><img src="" alt="" class='myProfileImage' /></span></div>
+									<button class="confirmBtn">등록</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<!--// 댓글 입력 폼 -->
+			</div>
+		</div>
+	</li>
+	{{/each}}
+</ul>
+{{!--// opinion-template --}}
+</script>
 </body>
 </html>

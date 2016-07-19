@@ -56,24 +56,24 @@
 		{{#each follows}}
 		<li class="js-follow-list"
 			data-follow-coperationName="{{coperationName}}"
-			data-follow-memberName="{{memberName}}"
+			data-follow-memberName="{{followMemberName}}"
 			data-follow-info='{
 			"coperationName" : "{{coperationName}}",
-			"memberName" : "{{memberName}}",
+			"memberName" : "{{followMemberName}}",
 			"followNumber" : {{followNumber}},
 			"followTargetCode" : "{{followTargetCode}}",
 			"followTargetSectionCode" : "{{followTargetSectionCode}}"
 		}'>
 			<ul class="innerWrap">
-				<li class="recordPic"><img src="{{imageFileUrl}}" alt="{{memberName}}"></li>
+				<li class="recordPic"><img src="{{imageFileUrl}}" alt="{{followMemberName}}"></li>
 
-				{{#vxIF coperationName '&&' memberName}}
-					<li class="name"><b>{{memberName}}</b><br>{{coperationName}}</li>
+				{{#vxIF coperationName '&&' followMemberName}}
+					<li class="name"><b>{{followMemberName}}</b><br>{{coperationName}}</li>
 				{{else}}
 					{{#if coperationName}}
 						<li class="name"><b>{{coperationName}}</b></li>
 					{{else}}
-						<li class="name"><b>{{memberName}}</b></li>
+						<li class="name"><b>{{followMemberName}}</b></li>
 					{{/if}}
 				{{/vxIF}}
 

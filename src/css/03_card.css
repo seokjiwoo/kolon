@@ -455,7 +455,7 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .expert .cardIntro{color: #666;}
 .cardWrap .expert .cardIntro:before{display: none;}
 
-.cardCon .removeScrap {position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_remove.png') center no-repeat; border-radius: 50%; z-index:4;font-size: 0;}
+.cardCon .removeScrap { display:none; position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_remove.png') center no-repeat; border-radius: 50%; z-index:8;font-size: 0;}
 
 /*  */
 .cardBgWrap {position:absolute;top:0;left:0;right:0;bottom:0;z-index:6;pointer-events:none;}

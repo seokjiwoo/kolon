@@ -50,20 +50,11 @@ module.exports = function() {
 		self.opts = opts;
 
 		self.urlVar = util.getUrlVar();
-		self.followTargetCode = self.urlVar.followTargetCode;
-		self.followTargetNumber = self.urlVar.followTargetNumber;
-		self.followTargetSectionCode = self.urlVar.followTargetSectionCode;
 		self.expertNumber = self.urlVar.expertNumber;
-
-		if (!self.expertNumber) {
-			var expertNumber = win.prompt('queryString not Found!\n\nexpertNumber 를 Number 입력하세요', '');
-			location.href += '?expertNumber=' + expertNumber;
-			return;
-		}
+		if (!self.expertNumber) location.href = '/manager/';
 		
 		setElements();
 		setBindEvents();
-
 		setBtnsEvents();
 
 		expertsController.detail(self.expertNumber);
@@ -93,11 +84,7 @@ module.exports = function() {
 		var target = $(e.currentTarget);
 
 		if (target.hasClass('js-add-follow')) {
-			followController.addFollows({
-				'followTargetCode' : self.followTargetCode,
-				'followTargetNumber' : self.followTargetNumber,
-				'followTargetSectionCode' : self.followTargetSectionCode
-			});
+			followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
 		} else if (target.hasClass('js-delete-follow')) {
 			followController.deleteFollows(self.followTargetNumber);
 		}
@@ -143,13 +130,19 @@ module.exports = function() {
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
-					case 200: $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉'); break;
+					case 200: 
+						$('#followerCount').text(Number($('#followerCount').text())+1);
+						$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+						break;
 					default: win.alert(result.message); break;
 				}
 				break;
 			case FOLLOWING_EVENT.DELETE_FOLLOW:
 				switch(status) {
-					case 200: $('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우'); break;
+					case 200: 
+						$('#followerCount').text(Number($('#followerCount').text())-1);
+						$('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우');
+						break;
 					default: win.alert(result.message); break;
 				}
 				break;

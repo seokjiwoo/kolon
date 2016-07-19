@@ -8,6 +8,7 @@ module.exports = function() {
 	APIController = require('../../controller/APIController.js'),
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
+	DropDownMenu = require('../../components/DropDownMenu.js'),
 	imageUploader = require('../../components/ImageUploader.js'),
 	fileName = 'qna/Index.js';
 
@@ -39,6 +40,7 @@ module.exports = function() {
 	var uploadFileNumber;
 	var uploadImageArray;
 	var opinionsClassArray;
+	var listOrder = 'newest';
 
 	var uploadScrapNumbers = [];
 	var uploadScrapImageArrary = [];
@@ -145,7 +147,12 @@ module.exports = function() {
 			$('#opinionThemes').append(tags);
 		}
 		
-		controller.opinionsList();
+		$('#alignDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+			listOrder = data.values[0];
+			controller.opinionsList(listOrder);
+		});
+		
+		controller.opinionsList(listOrder);
 	}
 
 	/**
@@ -165,6 +172,7 @@ module.exports = function() {
 					eachAnswers.content = eachAnswers.content.replace(/\n/, '<br />');
 					if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
+					if (eachAnswers.answererImageUrl == null) eachAnswers.answererImageUrl = '/images/profile40.jpg';
 				});
 			});
 
@@ -174,6 +182,8 @@ module.exports = function() {
 
 			if (loginData && loginData.imageUrl) {
 				$('.myProfileImage').attr('src', loginData.imageUrl);
+			} else {
+				$('.myProfileImage').attr('src', '/images/profile40.jpg');
 			}
 
 			$('.writeCommentButton').click(showCommentForm);
@@ -241,6 +251,7 @@ module.exports = function() {
 	 * 가장 많은 도움을 준 전문가 리스트 핸들링
 	 */
 	function opinionsExpertsListHandler(e, status, result) {
+		console.log(result);
 		if (status == 200) {
 			var template = window.Handlebars.compile($('#expert-rank-template').html());
 			var elements = $(template(result));
@@ -450,7 +461,7 @@ module.exports = function() {
 		e.preventDefault();
 		if (loginData != null) {
 			var pId = $(this).attr('id').substr(18);
-			$('#commentArea'+pId).addClass('showCommentInput');
+			$('#commentArea'+pId).toggleClass('showCommentInput');
 		} else {
 			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
 		}
@@ -530,6 +541,8 @@ module.exports = function() {
 		pollAnswerId = $(this).attr('id').substr(6);
 		if (!$(this).hasClass('on')) {
 			controller.pollAnswer(pollAnswerId);
+		} else {
+			alert('이미 참여하셨습니다.');
 		}
 	};
 
@@ -539,7 +552,7 @@ module.exports = function() {
 			$('#answerCount'+pollAnswerId).text(newCount);
 			$('#answer'+pollAnswerId).addClass('on');
 		} else {
-			alert(status+': '+result.message);
+			alert(result.message);
 		}
 	};
 

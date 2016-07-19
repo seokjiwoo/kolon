@@ -32,9 +32,13 @@ function ClassScrapController() {
 			 */
 			scrapImageList: scrapImageList,
 			/**
-			 * 스크랩 등록
+			 * 카드 스크랩 등록
 			 */
-			addScrap: addScrap,
+			addCardScrap: addCardScrap,
+			/**
+			 * 이미지 스크랩 등록
+			 */
+			addImageScrap: addImageScrap,
 			/**
 			 * 스크랩 수정
 			 */
@@ -82,13 +86,28 @@ function ClassScrapController() {
 		}, false);
 	};
 
-	function addScrap(folderNumber, targetCode, targetNumber) {
+	function addCardScrap(targetCode, targetNumber) {
+		Super.callApi('/apis/scraps', 'POST', {
+			"folderNumber": 0,
+			"scrapTargetCd": targetCode,
+			"scrapTargetNumber": targetNumber
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('addScrapResult', [status, result]);
+			} else {
+				Super.handleError('addScrap', result);
+				$(callerObj).trigger('addScrapResult', [status, result]);
+			}
+		}, false);
+	};
+
+	function addImageScrap(folderNumber, targetCode, imageUrl) {
 		if (targetCode == callerObj.SCRAP_TARGET_CODE_CARD_GOODS || targetCode == callerObj.SCRAP_TARGET_CODE_CARD_MAGAZINE) folderNumber = 0;
 
 		Super.callApi('/apis/scraps', 'POST', {
 			"folderNumber": folderNumber,
 			"scrapTargetCd": targetCode,
-			"scrapTargetNumber": targetNumber
+			"scrapImageUrl": imageUrl
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addScrapResult', [status, result]);

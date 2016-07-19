@@ -14,6 +14,8 @@ module.exports = function() {
 	
 	var controller = require('../../controller/MagazineController');
 	$(controller).on('magazineInfoResult', getDetailHandler);
+	var scrapController = require('../../controller/ScrapController.js');
+	$(scrapController).on('addScrapResult', scrapResultHandler);
 	
 	var callerObj = {
 		/**
@@ -37,6 +39,25 @@ module.exports = function() {
 
 		renderData(magazineData, '#top-cont-templates', '#top-cont-wrap', true);
 		renderData(magazineData, '#description-templates', '#description-wrap', true);
+		
+		if (magazineData.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
+		if (magazineData.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
+		$('.js-add-like').click(function(e){
+			e.preventDefault();
+			if ($(this).hasClass('on')) {
+				//
+			} else {
+				controller.likes(magazineData.magazineNumber);
+			}
+		});
+		$('.js-add-scrap').click(function(e){
+			e.preventDefault();
+			if ($(this).hasClass('on')) {
+				//
+			} else {
+				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_MAGAZINE, magazineData.magazineNumber);
+			}
+		});
 	};
 
 	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
@@ -44,5 +65,12 @@ module.exports = function() {
 		var elements = $(template(data));
 		if (clearFlag) $(wrapperSelector).empty();
 		$(wrapperSelector).append(elements);
+	};
+
+	function scrapResultHandler(e, status, result) {
+		if (status == 200) {
+			$('.js-add-scrap').addClass('on');
+			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
+		}
 	};
 };

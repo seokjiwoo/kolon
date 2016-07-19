@@ -56,16 +56,8 @@ module.exports = function() {
 		self.opts = opts;
 
 		self.urlVar = util.getUrlVar();
-		self.followTargetCode = self.urlVar.followTargetCode;
-		self.followTargetNumber = self.urlVar.followTargetNumber;
-		self.followTargetSectionCode = self.urlVar.followTargetSectionCode;
 		self.expertNumber = self.urlVar.expertNumber;
-
-		if (!self.expertNumber) {
-			var expertNumber = win.prompt('queryString not Found!\n\nexpertNumber 를 Number 입력하세요', '');
-			location.href += '?expertNumber=' + expertNumber;
-			return;
-		}
+		if (!self.expertNumber) location.href = '/manager/';
 		
 		setElements();
 		setBindEvents();
@@ -118,11 +110,7 @@ module.exports = function() {
 		var target = $(e.currentTarget);
 
 		if (target.hasClass('js-add-follow')) {
-			followController.addFollows({
-				'followTargetCode' : self.followTargetCode,
-				'followTargetNumber' : self.followTargetNumber,
-				'followTargetSectionCode' : self.followTargetSectionCode
-			});
+			followController.addFollows(self.brandNumber, 'BM_FOLLOW_TYPE_02');
 		} else if (target.hasClass('js-delete-follow')) {
 			followController.deleteFollows(self.followTargetNumber);
 		}
@@ -164,6 +152,7 @@ module.exports = function() {
 		switch(eventType) {
 			case EXPERTS_EVENT.BRAND:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				self.brandNumber = result.data.brand.bizNum;
 				displayData(result.data.brand);
 				break;
 			case EXPERTS_EVENT.BRAND_PRODUCTS:
@@ -173,32 +162,20 @@ module.exports = function() {
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
 					case 200:
-						$('#btnFollow').removeClass('js-add-follow')
-										.addClass('js-delete-follow')
-										.text('팔로잉');
+						$('#followerCount').text(Number($('#followerCount').text())+1);
+						$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 						break;
-					default:
-						win.alert('HTTP Status Code ' + status);
-						break;
+					default: win.alert(result.message); break;
 				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 			case FOLLOWING_EVENT.DELETE_FOLLOW:
 				switch(status) {
 					case 200:
-						$('#btnFollow').removeClass('js-delete-follow')
-										.addClass('js-add-follow')
-										.text('팔로우');
+						$('#followerCount').text(Number($('#followerCount').text())-1);
+						$('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우');
 						break;
-					default:
-						win.alert('HTTP Status Code ' + status);
-						break;
+					default: win.alert(result.message); break;
 				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
-				$('.' + eventType).html(JSON.stringify(response));
 				break;
 		}
 	}

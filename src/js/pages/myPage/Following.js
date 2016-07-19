@@ -111,7 +111,7 @@ module.exports = function() {
 
 		if (!isFollow) {
 			// 팔로우 하기
-			controller.addFollows(info.followTargetCode, info.followNumber, info.followTargetSectionCode, { wrap : wrap, css : self.opts.cssClass.isFollow });
+			controller.addFollows(info.followTargetCode, '', { wrap : wrap, css : self.opts.cssClass.isFollow });
 			debug.log(fileName, 'onWrapPopBtnClick', isFollow, info);
 		}
 	}
@@ -255,13 +255,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case FOLLOWING_EVENT.LIST:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				
 				displayData(result.data);

@@ -5,7 +5,7 @@
 			<div class="hexTop"><span></span></div>
 			<div class="hexBottom"><span></span></div>
 		</div>
-		<!-- Type1: 매거진 cardType06 cardSize02 -->
+		{{!-- Type1: 매거진 cardType06 cardSize02 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_01"}}
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">diy interior</p></div>
@@ -23,12 +23,13 @@
 			<!-- flag -->
 			<!-- <div class="melody"></div> -->
 			<!--// flag -->
+			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
-		<!-- Type1 -->
+		{{!-- Type1 --}}
 
-		<!-- Type2: 샵 상품 cardType01 cardSize03 -->
+		{{!-- Type2: 뉴폼 상품 cardType01 cardSize03 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_02"}}
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">{{producerTypeCodeName}}</p></div>
@@ -65,11 +66,12 @@
 			<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>
 			<div class="celeb"><p><span><b>셀럽</b>추천</p></div>
 			<!--// flag -->
+			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
 		{{/vxIF}}
-		<!-- Type2 -->
+		{{!-- Type2 --}}
 		
-		<!-- Type3: 샵 상품 cardType02 cardSize02 -->
+		{{!-- Type3: 샵 상품 cardType02 cardSize02 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">{{producerTypeCodeName}}</p></div>
@@ -99,12 +101,13 @@
 			<div class="upTo"><p><span><b>20</b>개</span>한정</p></div>
 			<div class="md"><p><span><b>MD</b>추천</span></p></div>
 			<!--// flag -->
+			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
-		<!-- Type3 -->
+		{{!-- Type3 --}}
 
-		<!-- Type5: 그래프 cardType08 cardSize02 -->
+		{{!-- Type5: 그래프 cardType08 cardSize02 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_05"}}
 		<div class="cardCon">
 			<h2 class="cardTit">{{{title}}}</h2>
@@ -135,16 +138,16 @@
 		</div>
 		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
-		<!-- Type5 -->
+		{{!-- Type5 --}}
 
-		<!-- Type7: 전문가 cardType08 cardSize02 -->
+		{{!-- Type7: 전문가 cardType08 cardSize02 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_07"}}
 		<div class="cardCon">
-			<div class="cardLine"><p class="italicNum">space specialist</p></div>
+			<div class="cardLine"><p class="italicNum">specialist</p></div>
 			<!-- card 내용 -->
 			<a href="{{detailUrl}}" class="cardTxt">
-				<p class="cardCat">{{typeName}}</p>
-				<h2 class="cardTit">{{summaryIntro}}<b>{{name}}</b><span>{{companyWebsiteUrl}}</span></h2>
+				<p class="cardCat">specialist</p>
+				<h2 class="cardTit">{{typeName}} 전문가<b>{{name}}</b><span>{{companyWebsiteUrl}}</span></h2>
 				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
 			</a>
 			<!--// card 내용 -->
@@ -153,7 +156,7 @@
 				<div class="cardCon">
 					<div class="iHover">
 						<div class="hoverImage">
-							<div class="imgHexagon" style="{{background}}"><!-- hover 배경이미지 -->
+							<div class="imgHexagon" style="{{hoverImage}}"><!-- hover 배경이미지 -->
 								<div class="imgHexTop"><span></span></div>
 								<div class="imgHexBottom"><span></span></div>
 							</div>
@@ -177,14 +180,14 @@
 			<ul class="check_icon">
 				<li class="cardDetail text"><a href="/manager/itemList.html?expertNumber={{expertNum}}"><span>판매<br>상품</span>{{countProduct}}</a></li>
 				<!--<li class="cardDetail text"><a href="javascript:alert('준비중입니다')"><span>완료된<br>공간</span>{{countView}}</a></li>-->
-				<li class="cardDetail like"><a href="javascript:alert('준비중입니다')">{{likeCount}}</a></li>
+				<li class="cardDetail text"><a href="/manager/detail.html?expertNumber={{expertNum}}"><span>팔로워</span>{{likeCount}}</a></li>
 			</ul>
 			<!-- flag -->
 			<!-- <div class="hi"></div> -->
 			<!--// flag -->
 		</div>
 		{{/vxIF}}
-		<!-- Type7 -->
+		{{!-- Type7 --}}
 	</li>
 {{/cards}} 
 </script>

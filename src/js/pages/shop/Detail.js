@@ -13,6 +13,7 @@ module.exports = function() {
 	Super = SuperClass(),
 	cartController = require('../../controller/OrderController.js'),
 	productController = require('../../controller/ProductController.js'),
+	scrapController = require('../../controller/ScrapController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	DropDownScroll = require('../../components/DropDownScroll'),
@@ -77,6 +78,7 @@ module.exports = function() {
 		//productController.preview(self.productNumber);
 		productController.related(self.productNumber);
 		//productController.reviews(self.productNumber, self.reviewNumber);
+
 		$('#sellerCard').bxSlider({
 			pager:false,
 			slideMargin: 10,
@@ -92,7 +94,7 @@ module.exports = function() {
 				maxSlides: 4,
 				slideWidth: 285
 			});
-		})
+		});
 	}
 
 	function setElements() {
@@ -104,6 +106,7 @@ module.exports = function() {
 	}
 
 	function setBindEvents() {
+		$(scrapController).on('addScrapResult', scrapResultHandler);
 		$(cartController).on(CART_EVENT.WILD_CARD, onControllerListener);
 		$(productController).on(PRODUCT_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
@@ -163,12 +166,20 @@ module.exports = function() {
 		}
 
 		if (target.hasClass('js-add-like')) {
-			productController.likes(target.data('product-number'), target.data('product-like'));
+			if (target.hasClass('on')) {
+				//
+			} else {
+				productController.likes(target.data('product-number'), target.data('product-like'));
+			}
 			return;
 		}
 
 		if (target.hasClass('js-add-scrap')) {
-			// productController.likes(target.data('product-number'), target.data('product-like'));
+			if (target.hasClass('on')) {
+				//
+			} else {
+				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_GOODS, target.data('product-number'));
+			}
 			return;
 		}
 
@@ -190,6 +201,13 @@ module.exports = function() {
 					orderGoods();
 				}
 			}
+		}
+	}
+
+	function scrapResultHandler(e, status, result) {
+		if (status == 200) {
+			$('.js-add-scrap').addClass('on');
+			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
 		}
 	}
 
@@ -319,6 +337,9 @@ module.exports = function() {
 					}
 
 					optionsDisplay();
+
+					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
+					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
 
 					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
 					$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);

@@ -85,7 +85,11 @@ function ClassLoginController() {
 			"loginPassword": pw
 		}
 		if (authNumber != undefined) loginPostObj.certiNumber = authNumber;
-		if (keepLogin == undefined) loginPostObj.keepLogin = 'N';
+		if (keepLogin == undefined) {
+			loginPostObj.keepYn = 'N';
+		} else {
+			loginPostObj.keepYn = keepLogin;
+		}
 
 		// recaptcha
 		if (window.VX_G_RECAPTCHA_CALL_BACK && window.grecaptcha) {

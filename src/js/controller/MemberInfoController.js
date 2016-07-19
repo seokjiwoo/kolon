@@ -288,7 +288,7 @@ function ClassMemberInfoController() {
 	 * 비밀번호 재설정
 	 */
 	function resetPassword(authKey, newPassword) {
-		Super.callApi('/apis/member/resetPassword', 'POST', {
+		Super.callApi('/apis/authorize/password', 'POST', {
 			"key": authKey,
 			"passwd": newPassword
 		}, function(status, result) {

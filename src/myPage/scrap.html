@@ -19,10 +19,11 @@
 			<a href="../_popup/popScrapCardDel.html" class="btnPop btnPop540" data-user-class="popEdge">[카드 수정하기]</a>
 		</p>
 		 -->
-		 
-		<section class="wrap" id="scrapAll"></section>
-
-		</div>
+		<section class="wrap" id="scrapAll">
+			<h2 class="hide">스크랩</h2>
+			<ul class="cardWrap" id="cardWrap"></ul>
+		</section>
+	</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
 
@@ -33,61 +34,6 @@
 	}
 	.wrap.is-loading .js-card-list {opacity: 0;-webkit-transform: scale(0.01,0.01);-ms-transform: scale(0.01, 0.01);transform: scale(0.01, 0.01)}
 </style>
-
-<script id="scrap-all-templates" type="text/x-handlebars-template">
-{{!-- 
-		scrap-all-templates 
-		@todo image 타입 추가 필요
---}}
-	<h2 class="hide">모든 스크랩</h2>
-	{{!-- 데이터 유무에 따른 화면 처리 --}}
-	{{#if scraps.length}}
-		<ul class="cardWrap" id="cardWrap">
-			{{#scraps}}
-				<!-- 상품 스크랩 -->
-				<li class="js-card-list cardType04 cardSize03"
-					data-scrapfolder-info='{
-					"scrapCount" : {{scrapCount}},
-					"scrapNumber": {{scrapNumber}}
-				}'>
-					<div class="cardLine"><p>handmade</p></div>
-					<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
-						<div class="hexTop"><span></span></div>
-						<div class="hexBottom"><span></span></div>
-					</div>
-					<div class="cardCon">
-						<a class="js-list-link" href="/myPage/scrap.html#category=images&amp;scrapNumber={{scrapNumber}}&amp;folderNumber={{../folderNumber}}">
-							<!-- card 내용 -->
-							<h2 class="cardTit">샌드위치모던<b>페이퍼 시계</b></h2>
-							<p class="cardPrice">37,000 <span class="priceBottom">won</span></p>
-							<!--// card 내용 -->
-							<!-- card hover 내용 -->
-							<div class="cardHover">
-								<div class="cardCon">
-									card hover 내용
-									<div class="cardDetail">
-										<div class="cardDetailWrap">
-											<span class="like">4.8</span><span class="comt">120</span>
-											<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
-											<p class="cardAuthorInfo hoverCon"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--// card hover 내용 -->
-						</a>
-						<a href="../_popup/popScrapDel.html?scrapNumber={{scrapNumber}}" class="btnPop btnPop540 removeScrap" data-user-class="scrapRemove popEdge">삭제</a>
-					</div>
-				</li>
-				<!--// 상품 스크랩 -->
-			{{/scraps}}
-		</ul>
-	{{else}}
-	{{!-- 데이터 유무에 따른 화면 처리 --}}
-		<p>데이터가 없습니다.</p>
-	{{/if}}
-{{!--// scrap-all-templates --}}
-</script>
 
 <script id="scrap-images-templates" type="text/x-handlebars-template">
 	{{!-- scrap-images-templates --}}

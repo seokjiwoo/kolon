@@ -62,8 +62,10 @@ function ClassOpinionsController() {
 		}, true);
 	}
 	
-	function opinionsList() {
-		Super.callApi('/apis/opinions', 'GET', {}, function(status, result) {
+	function opinionsList(order) {
+		Super.callApi('/apis/opinions', 'GET', {
+			"orderType": order
+		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('opinionsListResult', [status, result.data.opinions]);
 			} else {

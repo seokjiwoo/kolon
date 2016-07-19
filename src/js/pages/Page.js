@@ -128,14 +128,14 @@ module.exports = function() {
 			if (loginData.imageUrl != null) {
 				$('#topMemberInfoPic').attr('src', loginData.imageUrl);
 			} else {
-				$('#topMemberInfoPic').attr('src', '/images/profile.png');
+				$('#topMemberInfoPic').attr('src', '/images/profile40.jpg');
 			}
 			$('#topMemberInfoName').attr('href', '/myPage/').text(loginData.memberName);
 
 			if (loginData.imageUrl != null) {
 				$('#profileImage').attr('href', '/myPage/').attr('src', loginData.imageUrl);
 			} else {
-				$('#profileImage').attr('href', '/myPage/').attr('src', '/images/profile.png');
+				$('#profileImage').attr('href', '/myPage/').attr('src', '/images/profile100.jpg');
 			}
 			$('#profileName').html('<span>'+loginData.memberName+' 님</span><br>'+email);
 			$('#myMenuButtonList').removeClass('log');

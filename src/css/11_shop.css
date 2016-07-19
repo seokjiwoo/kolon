@@ -216,6 +216,7 @@ h3.sTit{font-size:50px;}
 .topArea .topContBox .newFormBtn .subBtn li {position:relative;display:inline-block;float:left;margin-left:5px;}
 .topArea .topContBox .newFormBtn .subBtn li:first-child {margin-left:0;}
 .topArea .topContBox .newFormBtn .subBtn li a {display:inline-block;text-align:left;width:80px;height:40px;padding:0 20px;line-height:40px;background:#808080;border-radius:20px;font-size:14px;color:#fff;}
+.topArea .topContBox .newFormBtn .subBtn li a.on {background-color:#f84b40;}
 .topArea .topContBox .newFormBtn .subBtn li a:after {content:'';display:inline-block;position:absolute;top:50%;right:15px;width:30px;height:30px;margin-top:-15px;background:url('../images/ico_newform.png') right 0 no-repeat;}
 .topArea .topContBox .newFormBtn .subBtn li.subBtn02 a:after {background-position:0 -30px}
 .topArea .topContBox .newFormBtn .subBtn li .socialBtn a {display:none;width:30px;height:30px;background:#a0a0a0;}

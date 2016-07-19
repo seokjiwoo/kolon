@@ -194,6 +194,7 @@ module.exports = function() {
 
 		switch(status) {
 			case 200:
+			case 201:
 				switch(Number(response.status)) {
 					case 200:	// 로그인 성공
 						location.href = '/';
@@ -228,7 +229,11 @@ module.exports = function() {
 								authNumberResendFlag = false;
 							},
 							onSubmit: function() {
-								controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
+								if ($.trim($('#mobileAuthNumber').val()) == '') {
+									alert('휴대전화로 전송된 인증번호를 입력해 주세요.');
+								} else {
+									controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
+								}
 							}
 						});
 						firstTryFlag = false;
@@ -313,5 +318,10 @@ module.exports = function() {
 				'theme' : 'light'
 			});
 		});
+
+		tag = $('<script></script>');
+		tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
+		$('head').append(tag);
+ 
 	}
 }

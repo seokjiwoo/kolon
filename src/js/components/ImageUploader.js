@@ -148,13 +148,13 @@ function ClassImageUploader() {
 		});
 
 		$(flashAddCallBack).on(FB_EVENT.SELECTED_FILES, function(e, selectedFile) {
+			clearPreviewFile();
 			setSelectedFiles(selectedFile);
 		});
 
 		$(flashAddCallBack).on(FB_EVENT.SELECTED_OVER_SIZE, function(e, selectedSize) {
-			if (!self.multiple && selectedSize >= 1) {
-				//win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
-				clearPreviewFile();
+			if (!self.multiple && selectedSize >= 3) {
+				//win.alert('최대 3개의 이미지를 선택 할 수 있습니다.');
 				return;
 			}
 
@@ -314,9 +314,8 @@ function ClassImageUploader() {
 		var supportFlag = true,
 		reader, bs64, file;
 
-		if (!self.multiple && files.length > 1 || !self.multiple && self.selectedFiles.length >= 1) {
-			//win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
-			clearPreviewFile();
+		if (!self.multiple && files.length > 3 || !self.multiple && self.selectedFiles.length >= 3) {
+			win.alert('최대 3개의 이미지를 선택 할 수 있습니다.');
 			return;
 		}
 
@@ -528,8 +527,8 @@ function ClassImageUploader() {
 	}
 
 	function setSelectedFiles(info) {
-		if (!self.multiple && self.selectedFiles.length >= 1) {
-			//win.alert('최대 1개의 이미지를 선택 할 수 있습니다.');
+		if (!self.multiple && self.selectedFiles.length >= 3) {
+			//win.alert('최대 3개의 이미지를 선택 할 수 있습니다.');
 			clearPreviewFile();
 		}
 

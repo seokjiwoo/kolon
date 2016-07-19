@@ -20,10 +20,7 @@ module.exports = function() {
 			minDate : 0,							// 선택 일자는 ' 금일 ' 이후로만 선택되도록 설정
 			onSelect : $.noop, 						// 일자 선택시 callback 설정
 			changeYear: true,
-			changeMonth: true,
-			onChangeMonthYear: function(year, month, inst) {
-				$('#'+inst.id).trigger('onChangeMonthYear', [year, month]);
-			}
+			changeMonth: true
 		},
 		range : {
 			from : {

@@ -29,7 +29,8 @@ module.exports = function() {
 	ALERTPOPUP_EVENT = events.ALERT_POPUP,
 	HTMLPOPUP_EVENT = events.HTML_POPUP,
 	CHECKBOX_EVENT = events.CHECK_BOX,
-	OPTIONNUM_EVENT = events.OPTION_NUM;
+	OPTIONNUM_EVENT = events.OPTION_NUM,
+	CARD_LIST_EVENT = events.CARD_LIST;
 
 	
 	var callerObj = {
@@ -101,12 +102,18 @@ module.exports = function() {
 
 		// htmlPopup event
 		eventManager.on(HTMLPOPUP_EVENT.OPEN, onHtmlPopupOpenListener);
+		
+		eventManager.on(CARD_LIST_EVENT.APPENDED, cardAppendedHandler);
 
 		$(window).resize(function(e) { winH = $(window).height(); });
 	};
 
 	function loginDataHandler(e, status, result) {
 		loginData = loginDataModel.loginData();
+	};
+
+	function cardAppendedHandler(e) {
+		$('.btnPop').on('click', htmlPopupLinkHandler);
 	};
 	
 	/**

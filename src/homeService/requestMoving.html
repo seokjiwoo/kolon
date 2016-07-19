@@ -105,48 +105,7 @@
 							<div id="companyListWrap" class="payTab tabWrap">
 								이사정보를 먼저 입력하시고, “이사업체 추천요청”을 누르시면,<br /> 
 								최적의 이사업체를 추천해 드립니다.
-								<script id="moving-company-templates" type="text/x-handlebars-template">
-								{{!-- moving-comapny-templates --}}
-									{{#each .}}
-									<span class="" data-company-number="{{companyNumber}}">
-										<a href="#" class="radioBtn">
-											<p class="thumBox"><img src="{{companyLogoImageUrl}}"></p>
-											<!-- <ul class="arraySide">
-												<li>
-													별점 
-													grade01 -> 1.0
-													grade15 -> 1.5
-													grade02 -> 2.0
-													grade25 -> 2.5
-													grade03 -> 3.0
-													grade35 -> 3.5
-													grade04 -> 4.0
-													grade45 -> 4.5
-													grade05 -> 5.0
-													<p>
-														가격 만족도
-														<span class="gradeNum">4.0</span>
-														<span class="grade">
-															<span class="grade04"></span>
-														</span>
-													</p>
-												</li>
-												<li>
-													<p>
-														서비스 만족도
-														<span class="gradeNum">3.5</span>
-														<span class="grade">
-															<span class="grade35"></span>
-														</span>
-													</p>
-												</li>
-											</ul> -->
-											<p class="labelTxt">{{companyName}}</p>
-										</a>
-									</span>
-									{{/each}}
-								{{!--// moving-comapny-templates --}}
-								</script>
+								
 							</div>
 						</div>
 						<h3 class="subTit">추가 요청사항 (선택)</h3>
@@ -181,5 +140,47 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<script id="moving-company-templates" type="text/x-handlebars-template">
+{{!-- moving-comapny-templates --}}
+	{{#each .}}
+	<span class="" data-company-number="{{companyNumber}}">
+		<a href="#" class="radioBtn">
+			<p class="thumBox"><img src="{{companyLogoImageUrl}}"></p>
+			{{!-- <ul class="arraySide">
+				<li>
+					별점 
+					grade01 -> 1.0
+					grade15 -> 1.5
+					grade02 -> 2.0
+					grade25 -> 2.5
+					grade03 -> 3.0
+					grade35 -> 3.5
+					grade04 -> 4.0
+					grade45 -> 4.5
+					grade05 -> 5.0
+					<p>
+						가격 만족도
+						<span class="gradeNum">4.0</span>
+						<span class="grade">
+							<span class="grade04"></span>
+						</span>
+					</p>
+				</li>
+				<li>
+					<p>
+						서비스 만족도
+						<span class="gradeNum">3.5</span>
+						<span class="grade">
+							<span class="grade35"></span>
+						</span>
+					</p>
+				</li>
+			</ul> --}}
+			<p class="labelTxt">{{companyName}}</p>
+		</a>
+	</span>
+	{{/each}}
+{{!--// moving-comapny-templates --}}
+</script>
 </body>
 </html>

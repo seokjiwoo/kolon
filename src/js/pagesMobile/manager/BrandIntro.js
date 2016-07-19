@@ -116,11 +116,7 @@ module.exports = function() {
 		var target = $(e.currentTarget);
 
 		if (target.hasClass('js-add-follow')) {
-			followController.addFollows({
-				'followTargetCode' : self.followTargetCode,
-				'followTargetNumber' : self.followTargetNumber,
-				'followTargetSectionCode' : self.followTargetSectionCode
-			});
+			followController.addFollows(self.brandNumber, 'BM_FOLLOW_TYPE_02');
 		} else if (target.hasClass('js-delete-follow')) {
 			followController.deleteFollows(self.followTargetNumber);
 		}
@@ -162,6 +158,7 @@ module.exports = function() {
 		switch(eventType) {
 			case EXPERTS_EVENT.BRAND:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				self.brandNumber = result.data.brand.bizNum;
 				displayData(result.data.brand);
 				break;
 			case EXPERTS_EVENT.BRAND_PRODUCTS:

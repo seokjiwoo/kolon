@@ -94,7 +94,7 @@ module.exports = function() {
 			if (loginData.imageUrl != null) {
 				$('#myPageHeaderProfilePic').attr('src', loginData.imageUrl);
 			} else {
-				$('#myPageHeaderProfilePic').attr('src', '/images/profile.png');
+				$('#myPageHeaderProfilePic').attr('src', '/images/profile180.jpg');
 			}
 
 			var activity = loginData.myActivity;

@@ -50,11 +50,10 @@ function ClassFollowController() {
 		}, true);
 	}
 
-	function addFollows(followTargetCode, followTargetNumber, followTargetSectionCode, elements) {
+	function addFollows(followTargetCode, followTargetSectionCode, elements) {
 		Super.callApi('/apis/follows', 'POST', {
-			'followTargetCode' : followTargetCode,
-			'followTargetNumber' : followTargetNumber,
-			'followTargetSectionCode' : followTargetSectionCode
+			'followMemberNumber' : followTargetCode,
+			'followTypeCode' : followTargetSectionCode
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addFollowsResult', [status, result, elements]);
