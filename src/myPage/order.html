@@ -145,15 +145,17 @@
 	</tr>
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 	{{#if listOrderItems.length}}
+		{{#with listOrderItems.[0]}}
 		<tr data-order-info='{
-				"orderNumber" : "{{listOrderItems.[0].orderNumber}}",
-				"deliveryChargePaymentCode" : "{{listOrderItems.[0].deliveryChargePaymentCode}}",
-				"deliveryNumber" : "{{listOrderItems.[0].deliveryNumber}}"
+				"orderNumber" : "{{orderNumber}}",
+				"deliveryChargePaymentCode" : "{{deliveryChargePaymentCode}}",
+				"deliveryNumber" : "{{deliveryNumber}}"
 			}'>
-			<td rowspan="{{listOrderItems.length}}" class="recordDate">
-				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{listOrderItems.[0].orderNumber}}">{{listOrderItems.[0].orderNumber}}</a></p>
-				<p class="total">총 결제금액<br><b>{{totalPaymentPriceDesc}} 원</b></p>
+			<td rowspan="{{../listOrderItems.length}}" class="recordDate">
+				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+				<p class="total">총 결제금액<br><b>{{vxTotalPaymentPriceDesc}} 원</b></p>
 			</td>
+		{{/with}}
 			{{#each listOrderItems}}
 				{{#vxIF @index "!==" 0}}
 				<tr data-order-info='{
@@ -223,6 +225,7 @@
 				</tr>
 				{{/vxIF}}
 			{{/each}}
+		}
 	{{else}}
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 		<tr>

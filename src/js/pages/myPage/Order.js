@@ -371,6 +371,9 @@ module.exports = function() {
 						if (localFlag) {
 							orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
 						}
+
+						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
+						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
 					});
 				}
 
