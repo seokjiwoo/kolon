@@ -248,7 +248,7 @@ span.price.fontS {font-size:14px;}
 .order .orderCont p.pdLt {margin-left:20px;}
 .order .orderCont p.pdLt a + a {margin-left:10px;;}
 
-.order .orderCont .tbHf {width:542px; float:left; display:inline-block;}
+.order .orderCont .tbHf {width:49%; float:left; display:inline-block;}
 .order .orderCont .tbHf + .tbHf {float:right;}
 .order .orderCont .tbHf .orderTb table {width:99.8%;}
 .order .orderCont .tbHf .orderTb table tr th {height:42px;}
@@ -341,4 +341,4 @@ span.price.fontS {font-size:14px;}
 .order .tablesType01 table tbody tr td span{font-size:20px;}
 .order .tablesType01 table tbody tr td span em{font-style:normal;font-family:'NotoSansB',  sans-serif;}
 
-.orderCont.tbSet .alignBox { z-index:unset }
+.orderCont.tbSet .alignBox { z-index:auto }
