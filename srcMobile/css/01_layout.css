@@ -38,6 +38,12 @@ a{color:#666;}
 .header .bagBtn span{padding-top:21px;text-align:center;display:block;color:#ff463b;font-weight:bold;font-size:11px;}
 .login .header .bagBtn{ display:block; }
 
+.is-scrolling .header {position:fixed; top:0; z-index:90; opacity: 0.96; background:#fff;}
+.is-scrolling .fixWrap {position:fixed; z-index:90; top:45px; opacity: 0.96; border-bottom:1px solid #ccc; background:#fff;}
+.fixWrap {width:100%; overflow:hidden; position:relative;}
+.is-scrolling .myCartTotal,
+.is-scrolling .btmFix {position:fixed; bottom:0; left:0; z-index:10;}
+
 .gnb{position:absolute;left:-300px;top:0;bottom:0;z-index:10;width:300px;height:100%;background:#fff;display:block;}
 .gnb .topArea{position:relative;}
 .gnb .userBox{text-align:center;padding-top:25px;background:#ff466c;}
