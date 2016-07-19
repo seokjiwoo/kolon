@@ -385,7 +385,7 @@ h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-
 .productList > li:last-child{padding-bottom:0;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
-.productList .info span{padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
+.productList .info span{padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;line-height:1;}
 .productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
 .productList .productData{clear:both;}
@@ -416,6 +416,8 @@ h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-
 
 .productList .btnToggle{display: block;position: absolute;top:15px;right: 0;width: 20px;height: 15px;background: url('../images/ico_toggleL.png') no-repeat;background-size: 15px;background-position:2px -7px;}
 .productList .btnToggle.open{background-position: 2px 5px;}
+.productList .productBtnWrap {width:100%; overflow:hidden; padding-top:15px; }
+.productList .productBtnWrap .newAddress {width:100%; padding:15px 0; border-top:1px dashed #ccc; overflow:hidden;}
 
 ul.optList {background:#fff;}
 ul.optList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}

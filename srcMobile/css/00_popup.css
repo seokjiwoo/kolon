@@ -21,8 +21,8 @@
 #cboxLoadedContent .popScroll {overflow:auto;padding-right: 25px;}
 #cboxLoadedContent .popScroll2 {overflow:auto; max-height:518px;}
 #cboxLoadedContent .popScroll3 {overflow:auto; max-height:470px;}
-#cboxLoadedContent p {margin-top:30px;}
-#cboxLoadedContent p:first-child {margin-top:0; }
+#cboxLoadedContent > p {margin-top:30px;}
+#cboxLoadedContent > p:first-child {margin-top:0; }
 #cboxLoadedContent .cardCon .btnWrap{margin-top: 30px;}
 #cboxLoadedContent .cardCon {height: auto;}
 
@@ -78,9 +78,9 @@
 .popCon h5.popSubTit + .popTb,
 .popCon h5.popSubTit + .tbSet,
 .popCon .popTb + h5.popSubTit {margin-top:20px;}
+.popCon. .popBtn {width:100%; background:#666; color:#fff;}
 .popCon .popBtnS {width:110px; height:40px; background:#999; color:#fff; border-radius:7px; overflow:hidden; display:inline-block; line-height:40px; text-align:center; outline:0; border:0;}
 .popCon .tbSet.mtNon {margin-top:-31px;}
-
 .popCon .popTb {width:100%; display:inline-block; border-top:1px solid #545454;}
 .popCon .popTb table{width:100%; border-bottom:1px solid #ccc; font-family:'NotoSansR', sans-serif; font-size: 14px; text-align: center; line-height: 1.2em}
 .popCon .popTb table.tbL td {text-align:left;}
@@ -185,3 +185,6 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .dateChangePop ul.tbList3{margin-bottom: 35px;}
 
 .msgCat.radioBox label{margin-right: 10px;}
+
+
+.orderDeliveryWrap {width:100%; height:100%; padding-top:15px; background:#e0e0e0;}
