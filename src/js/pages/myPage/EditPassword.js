@@ -41,12 +41,18 @@ module.exports = function() {
 		var inputValue1 = $('#newPW01').val();
 		var inputValue2 = $('#newPW02').val();
 		
-		if (inputValue2 != '' && inputValue1 != inputValue2) {
-			$('#newPWAlert').text('비밀번호가 일치하지 않습니다.');
-		} else if (!util.checkValidPassword(inputValue1)) {
-			$('#newPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+		if (!util.checkValidPassword(inputValue1)) {
+			$('#newPWAlert1').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+			$('#newPWAlert2').text('');
+		} else if (!util.checkValidPassword(inputValue2)) {
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+		} else if (inputValue2 != '' && inputValue1 != inputValue2) {
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').text('비밀번호가 일치하지 않습니다.');
 		} else {
-			$('#newPWAlert').text('');
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').text('');
 		}
 	};
 
