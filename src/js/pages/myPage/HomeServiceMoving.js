@@ -28,7 +28,6 @@ module.exports = function() {
 		MyPage.init();
 		
 		var serviceRequestNumber = util.getUrlVar().serviceRequestNumber;
-		console.log(serviceRequestNumber);
 		controller.homeServiceDetailMoving(serviceRequestNumber);
 	};
 

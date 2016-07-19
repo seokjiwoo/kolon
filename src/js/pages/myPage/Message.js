@@ -34,18 +34,23 @@ module.exports = function() {
 	function messageListHandler(e, status, result) {
 		if (status == 200) {
 			console.log(result);
+			renderData(result, '#message-list-templates', '#messageListWrap', true);
 		} else {
-			MyPage.Super.Super.alertPopup('', result.message, '확인');
-
 			if (result.errorCode == '1409') {
-				console.log($('#messageListWrap'));
 				$('#messageListWrap').css({
 					textAlign: 'center',
 					marginTop: '20px',
 					padding: '200px 0',
-					background: '#eeeeee',
+					background: '#ffffff',
 				}).text(result.message);
 			}
 		}
-	}
+	};
+	
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
+	};
 };

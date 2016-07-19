@@ -39,7 +39,8 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
-	WINDOWOPENER_EVENT = events.WINDOW_OPENER;
+	WINDOWOPENER_EVENT = events.WINDOW_OPENER,
+	CARD_LIST_EVENT = events.CARD_LIST;
 
 	var memberInfoController = require('../controller/MemberInfoController');
 	$(memberInfoController).on('verifyMemberResult', verifyMemberResultHandler);
@@ -91,13 +92,13 @@ module.exports = function() {
 		eventManager.on(INFOSLIDER_EVENT.REFRESH, infoSliderRefreshHandler)
 					.on(INFOSLIDER_EVENT.DESTROY, infoSliderDestoryhHandler);
 
-
 		// info slider event Listener
 		eventManager.on(INFOSLIDER_EVENT.REFRESH, onWindowPopupRefresh)
 					.on(INFOSLIDER_EVENT.DESTROY, onWindowPopupDestory);
 
-		fullSlideImg(); // slide Full img 중앙정렬 
+		eventManager.on(CARD_LIST_EVENT.APPENDED, cardAppendedHandler);
 
+		fullSlideImg(); // slide Full img 중앙정렬
 	};
 
 	function initInfoSlider() {
@@ -303,6 +304,10 @@ module.exports = function() {
 		lnbScroller.refresh();
 	};
 
+	function cardAppendedHandler(e) {
+		initAddressPopupButton();
+	};
+
 	/**
 	 * 상단 배너영역 초기화
 	 */
@@ -378,11 +383,10 @@ module.exports = function() {
 		},
 		target = $(e.currentTarget),
 		href = href || target.attr('href'),
-		dataOpts = opts || target.data('winpop-opts'),
 		optStr = '',
 		winPopup;
-
-		opts = $.extend({}, opts, dataOpts);
+		
+		if (target.data('winpop-opts') != undefined) opts = $.extend({}, opts, target.data('winpop-opts'));
 
 		opts.left 	= opts.left || (window.screen.width/2 - opts.width/2);
 		opts.top 	= opts.top || (window.screen.height/2 - opts.height/2);

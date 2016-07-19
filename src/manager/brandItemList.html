@@ -19,16 +19,21 @@
 							{{!-- 평점 evalScore TBD --}}
 							<!-- <p class="infoDetail"><span class="area">{{roadBaseAddr}}</span><span class="star">{{evalScore}}</span></p> -->
 							{{!--// 평점 evalScore TBD --}}
-							<p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span></p>
+							<p class="infoDetail"><span class="area">{{roadBaseAddr}}</span></p>
 							<p class="infoSub">{{intro}}</p>
 						</div>
 					</div>
 					<div class="col colR">
 						<a href="" id="sharePage">페이지 공유</a>
 						<p class="infoBtn">
-							<span id="followView" class="myRate"><b>104 </b>팔로워 - API 항목 필요</span>
+							<span id="followView" class="myRate">팔로워 <b>{{countFollower}}</b></span>
 							<a href="#" id="btnFollow" class="btnSizeM btnColor01 js-add-follow">팔로우</a>
-							<a href="../_popup/popMessage.html" id="btnMsg" class="btnSizeM btnColor03 btnPop btnPop590" data-user-class="orderPop popEdge popMessage">1:1 메세지</a>
+							<a href="/popup/popMessage.html?saleMemberNumber={{expertNum}}" class="btnSizeM btnColor03 openWindowPopup"
+								data-winpop-opts='{
+								"name" : "messagePopup",
+								"width" : 838,
+								"height" : 670
+								}'>1:1 메세지</a>
 						</p>
 					</div>
 				</div>

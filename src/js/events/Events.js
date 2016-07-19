@@ -78,6 +78,9 @@ function Events() {
 		RECAPTCHA : {
 			CALL_BACK : 'VX-G_RECAPTCHA-CALL_BACK'
 		},
+		CARD_LIST : {
+			APPENDED : 'VX-CARD_LIST-APPENDED'
+		},
 
 		// [S] Controller Events
 			// Login - 로그인

@@ -32,7 +32,6 @@ module.exports = function() {
 		debug.log(fileName, $, util);
 
 		cardList = CardList();
-		$(cardList).on('cardAppended', cardAppendedHandler);
 		cardList.init();	// 카드 리스트
 
 		var slider = $('#managerSlider').bxSlider({
@@ -62,10 +61,7 @@ module.exports = function() {
 	}
 
 	function expertListHandler(e, status, result) {
+		$('#expertCount').text(result.experts.length);
 		cardList.appendData(result.experts);
-	};
-
-	function cardAppendedHandler(e) {
-		console.log('카드 이벤트 설정?');
 	};
 }

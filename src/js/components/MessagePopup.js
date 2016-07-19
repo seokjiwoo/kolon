@@ -70,6 +70,7 @@ function ClassMessagePopup() {
 		self.opts = $.extend({}, opts, options);
 
 		self.productNumber = util.getUrlVar().productNumber;
+		if (self.productNumber == undefined) self.productNumber = 0;
 		self.saleMemberNumber = util.getUrlVar().saleMemberNumber;
 
 		setElements();
@@ -107,8 +108,9 @@ function ClassMessagePopup() {
 		messageController.inquiries(
 			self.msgInp.val(),
 			uploadImageArray,
-			self.productNumber,
-			self.saleMemberNumber
+			uploadScrapImageArrary,
+			self.saleMemberNumber,
+			self.productNumber
 		);
 	}
 
@@ -192,7 +194,7 @@ function ClassMessagePopup() {
 		eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 		eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
 
-		if (uploadScrapImageArrary.length >= 3) {
+		if (uploadScrapImageArrary.length >= 1) {
 			$('#scrapUpButton').hide();
 		} else {
 			$('#scrapUpButton').show();
@@ -240,8 +242,8 @@ function ClassMessagePopup() {
 		e.preventDefault();
 		var selecteds = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
 
-		if (selecteds >= 3) {
-			win.alert('최대 3장의 이미지를 선택하실 수 있습니다.');
+		if (selecteds >= 1) {
+			win.alert('최대 1장의 이미지를 선택하실 수 있습니다.');
 			return;
 		}
 
@@ -268,8 +270,8 @@ function ClassMessagePopup() {
 		scrapUid = target.data('scrap-uid'),
 		selecteds = callerObj.selScrapImgs.concat(uploadScrapImageArrary);
 
-		if (!target.hasClass('active') && selecteds.length >= 3) {
-			win.alert('최대 3장의 이미지를 선택하실 수 있습니다.');
+		if (!target.hasClass('active') && selecteds.length >= 1) {
+			win.alert('최대 1장의 이미지를 선택하실 수 있습니다.');
 			return;
 		}
 
@@ -312,8 +314,8 @@ function ClassMessagePopup() {
 		result = result.reviewAttachFile;
 		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
 		
-		if (uploadImageArray.length == 3) {
-			win.alert('이미지는 3장까지 첨부 가능합니다');
+		if (uploadImageArray.length == 1) {
+			win.alert('이미지는 1장까지 첨부 가능합니다');
 		} else {
 			uploadImageArray.push(result);
 			$('#fileUpList').append('<div id="con'+uploadFileNumber+'" class="conDel">'+result.attachFileName+' <a href="#" id="deleteFile'+uploadFileNumber+'" data-image-url="'+result.attachFileUrl+'" class="btnDel">삭제</a></div>');
@@ -332,7 +334,7 @@ function ClassMessagePopup() {
 			});
 
 			uploadFileNumber++;
-			if (uploadImageArray.length == 3) {
+			if (uploadImageArray.length == 1) {
 				$('#fileUpText').hide();
 				$('#fileUpButton').hide();
 			}
@@ -362,7 +364,7 @@ function ClassMessagePopup() {
 						break;
 					default:
 						win.alert(status + ' , ' + response.errorCode + ' , ' + response.message);
-						win.close();
+						//win.close();
 						break;
 				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);

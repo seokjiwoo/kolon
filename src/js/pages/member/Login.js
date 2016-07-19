@@ -313,11 +313,5 @@ module.exports = function() {
 				'theme' : 'light'
 			});
 		});
-
-		tag = $('<script></script>');
-		tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
-		$('head').append(tag);
-
 	}
-		
 }

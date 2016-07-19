@@ -134,38 +134,24 @@ module.exports = function() {
 
 		switch(eventType) {
 			case EXPERTS_EVENT.DETAIL:
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData(result.data.expert);
+				if (result.data.expert == null) {
+					alert('해당 전문가의 데이터가 없습니다.');
+					location.href = '/manager/';
+				} else {
+					displayData(result.data.expert);
+				}
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
-					case 200:
-						$('#btnFollow').removeClass('js-add-follow')
-										.addClass('js-delete-follow')
-										.text('팔로잉');
-						break;
-					default:
-						win.alert('HTTP Status Code ' + status);
-						break;
+					case 200: $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉'); break;
+					default: win.alert(result.message); break;
 				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 			case FOLLOWING_EVENT.DELETE_FOLLOW:
 				switch(status) {
-					case 200:
-						$('#btnFollow').removeClass('js-delete-follow')
-										.addClass('js-add-follow')
-										.text('팔로우');
-						break;
-					default:
-						win.alert('HTTP Status Code ' + status);
-						break;
+					case 200: $('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우'); break;
+					default: win.alert(result.message); break;
 				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
-				$('.' + eventType).html(JSON.stringify(response));
 				break;
 		}
 	}

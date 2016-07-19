@@ -16,26 +16,26 @@
 					<div class="recordWrap">
 						<h2 class="secTit">1:1 메시지</h2>
 						<div id='messageListWrap'>
-						<script id="record-list-templates" type="text/x-handlebars-template">
-						{{!-- record-list-templates --}}
+						<script id="message-list-templates" type="text/x-handlebars-template">
+						{{!-- message-list-templates --}}
 						<ul class="recordList">
-							{{#each items}}
+							{{#each inquiryMemberResponses}}
 							<li>
-								<a href="/myPage/messageDetail.html">
+								<a href="/myPage/messageDetail.html?saleMemberNumber={{saleMemberNumber}}">
 									<div class="sender">
-										<div class="recordPic"><img src="/images/temp01.jpg" alt=""></div>
-										<p><span><b>Wadiz</b> 홍길동</span>홈인테리어&amp;홈드레싱</p>
+										<div class="recordPic"><img src="{{profileImageUrl}}" alt=""></div>
+										<p><span><b>{{corporationName}}</b> {{saleMemberName}}</span>{{expertTypeName}}</p>
 									</div>
 									<div class="recordCon">
-										<p>현재 문의하신 제품은 품절입니다. <br>다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받으시다면 연락처를 남겨주세요. 재입고시 문자 드리겠습니다. 그럼 확인 후 연락 부탁 드립니다.</p>
-										<div class="newMsg"><span>1</span></div>
-										<span class="date">2016.04.25 14:04</span>
+										<p>{{answerContents}}</p>
+										<div class="newMsg"><span>{{answerNewCount}}</span></div>
+										<span class="date">{{answerCreateDateTime}}</span>
 									</div>
 								</a>
 							</li>
 							{{/each}}
 						</ul>
-						{{!--// record-list-templates --}}
+						{{!--// message-list-templates --}}
 						</script>
 						</div>
 					</div>

@@ -533,7 +533,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .my .expertBox .name > span > span:first-child,
 .my .expertBox .name > span > span:first-child + span{padding:1px 0;font-family:'NotoSansR',sans-serif;color:#666;}
 .my .expertBox .name > span > span:first-child + span{width:131px; max-height:28px; font-size:14px;}
-.my .expertBox .expertBtn{height:152px; display:table-cell; vertical-align:middle;}
+.my .expertBox .expertBtn{width:536px; height:152px; display:table-cell; vertical-align:middle;}
 .my .expertBtn .btnSizeM{min-width:168px;}
 .my .messageBox{background:#fff; border:1px solid #e5e5e5; font-size:14px;}
 .my .messageBox .prevMessage{height:65px;display:block;text-align:center;border-bottom:1px solid #e5e5e5;color:#333;}

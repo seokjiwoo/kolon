@@ -46,7 +46,7 @@ function ClassMessageController() {
 	function messageList() {
 		Super.callApi('/apis/inquiries', 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('messageListResult', [status, result]);
+				$(callerObj).trigger('messageListResult', [status, result.data]);
 			} else {
 				Super.handleError('messageList', result);
 				$(callerObj).trigger('messageListResult', [status, result]);
@@ -54,26 +54,28 @@ function ClassMessageController() {
 		}, true);
 	}
 
+	//	1:1 메세지 상세
+	//	GET /apis/inquiries/{saleMemberNumber}
+	function inquiriesDetail(saleMemberNumber) {
+		Super.callApi('/apis/inquiries/' + saleMemberNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('messageDetailResult', [status, result.data]);
+			} else {
+				Super.handleError('messageDetail', result);
+				$(callerObj).trigger('messageDetailResult', [status, result]);
+			}
+		}, true);
+	}
+
 
 	//	1:1 메세지 등록
 	//	POST /apis/inquiries
-	/*
-		-. request
-		{
-			'contents': 'string',
-			'inquiryAttachFileRequest': {
-				'attachFileName': 'string',
-				'attachFileSize': 'string',
-				'attachFileUrl': 'string'
-			},
-			'productNumber': 1,
-			'saleMemberNumber': 1
-		}
-	 */
-	function inquiries(contents, inquiryAttachFileRequest, productNumber, saleMemberNumber) {
+	function inquiries(contents, inquiryAttachFileRequest, inquiryScrapList, saleMemberNumber, productNumber) {
+		if (productNumber == undefined) productNumber = 0;
 		Super.callApi('/apis/inquiries', 'POST', {
 			'contents': contents,
 			'inquiryAttachFileRequest': inquiryAttachFileRequest,
+			'inquiryScrapList': inquiryScrapList,
 			'productNumber': productNumber,
 			'saleMemberNumber': saleMemberNumber
 		}, function(status, result) {
@@ -98,20 +100,6 @@ function ClassMessageController() {
 			} else {
 				Super.handleError('messageInquiriesImages', result);
 				$(callerObj).trigger('messageInquiriesImagesResult', [status, result]);
-			}
-		}, true);
-	}
-
-
-	//	1:1 메세지 상세
-	//	GET /apis/inquiries/{saleMemberNumber}
-	function inquiriesDetail(saleMemberNumber) {
-		Super.callApi('/apis/inquiries/' + saleMemberNumber, 'GET', {}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('messageInquiriesDetailResult', [status, result]);
-			} else {
-				Super.handleError('messageInquiriesDetail', result);
-				$(callerObj).trigger('messageInquiriesDetailResult', [status, result]);
 			}
 		}, true);
 	}

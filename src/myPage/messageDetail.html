@@ -14,117 +14,36 @@
 				<!-- @@include ../_template/my_depth03_03.html {"myMenu02":"on"} -->
 				<div class="singleCard" id="myMsgDetail">
 					<h2 class="secTit">메시지 상세</h2>
-					<div class="expertBox">
+					<div class="expertBox" id='message-member-wrap'>
+						<script id="message-member-templates" type="text/x-handlebars-template">
+						{{!-- message-member-templates --}}
 						<div class="name">
-		 					<span><img src="../images/temp01.jpg" alt=""></span>
+		 					<span><img src="{{profileImageUrl}}" alt=""></span>
 		 					<span>
-								<span><em>Wadizd</em> 홍길동</span>
-								<span class="except">홈인테리어	&amp;홈드레싱</span>
+								<span><em>{{corporationName}}</em> {{saleMemberName}}</span>
+								<span class="except">{{expertTypeName}}</span>
 							</span>
 		 				</div>
 		 				<div class="expertBtn">
-		 					<a href="#" class="btnRoundM"><span class="home">전문가 페이지</span></a>
-		 					<a href="#" class="btnRoundM"><span class="tell">전화하기</span></a>
-		 					<a href="#" class="btnSizeM btnColor02" id="deleteAllMessageButton">모든메시지 삭제</a>
+		 					<a href="/manager/detail.html?expertNumber={{saleMemberNumber}}" class="btnRoundM"><span class="home">전문가 페이지</span></a>
+		 					<a href="#" class="btnSizeM btnColor02 fl_right" id="deleteAllMessageButton">모든메시지 삭제</a>
 		 				</div>
+						{{!--// message-member-templates --}}
+						</script>
 					</div>
 					<div class="messageBox mt20">
-						<a href="#" class="prevMessage"><span>이전 메시지보기</span></a>
-						<div class="talkList">
-							<ul>
-								<li>
-									<div class="right">
-										<div class="txtbox">
-											<ul>
-												<li>
-													<p class="txt">안녕하세요, 이번에 신혼집을 리모델링하려고 하던 중에 포트폴리오 살펴보고 이렇게 문의 드리게 됐어요~혹시 가능하다면 샘플북을 좀 받아보고 싶은데 괜찮을까요?
-													안녕하세요, 이번에 신혼집을 리모델링하려고 하던 중에 포트폴리오 살펴보고 이렇게 문의 드리게 됐어요~혹시 가능하다면 샘플북을 좀 받아보고 싶은데 괜찮을까요?안녕하세요, 이번에 신혼집을 리모델링하려고 하던 중에 포트폴리오 살펴보고 이렇게 문의 드리게 됐어요~혹시 가능하다면 샘플북을 좀 받아보고 싶은데 괜찮을까요?안녕하세요, 이번에 신혼집을 리모델링하려고 하던 중에 포트폴리오 살펴보고 이렇게 문의 드리게 됐어요~혹시 가능하다면 샘플북을 좀 받아보고 싶은데 괜찮을까요?안녕하세요, 이번에 신혼집을 리모델링하려고 하던 중에 포트폴리오 살펴보고 이렇게 문의 드리게 됐어요~혹시 가능하다면 샘플북을 좀 받아보고 싶은데 괜찮을까요?안녕하세요, 이번에 신혼집을 리모델링하려고 하던 중에 포트폴리오 살펴보고 이렇게 문의 드리게 됐어요~혹시 가능하다면 샘플북을 좀 받아보고 싶은데 괜찮을까요?</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-											</ul>
-										</div>
-										<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
-									</div>
-								</li>
-								<li>
-									<div class="left">
-										<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
-										<div class="txtbox">
-											<ul>
-												<li>
-													<p class="txt">찾아주셔서 감사합니다 고객님. 주소를 알려주시면 샘플북 1부 보내드리도록 하겠습니다.</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-												<li>
-													<p class="txt">야</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-												<li>
-													<p class="txt">뭐하냐?</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="right">
-										<div class="txtbox">
-											<ul>
-												<li>
-													<p class="txt">벽지 스타일이 너무 많아서 어떤게 좋을지 결정을 못하겠어요</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-											</ul>
-										</div>
-										<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
-									</div>
-								</li>
-							</ul>
-							<p class="line">여기까지 읽으셨습니다.</p>
-							<ul>
-								<li>
-									<div class="left">
-										<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
-										<div class="txtbox">
-											<ul>
-												<li>
-													<p class="txt">찾아주셔서 감사합니다 고객님. 주소를 알려주시면 샘플북 1부 보내드리도록 하겠습니다.</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-												<li>
-													<p class="txt">야</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-												<li>
-													<p class="txt">뭐하냐?</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div class="right">
-										<div class="txtbox">
-											<ul>
-												<li>
-													<p class="txt">벽지 스타일이 너무 많아서 어떤게 좋을지 결정을 못하겠어요</p>
-													<em>2016.04.25 13:26</em>
-												</li>
-											</ul>
-										</div>
-										<span class="thumb"><img src="../images/temp01.jpg" alt="" /></span>
-									</div>
-								</li>
-							</ul>
+						<!--<a href="#" class="prevMessage"><span>이전 메시지보기</span></a>-->
+						<div class="talkList" id='message-detail-list-wrap'>
+							
 						</div>
 						<div class="inputField">
 							<span class="inp">
-								<input type="text" placeholder="최대 400자까지 입력 가능" title="메시지쓰기" />
-								<input type="file" title="사진첨부하기" />
+								<input type="text" id='messageContent' placeholder="최대 400자까지 입력 가능" title="메시지쓰기" style='width:100%' maxlength="400" />
+								<form method="POST" action="#" id='quickMessageAttachForm'>
+									<input type="file" name='file' id='attach' title="사진첨부하기" />
+								</form>
 							</span>
-							<button>보내기</button>
+							<button type='button' id='quickMessageButton'>보내기</button>
 						</div>
 					</div>
 				</div>
@@ -132,5 +51,60 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<script id="message-detail-list-templates" type="text/x-handlebars-template">
+{{!-- message-detail-list-templates --}}
+<ul>
+	{{#each_reverse inquiryMessages}}
+	{{#vxSwitch inquiryType}}
+		{{#vxCase "INQUIRY" break=true}}
+		<li>
+			<div class="right">
+				<div class="txtbox">
+					<ul>
+						<li>
+							<p class="txt">
+								{{contents}}
+								{{#if attachFileUrl}}
+								<br/><img src='http://dev.koloncommon.com/{{attachFileUrl}}' alt='이미지' style='max-width:300px;margin-top:10px'>
+								{{/if}}
+							</p>
+							<em>{{createDateTime}}</em>
+						</li>
+					</ul>
+				</div>
+				<span class="thumb"><img src="{{profileImageUrl}}" alt="" /></span>
+			</div>
+		</li>
+		{{/vxCase}}
+		{{#vxCase "RESPONSE" break=true}}
+		<li>
+			<div class="left">
+				<span class="thumb"><img src="{{profileImageUrl}}" alt="" /></span>
+				<div class="txtbox">
+					<ul>
+						<li>
+							<p class="txt">{{contents}}</p>
+							{{#if attachFileUrl}}
+							<img src='{{attachFileUrl}}' alt='이미지'>
+							{{/if}}
+							<em>{{createDateTime}}</em>
+						</li>
+						<!--<li>
+							<p class="txt">{contents}</p>
+							<em>{createDateTime}</em>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+		</li>
+		{{/vxCase}}
+		{{#vxCase "LINE" break=true}}
+		<li><p class="line">여기까지 읽으셨습니다.</p></li>
+		{{/vxCase}}
+	{{/vxSwitch}}
+	{{/each_reverse}}
+</ul>
+{{!--// message-member-templates --}}
+</script>
 </body>
 </html>

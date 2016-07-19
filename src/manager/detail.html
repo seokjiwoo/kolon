@@ -20,24 +20,24 @@
 				<div class="infoPic"><img src="{{imageUrl}}" alt=""></div>
 				<div class="infoWrap">
 					<h2 class="infoTit">{{name}}</h2>
-					<p class="infoId">{{companyName}}</p>
+					<p class="infoId"><a href='/manager/brand.html?expertNumber={{expertNum}}'>{{companyName}}<a></p>
 					{{!-- 평점 evalScore TBD --}}
 					<!-- <p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span><span class="star">{{evalScore}}</span></p> -->
 					{{!--// 평점 evalScore TBD --}}
-					<p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span></p>
+					<p class="infoDetail"><span class="area">{{roadBaseAddr}}</span></p>
 					<p class="infoSub">{{intro}}</p>
 				</div>
 			</div>
 			<div class="col colR">
 				<a href="#" id="sharePage">페이지 공유</a>
 				<p class="infoBtn">
-					<span id="followView" class="myRate"><b>104 </b>팔로워 - API 항목 필요</span>
+					<span id="followView" class="myRate">팔로워 <b>{{countFollower}}</b></span>
 					<a href="#" id="btnFollow" class="btnSizeM btnColor02 js-add-follow">팔로우</a>
-					<a href="/popup/popMessage.html?productNumber={{productNumber}}&amp;saleMemberNumber={{expertNum}}" class="btnSizeM btnColor03 openWindowPopup"
+					<a href="/popup/popMessage.html?saleMemberNumber={{expertNum}}" class="btnSizeM btnColor03 openWindowPopup"
 						data-winpop-opts='{
 						"name" : "messagePopup",
-						"width" : 855,
-						"height" : 640
+						"width" : 838,
+						"height" : 670
 						}'>1:1 메세지</a>
 				</p>
 			</div>
@@ -60,7 +60,7 @@
 			{{/if}}
 			<div class="sWrap" id="content">
 				<p>{{summaryIntro}}</p>
-				<h4 class="conTit">서비스지역<a href="http://map.naver.com/?query={{serviceArea}}" target="_blank" title="지도보기" class="btnSizeS btnColor03">지도보기</a></a></h4>
+				<h4 class="conTit">서비스지역</h4>
 				<p>{{serviceArea}}</p>
 				{{#if listTags}}
 					<h3 class="secTit">연관 태그</h3>

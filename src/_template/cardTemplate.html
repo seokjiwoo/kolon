@@ -31,7 +31,7 @@
 		<!-- Type2: 샵 상품 cardType01 cardSize03 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_02"}}
 		<div class="cardCon">
-			<div class="cardLine"><p class="italicNum">designer <span>compact</span></p></div>
+			<div class="cardLine"><p class="italicNum">{{producerTypeCodeName}}</p></div>
 			<!-- card 내용 -->
 			<a href="{{detailUrl}}" class="cardTxt cardDetail">
 				<p class="cardCat">{ {{productType}} }</p>
@@ -72,7 +72,7 @@
 		<!-- Type3: 샵 상품 cardType02 cardSize02 -->
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
 		<div class="cardCon">
-			<div class="cardLine"><p class="italicNum">handmade</p></div>
+			<div class="cardLine"><p class="italicNum">{{producerTypeCodeName}}</p></div>
 			<!-- card 내용 -->
 			<a href="{{detailUrl}}" class="cardTxt cardDetail">
 				<p class="cardCat">{ {{productType}} }</p>
@@ -168,14 +168,14 @@
 						</p>
 					</div>
 					<ul class="card_icon">
-						<li class="talk cardDetail"><a href="javascript:alert('준비중입니다')">1:1대화</a></li>
+						<li class="talk cardDetail"><a href="/popup/popMessage.html?saleMemberNumber={{expertNum}}" class="openWindowPopup" data-winpop-opts='{"name": "messagePopup","width": 838,"height": 670}'>1:1대화</a></li>
 						<li class="share cardDetail"><a href="javascript:alert('준비중입니다')">공유</a></li>
 					</ul>
 				</div>
 			</div>
 			<!--// card hover 내용 -->
 			<ul class="check_icon">
-				<li class="cardDetail text"><a href="javascript:alert('준비중입니다')"><span>판매<br>상품</span>{{countProduct}}</a></li>
+				<li class="cardDetail text"><a href="/manager/itemList.html?expertNumber={{expertNum}}"><span>판매<br>상품</span>{{countProduct}}</a></li>
 				<!--<li class="cardDetail text"><a href="javascript:alert('준비중입니다')"><span>완료된<br>공간</span>{{countView}}</a></li>-->
 				<li class="cardDetail like"><a href="javascript:alert('준비중입니다')">{{likeCount}}</a></li>
 			</ul>

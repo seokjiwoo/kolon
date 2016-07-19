@@ -5,7 +5,8 @@ module.exports = function() {
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
-	ISOTOPE_EVENT = events.ISOTOPE;
+	ISOTOPE_EVENT = events.ISOTOPE,
+	CARD_LIST_EVENT = events.CARD_LIST;
 
 	var callerObj = {
 		/**
@@ -90,7 +91,8 @@ module.exports = function() {
 		initOverEffect();
 		initCardRadio();
 
-		$(callerObj).trigger('cardAppended');
+		eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
+		//$(callerObj).trigger('cardAppended');
 	}
 
 	function appendData(cardListArray) {
