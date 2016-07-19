@@ -9,12 +9,11 @@
 		<div class="container">
 			<!-- @@include ../_template/my_depth01.html -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu02":"on"} -->
-
 			<section>
 				<div class="tabParents">
 					<ul class="tabSquare">
-						<li class="on"><a href="#writeReview">주문.배송 조회</a></li>
-						<li><a href="#writtenReview">교환˙반품.취소 조회</a></li>
+						<li class="on"><a href="/myPage/order.html">주문.배송 조회</a></li>
+						<li><a href="/myPage/return.html">교환˙반품.취소 조회</a></li>
 					</ul>
 				</div>
 				<div class="periodSearch">
@@ -24,9 +23,9 @@
 					</a>
 					<div class="searchArea">
 						<ul class="btnList js-sort-date">
-							<li class="acitve"><a href="#">1주일</a></li>
+							<li><a href="#">1주일</a></li>
 							<li><a href="#">2주일</a></li>
-							<li><a href="#">1개월</a></li>
+							<li class="js-default"><a href="#">1개월</a></li>
 							<li><a href="#">3개월</a></li>
 							<li><a href="#">6개월</a></li>
 						</ul>
@@ -55,8 +54,6 @@
 						</div>
 					</div>
 				</div>
-			</section>
-
 
 			<!-- [D] #order-list-templates - wrap -->
 			<div class="js-order-list-wrap"></div>
@@ -233,6 +230,7 @@
 			</div>
 			 -->			
 
+			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
@@ -242,17 +240,20 @@
 	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
 	.datePic ul {overflow:visible;height:30px}
 	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
-	.orderState a[data-filter] {display:inline-block;color:#999}
-	/* 리스트 수량이 적었을때, 진행보기 상태 필터 영역확보를 위함 */
-	.singleCard {min-height:550px}
+	.js-order-filter a[data-filter] {display:inline-block;color:#999}
+	.js-order-filter.is-active-1 li:nth-child(1) a[data-filter] {color:#fff}
+	.js-order-filter.is-active-2 li:nth-child(2) a[data-filter] {color:#fff}
+	.js-order-filter.is-active-3 li:nth-child(3) a[data-filter] {color:#fff}
+	.js-order-filter.is-active-4 li:nth-child(4) a[data-filter] {color:#fff}
+
 </style>
 
 <script id="order-list-templates" type="text/x-handlebars-template">
 {{!-- order-list-templates --}}
-	<div class="orderState js-order-filter">
+	<div class="orderState js-order-filter is-active-{{vxActiveFilterIdx}}">
 		<ul>
 			{{#with vxOrderStateCodes}}
-			<li class="active">
+			<li>
 				<a href="javascript:;" class="js-filter" data-filter="SL_ORDER_STATE_01,SL_ORDER_STATE_02">
 					<p>입금/결제</p>
 					<em>{{vxMath SL_ORDER_STATE_01 "+" SL_ORDER_STATE_02}}</em>
@@ -373,7 +374,10 @@
 	{{else}}
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 		<div class="wrapT">
-			<p>주문/배송 내역이 없습니다.</p>
+			<p>주문내역이 없습니다.</p>
+			<p>상품준비 내역이 없습니다.</p>
+			<p>배송 내역이 없습니다.</p>
+			<p>구매확정 내역이 없습니다.</p>
 		</div>
 	{{/if}}
 {{!--// order-list-templates --}}

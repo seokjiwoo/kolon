@@ -73,8 +73,8 @@ module.exports = function() {
 		deliveryStateCode = deliveryStateCode || '';
 
 		controller.myOrdersList(
-			'', //win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			'', //win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
 			keyword,
 			deliveryStateCode
 		);
@@ -96,6 +96,8 @@ module.exports = function() {
 		self.searchSubmit = self.search.find(self.opts.search.submit);
 
 		self.selPopBtnInfo = {};
+
+		self.activeFilterIdx = null;
 	}
 
 	function setBindEvents() {
@@ -153,6 +155,7 @@ module.exports = function() {
 								$(self.opts.orderFilter).on('click', onFilterChange);
 
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 							});
 	}
 
@@ -202,6 +205,8 @@ module.exports = function() {
 		
 		var target = $(e.currentTarget),
 		values = target.data('filter');
+
+		self.activeFilterIdx = target.closest('li').index() + 1;
 
 		debug.log(fileName, 'onFilterChange', values);
 		getOrderList(self.searchInp.val(), values);
@@ -272,6 +277,8 @@ module.exports = function() {
 
 			getOrderList();
 		});
+
+		$('.js-sort-date li.js-default').trigger('click');
 	}
 
 	function onControllerListener(e, status, response) {
@@ -306,6 +313,8 @@ module.exports = function() {
 					'SL_ORDER_STATE_09' : 0,
 					'SL_ORDER_STATE_10' : 0,
 				};
+
+				result.data.vxActiveFilterIdx = self.activeFilterIdx;
 
 				if (result.data.listOrderItems) {
 					$.each(result.data.listOrderItems, function(index, orderItems) {
