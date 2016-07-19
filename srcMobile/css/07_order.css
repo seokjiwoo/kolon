@@ -146,7 +146,7 @@ ul.reserInfo > li p.reserTxt span {width:60%; float:right; text-align:right; dis
 
 .order ul.homeType {width:100%; overflow:hidden;}
 .order ul.homeType li {width:25%; padding:66px 0 0; float:left; position:relative; text-align:center; color:#666; font-size:12px;;}
-.order ul.homeType li:before {content:''; width:61px; height:69px; margin-left:-30.5px; background:url(../images/ico_home_type.png) no-repeat; background-size:61px 278px; position:absolute;top:0; left:50%; }
+.order ul.homeType li:before {content:''; width:61px; height:69px; margin-left:-30.5px; background:url(../images/ico_home_type.png) no-repeat; background-size:61px 417px; position:absolute;top:0; left:50%; }
 .order ul.homeType li.hType01:before {background-position:50% 0;}
 .order ul.homeType li.hType02:before {background-position:50% -69px;}
 .order ul.homeType li.hType03:before {background-position:50% -139px;}
