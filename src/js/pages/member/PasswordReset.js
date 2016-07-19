@@ -24,8 +24,8 @@ module.exports = function() {
 		Super.init();
 
 		if (util.getUrlVar('key') == undefined) {
-			//alert('잘못된 접근입니다');
-			//location.href = '/';
+			alert('잘못된 접근입니다');
+			location.href = '/';
 		} else {
 			authKey = util.getUrlVar('key');
 			$('#key').val(authKey);
