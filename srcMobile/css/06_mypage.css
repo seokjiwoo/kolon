@@ -807,6 +807,13 @@ table ul.myCartInfoList li {color:#999;}
 .pointList > li > ul > li span:first-child{float:left;}
 .pointList > li > ul > li span:last-child{float:right;}
 
+.inAalign:after{content:"";display:block;clear:both;}
+.inAalign li:first-child{width:70%;float:left;}
+.inAalign li:last-child{width:30%;float:right;text-align:right;}
+.inAalign .check{padding-right:20px;background:url("../images/ico_check.png") no-repeat right center;background-size:16px;color:#999;}
+.inAalign li p{padding-top:5px;}
+.limitTxt{line-height:1.4em;color:#666;margin-top:8px;}
+
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p a {width:60px; height:60px; display:inline-block; position:relative;}

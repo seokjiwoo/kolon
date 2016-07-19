@@ -152,7 +152,7 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 /* form */
 .container input[type="checkbox"],
 .layerPopup input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
-.container input[type="text"], .container input[type="password"], .container input[type="email"],select, .layerPopup input[type="text"],.layerPopup input[type="password"]{width:100%;padding: 5px;border:1px solid #d1d1d1; /*border-radius: 7px;*/color: #999;font-size: 13px;line-height: 18px;}
+.container input[type="text"], .container input[type="password"], .container input[type="email"],select, .layerPopup input[type="text"],.layerPopup input[type="password"]{width:100%;padding: 5px;border:1px solid #d1d1d1; /*border-radius: 7px;*/color: #999;font-size: 13px;line-height: 18px;box-sizing:border-box;}
 
 .phone select{width: 30%;}
 .phone input[type="text"]{width: 28%;}
