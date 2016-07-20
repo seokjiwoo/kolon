@@ -62,8 +62,8 @@
 .wrapper .lyPop .subTit{font-size: 20px;color: #000;}
 .popEdge .popCon{position: relative;margin-top:-20px;padding: 50px 30px 0 30px;color: #333;line-height: 1.4em;font-size: 14px;background: #fff;}
 .popEdge .popCon.popConBg {background:url('../images/category_popup_bg.png') 100% 100% no-repeat #fff;}
-.popCon p{margin-top:20px;}
-.popCon p:first-child{margin-top:0;}
+.popCon > p{margin-top:20px;}
+.popCon > p:first-child{margin-top:0;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 
 #popAgree01 .popCon{text-align: left;}
@@ -175,7 +175,6 @@ ul.popList + .btnWrap,
 a.btnDetail {display: inline-block;padding: 0 20px;color: #000;font-size: 13px;line-height: 38px;border:1px solid #d9d9d9;font-family:'NotoSansR', sans-serif;}
 a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;margin-left: 20px;vertical-align: middle;background: url('../images/ico_plusW.png') no-repeat 0 -12px;}
 
-
 .dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
 .dateChangePop .timeSet .calendar{display: block;width:195px;margin:0 0 10px 0; }
 .dateChangePop .calendar span.calInp input[type=text]{width: 180px;color: #666;}
@@ -187,7 +186,8 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 
 .msgCat.radioBox label{margin-right: 10px;}
 
-.orderDeliveryWrap {width:100%; height:100%; padding-top:15px; background:#e0e0e0;}
-ul.productList li .selectWrap {width:100%; overflow:hidden; margin-top:15px; padding-top:15px; border:1px dashed #ccc;}
-ul.productList li ul.addressList li {padding:0; border:0;}
-ul.productList li .textWrap {border:0; padding:0; margin:0;}
+.orderDeliveryWrap {width:100%; padding:15px 0 60px; background:#e0e0e0;}
+
+.bankTime {margin-top:25px;}
+.popTb.bankTime table tr td a {color:#999;}
+

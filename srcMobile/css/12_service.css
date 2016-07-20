@@ -33,29 +33,76 @@
 .homeService-request .radioBox{overflow:hidden;}
 .homeService-request .htype {position:relative;text-align:center;float:left;width:25%;color:#666;font-size:12px;}
 .homeService-request .htype:last-child {margin-right:0;}
-.homeService-request .htype span {margin-left:7px;}
-.homeService-request .htype04 span {margin-left:15px;}
+.homeService-request .htype span {position:relative;display:inline-block;padding-left:10px;line-height:normal;}
 .homeService-request .htype.on span {color:#333;font-family:'NotoSansB', sans-serif;}
-.homeService-request .htype:after{content: '';display: inline-block;position:absolute;bottom:5px;left:8px;width: 18px;height: 18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;vertical-align: middle;}
-.homeService-request .htype.on:after{background-position: 0 0;}
+.homeService-request .htype span:after{position:absolute;content: '';display: inline-block;position:absolute;bottom:-1px;left:-10px;width: 18px;height: 18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;vertical-align: middle;}
+.homeService-request .htype.htype04 span:after {left:-10px;}
+.homeService-request .htype.on span:after{background-position: 0 0;}
 .homeService-request .htype:before {content:'';display:block;width:61px;height:69px;margin:0 auto 5px;background:url('../images/ico_home_type.png') 0 0 no-repeat;background-size:61px 417px;}
 .homeService-request .htype01:before, .homeService-request .radioBox label.htype01.on:before {background-position:50% -279px;}
 .homeService-request .htype02:before, .homeService-request .radioBox label.htype02.on:before {background-position:50% -69px;}
 .homeService-request .htype03:before, .homeService-request .radioBox label.htype03.on:before {background-position:50% -349px;}
 .homeService-request .htype04:before, .homeService-request .radioBox label.htype04.on:before {background-position:50% 0;}
 .homeService-request .datePic .dateInp {width:45%;}
+.homeService-request .reserInfo li .datePic .dateInp {width:auto;}
 .homeService-request textarea {margin-top:15px;font-size:13px;height:86px;letter-spacing:-0.5px}
 .homeService-request .wrapT:last-child {margin-bottom:15px;}
+
+.homeService-request .payTab {display:none;margin-top:25px;text-align:left;}
+.homeService-request .payTab > span {position:relative;display:inline-block;width:100%;margin-top:20px;}
+.homeService-request .payTab > span:first-child {margin-top:0;}
+.homeService-request .payTab span.best:before{position: absolute;top: -12px;left: 15px;z-index: 1;content:'Best';width: 41px;height: 35px;padding-top: 14px;color: #fff;font-size: 16px;background: url('../images/card_point.png') no-repeat;background-position:-350px -116px;font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif !important;font-style: italic;font-weight: 900}
+.homeService-request .payTab.tabWrap a.radioBtn {display:inline-block;background:none;margin:0;padding:0;text-align:left;font-size:14px;color:#000;vertical-align:bottom}
+.homeService-request .payTab.tabWrap a.radioBtn span {font-size:12px;}
+.homeService-request .payTab.tabWrap a.radioBtn span.labelTxt {display:inline-block;font-size:13px;color:#333;}
+.homeService-request .payTab.tabWrap a.radioBtn span.gradeNum {color:#f1645c;}
+.homeService-request .payTab.tabWrap a.radioBtn + p {margin-top:14px;}
+.homeService-request .payTab.tabWrap .labelTxt:after {content:'';display:inline-block;position:absolute;top:50%;left:0;margin-top:-9px;width:18px;height:18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;}
+.homeService-request .payTab.tabWrap .on .labelTxt:after {background-position:0 0;}
+.homeService-request .payTab.tabWrap.washingTab .labelTxt:after {display:none;}
+.homeService-request .payTab.tabWrap.washingTab a.radioBtn.homeLeft {padding-left:23px;}
+.homeService-request .payTab.tabWrap.washingTab a.radioBtn.homeLeft:after {content:'';display:inline-block;position:absolute;top:50%;left:0;margin-top:-9px;width:18px;height:18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;}
+.homeService-request .payTab.tabWrap.washingTab .on a.radioBtn.homeLeft:after {background-position:0 0;}
+
+.homeService-request .homeLeft {display:inline-block;width:45%;padding-left:23px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
+.homeService-request .homeRight {display:inline-block;width:53%;padding-left:5px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
+.homeService-request .homeRight a {margin-top:13px;}
+.homeService-request .gradeBox {float:left;}
+.homeService-request .gradeBox.gradeBoxRight {float:right;}
+
+.homeService-request .thumBox img {width:100%;}
+.homeService-request .arraySide li {margin-top:3px;line-height:normal;}
+.homeService-request .arraySide li:first-child {margin-top:10px;}
+.homeService-request .arraySide li p {overflow:hidden;font-size:14px;color:#666;text-align:left;margin:0;}
+
+/* priceChart popUp page */
+.layerPopup.homeService .homeServiceWrap .selectBox {background:#fff;}
+.layerPopup.homeService .homeServiceWrap .priceInfo {padding:15px;}
+.layerPopup.homeService .homeServiceWrap .priceInfo li {overflow:hidden;padding:20px 10px;border-bottom:1px solid #ccc;}
+.layerPopup.homeService .homeServiceWrap .priceInfo li:first-child {border-top:1px solid #333;}
+.layerPopup.homeService .homeServiceWrap .priceInfo li span {float:left;font-size:15px;font-family:'NotoSansR', sans-serif;}
+.layerPopup.homeService .homeServiceWrap .priceInfo li span b {font-size:15px;font-weight:normal;font-family:'NotoSansR', sans-serif;font-family:'NotoSansR', sans-serif;}
+.layerPopup.homeService .homeServiceWrap .priceInfo li span + span {float:right;font-size:18px;font-family:'NotoSansB', sans-serif;}
+
+@media (max-width:320px){
+	.homeService-request .homeRight {padding-left:0;}
+	.homeService-request .homeRight a {margin-top:7px;}
+	.homeService-request .payTab.tabWrap a.radioBtn span {font-size:11px;}
+	.homeService-request .payTab.tabWrap a.radioBtn span.labelTxt {font-size:12px;}
+	.homeService-request .arraySide li {margin-top:2px;}
+	.homeService-request .arraySide li:first-child {margin-top:7px;}
+
+	/* priceChart popUp page */
+	.layerPopup.homeService .homeServiceWrap .priceInfo li span {font-size:13px;}
+	.layerPopup.homeService .homeServiceWrap .priceInfo li span b {font-size:13px;}
+	.layerPopup.homeService .homeServiceWrap .priceInfo li span + span {font-size:15px;}
+}
 @media (max-width:375px){
 	.homeService-request .htype {font-size:11px;}
-	.homeService-request .htype:after {left:0;}
-	.homeService-request .htype04 span {margin-left:17px;}
+	.homeService-request .htype span {padding-left:5px;}
+	.homeService-request .htype.htype04 span {padding-left:8px;}
+	.homeService-request .htype span:after {left:-13px;}
 }
-
-
-
-
-
 
 
 

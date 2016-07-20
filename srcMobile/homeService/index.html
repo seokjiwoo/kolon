@@ -31,7 +31,7 @@
  					</p>
 				</div>
 
- 				<div class="tabType03Fix payTab tabWrap">
+ 				<div class="tabType03Fix payTab tabWrap js-menu-tab">
  					<span class="on"><a href="#homeService1">이사</a></span>
  					<span><a href="#homeService2">청소</a></span>
 					<span><a href="#homeService3">세탁</a></span>
@@ -70,4 +70,20 @@
  				<!-- @@include ../_template/footer.html -->
  		</div>  
  	</div>
+
+<script>
+	;(function(win, $) {
+		'use strict';
+
+		$(function() {
+			$('.js-menu-tab').find('a').on('click', function(e) {
+				var target = $(e.currentTarget),
+				hash = target.attr('href');
+
+				win.location.hash = hash;
+			});
+		});
+	})(window, window.jQuery);
+</script>
+
 </body>
