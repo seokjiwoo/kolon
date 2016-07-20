@@ -41,6 +41,7 @@
 .popEdge .popTit span.count{color:#f1645c;}
 .popEdge .subTit {font-size:20px;color:#000; }
 .popEdge .subTit + table{margin-top: 20px !important;}
+.popEdge .subTxt{font-size: 16px;color: #000;}
 
 /* 육각형 팝업 */
 .popHex .hexagon{background: #fff; top:0;}
