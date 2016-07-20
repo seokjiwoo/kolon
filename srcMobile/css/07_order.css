@@ -146,13 +146,26 @@ ul.reserInfo > li p.reserTxt + p.reserTxt {margin-top:10px;}
 ul.reserInfo > li p.reserTxt b {width:40%; float:left; display:inline-block; font-weight:normal;}
 ul.reserInfo > li p.reserTxt span {width:60%; float:right; text-align:right; display:inline-block;}
 
-.order ul.homeType {width:100%; overflow:hidden;}
-.order ul.homeType li {width:25%; padding:66px 0 0; float:left; position:relative; text-align:center; color:#666; font-size:12px;;}
-.order ul.homeType li:before {content:''; width:61px; height:69px; margin-left:-30.5px; background:url(../images/ico_home_type.png) no-repeat; background-size:61px 417px; position:absolute;top:0; left:50%; }
-.order ul.homeType li.hType01:before {background-position:50% 0;}
-.order ul.homeType li.hType02:before {background-position:50% -69px;}
-.order ul.homeType li.hType03:before {background-position:50% -139px;}
-.order ul.homeType li.hType04:before {background-position:50% -208px;}
+.order .homeType .radioBox{overflow:hidden;}
+.order .homeType .htype {position:relative;text-align:center;float:left;width:25%;color:#666;font-size:12px;}
+.order .homeType .htype:last-child {margin-right:0;}
+.order .homeType .htype span {position:relative;display:inline-block;padding-left:10px;line-height:normal;}
+.order .homeType .htype.on span {color:#333;font-family:'NotoSansB', sans-serif;}
+.order .homeType .htype span:after{position:absolute;content: '';display: inline-block;position:absolute;bottom:0;left:-10px;width: 18px;height: 18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;vertical-align: middle;}
+.order .homeType .htype.htype04 span:after {left:-10px;}
+.order .homeType .htype.on span:after{background-position: 0 0;}
+.order .homeType .htype:before {content:'';display:block;width:61px;height:69px;margin:0 auto 5px;background:url('../images/ico_home_type.png') 0 0 no-repeat;background-size:61px 417px;}
+.order .homeType .htype01:before, .order .homeType .radioBox label.htype01.on:before {background-position:50% 0;}
+.order .homeType .htype02:before, .order .homeType .radioBox label.htype02.on:before {background-position:50% -69px;}
+.order .homeType .htype03:before, .order .homeType .radioBox label.htype03.on:before {background-position:50% -139px;}
+.order .homeType .htype04:before, .order .homeType .radioBox label.htype04.on:before {background-position:50% -208px;}
+
+@media (max-width:375px){
+	.order .homeType .htype {font-size:11px;}
+	.order .homeType .htype span {padding-left:5px;}
+	.order .homeType .htype.htype04 span {padding-left:8px;}
+	.order .homeType .htype span:after {left:-13px;}
+}
 
 .order .orderTab {width:100%; overflow:hidden; margin-top:15px;}
 .order .orderTab span {width:49%; display:inline-block; margin-bottom:5px;}
