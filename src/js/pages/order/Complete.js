@@ -147,6 +147,11 @@ module.exports = function() {
 				} else if (result.data.slAccountTransfer != null) {
 					result.data.paymentInfo.method = '실시간 계좌이체';
 				}
+				$.map(result.data.listOrderItem, function(eachItem){
+					eachItem.slOrderDlvyAddr.cellPhoneNumber = util.mobileNumberFormat(eachItem.slOrderDlvyAddr.cellPhoneNumber);
+					eachItem.slOrderDlvyAddr.deliveryRequestMemo = decodeURI(eachItem.slOrderDlvyAddr.deliveryRequestMemo);
+				});
+				
 				displayData(result.data);
 				break;
 		}

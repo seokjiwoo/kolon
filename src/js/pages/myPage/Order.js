@@ -127,11 +127,9 @@ module.exports = function() {
 		};
 
 		if (target.hasClass('js-order-confirm')) {
-			isConfirm = win.confirm('선택하신 상품의 구매를 확정하시겠습니까?');
-		}
-
-		if (isConfirm) {
-			controller.orderConfirm(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.orderProductSequence);
+			if (win.confirm('선택하신 상품의 구매를 확정하시겠습니까?')) {
+				controller.orderConfirm(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber, self.selPopBtnInfo.info.orderOptionNumber);
+			}
 		}
 	}
 
@@ -235,9 +233,7 @@ module.exports = function() {
 		if (self.colorbox.hasClass('popOrderDelivery')) {
 			controller.orderTrackingInfo(
 				self.selPopBtnInfo.info.orderNumber,
-				self.selPopBtnInfo.info.orderProductSequence,
-				self.selPopBtnInfo.info.deliveryNumber,
-				self.selPopBtnInfo.info.orderNumber
+				self.selPopBtnInfo.info.deliveryNumber
 			);
 		}
 
@@ -312,6 +308,7 @@ module.exports = function() {
 			}
 		});
 
+		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
 		$('.sortTerm li a').click(function(e) {
 			e.preventDefault();
 			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');
@@ -332,6 +329,7 @@ module.exports = function() {
 					$('.js-picker-from').datepicker('setDate', win.moment().subtract(6, 'months').format('YYYY-MM-DD'));
 					break;
 			}
+			
 			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
 			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
 			e.stopPropagation();
@@ -421,13 +419,15 @@ module.exports = function() {
 				break;
 
 			case ORDER_EVENT.ORDER_TRACKING:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				var deliverInfo = response.data.deliveryInfo;
+
+				$('#dsProductName').text(deliverInfo.productName);
+				$('#dsProductOrderNumber').text(deliverInfo.orderNumber);
+				$('#dsDeliverName').text(deliverInfo.courierName);
+				$('#dsDeliverName').attr('href', deliverInfo.invoiceInquiryUrl);
+				$('#dsDeliverTel').text(deliverInfo.courierPhoneNumber);
+				$('#dsDeliverCode').text(deliverInfo.invoiceNumber);
 				break;
 		}
 	}

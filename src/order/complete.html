@@ -123,21 +123,23 @@
 								<tr>
 									<td>
 										<div class="photoList">
-											<a href="#">
-												<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+											<a href="/shop/detail.html?productNumber={{productNumber}}#">
+												<span class="thumb"><img src="{{productImageUrl}}" alt=""/></span>
 												<span class="cartInfo">
-													<span class="cartTit">브리티쉬 스타일 인테리어 빈티지 틴액자 </span>
-													<span>옵션 : : 60x120 우드</span>
+													<span class="cartTit">{{productName}}</span>
+													{{#if orderOptionNumber}}
+													<span>옵션 : {{orderOptionName}}</span>
+													{{/if}}
 												</span>
 											</a>
 										</div>
 									</td>
-									<td><b>1,700,000</b> 원</td>
-									<td><b>1</b></td>
-									<td>ANNA</td>
-									<td><b>10,000</b> 원</td>
-									<td><b>1,690,000</b> 원</td>
-									<td>무료</td>
+									<td><b>{{productOptionPrice}}</b> 원</td>
+									<td><b>{{orderQuantity}}</b></td>
+									<td>{{saleMemberName}}</td>
+									<td><b>{{discountAmt}}</b> 원</td>
+									<td><b>{{discountApplyAmt}}</b> 원</td>
+									<td>{{deliveryCharge}}</td>
 								</tr>
 								<!-- 수령지 / 배송요청사항 -->
 								<tr>
@@ -145,8 +147,8 @@
 										<dl>
 											<dt>수령지 정보</dt>
 											<dd class="adrCon">
-												<p><span><b>받으실 분</b>홍길동</span><span><b>연락처</b>010-12345-5678 </span></p>
-												<p><span><b>도로명</b>서울특별시 강남구 도산대로 4길 66 (청담동) </span><span><b>지번</b>서울특별시 강남구 청담동 246</span><span><b>상세주소</b>XX아파트 101동 1003호</span></p>
+												<p><span><b>받으실 분</b>{{slOrderDlvyAddr.receiverName}}</span><span><b>연락처</b>{{slOrderDlvyAddr.cellPhoneNumber}}</span></p>
+												<p><span><b>도로명</b>{{slOrderDlvyAddr.roadBaseAddress}}</span><span><b>지번</b>{{slOrderDlvyAddr.lotBaseAddress}}</span><span><b>상세주소</b>{{slOrderDlvyAddr.detailAddress}}</span></p>
 											</dd>
 										</dl>
 									</td>
@@ -157,7 +159,7 @@
 											<dt>배송 시 요청사항</dt>
 											<dd>
 												<div>
-													부재 시 핸드폰으로 연락바랍니다.
+													{{slOrderDlvyAddr.deliveryRequestMemo}}
 												</div>
 											</dd>
 										</dl>

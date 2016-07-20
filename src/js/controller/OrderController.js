@@ -311,10 +311,8 @@ function ClassOrderController() {
 	};
 
 	// 구매확정
-	function orderConfirm(orderNumber, orderProductSequence) {
-		Super.callApi('/apis/me/orders/' + orderNumber + '/confirm/', 'POST', {
-			'orderProductSequence' : orderProductSequence
-		}, function(status, result) {
+	function orderConfirm(orderNumber, productNumber, optionNumber) {
+		Super.callApi('/apis/me/orders/'+orderNumber+'/confirm/?productNumber='+productNumber+'&orderOptionNumber='+optionNumber, 'POST', {}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('orderConfirmResult', [status, result]);
 			} else {
@@ -422,11 +420,9 @@ function ClassOrderController() {
 
 
 	// 주문/배송 - 배송추적 팝업 조회
-	function orderTrackingInfo(orderNumber, orderProductSequence, deliveryNumber) {
+	function orderTrackingInfo(orderNumber, deliveryNumber) {
 		Super.callApi('/apis/me/orders/' + orderNumber + '/tracking', 'GET', {
-			'orderProductSequence' : orderProductSequence,
-			'deliveryNumber' : deliveryNumber,
-			'orderNumber' : orderNumber
+			'deliveryNumber' : deliveryNumber
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('orderTrackingInfoResult', [status, result]);

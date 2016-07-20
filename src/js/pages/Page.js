@@ -447,7 +447,7 @@ module.exports = function() {
 	function verifyMemberResultHandler(e, status, authData) {
 		switch(Number(status)) {
 			case 200:
-				Super.alertPopup('본인확인이 완료되었습니다.', '이제 COMMON의 모든 서비스를 이용하실 수 있습니다.', '확인');
+				Super.alertPopup('본인확인이 완료되었습니다.', authData.message, '확인');
 				memberInfoController.getMyInfo();
 				break;
 			default:
