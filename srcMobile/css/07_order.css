@@ -92,25 +92,25 @@ a.agreeBtn.open:after {background-position:0 0;}
 .complete p span.iconArrow {padding-left:15px; position:relative; display:inline-block;}
 .complete p span.iconArrow:before {content:''; width:10.5px; height:9.5px; margin-top:-4.525px; background:url(../images/ico_arrow.png) 0 0% no-repeat; background-size:10.5px 9.5px; position:absolute; top:50%; left:0;}
 
-.order .addressList {width:100%; overflow:hidden;}
-.order .addressList li {width:100%; padding:20px 0 13px; border-bottom:1px solid #ccc; overflow:hidden;}
-.order .addressList li p {line-height:130%;}
-.order .addressList li p.addressTit {color:#999; font-size:15px;}
-.order .addressList li p.addressTit.base {color:#000;}
-.order .addressList li p.addressTit span + span {padding-left:10px; margin-left:10px; position:relative;}
-.order .addressList li p.addressTit span + span:before {content:''; width:1px; height:13px; margin-top:-6.5px; background:#ccc; position:absolute; top:50%; left:0;}
-.order .addressList li p.addressTit + .addressCont {margin-top:20px;}
-.order .addressList li .addressCont p {font-size:15px; overflow:hidden; }
-.order .addressList li .addressCont p + p {margin-top:9px;} 
-.order .addressList li .addressCont p b,
-.order .addressList li .addressCont p span {display:inline-block;}
-.order .addressList li .addressCont p b {width:20%; color:#666; float:left; font-weight:normal;}
-.order .addressList li .addressCont p span {width:80%; color:#333; float:right; text-align:right;}
-.order .addressList li .btnwrap {width:100%; overflow:hidden; margin-top:18px;}
-.order .addressList li .btnwrap a.btnSizeS {width:49%; margin-bottom:6px;}
-.order .addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
-.order .formWrap + .underTxtMark {margin-top:14.5px;}
-.order .underTxtMark + h3.conTit {margin-top:25px;}
+.addressList {width:100%; overflow:hidden;}
+.addressList li {width:100%; padding:20px 0 13px; border-bottom:1px solid #ccc; overflow:hidden;}
+.addressList li p {line-height:130%;}
+.addressList li p.addressTit {color:#999; font-size:15px;}
+.addressList li p.addressTit.base {color:#000;}
+.addressList li p.addressTit span + span {padding-left:10px; margin-left:10px; position:relative;}
+.addressList li p.addressTit span + span:before {content:''; width:1px; height:13px; margin-top:-6.5px; background:#ccc; position:absolute; top:50%; left:0;}
+.addressList li p.addressTit + .addressCont {margin-top:20px;}
+.addressList li .addressCont p {font-size:15px; overflow:hidden; }
+.addressList li .addressCont p + p {margin-top:9px;} 
+.addressList li .addressCont p b,
+.addressList li .addressCont p span {display:inline-block;}
+.addressList li .addressCont p b {width:20%; color:#666; float:left; font-weight:normal;}
+.addressList li .addressCont p span {width:80%; color:#333; float:right; text-align:right;}
+.addressList li .btnwrap {width:100%; overflow:hidden; margin-top:18px;}
+.addressList li .btnwrap a.btnSizeS {width:49%; margin-bottom:6px;}
+.addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
+.formWrap + .underTxtMark {margin-top:14.5px;}
+.underTxtMark + h3.conTit {margin-top:25px;}
 
 ul.orderDetailList {width:100%; overflow:hidden;}
 ul.orderDetailList li {padding:15px 0; border-bottom:1px solid #ccc;}
