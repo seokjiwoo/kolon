@@ -41,6 +41,7 @@
 .popEdge .popTit span.count{color:#f1645c;}
 .popEdge .subTit {font-size:20px;color:#000; }
 .popEdge .subTit + table{margin-top: 20px !important;}
+.popEdge .subTxt{font-size: 16px;color: #000;}
 
 /* 육각형 팝업 */
 .popHex .hexagon{background: #fff; top:0;}
@@ -185,3 +186,16 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .dateChangePop ul.tbList3{margin-bottom: 35px;}
 
 .msgCat.radioBox label{margin-right: 10px;}
+
+/* 공유 팝업 */
+.popEdge .shareBtn{display: inline-block;margin:0 auto 30px;}
+.popEdge .shareBtn li{display: inline-block;width: 64px;height: 64px;margin: 0 5px;font-size: 0;}
+.popEdge .shareBtn a{display: block;width: 100%;height: 100%;background: url('../images/btn_sns.png') no-repeat;}
+.popEdge .shareBtn .fb{background-position: 0 0;}
+.popEdge .shareBtn .tw{background-position: -64px 0;}
+.popEdge .shareBtn .ks{background-position: -128px 0;}
+.popEdge .shareBtn .pn{background-position: -192px 0;}
+
+.popEdge .shareLink{width: 60%;display: block;margin:0 auto;padding: 10px;border:1px solid #000;border-radius: 5px;}
+.popEdge .shareLink input{padding: 0;background: #fff;border:0;vertical-align: middle;}
+.popEdge .shareLink .btnCopy{border:0;background: none;color: #465f8d;font-family:'NotoSansM', sans-serif;vertical-align: middle;}

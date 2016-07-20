@@ -20,16 +20,16 @@
 				<div class="infoPic"><img src="{{imageUrl}}" alt=""></div>
 				<div class="infoWrap">
 					<h2 class="infoTit">{{name}}</h2>
-					<p class="infoId"><a href='/manager/brand.html?expertNumber={{expertNum}}'>{{companyName}}<a></p>
+					<p class="infoId"><a href='/manager/brand.html?expertNumber={{expertNum}}'>{{companyName}}</a></p>
 					{{!-- 평점 evalScore TBD --}}
 					<!-- <p class="infoDetail"><span class="area"><a href="http://map.naver.com/?query={{roadBaseAddr}}" target="_blank">{{roadBaseAddr}}</a></span><span class="star">{{evalScore}}</span></p> -->
 					{{!--// 평점 evalScore TBD --}}
 					<p class="infoDetail"><span class="area">{{roadBaseAddr}}</span></p>
-					<p class="infoSub">{{summaryIntro}}</p>
+					<p class="infoSub except">{{summaryIntro}}</p>
 				</div>
 			</div>
 			<div class="col colR">
-				<a href="#" id="sharePage">페이지 공유</a>
+				<a href="../../_popup/popShare.html" id="sharePage" class="btnPop btnPop590" data-user-class="popEdge">페이지 공유</a>
 				<p class="infoBtn">
 					<span id="followView" class="myRate">팔로워 <b id='followerCount'>{{countFollower}}</b></span>
 					<a href="#" id="btnFollow" class="btnSizeM btnColor02 js-add-follow">팔로우</a>
@@ -45,7 +45,7 @@
 	</div>
 	<div class="tabType02">
 		<ul class="sWrap">
-			<li class="on"><a href="/manager/detail.html?expertNumber={{expertNum}}">디자이너 소개</a></li>
+			<li class="on"><a href="/manager/detail.html?expertNumber={{expertNum}}">전문가 소개</a></li>
 			<li><a href="/manager/itemList.html?expertNumber={{expertNum}}">판매상품 <span>{{countProduct}}</span></a></li>
 		</ul>
 	</div>

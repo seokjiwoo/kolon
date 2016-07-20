@@ -92,7 +92,7 @@
 
 .opinionbox .conbox{padding:30px 20px;background:#fff; font-size:14px;}
 .opinionbox .conbox.round{border-bottom:1px solid #545454;}
-.opinionbox .conbox strong{font-size:20px;font-family:'NotoSansR',sans-serif;color:#000;word-break: break-all;word-wrap:break-word;line-height: 1.2em;}
+.opinionbox .conbox strong{display: block;font-size:20px;font-family:'NotoSansR',sans-serif;color:#000;word-break: break-all;word-wrap:break-word;line-height: 1.2em;}
 .opinionbox .conbox strong span.it {padding:2px 8px; border:2px solid #00aeb9; font-size:14px; color:#00aeb9; margin-right:10px;}
 .opinionbox .conbox .conboxTxt > p{min-height:72px;height:72px; margin-top:20px;color:#666;line-height:1.3em;font-family:'NotoSansR',sans-serif; position:relative;word-break: break-all;word-wrap: break-word;}
 .opinionbox .conbox .conboxTxt {padding-right:80px; position:relative; overflow:hidden;}

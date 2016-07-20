@@ -152,6 +152,7 @@ module.exports = function() {
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				self.brandNumber = result.data.brand.memberNumber;
 				displayData(result.data.brand);
+				$('.except').dotdotdot({watch:'window'});
 				break;
 			case EXPERTS_EVENT.BRAND_PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
