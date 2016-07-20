@@ -65,16 +65,11 @@
 				<colgroup>
 					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
 				</colgroup>
+				
 				<tbody>
 					<tr>
 						<th scope="row">결제방법</th>
-						<td>무통장입금</td>
-						<th scope="row">입금자명</th>
-						<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
-					</tr>
-					<tr>
-						<th scope="row">입금계좌 정보</th>
-						<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
+						<td>{{paymentInfo.method}}</td>
 					</tr>
 				</tbody>
 			</table>

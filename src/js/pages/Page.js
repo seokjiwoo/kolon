@@ -429,7 +429,7 @@ module.exports = function() {
 					e.preventDefault();
 					var id = $('#verifyPhoneNumber').val();
 					if (util.checkValidMobileNumber(id)) {
-						memberInfoController.verifyMemberByPhone(id, 'IDENTITY');
+						memberInfoController.verifyMemberByPhone(id, authType);
 					} else {
 						alert('휴대폰 번호를 정확하게 입력해주세요.');
 					}
