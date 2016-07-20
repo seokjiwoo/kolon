@@ -133,6 +133,7 @@ module.exports = function() {
 			case EXPERTS_EVENT.DETAIL:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayBasicData(result.data.expert);
+				$('.except').dotdotdot({watch:'window'});
 				break;
 			case EXPERTS_EVENT.PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

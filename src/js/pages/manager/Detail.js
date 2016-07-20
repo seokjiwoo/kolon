@@ -126,6 +126,7 @@ module.exports = function() {
 					location.href = '/manager/';
 				} else {
 					displayData(result.data.expert);
+					$('.except').dotdotdot({watch:'window'});
 				}
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
