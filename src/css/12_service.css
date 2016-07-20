@@ -1,6 +1,7 @@
 /* homeService index */
 body[data-page-id=homeService] {overflow-y:hidden !important;}
 .container.homeWrap {padding:0 0 200px;}
+.homeWrap{font-family: 'NotoSansR', sans-serif;}
 .homeWrap .section0 {background:url('../images/hm_section00.jpg') center no-repeat;background-size:cover}
 .homeWrap .section1 {background:url('../images/hm_section01.jpg') center no-repeat;background-size:cover}
 .homeWrap .section2 {background:url('../images/hm_section02.jpg') center no-repeat;background-size:cover}
