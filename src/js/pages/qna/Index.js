@@ -251,7 +251,7 @@ module.exports = function() {
 	 * 가장 많은 도움을 준 전문가 리스트 핸들링
 	 */
 	function opinionsExpertsListHandler(e, status, result) {
-		console.log(result);
+		debug.log(result);
 		if (status == 200) {
 			var template = window.Handlebars.compile($('#expert-rank-template').html());
 			var elements = $(template(result));

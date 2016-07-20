@@ -89,7 +89,7 @@ module.exports = function() {
 			location.href='/';
 		} else {
 			orderProductArray = Cookies.getJSON('instantOrder');
-			console.log(orderProductArray);
+			debug.log(orderProductArray);
 			//Cookies.remove('instantOrder');
 			controller.myOrdersInfo(orderProductArray);
 		}
@@ -130,7 +130,7 @@ module.exports = function() {
 				$.each(data.paymentInfo, function(key, value) {
 					data.paymentInfo[key+'Desc'] = util.currencyFormat(value);
 				});
-				console.log(data);
+				debug.log(data);
 
 				displayData(data);
 				if (data.products.length == 1) {
@@ -154,7 +154,7 @@ module.exports = function() {
 				});
 				$('.openAddressPopup').click(function(e) {
 					addressBookTarget = $(this).attr('id').substr(12);
-					console.log($(this).attr('id').substr(12));
+					debug.log($(this).attr('id').substr(12));
 				});
 
 				if (pointLimit < 5000) {
@@ -245,7 +245,7 @@ module.exports = function() {
 
 	function myInfoResultHandler(e) {
 		loginData = loginDataModel.loginData();
-		console.log(loginData);
+		debug.log(loginData);
 		$('#BuyerName').val(loginData.memberName);
 		if (loginData.phone != null) {
 			$('#BuyerTel').val(loginData.phone);
@@ -383,7 +383,7 @@ module.exports = function() {
 	};
 
 	function selectAddressDataHandler(e, seq) {
-		console.log(addressBookTarget, seq);
+		debug.log(addressBookTarget, seq);
 		setAddress(addressBookTarget, seq);
 		$('#addressSelect-'+addressBookTarget).val(seq);
 	};

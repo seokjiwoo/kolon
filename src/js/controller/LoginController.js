@@ -3,6 +3,8 @@
 module.exports = ClassLoginController().getInstance();
 
 function ClassLoginController() {
+	var debug = require('../utils/Console.js');
+
 	var SuperClass = require('./APIController.js');
 	var Super = SuperClass();
 	
@@ -152,8 +154,8 @@ function ClassLoginController() {
 	 * document에 trigger걸렸을 때 핸들링. trigger 함수는 html에 위치.
 	 */
 	function socialLoginResultHandler(e, socialData) {
-		console.log('SOCIAL LOGIN RESULT HANDLER>');
-		console.log(socialData);
+		debug.log('SOCIAL LOGIN RESULT HANDLER>');
+		debug.log(socialData);
 
 		socialData.status = Number(socialData.status);
 

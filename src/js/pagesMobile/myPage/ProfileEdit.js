@@ -71,7 +71,7 @@ module.exports = function() {
 
 	function myInfoHandler(e, infoObject) {
 		myInfoObject = infoObject;
-		console.log(infoObject);
+		debug.log(infoObject);
 
 		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
 			$('#profileID').val(infoObject.email);
@@ -342,7 +342,7 @@ module.exports = function() {
 				break;
 			case 400:	// 인증실패
 			default:
-				console.log(response);
+				debug.log(response);
 				alert(response.message);
 				break;
 		}

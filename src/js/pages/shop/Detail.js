@@ -297,7 +297,7 @@ module.exports = function() {
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					$.map(result, function(each) {
-						console.log(result);
+						debug.log(result);
 					});
 
 					displayData(result, $('#detail-events-templates'), $('.js-detail-events-wrap'));
@@ -421,7 +421,7 @@ module.exports = function() {
 			optionsDisplay();
 
 			$('.cancelOption').hide();
-			console.log(orderData);
+			debug.log(orderData);
 			var totalPrice = reCalculateTotalPrice(orderData);
 			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
 		} else if (options.length == 1) {

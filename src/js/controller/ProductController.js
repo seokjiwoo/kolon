@@ -4,6 +4,7 @@ module.exports = ClassProductController().getInstance();
 
 function ClassProductController() {
 	'use strict';
+	var debug = require('../utils/Console.js');
 
 	var SuperClass = require('./APIController.js');
 	var Super = SuperClass();
@@ -157,7 +158,7 @@ function ClassProductController() {
 		for (var i = 0; i < optionLevel; i++) {
 			optionValues["optionValue"+(i+1)] = optionValueArray[i];
 		}
-		console.log(optionValues);
+		debug.log(optionValues);
 		Super.callApi('/apis/products/' + productNumber + '/options', 'GET', optionValues, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('productOptionsResult', [status, result]);

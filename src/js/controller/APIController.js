@@ -5,6 +5,8 @@ module.exports = function() {
 	var API_URL = localFlag ? 'https://dev.koloncommon.com/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
 	var CDN_URL = localFlag ? 'https://dev.koloncommon.com/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
 	
+	var debug = require('../utils/Console.js');
+	
 	$.ajaxSetup({
 		type: "POST"
 	});
@@ -61,11 +63,11 @@ module.exports = function() {
 			}
 			
 			$.ajax(ajaxOptions).done(function(data, textStatus, jqXHR) {
-				//console.log(url, data, textStatus, jqXHR);
+				//debug.log(url, data, textStatus, jqXHR);
 				loadingFlag = false;
 				callback.call(this, jqXHR.status, data);
 			}).fail(function(jqXHR, textStatus, errorThrown) {
-				//console.log(url, jqXHR, textStatus, errorThrown);
+				//debug.log(url, jqXHR, textStatus, errorThrown);
 				loadingFlag = false;
 				callback.call(this, jqXHR.status, jqXHR.responseJSON);
 			});
@@ -76,7 +78,7 @@ module.exports = function() {
 	 * Error Handler
 	 */
 	function handleError(callerId, result) {
-		console.log('ERROR ON', callerId, result);
+		debug.log('ERROR ON', callerId, result);
 		if (result != undefined) {
 			/* if (result.status == '401' && result.errorCode == '1603') {
 				alert('로그인이 필요한 페이지입니다.');

@@ -2,6 +2,7 @@
 
 module.exports = function() {
 	var util = require('../utils/Util.js');
+	var debug = require('../utils/Console.js');
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
@@ -140,7 +141,7 @@ module.exports = function() {
 			if (each.salePrice != undefined) each.salePrice = util.currencyFormat(each.salePrice);
 			if (each.discountPrice != undefined) each.discountPrice = util.currencyFormat(each.discountPrice);
 
-			//console.log(each);
+			//debug.log(each);
 		});
 
 		var data = {

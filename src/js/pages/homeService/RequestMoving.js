@@ -71,7 +71,7 @@ module.exports = function() {
 		});
 		$('.openAddressPopup').click(function(e) {
 			addressBookTarget = $(this).attr('id').substr(5);
-			console.log( $(this).attr('id').substr(5) );
+			debug.log( $(this).attr('id').substr(5) );
 		});
 	}
 
@@ -121,7 +121,7 @@ module.exports = function() {
 	};
 
 	function movingDateListHandler(e, status, result) {
-		console.log(result);
+		debug.log(result);
 	};
 
 	function movingCompanyListHandler(e, status, result) {

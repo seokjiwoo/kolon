@@ -208,7 +208,7 @@ module.exports = function() {
 
 		switch(eventType) {
 			case SCRAP_EVENT.LIST:
-				console.log(result.data.scraps);
+				debug.log(result.data.scraps);
 				cardList.appendData(result.data.scraps);
 				$('.removeScrap').show();
 				break;

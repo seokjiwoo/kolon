@@ -92,7 +92,7 @@ module.exports = function() {
 	}
 
 	function expertListHandler(e, status, result) {
-		console.log(result.data.experts);
+		debug.log(result.data.experts);
 		$('#expertCount').text(result.data.experts.length);
 		cardList.appendData(result.data.experts);
 	};

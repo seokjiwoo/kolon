@@ -71,7 +71,7 @@ module.exports = function() {
 	}
 
 	function cardAppendedHandler(e) {
-		console.log('카드 이벤트 설정?');
+		debug.log('카드 이벤트 설정?');
 	};
 
 	function setElements() {

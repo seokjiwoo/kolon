@@ -13,6 +13,8 @@ module.exports = function() {
 	var winH;
 	var pageId;
 	var device;
+	
+	var debug = require('../utils/Console.js');
 
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('refreshMyInfo', loginDataHandler);
@@ -314,7 +316,7 @@ module.exports = function() {
 	};
 
 	function alertPopup(title, description, buttonCaption, callback) {
-		//console.log(typeof(callback));
+		//debug.log(typeof(callback));
 		
 		var linkUrl;
 		var customClass;
@@ -449,10 +451,10 @@ module.exports = function() {
 			'popEdge',
 			{
 				onOpen: function() {
-					window.console.log('onOpen');
+					window.debug.log('onOpen');
 				},
 				onSubmit: function() {
-					window.console.log('onSubmit, popCallback');
+					window.debug.log('onSubmit, popCallback');
 					eventManager.triggerHandler(COLORBOX_EVENT.CLOSE);
 				}
 			}

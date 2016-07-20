@@ -33,12 +33,12 @@ module.exports = function() {
 
 	function messageListHandler(e, status, result) {
 		if (status == 200) {
-			console.log(result);
+			debug.log(result);
 		} else {
 			MyPage.Super.Super.alertPopup('', result.message, '확인');
 
 			if (result.errorCode == '1409') {
-				console.log($('#messageListWrap'));
+				debug.log($('#messageListWrap'));
 				$('#messageListWrap').css({
 					textAlign: 'center',
 					marginTop: '20px',

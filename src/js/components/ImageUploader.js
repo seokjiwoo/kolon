@@ -276,7 +276,7 @@ function ClassImageUploader() {
 				withCredentials: true
 			},
 			beforeSubmit: function(data, form, option) {
-				console.log(data, form, option);
+				debug.log(data, form, option);
 				return true;
 			}, success: function(response, status) {
 				$(self).trigger(EVENT.UPLOAD_SUCCESS, response.data);

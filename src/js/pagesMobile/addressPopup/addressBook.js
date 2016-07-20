@@ -24,7 +24,6 @@ module.exports = function() {
 
 	function addressListHandler(e, status, list) {
 		$.map(list.items, function(each) {
-			console.log(each);
 			each.rowClass = '';
 			each.basicAddressMark = '';
 			if (each.addressSectionCode == 'BM_ADDR_SECTION_02') {
@@ -40,7 +39,6 @@ module.exports = function() {
 
 		$('.selectAddress').click(function(e){
 			e.preventDefault();
-			console.log('select', $(this).data('addressSeq'));
 			window.opener.selectAddressData($(this).data('addressSeq'));
 			window.close();
 		});

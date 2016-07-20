@@ -122,7 +122,7 @@ module.exports = function() {
 		
 		switch(eventType) {
 			case PRODUCT_EVENT.NEWFORM_LIST:
-				console.log(result);
+				debug.log(result);
 				break;
 		}
 	}
@@ -234,6 +234,6 @@ module.exports = function() {
 	}
 
 	function cardAppendedHandler(e) {
-		console.log('카드 이벤트 설정?');
+		debug.log('카드 이벤트 설정?');
 	};
 };

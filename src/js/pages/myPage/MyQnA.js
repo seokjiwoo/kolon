@@ -87,7 +87,7 @@ module.exports = function() {
 						if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 						if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 					});
-					//console.log(each);
+					//debug.log(each);
 				});
 			}
 
@@ -139,7 +139,7 @@ module.exports = function() {
 
 	function postAnswerResultHandler(e, status, result) {
 		if (status == 200) {
-			console.log(result);
+			debug.log(result);
 			Super.Super.alertPopup('의견묻기', '의견이 등록되었습니다', '확인', function() {
 				location.reload(true);
 			});

@@ -52,7 +52,7 @@ module.exports = function() {
 			if (reasonCodes.length == 0) {
 				MyPage.Super.Super.alertPopup('탈퇴에 실패하였습니다', '회원탈퇴 사유를 1개 이상 체크해주세요.', '닫기');
 			} else {
-				console.log(reasonCodes, reasonStatement);
+				debug.log(reasonCodes, reasonStatement);
 				controller.deleteMember(reasonCodes, reasonStatement);
 			}
 		} else {

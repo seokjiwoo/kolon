@@ -47,7 +47,7 @@ module.exports = function() {
 
 	function personalCardResultHandler(e, status, result) {
 		$.map(result, function(each) {
-			//console.log(each);
+			//debug.log(each);
 
 			if (each.questionContents == undefined) each.questionContents = each.cardName;
 			//if (each.questionNumber == undefined) each.questionNumber = 0;
@@ -88,7 +88,7 @@ module.exports = function() {
 				var question = $(this).find('.cardCollect').data().questionNumber
 				var answer = selectedItem[0].answerSequence;
 
-				console.log('#answerCollect0'+question+'-'+answer);
+				debug.log('#answerCollect0'+question+'-'+answer);
 				$('#answerCollect0'+question+'-'+answer).addClass('on');
 			}
 		});

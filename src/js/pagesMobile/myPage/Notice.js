@@ -42,7 +42,7 @@ module.exports = function() {
 	};
 
 	function noticeListHandler(e, status, result) {
-		console.log(noticeTypeArray);
+		debug.log(noticeTypeArray);
 
 		var type = '';
 		switch(type) {

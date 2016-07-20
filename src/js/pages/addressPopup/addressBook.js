@@ -3,6 +3,7 @@
 
 module.exports = function() {
 	'use strict';
+	var debug = require('../../utils/Console.js');
 	
 	var util = require('../../utils/Util.js');
 	var controller = require('../../controller/AddressController.js');
@@ -24,7 +25,7 @@ module.exports = function() {
 
 	function addressListHandler(e, status, list) {
 		$.map(list.items, function(each) {
-			console.log(each);
+			debug.log(each);
 			each.rowClass = '';
 			each.basicAddressMark = '';
 			if (each.addressSectionCode == 'BM_ADDR_SECTION_02') {
@@ -40,7 +41,7 @@ module.exports = function() {
 
 		$('.selectAddress').click(function(e){
 			e.preventDefault();
-			console.log('select', $(this).data('addressSeq'));
+			debug.log('select', $(this).data('addressSeq'));
 			window.opener.selectAddressData($(this).data('addressSeq'));
 			window.close();
 		});

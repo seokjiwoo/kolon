@@ -32,7 +32,7 @@ module.exports = function() {
 	};
 
 	function getDetailHandler(e, status, result) {
-		console.log(result);
+		debug.log(result);
 
 		//renderData(magazineData, '#description-templates', '#description-wrap', true);
 	};

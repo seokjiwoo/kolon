@@ -33,7 +33,7 @@ module.exports = function() {
 
 	function messageListHandler(e, status, result) {
 		if (status == 200) {
-			console.log(result);
+			debug.log(result);
 			renderData(result, '#message-list-templates', '#messageListWrap', true);
 		} else {
 			if (result.errorCode == '1409') {

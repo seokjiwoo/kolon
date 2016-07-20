@@ -35,7 +35,7 @@ module.exports = function() {
 
 	function getDetailHandler(e, status, result) {
 		var magazineData = result.data.magazine;
-		console.log(magazineData);
+		debug.log(magazineData);
 
 		renderData(magazineData, '#top-cont-templates', '#top-cont-wrap', true);
 		renderData(magazineData, '#description-templates', '#description-wrap', true);

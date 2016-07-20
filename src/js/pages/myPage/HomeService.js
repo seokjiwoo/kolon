@@ -208,7 +208,7 @@ module.exports = function() {
 					break;
 			}
 		});
-		console.log(result);
+		debug.log(result);
 		renderData(result, '#homeservice-list-templates', '#homeservice-wrap', true);
 	};
 

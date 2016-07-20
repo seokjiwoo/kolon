@@ -69,7 +69,7 @@ module.exports = function() {
 				this.defOpts = opts.default;
 				this.wrap = $(this.defOpts.wrap);
 
-				win.console.log('this.wrap', this.wrap);
+				win.debug.log('this.wrap', this.wrap);
 
 				this.altField = getJqueryElement(this.wrap, this.defOpts.altField);
 				this.button = getJqueryElement(this.wrap, this.defOpts.button);
