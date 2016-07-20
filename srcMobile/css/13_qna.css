@@ -1,0 +1,24 @@
+.specialArea{min-height:374px;background:url("../images/bg_special.png") no-repeat 0 0;background-size:contain;}
+.specialArea .specialText{text-align:center;color:#fff;padding-top:25px;}
+.specialArea .specialText em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-size:20px;font-weight:bold;}
+.specialArea .specialText strong{display:block;font-weight:normal;margin-top:10px;font-size:26px;}
+.specialArea .specialText p{line-height:1.4em;color:#cbc9c8;margin-top:14px;}
+.specialArea .specialText p span{color:#aa7d71;}
+
+.specialSlide{overflow-x:auto;margin:20px 0 0 48px;}
+.specialSlide ul{width:500px;height:95px;overflow:hidden;}
+.specialSlide ul:after{content:"";display:block;clear:both;}
+.specialSlide ul li{float:left;margin-left:8px;}
+.specialSlide ul li:first-child{margin-left:0;}
+.specialSlide ul li a{position:relative;width:84px;height:95px;display:block;background:#c6bab7;}
+.specialSlide ul li a img{width:100%;vertical-align:top;display:none;}
+/*.specialSlide ul li a:before,
+.specialSlide ul li a:after{position:absolute;left:0;width:100%;height:24px;content:"";}
+.specialSlide ul li a:before{top:0;background:url("../images/bg_special_top.png") no-repeat 0 0;background-size:100%;}
+.specialSlide ul li a:after{bottom:0;background:url("../images/bg_special_bottom.png") no-repeat 0 0;background-size:100%;}*/
+.dummyImg + .dummyImg{margin-top:35px;}
+.dummyImg img{width:100%;}
+
+@media (max-width:320px){
+	.specialArea{min-height:290px;}
+}
