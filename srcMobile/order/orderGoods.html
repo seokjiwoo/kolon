@@ -267,15 +267,11 @@
 				</div>
 				<div class="wrapT">
 					<h3 class="conTit">결제 방법</h3>
-					<div class="payTab tabWrap">
-						<form method="post" action="/">
-							<fieldset >
-								<legend>결제방법 선택</legend>
-								<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-								<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
-								<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
-							</fieldset>
-						</form>
+					<div class="tabWrap orderTab">
+						<span class="on"><a href="#pay1" class="btnSizeS btnColor05">신용카드</a></span>
+						<span><a href="#pay2" class="btnSizeS btnColor05">무통장 입금</a></span>
+						<span><a href="#pay3" class="btnSizeS btnColor05">실시간 계좌이체</a></span>
+						<span><a href="#pay4" class="btnSizeS btnColor05">휴대폰 결제</a></span>
 					</div>
 					<div>
 						<!-- 신용카드 -->
@@ -423,8 +419,8 @@
 								<form method="post" action="/">
 									<div class="underTxtMark">결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</div>
 									<ul class="infoBtnWrap">
-										<li><p><a href="" class="btnSizeS btnColor03">실시간 계좌이체 안내</a></p></li>
-										<li><p><a href="" class="btnSizeS btnColor03">은행별 이용시간</a></p></li>
+										<li><p><a href="../_popup/popRemittance01.html" class="btnSizeS btnColor03 btnPop" data-user-class="pop">실시간 계좌이체 안내</a></p></li>
+										<li><p><a href="../_popup/popRemittance02.html" class="btnSizeS btnColor03 btnPop" data-user-class="pop">은행별 이용시간</a></p></li>
 									</ul>
 									<h3 class="conTit">현금영수증 발급 신청</h3>
 									<div class="payTab tabWrap">
@@ -482,6 +478,33 @@
 							</div>
 						</div>
 						<!--// 실시간 계좌이체  -->
+						<!-- 휴대폰 결제  -->
+						<div class="pay" id="pay4" style="display:none;">
+							<table class="formWrap tbL">
+								<caption>시공 상품 구매 안내</caption>
+								<colgroup>
+									<col style="width:100%;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">시공 상품 구매 안내</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<ul class="myCartInfoList">
+												<li>통신사 회원등급별 월 최대 50만원까지 결제가 가능합니다.</li>
+												<li>1년 이내 휴대폰 결제 내역이 없는 경우 결제가 불가능합니다.</li>
+												<li>부분취소 진행 시 당월 한도가 부족한 경우 환불 정책에 따라 캐쉬로 환불됩니다.</li>
+												<li>한도문의는 모빌리언스(<a href="tel:1600-0523">1600-0523</a>),다날(<a href="tel:1566-3355">1566-3355</a>)로 해주시기 바랍니다.</li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--// 휴대폰 결제  -->
 					</div>
 				</div>
 				<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->

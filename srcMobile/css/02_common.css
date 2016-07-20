@@ -123,6 +123,11 @@ a.btnFollow{min-width:108px;padding-right:22px; border:1px solid #adc427;border-
 a.btnFollow:after{content:''; width:12px; height:12px; margin-top:-6px; background:url("../images/ico_follow_off.png") no-repeat 0 0;background-size:12px; position:absolute; top:50%; right:23px;}
 a.btnFollow.active{background:#adc427;color:#fff;}
 a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat 0 0;background-size:12px;}
+@media (max-width:320px){
+	.btnWrap03 a {width:31.3%;}
+	a.btnFollow{min-width:auto;}
+	a.btnFollow:after {right:17px;}
+}
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 
@@ -427,6 +432,10 @@ h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-
 .productList .btnToggle.open{background-position: 2px 5px;}
 .productList .productBtnWrap {width:100%; overflow:hidden; padding-top:15px; }
 .productList .productBtnWrap .newAddress {width:100%; padding:15px 0; border-top:1px dashed #ccc; overflow:hidden;}
+
+.productList li .selectWrap {width:100%; overflow:hidden; margin-top:15px; padding-top:15px; border:1px dashed #ccc;}
+.productList li ul.addressList li {padding:0; border:0;}
+.productList li .textWrap {border:0; padding:0; margin:0;}
 
 ul.optList {background:#fff;}
 ul.optList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}

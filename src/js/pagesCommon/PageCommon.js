@@ -361,7 +361,7 @@ module.exports = function() {
 			href: popupFile,
 			html: popupContent,
 			width: width,
-			height: (isPC ? false : "80%"),
+			height: (isPC ? false : "100%"),
 			maxHeight: (isPC ? false : winH+'px'),
 			fixed: (isPC ? fixed : true),
 			className: "lyPop " + (isPC ? "lyPop-pc " : "lyPop-m ") + userClass,
@@ -388,7 +388,7 @@ module.exports = function() {
 						$.colorbox.resize();
 						break;
 					case 'm':
-						var contentHeight = winH-$('popTop').height()-50;
+						var contentHeight = winH-$('popTop').height()-45;
 						if ($('.fixwrap').length > 0) contentHeight -= $('.fixwrap').height();
 						$('.popCon').css('height', contentHeight+'px');
 						if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
