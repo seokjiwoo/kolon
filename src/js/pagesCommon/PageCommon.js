@@ -247,8 +247,22 @@ module.exports = function() {
 	 */
 	function initTabContentLayout() {
 		if ($('ul').hasClass('infoSlider')) initTabSlider();
+		
+		initTabDotdotdot();
+	};
+
+	function initTabDotdotdot() {
+		if ($('.except').data('dotdotdot')) {
+			$('.except').dotdotdot('destroy');
+		}
+		
 		$('.except').dotdotdot({watch:'window'});
+
 		if ($('p').hasClass('except02')) {
+			if ($('.except02').data('dotdotdot')) {
+				$('.except02').dotdotdot('destroy');
+			}
+			
 			$('.except02').dotdotdot({
 				after: 'a.readmore',
 				watch:'window',
@@ -261,7 +275,7 @@ module.exports = function() {
 				}
 			});
 		}
-	};
+	}
 	
 	/**
 	 * slide in detail page
@@ -415,6 +429,8 @@ module.exports = function() {
 
 		$('.optionNum a.btnMinus, .optionNum a.btnPlus').off('click', optionNumHandler)
 														.on('click', optionNumHandler);
+
+		initTabDotdotdot();
 	}
 
 	// Colorbox Cleanup 시점
