@@ -422,7 +422,7 @@ module.exports = function() {
 	 */
 	function requestVerifyMember(e, authType) {
 		e.preventDefault();
-		console.log('verityMember', authType);
+
 		Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
 			onOpen:function() {
 				$('#requestVerifyMemberForm').submit(function(e){
@@ -444,14 +444,14 @@ module.exports = function() {
 	/**
 	 * 휴대폰 실명인증 결과 핸들링
 	 */
-	function verifyMemberResultHandler(e, authData) {
-		switch(Number(authData.status)) {
+	function verifyMemberResultHandler(e, status, authData) {
+		switch(Number(status)) {
 			case 200:
 				Super.alertPopup('본인확인이 완료되었습니다.', '이제 COMMON의 모든 서비스를 이용하실 수 있습니다.', '확인');
 				memberInfoController.getMyInfo();
 				break;
 			default:
-				Super.alertPopup('', authData.message, '확인');
+				Super.alertPopup('본인확인에 실패하였습니다.', authData.message, '확인');
 				break;
 		}
 	};

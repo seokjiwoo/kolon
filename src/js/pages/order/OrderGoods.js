@@ -116,7 +116,7 @@ module.exports = function() {
 		switch(eventType) {
 			case ORDER_EVENT.ORDERS_INFO:
 				var data = result.common.data;
-				data.paymentInfo.leftPoint = 10000;
+				//data.paymentInfo.leftPoint = 100000;
 
 				productsInfo = data.products;
 				baseTotalPrice = Number(data.paymentInfo.totalPaymentPrice);
@@ -164,7 +164,7 @@ module.exports = function() {
 				$('#pointWt').change(function(e){
 					var newValue = Number($('#pointWt').val());
 					if (newValue < 5000) {
-						alert('포인트는 최하 5000포인트부터 사용가능합니다.');
+						if (newValue != 0) alert('포인트는 최하 5000포인트부터 사용가능합니다.');
 						$('#pointWt').val('');
 						$('.usedPoint').text('0');
 						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
@@ -245,7 +245,7 @@ module.exports = function() {
 
 	function myInfoResultHandler(e) {
 		loginData = loginDataModel.loginData();
-		debug.log(loginData);
+		//debug.log(loginData);
 		$('#BuyerName').val(loginData.memberName);
 		if (loginData.phone != null) {
 			$('#BuyerTel').val(loginData.phone);
