@@ -160,7 +160,7 @@
 .pageTop p {width:100%; line-height:130%; font-size:13px;}
 .pageTop button.allDel {padding:7.5px 7.5px 7.5px 15px; position:absolute; top:0; right:0; border:0; background:none;}
 
-.pageTop.scrapTop {padding-right:15px;}
+.pageTop.scrapTop {padding:10px 0;}
 .pageTop.scrapTop b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
 .pageTop.scrapTop b i{color:#00aeb9;}
 .pageTop.scrapTop p {text-align:center;}

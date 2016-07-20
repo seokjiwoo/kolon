@@ -123,6 +123,11 @@ a.btnFollow{min-width:108px;padding-right:22px; border:1px solid #adc427;border-
 a.btnFollow:after{content:''; width:12px; height:12px; margin-top:-6px; background:url("../images/ico_follow_off.png") no-repeat 0 0;background-size:12px; position:absolute; top:50%; right:23px;}
 a.btnFollow.active{background:#adc427;color:#fff;}
 a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat 0 0;background-size:12px;}
+@media (max-width:320px){
+	.btnWrap03 a {width:31.3%;}
+	a.btnFollow{min-width:auto;}
+	a.btnFollow:after {right:17px;}
+}
 
 .btnborder01{border:1px solid #e3e3e3;color: #666;} /*border*/
 
