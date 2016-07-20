@@ -10,6 +10,10 @@ module.exports = function() {
 	var loginData;
 	
 	var pageId;
+
+	var eventManager = require('../events/EventManager'),
+	events = require('../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
 	
 	var callerObj = {
 		/**
@@ -23,6 +27,7 @@ module.exports = function() {
 	};
 	
 	return callerObj;
+
 	
 	function init(_pageId) {
 		pageId = _pageId;
@@ -31,15 +36,12 @@ module.exports = function() {
 
 		initGnb();
 
-		$('.scrollWrap').each(function() {//horizontal scroll wrap width
-			var totalWidth = 0;
-			var margin = 0;
-			$(this).find('li').each(function(index) {
-				totalWidth += parseInt($(this).width(), 10);
-				margin += parseInt($(this).css('margin-right'), 10);
-			});
-			$(this).find('ul').css('width',totalWidth+margin);
-		})
+		initHorizontalScroll();	//horizontal scroll wrap width
+
+		// Colorbox Complete 시점
+		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
+					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
+
 		$('.btnToggle').on('click', function(e) { // common slideToggle
 			e.preventDefault();
 			$(this).toggleClass('open');
@@ -128,9 +130,18 @@ module.exports = function() {
 		$('.spSlide').bxSlider({ //magazine slide
 			controls:true
 		});
+	}
 
-			
-
+	function initHorizontalScroll() {
+		$('.scrollWrap').each(function() {//horizontal scroll wrap width
+			var totalWidth = 0;
+			var margin = 0;
+			$(this).find('li').each(function(index) {
+				totalWidth += parseInt($(this).width(), 10);
+				margin += parseInt($(this).css('margin-right'), 10);
+			});
+			$(this).find('ul').css('width',totalWidth+margin);
+		})
 	}
 
 	/**
@@ -278,4 +289,18 @@ module.exports = function() {
 		});
 		$(".dimBg").remove();
 	};
+
+
+	// Colorbox Complete 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxRefreshListener(e) {
+		initHorizontalScroll();
+	}
+
+	// Colorbox Cleanup 시점
+	// @see EventManager.js#onColorBoxListener
+	// @see Events.js#Events.COLOR_BOX
+	function onColorboxDestoryListener(e) {
+	}
 }
