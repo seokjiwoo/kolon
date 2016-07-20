@@ -190,6 +190,7 @@
 .cardHover .cardCon ul.card_icon li.share a:after {background-position:-33px 0;}
 .cardHover .cardCon ul.card_icon li.talk a:after {width:37px; background-position:-65px 0;}
 .cardHover .worker {width:285px; margin-left:-142.5px; position:absolute; bottom:127px; left:50%;}
+.cardType02 .cardHover .worker {width:285px; margin-left:-142.5px; position:absolute; bottom:80px; left:50%;}
 .cardHover .worker .cardAuthorLike {width:100%; text-align:center;}
 .cardHover .worker .cardAuthorLike .star {}
 .cardHover .worker .cardAuthorLike .star:before{background-position:0 0}
@@ -200,6 +201,7 @@
 .cardHover .worker .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
 .cardHover .worker .cardAuthorPic img{display: block;width: 100%;}
 .cardHover .worker .cardAuthorInfo{padding:15px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
+.cardType02 .cardHover .worker .cardAuthorInfo{padding:0px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
 .cardHover .worker .cardAuthorInfo b{color:#fff}
 
 .cardCon ul.check_icon {width:164px; height:71px; transform: rotate(-29.65deg); -ms-transform: rotate(-29.65deg); position:absolute; bottom:44px; right:-7px; z-index:5; text-align:right;}

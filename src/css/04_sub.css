@@ -12,7 +12,7 @@
 .infoTop{position: relative;background: #fff;color: #666;}
 .infoTop .area a{color: #666}
 .infoTop .infoPic{display: inline-block;overflow: hidden;width: 178px;height: 178px;border-radius: 50%;border:1px solid #d9d9d9;vertical-align: middle;}
-.infoTop .infoPic img{display: block;width: 100%;}
+.infoTop .infoPic img{display: block;width: 100%;height:100%;}
 .infoTop .infoWrap{display: inline-block;width:375px;margin-left:40px;vertical-align: middle;}
 .infoTop .infoTit{white-space: nowrap;overflow: hidden;text-overflow: ellipsis; font-family:'NotoSansR', sans-serif;color: #000;font-size: 30px;line-height: 1.1em}
 .infoTop .infoId{margin-top:10px;font-family:'NotoSansL', sans-serif;color: #666;font-size: 16px;}
