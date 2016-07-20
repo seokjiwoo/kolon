@@ -44,7 +44,7 @@
 .homeService-request .htype03:before, .homeService-request .radioBox label.htype03.on:before {background-position:50% -349px;}
 .homeService-request .htype04:before, .homeService-request .radioBox label.htype04.on:before {background-position:50% 0;}
 .homeService-request .datePic .dateInp {width:45%;}
-.homeService-request textarea {margin-top:15px;font-size:13px;height:86px;}
+.homeService-request textarea {margin-top:15px;font-size:13px;height:86px;letter-spacing:-0.5px}
 .homeService-request .wrapT:last-child {margin-bottom:15px;}
 @media (max-width:375px){
 	.homeService-request .htype {font-size:11px;}
