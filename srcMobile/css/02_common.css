@@ -172,7 +172,7 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 
 .radioBox{position: relative;line-height: 30px;}
 .radioBox input{position: absolute;opacity: 0;left: 0;}
-.radioBox label:before{content: '';display: inline-block; width:16px; height: 16px;margin-right:5px;background: url('../images/ico_radio.png') 0 0 no-repeat;vertical-align: middle; background-size: 16px 32px;}
+.radioBox label:before{content: '';display: inline-block; width:16px; height: 16px;margin-right:5px;background: url('../images/ico_radio.png') 0 0 no-repeat;vertical-align:text-top; background-size: 16px 32px;}
 .radioBox label.on:before{background-position: 0 -16px;}
 
 .checkWrap{padding: 10px 0 35px;border-bottom: 1px solid #e8e8e8;}
