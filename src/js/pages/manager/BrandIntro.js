@@ -150,7 +150,7 @@ module.exports = function() {
 		switch(eventType) {
 			case EXPERTS_EVENT.BRAND:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				self.brandNumber = result.data.brand.bizNum;
+				self.brandNumber = result.data.brand.memberNumber;
 				displayData(result.data.brand);
 				break;
 			case EXPERTS_EVENT.BRAND_PRODUCTS:

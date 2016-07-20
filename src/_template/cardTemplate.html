@@ -147,7 +147,7 @@
 			<!-- card 내용 -->
 			<a href="{{detailUrl}}" class="cardTxt">
 				<p class="cardCat">specialist</p>
-				<h2 class="cardTit">{{typeName}} 전문가<b>{{name}}</b><span>{{companyWebsiteUrl}}</span></h2>
+				<h2 class="cardTit">{{typeName}} 전문가<b>{{name}}</b><span>{{companyName}}</span></h2>
 				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
 			</a>
 			<!--// card 내용 -->
@@ -166,8 +166,8 @@
 					<div class="specialist">
 						<div class="specialistPic"><img src="{{imageUrl}}" alt=""></div>
 						<p class="specialistInfo">
-							<span class="tit"><b>{{name}}</b>{{companyWebsiteUrl}}</span>
-							<span class="adr">{{serviceArea}}</span>
+							<span class="tit"><b>{{name}}</b>{{companyName}}</span>
+							<span class="adr">{{roadBaseAddr}}</span>
 						</p>
 					</div>
 					<ul class="card_icon">
@@ -180,7 +180,7 @@
 			<ul class="check_icon">
 				<li class="cardDetail text"><a href="/manager/itemList.html?expertNumber={{expertNum}}"><span>판매<br>상품</span>{{countProduct}}</a></li>
 				<!--<li class="cardDetail text"><a href="javascript:alert('준비중입니다')"><span>완료된<br>공간</span>{{countView}}</a></li>-->
-				<li class="cardDetail text"><a href="/manager/detail.html?expertNumber={{expertNum}}"><span>팔로워</span>{{likeCount}}</a></li>
+				<li class="cardDetail text"><a href="/manager/detail.html?expertNumber={{expertNum}}"><span>팔로워</span>{{countFollower}}</a></li>
 			</ul>
 			<!-- flag -->
 			<!-- <div class="hi"></div> -->

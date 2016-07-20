@@ -6,6 +6,7 @@ module.exports = function() {
 	
 	var infoController = require('../../controller/MemberInfoController');
 	$(infoController).on('findPwResult', findPwResultHandler);
+	$(infoController).on('verifyMemberResult', findPwResultHandler);
 	$(infoController).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
 	$(infoController).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
 	var util = require('../../utils/Util.js');
@@ -82,7 +83,7 @@ module.exports = function() {
 	 */
 	function findPwResultHandler(e, result, id) {
 		switch(result.status) {
-			case '200':
+			case 200:
 				switch(findMethod) {
 					case 'phone':
 						//$('#findPwAuthMail').show().siblings('div').hide();
@@ -93,7 +94,7 @@ module.exports = function() {
 				}
 				break;
 				
-			case '400':
+			case 400:
 				// 아이디 없음
 				Super.Super.alertPopup('비밀번호 찾기', result.message, '확인');
 				break;

@@ -12,7 +12,7 @@ function ClassMemberInfoController() {
 	var tempMemberNumber;
 	var tempAuthKey;
 
-	$(document).on('getMobileAuthPasswordFindResult', mobileAuthPasswordFindResultHandler);
+	//$(document).on('getMobileAuthPasswordFindResult', mobileAuthPasswordFindResultHandler);
 	$(document).on('getMobileAuthVerifyResult', mobileAuthVerifyResultHandler);
 	
 	return {
@@ -238,25 +238,29 @@ function ClassMemberInfoController() {
 	 * 휴대폰 본인인증 완료 (비번찾기) 핸들링
 	 * document에 trigger걸렸을 때 핸들링. trigger 함수는 html에 위치.
 	 */
-	function mobileAuthPasswordFindResultHandler(e, authData) {
+	/*function mobileAuthPasswordFindResultHandler(e, authData) {
+		authData.status = Number(authData.status);
+
 		if (authData.status == 200) {
-			$(callerObj).trigger('findPwResult', [Number(authData.status), authData]);
+			$(callerObj).trigger('findPwResult', [authData.status, authData]);
 		} else {
 			Super.handleError('mobileAuthPasswordFindResultHandler', authData);
-			$(callerObj).trigger('findPwResult', [Number(authData.status), authData]);
+			$(callerObj).trigger('findPwResult', [authData.status, authData]);
 		}
-	};
+	};*/
 
 	/**
 	 * 휴대폰 본인인증 완료 (실명인증) 핸들링
 	 * document에 trigger걸렸을 때 핸들링. trigger 함수는 html에 위치.
 	 */
 	function mobileAuthVerifyResultHandler(e, authData) {
+		authData.status = Number(authData.status);
+
 		if (authData.status == 200) {
-			$(callerObj).trigger('verifyMemberResult', [Number(authData.status), authData]);
+			$(callerObj).trigger('verifyMemberResult', [authData.status, authData]);
 		} else {
 			Super.handleError('mobileAuthVerifyResultHandler', authData);
-			$(callerObj).trigger('verifyMemberResult', [Number(authData.status), authData]);
+			$(callerObj).trigger('verifyMemberResult', [authData.status, authData]);
 		}
 	};
 

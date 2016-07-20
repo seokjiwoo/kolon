@@ -203,7 +203,7 @@ module.exports = function() {
 	 * 소셜연결 실패 핸들링 
 	 */
 	function socialConnectFailHandler(e, status, result) {
-		if (status == '401') MyPage.Super.Super.alertPopup('', result.message, '확인');
+		if (status == 401) MyPage.Super.Super.alertPopup('', result.message, '확인');
 	};
 
 	/**

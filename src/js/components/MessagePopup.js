@@ -107,7 +107,7 @@ function ClassMessagePopup() {
 
 		messageController.inquiries(
 			self.msgInp.val(),
-			uploadImageArray,
+			uploadImageArray[0],
 			uploadScrapImageArrary,
 			self.saleMemberNumber,
 			self.productNumber

@@ -287,14 +287,14 @@ module.exports = function() {
 		}
 	};
 	
-	function messagePopup(title, subTitle, popupContent, width, userClass) {
+	function messagePopup(title, popupContent, width, userClass) {
 		if (width == undefined) width = 540;
 		if (String(width).substr(-1) != '%') width += "px";
 		
 		popupOpenHandlerFunction = null;
 		popupCallbackFunction = null;
 
-		var inline = '<div class="popTop"><h4 class="popTit">'+title+'</h4></div><div class="popCon"><p class="subTit">'+subTitle+'</p><div class="popScroll">'+popupContent+'</div></div>';
+		var inline = '<div class="popTop"><h4 class="popTit">'+title+'</h4></div><div class="popCon"><div class="popScroll">'+popupContent+'</div></div>';
 		openPopup(inline, width, userClass);
 	};
 	

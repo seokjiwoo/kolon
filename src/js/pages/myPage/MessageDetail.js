@@ -13,12 +13,14 @@ module.exports = function() {
 	var controller = require('../../controller/MessageController.js');
 	$(controller).on('messageDetailResult', messageDetailHandler);
 	$(controller).on('messageInquiriesResult', messageWriteHandler);
+	$(controller).on('messageDeleteResult', messageDeleteHandler);
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();
 
 	var saleMemberNumber;
 	var firstFlag = true;
+	var uploadingFlag = false;
 	var inquiryAttachedFile;
 	
 	var callerObj = {
@@ -37,20 +39,37 @@ module.exports = function() {
 
 		$('#attach').change(quickAttachHandler);
 		$('#quickMessageButton').click(quickMessageHandler);
-		$("#deleteAllMessageButton").on("click", function() {
-			confirm("메시지 내용을 모두 삭제하시겠습니까?\n삭제하실 경우 메시지 내용이 모두 삭제되며 1:1메시지 목록에서도 삭제됩니다.");
-		});
-
+		
 		controller.inquiriesDetail(saleMemberNumber);
 	};
 
+	function messageDeleteHandler(e, status, result) {
+		if (status == 200) {
+			location.href = '/myPage/message.html'; 
+		} else {
+			alert(result.message);
+		}
+	}
+
 	function messageDetailHandler(e, status, result) {
-		if (firstFlag == true) renderData(result.saleMember, '#message-member-templates', '#message-member-wrap', true);
+		if (firstFlag == true) {
+			renderData(result.saleMember, '#message-member-templates', '#message-member-wrap', true);
+
+			$("#deleteAllMessageButton").on("click", function() {
+				e.preventDefault();
+				if (confirm("메시지 내용을 모두 삭제하시겠습니까?\n삭제하실 경우 메시지 내용이 모두 삭제되며 1:1메시지 목록에서도 삭제됩니다.")) {
+					controller.messageDelete(saleMemberNumber);
+				}
+			});
+			
+			firstFlag = false;
+		}
+
 		renderData(result, '#message-detail-list-templates', '#message-detail-list-wrap', true);
+
 		$('.talkList').imagesLoaded().always(function() {
 			$('.talkList').scrollTop($('.talkList').prop('scrollHeight')-$('.talkList').innerHeight());
 		});
-		firstFlag = false;
 	};
 	
 	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
@@ -70,11 +89,14 @@ module.exports = function() {
 				withCredentials: true
 			},
 			beforeSubmit: function(data, form, option) {
+				uploadingFlag = true;
 				return true;
 			}, success: function(response, status) {
 				inquiryAttachedFile = response.data.reviewAttachFile;
+				uploadingFlag = false;
 			}, error: function() {
-				alert('파일 첨부에 실패하였습니다. 다시 시도해 주세요.')
+				alert('파일 첨부에 실패하였습니다. 다시 시도해 주세요.');
+				uploadingFlag = false;
 			}                               
 		});
 	};
@@ -85,6 +107,8 @@ module.exports = function() {
 
 		if ($.trim(content) == '') {
 			alert('내용을 입력하세요.');
+		} else if (uploadingFlag == true) {
+			alert('파일 업로드가 진행중입니다. 잠시 후에 다시 시도해 주세요.');
 		} else {
 			controller.inquiries(content, inquiryAttachedFile, [], saleMemberNumber, 0);
 		}

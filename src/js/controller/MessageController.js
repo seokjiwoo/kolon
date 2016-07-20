@@ -36,7 +36,11 @@ function ClassMessageController() {
 			/**
 			 * 1:1 메세지 상세
 			 */
-			inquiriesDetail : inquiriesDetail
+			inquiriesDetail : inquiriesDetail,
+			/**
+			 * 1:1 메세지 삭제
+			 */
+			messageDelete : messageDelete
 		};
 		
 		return callerObj;	
@@ -67,7 +71,6 @@ function ClassMessageController() {
 		}, true);
 	}
 
-
 	//	1:1 메세지 등록
 	//	POST /apis/inquiries
 	function inquiries(contents, inquiryAttachFileRequest, inquiryScrapList, saleMemberNumber, productNumber) {
@@ -85,7 +88,7 @@ function ClassMessageController() {
 				Super.handleError('messageInquiries', result);
 				$(callerObj).trigger('messageInquiriesResult', [status, result]);
 			}
-		}, true);
+		}, false);
 	}
 
 
@@ -101,7 +104,19 @@ function ClassMessageController() {
 				Super.handleError('messageInquiriesImages', result);
 				$(callerObj).trigger('messageInquiriesImagesResult', [status, result]);
 			}
-		}, true);
+		}, false);
+	}
+
+	//	1:1 메세지 일괄 삭제
+	function messageDelete(saleMemberNumber) {
+		Super.callApi('/apis/inquiries/' + saleMemberNumber, 'DELETE', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('messageDeleteResult', [status, result.data]);
+			} else {
+				Super.handleError('messageDelete', result);
+				$(callerObj).trigger('messageDeleteResult', [status, result]);
+			}
+		}, false);
 	}
 }
 
