@@ -190,7 +190,7 @@ function ClassUtils() {
 	}
 	
 	function removeComma(num) {
-		return Number(num.replace(/,/, ''));
+		return Number(String(num).replace(/,/, ''));
 	}
 
 	function currencyFormat(num) {

@@ -222,8 +222,6 @@ module.exports = function() {
 				delete each.name;
 				delete each.price;
 			});
-
-			$('.js-ajax-data').html('ajax 전송 data : ' + JSON.stringify(cartData));
 			
 			cartController.addMyCartList(cartData);
 		}
@@ -237,7 +235,13 @@ module.exports = function() {
 		} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
 			$(document).trigger('verifyMember');
 		} else {
-			Cookies.set('instantOrder', orderData);
+			var cartData = orderData.concat();
+			$.map(cartData, function(each) {
+				delete each.name;
+				delete each.price;
+			});
+
+			Cookies.set('instantOrder', cartData);
 			location.href = '/order/orderGoods.html';
 		}
 	};
@@ -321,21 +325,10 @@ module.exports = function() {
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
-					
-					if (!optionsUseFlag) {
-						var oneOptionData = [{
-							"productNumber": self.productNumber,
-							"orderOptionNumber": 0,
-							"productQuantity": 1,
-							"optionQuantity": 1,
-							"name": result.data.product.productName,
-							"price": result.data.product.salePrice
-						}];
-						displayData(oneOptionData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
-						totalQty = 1;
-						$('.cancelOption').hide();
-					}
 
+					self.productName = result.data.product.productName;
+					self.salePrice = result.data.product.salePrice;
+					
 					optionsDisplay();
 
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
@@ -365,7 +358,6 @@ module.exports = function() {
 				case PRODUCT_EVENT.PARTNER_INFO:
 					//debug.log(fileName, 'onControllerListener', eventType, status, response);
 					//$('.' + eventType).html(JSON.stringify(result.data.partner));
-					console.log( $('#info-partner-template') );
 					displayData(result.data.partner, $('#info-partner-template'), $('.js-info-partner-wrap'));
 					break;
 				case PRODUCT_EVENT.PREVIEW:
@@ -414,8 +406,26 @@ module.exports = function() {
 	}
 
 	function optionsHandler(options) {
-		if (options.length == 1) {
-			// 단일옵션 or 최종선택.
+		if (options.length == 0) {
+			// 단일옵션
+			orderData = [{
+				"productNumber": self.productNumber,
+				"orderOptionNumber": 0,
+				"quantity": 1,
+				"name": self.productName,
+				"price": self.salePrice
+			}];
+			totalQty = 1;
+			
+			displayData(orderData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
+			optionsDisplay();
+
+			$('.cancelOption').hide();
+			console.log(orderData);
+			var totalPrice = reCalculateTotalPrice(orderData);
+			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
+		} else if (options.length == 1) {
+			// 최종선택.
 			var selectedOptionData = options[0];
 
 			var addKey = true;
@@ -426,8 +436,7 @@ module.exports = function() {
 				orderData.push({
 					"productNumber": self.productNumber,
 					"orderOptionNumber": selectedOptionData.orderOptionNumber,
-					"productQuantity": 1,
-					"optionQuantity": 1,
+					"quantity": 1,
 					"name": selectedOptionData.optionName,
 					"price": util.currencyFormat(selectedOptionData.price)
 				});
@@ -476,20 +485,13 @@ module.exports = function() {
 		//var newQty = parseInt(target.find('.num').text());
 		totalQty = value;
 
-		if (optionsUseFlag) {
-			for (var key in orderData) {
-				var eachOrder = orderData[key];
-				if (eachOrder.orderOptionNumber == target.data().optionNum) {
-					eachOrder.productQuantity = value;
-					eachOrder.optionQuantity = value;
-				}
-			}
-
-			var totalPrice = reCalculateTotalPrice(orderData);
-			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
-		} else {
-			$('#totalOptionsPrice').html(util.currencyFormat(salePrice*value)+'<b>원</b>');
+		for (var key in orderData) {
+			var eachOrder = orderData[key];
+			if (eachOrder.orderOptionNumber == target.data().optionNum) eachOrder.quantity = value;
 		}
+
+		var totalPrice = reCalculateTotalPrice(orderData);
+		$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
 	};
 
 	function optionRemoveHandler(e) {
@@ -513,7 +515,7 @@ module.exports = function() {
 
 		for (var key in orderData) {
 			var eachOrder = orderData[key];
-			newTotalPrice += (util.removeComma(eachOrder.price)*eachOrder.optionQuantity);
+			newTotalPrice += (util.removeComma(eachOrder.price)*eachOrder.quantity);
 		}
 
 		return newTotalPrice;

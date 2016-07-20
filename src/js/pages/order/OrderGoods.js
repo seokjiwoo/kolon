@@ -89,9 +89,7 @@ module.exports = function() {
 			location.href='/';
 		} else {
 			orderProductArray = Cookies.getJSON('instantOrder');
-			$.map(orderProductArray, function(eachCartItem) {
-				eachCartItem.quantity = eachCartItem.productQuantity;
-			});
+			console.log(orderProductArray);
 			//Cookies.remove('instantOrder');
 			controller.myOrdersInfo(orderProductArray);
 		}
@@ -176,6 +174,10 @@ module.exports = function() {
 						$('.usedPoint').text('0');
 						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
 					} else {
+						if (newValue > baseTotalPrice) {
+							newValue = baseTotalPrice;
+							$('#pointWt').val(newValue);
+						}
 						$('.usedPoint').text(util.currencyFormat(newValue));
 						$('.totalPrice').text(util.currencyFormat(baseTotalPrice-newValue));
 					}

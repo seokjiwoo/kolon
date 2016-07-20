@@ -55,7 +55,7 @@
 								"producerType" : "{{producerType}}",
 								"productNumber" : {{productNumber}},
 								"optionNumber" : {{orderOptionNumber}},
-								"productQuantity" : {{productQuantity}},
+								"quantity" : {{productQuantity}},
 								"basePrice" : {{basePrice}},
 								"salePrice" : {{salePrice}}
 							}'>
@@ -66,7 +66,7 @@
 										<label for="myCartShop-list{{@index}}" class="on" data-cart-number="{{cartNumber}}" data-chk-group="myCartShop"><span class="hide">선택</span></label>
 									</p>
 									<div class="photoList">
-										<a href="#">
+										<a href="/shop/detail.html?productNumber={{productNumber}}">
 											<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
 											<span class="cartInfo recordInfo">
 												<b class="owner">{{producerType}}</b>
@@ -74,7 +74,6 @@
 											</span>
 										</a>
 									</div>
-									{{#vxIF optionUseYn "==" "Y"}}
 									<!-- 옵션 수량 선택 -->
 									<div class="optList">
 										<!-- 옵션 -->
@@ -84,14 +83,13 @@
 											<!-- [D] 최대수량 -->
 											<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
 												<a href="#" class="btnMinus">빼기</a>
-												<span class="num">{{productQuantity}}</span>
+												<span class="num">{{quantity}}</span>
 												<a href="#" class="btnPlus">더하기</a>
 											</p>
-											<a href="#" class="btnDel js-opt-delete">삭제</a>
+											{{!--<a href="#" class="btnDel js-opt-delete">삭제</a>--}}
 										</div>
 									</div>
 									<!--// 옵션 수량 선택 -->
-									{{/vxIF}}
 								</div>
 							</td>
 							<td><p class="price"><b class="js-list-price">{{basePriceDesc}}</b> 원</p></td>
