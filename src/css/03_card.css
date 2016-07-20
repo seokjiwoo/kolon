@@ -247,7 +247,7 @@ ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistPic img {widt
 ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo {margin-top:16px;}
 ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span {width:100%; display:inline-block;}
 ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.tit {font-size:14px; font-family:'NotoSansL', sans-serif;}
-ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.tit b {font-size:24px; line-height:29px; display:inline-block;}
+ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.tit b {font-size:24px; line-height:29px; display:block;}
 ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.adr {padding-left:12px; margin-top:15px; font-size:14px; font-family:'NotoSansL', sans-serif; position:relative;}
 ul.cardWrap > li.cardType07.cHover .cardCon .specialist .specialistInfo span.adr:before {content:''; width:8px; height:12px; margin-top:-4px; background:url(../images/ico_card_popular.png) -36px 0 no-repeat; position:absolute; top:50%; left:0;}
 ul.cardWrap > li.cardType07.cHover .cardCon ul.card_icon {width:142px; left:142px; top:270px;}

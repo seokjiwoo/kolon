@@ -48,7 +48,7 @@
 /* brand */
 .singleCard .bx-wrapper{overflow: visible !important;position: relative;width:795px;z-index: 1;margin: 0 auto;}
 .singleCard .bx-viewport{overflow: visible !important;}
-.singleCard #infoSlider img{display: block;width: 100%;}
+.singleCard #infoSlider img{display: block;width: 795px; height:550px;}
 .singleCard .bx-wrapper .bx-controls-direction .bx-prev{left: 80px;}
 .singleCard .bx-wrapper .bx-controls-direction .bx-next{right: 80px;}
 
