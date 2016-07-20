@@ -131,7 +131,7 @@ module.exports = function() {
 			_template = self.colorbox.find('#cancel-request-templates');
 			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
 		}
-
+		
 		var source = _template.html(),
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));
@@ -244,13 +244,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_DETAIL:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				if (result && !result.data) {
 					displayData([], type);
 					return;

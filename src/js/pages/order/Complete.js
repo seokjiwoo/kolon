@@ -140,6 +140,18 @@ module.exports = function() {
 				result.data.paymentInfo.totalPaymentPriceDesc = util.currencyFormat(result.data.paymentInfo.totalPaymentPrice, 10);
 
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				if (result.data.slCreditCard != null) {
+					result.data.paymentInfo.method = '신용카드';
+				} else if (result.data.slDwb != null) {
+					result.data.paymentInfo.method = '무통장 입금';
+				} else if (result.data.slAccountTransfer != null) {
+					result.data.paymentInfo.method = '실시간 계좌이체';
+				}
+				$.map(result.data.listOrderItem, function(eachItem){
+					eachItem.slOrderDlvyAddr.cellPhoneNumber = util.mobileNumberFormat(eachItem.slOrderDlvyAddr.cellPhoneNumber);
+					eachItem.slOrderDlvyAddr.deliveryRequestMemo = decodeURI(eachItem.slOrderDlvyAddr.deliveryRequestMemo);
+				});
+				
 				displayData(result.data);
 				break;
 		}

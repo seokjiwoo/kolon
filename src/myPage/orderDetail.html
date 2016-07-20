@@ -26,7 +26,7 @@
 {{!-- order-detail-templates --}}
 	<h2 class="secTit">주문 내역 <span class="icoTitle"></span> 주문 상세</h2>
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
-	{{#if length}}
+	{{#if ordererInfo}}
 		<table class="record record04 detail" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
 			<caption>주문번호 표</caption>
 			<colgroup>
@@ -36,7 +36,7 @@
 			<tr>
 				<th class="t_l">주문정보</th>
 				<td class="recordDate t_l">
-					<p class="date">{{orderDate}}<b>{{orderNumber}}</b></p>
+					<p class="date">{{listOrderItem.orderDate}} <b>{{listOrderItem.orderNumber}}</b></p>
 				</td>
 			</tr>
 		</table>
@@ -52,7 +52,7 @@
 			</colgroup>
 			<tr>
 				<th class="t_l h50">주문 금액</th>
-				<td class="t_r"><span class="fontM">{{totalPaymentPriceDesc}} 원</span></td>
+				<td class="t_r"><span class="fontM">{{paymentInfo.orderPrice}} 원</span></td>
 				<th rowspan="4" class="t_l">결제 방법</th>
 				<td rowspan="4" class="t_l rowspan">
 					<p class="fontM">API 구조 확인 필요</p>
@@ -60,21 +60,22 @@
 			</tr>
 			<tr>
 				<th class="t_l">배송비</th>
+				<td class="t_r"><span class="fontM">{{paymentInfo.deliveryCharge}} 원</span>
+				</td>
+			</tr>
+			<tr>
+				<th class="t_l">할인 금액</th>
 				<td class="t_l">
 					<ul class="arraySide">
 						<li>
-							<p>기본 할인<span class="fontM">- {{discountPriceDesc}} 원</span></p>
+							<p>기본 할인<span class="fontM">- {{paymentInfo.discountPrice}} 원</span></p>
 						</li>
 					</ul>
 				</td>
 			</tr>
 			<tr>
-				<th class="t_l">할인 금액</th>
-				<td class="t_r"><span class="fontM">{{discountPriceDesc}} 원</span></td>
-			</tr>
-			<tr>
 				<th class="t_l">총 결제금액</th>
-				<td class="t_r"><span class="fontM">{{totalPaymentPriceDesc}} 원</span></td>
+				<td class="t_r"><span class="fontM">{{paymentInfo.totalPaymentPrice}} 원</span></td>
 			</tr>
 		</table>
 
@@ -89,13 +90,13 @@
 			</colgroup>
 			<tr>
 				<th class="t_l">주문자 정보</th>
-				<td colspan="3" class="t_l">{{ordererName}}</td>
+				<td colspan="3" class="t_l">{{ordererInfo.ordererName}}</td>
 			</tr>
 			<tr>
 				<th class="t_l">연락처</th>
-				<td class="t_l">{{cellPhoneNum}}</td>
+				<td class="t_l">{{ordererInfo.cellPhoneNumber}}</td>
 				<th>이메일 주소</th>
-				<td class="t_l">{{ordererEmail}}</td>
+				<td class="t_l">{{ordererInfo.ordererEmail}}</td>
 			</tr>
 		</table>
 
@@ -120,7 +121,7 @@
 				<th>수령자</th>
 				<th>진행상태</th>
 			</tr>
-			{{#each listOrderItems}}
+			{{#each listOrderItem}}
 			<tr>
 				<td>
 					<p class="checkAgree checkbox">
@@ -129,25 +130,25 @@
 								data-order-number="{{../orderNumber}}" data-chk-group="orderDetail"><span class="hide">선택</span></label>
 					</p>
 				</td>
-				<td class="w90"><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
+				<td class="w90"><div class="recordThumb"><img src="{{productImageUrl}}" alt="{{productName}}"></div></td>
 				<td class="recordInfo">
-					<span class="owner">{{sellerName}}</span><br>
-					{{#if optionName}}
-						{{productName}}<span class="producOption">옵션 : {{optionName}}<br>수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
+					<span class="owner">{{saleMemberName}}</span><br>
+					{{#if orderOptionName}}
+						{{productName}}<span class="producOption">옵션 : {{orderOptionName}}<br>수량 : {{orderQuantity}}</span><span class="productPrice">{{productPrice}} 원</span>
 					{{else}}
-						<span class="productPrice">{{itemPriceDesc}} 원</span>
+						<span class="productPrice">{{productPrice}} 원</span>
 					{{/if}}
 				</td>
-				<td>{{discountPriceDesc}}원</td>
-				{{#if deliveryFee}}
-					<td>{{deliveryFeeDesc}}</td>
+				<td>{{productOptionPrice}}원</td>
+				{{#if deliveryCharge}}
+					<td>무료</td>
 				{{else}}
-					<td>{{deliveryFee}}</td>
+					<td>{{deliveryCharge}}원</td>
 				{{/if}}
-				<td class="payment">{{itemPriceDesc}} 원</td>
+				<td class="payment">{{discountApplyAmt}} 원</td>
 				<td>
 					{{receiverName}}
-					<!-- <a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a> -->
+					<a href="" class="btnSizeS btnColor03 btnIcoMore">더보기</a>
 				</td>
 				<td class="orderState stateWrap">
 					{{#vxSwitch deliveryStateCode}}
@@ -229,7 +230,7 @@
 				</colgroup>
 				<tr>
 					<th>받으실 분</th>
-					<td colspan="3">{{receiverName}}</td>
+					<td colspan="3">{{slOrderDlvyAddr}}</td>
 				</tr>
 				<tr>
 					<th>주소</th>
