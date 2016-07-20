@@ -3,30 +3,30 @@
 .order .orderWrap + .orderWrap {margin-top:10px;}
 .order .zipCode label.btnColor03 {background:#666;}
 
-.order .orderInfo {border:4px solid #333; margin-top:15px;}
-.order .orderInfo dl {width:100%; position:relative;}
-.order .orderInfo dl + dl {border-top:1px solid #333;}
-.order .orderInfo dl + dl:after {content:''; width:34px; height:39px; margin-left:-17px; background:url(../images/ico_order.png) no-repeat; background-size:34px 78px; position:absolute; top:-19.5px; left:50%; z-index:1;}
-.order .orderInfo dl + dl.minus:after {background-position:0 0;}
-.order .orderInfo dl + dl.equal:after {background-position:0 -39px;}
-.order .orderInfo dl dt {padding:13px 11px; background:#f8f8f8; overflow:hidden; border-bottom:1px solid #ccc;}
-.order .orderInfo dl dt span {width:50%; color:#666; float:left; display:inline-block;}
-.order .orderInfo dl dt span.orderTxt {float:right; text-align:right;}
-.order .orderInfo dl dd {padding:20px 10px; overflow:hidden;}
-.order .orderInfo dl dd + dt {border-top:1px solid #ccc;}
-.order .orderInfo dl dd + dd {border-top:1px solid #e8e8e8;}
-.order .orderInfo dl dd p.price {width:100%; text-align:right; font-size:15px;}
-.order .orderInfo dl dd p.price b {font-size:18px;}
-.order .orderInfo dl dd p.price + ul.odList {margin-top:15px;}
-.order .orderInfo dl dd p.underTxt {color:#9d9d9d; font-size:11px; line-height:130%;}
-.order .orderInfo dl dd.total {background:#f1645c; color:#fff; position:relative;}
-.order .orderInfo dl dd.total p {font-size:15px; line-height:15px;}
-.order .orderInfo dl dd.total p.odListCont {width:200px; margin-top:-9px; position:absolute; top:50%; right:10px;}
-.order .orderInfo dl dd.total p.odListCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:22.5px;}
-.order .orderInfo dl dd.total p span {width:100%; font-size:12px; display:inline-block;}
-.order .orderInfo dl dd span.point {color:#000; line-height:17px;}
-.order .orderInfo dl dd span.point em {color:#666; font-style:normal;}
-.order .orderInfo + table.formWrap {margin-top:20px;}
+.orderInfo {border:4px solid #333; margin-top:15px;}
+.orderInfo dl {width:100%; position:relative;}
+.orderInfo dl + dl {border-top:1px solid #333;}
+.orderInfo dl + dl:after {content:''; width:34px; height:39px; margin-left:-17px; background:url(../images/ico_order.png) no-repeat; background-size:34px 78px; position:absolute; top:-19.5px; left:50%; z-index:1;}
+.orderInfo dl + dl.minus:after {background-position:0 0;}
+.orderInfo dl + dl.equal:after {background-position:0 -39px;}
+.orderInfo dl dt {padding:13px 11px; background:#f8f8f8; overflow:hidden; border-bottom:1px solid #ccc;}
+.orderInfo dl dt span {width:50%; color:#666; float:left; display:inline-block;}
+.orderInfo dl dt span.orderTxt {float:right; text-align:right;}
+.orderInfo dl dd {padding:20px 10px; overflow:hidden;}
+.orderInfo dl dd + dt {border-top:1px solid #ccc;}
+.orderInfo dl dd + dd {border-top:1px solid #e8e8e8;}
+.orderInfo dl dd p.price {width:100%; text-align:right; font-size:15px;}
+.orderInfo dl dd p.price b {font-size:18px;}
+.orderInfo dl dd p.price + ul.odList {margin-top:15px;}
+.orderInfo dl dd p.underTxt {color:#9d9d9d; font-size:11px; line-height:130%;}
+.orderInfo dl dd.total {background:#f1645c; color:#fff; position:relative;}
+.orderInfo dl dd.total p {font-size:15px; line-height:15px;}
+.orderInfo dl dd.total p.odListCont {width:200px; margin-top:-9px; position:absolute; top:50%; right:10px;}
+.orderInfo dl dd.total p.odListCont b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-size:22.5px;}
+.orderInfo dl dd.total p span {width:100%; font-size:12px; display:inline-block;}
+.orderInfo dl dd span.point {color:#000; line-height:17px;}
+.orderInfo dl dd span.point em {color:#666; font-style:normal;}
+.orderInfo + table.formWrap {margin-top:20px;}
 .order table.formWrap + table.formWrap {margin-top:-1px;}
 .order table.formWrap + h3.secTit {margin-top:20px;}
 
@@ -104,8 +104,8 @@ a.agreeBtn.open:after {background-position:0 0;}
 .addressList li .addressCont p + p {margin-top:9px;} 
 .addressList li .addressCont p b,
 .addressList li .addressCont p span {display:inline-block;}
-.addressList li .addressCont p b {width:20%; color:#666; float:left; font-weight:normal;}
-.addressList li .addressCont p span {width:80%; color:#333; float:right; text-align:right;}
+.addressList li .addressCont p b {color:#666; float:left; font-weight:normal;}
+.addressList li .addressCont p span {color:#333; float:right; text-align:right;}
 .addressList li .btnwrap {width:100%; overflow:hidden; margin-top:18px;}
 .addressList li .btnwrap a.btnSizeS {width:49%; margin-bottom:6px;}
 .addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
