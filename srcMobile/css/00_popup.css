@@ -187,5 +187,7 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 
 .msgCat.radioBox label{margin-right: 10px;}
 
-.orderDeliveryWrap {width:100%; height:100%; overflow:hidden; padding-top:15px; background:#e0e0e0;}
-
+.orderDeliveryWrap {width:100%; height:100%; padding-top:15px; background:#e0e0e0;}
+ul.productList li .selectWrap {width:100%; overflow:hidden; margin-top:15px; padding-top:15px; border:1px dashed #ccc;}
+ul.productList li ul.addressList li {padding:0; border:0;}
+ul.productList li .textWrap {border:0; padding:0; margin:0;}
