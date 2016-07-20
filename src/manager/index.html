@@ -52,10 +52,10 @@
 								<p class="cardCat">specialist</p>
 								<h2><b>커먼</b>에는 당신의 생활<br>변화를 줄 <b>전문가</b>를 찾으세요</h2>
 								<p>
-									<input type="text" placeholder="전문가 명을 검색하세요">
-									<label for="">검색</label>
+									<input id='searchField' type="text" placeholder="전문가 명을 검색하세요">
+									<label for="searchButton">검색</label>
 								</p>
-								<button>FIND PROS</button>
+								<button id='searchButton'>FIND PROS</button>
 							</div>
 						</li>
 					</ul>
@@ -63,9 +63,8 @@
 			</form>
 			<div class="wrap">
 				<ul class="tabType01" style="position:relative;z-index:2">
-					<!--<li><a href="">평점순</a></li>-->
-					<li class="on"><a href="#">최신순</a></li>
-					<li><a href="#">공유 많은 순</a></li>
+					<li id='orderTab1'><a href="#newest">최신순</a></li>
+					<li id='orderTab2'><a href="#like">인기순</a></li>
 				</ul>
 				<ul class="cardWrap" id="cardWrap"></ul>
 			</div>

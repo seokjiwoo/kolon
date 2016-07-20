@@ -1,11 +1,11 @@
 <div class="layerPopup order">
-	
+	<!-- 복수 배송지 주소가 없을시 -->
+	<!-- 
 	<div class="popTop">
 		<h3 class="popTit">복수 배송지 선택</h3>
 		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
 	</div>
-	<!-- 복수 배송지 주소가 없을시 -->
-	<!-- <div class="popCon popScroll">
+	<div class="popCon popScroll">
 		<div class="orderDeliveryWrap">
 			<div class="myWrap">
 				<ul class="productList">
@@ -41,9 +41,15 @@
 			</div>
 			<a href="" class="popBtn">확인</a>
 		</div>
-	</div> -->
+	</div>
+	-->
 	<!--// 복수 배송지 주소가 없을시 -->
 	<!-- 복수 배송지 입력 -->
+	
+	<div class="popTop">
+		<h3 class="popTit">복수 배송지 선택</h3>
+		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
+	</div>
 	<div class="popCon popScroll">
 		<div class="orderDeliveryWrap">
 			<div class="myWrap">
@@ -54,20 +60,20 @@
 							<span>코오롱 글로벌</span>
 							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
 						</div>
-						<div class="textWrap">
-							<form method="post" action="/">
-								<fieldset>
-									<legend>새주소 입력 폼</legend>
-									<div class="selectBox">
-										<select title="배송 시 요청사항 선택">
-											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-											<option value="">경비실에 맡겨주세요</option>
-											<option value="">빠른 배송 부탁드립니다.</option>
-											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-										</select>
-									</div>
-								</fieldset>
-							</form>
+						<div class="productBtnWrap">
+							<div class="newAddress">
+								<form method="post" action="/">
+									<fieldset>
+										<legend>배송지 선택 폼</legend>
+										<div class="selectBox">
+											<select title="배송지 선택">
+												<option value="" selected="selected">자택</option>
+												<option value="">회사</option>
+											</select>
+										</div>
+									</fieldset>
+								</form>
+							</div>
 						</div>
 						<ul class="addressList">
 							<li>
@@ -78,9 +84,24 @@
 								</div>
 							</li>
 						</ul>
+						<div class="productBtnWrap">
+							<div class="newAddress">
+								<div class="textWrap">
+									<div class="selectBox">
+										<select title="배송 시 요청사항 선택">
+											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+											<option value="">경비실에 맡겨주세요</option>
+											<option value="">빠른 배송 부탁드립니다.</option>
+											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+										</select>
+									</div>
+									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
+									<p class="countTxt"><span>0</span>/50</p>
+								</div>
+							</div>
+						</div>
 					</li>
 				</ul>
-				
 			</div>
 			<div class="myWrap">
 				<ul class="productList">
@@ -90,6 +111,21 @@
 							<span>코오롱 글로벌</span>
 							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
 						</div>
+						<div class="productBtnWrap">
+							<div class="newAddress">
+								<form method="post" action="/">
+									<fieldset>
+										<legend>배송지 선택 폼</legend>
+										<div class="selectBox">
+											<select title="배송지 선택">
+												<option value="" selected="selected">자택</option>
+												<option value="">회사</option>
+											</select>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+						</div>
 						<ul class="addressList">
 							<li>
 								<div class="addressCont">
@@ -99,30 +135,33 @@
 								</div>
 							</li>
 						</ul>
+						<div class="productBtnWrap">
+							<div class="newAddress">
+								<div class="textWrap">
+									<div class="selectBox">
+										<select title="배송 시 요청사항 선택">
+											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+											<option value="">경비실에 맡겨주세요</option>
+											<option value="">빠른 배송 부탁드립니다.</option>
+											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+										</select>
+									</div>
+									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
+									<p class="countTxt"><span>0</span>/50</p>
+								</div>
+							</div>
+						</div>
 					</li>
 				</ul>
-				<div class="textWrap">
-					<form method="post" action="/">
-						<fieldset>
-							<legend>새주소 입력 폼</legend>
-							<div class="selectBox">
-								<select title="배송 시 요청사항 선택">
-									<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-									<option value="">경비실에 맡겨주세요</option>
-									<option value="">빠른 배송 부탁드립니다.</option>
-									<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-								</select>
-							</div>
-						</fieldset>
-					</form>
-				</div>
 			</div>
+			<a href="" class="popBtn">확인</a>
 		</div>
-		<a href="" class="popBtn">확인</a>
 	</div>
+	
 	<!--// 복수 배송지 입력 -->
 	<!-- 새주소 추가 -->
-	<!-- <div class="popTop">
+	<!-- 
+	<div class="popTop">
 		<h3 class="popTit">새 주소 추가</h3>
 		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
 	</div>
@@ -196,6 +235,7 @@
 			<li><a href="" class="btnSizeB btnColor03 popClose">취소</a></li>
 			<li><a href="" class="btnSizeB btnColor02">확인</a></li>
 		</ul>
-	</div> -->
+	</div>
+	-->
 	<!--// 새주소 추가 -->
 </div>

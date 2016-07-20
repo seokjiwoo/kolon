@@ -287,14 +287,14 @@ module.exports = function() {
 		}
 	};
 	
-	function messagePopup(title, subTitle, popupContent, width, userClass) {
+	function messagePopup(title, popupContent, width, userClass) {
 		if (width == undefined) width = 540;
 		if (String(width).substr(-1) != '%') width += "px";
 		
 		popupOpenHandlerFunction = null;
 		popupCallbackFunction = null;
 
-		var inline = '<div class="popTop"><h4 class="popTit">'+title+'</h4></div><div class="popCon"><p class="subTit">'+subTitle+'</p><div class="popScroll">'+popupContent+'</div></div>';
+		var inline = '<div class="popTop"><h4 class="popTit">'+title+'</h4></div><div class="popCon"><div class="popScroll">'+popupContent+'</div></div>';
 		openPopup(inline, width, userClass);
 	};
 	
@@ -361,7 +361,7 @@ module.exports = function() {
 			href: popupFile,
 			html: popupContent,
 			width: width,
-			height: (isPC ? false : "80%"),
+			height: (isPC ? false : "100%"),
 			maxHeight: (isPC ? false : winH+'px'),
 			fixed: (isPC ? fixed : true),
 			className: "lyPop " + (isPC ? "lyPop-pc " : "lyPop-m ") + userClass,
@@ -388,7 +388,7 @@ module.exports = function() {
 						$.colorbox.resize();
 						break;
 					case 'm':
-						var contentHeight = winH-$('popTop').height()-50;
+						var contentHeight = winH-$('popTop').height()-45;
 						if ($('.fixwrap').length > 0) contentHeight -= $('.fixwrap').height();
 						$('.popCon').css('height', contentHeight+'px');
 						if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();

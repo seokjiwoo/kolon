@@ -131,8 +131,8 @@ module.exports = function() {
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';
 					each.detailUrl = "/manager/detail.html?expertNumber="+each.expertNum;
-					each.background = 'background-color:#c6b19e; background-image:url("'+each.bigImageUrl+'")';
-					each.hoverImage = 'background-image:url("'+each.cardImageUrl+'")';
+					each.background = 'background-color:#c6b19e; background-image:url("'+each.imageUrl+'")';
+					each.hoverImage = 'background-image:url("'+each.portfolios[0]+'")';
 					break;
 			}
 

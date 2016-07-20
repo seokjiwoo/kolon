@@ -16,7 +16,10 @@ module.exports = function() {
 	var cardList;
 
 	var controller = require('../../controller/ExpertsController.js');
-	$(controller).on('expertsListResult', expertListHandler);
+	$(controller).on('expertsNameResult', expertListHandler);
+
+	var searchName = '';
+	var orderCode = 'newest';
 	
 	var callerObj = {
 		/**
@@ -56,12 +59,41 @@ module.exports = function() {
 				}
 			}
 		});
+		
+		$('#searchButton').click(refreshList);
 
-		controller.list();
+		window.onhashchange = hashChangeHandler;
+		hashChangeHandler();
+	}
+
+	function hashChangeHandler() {
+		//$('html, body').scrollTop(0);
+		orderCode = location.hash.substr(1);
+		switch(orderCode) {
+			default:
+				orderCode = 'newest';
+			case 'newest':
+				$('#orderTab1').addClass('on');
+				$('#orderTab2').removeClass('on');
+				break;
+			case 'like':
+				$('#orderTab1').removeClass('on');
+				$('#orderTab2').addClass('on');
+				break;
+		}
+		refreshList();
+	};
+
+	function refreshList(e) {
+		if (e != undefined) e.preventDefault();
+		cardList.removeAllData();
+		controller.name(orderCode, $('#searchField').val());
+		if (e != undefined) e.stopPropagation();
 	}
 
 	function expertListHandler(e, status, result) {
-		$('#expertCount').text(result.experts.length);
-		cardList.appendData(result.experts);
+		console.log(result.data.experts);
+		$('#expertCount').text(result.data.experts.length);
+		cardList.appendData(result.data.experts);
 	};
 }

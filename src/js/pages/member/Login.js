@@ -84,7 +84,7 @@ module.exports = function() {
 	 * 회원 이용약관 본문 핸들링
 	 */
 	function termsContentHandler(e, term) {
-		Super.Super.messagePopup(term.termsName, term.termsName, term.termsContents, 590, 'popEdge');
+		Super.Super.messagePopup(term.termsName, term.termsContents, 590, 'popEdge');
 	};
 	
 	/**

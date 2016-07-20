@@ -72,10 +72,12 @@ function ClassExpertsController() {
 	/**
 	 * 전문가 이름 조회
 	 * GET /apis/experts/name
-	 * @param  {String} expertName
 	 * @param  {String} order      [PD_OPTION_SORT]
+	 * @param  {String} expertName
 	 */
-	function name(expertName, order) {
+	function name(order, expertName) {
+		if (expertName == undefined) expertName = '';
+
 		Super.callApi('/apis/experts/name', 'GET', {
 			'expertName' : expertName,
 			'order' : order
