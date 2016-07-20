@@ -842,12 +842,51 @@ table ul.myCartInfoList li a {color:#999;}
 .haxbgBox .txt p:first-child{color:#000;font-size:28px;}
 .haxbgBox .txt p:last-child{margin-top:30px;color:#fff;font-size:15px;}
 
-.haxList li{margin-top:25px;}
-.haxList li:first-child{margin-top:25px;}
+.haxList > li{margin-top:25px;}
+.haxList > li:first-child{margin-top:25px;}
 .haxwrap{width:306px;margin:0 auto;padding-top:88px;padding-bottom:88px;}
-.haxbox{position:relative;height:300px;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;background:#fff;}
+.haxbox{position:relative;height:300px;padding:0 30px;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;background:#fff;}
 .haxbox:before{content:"";position:absolute;left:0;top:-88px;width:100%;height:88px;background:url("../images/bg_hax_linetop.png") no-repeat 0 0;background-size:100%;}
 .haxbox:after{content:"";position:absolute;left:0;bottom:-88px;width:100%;height:88px;background:url("../images/bg_hax_linebottom.png") no-repeat 0 0;background-size:100%;}
+.haxbox .conbox{position:relative;}
+.haxbox .conbox ul.selectList li{margin-top:25px;}
+.haxbox .conbox p{padding-top:10px;letter-spacing:-2px;text-align:center;line-height:1.4em;font-size:18px;}
+.haxbox .btm{position:absolute;left:0;bottom:0;width:100%;text-align:center;}
+.haxbox .btm .btnSizeS{width:80px;}
+
+.haxbox .ico{position:absolute;right:38px;top:-68px;width:55px;height:63px;overflow:hidden;display:block;background:url("../images/bg_myinfo_haxa.png") no-repeat;text-align:center;color:#fff;}
+.haxbox .ico em{display:block;margin-top:15px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-style:italic;font-weight:bold;font-size:18px;}
+.haxbox .ico.c01{background-position:0 0;background-size:100%;}
+.haxbox .ico.c02{background-position:0 -63px;background-size:100%;}
+.haxbox .ico.c03{background-position:0 -126px;background-size:100%;}
+.haxbox .ico.c04{background-position:0 -189px;background-size:100%;}
+
+.infoCheckList{width:67%;margin:20px auto 0 auto;}
+.infoCheckList:after{content:"";display:block;clear:both;}
+.infoCheckList li{width:50%;float:left;text-align:center;}
+.infoCheckList li:nth-child(3),
+.infoCheckList li:nth-child(4){margin-top:5px;}
+.familyList{text-align:center;margin-top:44px;}
+
+.infoCheck,
+.infoRadio,
+.noinfo input[type="checkbox"]{position:static !important;opacity:1 !important;width:75px;height:75px;display:inline-block;overflow:hidden;background-color:#eee;border-radius:100%;margin:0;-webkit-appearance: none; -moz-appearance: none; appearance: none;}
+
+.infoCheck.bg01{background:url("../images/bg_myinfo01.png") no-repeat 0 0;background-size:75px;}
+.infoCheck.bg02{background:url("../images/bg_myinfo02.png") no-repeat 0 0;background-size:75px;}
+.infoCheck.bg03{background:url("../images/bg_myinfo03.png") no-repeat 0 0;background-size:75px;}
+.infoRadio.bg04{background:url("../images/bg_myinfo04.png") no-repeat 0 0;background-size:75px;}
+.infoRadio.bg05{background:url("../images/bg_myinfo05.png") no-repeat 0 0;background-size:75px;}
+.infoRadio.bg06{background:url("../images/bg_myinfo06.png") no-repeat 0 0;background-size:75px;}
+.infoRadio.bg07{background:url("../images/bg_myinfo07.png") no-repeat 0 0;background-size:75px;}
+.infoRadio.bg08{background:url("../images/bg_myinfo08.png") no-repeat 0 0;background-size:75px;}
+.infoCheck:checked,
+.infoRadio:checked{background-color:#00aeb9;background-position:0 -75px;}
+
+.noinfo{position:relative;width:75px;height:75px;display:inline-block;}
+.noinfo span{position:absolute;left:0;top:29px;width:100%;display:block;color:#00aeb9;}
+.noinfo input[type="checkbox"]:checked{background-color:#00aeb9;}
+.noinfo input[type="checkbox"]:checked + span{color:#fff;}
 
 @media (max-width:320px){
   .scrapWrap ul.scrap li .scrapCont .scrapPhoto p img {width:60px; height:60px;}
