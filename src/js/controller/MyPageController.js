@@ -67,6 +67,7 @@ function ClassMyPageController() {
 				$(callerObj).trigger('myInfoResult', [200, result]);
 			} else {
 				Super.handleError('myInfo', result);
+				$(callerObj).trigger('myInfoResult', [status, result]);
 			}
 		}, true);
 	};
@@ -87,8 +88,9 @@ function ClassMyPageController() {
 				$(callerObj).trigger('myOpinionsResult', [200, result.data.myOpinions]);
 			} else {
 				Super.handleError('myOpinions', result);
+				$(callerObj).trigger('myOpinionsResult', [status, result.data.myOpinions]);
 			}
-		}, false);
+		}, true);
 	};
 	
 	function recentViewItems() {
@@ -97,8 +99,9 @@ function ClassMyPageController() {
 				$(callerObj).trigger('recentViewItemsResult', [200, result]);
 			} else {
 				Super.handleError('recentViewItems', result);
+				$(callerObj).trigger('recentViewItemsResult', [status, result]);
 			}
-		}, false);
+		}, true);
 	};
 	
 	function myPoints() {
