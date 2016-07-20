@@ -83,6 +83,28 @@ function Events() {
 		},
 
 		// [S] Controller Events
+			// MyPage
+			// @see MyPageController.js
+			MYPAGE : {
+				// 내 정보 확인
+				INFO : 'myInfoResult',
+				// 마이커먼 타임라인
+				TIMELINE : 'myTimeLineResult',
+				// 내 의견 묻기 목록
+				OPINIONS : 'myOpinionsResult',
+				// 최근 본 상품 목록
+				RECENT_VIEW_ITEMS : 'recentViewItemsResult',
+				// 포인트 조회
+				POINT : 'myPointsResult',
+				// 포인트 상세
+				POINT_HISTORY : 'pointsHistoryResult',
+				// 알림 유형 코드
+				NOTICE_TYPE : 'noticeTypeCodeResult',
+				// 알림 리스트 조회
+				NOTICE_LIST : 'noticeListResult',
+				// 알림 삭제
+				NOTICE_DELETE : 'noticeDeleteResult'
+			},
 			// Login - 로그인
 			// @see LoginController.js
 			LOGIN : {

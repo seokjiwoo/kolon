@@ -41,10 +41,13 @@ module.exports = function() {
 			wrap : '.js-myCartShop-orderInfo',
 			price : '.js-orderInfo-price',
 			discount : '.js-dicount-price',
-			totalPrice : '.js-orderInfo-totalPrice'
+			delivery : '.js-order-delivery',
+			totalPrice : '.js-orderInfo-totalPrice',
+			moreBtn : '.js-orderInfo-more',
+			moreWrap : '.js-orderInfo-more-wrap'
 		},
 		templates : {
-			wrap : '.singleCard',
+			wrap : '.js-myCartShop-list-wrap',
 			template : '#myCartShop-list-templates'
 		},
 		listSize : '.js-list-size',
@@ -80,6 +83,7 @@ module.exports = function() {
 		self.template = $(self.opts.templates.template);
 
 		self.colorbox = $(self.opts.colorbox);
+		self.chkedList = null;
 	}
 
 	function setBindEvents() {
@@ -141,25 +145,40 @@ module.exports = function() {
 		$.each(chked, function() {
 			list.push($(this).closest(self.opts.cartList.wrap).get(0));
 		});
-		displayUpdate(list);
+
+		self.templatesWrap.find(self.opts.listSize).html(chked.size());
+
+		// 체크 수량에 따라 삭제 버튼 - 활성/비활성화 처리
+		if (chked.size()) {
+			self.templatesWrap.find(self.opts.listDel).removeAttr('disabled');
+		} else {
+			self.templatesWrap.find(self.opts.listDel).attr('disabled',true);
+		}
+
+		self.chkedList = list;
+
+		displayUpdate();
 	}
 
-	function displayUpdate(chked) {
+	function displayUpdate() {
 		orderData = new Array();
 		
-		var list = chked || self.templatesWrap.find(self.opts.cartList.wrap),
+		var list = (self.chkedList === null) ? self.templatesWrap.find(self.opts.cartList.wrap) : self.chkedList,
 		orderInfo = self.templatesWrap.find(self.opts.cartOrderInfo.wrap),
 		info = {},
 		value1 = 0,
 		value2 = 0,
 		totalBaseValue = 0,
 		discountValue = 0,
-		totalSaleValue = 0;
+		totalSaleValue = 0,
+		totalDeliveryValue = 0;
 
 		$.each(list, function() {
 			info = $(this).data('list-info');
-			value1 = (info.basePrice * info.productQuantity) + info.deliveryCharge;
+			value1 = (info.basePrice * info.productQuantity);// + info.deliveryCharge;
 			value2 = (info.salePrice * info.productQuantity) + info.deliveryCharge;
+
+			totalDeliveryValue += info.deliveryCharge;
 
 			totalBaseValue += value1;
 			discountValue += (info.basePrice-info.salePrice)*info.productQuantity;
@@ -178,7 +197,14 @@ module.exports = function() {
 
 		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalBaseValue));
 		orderInfo.find(self.opts.cartOrderInfo.discount).html(util.currencyFormat(discountValue));
+		orderInfo.find(self.opts.cartOrderInfo.delivery).html(util.currencyFormat(totalDeliveryValue));
 		orderInfo.find(self.opts.cartOrderInfo.totalPrice).html(util.currencyFormat(totalSaleValue));
+	}
+
+	function onCartOrderInfoToggler(e) {
+		e.preventDefault();
+
+		$(self.opts.cartOrderInfo.moreWrap).toggle();
 	}
 
 	function displayData(data) {
@@ -187,6 +213,10 @@ module.exports = function() {
 			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
 			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
 			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
+
+			if (util.isLocal()) {
+				eachCartItem.productImageUrl = 'https://dev.koloncommon.com' + eachCartItem.productImageUrl;
+			}
 		});
 
 		var source = self.template.html(),
@@ -204,6 +234,8 @@ module.exports = function() {
 							});
 
 		self.templatesWrap.find(self.opts.listSize).html(self.templatesWrap.find(self.opts.cartList.wrap).size());
+
+		$(self.opts.cartOrderInfo.moreBtn).on('click', onCartOrderInfoToggler);
 	}
 
 	function onControllerListener(e, status, response) {
@@ -217,7 +249,9 @@ module.exports = function() {
 				displayUpdate();
 				setDeleteEvents();
 
-				$('#js-myCartShop-submit').click(function(e){
+				$('#js-myCartShop-submit').click(function(e) {
+					e.preventDefault();
+
 					var loginData = loginDataModel.loginData();
 
 					if (loginData.stateCode == 'BM_MEM_STATE_01') {

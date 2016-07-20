@@ -223,21 +223,26 @@ module.exports = function() {
 	}
 	
 	/**
-	 * initalize page tab
-	 */
+	* initalize page tab
+	*/
 	function initTab() {
 		$('.tabWrap a').on('click', function(e) {// common tab
 			e.preventDefault();
-			var tabBtn = $(this);
-			var tabCon = $(this).attr('href');
-			
+
+			var tabBtn = $(this),
+			href = $(this).attr('href'),
+			tabCon;
+
 			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
-			$(tabCon).show().siblings().hide();
+
+			if (href.substr(0, 1) !== '#') return;
+			if (!$(href).size())  return;
+
+			tabCon = $(href);
+			tabCon.show().siblings().hide();
 
 			// tab toggle 시 cardWrap isotope 설정체크
-			if (!$(tabCon).find('#cardWrap').size()) {
-				return;
-			}
+			if (!tabCon.find('#cardWrap').size()) return;
 
 			// ie9 isotope bugfix
 			eventManager.triggerHandler(ISOTOPE_EVENT.REFRESH);
@@ -249,8 +254,22 @@ module.exports = function() {
 	 */
 	function initTabContentLayout() {
 		if ($('ul').hasClass('infoSlider')) initTabSlider();
+		
+		initTabDotdotdot();
+	};
+
+	function initTabDotdotdot() {
+		if ($('.except').data('dotdotdot')) {
+			$('.except').dotdotdot('destroy');
+		}
+		
 		$('.except').dotdotdot({watch:'window'});
+
 		if ($('p').hasClass('except02')) {
+			if ($('.except02').data('dotdotdot')) {
+				$('.except02').dotdotdot('destroy');
+			}
+			
 			$('.except02').dotdotdot({
 				after: 'a.readmore',
 				watch:'window',
@@ -263,7 +282,7 @@ module.exports = function() {
 				}
 			});
 		}
-	};
+	}
 	
 	/**
 	 * slide in detail page
@@ -417,6 +436,8 @@ module.exports = function() {
 
 		$('.optionNum a.btnMinus, .optionNum a.btnPlus').off('click', optionNumHandler)
 														.on('click', optionNumHandler);
+
+		initTabDotdotdot();
 	}
 
 	// Colorbox Cleanup 시점
