@@ -19,7 +19,7 @@
 				</div>
 
 				<!-- [D] #my-activity-message-template - wrap -->
-				<div class="wrapT plate js-my-activity-message-wrap"></div>
+				<div class="wrapT js-my-activity-message-wrap"></div>
 				<!--// [D] #my-activity-message-template - wrap -->
 
 				<!-- [D] #my-activity-opnions-template - wrap -->
@@ -105,6 +105,9 @@
 <style>
 	.js-my-activity-recent-wrap.is-loading {opacity:0}
 	.js-my-activity-recent-wrap {opacity:1}
+
+	/* 답변 메시지 없을 경우 - 레이아웃 보정 */
+	.js-my-activity-message-wrap .previewList > li > a{display:block}
 </style>
 
 <script id="my-activity-recent-template" type="text/x-handlebars-template">
@@ -134,27 +137,26 @@
 	{{!--// my-activity-recent-template --}}
 </script>
 
-
 <script id="my-activity-message-template" type="text/x-handlebars-template">
 	{{!-- my-activity-message-template --}}
-	<h2 class="conTit plateTit icoN2">1:1 메시지 <a href="/myPage/message.html">전체보기</a></h2>
+	<h2 class="conTit">1:1 메시지 <a href="/myPage/message.html">전체보기</a></h2>
 		{{!-- 데이터 유무에 따른 화면 처리 --}}
 		{{#if inquiryMemberResponses.length}}
 			<ul class="previewList message">
 			{{#each inquiryMemberResponses}}
-			<li>
-				<a href="/myPage/messageDetail.html?saleMemberNumber={{saleMemberNumber}}">
-					<a href="messageDetail.html">
-						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
+				{{#vxIF @index "<" 3}}
+				<li>
+					<a href="/myPage/messageDetail.html?saleMemberNumber={{saleMemberNumber}}">
+						<div class="pic"><img src="{{profileImageUrl}}" alt=""></div>
 						<p class="date dateR">2016.04.25 14:04</p>
-						<h3 class="listTit"><b>{{corporationName}} </b>{{saleMemberName}}</h3>
-						<span class="count">2</span>
-						<span class="count">2</span>
-						<p class="except">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고 싶으시면 신청 현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고 싶으시면 신청</p>
+						<h3 class="listTit"><b>Wadiz </b>홍길동</h3>
+						<span class="count">{{answerNewCount}}</span>
+						<p class="except">{{answerContents}}</p>
 					</a>
-				</a>
-			</li>
-			<!-- <li>
+				</li>
+				{{/vxIF}}
+			<!-- 
+			<li>
 				<a href="messageDetail.html">
 					<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
 					<p class="date dateR">2016.04.25 14:04</p>
@@ -182,7 +184,7 @@
 				</a>
 			</li> -->
 			{{/each}}
-		</ul>
+			</ul>
 		{{else}}
 			{{!-- 데이터 유무에 따른 화면 처리 --}}
 			<p class="noContent" style="display:block">1:1 메시지가 없습니다.</p>

@@ -127,9 +127,17 @@ module.exports = function() {
 			// 1:1 메세지 리스트
 			case MESSAGE_EVENT.LIST:
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+
+				if (result.inquiryMemberResponses) {
+					$.each(result.inquiryMemberResponses, function(index, inquiryMember) {
+						if (util.isLocal()) {
+							inquiryMember.profileImageUrl = 'http://dev.koloncommon.com' + inquiryMember.profileImageUrl;
+						}
+					});
+				}
 				displayData(result, $(self.opts.templates.message.template), $(self.opts.templates.message.wrap));
 				break;
-				
+
 			// 내 의견 묻기 목록
 			case MYPAGE_EVENT.OPINIONS:
 				switch(status) {
