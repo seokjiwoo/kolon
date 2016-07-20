@@ -136,7 +136,7 @@ function ClassMyPageController() {
 
 	/**
 	 * 알림 리스트 타입 코드 받아오기
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/common-code-controller/listCommonCodeUsingGET ? groupCode=BM_NOTICE_TYPE
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/common-code-controller/listCommonCodeUsingGET ? groupCode=BM_NOTICE_TYPE
 	 */
 	function noticeTypeCode() {
 		Super.callApi('/apis/codes/BM_NOTICE_TYPE', 'GET', {}, function(status, result) {
@@ -151,7 +151,7 @@ function ClassMyPageController() {
 
 	/**
 	 * 알림 리스트
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/notice-controller/getNoticeListUsingGET
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/notice-controller/getNoticeListUsingGET
 	 */
 	function noticeList(page, qty) {
 		Super.callApi('/apis/notices', 'GET', {}, function(status, result) {
@@ -166,7 +166,7 @@ function ClassMyPageController() {
 
 	/**
 	 * 알림 삭제
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/notice-controller/removeNoticeUsingDELETE
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/notice-controller/removeNoticeUsingDELETE
 	 */
 	function noticeDelete() {
 		Super.callApi('/apis/notices', 'DELETE', {}, function(status, result) {

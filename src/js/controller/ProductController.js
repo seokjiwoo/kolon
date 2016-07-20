@@ -27,7 +27,7 @@ function ClassProductController() {
 			shopList: shopList,
 			// 뉴폼(=시공형 상품) 리스트
 			newFormList: newFormList,
-			// 상품 평가및 리뷰
+			// 상품 평가및 리뷰 (사용안함)
 			evals : evals,
 			// 상품 정보
 			info : info,
@@ -35,11 +35,13 @@ function ClassProductController() {
 			likes : likes,
 			// 상품 판매자 정보
 			partnerInfo : partnerInfo,
-			// 상품 미리보기
+			// 추천상품 리스트
+			recommend : recommend,
+			// 상품 미리보기 (사용안함)
 			preview : preview,
-			// 연관상품 리스트
+			// 연관상품 리스트 (사용안함)
 			related : related,
-			// 연관상품 리스트
+			// 리뷰 리스트 (사용안함)
 			reviews : reviews,
 			// 다중옵션 리스트
 			options : options
@@ -90,7 +92,7 @@ function ClassProductController() {
 	/**
 	 * 상품 평가및 리뷰
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductEvalUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductEvalUsingGET
 	 * @ GET /apis/products/{productNumber}/eval
 	 */
 	function evals(productNumber) {
@@ -108,7 +110,7 @@ function ClassProductController() {
 	/**
 	 * 상품 정보
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductInfoUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductInfoUsingGET
 	 * @ GET /apis/products/{productNumber}/info
 	 */
 	function info(productNumber) {
@@ -125,7 +127,7 @@ function ClassProductController() {
 	/**
 	 * 상품 좋아요
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductInfoUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductInfoUsingGET
 	 * @ POST /apis/products/{productNumber}/likes
 	 */
 	function likes(productNumber, productSvcCode) {
@@ -172,7 +174,7 @@ function ClassProductController() {
 	/**
 	 * 상품 판매자 정보
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductPartnerInfoUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductPartnerInfoUsingGET
 	 * @ GET /apis/products/{productNumber}/partnerInfo
 	 */
 	function partnerInfo(productNumber) {
@@ -187,9 +189,30 @@ function ClassProductController() {
 	}
 
 	/**
+	 * 추천상품 리스트
+	 * @param  {Number} productNumber
+	 * @param  {String} productServiceSectionCode
+	 * @see  https://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getRecommendProductUsingGET
+	 * @ GET /apis/products/{productNumber}/recommend
+	 */
+	function recommend(productNumber, productServiceSectionCode) {
+		Super.callApi('/apis/products/'+productNumber+'/recommend', 'GET', {
+			"productServiceSectionCode": productServiceSectionCode
+		}, function(status, result) {
+			if (status == 200) {
+				result.data.productServiceSectionCode = productServiceSectionCode;
+				$(callerObj).trigger('recommendProductResult', [status, result]);
+			} else {
+				Super.handleError('recommendProduct', result);
+				$(callerObj).trigger('recommendProductResult', [status, result]);
+			}
+		}, true);
+	}
+
+	/**
 	 * 상품 미리보기
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductPreviewUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductPreviewUsingGET
 	 * @ GET /apis/products/{productNumber}/preview
 	 */
 	function preview(productNumber) {
@@ -206,7 +229,7 @@ function ClassProductController() {
 	/**
 	 * 연관상품 리스트
 	 * @param  {Number} productNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductRelatedUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductRelatedUsingGET
 	 * @ GET /apis/products/{productNumber}/related
 	 */
 	function related(productNumber) {
@@ -224,7 +247,7 @@ function ClassProductController() {
 	 * 연관상품 리스트
 	 * @param  {Number} productNumber
 	 * @param  {Number} reviewNumber
-	 * @see  http://uppp.oneplat.co/swagger/swagger-ui.html#!/product-controller/getProductReviewUsingGET
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductReviewUsingGET
 	 * @ GET /apis/products/{productNumber}/reviews/{reviewNumber}
 	 */
 	function reviews(productNumber, reviewNumber) {

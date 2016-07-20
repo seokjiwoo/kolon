@@ -70,7 +70,10 @@ module.exports = function() {
 		$('#requestMoving').click(function(e){
 			e.preventDefault();
 			loginData = loginDataModel.loginData();
-			if (loginData.stateCode == 'BM_MEM_STATE_01') {
+			if (loginData == null) {
+				alert('로그인이 필요합니다.');
+				location.href = '/member/login.html';
+			} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
 				$(document).trigger('verifyMember', ['LIVING']);
 			} else {
 				location.href = 'requestMoving.html';

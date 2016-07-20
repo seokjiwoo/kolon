@@ -160,14 +160,14 @@ function Events() {
 			},
 			// 마이홈즈 - 타임라인
 			// @see MyPageController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/my-page-controller
+			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/my-page-controller
 			TIMELINE : {
 				// 마이커먼 리스트
 				LIST : 'myTimeLineResult'
 			},
 			// 마이홈즈 - 장바구니
 			// @see MyPageController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/my-page-controller
+			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/my-page-controller
 			CART : {
 				// 장바구니 리스트
 				LIST : 'myCartListResult',
@@ -178,7 +178,7 @@ function Events() {
 			},
 			// 스크랩
 			// @see ScrapController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/scrap-controller
+			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/scrap-controller
 			SCRAP : {
 				// 스크랩 목록
 				LIST : 'scrapListResult',
@@ -199,7 +199,7 @@ function Events() {
 			},
 			// 팔로잉
 			// @see FollowController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/follow-controller
+			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/follow-controller
 			FOLLOWING : {
 				// 팔로우 리스트
 				LIST : 'followsListResult',
@@ -210,7 +210,7 @@ function Events() {
 			},
 			// ProductController - 상품
 			// @see ProductController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/product-controller
+			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/product-controller
 			PRODUCT : {
 				// 샵 상품 목록
 				SHOP_LIST: 'shopProductListResult', 
@@ -231,11 +231,13 @@ function Events() {
 				// 연관상품 리스트
 				RELATED : 'productRelatedResult',
 				// 상품 리뷰 상세
-				REVIEWS : 'productReviewsResult'
+				REVIEWS : 'productReviewsResult',
+				// 추천 상품 리스트
+				RECOMMEND: 'recommendProductResult'
 			},
 			// OrderController - 주문조회
 			// @see OrderController.js
-			// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/me-order-controller
+			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/me-order-controller
 			ORDER : {
 				// 주문/배송 현황 조회
 				ORDER_LIST : 'myOrdersListResult',
@@ -260,7 +262,7 @@ function Events() {
 
 				// OrderController - 주문서 작성
 				// @see OrderController.js
-				// @see http://uppp.oneplat.co/swagger/swagger-ui.html#/me-order-controller
+				// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/me-order-controller
 					// 배송형 주문서 작성 페이지 조회
 					ORDERS_INFO : 'myOrdersInfoResult',
 					// 주문완료

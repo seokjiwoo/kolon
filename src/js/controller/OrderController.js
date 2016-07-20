@@ -148,7 +148,7 @@ function ClassOrderController() {
 	/**
 	 * 장바구니 등록
 	 * @param {Arrary} myCartRequestList
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
 	 */
 	function addMyCartList(myCartRequestList) {
 		Super.callApi('/apis/me/cart', 'POST', myCartRequestList, function(status, result) {
@@ -164,7 +164,7 @@ function ClassOrderController() {
 	/**
 	 * 장바구니 수량 변경
 	 * @param {Arrary} myCartRequestList
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPUT
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPUT
 	 */
 	function updateMyCartList(productNumber, myCartRequestList) {
 		Super.callApi('/apis/me/cart/'+productNumber, 'PUT', myCartRequestList, function(status, result) {
@@ -182,7 +182,7 @@ function ClassOrderController() {
 	/**
 	 * 장바구니 삭제
 	 * @param  {Array} cartNumber
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/my-page-controller/removeMyCartUsingDELETE
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/my-page-controller/removeMyCartUsingDELETE
 	 */
 	function deleteMyCartList(cartNumber) {
 		Super.callApi('/apis/me/cart', 'DELETE', {
@@ -550,7 +550,7 @@ function ClassOrderController() {
 
 	/**
 	 * 배송형 주문서 작성 페이지 조회
-	 * @see http://uppp.oneplat.co/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
 	 "products": [
 		{
 			"orderOptionNumber": "67",

@@ -25,6 +25,10 @@ module.exports = function() {
 	
 	var loginController = require('../../controller/LoginController');
 	var loginDataModel = require('../../model/LoginModel');
+
+	var CardList = require('../../components/CardList.js');
+	var recommendShopList;
+	var recommendNewFormList;
  
  	var criteriaOptionCount;
 	var optionsUseFlag;
@@ -71,13 +75,9 @@ module.exports = function() {
 
 		setBtnsEvents();
 
-		//productController.evals(self.productNumber);
 		productController.info(self.productNumber);
 		// info call 후에 추가
 		productController.partnerInfo(self.productNumber);
-		//productController.preview(self.productNumber);
-		productController.related(self.productNumber);
-		//productController.reviews(self.productNumber, self.reviewNumber);
 
 		$('#sellerCard').bxSlider({
 			pager:false,
@@ -86,15 +86,12 @@ module.exports = function() {
 			maxSlides: 2,
 			slideWidth: 285
 		});
-		$.each($('.slider04'), function(){
-			$(this).bxSlider({
-				pager:false,
-				slideMargin: 10,
-				minSlides: 4,
-				maxSlides: 4,
-				slideWidth: 285
-			});
-		});
+		
+		recommendShopList = CardList();
+		recommendShopList.init('#recommendShopWrap', true);
+		
+		recommendNewFormList = CardList();
+		recommendNewFormList.init('#recommendShopWrap');
 	}
 
 	function setElements() {
@@ -266,7 +263,7 @@ module.exports = function() {
 								destoryBtnsEvents();
 								setBtnsEvents();
 							});
-	}
+	};
 
 	function onControllerListener(e, status, response, elements) {
 		var eventType = e.type,
@@ -293,16 +290,6 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
-			/*	case PRODUCT_EVENT.EVALS:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
-					$.map(result, function(each) {
-						debug.log(result);
-					});
-
-					displayData(result, $('#detail-events-templates'), $('.js-detail-events-wrap'));
-					displayData(result, $('#detail-tags-templates'), $('.js-detail-tags-wrap'));
-					break;*/
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
@@ -339,6 +326,9 @@ module.exports = function() {
 
 					productController.options(self.productNumber, criteriaOptionCount, 0, selectedOptions);
 					productController.partnerInfo(self.productNumber);
+					
+					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_01');
+					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_02');
 					break;
 				case PRODUCT_EVENT.LIKES:
 					switch(status) {
@@ -356,21 +346,33 @@ module.exports = function() {
 					optionsHandler(result.data.options);
 					break;
 				case PRODUCT_EVENT.PARTNER_INFO:
-					//debug.log(fileName, 'onControllerListener', eventType, status, response);
-					//$('.' + eventType).html(JSON.stringify(result.data.partner));
 					displayData(result.data.partner, $('#info-partner-template'), $('.js-info-partner-wrap'));
 					break;
-				case PRODUCT_EVENT.PREVIEW:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
-					break;
-				case PRODUCT_EVENT.RELATED:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
-					break;
-				case PRODUCT_EVENT.REVIEWS:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
+				case PRODUCT_EVENT.RECOMMEND:
+					switch(response.data.productServiceSectionCode) {
+						case 'PD_PROD_SVC_SECTION_01':
+							// 샵
+							recommendShopList.appendData(result.data.productCards);
+							$('#recommendShopWrap').bxSlider({
+								pager:false,
+								slideMargin: 10,
+								minSlides: 4,
+								maxSlides: 4,
+								slideWidth: 285
+							});	
+							break;
+						case 'PD_PROD_SVC_SECTION_02':
+							// 리폼  
+							recommendNewFormList.appendData(result.data.productCards);
+							$('#recommendNewFormWrap').bxSlider({
+								pager:false,
+								slideMargin: 10,
+								minSlides: 4,
+								maxSlides: 4,
+								slideWidth: 285
+							});
+							break;
+					}
 					break;
 			// [E] PRODUCT - 상품
 		}

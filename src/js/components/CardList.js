@@ -44,28 +44,32 @@ module.exports = function() {
 
 	var wrap,
 	_wrapId;
+
+	var fixedFlag;
 	
-	function init(wrapId) {
+	function init(wrapId, _fixedFlag) {
+		fixedFlag = _fixedFlag;
 		_wrapId = wrapId || '#cardWrap';
 		wrap = $(_wrapId);
 
-		wrap.isotope({
-			itemSelector : _wrapId + ' > li:not(.stamp)',
-			stamp : _wrapId + ' > .stamp',
-			layoutMode : 'packery',
-			packery : {
-				columnWidth : 285,
-				gutter : 20
-			}
-		});
+		if (!fixedFlag) {
+			wrap.isotope({
+				itemSelector : _wrapId + ' > li:not(.stamp)',
+				stamp : _wrapId + ' > .stamp',
+				layoutMode : 'packery',
+				packery : {
+					columnWidth : 285,
+					gutter : 20
+				}
+			});
 
-		// isotope event
-		eventManager.off(ISOTOPE_EVENT.REFRESH, refresh)
-					.off(ISOTOPE_EVENT.DESTROY, destory);
+			// isotope event
+			eventManager.off(ISOTOPE_EVENT.REFRESH, refresh)
+						.off(ISOTOPE_EVENT.DESTROY, destory);
 
-		eventManager.on(ISOTOPE_EVENT.REFRESH, refresh)
-					.on(ISOTOPE_EVENT.DESTROY, destory);
-
+			eventManager.on(ISOTOPE_EVENT.REFRESH, refresh)
+						.on(ISOTOPE_EVENT.DESTROY, destory);
+		}
 		initOverEffect();
 		initCardRadio();
 	};
@@ -85,10 +89,14 @@ module.exports = function() {
 	function html(tags) {
 		var insertElements = $(tags);
 
-		wrap.append(insertElements)
+		if (!fixedFlag) {
+			wrap.append(insertElements)
 			.isotope('appended', insertElements)
 			.isotope('layout');
-			
+		} else {
+			wrap.append(insertElements);
+		}
+		
 		initOverEffect();
 		initCardRadio();
 
@@ -122,8 +130,6 @@ module.exports = function() {
 					each.detailUrl = "/newForm/detail.html?productNumber="+each.cardNumber;
 					each.productType = each.productTypeCodeName.toLowerCase();
 					break;
-				case 'PROD':
-					each.cardTypeCode = 'DP_CARD_TYPE_03';
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
 					each.detailUrl = "/shop/detail.html?productNumber="+each.cardNumber;
@@ -156,8 +162,12 @@ module.exports = function() {
 	};
 
 	function removeAllData() {
-		while (wrap.data('isotope').items.length) {
-			wrap.isotope('remove', wrap.data('isotope').items[0].element);
+		if (!fixedFlag) {
+			while (wrap.data('isotope').items.length) {
+				wrap.isotope('remove', wrap.data('isotope').items[0].element);
+			}
+		} else {
+			wrap.empty();
 		}
 		$(callerObj).trigger('cardRemoveAll');
 	}
@@ -165,7 +175,7 @@ module.exports = function() {
 	function initOverEffect(e) {
 		cleanOverEffect(e);
 
-		$('#cardWrap > li').each(function(){ // main card mouseover
+		$(_wrapId+' > li').each(function(){ // main card mouseover
 			$(this).on('mouseover', onCardConOver)
 			$(this).on('mouseleave', onCardConLeave);
 			$(this).find('.cardDetail').on('mouseover', onCardDetailOver)
@@ -174,7 +184,7 @@ module.exports = function() {
 	};
 
 	function cleanOverEffect(e) {
-		$('#cardWrap > li').each(function(){ // main card mouseover
+		$(_wrapId+' > li').each(function(){ // main card mouseover
 			$(this).off('mouseover', onCardConOver)
 			$(this).off('mouseleave', onCardConLeave);
 			$(this).find('.cardDetail').off('mouseover', onCardDetailOver)
