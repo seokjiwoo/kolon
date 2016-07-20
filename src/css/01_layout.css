@@ -1,4 +1,7 @@
-body{margin:0;line-height:1;font-family:'NotoSansL', sans-serif; min-width:1240px;}
+body{margin:0;line-height:1;font-family:'NotoSansL', sans-serif; min-width:1240px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+font-smoothing: antialiased;}
 body.popupWindow {min-width:auto}
 a{text-decoration:none;}
 a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
