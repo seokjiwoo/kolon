@@ -59,7 +59,7 @@ module.exports = function() {
 			// 휴대폰 번호
 			findMethod = 'phone';
 			tempId = id;
-			infoController.findPasswordByPhone(id);
+			infoController.verifyMemberByPhone(id, 'PASSWORD');
 		} else {
 			// 이메일
 			if (util.checkVaildEmail(id)) {

@@ -57,9 +57,9 @@ function ClassMemberInfoController() {
 			 */
 			findPasswordByMail: findPasswordByMail,
 			/**
-			 * 비밀번호 찾기 (휴대폰)
+			 * 비밀번호 찾기 (휴대폰) 
 			 */
-			findPasswordByPhone: findPasswordByPhone,
+			//findPasswordByPhone: findPasswordByPhone,
 			/**
 			 * 휴대폰 본인인증
 			 */
@@ -184,24 +184,17 @@ function ClassMemberInfoController() {
 	};
 	
 	/**
-	 * 비밀번호 찾기 (휴대폰)
-	 */
-	function findPasswordByPhone(id) {
-		Super.callApi('/apis/authorize/vertify?type=PASSWORD&phoneNumber='+id, 'GET', {}, function(status, result) {
-			if (status == 200) {
-				openKMCISWindow(result.data.identityUrl);
-			} else {
-				Super.handleError('findPasswordByPhone', result);
-				$(callerObj).trigger('findPwResult', [status, result]);
-			}
-		}, false);
-	};
-
-	/**
 	 * 회원 실명인증 요청
+	 * PASSWORD, https://dev.koloncommon.com/member/passwordFind.html
+	 * IDENTITY, https://dev.koloncommon.com/myPage/profileEdit.html
+	 * LIVING, https://dev.koloncommon.com/homeService/
+	 * SHOP, https://dev.koloncommon.com/shop/detail.html
+	 * NEWFORM,
+	 * MYCART_NEWFORM,
+	 * MYCART_SHOP,
 	 */
-	function verifyMemberByPhone(number) {
-		Super.callApi('/apis/authorize/vertify?type=IDENTITY&phoneNumber='+number, 'GET', {}, function(status, result) {
+	function verifyMemberByPhone(number, type) {
+		Super.callApi('/apis/authorize/vertify?type='+type+'&phoneNumber='+number, 'GET', {}, function(status, result) {
 			if (status == 200) {
 				openKMCISWindow(result.data.identityUrl);
 			} else {

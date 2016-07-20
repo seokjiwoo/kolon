@@ -7,8 +7,7 @@ module.exports = function() {
 	var infoController = require('../../controller/MemberInfoController');
 	$(infoController).on('findPwResult', findPwResultHandler);
 	$(infoController).on('verifyMemberResult', findPwResultHandler);
-	$(infoController).on('authorizePhoneRequestResult', authorizePhoneRequestHandler);
-	$(infoController).on('authorizePhoneConfirmResult', authorizePhoneConfirmHandler);
+	
 	var util = require('../../utils/Util.js');
 	
 	var findMethod;
@@ -63,7 +62,7 @@ module.exports = function() {
 			// 휴대폰 번호
 			findMethod = 'phone';
 			tempId = id;
-			infoController.findPasswordByPhone(id);
+			infoController.verifyMemberByPhone(id, 'PASSWORD');
 		} else {
 			// 이메일
 			if (util.checkVaildEmail(id)) {

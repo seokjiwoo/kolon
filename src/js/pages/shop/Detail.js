@@ -233,7 +233,7 @@ module.exports = function() {
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
 		} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
-			$(document).trigger('verifyMember');
+			$(document).trigger('verifyMember', 'SHOP');
 		} else {
 			var cartData = orderData.concat();
 			$.map(cartData, function(each) {

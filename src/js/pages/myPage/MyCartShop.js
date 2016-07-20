@@ -223,7 +223,7 @@ module.exports = function() {
 					var loginData = loginDataModel.loginData();
 
 					if (loginData.stateCode == 'BM_MEM_STATE_01') {
-						$(document).trigger('verifyMember');
+						$(document).trigger('verifyMember', ['MYCART_SHOP']);
 					} else {
 						Cookies.set('instantOrder', orderData);
 						location.href = '/order/orderGoods.html';

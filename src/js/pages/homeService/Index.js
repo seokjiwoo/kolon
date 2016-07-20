@@ -71,7 +71,7 @@ module.exports = function() {
 			e.preventDefault();
 			loginData = loginDataModel.loginData();
 			if (loginData.stateCode == 'BM_MEM_STATE_01') {
-				$(document).trigger('verifyMember');
+				$(document).trigger('verifyMember', ['LIVING']);
 			} else {
 				location.href = 'requestMoving.html';
 			}

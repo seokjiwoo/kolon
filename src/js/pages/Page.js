@@ -418,17 +418,18 @@ module.exports = function() {
 	
 	/**
 	 * 휴대폰 수정(=실명인증) 진행
+	 * 
 	 */
-	function requestVerifyMember(e) {
+	function requestVerifyMember(e, authType) {
 		e.preventDefault();
-
+		console.log('verityMember', authType);
 		Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
 			onOpen:function() {
 				$('#requestVerifyMemberForm').submit(function(e){
 					e.preventDefault();
 					var id = $('#verifyPhoneNumber').val();
 					if (util.checkValidMobileNumber(id)) {
-						memberInfoController.verifyMemberByPhone(id);
+						memberInfoController.verifyMemberByPhone(id, 'IDENTITY');
 					} else {
 						alert('휴대폰 번호를 정확하게 입력해주세요.');
 					}

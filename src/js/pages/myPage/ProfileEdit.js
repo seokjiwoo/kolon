@@ -361,7 +361,7 @@ module.exports = function() {
 	 */
 	function submitMobileEditForm(e) {
 		e.preventDefault();
-		$(document).trigger('verifyMember');
+		$(document).trigger('verifyMember', ['IDENTITY']);
 		e.stopPropagation();
 	};
 
