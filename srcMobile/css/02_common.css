@@ -164,9 +164,10 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 .selectBox:after {content:''; width:10.5px; height:6px; margin-top:-3px; background:url(../images/select_arrow.png) 0 0 no-repeat; background-size:10.5px 6px; position:absolute; top:50%; right:10px; z-index:-1;}
 .selectBox select {width:100%; text-align:center; padding:0; border:0; margin:0; color:#666; border:0;-webkit-appearance: none; -moz-appearance: none; appearance: none; background:transparent; text-align:left;}
 
-.phone .selectBox{width:30%;}
-.phone .selectBox select {width:100%;}
-.phone input[type="text"]{width: 28%;}
+.phone {vertical-align:middle;}
+.phone .selectBox{width:30%; vertical-align:middle;}
+.phone .selectBox select {width:100%; vertical-align:middle; line-height:110%;}
+.phone input[type="text"]{width: 28%; vertical-align:middle;}
 .phone label.hide{opacity: 0;}
 .phone label{display: inline-block;width: 5px;height: 1px;background: #999;vertical-align: middle;font-size: 0;}
 
