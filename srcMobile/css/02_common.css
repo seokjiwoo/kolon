@@ -428,6 +428,10 @@ h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-
 .productList .productBtnWrap {width:100%; overflow:hidden; padding-top:15px; }
 .productList .productBtnWrap .newAddress {width:100%; padding:15px 0; border-top:1px dashed #ccc; overflow:hidden;}
 
+.productList li .selectWrap {width:100%; overflow:hidden; margin-top:15px; padding-top:15px; border:1px dashed #ccc;}
+.productList li ul.addressList li {padding:0; border:0;}
+.productList li .textWrap {border:0; padding:0; margin:0;}
+
 ul.optList {background:#fff;}
 ul.optList > li {width:100%; padding:15px 0; position:relative; font-family:'NotoSansB', 'RobotoB', sans-serif;}
 ul.optList > li + li {border-top:1px solid #666;}

@@ -175,7 +175,6 @@ ul.popList + .btnWrap,
 a.btnDetail {display: inline-block;padding: 0 20px;color: #000;font-size: 13px;line-height: 38px;border:1px solid #d9d9d9;font-family:'NotoSansR', sans-serif;}
 a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;margin-left: 20px;vertical-align: middle;background: url('../images/ico_plusW.png') no-repeat 0 -12px;}
 
-
 .dateChangePop .timeSet th, .dateChangePop .timeSet td{width: 50%;}
 .dateChangePop .timeSet .calendar{display: block;width:195px;margin:0 0 10px 0; }
 .dateChangePop .calendar span.calInp input[type=text]{width: 180px;color: #666;}
@@ -188,9 +187,6 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .msgCat.radioBox label{margin-right: 10px;}
 
 .orderDeliveryWrap {width:100%; padding:15px 0 60px; background:#e0e0e0;}
-ul.productList li .selectWrap {width:100%; overflow:hidden; margin-top:15px; padding-top:15px; border:1px dashed #ccc;}
-ul.productList li ul.addressList li {padding:0; border:0;}
-ul.productList li .textWrap {border:0; padding:0; margin:0;}
 
 .bankTime {margin-top:25px;}
 .popTb.bankTime table tr td a {color:#999;}
