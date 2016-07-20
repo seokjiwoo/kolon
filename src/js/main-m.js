@@ -295,6 +295,11 @@ $(document).ready(function() {
 			case 'myPage-point':
 				PageModuleClass = require('./pagesMobile/myPage/Point.js');
 				break;
+
+			// 나의 활동 내역 - 모바일만 적용
+			case 'myPage-myActivity':
+				PageModuleClass = require('./pagesMobile/myPage/MyActivity.js')
+				break;
 		// [E] 마이커먼 myPage
 
 		case 'popup-addressBook':
