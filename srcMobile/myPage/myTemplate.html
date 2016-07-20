@@ -710,6 +710,29 @@
 							</tr>
 						</tbody>
 					</table>
+					<table class="formWrap tbL">
+						<caption>시공 상품 구매 안내</caption>
+						<colgroup>
+							<col style="width:100%;">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">시공 상품 구매 안내</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<ul class="myCartInfoList">
+										<li>통신사 회원등급별 월 최대 50만원까지 결제가 가능합니다.</li>
+										<li>1년 이내 휴대폰 결제 내역이 없는 경우 결제가 불가능합니다.</li>
+										<li>부분취소 진행 시 당월 한도가 부족한 경우 환불 정책에 따라 캐쉬로 환불됩니다.</li>
+										<li>한도문의는 모빌리언스(<a href="tel:1600-0523">1600-0523</a>),다날(<a href="tel:1566-3355">1566-3355</a>)로 해주시기 바랍니다.</li>
+									</ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				<!--// 테이블 -->
 
@@ -902,6 +925,249 @@
 					</ul>
 				</div>
 				<!--// 견적 상세정보 -->
+
+				<div class="wrapT">
+					<h3 class="conTit">결제 방법</h3>
+					<div class="tabWrap orderTab">
+						<span class="on"><a href="#pay1" class="btnSizeS btnColor05">신용카드</a></span>
+						<span><a href="#pay2" class="btnSizeS btnColor05">무통장 입금</a></span>
+						<span><a href="#pay3" class="btnSizeS btnColor05">실시간 계좌이체</a></span>
+						<span><a href="#pay4" class="btnSizeS btnColor05">휴대폰 결제</a></span>
+					</div>
+					<div>
+						<!-- 신용카드 -->
+						<div class="pay" id="pay1">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>신용카드 결재에 관한 카드 선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">카드선택</th>
+												<td>
+													<select title="수령지 선택">
+														<option value="" label="카드 선택" selected="selected">카드 선택</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">할부방식</th>
+												<td>
+													<select title="수령지 선택">
+														<option value="" label="일시불" selected="selected">일시불</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<h4 class="tbTit">무이자 할부적용 카드</h4>
+									<div class="tbBox">
+										<ul class="tbList">
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ12월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ 6 , 12개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 신용카드 -->
+						<!-- 무통장 입금 -->
+						<div class="pay" id="pay2" style="display:none;">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제 안내, 현금영수증 발금신청 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">은행선택</th>
+												<td>
+													<select title="은행선택">
+														<option value="" label="은행 선택" selected="selected">은행 선택</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="bank01">입금자</label></th>
+												<td>
+													<input type="text" class="" id="bank01" value=""/>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">예금주</th>
+												<td class="t_r">예금주명</td>
+											</tr>
+											<tr>
+												<th scope="row">입금<br/>마감일</th>
+												<td class="t_r">2016. 05. 30</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="underTxtMark">
+										주문시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.
+									</div>
+									<h3 class="conTit">현금영수증 발급 신청</h3>
+									<div class="payTab tabWrap">
+										<span class="on"><a href="#cashCt1" class="radioBtn">개인 소득 공제</a></span>
+										<span><a href="#cashCt2" class="radioBtn">사업자 지출 증빙</a></span>
+									</div>
+									<div class="">
+										<!-- 개인소득공제 -->
+										<div class="" id="cashCt1">
+											<div class="shipPhone">
+												<!-- 개인소득공제 : 휴대폰 번호 -->
+												<p>
+													<select title="소득공제 방법 선택" style="width:auto;">
+														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+														<option value="" label="현금영수증 카드">현금영수증 카드</option>
+													</select>
+												</p>
+												<p>
+													<select title="휴대폰 통신사 번호 선택">
+														<option value="" label="010" selected="selected">010</option>
+														<option value="" label=""></option>
+													</select> - 
+													<input type="text" title="휴대폰 앞자리 입력"/> - 
+													<input type="text" title="휴대폰 뒷자리 입력"/>
+												</p>
+												<!--// 개인소득공제 : 휴대폰 번호 -->
+												<!-- 개인소득공제 : 현금영수증 카드 -->
+												<!--
+												<p class="inp4">
+													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
+												</p>
+												-->
+												<!--// 개인소득공제 : 현금영수증 카드 -->
+											</div>
+											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 개인소득공제 -->
+										<!-- 사업자 지출 증빙 -->
+										<div id="cashCt2" style="display:none;">
+											<div class="shipPhone">
+												<p>
+													<input type="text" title="사업자번호 앞자리 입력"/> - 
+													<input type="text" title="사업자번호 중간자리 입력"/> - 
+													<input type="text" title="사업자번호 뒷자리 입력"/>
+												</p>
+											</div>
+											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 사업자 지출 증빙 -->
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 무통장 입금 -->
+						<!-- 실시간 계좌이체  -->
+						<div class="pay" id="pay3" style="display:none;">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<div class="underTxtMark">결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</div>
+									<ul class="infoBtnWrap">
+										<li><p><a href="" class="btnSizeS btnColor03">실시간 계좌이체 안내</a></p></li>
+										<li><p><a href="" class="btnSizeS btnColor03">은행별 이용시간</a></p></li>
+									</ul>
+									<h3 class="conTit">현금영수증 발급 신청</h3>
+									<div class="payTab tabWrap">
+										<span class="on"><a href="#cashCt2_1" class="radioBtn">개인 소득 공제</a></span>
+										<span><a href="#cashCt2_2" class="radioBtn">사업자 지출 증빙</a></span>
+									</div>
+									<div class="">
+										<!-- 개인소득공제 -->
+										<div id="cashCt2_1">
+											<div class="shipPhone">
+												<!-- 개인소득공제 : 휴대폰 번호 -->
+												<p>
+													<select title="소득공제 방법 선택" style="width:auto;">
+														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+														<option value="" label="현금영수증 카드">현금영수증 카드</option>
+													</select>
+												</p>
+												<p>
+													<select title="휴대폰 통신사 번호 선택">
+														<option value="" label="010" selected="selected">010</option>
+														<option value="" label=""></option>
+													</select> - 
+													<input type="text" title="휴대폰 앞자리 입력"/> - 
+													<input type="text" title="휴대폰 뒷자리 입력"/>
+												</p>
+												<!--// 개인소득공제 : 휴대폰 번호 -->
+												<!-- 개인소득공제 : 현금영수증 카드 -->
+												<!--
+												<p class="inp4">
+													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
+												</p>
+												-->
+												<!--// 개인소득공제 : 현금영수증 카드 -->
+												<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+											</div>
+										</div>
+										<!--// 개인소득공제 -->
+										<!-- 사업자 지출 증빙 -->
+										<div id="cashCt2_2" style="display:none;">
+											<div class="shipPhone">
+												<p>
+													<input type="text" title="사업자번호 앞자리 입력"/> - 
+													<input type="text" title="사업자번호 중간자리 입력"/> - 
+													<input type="text" title="사업자번호 뒷자리 입력"/>
+												</p>
+											</div>
+											<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 사업자 지출 증빙 -->
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 실시간 계좌이체  -->
+						<!-- 휴대폰 결제  -->
+						<div class="pay" id="pay4" style="display:none;">
+							<table class="formWrap tbL">
+								<caption>시공 상품 구매 안내</caption>
+								<colgroup>
+									<col style="width:100%;">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">시공 상품 구매 안내</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<ul class="myCartInfoList">
+												<li>통신사 회원등급별 월 최대 50만원까지 결제가 가능합니다.</li>
+												<li>1년 이내 휴대폰 결제 내역이 없는 경우 결제가 불가능합니다.</li>
+												<li>부분취소 진행 시 당월 한도가 부족한 경우 환불 정책에 따라 캐쉬로 환불됩니다.</li>
+												<li>한도문의는 모빌리언스(<a href="tel:1600-0523">1600-0523</a>),다날(<a href="tel:1566-3355">1566-3355</a>)로 해주시기 바랍니다.</li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--// 휴대폰 결제  -->
+					</div>
+				</div>
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>

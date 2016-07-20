@@ -504,7 +504,8 @@ ul.myCartInfoList li {padding-left:6px; line-height:130%; color:#666; font-size:
 ul.myCartInfoList li + li {margin-top:5px;}
 ul.myCartInfoList li:before {content:''; width:2px; height:2px; border-radius:50%; background:#666; position:absolute; top:7px; left:0;}
 table ul.myCartInfoList {padding:5px 0;}
-table ul.myCartInfoList li {color:#999;}
+table ul.myCartInfoList li,
+table ul.myCartInfoList li a {color:#999;}
 .myCartTotal {width:100%; overflow:hidden; position:relative;}
 .myCartTotal .total{padding:20px 50px 20px 15px; border-top:1px solid #ccc; overflow:hidden; position:relative; background:#fff;}
 .myCartTotal p.totalTit {width:40%; float:left; color:#333; font-family:'NotoSansM', 'RobotoM', sans-serif; line-height:20px; font-size:15px;}

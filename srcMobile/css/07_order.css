@@ -153,3 +153,8 @@ ul.reserInfo > li p.reserTxt span {width:60%; float:right; text-align:right; dis
 .order ul.homeType li.hType02:before {background-position:50% -69px;}
 .order ul.homeType li.hType03:before {background-position:50% -139px;}
 .order ul.homeType li.hType04:before {background-position:50% -208px;}
+
+.order .orderTab {width:100%; overflow:hidden; margin-top:15px;}
+.order .orderTab span {width:49%; display:inline-block; margin-bottom:5px;}
+.order .orderTab span a {width:100%;}
+.order .orderTab span.on a {background:#2d427a;}
