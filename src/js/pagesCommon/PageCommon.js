@@ -221,21 +221,26 @@ module.exports = function() {
 	}
 	
 	/**
-	 * initalize page tab
-	 */
+	* initalize page tab
+	*/
 	function initTab() {
 		$('.tabWrap a').on('click', function(e) {// common tab
 			e.preventDefault();
-			var tabBtn = $(this);
-			var tabCon = $(this).attr('href');
-			
+
+			var tabBtn = $(this),
+			href = $(this).attr('href'),
+			tabCon;
+
 			$(tabBtn).parent().addClass('on').siblings().removeClass('on');
-			$(tabCon).show().siblings().hide();
+
+			if (href.substr(0, 1) !== '#') return;
+			if (!$(href).size())  return;
+
+			tabCon = $(href);
+			tabCon.show().siblings().hide();
 
 			// tab toggle 시 cardWrap isotope 설정체크
-			if (!$(tabCon).find('#cardWrap').size()) {
-				return;
-			}
+			if (!tabCon.find('#cardWrap').size()) return;
 
 			// ie9 isotope bugfix
 			eventManager.triggerHandler(ISOTOPE_EVENT.REFRESH);
