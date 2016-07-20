@@ -12,8 +12,8 @@
 			<section id="">
 				<div class="tabParents">
 					<ul class="tabSquare">
-						<li class="on"><a href="#">시공 상품 내역</a></li>
-						<li><a href="#">시공 취소 .환불 내역</a></li>
+						<li class="on"><a href="/myPage/myService.html">시공 상품 내역</a></li>
+						<li><a href="/myPage/myServiceCancel.html">시공 취소 .환불 내역</a></li>
 					</ul>
 				</div>
 				<div class="periodSearch">
@@ -22,31 +22,35 @@
 						<em><i></i></em>
 					</a>
 					<div class="searchArea">
-						<ul class="btnList">
-							<li class="acitve"><a href="#">1주일</a></li>
+						<ul class="btnList js-sort-date">
+							<li><a href="#">1주일</a></li>
 							<li><a href="#">2주일</a></li>
-							<li><a href="#">1개월</a></li>
+							<li class="js-default"><a href="#">1개월</a></li>
 							<li><a href="#">3개월</a></li>
 							<li><a href="#">6개월</a></li>
 						</ul>
-						<div class="datePic">
+						<div class="datePic js-range-picker">
 							<ul>
 								<li>
 									<span class="dateInp">
-										<input type="text" value="2016.04.20" id="datePic01" class='datePicker' />
+										<input type="text" value="" class="datePicker js-alt-from" readonly="readonly"/>
+										<a href="#" class="calBtn js-btn-from">날짜선택</a>
+										<div class="cal-container js-picker-from"></div>
 									</span> 
 								</li>
 								<li><span>-</span></li>
 								<li>
 									<span class="dateInp">
-										<input type="text" value="2016.04.20" id="datePic02" class='datePicker' />
+										<input type="text" value="" class="datePicker js-alt-to" readonly="readonly"/>
+										<a href="#" class="calBtn js-btn-to">날짜선택</a>
+										<div class="cal-container js-picker-to"></div>
 									</span>
 								</li>
 							</ul>
 						</div>
-						<div class="searchbox">
-							<input type="text" placeholder="검색어를 입력해주세요" />
-							<button><span class="hide">검색</span></button>
+						<div class="searchbox js-order-search">
+							<input type="text" class="js-inp" placeholder="검색어를 입력해주세요" />
+							<button class="js-submit"><span class="hide">검색</span></button>
 						</div>
 					</div>
 				</div>
@@ -150,4 +154,18 @@
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<!-- [D] 임시 구성 -->
+<style>
+	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
+	.datePic ul {overflow:visible;height:30px}
+	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
+	.js-order-filter a[data-filter] {display:inline-block;color:#999}
+	.js-order-filter.is-active-1 li:nth-child(1) a[data-filter] {color:#fff}
+	.js-order-filter.is-active-2 li:nth-child(2) a[data-filter] {color:#fff}
+	.js-order-filter.is-active-3 li:nth-child(3) a[data-filter] {color:#fff}
+	.js-order-filter.is-active-4 li:nth-child(4) a[data-filter] {color:#fff}
+
+</style>
+
 </body>

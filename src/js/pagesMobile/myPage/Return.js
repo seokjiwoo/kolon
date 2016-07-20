@@ -9,8 +9,8 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/Return.js';
 
-	var SuperClass = require('../Page.js'),
-	Super = SuperClass(),
+	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),
 	controller = require('../../controller/OrderController.js'),
@@ -54,7 +54,7 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
 		
 		debug.log(fileName, $, util, controller, eventManager, events, COLORBOX_EVENT);
 
