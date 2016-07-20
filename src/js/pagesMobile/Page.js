@@ -14,6 +14,8 @@ module.exports = function() {
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX;
+
+	$(document).on('verifyMember', requestVerifyMember);
 	
 	var callerObj = {
 		/**
@@ -143,6 +145,31 @@ module.exports = function() {
 			$(this).find('ul').css('width',totalWidth+margin);
 		})
 	}
+
+	/**
+	 * 휴대폰 수정(=실명인증) 진행
+	 */
+	function requestVerifyMember(e) {
+		e.preventDefault();
+
+		Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
+			onOpen:function() {
+				$('#requestVerifyMemberForm').submit(function(e){
+					e.preventDefault();
+					var id = $('#verifyPhoneNumber').val();
+					if (util.checkValidMobileNumber(id)) {
+						memberInfoController.verifyMemberByPhone(id);
+					} else {
+						alert('휴대폰 번호를 정확하게 입력해주세요.');
+					}
+					e.stopPropagation();
+				});
+			}
+		});
+		
+		e.stopPropagation();
+	};
+	
 
 	/**
 	 * 내 정보 갱신 반영
