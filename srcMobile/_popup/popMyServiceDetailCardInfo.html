@@ -39,17 +39,109 @@
 				<div class="payInfoWrap">
 					<dl class="payInfo">
 						<dt>
-							<span></span>
-							<span class="price"><strong></strong></span>
+							<span>할부 1회차</span>
+							<span class="price"><b>1,249,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
 						</dt>
-						<dd>
-							<span></span>
-							<span></span>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>할부 2회차</span>
+							<span class="price"><b>1,249,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>할부 3회차</span>
+							<span class="price"><b>1,249,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>할부 4회차</span>
+							<span class="price"><b>1,249,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>할부 5회차</span>
+							<span class="price"><b>1,249,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>할부 6회차</span>
+							<span class="price"><b>1,249,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
+						</dd>
+					</dl>
+					<dl class="payInfo total">
+						<dt>
+							<span>합계</span>
+							<span class="price"><b>7,494,000</b>원</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<p><span>예정청구년일</span><span>2016.01</span></p>
+							<p><span>할부원금</span><span>833,000 원</span></p>
+							<p><span>할부이자</span><span>416,000 원</span></p>
+							<p><span>월할부 청구금</span><span>1,249,000 원</span></p>
 						</dd>
 					</dl>
 				</div>
+				<p class="underTxtMark">상세문의는 고객센터(070-0000-0000)로 문의 부탁 드립니다. </p>
 			</div>
-			<a href="" class="popBtn">확인</a>
 		</div>
 	</div>
+	<a href="" class="popBtn">확인</a>
 </div>
+<script language="javascript" type="text/javascript">
+//<![CDATA[
+	$('.payInfoMore').on('click', function() { 
+		$('.payInfoMore').removeClass('opened')
+		$('.payInfoSlide').hide();
+		$(this).toggleClass('opened');
+		$(this).parent().next().slideToggle();
+	});
+//]]>
+</script>

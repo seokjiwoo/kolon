@@ -68,12 +68,12 @@
 .members .accountList .btn{float: right;width:160px;}
 .members .accountList .loginSns:before{width:25px;margin-right: 10px;}
 
-.members .lifeStyle{width:188px;padding-top:30px;margin:0 auto;}
+.members .lifeStyle{width:280px;padding-top:30px;margin:0 auto; text-align:center;}
 .members .lifeStyle p{line-height:1.4em;font-size:22px;font-family:'RobotoR','NotoSansR', sans-serif;color:#333;}
-.members .lifeStyle img{width:201px;margin-top:8px;}
-.members .loginForm{padding:0 30px;margin-top:30px;}
+.members .lifeStyle img{max-width:280px; margin-top:8px;}
+.members .loginForm{padding:0 30px;margin-top:7px;}
 .members .loginForm > div{padding-bottom:20px;border-bottom:1px solid #ccc;}
-.members .loginForm > div > p{text-align:center;font-family:'RobotoB','NotoSansB', sans-serif;}
+.members .loginForm > div > p{padding-bottom:18px; border-bottom:2px solid #666; text-align:center;font-family:'RobotoB','NotoSansB', sans-serif; font-size:15px;}
 .members .loginForm ul{margin-top:12px;}
 .members .loginForm ul li{margin-top:6px;}
 .members .loginForm ul li:first-child{margin-top:0;}
@@ -82,28 +82,28 @@
 .members .stateBox:after{content:"";display:block;clear:both;}
 .members .stateBox p{float:left;}
 .members .stateBox a{float:right;padding:4px 0;}
-.members .policy{margin-top:20px;padding:0 10px;letter-spacing:-1px;text-align:center;line-height:1.4em;color:#333;font-family:'RobotoR','NotoSansR', sans-serif;}
-.members .policy span{color:#00aeb9;text-decoration:underline;}
-.members .policy .btnPop {color:#00aeb9;text-decoration:underline}
+.members .policy{max-width:280px; width:100%; margin:20px auto;padding:0 10px;letter-spacing:-1px;text-align:left;line-height:1.4em;color:#333;font-family:'RobotoR','NotoSansR', sans-serif;}
+.members .policy span{color:#b08967;text-decoration:underline;}
+.members .policy .btnPop {color:#b08967;text-decoration:underline}
 .members .btnPop{display: inline-block;margin:0;border-radius:0;background:none;padding:0}
 
 .snsList{margin-top:20px;}
 .snsList li{padding:0 30px;margin-top:6px;}
 .snsList li:first-child{margin-top:0;}
 .snsBtn{position:relative;display:block;border:1px solid #ccc;border-radius:20px;text-align:center;font-family:'RobotoB','NotoSansB', sans-serif;letter-spacing:-1px;}
-.snsBtnS{height:30px;font-size:13px;text-align:left !important;}
+.snsBtnS{height:30px;font-size:13px;text-align:left !important; background:url("../images/ico_sns.png") no-repeat; background-size:10px 137px;}
 .snsBtnS span{display:block;padding-top:6px;padding-left:46px;}
 .snsBtnS:before{position:absolute;left:36px;top:8px;content:"";display:block;width:1px;height:12px;background:#ccc;}
-.snsBtnS.facebook{background:url("../images/ico_sns.png") no-repeat 16px 7px;background-size:10px;}
-.snsBtnS.naver{background:url("../images/ico_sns.png") no-repeat 16px -40px;background-size:10px;}
-.snsBtnS.kakao{background:url("../images/ico_sns.png") no-repeat 16px -75px;background-size:10px;}
-.snsBtnS.twitter{background:url("../images/ico_sns.png") no-repeat 16px -119px;background-size:10px;}
-.snsBtnM{height:35px;font-size:13px;}
+.snsBtnS.facebook{background-position: 16px 7px;}
+.snsBtnS.naver{background-position: 16px -40px;}
+.snsBtnS.kakao{background-position: 16px -75px;}
+.snsBtnS.twitter{background-position: 16px -119px;}
+.snsBtnM{height:35px;font-size:13px;background:url("../images/ico_sns.png") no-repeat;}
 .snsBtnM span{display:block;padding-top:11px;}
 .snsBtnM:before{position:absolute;left:55px;top:11px;content:"";display:block;width:1px;height:12px;background:#ccc;}
-.snsBtnM.facebook{background:url("../images/ico_sns.png") no-repeat 26px 10px;background-size:10px;}
-.snsBtnM.naver{background:url("../images/ico_sns.png") no-repeat 26px -37px;background-size:10px;}
-.snsBtnM.kakao{background:url("../images/ico_sns.png") no-repeat 26px -81px;background-size:10px;}
+.snsBtnM.facebook{ background-position:26px 10px;background-size:10px 137px;}
+.snsBtnM.naver{background-position: 26px -30px;background-size:10px 137px;}
+.snsBtnM.kakao{background-position: 26px -72px;background-size:10px 137px;}
 
 .members .accTxt{text-align:center;margin-top:25px;}
 .members .accTxt em,
