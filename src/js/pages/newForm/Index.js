@@ -99,7 +99,11 @@ module.exports = function() {
 		cardList.init();	// 카드 리스트
 
 		self.colorbox = $(opts.colorbox.target);
-		$('#mainSlider').bxSlider();
+		$('#mainSlider').bxSlider({
+			auto:true,
+			autoHover:true,
+			pause:5000
+		});
 	}
 
 	function setBindEvents() {

@@ -91,7 +91,11 @@ module.exports = function() {
 
 		self.colorbox = $(opts.colorbox.target);
 		
-		$('#mainSlider').bxSlider();
+		$('#mainSlider').bxSlider({
+			auto:true,
+			autoHover:true,
+			pause:5000
+		});
 	}
 
 	function setBindEvents() {
