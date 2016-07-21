@@ -1,48 +1,84 @@
 <!DOCTYPE html>
-<html lang="ko-kr">
+<html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 좋아요"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 뉴폼"} -->
 </head>
-<body data-page-id="myPage-like">
-	<div class="wrapper scrap">
+<body data-page-id="search-result">
+	<div class="wrapper search">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
-				<div class="fixWrap">
-					<h2 class="pageTit">좋아요</h2>
-					<div class="pageTop scrapTop">
-						<p>내가 좋아요한 카드 목록이 표시됩니다.</p>
+				<div class="tagList">
+					<a href="#">#북유럽</a>
+					<a href="#">#모던프렌치</a>
+					<a href="#">#럭셔리</a>
+					<a href="#">#모던프렌치</a>
+					<a href="#">#인터스트리얼</a>
+					<a href="#">#모던프렌치</a>
+				</div>
+				<div class="newFormWrap">
+					<div class="newFormVisual">
+						뉴폼 디자인 반영전 슬라이드 영역
+						<!-- <h3 class="nfTit"><img src="/images/newFormSlide_title.png" alt=""/></h3>
+						<div class="newFormSlide">
+							<ul class="nfSlide">
+								<li>
+									<a href="#">
+										<img src="/images/temp20.jpg" alt=""/>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="/images/temp20.jpg" alt=""/>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="/images/temp20.jpg" alt=""/>
+									</a>
+								</li>
+							</ul>
+						</div> -->
 					</div>
-					<div class="scrapbtnTopR"><a href="#" class="btnSizeS btnColor03">좋아요 삭제</a></div>
-					<!-- 좋아요 삭제 누르면 나타남 -->
-					<!-- 
-					<div class="scrapbtnTop">
+				<div class="searchDetail">
+					<div class="searchDetailWrap">
 						<form method="post" action="/">
 							<fieldset>
-								<legend>스크랩 이미지</legend>
-								<p class="checkbox checkAll">
-									<input type="checkbox" id="checkAll"/>
-									<label for="checkAll">모두 선택</label>
-								</p>
-								<p class="btnR">
-									<button><b>6</b>개 삭제</button>
-									<button>취소</button>
-								</p>
+								<legend>검색결과 조건 정렬 선택</legend>
+								<p class="sdTit">총 <b>150</b>개 상품</p>
+								<a href="../_popup/popDetailedMore.html" class="btnPop detailBtn" data-user-class="pop">상세조건</a><!-- 뉴폼 상세조건 필터 -->
+								<div class="selectBox">
+									<select name="" title="검색결과 정렬 선택" class="">
+										<option value="" selected="selected">최신순</option>
+										<option value="">인기순</option>
+										<option value="">가격높은순</option>
+										<option value="">가격낮은순</option>
+										<option value="">스크랩 많은 순</option>
+									</select>
+								</div>
 							</fieldset> 
 						</form>
 					</div>
-					-->
-					<!--// 좋아요 삭제 누르면 나타남 -->
 				</div>
-				<form method="post" action="/">
+				<div class="resultWrap">
+					<!-- 카드 모듈
+						cardType01 -> 뉴폼
+						cardType02 -> 리빙몰
+						cardType03 -> 임차인
+						cardType04 -> -
+						cardType05 -> 생활서비스
+						cardType06 -> 매거진
+						cardType07 -> 전문가
+						cardType08 -> 수익률 알림형 (헤더에서만 사용)
+						cardType09 -> 라이프, 키워드, sns, app
+						cardType10 -> SPECIALIST
+
+						cardSize01 -> 285x328
+						cardSize02 -> 285x499
+						cardSize03 -> 285x676
+					 -->
 					<ul class="cardWrap" id="cardWrap" >
 						<li class="card cardType01 cardSize03">
-							<!-- checkBox : 좋아요 삭제 누르면 나타남 -->
-							<p class="checkbox">
-								<input type="checkbox" id="check01">
-								<label for="check01"></label>
-							</p>
-							<!--// checkBox -->
 							<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
@@ -79,15 +115,12 @@
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
 								<!--// hover 제어 버튼 -->
+								<!-- flag -->
+								<div class="today"><p><span><b>20</b>%</span></p></div>
+								<!--// flag -->
 							</div>
 						</li>
 						<li class="card cardType02 cardSize02">
-							<!-- checkBox -->
-							<p class="checkbox">
-								<input type="checkbox" id="check01">
-								<label for="check01"></label>
-							</p>
-							<!--// checkBox -->
 							<div class="hexagon" style="background-image: url('/images/temp04.jpg')"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
@@ -120,15 +153,12 @@
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
 								<!--// hover 제어 버튼 -->
+								<!-- flag -->
+								<div class="today"><p><span><b>20</b>%</span></p></div>
+								<!--// flag -->
 							</div>
 						</li>
 						<li class="card cardType03 cardSize02">
-							<!-- checkBox -->
-							<p class="checkbox">
-								<input type="checkbox" id="check01">
-								<label for="check01"></label>
-							</p>
-							<!--// checkBox -->
 							<div class="hexagon" style="background-image: url('/images/temp04.jpg')"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
@@ -164,12 +194,6 @@
 							</div>
 						</li>
 						<li class="card cardType06 cardSize02">
-							<!-- checkBox -->
-							<p class="checkbox">
-								<input type="checkbox" id="check01">
-								<label for="check01"></label>
-							</p>
-							<!--// checkBox -->
 							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
@@ -190,12 +214,6 @@
 							</div>
 						</li>
 						<li class="card cardType07 cardSize02">
-							<!-- checkBox -->
-							<p class="checkbox">
-								<input type="checkbox" id="check01">
-								<label for="check01"></label>
-							</p>
-							<!--// checkBox -->
 							<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
@@ -244,18 +262,9 @@
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
 								<!--// hover 제어 버튼 -->
-								<!-- flag -->
-								<div class="hi"></div>
-								<!--// flag -->
 							</div>
 						</li>
 						<li class="card cardType05 cardSize01">
-							<!-- checkBox -->
-							<p class="checkbox">
-								<input type="checkbox" id="check01">
-								<label for="check01"></label>
-							</p>
-							<!--// checkBox -->
 							<div class="hexagon" style="background-image: url('/images/temp08.jpg')"><!-- 배경이미지 -->
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
@@ -276,8 +285,13 @@
 								</ul>
 							</div>
 						</li>
+						<li class="cardTitle newForm stamp">
+							<div class="cardTitleCont">
+							</div>
+						</li>
 					</ul>
-				</form>
+					
+				</div>
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
@@ -287,7 +301,7 @@
 	;(function(win, $) {
 		'use strict';
 		$(function() {
-			var _wrapId = '#cardWrap',
+			var _wrapId = '.cardWrap',
 			wrap = $(_wrapId);
 
 			wrap.isotope({
