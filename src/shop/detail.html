@@ -49,8 +49,8 @@
 						<ul class="unitPrice">
 							<li>
 								<h4>배송비 {{deliverCharge}}원</h4>
-								{{#vxIF discountSetupYn "==" "Y"}}
-									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountRate}}<i>%</i></span></p>
+								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
+									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
 									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
 								{{else}}
 									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
