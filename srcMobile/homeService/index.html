@@ -32,12 +32,12 @@
 				</div>
 
  				<div class="tabType03Fix payTab tabWrap js-menu-tab">
- 					<span class="on"><a href="#homeService1">이사</a></span>
- 					<span><a href="#homeService2">청소</a></span>
-					<span><a href="#homeService3">세탁</a></span>
+ 					<span class="on"><a href="#move">이사</a></span>
+ 					<span><a href="#cleaning">청소</a></span>
+					<span><a href="#washing">세탁</a></span>
  				</div>
  				<div>
- 					<div id="homeService1" class="serviceConBox">
+ 					<div id="move" class="serviceConBox">
  						<h3>휴일처럼 편안한 <br><span>이사서비스</span></h3>
  						<p>이사 준비부터 입주까지 한번에 해결!<br>
 						합리적인 가격과 실속 있는 서비스로 찾아 뵙겠습니다.</p>
@@ -52,7 +52,18 @@
  						</ul>
  					</div>
 
- 					<div id="homeService3" class="serviceConBox washingCon">
+ 					<div id="cleaning" class="serviceConBox cleaningCon">
+ 						<h3>청소 <br><span>청소</span></h3>
+ 						<p>청소</p>
+ 						<p class="serviceCon serviceCon02"><img src="../images/serviceM_con02.png"></p>
+ 						<ul class="starIco">
+ 							<li>
+ 								청소
+ 							</li>
+ 						</ul>
+ 					</div>
+
+ 					<div id="washing" class="serviceConBox washingCon">
  						<h3>수거부터 배달까지 <br>간편한 <span>세탁서비스</span></h3>
  						<p>불편하게 세탁소에 직접 들리지 말고 COMMON에<br>
  						맡기시면 원하는 장소에서 수거하고 배달해드립니다.</p>
@@ -64,26 +75,22 @@
  							</li>
  						</ul>
  					</div>
- 				</div>    
+ 				</div>
  				<!-- 하단 고정 버튼 -->
- 				<div class="btmFix"><a href="" class="btnSizeB btnColor03 popClose">서비스 신청하기</a></div>
+				<div class="btmFix">
+					<a href="#" data-submit-role="#move" class="btnSizeB btnColor03 is-show">서비스 신청하기</a>
+					<a href="http://wahome.co.kr/booking_step1" target="_blank" data-submit-role="#cleaning" class="btnSizeB btnColor03">서비스 신청하기</a>
+					<a href="/homeService/requestWashing.html" data-submit-role="#washing" data-submit-role="move" class="btnSizeB btnColor03">서비스 신청하기</a>
+				</div>
  				<!-- @@include ../_template/footer.html -->
  		</div>  
  	</div>
 
-<script>
-	;(function(win, $) {
-		'use strict';
-
-		$(function() {
-			$('.js-menu-tab').find('a').on('click', function(e) {
-				var target = $(e.currentTarget),
-				hash = target.attr('href');
-
-				win.location.hash = hash;
-			});
-		});
-	})(window, window.jQuery);
-</script>
+<!-- [D] 임시 구성 -->
+<style>
+	[data-page-id="homeService"] [data-submit-role] {display:none}
+	[data-page-id="homeService"] [data-submit-role].is-show {display:block}
+	.serviceConBox.cleaningCon {display:none}
+</style>
 
 </body>

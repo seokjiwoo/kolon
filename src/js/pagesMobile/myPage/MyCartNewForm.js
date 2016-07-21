@@ -127,15 +127,14 @@ module.exports = function() {
 
 	function onOptionNumChange(e, target, value) {
 		var info = target.closest(self.opts.cartList.wrap).data('list-info');
-		info.productQuantity = value;
+		info.quantity = value;
 
 		target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
 		displayUpdate();
 
 		controller.updateMyCartList(info.productNumber, {
 			"orderOptionNumber": target.data().optionNum,
-			"optionQuantity": value,
-			"productQuantity": value
+			"quantity": value
 		});
 	}
 
@@ -175,23 +174,22 @@ module.exports = function() {
 
 		$.each(list, function() {
 			info = $(this).data('list-info');
-			value1 = (info.basePrice * info.productQuantity);// + info.deliveryCharge;
-			value2 = (info.salePrice * info.productQuantity) + info.deliveryCharge;
+			value1 = (info.basePrice * info.quantity);// + info.deliveryCharge;
+			value2 = (info.salePrice * info.quantity) + info.deliveryCharge;
 
-			totalDeliveryValue += info.deliveryCharge;
+			totalDeliveryValue += (info.deliveryCharge || 0);
 
 			totalBaseValue += value1;
-			discountValue += (info.basePrice-info.salePrice)*info.productQuantity;
+			discountValue += (info.basePrice-info.salePrice)*info.quantity;
 			totalSaleValue += value2;
 
 			$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
-			$(this).find(self.opts.optionNum).html(info.productQuantity);
+			$(this).find(self.opts.optionNum).html(info.quantity);
 
 			orderData.push({
 				"productNumber": info.productNumber,
 				"orderOptionNumber": info.optionNumber,
-				"productQuantity": info.productQuantity,
-				"optionQuantity": info.productQuantity,
+				"quantity": info.quantity,
 			});
 		});
 

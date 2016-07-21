@@ -115,7 +115,13 @@ function ClassUtils() {
 			 * 	로컬 환경 체크 : localhost || 192.168 ~ && :3000
 			 * @type {Boolean}
 			 */
-			isLocal : isLocal
+			isLocal : isLocal,
+			/**
+			 * @description
+			 * 	레퍼러 체크 - 유효 레퍼러(kolocommon내 url) 일시 url 반환
+			 * @type {String}
+			 */
+			getReferrer : getReferrer
 		};
 	}
 	
@@ -309,6 +315,20 @@ function ClassUtils() {
 
 	function isLocal() {
 		return (/localhost/).test(location.host) || (location.host.indexOf('192.168.') > -1 && location.port === '3000');
+	}
+
+	function getReferrer() {
+		var referrer = window.document.referrer;
+
+		if (!referrer) {
+			return '';
+		}
+
+		if (isLocal() || (/koloncommon/).test(referrer)) {
+			return referrer;
+		} else {
+			return '';
+		}
 	}
 
 }

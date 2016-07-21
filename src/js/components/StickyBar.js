@@ -22,8 +22,11 @@ function StickyBar() {
 		marginPos : 0
 	};
 
+	var _isReady = false;
+
 	var callerObj = {
-		init : init
+		init : init,
+		isReady : isReady
 	},
 	instance, self;
 	
@@ -44,6 +47,8 @@ function StickyBar() {
 		setBindEvents();
 
 		onScrollListener();
+
+		_isReady = true;
 	}
 
 	function setElements() {
@@ -107,6 +112,10 @@ function StickyBar() {
 
 	function onResizeListener() {
 		onScrollListener();
+	}
+
+	function isReady() {
+		return _isReady;
 	}
 
 }

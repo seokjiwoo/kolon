@@ -11,6 +11,10 @@ module.exports = function() {
 
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
+
+	var controller = require('../../controller/MemberInfoController');
+
+	var memberNumber;
 	
 	var callerObj = {
 		/**
@@ -23,6 +27,21 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
-		debug.log(fileName, $, util);
-	}
+		
+		memberNumber = util.getUrlVar().memberNumber;
+		
+	};
+
+	function getMemberInformationHandler(e, status, result) {
+		debug.log(result);
+
+		//renderData(magazineData, '#description-templates', '#description-wrap', true);
+	};
+
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
+	};
 };

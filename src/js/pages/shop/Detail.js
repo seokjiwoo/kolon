@@ -17,6 +17,7 @@ module.exports = function() {
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	DropDownScroll = require('../../components/DropDownScroll'),
+	stickyBar = require('../../components/StickyBar.js'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	CART_EVENT = events.CART,
 	PRODUCT_EVENT = events.PRODUCT,
@@ -243,6 +244,27 @@ module.exports = function() {
 		}
 	};
 
+	function onStickyShareEnter() {
+		$(this).addClass('is-hover');
+		
+		$(this).off('mouseleave', onStickyShareLeave)
+				.on('mouseleave', onStickyShareLeave);
+	}
+
+	function onStickyShareLeave() {
+		var isClipHover = $(this).find('.zeroclipboad-is-hover').size();
+		if (isClipHover) {
+			$(this).off('mouseleave', onStickyShareLeave);
+			return;
+		}
+		$(this).off('mouseleave', onStickyShareLeave);
+		$(this).removeClass('is-hover');
+	}
+
+	function setStickySnsShare() {
+		$('.hoverSocialBtn').on('mouseenter', onStickyShareEnter);
+	}
+
 	// Handlebars 마크업 템플릿 구성
 	function displayData(data, template, templatesWrap) {
 		template = template || self.template;
@@ -262,6 +284,11 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								destoryBtnsEvents();
 								setBtnsEvents();
+
+								if (!stickyBar.isReady()) {
+									stickyBar.init();
+									setStickySnsShare();
+								}
 							});
 	};
 
