@@ -71,9 +71,6 @@ module.exports = function() {
 				e.preventDefault();
 				onRequestMoving();
 				break;
-			case '#washing':
-				e.preventDefault();
-				break;
 		}
 	}
 
