@@ -401,7 +401,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myInfoEdit .account td.account02 span{background-position: 0 -14px;}
 #myInfoEdit .account td.account03 span{background-position: 0 -28px;}
 #myInfoEdit .account .active td{color: #000}
-#myInfoEdit .inputWrap{line-height: 50px;color: #666;font-family:'NotoSansM', sans-serif;}
+#myInfoEdit .inputWrap{color: #666;font-family:'NotoSansM', sans-serif;}
 #myInfoEdit .inputWrap p{display: inline-block;width: 290px;font-size: 16px;}
 #myInfoEdit .inputWrap label{min-width: 20px;font-family:'NotoSansR', sans-serif;color: #666;}
 #myInfoEdit .inputWrap.radiobox{line-height: 30px;}
