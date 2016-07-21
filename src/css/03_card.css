@@ -99,10 +99,10 @@
 .cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
 .cardWrap .cardThumb img{display: block;width: 100%;}
 .cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:14px auto;background: #fff}
-.cardWrap p.cardPrice {padding:10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
+.cardWrap p.cardPrice {padding:10px 13px 10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
 .cardWrap p.cardPrice span {font-size:14px; position:absolute; right:0;}
 .cardWrap p.cardPrice span.priceTop {top:0px;}
-.cardWrap p.cardPrice span.priceBottom {bottom:0px; font-weight: 400}
+.cardWrap p.cardPrice span.priceBottom {bottom:15 px; font-weight: 400}
 
 
 /* card flag */
