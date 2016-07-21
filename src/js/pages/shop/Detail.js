@@ -312,6 +312,7 @@ module.exports = function() {
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
+					displayData(result.data.product.tags, $('#detail-tags-templates'), $('#js-detail-tags-wrap'));
 
 					self.productName = result.data.product.productName;
 					self.salePrice = result.data.product.salePrice;

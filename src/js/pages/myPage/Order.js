@@ -344,18 +344,7 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
+				console.log(result.data);
 				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
 
 				if (result.data.listOrderItems) {
@@ -379,25 +368,10 @@ module.exports = function() {
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
-				switch(status) {
-					case 200:
-						window.alert('구매가 확정되었습니다.');
-						location.reload();
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 
 			case ORDER_EVENT.ORDER_DETAIL:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				if (result && !result.data) {
 					displayData([], type);
 					return;

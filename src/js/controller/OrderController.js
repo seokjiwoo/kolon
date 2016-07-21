@@ -206,6 +206,19 @@ function ClassOrderController() {
 			'deliveryStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
+				var deliveryChunk = {};
+				$.map(result.data.listOrderItems, function(eachOrder) {
+					if (eachOrder.parentDeliveryNumber != 0) eachOrder.deliveryNumber = eachOrder.parentDeliveryNumber;
+					if (deliveryChunk[eachOrder.deliveryNumber] == undefined) deliveryChunk[eachOrder.deliveryNumber] = new Array();
+					deliveryChunk[eachOrder.deliveryNumber].push(eachOrder);
+				});
+				var deliceryChunkArray = new Array();
+				$.map(deliveryChunk, function(eachOrder) {
+					deliceryChunkArray.push(eachOrder);
+				});
+				deliceryChunkArray.reverse();
+
+				result.data.deliveryChunk = deliceryChunkArray;
 				$(callerObj).trigger('myOrdersListResult', [status, result]);
 			} else {
 				Super.handleError('myOrdersList', result);
@@ -235,6 +248,19 @@ function ClassOrderController() {
 	function orderDetail(orderNumber, type) {
 		Super.callApi('/apis/me/orders/'+orderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
+				var deliveryChunk = {};
+				$.map(result.data.listOrderItem, function(eachOrder) {
+					if (eachOrder.parentDeliveryNumber != 0) eachOrder.deliveryNumber = eachOrder.parentDeliveryNumber;
+					if (deliveryChunk[eachOrder.deliveryNumber] == undefined) deliveryChunk[eachOrder.deliveryNumber] = new Array();
+					deliveryChunk[eachOrder.deliveryNumber].push(eachOrder);
+				});
+				var deliceryChunkArray = new Array();
+				$.map(deliveryChunk, function(eachOrder) {
+					deliceryChunkArray.push(eachOrder);
+				});
+				deliceryChunkArray.reverse();
+
+				result.data.deliveryChunk = deliceryChunkArray;
 				$(callerObj).trigger('orderDetailResult', [status, result, type]);
 			} else {
 				Super.handleError('orderDetail', result);
@@ -263,39 +289,6 @@ function ClassOrderController() {
 
 	// 주문 취소 신청 처리
 	// POST /apis/me/orders/{orderNumber}/cancel
-	/*
-	{
-		"claim": {
-			"accountAuthDatetime": "2016-04-01",
-			"accountAuthYn": "Y",
-			"addDeliveryChargeTotal": 0,
-			"claimDeliveryChargeTotal": 0,
-			"claimReasonCode": "string",
-			"claimReasonStatement": "string",
-			"claimTypeCode": "string",
-			"orderNumber": 0,
-			"refundAccountNumber": 0,
-			"refundBankCode": "string",
-			"refundDepositorName": "string"
-		},
-		"items": [
-			{
-				"addDeliveryCharge": 0,
-				"claimDeliveryCharge": 0,
-				"claimNumber": 0,
-				"claimProcessDatetime": "string",
-				"claimProcessQuantity": 0,
-				"claimProductAmount": 0,
-				"claimRequestQuantity": 0,
-				"claimStateCode": "string",
-				"claimStateReason": "string",
-				"deliveryChargePaymentCode": "string",
-				"orderNumber": 0,
-				"orderProductSequence": "string"
-			}
-		]
-	}
-	 */
 	function orderCancel(orderNumber, claim, items) {
 		Super.callApi('/apis/me/orders/'+orderNumber + '/cancel', 'POST', {
 			'claim' : claim,

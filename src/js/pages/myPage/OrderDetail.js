@@ -9,8 +9,8 @@ module.exports = function() {
 	util = require('../../utils/Util.js'),
 	fileName = 'myPage/OrderDetail.js';
 
-	var SuperClass = require('../Page.js'),
-	Super = SuperClass(),
+	var MyPageClass = require('./MyPage.js'),
+	MyPage = MyPageClass(),
 	controller = require('../../controller/OrderController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
@@ -42,7 +42,7 @@ module.exports = function() {
 	return callerObj;
 	
 	function init() {
-		Super.init();
+		MyPage.init();
 		
 		debug.log(fileName, $, util, controller, eventManager, events, COLORBOX_EVENT);
 
@@ -248,20 +248,44 @@ module.exports = function() {
 					displayData([], type);
 					return;
 				}
+				var orderData = result.data;
+				console.log(orderData);
 
-				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
-				result.data.discountPriceDesc = util.currencyFormat(parseInt(result.data.discountPriceDesc, 10));
+				orderData.orderDate = moment(orderData.listOrderItem[0].orderDateTime).format('YYYY. MM. DD');
+				orderData.orderNumber = orderData.listOrderItem[0].orderNumber;
 
-				if (result.data.listOrderItems) {
-					$.each(result.data.listOrderItems, function(index, listOrderItems) {
-						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
-						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
-						listOrderItems.deliveryFreeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFree, 10));
+				orderData.ordererInfo.cellPhoneNumber = util.mobileNumberFormat(orderData.ordererInfo.cellPhoneNumber);
+
+				if (orderData.paymentInfo.slCreditCard != null) {
+					orderData.paymentInfo.method = '신용카드';
+				} else if (orderData.paymentInfo.slDwb != null) {
+					orderData.paymentInfo.method = '무통장 입금';
+				} else if (orderData.paymentInfo.slAccountTransfer != null) {
+					orderData.paymentInfo.method = '실시간 계좌이체';
+				}
+				orderData.paymentInfo.totalPaymentPriceDesc = util.currencyFormat(Number(orderData.paymentInfo.totalPaymentPrice));
+				orderData.paymentInfo.deliveryChargeDesc = util.currencyFormat(Number(orderData.paymentInfo.deliveryCharge));
+				orderData.paymentInfo.orderPriceDesc = util.currencyFormat(Number(orderData.paymentInfo.orderPrice));
+				orderData.paymentInfo.discountPriceDesc = util.currencyFormat(Number(orderData.paymentInfo.discountPriceDesc));
+
+				if (orderData.listOrderItem) {
+					$.each(orderData.listOrderItem, function(index, listOrderItem) {
+						listOrderItem.itemPriceDesc = util.currencyFormat(Number(listOrderItem.itemPrice));
+						listOrderItem.discountPriceDesc = util.currencyFormat(Number(listOrderItem.discountPrice));
+						listOrderItem.deliveryFreeDesc = util.currencyFormat(Number(listOrderItem.deliveryFree));
 					});
 				}
 
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
-				displayData(result.data, type);
+				displayData(orderData, type);
+
+				$('.moreView').hide();
+				$('.btnIcoMore').click(function(e) {
+					e.preventDefault();
+					var tableId = $(this).attr('id').substr(8);
+					$(this).toggleClass('active');
+					$('#moreTable'+tableId).slideToggle();
+				});
 				break;
 
 			case ORDER_EVENT.ORDER_CANCEL:
