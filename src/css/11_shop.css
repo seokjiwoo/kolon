@@ -147,11 +147,11 @@ h3.sTit{font-size:50px;}
 .topArea .topContBox {height:900px;background-position:top center;background-repeat:no-repeat;}
 .topArea .topContBox .topCont {width:1140px;height:780px;margin:0 auto;padding-top:120px;color:#000;font-family:'NotoSansR' sans-serif;text-align:left;}
 .topArea .topContBox .topCont.subTop .tagList {margin-top:0;}
-.topArea .topContBox .topCont h3 {margin-top:10px;}
+.topArea .topContBox .topCont h3 {margin-top:10px;padding-right: 80px;}
 .topArea .topContBox .topCont .infoSub {margin-top:20px;font-size:20px;}
-.topArea .topContBox .topCont .infoSub + p:before {content:'';display:block;width:60px;height:1px;background:#000;margin:20px 0 24px;}
-.topArea .topContBox .topCont .infoSub + p {font-size:16px;}
-.topArea .topContBox .topCont .infoSub + p span {font-family:'NotoSansL' sans-serif;}
+.topArea .topContBox .topCont .js-detail-partner-wrap p:before {content:'';display:block;width:60px;height:1px;background:#000;margin:20px 0 24px;}
+.topArea .topContBox .topCont .js-detail-partner-wrap p {font-size:16px;}
+.topArea .topContBox .topCont .js-detail-partner-wrap p span {font-family:'NotoSansL' sans-serif;}
 .topArea .topContBox .topCont .cardCon {position:absolute;width:auto;padding:0;top:165px;right:0;}
 .topArea .topContBox .topCont .cardCon .upTo2 {position:static;}
 
