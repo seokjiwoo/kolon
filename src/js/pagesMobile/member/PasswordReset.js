@@ -5,8 +5,10 @@ module.exports = function() {
 	var Super = SuperClass();
 	
 	var util = require('../../utils/Util.js');
+
+	var infoController = require('../../controller/MemberInfoController');
+	$(infoController).on('resetPasswordResult', resetPasswordResultHandler);
 	
-	var memberNumber;
 	var authKey;
 	
 	var callerObj = {
@@ -21,26 +23,21 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		
-		if (Cookies.getJSON('loginPwReset') == undefined) {
-			// 메일인 경우?
-			// alert('잘못된 접근입니다');
+		if (util.getUrlVar('key') == undefined) {
+			alert('잘못된 접근입니다');
+			location.href = '/';
 		} else {
-			var searchResultCookie = Cookies.getJSON('loginPwReset');
-			
-			$('#memberName').text(searchResultCookie.name);
-			$('#memberMail').text(searchResultCookie.mail);
-			memberNumber = searchResultCookie.memberNumber;
-			authKey = searchResultCookie.authKey;
+			authKey = util.getUrlVar('key');
+			$('#key').val(authKey);
 		}
 		
 		$('#resetPW').change(checkPasswordField);
 		$('#resetPW02').change(checkPasswordField);
+		$('#resetPW').on('keydown keyup', onCheckValidPassword);
+		$('#resetPW02').on('keydown keyup', onCheckValidPassword);
+
 		$('#passwordResetForm').submit(resetPasswordHandler);
-
-		$('#resetPW').on('keydown', onCheckValidPassword);
-		$('#resetPW02').on('keydown', onCheckValidPassword);
-
-		$('#resetPWSubmit').on('click', checkPasswordField);
+		$('#passwordResetForm .js-submit').on('click', resetPasswordHandler);		
 	};
 
 	function onCheckValidPassword(e) {
@@ -96,7 +93,29 @@ module.exports = function() {
 	 * 패스워드 리셋 요청
 	 */
 	function resetPasswordHandler(e) {
-		// 비밀번호와 비밀번호 확인 정보 간 불일치 시: ‘비밀번호가 일치하지 않습니다.’
-		// 기존 비밀번호와 동일한 정보를 입력할 시: ‘기존 비밀번호와 동일한 비밀번호는 사용이 불가합니다. 다시 입력해주세요.’
+		e.preventDefault();
+
+		var inputValue1 = $.trim($('#resetPW').val());
+		var inputValue2 = $.trim($('#resetPW02').val());
+		
+		if (inputValue1 == '') {
+			Super.Super.alertPopup('', '비밀번호를 입력해 주세요.', '확인');
+		} else if (inputValue1 != '' && inputValue2 == '') {
+			Super.Super.alertPopup('', '비밀번호를 한번 더 입력해 주세요.', '확인');
+		} else if (inputValue2 != '' && inputValue1 != inputValue2) {
+			Super.Super.alertPopup('', '비밀번호가 일치하지 않습니다.', '확인');
+		} else {
+			infoController.resetPassword(authKey, inputValue1);
+		}
+		e.stopPropagation();
+	};
+
+	function resetPasswordResultHandler(e, status, result) {
+		if (status == 200) {
+			window.alert(result.message);
+			location.href='/member/login.html';
+		} else {
+			$('#resetPWAlert').text(result.message);
+		}
 	};
 }

@@ -27,12 +27,10 @@ module.exports = function() {
 		Super.init();
 		
 		$('.btnBackToForm').click(initForm);
-		$('#pwAuthPhone').click(initPwAuthPhoneForm);
-		$('#findPwAuthPhoneRequestButton').click(requestPhoneAuthNumber);
-		$('#findPwAuthPhoneConfirmButton').click(confirmPhoneAuthNumber);
 		$('#findPwAuthMailResendButton').click(requstPwAuthMailResend);
 		
 		$('#findPW').submit(findPwFormSubmitHandler);
+		$('#findPW .js-submit').on('click', findPwFormSubmitHandler);
 		initForm();
 	};
 	
@@ -70,7 +68,7 @@ module.exports = function() {
 				tempId = id;
 				infoController.findPasswordByMail(id);
 			} else {
-				Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
+				Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
 			}
 		}
 
@@ -80,15 +78,22 @@ module.exports = function() {
 	/**
 	 * 비번찾기 결과 handling
 	 */
-	function findPwResultHandler(e, result, id) {
-		switch(result.status) {
+	function findPwResultHandler(e, status, result) {
+		console.log('findPwResultHandler', e, result, status);
+		switch(status) {
 			case 200:
 				switch(findMethod) {
 					case 'phone':
-						//$('#findPwAuthMail').show().siblings('div').hide();
+						//location.href = result.data.redirectUrl;
+						location.href = '/authorize/password?key='+result.data.redirectUrl.split('=')[1];
 						break;
 					case 'mail':
 						$('#findPwAuthMail').show().siblings('div').hide();
+						
+						var tempIdId = tempId.split('@');
+						var tempIdDomain = tempIdId[1].split('.');
+
+						$('#sendedEmailAddress').text(tempIdId[0].substr(0, 3)+('***@')+tempIdDomain[0].substr(0, 3)+('***.')+tempIdDomain[1]);
 						break;
 				}
 				break;
@@ -96,6 +101,10 @@ module.exports = function() {
 			case 400:
 				// 아이디 없음
 				Super.Super.alertPopup('비밀번호 찾기', result.message, '확인');
+				break;
+				
+			default:
+				Super.Super.alertPopup('비밀번호 찾기', result.status+': '+result.message, '확인');
 				break;
 		}
 	};
@@ -105,83 +114,8 @@ module.exports = function() {
 	 */
 	function requstPwAuthMailResend(e) {
 		e.preventDefault();
+		infoController.findPasswordByMail(tempId);
 		Super.Super.alertPopup('비밀번호 찾기', '인증메일이 재발송 되었습니다', '확인');
 		e.stopPropagation();
-	};
-	
-	/**
-	 * 휴대전화 인증 폼 초기화
-	 */
-	function initPwAuthPhoneForm(e) {
-		e.preventDefault();
-		$('#findPwAuthPhoneName').val('');
-		$('#findPwAuthPhonePhone').val('');
-		$('#findPwAuthPhoneConfirm').val('');
-		
-		$('#findPwAuthPhone').show().siblings('div').hide();
-		e.stopPropagation();
-	};
-	
-	/**
-	 * 휴대전화 인증번호 요청
-	 */
-	function requestPhoneAuthNumber(e) {
-		e.preventDefault();
-		
-		var phone = $.trim($('#findPwAuthPhonePhone').val());
-		var name = $.trim($('#findPwAuthPhoneName').val());
-		
-		if (name == '') {
-			alert('이름을 입력해주세요');
-		} else if (phone == '' || !util.checkValidMobileNumber(phone)) {
-			alert('휴대폰번호를 입력해주세요');
-		} else {
-			infoController.authorizePhoneRequest(phone, name);
-		}
-		
-		e.stopPropagation();
-	};
-	
-	/**
-	 * 휴대전화 인증번호 요청결과 핸들링
-	 */
-	function authorizePhoneRequestHandler(e, result) {
-		switch(result.status) {
-			case '200':
-				alert('인증번호가 발송되었습니다.'); 
-				break;
-			default:
-				alert(result.message);
-				break;
-		}
-	};
-	
-	/**
-	 * 휴대전화 인증번호 검증
-	 */
-	function confirmPhoneAuthNumber(e) {
-		e.preventDefault();
-		tempAuthKey = '';
-		
-		alert('휴대폰 인증번호를 입력해 주세요');
-		e.stopPropagation();
-	};
-	
-	/**
-	 * 휴대전화 인증번호 검증결과 핸들링
-	 */
-	function authorizePhoneConfirmHandler(e, result, tempAuthKey) {
-		switch(result.status) {
-			case '200':
-				alert('휴대폰 인증에 성공하였습니다.');
-				tempAuthKey = tempAuthKey;
-				break;
-			case '400':
-				alert('휴대폰 인증에 실패하였습니다. 인증번호를 다시 확인해 주세요.'); 
-				break;
-			default:
-				alert(result.message);
-				break;
-		}
 	};
 }
