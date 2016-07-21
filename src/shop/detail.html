@@ -198,8 +198,40 @@
 			</div>
 			<!-- // 이벤트 베너 -->
 
+			<!-- detail 상단 탭 -->
+			<style>
+				.js-sticky-bar {position:relative;top:0;left:0;right:0;z-index:5;background:#858585}
+				.js-sticky-bar.is-fixed {position:fixed;top:60px}
+
+				.detailTopTab .socialTopBtn .hoverSocialBtn.is-hover {width:auto;margin-top:0;background:none;}
+				.detailTopTab .socialTopBtn .hoverSocialBtn.is-hover a {display:inline-block;}
+			</style>
+			<div class="detailTopTab js-sticky-bar">
+				<div class="topTabWrap">
+					<ul class="js-sticky-list">
+						<!-- [D] 활성화시 li.on -->
+						<li class="on"><a href="#ProductArea">상품정보</a></li>
+						<li><a href="#SellerArea">디자이너정보</a></li>
+						<li><a href="#PurchasingArea">구매정보</a></li>
+					</ul>
+					<div class="socialTopBtn">
+						<a href="#" class="socialBtn01"><span class="hide">좋아요</span></a>
+						<a href="#" class="socialBtn02"><span class="hide">스크랩</span></a>
+						<span class="hoverSocialBtn">
+							<span class="hide">공유하기</span>
+							<a href="#" class="socialBtn03" data-share-sns="facebook"><span class="hide">페이스북</span></a>
+							<a href="#" class="socialBtn04" data-share-sns="twitter"><span class="hide">트위터</span></a>
+							<a href="#" class="socialBtn05" data-share-sns="pinterest"><span class="hide">핀터레스트</span></a>
+							<a href="#" class="socialBtn06" data-share-sns="kakaostory"><span class="hide">카카오스토리</span></a>
+							<a href="#" class="socialBtn07" data-share-sns="url"><span class="hide">URL복사</span></a>
+						</span>
+					</div>
+				</div>
+			</div>
+			<!-- // detail 상단 탭 -->
+
 			<!-- 상품 상세설명 -->
-			<div class="detailArea shop-detail-description-wrap" style="overflow: hidden">
+			<div id="ProductArea" class="detailArea shop-detail-description-wrap" style="overflow: hidden">
 				<script id="shop-detail-description-templates" type="text/x-handlebars-template">
 					{{!-- shop-detail-templates --}}
 					<!-- <span>{{productDesc}}</span> -->
@@ -252,7 +284,7 @@
 			<!-- // 판매자안내 영역 -->
 
 			<!-- 구매정보 영역 -->
-			<div class="detailArea purchasingArea">
+			<div id="PurchasingArea" class="detailArea purchasingArea">
 				<h3>Purchasing Information</h3>
 				<p>구매정보</p>
 				<ul class="accordion">

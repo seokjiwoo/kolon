@@ -42,6 +42,11 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
+
+		var hash = win.location.hash;
+		if (hash && $(hash)) {
+			$('.js-menu-tab a[href=\'' + hash + '\']').trigger('click');
+		}
 	}
 
 	function setElements() {
@@ -65,9 +70,6 @@ module.exports = function() {
 			case '#move':
 				e.preventDefault();
 				onRequestMoving();
-				break;
-			case '#washing':
-				e.preventDefault();
 				break;
 		}
 	}
