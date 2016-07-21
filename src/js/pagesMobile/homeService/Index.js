@@ -42,6 +42,11 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
+
+		var hash = win.location.hash;
+		if (hash && $(hash)) {
+			$('.js-menu-tab a[href=\'' + hash + '\']').trigger('click');
+		}
 	}
 
 	function setElements() {
