@@ -328,10 +328,12 @@ module.exports = function() {
 							product.salePriceDesc = util.currencyFormat(parseInt(product.salePrice, 10));
 						});
 					}
-					
+					if (result.data.product.discountSetupYn == 'Y') result.data.product.discountRate = Math.round(result.data.product.discountPrice/result.data.product.basePrice);
+
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
+					
 					if (result.data.product.tags.length == 0) {
 						$('#tagArea').hide();
 					} else {
@@ -346,8 +348,20 @@ module.exports = function() {
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
 
-					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
-					$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
+					switch(result.data.product.saleStateCode) {
+						case "PD_SALE_STATE_01":
+							$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
+							$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
+							break;
+						case "PD_SALE_STATE_02":
+							$('.js-add-cart').remove();
+							$('.js-prd-buy').css('background', '#666666').text('품절').removeClass('js-prd-buy');
+							break;
+						case "PD_SALE_STATE_03":
+							$('.js-add-cart').remove();
+							$('.js-prd-buy').css('background', '#666666').text('판매중지').removeClass('js-prd-buy');
+							break;
+					}
 
 					productController.options(self.productNumber, criteriaOptionCount, 0, selectedOptions);
 					productController.partnerInfo(self.productNumber);

@@ -129,11 +129,19 @@ module.exports = function() {
 					each.cardClass = 'cardType01 cardSize03';
 					each.detailUrl = "/newForm/detail.html?productNumber="+each.cardNumber;
 					each.productType = each.productTypeCodeName.toLowerCase();
+					
+					each.basePrice = util.currencyFormat(each.basePrice)+' <span class="priceBottom">원 / 평</span>';
+					each.salePrice = util.currencyFormat(each.salePrice)+' <span class="priceBottom">원 / 평</span>';
+					each.discountPrice = util.currencyFormat(each.discountPrice)+' <span class="priceBottom">원 / 평</span>';
 					break;
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
 					each.detailUrl = "/shop/detail.html?productNumber="+each.cardNumber;
 					each.productType = each.productTypeCodeName.toLowerCase();
+					
+					each.basePrice = util.currencyFormat(each.basePrice)+' <span class="priceBottom">원</span>';
+					each.salePrice = util.currencyFormat(each.salePrice)+' <span class="priceBottom">원</span>';
+					each.discountPrice = util.currencyFormat(each.discountPrice)+' <span class="priceBottom">원</span>';
 					break;
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';
@@ -143,9 +151,16 @@ module.exports = function() {
 					break;
 			}
 
-			if (each.basePrice != undefined) each.basePrice = util.currencyFormat(each.basePrice);
-			if (each.salePrice != undefined) each.salePrice = util.currencyFormat(each.salePrice);
-			if (each.discountPrice != undefined) each.discountPrice = util.currencyFormat(each.discountPrice);
+			switch(each.saleStateCode) {
+				case 'PD_SALE_STATE_02':
+					each.basePrice = each.salePrice = each.discountPrice = 'Sold out';
+					break;
+				case 'PD_SALE_STATE_03':
+					each.basePrice = each.salePrice = each.discountPrice = 'Stop sale';
+					break;
+			}
+//
+//
 
 			//debug.log(each);
 		});

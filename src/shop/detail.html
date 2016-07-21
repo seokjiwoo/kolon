@@ -50,7 +50,7 @@
 							<li>
 								<h4>배송비 {{deliverCharge}}원</h4>
 								{{#vxIF discountSetupYn "==" "Y"}}
-									<p>{{basePriceDesc}}<b>원</b><span class="discount">할인률 / API - 확인 필요<i>%</i></span></p>
+									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountRate}}<i>%</i></span></p>
 									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
 								{{else}}
 									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
