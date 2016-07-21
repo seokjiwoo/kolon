@@ -135,6 +135,15 @@
 
 <script id="order-list-templates" type="text/x-handlebars-template">
 {{!-- order-list-templates --}}
+	<colgroup>
+		<col style="width:17%">
+		<col style="width:10%">
+		<col style="width:20%">
+		<col style="width:10%">
+		<col style="width:11%">
+		<col style="width:11%">
+		<col style="width:22%">
+	</colgroup>
 	<tr>
 		<th>주문일/주문번호</th>
 		<th colspan="2">상품정보</th>
@@ -158,7 +167,7 @@
 			</td>
 			<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
 			{{#if orderOptionName}}
-				<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
+				<td class="recordInfo" style="padding-left: 0"><a href="/shop/detail.html?productNumber={{productNumber}}" class="color01">{{productName}}</a><span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 				</td>
 			{{else}}
 				<td class="recordInfo">{{productName}}<span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
