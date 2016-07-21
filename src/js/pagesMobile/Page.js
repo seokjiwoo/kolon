@@ -13,7 +13,11 @@ module.exports = function() {
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
-	COLORBOX_EVENT = events.COLOR_BOX;
+	COLORBOX_EVENT = events.COLOR_BOX,
+	MEMBERINFO_EVENT = events.MEMBER_INFO,
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	WINDOWOPENER_EVENT = events.WINDOW_OPENER,
+	CARD_LIST_EVENT = events.CARD_LIST;
 
 	$(document).on('verifyMember', requestVerifyMember);
 	
@@ -43,6 +47,9 @@ module.exports = function() {
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
+
+
+		initAddressPopupButton();	// 주소록 팝업버튼
 
 		$('.btnToggle').on('click', function(e) { // common slideToggle
 			e.preventDefault();
@@ -288,6 +295,63 @@ module.exports = function() {
 			}
 		});
 	};
+
+	/**
+	 * 주소록 시스템팝업 버튼 초기화
+	 * 시스텝 팝업 설정
+	 */
+	function initAddressPopupButton() {
+		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
+		eventManager.on(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
+	}
+
+	/**
+	 * onWindowPopupHandler
+	 * @example
+	 <a href="/popup/popMessage.html" class="btnSizeM btnColor03 openWindowPopup"
+		data-winpop-opts='{
+		"name" : "messagePopup",
+		"height" : 900
+		}'>1:1 메세지</a>
+	 */
+	function onWindowPopupHandler(e, href, opts) {
+		e.preventDefault();
+
+		var opts = {
+			name : 'addressPopup',
+			left : null,
+			top : null,
+			width : 770,
+			height : 730,
+			menubar : 'no',
+			status : 'no',
+			resizable : 'no',
+			fullscreen : 'no'
+		},
+		target = $(e.currentTarget),
+		href = href || target.attr('href'),
+		optStr = '',
+		winPopup;
+		
+		if (target.data('winpop-opts') != undefined) opts = $.extend({}, opts, target.data('winpop-opts'));
+
+		opts.left 	= opts.left || (window.screen.width/2 - opts.width/2);
+		opts.top 	= opts.top || (window.screen.height/2 - opts.height/2);
+
+		$.map(opts, function(value, key) {
+			optStr += key + '=' + value + ',';
+		});
+
+		winPopup = window.open(href, opts.name, optStr);
+		// window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
+
+		if (!winPopup) {
+			window.alert('팝업 차단기능 혹은 팝업차단 프로그램이 동작중입니다.\n팝업 차단 기능을 해제한 후 다시 시도하세요.');
+			return;
+		}
+
+		e.stopPropagation();
+	}
 
 	/**
 	 * GNB open
