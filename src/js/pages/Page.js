@@ -10,6 +10,7 @@ module.exports = function() {
 	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
 	
 	var loginDataModel = require('../model/LoginModel');
+	var loginData;
 	
 	var lnbScroller;
 	var pageId;
@@ -113,7 +114,7 @@ module.exports = function() {
 	 * 내 정보 갱신 반영
 	 */
 	function myInfoResultHandler(e) {
-		var loginData = loginDataModel.loginData();
+		loginData = loginDataModel.loginData();
 
 		if (loginData != null) {
 			var email = loginData.email == null ? '' : loginData.email;
@@ -360,6 +361,7 @@ module.exports = function() {
 
 	/**
 	 * onWindowPopupHandler
+	 * 1:1메시지 팝업과 주소록 팝업에서 사용중. 둘 다 로그인시에만 보이는 것들이라 로그인 여부 체크중. 차후에 뭔가 변경되면 코드 갱신 필요.
 	 * @example
 	 <a href="/popup/popMessage.html" class="btnSizeM btnColor03 openWindowPopup"
 		data-winpop-opts='{
@@ -369,6 +371,12 @@ module.exports = function() {
 	 */
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
+
+		if (loginData == null) {
+			alert('로그인이 필요합니다.');
+			location.href = '/member/login.html';
+			return;
+		}
 
 		var opts = {
 			name : 'addressPopup',
@@ -396,7 +404,6 @@ module.exports = function() {
 		});
 
 		winPopup = window.open(href, opts.name, optStr);
-		// window.open($(this).attr('href'), 'addressPopup', 'width=770,height=730,menubar=no,status=no,toolbar=no,resizable=no,fullscreen=no');
 
 		if (!winPopup) {
 			window.alert('팝업 차단기능 혹은 팝업차단 프로그램이 동작중입니다.\n팝업 차단 기능을 해제한 후 다시 시도하세요.');

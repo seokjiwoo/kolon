@@ -226,6 +226,8 @@ function Events() {
 				OPTIONS : 'productOptionsResult',
 				// 상품 판매자 정보
 				PARTNER_INFO : 'productPartnerInfoResult',
+				// 판매자의 다른 상품
+				PARTNER_GOODS : 'productPartnerGoodsResult',
 				// 상품 미리보기
 				PREVIEW : 'productPreviewResult',
 				// 연관상품 리스트

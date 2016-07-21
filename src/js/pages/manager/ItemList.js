@@ -132,8 +132,10 @@ module.exports = function() {
 		switch(eventType) {
 			case EXPERTS_EVENT.DETAIL:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				self.followTargetNumber = result.data.expert.followSeq;
 				displayBasicData(result.data.expert);
 				$('.except').dotdotdot({watch:'window'});
+				if (result.data.expert.followYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 				break;
 			case EXPERTS_EVENT.PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

@@ -35,6 +35,8 @@ function ClassProductController() {
 			likes : likes,
 			// 상품 판매자 정보
 			partnerInfo : partnerInfo,
+			// 판매자의 다른 상품
+			partnerGoodsInfo: partnerGoodsInfo,
 			// 추천상품 리스트
 			recommend : recommend,
 			// 상품 미리보기 (사용안함)
@@ -57,8 +59,8 @@ function ClassProductController() {
 		// page, size는 나중에 정의 필요
 
 		Super.callApi('/apis/products/', 'GET', {
-			productServiceSectionCode: "PD_PROD_SVC_SECTION_01",
-			order: order
+			"productServiceSectionCode": "PD_PROD_SVC_SECTION_01",
+			"orderType": order
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('shopProductListResult', [status, result.data]);
@@ -77,8 +79,8 @@ function ClassProductController() {
 		// page, size는 나중에 정의 필요
 
 		Super.callApi('/apis/products/', 'GET', {
-			productServiceSectionCode: "PD_PROD_SVC_SECTION_02",
-			order: order
+			"productServiceSectionCode": "PD_PROD_SVC_SECTION_02",
+			"orderType": order
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('shopNewFormListResult', [status, result.data]);
@@ -184,6 +186,23 @@ function ClassProductController() {
 			} else {
 				Super.handleError('productPartnerInfo', result);
 				$(callerObj).trigger('productPartnerInfoResult', [status, result]);
+			}
+		}, true);
+	}
+
+	/**
+	 * 상품 판매자의 다른 상품 정보
+	 * @param  {Number} productNumber
+	 * @see  http://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductPartnerInfoUsingGET
+	 * @ GET /apis/products/{productNumber}/partnerInfo
+	 */
+	function partnerGoodsInfo(productNumber) {
+		Super.callApi('/apis/products/' + productNumber + '/partners/products', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('productPartnerGoodsResult', [status, result]);
+			} else {
+				Super.handleError('productPartnerGoods', result);
+				$(callerObj).trigger('productPartnerGoodsResult', [status, result]);
 			}
 		}, true);
 	}

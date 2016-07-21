@@ -185,6 +185,8 @@ module.exports = function() {
 			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
 			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
 			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
+			eachCartItem.discountPriceDesc = util.currencyFormat(eachCartItem.discountPrice);
+			
 
 			if (util.isLocal()) {
 				eachCartItem.productImageUrl = 'https://dev.koloncommon.com' + eachCartItem.productImageUrl;

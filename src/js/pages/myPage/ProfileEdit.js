@@ -62,7 +62,6 @@ module.exports = function() {
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
 			$('.verifyMemberPopup').click(submitMobileEditForm);
-			$('#changeRefundInfoButton').click(popRefundAccount);
 		} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
@@ -110,10 +109,9 @@ module.exports = function() {
 				$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
 				$('#refundName').text(infoObject.memberRefundAccount.depositorName);
 			} else {
-				$('#refundBankName').text('');  
-				$('#refundAccount').text('');
-				$('#refundName').text('');
+				$('#refundInfoRow').html('<td colspan="3" style="padding: 25px"><button id="changeRefundInfoButton" class="btn btnSizeM btnColor01">계좌 등록</button></td>')
 			}
+			$('#changeRefundInfoButton').click(popRefundAccount);
 
 			switch(infoObject.emailReceiveYn) {
 				default: 

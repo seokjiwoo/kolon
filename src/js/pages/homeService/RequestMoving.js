@@ -126,15 +126,19 @@ module.exports = function() {
 
 	function movingCompanyListHandler(e, status, result) {
 		if (status == 200) {
-			var template = window.Handlebars.compile($('#moving-company-templates').html());
-			var elements = $(template(result.livingCompanyList));
-			$('#companyListWrap').empty().append(elements);
-			
-			$('.tabWrap a').on('click', function(e) {// common tab
-				e.preventDefault();
-				var tabBtn = $(this);
-				$(tabBtn).parent().addClass('on').siblings().removeClass('on');
-			});
+			if (result.livingCompanyList.length == 0) {
+				$('#companyListWrap').text('검색된 이사업체가 없습니다.');
+			} else {
+				var template = window.Handlebars.compile($('#moving-company-templates').html());
+				var elements = $(template(result.livingCompanyList));
+				$('#companyListWrap').empty().append(elements);
+				
+				$('.tabWrap a').on('click', function(e) {// common tab
+					e.preventDefault();
+					var tabBtn = $(this);
+					$(tabBtn).parent().addClass('on').siblings().removeClass('on');
+				});
+			}
 		} else {
 			alert('/apis/living/moving/company/ - '+status+':'+result.message);
 		}

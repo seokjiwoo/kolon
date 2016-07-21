@@ -14,6 +14,7 @@ module.exports = function() {
 	cartController = require('../../controller/OrderController.js'),
 	productController = require('../../controller/ProductController.js'),
 	scrapController = require('../../controller/ScrapController.js'),
+	followController = require('../../controller/FollowController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	DropDownScroll = require('../../components/DropDownScroll'),
@@ -21,6 +22,7 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	CART_EVENT = events.CART,
 	PRODUCT_EVENT = events.PRODUCT,
+	FOLLOWING_EVENT = events.FOLLOWING,
 	OPTIONNUM_EVENT = events.OPTION_NUM,
 	MEMBERINFO_EVENT = events.MEMBER_INFO;
 	
@@ -30,6 +32,7 @@ module.exports = function() {
 	var CardList = require('../../components/CardList.js');
 	var recommendShopList;
 	var recommendNewFormList;
+	var partnerGoodsList;
  
  	var criteriaOptionCount;
 	var optionsUseFlag;
@@ -75,20 +78,12 @@ module.exports = function() {
 		setBindEvents();
 
 		setBtnsEvents();
-
-		$('#sellerCard').bxSlider({
-			pager:false,
-			slideMargin: 10,
-			minSlides: 2,
-			maxSlides: 2,
-			slideWidth: 285
-		});
 		
 		recommendShopList = CardList();
 		recommendShopList.init('#recommendShopWrap', true);
 		
 		recommendNewFormList = CardList();
-		recommendNewFormList.init('#recommendShopWrap');
+		recommendNewFormList.init('#recommendShopWrap', true);
 		
 
 		productController.info(self.productNumber);
@@ -106,19 +101,18 @@ module.exports = function() {
 		$(scrapController).on('addScrapResult', scrapResultHandler);
 		$(cartController).on(CART_EVENT.WILD_CARD, onControllerListener);
 		$(productController).on(PRODUCT_EVENT.WILD_CARD, onControllerListener);
+		$(followController).on(FOLLOWING_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 		eventManager.on(OPTIONNUM_EVENT.CHANGE, optionQtyChangeHandler);
 	}
 
 	function setBtnsEvents() {
 		$('.accordion li a').on('click', onAccordionListener);
-
 		$('.wrapper .js-add-cart, .wrapper .js-prd-buy, .wrapper .js-add-like, .wrapper .js-add-scrap').on('click', onCartBuyListener);
 	}
 
 	function destoryBtnsEvents() {
 		$('.accordion li a').off('click', onAccordionListener);
-
 		$('.wrapper .js-add-cart, .wrapper .js-prd-buy, .wrapper .js-add-like, .wrapper .js-add-scrap').off('click', onCartBuyListener);
 	}
 
@@ -166,7 +160,7 @@ module.exports = function() {
 			if (target.hasClass('on')) {
 				//
 			} else {
-				productController.likes(target.data('product-number'), target.data('product-like'));
+				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
 			}
 			return;
 		}
@@ -175,7 +169,7 @@ module.exports = function() {
 			if (target.hasClass('on')) {
 				//
 			} else {
-				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_GOODS, target.data('product-number'));
+				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_GOODS, self.productNumber);
 			}
 			return;
 		}
@@ -338,7 +332,11 @@ module.exports = function() {
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
-					displayData(result.data.product.tags, $('#detail-tags-templates'), $('#js-detail-tags-wrap'));
+					if (result.data.product.tags.length == 0) {
+						$('#tagArea').hide();
+					} else {
+						displayData(result.data.product.tags, $('#detail-tags-templates'), $('#js-detail-tags-wrap'));
+					}
 
 					self.productName = result.data.product.productName;
 					self.salePrice = result.data.product.salePrice;
@@ -364,7 +362,7 @@ module.exports = function() {
 							location.reload();
 							break;
 						default:
-							win.alert(status + ' , ' + result.errorCode + ' , ' + result.message);
+							win.alert(result.message);
 							break;
 					}
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -375,36 +373,86 @@ module.exports = function() {
 				case PRODUCT_EVENT.PARTNER_INFO:
 					var partnerData1 = result.data.partner;
 					var partnerData2 = result.data.partner;
+					if (partnerData2.memberMasterYn == 'Y') {
+						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
+					} else {
+						partnerData2.link = '/manager/brand.html?expertNumber='+partnerData2.partnerNumber;
+					}
 					displayData(partnerData1, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
 					displayData(partnerData2, $('#info-partner-templates'), $('.js-info-partner-wrap'));
+
+					self.expertNumber = partnerData2.partnerNumber;
+					$('#btnFollow').on('click', onFollowListener);
+					$('#btnMessage').attr('href', '/popup/popMessage.html?saleMemberNumber='+partnerData2.partnerNumber);
+					
+					partnerGoodsList = CardList();
+					partnerGoodsList.init('#sellerCard', true);
+					productController.partnerGoodsInfo(self.productNumber);
+					break;
+				case FOLLOWING_EVENT.ADD_FOLLOW:
+					switch(status) {
+						case 200: 
+							$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+							break;
+						default: win.alert(result.message); break;
+					}
+					break;
+				case PRODUCT_EVENT.PARTNER_GOODS:
+					//console.log(result.data.productCards.length);
+					partnerGoodsList.appendData(result.data.productCards);
+					$('#sellerCard').bxSlider({
+						pager:false,
+						slideMargin: 10,
+						minSlides: 2,
+						maxSlides: 2,
+						slideWidth: 285
+					});
 					break;
 				case PRODUCT_EVENT.RECOMMEND:
 					switch(response.data.productServiceSectionCode) {
 						case 'PD_PROD_SVC_SECTION_01':
 							// 샵
-							recommendShopList.appendData(result.data.productCards);
-							$('#recommendShopWrap').bxSlider({
-								pager:false,
-								slideMargin: 10,
-								minSlides: 4,
-								maxSlides: 4,
-								slideWidth: 285
-							});	
+							if (result.data.productCards.length == 0) {
+								$('#recommendLiving').hide();
+							} else {
+								recommendShopList.appendData(result.data.productCards);
+								$('#recommendShopWrap').bxSlider({
+									pager:false,
+									slideMargin: 10,
+									minSlides: 4,
+									maxSlides: 4,
+									slideWidth: 285
+								});	
+							}
 							break;
 						case 'PD_PROD_SVC_SECTION_02':
 							// 리폼  
-							recommendNewFormList.appendData(result.data.productCards);
-							$('#recommendNewFormWrap').bxSlider({
-								pager:false,
-								slideMargin: 10,
-								minSlides: 4,
-								maxSlides: 4,
-								slideWidth: 285
-							});
+							if (result.data.productCards.length == 0) {
+								$('#recommendNewForm').hide();
+							} else {
+								recommendNewFormList.appendData(result.data.productCards);
+								$('#recommendNewFormWrap').bxSlider({
+									pager:false,
+									slideMargin: 10,
+									minSlides: 4,
+									maxSlides: 4,
+									slideWidth: 285
+								});
+							}
 							break;
 					}
 					break;
 			// [E] PRODUCT - 상품
+		}
+	}
+
+	function onFollowListener(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget);
+
+		if (target.hasClass('js-add-follow')) {
+			followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
 		}
 	}
 

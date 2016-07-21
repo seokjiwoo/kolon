@@ -65,13 +65,13 @@
 							</div>
 							<ul class="subBtn">
 								<li class="subBtn01">
-									<a href="#" class="js-add-like" data-product-number="{{productNumber}}" data-product-like="{{productServiceSectionCode}}">
+									<a href="#" class="js-add-like">
 										<span class="hide">좋아요</span>
 										<span class="countNum">{{likeCount}}</span>
 									</a>
 								</li>
 								<li class="subBtn02">
-									<a href="#" class="js-add-scrap" data-product-number="{{productNumber}}" data-product-like="{{productServiceSectionCode}}">
+									<a href="#" class="js-add-scrap">
 										<span class="hide">스크랩</span>
 										<span class="countNum">{{scrapCount}}</span>
 									</a>
@@ -128,7 +128,7 @@
 						</div>
 						<div class="barRight">
 							<span class="allPrice "><span class="italicNum">{{basePriceDesc}}</span> 원</span>
-							<a href="#" class="js-add-like" data-product-number="{{productNumber}}" data-product-like="{{productServiceSectionCode}}"><span class="hide">좋아요</span></a>
+							<a href="#" class="js-add-like" data-product-number="{{productNumber}}"><span class="hide">좋아요</span></a>
 							<a href="#" class="js-add-cart bigBtn03">마이카트</a>
 							<a href="#" class="js-prd-buy bigBtn03">구매하기</a>
 						</div>
@@ -215,8 +215,8 @@
 						<li><a href="#PurchasingArea">구매정보</a></li>
 					</ul>
 					<div class="socialTopBtn">
-						<a href="#" class="socialBtn01"><span class="hide">좋아요</span></a>
-						<a href="#" class="socialBtn02"><span class="hide">스크랩</span></a>
+						<a href="#" class="socialBtn01 js-add-like"><span class="hide">좋아요</span></a>
+						<a href="#" class="socialBtn02 js-add-scrap"><span class="hide">스크랩</span></a>
 						<span class="hoverSocialBtn">
 							<span class="hide">공유하기</span>
 							<a href="#" class="socialBtn03" data-share-sns="facebook"><span class="hide">페이스북</span></a>
@@ -242,14 +242,14 @@
 			<!-- // 상품 상세설명 -->
 
 			<!-- 태그 영역 -->
-			<div class="detailArea tagArea">
+			<div class="detailArea tagArea" id='tagArea'>
 				<h3 class="sTit">Tag</h3>
 				<div id='js-detail-tags-wrap'>
 				<script id="detail-tags-templates" type="text/x-handlebars-template">
 					{{!-- detail-tags-templates --}}
 					<ul>
 						{{#each .}}
-						<li><a href="#">{{.}}</a></li>
+						<li><a href="/search/result.html?query={{.}}">{{.}}</a></li>
 						{{/each}}
 					</ul>
 					{{!--// detail-tags-templates --}}
@@ -394,9 +394,15 @@
 			<h4>{{partnerName}}</h4>
 			<p>{{company}}<br><span>{{serviceArea}}</span></p>
 			<ul>
-				<li><a href="/manager/detail.html?expertNumber={{partnerNumber}}" class="btn btnSizeM btnborder02">자세히보기</a></li>
-				<li><a href="#" class="btn btnSizeM btnColor01">팔로우</a></li>
-				<li><a href="#" class="btn btnSizeM btnColor04">1:1 메시지</a></li>
+				<li><a href="{{link}}" class="btn btnSizeM btnborder02">자세히보기</a></li>
+				<li><a href="#" class="btn btnSizeM btnColor01 js-add-follow" id='btnFollow'>팔로우</a></li>
+				<li>
+					<a href="#" class="btn btnSizeM btnColor04 openWindowPopup" id='btnMessage' data-winpop-opts='{
+					"name" : "messagePopup",
+					"width" : 838,
+					"height" : 670
+					}'>1:1 메시지</a>
+				</li>
 			</ul>
 		</div>
 	</div>

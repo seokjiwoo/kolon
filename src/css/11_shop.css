@@ -324,7 +324,6 @@ h3.sTit{font-size:50px;}
 .sellerArea .sellerProduct h5:before{top:0;left:0;background-position: 0 -115px}
 .sellerArea .sellerProduct h5:after{border:0;right: 0;background-position: -57px -114px}
 
-.productDetail #SellerArea .cardWrap li{width: 285px !important}
 .productDetail #SellerArea .cardSlider .bx-controls{top:30px;left: 50%;right: auto;margin-left: -46px;}
 .productDetail #SellerArea .cardSlider .bx-controls .bx-prev{margin-right: 10px;background-position: -27px 0}
 .productDetail #SellerArea .cardSlider .bx-controls .bx-next{background-position: -27px -41px}

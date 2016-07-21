@@ -144,7 +144,7 @@ module.exports = function() {
 
 		var id = $.trim($('#inputName').val());
 		var pw = $.trim($('#inputPW').val());
-		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
+		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
 		if (id == '') { 
 			$('#idAlert').text('아이디(이메일 또는 휴대폰 번호)를 입력해주세요.');

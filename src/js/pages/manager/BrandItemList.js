@@ -153,8 +153,10 @@ module.exports = function() {
 			case EXPERTS_EVENT.BRAND:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				self.brandNumber = result.data.brand.memberNumber;
+				self.followTargetNumber = result.data.brand.followSeq;
 				displayData(result.data.brand);
 				$('.except').dotdotdot({watch:'window'});
+				if (result.data.brand.followYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 				break;
 			case EXPERTS_EVENT.BRAND_PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

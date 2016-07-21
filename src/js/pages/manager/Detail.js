@@ -125,8 +125,10 @@ module.exports = function() {
 					alert('해당 전문가의 데이터가 없습니다.');
 					location.href = '/manager/';
 				} else {
+					self.followTargetNumber = result.data.expert.followSeq;
 					displayData(result.data.expert);
 					$('.except').dotdotdot({watch:'window'});
+					if (result.data.expert.followYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 				}
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:

@@ -57,7 +57,7 @@
 								"optionNumber" : {{orderOptionNumber}},
 								"quantity" : {{quantity}},
 								"basePrice" : {{basePrice}},
-								"salePrice" : {{salePrice}}
+								"salePrice" : {{discountPrice}}
 							}'>
 							<td>
 								<div class="cartChk">
@@ -79,7 +79,7 @@
 										<!-- 옵션 -->
 										<div class="option">
 											<p class="optionTit">{{orderOptionName}}</p>
-											<p class="optionPrice"><b>{{salePrice}}</b> 원</p>
+											<p class="optionPrice"><b>{{discountPrice}}</b> 원</p>
 											<!-- [D] 최대수량 -->
 											<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
 												<a href="#" class="btnMinus">빼기</a>
@@ -93,7 +93,7 @@
 								</div>
 							</td>
 							<td><p class="price"><b class="js-list-price">{{basePriceDesc}}</b> 원</p></td>
-							<td><p class="price"><b>{{salePriceDesc}}</b> 원</p></td>
+							<td><p class="price"><b>{{discountPriceDesc}}</b> 원</p></td>
 							{{#vxIF deliveryChargeDesc "==" "0"}}
 								<td>무료</td>
 								{{else}}
