@@ -76,10 +76,6 @@ module.exports = function() {
 
 		setBtnsEvents();
 
-		productController.info(self.productNumber);
-		// info call 후에 추가
-		productController.partnerInfo(self.productNumber);
-
 		$('#sellerCard').bxSlider({
 			pager:false,
 			slideMargin: 10,
@@ -93,6 +89,9 @@ module.exports = function() {
 		
 		recommendNewFormList = CardList();
 		recommendNewFormList.init('#recommendShopWrap');
+		
+
+		productController.info(self.productNumber);
 	}
 
 	function setElements() {
@@ -373,7 +372,10 @@ module.exports = function() {
 					optionsHandler(result.data.options);
 					break;
 				case PRODUCT_EVENT.PARTNER_INFO:
-					displayData(result.data.partner, $('#info-partner-template'), $('.js-info-partner-wrap'));
+					var partnerData1 = result.data.partner;
+					var partnerData2 = result.data.partner;
+					displayData(partnerData1, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
+					displayData(partnerData2, $('#info-partner-templates'), $('.js-info-partner-wrap'));
 					break;
 				case PRODUCT_EVENT.RECOMMEND:
 					switch(response.data.productServiceSectionCode) {

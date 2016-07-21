@@ -44,7 +44,6 @@
 
 						<h3>{{productName}}</h3>
 						<p class="infoSub">{{productDesc}}</p>
-						<p>{{partnerName}} <span>{{company}}</span></p>
 						<div class="js-detail-partner-wrap"></div>
 
 						<ul class="unitPrice">
@@ -372,7 +371,18 @@
 	</div>
 
 <!-- @@include ../_template/cardTemplate.html -->
-<script id="info-partner-template" type="text/x-handlebars-template">
+
+<script id="detail-partner-templates" type="text/x-handlebars-template">
+{{!-- detail-partner-template --}}
+{{#if company}}
+	<p>{{partnerName}} <span>{{company}}</span></p>
+{{else}}
+	<p>{{partnerName}}</p>
+{{/if}}
+{{!--// detail-partner-template --}}
+</script>
+
+<script id="info-partner-templates" type="text/x-handlebars-template">
 {{!-- info-partner-template --}}
 <div class="sellInfo">
 	<h3 class="sellerTit"></h3>
@@ -427,14 +437,6 @@
 </li>
 {{/each}}
 {{!-- detail-selected-options-templates --}}
-</script>
-
-<script id="detail-partner-templates" type="text/x-handlebars-template">
-	{{#if company}}
-		<p>by {{partnerName}} <span>{{company}}</span>  / 마크업 대응 필요</p>
-	{{else}}
-		<p>by {{partnerName}} / 마크업 대응 필요</p>
-	{{/if}}
 </script>
 
 </body>
