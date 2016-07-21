@@ -36,7 +36,6 @@
 .qaList .thumb .commont{position:absolute;right:0;bottom:0;padding-left:20px;background:url("../images/ico_comment.png") no-repeat 0 center;background-size:17px;}
 .qaList .thumb .commont{line-height:1.4em;color:#f1645c;}
 
-.opinionsList{}
 .opinionsList li{padding:25px 0;border-top:1px solid #ccc;}
 .opinionsList li:first-child{border-top:0;}
 .opinionsList li:after{content:"";display:block;clear:both;}
@@ -56,11 +55,13 @@
 .opinionsList .info .count span:first-child{float:left;color:#999;}
 .opinionsList .info .count span:last-child{float:right;color:#f1645c;padding-left:20px;background:url("../images/ico_help.png") no-repeat 0 center;background-size:15px;}
 
-.listLink{height:55px;padding:15px 0;border-top:1px solid #ccc;}
-.listLink:after{content:;display:block;clear:both;}
-.listLink a{display:inline-block;}
-.listLink a:first-child{float:left;}
-.listLink a:last-child{float:right;}
+.opinionsFix{height:55px;padding:0 15px;border-top:1px solid #ccc;background:#fff;}
+.opinionsFix:after{content:;display:block;clear:both;}
+.opinionsFix a{display:inline-block;line-height:1.4em;}
+.opinionsFix a:first-child{float:left;padding-left:20px;background:url("../images/ico_back.png") no-repeat 0 center;background-size:9px;font-size:18px;color:#333;margin-top:12px;}
+.opinionsFix a:last-child{float:right;padding-left:20px;background:url("../images/ico_comment.png") no-repeat 0 center;background-size:17px;color:#f1645c;margin-top:14px;}
+.opinionsFix{position:fixed;bottom: 0;left: 0;right: 0;z-index: 1;}
+.opinionsFix + .container{padding-bottom: 55px;}
 
 @media (max-width:320px){
 	.specialArea{min-height:290px;}
