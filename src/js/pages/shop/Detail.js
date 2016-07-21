@@ -141,11 +141,6 @@ module.exports = function() {
 		isLogin = eventManager.triggerHandler(MEMBERINFO_EVENT.IS_LOGIN),
 		orderGoodsUrl = '';
 
-		if (!isLogin) {
-			win.alert('로그인이 필요합니다.');
-			location.href = '/member/login.html';
-			return;
-		}
 		if (target.hasClass('js-option-open')) {
 			$('.detailBottomTab .bottomTabWrap').toggleClass('active');
 			
@@ -156,6 +151,12 @@ module.exports = function() {
 			return;
 		}
 
+		if (!isLogin) {
+			win.alert('로그인이 필요합니다.');
+			location.href = '/member/login.html';
+			return;
+		}
+		
 		if (target.hasClass('js-add-like')) {
 			if (target.hasClass('on')) {
 				//
@@ -342,16 +343,18 @@ module.exports = function() {
 
 					self.productName = result.data.product.productName;
 					self.salePrice = result.data.product.salePrice;
+					self.stock = result.data.product.stock;
 					
 					optionsDisplay();
 
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
 
+					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
+					$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
+
 					switch(result.data.product.saleStateCode) {
 						case "PD_SALE_STATE_01":
-							$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
-							$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
 							break;
 						case "PD_SALE_STATE_02":
 							$('.js-add-cart').remove();
