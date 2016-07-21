@@ -30,8 +30,9 @@
 .detailTopTab .socialTopBtn {text-align:right;width:276px;height:40px;padding:0 9px;}
 .detailTopTab .socialTopBtn .hoverSocialBtn {display:inline-block;margin-top:5px;width:30px;height:30px;background: url('../images/ico_newform.png') 0 -60px no-repeat}
 .detailTopTab .socialTopBtn .hoverSocialBtn a {display:none;}
-.detailTopTab .socialTopBtn .hoverSocialBtn:hover {width:auto;margin-top:0;background:none;}
-.detailTopTab .socialTopBtn .hoverSocialBtn:hover a {display:inline-block;}
+.detailTopTab .socialTopBtn .hoverSocialBtn.is-hover {width:auto;margin-top:0;background:none;}
+.detailTopTab .socialTopBtn .hoverSocialBtn.is-hover a {display:inline-block;}
+
 .socialTopBtn a {display:inline-block;margin-top:5px;width:30px;height:30px;padding:0;background: url('../images/ico_newform.png') no-repeat}
 .socialTopBtn .socialBtn01 {background-position:0 -0px;}
 .socialTopBtn .socialBtn02 {background-position:0 -30px;}
