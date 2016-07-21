@@ -196,11 +196,11 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #following #followSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
 #following button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
 
-.recordSort{table-layout: fixed;width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.recordSort{;table-layout: fixed;width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding:15px 0 15px 15px;}
 .recordSort{margin:20px 0 30px;text-align: left;}
-.recordSort tr:first-child td{padding-bottom: 0;}
+.recordSort tr:first-child td{position: relative;padding-bottom: 0;}
 .sortTerm{display: inline-block;}
 .recordSort li{display: inline-block;margin-left:2px;}
 .recordSort li:first-child{margin:0;}
@@ -211,6 +211,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .recordSearch button{width:33px;height:14px;font-size: 0; background: url('../images/btn_searchG.png') no-repeat center;border:0;outline: 0;vertical-align: middle; border-left:1px solid #d5d5d5;}
 .recordSort .leftBox + .leftBox {margin-left:20px;}
 .recordSort .leftBox, .recordSort .leftBox .drop li {width:372px;}
+.recordSort .sortTermSet{position:absolute;top: 25px;right: 0; }
 
 .sortTermSet{display: inline-block;margin-left: 30px;}
 .sortTermSet .calendar {margin-right:0;padding:10px 18px;border:1px solid #ccc;}
