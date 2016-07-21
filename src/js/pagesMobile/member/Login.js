@@ -187,12 +187,11 @@ module.exports = function() {
 	 */
 	function loginCompleteHandler(e, status, response) {
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
-
 		switch(status) {
 			case 200:
 				switch(Number(response.status)) {
 					case 200:	// 로그인 성공
-						location.href = '/';
+						location.href = util.getReferrer() || '/';
 						break;
 					case 201:	// 회원가입 완료
 						Super.Super.alertPopup('회원가입이 완료되었습니다.', '메인화면으로 이동합니다.', '확인', function() {
