@@ -112,6 +112,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnSizeL{height:35px;padding:0 17px;font-size: 15px;border-radius: 20px;line-height: 35px;}
 .btnSizeB{width: 100%;height: 55px;font-size: 18px;line-height: 55px;}
 .btnSizeW{width: 100%;}
+a.btnSizeB{width: 100%;height: 55px;font-size: 18px;line-height: 55px;}
 
 .btnColor01{background:#a9c700} /*green*/
 .btnColor02{background:#2d427a} /*blue*/
@@ -119,6 +120,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .btnColor04{background:#2d427a} /* cyan */
 .btnColor05{background:#999} /*grey*/
 .btnColor06{background:#333} /*dark grey*/
+.btnColor07{background:#293145;}/*dark blue*/
 a.btnFollow{min-width:106px;padding-right:22px; border:1px solid #adc427;border-radius:17px;color:#adc427; text-align:center; position:relative; background:#fff;}
 a.btnFollow:after{content:''; width:12px; height:12px; margin-top:-6px; background:url("../images/ico_follow_off.png") no-repeat 0 0;background-size:12px; position:absolute; top:50%; right:23px;}
 a.btnFollow.active{background:#adc427;color:#fff;}
@@ -307,7 +309,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 .previewList.reviewType .except{margin-top:12px;}
 
 .pageWrap{background: #fff;}
-.pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
+.pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 30px;font-size: 15px;}
 .pageWrap .wrap{padding:0 15px;}
 
 .slideCon{display: none;}
@@ -366,7 +368,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 .abcList i{position: absolute;left: 0;top: 0;font-style: normal}
 
 /* title */
-.pageTit{padding:0 15px;color: #fff;text-align: center;background: #f1645c;line-height: 32px;font-size: 15px;}
+.pageTit{padding:0 15px;color: #fff;text-align: center;background: #2d427a;line-height: 32px;font-size: 15px;}
 .conTit{padding-bottom:10px;border-bottom:1px solid #666;font-size:15px;font-weight:bold;}
 .conTit:after{content:"";display:block;clear:both;}
 .conTit a{float:right;padding-right: 14px;background: url("../images/ico_arrowG.png") no-repeat right 2px;background-size: 6px;font-size:13px;font-weight:normal;}
@@ -377,7 +379,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 h2.secTit {width:auto; padding-bottom:11.5px; margin-bottom:20px; font-size:18px; font-family:'NotoSansR', 'RobotoR', sans-serif; border-bottom:1px solid #666; color:#000;}
 h3.subTit {width:auto; font-size:15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .partTit{margin-top: 20px;font-size: 15px;color: #1a1a1a; font-weight:bold;}
-
+h4.partTit {font-size:12px;}
 .orderState{height:80px;background:#333;font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .orderState ul{overflow:hidden;padding-top:20px;}
 .orderState ul li{width:25%;float:left;color:#999;text-align:center;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:8px;}

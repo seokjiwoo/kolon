@@ -82,7 +82,7 @@
 .members .stateBox:after{content:"";display:block;clear:both;}
 .members .stateBox p{float:left;}
 .members .stateBox a{float:right;padding:4px 0;}
-.members .policy{max-width:280px; width:100%; margin:20px auto;padding:0 10px;letter-spacing:-1px;text-align:left;line-height:1.4em;color:#333;font-family:'RobotoR','NotoSansR', sans-serif;}
+.members .policy{padding:0 32px; margin:20px 0;letter-spacing:-1px;text-align:left;line-height:17px;color:#333;font-family:'RobotoR','NotoSansR', sans-serif; font-size:12px; color:#666;}
 .members .policy span{color:#b08967;text-decoration:underline;}
 .members .policy .btnPop {color:#b08967;text-decoration:underline}
 .members .btnPop{display: inline-block;margin:0;border-radius:0;background:none;padding:0}
@@ -94,26 +94,26 @@
 .snsBtnS{height:30px;font-size:13px;text-align:left !important; background:url("../images/ico_sns.png") no-repeat; background-size:10px 137px;}
 .snsBtnS span{display:block;padding-top:6px;padding-left:46px;}
 .snsBtnS:before{position:absolute;left:36px;top:8px;content:"";display:block;width:1px;height:12px;background:#ccc;}
-.snsBtnS.facebook{background-position: 16px 7px;}
-.snsBtnS.naver{background-position: 16px -40px;}
-.snsBtnS.kakao{background-position: 16px -75px;}
+.snsBtnS.facebook{background-position: 16px 8px;}
+.snsBtnS.naver{background-position: 16px -34px;}
+.snsBtnS.kakao{background-position: 16px -74px;}
 .snsBtnS.twitter{background-position: 16px -119px;}
-.snsBtnM{height:35px;font-size:13px;background:url("../images/ico_sns.png") no-repeat;}
+.snsBtnM{height:35px;font-size:15px;background:url("../images/ico_sns.png") no-repeat; color:#333;}
 .snsBtnM span{display:block;padding-top:11px;}
 .snsBtnM:before{position:absolute;left:55px;top:11px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .snsBtnM.facebook{ background-position:26px 10px;background-size:10px 137px;}
 .snsBtnM.naver{background-position: 26px -30px;background-size:10px 137px;}
 .snsBtnM.kakao{background-position: 26px -72px;background-size:10px 137px;}
 
-.members .accTxt{text-align:center;margin-top:25px;}
+.members .accTxt{}
 .members .accTxt em,
 .members .accTxt span{display:block;}
-.members .accTxt em{font-style:normal;font-size:15px;font-family:'RobotoR','NotoSansR', sans-serif;color:#000;}
-.members .accTxt span{margin-top:14px;line-height:1.4em;color:#666;letter-spacing:-1px;padding:0 6px;}
-.members .accountArea{padding:0 16px;margin-top:20px;}
+.members .accTxt em{font-style:normal;font-size:15px;font-family:'RobotoR','NotoSansR', sans-serif;color:#333;}
+.members .accTxt span{margin-top:12px;line-height:1.4em;color:#666;letter-spacing:-1px; font-size:12px;}
+.members .accountArea{width:100%; overflow:hidden;}
 .members .accountArea dl{border:1px solid #ccc;text-align:center;margin-top:10px;}
 .members .accountArea dl:first-child{margin-top:0;}
-.members .accountArea dt{height:30px;line-height:30px;background:#f8f8f8;color:#000;}
+.members .accountArea dt{height:30px;line-height:30px;background:#f8f8f8;color:#333;}
 .members .accountArea dd{padding:0 20px;}
 .members .accountArea dd div{padding:20px 0;}
 .members .accountArea dd div.bdt{border-top:1px solid #e5e5e5;}
@@ -124,14 +124,15 @@
 .members .accountArea .date + p{line-height:1.4em;margin:16px 0 16px;color:#666;}
 .members .accountArea .btn,
 .members .accountArea .snsBtn{width:150px;margin:0 auto;}
+.members h4.partTit + .accountBox {margin-top:10px;}
 
-.members .restAccount{text-align:center;padding:25px 15px 0}
+.members .restAccount{padding:25px 15px 0}
 .members .restAccount div{padding-bottom:20px;border-bottom:1px solid #ccc;}
 .members .restAccount p{line-height:1.4em;font-family:'RobotoR','NotoSansR', sans-serif;}
-.members .restAccount p:first-child{color:#000;font-size:15px;}
-.members .restAccount p:first-child span{color:#00aeb9;}
-.members .restAccount p:first-child + p{margin-top:14px;color:#666;letter-spacing:-1px;}
-.members .btnWrap{text-align:center;margin-top:20px;}
+.members .restAccount p:first-child{color:#333;font-size:15px;}
+.members .restAccount p:first-child span{color:#436ebb;}
+.members .restAccount p:first-child + p{margin-top:12px;color:#666;letter-spacing:-1px;}
+.members .btnWrap{margin-top:20px;}
 .members .btnWrap .btn{width:140px;display:inline-block;}
 
 .members .certification{padding:0 15px;text-align:center;}
@@ -148,7 +149,7 @@
 .members .numInput ul li input[type="password"]{background:url("../images/ico_check02.png") no-repeat right 10px;background-size:24px;}
 .members .numInput ul li.active input[type="password"]{background-position:right -22px;}
 .members .numInput ul li p{line-height:1.4em;margin-top:5px;}
-
+.members .numInput p.idPhon {margin:10px 0 8px;}
 .members .terms h4{font-size:15px;}
 .members .terms h5{margin-top:18px;color:#666;font-size:13px;}
 .members .terms p{line-height:1.4em;margin-top:15px;color:#666;}
