@@ -104,7 +104,7 @@ module.exports = function() {
 			$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
 			$('.optionScroll').on('mousewheel', function(e) {
 				e.preventDefault();
-				win.debug.log('mousewheel');
+				debug.log('mousewheel');
 			});
 		}
 		self.optionIScroll = new win.IScroll('.optionScroll', {
