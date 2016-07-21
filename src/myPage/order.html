@@ -167,7 +167,7 @@
 			</td>
 			<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
 			{{#if orderOptionName}}
-				<td class="recordInfo">{{productName}}<span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
+				<td class="recordInfo" style="padding-left: 0"><a href="/shop/detail.html?productNumber={{productNumber}}" class="color01">{{productName}}</a><span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 				</td>
 			{{else}}
 				<td class="recordInfo">{{productName}}<span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
