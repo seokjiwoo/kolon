@@ -242,17 +242,19 @@
 			<!-- // 상품 상세설명 -->
 
 			<!-- 태그 영역 -->
-			<div class="detailArea tagArea js-detail-tags-wrap">
+			<div class="detailArea tagArea">
 				<h3 class="sTit">Tag</h3>
+				<div id='js-detail-tags-wrap'>
 				<script id="detail-tags-templates" type="text/x-handlebars-template">
 					{{!-- detail-tags-templates --}}
 					<ul>
 						{{#each .}}
-						<li><a href="#">태그 / API - 확인 필요</a></li>
+						<li><a href="#">{{.}}</a></li>
 						{{/each}}
 					</ul>
 					{{!--// detail-tags-templates --}}
 				</script>
+				</div>
 			</div>
 			<!-- // 태그 영역 -->
 			

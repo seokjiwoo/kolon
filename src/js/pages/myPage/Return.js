@@ -19,6 +19,8 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	CLAIMS_EVENT = events.CLAIMS,
 	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+
+	var clameState = 'SL_CLAIM_STATE_01_01,SL_CLAIM_STATE_01_02,SL_CLAIM_STATE_01_03,SL_CLAIM_STATE_02_01,SL_CLAIM_STATE_02_02,SL_CLAIM_STATE_02_03,SL_CLAIM_STATE_03_01,SL_CLAIM_STATE_03_02,SL_CLAIM_STATE_03_03,SL_CLAIM_STATE_01_04,SL_CLAIM_STATE_02_04,SL_CLAIM_STATE_03_04,SL_CLAIM_STATE_01_05,SL_CLAIM_STATE_02_05,SL_CLAIM_STATE_01_06,SL_CLAIM_STATE_02_06';
 	
 	var callerObj = {
 		/**
@@ -72,14 +74,13 @@ module.exports = function() {
 	}
 
 	function getClaimsList(keyword, deliveryStateCode) {
-		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
+		keyword = self.searchInp.val();
 
 		controller.myClaimsList(
 			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
 			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
 			keyword,
-			deliveryStateCode
+			clameState
 		);
 	}
 
@@ -198,7 +199,8 @@ module.exports = function() {
 		var target = $(e.target);
 
 		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getClaimsList(self.searchInp.val(), data.values.join(','));
+		clameState = data.values.join(',');
+		getClaimsList();
 	}
 
 	function onSearch(e) {
@@ -213,7 +215,7 @@ module.exports = function() {
 			self.searchInp.val('').focus();
 			return;
 		}
-		getClaimsList(self.searchInp.val());
+		getClaimsList();
 	}
 
 	function setRangePicker() {
@@ -237,6 +239,7 @@ module.exports = function() {
 			}
 		});
 
+		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
 		$('.sortTerm li a').click(function(e) {
 			e.preventDefault();
 			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');

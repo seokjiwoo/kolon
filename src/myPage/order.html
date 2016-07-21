@@ -154,17 +154,20 @@
 	</tr>
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 	{{#if listOrderItems.length}}
-		{{#each listOrderItems}}
+		{{#each deliveryChunk}}
+		{{#each .}}
 		<tr data-order-info='{
 			"orderNumber" : "{{orderNumber}}",
 			"productNumber" : "{{productNumber}}",
 			"orderOptionNumber" : "{{orderOptionNumber}}",
 			"deliveryNumber" : "{{deliveryNumber}}"
 		}'>
-			<td class="recordDate">
+			{{#if @first}}
+			<td class="recordDate" rowspan="{{../length}}">
 				<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
 				<p class="total">총 결제금액<br><b>{{vxTotalPaymentPriceDesc}} 원</b></p>
 			</td>
+			{{/if}}
 			<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
 			{{#if orderOptionName}}
 				<td class="recordInfo" style="padding-left: 0"><a href="/shop/detail.html?productNumber={{productNumber}}" class="color01">{{productName}}</a><span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
@@ -173,10 +176,11 @@
 				<td class="recordInfo">{{productName}}<span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 				</td>
 			{{/if}}
-			<td>{{saleMemberName}}</td>
-			<td>{{receiverName}}</td>
-			<td>{{deliveryChargeDesc}}</td>
-			<td class="orderState stateWrap">
+			{{#if @first}}
+			<td rowspan="{{../length}}">{{saleMemberName}}</td>
+			<td rowspan="{{../length}}">{{receiverName}}</td>
+			<td rowspan="{{../length}}">{{deliveryChargeDesc}}</td>
+			<td class="orderState stateWrap" rowspan="{{../length}}">
 				{{#vxSwitch orderStateCode}}
 					{{#vxCase "SL_ORDER_STATE_01" break=true}}
 						<div class="stateTxt">
@@ -222,7 +226,9 @@
 					{{/vxCase}}
 				{{/vxSwitch}}
 			</td>
+			{{/if}}
 		</tr>
+		{{/each}}
 		{{/each}}
 	{{else}}
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
