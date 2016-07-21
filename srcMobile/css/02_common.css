@@ -196,7 +196,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 
 /* popup */
 .layerPopup{background:#fff;font-family:'RobotoR','NotoSansR', sans-serif;font-size:13px;}
-.layerPopup .popTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;font-size:18px;}
+.layerPopup .popTop{position:relative;color:#000;text-align:center;line-height:45px;font-size:18px;margin-bottom:25px;}
 .layerPopup .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
 .layerPopup .popcon{padding-top:10px;}
 .layerPopup .wrapT:first-child{padding-top:0;}
