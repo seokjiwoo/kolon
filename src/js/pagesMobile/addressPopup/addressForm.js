@@ -35,6 +35,7 @@ module.exports = function() {
 		}
 		$('#findZipCodeButton').click(findZipCode);
 		$('#addressForm').submit(addressSubmitHandler);
+		$('#addressForm .js-submit').on('click', addressSubmitHandler);
 	};
 
 	function addressHandler(e, status, data) {
@@ -65,7 +66,7 @@ module.exports = function() {
 				$('#roadAddress').val(data.roadAddress);
 				$('#extraAddress').val(extraRoadAddr);
 				$('#jibunAddress').text(data.jibunAddress);
-				$('#regionCode').val(data.bcode);
+				$('#regionCode').val(data.bcode.substr(0, 5)+'00000');	// 구까지만 필요함. 동은 짤라버리는 걸로.
 
 				$('#extraAddress').removeAttr('disabled');
 				$('#findZipCode').hide();
