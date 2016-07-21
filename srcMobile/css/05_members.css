@@ -144,6 +144,7 @@
 .members .certification p:first-child span,
 .members .certification p:last-child span{color:#00aeb9;}
 .members .numInput{padding:0 15px;margin-top:20px;}
+.members .numInput ul {margin-top:10px;}
 .members .numInput ul li{margin-top:6px;}
 .members .numInput ul li:first-child{margin-top:0;}
 .members .numInput ul li input[type="password"]{background:url("../images/ico_check02.png") no-repeat right 10px;background-size:24px;}
