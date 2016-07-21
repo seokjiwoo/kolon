@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 주소록"} -->
+</head>
+<body class="popupWindow" data-page-id="popup-addressForm">
+<div id="cboxLoadedContent" class="orderPop popEdge">
+	<div id="findZipCode"></div>
+	<form method="post" id="addressForm" action="#">
+		<div class="btmFix fixwrap">
+			<ul>
+				<li><a href="javascript:history.back(-1)" class="btnSizeB btnColor03 popClose">취소</a></li>
+				<li><a href="javascript:;" class="btnSizeB btnColor02 submit js-submit">확인</a></li>
+			</ul>
+		</div>
+		<div class="layerPopup order">
+			<div class=popTop>
+				<h3 class="popTit">새 주소 추가</h3>
+				<!-- <a href="" class="closeBtn popClose"><span class="hide">팝업닫기</span></a> -->
+			</div>
+			<div class="popCon">
+				<div class="rowwrap">
+					<table class="formWrap mt0">
+						<caption>주소추가테이블</caption>
+						<colgroup>
+							<col style="width:15%" /><col style="width:85%" />
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row">주소 별칭</th>
+								<td><input type="text" id="adrName1" value="" name="adrName1" placeholder="주소의 별칭을 입력해주세요." /></td>
+							</tr>
+							<tr>
+								<th scope="row">이름</th>
+								<td><input type="text" id="adrName2" value="" name="adrName2" placeholder="이름을 입력해주세요." /></td>
+							</tr>
+							<tr class="phone">
+								<th scope="row">연락처</th>
+								<td>
+									<select id="phone1" name="phone1" title="국번 입력">
+										<option value="010" selected="selected">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="018">018</option>
+										<option value="019">019</option>
+										<option value="02">02</option>
+										<option value="031">031</option>
+										<option value="032">032</option>
+										<option value="033">033</option>
+										<option value="041">041</option>
+										<option value="042">042</option>
+										<option value="043">043</option>
+										<option value="044">044</option>
+										<!--<option value="049">049</option>-->
+										<option value="051">051</option>
+										<option value="052">052</option>
+										<option value="053">053</option>
+										<option value="054">054</option>
+										<option value="055">055</option>
+										<option value="061">061</option>
+										<option value="062">062</option>
+										<option value="063">063</option>
+										<option value="064">064</option>
+									</select>
+									-
+									<input type="text" title="연락처 앞자리 입력" value="" maxlength="4" id="phone2" name="phone2"/> 
+									-
+									<input type="text" title="연락처 뒷자리 입력" value="" maxlength="4" id="phone3" name="phone3"/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<h4 class="partTit">주소</h4>
+					<div class="shipAddress">
+						<p class="zipCode">
+							<input type="text" value="" id="zipCode" name="zipCode" title="우편번호" placeholder="우편번호 주소" disabled />
+							<label for="zipCode">주소검색</label>
+							<input type="hidden" title="법정동/리 코드" value="" id="regionCode" name="regionCode" /> 
+							<a href="#" id="findZipCodeButton"></a>
+						</p>
+						<p><input type="text" title="도로명 주소" value="" id="roadAddress" name="roadAddress" placeholder="도로명 주소" disabled><label for="" class="hide">주소</label></p>
+						<p><input type="text" title="상세 주소" value="" id="extraAddress" name="extraAddress" placeholder="상세 주소" disabled><label for="" class="hide">상세 주소 입력</label></p>
+						<p>지번 : <span id="jibunAddress"></span></p>
+						<p>
+							<span class="checkbox">
+								<input type="checkbox" id="adr1">
+								<label for="adr1" id="basicAddrFlag">기본 배송지로 설정</label>
+							</span>
+						</p>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
+
+</body>
+</html>
