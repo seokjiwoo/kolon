@@ -1,43 +1,20 @@
 <!DOCTYPE html>
-<html lang="ko-kr">
+<html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 좋아요"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 최근 본 상품"} -->
 </head>
-<body data-page-id="myPage-like">
+<body data-page-id="myPage-recentSeenItem">
 	<div class="wrapper scrap">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
 				<div class="fixWrap">
-					<h2 class="pageTit">좋아요</h2>
-					<div class="pageTop scrapTop">
-						<p>내가 좋아요한 카드 목록이 표시됩니다.</p>
-					</div>
-					<div class="scrapbtnTopR"><a href="#" class="btnSizeS btnColor03">좋아요 삭제</a></div>
-					<!-- 좋아요 삭제 누르면 나타남 -->
-					<!-- 
-					<div class="scrapbtnTop">
-						<form method="post" action="/">
-							<fieldset>
-								<legend>스크랩 이미지</legend>
-								<p class="checkbox checkAll">
-									<input type="checkbox" id="checkAll"/>
-									<label for="checkAll">모두 선택</label>
-								</p>
-								<p class="btnR">
-									<button><b>6</b>개 삭제</button>
-									<button>취소</button>
-								</p>
-							</fieldset> 
-						</form>
-					</div>
-					-->
-					<!--// 좋아요 삭제 누르면 나타남 -->
+					<h2 class="pageTit">최근 본 상품</h2>
 				</div>
 				<form method="post" action="/">
 					<ul class="cardWrap" id="cardWrap" >
 						<li class="card cardType01 cardSize03">
-							<!-- checkBox : 좋아요 삭제 누르면 나타남 -->
+							<!-- checkBox : 스크랩 삭제 누르면 나타남 -->
 							<p class="checkbox">
 								<input type="checkbox" id="check01">
 								<label for="check01"></label>
