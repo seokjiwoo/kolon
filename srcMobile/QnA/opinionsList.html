@@ -1,43 +1,29 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"의견묻기 목록"} -->
+	<!-- @@include ../_template/header.html {"title":"등록된 질문"} -->
 </head>
 <body data-page-id="">
 	<div class="wrapper qna">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
-				<div class="specialArea">
-					<div class="specialText">
-						<em>specialist</em>
-						<strong>커먼인들에게 물어보기</strong>
-						<p><span>커먼</span>과 함께합니다. <br /><span>전문가의 의견</span>을 받아보세요.</p>
-					</div>
-					<div class="specialSlide">
-						<ul class="slide">
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /></a><span>이강준 /  SPAC</span></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /></a><span>이강준 /  SPAC</li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /></a><span>이강준 /  SPAC</li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /></a><span>이강준 /  SPAC</li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /></a><span>이강준 /  SPAC</li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /></a><span>이강준 /  SPAC</li>
-						</ul>
-					</div>
-					<div class="slideNav">
-						<a href="" class="active"></a>
-						<a href=""></a>
-						<a href=""></a>
-					</div>
+				<h2 class="pageTit">등록된 질문</h2>
+				<div class="selectwrap">
+					<ul>
+						<li>
+							<select>
+								<option value="모든질문">모든질문</option>
+							</select>
+						</li>
+						<li>
+							<select>
+								<option value="최신순">최신순</option>
+							</select>
+						</li>
+					</ul>
 				</div>
-
-				<!-- 기능구현 여부 명확하지 않음 -->
-				<p class="dummyImg"><img src="../images/dummy_01.jpg" alt="" /></p>
-				<p class="dummyImg"><img src="../images/dummy_02.jpg" alt="" /></p>
-				<!-- // 기능구현 여부 명확하지 않음 -->
-
-				<div class="wrapT">
-					<h3 class="conTit">최근 등록된 질문 <a href="">등록된 질문</a></h3>
+				<div class="myWrap">
 					<ul class="qaList">
 						<li>
 							<div class="top">
@@ -88,7 +74,6 @@
 							</div>
 						</li>
 					</ul>
-					<p class="t_c mt20"><a href="" class="btnSizeS btnColor05">등록된 질문 더보기</a></p>
 				</div>
 				<a href="" class="btnSizeB btnColor02">문의하기</a>
 			</section>
