@@ -343,6 +343,8 @@ h3.sTit{font-size:50px;}
 .sellerArea .wrap{overflow: hidden;}
 .sellerArea .wrap > div{float: left;width: 50%;}
 .sellerArea .sellerInfo{position: relative;}
+.sellerArea .sellerPhoto{overflow: hidden;width: 435px;height: 585px;}
+.sellerArea .sellerPhoto img{display: block;height: 100;margin: 0 auto;}
 .sellerArea .sellerTit{width: 340px;height: 112px;margin-left:100px;margin-bottom:-32px;background: url('../images/seller_tit.png') no-repeat;}
 .sellerArea .sellerCont{position: absolute;left: 400px;top: 270px;width: 190px;text-align: center;}
 .sellerArea .sellerCont h4{font-size: 30px;margin-bottom: 10px;}
