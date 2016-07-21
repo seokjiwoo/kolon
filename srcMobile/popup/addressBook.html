@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 주문서 작성"} -->
+</head>
+<body data-page-id="myPage-order">
+	<div class="wrapper order">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<section>
+				<h2 class="pageTit">수령지 정보</h2>
+				<div class="wrapT">
+					<fieldset class="selectAddress">
+						<div class="addressBtnWrap">
+							<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
+						</div>
+						<!-- 등록된 주소가 있는 경우 -->
+						<ul class="addressList">
+							<li>
+								<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></span><span class="pointRed">기본 주소</span></p>
+								<div class="addressCont">
+									<p><b>주문자</b><span>홍길동</span></p>
+									<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
+									<p><b>연락처</b><span>010-1234-5678</span></p>
+								</div>
+								<div class="btnwrap">
+									<a href="#" class="btnSizeS btnColor05">수정</a>
+									<a href="#" class="btnSizeS btnColor05">삭제</a>
+								</div>
+							</li>
+							<li>
+								<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></span><span class="pointGreen">최근 주소</span></p>
+								<div class="addressCont">
+									<p><b>주문자</b><span>홍길동</span></p>
+									<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+									<p><b>연락처</b><span>010-1234-5678</span></p>
+								</div>
+								<div class="btnwrap">
+									<a href="#" class="btnSizeS btnColor05">수정</a>
+									<a href="#" class="btnSizeS btnColor05">삭제</a>
+								</div>
+							</li>
+							<li>
+								<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></span></p>
+								<div class="addressCont">
+									<p><b>주문자</b><span>홍길동</span></p>
+									<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+									<p><b>연락처</b><span>010-1234-5678</span></p>
+								</div>
+								<div class="btnwrap">
+									<a href="#" class="btnSizeS btnColor05">수정</a>
+									<a href="#" class="btnSizeS btnColor05">삭제</a>
+								</div>
+							</li>
+							<!-- 등록된 주소가 없는 경우 -->
+							<li>
+								<div class="addressNon">등록된 주소가 없습니다.<br/>수령할 주소를 등록해주세요.</div>
+							</li>
+							<!--// 등록된 주소가 없는 경우 -->
+						</ul>
+					</fieldset>
+				</div>
+			</section>
+			<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+</body>
+</html>
