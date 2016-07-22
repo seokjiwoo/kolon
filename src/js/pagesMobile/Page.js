@@ -4,6 +4,7 @@ module.exports = function() {
 	var SuperClass = require('../pagesCommon/PageCommon.js');
 	var Super = SuperClass();
 	
+	var util = require('../utils/Util.js');	
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
 	var loginDataModel = require('../model/LoginModel');
@@ -18,6 +19,9 @@ module.exports = function() {
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
 	WINDOWOPENER_EVENT = events.WINDOW_OPENER,
 	CARD_LIST_EVENT = events.CARD_LIST;
+
+	var memberInfoController = require('../controller/MemberInfoController');
+	$(memberInfoController).on('verifyMemberResult', verifyMemberResultHandler);
 
 	$(document).on('verifyMember', requestVerifyMember);
 	
@@ -159,7 +163,7 @@ module.exports = function() {
 	function requestVerifyMember(e) {
 		e.preventDefault();
 
-		Super.htmlPopup('../_popup/popCheckId.html', 650, 'popEdge', {
+		Super.htmlPopup('../_popup/popCheckId.html', '100%', 'popEdge', {
 			onOpen:function() {
 				$('#requestVerifyMemberForm').submit(function(e){
 					e.preventDefault();
@@ -167,7 +171,7 @@ module.exports = function() {
 					if (util.checkValidMobileNumber(id)) {
 						memberInfoController.verifyMemberByPhone(id);
 					} else {
-						alert('휴대폰 번호를 정확하게 입력해주세요.');
+						alert('휴대폰 번호를 정확하게 입력해주세요.');
 					}
 					e.stopPropagation();
 				});
@@ -175,6 +179,21 @@ module.exports = function() {
 		});
 		
 		e.stopPropagation();
+	};
+
+	/**
+	 * 휴대폰 실명인증 결과 핸들링
+	 */
+	function verifyMemberResultHandler(e, status, authData) {
+		switch(Number(status)) {
+			case 200:
+				Super.alertPopup('본인확인이 완료되었습니다.', authData.message, '확인');
+				memberInfoController.getMyInfo();
+				break;
+			default:
+				Super.alertPopup('본인확인에 실패하였습니다.', authData.message, '확인');
+				break;
+		}
 	};
 	
 
