@@ -324,7 +324,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .periodSearch{position:relative;background:#fff;font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .periodSearch + .wrapT{margin-top:10px;}
 .periodSearch > a{position:relative;height:58px;display:block;padding:0 15px;}
-.periodSearch > a span{display:block;padding-top:22px;font-size:15px;}
+.periodSearch > a span{display:block;padding-top:22px;font-size:15px;color:#1a1a1a;}
 .periodSearch > a em{position:absolute;right:17px;top:24px;width:15px;height:10px;overflow:hidden;display:block;background:url("../images/ico_toggleL.png") no-repeat 0 -7px;background-size:15px;}
 .periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;z-index:10;width:100%;background:#fff;padding:0 15px 15px;box-sizing: border-box;}
 .periodSearch .searchArea.active{position:static;display:block;margin-top:10px;padding-top:25px;}
@@ -333,7 +333,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .periodSearch .btnList li{width:19.5%;float:left;margin-left:0.5%;}
 .periodSearch .btnList li:first-child{margin-left:0;}
 .periodSearch .btnList li a{display:block;height:30px;padding: 0 12px;font-size: 13px;border:1px solid #ccc;border-radius: 15px;line-height: 30px;text-align:center;}
-.periodSearch .btnList li.acitve a{background:#adc427;border-color:#adc427;color:#fff;}
+.periodSearch .btnList li.acitve a{background:#2d427a;border-color:#2d427a;color:#fff;}
 .datePic{margin-top:8px;}
 .datePic ul{overflow:hidden;}
 .datePic ul li{width:49%;float:left;}
@@ -363,7 +363,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .orderNum{overflow:hidden;font-size:15px;}
 .orderNum span,
 .orderNum a{display:inline-block;}
-.orderNum span{float:left;}
+.orderNum span{float:left; color:#1a1a1a;}
 .orderNum a{float:right;padding-right:12px;background:url("../images/ico_arrowG.png") no-repeat right center;background-size:6px;}
 .payPrice{margin-top:5px;color:#f1645c;font-size:18px;padding-bottom:10px;border-bottom:1px solid #666;font-weight:bold;}
 .payPrice em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
@@ -375,7 +375,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
 .productList .info + .cancelArea{margin-top:44px;}
-.productList .info span{padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
+.productList .info span{padding:4px 6px; font-size:11px; border:1px solid #436ebb; color:#436ebb; display:inline-block;}
 .productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
 .productList .productData{clear:both;}
@@ -394,7 +394,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;clear:both;}
 .productList .cancelArea .state,
 .productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
-.productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px;}
+.productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px; color:#b08967; font-weight:bold;}
 .productList .cancelArea .btnSizeS{float:right;margin-left:4px;}
 .productList .workInfo{padding-top:10px;margin-top:40px;clear:both;border-top:1px solid #ccc;clear:both;}
 .productList .workInfo .addr p{line-height:1.4em;}
@@ -454,7 +454,7 @@ ul.optList > li + li {border-top:1px solid #666;}
 ul.optList li > a {padding-left:121px; display:inline-block; position:relative; font-size:15px;}
 ul.optList li .cont {width:100%; min-height:78.5px; overflow:hidden;}
 ul.optList li .cont p {color:#333; line-height:130%;}
-ul.optList li .cont span {padding:4px 6px; font-size:11px; border:1px solid #00aeb9; color:#00aeb9; display:inline-block;}
+ul.optList li .cont span {padding:4px 6px; font-size:11px; border:1px solid #436ebb; color:#436ebb; display:inline-block;}
 ul.optList li .cont span + p {margin-top:6px;}
 ul.optList li p.checkbox {position:absolute; top:0; left:0;}
 ul.optList li p.photo,
