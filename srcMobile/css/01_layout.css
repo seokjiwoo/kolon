@@ -67,7 +67,7 @@ a{color:#666;}
 .gnb .colMenu li:nth-child(odd):after{width:86%;}
 .gnb .colMenu li:last-child:after{display:none;}
 .gnb .colMenu li a{height:40px;line-height:40px;display:block;font-size:14px;letter-spacing:-1px;color:#333;}
-.gnb .colMenu li:last-child a{color:#00c9d6;border:0}
+.gnb .colMenu li:last-child a{color:#436ebb;border:0}
 .gnb .colMenu li a em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-weight:bold;}
 
 .gnb .stateArea{width:100%;position:absolute;left:0;bottom:0;}

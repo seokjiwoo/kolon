@@ -182,3 +182,5 @@
 .members .checkArea .checkbox{width:248px;margin:0 auto;}
 .members .checkArea label{overflow:hidden;}
 .members .checkArea label:before{float:left;margin-top:7px;}
+
+#vxrecaptcha {width:302px; overflow:hidden; margin:10px auto 0;}
