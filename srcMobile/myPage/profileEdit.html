@@ -6,17 +6,13 @@
 <body data-page-id="myPage-profileEdit">
 	<div class="wrapper my">
 		<!-- @@include ../_template/menu.html -->
-		<div class="btmFix fixwrap">
-			<ul>
-				<li><a href="" class="btnSizeB btnColor02 popClose">취소</a></li>
-				<li><a href="" class="btnSizeB btnColor03 popClose">확인</a></li>
-			</ul>
-		</div>
 		<div class="container">
 			<section>
 				<div class="editArea">
-					<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
-					<div><a href="" class="btnSizeS btnColor03">편집</a></div>
+					<div class="thumb"><img id="myPageHeaderProfilePic" src="" alt="" /></div>
+					<div>
+						<a href="../_popup/popProfilePic.html" class="btnSizeS btnPop btnColor03" data-user-class="qna popProfilePic popEdge">편집</a>
+					</div>
 				</div>
 				<div class="wrapT">
 					<h3 class="conTit noBorder">계정정보</h3>
@@ -26,39 +22,52 @@
 							<tr>
 								<th scope="col">이메일아이디</th>
 								<td>
-									<ul class="inAalign">
-										<li><p>pkolon34@gmail.com</p></li>
-										<li><a href="" class="btnSizeS btnColor03">변경</a></li>
-									</ul>
+									<form action="#" id="changeEmailIdForm" method="POST">
+										<ul class="inAalign">
+											<!-- <li><p>pkolon34@gmail.com</p></li> -->
+											<li><p id="profileID"></p></li>
+											<li><a href="#" id="changeIdButton" class="btnSizeS btnColor03">변경</a></li>
+										</ul>
+										<div id="changeEmailField" style="margin-top:10px">
+											<input type="text" value="" id="profileNewID" placeholder="변경할 이메일 주소를 입력해주세요">
+											<button type="submit" class="btn btnSizeL btnColor01" style="margin-top:10px">인증메일 전송</button>
+										</div>
+									</form>
 								</td>
 							</tr>
 							<tr>
 								<th scope="col">휴대폰 번호<br />아이디</th>
 								<td>
 									<ul class="inAalign">
-										<li><input type="text" /></li>
-										<li> <a href="" class="btnSizeS btnColor01">등록</a></li>
+										<li><input type="text" id="editPhoneID" disabled="disabled"/></li>
+										<li><a href="#" class="btnSizeS btnColor01 verifyMemberPopup" id="changePhoneButton">등록</a></li>
 									</ul>
 								</td>
 							</tr>
-							<tr>
-								<th scope="col">현재 비밀번호</th>
-								<td>********</td>
-							</tr>
-							<tr>
-								<th scope="col">새 비밀번호</th>
-								<td><input type="password" placeholder="영문, 숫자, 특수문자 조합 ( 9~16자리)" /></td>
-							</tr>
-							<tr>
-								<th scope="col">새 비밀번호<br />재입력</th>
-								<td><input type="password" /></td>
-							</tr>
+
+						<form action="#" id="changePWForm">
+								<tr>
+									<th scope="col">현재 비밀번호</th>
+									<td><input type="password" id="currentPW" placeholder="현재 비밀번호를 입력해주세요"></td>
+								</tr>
+								<tr>
+									<th scope="col">새 비밀번호</th>
+									<td><input type="password" id="newPW01" placeholder="영문, 숫자, 특수문자 조합(9~16자리)"></td>
+									<td><span id='newPWAlert1' class="alert"></span></td></td>
+								</tr>
+								<tr>
+									<th scope="col">새 비밀번호<br />재입력</th>
+									<td><input type="password" id="newPW02" placeholder="비밀번호를 한번 더 입력해주세요."> </td>
+									<td><span id='newPWAlert2' class="alert"></span></td>
+								</tr>
+						</form>
+
 							<tr>
 								<th scope="col">Facebook</th>
 								<td>
 									<ul class="inAalign">
-										<li><p>kolon34@gmail.com</p></li>
-										<li><a href="" class="btnSizeS btnColor03">해제</a></li>
+										<li><p id="socialInfo_facebook">연결된 정보가 없습니다.</p></li>
+										<li><a href="#" id="socialButton_facebook" class="btnSizeS btnColor01 socialButton">연결</a></li>
 									</ul>
 								</td>
 							</tr>
@@ -66,8 +75,8 @@
 								<th scope="col">NAVER</th>
 								<td>
 									<ul class="inAalign">
-										<li></li>
-										<li><a href="" class="btnSizeS btnColor01">연결</a></li>
+										<li><p id="socialInfo_naver">연결된 정보가 없습니다.</p></li>
+										<li><a href="#" id="socialButton_naver" class="btnSizeS btnColor01 socialButton">연결</a></li>
 									</ul>
 								</td>
 							</tr>
@@ -75,101 +84,154 @@
 								<th scope="col">KAKAO</th>
 								<td>
 									<ul class="inAalign">
-										<li></li>
-										<li><a href="" class="btnSizeS btnColor01">연결</a></li>
+										<li><p id="socialInfo_kakao">연결된 정보가 없습니다.</p></li>
+										<li><a href="#" id="socialButton_kakao" class="btnSizeS btnColor01 socialButton">연결</a></li>
 									</ul>
 								</td>
 							</tr>
 						</tbody>
 					</table>
-					<h3 class="conTit noBorder mt30">기본 정보</h3>
-					<table class="formWrap mt0">
-						<caption>기본 정보 표</caption>
-						<tbody>
-							<tr>
-								<th scope="col">이름</th>
-								<td>
-									<div class="nameConfirm">
-										<span></span>
-										<a href="" class="check">본인확인</a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">생년월일</th>
-								<td class="phone">
-									<select>
-										<option>2016</option>
-									</select>
-									<select>
-										<option>04</option>
-									</select>
-									<select>
-										<option>02</option>
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">휴대폰 번호</th>
-								<td class="phone">
-									<select>
-										<option>010</option>
-									</select> -
-									<input type="tel" title="연락처 앞자리 입력" /> -
-									<input type="tel" title="연락처 뒷자리 입력" />
-								</td>
-							</tr>
-							<tr>
-								<th scope="col">일반 전화번호</th>
-								<td class="phone">
-									<select>
-										<option>010</option>
-									</select> -
-									<input type="tel" title="연락처 앞자리 입력" /> -
-									<input type="tel" title="연락처 뒷자리 입력" />
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<p class="limitTxt">* 본인확인을 하지 않으면 서비스 이용에 제한이 있을 수 있습니다.</p>
-					<h3 class="conTit noBorder mt30">기본 배송지 정보</h3>
-					<div class="addrInfo">
-						<ul class="inAalign">
-							<li><input type="text" /></li>
-							<li><a href="" class="btnSizeS btnColor03">주소검색</a></li>
-						</ul>
-						<p><input type="text" /></p>
-						<p><input type="text" /></p>
-						<p><a href="#" class="btnColor04 btnSizeL btnSizeW btn">주소록 관리</a></p>
-					</div>
 				</div>
-				<div class="emailCheck">
-					<h3 class="conTit noBorder">이메일 및 SMS 수신 여부</h3>
-					<ul>
-						<li>
-							<ul class="myCartInfoList">
-								<li>공지 및 마케팅 메일/행사, 이벤트, 세일 정보 SMS를 수신 동의하시면 커먼에서 제공하는 다양한 정보를 미리 안내 받으실 수 있습니다.</li>
-								<li>수신 동의 여부와 상관 없이 주문, 결제, 배송, 취소, 비밀번호 변경등에 대한 정보는 발송 됩니다.</li>
+
+				<form action="#" id="changeInfoForm" method="POST">
+					<div class="wrapT" style="margin-top:-40px">
+						<h3 class="conTit noBorder mt30">기본 정보</h3>
+						<table class="formWrap mt0">
+							<caption>기본 정보 표</caption>
+							<tbody>
+								<tr>
+									<th scope="col">이름</th>
+									<td>
+										<div class="nameConfirm">
+											<span><input type="text" value="홍길동" id="editName"></span>
+											<a href="#" class='btn btnSizeM btnColor01 verifyMemberPopup' data-user-class="popEdge">본인확인</a>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="col">생년월일</th>
+									<td class="birth">
+										<!-- <select>
+											<option>2016</option>
+										</select>
+										<select>
+											<option>04</option>
+										</select>
+										<select>
+											<option>02</option>
+										</select> -->
+										<div>
+											<select id="joinBirth01"></select>
+											<label for="joinBirth01" class="joinBirth">년</label>
+											<select id="joinBirth02">
+												<option value="01">1</option>
+												<option value="02">2</option>
+												<option value="03">3</option>
+												<option value="04">4</option>
+												<option value="05">5</option>
+												<option value="06">6</option>
+												<option value="07">7</option>
+												<option value="08">8</option>
+												<option value="09">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+											<label for="joinBirth02" class="joinBirth">월</label>
+											<select id="joinBirth03"></select>
+											<label for="joinBirth03" class="joinBirth">일</label>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th scope="col">휴대폰 번호</th>
+									<td class="phone">
+										<p class="inputWrap" id="profileMobile"></p>
+										<!-- <select>
+											<option>010</option>
+										</select> -
+										<input type="tel" title="연락처 앞자리 입력" /> -
+										<input type="tel" title="연락처 뒷자리 입력" /> -->
+									</td>
+								</tr>
+								<tr>
+									<!-- <th scope="col">일반 전화번호</th>
+									<td class="phone">
+										<select>
+											<option>010</option>
+										</select> -
+										<input type="tel" title="연락처 앞자리 입력" /> -
+										<input type="tel" title="연락처 뒷자리 입력" />
+									</td> -->
+									<th scope="col"><label for="profileHomePhone">일반 전화번호</label></th>
+									<td class="phone"><input type="text" id="profileHomePhone"></td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="limitTxt">* 본인확인을 하지 않으면 서비스 이용에 제한이 있을 수 있습니다.</p>
+						<h3 class="conTit noBorder mt30">기본 배송지 정보</h3>
+						<div class="addrInfo">
+							<!-- 
+							<ul class="inAalign">
+								<li><input type="text" /></li>
+								<li><a href="" class="btnSizeS btnColor03">주소검색</a></li>
 							</ul>
-						</li>
-						<li>
-							<span>공지 및 마케팅 메일 수신</span>
-							<div>
-								<span class="radioBox"><input type="radio" name="g1" id="rd01"><label for="rd01">수신</label></span>
-								<span class="radioBox"><input type="radio" name="g1" id="rd02"><label for="rd02">수신거부</label></span>
-							</div>
-						</li>
-						<li>
-							<span>행사, 이벤트 정보 SMS 수신</span>
-							<div>
-								<span class="radioBox"><input type="radio" name="" id="rd03"><label for="rd03">수신</label></span>
-								<span class="radioBox"><input type="radio" name="" id="rd04"><label for="rd04">수신거부</label></span>
-							</div>
-						</li>
-					</ul>
-				</div>
+							<p><input type="text" /></p>
+							<p><input type="text" /></p>
+							 -->
+							<p><a href="../popup/addressBook.html" class="btnColor04 btnSizeL btnSizeW btn openAddressPopup">주소록 관리</a></p>
+						</div>
+						<div class="emailCheck">
+							<h3 class="conTit noBorder">이메일 및 SMS 수신 여부</h3>
+							<ul>
+								<li>
+									<ul class="myCartInfoList">
+										<li>공지 및 마케팅 메일/행사, 이벤트, 세일 정보 SMS를 수신 동의하시면 커먼에서 제공하는 다양한 정보를 미리 안내 받으실 수 있습니다.</li>
+										<li>수신 동의 여부와 상관 없이 주문, 결제, 배송, 취소, 비밀번호 변경등에 대한 정보는 발송 됩니다.</li>
+									</ul>
+								</li>
+								<li>
+									<span>공지 및 마케팅 메일 수신</span>
+									<div>
+										<span class="radioBox">
+											<input type="radio" name="receive01" id="agreeReceive01">
+											<label for="agreeReceive01">수신</label>
+											<input type="radio" name="receive01" id="disagreeReceive01">
+											<label for="disagreeReceive01">수신거부</label>
+										</span>
+									</div>
+								</li>
+								<li>
+									<span>행사, 이벤트 정보 SMS 수신</span>
+									<div>
+										<span class="radioBox">
+											<input type="radio" name="receive02" id="agreeReceive02">
+											<label for="agreeReceive02">수신</label>
+											<input type="radio" name="receive02" id="disagreeReceive02">
+											<label for="disagreeReceive02">수신거부</label>
+										</span>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</form>
 			</section>
+			<div class="btmFix fixwrap">
+				<ul>
+					<li><a href="javascript:history.back(-1)" class="btnSizeB btnColor02 popClose">취소</a></li>
+					<li><a href="javascript:;" class="btnSizeB btnColor03 popClose js-submit">확인</a></li>
+				</ul>
+			</div>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<!-- [D] 임시 구성 -->
+<style>
+	[data-page-id="myPage-profileEdit"] .birth select {width:25%}
+	[data-page-id="myPage-profileEdit"] .radioBox label:before{background-position: 0 -16px}
+	[data-page-id="myPage-profileEdit"] .radioBox label.on:before{background-position: 0 0px}
+</style>
+
 </body>

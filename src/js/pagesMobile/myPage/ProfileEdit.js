@@ -20,13 +20,21 @@ module.exports = function() {
 	$(controller).on('refundDataResult', refundDataResultHandler);
 	
 	var loginController = require('../../controller/LoginController');
+	$(loginController).on('loginResult', socialConnectFailHandler);
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
 	
+	var controller = require('../../controller/MemberInfoController');
+	$(controller).on('changePasswordResult', changePasswordResultHandler);
+
+
+
 	var eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	DROPDOWNSCROLL_EVENT = events.DROPDOWN_SCROLL;
+
+
 
 	var myInfoObject;
 	var emailDuplicateFlag = false;
@@ -61,7 +69,23 @@ module.exports = function() {
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
 			$('.verifyMemberPopup').click(submitMobileEditForm);
-			$('#changeRefundInfoButton').click(popRefundAccount);
+
+
+			$('#newPW01').change(checkPasswordField);
+			$('#newPW02').change(checkPasswordField);
+			$('#changePWForm').submit(submitPasswordForm);
+
+			$('#changeIdButton').on('click', function(e) {
+				e.preventDefault();
+				$('#changeEmailIdForm').submit();
+			});
+
+			$('.js-submit').on('click', function(e) {
+				e.preventDefault();
+				$('#changeInfoForm').submit();
+				$('#changePWForm').submit();
+			});
+
 		} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
@@ -73,15 +97,15 @@ module.exports = function() {
 		debug.log(infoObject);
 
 		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
-			$('#profileID').val(infoObject.email);
+			$('#profileID').text(infoObject.email);
 			$('#changeEmailField').hide();
 			if (infoObject.email != null) {
 				$('#profileID').attr('disabled', 'disabled');
-				$('#changeIdButton').text('변경하기');
+				$('#changeIdButton').text('등록');
 			}
 			$('#editPhoneID').val(infoObject.cellPhoneNumber);
 			if (infoObject.cellPhoneNumber != null) {
-				$('#changePhoneButton').text('변경하기');
+				$('#changePhoneButton').text('등록');
 			}
 			$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
 			for (var key in infoObject.socials) {
@@ -92,7 +116,7 @@ module.exports = function() {
 					case 'kakao':	// kakao
 						$('#socialRow_'+eachSocialData.socialName).addClass('active');
 						$('#socialInfo_'+eachSocialData.socialName).text('연결되었습니다. (이메일 : '+eachSocialData.socialEmail+')');
-						$('#socialButton_'+eachSocialData.socialName).text('연결해제');
+						$('#socialButton_'+eachSocialData.socialName).text('해제');
 						break;
 				}
 			}
@@ -109,10 +133,9 @@ module.exports = function() {
 				$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
 				$('#refundName').text(infoObject.memberRefundAccount.depositorName);
 			} else {
-				$('#refundBankName').text('');  
-				$('#refundAccount').text('');
-				$('#refundName').text('');
+				$('#refundInfoRow').html('<td colspan="3" style="padding: 25px"><button id="changeRefundInfoButton" class="btn btnSizeM btnColor01">계좌 등록</button></td>')
 			}
+			$('#changeRefundInfoButton').click(popRefundAccount);
 
 			switch(infoObject.emailReceiveYn) {
 				default: 
@@ -164,7 +187,7 @@ module.exports = function() {
 	};
 
 	/**
-	 * 소셜연결/연결해제 클릭 핸들링 
+	 * 소셜연결/해제 클릭 핸들링 
 	 */
 	function socialButtonClickHandler(e) {
 		var socialName = $(this).attr('id').substr(13);
@@ -192,13 +215,20 @@ module.exports = function() {
 			case 'kakao':	// kakao
 				$('#socialRow_'+socialName).addClass('active');
 				$('#socialInfo_'+socialName).text('연결되었습니다.');
-				$('#socialButton_'+socialName).text('연결해제');
+				$('#socialButton_'+socialName).text('해제');
 				break;
 		}
 	};
 
 	/**
-	 * 소셜 연결해제 결과 핸들링
+	 * 소셜연결 실패 핸들링 
+	 */
+	function socialConnectFailHandler(e, status, result) {
+		if (status == 401) MyPage.Super.Super.alertPopup('', result.message, '확인');
+	};
+
+	/**
+	 * 소셜 해제 결과 핸들링
 	 */
 	function socialDisconnectResultHandler(e, status, result, socialName) {
 		switch(socialName) {
@@ -207,7 +237,7 @@ module.exports = function() {
 			case 'kakao':	// kakao
 				$('#socialRow_'+socialName).removeClass('active');
 				$('#socialInfo_'+socialName).text('연결된 정보가 없습니다.');
-				$('#socialButton_'+socialName).text('계정연결');
+				$('#socialButton_'+socialName).text('연결');
 				break;
 		}
 	};
@@ -226,7 +256,7 @@ module.exports = function() {
 	 */
 	function refundBankListResultHandler(e, status, result) {
 		if (status == 200) {
-			MyPage.Super.Super.htmlPopup('../../_popup/popRefundAccount.html', 590, 'popEdge', {
+			MyPage.Super.Super.htmlPopup('../../_popup/popRefundAccount.html', '100%', 'popEdge', {
 				onOpen: function() {
 					var tags = '';
 					for (var key in result.bankCodes) {
@@ -317,7 +347,7 @@ module.exports = function() {
 	function changeEmailIdResultHandler(e, status, response) {
 		switch(status) {
 			case 200:	// 인증메일 발송 완료
-				MyPage.Super.Super.htmlPopup('../../_popup/popAuthorizeEmail.html', 590, 'popEdge', {
+				MyPage.Super.Super.htmlPopup('../../_popup/popAuthorizeEmail.html', '100%', 'popEdge', {
 					onOpen: function() {
 						$('#emailAuthNumber').val('');
 						$('#sendedAddress').text(enteredId);
@@ -336,7 +366,7 @@ module.exports = function() {
 				$.colorbox.close();
 				alert(response.message);
 				$('#myPageHeaderId').text(enteredId);
-				$('#profileID').val(enteredId).attr('disabled', 'disabled');
+				$('#profileID').text(enteredId).attr('disabled', 'disabled');
 				$('#changeEmailField').hide();
 				break;
 			case 400:	// 인증실패
@@ -421,4 +451,65 @@ module.exports = function() {
 		}
 		$('#joinBirth03').html(tags);
 	};
+
+
+
+
+
+	/**
+	 * 패스워드 필드 검사 
+	 */
+	function checkPasswordField(e) {
+		var inputValue1 = $('#newPW01').val();
+		var inputValue2 = $('#newPW02').val();
+		
+		if (inputValue2 != '' && inputValue1 != inputValue2) {
+			$('#newPWAlert').text('비밀번호가 일치하지 않습니다.');
+		} else if (!util.checkValidPassword(inputValue1)) {
+			$('#newPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+		} else {
+			$('#newPWAlert').text('');
+		}
+	};
+
+	/**
+	 * 회원가입 절차 진행
+	 */
+	function submitPasswordForm(e) {
+		e.preventDefault();
+		
+		var pw0 = $('#currentPW').val();
+		var pw1 = $('#newPW01').val();
+		var pw2 = $('#newPW02').val();
+
+		if (!pw0) {
+			return;
+		}
+		
+		if (pw1 == '' || pw2 == '') {
+			alert('비밀번호를 입력해 주세요.');
+			$('#newPWAlert').text('비밀번호를 입력해 주세요.');
+		} else if (pw1 != pw2) {
+			alert('비밀번호가 일치하지 않습니다.');
+			$('#newPWAlert').text('비밀번호가 일치하지 않습니다.');
+		} else if (!util.checkValidPassword(pw1)) {
+			alert('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+			$('#newPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+		} else {
+			controller.changePassword(pw0, pw1);
+		}
+		
+		e.stopPropagation();
+	};
+
+	function changePasswordResultHandler(e, status, result) {
+		if (status == 200) {
+			MyPage.Super.Super.alertPopup('비밀번호 변경에 성공하였습니다', result.message, '확인', function(){
+				location.href='/myPage/';
+			});
+		} else {
+			MyPage.Super.Super.alertPopup('비밀번호 변경에 실패하였습니다', result.message, '확인');
+		}
+	};
+
 };
