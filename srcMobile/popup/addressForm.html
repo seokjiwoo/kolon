@@ -7,13 +7,14 @@
 <div id="cboxLoadedContent" class="popAdressForm">
 	<div id="findZipCode"></div>
 	<form method="post" id="addressForm" action="#">
+
 		<div class="layerPopup container">
 			<div class="popTop">
 				<h3 class="popTit">새 주소 추가</h3>
 				<!-- <a href="" class="closeBtn popClose"><span class="hide">팝업닫기</span></a> -->
 			</div>
-			<div class="popCon">
-				<div class="rowwrap">
+			<div class="container">
+				<div class="addressFormWrap">
 					<table class="formWrap mt0">
 						<caption>주소추가테이블</caption>
 						<colgroup>
@@ -60,7 +61,12 @@
 							</span>
 						</p>
 					</div>
-
+					<div class="btmFix fixwrap">
+						<ul>
+							<li><a href="javascript:history.back(-1)" class="btnSizeB btnColor03 popClose">취소</a></li>
+							<li><a href="javascript:;" class="btnSizeB btnColor02 submit js-submit">확인</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

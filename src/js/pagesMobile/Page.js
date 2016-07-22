@@ -7,6 +7,8 @@ module.exports = function() {
 	var util = require('../utils/Util.js');	
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
+	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
+
 	var loginDataModel = require('../model/LoginModel');
 	var loginData;
 	
@@ -243,11 +245,11 @@ module.exports = function() {
 
 			$('.profileEditButton').click(function(e){
 				e.preventDefault();
-				closeLnbHandler();
+				closeSideMenu();
 				if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
 					confirmPasswordResultHandler(null, 200);
 				} else {
-					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+					Super.htmlPopup('../../_popup/popCheckPw.html', '100%', 'popEdge', {
 						onOpen: function() {
 							$('#checkPwForm').submit(function(e){
 								e.preventDefault();
@@ -276,6 +278,19 @@ module.exports = function() {
 			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		}
 	};
+
+	function confirmPasswordResultHandler(e, status, result) {
+		switch(status) {
+			case 200:
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/1440 });	// 1 minutes
+				// location.href = '/myPage/profileEdit.html';
+				location.href = '/myPage/profilePreview.html';
+				break;
+			case 400:
+				alert(result.message);
+				break;
+		}
+	}
 
 	/**
 	 * GNB 초기화

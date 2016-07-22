@@ -226,6 +226,10 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/Profile.js');
 				break;
 
+			case 'myPage-profilePreview':
+				PageModuleClass = require('./pagesMobile/myPage/ProfilePreview.js');
+				break;
+
 			// 내 정보 수정	profileEdit
 			case 'myPage-profileEdit':
 				PageModuleClass = require('./pagesMobile/myPage/ProfileEdit.js');

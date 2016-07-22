@@ -59,11 +59,11 @@
 .homeService-request .payTab.tabWrap a.radioBtn span.labelTxt {display:inline-block;font-size:13px;color:#333;}
 .homeService-request .payTab.tabWrap a.radioBtn span.gradeNum {color:#f1645c;}
 .homeService-request .payTab.tabWrap a.radioBtn + p {margin-top:14px;}
-.homeService-request .payTab.tabWrap .labelTxt:after {content:'';display:inline-block;position:absolute;top:50%;left:0;margin-top:-9px;width:18px;height:18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;}
+.homeService-request .payTab.tabWrap .labelTxt:after {content:'';display:inline-block;position:absolute;top:50%;left:0;margin-top:-9px;width:16px;height:16px;background: url('../images/ico_radio.png') 0 -16px no-repeat;background-size:16px 32px;}
 .homeService-request .payTab.tabWrap .on .labelTxt:after {background-position:0 0;}
 .homeService-request .payTab.tabWrap.washingTab .labelTxt:after {display:none;}
 .homeService-request .payTab.tabWrap.washingTab a.radioBtn.homeLeft {padding-left:23px;}
-.homeService-request .payTab.tabWrap.washingTab a.radioBtn.homeLeft:after {content:'';display:inline-block;position:absolute;top:50%;left:0;margin-top:-9px;width:18px;height:18px;background: url('../images/ico_radio.png') 0 -18px no-repeat;}
+.homeService-request .payTab.tabWrap.washingTab a.radioBtn.homeLeft:after {content:'';display:inline-block;position:absolute;top:50%;left:0;margin-top:-9px;width:16px;height:16px;background: url('../images/ico_radio.png') 0 -18px no-repeat;background-size:16px 32px}
 .homeService-request .payTab.tabWrap.washingTab .on a.radioBtn.homeLeft:after {background-position:0 0;}
 
 .homeService-request .homeLeft {display:inline-block;width:45%;padding-left:23px;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box}
