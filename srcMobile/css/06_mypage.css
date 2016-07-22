@@ -936,3 +936,31 @@ table ul.myCartInfoList li a {color:#999;}
 .my .graphBox .graph {width:100%;}
 
 .addressBtnWrap {padding-bottom:15px; border-bottom:1px solid #ccc;}
+
+.my .stateWrap {width:100%; position:relative; overflow:hidden;}
+.stateWrap .stepImg, 
+.stateWrap .stepImg span{width:310px; height:15.45px; margin-left:-155px; background: url('../images/ico_step.png') 0 0 no-repeat; background-size:310px 154.5px;position:absolute; top:15px; left:50%;}
+.my .stateWrap .state{padding: 15px 0;}
+.my .stateWrap ul{max-width:310px; overflow: hidden; margin:0 auto;}
+.my .stateWrap li{min-height:34px; float: left;padding-top:30px;text-align: center;color: #666;font-size: 13px;line-height: 1.3em}
+.my .stateWrap li.on{font-family:'NotoSansM', sans-serif;color: #000;}
+.my .stateWrap .stepImg{height:154.5px;}
+.my .stateWrap .stepImg span{display: block;height: 100%;}
+
+.my .stateWrap .state .stepImg{background-position:0 0;}
+.my .stateWrap .state .stepImg span{background: url('../images/ico_step_on.png') 0 0 no-repeat; overflow:hidden; background-size:310px 154.5px; top:0;}
+.my .stateWrap .state li{width:25%; text-align:center;}
+.my .stateWrap .state .step01 span{width: 53px; height:30px;}
+.my .stateWrap .state .step02 span{width: 125px; height:30px;}
+.my .stateWrap .state .step03 span{width: 203px; height:30px;}
+.my .stateWrap .state .step04 span{width: 282px; height:30px;}
+.my .stateWrap .state .step05 span{width: 390px; height:92px;}
+.my .stateWrap .state .step05 span:after {content:''; width:257px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step.png') 0 -64px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step06 span{width: 480px; height:92px;}
+.my .stateWrap .state .step06 span:after {content:''; width:178px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step.png') 0 -64px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step07 span{width: 570px; height:92px;}
+.my .stateWrap .state .step07 span:after {content:''; width:100px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step.png') 0 -64px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step08 span{width: 660px; height:92px;}
+.my .stateWrap .state .step08 span:after {content:''; width:28px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step.png') 0 -64px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step09 span{width: 750px; height:155px;}
+.my .stateWrap .state .step09 span:after {content:''; width:178px; height:30px; position:absolute; top:125px; right:0; background:url('../images/ico_step.png') 0 -125px no-repeat; background-size:310px 154.5px;}
