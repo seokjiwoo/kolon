@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"나의 정보"} -->
 </head>
-<body data-page-id="">
+<body data-page-id="myPage-profile">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -16,201 +16,225 @@
 							<p>고객님에 대해<br />알려주세요!</p>
 							<p>고객님 정보에 따라<br />맞춤 정보를 제공하게 됩니다.</p>
 						</div>
-						<ul class="haxList">
-							<li>
-								<div class="haxwrap">
-									<div class="haxbox">
-										<!-- <div class="ico c01">
-											<em>200P</em>
-											<p>지급</p>
-										</div> -->
-										<div class="conbox">
-											<p>지금 살고 계시는 지역을<br />알려주세요</p>
-											<ul class="selectList">
-												<li>
-													<select>
-														<option value="시도">시도</option>
-													</select>
-												</li>
-												<li>
-													<select>
-														<option value="시군구">시군구</option>
-													</select>
-												</li>
-												<li>
-													<select>
-														<option value="읍면동">읍면동</option>
-													</select>
-												</li>
-											</ul>
-										</div>
-										<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="haxwrap">
-									<div class="haxbox">
-										<!-- <div class="ico c04">
-											<em>100P</em>
-											<p>지급</p>
-										</div> -->
-										<div class="conbox">
-											<p>주거 형태는 어떻게 되시나요?</p>
-											<ul class="selectList">
-												<li>
-													<select>
-														<option value="아파트">아파트</option>
-													</select>
-												</li>
-												<li>
-													<select>
-														<option value="79㎡/24PY 미만">79㎡/24PY 미만</option>
-													</select>
-												</li>
-											</ul>
-										</div>
-										<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="haxwrap">
-									<div class="haxbox">
-										<!-- <div class="ico c03">
-											<em>300P</em>
-											<p>지급</p>
-										</div> -->
-										<div class="conbox">
-											<p>이사나 인테리어를 계획 중이라면 어느 지역인가요?</p>
-											<ul class="selectList">
-												<li>
-													<select>
-														<option value="시도">시도</option>
-													</select>
-												</li>
-												<li>
-													<select>
-														<option value="시군구">시군구</option>
-													</select>
-												</li>
-												<li>
-													<select>
-														<option value="읍면동">읍면동</option>
-													</select>
-												</li>
-											</ul>
-										</div>
-										<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="haxwrap">
-									<div class="haxbox">
-										<!-- <div class="ico c01">
-											<em>200P</em>
-											<p>지급</p>
-										</div> -->
-										<div class="conbox">
-											<p>반려동물 키우세요?</p>
-											<ul class="infoCheckList">
-												<li>
-													<input type="checkbox" class="infoCheck bg01" />
-												</li>
-												<li>
-													<input type="checkbox" class="infoCheck bg02" />
-												</li>
-												<li>
-													<input type="checkbox" class="infoCheck bg03" />
-												</li>
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>안키워요</span>
-													</label>
-												</li>
-											</ul>
-										</div>
-										<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="haxwrap">
-									<div class="haxbox">
-										<!-- <div class="ico c02">
-											<em>5 00P</em>
-											<p>지급</p>
-										</div> -->
-										<div class="conbox">
-											<p>가족 구성원은 어떻게 되시나요?</p>
-											<div class="familyList">
-												<input type="radio" name="family" class="infoRadio bg04" />
-												<input type="radio" name="family" class="infoRadio bg05" />
-												<input type="radio" name="family" class="infoRadio bg06" />
-												<input type="radio" name="family" class="infoRadio bg07" />
-												<input type="radio" name="family" class="infoRadio bg08" />
-											</div>
-										</div>
-										<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="haxwrap">
-									<div class="haxbox">
-										<div class="conbox">
-											<p>주로 어떤 것들에 <br/>관심이 있으신가요?</p>
-											<ul class="infoCheckList likeList">
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>임대/임차</span>
-													</label>
-												</li>
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>투자</span>
-													</label>
-												</li>
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>중개</span>
-													</label>
-												</li>
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>인테리어</span>
-													</label>
-												</li>
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>운동</span>
-													</label>
-												</li>
-												<li>
-													<label for="noinfo" class="noinfo">
-														<input type="checkbox" id="noinfo" />
-														<span>디자인 소품</span>
-													</label>
-												</li>
-											</ul>
-										</div>
-										<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
-									</div>
-								</div>
-							</li>
-						</ul>
+		
+						<!-- [D] #personal-info-card-template - wrap -->
+						<ul class="haxList" id="cardWrap"></ul>
+						<!--// [D] #personal-info-card-template - wrap -->
+
 					</div>
 				</div>
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<!-- [D] 임시 구성 -->
+<style>
+	.haxbgBox .txt {top:200px}
+	.haxList {width:100%;min-height:300px}
+	.haxList > li {width:100%}
+	.haxList > li:last-child {margin-bottom:40px}
+</style>
+
+<script id="personal-info-card-template" type="text/x-handlebars-template">
+{{!-- personal-info-card-template --}}
+{{#each .}}
+	{{#vxIF cardClass "==" "addressCard"}}
+	<li>
+		<div class="haxwrap">
+			<div class="haxbox">
+				<!-- <div class="ico c01">
+					<em>200P</em>
+					<p>지급</p>
+				</div> -->
+				<div class="conbox">
+					<p>지금 살고 계시는 지역을<br />알려주세요</p>
+					<ul class="selectList">
+						<li>
+							<div class="selectBox">
+								<select class="addressDrop1"></select>
+							</div>
+						</li>
+						<li>
+							<div class="selectBox">
+								<select class="addressDrop2"></select>
+							</div>
+						</li>
+						<li>
+							<div class="selectBox">
+								<select class="addressDrop3"></select>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- <div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div> -->
+			</div>
+		</div>
+	</li>
+	{{/vxIF}}
+	{{#vxIF cardClass "==" "dwellingCard"}}
+	<li>
+		<div class="haxwrap">
+			<div class="haxbox">
+				<!-- <div class="ico c04">
+					<em>100P</em>
+					<p>지급</p>
+				</div> -->
+				<div class="conbox">
+					<p>주거 형태는 어떻게 되시나요?</p>
+					<ul class="selectList">
+						<li>
+							<div class="selectBox">
+								<select class="dwellingFormDrop"></select>
+							</div>
+						</li>
+						<li>
+							<div class="selectBox">
+								<select class="dwellingPyeongDrop"></select>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
+			</div>
+		</div>
+	</li>
+	{{/vxIF}}
+	<!-- 
+	<li>
+		<div class="haxwrap">
+			<div class="haxbox">
+				<div class="ico c03">
+					<em>300P</em>
+					<p>지급</p>
+				</div>
+				<div class="conbox">
+					<p>이사나 인테리어를 계획 중이라면 어느 지역인가요?</p>
+					<ul class="selectList">
+						<li>
+							<select>
+								<option value="시도">시도</option>
+							</select>
+						</li>
+						<li>
+							<select>
+								<option value="시군구">시군구</option>
+							</select>
+						</li>
+						<li>
+							<select>
+								<option value="읍면동">읍면동</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+				<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="haxwrap">
+			<div class="haxbox">
+				<div class="ico c01">
+					<em>200P</em>
+					<p>지급</p>
+				</div>
+				<div class="conbox">
+					<p>반려동물 키우세요?</p>
+					<ul class="infoCheckList">
+						<li>
+							<input type="checkbox" class="infoCheck bg01" />
+						</li>
+						<li>
+							<input type="checkbox" class="infoCheck bg02" />
+						</li>
+						<li>
+							<input type="checkbox" class="infoCheck bg03" />
+						</li>
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>안키워요</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+				<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="haxwrap">
+			<div class="haxbox">
+				<div class="ico c02">
+					<em>5 00P</em>
+					<p>지급</p>
+				</div>
+				<div class="conbox">
+					<p>가족 구성원은 어떻게 되시나요?</p>
+					<div class="familyList">
+						<input type="radio" name="family" class="infoRadio bg04" />
+						<input type="radio" name="family" class="infoRadio bg05" />
+						<input type="radio" name="family" class="infoRadio bg06" />
+						<input type="radio" name="family" class="infoRadio bg07" />
+						<input type="radio" name="family" class="infoRadio bg08" />
+					</div>
+				</div>
+				<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="haxwrap">
+			<div class="haxbox">
+				<div class="conbox">
+					<p>주로 어떤 것들에 <br/>관심이 있으신가요?</p>
+					<ul class="infoCheckList likeList">
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>임대/임차</span>
+							</label>
+						</li>
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>투자</span>
+							</label>
+						</li>
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>중개</span>
+							</label>
+						</li>
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>인테리어</span>
+							</label>
+						</li>
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>운동</span>
+							</label>
+						</li>
+						<li>
+							<label for="noinfo" class="noinfo">
+								<input type="checkbox" id="noinfo" />
+								<span>디자인 소품</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+				<div class="btm"><a href="" class="btnSizeS btnColor03">확인</a></div>
+			</div>
+		</div>
+	</li> -->
+{{/each}}
+{{!--// personal-info-card-template --}}
+</script>
+
 </body>
 </html>
