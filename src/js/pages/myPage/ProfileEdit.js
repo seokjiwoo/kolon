@@ -77,11 +77,15 @@ module.exports = function() {
 			$('#changeEmailField').hide();
 			if (infoObject.email != null) {
 				$('#profileID').attr('disabled', 'disabled');
+				$('#changeIdButton').text('변경하기');
+			} else {
 				$('#changeIdButton').text('등록하기');
 			}
 			$('#editPhoneID').val(infoObject.cellPhoneNumber);
-			if (infoObject.cellPhoneNumber != null) {
+			if (infoObject.cellPhoneNumber == null) {
 				$('#changePhoneButton').text('등록하기');
+			} else {
+				$('#changePhoneButton').text('변경하기');
 			}
 			$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
 			for (var key in infoObject.socials) {
