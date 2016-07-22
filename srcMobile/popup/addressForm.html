@@ -4,10 +4,11 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 주소록"} -->
 </head>
 <body class="popupWindow" data-page-id="popup-addressForm">
-<div id="cboxLoadedContent" class="orderPop popEdge">
+<div id="cboxLoadedContent" class="popAdressForm">
 	<div id="findZipCode"></div>
 	<form method="post" id="addressForm" action="#">
-		<div class="layerPopup order">
+
+		<div class="layerPopup container">
 			<div class="popTop">
 				<h3 class="popTit">새 주소 추가</h3>
 				<!-- <a href="" class="closeBtn popClose"><span class="hide">팝업닫기</span></a> -->
@@ -30,39 +31,14 @@
 							</tr>
 							<tr class="phone">
 								<th scope="row">연락처</th>
-								<td>
+								<td class="phone">
 									<div class="selectBox">
-										<select id="phone1" name="phone1" title="국번 입력">
-											<option value="010" selected="selected">010</option>
-											<option value="011">011</option>
-											<option value="016">016</option>
-											<option value="017">017</option>
-											<option value="018">018</option>
-											<option value="019">019</option>
-											<option value="02">02</option>
-											<option value="031">031</option>
-											<option value="032">032</option>
-											<option value="033">033</option>
-											<option value="041">041</option>
-											<option value="042">042</option>
-											<option value="043">043</option>
-											<option value="044">044</option>
-											<!--<option value="049">049</option>-->
-											<option value="051">051</option>
-											<option value="052">052</option>
-											<option value="053">053</option>
-											<option value="054">054</option>
-											<option value="055">055</option>
-											<option value="061">061</option>
-											<option value="062">062</option>
-											<option value="063">063</option>
-											<option value="064">064</option>
+										<select name="" title="국번 선택">
+											<option value="">02</option>
 										</select>
-									</div>
-									-
-									<input type="tel" title="연락처 앞자리 입력" value="" maxlength="4" id="phone2" name="phone2"/> 
-									-
-									<input type="tel" title="연락처 뒷자리 입력" value="" maxlength="4" id="phone3" name="phone3"/>
+									</div> -
+									<input type="tel" title="연락처 앞자리 입력"> -
+									<input type="tel" title="연락처 뒷자리 입력">
 								</td>
 							</tr>
 						</tbody>
@@ -95,6 +71,12 @@
 			</div>
 		</div>
 	</form>
+	<div class="btmFix fixwrap">
+			<ul>
+				<li><a href="javascript:history.back(-1)" class="btnSizeB btnColor03 popClose">취소</a></li>
+				<li><a href="javascript:;" class="btnSizeB btnColor02 submit js-submit">확인</a></li>
+			</ul>
+		</div>
 </div>
 
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
