@@ -1,0 +1,56 @@
+<!-- [D]
+	prefix js- 는 테스트 구성 위해 설정한 class 명입니다.
+	js 실행을 위해서는 유지해 주세요.
+-->
+<style>
+	.qna .picturesBox{height:302px;background:#f2f2f2 url("../images/ico_image.png") no-repeat center 82px;}
+	.qna .picturesBox > div{text-align:center;}
+	.qna .picturesBox > div:first-child{padding-top:152px;font-family:'NotoSansR',sans-serif;color:#999;}
+	.qna .picturesBox > div:first-child + div{margin-top:30px;}
+
+	.js-upload-container {position:relative}
+	.js-upload-container.has-file {background-image: none;}
+	.js-upload-container.has-file .js-select{display: none;}
+	.js-upload-container.has-file .js-msg {}
+	.js-holder {position:absolute;width:100%;height:100%;left:0;top:0;overflow:hidden}
+	.js-select {position:relative;overflow:hidden}
+	.js-select .js-inp {position:absolute;right:0;top:0;font-size:30px;opacity:0;filter: alpha(opacity=0);-ms-filter: alpha(opacity=0);cursor:pointer}
+	
+	/* drag & drop 미지원시 */
+	.js-upload-wrap.no-filereader .js-msg {font-size:0}
+
+	/* 
+		이미지 선택전까지 비활성화
+		.btnColor02 색상
+	*/
+	.is-hide {display:none}
+</style>
+<div class="popTop"><h4 class="popTit">프로필 사진 선택</h4></div>
+<div class="popCon js-upload-wrap">
+	<div class="picturesBox js-upload-container">
+		<!--
+		[D] JS 기능적용 - 구조 변경되었습니다.
+
+		<div>사용할 사진을 드래그하시거나 컴퓨터에서 선택해주세요.</div>
+		<div><a href="#" class="btnSizeS btnColor03">컴퓨터에서 사진 선택</a></div>
+		-->
+		<div class="js-msg"></div>
+		<div>
+			<a href="#" class="btnSizeS btnColor03 js-select">
+				사진 선택
+				<form method="post" id="imageForm" action="#"><input type="file" name="file" class="js-inp"></form>
+			</a>
+		</div>
+		<div class="js-holder"></div>
+	</div>
+	<p class="btnWrap" style="padding-bottom:20px">
+		<!--
+		<button type="submit" class="btn btnSizeM btnColor04 js-cancel">취소</button>
+		<button type="submit" class="btn btnSizeM2 btnColor02 js-submit">프로필 사진으로 설정</button>
+		-->
+
+		<!-- <button class="btn btnSizeM btnColor03 js-cancel">취소</button> -->
+		<button class="btn btnSizeL btnColor03 js-default">기본 사진으로 설정</button>
+		<button class="btn btnSizeL btnColor01 js-submit">프로필 사진으로 설정</button>
+	</p>
+</div>
