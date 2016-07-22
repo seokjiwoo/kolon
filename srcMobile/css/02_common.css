@@ -96,7 +96,7 @@ a.pointLink {color:#2d427a;text-decoration:underline;}
 .tabType03Fix span{display:block;float:left;width:33.33%;background: #f6f6f6;text-align: center;height: 49px;overflow: hidden;}
 .tabType03Fix a{position: relative;display: block;padding: 0 25px;color: #666;font-size: 13px;line-height: 49px;}
 .tabType03Fix span.on a{color: #1a1a1a;}
-.tabType03Fix span.on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #a9c700}
+.tabType03Fix span.on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #2d427a}
 
 
 /* button */
