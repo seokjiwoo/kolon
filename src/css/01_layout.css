@@ -25,11 +25,11 @@ fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999
 .topBanner .checkbox input{position: absolute;opacity: 0;top: 0;left: -20px;}
 
 .topMenu{width:100%; position:fixed; z-index:4; min-width:1240px; white-space: nowrap;}
-.topMenu .topL{width:15%; min-width:180px; height:60px; float:left;}
+.topMenu .topL{width:16%; min-width:180px; height:60px; float:left;}
 .topMenu .topL .btnLnb{width:80px; height:60px; float:left; background:url('../images/btn_menu.png') center no-repeat;}
 .topMenu .topL h1.logo{width:111px; float: left; overflow:hidden; line-height:0;}
 .topMenu .topL h1.logo a{width:100%; padding:22px 0; display:inline-block;}
-.topMenu .menu{width:65%; min-width:765px; height:60px; overflow:hidden; float:left; text-align:center;}
+.topMenu .menu{width:64%; min-width:765px; height:60px; overflow:hidden; float:left; text-align:center;}
 .topMenu .menu ul.menuList {height:60px; display:inline-block;}
 .topMenu .menu ul.menuList + ul.menuList{margin-left:29px; padding-left:29px; position:relative;}
 .topMenu .menu ul.menuList + ul.menuList:before {content:''; width:5px; height:5px; margin-top:-2.5px; background:#d2d2d2; position:absolute; top:50%; left:0;}
