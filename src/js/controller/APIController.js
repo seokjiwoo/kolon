@@ -2,7 +2,7 @@
 
 module.exports = function() {
 	var localFlag = (/localhost/).test(document.URL) || (location.host.indexOf('192.168.') > -1 && location.port === '3000');
-	var API_URL = localFlag ? 'https://stg.koloncommon.com/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
+	var API_URL = localFlag ? 'https://dev.koloncommon.com/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
 	var CDN_URL = localFlag ? 'https://dev.koloncommon.com/' : document.URL.split('/')[0]+'//'+document.URL.split('/')[2]+'/';
 	
 	var debug = require('../utils/Console.js');

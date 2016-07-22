@@ -6,274 +6,247 @@
 <body data-page-id="homeService-requestMoving">
 	<div class="wrapper homeService-request">
 		<!-- @@include ../_template/menu.html -->
-		<div class="container">
-			<h2 class="pageTit">이사서비스 신청</h2>
+		
+		<form id="requestMovingForm" method="POST" action="#">
+			<div class="container">
+				<h2 class="pageTit">이사서비스 신청</h2>
 
-			<div class="wrapT">
-				<h3 class="conTit">서비스 신청자 정보 ( 필수)</h3>
-				<table class="formWrap">
-					<tbody>
-						<tr>
-							<th>이름</th>
-							<td><input type="text" id="name" placeholder="홍길동"></td>
-						</tr>
-						<tr>
-							<th>연락처</th>
-							<td class="phone">
-								<div class="selectBox">
-									<select name="" title="국번 선택">
-										<option value="">02</option>
-									</select>
-								</div> -
-								<input type="tel" title="연락처 앞자리 입력"> -
-								<input type="tel" title="연락처 뒷자리 입력">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			
-			<div class="wrapT">
-				<h3 class="conTit">이사 출발 지역 (필수)</h3>
-				<div class="addressBtnWrap mt15">
-					<a href="/popup/addressBook.html" id="book-origin" class="btnColor04 btnSizeL btnSizeW btn openAddressPopup">새 주소 추가</a>
-					<p class="mt15"><span class="underTxtMark">주문 시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.</span></p>
+				<div class="wrapT">
+					<h3 class="conTit">서비스 신청자 정보 ( 필수)</h3>
+					<table class="formWrap">
+						<tbody>
+							<tr>
+								<th>이름</th>
+								<td><input type="text" id="name" title="이름 입력" value=""></td>
+							</tr>
+							<tr>
+								<th>연락처</th>
+								<td><input type="tel" id="phoneNumber" title="휴대폰번호 입력" value=""></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<ul class="addressList">
-					<!-- 
-					<li>
-						<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></a></span><span class="pointRed">기본 주소</span></p>
-						<div class="addressCont">
-							<p><b>주문자</b><span>홍길동</span></p>
-							<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
-							<p><b>연락처</b><span>010-1234-5678</span></p>
-						</div>
-						<p class="pointRed pointBox mt15">서비스 가능 지역입니다.</p>
-						<div class="btnwrap mt15">
-							<a href="#" class="btnSizeS btnColor05">수정</a>
-							<a href="#" class="btnSizeS btnColor05">삭제</a>
-						</div>
-					</li>
-					<li>
-						<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></a></span><span class="pointGreen">최근 주소</span></p>
-						<div class="addressCont">
-							<p><b>주문자</b><span>홍길동</span></p>
-							<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
-							<p><b>연락처</b><span>010-1234-5678</span></p>
-						</div>
-					</li>
-					<li>
-						<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></a></span></p>
-						<div class="addressCont">
-							<p><b>주문자</b><span>홍길동</span></p>
-							<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
-							<p><b>연락처</b><span>010-1234-5678</span></p>
-						</div>
-					</li>
-					 -->
-				</ul>
-				<h3 class="conTit mt25">이사 도착지 주소 ( 필수)</h3>
-				<div class="addressBtnWrap mt15">
-					<a href="/popup/addressBook.html" id="book-target" class="btnColor04 btnSizeL btnSizeW btn openAddressPopup">새 주소 추가</a>
-				</div>
-			</div>
+				
+				<div class="wrapT">
+					<h3 class="conTit">이사 출발 지역 (필수)</h3>
+					<div class="addressBtnWrap mt15">
+						<a href="/popup/addressBook.html" id="book-origin" class="btnColor04 btnSizeL btnSizeW btn openAddressPopup">새 주소 추가</a>
+						<p class="mt15"><span class="underTxtMark">지역 목록에 나오지 않는 지역은 현재 이사서비스가 불가능한 지역입니다. 추후 지속적으로 서비스가 확장될 예정입니다.</span></p>
+					</div>
+					<!-- <ul class="addressList">
+						<li>
+							<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></a></span><span class="pointRed">기본 주소</span></p>
+							<div class="addressCont">
+								<p><b>주문자</b><span>홍길동</span></p>
+								<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
+								<p><b>연락처</b><span>010-1234-5678</span></p>
+							</div>
+							<p class="pointRed pointBox mt15">서비스 가능 지역입니다.</p>
+							<div class="btnwrap mt15">
+								<a href="#" class="btnSizeS btnColor05">수정</a>
+								<a href="#" class="btnSizeS btnColor05">삭제</a>
+							</div>
+						</li>
+						<li>
+							<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></a></span><span class="pointGreen">최근 주소</span></p>
+							<div class="addressCont">
+								<p><b>주문자</b><span>홍길동</span></p>
+								<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+								<p><b>연락처</b><span>010-1234-5678</span></p>
+							</div>
+						</li>
+						<li>
+							<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></a></span></p>
+							<div class="addressCont">
+								<p><b>주문자</b><span>홍길동</span></p>
+								<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
+								<p><b>연락처</b><span>010-1234-5678</span></p>
+							</div>
+						</li>
+					</ul> -->
+					<div class="selectBox">
+						<select id="originAddressDrop"><option value="">선택해 주세요</option></select>
+					</div>
+					<ul class="addressList" id="originAddress"></ul>
 
-			<div class="wrapT js-picker-wrapT">
-				<h3 class="conTit">이사 정보(필수)</h3>
-				<h4 class="conSubTit mt15">이사일 (필수)</h4>
-				<!-- datePicker -->
-				<div class="reserCont datePic mt15 js-picker">
-					<p>
-						<span class="dateInp">
-							<input type="text" value="" class="datePicker js-alt" readonly="readonly"/>
-							<a href="#" class="calBtn js-btn">날짜선택</a>
-							<div id="moveDate" class="cal-container js-picker"></div>
-						</span> 
-					</p>
+					<h3 class="conTit mt25">이사 도착지 주소 ( 필수)</h3>
+					<div class="addressBtnWrap mt15">
+						<a href="/popup/addressBook.html" id="book-target" class="btnColor04 btnSizeL btnSizeW btn openAddressPopup">새 주소 추가</a>
+					</div>
+					<div class="selectBox">
+						<select id="targetAddressDrop"><option value="">선택해 주세요</option></select>
+					</div>
+					<ul class="addressList" id="targetAddress"></ul>
 				</div>
-				<!--// datePicker -->
-				<h4 class="conSubTit upLineDot">서비스 종류</h4>
-				<div class="radioBox mt15">
-					<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1" class="htype htype01"><span>포장이사</span></label>
-					<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2" class="htype htype02"><span>원룸이사</span></label>
-					<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3" class="htype htype03"><span>보관이사</span></label>
-					<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4" class="htype htype04"><span>사무실이사</span></label>
-				</div>
-			</div>
 
-			<div class="wrapT">
-				<h3 class="conTit">추천 이사업체 선택 (필수)</h3>
-				<div class="addressBtnWrap mt15">
-					<a href="#" class="btnColor04 btnSizeL btnSizeW btn btnAction" id="getCompanyListButton">이사업체 추천 요청</a>
-					<p class="mt15 infoAction">
-						<span class="underTxtMark" id="companyListWrap">이사정보를 먼저 입력하시고, “이사업체 추천요청”을 누르시면, 최적의 이사업체를 추천해 드립니다.</span>
-					</p>
-					<div class="payTab tabWrap">
-						<span class="on">
-							<span class="on best"></span>
-							<a href="#" class="radioBtn">
-								<div class="homeLeft"><p class="thumBox"><img src="../images/thumM_recommend01.jpg"></p></div>
-								<div class="homeRight">
-									<p class="labelTxt">이사의 명가</p>
-									<ul class="arraySide">
-										<li>
-											<!-- 별점 
-											grade01 -> 1.0
-											grade15 -> 1.5
-											grade02 -> 2.0
-											grade25 -> 2.5
-											grade03 -> 3.0
-											grade35 -> 3.5
-											grade04 -> 4.0
-											grade45 -> 4.5
-											grade05 -> 5.0 -->
-											<p>
-												<span class="gradeInfo gradeBox">가격 만족도</span>
-												<span class="gradeBox gradeBoxRight">
-													<span class="grade">
-														<span class="grade04"></span>
-													</span>
-													<span class="gradeNum">4.0</span>
-												</span>
-											</p>
-										</li>
-										<li>
-											<p>
-												<span class="gradeInfo gradeBox">서비스 만족도</span>
-												<span class="gradeBox gradeBoxRight">
-													<span class="grade">
-														<span class="grade35"></span>
-													</span>
-													<span class="gradeNum">3.5</span>
-												</span>
-											</p>
-										</li>
-									</ul>
-								</div>
-							</a>
-						</span>
-						<span>
-							<a href="#" class="radioBtn">
-								<div class="homeLeft"><p class="thumBox"><img src="../images/thumM_recommend02.jpg"></p></div>
-								<div class="homeRight">
-									<p class="labelTxt">24 공간</p>
-									<ul class="arraySide">
-										<li>
-											<!-- 별점 
-											grade01 -> 1.0
-											grade15 -> 1.5
-											grade02 -> 2.0
-											grade25 -> 2.5
-											grade03 -> 3.0
-											grade35 -> 3.5
-											grade04 -> 4.0
-											grade45 -> 4.5
-											grade05 -> 5.0 -->
-											<p>
-												<span class="gradeInfo gradeBox">가격 만족도</span>
-												<span class="gradeBox gradeBoxRight">
-													<span class="grade">
-														<span class="grade04"></span>
-													</span>
-													<span class="gradeNum">4.0</span>
-												</span>
-											</p>
-										</li>
-										<li>
-											<p>
-												<span class="gradeInfo gradeBox">서비스 만족도</span>
-												<span class="gradeBox gradeBoxRight">
-													<span class="grade">
-														<span class="grade35"></span>
-													</span>
-													<span class="gradeNum">3.5</span>
-												</span>
-											</p>
-										</li>
-									</ul>
-								</div>
-							</a>
-						</span>
-						<span>
-							<a href="#" class="radioBtn">
-								<div class="homeLeft"><p class="thumBox"><img src="../images/thumM_recommend03.jpg"></p></div>
-								<div class="homeRight">
-									<p class="labelTxt">이사가요</p>
-									<ul class="arraySide">
-										<li>
-											<!-- 별점 
-											grade01 -> 1.0
-											grade15 -> 1.5
-											grade02 -> 2.0
-											grade25 -> 2.5
-											grade03 -> 3.0
-											grade35 -> 3.5
-											grade04 -> 4.0
-											grade45 -> 4.5
-											grade05 -> 5.0 -->
-											<p>
-												<span class="gradeInfo gradeBox">가격 만족도</span>
-												<span class="gradeBox gradeBoxRight">
-													<span class="grade">
-														<span class="grade04"></span>
-													</span>
-													<span class="gradeNum">4.0</span>
-												</span>
-											</p>
-										</li>
-										<li>
-											<p>
-												<span class="gradeInfo gradeBox">서비스 만족도</span>
-												<span class="gradeBox gradeBoxRight">
-													<span class="grade">
-														<span class="grade35"></span>
-													</span>
-													<span class="gradeNum">3.5</span>
-												</span>
-											</p>
-										</li>
-									</ul>
-								</div>
-							</a>
-						</span>
+				<div class="wrapT js-picker-wrapT">
+					<h3 class="conTit">이사 정보(필수)</h3>
+					<h4 class="conSubTit mt15">이사일 (필수)</h4>
+					<!-- datePicker -->
+					<div class="reserCont datePic mt15 js-picker">
+						<p>
+							<span class="dateInp">
+								<input type="text" value="" class="datePicker js-alt" readonly="readonly"/>
+								<a href="#" class="calBtn js-btn">날짜선택</a>
+								<div id="moveDate" class="cal-container js-picker"></div>
+							</span> 
+						</p>
+					</div>
+					<!--// datePicker -->
+					<h4 class="conSubTit upLineDot">서비스 종류</h4>
+					<div class="radioBox mt15">
+						<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1" class="htype htype01"><span>포장이사</span></label>
+						<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2" class="htype htype02"><span>원룸이사</span></label>
+						<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3" class="htype htype03"><span>보관이사</span></label>
+						<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4" class="htype htype04"><span>사무실이사</span></label>
 					</div>
 				</div>
+
+				<div class="wrapT">
+					<h3 class="conTit">추천 이사업체 선택 (필수)</h3>
+					<div class="addressBtnWrap mt15">
+						<a href="#" class="btnColor04 btnSizeL btnSizeW btn btnAction" id="getCompanyListButton">이사업체 추천 요청</a>
+						<p class="mt15 infoAction">
+							<span class="underTxtMark">이사정보를 먼저 입력하시고, “이사업체 추천요청”을 누르시면, 최적의 이사업체를 추천해 드립니다.</span>
+						</p>
+
+						<!-- [D] #moving-company-templates - wrap -->
+						<div class="payTab tabWrap" id="companyListWrap" style="display:block"></div>
+						<!--// [D] #moving-company-templates - wrap -->
+
+					</div>
+				</div>
+				
+				<div class="wrapT">
+					<h3 class="conTit">추가 요청 사항 (선택)</h3>
+					<textarea id="additionalComments" title="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요." placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
+					<table class="formWrap tbL">
+						<caption>개인정보 제 3자 제공 동의</caption>
+						<thead>
+							<tr>
+								<th scope="col">
+									<span class="checkbox">
+										<input type="checkbox" id="agree01"/>
+										<label for="agree01" id="agree01lb">개인정보 제 3자 제공 동의</label>
+									</span>
+								</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="#" class="agreeBtn btnToggle">개인정보 제 3자 제공</a>
+									<div class="agreeCont slideCon">
+										가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. 
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- 하단 고정 버튼 -->
+	 			<div class="btmFix"><a href="#" class="btnSizeB btnColor03 popClose js-submit">신청하기</a></div>
+				<!-- @@include ../_template/footer.html -->
 			</div>
-			
-			<div class="wrapT">
-				<h3 class="conTit">추가 요청 사항 (선택)</h3>
-				<textarea id="additionalComments" name="" title="기타 사항을 입력해 주세요." placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
-				<table class="formWrap tbL">
-					<caption>개인정보 제 3자 제공 동의</caption>
-					<thead>
-						<tr>
-							<th scope="col">
-								<span class="checkbox">
-									<input type="checkbox" id="agree01"/>
-									<label for="agree01" id="agree01lb">개인정보 제 3자 제공 동의</label>
-								</span>
-							</th>
-						<tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<a href="#" class="agreeBtn btnToggle">개인정보 제 3자 제공</a>
-								<div class="agreeCont slideCon">
-									가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. 
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- 하단 고정 버튼 -->
- 			<div class="btmFix"><a href="#" class="btnSizeB btnColor03 popClose">신청하기</a></div>
-			<!-- @@include ../_template/footer.html -->
-		</div>
+
+		</form>
 		
 	</div>
 
+
+<script id="sel-address-templates" type="text/x-handlebars-template">
+	<li>
+		<p class="addressTit base">
+			<!-- <span class="radioBox">
+				<input type="radio" name="" id="adr1" />
+				<label for="adr1">{{addressSectionCodeName}}</label>
+			</span> -->
+			<span>{{addressSectionCodeName}}</span>
+			<span class="pointRed">{{receiverName}}</span>
+		</p>
+		<div class="addressCont">
+			<p><b>도로명</b><span>{{roadBaseAddress}}</span></p>
+			<p><b>지번주소</b><span>{{lotBaseAddress}}</span></p>
+			<p><b>상세주소</b><span>{{detailAddress}}</span></p>
+		</div>
+	</li>
+</script>
+
+<script id="moving-address-templates" type="text/x-handlebars-template">
+{{!-- moving-address-templates --}}
+	{{#each items}}
+	<li>
+		<p class="addressTit base">
+			<!-- <span class="radioBox">
+				<input type="radio" name="" id="adr1" />
+				<label for="adr1">{{addressSectionCodeName}}</label>
+			</span> -->
+			<span>{{addressSectionCodeName}}</span>
+			<span class="pointRed">{{receiverName}}</span>
+		</p>
+		<div class="addressCont">
+			<p><b>도로명</b><span>{{roadBaseAddress}}</span></p>
+			<p><b>지번주소</b><span>{{lotBaseAddress}}</span></p>
+			<p><b>상세주소</b><span>{{detailAddress}}</span></p>
+		</div>
+	</li>
+	{{/each}}
+{{!--// moving-address-templates --}}
+</script>
+
+<script id="moving-company-templates" type="text/x-handlebars-template">
+{{!-- moving-comapny-templates --}}
+	{{#if length}}
+		{{#each .}}
+		<span data-company-number="{{companyNumber}}">
+			<span class="on best"></span>
+			<a href="#" class="radioBtn">
+				<div class="homeLeft"><p class="thumBox"><img src="{{companyLogoImageUrl}}"></p></div>
+				<div class="homeRight">
+					<p class="labelTxt">{{companyName}}</p>
+					<!-- <ul class="arraySide">
+						<li>
+							별점 
+							grade01 -> 1.0
+							grade15 -> 1.5
+							grade02 -> 2.0
+							grade25 -> 2.5
+							grade03 -> 3.0
+							grade35 -> 3.5
+							grade04 -> 4.0
+							grade45 -> 4.5
+							grade05 -> 5.0
+							<p>
+								<span class="gradeInfo gradeBox">가격 만족도</span>
+								<span class="gradeBox gradeBoxRight">
+									<span class="grade">
+										<span class="grade04"></span>
+									</span>
+									<span class="gradeNum">4.0</span>
+								</span>
+							</p>
+						</li>
+						<li>
+							<p>
+								<span class="gradeInfo gradeBox">서비스 만족도</span>
+								<span class="gradeBox gradeBoxRight">
+									<span class="grade">
+										<span class="grade35"></span>
+									</span>
+									<span class="gradeNum">3.5</span>
+								</span>
+							</p>
+						</li>
+					</ul> -->
+				</div>
+			</a>
+		</span>
+		{{/each}}
+	{{else}}
+		<span>목록이 없습니다.</span>
+	{{/if}}
+{{!--// moving-comapny-templates --}}
+</script>
 
 <!-- [D] 임시 구성 -->
 <style>
@@ -283,20 +256,4 @@
 	.datePic ul {overflow:visible;height:30px}
 	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
 </style>
-
-
-	<script>
-	;(function(win, $) {
-		'use strict';
-
-		$(function() {
-			$('.btnAction').on('click', function(e) {
-				e.preventDefault();
-				$(this).parent('.addressBtnWrap').find('.infoAction').hide();
-				$(this).parent('.addressBtnWrap').find('.payTab').show();
-			});
-		});
-	})(window, window.jQuery);
-
-</script>
 </body>
