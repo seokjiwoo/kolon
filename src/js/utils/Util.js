@@ -325,7 +325,7 @@ function ClassUtils() {
 		}
 
 		if (isLocal() || (/koloncommon/).test(referrer)) {
-			return referrer;
+			return (referrer.indexOf('/member/') === -1) ? referrer : '';
 		} else {
 			return '';
 		}
