@@ -542,6 +542,8 @@ table ul.myCartInfoList li a {color:#999;}
 .my .userArea .info p{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
 .my .userArea .info p:first-child{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;font-size:28px;font-weight:bold;}
 .my .userArea .info p:last-child{color:#666;}
+.my .userArea .info .profileEditButton {display:inline-block;position:absolute;bottom:15px;right:15px;color:#666;font-size:12px;}
+.my .userArea .info .profileEditButton:before {content:'';display:inline-block;width:10px;height:10px;margin-right:5px;background:url(../images/ico_set.png) no-repeat;background-size:10px 10px;}
 .my .userArea .menu ul{overflow:hidden;}
 .my .userArea .menu ul li{position:absolute;text-align:center;}
 .my .userArea .menu ul li:nth-child(1){left:15px;top:187px;}
