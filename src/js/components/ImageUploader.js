@@ -18,6 +18,7 @@ function ClassImageUploader() {
 		inpFile : '.js-inp',
 		btnCancel : '.js-cancel',
 		btnSubmit : '.js-submit',
+		btnDefault : '.js-default',
 		btnExit : '#cboxClose',
 		acceptedTypes : [
 			'image/jpg',
@@ -122,6 +123,7 @@ function ClassImageUploader() {
 		self.inpFile = self.wrap.find(self.opts.inpFile);
 		self.btnCancel = self.wrap.find(self.opts.btnCancel);
 		self.btnSubmit = self.wrap.find(self.opts.btnSubmit);
+		self.btnDefault = self.wrap.find(self.opts.btnDefault);
 		self.btnExit = $(self.opts.btnExit);
 
 		self.selTempFile = null;
@@ -185,6 +187,7 @@ function ClassImageUploader() {
 					.on('click', onHolderClick);
 		self.btnCancel.on('click', onBtnCancelClick);
 		self.btnSubmit.on('click', onBtnSubmitClick);
+		self.btnDefault.on('click', onBtnDefaultClick);
 
 		$(self).on(EVENT.GET_SELECTED_FILES, function() {
 			return getSelectedFiles();
@@ -255,17 +258,25 @@ function ClassImageUploader() {
 		$(self).trigger(EVENT.CANCEL);
 		self.btnExit.trigger('click');
 	}
+
+	function onBtnDefaultClick(e) {
+		self.inpFile.val('');
+		onBtnSubmitClick(e, true);
+	}
 				
-	function onBtnSubmitClick(e) {
+	function onBtnSubmitClick(e, defaultImage) {
 		debug.log(fileName, 'onBtnSubmitClick', e);
 
-		if (!self.selectedFiles.length) {
-			win.alert('이미지를 선택하세요.');
-			return;
+		if (!defaultImage) {
+			if (!self.selectedFiles.length) {
+				win.alert('이미지를 선택하세요.');
+				return;
+			}
+			
+			debug.info(fileName, '전송처리 단계~', getSelectedFiles());
+			debug.log(fileName, 'self.imageInfo', self.imageInfo);
 		}
-		
-		debug.info(fileName, '전송처리 단계~', getSelectedFiles());
-		debug.log(fileName, 'self.imageInfo', self.imageInfo);
+
 		$(self).trigger(EVENT.SUBMIT);
 
 		$('#imageForm').attr('action', self.opts.api_url);
