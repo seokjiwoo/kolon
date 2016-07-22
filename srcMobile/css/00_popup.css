@@ -212,3 +212,39 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .payInfoWrap dl.payInfo.total dt span.price {color:#f1645c; }
 .payInfoWrap dl.payInfo.total dt span.price b{font-size:22.5px; font-family:"Times New Roman", Times, Baskerville, Georgia, serif !important; font-style:italic;}
 .payInfoWrap dl.payInfo.total dd {background:#fff;}
+.payInfoWrap dl.payInfo dt span.detailTxt {color:#436ebb; font-size:13px; text-align:right; float:right;}
+
+/* category */
+.payInfoWrap.category dl.payInfo dd {padding:15px 0 7px;}
+.sortCont ul{width:100%; overflow: hidden; font-family:'NotoSansR', sans-serif;}
+.sortCont ul li{float: left;width:33.33%;margin-bottom:6px;}
+.sortCont ul li a{width:92%; display:inline-block; position: relative; margin: 0 5px;padding:6.5px 0 7px;background:#fff; border-radius: 20px;color: #666;font-size:12px; border:1px solid #d9d9d9; text-align:center;}
+.sortCont ul li a.on{color: #2d427a;border:1px solid #2d427a; background:#fff;}
+.sortCont ul li a:before{content: ''; width:12.5px; height:12.5px; position: absolute; left:10px; top:9px; border-radius: 50%; background-size:12.5px 12.5px;}
+.sortCont ul li #colorAll:before{background:url('../images/all_color.png') 0 0 no-repeat; background-size:;}
+.sortCont ul li #color01:before{width:13px; height:13px; border:1px solid #999; background:#fff; overflow:hidden;}
+.sortCont ul li #color02:before{background:#999;}
+.sortCont ul li #color03:before{background:#4d4d4d;}
+.sortCont ul li #color04:before{background:#825f52;}
+.sortCont ul li #color05:before{background:#eac294;}
+.sortCont ul li #color06:before{background:#92278f;}
+.sortCont ul li #color07:before{background:#ff80ab;}
+.sortCont ul li #color08:before{background:#e1594b;}
+.sortCont ul li #color09:before{background:#f68c0b;}
+.sortCont ul li #color10:before{background:#ffc814;}
+.sortCont ul li #color11:before{background:#9ccc66;}
+.sortCont ul li #color12:before{background:#48c7ff;}
+.sortCont ul.color {}
+.sortCont ul.color li a {width:76%; padding-left:15px;}
+
+.catSort .sortGraph {width:100%; height:12px; margin:45px 0 44px; display:inline-block; border-radius:5px; background:#e1e1e1;}
+.catSort .sortGraph .won {width:100%; overflow:hidden; margin-top:15px;}
+.catSort .sortGraph .won span {width:50%; float:left; display:inline-block; letter-spacing:-1px;}
+.catSort .sortGraph .won span b {font-weight:normal;}
+.catSort .sortGraph .won span.wonL {text-align:left;}
+.catSort .sortGraph .won span.wonR {text-align:right;}
+.catSort ul + h3.sortTit {margin-top:20px;}
+
+@media (max-width:320px){
+	.sortCont ul li a {letter-spacing:-2px}
+}
