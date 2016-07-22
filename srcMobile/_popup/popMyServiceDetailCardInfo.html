@@ -137,11 +137,10 @@
 </div>
 <script language="javascript" type="text/javascript">
 //<![CDATA[
-	$('.payInfoMore').on('click', function() { 
-		$('.payInfoMore').removeClass('opened')
-		$('.payInfoSlide').hide();
+	$('.payInfoMore').click(function() {
 		$(this).toggleClass('opened');
-		$(this).parent().next().slideToggle();
+		$('.payInfoSlide').not($(this).parent().next('.payInfoSlide').slideToggle()).hide();
 	});
+	
 //]]>
 </script>

@@ -2,15 +2,28 @@
 .members .subTit{width:100%;font-family:'RobotoR','NotoSansR', sans-serif;color: #000;font-size: 30px;}
 .members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;}
 .members .container .subTit .note{margin-top:8px;text-align: center;font-size: 14px;color: #666;}
+.members .container .subTit b {color:#436ebb; font-weight:normal;}
 .members .container .subTxt{font-size: 16px;color: #000;}
 .members .container .subTxt02{margin-top:25px;font-size: 16px;color: #000;font-family:'RobotoR','NotoSansR', sans-serif;}
+
+#findPwAuthMail {}
+#findPwAuthMail .subTit {font-size:15px; line-height:18px;}
+#findPwAuthMail .subTit b {color:#436ebb; font-weight:normal;}
+#findPwAuthMail .subTxt02 {font-size:12px; margin-top:11px; color:#666; line-height:130%;}
+#findPwAuthMail .notMail {padding:15px 150px 15px 10px; margin-top:42.5px; overflow:hidden; background:#f8f8f8;position:relative;}
+#findPwAuthMail .notMail .notMailText {width:100%;}
+#findPwAuthMail .notMail .notMailText p {font-size:12px; color:#666; text-align:left;}
+#findPwAuthMail .notMail .notMailText p.qTxt {color:#436ebb;}
+#findPwAuthMail .notMail a.btn {position:absolute; bottom:10px; right:15px;}
+.members #findPwAuthMail .btnWrap {margin:0;}
+.members #findPwAuthMail .btnWrap .btn {width:auto;}
 
 .members .btnPop{display: inline-block;margin:0 10px;padding: 5px 20px;border-radius: 12px;background: #999;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 13px;color: #fff;}
 .members .btnSizeL{display: block;/*width: 290px;margin:40px auto 0;*/}
 .members .btnSelect{margin:40px 3px 0;}
 .members .btnDefault{margin:40px 3px 0;padding: 0 25px;}
 
-.members .conWrap{width: 600px;margin:60px auto 0;padding-bottom: 40px;border-bottom:1px solid #e8e8e8;text-align: center;}
+.members .conWrap{width: 100%; margin:25px auto 0;padding-bottom: 25px;border-bottom:1px solid #ccc;text-align: center;}
 .members .inform{margin-top:40px;font-family:'RobotoR','NotoSansR', sans-serif;font-size: 20px;color: #000;line-height: 1.2em;}
 .members .inform b{font-family:'RobotoM','NotoSansM', sans-serif;color: #a9c700}
 .members .inform strong{font-family:'RobotoM','NotoSansM', sans-serif;}

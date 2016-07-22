@@ -1,0 +1,115 @@
+<div class="layerPopup newForm">
+	<div class="popTop">
+		<h3 class="popTit">상세조건</h3>
+		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
+	</div>
+	<div class="popCon popScroll">
+		<div class="orderDeliveryWrap">
+			<div class="wrapT">
+				<div class="payInfoWrap category">
+					<dl class="payInfo">
+						<dt>
+							<span>라이프스타일</span>
+							<span class="detailTxt">모든 라이프스타일</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<div class="sortCont">
+								<ul>
+									<li><a href="" class="on">모든라이프스타일</a></li>
+									<li><a href="">자녀양육</a></li>
+									<li><a href="">건강/웰빙</a></li>
+									<li><a href="">재산증식</a></li>
+									<li><a href="">외식/음식</a></li>
+									<li><a href="">수면</a></li>
+									<li><a href="">반려동물</a></li>
+									<li><a href="">노후</a></li>
+									<li><a href="">절약</a></li>
+									<li><a href="">스포츠/다이어트</a></li>
+									<li><a href="">싱글라이프</a></li>
+									<li><a href="">패밀리라이프</a></li>
+									<li><a href="">취업</a></li>
+									<li><a href="">외식/음식</a></li>
+								</ul>
+							</div>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>컬러</span>
+							<span class="detailTxt">모든 컬러</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<div class="sortCont">
+								<ul class="color">
+									<li><a href="" id="colorAll" class="on">모든컬러</a></li>
+									<li><a href="" id="color01">화이트</a></li>
+									<li><a href="" id="color02">그레이</a></li>
+									<li><a href="" id="color03">블랙</a></li>
+									<li><a href="" id="color04">브라운</a></li>
+									<li><a href="" id="color05">베이지</a></li>
+									<li><a href="" id="color06">퍼플</a></li>
+									<li><a href="" id="color07">핑크</a></li>
+									<li><a href="" id="color08">레드</a></li>
+									<li><a href="" id="color09">오렌지</a></li>
+									<li><a href="" id="color10">옐로우</a></li>
+									<li><a href="" id="color11">그린</a></li>
+									<li><a href="" id="color12">블루</a></li>
+								</ul>
+							</div>
+						</dd>
+					</dl>
+					<dl class="payInfo">
+						<dt>
+							<span>가격</span>
+							<span class="detailTxt">모든가격</span>
+							<a href="#" class="payInfoMore">상세보기</a>
+						</dt>
+						<dd class="payInfoSlide">
+							<div class="sortCont">
+								<!-- 가격설정 그래프 - * style 수정 필요 적용 후 말씀해주세요(이인경) * -->
+								<div class="sortGraph slider-wrap js-slider-wrap">
+									<div class="slider-container js-slider-container">
+										<!-- <span class="graphData js-slider-values">300 ~ 2500</span> -->
+										<!-- [D] data-slider-opt 범위 옵션 설정 -->
+										<div class="js-slider"
+											data-slider-opt='{
+												"min" : 300,
+												"max" : 2500,
+												"values" : [ 750, 1500 ],
+												"currency" : ""
+											}'>
+											<span class="ui-slider-handle leftBtn"><span class="graphData dataMin js-slider-lv">300</span></span><!-- 최소금액 -->
+											<span class="ui-slider-handle rightBtn"><span class="graphData dataMax js-slider-rv">2500</span></span><!-- 최대금액 -->
+										</div>
+									</div>
+									<div class="won">
+										<span class="wonL"><b class="js-slider-lv">100</b> 만원</span>
+										<span class="wonR"><b class="js-slider-rv">5000</b> 만원</span>
+									</div>
+								</div>
+								<!--// 가격조절 그래프  -->
+							</div>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="btmFix fixwrap">
+		<ul>
+			<li><a href="" class="btnSizeB btnColor03 popClose">취소</a></li>
+			<li><a href="" class="btnSizeB btnColor02">확인</a></li>
+		</ul>
+	</div>
+</div>
+<script language="javascript" type="text/javascript">
+//<![CDATA[
+	$('.payInfoMore').click(function() {
+		$(this).toggleClass('opened');
+		$('.payInfoSlide').not($(this).parent().next('.payInfoSlide').slideToggle()).hide();
+	});
+	
+//]]>
+</script>
