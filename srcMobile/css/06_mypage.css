@@ -838,14 +838,18 @@ table ul.myCartInfoList li a {color:#999;}
 .emailCheck > ul > li > span{float:left;margin-top:7px;}
 .emailCheck > ul > li > div{float:right;}
 
-.haxbgBox{position:relative;padding-top:428px;background:url("../images/bg_myinfo.png") no-repeat right top;background-size:94%}
-.haxbgBox .txt{position:absolute;top:6.5%;right:6%;}
+.haxbgBox{position:relative;}
+.haxbgBox .profileTitle {width:100%; overflow:hidden; position:relative;}
+.haxbgBox .profileTitle img {width:100%;}
+.haxbgBox .txt{width:200px; position:absolute; top:40%; right:10%;}
 .haxbgBox .txt p{line-height:1.4em;}
 .haxbgBox .txt p:first-child{color:#000;font-size:28px;}
 .haxbgBox .txt p:last-child{margin-top:30px;color:#fff;font-size:15px;}
 
-.haxList > li{margin-top:25px;}
+.haxList {width:100%;}
+.haxList > li{width:100%; margin-top:25px;}
 .haxList > li:first-child{margin-top:25px;}
+.haxList > li:last-child {margin-bottom:40px}
 .haxwrap{width:306px;margin:0 auto;padding-top:88px;padding-bottom:88px;}
 .haxbox{position:relative;height:300px;padding:0 30px;border-left:1px solid #e1e1e1;border-right:1px solid #e1e1e1;background:#fff;}
 .haxbox:before{content:"";position:absolute;left:0;top:-88px;width:100%;height:88px;background:url("../images/bg_hax_linetop.png") no-repeat 0 0;background-size:100%;}
@@ -902,8 +906,7 @@ table ul.myCartInfoList li a {color:#999;}
   .my .userArea .menu ul li:nth-child(4){left:124px;top:154px;}
   .my .userArea .menu ul li:nth-child(5){left:176px;top:112px;}
   .my .userArea .menu ul li:nth-child(6){left:228px;top:70px;}
-
-  .haxbgBox .txt{position:absolute;top:154px;right:19px;}
+  .haxbgBox .txt {right:0;}
   .haxbgBox .txt p:first-child{font-size:26px;}
   .haxbgBox .txt p:last-child{font-size:13px;}
 }
