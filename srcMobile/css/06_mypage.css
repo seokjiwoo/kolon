@@ -867,11 +867,11 @@ table ul.myCartInfoList li a {color:#999;}
 .infoCheckList li:nth-child(3),
 .infoCheckList li:nth-child(4){margin-top:5px;}
 .familyList{text-align:center;margin-top:44px;}
-
+.infoCheckList.likeList {width:100%;}
+.infoCheckList.likeList li {width:33.33%; margin:0 0 5px;}
 .infoCheck,
 .infoRadio,
 .noinfo input[type="checkbox"]{position:static !important;opacity:1 !important;width:75px;height:75px;display:inline-block;overflow:hidden;background-color:#eee;border-radius:100%;margin:0;-webkit-appearance: none; -moz-appearance: none; appearance: none;}
-
 .infoCheck.bg01{background:url("../images/bg_myinfo01.png") no-repeat 0 0;background-size:75px;}
 .infoCheck.bg02{background:url("../images/bg_myinfo02.png") no-repeat 0 0;background-size:75px;}
 .infoCheck.bg03{background:url("../images/bg_myinfo03.png") no-repeat 0 0;background-size:75px;}
