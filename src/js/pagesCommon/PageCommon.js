@@ -412,6 +412,7 @@ module.exports = function() {
 						var contentHeight = winH - $('.popTop').outerHeight();
 						var marginTop = 0;
 						var offsetTop = 0;
+
 						if ($('.popCon').css('margin-top')) {
 							marginTop = parseInt($('.popCon').css('margin-top').split('px'), 10);
 						}
@@ -422,6 +423,12 @@ module.exports = function() {
 						if ($('.fixwrap').length > 0) contentHeight -= $('.fixwrap').height();
 						$('.popScroll').css('height', (contentHeight - offsetTop - marginTop)+'px');
 						if (popupOpenHandlerFunction != null) popupOpenHandlerFunction.call();
+
+						// 화면 높이보다 사이즈가 작은 팝업의 경우 - resize 처리
+						if (winH > $('#colorbox .popCon').outerHeight()) {
+							$.colorbox.resize();
+						}
+
 						$(window).resize(function(e){ $.colorbox.close(); });
 						break;
 				}
