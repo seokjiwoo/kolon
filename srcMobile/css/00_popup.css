@@ -26,6 +26,10 @@
 #cboxLoadedContent .cardCon .btnWrap{margin-top: 30px;}
 #cboxLoadedContent .cardCon {height: auto;}
 
+/* 새주소 추가 팝업 */
+#cboxLoadedContent.popAdressForm {padding-bottom:0}
+.popAdressForm .layerPopup input[type=text] {background:#fff;}
+
 /* 모서리 형 팝업 
 .popEdge #cboxLoadedContent:after, .popEdge #cboxLoadedContent:before{content: '';position: absolute;bottom: 0}
 .popEdge #cboxLoadedContent:before{left:0;right: 30px;height: 60px;background: #fff;}
