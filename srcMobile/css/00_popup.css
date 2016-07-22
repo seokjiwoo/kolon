@@ -127,6 +127,7 @@
 .popCon .popTb + .btnWrap {margin-top:24px;}
 .popCon .checkPw {width:100%; text-align:center; margin-bottom:20px}
 .popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR', sans-serif;}
+.popCon .checkPw p + p {margin-top:10px;}
 .popCon .expertInfo {width:100%; overflow:hidden;}
 .popCon .expertInfo .ePic {width:180px; height:180px; margin-left:15px; border-radius:50%; overflow:hidden; float:left;}
 .popCon .expertInfo .ePic img {width:180px; height:180px;}
@@ -256,3 +257,6 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 
 .addressFormWrap {padding:25px 15px 0; margin-top:15px; background:#fff; position:relative;}
 .addressFormWrap .btmFix {position:fixed; bottom:0; left:0;}
+
+.popCon .btnWrap.pwFormBtn {margin:0; padding-bottom:25px;}
+.popCon .btnWrap.pwFormBtn .btn {width:100px;}
