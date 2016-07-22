@@ -43,7 +43,7 @@
 .socialTopBtn .socialBtn07 {background-position:0 -210px;}
 
 /* 하단 tab common */
-.detailBottomTab {position:fixed;bottom:0;left:0;right:0;z-index:4;}
+.detailBottomTab {position:fixed;bottom:0;left:0;right:0;z-index:6;}
 .detailBottomTab .bottomTabWrap {background:#000;font-size:14px;}
 .detailBottomTab .bottomTabWrap + .bottomTabWrap {display:none;background:#fff;border-bottom:2px solid #000;}
 .detailBottomTab .bottomTabWrap + .bottomTabWrap.active {display:block;}
