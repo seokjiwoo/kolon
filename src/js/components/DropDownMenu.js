@@ -194,6 +194,7 @@ function DropDownMenu() {
 	}
 
 	function destroy() {
+		if (!(instance && self)) return;
 		removeBindEvents();
 
 		$.each(self.drops, function() {
