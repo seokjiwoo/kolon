@@ -34,7 +34,7 @@
 .popEdge #cboxClose:active {outline:0;}
 .popEdge .popTop{position: relative;margin:0 30px;height: 80px;background: #fff;z-index: 1;}
 .popEdge .popTop:before{content: '';position: absolute;top:0;left: -30px;width: 0;height: 0;border-bottom: 60px solid #fff;border-left: 30px solid transparent;}
-.popEdge .popTop:after{content: '';position: absolute;right: -30px;top: 0;width: 60px;height: 60px;background: #fff;}
+.popEdge .popTop:after{content:"";position: absolute;right: -30px;top: 0;width: 60px;height: 60px;background: #fff;}
 
 .popEdge .popTit {position: relative;top:0;line-height: 80px;text-align: center;font-size:30px;}
 .popEdge .popTit:after{content: '';display: block;width: 100%;bottom: 0;height: 1px;background: #666;}
@@ -69,7 +69,7 @@
 #popAgree01 .popCon{text-align: left;}
 
 .popCon .popTxt{color: #999;}
-.popCon a[class^=btnSize]{min-width: 150px;}
+/*.popCon a[class^=btnSize]{min-width: 150px;}*/
 .popCon input[type="text"],
 .popCon input[type="password"]{width:230px; padding:10px 20px; border:1px solid #ccc;font-family:'NotoSansM', sans-serif; color: #999; margin:0;}
 .popCon select{padding:10px 10px; border:1px solid #ccc;color: #666;font-family:'NotoSansR', sans-serif;}
