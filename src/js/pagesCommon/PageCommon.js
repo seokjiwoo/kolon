@@ -413,12 +413,14 @@ module.exports = function() {
 						var marginTop = 0;
 						var offsetTop = 0;
 
-						if ($('.popCon').css('margin-top')) {
-							marginTop = parseInt($('.popCon').css('margin-top').split('px'), 10);
-						}
-						if ($('.popScroll').size() && $('.popScroll').offset().top) {
-							offsetTop = $('.popScroll').offset().top - $(window).scrollTop();
-						}
+						// if ($('#colorbox').hasClass('popEdge')) {
+						// 	if ($('.popCon').css('margin-top')) {
+						// 		marginTop = parseInt($('.popCon').css('margin-top').split('px'), 10);
+						// 	}
+						// 	if ($('.popScroll').size() && $('.popScroll').offset().top) {
+						// 		offsetTop = $('.popScroll').offset().top - $(window).scrollTop();
+						// 	}
+						// }
 
 						if ($('.fixwrap').length > 0) contentHeight -= $('.fixwrap').height();
 						$('.popScroll').css('height', (contentHeight - offsetTop - marginTop)+'px');
