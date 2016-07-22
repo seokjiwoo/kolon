@@ -72,7 +72,7 @@
 .popEdge .popCon .mt30 {margin-top:25px;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
 #popAgree01 .popCon{text-align: left;}
-
+.termsPop .popCon {padding-bottom:15px;}
 .popCon .popTxt{color: #999;}
 .popCon a[class^=btnSize]{min-width: 150px;}
 .popCon input[type="text"],
