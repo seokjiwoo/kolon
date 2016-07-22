@@ -258,20 +258,24 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .reviewTop .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
 .reviewArea{padding:20px 15px 0;background:#fff;}
 
-.writeBox{border:1px solid #ccc;margin-top:6px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.writeBox{/*border:1px solid #ccc;*/margin-top:6px;font-family:'NotoSansR', 'RobotoR', sans-serif;}
+.writeBox > ul{}
+.writeBox > ul > li{margin-top:10px;}
+.writeBox > ul > li:first-child{margin-top:0;}
+.writeBox > ul > li textarea{width:100%;height:150px;}
 .writeBox .txt{padding:14px 14px 14px;border-top:1px solid #ccc;}
 .writeBox .txt p{min-height:98px;line-height:1.4em;color:#999;}
 .writeBox .point{height:52px;line-height:52px;text-align:center;}
 .writeBox .point *{vertical-align:middle;}
 .writeBox .point span{display:inline-block;margin-right:10px;}
-.writeBox .info{min-height:36px;padding:0 14px;border-top:1px solid #ccc;background:#f8f8f8;}
+.writeBox .info{min-height:36px;padding:0 14px;border:1px solid #ccc;border-bottom:0;background:#f8f8f8;}
 .writeBox .info:after{content:"";display:block;clear:both;}
 .writeBox .pic{position:relative;height:18px;display:inline-block;}
 .writeBox .pic:before{content:"";display:block;width:25px;height:18px;background:url("../images/ico_pic.png") no-repeat 0 0;background-size:25px;margin-top:8px;}
 .writeBox .pic input{position:absolute;left:0;top:8px;width:25px;height:18px;overflow:hidden;opacity:0;}
 .writeBox .count{display:inline-block;float:right;color:#999;margin-top:10px;}
 .writeBox .count i{font-style:normal;color:#666;}
-.writeBox .thumbList{background:#f8f8f8;border-top:1px solid #ccc;padding:15px;}
+.writeBox .thumbList{background:#f8f8f8;border:1px solid #ccc;padding:15px;}
 .writeBox .thumbList ul{overflow:hidden;}
 .writeBox .thumbList ul li{position:relative;width:31%;margin-left:3.5%;float:left;}
 .writeBox .thumbList ul li:first-child{margin-left:0;}
