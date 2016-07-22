@@ -257,6 +257,9 @@ module.exports = function() {
 						);
 						controller.notarobot();
 						break;
+					default:
+						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
+						break;
 				}
 				break;
 			default:

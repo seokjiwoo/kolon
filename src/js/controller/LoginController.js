@@ -61,6 +61,10 @@ function ClassLoginController() {
 			 */
 			resendAuthNumber: resendAuthNumber,
 			/**
+			 * 인증메일 재전송 요청
+			 */
+			resendAuthMail: resendAuthMail,
+			/**
 			 * 소셜 연결
 			 */
 			socialConnect: socialConnect,
@@ -285,9 +289,24 @@ function ClassLoginController() {
 				$(callerObj).trigger('resendAuthNumberResult', [status, result]);
 			}
 		}, false);
-		// 
 	}
 	
+	/**
+	 * 인증메일 재전송 요청
+	 */
+	function resendAuthMail(mail) {
+		Super.callApi('/apis/authorize/certification/email', 'POST', {
+			"email": mail
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('resendAuthMailResult', [200, result]);
+			} else {
+				Super.handleError('resendAuthMail', result);
+				$(callerObj).trigger('resendAuthMailResult', [status, result]);
+			}
+		}, false);
+	}
+
 	/**
 	 * 로그아웃
 	 */

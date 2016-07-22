@@ -63,7 +63,6 @@ module.exports = function() {
 		floatMenu.init();		// 플로팅버튼
 
 		// 일부 페이지 공용 요소 초기화
-		initTopBanner();	// 상단 배너 (index만 사용, 공용요소 LNB때문에 이쪽에 위치)
 		initChart();	// 차트 컴포넌트
 		dropDownMenu.init();	// 드롭다운 메뉴
 		dropDownScroll.init();		// 드롭다운스크롤 메뉴
@@ -154,6 +153,8 @@ module.exports = function() {
 				$('#menuCountCart').text(loginData.myActivity.cartCount);
 			}
 
+			initTopBanner();
+			
 			$('.profileEditButton').click(function(e){
 				e.preventDefault();
 				closeLnbHandler();
@@ -172,6 +173,15 @@ module.exports = function() {
 						}
 					});
 				}
+				e.stopPropagation();
+			});
+
+			$('.resendAuthMail').click(function(e){
+				e.preventDefault();
+				if (loginData.emailAuthYn != 'Y') {
+					loginController.resendAuthMail(loginData.email);
+				}
+				e.stopPropagation();
 			});
 		} else {
 			// 로그인 상태가 아닐 때
@@ -190,6 +200,39 @@ module.exports = function() {
 		}
 	};
 
+	/**
+	 * 상단 배너영역 초기화
+	 */
+	function initTopBanner() {
+		console.log(loginData.stateCode, loginData.joinSectionCode, loginData.emailAuthYn);
+
+		if (loginData == null || loginData.stateCode == "BM_MEM_STATE_02" || Cookies.get('topBannerHide') == 'hide') {
+			// 푸로모션 배너영역
+			hideTopBanner();
+		} else if (loginData.joinSectionCode == 'BM_JOIN_SECTION_01' && loginData.emailAuthYn != 'Y') {
+			topBannerShowFlag = true;
+			$('#topBannerCheckArea').remove();
+			
+			$('#topBannerImage').attr('src', '/images/banner_email.jpg');
+			$('#topBanner').css('background', '#ff849d').show();
+			$('#topBannerLink').addClass('resendAuthMail'); 
+			$('.container').css('padding-top','113px');
+			$('#closeTopBannerButton').click(hideTopBanner);
+			lnbScroller.refresh();
+		} else if (loginData.stateCode == "BM_MEM_STATE_01") {
+			topBannerShowFlag = true;
+
+			$('#topBannerImage').attr('src', '/images/banner_phone.jpg');
+			$('#topBanner').css('background', '#d3b295').show();
+			$('#topBannerLink').addClass('profileEditButton'); 
+			$('.container').css('padding-top','113px');
+			$('#closeTopBannerButton').click(hideTopBanner);
+			lnbScroller.refresh();
+		} else {
+			hideTopBanner();
+		}
+	};
+
 	function confirmPasswordResultHandler(e, status, result) {
 		switch(status) {
 			case 200:
@@ -200,7 +243,7 @@ module.exports = function() {
 				alert(result.message);
 				break;
 		}
-	}
+	};
 	
 	/**
 	 * GNB/LNB 초기화
@@ -310,32 +353,14 @@ module.exports = function() {
 	};
 
 	/**
-	 * 상단 배너영역 초기화
-	 */
-	function initTopBanner() {
-		var showBannerFlag = (pageId == 'index'); 	// 임시 조건. 나중에 바꿔야 함. 쿠키라던가...
-
-		if (showBannerFlag) {
-			/*
-			topBannerShowFlag = true;
-			$('#topBanner').show();
-			$('#closeTopBannerButton').click(hideTopBanner);
-			lnbScroller.refresh();
-			*/
-			hideTopBanner();
-		} else {
-			hideTopBanner();
-		}
-	};
-
-	/**
 	 * 상단 배너영역 숨기기
 	 */
 	function hideTopBanner(e) {
 		topBannerShowFlag = false;
+		if ($('#topBannerCheckArea label').hasClass('on')) Cookies.set('topBannerHide', 'hide', { expires: 365 });
 
 		$('#topBanner').hide();
-		$('.main .container').css('padding-top','0');
+		$('.container').css('padding-top','0');
 		$('#lnbWrapper').css({
 			"top": 0,
 			"height": "100%"
