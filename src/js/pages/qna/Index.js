@@ -189,6 +189,7 @@ module.exports = function() {
 			$('.writeCommentButton').click(showCommentForm);
 			$('.answerCount').click(pollAnswer);
 			$('.answerForm').submit(answerFormSubmitHandler);
+
 			$('.except02').dotdotdot({
 				after: 'a.more',
 				watch:'window',

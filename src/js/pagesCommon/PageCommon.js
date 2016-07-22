@@ -265,7 +265,7 @@ module.exports = function() {
 		
 		$('.except').dotdotdot({watch:'window'});
 
-		if ($('p').hasClass('except02')) {
+		/*if ($('p').hasClass('except02')) {
 			if ($('.except02').data('dotdotdot')) {
 				$('.except02').dotdotdot('destroy');
 			}
@@ -279,9 +279,11 @@ module.exports = function() {
 						$(this).parent('p').siblings('.slideCon').slideDown();
 						$(this).parent('.except02').trigger('destroy').css('max-height','none').find('a').remove();
 					});
+
 				}
 			});
-		}
+
+		}*/
 	}
 	
 	/**
