@@ -123,21 +123,21 @@ module.exports = function() {
 		$('.dwellingCard').each(function(idx){
 			var selectedItem = selectedItems[$(this).attr('id').substr(12)];
 			if (selectedItem != undefined) {
-				$(this).find('.dwellingFormDrop').html('<ul class="drop" data-prevent="true"><li><a href="#">'+selectedItem.dwellingFormCodeName+'</a></li></ul>');
-				$(this).find('.dwellingPyeongDrop').html('<ul class="drop" data-prevent="true"><li><a href="#">'+selectedItem.dwellingPyeongCodeName+'</a></li></ul>');
+				$(this).find('.dwellingFormDrop').html('<option>'+selectedItem.dwellingFormCodeName+'</option>');
+				$(this).find('.dwellingPyeongDrop').html('<option>'+selectedItem.dwellingPyeongCodeName+'</option>');
 			}
 			controller.getDwellingItem($(this));
 		});
 
-		$('.dwellingCard .alignBox').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+		$('.dwellingCard .alignBox').on('change', function(e, data) {
 			var cardTarget = $(e.target.parentNode.parentNode.parentNode.parentNode.parentNode);
 			var cardId = cardTarget.attr('id').substr(12);
 			var dataKey = String($(this).data().dataKey);
 			
 			if (selectedItems[cardId] == undefined) selectedItems[cardId] = {};
 			switch(dataKey) {
-				case 'dwellingForm': selectedItems[cardId].dwellingFormCode = data.values[0]; break;
-				case 'dwellingPyeong': selectedItems[cardId].dwellingPyeongCode = data.values[0]; break;
+				case 'dwellingForm': selectedItems[cardId].dwellingFormCode = $(this).val(); break;
+				case 'dwellingPyeong': selectedItems[cardId].dwellingPyeongCode = $(this).val(); break;
 			}
 
 			if (selectedItems[cardId].dwellingFormCode != undefined && selectedItems[cardId].dwellingPyeongCode != undefined) {
@@ -166,10 +166,10 @@ module.exports = function() {
 			if (selectedItem != undefined) label = selectedItem[key+'CodeName'];
 			
 			var eachDrop = result[key];
-			var tags = '<ul class="drop" data-prevent="true"><li><a href="#">'+label+'</a></li>';
+			var tags = '<option>'+label+'</option>';
 			for (var valueKey in eachDrop) {
 				var eachItem = eachDrop[valueKey];
-				tags += '<li><a href="#" data-value="'+eachItem.code+'">'+eachItem.codeDesc+'</a></li>';
+				tags += '<option value="'+eachItem.code+'">'+eachItem.codeDesc+'</option>';
 			}
 			tags += '</ul>';
 
@@ -184,35 +184,35 @@ module.exports = function() {
 		$('.addressCard').each(function(idx){
 			var selectedItem = selectedItems[$(this).attr('id').substr(12)];
 			if (selectedItem != undefined) {
-				$(this).find('.addressDrop1').html('<ul class="drop" data-prevent="true"><li><a href="#">'+selectedItem.sido+'</a></li></ul>');
-				$(this).find('.addressDrop2').html('<ul class="drop" data-prevent="true"><li><a href="#">'+selectedItem.sigungu+'</a></li></ul>');
-				$(this).find('.addressDrop3').html('<ul class="drop" data-prevent="true"><li><a href="#">'+selectedItem.dong+'</a></li></ul>');
+				$(this).find('.addressDrop1').html('<option>'+selectedItem.sido+'</option>');
+				$(this).find('.addressDrop2').html('<option>'+selectedItem.sigungu+'</option>');
+				$(this).find('.addressDrop3').html('<option>'+selectedItem.dong+'</option>');
 			}
 			controller.getAddressItems($(this));
 		});
 
-		$('.addressDrop1').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+		$('.addressDrop1').on('change', function(e, data) {
 			var cardTarget = $(e.target.parentNode.parentNode.parentNode.parentNode.parentNode);
 			var cardId = cardTarget.attr('id').substr(12);
 			selectedItems[cardId] = {};
-			selectedItems[cardId].sido = data.values[0];
+			selectedItems[cardId].sido = $(this).val();
 
-			cardTarget.find('.addressDrop3').html('<ul class="drop" data-prevent="true"><li><a href="#">읍면동</a></li></ul>');
+			cardTarget.find('.addressDrop3').html('<option>읍면동</option>');
 			controller.getAddressItems(cardTarget, selectedItems[cardId].sido);
 		});
 
-		$('.addressDrop2').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+		$('.addressDrop2').on('change', function(e, data) {
 			var cardTarget = $(e.target.parentNode.parentNode.parentNode.parentNode.parentNode);
 			var cardId = cardTarget.attr('id').substr(12);
-			selectedItems[cardId].sigungu = data.values[0];
+			selectedItems[cardId].sigungu = $(this).val();
 
 			controller.getAddressItems(cardTarget, selectedItems[cardId].sido, selectedItems[cardId].sigungu);
 		});
 
-		$('.addressDrop3').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+		$('.addressDrop3').on('change', function(e, data) {
 			var cardTarget = $(e.target.parentNode.parentNode.parentNode.parentNode.parentNode);
 			var cardId = cardTarget.attr('id').substr(12);
-			selectedItems[cardId].dong = data.values[0];
+			selectedItems[cardId].dong = $(this).val();
 
 			controller.answer(cardId, 'BM_PERSONAL_TYPE_01', {
 				"personalAnswer": {
@@ -230,35 +230,35 @@ module.exports = function() {
 
 	function addressItemsResultHandler(e, status, result, target) {
 		var targetBox, label, key, each;
-		var tags = '<ul class="drop" data-prevent="true">';
+		var tags = '';
 
 		if (result.regionList[0].sido != result.regionList[1].sido) {
 			var selectedItem = selectedItems[target.attr('id').substr(12)];
 			label = (selectedItem == undefined ? '시/도' : selectedItem.sido);
 			targetBox = target.find('.addressDrop1');
 
-			tags += '<li><a href="#">'+label+'</a></li>';
+			tags += '<option>'+label+'</option>';
 			for (key in result.regionList) {
 				each = result.regionList[key];
-				tags += '<li><a href="#" data-value="'+each.sido+'">'+each.sido+'</a></li>';
+				tags += '<option value="'+each.sido+'">'+each.sido+'</option>';
 			}
 		} else if (result.regionList[0].sigungu != result.regionList[1].sigungu) {
 			label = '시군구';
 			targetBox = target.find('.addressDrop2');
 
-			tags += '<li><a href="#">'+label+'</a></li>';
+			tags += '<option>'+label+'</option>';
 			for (key in result.regionList) {
 				each = result.regionList[key];
-				tags += '<li><a href="#" data-value="'+each.sigungu+'">'+each.sigungu+'</a></li>';
+				tags += '<option value="'+each.sigungu+'">'+each.sigungu+'</option>';
 			}
 		} else {
 			label = '읍면동';
 			targetBox = target.find('.addressDrop3');
 
-			tags += '<li><a href="#">'+label+'</a></li>';
+			tags += '<option>'+label+'</option>';
 			for (key in result.regionList) {
 				each = result.regionList[key];
-				tags += '<li><a href="#" data-value="'+each.dong+'">'+each.dong+'</a></li>';
+				tags += '<option value="'+each.dong+'">'+each.dong+'</option>';
 			}
 		}
 		tags += '</ul>';

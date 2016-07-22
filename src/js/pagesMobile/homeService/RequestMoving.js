@@ -63,11 +63,13 @@ module.exports = function() {
 		});*/
 		$('#getCompanyListButton').click(requestMovingCompany);
 		$('#requestMovingForm').submit(requestMovingSubmit);
-		$('#originAddressDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
-			setAddress('origin', data.values[0]);
+		$('#requestMovingForm .js-submit').on('click', requestMovingSubmit);
+
+		$('#originAddressDrop').on('change', function(e, data) {
+			setAddress('origin', $(this).val());
 		});
-		$('#targetAddressDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
-			setAddress('target', data.values[0]);
+		$('#targetAddressDrop').on('change', function(e, data) {
+			setAddress('target', $(this).val());
 		});
 		$('.openAddressPopup').click(function(e) {
 			addressBookTarget = $(this).attr('id').substr(5);
@@ -126,8 +128,14 @@ module.exports = function() {
 
 	function movingCompanyListHandler(e, status, result) {
 		if (status == 200) {
+			var data = result.livingCompanyList;
+
+			$.each(data, function(index, listValues) {
+				listValues.companyLogoImageUrl = (util.isLocal()) ? 'http://dev.koloncommon.com' + listValues.companyLogoImageUrl : listValues.companyLogoImageUrl;
+			});
+
 			var template = window.Handlebars.compile($('#moving-company-templates').html());
-			var elements = $(template(result.livingCompanyList));
+			var elements = $(template(data));
 			$('#companyListWrap').empty().append(elements);
 			
 			$('.tabWrap a').on('click', function(e) {// common tab
@@ -145,6 +153,14 @@ module.exports = function() {
 	};
 
 	function addressListHandler(e, status, list) {
+		// var template = window.Handlebars.compile($('#moving-address-templates').html());
+		// var elements = $(template(list));
+		// var elements2 = $(template(list));
+		// $('#originAddress').empty().append(elements);
+		// $('#targetAddress').empty().append(elements2);
+
+		// return;
+
 		if (list.items.length == 0) {
 			$('#originAddressDrop').parent().hide();
 			$('#targetAddressDrop').parent().hide();
@@ -152,13 +168,13 @@ module.exports = function() {
 			$('#originAddressDrop').parent().show();
 			$('#targetAddressDrop').parent().show();
 
-			var tags1 = '<li><a id="originLabel" href="#">선택해 주세요</a></li>';
-			var tags2 = '<li><a id="targetLabel" href="#">선택해 주세요</a></li>';
+			var tags1 = '<option id="originLabel" value="">선택해 주세요</option>';
+			var tags2 = '<option id="targetLabel" value="">선택해 주세요</option>';
 			addressArray = new Array();
 			$.map(list.items, function(each) {
 				addressArray[each.addressSequence] = each;
-				tags1 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
-				tags2 += '<li><a href="#" data-value="'+each.addressSequence+'">'+each.addressManagementName+'</a></li>';
+				tags1 += '<option value="' + each.addressSequence + '">' + each.addressManagementName + "</option>" ;
+				tags2 += '<option value="' + each.addressSequence + '">' + each.addressManagementName + "</option>" ;
 			});
 			$('#originAddressDrop').html(tags1);
 			$('#targetAddressDrop').html(tags2);
@@ -172,7 +188,12 @@ module.exports = function() {
 
 	function setAddress(addressType, seq) {
 		var addressObject = addressArray[seq];
-		$('#'+addressType+'Address').html('<dt>- 도로명</dt><dd>'+addressObject.roadBaseAddress+'</dd><dt>- 지번</dt><dd>'+addressObject.lotBaseAddress+'</dd><dt>- 상세주소</dt><dd>'+addressObject.detailAddress+'</dd>');
+		// $('#'+addressType+'Address').html('<dt>- 도로명</dt><dd>'+addressObject.roadBaseAddress+'</dd><dt>- 지번</dt><dd>'+addressObject.lotBaseAddress+'</dd><dt>- 상세주소</dt><dd>'+addressObject.detailAddress+'</dd>');
+
+		var template = window.Handlebars.compile($('#sel-address-templates').html());
+		var elements = $(template(addressObject));
+		$('#'+addressType+'Address').empty().append(elements);
+
 		switch(addressType) {
 			case 'origin': 
 				originAddress = addressObject;
