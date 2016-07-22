@@ -83,11 +83,11 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		productController.shopList(listOrder);			// newest:최신순/scrap:스크랩순/like:좋아요순
+		productController.newFormList(listOrder);			// newest:최신순/scrap:스크랩순/like:좋아요순
 		$('#orderDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			cardList.removeAllData();
 			listOrder = data.values[0];
-			productController.shopList(listOrder);
+			productController.newFormList(listOrder);
 		});
 	}
 
@@ -126,7 +126,7 @@ module.exports = function() {
 		
 		switch(eventType) {
 			case PRODUCT_EVENT.NEWFORM_LIST:
-				debug.log(result);
+				cardList.appendData(result.productCards);
 				break;
 		}
 	}
