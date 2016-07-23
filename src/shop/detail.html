@@ -14,16 +14,7 @@
 				<div class="topContBox" style="background-image:url('{{productImageUrl}}')">
 					<div class="topCont subTop">
 						<ul class="tagList">
-							{{!-- 서비스분류 --}}
-								{{#vxSwitch productServiceSectionCode}}
-									{{#vxCase "PD_PROD_SVC_SECTION_01" break="true"}}
-									<li><a href="#">Shop</a></li>
-									{{/vxCase}}
-									{{#vxCase "PD_PROD_SVC_SECTION_02" break="true"}}
-									<li><a href="#">NewForm</a></li>
-									{{/vxCase}}
-								{{/vxSwitch}}
-							{{!-- 서비스분류 --}}
+							<li><a href="#">Shop</a></li>
 
 							{{!-- 생산자유형 --}}
 								{{#vxSwitch producerTypeCode}}

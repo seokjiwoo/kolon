@@ -76,7 +76,6 @@ module.exports = function() {
 		
 		setElements();
 		setBindEvents();
-
 		setBtnsEvents();
 		
 		recommendShopList = CardList();
@@ -306,14 +305,12 @@ module.exports = function() {
 							break;
 					}
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
 					break;
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
 
 					orderData = new Array();
 
@@ -329,7 +326,6 @@ module.exports = function() {
 							product.salePriceDesc = util.currencyFormat(parseInt(product.salePrice, 10));
 						});
 					}
-					if (result.data.product.discountSetupYn == 'Y') result.data.product.discountRate = Math.round(result.data.product.discountPrice/result.data.product.basePrice);
 
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));

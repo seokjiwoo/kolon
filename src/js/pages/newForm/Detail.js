@@ -11,14 +11,28 @@ module.exports = function() {
 
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
-	stickyBar = require('../../components/StickyBar.js'),
 	cartController = require('../../controller/OrderController.js'),
 	productController = require('../../controller/ProductController.js'),
+	scrapController = require('../../controller/ScrapController.js'),
+	followController = require('../../controller/FollowController.js'),
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
+	DropDownScroll = require('../../components/DropDownScroll'),
+	stickyBar = require('../../components/StickyBar.js'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	CART_EVENT = events.CART,
-	PRODUCT_EVENT = events.PRODUCT;
+	PRODUCT_EVENT = events.PRODUCT,
+	FOLLOWING_EVENT = events.FOLLOWING,
+	OPTIONNUM_EVENT = events.OPTION_NUM,
+	MEMBERINFO_EVENT = events.MEMBER_INFO;
+	
+	var loginController = require('../../controller/LoginController');
+	var loginDataModel = require('../../model/LoginModel');
+
+	var CardList = require('../../components/CardList.js');
+	var recommendShopList;
+	var recommendNewFormList;
+	var partnerGoodsList;
 	
 	var callerObj = {
 		/**
@@ -74,31 +88,19 @@ module.exports = function() {
 		self.productNumber = util.getUrlVar().productNumber;
 		//self.reviewNumber = util.getUrlVar().reviewNumber;
 
-		if (debug.isDebugMode()) {
-			if (!self.productNumber) {
-				var productNumber = win.prompt('queryString not Found!\n\nproductNumber 를 입력하세요', '');
-				location.href += '?productNumber=' + productNumber;
-				return;
-			}/*
-			if (!self.reviewNumber) {
-				var reviewNumber = win.prompt('queryString not Found!\n\nreviewNumber 를 입력하세요', '');
-				location.href += '&reviewNumber=' + reviewNumber;
-				return;
-			}*/
-		}
-		
 		setElements();
 		setBindEvents();
+		setBtnsEvents();
 
 		stickyBar.init();
 
 		//productController.evals(self.productNumber);
 		productController.info(self.productNumber);
-		productController.partnerInfo(self.productNumber);
-		productController.preview(self.productNumber);
-		productController.related(self.productNumber);
+		//productController.partnerInfo(self.productNumber);
+		//productController.preview(self.productNumber);
+		//productController.related(self.productNumber);
 		//productController.reviews(self.productNumber, self.reviewNumber);
-
+/*
 		$('.optionScroll').height($('.optionList').height());
 		if ($('.optionList').find('li').size() > 3) {
 			$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
@@ -112,61 +114,7 @@ module.exports = function() {
 			mouseWheel: true,
 			fadeScrollbars: false,
 			bounce: false
-		});
-
-		$('.js-add-cart, .js-option-open').on('click', function(e) {
-			e.preventDefault();
-
-			var target = $(e.currentTarget);
-
-			if (target.hasClass('js-add-cart')) {
-				var data = [
-					{
-						"myCartAddCompositions": [
-							{
-								"addCompositionProductNumber": 0,
-								"addCompositionProductQuantity": 0,
-								"orderOptionNumber": 0
-							}
-						],
-						"optionQuantity": 0,
-						"orderOptionNumber": 0,
-						"productNumber": parseInt(self.productNumber, 10),
-						"productQuantity": 0
-					}
-				];
-				$('.js-ajax-data').html('ajax 전송 data : ' + JSON.stringify(data));
-				cartController.addMyCartList(data);
-				
-				$('.detailBottomTab .bottomTabWrap').addClass('active');
-			}
-
-			if (target.hasClass('js-option-open')) {
-				$('.detailBottomTab .bottomTabWrap').toggleClass('active');
-			}
-
-			if ($('.detailBottomTab .bottomTabWrap').hasClass('active')) {
-				$('.optionScroll').height($('.optionList').height());
-				self.optionIScroll.refresh();
-			}
-
-		});
-		$('#sellerCard').bxSlider({
-			pager:false,
-			slideMargin: 10,
-			minSlides: 2,
-			maxSlides: 2,
-			slideWidth: 285
-		});
-		$.each($('.slider04'), function(){
-			$(this).bxSlider({
-				pager:false,
-				slideMargin: 10,
-				minSlides: 4,
-				maxSlides: 4,
-				slideWidth: 285
-			});
-		})
+		});*/
 	}
 
 	function setElements() {
@@ -183,22 +131,102 @@ module.exports = function() {
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 	}
 
+	function setBtnsEvents() {
+		$('.accordion li a').on('click', onAccordionListener);
+		$('.wrapper .js-add-cart, .wrapper .js-prd-buy, .wrapper .js-add-like, .wrapper .js-add-scrap').on('click', onCartBuyListener);
+	}
+
+	function destoryBtnsEvents() {
+		$('.accordion li a').off('click', onAccordionListener);
+		$('.wrapper .js-add-cart, .wrapper .js-prd-buy, .wrapper .js-add-like, .wrapper .js-add-scrap').off('click', onCartBuyListener);
+	}
+
+	function onSocialCloseListener(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget);
+		target.parent('.socialBtn').removeClass('active');
+	}
+
+	function onAccordionListener(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget);
+		if (target.parent('li').hasClass('on')) {
+			target.parent('li').removeClass('on');
+		} else {
+			target.parent('li').removeClass('on').addClass('on');
+		}
+	}
+
+	function onCartBuyListener(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget),
+		isLogin = eventManager.triggerHandler(MEMBERINFO_EVENT.IS_LOGIN),
+		orderGoodsUrl = '';
+
+		if (target.hasClass('js-option-open')) {
+			$('.detailBottomTab .bottomTabWrap').toggleClass('active');
+			
+			if ($('.detailBottomTab .bottomTabWrap').hasClass('active')) {
+				$('.optionScroll').height($('.optionList').height());
+				self.optionIScroll.refresh();
+			}
+			return;
+		}
+
+		if (!isLogin) {
+			win.alert('로그인이 필요합니다.');
+			location.href = '/member/login.html';
+			return;
+		}
+		
+		if (target.hasClass('js-add-like')) {
+			if (target.hasClass('on')) {
+				//
+			} else {
+				productController.likes(self.productNumber, 'BM_LIKE_SECTION_02');
+			}
+			return;
+		}
+
+		if (target.hasClass('js-add-scrap')) {
+			if (target.hasClass('on')) {
+				//
+			} else {
+				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_GOODS, self.productNumber);
+			}
+			return;
+		}
+	}
+
 	// Handlebars 마크업 템플릿 구성
-	function displayData(data) {
-		var source = self.template.html(),
+	function displayData(data, template, templatesWrap) {
+		template = template || self.template;
+		templatesWrap = templatesWrap || self.templatesWrap;
+
+		var source = template.html(),
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));
 
-		self.templatesWrap.empty()
+		templatesWrap.empty()
 							.addClass(self.opts.cssClass.isLoading)
 							.append(insertElements);
 
-		self.templatesWrap.imagesLoaded()
+		templatesWrap.imagesLoaded()
 							.always(function() {
-								self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+								templatesWrap.removeClass(self.opts.cssClass.isLoading);
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								destoryBtnsEvents();
+								setBtnsEvents();
+
+								if (!stickyBar.isReady()) {
+									stickyBar.init();
+									setStickySnsShare();
+								}
 							});
-	}
+	};
 
 	function onControllerListener(e, status, response, elements) {
 		var eventType = e.type,
@@ -206,27 +234,6 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
-			// default:
-			// 	dummyData = [];
-
-			// 	/*
-			// 	401	Unauthorized
-			// 	403	Forbidden
-			// 	404	Not Found
-			// 	 */
-			// 	switch(status) {
-			// 		case 200:
-			// 			break;
-			// 		default:
-			// 			win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-			// 			result = dummyData;
-			// 			break;
-			// 	}
-
-			// 	debug.log(fileName, 'onControllerListener', eventType, status, response);
-			// 	displayData(result);
-			// 	break;
-
 			// [S] CART - 장바구니
 				case CART_EVENT.ADD:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -235,17 +242,144 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
-				case PRODUCT_EVENT.EVALS:
+				case PRODUCT_EVENT.INFO:
+					if (result && result.data && result.data.product) {
+						$.each(result.data, function(index, product) {
+							product.basePriceDesc = util.currencyFormat(parseInt(product.basePrice, 10));
+							product.salePriceDesc = util.currencyFormat(parseInt(product.salePrice, 10));
+							product.pyeongBasePriceDesc = util.currencyFormat(parseInt(product.pyeongBasePrice, 10));
+							product.pyeongSalePriceDesc = util.currencyFormat(parseInt(product.pyeongSalePrice, 10));
+						});
+					}
+
+					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
+					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
+					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
+
+					if (result.data.product.tags.length == 0) {
+						$('#tagArea').hide();
+					} else {
+						displayData(result.data.product.tags, $('#detail-tags-templates'), $('#js-detail-tags-wrap'));
+					}
+					
+					self.productName = result.data.product.productName;
+					self.salePrice = result.data.product.salePrice;
+					self.stock = result.data.product.stock;
+
+					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
+					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
+					
+					optionsDisplay();
+
+					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
+					//$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
+
+					switch(result.data.product.saleStateCode) {
+						case "PD_SALE_STATE_01":
+							break;
+						case "PD_SALE_STATE_02":
+							$('.js-add-cart').remove();
+							$('.js-prd-buy').css('background', '#666666').text('품절').removeClass('js-prd-buy');
+							break;
+						case "PD_SALE_STATE_03":
+							$('.js-add-cart').remove();
+							$('.js-prd-buy').css('background', '#666666').text('판매중지').removeClass('js-prd-buy');
+							break;
+					}
+
+					//productController.options(self.productNumber, criteriaOptionCount, 0, selectedOptions);
+					productController.partnerInfo(self.productNumber);
+					
+					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_01');
+					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_02');
+					break;
+				case PRODUCT_EVENT.LIKES:
+					switch(status) {
+						case 200:
+							win.alert('해당 상품을 \'좋아요\' 하였습니다.');
+							location.reload();
+							break;
+						default:
+							win.alert(result.message);
+							break;
+					}
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
 					break;
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
 				case PRODUCT_EVENT.PARTNER_INFO:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
+					var partnerData1 = result.data.partner;
+					var partnerData2 = result.data.partner;
+					if (partnerData2.memberMasterYn == 'Y') {
+						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
+					} else {
+						partnerData2.link = '/manager/brand.html?expertNumber='+partnerData2.partnerNumber;
+					}
+					displayData(partnerData1, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
+					displayData(partnerData2, $('#info-partner-templates'), $('.js-info-partner-wrap'));
+
+					self.expertNumber = partnerData2.partnerNumber;
+					$('#btnFollow').on('click', onFollowListener);
+					$('#btnMessage').attr('href', '/popup/popMessage.html?saleMemberNumber='+partnerData2.partnerNumber);
+					
+					partnerGoodsList = CardList();
+					partnerGoodsList.init('#sellerCard', true);
+					productController.partnerGoodsInfo(self.productNumber);
+					break;
+				case FOLLOWING_EVENT.ADD_FOLLOW:
+					switch(status) {
+						case 200: 
+							$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+							break;
+						default: win.alert(result.message); break;
+					}
+					break;
+				case PRODUCT_EVENT.PARTNER_GOODS:
+					//console.log(result.data.productCards.length);
+					partnerGoodsList.appendData(result.data.productCards);
+					$('#sellerCard').bxSlider({
+						pager:false,
+						slideMargin: 10,
+						minSlides: 2,
+						maxSlides: 2,
+						slideWidth: 285
+					});
+					break;
+				case PRODUCT_EVENT.RECOMMEND:
+					switch(response.data.productServiceSectionCode) {
+						case 'PD_PROD_SVC_SECTION_01':
+							// 샵
+							if (result.data.productCards.length == 0) {
+								$('#recommendLiving').hide();
+							} else {
+								recommendShopList.appendData(result.data.productCards);
+								$('#recommendShopWrap').bxSlider({
+									pager:false,
+									slideMargin: 10,
+									minSlides: 4,
+									maxSlides: 4,
+									slideWidth: 285
+								});	
+							}
+							break;
+						case 'PD_PROD_SVC_SECTION_02':
+							// 리폼  
+							if (result.data.productCards.length == 0) {
+								$('#recommendNewForm').hide();
+							} else {
+								recommendNewFormList.appendData(result.data.productCards);
+								$('#recommendNewFormWrap').bxSlider({
+									pager:false,
+									slideMargin: 10,
+									minSlides: 4,
+									maxSlides: 4,
+									slideWidth: 285
+								});
+							}
+							break;
+					}
 					break;
 				case PRODUCT_EVENT.PREVIEW:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -255,11 +389,46 @@ module.exports = function() {
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 					$('.' + eventType).html(JSON.stringify(response));
 					break;
-				case PRODUCT_EVENT.REVIEWS:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
-					break;
 			// [E] PRODUCT - 상품
+		}
+	}
+
+	function onFollowListener(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget);
+
+		if (target.hasClass('js-add-follow')) {
+			followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
+		}
+	}
+
+	function optionsDisplay() {
+		$('.optionScroll').height($('.optionList').height());
+		if ($('.optionList').find('li').size() > 3) {
+			$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
+		} else {
+			$('.optionScroll').closest('.activeRight').removeClass('has-iscroll');
+		}
+
+		if (!self.optionIScroll) {
+			self.optionIScroll = new win.IScroll('.optionScroll', {
+				scrollbars: true,
+				mouseWheel: true,
+				fadeScrollbars: false,
+				bounce: false
+			});
+
+			$('.activeOption .activeRight').on('mousewheel DOMMouseScroll', function(e) {
+				var target = $(e.target),
+				isScrollArea = target.hasClass('.optionScroll') || target.closest('.optionScroll').size();
+
+				if (isScrollArea) {
+					e.preventDefault();
+				}
+			});
+		} else {
+			self.optionIScroll.refresh();
 		}
 	}
 

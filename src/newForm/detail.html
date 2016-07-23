@@ -8,86 +8,110 @@
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<!-- 상단 배너 -->
-			<div class="detailArea topArea">
-			    <div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
+			<div class="detailArea topArea js-detail-info-wrap">
+				<script id="detail-info-templates" type="text/x-handlebars-template">
+				{{!-- detail-info-templates --}}
+				<div class="topContBox" style="background-image:url('{{productImageUrl}}')">
 			    	<div class="topCont subTop">
 				    	<ul class="tagList">
 							<li><a href="#">NewForm</a></li>
-							<li><a href="#">Compact</a></li>
-							<li><a href="#">Full</a></li>
+							{{!-- 생산자유형 --}}
+							{{#vxSwitch producerTypeCode}}
+								{{#vxDefault}}
+								<li><a href="#">{{producerTypeCodeName}}</a></li>
+								{{/vxDefault}}
+							{{/vxSwitch}}
+							{{!-- 생산자유형 --}}
+							{{!-- 상품분류 최하위 --}}
+							{{#vxSwitch productTypeCode}}
+								{{#vxDefault}}
+								<li><a href="#">{{productTypeCodeName}}</a></li>
+								{{/vxDefault}}
+							{{/vxSwitch}}
+							{{!-- 상품분류 최하위 --}}
 							<li><a href="#">50㎡ (15PY)</a></li>
 						</ul>
 
-					    <h3>Compact But Enough</h3>
-					    <p class="infoSub">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
-					    <p>by 박실장 <span>KOLON GLOBAL</span></p>
+						<h3>{{productName}}</h3>
+						<p class="infoSub">{{productDesc}}</p>
+						<div class="js-detail-partner-wrap"></div>
 
 					    <ul class="unitPrice">
 					    	<li>
 					    		<h4>50㎡/15PY 기준 평당 단가</h4>
-					    		<p>165,000<b>원</b><span class="discount">10<i>%</i></span></p>
-					    		<p class="salePrice">150,000<b>원</b></p>
+								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
+									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
+									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
+								{{else}}
+									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
+								{{/vxIF}}
 					    	</li>
 					    	<li>
 					    		<h4>50㎡/15PY 기준 금액</h4>
-					    		<p>30,000,000<b>원</b><span class="discount">10<i>%</i></span></p>
-					    		<p class="salePrice">27,000,000<b>원</b></p>
+								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
+									<p>{{pyeongBasePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
+									<p class="salePrice">{{pyeongSalePriceDesc}}<b>원</b></p>
+								{{else}}
+									<p class="salePrice">{{pyeongSalePriceDesc}}<b>원</b></p>
+								{{/vxIF}}
 					    	</li>
 					    </ul>
 						
-						<div class="newFormBtn">
+						<div class="newFormBtn shopBtn">
 							<div class="bigBtnBox">
 								<a href="#" class="js-add-cart bigBtn">마이카트</a>
-					  			<a href="#" class="js-add-cart bigBtn bigBtn02">구매하기<span>10% 선결제하시면 실측이 무료</span></a>
+					  			<a href="#" class="js-prd-buy bigBtn bigBtn02">구매하기<span>10% 선결제하시면 실측이 무료</span></a>
 					  		</div>
 					  		<ul class="subBtn">
 					  			<li class="subBtn01">
-					  				<a href="#">
+									<a href="#" class="js-add-like">
 					  					<span class="hide">좋아요</span>
-					  					<span class="countNum">12,213</span>
+										<span class="countNum">{{likeCount}}</span>
 					  				</a>
 					  			</li>
 					  			<li class="subBtn02">
-					  				<a href="#">
+									<a href="#" class="js-add-scrap">
 					  					<span class="hide">스크랩</span>
-					  					<span class="countNum">12,213</span>
+										<span class="countNum">{{scrapCount}}</span>
 					  				</a>
 					  			</li>
 					  			<li>
-					  				<span class="socialBtn">
-					  					<a href="#" class="socialBtnOpen">
-					  						<span class="hide">공유하기</span>
-					  					</a>
-					  					<a href="#" class="socialBtn01">
-					  						<span class="hide">페이스북</span>
-					  					</a>
-							            <a href="#" class="socialBtn02">
-							            	<span class="hide">트위터</span>
-							            </a>
-							            <a href="#" class="socialBtn03">
-							            	<span class="hide">핀터레스트</span>
-							            </a>
-							            <a href="#" class="socialBtn04">
-							            	<span class="hide">카카오스토리</span>
-							            </a>
-							            <a href="#" class="socialBtn05">
-							            	<span class="hide">URL복사</span>
-							            </a>
-							            <a href="#" class="socialBtnClose">
-							            	<span class="hide">닫기</span>
-							            </a>
-					  				</span>
+									<span class="socialBtn js-social-wrap">
+										<a href="#" class="socialBtnOpen js-open">
+											<span class="hide">공유하기</span>
+										</a>
+										<a href="#" class="socialBtn01" data-share-sns="facebook">
+											<span class="hide">페이스북</span>
+										</a>
+										<a href="#" class="socialBtn02" data-share-sns="twitter">
+											<span class="hide">트위터</span>
+										</a>
+										<a href="#" class="socialBtn03" data-share-sns="pinterest">
+											<span class="hide">핀터레스트</span>
+										</a>
+										<a href="#" class="socialBtn04" data-share-sns="kakaostory">
+											<span class="hide">카카오스토리</span>
+										</a>
+										<a href="#" class="socialBtn05" data-share-sns="url">
+											<span class="hide">URL복사</span>
+										</a>
+										<a href="#" class="socialBtnClose js-close">
+											<span class="hide">닫기</span>
+										</a>
+									</span>
 					  			</li>
 					  		</ul>
 						</div>
 						<div class="cardCon">
 							<div class="upTo2">
-								<p>기간한정<span><b>20</b>%</span></p>
+								<p>기간한정 / API - 확인 필요</p>
+								<!-- <p>기간한정<span><b>20</b>%</span></p> -->
 							</div>
 						</div>
 					</div>
 				</div>
-
+				{{!--// detail-info-templates --}}
+				</script>
 			</div>
 			<!-- // 상단 배너 -->
 
@@ -126,107 +150,116 @@
 				</div>
 			</div>
 			<!-- // detail 상단 탭 -->
-			
-			<!-- 기본 정보 -->
-			<div id="ProductArea" class="detailArea basicArea">
-				<h3>Basics Info</h3>
-				<div class="floorSpace">
-					<h4 class="alignLine">기준평형</h4>
-					<p><b class="italic">15</b>평 기준</p>
-				</div>
-				<div class="composition">
-					<h4 class="alignLine">구성</h4>
-					<!-- 
-						unitIco01 = 현관
-						unitIco02 = 거실
-						unitIco03 = 침실
-						unitIco04 = 욕실
-						unitIco05 = 주방
-						unitIco06 = 아이방
-					 -->
-					<ul class="unitIco">
-						<li class="unitIco01 on"><span>현관</span></li>
-						<li class="unitIco02 on"><span>거실</span></li>
-						<li class="unitIco03 on"><span>침실</span></li>
-						<li class="unitIco04"><span>욕실</span></li>
-						<li class="unitIco05"><span>주방</span></li>
-						<li class="unitIco06"><span>아이방</span></li>
-					</ul>
-					<p class="floorPlanBox"><img src="../images/floor_plan.png"></p>
-				</div>
-				<div class="optionBox">
-					<h4 class="alignLine">옵션</h4>
-					<ul class="basicOption">
-						<li class="basicOption01">
-							<p>인테리어<br>시공상품</p>
-							<span class="basicIco"><span class="italic">150,000</span>원</span>
-						</li>
-						<li class="basicOption02">
-							<p>홈드레싱<br>패키지 상품</p>
-							<span class="basicIco"><span class="italic">150,000</span>원</span>
-						</li>
-						<li class="basicOption03">
-							<div class="clearBox">
-								<p class="optionLeft">인테리어<br>시공상품</p>
-								<p class="optionRight">홈드레싱<br>패키지 상품</p>
-							</div>
-							<span class="basicIco"><span class="italic">850,000</span>원</span>
-						</li>
-					</ul>
-				</div>
-				<div class="constructPrice">
-					<h4 class="alignLine">시공가</h4>
-					<dl>
-						<dt>평당</dt>
-						<dd>원가<b class="ml15">165,000원</b></dd>
-						<dd class="pointPrice">할인가<b class="ml15 italic">150,000</b>원</dd>
-					</dl>
-					<dl>
-						<dt>15평 기준</dt>
-						<dd>원가<b class="ml15">33,000,000원</b></dd>
-						<dd class="pointPrice">할인가<b class="ml15 italic">30,000,000</b>원</dd>
-					</dl>
-				</div>
-				<div class="installment">
-					<h4 class="alignLine">할부 결제</h4>
-					<p>120개월 할부<b class="ml15">30,000,000원</b></p>
-					<p class="pointPrice">월 <span class="italic">550,000</span>원 x <span class="italic">120</span>개월</p>
-				</div>
-			</div>
-			<!-- // 기본 정보 -->
 
-			<!-- 컨셉 영역, 이미지 스크랩 가능 -->
-			<div class="detailArea conceptArea">
-				<h3 class="icoNewformTit">Compact but enough</h3>
-				<p class="subNewformTit">신혼부부의 셀렘을 영원히 간직할 둘만의 공간</p>
-				<p><img src="../images/compact_detail.png"></p>
-			</div>
-			<!-- // 컨셉 영역, 이미지 스크랩 가능 -->
+			<!-- 상품 상세설명 -->
+			<div class="shop-detail-description-wrap">
+			<script id="shop-detail-description-templates" type="text/x-handlebars-template">
+				{{!-- shop-detail-templates --}}
+				<!-- 기본 정보 -->
+				<div id="ProductArea" class="detailArea basicArea">
+					<h3>Basics Info</h3>
+					<div class="floorSpace">
+						<h4 class="alignLine">기준평형</h4>
+						<p><b class="italic">15</b>평 기준</p>
+					</div>
+					<div class="composition">
+						<h4 class="alignLine">구성</h4>
+						<!-- 
+							unitIco01 = 현관
+							unitIco02 = 거실
+							unitIco03 = 침실
+							unitIco04 = 욕실
+							unitIco05 = 주방
+							unitIco06 = 아이방
+						-->
+						<ul class="unitIco">
+							<li class="unitIco01 on"><span>현관</span></li>
+							<li class="unitIco02 on"><span>거실</span></li>
+							<li class="unitIco03 on"><span>침실</span></li>
+							<li class="unitIco04"><span>욕실</span></li>
+							<li class="unitIco05"><span>주방</span></li>
+							<li class="unitIco06"><span>아이방</span></li>
+						</ul>
+						<p class="floorPlanBox"><img src="../images/floor_plan.png"></p>
+					</div>
+					<div class="optionBox">
+						<h4 class="alignLine">옵션</h4>
+						<ul class="basicOption">
+							<li class="basicOption01">
+								<p>인테리어<br>시공상품</p>
+								<span class="basicIco"><span class="italic">150,000</span>원</span>
+							</li>
+							<li class="basicOption02">
+								<p>홈드레싱<br>패키지 상품</p>
+								<span class="basicIco"><span class="italic">150,000</span>원</span>
+							</li>
+							<li class="basicOption03">
+								<div class="clearBox">
+									<p class="optionLeft">인테리어<br>시공상품</p>
+									<p class="optionRight">홈드레싱<br>패키지 상품</p>
+								</div>
+								<span class="basicIco"><span class="italic">850,000</span>원</span>
+							</li>
+						</ul>
+					</div>
+					<div class="constructPrice">
+						<h4 class="alignLine">시공가</h4>
+						<dl>
+							<dt>평당</dt>
+							<dd>원가<b class="ml15">165,000원</b></dd>
+							<dd class="pointPrice">할인가<b class="ml15 italic">150,000</b>원</dd>
+						</dl>
+						<dl>
+							<dt>15평 기준</dt>
+							<dd>원가<b class="ml15">33,000,000원</b></dd>
+							<dd class="pointPrice">할인가<b class="ml15 italic">30,000,000</b>원</dd>
+						</dl>
+					</div>
+					<div class="installment">
+						<h4 class="alignLine">할부 결제</h4>
+						<p>120개월 할부<b class="ml15">30,000,000원</b></p>
+						<p class="pointPrice">월 <span class="italic">550,000</span>원 x <span class="italic">120</span>개월</p>
+					</div>
+				</div>
+				<!-- // 기본 정보 -->
 
-			<!-- 자재영역 -->
-			<div class="detailArea materialArea">
-				<h3 class="icoNewformTit"><span class="hide">Material Board</span></h3>
-				<p><img src="../images/material_board.png"></p>
-			</div>
-			<!-- // 자재영역 -->
+				<!-- 컨셉 영역, 이미지 스크랩 가능 -->
+				<div class="detailArea conceptArea">
+					<h3 class="icoNewformTit">Compact but enough</h3>
+					<p class="subNewformTit">신혼부부의 셀렘을 영원히 간직할 둘만의 공간</p>
+					<!--<p><img src="../images/compact_detail.png"></p>-->
+				</div>
+				<!-- // 컨셉 영역, 이미지 스크랩 가능 -->
 
-			<!-- 유닛상품영역 -->
-			<div class="detailArea unitArea">
+				<!-- 자재영역 -->
+				<div class="detailArea materialArea">
+					<h3 class="icoNewformTit"><span class="hide">Material Board</span></h3>
+					<!--<p><img src="../images/material_board.png"></p>-->
+				</div>
+				<!-- // 자재영역 -->
+
+				<!-- 유닛상품영역 -->
+				<div class="detailArea unitArea">
+					
+				</div>
+				<!-- // 유닛상품영역 -->
 				
-			</div>
-			<!-- // 유닛상품영역 -->
-			
-			<!-- 모아보기 영역 -->
-			<div class="detailArea viewGather">
+				<!-- 모아보기 영역 -->
+				<div class="detailArea viewGather">
+					
+				</div>
+				<!-- // 모아보기 영역 -->
 				
+				<!-- VR  페이지 연결 영역 -->
+				<div class="detailArea vrArea">
+					
+				</div>
+				<!-- // VR  페이지 연결 영역 -->
+
+				{{!--// shop-detail-templates --}}
+			</script>
 			</div>
-			<!-- // 모아보기 영역 -->
-			
-			<!-- VR  페이지 연결 영역 -->
-			<div class="detailArea vrArea">
-				
-			</div>
-			<!-- // VR  페이지 연결 영역 -->
+			<!-- // 상품 상세설명 -->
 
 			<!-- 패키지 영역 -->
 			<div class="detailArea packageArea">
@@ -234,709 +267,51 @@
 					<p class="icoNewformTit"></p>
 					<h3 class="sTit">Related NewForm Package</h3>
 					<p class="subTit">Compact Newly Weds PKG</p>
-					<ul class="cardWrap">
-						<li class="card cardType03 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-					</ul>
+					<ul class="cardWrap slider04" id='packageWrap'></ul>
 				</div>
 			</div>
 			<!-- // 패키지 영역 -->
 		
 			<!-- 태그 영역 -->
-			<div class="detailArea tagArea">
-				<h3>Tag</h3>
-				<ul>
-					<li><a href="#">#짜투리공간</a></li>
-					<li><a href="#">#내추럴모던</a></li>
-					<li><a href="#">#동선이좋은공간</a></li>
-					<li><a href="#">#헌집줄게새집다오</a></li>
-					<li><a href="#">#라이프스타일</a></li>
-					<li><a href="#">#반려동물</a></li>
-					<li><a href="#">#헌집줄게새집다오</a></li>
-					<li><a href="#">#반려동물</a></li>
-					<li><a href="#">#동선이좋은공간</a></li>
-					<li><a href="#">#헌집줄게새집다오</a></li>
-					<li><a href="#">#라이프스타일</a></li>
-					<li><a href="#">#반려동물</a></li>
-					<li><a href="#">#헌집줄게새집다오</a></li>
-					<li><a href="#">#반려동물</a></li>
-				</ul>
+			<div class="detailArea tagArea" id='tagArea'>
+				<h3 class="sTit">Tag</h3>
+				<div id='js-detail-tags-wrap'>
+				<script id="detail-tags-templates" type="text/x-handlebars-template">
+					{{!-- detail-tags-templates --}}
+					<ul>
+						{{#each .}}
+						<li><a href="/search/result.html?query={{.}}">{{.}}</a></li>
+						{{/each}}
+					</ul>
+					{{!--// detail-tags-templates --}}
+				</script>
+				</div>
 			</div>
 			<!-- // 태그 영역 -->
 
-			<!-- 추천 패키지 영역 -->
+			<!-- 추천 뉴폼패키지 -->
 			<div id="recommendNewForm" class="detailArea recommend">
 				<div class="wrap cardSlider">
 					<h3 class="sTit">Recommend NewForm Package</h3>
 					<p class="subTit">추천 뉴폼패키지</p>
-					<ul class="cardWrap slider04">
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-					</ul>
+					<ul class="cardWrap slider04" id='recommendNewFormWrap'></ul>
 				</div>
 			</div>
-			<!-- // 추천 패키지 영역 -->
+			<!-- //추천 뉴폼패키지 -->
 
-			<!-- 추천 리빙 영역 -->
+			<!-- 추천 리빙아이템 -->
 			<div id="recommendLiving" class="detailArea recommend">
 				<div class="wrap cardSlider">
-					<h3 class="sTit">Recommend Living Item</h3>
-					<p class="subTit">추천 리빙아이템</p>
-					<ul class="cardWrap slider04">
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-						<li class="card cardType03 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-								<div class="hexTop"><span></span></div>
-								<div class="hexBottom"><span></span></div>
-							</div>
-							<div class="cardCon">
-								<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-								<!-- card 내용 -->
-								<a href="#" class="cardTxt cardDetail">
-									<p class="cardCat">{ 전세 }</p>
-									<h2 class="cardTit">컨시어지하우스</h2>
-									<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-									<span href="#" class="cardMore">상세보기</span>
-								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
-								<div class="cardHover hoverStyle03">
-									<div class="cardCon">
-										<ul class="card_icon">
-											<li class="cart cardDetail"><a href="#">장바구니</a></li>
-											<li class="share cardDetail"><a href="#">공유</a></li>
-										</ul>
-									</div>
-								</div>
-								<!--// card hover 내용 -->
-								<ul class="check_icon">
-									<li class="cardDetail like"><a href="#">23569</a></li>
-									<li class="cardDetail share"><a href="#">7542</a></li>
-								</ul>
-								<!-- flag -->
-								<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-								<div class="issue"><p>Hot issue</p></div>
-								<!--// flag -->
-							</div>
-						</li>
-					</ul>
+					<h3 class="sTit">Recommend Shop Item</h3>
+					<p class="subTit">추천 샵 아이템</p>
+					<ul class="cardWrap slider04" id='recommendShopWrap'></ul>
 				</div>
 			</div>
-			<!-- // 추천 리빙 영역 -->
+			<!-- //추천 리빙아이템 -->
 
 			<!-- 판매자안내 영역 -->
 			<div id="SellerArea" class="detailArea sellerArea">
-				<div class="wrap">
-					<div class="sellInfo">
-						<h3 class="sellerTit"></h3>
-						<div class="sellerInfo">							
-							<p class="sellerPhoto"><img src="../images/temp33.png"></p>
-							<div class="sellerCont">
-								<h4>박실장</h4>
-								<p>KOLON GLOBAL<br><span>서울시 마포구 서교동</span></p>
-								<ul>
-									<li><a href="#" class="btn btnSizeM btnborder02">자세히보기</a></li>
-									<li><a href="#" class="btn btnSizeM btnColor01">팔로우</a></li>
-									<li><a href="#" class="btn btnSizeM btnColor04">1:1 메시지</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="sellerProduct cardSlider">
-						<h5>편안하고 개성있는 공간을 <br>만들어 드립니다.</h5>
-						<ul class="cardWrap" id="sellerCard">
-							<li class="card cardType03 cardSize02">
-								<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-									<div class="hexTop"><span></span></div>
-									<div class="hexBottom"><span></span></div>
-								</div>
-								<div class="cardCon">
-									<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-									<!-- card 내용 -->
-									<a href="#" class="cardTxt cardDetail">
-										<p class="cardCat">{ 전세 }</p>
-										<h2 class="cardTit">컨시어지하우스</h2>
-										<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-										<span href="#" class="cardMore">상세보기</span>
-									</a>
-									<!--// card 내용 -->
-									<!-- card hover 내용 -->
-									<div class="cardHover hoverStyle03">
-										<div class="cardCon">
-											<ul class="card_icon">
-												<li class="cart cardDetail"><a href="#">장바구니</a></li>
-												<li class="share cardDetail"><a href="#">공유</a></li>
-											</ul>
-										</div>
-									</div>
-									<!--// card hover 내용 -->
-									<ul class="check_icon">
-										<li class="cardDetail like"><a href="#">23569</a></li>
-										<li class="cardDetail share"><a href="#">7542</a></li>
-									</ul>
-									<!-- flag -->
-									<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-									<div class="issue"><p>Hot issue</p></div>
-									<!--// flag -->
-								</div>
-							</li>
-							<li class="card cardType03 cardSize02">
-								<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-									<div class="hexTop"><span></span></div>
-									<div class="hexBottom"><span></span></div>
-								</div>
-								<div class="cardCon">
-									<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-									<!-- card 내용 -->
-									<a href="#" class="cardTxt cardDetail">
-										<p class="cardCat">{ 전세 }</p>
-										<h2 class="cardTit">컨시어지하우스</h2>
-										<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-										<span href="#" class="cardMore">상세보기</span>
-									</a>
-									<!--// card 내용 -->
-									<!-- card hover 내용 -->
-									<div class="cardHover hoverStyle03">
-										<div class="cardCon">
-											<ul class="card_icon">
-												<li class="cart cardDetail"><a href="#">장바구니</a></li>
-												<li class="share cardDetail"><a href="#">공유</a></li>
-											</ul>
-										</div>
-									</div>
-									<!--// card hover 내용 -->
-									<ul class="check_icon">
-										<li class="cardDetail like"><a href="#">23569</a></li>
-										<li class="cardDetail share"><a href="#">7542</a></li>
-									</ul>
-									<!-- flag -->
-									<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-									<div class="issue"><p>Hot issue</p></div>
-									<!--// flag -->
-								</div>
-							</li>
-							<li class="card cardType03 cardSize02">
-								<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-									<div class="hexTop"><span></span></div>
-									<div class="hexBottom"><span></span></div>
-								</div>
-								<div class="cardCon">
-									<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-									<!-- card 내용 -->
-									<a href="#" class="cardTxt cardDetail">
-										<p class="cardCat">{ 전세 }</p>
-										<h2 class="cardTit">컨시어지하우스</h2>
-										<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-										<span href="#" class="cardMore">상세보기</span>
-									</a>
-									<!--// card 내용 -->
-									<!-- card hover 내용 -->
-									<div class="cardHover hoverStyle03">
-										<div class="cardCon">
-											<ul class="card_icon">
-												<li class="cart cardDetail"><a href="#">장바구니</a></li>
-												<li class="share cardDetail"><a href="#">공유</a></li>
-											</ul>
-										</div>
-									</div>
-									<!--// card hover 내용 -->
-									<ul class="check_icon">
-										<li class="cardDetail like"><a href="#">23569</a></li>
-										<li class="cardDetail share"><a href="#">7542</a></li>
-									</ul>
-									<!-- flag -->
-									<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-									<div class="issue"><p>Hot issue</p></div>
-									<!--// flag -->
-								</div>
-							</li>
-							<li class="card cardType03 cardSize02">
-								<div class="hexagon" style="background-image: url('/images/temp18.jpg')"><!-- 배경이미지 -->
-									<div class="hexTop"><span></span></div>
-									<div class="hexBottom"><span></span></div>
-								</div>
-								<div class="cardCon">
-									<div class="cardLine"><p class="italicNum">서울 강남</p></div>
-									<!-- card 내용 -->
-									<a href="#" class="cardTxt cardDetail">
-										<p class="cardCat">{ 전세 }</p>
-										<h2 class="cardTit">컨시어지하우스</h2>
-										<p class="cardPrice"><span class="priceTop">30,000,000</span>700,000 <span class="priceBottom">won / 79m2</span></p>
-										<span href="#" class="cardMore">상세보기</span>
-									</a>
-									<!--// card 내용 -->
-									<!-- card hover 내용 -->
-									<div class="cardHover hoverStyle03">
-										<div class="cardCon">
-											<ul class="card_icon">
-												<li class="cart cardDetail"><a href="#">장바구니</a></li>
-												<li class="share cardDetail"><a href="#">공유</a></li>
-											</ul>
-										</div>
-									</div>
-									<!--// card hover 내용 -->
-									<ul class="check_icon">
-										<li class="cardDetail like"><a href="#">23569</a></li>
-										<li class="cardDetail share"><a href="#">7542</a></li>
-									</ul>
-									<!-- flag -->
-									<div class="upTo2"><p>기간한정<span><b>20</b>%</span></p></div>
-									<div class="issue"><p>Hot issue</p></div>
-									<!--// flag -->
-								</div>
-							</li>
-						</ul>
-					</div>
+				<div class="wrap js-info-partner-wrap">
 				</div>				
 			</div>
 			<!-- // 판매자안내 영역 -->
@@ -1050,9 +425,10 @@
 			</div>
 			<!-- // 구매정보 영역 -->
 
-
 			<!-- detail 하단 탭 -->
-			<div class="detailBottomTab">
+			<div class="detailBottomTab" id='criteria-options-wrap'>
+				<script id="detail-criteria-options-templates" type="text/x-handlebars-template">
+				{{!-- detail-criteria-options-templates --}}
 				<!-- [D] 활성화시 .active -->
 				<div class="bottomTabWrap">
 					<div class="optionBar">
@@ -1060,10 +436,10 @@
 							<a href="#" class="optionBtn js-option-open"><span></span>옵션 선택</a>
 						</div>
 						<div class="barRight">
-							<span class="allPrice"><span class="italicNum">27,000,000</span> 원</span>
-							<a href="#"><span class="hide">좋아요</span></a>
+							<span class="allPrice "><span class="italicNum">{{basePriceDesc}}</span> 원</span>
+							<a href="#" class="js-add-like" data-product-number="{{productNumber}}"><span class="hide">좋아요</span></a>
 							<a href="#" class="js-add-cart bigBtn03">마이카트</a>
-							<a href="#" class="js-add-cart bigBtn03">구매하기</a>
+							<a href="#" class="js-prd-buy bigBtn03">구매하기</a>
 						</div>
 					</div>
 				</div>
@@ -1073,31 +449,19 @@
 							<form method="" id='' action="#">
 								<fieldset>
 									<legend>선택 상품 정보 및 옵션 선택</legend>
-									<h4>Compat But Enough Wedding</h4>
-									<p class="choiceTitInfo">작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지</p>
-									
-										<div class="dropUp dropUpOn dropScrollEx js-drop-scroll">
-											<a href="#" class="dropToggle js-toggler">옵션 선택</a>
+									<h4>{{productName}}</h4>
+									<p class="choiceTitInfo"><!--작지만 꽉찬 새내기 신혼부부를 위한 인테리어 패키지--></p>
+									{{#each criteriaOptions}}
+										<div class="dropUp dropUpOn dropScrollEx js-drop-scroll optionListDrop" id='optionsDrop{{@index}}'>
+											<a href="#" class="dropToggle js-toggler">{{criteriaOptionName}}</a>
 											<!-- [D] active 시에 .dropUpCon outHeight 수치를 top으로 설정 -->
 											<div class="scrollWrapEx js-scroll-wrap">
 												<div class="dropListEx js-list">
-													<ul class="dropUpCon" data-prevent="true">
-														<li><a href="#" data-value="type-1">전체</a></li>
-														<li><a href="#" data-value="type-2">입금대기</a></li>
-														<li><a href="#" data-value="type-3">결제완료</a></li>
-														<li><a href="#" data-value="type-4">상품준비중</a></li>
-														<li><a href="#" data-value="type-5">배송중</a></li>
-														<li><a href="#" data-value="type-6">배송완료</a></li>
-														<li><a href="#" data-value="type-7">구매확정</a></li>
-														<li><a href="#" data-value="type-3">결제완료</a></li>
-														<li><a href="#" data-value="type-4">상품준비중</a></li>
-														<li><a href="#" data-value="type-5">배송중</a></li>
-														<li><a href="#" data-value="type-6">배송완료</a></li>
-														<li><a href="#" data-value="type-7">구매확정</a></li>
-													</ul>	
+													<ul class="dropUpCon" data-prevent="true" id='optionsDrop{{@index}}Con'></ul>
 												</div>
 											</div>
 										</div>
+									{{/each}}
 								</fieldset>
 							</form>
 						</div>
@@ -1108,181 +472,15 @@
 									<legend>선택 상품 옵션 확인</legend>
 									<div class="optionScroll">
 										<div class="optionScrollWrap">
-											<ul class="optionList">
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<a href="" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<!-- 옵션 수량 선택 -->
-														<div class="optList">
-															<!-- 옵션 -->
-															<div class="option">
-																<!-- [D] 최대수량 -->
-																<p class="optionNum"
-																	data-optionnum-opts='{
-																	"max" : 5,
-																	"min" : 1
-																}'>
-																	<a href="#" class="btnMinus">빼기</a>
-																	<span class="num">1</span>
-																	<a href="#" class="btnPlus">더하기</a>
-																</p>
-															</div>
-														</div>
-														<!--// 옵션 수량 선택 -->
-														<a href="" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<!-- 옵션 수량 선택 -->
-														<div class="optList">
-															<!-- 옵션 -->
-															<div class="option">
-																<!-- [D] 최대수량 -->
-																<p class="optionNum"
-																	data-optionnum-opts='{
-																	"max" : 5,
-																	"min" : 1
-																}'>
-																	<a href="#" class="btnMinus">빼기</a>
-																	<span class="num">1</span>
-																	<a href="#" class="btnPlus">더하기</a>
-																</p>
-															</div>
-														</div>
-														<!--// 옵션 수량 선택 -->
-														<a href="" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<!-- 옵션 수량 선택 -->
-														<div class="optList">
-															<!-- 옵션 -->
-															<div class="option">
-																<!-- [D] 최대수량 -->
-																<p class="optionNum"
-																	data-optionnum-opts='{
-																	"max" : 5,
-																	"min" : 1
-																}'>
-																	<a href="#" class="btnMinus">빼기</a>
-																	<span class="num">1</span>
-																	<a href="#" class="btnPlus">더하기</a>
-																</p>
-															</div>
-														</div>
-														<!--// 옵션 수량 선택 -->
-														<a href="" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<!-- 옵션 수량 선택 -->
-														<div class="optList">
-															<!-- 옵션 -->
-															<div class="option">
-																<!-- [D] 최대수량 -->
-																<p class="optionNum"
-																	data-optionnum-opts='{
-																	"max" : 5,
-																	"min" : 1
-																}'>
-																	<a href="#" class="btnMinus">빼기</a>
-																	<span class="num">1</span>
-																	<a href="#" class="btnPlus">더하기</a>
-																</p>
-															</div>
-														</div>
-														<!--// 옵션 수량 선택 -->
-														<a href="" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<!-- 옵션 수량 선택 -->
-														<div class="optList">
-															<!-- 옵션 -->
-															<div class="option">
-																<!-- [D] 최대수량 -->
-																<p class="optionNum"
-																	data-optionnum-opts='{
-																	"max" : 5,
-																	"min" : 1
-																}'>
-																	<a href="#" class="btnMinus">빼기</a>
-																	<span class="num">1</span>
-																	<a href="#" class="btnPlus">더하기</a>
-																</p>
-															</div>
-														</div>
-														<!--// 옵션 수량 선택 -->
-														<a href="" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-												<li>
-													<div class="optionInfo">
-														<p>인테리어 시공 + 홈드레싱 패키지 상품 (5,400,000원)</p>
-													</div>
-													<div class="optionControl">
-														<p class="individualPrice"><span>300,000</span> 원</p>
-														<!-- 옵션 수량 선택 -->
-														<div class="optList">
-															<!-- 옵션 -->
-															<div class="option">
-																<!-- [D] 최대수량 -->
-																<p class="optionNum"
-																	data-optionnum-opts='{
-																	"max" : 5,
-																	"min" : 1
-																}'>
-																	<a href="#" class="btnMinus">빼기</a>
-																	<span class="num">1</span>
-																	<a href="#" class="btnPlus">더하기</a>
-																</p>
-															</div>
-														</div>
-														<!--// 옵션 수량 선택 -->
-														<a href="#" class="cancelOption"><span class="hide">제거</span></a>
-													</div>
-												</li>
-											</ul>
+											<ul class="optionList" id='selectedOptionList'></ul>
 										</div>
 									</div>
 									<div class="allPriceBox">
 										<div class="allPriceLeft">
-											<p>배송비<span>주문시 결제 3,000<b>원</b></span></p>
+											<p>배송비<span>주문시 결제 0<b>원</b></span></p>
 										</div>
 										<div class="allPriceRight">
-											<p>총합계<span>30,000,000<b>원</b></span></p>
+											<p>총합계<span id='totalOptionsPrice'>{{basePriceDesc}}<b>원</b></span></p>
 										</div>
 									</div>
 								</fieldset>
@@ -1290,44 +488,11 @@
 						</div>
 					</div>				
 				</div>
+				{{!--// detail-criteria-options-templates --}}
+				</script>
 			</div>
 			<!-- // detail 하단 탭 -->
 
-			<!-- [D] API 통신 - 결과화면 영역 -->
-			<div class="js-api-result">
-				<h1>API 통신 - 결과화면 영역</h1>
-				<div>
-					<h2>- POST /apis/me/cart 장바구니 등록</h2>
-					<div class="js-ajax-data"></div>
-					<div class="addMyCartListResult"></div>
-				</div>
-				<div>
-					<h2>- GET /apis/products/{productNumber}/eval 상품 평가및 리뷰</h2>
-					<div class="productEvalsResult"></div>
-				</div>
-				<div>
-					<h2>- GET /apis/products/{productNumber}/info 상품 정보</h2>
-					<div class="productInfoResult"></div>
-				</div>
-				<div>
-					<h2>- GET /apis/products/{productNumber}/partnerInfo 상품 판매자 정보</h2>
-					<div class="productPartnerInfoResult"></div>
-				</div>
-				<div>
-					<h2>- GET /apis/products/{productNumber}/preview 상품 미리보기</h2>
-					<div class="productPreviewResult"></div>
-				</div>
-				<div>
-					<h2>- GET /apis/products/{productNumber}/related 연관상품 리스트</h2>
-					<div class="productRelatedResult"></div>
-				</div>
-				<div>
-					<h2>- GET /apis/products/{productNumber}/reviews/{reviewNumber} 상품 리뷰 상세</h2>
-					<div class="productReviewsResult"></div>
-				</div>
-			</div>
-			<!--// [D] API 통신 - 결과화면 영역 -->
-		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
 
@@ -1342,6 +507,81 @@
 <script id="newForm-detail-templates" type="text/x-handlebars-template">
 	{{!-- newForm-detail-templates --}}
 	{{!--// newForm-detail-templates --}}
+</script>
+
+<!-- @@include ../_template/cardTemplate.html -->
+
+<script id="detail-partner-templates" type="text/x-handlebars-template">
+{{!-- detail-partner-template --}}
+{{#if company}}
+	<p>by {{partnerName}} <span>{{company}}</span></p>
+{{else}}
+	<p>by {{partnerName}}</p>
+{{/if}}
+{{!--// detail-partner-template --}}
+</script>
+
+<script id="info-partner-templates" type="text/x-handlebars-template">
+{{!-- info-partner-template --}}
+<div class="sellInfo">
+	<h3 class="sellerTit"></h3>
+	<div class="sellerInfo">							
+		<p class="sellerPhoto"><img src="{{imageUrl}}"></p>
+		<div class="sellerCont">
+			<h4>{{partnerName}}</h4>
+			<p>{{company}}<br><span>{{serviceArea}}</span></p>
+			<ul>
+				<li><a href="{{link}}" class="btn btnSizeM btnborder02">자세히보기</a></li>
+				<li><a href="#" class="btn btnSizeM btnColor01 js-add-follow" id='btnFollow'>팔로우</a></li>
+				<li>
+					<a href="#" class="btn btnSizeM btnColor04 openWindowPopup" id='btnMessage' data-winpop-opts='{
+					"name" : "messagePopup",
+					"width" : 838,
+					"height" : 670
+					}'>1:1 메시지</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="sellerProduct cardSlider">
+	<h5>편안하고 개성있는 공간을 <br>만들어 드립니다.</h5>
+	<ul class="cardWrap" id="sellerCard"></ul>
+</div>
+{{!--// info-partner-template --}}
+</script>
+
+<script id="detail-options-templates" type="text/x-handlebars-template">
+{{!-- detail-options-templates --}}
+{{#each .}}
+<li><a href="#" data-value="{{optionLevel}}-{{@index}}">{{optionName}} {{priceTag}}</a></li>
+{{/each}}
+{{!--// detail-options-templates --}}
+</script>
+
+<script id="detail-selected-options-templates" type="text/x-handlebars-template">
+{{!-- detail-selected-options-templates --}}
+{{#each .}}
+<li>
+	<div class="optionInfo">
+		<p>{{name}}</p>
+	</div>
+	<div class="optionControl">
+		<p class="individualPrice"><span>{{price}}</span> 원</p>
+		<div class="optList">
+			<div class="option">
+				<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
+					<a href="#" class="btnMinus">빼기</a>
+					<span class="num">{{quantity}}</span>
+					<a href="#" class="btnPlus">더하기</a>
+				</p>
+			</div>
+		</div>
+		<a href="#" class="cancelOption" data-option-num='{{orderOptionNumber}}'><span class="hide">제거</span></a>
+	</div>
+</li>
+{{/each}}
+{{!-- detail-selected-options-templates --}}
 </script>
 
 </body>

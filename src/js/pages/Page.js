@@ -197,6 +197,8 @@ module.exports = function() {
 			//$('#btnJoinMyPage').attr('href', '/member/login.html').addClass('btnMypage').text('로그인 / 회원가입');
 			$('#menuToggle').hide();
 			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
+
+			initTopBanner();
 		}
 	};
 
@@ -204,11 +206,12 @@ module.exports = function() {
 	 * 상단 배너영역 초기화
 	 */
 	function initTopBanner() {
-		console.log(loginData.stateCode, loginData.joinSectionCode, loginData.emailAuthYn);
-
 		if (loginData == null || loginData.stateCode == "BM_MEM_STATE_02" || Cookies.get('topBannerHide') == 'hide') {
 			// 푸로모션 배너영역
-			hideTopBanner();
+			$('#lnbWrapper').css({
+				"top": 0,
+				"height": "100%"
+			});
 		} else if (loginData.joinSectionCode == 'BM_JOIN_SECTION_01' && loginData.emailAuthYn != 'Y') {
 			topBannerShowFlag = true;
 			$('#topBannerCheckArea').remove();
