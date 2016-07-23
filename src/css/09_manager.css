@@ -27,7 +27,7 @@
 .managerList .tabType01 .on a{background: none}
 .managerList .tabType01 .on a:before{content:'';position: absolute;top: 5px;left: 0;width: 100%;height: 13px;background: rgba(170,125,113,.3)}
 
-.managerList .serchPro{;position:relative;width: 1220px;margin:0 auto;z-index: 2}
+.managerList .serchPro{position:relative;width: 1220px;margin:0 auto;z-index: 2}
 .managerList .serchPro li{position: absolute;left: 772px;top: 125px;}
 .managerList .serchPro .hexagon{background: #aa7d71;}
 .managerList .serchPro .cardCon{padding-top: 55px;}

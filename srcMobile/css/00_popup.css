@@ -230,7 +230,7 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .sortCont ul li a{width:92%; display:inline-block; position: relative; margin: 0 5px;padding:6.5px 0 7px;background:#fff; border-radius: 20px;color: #666;font-size:12px; border:1px solid #d9d9d9; text-align:center;}
 .sortCont ul li a.on{color: #2d427a;border:1px solid #2d427a; background:#fff;}
 .sortCont ul li a:before{content: ''; width:12.5px; height:12.5px; position: absolute; left:10px; top:9px; border-radius: 50%; background-size:12.5px 12.5px;}
-.sortCont ul li #colorAll:before{background:url('../images/all_color.png') 0 0 no-repeat; background-size:;}
+.sortCont ul li #colorAll:before{background:url('../images/all_color.png') 0 0 no-repeat;}
 .sortCont ul li #color01:before{width:13px; height:13px; border:1px solid #999; background:#fff; overflow:hidden;}
 .sortCont ul li #color02:before{background:#999;}
 .sortCont ul li #color03:before{background:#4d4d4d;}
