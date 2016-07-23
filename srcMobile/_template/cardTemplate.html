@@ -1,0 +1,169 @@
+<script id="index-card-templates" type="text/x-handlebars-template">
+{{#cards}}
+	<li class="card {{cardClass}}">
+		<div class="hexagon" style="{{background}}"><!-- 배경이미지 -->
+			<div class="hexTop"><span></span></div>
+			<div class="hexBottom"><span></span></div>
+		</div>
+		{{!-- Type1: 매거진 cardType06 cardSize02 --}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_01"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">diy interior</p></div>
+			<!-- card 내용 -->
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">Magazine</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="javascript:alert('준비중입니다')">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
+			</ul>
+			<!-- flag -->
+			<!-- <div class="melody"></div> -->
+			<!--// flag -->
+			<!--<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a> -->
+		</div>
+		{{/vxIF}}
+		{{!-- Type1 --}}
+
+		{{!-- Type2: 뉴폼 상품 cardType01 cardSize03 --}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_02"}}<div class="cardCon">
+		<div class="cardLine"><p class="italicNum">designer</p></div>
+			<!-- card 내용 -->
+			<a href="#" class="cardTxt cardDetail">
+				<p class="cardCat">{ unit }</p>
+				<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
+				<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
+				<span class="cardMore">상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle01">
+				<div class="cardCon">
+					<ul class="card_icon">
+						<li class="cart cardDetail"><a href="#">장바구니</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+					<div class="worker">
+						<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
+						<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+					</div>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="#">23569</a></li>
+				<li class="cardDetail share"><a href="#">7542</a></li>
+			</ul>
+			<!-- hover 제어 버튼 -->
+			<a href="#" class="hoverMore">상세보기</a>
+			<a href="#" class="hoverClose">닫기</a>
+			<!--// hover 제어 버튼 -->
+			<!-- flag -->
+			<div class="today"><p><span><b>20</b>%</span></p></div>
+			<div class="celeb"><p></p></div>
+			<!--// flag -->
+		</div>
+		{{/vxIF}}
+		{{!-- Type2 --}}
+		
+		{{!-- Type3: 샵 상품 cardType02 cardSize02 --}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">handmade</p></div>
+			<!-- card 내용 -->
+			<a href="#" class="cardTxt cardDetail">
+				<p class="cardCat">{ clock }</p>
+				<h2 class="cardTit"><b>샌드위치 모던</b>페이퍼 시계</h2>
+				<p class="cardPrice">37,000 <span class="priceBottom">won / 3.3m2</span></p>
+				<span href="#" class="cardMore">상품 상세보기</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle02">
+				<div class="cardCon">
+					<ul class="card_icon">
+						<li class="cart cardDetail"><a href="#">장바구니</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail like"><a href="#">23569</a></li>
+				<li class="cardDetail share"><a href="#">7542</a></li>
+			</ul>
+			<!-- hover 제어 버튼 -->
+			<a href="#" class="hoverMore">상세보기</a>
+			<a href="#" class="hoverClose">닫기</a>
+			<!--// hover 제어 버튼 -->
+			<!-- flag -->
+			<div class="upTo"><p><span><b>20</b></span></p></div>
+			<div class="md"><p></p></div>
+			<!--// flag -->
+		</div>
+		{{/vxIF}}
+		{{!-- Type3 --}}
+
+		{{!-- Type5: 그래프 cardType08 cardSize02 --}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_05"}}
+		{{/vxIF}}
+		{{!-- Type5 --}}
+
+		{{!-- Type7: 전문가 cardType08 cardSize02 --}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_07"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">specialist</p></div>
+			<!-- card 내용 -->
+			<a href="#" class="cardTxt">
+				<p class="cardCat">Space Specialist</p>
+				<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
+				<span href="#" class="cardMore">+ 6</span>
+			</a>
+			<!--// card 내용 -->
+			<!-- card hover 내용 -->
+			<div class="cardHover hoverStyle04">
+				<div class="cardCon">
+					<div class="iHover">
+						<div class="hoverImage">
+							<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
+								<div class="imgHexTop"><span></span></div>
+								<div class="imgHexBottom"><span></span></div>
+							</div>
+							<div class="imageCon"></div>
+						</div>
+					</div>
+					<div class="specialist">
+						<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
+						<p class="specialistInfo">
+							<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
+							<span class="adr">경기도 상록구 사동</span>
+						</p>
+					</div>
+					<ul class="card_icon">
+						<li class="talk cardDetail"><a href="#">1:1대화</a></li>
+						<li class="share cardDetail"><a href="#">공유</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--// card hover 내용 -->
+			<ul class="check_icon">
+				<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
+				<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
+				<li class="cardDetail like"><a href="#">23569</a></li>
+			</ul>
+			<!-- hover 제어 버튼 -->
+			<a href="#" class="hoverMore">상세보기</a>
+			<a href="#" class="hoverClose">닫기</a>
+			<!--// hover 제어 버튼 -->
+			<!-- flag -->
+			<div class="hi"></div>
+			<!--// flag -->
+		</div>
+		{{/vxIF}}
+		{{!-- Type7 --}}
+	</li>
+{{/cards}} 
+</script>

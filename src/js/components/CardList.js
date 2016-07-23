@@ -53,14 +53,24 @@ module.exports = function() {
 		wrap = $(_wrapId);
 
 		if (!fixedFlag) {
+			if (!util.isMobile()) {
+				// PC
+				var sizeDefine = {
+					columnWidth : 285,
+					gutter : 20
+				}
+			} else {
+				// Mobile
+				var sizeDefine = {
+					columnWidth : 145,
+					gutter : 10
+				}
+			}
 			wrap.isotope({
 				itemSelector : _wrapId + ' > li:not(.stamp)',
 				stamp : _wrapId + ' > .stamp',
 				layoutMode : 'packery',
-				packery : {
-					columnWidth : 285,
-					gutter : 20
-				}
+				packery : sizeDefine
 			});
 
 			// isotope event

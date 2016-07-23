@@ -6,6 +6,8 @@ function ClassMemberInfoController() {
 	var SuperClass = require('./APIController.js');
 	var Super = SuperClass();
 	
+	var util = require('../utils/Util.js');
+	
 	var instance;
 	var callerObj;
 	
@@ -210,9 +212,8 @@ function ClassMemberInfoController() {
 	function openKMCISWindow(certInformation) {
 		if ( $('#reqKMCISForm').length != 0 ) $('#reqKMCISForm').remove();
 		$('body').append('<form id="reqKMCISForm" name="reqKMCISForm" method="post" action="'+certInformation.reqUrl+'"><input type="hidden" name="tr_cert" id="tr_cert" value = "'+certInformation.trCert+'"><input type="hidden" name="tr_url" id="tr_url" value = "'+certInformation.trUrl+'"></form>');
-		var UserAgent = navigator.userAgent;
 		
-		if (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null) {
+		if (util.isMobile()) {
 			// 모바일일 경우 (변동사항 있을경우 추가 필요)
 			$('#reqKMCISForm').attr('target', '');
 		} else {

@@ -18,6 +18,10 @@ function ClassUtils() {
 	function init() {
 		return {
 			/**
+			 * 모바일 여부 검사
+			 */
+			isMobile: isMobile,
+			/**
 			 * GET query 추출
 			 * @param {String} name - query var
 			 */
@@ -123,6 +127,11 @@ function ClassUtils() {
 			 */
 			getReferrer : getReferrer
 		};
+	}
+
+	function isMobile() {
+		var UserAgent = navigator.userAgent;
+		return (UserAgent.match(/iPhone|iPod|Android|Windows CE|BlackBerry|Symbian|Windows Phone|webOS|Opera Mini|Opera Mobi|POLARIS|IEMobile|lgtelecom|nokia|SonyEricsson/i) != null || UserAgent.match(/LG|SAMSUNG|Samsung/) != null);
 	}
 	
 	function checkVaildEmail(value) {

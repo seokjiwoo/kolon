@@ -12,6 +12,14 @@ module.exports = function() {
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
+	var CardList = require('../../components/CardList.js');
+	var cardList;
+	
+	var model = require('../../model/CardListModel.js');
+	
+	var controller = require('../../controller/MagazineController');
+	$(controller).on('magazineListResult', getListHandler);
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -23,6 +31,22 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
+
 		debug.log(fileName, $, util);
-	}
+
+		cardList = CardList();
+		$(cardList).on('cardAppended', cardAppendedHandler);
+		cardList.init();	// 카드 리스트
+		
+		controller.list();
+		//bestKeySlide();
+	};
+
+	function getListHandler(e, status, result) {
+		cardList.appendData(result.magazineCards);
+	};
+
+	function cardAppendedHandler(e) {
+		debug.log('카드 이벤트 설정?');
+	};
 };
