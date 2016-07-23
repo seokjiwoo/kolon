@@ -269,7 +269,7 @@ module.exports = function() {
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
 					
-					optionsDisplay();
+					//optionsDisplay(); tail-options-templa
 
 					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
 					//$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
@@ -432,6 +432,17 @@ module.exports = function() {
 		}
 	}
 
+	function reCalculateTotalPrice(orderData) {
+		var newTotalPrice = 0;
+
+		for (var key in orderData) {
+			var eachOrder = orderData[key];
+			newTotalPrice += (util.removeComma(eachOrder.price)*eachOrder.quantity);
+		}
+
+		return newTotalPrice;
+	};
+
 	function onColorBoxAreaListener(e) {
 		switch(e.type) {
 			case COLORBOX_EVENT.COMPLETE:
@@ -440,17 +451,4 @@ module.exports = function() {
 				break;
 		}
 	}
-
-	// function socialBtn() {
-	// 	$('.socialBtn').on('click', function() {
-	// 		if ($('.socialBtn').hasClass('active')) {
-	// 			$(this).removeClass('active');
-	// 		} else {
-	// 			$(this).removeClass('active').addClass('active');
-	// 		}
-	// 	};
-	// 	$('.socialBtn06 ').on('click', function() {
-	// 		$(this).parents('.socialBtn').removeClass('active');
-	// 	}
-	// }
 };
