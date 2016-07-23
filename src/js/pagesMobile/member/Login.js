@@ -18,6 +18,8 @@ module.exports = function() {
 	$(controller).on('loginResult', loginCompleteHandler);
 	$(controller).on('resendAuthNumberResult', resendAuthNumberHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
+	$(controller).on('notarobotResult', onRecaptchaHandler);
+
 	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
 	$(memberInfoController).on('termsResult', termsContentHandler);
@@ -28,7 +30,8 @@ module.exports = function() {
 	var firstTryFlag = true;		// 페이지 열리고 첫 시도인지 체크 (휴대전화로 가입시도 후 페이지 새로고침 했을 때 이전 세션 때문에 인증번호 틀림 에러코드 돌아오는 문제 때문에...)
 	
 	// recaptcha widget ID
-	var recaptchaWidget;
+	var recaptchaWidget,
+	recaptchaData;
 
 	var callerObj = {
 		/**
@@ -81,7 +84,7 @@ module.exports = function() {
 	 * 회원 이용약관 본문 핸들링
 	 */
 	function termsContentHandler(e, term) {
-		Super.Super.messagePopup(term.termsName, term.termsContents, '100%', 'popEdge termsPop');
+		Super.Super.messagePopup(term.termsName, term.termsContents, 590, 'popEdge');
 	};
 	
 	/**
@@ -90,9 +93,10 @@ module.exports = function() {
 	function socialLoginUrlResultHandler(e, status, socialAuthLoginUrl) {
 		for (var key in socialAuthLoginUrl) {
 			var eachService = socialAuthLoginUrl[key];
-			$('#socialLogin-'+eachService.socialName).attr({ 'href' : eachService.authUrl, 'target' : '_blank' });
+			$('#socialLogin-'+eachService.socialName).attr('href', eachService.authUrl);
+
+			initSocialLoginPopupButton();
 		}
-		// initSocialLoginPopupButton();
 	};
 	
 	/**
@@ -140,7 +144,7 @@ module.exports = function() {
 
 		var id = $.trim($('#inputName').val());
 		var pw = $.trim($('#inputPW').val());
-		var keepLogin = $('#saveInfo').prop('checked') ? 'Y' : 'N';
+		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
 		if (id == '') { 
 			$('#idAlert').text('아이디(이메일 또는 휴대폰 번호)를 입력해주세요.');
@@ -161,7 +165,7 @@ module.exports = function() {
 					controller.login(enteredId, pw, keepLogin);
 				} else {
 					$('#idAlert').text('아이디(이메일 또는 휴대폰 번호)를 입력해주세요.');
-					Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
+					Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
 				}
 			}
 		}
@@ -176,7 +180,7 @@ module.exports = function() {
 		$('.loginSns').click(function(e) {
 			e.preventDefault();
 			
-			window.open($(this).attr('href'), 'socialLoginPopup', 'width=600,height=550,menubar=no,status=no,toolbar=no,resizable=yes,fullscreen=no');
+			window.open($(this).attr('href'), 'socialLoginPopup', 'width=600,height=550,menubar=no,status=no,toolbar=no,resizable=yes,fullscreen=no')
 
 			e.stopPropagation();
 		});
@@ -187,8 +191,10 @@ module.exports = function() {
 	 */
 	function loginCompleteHandler(e, status, response) {
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
+
 		switch(status) {
 			case 200:
+			case 201:
 				switch(Number(response.status)) {
 					case 200:	// 로그인 성공
 						location.href = util.getReferrer() || '/';
@@ -223,7 +229,11 @@ module.exports = function() {
 								authNumberResendFlag = false;
 							},
 							onSubmit: function() {
-								controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
+								if ($.trim($('#mobileAuthNumber').val()) == '') {
+									alert('휴대전화로 전송된 인증번호를 입력해 주세요.');
+								} else {
+									controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
+								}
 							}
 						});
 						firstTryFlag = false;
@@ -245,7 +255,7 @@ module.exports = function() {
 								'확인'
 							]
 						);
-						setRecaptcha();
+						controller.notarobot();
 						break;
 				}
 				break;
@@ -254,6 +264,11 @@ module.exports = function() {
 				break;
 		}
 	};
+
+	function onRecaptchaHandler(e, status, response) {
+		recaptchaData = response.data;
+		setRecaptcha();
+	}
 
 	/**
 	 * 인증번호 재발송 이벤트 핸들링
@@ -296,6 +311,7 @@ module.exports = function() {
 			if (recaptchaWidget) {
 				return;
 			}
+			win.grecaptcha.VX_RECAPTCHA_DATA = recaptchaData.recaptcha;
 			recaptchaWidget = win.grecaptcha.render('vxrecaptcha', {
 				'sitekey' : '6Le4NyUTAAAAAB8tcMLMcftsItykhlcIBq4vtMhq',
 				'size' : 'normal',
@@ -306,7 +322,6 @@ module.exports = function() {
 		tag = $('<script></script>');
 		tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
 		$('head').append(tag);
-
+ 
 	}
-		
 }
