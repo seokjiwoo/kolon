@@ -167,7 +167,7 @@ span.price.fontS {font-size:14px;}
 .homeService.order .tbSet dt {float:left;color:#000;}
 .homeService.order .tbSet dd {padding-left:80px;margin:0;color:#666;}
 
-.homeService.order .leftBox, .homeService.order .leftBox .drop li {width:228px;}
+.homeService.order .leftBox, .homeService.order .leftBox .drop li {width:400px;}
 .homeService.order .leftBox .drop li a {padding:0 20px;color:#999;}
 .homeService.order .leftBox + .leftBox {margin-left:10px;}
 .homeService.order .leftBox .btnSizeM{min-width:100px;}
