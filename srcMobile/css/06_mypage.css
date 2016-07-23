@@ -950,7 +950,7 @@ table ul.myCartInfoList li a {color:#999;}
 .my .stateWrap .state{padding: 15px 0; position:relative;}
 .my .stateWrap ul{max-width:310px; overflow: hidden; margin:0 auto;}
 .my .stateWrap li{min-height:34px; float: left;padding-top:30px;text-align: center;color: #666;font-size: 13px;line-height: 1.3em}
-.my .stateWrap li.on{font-family:'NotoSansM', sans-serif;color: #000;}
+.my .stateWrap li.on{font-family:'NotoSansM', sans-serif;color: #000; font-weight:bold;}
 .my .stateWrap .stepImg{height:154.5px;}
 .my .stateWrap .stepImg span{display: block;height: 100%;}
 
@@ -970,4 +970,8 @@ table ul.myCartInfoList li a {color:#999;}
 .my .stateWrap .state .step08 span{width: 660px; height:92px;}
 .my .stateWrap .state .step08 span:after {content:''; width:28px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step.png') 0 -64px no-repeat; background-size:310px 154.5px;}
 .my .stateWrap .state .step09 span{width: 750px; height:155px;}
-.my .stateWrap .state .step09 span:after {content:''; width:206px; height:30px; position:absolute; top:125px; left:0; background:url('../images/ico_step.png') 0 -125px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step09 span:after {content:''; width:206px; height:30px; position:absolute; top:125px; left:53px; background:url('../images/ico_step.png') -53px -125px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step10 span{width: 750px; height:155px;}
+.my .stateWrap .state .step10 span:after {content:''; width:206px; height:30px; position:absolute; top:125px; left:125px; background:url('../images/ico_step.png') -125px -125px no-repeat; background-size:310px 154.5px;}
+.my .stateWrap .state .step11 span{width: 750px; height:155px;}
+.my .stateWrap .state .step11 span:after {display:none;}
