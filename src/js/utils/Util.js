@@ -18,6 +18,10 @@ function ClassUtils() {
 	function init() {
 		return {
 			/**
+			 * IE 여부 검사
+			 */
+			isIe: isIe,
+			/**
 			 * 모바일 여부 검사
 			 */
 			isMobile: isMobile,
@@ -127,6 +131,10 @@ function ClassUtils() {
 			 */
 			getReferrer : getReferrer
 		};
+	}
+
+	function isIe() {
+		return (navigator.userAgent.indexOf("msie") != -1);
 	}
 
 	function isMobile() {

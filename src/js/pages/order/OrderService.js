@@ -242,6 +242,8 @@ module.exports = function() {
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
 				$('.requestPaymentButton').click(getHashString);*/
+
+				if (!util.isIe()) $('#payBANK').remove();
 				break;
 		}
 	};

@@ -222,6 +222,8 @@ module.exports = function() {
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
 				});
 
+				if (!util.isIe()) $('#payBANK').remove();
+
 				$('#MID').val(data.pgInfo.mid);
 				$("#MallIP").val(data.pgInfo.mallIp);
 				$("#UserIP").val(data.pgInfo.userIp);
