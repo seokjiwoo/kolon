@@ -58,7 +58,7 @@ module.exports = function() {
 		setBindEvents();
 
 		// myCartNewForm 리스트 조회
-		var productSectionCode = 'PD_PROD_TYPE_02';
+		var productSectionCode = 'PD_PROD_SVC_SECTION_02';
 		controller.myCartList(productSectionCode);
 	}
 
@@ -131,36 +131,11 @@ module.exports = function() {
 
 		switch(eventType) {
 			case CART_EVENT.LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayData(result.data);
 				setDeleteEvents();
 				break;
 			case CART_EVENT.DELETE:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				 */
-				/*
-				204	No Content
-				401	Unauthorized
-				403	Forbidden
-				 */
 				switch(status) {
 					case 200:
 						break;

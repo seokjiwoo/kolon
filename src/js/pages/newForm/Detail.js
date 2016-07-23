@@ -33,6 +33,13 @@ module.exports = function() {
 	var recommendShopList;
 	var recommendNewFormList;
 	var partnerGoodsList;
+ 
+ 	var criteriaOptionCount;
+	var optionsDataArray;
+	var orderData;
+	var selectedOptions;
+	var salePrice;
+	var totalQty;
 	
 	var callerObj = {
 		/**
@@ -100,21 +107,6 @@ module.exports = function() {
 		//productController.preview(self.productNumber);
 		//productController.related(self.productNumber);
 		//productController.reviews(self.productNumber, self.reviewNumber);
-/*
-		$('.optionScroll').height($('.optionList').height());
-		if ($('.optionList').find('li').size() > 3) {
-			$('.optionScroll').closest('.activeRight').addClass('has-iscroll');
-			$('.optionScroll').on('mousewheel', function(e) {
-				e.preventDefault();
-				debug.log('mousewheel');
-			});
-		}
-		self.optionIScroll = new win.IScroll('.optionScroll', {
-			scrollbars: true,
-			mouseWheel: true,
-			fadeScrollbars: false,
-			bounce: false
-		});*/
 	}
 
 	function setElements() {
@@ -126,8 +118,10 @@ module.exports = function() {
 	}
 
 	function setBindEvents() {
+		$(scrapController).on('addScrapResult', scrapResultHandler);
 		$(cartController).on(CART_EVENT.WILD_CARD, onControllerListener);
 		$(productController).on(PRODUCT_EVENT.WILD_CARD, onControllerListener);
+		$(followController).on(FOLLOWING_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 	}
 
@@ -199,7 +193,51 @@ module.exports = function() {
 			}
 			return;
 		}
+
+		if ($('.detailBottomTab .bottomTabWrap').hasClass('active')) {
+			if (target.hasClass('js-add-cart')) {
+				addCart();
+			} else if (target.hasClass('js-prd-buy')) {
+				orderGoods();
+			}
+		} else {
+			$('.detailBottomTab .bottomTabWrap').addClass('active');
+			$('.optionScroll').height($('.optionList').height());
+			self.optionIScroll.refresh();
+		}
 	}
+
+	function scrapResultHandler(e, status, result) {
+		if (status == 200) {
+			$('.js-add-scrap').addClass('on');
+			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
+		}
+	}
+
+	function addCart() {
+		var loginData = loginDataModel.loginData();
+
+		if (orderData.length == 0) {
+			alert('옵션을 선택해주세요.');
+		} else {
+			var cartData = orderData.concat();
+			//cartController.addMyCartList(cartData);
+		}
+	};
+
+	function orderGoods() {
+		var loginData = loginDataModel.loginData();
+		
+		if (orderData.length == 0) {
+			alert('옵션을 선택해주세요.');
+		} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
+			$(document).trigger('verifyMember', 'NEWFORM');
+		} else {
+			var cartData = orderData.concat();
+			Cookies.set('instantNFOrder', cartData);
+			location.href = '/order/orderInstallment.html';
+		}
+	};
 
 	// Handlebars 마크업 템플릿 구성
 	function displayData(data, template, templatesWrap) {
@@ -236,13 +274,26 @@ module.exports = function() {
 		switch(eventType) {
 			// [S] CART - 장바구니
 				case CART_EVENT.ADD:
-					debug.log(fileName, 'onControllerListener', eventType, status, response);
-					$('.' + eventType).html(JSON.stringify(response));
+					switch (status) {
+						case 200:
+							if (win.confirm('선택하신 상품을 마이커먼에 담았습니다.\n바로 확인 하시겠습니까?')) {
+								location.href = '/myPage/myCartNewForm.html';
+							}
+							break;
+						default:
+							break;
+					}
 					break;
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
 				case PRODUCT_EVENT.INFO:
+					orderData = new Array();
+
+					criteriaOptionCount = result.data.product.criteriaOptionCount;
+					optionsDataArray = new Array();
+					selectedOptions = new Array();
+
 					if (result && result.data && result.data.product) {
 						$.each(result.data, function(index, product) {
 							product.basePriceDesc = util.currencyFormat(parseInt(product.basePrice, 10));
@@ -269,10 +320,10 @@ module.exports = function() {
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
 					
-					//optionsDisplay(); tail-options-templa
+					optionsDisplay();
 
 					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
-					//$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
+					$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
 
 					switch(result.data.product.saleStateCode) {
 						case "PD_SALE_STATE_01":
@@ -287,7 +338,7 @@ module.exports = function() {
 							break;
 					}
 
-					//productController.options(self.productNumber, criteriaOptionCount, 0, selectedOptions);
+					productController.options(self.productNumber, criteriaOptionCount, 0, new Array());
 					productController.partnerInfo(self.productNumber);
 					
 					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_01');
@@ -304,6 +355,9 @@ module.exports = function() {
 							break;
 					}
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
+					break;
+				case PRODUCT_EVENT.OPTIONS:
+					optionsHandler(result.data.options);
 					break;
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -431,6 +485,59 @@ module.exports = function() {
 			self.optionIScroll.refresh();
 		}
 	}
+
+	function optionsHandler(options) {
+		if (options.length == 0) {
+			// 최종선택.
+			alert('상품 옵션 세부 데이터가 없습니다.');
+			$('#totalOptionsPrice').html('0<b>원</b>');
+		} else if (options.length == 1) {
+			// 최종선택.
+			var selectedOptionData = options[0];
+
+			orderData = [{
+				"productNumber": self.productNumber,
+				"orderOptionNumber": selectedOptionData.orderOptionNumber,
+				"quantity": 1
+			}];
+			console.log(orderData);
+			optionsDisplay();
+
+			$('.cancelOption').click(optionRemoveHandler);
+			
+			var totalPrice = reCalculateTotalPrice(orderData);
+			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
+		} else {
+			var optionLevel;
+			var valueArray = new Array();
+
+			for (var key in options) {
+				var eachOptions = options[key];
+				optionLevel = eachOptions.optionLevel;
+				if (eachOptions.price != null) {
+					eachOptions.priceTag = '('+util.currencyFormat(parseInt(eachOptions.price, 10))+'원)';
+					eachOptions.price = util.currencyFormat(parseInt(eachOptions.price, 10));
+				}
+				valueArray.push(eachOptions.optionName);
+			}
+
+			optionsDataArray[optionLevel] = valueArray;
+			displayData(options, $('#detail-options-templates'), $('#optionsDrop'+(optionLevel-1)+'Con'));
+			DropDownScroll.refresh();
+		}
+	}
+
+	function optionSelectHandler(e, data) {
+		e.preventDefault();
+
+		var optionLevel = Number($(this).attr('id').substr(11))+1;
+		var optionAddress = data.values.split("-");
+		var selectedOptionData = optionsDataArray[parseInt(optionAddress[0])][parseInt(optionAddress[1])];
+
+		selectedOptions[optionLevel-1] = selectedOptionData;
+		selectedOptions.splice(optionLevel);
+		productController.options(self.productNumber, criteriaOptionCount, optionLevel, selectedOptions);
+	};
 
 	function reCalculateTotalPrice(orderData) {
 		var newTotalPrice = 0;

@@ -1,0 +1,34 @@
+<script src="https://web.nicepay.co.kr/flex/js/nicepay_tr.js" language="javascript"></script>
+<script language="javascript">
+NicePayUpdate();    //ActiveX Control 초기화 함수로 head 태그 안에 선언합니다.
+
+/**
+ * nicepay 를 통해 결제를 시작합니다.
+ */
+function nicepay() {
+    var payForm = document.payForm;
+    // 필수 사항들을 체크하는 로직을 삽입해주세요.
+    goPay(payForm);
+}
+
+/**
+ * 결제를 취소 할때 호출됩니다.
+ */
+function nicepayClose() {
+    alert("결제가 취소 되었습니다");
+}
+
+/**
+ * 사용자가 결제요청을 누를때 실행됩니다.
+ * form 명을 확인하여 주십시요.
+ */
+function nicepaySubmit() {
+    document.payForm.submit();
+}
+function chkTransType(value) {
+    document.payForm.TransType.value = value;
+}
+function chkPayType() {
+    document.payForm.PayMethod.value = checkedButtonValue('selectType');
+}
+</script>

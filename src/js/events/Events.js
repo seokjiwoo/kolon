@@ -272,7 +272,10 @@ function Events() {
 					// hash_String 취득(EncryptData)
 					ORDERS_GET_HASH : 'ordersGetHashStrResult',
 					// 배송형 주문서 작성 페이지 처리(결제)
-					ORDERS_PROCESS : 'ordersProcessResult'
+					ORDERS_PROCESS : 'ordersProcessResult',
+				
+				// 뉴폼상품 선결제 페이지 조회
+				NEWFORM_ORDER_DEPOSIT_INFO: 'newFormDepositFormResult'
 			},
 			CLAIMS : {
 				// 교환/반품/취소 목록 조회

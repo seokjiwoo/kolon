@@ -123,8 +123,11 @@ function ClassOrderController() {
 			/**
 			 * 배송형 주문서 작성 페이지 처리(결제)
 			 */
-			ordersProcess: ordersProcess
-
+			ordersProcess: ordersProcess,
+			/**
+			 * 시공형 주문서 선결제 페이지 조회
+			 */
+			orderNewFormDepositForm: orderNewFormDepositForm
 		}
 		
 		return callerObj;	
@@ -544,13 +547,6 @@ function ClassOrderController() {
 	/**
 	 * 배송형 주문서 작성 페이지 조회
 	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
-	 "products": [
-		{
-			"orderOptionNumber": "67",
-			"productNumber": "1001",
-			"quantity": 2
-		}
-	]
 	 */
 	function myOrdersInfo(products) {
 		Super.callApi('/apis/orders', 'POST', {
@@ -563,7 +559,7 @@ function ClassOrderController() {
 				$(callerObj).trigger('myOrdersInfoResult', [status, result]);
 			}
 		}, true);
-	}
+	};
 
 	// 주문완료
 	function ordersComplete(orderNumber) {
@@ -575,7 +571,7 @@ function ClassOrderController() {
 				$(callerObj).trigger('ordersCompleteResult', [status, result]);
 			}
 		}, true);
-	}
+	};
 
 	/**
 	 * hash_String 취득(EncryptData)
@@ -594,7 +590,7 @@ function ClassOrderController() {
 				$(callerObj).trigger('ordersGetHashStrResult', [status, result]);
 			}
 		}, true);
-	}
+	};
 
 	/**
 	 * 배송형 주문서 작성 페이지 처리(결제)
@@ -613,7 +609,24 @@ function ClassOrderController() {
 				$(callerObj).trigger('ordersProcessResult', [status, result]);
 			}
 		}, true);
-	}
+	};
+
+	/**
+	 * 시공형 선결제 주문서 작성 페이지 조회
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
+	 */
+	function orderNewFormDepositForm(products) {
+		Super.callApi('/apis/constorders/advance', 'POST', {
+			'orderProducts' : products
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('newFormDepositFormResult', [status, result]);
+			} else {
+				Super.handleError('orderNewFormDepositForm', result);
+				$(callerObj).trigger('newFormDepositFormResult', [status, result]);
+			}
+		}, true);
+	};
 
 	/*
 	/apis/orders : 주문서 작성

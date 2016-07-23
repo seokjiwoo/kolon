@@ -45,12 +45,12 @@
 			<div class="cardHover hoverStyle01">
 				<div class="cardCon">
 					<ul class="card_icon">
-						<li class="cart cardDetail"><a href="javascript:alert('준비중입니다')">장바구니</a></li>
+						<li class="cart cardDetail"><a href="{{detailUrl}}">장바구니</a></li>
 						<li class="share cardDetail"><a href="javascript:alert('준비중입니다')">공유</a></li>
 					</ul>
 					<div class="worker">
-						<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
-						<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+						<div class="cardAuthorPic"><img src="{{expertImageUrl}}" alt="{{expertName}}"></div>
+						<p class="cardAuthorInfo"><b>{{expertName}}</b><br>{{companyName}}</p>
 						<!--<div class="cardAuthorLike">
 							<span class="star">4.8</span><span class="comt">120</span>
 						</div>-->
@@ -63,8 +63,8 @@
 				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
 			</ul>
 			<!-- flag -->
-			<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>
-			<div class="celeb"><p><span><b>셀럽</b>추천</p></div>
+			<!--<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>-->
+			<!--<div class="celeb"><p><span><b>셀럽</b>추천</p></div>-->
 			<!--// flag -->
 			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
