@@ -156,8 +156,8 @@ module.exports = function() {
 			$('#originAddressDrop').parent().show();
 			$('#targetAddressDrop').parent().show();
 
-			var tags1 = '<li><a id="originLabel" href="#">선택해 주세요</a></li>';
-			var tags2 = '<li><a id="targetLabel" href="#">선택해 주세요</a></li>';
+			var tags1 = '<li><a id="originLabel" href="#">이사 출발지 주소를 입력해주세요.</a></li>';
+			var tags2 = '<li><a id="targetLabel" href="#">이사 도착지 주소를 입력해주세요.</a></li>';
 			addressArray = new Array();
 			$.map(list.items, function(each) {
 				addressArray[each.addressSequence] = each;
