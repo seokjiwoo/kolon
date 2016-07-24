@@ -78,7 +78,7 @@ module.exports = function() {
 		debug.log(infoObject);
 
 		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
-			$('#profileID').val(infoObject.email);
+			$('#profileID').val(infoObject.email || '');
 			$('#changeEmailField').hide();
 			if (infoObject.email != null) {
 				$('#profileID').attr('disabled', 'disabled');
