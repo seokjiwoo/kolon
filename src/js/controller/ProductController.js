@@ -23,6 +23,10 @@ function ClassProductController() {
 	
 	function ProductController() {
 		callerObj = {
+			// 상세페이지 진입 카운트 
+			detailCountAdd: detailCountAdd,
+			// 상세페이지 이탈 카운트
+			detailCountSubtract: detailCountSubtract,
 			// 샵(=배송형 상품) 리스트
 			shopList: shopList,
 			// 뉴폼(=시공형 상품) 리스트
@@ -50,6 +54,26 @@ function ClassProductController() {
 		};		
 		return callerObj;
 	}
+
+	function detailCountAdd() {
+		Super.callApi('/apis/count/product/', 'GET', {
+			"url": encodeURI(document.URL)
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('toastMessageResult', [status, result.data]);
+			} else {
+				Super.handleError('detailCountAdd', result);
+				$(callerObj).trigger('toastMessageResult', [status, result]);
+			}
+		}, true);
+	};
+
+	function detailCountSubtract() {
+		Super.callApi('/apis/count/product/', 'DELETE', {
+			"url": encodeURI(document.URL)
+		}, function(status, result) {
+		}, true);
+	};
 
 	/**
 	 * 샵(=배송형 상품) 리스트

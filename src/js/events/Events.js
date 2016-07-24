@@ -212,6 +212,8 @@ function Events() {
 			// @see ProductController.js
 			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/product-controller
 			PRODUCT : {
+				// 토스트 메시지
+				TOAST_MESSAGE: 'toastMessageResult',
 				// 샵 상품 목록
 				SHOP_LIST: 'shopProductListResult', 
 				// 뉴폼 상품 목록

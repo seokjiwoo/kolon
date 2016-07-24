@@ -66,28 +66,6 @@ module.exports = function() {
 	function init() {
 		Super.init();
 
-		$('.socialBtnOpen').click(function(e){
-			e.preventDefault();
-			if ($(this).parent('.socialBtn').hasClass('active')) {
-				$(this).parent('.socialBtn').removeClass('active');
-			} else {
-				$(this).parent('.socialBtn').removeClass('active').addClass('active');
-			}
-		});
-		$('.socialBtnClose').click(function(e){
-			e.preventDefault();
-			$(this).parent('.socialBtn').removeClass('active');
-		});
-
-		$('.accordion li a').click(function(e){
-			e.preventDefault();
-			if ($(this).parent('li').hasClass('on')) {
-				$(this).parent('li').removeClass('on');
-			} else {
-				$(this).parent('li').removeClass('on').addClass('on');
-			}
-		});
-
 		debug.log(fileName, 'init');
 
 		self = callerObj;
@@ -101,12 +79,13 @@ module.exports = function() {
 
 		stickyBar.init();
 
-		//productController.evals(self.productNumber);
+		productController.detailCountAdd();
+		$(window).on('beforeunload', function(){
+			productController.detailCountSubtract();
+			return 'bye';
+		});
+
 		productController.info(self.productNumber);
-		//productController.partnerInfo(self.productNumber);
-		//productController.preview(self.productNumber);
-		//productController.related(self.productNumber);
-		//productController.reviews(self.productNumber, self.reviewNumber);
 	}
 
 	function setElements() {
@@ -287,6 +266,9 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
+				case PRODUCT_EVENT.TOAST_MESSAGE:
+					console.log(result.message); 
+					break;
 				case PRODUCT_EVENT.INFO:
 					orderData = new Array();
 

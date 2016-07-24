@@ -83,7 +83,12 @@ module.exports = function() {
 		
 		recommendNewFormList = CardList();
 		recommendNewFormList.init('#recommendShopWrap', true);
-		
+
+		productController.detailCountAdd();
+		$(window).on('beforeunload', function(){
+			productController.detailCountSubtract();
+			return 'bye';
+		});
 
 		productController.info(self.productNumber);
 	}
@@ -309,6 +314,9 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
+				case PRODUCT_EVENT.TOAST_MESSAGE:
+					console.log(result.message); 
+					break;
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 
