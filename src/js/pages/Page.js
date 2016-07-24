@@ -417,7 +417,7 @@ module.exports = function() {
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
 
-		if (loginData == null) {
+		if (opts.name !== 'snsshare' && loginData == null) {
 			$(document).trigger('needLogin');
 			return;
 		}

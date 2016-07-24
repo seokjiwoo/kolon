@@ -131,20 +131,20 @@
 		</div>
 		<a href="" class="closePop"></a>
 		<p class="popIco">공유</p>
-		<div class="cardCon">
+		<div class="cardCon js-social-wrap">
 			<h3 class="popTit">SNS로 커먼 공유하기</h3>
 			<ul class="popCon">
-				<li class="sns01"><a href=""></a></li>
-				<li class="sns02"><a href=""></a></li>
-				<li class="sns03"><a href=""></a></li>
+				<li class="sns01"><a href="#" data-share-sns="facebook"></a></li>
+				<li class="sns02"><a href="#" data-share-sns="twitter"></a></li>
+				<li class="sns03"><a href="#" data-share-sns="kakaostory"></a></li>
 			</ul>
-			<form action="">
+			<form action="javascript:;">
 				<fieldset class="shareLink">
 					<legend class="hide">공유 링크</legend>
 					<p>
-						<input type="text" id="shareLink" disabled value="http://www.koloncommon.com/">
+						<input type="text" id="shareLink" disabled value="">
 						<label for="shareLink" class="hide">공유 링크 복사</label>
-						<button id="shareLinkBtn">URL 복사</button>
+						<button id="shareLinkBtn" data-share-sns="url">URL 복사</button>
 					</p>
 				</fieldset>
 			</form>
