@@ -192,6 +192,8 @@ module.exports = function() {
 	function loginCompleteHandler(e, status, response) {
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
+		status = parseInt(status, 10);
+
 		switch(status) {
 			case 200:
 			case 201:
@@ -256,6 +258,9 @@ module.exports = function() {
 							]
 						);
 						controller.notarobot();
+						break;
+					default:
+						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 				}
 				break;
