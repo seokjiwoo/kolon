@@ -11,6 +11,12 @@ function Events() {
 
 	var Events = {
 		MEMBER_INFO : {
+			INFO : 'myInfoResult',
+			CHANGE_EMAIL_ID : 'changeEmailIdResult',
+			EDIT_INFO : 'editMemberInfoResult',
+			REFUND_BANK_LIST : 'refundBankListResult',
+			REFUND_DATA : 'refundDataResult',
+			CHANGE_PWD : 'changePasswordResult',
 			IS_LOGIN : 'VX-MEMBER_INFO-IS_LOGIN'
 		},
 		// @see http://www.jacklmoore.com/colorbox/
@@ -108,6 +114,10 @@ function Events() {
 			// Login - 로그인
 			// @see LoginController.js
 			LOGIN : {
+				RESULT : 'loginResult',
+				SOCIAL_LOGIN_URL : 'socialLoginUrlResult',
+				SOCIAL_CONNECT : 'socialConnectResult',
+				SOCIAL_DISCONNECT : 'socialDisconnectResult',
 				NOT_A_ROBOT : 'notarobotResult'
 			},
 			// Opinions - 의견묻기
