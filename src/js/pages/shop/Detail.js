@@ -42,6 +42,9 @@ module.exports = function() {
 	var salePrice;
 	var totalQty;
 
+	var shareEnterDiff = 0,
+	shareEnterDiffLimit = 250;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -239,19 +242,23 @@ module.exports = function() {
 
 	function onStickyShareEnter() {
 		$(this).addClass('is-hover');
-		
-		$(this).off('mouseleave', onStickyShareLeave)
-				.on('mouseleave', onStickyShareLeave);
+
+		shareEnterDiff = +new Date();
+		var wrap = $(this).closest('.socialTopBtn');
+		wrap.off('mouseoveroutside', onStickyShareLeave)
+			.on('mouseoveroutside', onStickyShareLeave);
 	}
 
 	function onStickyShareLeave() {
+		if (+new Date() - shareEnterDiff < shareEnterDiffLimit)  return;
+
 		var isClipHover = $(this).find('.zeroclipboad-is-hover').size();
 		if (isClipHover) {
-			$(this).off('mouseleave', onStickyShareLeave);
+			$(this).off('mouseoveroutside', onStickyShareLeave);
 			return;
 		}
-		$(this).off('mouseleave', onStickyShareLeave);
-		$(this).removeClass('is-hover');
+		$(this).off('mouseoveroutside', onStickyShareLeave);
+		$(this).find('.hoverSocialBtn').removeClass('is-hover');
 	}
 
 	function setStickySnsShare() {
