@@ -125,6 +125,7 @@ module.exports = function() {
 			// 일자 선택 callback
 			onPickerSelect : function(selectedDate, inst) {
 				debug.log(fileName, 'DefaultPicker onPickerSelect', selectedDate, inst);
+				picker.trigger('onSelect', [selectedDate, inst]);
 				this.onPickerHide();
 			}
 		};
@@ -244,6 +245,8 @@ module.exports = function() {
 				} else {
 					this.fromPicker.datepicker('option', 'maxDate', new Date(selectedDate));
 				}
+
+				picker.trigger('onSelect', [selectedDate, inst]);
 
 				this.onPickerHide();
 			}
