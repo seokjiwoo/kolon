@@ -76,6 +76,12 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 		setBtnsEvents();
+		
+		recommendShopList = CardList();
+		recommendShopList.init('#recommendShopWrap', true);
+		
+		recommendNewFormList = CardList();
+		recommendNewFormList.init('#recommendShopWrap', true);
 
 		stickyBar.init();
 
@@ -149,8 +155,7 @@ module.exports = function() {
 		}
 
 		if (!isLogin) {
-			win.alert('로그인이 필요합니다.');
-			location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 			return;
 		}
 		

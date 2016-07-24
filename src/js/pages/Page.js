@@ -8,6 +8,7 @@ module.exports = function() {
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('myInfoResult', myInfoResultHandler);
 	$(loginController).on('confirmPasswordResult', confirmPasswordResultHandler);
+	$(loginController).on('resendAuthMailResult', resendAuthMailHandler);
 	
 	var loginDataModel = require('../model/LoginModel');
 	var loginData;
@@ -202,11 +203,19 @@ module.exports = function() {
 		}
 	};
 
+	function resendAuthMailHandler(e, status, result) {
+		if (status == 200) {
+			alert('인증메일이 재발송되었습니다.');
+		} else {
+			alert(status+' error');
+		}
+	};
+
 	/**
 	 * 상단 배너영역 초기화
 	 */
 	function initTopBanner() {
-		if (loginData == null || loginData.stateCode == "BM_MEM_STATE_02" || Cookies.get('topBannerHide') == 'hide') {
+		if (loginData == null) {
 			// 푸로모션 배너영역
 			$('#lnbWrapper').css({
 				"top": 0,
@@ -222,7 +231,7 @@ module.exports = function() {
 			$('.container').css('padding-top','113px');
 			$('#closeTopBannerButton').click(hideTopBanner);
 			lnbScroller.refresh();
-		} else if (loginData.stateCode == "BM_MEM_STATE_01") {
+		} else if (loginData.stateCode == "BM_MEM_STATE_01" && Cookies.get('topBannerHide') != 'EXTERMINATE') {
 			topBannerShowFlag = true;
 
 			$('#topBannerImage').attr('src', '/images/banner_phone.jpg');
@@ -231,8 +240,16 @@ module.exports = function() {
 			$('.container').css('padding-top','113px');
 			$('#closeTopBannerButton').click(hideTopBanner);
 			lnbScroller.refresh();
+		} else if (loginData.stateCode == "BM_MEM_STATE_02") {
+			$('#lnbWrapper').css({
+				"top": 0,
+				"height": "100%"
+			});
 		} else {
-			hideTopBanner();
+			$('#lnbWrapper').css({
+				"top": 0,
+				"height": "100%"
+			});
 		}
 	};
 
@@ -360,7 +377,7 @@ module.exports = function() {
 	 */
 	function hideTopBanner(e) {
 		topBannerShowFlag = false;
-		if ($('#topBannerCheckArea label').hasClass('on')) Cookies.set('topBannerHide', 'hide', { expires: 365 });
+		if ($('#topBannerCheckArea label').hasClass('on')) Cookies.set('topBannerHide', 'EXTERMINATE', { expires: 7 });
 
 		$('#topBanner').hide();
 		$('.container').css('padding-top','0');
@@ -401,8 +418,7 @@ module.exports = function() {
 		e.preventDefault();
 
 		if (loginData == null) {
-			alert('로그인이 필요합니다.');
-			location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 			return;
 		}
 

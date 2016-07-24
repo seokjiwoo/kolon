@@ -60,7 +60,11 @@ module.exports = function() {
 			updateDateSelect();
 
 			$(window).on('beforeunload', function(){
-				Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+				if (confirm("이 페이지를 벗어나면 변경하신 내용이 저장되지 않습니다.\n이전 화면으로 이동하시려면 [확인]을 누르시고, 현재 페이지에 있으시려면 [취소]를 눌러주세요.")) {
+					Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+				} else {
+					return false;
+				}
 				//return 'bye';
 			});
 			
@@ -78,6 +82,8 @@ module.exports = function() {
 		debug.log(infoObject);
 
 		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
+			if (infoObject.joinSectionCode == "BM_JOIN_SECTION_02") $('#changePwRow').remove();
+
 			$('#profileID').val(infoObject.email || '');
 			$('#changeEmailField').hide();
 			if (infoObject.email != null) {
@@ -145,8 +151,11 @@ module.exports = function() {
 
 			switch(infoObject.memberStateCode) {
 				case 'BM_MEM_STATE_01': // 일반 회원
+					$('#certficateMessage').text('본인확인을 해주세요! 본인확인을 하지 않으시면 서비스 이용에 제한이 있을 수 있습니다.');
 					break;
 				case 'BM_MEM_STATE_02': // 본인인증 완료 회원
+					$('#certficateMessage').text('본인확인이 완료되었습니다.');
+					$('#certficateButton').remove();
 					$('#editName').attr('disabled', 'disabled');
 					$('#joinBirth01').attr('disabled', 'disabled');
 					$('#joinBirth02').attr('disabled', 'disabled');

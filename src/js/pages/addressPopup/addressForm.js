@@ -125,7 +125,7 @@ module.exports = function() {
 		if (status == 200) {
 			alert('완료되었습니다');
 		} else {
-			alert(status+': '+result.message);
+			alert(result.message);
 		}
 		window.opener.refreshAddressData();
 		location.href = 'addressBook.html';
@@ -135,7 +135,7 @@ module.exports = function() {
 		if (status == 200) {
 			alert('완료되었습니다');
 		} else {
-			alert(status+': '+result.message);
+			alert(result.message);
 		}
 		window.opener.refreshAddressData();
 		location.href = 'addressBook.html';

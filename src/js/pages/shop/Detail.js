@@ -87,6 +87,8 @@ module.exports = function() {
 		recommendNewFormList = CardList();
 		recommendNewFormList.init('#recommendShopWrap', true);
 
+		stickyBar.init();
+
 		productController.detailCountAdd();
 		$(window).on('beforeunload', function(){
 			productController.detailCountSubtract();
@@ -159,8 +161,7 @@ module.exports = function() {
 		}
 
 		if (!isLogin) {
-			win.alert('로그인이 필요합니다.');
-			location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 			return;
 		}
 		

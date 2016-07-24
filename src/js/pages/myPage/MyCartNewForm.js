@@ -84,7 +84,7 @@ module.exports = function() {
 		// 선택 리스트 삭제 처리
 		$(self.opts.listDel).on('click', function(e) {
 			e.preventDefault();
-			if (confirm('삭제하시겠습니까?')) {
+			if (confirm('선택하신 상품을 삭제하시겠습니까?')) {
 				var list = $('[data-chk-group=\'myCartNewForm\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
 				deleteList = [];
 				$.each(list, function() {

@@ -104,20 +104,20 @@ module.exports = function() {
 		// 선택 리스트 삭제 처리
 		$(self.opts.listDel).on('click', function(e) {
 			e.preventDefault();
+			if (confirm('선택하신 상품을 삭제하시겠습니까?')) {
+				var list = $('[data-chk-group=\'myCartShop\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
+				deleteList = [];
+				$.each(list, function() {
+					deleteList.push($(this).data('cart-number'));
+				});
+				if (!deleteList.length) {
+					alert('삭제할 상품이 없습니다.');
+					return;
+				}
 
-			var list = $('[data-chk-group=\'myCartShop\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
-			deleteList = [];
-
-			$.each(list, function() {
-				deleteList.push($(this).data('cart-number'));
-			});
-
-			if (!deleteList.length) {
-				return;
+				// myCartShop 리스트 삭제
+				controller.deleteMyCartList(deleteList);
 			}
-
-			// myCartShop 리스트 삭제
-			controller.deleteMyCartList(deleteList);
 		});
 	}
 

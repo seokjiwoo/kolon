@@ -93,8 +93,7 @@ module.exports = function() {
 	function onRequestMoving() {
 		loginData = loginDataModel.loginData();
 		if (!loginData) {
-			win.alert('로그인이 필요합니다.');
-			win.location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 		} else if (loginData.stateCode === 'BM_MEM_STATE_01') {
 			$(document).trigger('verifyMember', ['LIVING']);
 		} else {

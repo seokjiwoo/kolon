@@ -35,6 +35,7 @@ module.exports = function() {
 	OPTIONNUM_EVENT = events.OPTION_NUM,
 	CARD_LIST_EVENT = events.CARD_LIST;
 
+	$(document).on('needLogin', needLoginHandler);
 	
 	var callerObj = {
 		/**
@@ -296,6 +297,11 @@ module.exports = function() {
 		});
 	};
 	
+	function needLoginHandler(e) {
+		alert('로그인이 필요합니다');
+		location.href = '/member/login.html';
+	}
+
 	function htmlPopupLinkHandler(e) {
 		e.preventDefault();
 		var popupFile = $(this).attr('href');
