@@ -162,6 +162,9 @@ $(document).ready(function() {
 			case 'order-orderService':
 				PageModuleClass = require('./pages/order/OrderService.js');
 				break;
+			case 'order-orderServiceBalance':
+				PageModuleClass = require('./pages/order/OrderServiceBalance.js');
+				break;
 
 			// 주문완료 complete
 			case 'order-complete':
@@ -169,6 +172,9 @@ $(document).ready(function() {
 				break;
 			case 'order-complete-advance':
 				PageModuleClass = require('./pages/order/CompleteAdvance.js');
+				break;
+			case 'order-complete-balance':
+				PageModuleClass = require('./pages/order/CompleteBalance.js');
 				break;
 		// [E] 주문서 작성 order
 

@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'order/CompleteAdvance.js';
+	fileName = 'order/CompleteBalance.js';
 
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
@@ -137,7 +137,7 @@ module.exports = function() {
 			$(document).trigger('needLogin');
 		} else {
 			self.memberName = loginData.memberName;
-			controller.ordersAdvanceComplete(self.orderNumber);
+			controller.ordersBalanceComplete(self.orderNumber);
 		}
 	}
 
