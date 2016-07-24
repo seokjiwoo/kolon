@@ -300,6 +300,7 @@ module.exports = function() {
 		if (status == 200) {
 			alert('등록이 완료되었습니다');
 			$.colorbox.close();
+			$(window).off('beforeunload');
 			Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
 			location.reload(true);
 		} else {
@@ -364,6 +365,10 @@ module.exports = function() {
 				$('#myPageHeaderId').text(enteredId);
 				$('#profileID').val(enteredId).attr('disabled', 'disabled');
 				$('#changeEmailField').hide();
+				
+				$(window).off('beforeunload');
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+				location.reload(true);
 				break;
 			case 400:	// 인증실패
 			default:
@@ -422,6 +427,7 @@ module.exports = function() {
 			switch(response.status) {
 				case '201':
 					MyPage.Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
+						$(window).off('beforeunload');
 						Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
 						location.reload(true);
 					});

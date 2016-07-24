@@ -57,7 +57,7 @@ module.exports = function() {
 	};
 
 	/**
-	 * 회원가입 절차 진행
+	 * 절차 진행
 	 */
 	function submitPasswordForm(e) {
 		e.preventDefault();
@@ -66,15 +66,26 @@ module.exports = function() {
 		var pw1 = $('#newPW01').val();
 		var pw2 = $('#newPW02').val();
 		
-		if (pw1 == '' || pw2 == '') {
+		if (pw1 == '') {
 			alert('비밀번호를 입력해 주세요.');
-			$('#newPWAlert').text('비밀번호를 입력해 주세요.');
+			$('#newPWAlert1').text('비밀번호를 입력해 주세요.');
+			$('#newPWAlert2').text('');
+		} else if (pw2 == '') {
+			alert('비밀번호를 입력해 주세요.');
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').text('비밀번호를 입력해 주세요.');
 		} else if (pw1 != pw2) {
 			alert('비밀번호가 일치하지 않습니다.');
-			$('#newPWAlert').text('비밀번호가 일치하지 않습니다.');
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').text('비밀번호가 일치하지 않습니다.');
+		} else if (pw0 == pw1 && pw1 == pw2) {
+			alert('기존 비밀번호와 동일한 비밀번호는 사용이 불가능합니다.');
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').html('기존 비밀번호와 동일한 비밀번호는 사용이 불가능합니다.');
 		} else if (!util.checkValidPassword(pw1)) {
 			alert('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
-			$('#newPWAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
+			$('#newPWAlert1').text('');
+			$('#newPWAlert2').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
 		} else {
 			controller.changePassword(pw0, pw1);
 		}
