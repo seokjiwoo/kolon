@@ -101,23 +101,18 @@ module.exports = function() {
 				result.data.vxOrderNumber = self.orderNumber;
 				result.data.vxOrderDate = win.moment(new Date()).format('YYYY년 MM월 DD일');
 
-				result.data.savingSchedPointDesc = util.currencyFormat(result.data.savingSchedPoint, 10);
-				result.data.paymentInfo.orderPriceDesc = util.currencyFormat(result.data.paymentInfo.orderPrice, 10);
-				result.data.paymentInfo.discountPriceDesc = util.currencyFormat(result.data.paymentInfo.discountPrice, 10);
-				result.data.paymentInfo.deliveryChargeDesc = util.currencyFormat(result.data.paymentInfo.deliveryCharge, 10);
-				result.data.paymentInfo.totalPaymentPriceDesc = util.currencyFormat(result.data.paymentInfo.totalPaymentPrice, 10);
+				result.data.constPaymentInfo.method = result.data.constPaymentInfo.paymentMethods[0].paymentMethodCodeName;
+				result.data.constPaymentInfo.totalPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalProductPrice);
+				result.data.constPaymentInfo.totalDiscountPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalDiscountPrice);
+				result.data.constPaymentInfo.totalConstExpectPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalConstExpectPrice);
+				result.data.constPaymentInfo.totalAdvancePriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalAdvancePrice);
+				
+				result.data.constOrderInfo.receiverContact = util.mobileNumberFormat(result.data.constOrderInfo.receiverContact);
 
-				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
-				if (result.data.slCreditCard != null) {
-					result.data.paymentInfo.method = '신용카드';
-				} else if (result.data.slDwb != null) {
-					result.data.paymentInfo.method = '무통장 입금';
-				} else if (result.data.slAccountTransfer != null) {
-					result.data.paymentInfo.method = '실시간 계좌이체';
-				}
-				$.map(result.data.listOrderItem, function(eachItem){
-					eachItem.slOrderDlvyAddr.cellPhoneNumber = util.mobileNumberFormat(eachItem.slOrderDlvyAddr.cellPhoneNumber);
-					eachItem.slOrderDlvyAddr.deliveryRequestMemo = decodeURI(eachItem.slOrderDlvyAddr.deliveryRequestMemo);
+				$.map(result.data.constProducts, function(eachItem){
+					eachItem.constExpectPriceDesc = util.currencyFormat(eachItem.constExpectPrice);
+					eachItem.productPriceDesc = util.currencyFormat(eachItem.productPrice);
+					eachItem.discountPriceDesc = util.currencyFormat(eachItem.discountPrice);
 				});
 				
 				displayData(result.data);
@@ -143,7 +138,7 @@ module.exports = function() {
 			location.href = '/member/login.html';
 		} else {
 			self.memberName = loginData.memberName;
-			controller.ordersComplete(self.orderNumber);
+			controller.ordersAdvanceComplete(self.orderNumber);
 		}
 	}
 

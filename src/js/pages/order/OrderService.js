@@ -293,8 +293,8 @@ module.exports = function() {
 		$('#dwellingFormCode').val($('input[name="hTp1"]:checked').val());
 		$('#dwellingPyeongCode').val($('input[name="hTp2"]:checked').val());
 		$('#remodelingReasonCode').val($('input[name="hTp3"]:checked').val());
-		$('#remodelingReasonEtc').val($('#homeReasonEtcField').val());
-		$('#addRequestContents').val($('#requestField').val());
+		$('#remodelingReasonEtc').val(encodeURI($('#homeReasonEtcField').val()));
+		$('#addRequestContents').val(encodeURI($('#requestField').val()));
 	
 		switch($('#PayMethod').val()) {
 			case 'CARD':

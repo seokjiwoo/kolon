@@ -116,6 +116,7 @@ function ClassOrderController() {
 			 * 주문완료
 			 */
 			ordersComplete: ordersComplete,
+			ordersAdvanceComplete: ordersAdvanceComplete,
 			/**
 			 * hash_String 취득(EncryptData)
 			 */
@@ -564,6 +565,18 @@ function ClassOrderController() {
 	// 주문완료
 	function ordersComplete(orderNumber) {
 		Super.callApi('/apis/orders/complete/' + orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			} else {
+				Super.handleError('ordersComplete', result);
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			}
+		}, true);
+	};
+
+	// 선결제 주문 완료
+	function ordersAdvanceComplete(orderNumber) {
+		Super.callApi('/apis/constorders/advance/' + orderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('ordersCompleteResult', [status, result]);
 			} else {
