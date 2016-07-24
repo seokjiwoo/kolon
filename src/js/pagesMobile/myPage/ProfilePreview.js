@@ -19,7 +19,8 @@ module.exports = function() {
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	LOGIN_EVENT = events.LOGIN,
 	HTMLPOPUP_EVENT = events.HTML_POPUP,
-	COLORBOX_EVENT = events.COLOR_BOX;
+	COLORBOX_EVENT = events.COLOR_BOX,
+	WINDOWOPENER_EVENT = events.WINDOW_OPENER;
 	
 	var callerObj = {
 		/**
@@ -130,7 +131,6 @@ module.exports = function() {
 			win.alert(result.message);
 			
 			if (status === 401 && result.errorCode === '1609' && loginData.stateCode === 'BM_MEM_STATE_01') {
-				win.console.log('this case');
 				$(document).trigger('verifyMember', ['LIVING']);
 				return;
 			}
@@ -175,6 +175,7 @@ module.exports = function() {
 							.always(function() {
 								self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(WINDOWOPENER_EVENT.REFRESH);
 
 								$('#changeRefundInfoButton').off('click', popRefundAccount)
 															.on('click', popRefundAccount);

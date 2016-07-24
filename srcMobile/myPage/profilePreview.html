@@ -77,26 +77,27 @@
 		</table>
 	</div>
 	<div class="wrapT">
-		<h3 class="conTit">기본 배송지 정보</h3>
-		{{!-- 기본 배송지 여부 --}}
-		{{#vxIF addressSectionCode "==" "BM_ADDR_SECTION_02"}}
-			<table class="tb01">
-				<tr>
-					<th>주문자</th>
-					<td>{{receiverName}}</td>
-				</tr>
-				<tr>
-					<th>도로명</th>
-					<td>{{roadBaseAddress}}</td>
-				</tr>
-				<tr>
-					<th>지번</th>
-					<td>{{lotBaseAddress}}</td>
-				</tr>
-			</table>
-		{{else}}
-			<p class="noContent" style="display:block">기본 배송지로 설정된 정보가 없습니다.</p>
-		{{/vxIF}}
+		<h3 class="conTit noBorder">기본 배송지 정보</h3>
+		<p>
+			<p><a href="../popup/addressBook.html" class="btnSizeS btnSizeW btnColor04 mt15 openAddressPopup">주소록 관리</a></p>
+		</p>
+
+		<!-- 
+		<table class="tb01">
+			<tr>
+				<th>주문자</th>
+				<td>{{receiverName}}</td>
+			</tr>
+			<tr>
+				<th>도로명</th>
+				<td>{{roadBaseAddress}}</td>
+			</tr>
+			<tr>
+				<th>지번</th>
+				<td>{{lotBaseAddress}}</td>
+			</tr>
+		</table>
+		-->
 	</div>
 	<!-- [D] TBD
 	<div class="wrapT">
@@ -158,6 +159,8 @@
 	<a href="/myPage/profileEdit.html" class="btnSizeB btnColor06 mt20">개인정보 수정하기</a>
 	{{!--// profile-preview-templates --}}
 </script>
+
+<!-- @@include ../_template/footer.html -->
 
 </body>
 </html>
