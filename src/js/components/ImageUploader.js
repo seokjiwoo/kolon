@@ -215,6 +215,7 @@ function ClassImageUploader() {
 		target.removeClass('hover');
 
 		if (event.dataTransfer.files.length) {
+			self.inpFile.prop('files', event.dataTransfer.files);
 			setReadFiles(event.dataTransfer.files);
 		}
 	}

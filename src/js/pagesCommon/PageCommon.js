@@ -434,7 +434,11 @@ module.exports = function() {
 							$.colorbox.resize();
 						}
 
-						$(window).resize(function(e){ $.colorbox.close(); });
+						$(window).on('orientationchange', function() {
+							$.colorbox.close();
+						});
+
+						// $(window).resize(function(e){ $.colorbox.close(); });
 						break;
 				}
 			}
