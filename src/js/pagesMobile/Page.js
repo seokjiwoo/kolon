@@ -233,10 +233,10 @@ module.exports = function() {
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
-			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount);
-			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount);
-			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount);
-			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount);
+			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount || 0);
+			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount || 0);
+			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount || 0);
+			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount || 0);
 			if (loginData.myActivity.cartCount == 0) {
 				$('#menuCountCart').hide();
 			} else {
