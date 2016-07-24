@@ -18,6 +18,11 @@ module.exports = function() {
 	CHECKBOX_EVENT = events.CHECK_BOX,
 	CART_EVENT = events.CART;
 
+	var loginController = require('../../controller/LoginController');
+	var loginDataModel = require('../../model/LoginModel');
+
+	var orderData;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -79,32 +84,54 @@ module.exports = function() {
 		// 선택 리스트 삭제 처리
 		$(self.opts.listDel).on('click', function(e) {
 			e.preventDefault();
+			if (confirm('삭제하시겠습니까?')) {
+				var list = $('[data-chk-group=\'myCartNewForm\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
+				deleteList = [];
+				$.each(list, function() {
+					deleteList.push($(this).data('cart-number'));
+				});
+				if (!deleteList.length) {
+					alert('삭제할 상품이 없습니다.');
+					return;
+				}
 
-			var list = $('[data-chk-group=\'myCartNewForm\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
-			deleteList = [];
-
-			$.each(list, function() {
-				deleteList.push($(this).data('cart-number'));
-			});
-
-			if (!deleteList.length) {
-				return;
+				// myCartNewForm 리스트 삭제
+				controller.deleteMyCartList(deleteList);
 			}
-
-			// myCartNewForm 리스트 삭제
-			controller.deleteMyCartList(deleteList);
 		});
 	}
 
-	function onCheckBoxChange(/*e, target, chkGroup, chked*/) {
+	function onCheckBoxChange(e, target, chkGroup, chked) {
+		var list = [];
+
+		$.each(chked, function() {
+			list.push($(this).closest(self.opts.newFormList.wrap).get(0));
+		});
+		displayUpdate(list);
+	}
+
+	function displayUpdate(chked) {
+		orderData = new Array();
+		
+		var list = chked || self.templatesWrap.find(self.opts.newFormList.wrap),
+		info = {};
+
+		$.each(list, function() {
+			info = $(this).data('list-info');
+
+			orderData.push({
+				"productNumber": info.productNumber,
+				"productOptionNumber": info.productOptionNumber
+			});
+		});
+
+		$('.js-list-size').text(orderData.length);
 	}
 
 	function displayData(data) {
 		if (data.myCarts) {
 			$.map(data.myCarts, function(myCarts) {
-				myCarts.deliveryChargeDesc = util.currencyFormat(myCarts.deliveryCharge);
-				myCarts.productOrderPriceDesc = util.currencyFormat(myCarts.productOrderPrice);
-				myCarts.productSalePriceDesc = util.currencyFormat(myCarts.productSalePrice);
+				myCarts.salePriceDesc = util.currencyFormat(myCarts.salePrice);
 			});
 		}
 
@@ -133,25 +160,41 @@ module.exports = function() {
 			case CART_EVENT.LIST:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayData(result.data);
+				displayUpdate();
 				setDeleteEvents();
+
+				$('.js-myCartNewForm-order').click(function(e){
+					var loginData = loginDataModel.loginData();
+
+					if (loginData.stateCode == 'BM_MEM_STATE_01') {
+						$(document).trigger('verifyMember', ['MYCART_NEWFORM']);
+					} else {
+						Cookies.set('instantNFOrder', [$(this).data('order-info')]);
+						location.href = '/order/orderService.html';
+					}
+				});
+
+				$('#js-myCartNewForm-submit').click(function(e){
+					var loginData = loginDataModel.loginData();
+
+					if (loginData.stateCode == 'BM_MEM_STATE_01') {
+						$(document).trigger('verifyMember', ['MYCART_NEWFORM']);
+					} else {
+						Cookies.set('instantNFOrder', orderData);
+						location.href = '/order/orderService.html';
+					}
+				});
 				break;
 			case CART_EVENT.DELETE:
 				switch(status) {
 					case 200:
+						win.location.reload();
 						break;
 					default:
 						win.alert('HTTP Status Code ' + status);
 						break;
 				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				testResult();
 				break;
 		}
 	}
-
-	function testResult() {
-		win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
-	}
-
 };

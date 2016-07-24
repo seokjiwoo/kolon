@@ -69,9 +69,7 @@ function ClassProductController() {
 	};
 
 	function detailCountSubtract() {
-		Super.callApi('/apis/count/product/', 'DELETE', {
-			"url": encodeURI(document.URL)
-		}, function(status, result) {
+		Super.callApi('/apis/count/product/?url='+encodeURI(document.URL), 'DELETE', {}, function(status, result) {
 		}, true);
 	};
 

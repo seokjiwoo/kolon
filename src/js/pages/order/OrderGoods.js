@@ -232,7 +232,7 @@ module.exports = function() {
 				
 				$('#GoodsName').val(data.products[0].productName);
 				$('#Amt').val(baseTotalPrice);
-				$('#Moid').val(data.orderNumber);
+				$('#Moid').val(data.pgInfo.moid);
 				$('#GoodsCnt').val(data.products.length);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
@@ -306,6 +306,7 @@ module.exports = function() {
 			url: "/apis/orders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
+				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
 				goPay(document.payForm);

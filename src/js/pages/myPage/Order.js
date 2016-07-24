@@ -308,6 +308,13 @@ module.exports = function() {
 			}
 		});
 
+		$('.js-picker-from').on('onSelect', function() {
+			getOrderList();
+		});
+		$('.js-picker-to').on('onSelect', function() {
+			getOrderList();
+		});
+
 		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
 		$('.sortTerm li a').click(function(e) {
 			e.preventDefault();
@@ -355,7 +362,7 @@ module.exports = function() {
 						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
 
 						if (util.isLocal()) {
-							orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
+							orderItems.productImageUrl = 'https://dev.koloncommon.com/' + orderItems.productImageUrl;
 						}
 
 						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;

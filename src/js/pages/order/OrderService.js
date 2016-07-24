@@ -82,7 +82,7 @@ module.exports = function() {
 		
 		setElements();
 		setBindEvents();
-		/*
+
 		var orderProductArray = new Array();
 
 		if (Cookies.getJSON('instantNFOrder') == undefined) {
@@ -95,13 +95,6 @@ module.exports = function() {
 			//Cookies.remove('instantNFOrder');
 			controller.orderNewFormDepositForm(orderProductArray);
 		}
-		*/
-		var orderProductArray = [{
-			"productNumber": 1000000001,
-			"productOptionNumber": 1002,
-			"productQty": 1
-		}];
-		controller.orderNewFormDepositForm(orderProductArray);
 	}
 
 	function setElements() {
@@ -186,19 +179,22 @@ module.exports = function() {
 				var constReservation = data.constReservation;
 				var tags = '';
 				$.each(constReservation.dwellingForm, function(key, each){
-					tags += '<li class="hType0'+(key+1)+'"><span class="radioBox"><input type="radio" value="'+each.code+'" id="hTp1'+key+'"/><label for="hTp1'+key+'">'+each.codeName+'</label></span></li>';  // <li class="">
+					tags += '<li class="hType0'+(key+1)+'"><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp1" id="hTp1'+key+'"/><label for="hTp1'+key+'">'+each.codeName+'</label></span></li>';  // <li class="">
 				});
 				$('.homeType').html(tags);
 				tags = '';
 				$.each(constReservation.dwellingPyeong, function(key, each){
-					tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" id="hTp2'+key+'"/><label for="hTp2'+key+'">'+each.codeName+'</label></span></li>';
+					tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp2" id="hTp2'+key+'"/><label for="hTp2'+key+'">'+each.codeName+'</label></span></li>';
 				});
 				$('.homeSize').html(tags);
 				tags = '';
 				$.each(constReservation.remodelingReason, function(key, each){
-					tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" id="hTp3'+key+'"/><label for="hTp3'+key+'">'+each.codeName+'</label></span></li>';
+					tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp3" id="hTp3'+key+'"/><label for="hTp3'+key+'">'+each.codeName+'</label></span></li>';
 				});
 				$('.homeReason').html(tags);
+				$('.radioBox label').on('click', function(e){
+					$(this).addClass('on').parent().parent().siblings('li').find('label').removeClass('on');
+				});
 
 				$('.agreeCont').html(constReservation.constOrderTerms[0].termsContents);
 				
@@ -220,28 +216,29 @@ module.exports = function() {
 					cardSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.cardCompanyName+'">'+eachCard.cardCompanyName+'</option>';
 				}
 				$('#cardSelect').html(cardSelectTag);
+		
 
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
 				});
-/*
+		
 				$('#MID').val(data.pgInfo.mid);
 				$("#MallIP").val(data.pgInfo.mallIp);
 				$("#UserIP").val(data.pgInfo.userIp);
 				$("#EdiDate").val(data.pgInfo.ediDate);
 				$("#VbankExpDate").val(data.pgInfo.vbankExpDate);
 				
-				$('#GoodsName').val(data.products[0].productName);
-				$('#Amt').val(baseTotalPrice);
+				$('#GoodsName').val(productsInfo[0].productName);
+				$('#Amt').val(paymentInfo.totalAdvancePrice);
 				$('#Moid').val(data.orderNumber);
-				$('#GoodsCnt').val(data.products.length);
+				$('#GoodsCnt').val(productsInfo.length);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
 				$('#SelectCardCode').val(''); // 카드번호
 				$('#SelectQuota').val('00'); // 할부개월수
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
-				$('.requestPaymentButton').click(getHashString);*/
+				$('.requestPaymentButton').click(getHashString);
 
 				if (!util.isIe()) $('#payBANK').remove();
 				break;
@@ -251,12 +248,83 @@ module.exports = function() {
 	function myInfoResultHandler(e) {
 		loginData = loginDataModel.loginData();
 		//debug.log(loginData);
+		$('#BuyerName').val(loginData.memberName);
 		if (loginData.phone != null) {
-			//
+			$('#BuyerTel').val(loginData.phone);
 		} else {
 			alert('본인인증이 필요한 페이지입니다.');
+			//Cookies.remove('instantOrder');
 			location.href='/';
 		}
+	};
+
+	function getHashString(e) {
+		if (!$('#agree01cb').hasClass('on')) {
+			alert('개인정보 제 3자 제공에 동의해 주세요.');
+			return;
+		}
+		if (!selectedOneAddress) {
+			alert('배송지를 지정해 주세요.');
+			return;
+		}
+		if ($('#visitTimeSelector').val() == '') {
+			alert('희망 실측 방문/상담 시간을 지정해 주세요.');
+			return;
+		}
+		
+		var paymentPrice = Number($('#Amt').val());
+
+		var productsArray = new Array();
+		for (var key in productsInfo) {
+			var product = productsInfo[key];
+			var eachOrderArray = new Array(
+				product.productNumber,
+				product.productOptionNumber
+			);
+			productsArray.push(eachOrderArray.join('|'));
+		}
+		
+		$('#products').val(productsArray.join(','));
+		$('#wishSurveyDate').val(moment($('.js-picker-visit').datepicker('getDate')).format('YYYYMMDD'));
+		$('#wishSurveyHour').val($('#visitTimeSelector').val());
+		$('#wishConstBeginDate').val(moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'));
+		$('#wishConstEndDate').val(moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'));
+		$('#addressSequence').val(selectedOneAddress);
+		$('#dwellingFormCode').val($('input[name="hTp1"]:checked').val());
+		$('#dwellingPyeongCode').val($('input[name="hTp2"]:checked').val());
+		$('#remodelingReasonCode').val($('input[name="hTp3"]:checked').val());
+		$('#remodelingReasonEtc').val($('#homeReasonEtcField').val());
+		$('#addRequestContents').val($('#requestField').val());
+	
+		switch($('#PayMethod').val()) {
+			case 'CARD':
+				if ($('#cardSelect').val() == '') {
+					alert('카드를 지정해 주세요.');
+					return;
+				}
+				if ($('#SelectQuota').val() == '') {
+					alert('할부개월수를 지정해 주세요.');
+					return;
+				}
+				$('#SelectCardCode').val($('#cardSelect').val()); 	// 카드회사 번호
+				$('#SelectQuota').val($('#quotaSelect').val()); 	// 할부개월수
+				break;
+		}
+
+		jQuery.ajax({
+			type: "GET",
+			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			success : function(data) {
+				$("#EncryptData").val(data.data.hash_String);
+				$("#Moid").val(data.data.orderNumber);
+			},
+			complete : function(data) {
+				goPay(document.payForm);
+			},
+			error : function(xhr, status, error) {
+				Super.Super.alertPopup('결재에 실패하였습니다', status+': '+error, '확인');
+			}
+		});
 	};
 
 	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
@@ -284,15 +352,7 @@ module.exports = function() {
 	function setAddress(addressNum, seq) {
 		var addressObject = addressArray[seq];
 		$('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
-
-		if (addressNum == '1') {
-			// 단일배송지
-			selectedOneAddress = seq;
-		} else {
-			// 복수배송지
-			var orderOrder = Number(addressNum.split('-')[1]);
-			selectedMultiAddress[orderOrder] = seq;
-		}
+		selectedOneAddress = seq;
 	};
 
 	function selectAddressDataHandler(e, seq) {
