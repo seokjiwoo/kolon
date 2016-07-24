@@ -1,15 +1,12 @@
 /* global $ */
 
 module.exports = function() {
-
-
 	var win = window,
 	$ = win.jQuery,
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	ALERTPOPUP_EVENT = events.ALERT_POPUP,
 	RECAPTCHA_EVENT = events.RECAPTCHA;
-
 
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();

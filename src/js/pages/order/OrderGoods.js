@@ -16,6 +16,8 @@ module.exports = function() {
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	CARD_LIST_EVENT = events.CARD_LIST,
 	ORDER_EVENT = events.ORDER;
 
 	var addressController = require('../../controller/AddressController.js');
@@ -241,6 +243,7 @@ module.exports = function() {
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
 				$('.requestPaymentButton').click(getHashString);
+				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;
 		}
 	}

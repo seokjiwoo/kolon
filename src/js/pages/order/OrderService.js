@@ -16,6 +16,7 @@ module.exports = function() {
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	CARD_LIST_EVENT = events.CARD_LIST,
 	ORDER_EVENT = events.ORDER;
 
 	var DatePickerClass = require('../../components/DatePicker.js'),
@@ -241,6 +242,7 @@ module.exports = function() {
 				$('.requestPaymentButton').click(getHashString);
 
 				if (!util.isIe()) $('#payBANK').remove();
+				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;
 		}
 	};

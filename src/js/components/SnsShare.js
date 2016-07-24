@@ -59,6 +59,8 @@ function SnsShare() {
 
 		setElements();
 		setBindEvents();
+		
+		$('#shareUrlField').val(document.URL);
 	}
 
 	function setElements() {

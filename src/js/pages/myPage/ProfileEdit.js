@@ -58,6 +58,11 @@ module.exports = function() {
 			$('#joinBirth01').html(tags);
 			$('#joinBirth02').change(updateDateSelect);
 			updateDateSelect();
+
+			$(window).on('beforeunload', function(){
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+				//return 'bye';
+			});
 			
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
@@ -110,7 +115,7 @@ module.exports = function() {
 		
 			if (infoObject.memberRefundAccount != null) {
 				$('#refundBankName').text(infoObject.memberRefundAccount.bankName);  
-				$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
+				$('#refundAccount').html(infoObject.memberRefundAccount.accountNumber+" <button id='changeRefundInfoButton' class='btn btnSizeS btnColor03'>계좌 수정</button>");
 				$('#refundName').text(infoObject.memberRefundAccount.depositorName);
 			} else {
 				$('#refundInfoRow').html('<td colspan="3" style="padding: 25px"><button id="changeRefundInfoButton" class="btn btnSizeM btnColor01">계좌 등록</button></td>')
@@ -272,7 +277,7 @@ module.exports = function() {
 		} else if ($.trim(depositorName) == '') {
 			alert('예금주명을 입력해 주세요');
 		} else {
-			controller.refundData(bankCode[0], accountNumber, depositorName);
+			controller.refundData(String(bankCode), String(accountNumber), String(depositorName));
 		} 
 		
 		e.stopPropagation();
@@ -286,6 +291,8 @@ module.exports = function() {
 		if (status == 200) {
 			alert('등록이 완료되었습니다');
 			$.colorbox.close();
+			Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+			location.reload(true);
 		} else {
 			alert(result.message);
 		}
@@ -406,6 +413,7 @@ module.exports = function() {
 			switch(response.status) {
 				case '201':
 					MyPage.Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
+						Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
 						location.reload(true);
 					});
 					break;

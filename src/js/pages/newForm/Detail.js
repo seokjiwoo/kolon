@@ -212,8 +212,12 @@ module.exports = function() {
 			$(document).trigger('verifyMember', 'NEWFORM');
 		} else {
 			var cartData = orderData.concat();
+			$.map(cartData, function(each) {
+				delete each.quantity;
+				delete each.price;
+			});
 			Cookies.set('instantNFOrder', cartData);
-			location.href = '/order/orderInstallment.html';
+			location.href = '/order/orderService.html';
 		}
 	};
 

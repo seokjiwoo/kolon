@@ -87,14 +87,19 @@ module.exports = function() {
 		
 		if ($.trim($('#adrName1').val()) == '') {
 			alert('주소 별칭을 입력해 주세요');
+			return;
 		} else if ($.trim($('#adrName2').val()) == '') {
 			alert('이름을 입력해 주세요');
+			return;
 		} else if ($.trim($('#phone2').val()) == '' || $.trim($('#phone3').val()) == '') {
 			alert('연락처를 입력해 주세요');
+			return;
 		} else if (!util.checkValidMobileNumber(phoneNumber)) {
 			alert('올바른 연락처를 입력해 주세요');
+			return;
 		} else if ($.trim($('#zipCode').val()) == '') {
 			alert('주소를 입력해 주세요');
+			return;
 		} else { 
 			var addressObject = {
 				"addressManagementName": $('#adrName1').val(),
