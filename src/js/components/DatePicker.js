@@ -125,7 +125,7 @@ module.exports = function() {
 			// 일자 선택 callback
 			onPickerSelect : function(selectedDate, inst) {
 				debug.log(fileName, 'DefaultPicker onPickerSelect', selectedDate, inst);
-				picker.trigger('onSelect', [selectedDate, inst]);
+				this.picker.trigger('onSelect', [selectedDate, inst]);
 				this.onPickerHide();
 			}
 		};

@@ -617,7 +617,7 @@ function ClassOrderController() {
 	 */
 	function orderNewFormDepositForm(products) {
 		Super.callApi('/apis/constorders/advance', 'POST', {
-			'orderProducts' : products
+			'products' : products
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('newFormDepositFormResult', [status, result]);

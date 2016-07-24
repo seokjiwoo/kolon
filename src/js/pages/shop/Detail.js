@@ -87,7 +87,7 @@ module.exports = function() {
 		productController.detailCountAdd();
 		$(window).on('beforeunload', function(){
 			productController.detailCountSubtract();
-			return 'bye';
+			//return 'bye';
 		});
 
 		productController.info(self.productNumber);

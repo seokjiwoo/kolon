@@ -82,7 +82,6 @@ module.exports = function() {
 		productController.detailCountAdd();
 		$(window).on('beforeunload', function(){
 			productController.detailCountSubtract();
-			return 'bye';
 		});
 
 		productController.info(self.productNumber);
@@ -200,7 +199,7 @@ module.exports = function() {
 			alert('옵션을 선택해주세요.');
 		} else {
 			var cartData = orderData.concat();
-			//cartController.addMyCartList(cartData);
+			cartController.addMyCartList(cartData);
 		}
 	};
 
@@ -480,12 +479,11 @@ module.exports = function() {
 			orderData = [{
 				"productNumber": self.productNumber,
 				"orderOptionNumber": selectedOptionData.orderOptionNumber,
-				"quantity": 1
+				"quantity": 1,
+				"price": Number(selectedOptionData.price)
 			}];
 			console.log(orderData);
 			optionsDisplay();
-
-			$('.cancelOption').click(optionRemoveHandler);
 			
 			var totalPrice = reCalculateTotalPrice(orderData);
 			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
