@@ -14,6 +14,8 @@ module.exports = function() {
 	
 	var controller = require('../../controller/MemberInfoController');
 	$(controller).on('deleteMemberResult', resignResponseHandler);
+	$(controller).on('refundBankListResult', refundBankListResultHandler);
+	$(controller).on('refundDataResult', refundDataResultHandler);
 
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('logoutResult', logoutResultHandler);
@@ -32,7 +34,9 @@ module.exports = function() {
 		
 		debug.log(fileName, $, util);
 
+		$('#changeRefundInfoButton').click(popRefundAccount);
 		$('#resignForm').submit(resignHandler);
+		$('#resignForm .js-submit').on('click', resignHandler);
 	}
 
 
@@ -74,5 +78,78 @@ module.exports = function() {
 	
 	function logoutResultHandler(e, status) {
 		location.href = '/';
+	};
+
+
+	
+	
+	/**
+	 * 환불정보 팝업 호출 (1) - 은행 목록 요청
+	 */
+	function popRefundAccount(e) {
+		e.preventDefault();
+		controller.refundBankList();
+		e.stopPropagation();
+	};
+
+	/**
+	 * 환불정보 팝업 호출 (2) - 팝업 열기
+	 */
+	function refundBankListResultHandler(e, status, result) {
+		if (status == 200) {
+			MyPage.Super.Super.htmlPopup('../../_popup/popRefundAccount.html', 590, 'popEdge', {
+				onOpen: function() {
+					var tags = '';
+					for (var key in result.bankCodes) {
+						tags += '<li><a href="#" data-value="'+result.bankCodes[key].code+'">'+result.bankCodes[key].bankName+'</a></li>';
+					}
+					$('#refundBankDrop').html(tags);
+					eventManager.triggerHandler(DROPDOWNSCROLL_EVENT.REFRESH);
+					$('#refundAccountForm').submit(submitChangeRefundAccount);
+				},
+				onSubmit: function() {
+					$('#refundAccountForm').submit();
+				}
+			});
+		} else {
+			alert(status);
+		}
+	};
+	
+	/**
+	 * 환불정보 변경요청  
+	 */
+	function submitChangeRefundAccount(e) {
+		e.preventDefault();
+
+		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').val();
+		var accountNumber = $('#accountNumber').val();
+		var depositorName = $('#depositorName').val();
+
+		if (bankCode == '') {
+			alert('은행을 선택해 주세요');
+		} else if (!(/[0-9]+/g).test(accountNumber)) {
+			alert('계좌번호는 숫자만 입력해 주세요');
+		} else if ($.trim(depositorName) == '') {
+			alert('예금주명을 입력해 주세요');
+		} else {
+			controller.refundData(bankCode[0], accountNumber, depositorName);
+		} 
+		
+		e.stopPropagation();
+	};
+	
+	/**
+	 * 환불정보 변경요청 결과 핸들링
+	 */
+	function refundDataResultHandler(e, status, result) {
+		e.preventDefault();
+		if (status == 200) {
+			alert('등록이 완료되었습니다');
+			$.colorbox.close();
+		} else {
+			alert(result.message);
+		}
+		e.stopPropagation();
 	};
 };
