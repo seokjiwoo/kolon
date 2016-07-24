@@ -192,6 +192,8 @@ module.exports = function() {
 	function loginCompleteHandler(e, status, response) {
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
+		status = parseInt(status, 10);
+
 		switch(status) {
 			case 200:
 			case 201:

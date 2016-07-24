@@ -18,15 +18,13 @@ module.exports = function() {
 	$(controller).on('editMemberInfoResult', editInfoResultHandler);
 	$(controller).on('refundBankListResult', refundBankListResultHandler);
 	$(controller).on('refundDataResult', refundDataResultHandler);
+	$(controller).on('changePasswordResult', changePasswordResultHandler);
 	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('loginResult', socialConnectFailHandler);
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
-	
-	var controller = require('../../controller/MemberInfoController');
-	$(controller).on('changePasswordResult', changePasswordResultHandler);
 
 
 

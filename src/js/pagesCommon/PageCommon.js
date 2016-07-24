@@ -15,6 +15,7 @@ module.exports = function() {
 	var device;
 	
 	var debug = require('../utils/Console.js');
+	var util = require('../utils/Util.js');
 
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('refreshMyInfo', loginDataHandler);
@@ -653,5 +654,23 @@ module.exports = function() {
 			"%": lvalue % rvalue
 			}[operator];
 		});
+
+
+		//@see http://stackoverflow.com/questions/10138518/handlebars-substring
+		//@example {{vxSubString value 0 300}}
+		window.Handlebars.registerHelper('vxSubString', function(passedString, startstring, endstring) {
+			var theString = passedString.substring(startstring, endstring);
+			return new Handlebars.SafeString(theString)
+		});
+
+		//@example {{vxMoment value "YYYY.MM.DD"}}
+		window.Handlebars.registerHelper('vxMoment', function(dateStr, dateFormat) {
+			return new window.moment(dateStr).format(dateFormat);
+		});
+
+		//@example {{vxMobileNumberFormat value}}
+		window.Handlebars.registerHelper('vxMobileNumberFormat', function(phoneNumber) {
+			return util.mobileNumberFormat(phoneNumber);
+		})
 	}
 }

@@ -6,3 +6,4 @@ distMobile
 bower_components
 test/bower_components
 .vscode
+sh.exe.stackdump
