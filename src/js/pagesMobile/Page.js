@@ -167,7 +167,7 @@ module.exports = function() {
 	/**
 	 * 휴대폰 수정(=실명인증) 진행
 	 */
-	function requestVerifyMember(e) {
+	function requestVerifyMember(e, authType) {
 		e.preventDefault();
 
 		Super.htmlPopup('../_popup/popCheckId.html', '100%', 'popEdge', {
@@ -176,7 +176,7 @@ module.exports = function() {
 					e.preventDefault();
 					var id = $('#verifyPhoneNumber').val();
 					if (util.checkValidMobileNumber(id)) {
-						memberInfoController.verifyMemberByPhone(id);
+						memberInfoController.verifyMemberByPhone(id, authType);
 					} else {
 						alert('휴대폰 번호를 정확하게 입력해주세요.');
 					}
