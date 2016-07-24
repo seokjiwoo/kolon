@@ -400,7 +400,7 @@ module.exports = function() {
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
 
-		if (loginData == null) {
+		if (opts.name !== 'snsshare' && loginData == null) {
 			alert('로그인이 필요합니다.');
 			location.href = '/member/login.html';
 			return;
