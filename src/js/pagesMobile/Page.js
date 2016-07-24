@@ -55,6 +55,11 @@ module.exports = function() {
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
 
+		// WindowOpener eventManager 연결
+		eventManager.on(WINDOWOPENER_EVENT.REFRESH, onWinOpenerRefreshListener)
+					.on(WINDOWOPENER_EVENT.DESTROY, onWinOpenerDestoryListener);
+
+
 		initAddressPopupButton();	// 주소록 팝업버튼
 
 		$('.btnToggle').on('click', function(e) { // common slideToggle
@@ -427,5 +432,16 @@ module.exports = function() {
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
+	}
+
+
+	function onWinOpenerRefreshListener(e) {
+		onWinOpenerDestoryListener();
+		initAddressPopupButton();
+	}
+
+	function onWinOpenerDestoryListener(e) {
+		$('.openAddressPopup, .openWindowPopup').off('click', onWindowPopupHandler);
+		eventManager.off(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
 }
