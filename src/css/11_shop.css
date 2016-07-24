@@ -110,7 +110,7 @@
 .activeOption .cancelOption:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-6px 0 0 -5px;width:11px;height:11px;background:url(../images/btn_closeW.png) no-repeat;}
 
 
-.detailArea h3 {font-size:80px;font-weight:bold;font-style:italic;font-family:'Times New Roman', sans-serif;}
+.detailArea h3 {font-size:60px;font-style:normal;font-family:NotoSansM;}
 h3.sTit{font-size:50px;}
 .detailArea .icoNewformTit:before {content:'';display:block;width:83px;height:75px;margin:0 auto;background:url(../images/ico_newform_tit.png) no-repeat}
 .italic {font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
@@ -124,7 +124,7 @@ h3.sTit{font-size:50px;}
 
 /* shop detail */
 .detailArea{text-align: center;}
-.detailArea h3 span {display:block;font-size:60px;font-family:'NotoSansT', sans-serif;font-weight:normal;font-style:normal;}
+.detailArea h3 span {display:block;font-size:60px;font-style:normal;font-family:NotoSansM;font-weight:normal;font-style:normal;}
 .shopTop.detailArea h3 {font-size:70px;}
 .shopTop.topArea .topContBox .unitPrice {margin-top:100px;}
 
@@ -139,8 +139,7 @@ h3.sTit{font-size:50px;}
 .productDetail .detailArea .subTit:after{content:'';display: block;width: 100px;height: 1px;background: #000;margin:50px auto 0; }
 
 /* magazine detail */
-.magazineTop.detailArea h3 span {font-size:80px;font-family:'NotoSansL', sans-serif;}
-
+.magazineTop.detailArea h3 span {font-size:60px;font-style:normal;font-family:NotoSansM;}
 
 /* newform detail */
 /* topArea */
