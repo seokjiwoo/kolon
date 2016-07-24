@@ -76,7 +76,7 @@ module.exports = function() {
 		}).embed(document.getElementById('findZipCode'));
 		$('#findZipCode').css({
 			position:'fixed',
-			top:0, left:0, width:'90%', height:'90%', padding:'5%', zIndex:2, background:'rgba(0,0,0,0.5)'
+			top:0, left:0, width:'90%', height:'95%', padding:'5%', zIndex:2, background:'rgba(0,0,0,0.5)'
 		}).show();
 	};
 
