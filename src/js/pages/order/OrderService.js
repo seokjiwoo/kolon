@@ -217,7 +217,8 @@ module.exports = function() {
 					cardSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.cardCompanyName+'">'+eachCard.cardCompanyName+'</option>';
 				}
 				$('#cardSelect').html(cardSelectTag);
-		
+
+				if (paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));

@@ -351,7 +351,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDER_LIST:
-				console.log(result.data);
 				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
 
 				if (result.data.listOrderItems) {

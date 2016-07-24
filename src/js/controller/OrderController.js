@@ -633,10 +633,10 @@ function ClassOrderController() {
 			'products' : products
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('newFormDepositFormResult', [status, result]);
+				$(callerObj).trigger('newFormDepositFormResult', [status, result.common]);
 			} else {
 				Super.handleError('orderNewFormDepositForm', result);
-				$(callerObj).trigger('newFormDepositFormResult', [status, result]);
+				$(callerObj).trigger('newFormDepositFormResult', [status, result.common]);
 			}
 		}, true);
 	};

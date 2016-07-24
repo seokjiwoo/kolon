@@ -79,7 +79,6 @@ module.exports = function() {
 	 * 비번찾기 결과 handling
 	 */
 	function findPwResultHandler(e, status, result) {
-		console.log('findPwResultHandler', e, result, status);
 		switch(status) {
 			case 200:
 				switch(findMethod) {

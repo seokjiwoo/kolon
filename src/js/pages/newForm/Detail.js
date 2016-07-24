@@ -270,7 +270,7 @@ module.exports = function() {
 
 			// [S] PRODUCT - 상품
 				case PRODUCT_EVENT.TOAST_MESSAGE:
-					console.log(result.message); 
+					//console.log(result.message); 
 					break;
 				case PRODUCT_EVENT.INFO:
 					orderData = new Array();
@@ -482,11 +482,10 @@ module.exports = function() {
 
 			orderData = [{
 				"productNumber": self.productNumber,
-				"orderOptionNumber": selectedOptionData.orderOptionNumber,
+				"productOptionNumber": selectedOptionData.orderOptionNumber,
 				"quantity": 1,
 				"price": Number(selectedOptionData.price)
 			}];
-			console.log(orderData);
 			optionsDisplay();
 			
 			var totalPrice = reCalculateTotalPrice(orderData);

@@ -315,7 +315,7 @@ module.exports = function() {
 
 			// [S] PRODUCT - 상품
 				case PRODUCT_EVENT.TOAST_MESSAGE:
-					console.log(result.message); 
+					//console.log(result.message); 
 					break;
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
