@@ -129,7 +129,13 @@ function ClassUtils() {
 			 * 	레퍼러 체크 - 유효 레퍼러(kolocommon내 url) 일시 url 반환
 			 * @type {String}
 			 */
-			getReferrer : getReferrer
+			getReferrer : getReferrer,
+			/**
+			 * @description 
+			 * 	IE Detection
+			 * @type {Boolean}
+			 */
+			isIE : isIE
 		};
 	}
 
@@ -346,6 +352,11 @@ function ClassUtils() {
 		} else {
 			return '';
 		}
+	}
+
+	function isIE(userAgent) {
+		userAgent = userAgent || navigator.userAgent;
+		return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1 || userAgent.indexOf("Edge/") > -1;
 	}
 
 }

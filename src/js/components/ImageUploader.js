@@ -107,9 +107,13 @@ function ClassImageUploader() {
 		setElements();
 
 		if (!util.isSupport().fileReader) {
-			self.wrap.addClass(self.opts.cssClass.noFilereader);
+			// self.wrap.addClass(self.opts.cssClass.noFilereader);
+			self.wrap.find('.js-msg').text('사용할 사진을 컴퓨터에서 선택해주세요.');
 			setFlashVersion();
 		} else {
+			if (util.isIE()) {
+				self.wrap.find('.js-msg').text('사용할 사진을 컴퓨터에서 선택해주세요.');
+			}
 			setHtmlVersion();
 		}
 		
@@ -181,10 +185,14 @@ function ClassImageUploader() {
 	function setBindEvents() {
 		debug.log(fileName, 'setBindEvents');
 		self.inpFile.on('change', onInpFileChange);
-		self.holder.on('dragover', onHolderDrapOver)
-					.on('dragend', onHolderDrapEnd)
-					.on('drop', onHolderDrop)
-					.on('click', onHolderClick);
+
+		if (!util.isIE()) {
+			self.holder.on('dragover', onHolderDrapOver)
+						.on('dragend', onHolderDrapEnd)
+						.on('drop', onHolderDrop);
+		}
+
+		self.holder.on('click', onHolderClick);
 		self.btnCancel.on('click', onBtnCancelClick);
 		self.btnSubmit.on('click', onBtnSubmitClick);
 		self.btnDefault.on('click', onBtnDefaultClick);
