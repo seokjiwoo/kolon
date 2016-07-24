@@ -324,9 +324,17 @@ module.exports = function() {
 			});
 		});
 
-		tag = $('<script></script>');
-		tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
-		$('head').append(tag);
+		$.getScript('//www.google.com/recaptcha/api.js', function() {
+			if (win.grecaptcha) {
+				win.VX_G_RECAPTCHA_CALL_BACK();
+			} else {
+				console.log('arguments', arguments);
+			}
+		});
+
+		// tag = $('<script></script>');
+		// tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
+		// $('head').append(tag);
  
 	}
 }
