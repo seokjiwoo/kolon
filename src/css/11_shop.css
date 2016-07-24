@@ -125,7 +125,7 @@ h3.sTit{font-size:50px;}
 /* shop detail */
 .detailArea{text-align: center;}
 .detailArea h3 span {display:block;font-size:60px;font-style:normal;font-family:NotoSansM;font-weight:normal;font-style:normal;}
-.shopTop.detailArea h3 {font-size:60px;}
+.shopTop.detailArea h3 {font-size:55px;}
 .shopTop.topArea .topContBox .unitPrice {margin-top:100px;}
 
 .productDetail .cardSlider .bx-wrapper{position:relative;height: 600px;overflow: hidden;}
