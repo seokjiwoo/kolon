@@ -57,6 +57,10 @@ $(document).ready(function() {
 			case 'member-accountInformation':
 				PageModuleClass = require('./pagesMobile/member/AccountInformation.js');
 				break;
+
+			case 'member-certified':
+				PageModuleClass = require('./pagesMobile/member/Certified.js');
+				break;
 		// [E] 회원 member
 
 
