@@ -130,10 +130,11 @@ module.exports = function() {
 		} else {
 			win.alert(result.message);
 			
-			if (status === 401 && result.errorCode === '1609' && loginData.stateCode === 'BM_MEM_STATE_01') {
-				$(document).trigger('verifyMember', ['LIVING']);
-				return;
-			}
+			// 인증처리 단계
+			// if (status === 401 && result.errorCode === '1609' && loginData.stateCode === 'BM_MEM_STATE_01') {
+			// 	$(document).trigger('verifyMember', ['LIVING']);
+			// 	return;
+			// }
 		}
 		e.stopPropagation();
 	};
