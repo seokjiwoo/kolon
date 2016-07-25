@@ -27,10 +27,13 @@
 .qaList{border-bottom:1px solid #ccc;}
 .qaList li{padding:25px 0;border-top:1px solid #ccc;}
 .qaList li:first-child{border-top:0;}
+.qaList li .except{overflow: hidden;max-height: 4.6em;}
 .qaList .top:after{content:"";display:block;clear:both;}
-.qaList .info{float:left;padding:4px 6px;border:1px solid #00aeb9;color:#00aeb9;display: inline-block;font-size:11px;}
-.qaList .name{float:right;margin-top:2px;}
+.qaList .info{float:left;padding:4px 6px;border:1px solid #436ebb;color:#436ebb;display: inline-block;font-size:11px;border-radius: 15px;}
+.qaList .name{margin-top:2px;}
 .qaList .name em{color:#999;font-style:normal;}
+.qaList .state{color: #999;font-size: 12px;}
+.qaList .state:after{content:'';display: inline-block;width: 1px;height: 11px;margin:0 5px;background: #dadada;vertical-align: middle;}
 .qaList .txt p{margin-top:10px;line-height:1.4em;}
 .qaList .txt p:first-child{font-size:15px;}
 .qaList .txt p:last-child{color:#666;}
