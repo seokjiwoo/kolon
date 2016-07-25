@@ -78,7 +78,7 @@ module.exports = function() {
 	 * 비번찾기 결과 handling
 	 */
 	function findPwResultHandler(e, status, result) {
-		switch(result.status) {
+		switch(status) {
 			case 200:
 				switch(findMethod) {
 					case 'phone':

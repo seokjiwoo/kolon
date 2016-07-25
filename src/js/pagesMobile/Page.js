@@ -55,6 +55,11 @@ module.exports = function() {
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
 
 
+		// WindowOpener eventManager 연결
+		eventManager.on(WINDOWOPENER_EVENT.REFRESH, onWinOpenerRefreshListener)
+					.on(WINDOWOPENER_EVENT.DESTROY, onWinOpenerDestoryListener);
+
+
 		initAddressPopupButton();	// 주소록 팝업버튼
 
 		$('.btnToggle').on('click', function(e) { // common slideToggle
@@ -168,7 +173,7 @@ module.exports = function() {
 	/**
 	 * 휴대폰 수정(=실명인증) 진행
 	 */
-	function requestVerifyMember(e) {
+	function requestVerifyMember(e, authType) {
 		e.preventDefault();
 
 		Super.htmlPopup('../_popup/popCheckId.html', '100%', 'popEdge', {
@@ -177,7 +182,7 @@ module.exports = function() {
 					e.preventDefault();
 					var id = $('#verifyPhoneNumber').val();
 					if (util.checkValidMobileNumber(id)) {
-						memberInfoController.verifyMemberByPhone(id);
+						memberInfoController.verifyMemberByPhone(id, authType);
 					} else {
 						alert('휴대폰 번호를 정확하게 입력해주세요.');
 					}
@@ -239,10 +244,10 @@ module.exports = function() {
 			$('#menuToggle').show();
 			$('#buttonLogInOut').attr('href', '/member/logout.html').text('로그아웃');
 
-			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount);
-			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount);
-			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount);
-			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount);
+			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount || 0);
+			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount || 0);
+			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount || 0);
+			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount || 0);
 			if (loginData.myActivity.cartCount == 0) {
 				$('#menuCountCart').hide();
 			} else {
@@ -433,5 +438,16 @@ module.exports = function() {
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
+	}
+
+
+	function onWinOpenerRefreshListener(e) {
+		onWinOpenerDestoryListener();
+		initAddressPopupButton();
+	}
+
+	function onWinOpenerDestoryListener(e) {
+		$('.openAddressPopup, .openWindowPopup').off('click', onWindowPopupHandler);
+		eventManager.off(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
 }

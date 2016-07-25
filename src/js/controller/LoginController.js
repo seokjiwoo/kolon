@@ -295,7 +295,7 @@ function ClassLoginController() {
 	 * 인증메일 재전송 요청
 	 */
 	function resendAuthMail(mail) {
-		Super.callApi('/apis/authorize/certification/email', 'POST', {
+		Super.callApi('/apis/authorize/certification/email', 'GET', {
 			"email": mail
 		}, function(status, result) {
 			if (status == 200) {

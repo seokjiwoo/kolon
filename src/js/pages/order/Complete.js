@@ -97,38 +97,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			default:
-				dummyData = {
-					"status": "200",
-					"message": "ok",
-					"data": {
-						"savingSchedPoint": 0,
-						"listOrderItem": [],
-						"paymentInfo": {
-							"orderPrice": 0,
-							"discountPrice": 0,
-							"deliveryCharge": 0,
-							"totalPaymentPrice": 0,
-							"slCreditCard": null,
-							"slDwb": null,
-							"slAccountTransfer": null
-						}
-					}
-				};
-
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						// win.alert('HTTP Status Code ' + status + ' - DummyData 구조 설정');
-						result = dummyData;
-						break;
-				}
-
 				result.data.vxMemberName = self.memberName;
 				result.data.vxOrderNumber = self.orderNumber;
 				result.data.vxOrderDate = win.moment(new Date()).format('YYYY년 MM월 DD일');
@@ -171,8 +139,7 @@ module.exports = function() {
 		var loginData = loginDataModel.loginData();
 
 		if (loginData == null) {
-			alert('로그인이 필요한 페이지입니다');
-			location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 		} else {
 			self.memberName = loginData.memberName;
 			controller.ordersComplete(self.orderNumber);

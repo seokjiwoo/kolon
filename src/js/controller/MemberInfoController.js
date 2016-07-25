@@ -151,7 +151,8 @@ function ClassMemberInfoController() {
 		if (certiNumber != undefined) data.certiNumber = certiNumber;
 
 		Super.callApi('/apis/member/id', 'POST', data, function(status, result) {
-			if (status != 200) Super.handleError('changeEmailId', result);
+			status = Number(status);
+			if (status != 200 && status != 201) Super.handleError('changeEmailId', result);
 			$(callerObj).trigger('changeEmailIdResult', [status, result]);
 		}, false);
 	};

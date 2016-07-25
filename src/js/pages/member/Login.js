@@ -1,15 +1,12 @@
 /* global $ */
 
 module.exports = function() {
-
-
 	var win = window,
 	$ = win.jQuery,
 	eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
 	ALERTPOPUP_EVENT = events.ALERT_POPUP,
 	RECAPTCHA_EVENT = events.RECAPTCHA;
-
 
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
@@ -192,6 +189,8 @@ module.exports = function() {
 	function loginCompleteHandler(e, status, response) {
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
+		status = parseInt(status, 10);
+
 		switch(status) {
 			case 200:
 			case 201:
@@ -322,9 +321,26 @@ module.exports = function() {
 			});
 		});
 
-		tag = $('<script></script>');
-		tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
-		$('head').append(tag);
+		$.getScript('//www.google.com/recaptcha/api.js', function() {
+			if (win.grecaptcha) {
+				win.VX_G_RECAPTCHA_CALL_BACK();
+			} else {
+				//console.log('arguments', arguments);
+				readyReCaptcha();
+			}
+		});
+
+		// tag = $('<script></script>');
+		// tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
+		// $('head').append(tag);
  
+	}
+
+	function readyReCaptcha() {
+		if (win.grecaptcha) {
+			win.VX_G_RECAPTCHA_CALL_BACK();
+		} else {
+			setTimeout(readyReCaptcha, 10);
+		}
 	}
 }

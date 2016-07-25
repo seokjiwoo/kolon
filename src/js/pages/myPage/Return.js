@@ -239,6 +239,13 @@ module.exports = function() {
 			}
 		});
 
+		$('.js-picker-from').on('onSelect', function() {
+			getClaimsList();
+		});
+		$('.js-picker-to').on('onSelect', function() {
+			getClaimsList();
+		});
+
 		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
 		$('.sortTerm li a').click(function(e) {
 			e.preventDefault();

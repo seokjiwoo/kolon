@@ -249,7 +249,6 @@ module.exports = function() {
 					return;
 				}
 				var orderData = result.data;
-				console.log(orderData);
 
 				orderData.orderDate = moment(orderData.listOrderItem[0].orderDateTime).format('YYYY. MM. DD');
 				orderData.orderNumber = orderData.listOrderItem[0].orderNumber;

@@ -61,77 +61,50 @@
 							</td>
 						</tr>
 					</table>
-					<div class="alignBox">						
-						<h3 class="subTit">시공 상품 목록 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
-						<!-- 
-							[D] dropbox - active 시 .dropOn 
-							
-							- data-prevent Flag값 입력
-							- data-prevent : a href prevent flag / 기본값 - true
-						-->
-						<style>
-							/* 테스트 임시 구성 */
-							/*.drop a.on {color:#f1645c}*/
-						</style>
-						<ul class="drop" data-prevent="true">
-							<li><a href="#">진행상태 보기</a></li>
-							<li><a href="#" data-value="type-1">전체</a></li>
-							<li><a href="#" data-value="type-2">입금대기</a></li>
-							<li><a href="#" data-value="type-3">결제완료</a></li>
-							<li><a href="#" data-value="type-4">상품준비중</a></li>
-							<li><a href="#" data-value="type-5">배송중</a></li>
-							<li><a href="#" data-value="type-6">배송완료</a></li>
-							<li><a href="#" data-value="type-7">구매확정</a></li>
-						</ul>
-
-						<!-- 
-							[D] dropbox 체크 타입 - active 시 .dropOn
-
-							- data-prevent Flag값 입력
-							- data-prevent : a href prevent flag / 기본값 - true
-						 -->
-						<ul class="drop dropChk" style="right:200px" data-prevent="true">
+					<div class="alignBox expand">
+						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+						<ul class="drop dropChk dropExpand" data-prevent="true">
 							<li><a href="#">진행상태 보기</a></li>
 							<li>
 								<p class="checkbox">
 									<label for="chkAll" class="on">전체</label>
-									<input type="checkbox" name="chkGroup" id="chkAll" checked="checked" data-value="type-1">
+									<input type="checkbox" name="SL_ORDER_STATE" id="chkAll" checked data-all-checker="true">
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk01" class="on">입금대기</label>
-									<input type="checkbox" name="chkGroup" id="chk01" checked="checked" data-value="type-2">
+									<input type="checkbox" name="SL_ORDER_STATE_01" id="chk01" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk02" class="on">결제완료</label>
-									<input type="checkbox" name="chkGroup" id="chk02" checked="checked" data-value="type-3">
+									<input type="checkbox" name="SL_ORDER_STATE_02" id="chk02" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk03" class="on">상품준비중</label>
-									<input type="checkbox" name="chkGroup" id="chk03" checked="checked" data-value="type-4">
+									<input type="checkbox" name="SL_ORDER_STATE_03" id="chk03" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk04" class="on">배송중</label>
-									<input type="checkbox" name="chkGroup" id="chk04" checked="checked" data-value="type-5">
+									<input type="checkbox" name="SL_ORDER_STATE_04" id="chk04" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk05" class="on">배송완료</label>
-									<input type="checkbox" name="chkGroup" id="chk05" checked="checked" data-value="type-6">
+									<input type="checkbox" name="SL_ORDER_STATE_05" id="chk05" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
 									<label for="chk06" class="on">구매확정</label>
-									<input type="checkbox" name="chkGroup" id="chk06" checked="checked" data-value="type-7">
+									<input type="checkbox" name="SL_ORDER_STATE_06" id="chk06" checked>
 								</p>
 							</li>
 						</ul>

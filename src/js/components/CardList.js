@@ -70,7 +70,8 @@ module.exports = function() {
 				itemSelector : _wrapId + ' > li:not(.stamp)',
 				stamp : _wrapId + ' > .stamp',
 				layoutMode : 'packery',
-				packery : sizeDefine
+				packery : sizeDefine,
+				transitionDuration: 0
 			});
 
 			// isotope event

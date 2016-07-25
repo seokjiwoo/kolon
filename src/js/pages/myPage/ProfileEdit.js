@@ -58,6 +58,15 @@ module.exports = function() {
 			$('#joinBirth01').html(tags);
 			$('#joinBirth02').change(updateDateSelect);
 			updateDateSelect();
+
+			$(window).on('beforeunload', function(){
+				if (confirm("이 페이지를 벗어나면 변경하신 내용이 저장되지 않습니다.\n이전 화면으로 이동하시려면 [확인]을 누르시고, 현재 페이지에 있으시려면 [취소]를 눌러주세요.")) {
+					Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+				} else {
+					return false;
+				}
+				//return 'bye';
+			});
 			
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
@@ -73,7 +82,9 @@ module.exports = function() {
 		debug.log(infoObject);
 
 		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
-			$('#profileID').val(infoObject.email);
+			if (infoObject.joinSectionCode == "BM_JOIN_SECTION_02") $('#changePwRow').remove();
+
+			$('#profileID').val(infoObject.email || '');
 			$('#changeEmailField').hide();
 			if (infoObject.email != null) {
 				$('#profileID').attr('disabled', 'disabled');
@@ -110,7 +121,7 @@ module.exports = function() {
 		
 			if (infoObject.memberRefundAccount != null) {
 				$('#refundBankName').text(infoObject.memberRefundAccount.bankName);  
-				$('#refundAccount').text(infoObject.memberRefundAccount.accountNumber);
+				$('#refundAccount').html(infoObject.memberRefundAccount.accountNumber+" <button id='changeRefundInfoButton' class='btn btnSizeS btnColor03'>계좌 수정</button>");
 				$('#refundName').text(infoObject.memberRefundAccount.depositorName);
 			} else {
 				$('#refundInfoRow').html('<td colspan="3" style="padding: 25px"><button id="changeRefundInfoButton" class="btn btnSizeM btnColor01">계좌 등록</button></td>')
@@ -140,8 +151,11 @@ module.exports = function() {
 
 			switch(infoObject.memberStateCode) {
 				case 'BM_MEM_STATE_01': // 일반 회원
+					$('#certficateMessage').text('본인확인을 해주세요! 본인확인을 하지 않으시면 서비스 이용에 제한이 있을 수 있습니다.');
 					break;
 				case 'BM_MEM_STATE_02': // 본인인증 완료 회원
+					$('#certficateMessage').text('본인확인이 완료되었습니다.');
+					$('#certficateButton').remove();
 					$('#editName').attr('disabled', 'disabled');
 					$('#joinBirth01').attr('disabled', 'disabled');
 					$('#joinBirth02').attr('disabled', 'disabled');
@@ -272,7 +286,7 @@ module.exports = function() {
 		} else if ($.trim(depositorName) == '') {
 			alert('예금주명을 입력해 주세요');
 		} else {
-			controller.refundData(bankCode[0], accountNumber, depositorName);
+			controller.refundData(String(bankCode), String(accountNumber), String(depositorName));
 		} 
 		
 		e.stopPropagation();
@@ -286,6 +300,9 @@ module.exports = function() {
 		if (status == 200) {
 			alert('등록이 완료되었습니다');
 			$.colorbox.close();
+			$(window).off('beforeunload');
+			Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+			location.reload(true);
 		} else {
 			alert(result.message);
 		}
@@ -348,6 +365,10 @@ module.exports = function() {
 				$('#myPageHeaderId').text(enteredId);
 				$('#profileID').val(enteredId).attr('disabled', 'disabled');
 				$('#changeEmailField').hide();
+				
+				$(window).off('beforeunload');
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+				location.reload(true);
 				break;
 			case 400:	// 인증실패
 			default:
@@ -406,6 +427,8 @@ module.exports = function() {
 			switch(response.status) {
 				case '201':
 					MyPage.Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
+						$(window).off('beforeunload');
+						Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
 						location.reload(true);
 					});
 					break;

@@ -116,6 +116,8 @@ function ClassOrderController() {
 			 * 주문완료
 			 */
 			ordersComplete: ordersComplete,
+			ordersAdvanceComplete: ordersAdvanceComplete,
+			ordersBalanceComplete: ordersBalanceComplete,
 			/**
 			 * hash_String 취득(EncryptData)
 			 */
@@ -127,7 +129,11 @@ function ClassOrderController() {
 			/**
 			 * 시공형 주문서 선결제 페이지 조회
 			 */
-			orderNewFormDepositForm: orderNewFormDepositForm
+			orderNewFormDepositForm: orderNewFormDepositForm,
+			/**
+			 * 시공형 주문서 잔금결제 페이지 조회
+			 */
+			orderNewFormBalanceForm: orderNewFormBalanceForm
 		}
 		
 		return callerObj;	
@@ -573,6 +579,32 @@ function ClassOrderController() {
 		}, true);
 	};
 
+	// 선결제 주문 완료
+	function ordersAdvanceComplete(orderNumber) {
+		Super.callApi('/apis/constorders/advance/' + orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			} else {
+				Super.handleError('ordersComplete', result);
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			}
+		}, true);
+	};
+
+	// 잔금결제 주문 완료
+	function ordersBalanceComplete(orderNumber) {
+		Super.callApi('/apis/constorders/balance/' + orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			} else {
+				Super.handleError('ordersComplete', result);
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			}
+		}, true);
+	};
+
+	
+
 	/**
 	 * hash_String 취득(EncryptData)
 	 * @param  {String} ediDate [yyyyMMddHHmmss - 전문 생성일시]
@@ -617,25 +649,35 @@ function ClassOrderController() {
 	 */
 	function orderNewFormDepositForm(products) {
 		Super.callApi('/apis/constorders/advance', 'POST', {
-			'orderProducts' : products
+			'products' : products
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('newFormDepositFormResult', [status, result]);
+				$(callerObj).trigger('newFormDepositFormResult', [status, result.common]);
 			} else {
 				Super.handleError('orderNewFormDepositForm', result);
-				$(callerObj).trigger('newFormDepositFormResult', [status, result]);
+				$(callerObj).trigger('newFormDepositFormResult', [status, result.common]);
 			}
 		}, true);
 	};
 
-	/*
-	/apis/orders : 주문서 작성
-		post /apis/orders
-			배송형 주문서 작성 페이지 조회
-		post /apis/orders/process
-			배송형 주문서 작성 처리
-	*/
+	/**
+	 * 시공형 잔금결제 주문서 작성 페이지 조회
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
+	 */
+	function orderNewFormBalanceForm(orderNumber) {
+		Super.callApi('/apis/constorders/balance/'+orderNumber, 'POST', {
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('newFormBalanceFormResult', [status, result.common]);
+			} else {
+				Super.handleError('orderNewFormBalanceForm', result);
+				$(callerObj).trigger('newFormBalanceFormResult', [status, result.common]);
+			}
+		}, true);
+	};
+
 	
+
 	/*
     get /apis/me/orders/{orderNumber}/cancel
         취소 신청 조회 팝업

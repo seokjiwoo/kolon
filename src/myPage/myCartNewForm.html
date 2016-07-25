@@ -22,24 +22,6 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
-
-<style>
-	.singleCard .cartCont,
-	.singleCard .js-myCartShop-orderInfo,
-	.singleCard .btnC {
-		opacity: 1;
-		-webkit-transform:translateY(0px);-moz-transform:translateY(0px);-ms-transform:translateY(0px);-o-transform:translateY(0px);transform:translateY(0px);
-		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
-	}
-
-	.singleCard .js-myCartShop-orderInfo {-webkit-transition-delay:250ms;transition-delay:250ms}
-	.singleCard .btnC {-webkit-transition-delay:500ms;transition-delay:500ms}
-
-	.singleCard.is-loading .cartCont,
-	.singleCard.is-loading .js-myCartShop-orderInfo,
-	.singleCard.is-loading .btnC {opacity:0;-webkit-transform:translateY(50px);-moz-transform:translateY(50px);-ms-transform:translateY(50px);-o-transform:translateY(50px);transform:translateY(50px)}
-</style>
-
 <script id="myCartNewForm-list-templates" type="text/x-handlebars-template">
 {{!-- myCartNewForm-list-templates --}}
 	<h2 class="secTit">뉴폼 상품</h2>
@@ -65,14 +47,9 @@
 						<tr class="js-myCartNewForm-list"
 							data-list-info='{
 								"cartNumber" : {{cartNumber}},
-								"memberNumber" : {{memberNumber}},
-								"deliveryCharge" : {{deliveryCharge}},
-								"producerType" : "{{producerType}}",
-								"productDiscountSalePrice" : {{productDiscountSalePrice}},
 								"productNumber" : {{productNumber}},
-								"productOrderPrice" : {{productOrderPrice}},
-								"productQuantity" : {{productQuantity}},
-								"productSalePrice" : {{productSalePrice}}
+								"productOptionNumber" : {{orderOptionNumber}},
+								"salePrice" : {{salePrice}}
 						}'>
 							<td>
 								<div class="cartChk">
@@ -92,8 +69,14 @@
 									</div>
 								</div>
 							</td>
-							<td><span class="price fontL"><b class="js-list-price">{{productOrderPriceDesc}}</b> 원</span></td>
-							<td><a href="../_popup/popMyServiceDetail.html" class="btnSizeS btnColor06 btnPop btnPop895" data-user-class="myServiceDetail popEdge">실측/견적 요청</a></td>
+							<td><span class="price fontL"><b class="js-list-price">{{salePriceDesc}}</b> 원</span></td>
+							<td>
+								<!--<a href="../_popup/popMyServiceDetail.html" class="btnSizeS btnColor06 btnPop btnPop895" data-user-class="myServiceDetail popEdge">실측/견적 요청</a>-->
+								<button type="button" class="btn btnSizeS btnColor06 js-myCartNewForm-order" data-order-info='{
+									"productNumber" : {{productNumber}},
+									"productOptionNumber" : {{orderOptionNumber}}
+								}'>실측/견적 요청</button>
+							</td>
 						</tr>
 						{{/each}}
 					{{else}}
@@ -118,6 +101,10 @@
 					<p class="btnR">
 						<a href="#" class="btnSizeS btnColor04 js-list-delete">삭제</a>
 					</p>
+				</div>
+				<!--// 결제 정보 -->
+				<div class="btnC mt40">
+					<button type="button" id='js-myCartNewForm-submit' class="btn btnSizeL btnColor06 btnWM">실측/견적 요청</button>
 				</div>
 			{{/if}}
 		</form>

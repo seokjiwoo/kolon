@@ -19,7 +19,8 @@ function StickyBar() {
 			isFixed : 'is-fixed'
 		},
 		duration : 400,
-		marginPos : 0
+		marginPos : 0,
+		detectEvt : ['show', 'hide']
 	};
 
 	var _isReady = false;
@@ -38,17 +39,22 @@ function StickyBar() {
 	};
 	
 	function init(options) {
-		self = callerObj;
-		self.opts = $.extend({}, opts, options);
-
-		debug.log(fileName, 'init', self.opts);
-
-		setElements();
-		setBindEvents();
-
-		onScrollListener();
+		if (_isReady) return;
 
 		_isReady = true;
+
+		$(win).on('load', function() {
+			self = callerObj;
+			self.opts = $.extend({}, opts, options);
+
+			debug.log(fileName, 'init', self.opts);
+
+			setElements();
+			setBindEvents();
+
+			onScrollListener();
+			setDetect();
+		});
 	}
 
 	function setElements() {
@@ -63,6 +69,41 @@ function StickyBar() {
 				.on('resize', $.proxy(onResizeListener, self));
 
 		self.stickyBarList.find('a').on('click', $.proxy(onStickyClick, self));
+	}
+
+	function setDetect() {
+		var topBanner = $('#topBanner');
+
+		if (!topBanner.size()) return;
+
+		$.each(self.opts.detectEvt, function (i, ev) {
+			var el = $.fn[ev];
+			$.fn[ev] = function () {
+				this.trigger(ev);
+				return el.apply(this, arguments);
+			};
+		});
+
+		topBanner.on('hide', function() {
+			setStickyOffset();
+		});
+	}
+
+	function setStickyOffset() {
+		var topBanner = $('#topBanner'),
+		offset = 0;
+
+		if (!topBanner.size()) return;
+
+		if (topBanner.is(':visible')) {
+			offset = topBanner.outerHeight();
+		}
+
+		if (self.stickyBar.hasClass(self.opts.cssClass.isFixed)) {
+			self.stickyBar.css({'top' : 60 + offset});
+		} else {
+			self.stickyBar.css({'top' : 0});
+		}
 	}
 
 	function onStickyClick(e) {
@@ -88,6 +129,8 @@ function StickyBar() {
 		} else {
 			self.stickyBar.removeClass(self.opts.cssClass.isFixed);
 		}
+		
+		setStickyOffset();
 
 		if (!self.stickyBar.hasClass(self.opts.cssClass.isFixed)) {
 			return

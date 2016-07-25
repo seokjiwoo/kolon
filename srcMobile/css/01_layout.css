@@ -47,7 +47,7 @@ a{color:#666;}
 .gnb .topArea{position:relative;}
 .gnb .userBox{text-align:center;padding-top:25px;background:#ff466c;}
 .gnb .userBox .thumb{width:60px;height:60px;display:inline-block;overflow:hidden;border-radius:100%;}
-.gnb .userBox .thumb img{width:100%;vertical-align:top;}
+.gnb .userBox .thumb img{width:100%;height:100%;vertical-align:top;}
 .gnb .userBox p{position:relative;line-height:1.4em;}
 .gnb .userBox .thumb + p{margin-top: 5px;color:#fff;font-size:15px;font-weight:bold;}
 .gnb .userBox .thumb + p em{font-style: normal}

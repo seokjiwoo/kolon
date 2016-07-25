@@ -120,7 +120,7 @@
 .opinionbox .commentArea.noMoreBtn {padding-top:0}
 .opinionbox .commentArea > p{text-align:center;}
 .opinionbox .moreWrap {width:100%; text-align:center; margin-bottom:30px;}
-.opinionbox .moreBtn{width:117px;height:30px;padding-left:23px;background:#fff;border-radius:14px;display:inline-block;text-align:left; position:relative;}
+.opinionbox .moreBtn{top:10px;left:50%;margin-left:-59px;width:117px;height:30px;padding-left:23px;background:#fff;border-radius:14px;display:inline-block;text-align:left; position:relative;}
 .opinionbox .moreBtn:after {content:''; width:13px; height:8px; margin-top:-4px; background:url("../images/ico_more.png") no-repeat 0 -8px; position:absolute; top:50%; right:15px; display:inline-block;}
 .opinionbox .moreBtn span{padding-top:8px;display:block;color:#000;font-family:'NotoSansR',sans-serif;font-size:13px;}
 .opinionbox .commentArea ul {padding:0 20px;}
@@ -219,7 +219,7 @@ h2.optit span{display:block;padding-top:30px;font-size:20px;font-family:'NotoSan
 .detailBox a.next{right:30px;background-position:-34px 0;}
 select.scrapSelect{width:530px;padding:9px 20px;border:1px solid #d6d6d6;border-radius:7px;font-family:'NotoSansM', sans-serif;color:#666;}
 
-.paging {width:511px; margin:0 auto; padding:50px 0; }
+.paging {width:511px; margin:0 auto; padding:50px 0; text-align:center }
 .paging a {display:inline-block; color:#666; vertical-align:top;}
 .paging > a { line-height:14px;}
 .paging > a:first-child:before,

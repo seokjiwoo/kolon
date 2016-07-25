@@ -66,28 +66,6 @@ module.exports = function() {
 	function init() {
 		Super.init();
 
-		$('.socialBtnOpen').click(function(e){
-			e.preventDefault();
-			if ($(this).parent('.socialBtn').hasClass('active')) {
-				$(this).parent('.socialBtn').removeClass('active');
-			} else {
-				$(this).parent('.socialBtn').removeClass('active').addClass('active');
-			}
-		});
-		$('.socialBtnClose').click(function(e){
-			e.preventDefault();
-			$(this).parent('.socialBtn').removeClass('active');
-		});
-
-		$('.accordion li a').click(function(e){
-			e.preventDefault();
-			if ($(this).parent('li').hasClass('on')) {
-				$(this).parent('li').removeClass('on');
-			} else {
-				$(this).parent('li').removeClass('on').addClass('on');
-			}
-		});
-
 		debug.log(fileName, 'init');
 
 		self = callerObj;
@@ -98,15 +76,21 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 		setBtnsEvents();
+		
+		recommendShopList = CardList();
+		recommendShopList.init('#recommendShopWrap', true);
+		
+		recommendNewFormList = CardList();
+		recommendNewFormList.init('#recommendShopWrap', true);
 
 		stickyBar.init();
 
-		//productController.evals(self.productNumber);
+		productController.detailCountAdd();
+		$(window).on('beforeunload', function(){
+			productController.detailCountSubtract();
+		});
+
 		productController.info(self.productNumber);
-		//productController.partnerInfo(self.productNumber);
-		//productController.preview(self.productNumber);
-		//productController.related(self.productNumber);
-		//productController.reviews(self.productNumber, self.reviewNumber);
 	}
 
 	function setElements() {
@@ -171,8 +155,7 @@ module.exports = function() {
 		}
 
 		if (!isLogin) {
-			win.alert('로그인이 필요합니다.');
-			location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 			return;
 		}
 		
@@ -221,7 +204,7 @@ module.exports = function() {
 			alert('옵션을 선택해주세요.');
 		} else {
 			var cartData = orderData.concat();
-			//cartController.addMyCartList(cartData);
+			cartController.addMyCartList(cartData);
 		}
 	};
 
@@ -234,8 +217,12 @@ module.exports = function() {
 			$(document).trigger('verifyMember', 'NEWFORM');
 		} else {
 			var cartData = orderData.concat();
+			$.map(cartData, function(each) {
+				delete each.quantity;
+				delete each.price;
+			});
 			Cookies.set('instantNFOrder', cartData);
-			location.href = '/order/orderInstallment.html';
+			location.href = '/order/orderService.html';
 		}
 	};
 
@@ -287,6 +274,9 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
+				case PRODUCT_EVENT.TOAST_MESSAGE:
+					//console.log(result.message); 
+					break;
 				case PRODUCT_EVENT.INFO:
 					orderData = new Array();
 
@@ -497,13 +487,11 @@ module.exports = function() {
 
 			orderData = [{
 				"productNumber": self.productNumber,
-				"orderOptionNumber": selectedOptionData.orderOptionNumber,
-				"quantity": 1
+				"productOptionNumber": selectedOptionData.orderOptionNumber,
+				"quantity": 1,
+				"price": Number(selectedOptionData.price)
 			}];
-			console.log(orderData);
 			optionsDisplay();
-
-			$('.cancelOption').click(optionRemoveHandler);
 			
 			var totalPrice = reCalculateTotalPrice(orderData);
 			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');

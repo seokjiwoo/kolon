@@ -33,7 +33,7 @@
 									<input type="text" value="" id="editPhoneID" disabled="disabled"><button id='changePhoneButton' type="button" class="btn btnSizeM btnColor01 verifyMemberPopup">등록하기</button>
 								</td>
 							</tr>
-							<tr>
+							<tr id='changePwRow'>
 								<th><b class="require">* </b>비밀번호</th>
 								<td>
 									<p class="inputWrap">
@@ -81,8 +81,9 @@
 									<td>
 										<p class="inputWrap">
 											<input type="text" value="홍길동" id="editName">
-											<button class='btn btnSizeM btnColor01 btnPop650 verifyMemberPopup' data-user-class="popEdge">본인확인</button>
+											<button id='certficateButton' class='btn btnSizeM btnColor01 btnPop650 verifyMemberPopup' data-user-class="popEdge">본인확인</button>
 										</p>
+										<p class='alert' id='certficateMessage'></p>
 									</td>
 								</tr>
 								<tr>

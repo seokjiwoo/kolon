@@ -15,6 +15,7 @@ module.exports = function() {
 	var controller = require('../../controller/OpinionsController.js');
 	$(controller).on('opinionsClassResult', opinionsClassHandler);
 	$(controller).on('opinionsListResult', opinionsListHandler);
+	$(controller).on('opinionAnswersResult', opinionsAnswerHandler);
 	$(controller).on('opinionsExpertsListResult', opinionsExpertsListHandler);
 	$(controller).on('scrapedOpinionsListResult', scrapedOpinionsListHandler);
 
@@ -24,9 +25,6 @@ module.exports = function() {
 
 	var expertController = require('../../controller/ExpertsController.js');
 	$(expertController).on('expertsListResult', expertListHandler);
-
-	var myPageController = require('../../controller/MyPageController.js');
-	$(myPageController).on('myOpinionsResult', myOpinionsHandler);
 
 	var eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
@@ -46,6 +44,8 @@ module.exports = function() {
 	var uploadScrapImageArrary = [];
 
 	var pollAnswerId;
+
+	var currentPage = 1;
 	
 	var opts = {
 		colorbox : {
@@ -126,7 +126,6 @@ module.exports = function() {
 		if (loginData != null) {
 			$('#myOpinion').show();
 			$('#expertRank').css('margin-top', '20px');
-			myPageController.myOpinions();
 		}
 		controller.opinionsExpertList();
 		expertController.list();
@@ -149,10 +148,10 @@ module.exports = function() {
 		
 		$('#alignDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			listOrder = data.values[0];
-			controller.opinionsList(listOrder);
+			controller.opinionsList(listOrder, currentPage);
 		});
 		
-		controller.opinionsList(listOrder);
+		controller.opinionsList(listOrder, currentPage);
 	}
 
 	/**
@@ -160,25 +159,67 @@ module.exports = function() {
 	 */
 	function opinionsListHandler(e, status, result) {
 		if (status == 200) {
-			$.map(result, function(each) {
+			var pageInfo = result.pageInfo;
+
+			currentPage = pageInfo.page;
+			var totalPage = Math.ceil(pageInfo.totalCount/pageInfo.size);
+			var basePage = 1+(Math.floor((currentPage-1)/5)*5);
+			var tags = '';
+			for (var i=basePage; i <= Math.min(basePage+4, totalPage); i++) {
+				tags += '<a href="#" class="pageButton '+(i==currentPage?'on':'')+'" data-target-page="'+i+'">'+i+'</a>';
+			}
+			$('#pageButtonArea').html(tags);
+			if (basePage == 1) {
+				$('#prevPageButton').hide();
+			} else {
+				$('#prevPageButton').show();
+				$('#prevPageButton').data('target-page', basePage-1);
+			}
+			if (basePage > totalPage-5) {
+				$('#nextPageButton').hide();
+			} else {
+				$('#nextPageButton').show();
+				$('#nextPageButton').data('target-page', basePage+5);
+			}
+			 
+			$('.pageButton').click(function(e){
+				e.preventDefault();
+				$('#opinionList').empty();
+				controller.opinionsList(listOrder, $(this).data().targetPage);
+			});
+
+
+			var opinions = result.opinions;
+
+			$.map(opinions, function(each) {
 				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
 				each.content = each.content.replace(/\n/, '<br />');
-				if (each.answers.length == 0) {
-					each.answerCount = '<p>미답변</p>';
+				if (each.answerCount == 0) {
+					each.answerCountTag = '<p>미답변</p>';
 				} else {
-					each.answerCount = '<p><span class="pointRed">'+each.answers.length+'개</span> 의견</p>';
+					each.answerCountTag = '<p><span class="pointRed">'+each.answerCount+'개</span> 의견</p>';
 				}
+				
+				if (each.answerCount > 5) each.moreButtonFlag = 'Y';
 				$.map(each.answers, function(eachAnswers) {
 					eachAnswers.content = eachAnswers.content.replace(/\n/, '<br />');
 					if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 					if (eachAnswers.answererImageUrl == null) eachAnswers.answererImageUrl = '/images/profile40.jpg';
 				});
+				each.answers.reverse();
 			});
 
 			var template = window.Handlebars.compile($('#opinion-template').html());
-			var elements = $(template(result));
+			var elements = $(template(opinions));
 			$('#opinionList').empty().append(elements);
+
+			$('.moreBtn').click(function(e){
+				e.preventDefault();
+				var targetNumber = $(this).attr('id').substr(11);
+				$(this).hide();
+				controller.opinionAnswers(targetNumber, $('#answerList'+targetNumber).data().answerNextPage);
+			});
 
 			if (loginData && loginData.imageUrl) {
 				$('.myProfileImage').attr('src', loginData.imageUrl);
@@ -221,10 +262,41 @@ module.exports = function() {
 					info : info
 				};
 			});
+			
+			if (loginData != null) {
+				var template = window.Handlebars.compile($('#my-opinion-template').html());
+				var elements = $(template(result.myRecentOpinions));
+				$('#myOpinion').empty().append(elements);
+			}
 
 			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 		}
 	};
+
+	/**
+	 * 
+	 */
+	function opinionsAnswerHandler(e, status, result, opinionNumber) {
+		if (status == 200) {
+			$('#answerList'+opinionNumber).data().answerNextPage++;
+
+			$.map(result.opinionAnswerList, function(eachAnswers) {
+				eachAnswers.content = eachAnswers.content.replace(/\n/, '<br />');
+				if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
+				if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
+				if (eachAnswers.answererImageUrl == null) eachAnswers.answererImageUrl = '/images/profile40.jpg';
+			});
+			result.opinionAnswerList.reverse();
+			
+			var template = window.Handlebars.compile($('#opinion-answer-template').html());
+			var elements = $(template(result.opinionAnswerList));
+			$('#answerList'+opinionNumber).prepend(elements);
+
+			if (result.opinionAnswerList.length == 5) $('#moreAnswers'+opinionNumber).show();
+
+			//console.log($('#answerList'+targetNumber).data().answerNextPage);
+		}
+	}
 
 	/**
 	 * 상단 전문가 리스트 핸들링
@@ -257,17 +329,6 @@ module.exports = function() {
 			var template = window.Handlebars.compile($('#expert-rank-template').html());
 			var elements = $(template(result));
 			$('#expertRank').empty().append(elements);
-		}
-	};
-
-	/**
-	 * 내 의견묻기 목록 핸들링
-	 */
-	function myOpinionsHandler(e, status, result) {
-		if (status == 200) {
-			var template = window.Handlebars.compile($('#my-opinion-template').html());
-			var elements = $(template(result));
-			$('#myOpinion').empty().append(elements);
 		}
 	};
 

@@ -101,13 +101,36 @@
 													<span class="calInp">
 														<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
 														<a href="#" class="calBtn js-btn">날짜 선택</a>
-														<div class="cal-container js-picker"></div>
+														<div class="cal-container js-picker js-picker-visit"></div>
 													</span>
 												</div>
 												<!--// datePicker -->
-												<select title="상담시간 선택" style="width:247px;">
+												<select title="상담시간 선택" style="width:247px;" id='visitTimeSelector'>
 													<option value="" label="시간" selected="selected">시간</option>
-													<option value="" label=""></option>
+													<option value="0" label="오전 12시">오전 12시</option>
+													<option value="1" label="오전 01시">오전 01시</option>
+													<option value="2" label="오전 02시">오전 02시</option>
+													<option value="3" label="오전 03시">오전 03시</option>
+													<option value="4" label="오전 04시">오전 04시</option>
+													<option value="5" label="오전 05시">오전 05시</option>
+													<option value="6" label="오전 06시">오전 06시</option>
+													<option value="7" label="오전 07시">오전 07시</option>
+													<option value="8" label="오전 08시">오전 08시</option>
+													<option value="9" label="오전 09시">오전 09시</option>
+													<option value="10" label="오전 10시">오전 10시</option>
+													<option value="11" label="오전 11시">오전 11시</option>
+													<option value="12" label="오후 12시">오후 12시</option>
+													<option value="13" label="오후 01시">오후 01시</option>
+													<option value="14" label="오후 02시">오후 02시</option>
+													<option value="15" label="오후 03시">오후 03시</option>
+													<option value="16" label="오후 04시">오후 04시</option>
+													<option value="17" label="오후 05시">오후 05시</option>
+													<option value="18" label="오후 06시">오후 06시</option>
+													<option value="19" label="오후 07시">오후 07시</option>
+													<option value="20" label="오후 08시">오후 08시</option>
+													<option value="21" label="오후 09시">오후 09시</option>
+													<option value="22" label="오후 10시">오후 10시</option>
+													<option value="23" label="오후 11시">오후 11시</option>
 												</select>
 											</td>
 										</tr>
@@ -147,13 +170,13 @@
 											<th scope="row">리모델링을 하는 이유가 무엇인가요?</th>
 											<td>
 												<ul class="homeReason"></ul>
-												<!--<input type="text" title="기타 사항 입력" placeholder="기타 사항을 입력해 주세요." style="width:360px;"/>-->
+												<input type="text" title="기타 사항 입력" placeholder="기타 사항을 입력해 주세요." style="width:360px;" id="homeReasonEtcField" />
 											</td>
 										</tr>
 										<tr>
 											<th scope="row">추가 요청사항 (선택)</th>
 											<td>
-												<textarea cols="80" rows="5" title="추가로 필요한 사항을 입력" placeholder="추가로 필요한 사항을 입력해 주세요."></textarea>
+												<textarea cols="50" rows="5" title="추가로 필요한 사항을 입력" placeholder="추가로 필요한 사항을 입력해 주세요." id='requestField'></textarea>
 											</td>
 										</tr>
 									</tbody>
@@ -168,7 +191,7 @@
 							<div class="agreeCont"></div>
 							<p class="checkAgree checkbox">
 								<input type="checkbox" id="agree01">
-								<label for="agree01">개인정보 제 3자 제공에 동의합니다.</label>
+								<label for="agree01" id="agree01cb">개인정보 제 3자 제공에 동의합니다.</label>
 							</p>
 						</div>
 					</div>
@@ -236,7 +259,7 @@
 										<div>
 											<ul class="giveList">
 												<li>적립 예정 <br/>포인트</li>
-												<li class="pc"><b class='savingPoint'></b> p</li>
+												<li>시공 이후 <br/>확인가능</li>
 											</ul>
 										</div>
 									</dd>
@@ -252,9 +275,9 @@
 							<form method="post" action="/">
 								<fieldset >
 									<legend>결제방법 선택</legend>
-									<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-									<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
-									<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
+									<span id='payCARD' class="payRadio on"><a href="#pay1" class="radioBtn">신용카드</a></span>
+									<span id='payVBANK' class="payRadio"><a href="#pay2" class="radioBtn">무통장 입금</a></span>
+									<span id='payBANK' class="payRadio"><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
 								</fieldset>
 							</form>
 						</div>
@@ -532,5 +555,51 @@
 		</div>	
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<form id="payForm" name="payForm" method="post" action="/apis/constorders/advance/process">
+	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호) -->
+	<input type="hidden" name="wishSurveyDate" id="wishSurveyDate" value="" /> <!-- 희망 실측 방문/상담 날짜 -->
+	<input type="hidden" name="wishSurveyHour" id="wishSurveyHour" value="" /> <!-- 희망 실측 방문/상담 시간 -->
+	<input type="hidden" name="wishConstBeginDate" id="wishConstBeginDate" value="" /> <!-- 시공날짜 시작 -->
+	<input type="hidden" name="wishConstEndDate" id="wishConstEndDate" value="" /> <!-- 시공날짜 끝 -->
+	<input type="hidden" name="addressSequence" id="addressSequence" value="" /> <!-- 회원주소순번 -->
+
+	<input type="hidden" name="dwellingFormCode" id="dwellingFormCode" value="" /> <!-- 주거 형태 -->
+	<input type="hidden" name="dwellingPyeongCode" id="dwellingPyeongCode" value="" /> <!-- 주거 평형 -->
+	<input type="hidden" name="remodelingReasonCode" id="remodelingReasonCode" value="" /> <!-- 인테리어 사유 코드 -->
+	<input type="hidden" name="remodelingReasonEtc" id="remodelingReasonEtc" value="" /> <!-- 인테리어 사유 -->
+	<input type="hidden" name="addRequestContents" id="addRequestContents" value="" /> <!-- 인테리어 사유 -->
+	<input type="hidden" name="termsNumber" value="3">
+
+	<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
+	<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->
+	<input type="hidden" name="Moid" id="Moid" value=""/> <!-- 주문번호 -->
+	<input type="hidden" name="BuyerName" id="BuyerName" value=""/> <!-- 이름 -->
+	<input type="hidden" name="BuyerEmail" id="BuyerEmail" value=""/> <!-- 이메일 -->
+	<input type="hidden" name="BuyerAddr" id="BuyerAddr" value="">	<!-- 주소 -->
+	<input type="hidden" name="BuyerTel" id="BuyerTel" value=""/> <!-- 전화번호 -->
+	<input type="hidden" name="GoodsCnt" id="GoodsCnt" value="">	<!-- 상품 갯수 -->
+
+	<input type="hidden" name="PayMethod" id="PayMethod" value="CARD" />	<!-- 결재수단 (CARD/BANK/VBANK) --> 
+
+	<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
+	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00" />		<!-- 할부개월수 (00, 01, 02, ....) -->
+
+	<input type="hidden" name="MID" id="MID" value="">
+	<input type="hidden" name="UserIP" id="UserIP" value="">
+	<input type="hidden" name="MallIP" id="MallIP" value="">
+	<input type="hidden" name="TransType" value="0">
+	<input type="hidden" name="OptionList" value="">
+	<input type="hidden" name="VbankExpDate" id="VbankExpDate" value="VbankExpDate"> 
+	<input type="hidden" name="MallUserID" value=""> 
+	<input type="hidden" name="SUB_ID" value="">
+	<input type="hidden" name="GoodsCl" value="">
+	<input type="hidden" name="EncodeParameters" value="CardNo,CardExpire,CardPwd">
+	<input type="hidden" name="EdiDate" id="EdiDate" value="ediDate">
+	<input type="hidden" name="EncryptData" id="EncryptData" value="hash_String">
+	<input type="hidden" name="SocketYN" value="Y">
+	<input type="hidden" name="TrKey" value="">
+	<input type="hidden" name="SkinType" value="blue">
+	<input type="hidden" name="redirectUrl" value="/order/completeAdvance.html">
+</form>
 </body>
 </html>

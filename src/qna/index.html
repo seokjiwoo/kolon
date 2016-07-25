@@ -126,43 +126,16 @@
 							
 						</div>
 						<!--// list -->
-						<!--<div class="paging">
-							<a href="#">이전</a>
-							<span class="num">
-								<a href="#" class="on">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<a href="#">5</a>
-								<a href="#">6</a>
-								<a href="#">7</a>
-								<a href="#">8</a>
-								<a href="#">9</a>
-								<a href="#">10</a>
+						<div class="paging">
+							<a class='jumpButton pageButton' id='prevPageButton' href="#">이전</a>
+							<span class="num" id='pageButtonArea'>
 							</span>
-							<a href="#">다음</a>
-						</div>-->
+							<a class='jumpButton pageButton' id='nextPageButton' href="#">다음</a>
+						</div>
 					</section>
 					<aside class="col-right">
 						<div id="myOpinion" class="latelyOpinion">
-							<script id="my-opinion-template" type="text/x-handlebars-template">
-							{{!-- my-opinion-template --}}
-							<h2 class="optit"><a href='/myPage/myQnA.html'><span>내가 최근에 등록한 의견</span></a></h2>
-							<ul>
-								{{#each .}}
-								<li>
-									<a href="#">
-										<span>{{title}}</span>
-										<span>
-											<span>{{createDate}}</span>
-											<span><em class="pointRed">{{answerCount}}개</em> 의견</span>
-										</span>
-									</a>
-								</li>
-								{{/each}}
-							</ul>
-							{{!--// my-opinion-template --}}
-							</script>
+							
 						</div>
 
 						<div id="expertRank" class="expertHelp">
@@ -197,6 +170,25 @@
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
+<script id="my-opinion-template" type="text/x-handlebars-template">
+{{!-- my-opinion-template --}}
+<h2 class="optit"><a href='/myPage/myQnA.html'><span>내가 최근에 등록한 의견</span></a></h2>
+<ul>
+	{{#each .}}
+	<li>
+		<a href="#">
+			<span>{{title}}</span>
+			<span>
+				<span>{{createDate}}</span>
+				<span><em class="pointRed">{{answerCount}}개</em> 의견</span>
+			</span>
+		</a>
+	</li>
+	{{/each}}
+</ul>
+{{!--// my-opinion-template --}}
+</script>
+
 <script id="opinion-template" type="text/x-handlebars-template">
 {{!-- opinion-template --}}
 <ul>
@@ -232,15 +224,17 @@
 				</a>
 				<!--// 사진 -->
 				<div class="commentCount">
-					{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
+					{{{answerCountTag}}} <!-- <em class="pointBlue">답변완료</em> -->
 					<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
 				</div>
 			</div>
 			<!--// 의견 내용 -->
 			<div id="commentArea{{opinionNumber}}" class="commentArea">
-				<!--<p><a href="#" class="moreBtn"><span>이전 댓글보기</span></a></p>-->
+				{{#if moreButtonFlag}}
+				<a href="#" class="moreBtn" id="moreAnswers{{opinionNumber}}"><span>이전 댓글보기</span></a></p>
+				{{/if}}
 				<!-- 댓글 리스트 -->
-				<ul>
+				<ul id="answerList{{opinionNumber}}" data-answer-next-page='2'>
 					{{#each answers}}
 					<li>
 						<div class="commentName">
@@ -280,6 +274,25 @@
 	{{/each}}
 </ul>
 {{!--// opinion-template --}}
+</script>
+<script id="opinion-answer-template" type="text/x-handlebars-template">
+{{!-- opinion-answer-template --}}
+{{#each .}}
+<li>
+	<div class="commentName">
+		<div class="name">
+			<span><img src="{{answererImageUrl}}" alt="" /></span>
+			<span>
+				<span><em>{{expertCompany}}</em> {{expertName}}</span>
+				<span class="except">{{answererSectionCodeName}}</span>
+			</span>
+		</div>
+	</div>
+	<p class="txt">{{{content}}}</p>
+	<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount {{answerCountClass}}'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
+</li>
+{{/each}}
+{{!--// opinion-answer-template --}}
 </script>
 </body>
 </html>
