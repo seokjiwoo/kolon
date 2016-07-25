@@ -25,8 +25,8 @@
 .serviceConBox p.serviceCon img {width:100%;vertical-align:top}
 .serviceConBox p.serviceCon + .serviceCon {margin-top:0;}
 .starIco {overflow:hidden;margin-top:20px;}
-.starIco li {position:relative;padding-left:7px;font-size:12px;color:#999;line-height:1.4}
-.starIco li:before {content:'*';display:inline-block;position:absolute;top:0;left:0;}
+.starIco li {position:relative;padding-left:18px;font-size:12px;color:#999;line-height:1.4}
+.starIco li:before {content:'';display:inline-block;position:absolute;top:0;left:0;width: 15px;height: 15px;background: url('../images/ico_info.png') no-repeat 0 -16px;background-size: 100%;}
 .serviceConBox.cleaningCon {display:none;background:url('../images/serviceC_con_bg.png') no-repeat 0 0;background-size:100%;}
 .serviceConBox.washingCon {display:none;background:url('../images/serviceW_con_bg.png') no-repeat 0 0;background-size:100%;}
 
