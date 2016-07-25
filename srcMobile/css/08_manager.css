@@ -14,7 +14,7 @@
 .manager .expertArea .thumb img{width:100%;vertical-align:top;}
 .manager .expertArea .info{color:#fff;text-align:center;}
 .manager .expertArea .info em{display:block;margin-top:16px;font-style:normal;font-size:15px;}
-.manager .expertArea .info em i{display:block;color:#f1dfba;font-style:normal;margin-top:5px;}
+.manager .expertArea .info em i{display:block;color:#b08967;font-style:normal;margin-top:5px;}
 .manager .expertArea .info p{color:#999;line-height:1.4em;margin-top:8px;}
 .manager .expertArea .fol{margin-top:16px;}
 .manager .expertArea .fol span{position:relative;display:inline-block;padding-left:17px;margin-left:25px;font-style:italic;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;}
@@ -84,3 +84,13 @@
 .specialistSelect:after {content:''; width:10.5px; height:6px; margin-top:-3px; background:url(../images/specialistSelect_arrow.png) 0 0 no-repeat; background-size:10.5px 6px; position:absolute; top:50%; right:0px; z-index:0;}
 .specialistSelect select {width:auto; padding-right:20px; text-align:center; color:#fff; border:0;-webkit-appearance: none; -moz-appearance: none; appearance: none; background:transparent;}
 .allMagazine {text-align:center;}
+
+.is-scrolling .manager .portfolioBar {position:fixed; top:45px; left:0; width:100%; background:#fff; opacity: 0.96; display:block; z-index:12;}
+.manager .portfolioBar {display:none;}
+.manager .portfolioBar .pfInfo {padding:15px 7px; overflow:hidden;}
+.manager .portfolioBar .pfInfo p.photo,
+.manager .portfolioBar .pfInfo p.photo img {width:32px; height:32px;}
+.manager .portfolioBar .pfInfo p.photo {float:left; border-radius:50%; overflow:hidden; }
+.manager .portfolioBar .pfInfo .pfTxt {padding:2px 0; margin-left:10px; float:left; font-size:12px; color:#b08967;}
+.manager .portfolioBar .pfInfo .pfTxt p.name {font-weight:bold; color:#333;}
+.manager .portfolioBar .pfInfo .pfTxt p + p {margin-top:5px;}
