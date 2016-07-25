@@ -1,6 +1,7 @@
 .magazineMain {background:url(../images/magazine_header_bg.gif) 50% 0 no-repeat; background-size:360px 930px;}
 .magazineMain .header .gnbBtn {}
 .magazineMain .magazineWrap {width:100%; overflow:hidden;}
+.is-scrolling .magazineMain .magazineWrap .magazineVisual {margin-top:45px;}
 .magazineMain .magazineWrap .magazineVisual {width:100%; overflow:hidden; padding-bottom:168px; position:relative;}
 .magazineMain .magazineWrap .magazineVisual:after {content:''; width:61px; height:112px; background:url(../images/magazine_flag.png) 0 0 no-repeat; background-size:61px 112px; position:absolute; bottom:22px; right:0; z-index:5;}
 .magazineMain .magazineVisual h3.mTit {margin:29px auto 14px;}

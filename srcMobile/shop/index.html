@@ -8,59 +8,38 @@
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
-				<div class="tagList">
-					<a href="#">#북유럽</a>
-					<a href="#">#모던프렌치</a>
-					<a href="#">#럭셔리</a>
-					<a href="#">#모던프렌치</a>
-					<a href="#">#인터스트리얼</a>
-					<a href="#">#모던프렌치</a>
+				<div class="tagWrap">
+					<div class="tagList">
+						<a href="#">#북유럽</a>
+						<a href="#">#모던프렌치</a>
+						<a href="#">#럭셔리</a>
+						<a href="#">#모던프렌치</a>
+						<a href="#">#인터스트리얼</a>
+						<a href="#">#모던프렌치</a>
+					</div>
 				</div>
 				<div class="shopWrap">
-					<div class="shopVisual">
-						샵 디자인 반영전 슬라이드 영역
-						<!-- 작업안됨 <h3 class="nfTit"><img src="/images/newFormSlide_title.png" alt=""/></h3>
-						<div class="newFormSlide">
-							<ul class="nfSlide">
-								<li>
-									<a href="#">
-										<img src="/images/temp20.jpg" alt=""/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="/images/temp20.jpg" alt=""/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="/images/temp20.jpg" alt=""/>
-									</a>
-								</li>
-							</ul>
-						</div> -->
+					<div class="searchDetail">
+						<div class="searchDetailWrap">
+							<form method="post" action="/">
+								<fieldset>
+									<legend>검색결과 조건 정렬 선택</legend>
+									<p class="sdTit">총 <b>150</b>개 상품</p>
+									<a href="../_popup/popDetailedMore.html" class="btnPop detailBtn" data-user-class="pop">상세조건</a><!-- 뉴폼 상세조건 필터 -->
+									<div class="selectBox">
+										<select name="" title="검색결과 정렬 선택" class="">
+											<option value="" selected="selected">최신순</option>
+											<option value="">인기순</option>
+											<option value="">가격높은순</option>
+											<option value="">가격낮은순</option>
+											<option value="">스크랩 많은 순</option>
+										</select>
+									</div>
+								</fieldset> 
+							</form>
+						</div>
 					</div>
-				<div class="searchDetail">
-					<div class="searchDetailWrap">
-						<form method="post" action="/">
-							<fieldset>
-								<legend>검색결과 조건 정렬 선택</legend>
-								<p class="sdTit">총 <b>150</b>개 상품</p>
-								<a href="../_popup/popDetailedMore.html" class="btnPop detailBtn" data-user-class="pop">상세조건</a><!-- 뉴폼 상세조건 필터 -->
-								<div class="selectBox">
-									<select name="" title="검색결과 정렬 선택" class="">
-										<option value="" selected="selected">최신순</option>
-										<option value="">인기순</option>
-										<option value="">가격높은순</option>
-										<option value="">가격낮은순</option>
-										<option value="">스크랩 많은 순</option>
-									</select>
-								</div>
-							</fieldset> 
-						</form>
-					</div>
-				</div>
-				<div class="resultWrap">
+					<div class="resultWrap">
 					<!-- 카드 모듈
 						cardType01 -> 뉴폼
 						cardType02 -> 리빙몰
@@ -578,7 +557,6 @@
 							</div>
 						</li>
 					</ul>
-					
 				</div>
 			</section>
 			<!-- @@include ../_template/footer.html -->

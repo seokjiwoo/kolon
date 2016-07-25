@@ -278,3 +278,11 @@ ul.photoSelectBtn {width:100%; overflow:hidden; margin:0 auto; border:1px solid 
 ul.photoSelectBtn li {padding:20px 10px; vertical-align:middle; color:#333; font-size:15px;}
 ul.photoSelectBtn li + li {border-top:1px solid #ccc;}
 ul.photoSelectBtn li a {width:100%; display:inline-block;}
+
+ul.shareBtn {width:100%; padding:15px 0; overflow:hidden;}
+ul.shareBtn li {width:25%; float:left; text-align:center;}
+ul.shareBtn li a {width:50.5px; height:50.5px; font-size:0; background:url(../images/icon_share_pop.png) no-repeat; background-size:171px 110.5px; display:inline-block;}
+ul.shareBtn li a.fb {background-position:0 0;}
+ul.shareBtn li a.tw {background-position:-60px 0;}
+ul.shareBtn li a.ks {background-position:-121px 0;}
+ul.shareBtn li a.urlBtn {background-position:-59.5px -59.5px; }

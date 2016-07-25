@@ -14,9 +14,13 @@
 
 .vx_simply_toast.alert-info
 {
-	color: #31708f;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
+	color: #fff;
+	background-color: #0a0a0a;
+	border-radius: 20px;
+	padding:13px;
+	font-size:13px;
+	line-height:12px;
+	text-align:center;
 }
 
 .vx_simply_toast.alert-danger
