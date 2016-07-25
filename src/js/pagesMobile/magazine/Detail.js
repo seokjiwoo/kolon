@@ -12,6 +12,11 @@ module.exports = function() {
 	var SuperClass = require('../Page.js');
 	var Super = SuperClass();
 	
+	var controller = require('../../controller/MagazineController');
+	$(controller).on('magazineInfoResult', getDetailHandler);
+	var scrapController = require('../../controller/ScrapController.js');
+	$(scrapController).on('addScrapResult', scrapResultHandler);
+	
 	var callerObj = {
 		/**
 		 * 초기화
@@ -23,6 +28,49 @@ module.exports = function() {
 	
 	function init() {
 		Super.init();
-		debug.log(fileName, $, util);
-	}
+		
+		var articleNumber = util.getUrlVar().articleNumber;
+		controller.info(articleNumber);
+	};
+
+	function getDetailHandler(e, status, result) {
+		var magazineData = result.data.magazine;
+		debug.log(magazineData);
+
+		renderData(magazineData, '#top-cont-templates', '#top-cont-wrap', true);
+		renderData(magazineData, '#description-templates', '#description-wrap', true);
+		
+		if (magazineData.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
+		if (magazineData.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
+		$('.js-add-like').click(function(e){
+			e.preventDefault();
+			if ($(this).hasClass('on')) {
+				//
+			} else {
+				controller.likes(magazineData.magazineNumber);
+			}
+		});
+		$('.js-add-scrap').click(function(e){
+			e.preventDefault();
+			if ($(this).hasClass('on')) {
+				//
+			} else {
+				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_MAGAZINE, magazineData.magazineNumber);
+			}
+		});
+	};
+
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
+	};
+
+	function scrapResultHandler(e, status, result) {
+		if (status == 200) {
+			$('.js-add-scrap').addClass('on');
+			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
+		}
+	};
 };
