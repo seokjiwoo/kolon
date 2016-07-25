@@ -80,7 +80,7 @@
 /* card style */
 .popCard {width:100%; overflow:hidden; padding-bottom:15px;}
 .cardWrap {width:300px; z-index: 1;margin:0 auto 0;padding-top:83px;}
-.cardWrap > li.card {max-width:145px;overflow: hidden;float: left;margin-top:-84px;padding:42px 0;text-align: center;color:#fefefe;background-size: 100%;background-position: center; position:relative;}
+.cardWrap > li.card {max-width:145px;overflow: hidden;float: left;margin-top:-84px;padding:42px 0;text-align: center;color:#fefefe;background-size: 100%;background-position: center; position:relative; z-index:2;}
 .cardWrap > li.card .hexagon {max-width:145px; top:42px; margin:42px 0;}
 
 @media (max-width:1520px){
@@ -93,15 +93,6 @@
 .cardLayer .cardWrap li {position:relative; background:none;}
 .cardLayer .cardWrap li + li {margin-left:10px;}
 
-.cardTitle {margin-top:-262px;}
-.cardTitle .cardTitleCont {width:100%; height:100%; position:relative;}
-.cardTitle .cardTitleCont .cardTitleBg,
-.cardTitle .cardTitleCont .cardFlagBg {position:absolute; z-index:0;}
-.cardTitle .cardTitleCont .cardTitleSub {overflow:hidden; position:absolute;}
-.cardTitle .cardTitleCont .cardTitleSub .txt {color:#000; font-size:18px; font-family:'NotoSansT', sans-serif; line-height:130%;}
-.cardTitle .cardTitleCont .cardTitleSub .txt b {font-family:'NotoSansM', sans-serif;}
-.cardTitle .cardTitleCont .cardTitleSub a.more {display:inline-block; padding:14px 92px 14px 0; color:#000; font-size:14px; font-family:'NotoSansL', sans-serif; line-height:130%; background:url('../images/main_cardMore_btn.png') 100% 50% no-repeat;}
-.cardTitle .cardTitleCont .cardTitleSub a.more b {font-family:'NotoSansM', sans-serif;}
 .cardTitle.newForm {width:590px; height:716px; position:absolute; top:1292px; left:0;}
 .cardTitle.newForm .cardTitleCont .cardTitleSub {width:368px; overflow:hidden; top:352px; right:0;}
 .cardTitle.newForm .cardTitleCont .cardTitleSub .more {margin-top:66px; float:right;}
