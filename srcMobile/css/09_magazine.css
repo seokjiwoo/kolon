@@ -47,7 +47,7 @@
 .magazine .magazineIntro p.mzIntroBg img {width:auto; max-width:100%;}
 .magazine .magazineIntro p.mzIntroBg {position:relative;}
 .magazine .magazineIntro p.mzIntroBg:before {content:''; width:100%; height:100%;position:absolute; top:0; left:0; background:url(../images/magazine_intro_dim.png) 0 0 no-repeat; background-size:100%;}
-.magazine .magazineIntro dl.mzIntro {padding:50px 30px; position:absolute; top:0; left:0;}
+.magazine .magazineIntro dl.mzIntro {padding:50px 30px; position:absolute; top:45px; left:0;}
 .magazine .magazineIntro dl.mzIntro dt,
 .magazine .magazineIntro dl.mzIntro dd {color:#fff;}
 .magazine .magazineIntro dl.mzIntro dt {width:100%; font-size:27px; line-height:32.5px;}
