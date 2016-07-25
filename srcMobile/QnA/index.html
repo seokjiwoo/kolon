@@ -106,14 +106,14 @@
 		</div>
 	</div>
 	<script>
-		$(document).ready(function(){
-			$(".specialSlide .slide").bxSlider({
-				minSlides: 3,
-				maxSlides: 4,
-				slideWidth: 75,
-				slideMargin: 10
-			})
-		});
+		// $(document).ready(function(){
+		// 	$(".specialSlide .slide").bxSlider({
+		// 		minSlides: 3,
+		// 		maxSlides: 4,
+		// 		slideWidth: 75,
+		// 		slideMargin: 10
+		// 	})
+		// });
 	</script>
 
 
@@ -121,11 +121,10 @@
 {{!-- experts-template --}}
 	{{#each experts}}
 	<li>
-		<div class="hexagon" style="background-image: url('{{imageUrl}}')"><!-- 배경이미지 -->
-			<div class="hexTop"><span></span></div>
-			<div class="hexBottom"><span></span></div>
-		</div>
-		<h3 class="expertName">{{name}} / {{companyName}}</h3>
+		<a href="javascript:;">
+			<img src="{{imageUrl}}" alt="" />
+			<span>{{name}} / {{companyName}}</span>
+		</a>
 	</li>
 	{{/each}}
 {{!--// experts-template --}}

@@ -131,9 +131,38 @@ module.exports = function() {
 		expertsController.list();
 	}
 
+	/**
+	 * 스크랩 북 목록 핸들링
+	 */
 	function opinionsListHandler(e, status, result) {
 		win.console.log(status, result.pageInfo);
 	}
+
+	/**
+	 * 상단 전문가 리스트 핸들링
+	 */
+	function expertListHandler(e, status, result) {
+		win.console.log(e, status, result);
+		if (status == 200) {
+			var template = window.Handlebars.compile($('#experts-template').html());
+			var elements = $(template(result));
+			$('#expertList').empty().append(elements);
+
+			win.console.warn("$('#experts-template').html()", $('#experts-template').html());
+			win.console.log(template, elements, result);
+
+			// $('#expertList').bxSlider({
+			// 	minSlides: 5,
+			// 	maxSlides: 5,
+			// 	responsive: false,
+			// 	pager: false,
+			// 	controls: false,
+			// 	slideWidth: 166,
+			// 	slideMargin: 7,
+			// 	auto: true
+			// });
+		}
+	};
 
 	function onControllerListener(e, status, response) {
 		var eventType = e.type,
@@ -178,6 +207,8 @@ module.exports = function() {
 
 			// 의견묻기 전문가 리스트
 			case OPINIONS_EVENT.EXPERTS_LIST:
+				win.console.log(e, status, result, 'onControllerListener');
+				expertListHandler(e, status, result);
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 
