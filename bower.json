@@ -40,6 +40,7 @@
     "jquery-form": "^3.46.0",
     "html5shiv": "^3.7.3",
     "zeroclipboard": "^2.2.0",
-    "placeholders": "^4.0.1" 
+    "placeholders": "^4.0.1",
+    "simply-toast": "https://github.com/ericprieto/simply-toast.git"
   }
 }
