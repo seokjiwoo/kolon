@@ -240,13 +240,14 @@ h3.sTit{font-size:50px;}
 .detailArea.recommend{padding-top: 150px;text-align: center;}
 .detailArea.recommend + .recommend{padding-bottom: 140px;}
 
+
 /* packageArea */
 .packageArea{background: url('../images/bg_relate.jpg') no-repeat center top;}
 .packageArea .icoNewformTit{margin-bottom: 75px;}
 .packageArea .cardWrap{overflow: hidden;margin: 0;padding: 0;}
 .packageArea .cardWrap li{position: relative;margin:10px;}
 
-<<<<<<< HEAD
+
 /* 상세시작 */
 .detailRow01{position:relative;}
 .detailRow01 .imgArea img{width:100%;vertical-align:top;}
@@ -273,5 +274,3 @@ h3.sTit{font-size:50px;}
 
 .detailRow02{background:#fff;padding:0 15px 25px;}
 .detailRow02 .info{padding:15px 0 15px;border-bottom:1px solid #e5e5e5;}
-=======
->>>>>>> origin/jjh_work
