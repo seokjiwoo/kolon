@@ -87,7 +87,7 @@ module.exports = function() {
 		recommendNewFormList = CardList();
 		recommendNewFormList.init('#recommendShopWrap', true);
 
-		stickyBar.init();
+		//stickyBar.init();
 
 		productController.detailCountAdd();
 		$(window).on('beforeunload', function(){

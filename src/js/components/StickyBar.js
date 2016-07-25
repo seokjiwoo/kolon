@@ -71,8 +71,6 @@ function StickyBar() {
 	function setDetect() {
 		var topBanner = $('#topBanner');
 
-		win.console.log(topBanner.size());
-
 		if (!topBanner.size()) return;
 
 		$.each(self.opts.detectEvt, function (i, ev) {

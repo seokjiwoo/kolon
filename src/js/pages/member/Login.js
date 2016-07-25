@@ -325,7 +325,8 @@ module.exports = function() {
 			if (win.grecaptcha) {
 				win.VX_G_RECAPTCHA_CALL_BACK();
 			} else {
-				console.log('arguments', arguments);
+				//console.log('arguments', arguments);
+				readyReCaptcha();
 			}
 		});
 
@@ -333,5 +334,13 @@ module.exports = function() {
 		// tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
 		// $('head').append(tag);
  
+	}
+
+	function readyReCaptcha() {
+		if (win.grecaptcha) {
+			win.VX_G_RECAPTCHA_CALL_BACK();
+		} else {
+			setTimeout(readyReCaptcha, 10);
+		}
 	}
 }

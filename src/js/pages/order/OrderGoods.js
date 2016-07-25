@@ -213,7 +213,7 @@ module.exports = function() {
 				}
 				$('#cardSelect').html(cardSelectTag);
 
-				if (paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
+				if (data.paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
 				/* var bankSelectTag = '<option value="" label="은행 선택" selected="selected">은행 선택</option>';
 				for (var key in data.banks) {
