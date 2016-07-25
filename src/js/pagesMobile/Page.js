@@ -16,6 +16,7 @@ module.exports = function() {
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
+	snsShare = require('../components/SnsShare.js'),
 	scrollMenu = require('../components/ScrollMenu'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
@@ -51,7 +52,8 @@ module.exports = function() {
 
 		initHorizontalScroll();	//horizontal scroll wrap width
 
-		scrollMenu.init();
+		scrollMenu.init();			// scroll에 따른 메뉴 활성화
+		snsShare.init();			// snsshare 메뉴
 
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
@@ -359,6 +361,11 @@ module.exports = function() {
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
 
+		if (opts.name !== 'snsshare' && loginData == null) {
+			$(document).trigger('needLogin');
+			return;
+		}
+
 		var opts = {
 			name : 'addressPopup',
 			left : null,
@@ -429,6 +436,7 @@ module.exports = function() {
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxRefreshListener(e) {
 		initHorizontalScroll();
+		snsShare.refresh();
 	}
 
 	// Colorbox Cleanup 시점
