@@ -268,7 +268,8 @@ module.exports = function() {
 	}
 
 	function setStickySnsShare() {
-		$('.hoverSocialBtn').on('mouseenter', onStickyShareEnter);
+		$('.hoverSocialBtn').off('mouseenter', onStickyShareEnter)
+							.on('mouseenter', onStickyShareEnter);
 	}
 
 	// Handlebars 마크업 템플릿 구성
@@ -290,10 +291,10 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								destoryBtnsEvents();
 								setBtnsEvents();
+								setStickySnsShare();
 
 								if (!stickyBar.isReady()) {
 									stickyBar.init();
-									setStickySnsShare();
 								}
 							});
 	};
