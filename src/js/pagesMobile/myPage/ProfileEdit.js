@@ -18,15 +18,13 @@ module.exports = function() {
 	$(controller).on('editMemberInfoResult', editInfoResultHandler);
 	$(controller).on('refundBankListResult', refundBankListResultHandler);
 	$(controller).on('refundDataResult', refundDataResultHandler);
+	$(controller).on('changePasswordResult', changePasswordResultHandler);
 	
 	var loginController = require('../../controller/LoginController');
 	$(loginController).on('loginResult', socialConnectFailHandler);
 	$(loginController).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(loginController).on('socialConnectResult', socialConnectResultHandler);
 	$(loginController).on('socialDisconnectResult', socialDisconnectResultHandler);
-	
-	var controller = require('../../controller/MemberInfoController');
-	$(controller).on('changePasswordResult', changePasswordResultHandler);
 
 
 
@@ -97,15 +95,19 @@ module.exports = function() {
 		debug.log(infoObject);
 
 		if (Cookies.get('profileEditAuth') == 'auth' || infoObject.joinSectionCode == "BM_JOIN_SECTION_02") {
-			$('#profileID').text(infoObject.email);
+			$('#profileID').val(infoObject.email || '');
 			$('#changeEmailField').hide();
 			if (infoObject.email != null) {
 				$('#profileID').attr('disabled', 'disabled');
+				$('#changeIdButton').text('변경');
+			} else {
 				$('#changeIdButton').text('등록');
 			}
 			$('#editPhoneID').val(infoObject.cellPhoneNumber);
-			if (infoObject.cellPhoneNumber != null) {
+			if (infoObject.cellPhoneNumber == null) {
 				$('#changePhoneButton').text('등록');
+			} else {
+				$('#changePhoneButton').text('변경');
 			}
 			$('#profileMobile').text(util.mobileNumberFormat(infoObject.cellPhoneNumber));
 			for (var key in infoObject.socials) {

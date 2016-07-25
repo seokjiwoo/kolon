@@ -57,7 +57,9 @@ function ClassFollowController() {
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addFollowsResult', [status, result, elements]);
-			} else {
+			} if (status == 401 && result.errorCode == '1603') {
+				$(document).trigger('needLogin');
+			}else {
 				Super.handleError('addFollows', result);
 				$(callerObj).trigger('addFollowsResult', [status, result, elements]);
 			}

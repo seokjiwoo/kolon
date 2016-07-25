@@ -11,6 +11,12 @@ function Events() {
 
 	var Events = {
 		MEMBER_INFO : {
+			INFO : 'myInfoResult',
+			CHANGE_EMAIL_ID : 'changeEmailIdResult',
+			EDIT_INFO : 'editMemberInfoResult',
+			REFUND_BANK_LIST : 'refundBankListResult',
+			REFUND_DATA : 'refundDataResult',
+			CHANGE_PWD : 'changePasswordResult',
 			IS_LOGIN : 'VX-MEMBER_INFO-IS_LOGIN'
 		},
 		// @see http://www.jacklmoore.com/colorbox/
@@ -33,7 +39,9 @@ function Events() {
 			OPEN : 'VX-ALERT_POPUP-OPEN'
 		},
 		HTML_POPUP : {
-			OPEN : 'VX-HTML_POPUP-OPEN'
+			OPEN : 'VX-HTML_POPUP-OPEN',
+			REFRESH : 'VX-HTML_POPUP-REFRESH',
+			DESTROY : 'VX-HTML_POPUP-DESTROY'
 		},
 		CHECK_BOX : {
 			CHANGE : 'VX-CHECK_BOX-CHANGE'
@@ -73,7 +81,9 @@ function Events() {
 			DESTROY : 'VX-INFO_SLIDER-DESTROY',
 		},
 		WINDOW_OPENER : {
-			OPEN : 'VX-WINDOW_OPENER-OPEN'
+			OPEN : 'VX-WINDOW_OPENER-OPEN',
+			REFRESH : 'VX-WINDOW_OPENER-REFRESH',
+			DESTROY : 'VX-WINDOW_OPENER-DESTROY'
 		},
 		RECAPTCHA : {
 			CALL_BACK : 'VX-G_RECAPTCHA-CALL_BACK'
@@ -108,6 +118,10 @@ function Events() {
 			// Login - 로그인
 			// @see LoginController.js
 			LOGIN : {
+				RESULT : 'loginResult',
+				SOCIAL_LOGIN_URL : 'socialLoginUrlResult',
+				SOCIAL_CONNECT : 'socialConnectResult',
+				SOCIAL_DISCONNECT : 'socialDisconnectResult',
 				NOT_A_ROBOT : 'notarobotResult'
 			},
 			// Opinions - 의견묻기
@@ -212,6 +226,8 @@ function Events() {
 			// @see ProductController.js
 			// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/product-controller
 			PRODUCT : {
+				// 토스트 메시지
+				TOAST_MESSAGE: 'toastMessageResult',
 				// 샵 상품 목록
 				SHOP_LIST: 'shopProductListResult', 
 				// 뉴폼 상품 목록
@@ -275,7 +291,9 @@ function Events() {
 					ORDERS_PROCESS : 'ordersProcessResult',
 				
 				// 뉴폼상품 선결제 페이지 조회
-				NEWFORM_ORDER_DEPOSIT_INFO: 'newFormDepositFormResult'
+				NEWFORM_ORDER_DEPOSIT_INFO: 'newFormDepositFormResult',
+				// 뉴폼상품 잔금결제 페이지 조회
+				NEWFORM_ORDER_BALANCE_INFO: 'newFormBalanceFormResult'
 			},
 			CLAIMS : {
 				// 교환/반품/취소 목록 조회

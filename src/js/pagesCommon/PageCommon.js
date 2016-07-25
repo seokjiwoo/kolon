@@ -15,6 +15,7 @@ module.exports = function() {
 	var device;
 	
 	var debug = require('../utils/Console.js');
+	var util = require('../utils/Util.js');
 
 	var loginController = require('../controller/LoginController');
 	$(loginController).on('refreshMyInfo', loginDataHandler);
@@ -34,6 +35,7 @@ module.exports = function() {
 	OPTIONNUM_EVENT = events.OPTION_NUM,
 	CARD_LIST_EVENT = events.CARD_LIST;
 
+	$(document).on('needLogin', needLoginHandler);
 	
 	var callerObj = {
 		/**
@@ -295,6 +297,11 @@ module.exports = function() {
 		});
 	};
 	
+	function needLoginHandler(e) {
+		alert('로그인이 필요합니다');
+		location.href = '/member/login.html';
+	}
+
 	function htmlPopupLinkHandler(e) {
 		e.preventDefault();
 		var popupFile = $(this).attr('href');
@@ -433,7 +440,11 @@ module.exports = function() {
 							$.colorbox.resize();
 						}
 
-						$(window).resize(function(e){ $.colorbox.close(); });
+						$(window).on('orientationchange', function() {
+							$.colorbox.close();
+						});
+
+						// $(window).resize(function(e){ $.colorbox.close(); });
 						break;
 				}
 			}
@@ -653,5 +664,23 @@ module.exports = function() {
 			"%": lvalue % rvalue
 			}[operator];
 		});
+
+
+		//@see http://stackoverflow.com/questions/10138518/handlebars-substring
+		//@example {{vxSubString value 0 300}}
+		window.Handlebars.registerHelper('vxSubString', function(passedString, startstring, endstring) {
+			var theString = passedString.substring(startstring, endstring);
+			return new Handlebars.SafeString(theString)
+		});
+
+		//@example {{vxMoment value "YYYY.MM.DD"}}
+		window.Handlebars.registerHelper('vxMoment', function(dateStr, dateFormat) {
+			return new window.moment(dateStr).format(dateFormat);
+		});
+
+		//@example {{vxMobileNumberFormat value}}
+		window.Handlebars.registerHelper('vxMobileNumberFormat', function(phoneNumber) {
+			return util.mobileNumberFormat(phoneNumber);
+		})
 	}
 }

@@ -69,7 +69,7 @@ module.exports = function() {
 		$(cardList).on('cardAppended', cardAppendedHandler);
 
 		expertsController.brand(self.expertNumber);
-		expertsController.brandProducts(self.expertNumber, 'PD_OPTION_SORT_01');
+		expertsController.brandProducts(self.expertNumber, 'newest');
 	}
 
 	function cardAppendedHandler(e) {
@@ -92,7 +92,7 @@ module.exports = function() {
 	function setBtnsEvents() {
 		destroyBtnsEvents();
 		$('#btnFollow').on('click', onFollowListener);
-		$('#brandList .drop').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
+		$('#orderDrop').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
 	}
 
 	function onDropCheckMenuChange(e, data) {
@@ -101,7 +101,6 @@ module.exports = function() {
 		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
 		cardList.removeAllData();
 		expertsController.brandProducts(self.expertNumber, target.val().join(''));
-		// getOrderList(self.searchInp.val(), data.values.join(','));
 	}
 
 	function onFollowListener(e) {
@@ -160,6 +159,7 @@ module.exports = function() {
 				break;
 			case EXPERTS_EVENT.BRAND_PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				cardList.removeAllData();
 				cardList.appendData(result.data.products);
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:

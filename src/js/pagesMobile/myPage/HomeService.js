@@ -14,8 +14,12 @@ module.exports = function() {
 	MyPage = MyPageClass(),
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass(),
-	dropDownMenu =  require('../../components/DropDownMenu.js'),
-	callerObj = {
+	dropDownMenu =  require('../../components/DropDownMenu.js');
+
+	var controller = require('../../controller/HomeServiceController.js');
+	$(controller).on('homeServiceOrderListResult', listHandler);
+
+	var callerObj = {
 		/**
 		 * 초기화
 		 */
@@ -32,7 +36,14 @@ module.exports = function() {
 		},
 		cssClass : {
 			categoryPop : 'dateChangePop'
-		}
+		},
+		search : {
+			wrap : '.js-order-search',
+			inp : '.js-inp',
+			submit : '.js-submit',
+		},
+		dateFormat : 'YYYYMMDD',
+		orderFilter : '.js-order-filter .js-filter'
 	},
 	self;
 	
@@ -44,43 +55,64 @@ module.exports = function() {
 		debug.log(fileName, 'init');
 
 		self = callerObj;
+		self.opts = opts;
 
 		setElements();
 		initRangePicker();
 		setBindEvents();
+
+		refreshListCritica();
 	}
 
 	function setElements() {
 		self.colorbox = $(opts.colorbox.target);
+
+		self.search = $(self.opts.search.wrap);
+		self.searchInp = self.search.find(self.opts.search.inp);
+		self.searchSubmit = self.search.find(self.opts.search.submit);
 	}
 
 	function initRangePicker() {
 		setRangePicker();
 
 		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
-		$('.sortTerm li a').click(function(e) {
+
+		$('.js-sort-date li').click(function(e) {
 			e.preventDefault();
-			$(this).addClass('on').parent().siblings('li').find('a').removeClass('on');
+			$(this).addClass('acitve').siblings('li').removeClass('acitve');
 			switch($(this).text()) {
 				case '1주일':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(7, 'days').format('YYYY-MM-DD'));
 					break;
 				case '2주일':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(14, 'days').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(14, 'days').format('YYYY-MM-DD'));
 					break;
 				case '1개월':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(1, 'months').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(1, 'months').format('YYYY-MM-DD'));
 					break;
 				case '3개월':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(3, 'months').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(3, 'months').format('YYYY-MM-DD'));
 					break;
 				case '6개월':
-					$('.js-picker-from').datepicker('setDate', moment().subtract(6, 'months').format('YYYY-MM-DD'));
+					$('.js-picker-from').datepicker('setDate', win.moment().subtract(6, 'months').format('YYYY-MM-DD'));
 					break;
 			}
-			$('.js-picker-to').datepicker('setDate', moment().format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
 			e.stopPropagation();
+
+			refreshListCritica();
 		});
+
+		$('.js-sort-date li.js-default').trigger('click');
+	};
+
+	function refreshListCritica(e) {
+		if (e != undefined) e.preventDefault();
+		var fromDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
+		var toDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
+		controller.homeServiceOrderList(self.searchInp.val(), fromDate, toDate);
+		if (e != undefined) e.stopPropagation();
 	};
 
 	function setRangePicker() {
@@ -104,7 +136,7 @@ module.exports = function() {
 				}
 			}
 		});
-	}
+	};
 
 	function setBindEvents() {
 		debug.log(fileName, 'setBindEvents');
@@ -114,6 +146,47 @@ module.exports = function() {
 		$(doc).on(CB_EVENTS.COMPLETE, onCboxEventListener)
 				.on(CB_EVENTS.CLEANUP, onCboxEventListener)
 				.on(CB_EVENTS.CLOSED, onCboxEventListener);
+		
+		$('#searchButton').click(refreshListCritica);
+
+		self.search.on('submit', function(e) {
+			e.preventDefault();
+		});
+
+		self.searchSubmit.on('click', onSearch);
+		self.searchInp.on('keydown', onSearch);
+
+		$(self.opts.orderFilter).on('click', onFilterChange);
+	}
+
+	function onFilterChange(e) {
+		e.preventDefault();
+		
+		var target = $(e.currentTarget),
+		values = target.data('filter');
+
+		self.activeFilterIdx = target.closest('li').index() + 1;
+
+		debug.log(fileName, 'onFilterChange', values);
+		refreshListCritica();
+	}
+
+	function onSearch(e) {
+		if (e.type === 'keydown') {
+			if (e.which !== $.ui.keyCode.ENTER) {
+				return;
+			}
+		}
+
+		e.preventDefault();
+
+		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
+			win.alert('검색어를 입력하세요.');
+			self.searchInp.val('').focus();
+			return;
+		}
+
+		refreshListCritica();
 	}
 
 	function onCboxEventListener(e) {
@@ -173,4 +246,45 @@ module.exports = function() {
 		$(dropDownMenu).trigger(dropDownMenu.EVENT.DESTROY);
 	}
 
+	function listHandler(e, status, result) {
+		// 임시구성 - 신청, 진행중, 완료, 결제 - 수량관리용
+		// API 제공 필요
+		result.vxOrderStateCodes = {
+			'LS_MOVING_STATE_01' : 0,
+			'LS_MOVING_STATE_02' : 0,
+			'LS_MOVING_STATE_03' : 0,
+			'LS_MOVING_STATE_04' : 0,
+			'LS_MOVING_STATE_05' : 0,
+			'LS_MOVING_STATE_06' : 0,
+			'LS_MOVING_STATE_07' : 0
+		};
+		$.map(result.livingRequestHistoryList, function(each) {
+			each.createDate = win.moment(each.createDateTime).format('YYYY. MM. DD');
+			switch(each.serviceSectionCode) {
+				case 'LS_SERVICE_TYPE_01':
+					switch(each.statusCode) {
+						case "LS_MOVING_STATE_01": 
+						case "LS_MOVING_STATE_02": each.paymentStatus = '실측 후 견적 안내 및 계약 진행'; break;
+						case "LS_MOVING_STATE_03": 
+						case "LS_MOVING_STATE_04": each.paymentStatus = '업체와 협의 중'; break;
+						case "LS_MOVING_STATE_05": 
+						case "LS_MOVING_STATE_06": each.paymentStatus = '결제완료'; break;
+						case "LS_MOVING_STATE_07": each.paymentStatus = ''; break;
+					}
+					break;
+			}
+		});
+		debug.log(result);
+		renderData(result, '#homeservice-list-templates', '#homeservice-wrap', true);
+	};
+
+	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
+		var template = window.Handlebars.compile($(templateSelector).html());
+		var elements = $(template(data));
+		if (clearFlag) $(wrapperSelector).empty();
+		$(wrapperSelector).append(elements);
+
+		$(self.opts.orderFilter).off('click', onFilterChange);
+		$(self.opts.orderFilter).on('click', onFilterChange);
+	};
 };

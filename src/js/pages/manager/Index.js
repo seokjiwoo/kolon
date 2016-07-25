@@ -60,7 +60,15 @@ module.exports = function() {
 			}
 		});
 		
-		$('#searchButton').click(refreshList);
+		$('#searchButton').click(function(e){
+			e.preventDefault();
+			if ($.trim($('#searchField').val()) == '') {
+				alert('최소 한글자의 검색어를 입력해주세요.');
+			} else {
+				refreshList();
+			}
+			e.stopPropagation();
+		});
 
 		window.onhashchange = hashChangeHandler;
 		hashChangeHandler();
@@ -84,11 +92,9 @@ module.exports = function() {
 		refreshList();
 	};
 
-	function refreshList(e) {
-		if (e != undefined) e.preventDefault();
+	function refreshList() {
 		cardList.removeAllData();
 		controller.name(orderCode, $('#searchField').val());
-		if (e != undefined) e.stopPropagation();
 	}
 
 	function expertListHandler(e, status, result) {

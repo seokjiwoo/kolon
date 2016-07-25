@@ -42,6 +42,9 @@ module.exports = function() {
 	var salePrice;
 	var totalQty;
 
+	var shareEnterDiff = 0,
+	shareEnterDiffLimit = 250;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -83,7 +86,14 @@ module.exports = function() {
 		
 		recommendNewFormList = CardList();
 		recommendNewFormList.init('#recommendShopWrap', true);
-		
+
+		//stickyBar.init();
+
+		productController.detailCountAdd();
+		$(window).on('beforeunload', function(){
+			productController.detailCountSubtract();
+			//return 'bye';
+		});
 
 		productController.info(self.productNumber);
 	}
@@ -151,8 +161,7 @@ module.exports = function() {
 		}
 
 		if (!isLogin) {
-			win.alert('로그인이 필요합니다.');
-			location.href = '/member/login.html';
+			$(document).trigger('needLogin');
 			return;
 		}
 		
@@ -239,23 +248,28 @@ module.exports = function() {
 
 	function onStickyShareEnter() {
 		$(this).addClass('is-hover');
-		
-		$(this).off('mouseleave', onStickyShareLeave)
-				.on('mouseleave', onStickyShareLeave);
+
+		shareEnterDiff = +new Date();
+		var wrap = $(this).closest('.socialTopBtn');
+		wrap.off('mouseoveroutside', onStickyShareLeave)
+			.on('mouseoveroutside', onStickyShareLeave);
 	}
 
 	function onStickyShareLeave() {
+		if (+new Date() - shareEnterDiff < shareEnterDiffLimit)  return;
+
 		var isClipHover = $(this).find('.zeroclipboad-is-hover').size();
 		if (isClipHover) {
-			$(this).off('mouseleave', onStickyShareLeave);
+			$(this).off('mouseoveroutside', onStickyShareLeave);
 			return;
 		}
-		$(this).off('mouseleave', onStickyShareLeave);
-		$(this).removeClass('is-hover');
+		$(this).off('mouseoveroutside', onStickyShareLeave);
+		$(this).find('.hoverSocialBtn').removeClass('is-hover');
 	}
 
 	function setStickySnsShare() {
-		$('.hoverSocialBtn').on('mouseenter', onStickyShareEnter);
+		$('.hoverSocialBtn').off('mouseenter', onStickyShareEnter)
+							.on('mouseenter', onStickyShareEnter);
 	}
 
 	// Handlebars 마크업 템플릿 구성
@@ -277,10 +291,10 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								destoryBtnsEvents();
 								setBtnsEvents();
+								setStickySnsShare();
 
 								if (!stickyBar.isReady()) {
 									stickyBar.init();
-									setStickySnsShare();
 								}
 							});
 	};
@@ -309,6 +323,9 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
+				case PRODUCT_EVENT.TOAST_MESSAGE:
+					//console.log(result.message); 
+					break;
 				case PRODUCT_EVENT.INFO:
 					debug.log(fileName, 'onControllerListener', eventType, status, response);
 

@@ -95,6 +95,7 @@ span.price.fontS {font-size:14px;}
 .payTb.border dl dd.totalwrap div{width:100% !important;}
 .payTb.border dl dd.totalwrap div{display:block;}
 .payTb.border dl ul.totalList li{padding:18px 30px;border-top:1px solid #000;}
+.payTb.border dl ul.totalList.advance li{padding:8px 30px;}
 .payTb.border dl ul.totalList li:first-child{border-top:0;}
 .payTb.border dl ul.totalList li:after{content:"";display:block;clear:both;}
 .payTb.border dl ul.totalList li em{float:left;display:inline-block;font-style:normal;font-family: 'NotoSansR',sans-serif;}

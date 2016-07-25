@@ -120,6 +120,13 @@ module.exports = function() {
 				}
 			}
 		});
+
+		$('.js-picker-from').on('onSelect', function() {
+			refreshListCritica();
+		});
+		$('.js-picker-to').on('onSelect', function() {
+			refreshListCritica();
+		});
 	};
 
 	function setBindEvents() {

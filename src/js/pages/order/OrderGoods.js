@@ -16,6 +16,8 @@ module.exports = function() {
 	events = require('../../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	CARD_LIST_EVENT = events.CARD_LIST,
 	ORDER_EVENT = events.ORDER;
 
 	var addressController = require('../../controller/AddressController.js');
@@ -211,6 +213,8 @@ module.exports = function() {
 				}
 				$('#cardSelect').html(cardSelectTag);
 
+				if (data.paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
+
 				/* var bankSelectTag = '<option value="" label="은행 선택" selected="selected">은행 선택</option>';
 				for (var key in data.banks) {
 					var eachCard = data.banks[key];
@@ -222,6 +226,8 @@ module.exports = function() {
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
 				});
 
+				if (!util.isIe()) $('#payBANK').remove();
+
 				$('#MID').val(data.pgInfo.mid);
 				$("#MallIP").val(data.pgInfo.mallIp);
 				$("#UserIP").val(data.pgInfo.userIp);
@@ -230,7 +236,7 @@ module.exports = function() {
 				
 				$('#GoodsName').val(data.products[0].productName);
 				$('#Amt').val(baseTotalPrice);
-				$('#Moid').val(data.orderNumber);
+				$('#Moid').val(data.pgInfo.moid);
 				$('#GoodsCnt').val(data.products.length);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
@@ -239,6 +245,7 @@ module.exports = function() {
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
 				$('.requestPaymentButton').click(getHashString);
+				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;
 		}
 	}
@@ -304,6 +311,7 @@ module.exports = function() {
 			url: "/apis/orders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
+				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
 				goPay(document.payForm);

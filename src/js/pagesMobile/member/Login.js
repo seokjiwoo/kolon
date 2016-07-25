@@ -84,7 +84,7 @@ module.exports = function() {
 	 * 회원 이용약관 본문 핸들링
 	 */
 	function termsContentHandler(e, term) {
-		Super.Super.messagePopup(term.termsName, term.termsContents, 590, 'popEdge');
+		Super.Super.messagePopup(term.termsName, term.termsContents, '100%', 'popEdge');
 	};
 	
 	/**
@@ -192,6 +192,8 @@ module.exports = function() {
 	function loginCompleteHandler(e, status, response) {
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
+		status = parseInt(status, 10);
+
 		switch(status) {
 			case 200:
 			case 201:
@@ -216,7 +218,7 @@ module.exports = function() {
 					case 1901:	// 모바일 인증번호
 						if (!firstTryFlag) alert(response.message);
 					case 1900:	// 모바일 가입 인증 요구
-						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
+						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', '100%', 'popEdge', {
 							onOpen: function() {
 								$('#mobileAuthNumber').val('');
 								$('#sendedPhoneNumber').text(util.mobileNumberFormat(enteredId));
@@ -256,6 +258,9 @@ module.exports = function() {
 							]
 						);
 						controller.notarobot();
+						break;
+					default:
+						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 				}
 				break;

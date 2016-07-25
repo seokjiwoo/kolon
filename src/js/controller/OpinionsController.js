@@ -27,6 +27,10 @@ function ClassOpinionsController() {
 			 */
 			opinionsList: opinionsList,
 			/**
+			 * 의견묻기 답변 전체 리스트 조회
+			 */
+			opinionAnswers: opinionAnswers,
+			/**
 			 * 의견묻기 전문가 리스트
 			 */
 			opinionsExpertList: opinionsExpertList,
@@ -62,17 +66,33 @@ function ClassOpinionsController() {
 		}, true);
 	}
 	
-	function opinionsList(order) {
+	function opinionsList(order, page) {
 		Super.callApi('/apis/opinions', 'GET', {
-			"orderType": order
+			"orderType": order,
+			"page": page,
+			"size": 2
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('opinionsListResult', [status, result.data.opinions]);
+				$(callerObj).trigger('opinionsListResult', [status, result.data]);
 			} else {
 				Super.handleError('opinionsList', result);
 				$(callerObj).trigger('opinionsListResult', [status, result]);
 			}
 		}, true);
+	};
+	
+	function opinionAnswers(opinionNumber, page) {
+		Super.callApi('/apis/opinions/'+opinionNumber+'/answer', 'GET', {
+			"page": page,
+			"size": 5
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('opinionAnswersResult', [status, result.data, opinionNumber]);
+			} else {
+				Super.handleError('opinionAnswers', result);
+				$(callerObj).trigger('opinionAnswersResult', [status, result]);
+			}
+		}, false);
 	};
 
 	function opinionsExpertList() {

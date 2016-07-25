@@ -212,10 +212,7 @@
 						tempHtml = '';
 
 						if (e.which && (e.which === $.ui.keyCode.ENTER) || (e.which === $.ui.keyCode.SPACE)) {
-							win.console.log('value', value);
-							win.console.log('terms', terms);
 							$.each(terms, function(index, val) {
-								win.console.log('each', index, val);
 								if (!val || val === ' ' || val === '&nbsp;' || val === '&nbsp;&nbsp;') {
 									return;
 								}
@@ -270,8 +267,6 @@
 							val.replace(this.opts.hashReg, function(value) {
 								hashHtml += value;
 							});
-
-							win.console.log('split', hashHtml, val.split(hashHtml)[1].split(/\s{1}/));
 
 							rtn = val.split(hashHtml)[1].split(/\s{1}/);
 							rtn.unshift(hashHtml);
@@ -390,7 +385,7 @@
 						}
 
 						if (e.which && (e.which === $.ui.keyCode.ENTER) || (e.which === $.ui.keyCode.SPACE)) {
-							win.console.log('submit');
+							//win.console.log('submit');
 						}
 					},
 					tagAutoComplete : function(e) {

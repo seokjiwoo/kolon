@@ -19,7 +19,8 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	EXPERTS_EVENT = events.EXPERTS,
 	FOLLOWING_EVENT = events.FOLLOWING,
-	INFOSLIDER_EVENT = events.INFO_SLIDER;
+	INFOSLIDER_EVENT = events.INFO_SLIDER,
+	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
 	
 	var CardList = require('../../components/CardList.js');
 	var cardList;
@@ -63,7 +64,7 @@ module.exports = function() {
 		setBtnsEvents();
 
 		expertsController.detail(self.expertNumber);
-		expertsController.products(self.expertNumber, 'PD_OPTION_SORT_01');
+		expertsController.products(self.expertNumber, 'newest');
 	}
 
 	function setElements() {
@@ -86,6 +87,15 @@ module.exports = function() {
 	function setBtnsEvents() {
 		destroyBtnsEvents();
 		$('#btnFollow').on('click', onFollowListener);
+		$('#orderDrop').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
+	}
+
+	function onDropCheckMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		cardList.removeAllData();
+		expertsController.products(self.expertNumber, target.val().join(''));
 	}
 
 	function onFollowListener(e) {
@@ -139,6 +149,7 @@ module.exports = function() {
 				break;
 			case EXPERTS_EVENT.PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				cardList.removeAllData();
 				cardList.appendData(result.data.products);
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:

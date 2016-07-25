@@ -102,26 +102,26 @@
 								.on('drop', $.proxy(this.onHolderDrop, this))
 								.on('click', $.proxy(this.onHolderClick, this));
 
-					win.console.log('this.btnCancel', this.btnCancel);
+					// win.console.log('this.btnCancel', this.btnCancel);
 					this.btnCancel.on('click', $.proxy(this.onBtnCancelClick, this));
 					this.btnSubmit.on('click', $.proxy(this.onBtnSubmitClick, this));
 				},
 				onHolderDrapOver : function(e) {
-					win.console.log('onHolderDrapOver', e);
+					// win.console.log('onHolderDrapOver', e);
 
 					e.preventDefault();
 					var target = $(e.currentTarget);
 					target.addClass('hover');
 				},
 				onHolderDrapEnd : function(e) {
-					win.console.log('onHolderDrapEnd', e);
+					// win.console.log('onHolderDrapEnd', e);
 
 					e.preventDefault();
 					var target = $(e.currentTarget);
 					target.removeClass('hover');
 				},
 				onHolderDrop : function(e) {
-					win.console.log('onHolderDrop', e.originalEvent.dataTransfer.files);
+					// win.console.log('onHolderDrop', e.originalEvent.dataTransfer.files);
 
 					e.preventDefault();
 					var target = $(e.currentTarget),
@@ -159,18 +159,18 @@
 					}
 				},
 				onBtnCancelClick : function(e) {
-					win.console.log('onBtnCancelClick', e);
+					// win.console.log('onBtnCancelClick', e);
 					this.clearPreviewFile();
 				},
 				onBtnSubmitClick : function(e) {
-					win.console.log('onBtnSubmitClick', e);
+					// win.console.log('onBtnSubmitClick', e);
 
 					if (!this.imageInfo) {
 						win.alert('이미지를 선택하세요.');
 						return;
 					}
 					win.console.info('전송처리 단계~');
-					win.console.log('this.imageInfo', this.imageInfo);
+					// win.console.log('this.imageInfo', this.imageInfo);
 				},
 				setReadFiles : function(file) {
 					file = file[0];
@@ -185,7 +185,7 @@
 						return;
 					}
 
-					win.console.log(file, file.size, file.width, file.height);
+					// win.console.log(file, file.size, file.width, file.height);
 
 					var _this = this;
 					this.imgRotation = 0;
@@ -239,17 +239,17 @@
 							// 가로형 - landscape
 							imgScale.x = viewPort.width / imgWidth;
 							imgScale.y = imgScale.x;
-							win.console.log('가로형 ', viewPort, imgScale);
+							// win.console.log('가로형 ', viewPort, imgScale);
 						} else if (imgHeight > imgWidth) {
 							// 세로형 - portrait
 							imgScale.y = viewPort.height / imgHeight;
 							imgScale.x = imgScale.y;
-							win.console.log('세로형 ', imgScale);
+							// win.console.log('세로형 ', imgScale);
 						} else {
 							// 정방형
 							imgScale.y = viewPort.height / imgHeight;
 							imgScale.x = imgScale.y;
-							win.console.log('정방형 ', imgScale);
+							// win.console.log('정방형 ', imgScale);
 						}
 
 						displayWidth = imgScale.x * imgWidth;
@@ -263,7 +263,7 @@
 							displayHeight = imgScale.y * displayHeight;
 						}
 
-						win.console.log(this.imgRotation);
+						// win.console.log(this.imgRotation);
 
 						image.css({
 							'width' : displayWidth,
