@@ -31,7 +31,7 @@
 			<div class="payTb payTbL border">
 				<dl class="payS minus">
 					<dt><div>견적금액</div></dt>
-					<dd><div><span class="price"><b>32,000,000</b> 원</span></div></dd>
+					<dd><div><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b> 원</span></div></dd>
 				</dl>
 				<dl class="payS equal">
 					<dd class="pricewrap">
@@ -39,11 +39,11 @@
 							<ul class="priceList">
 								<li>
 									<em>선결제금액</em>
-									<span class="price"><b>300,000</b> 원</span>
+									<span class="price"><b>{{constPaymentInfo.totalPaymentPriceDesc}}</b> 원</span>
 								</li>
 								<li>
 									<em>총 할인금액</em>
-									<span class="point">포인트 <i>0P</i></span>
+									<span class="point"><i>{{constPaymentInfo.totalDiscountPriceDesc}} P</i></span>
 								</li>
 							</ul>
 						</div>
@@ -52,7 +52,7 @@
 				<dl class="payS">
 					<dt><div>총 결제금액</div></dt>
 					<dd>
-						<div><span class="price"><b>31,700,000</b> 원</span></div>
+						<div><span class="price"><b>{{constPaymentInfo.advancePriceDesc}}</b> 원</span></div>
 					</dd>
 				</dl>
 			</div>
@@ -67,13 +67,7 @@
 				<tbody>
 					<tr>
 						<th scope="row">결제방법</th>
-						<td>무통장입금</td>
-						<th scope="row">입금자명</th>
-						<td>홍길동 (*입금자명 불일치할 경우 입금확인이 지연됩니다.)</td>
-					</tr>
-					<tr>
-						<th scope="row">입금계좌 정보</th>
-						<td colspan="3"><b>XX은행</b> 123-456789-01-132 / <b>예금주</b> ㈜가인인테리어 (*주문 후 YYYY.MM.DD 까지 입금하지 않으시면 주문이 자동 취소됩니다.)</td>
+						<td>{{constPaymentInfo.method}}</td>
 					</tr>
 				</tbody>
 			</table>
@@ -91,7 +85,7 @@
 				<tbody>
 					<tr>
 						<th scope="row">기본 적립</th>
-						<td><span class="pointRed">235,800</span> P</td>
+						<td><span class="pointRed">{{constPaymentInfo.savingPointDesc}}</span> P</td>
 						<th scope="row">적립 시점</th>
 						<td>구매확정 시 적립</td>
 					</tr>
@@ -120,42 +114,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						반복영역
+						{{#each constProducts}}
 						<tr>
 							<td>
 								<div class="photoList">
-									<a href="#">
-										<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
+									<a href="/newForm/detail.html?productNumber={{productNumber}}">
+										<span class="thumb"><img src="{{productImageUrl}}" alt=""/></span>
 										<span class="cartInfo">
-											<span class="cartTit">비스트 콜라보레이션 <br/>아이방 패키지</span>
+											<span class="cartTit">{{productName}}</span>
 										</span>
 									</a>
 								</div>
 							</td>
-							<td><b>1,700,000</b> 원</td>
-							<td>ANNA</td>
-							<td><b>1,720,000</b> 원<br/>(실측 : +20,000 원)</td>
-							<td><b>- 120,000</b> 원</td>
-							<td><b>1,720,000</b> 원</td>
+							<td><b>{{constExpectPriceDesc}}</b> 원</td>
+							<td>{{saleMemberName}}</td>
+							<td><b>{{constExpectPrice}}</b> 원</td>
+							<td><b>- {{discountPriceDesc}}</b> 원</td>
+							<td><b>???</b> 원</td>
 						</tr>
-						// 반복영역
-						<tr>
-							<td>
-								<div class="photoList">
-									<a href="#">
-										<span class="thumb"><img src="/images/temp09.jpg" alt=""/></span>
-										<span class="cartInfo">
-											<span class="cartTit">비스트 콜라보레이션 <br/>아이방 패키지</span>
-										</span>
-									</a>
-								</div>
-							</td>
-							<td><b>1,700,000</b> 원</td>
-							<td>ANNA</td>
-							<td><b>1,720,000</b> 원<br/>(실측 : +20,000 원)</td>
-							<td><b>- 120,000</b> 원</td>
-							<td><b>1,720,000</b> 원</td>
-						</tr>
+						{{/each}}
 					</tbody>
 				</table>
 				<div class="tbSBg tbSet">
@@ -167,21 +144,21 @@
 						<tbody>
 							<tr>
 								<th scope="row">시공대상</th>
-								<td>서울 서초구 반포동 아파트 79㎡</td>
+								<td>{{constOrderInfo.roadBaseAddress}}</td>
 								<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
-								<td><span class="price"><b>34,400,000</b>원</span></td>
+								<td><span class="price"><b></b>원</span></td>
 							</tr>
 							<tr>
 								<th scope="row">예상기간</th>
-								<td>2016. 04. 17 ~ 05.02 (16일)</td>
+								<td>0000.00.00 ~ 0000.00.00 (0일)</td>
 								<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
-								<td rowspan="2"><span class="price"><b>32,000,000</b>원</span></td>
+								<td rowspan="2"><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b>원</span></td>
 							</tr>
 							<tr>
 								<th scope="row">시공업체</th>
 								<td>
-									<span class="companyInfo">김석우  |  (주)가인인테리어</span>
-									<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>
+									<!--<span class="companyInfo">김석우  |  (주)가인인테리어</span>
+									<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>-->
 								</td>
 							</tr>
 						</tbody>
@@ -208,10 +185,10 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>도배</td>
-						<td class="txtR">1,300,000원</td>
-						<td>LG, DID, 대동,대우 등의 실크벽지, 초배시공</td>
-						<td rowspan="5" class="lineL">
+						<td></td>
+						<td class="txtR">원</td>
+						<td></td>
+						<td rowspan="1" class="lineL">
 							<ul class="tbList2">
 								<li>고객요청시 무료방문견적 및 상세 견적서 제공</li>
 								<li>고객요청시 3D 디자인시안 무료 제공 (계약전-유료)</li>
@@ -221,26 +198,6 @@
 								<li>시공완료일 부터 12개월 이내 부실시공으로 인한 하자발생시 A/S.</li>
 							</ul>
 						</td>
-					</tr>
-					<tr>
-						<td>바닥재</td>
-						<td class="txtR">670,000원</td>
-						<td>LG. 한화, 고려 등의 중보행용 바닥재</td>
-					</tr>
-					<tr>
-						<td>거실확장</td>
-						<td class="txtR">3,300,000원</td>
-						<td>철거,바닥난방,조형공사,단열작업,전기</td>
-					</tr>
-					<tr>
-						<td>거실욕실</td>
-						<td class="txtR">2,600,000원</td>
-						<td>철거,방수,벽천정목공사,타일,욕조or샤워부스</td>
-					</tr>
-					<tr>
-						<td>싱크대</td>
-						<td class="txtR">2,300,000원</td>
-						<td>멤브도어,친환경목대,스텐볼,후드,수전</td>
 					</tr>
 				</tbody>
 			</table>

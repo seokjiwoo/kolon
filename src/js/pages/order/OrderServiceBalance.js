@@ -45,6 +45,7 @@ module.exports = function() {
 	var loginDataModel = require('../../model/LoginModel');
 	var loginData;
 
+	var orderNumber;
 	var orderData;
 	
 	var callerObj = {
@@ -86,7 +87,7 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		var orderNumber = util.getUrlVar().orderNumber;
+		orderNumber = util.getUrlVar().orderNumber;
 		var orderProductArray = new Array();
 
 		if (orderNumber == undefined) {
@@ -174,6 +175,8 @@ module.exports = function() {
 					reCalculatePointUse();
 				});
 
+				reCalculatePointUse();
+
 				var cardSelectTag = '<option value="" label="카드 선택" selected="selected">카드 선택</option>';
 				for (var key in data.listCards) {
 					var eachCard = data.listCards[key];
@@ -193,7 +196,7 @@ module.exports = function() {
 				
 				$('#GoodsName').val(productsInfo[0].productName);
 				$('#Amt').val(paymentInfo.totalPaymentPrice);
-				$('#Moid').val(data.orderNumber);
+				$('#Moid').val(orderNumber);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
 				$('#SelectCardCode').val(''); // 카드번호
@@ -296,10 +299,9 @@ module.exports = function() {
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice+"&orderNumber="+orderNumber,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
-				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
 				goPay(document.payForm);

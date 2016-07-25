@@ -133,7 +133,12 @@ function ClassOrderController() {
 			/**
 			 * 시공형 주문서 잔금결제 페이지 조회
 			 */
-			orderNewFormBalanceForm: orderNewFormBalanceForm
+			orderNewFormBalanceForm: orderNewFormBalanceForm,
+
+			/**
+			 * 시공형 주문목록
+			 */
+			myConstOrdersList: myConstOrdersList
 		}
 		
 		return callerObj;	
@@ -204,7 +209,7 @@ function ClassOrderController() {
 				$(callerObj).trigger('deleteMyCartListResult', [status, result]);
 			}
 		}, false);
-	}
+	};
 	
 	// 주문/배송 현황 조회
 	function myOrdersList(startDate, endDate, keyword, deliveryStateCode) {
@@ -325,39 +330,6 @@ function ClassOrderController() {
 	};
 
 	// 교환 신청 처리
-	/*
-	{
-		"claim": {
-			"accountAuthDatetime": "2016-04-01",
-			"accountAuthYn": "Y",
-			"addDeliveryChargeTotal": 0,
-			"claimDeliveryChargeTotal": 0,
-			"claimReasonCode": "string",
-			"claimReasonStatement": "string",
-			"claimTypeCode": "string",
-			"orderNumber": 0,
-			"refundAccountNumber": 0,
-			"refundBankCode": "string",
-			"refundDepositorName": "string"
-		},
-		"items": [
-			{
-				"addDeliveryCharge": 0,
-				"claimDeliveryCharge": 0,
-				"claimNumber": 0,
-				"claimProcessDatetime": "string",
-				"claimProcessQuantity": 0,
-				"claimProductAmount": 0,
-				"claimRequestQuantity": 0,
-				"claimStateCode": "string",
-				"claimStateReason": "string",
-				"deliveryChargePaymentCode": "string",
-				"orderNumber": 0,
-				"orderProductSequence": "string"
-			}
-		]
-	}
-	 */
 	function orderExchange(orderNumber, claim, items) {
 		Super.callApi('/apis/me/orders/' + orderNumber + '/exchange', 'POST', {
 			'claim' : claim,
@@ -373,39 +345,6 @@ function ClassOrderController() {
 	};
 
 	// 반품 신청 처리
-	/*
-	{
-		"claim": {
-			"accountAuthDatetime": "2016-04-01",
-			"accountAuthYn": "Y",
-			"addDeliveryChargeTotal": 0,
-			"claimDeliveryChargeTotal": 0,
-			"claimReasonCode": "string",
-			"claimReasonStatement": "string",
-			"claimTypeCode": "string",
-			"orderNumber": 0,
-			"refundAccountNumber": 0,
-			"refundBankCode": "string",
-			"refundDepositorName": "string"
-		},
-		"items": [
-			{
-				"addDeliveryCharge": 0,
-				"claimDeliveryCharge": 0,
-				"claimNumber": 0,
-				"claimProcessDatetime": "string",
-				"claimProcessQuantity": 0,
-				"claimProductAmount": 0,
-				"claimRequestQuantity": 0,
-				"claimStateCode": "string",
-				"claimStateReason": "string",
-				"deliveryChargePaymentCode": "string",
-				"orderNumber": 0,
-				"orderProductSequence": "string"
-			}
-		]
-	}
-	 */
 	function orderReturn(orderNumber, claim, items) {
 		Super.callApi('/apis/me/orders/' + orderNumber + '/return', 'POST', {
 			'claim' : claim,
@@ -674,6 +613,37 @@ function ClassOrderController() {
 				$(callerObj).trigger('newFormBalanceFormResult', [status, result.common]);
 			}
 		}, true);
+	};
+	
+	// 주문/배송 현황 조회
+	function myConstOrdersList(startDate, endDate, keyword, deliveryStateCode) {
+		Super.callApi('/apis/me/constorders', 'GET', {
+			'startDate' : startDate,
+			'endDate' : endDate,
+			'keyword' : keyword || '',
+			'deliveryStateCode' : deliveryStateCode || ''
+		}, function(status, result) {
+			if (status == 200) {
+				/*
+				var deliveryChunk = {};
+				$.map(result.data.listOrderItems, function(eachOrder) {
+					if (eachOrder.parentDeliveryNumber != 0) eachOrder.deliveryNumber = eachOrder.parentDeliveryNumber;
+					if (deliveryChunk[eachOrder.deliveryNumber] == undefined) deliveryChunk[eachOrder.deliveryNumber] = new Array();
+					deliveryChunk[eachOrder.deliveryNumber].push(eachOrder);
+				});
+				var deliceryChunkArray = new Array();
+				$.map(deliveryChunk, function(eachOrder) {
+					deliceryChunkArray.push(eachOrder);
+				});
+				deliceryChunkArray.reverse();
+
+				result.data.deliveryChunk = deliceryChunkArray;*/
+				$(callerObj).trigger('myConstOrdersListResult', [status, result.data]);
+			} else {
+				Super.handleError('myConstOrdersList', result);
+				$(callerObj).trigger('myConstOrdersListResult', [status, result]);
+			}
+		}, false);
 	};
 
 	

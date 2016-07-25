@@ -313,7 +313,9 @@ function Events() {
 				// 뉴폼상품 선결제 페이지 조회
 				NEWFORM_ORDER_DEPOSIT_INFO: 'newFormDepositFormResult',
 				// 뉴폼상품 잔금결제 페이지 조회
-				NEWFORM_ORDER_BALANCE_INFO: 'newFormBalanceFormResult'
+				NEWFORM_ORDER_BALANCE_INFO: 'newFormBalanceFormResult',
+				// 뉴폼상품 주문 리스트 조회
+				NEWFORM_ORDER_LIST: 'myConstOrdersListResult'
 			},
 			CLAIMS : {
 				// 교환/반품/취소 목록 조회

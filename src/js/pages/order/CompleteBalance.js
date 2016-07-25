@@ -55,9 +55,6 @@ module.exports = function() {
 
 		setElements();
 		setBindEvents();
-
-		// myInfoResultHandler - 호출후 실행하는 형태 구성
-		// controller.ordersComplete(self.orderNumber);
 	}
 
 	function setElements() {
@@ -102,19 +99,25 @@ module.exports = function() {
 				result.data.vxOrderDate = win.moment(new Date()).format('YYYY년 MM월 DD일');
 
 				result.data.constPaymentInfo.method = result.data.constPaymentInfo.paymentMethods[0].paymentMethodCodeName;
-				result.data.constPaymentInfo.totalPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalProductPrice);
+				result.data.constPaymentInfo.estimatePriceDesc = util.currencyFormat(result.data.constPaymentInfo.balancePaymentPrice.estimatePrice);
+				result.data.constPaymentInfo.advancePriceDesc = util.currencyFormat(result.data.constPaymentInfo.balancePaymentPrice.advancePrice);
+				result.data.constPaymentInfo.totalPaymentPriceDesc = util.currencyFormat(result.data.constPaymentInfo.balancePaymentPrice.totalPaymentPrice);
+				result.data.constPaymentInfo.totalDiscountPriceDesc = util.currencyFormat(result.data.constPaymentInfo.balancePaymentPrice.totalDiscountPrice);
+				result.data.constPaymentInfo.savingPointDesc = util.currencyFormat(result.data.constPaymentInfo.balancePaymentPrice.savingPoint);
+				
+				$.map(result.data.constProducts, function(eachItem){
+					eachItem.constExpectPriceDesc = util.currencyFormat(eachItem.constExpectPrice);
+					eachItem.productPriceDesc = util.currencyFormat(eachItem.productPrice);
+					eachItem.discountPriceDesc = util.currencyFormat(eachItem.discountPrice);
+				});
+				/*
 				result.data.constPaymentInfo.totalDiscountPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalDiscountPrice);
 				result.data.constPaymentInfo.totalConstExpectPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalConstExpectPrice);
 				result.data.constPaymentInfo.totalAdvancePriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalAdvancePrice);
 				
 				result.data.constOrderInfo.receiverContact = util.mobileNumberFormat(result.data.constOrderInfo.receiverContact);
 
-				$.map(result.data.constProducts, function(eachItem){
-					eachItem.constExpectPriceDesc = util.currencyFormat(eachItem.constExpectPrice);
-					eachItem.productPriceDesc = util.currencyFormat(eachItem.productPrice);
-					eachItem.discountPriceDesc = util.currencyFormat(eachItem.discountPrice);
-				});
-				
+				*/
 				displayData(result.data);
 				break;
 		}
