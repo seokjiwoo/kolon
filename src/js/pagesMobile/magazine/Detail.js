@@ -16,6 +16,10 @@ module.exports = function() {
 	$(controller).on('magazineInfoResult', getDetailHandler);
 	var scrapController = require('../../controller/ScrapController.js');
 	$(scrapController).on('addScrapResult', scrapResultHandler);
+
+	var eventManager = require('../../events/EventManager'),
+	events = require('../../events/events'),
+	COLORBOX_EVENT = events.COLOR_BOX;
 	
 	var callerObj = {
 		/**
@@ -58,6 +62,8 @@ module.exports = function() {
 				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_MAGAZINE, magazineData.magazineNumber);
 			}
 		});
+
+		eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 	};
 
 	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
