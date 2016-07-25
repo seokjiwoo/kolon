@@ -3,20 +3,60 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 매거진"} -->
 </head>
-<body data-page-id="magazine-list">
+<body data-page-id="magazine-list"><!--  class="is-scrolling" -->
 	<div class="wrapper magazine">
-	<!-- @@include ../_template/menu.html -->
+	<!-- @@include ../_template/menu_magazine.html -->
 		<div class="container">
 			<section>
+				<!-- intro -->
+				<div class="magazineIntro">
+					<p class="mzIntroBg">
+						<img src="/images/temp19.jpg" alt=""/>
+					</p><!-- 배경이미지 -->
+					<dl class="mzIntro">
+						<dt>야행성 부부의 <br>호텔같은 집</dt>
+						<dd>
+							<p>호텔같이 편안하면서도 개성있는 아파트 패키지</p>
+							<div class="profile">
+								<p class="photo"><img src="/images/temp01.jpg" alt=""/></p>
+								<div class="worker">
+									<p class="date">June, 22, 2016</p>
+									<p class="by">by 박실장 KOLON GLOBAL</p>
+								</div>
+							</div>
+						</dd>
+					</dl>
+					<!-- <div class="mzBtn">
+						<a href="#" class="like">12,213</a>
+						<a href="#" class="scrap">12,213</a>
+						<a href="#" class="share">공유</a>
+					</div>
+					<a href="#" class="mzMore">더보기</a> -->
+					<!-- 매거진 하단 bar -->
+					<div class="magazineBar">
+						<!-- <a href="../_popup/popMagazineList.html" class="btnPop mzList" data-user-class="pop">매거진 목록보기</a>
+						<span>2/13</span> -->
+						<div class="sns">
+							<a href="#" class="iconF">페이스북</a>
+							<a href="#" class="iconT">트위터</a>
+							<a href="#"class="iconK">카카오스토리</a>
+							<a href="#"class="iconP">핀터레스트</a>
+							<a href="#"class="iconU">url복사</a>
+						</div>
+						<a href="#" class="like">12,213</a>
+					</div>
+					<!--// 매거진 하단 bar -->
+				</div>
+				<!--// intro -->
 				<!-- 상세보기 -->
 				<div class="magazineDetail">
-					<p class="mzDetail"><img src="/images/temp19.jpg" alt=""/></p><!-- 배경이미지 -->
+					<!-- <p class="mzDetail"><img src="/images/temp19.jpg" alt=""/></p>
 					<div class="mzMore mzMore1">
 						<a href="#" class="btnToggle">자세히보기</a>
 						<div class="mzMoreTxt slideCon">
 							상품 상세보기
 						</div>
-					</div>
+					</div> -->
 					<div class="mzMore mzMore2">
 						<a href="#" class="btnToggle">자세히보기</a>
 						<div class="mzMoreTxt slideCon">
@@ -593,13 +633,7 @@
 				</div>
 				<!--// 에디터의 다른 매거진 -->
 
-				<!-- 매거진 하단 bar -->
-				<div class="magazineBar">
-					<a href="../_popup/popMagazineList.html" class="btnPop mzList" data-user-class="pop">매거진 목록보기</a>
-					<span>2/13</span><!-- 페이지 -->
-					<a href="#" class="mzReply">12</a><!-- 댓글수 -->
-				</div>
-				<!--// 매거진 하단 bar -->
+				
 				
 			</section>
 			
