@@ -39,11 +39,20 @@ module.exports = function() {
 		cardList.init();	// 카드 리스트
 		
 		controller.list();
-		//bestKeySlide();
+		// bestKeySlide();
 	};
 
 	function getListHandler(e, status, result) {
 		cardList.appendData(result.magazineCards);
+	};
+
+	function bestKeySlide(){
+		$('#bestKeySlide').bxSlider({
+			mode: 'vertical',
+			minSlides: 5,
+			controls:false,
+			infiniteLoop:false
+		});
 	};
 
 	function cardAppendedHandler(e) {

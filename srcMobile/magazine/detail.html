@@ -3,14 +3,65 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 매거진"} -->
 </head>
-<body data-page-id="magazine-list">
+<body data-page-id="magazine-detail"><!--  class="is-scrolling" -->
 	<div class="wrapper magazine">
-	<!-- @@include ../_template/menu.html -->
+	<!-- @@include ../_template/menu_magazine.html -->
 		<div class="container">
 			<section>
-				<!-- 상세보기 -->
+
+				<div id="top-cont-wrap"></div>
+
+				<div id="description-wrap"></div>
+
+				<!-- intro -->
+				<!-- 
+				<div class="magazineIntro">
+					<p class="mzIntroBg">
+						<img src="/images/temp19.jpg" alt=""/>
+					</p>배경이미지
+					<dl class="mzIntro">
+						<dt>야행성 부부의 <br>호텔같은 집</dt>
+						<dd>
+							<p>호텔같이 편안하면서도 개성있는 아파트 패키지</p>
+							<div class="profile">
+								<p class="photo"><img src="/images/temp01.jpg" alt=""/></p>
+								<div class="worker">
+									<p class="date">June, 22, 2016</p>
+									<p class="by">by 박실장 KOLON GLOBAL</p>
+								</div>
+							</div>
+						</dd>
+					</dl>
+					<div class="mzBtn">
+						<a href="#" class="like">12,213</a>
+						<a href="#" class="scrap">12,213</a>
+						<a href="#" class="share">공유</a>
+					</div>
+					<a href="#" class="mzMore">더보기</a>
+					매거진 하단 bar
+					<div class="magazineBar">
+						<a href="../_popup/popMagazineList.html" class="btnPop mzList" data-user-class="pop">매거진 목록보기</a>
+						<span>2/13</span>
+						<div class="sns">
+							<a href="#" class="iconF">페이스북</a>
+							<a href="#" class="iconT">트위터</a>
+							<a href="#" class="iconK">카카오스토리</a>
+							<a href="#" class="iconP">핀터레스트</a>
+							<a href="#" class="iconU">url복사</a>
+						</div>
+						<a href="#" class="like">12,213</a>
+					</div>
+					// 매거진 하단 bar
+				</div>
+				 -->
+				<!--// intro -->
+
+				<!-- 
+				상세보기
 				<div class="magazineDetail">
-					<p class="mzDetail"><img src="/images/temp19.jpg" alt=""/></p><!-- 배경이미지 -->
+					<p class="mzDetail"><img src="/images/temp19.jpg" alt=""/></p>배경이미지
+				<div class="magazineDetail">
+					<p class="mzDetail"><img src="/images/temp19.jpg" alt=""/></p>
 					<div class="mzMore mzMore1">
 						<a href="#" class="btnToggle">자세히보기</a>
 						<div class="mzMoreTxt slideCon">
@@ -57,10 +108,8 @@
 						</dd>
 					</dl>
 				</div>
-				<!--// 상세보기 -->
-
-				<!-- 영상 -->
-				<div style="display:none"><!-- 숨김 -->
+				// 상세보기
+				영상
 				<div class="video">
 					<video poster="/images/video_poster.jpg" controls="controls" style="width:100%;">
 						<source src=".mp4" type="video/mp4" />
@@ -75,11 +124,9 @@
 						</dd>
 					</dl>
 				</div>
-				</div>
-				<!--// 영상 -->
-
-				<!-- 시공내역 연관태그 -->
-				<div style="display:none"><!-- 숨김 -->
+				// 영상
+				
+				시공내역 연관태그
 				<div class="mzDetailWrap">
 					<h3 class="conTit">시공내역</h3>
 					<div class="DtList">
@@ -119,28 +166,27 @@
 					</dl>
 				</div>
 				</div>
-				<!--// 시공내역 연관태그 -->
-
-				<!-- 추천 매거진 -->
-				<div style="display:none"><!-- 숨김 -->
+				// 시공내역 연관태그
+				
+				추천 매거진
 				<div class="mzDetailWrap">
 					<h3 class="conTit">추천 매거진<a href="../_popup/popMagazineBest.html" class="btnPop" data-user-class="pop">더보기</a>
 					</h3>
 					<ul class="cardWrap" id="cardWrap">
 						<li class="card cardType06 cardSize02 cHover">
-							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">diy interior</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">Magazine</p>
 									<h2 class="cardTit">아토피 없는<b>친환경</b>자재이야기</h2>
 									<span href="#" class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
+								// card 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
@@ -148,19 +194,19 @@
 							</div>
 						</li>
 						<li class="card cardType06 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">diy interior</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">Magazine</p>
 									<h2 class="cardTit">아토피 없는<b>친환경</b>자재이야기</h2>
 									<span href="#" class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
+								// card 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
@@ -168,19 +214,19 @@
 							</div>
 						</li>
 						<li class="card cardType06 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">diy interior</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">Magazine</p>
 									<h2 class="cardTit">아토피 없는<b>친환경</b>자재이야기</h2>
 									<span href="#" class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
+								// card 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
@@ -188,19 +234,19 @@
 							</div>
 						</li>
 						<li class="card cardType06 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">diy interior</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">Magazine</p>
 									<h2 class="cardTit">아토피 없는<b>친환경</b>자재이야기</h2>
 									<span href="#" class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
+								// card 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
@@ -209,30 +255,28 @@
 						</li>
 					</ul>
 				</div>
-				</div>
-				<!--// 추천 매거진 -->
-
-				<!-- 추천 뉴폼 패키지 -->
-				<div style="display:none"><!-- 숨김 -->
+				// 추천 매거진
+				
+				추천 뉴폼 패키지
 				<div class="mzDetailWrap">
 					<h3 class="conTit">추천 뉴폼 패키지<a href="../_popup/popMagazineNewform.html" class="btnPop" data-user-class="pop">더보기</a></h3>
 					<ul class="cardWrap" id="cardWrap">
 						<li class="card cardType01 cardSize03 cHover">
-							<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp24.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">designer</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ unit }</p>
 									<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
 									<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle01">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -245,33 +289,33 @@
 										</div>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 						<li class="card cardType01 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp24.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">designer</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ unit }</p>
 									<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
 									<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle01">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -284,33 +328,33 @@
 										</div>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 						<li class="card cardType01 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp24.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">designer</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ unit }</p>
 									<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
 									<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle01">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -323,33 +367,33 @@
 										</div>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 						<li class="card cardType01 cardSize03">
-							<div class="hexagon" style="background-image: url('/images/temp24.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp24.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">designer</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ unit }</p>
 									<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
 									<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle01">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -362,42 +406,40 @@
 										</div>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 					</ul>
 				</div>
-				</div>
-				<!--// 추천 뉴폼 패키지 -->
-				<!-- 추천 리빙아이템 -->
-				<div style="display:none"><!-- 숨김 -->
+				// 추천 뉴폼 패키지
+				추천 리빙아이템
 				<div class="mzDetailWrap">
 					<h3 class="conTit">추천 리빙아이템<a href="../_popup/popMagazineShop.html" class="btnPop" data-user-class="pop">더보기</a></h3>
 					<ul class="cardWrap" id="cardWrap">
 						<li class="card cardType02 cardSize02 cHover">
-							<div class="hexagon" style="background-image: url('/images/temp04.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp04.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">handmade</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ clock }</p>
 									<h2 class="cardTit"><b>샌드위치 모던</b>페이퍼 시계</h2>
 									<p class="cardPrice">37,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span href="#" class="cardMore">상품 상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle02">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -406,33 +448,33 @@
 										</ul>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 						<li class="card cardType02 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp04.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp04.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">handmade</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ clock }</p>
 									<h2 class="cardTit"><b>샌드위치 모던</b>페이퍼 시계</h2>
 									<p class="cardPrice">37,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span href="#" class="cardMore">상품 상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle02">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -441,33 +483,33 @@
 										</ul>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 						<li class="card cardType02 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp04.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp04.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">handmade</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ clock }</p>
 									<h2 class="cardTit"><b>샌드위치 모던</b>페이퍼 시계</h2>
 									<p class="cardPrice">37,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span href="#" class="cardMore">상품 상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle02">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -476,33 +518,33 @@
 										</ul>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 						<li class="card cardType02 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp04.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp04.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">handmade</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">{ clock }</p>
 									<h2 class="cardTit"><b>샌드위치 모던</b>페이퍼 시계</h2>
 									<p class="cardPrice">37,000 <span class="priceBottom">won / 3.3m2</span></p>
 									<span href="#" class="cardMore">상품 상세보기</span>
 								</a>
-								<!--// card 내용 -->
-								<!-- card hover 내용 -->
+								// card 내용
+								card hover 내용
 								<div class="cardHover hoverStyle02">
 									<div class="cardCon">
 										<ul class="card_icon">
@@ -511,23 +553,21 @@
 										</ul>
 									</div>
 								</div>
-								<!--// card hover 내용 -->
+								// card hover 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
 								</ul>
-								<!-- hover 제어 버튼 -->
+								hover 제어 버튼
 								<a href="#" class="hoverMore">상세보기</a>
 								<a href="#" class="hoverClose">닫기</a>
-								<!--// hover 제어 버튼 -->
+								// hover 제어 버튼
 							</div>
 						</li>
 					</ul>
 				</div>
-				</div>
-				<!--// 추천 리빙아이템 -->
-				<!-- 에디터의 다른 매거진 -->
-				<div style="display:none"><!-- 숨김 -->
+				// 추천 리빙아이템
+				에디터의 다른 매거진
 				<div class="estimateArea">
 					<div class="profile">
 						<div class="thumb"><img src="../images/temp01.jpg" alt=""></div>
@@ -541,7 +581,7 @@
 						<span>4.5</span>
 					</div>
 					<div class="pid">
-						<a href="" class="btnSizeS btnFollow">팔로잉</a><!-- class: active 팔로우 완료 표시-->
+						<a href="" class="btnSizeS btnFollow">팔로잉</a>class: active 팔로우 완료 표시
 						<a href="" class="btnSizeS btnColor03">1:1 메시지</a>
 					</div>
 				</div>
@@ -549,19 +589,19 @@
 					<h3 class="conTit">에디터의 다른 매거진<a href="../_popup/popMagazineEditor.html" class="btnPop" data-user-class="pop">더보기</a></h3>
 					<ul class="cardWrap" id="cardWrap">
 						<li class="card cardType06 cardSize02 cHover">
-							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">diy interior</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">Magazine</p>
 									<h2 class="cardTit">아토피 없는<b>친환경</b>자재이야기</h2>
 									<span href="#" class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
+								// card 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
@@ -569,19 +609,19 @@
 							</div>
 						</li>
 						<li class="card cardType06 cardSize02">
-							<div class="hexagon" style="background-image: url('/images/temp11.jpg')"><!-- 배경이미지 -->
+							<div class="hexagon" style="background-image: url('/images/temp11.jpg')">배경이미지
 								<div class="hexTop"><span></span></div>
 								<div class="hexBottom"><span></span></div>
 							</div>
 							<div class="cardCon">
 								<div class="cardLine"><p class="italicNum">diy interior</p></div>
-								<!-- card 내용 -->
+								card 내용
 								<a href="#" class="cardTxt cardDetail">
 									<p class="cardCat">Magazine</p>
 									<h2 class="cardTit">아토피 없는<b>친환경</b>자재이야기</h2>
 									<span href="#" class="cardMore">상세보기</span>
 								</a>
-								<!--// card 내용 -->
+								// card 내용
 								<ul class="check_icon">
 									<li class="cardDetail like"><a href="#">23569</a></li>
 									<li class="cardDetail share"><a href="#">7542</a></li>
@@ -590,17 +630,19 @@
 						</li>
 					</ul>
 				</div>
-				</div>
-				<!--// 에디터의 다른 매거진 -->
-
+				 -->
+				<!-- 에디터의 다른 매거진 -->
+				
 				<!-- 매거진 하단 bar -->
+				<!-- 
 				<div class="magazineBar">
 					<a href="../_popup/popMagazineList.html" class="btnPop mzList" data-user-class="pop">매거진 목록보기</a>
-					<span>2/13</span><!-- 페이지 -->
-					<a href="#" class="mzReply">12</a><!-- 댓글수 -->
+					<span>2/13</span>페이지
+					<a href="#" class="mzReply">12</a>댓글수
 				</div>
-				<!--// 매거진 하단 bar -->
-				
+				 -->
+				<!-- // 매거진 하단 bar -->
+				<!--// 에디터의 다른 매거진 -->
 			</section>
 			
 			<!-- @@include ../_template/footer.html -->
@@ -609,6 +651,7 @@
 	<!-- 테스트용 임시 -->
 	<script language="javascript" type="text/javascript">
 	;(function(win, $) {
+		return;
 		'use strict';
 		$(function() {
 			var _wrapId = '.cardWrap',
@@ -627,5 +670,63 @@
 	})(window, window.jQuery);
 	</script>
 	<!--// 테스트용 임시 -->
+
+
+<!-- [D] 임시 처리 -->
+<style>
+	.mzIntroBg {min-height:300px}
+	.container.fix {top:0}
+</style>
+
+<script id="top-cont-templates" type="text/x-handlebars-template">
+{{!-- top-cont-box-templates --}}
+	<div class="magazineIntro">
+		<p class="mzIntroBg">
+			<img src="{{mainImageUrl}}" alt=""/>
+		</p><!-- 배경이미지 -->
+		<dl class="mzIntro">
+			<dt>{{magazineTitle}}</dt>
+			<dd>
+				<p>{{magazineDesc}}</p>
+				<!-- 
+				<div class="profile">
+					<p class="photo"><img src="/images/temp01.jpg" alt=""/></p>
+					<div class="worker">
+						<p class="date">June, 22, 2016</p>
+						<p class="by">by 박실장 KOLON GLOBAL</p>
+					</div>
+				</div>
+				 -->
+			</dd>
+		</dl>
+		<!-- 매거진 하단 bar -->
+		<div class="magazineBar">
+			<div class="sns">
+				<a href="#" class="iconF" data-share-sns="facebook">페이스북</a>
+				<a href="#" class="iconT" data-share-sns="twitter">트위터</a>
+				<a href="#" class="iconK" data-share-sns="kakaostory">카카오스토리</a>
+				<a href="#" class="iconP" data-share-sns="pinterest">핀터레스트</a>
+				<a href="#" class="iconU" data-share-sns="url">url복사</a>
+			</div>
+			<a href="#" class="like js-add-like">{{likeCount}}</a>
+		</div>
+		<!--// 매거진 하단 bar -->
+	</div>
+{{!--// top-cont-box-templates --}}
+</script>
+
+<script id="description-templates" type="text/x-handlebars-template">
+{{!-- description-templates --}}
+	<div class="mzDetailWrap">
+		<dl class="mzRoom">
+			<dt></dt>
+			<dd>{{magazineContents}}</dd>
+		</dl>
+	</div>
+{{!--// description-templates --}}
+</script>
+
+
+
 </body>
 </html>

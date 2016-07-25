@@ -1,0 +1,21 @@
+<div class="popTop">
+	<h4 class="popTit">공유하기</h4>
+</div>
+
+<!-- [D] #js-share-pop-templates-wrap - wrap -->
+<div class="popCon t_c js-share-pop-templates-wrap"></div>
+<!--// [D] #js-share-pop-templates-wrap - wrap -->
+
+<script id="share-pop-templates" type="text/x-handlebars-template">
+{{!-- share-pop-templates --}}
+	<div class="js-social-wrap">
+		<ul class="shareBtn">
+			<li><a href="#" class="fb" data-share-sns="facebook" data-share-url="{{shareUrl}}">페이스북 공유</a></li>
+			<li><a href="#" class="tw" data-share-sns="twitter" data-share-url="{{shareUrl}}">트위터 공유</a></li>
+			<!-- <li><a href="#" class="pn" data-share-sns="pinterest" data-share-url="{{shareUrl}}">핀터레스트 공유</a></li> -->
+			<li><a href="#" class="ks" data-share-sns="kakaostory" data-share-url="{{shareUrl}}">카카오스토리 공유</a></li>
+			<li><a href="{{shareUrl}}" class="urlBtn" id="mobileShareUrl" onclick="return false;">{{shareUrl}}</a></li>
+		</ul>
+	</div>
+{{!--// share-pop-templates --}}
+</script>

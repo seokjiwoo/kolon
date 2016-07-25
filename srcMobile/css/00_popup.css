@@ -45,7 +45,6 @@
 
 /*.popEdge .popTit {position: relative;top:0;line-height: 80px;text-align: center;font-size:30px;}*/
 .popEdge .popTit {width:100%; line-height: 46px;text-align: center;font-size:18px;background:#fff;}
-.popEdge .popTit:after{content: '';display: block;width: 100%;bottom: 0;height: 1px;background: #666;}
 .popEdge .popTit span.count{color:#f1645c;}
 .popEdge .subTit {font-size:15px;color:#333; }
 .popEdge .subTit:first-child {margin-top:25px;}
@@ -130,7 +129,7 @@
 .popCon .checkbox + .btnWrap,
 .popCon .popTb + .btnWrap {margin-top:24px;}
 .popCon .checkPw {width:100%; text-align:center; margin-bottom:20px}
-.popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR', sans-serif;}
+.popCon .checkPw p.tit {font-size:15px; color:#000; letter-spacing:-1px; font-family:'NotoSansR', sans-serif;line-height: 1.3em}
 .popCon .checkPw p + p {margin-top:10px;}
 .popCon .expertInfo {width:100%; overflow:hidden;}
 .popCon .expertInfo .ePic {width:180px; height:180px; margin-left:15px; border-radius:50%; overflow:hidden; float:left;}
@@ -263,3 +262,26 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 
 .addressFormWrap {padding:25px 15px 0; margin-top:15px; background:#fff; position:relative;}
 .addressFormWrap .btmFix {position:fixed; bottom:0; left:0;}
+
+.popEdge .popCon.profilePicWrap {padding:0;}
+.popEdge .popCon.profilePicWrap .js-msg {display:none;}
+.popEdge .popCon.profilePicWrap .profilePictures {width:115px; min-height:115px; margin:67.5px auto; position:relative;}
+.popEdge .popCon.profilePicWrap .profilePictures .js-holder {width:115px; height:115px; border-radius:50%; border:3.5px solid #fff; overflow:hidden; background:url(../images/profilePic_img_bg.png) -2px 100% no-repeat; background-size:76px 93.5px;position:absolute;left:0;top:0; z-index:2;}
+.popEdge .popCon.profilePicWrap .profilePictures .js-holder img {width:115px; height:115px;}
+.popEdge .popCon.profilePicWrap .profilePictures a.picturesBtn {width:35px; height:35px; border-radius:50%; background:url(../images/profilePic_img_btn.png) 50% no-repeat #999; background-size:15px 13.5px; overflow:hidden; position:absolute; bottom:0; right:0; font-size:0; z-index:3;}
+.popEdge .popCon.profilePicWrap .profilePictures a.picturesBtn input[type=file] {width:35px; height:35px; overflow:hidden;}
+
+.attachSelector #cboxClose {display:none;}
+.photoSelectWrap {width:100%; background:#fff;}
+ul.photoSelectBtn {width:100%; overflow:hidden; margin:0 auto; border:1px solid #ccc; vertical-align:middle;}
+ul.photoSelectBtn li {padding:20px 10px; vertical-align:middle; color:#333; font-size:15px;}
+ul.photoSelectBtn li + li {border-top:1px solid #ccc;}
+ul.photoSelectBtn li a {width:100%; display:inline-block;}
+
+ul.shareBtn {width:100%; padding:15px 0; overflow:hidden;}
+ul.shareBtn li {width:25%; float:left; text-align:center;}
+ul.shareBtn li a {width:50.5px; height:50.5px; font-size:0; background:url(../images/icon_share_pop.png) no-repeat; background-size:171px 110.5px; display:inline-block;}
+ul.shareBtn li a.fb {background-position:0 0;}
+ul.shareBtn li a.tw {background-position:-60px 0;}
+ul.shareBtn li a.ks {background-position:-121px 0;}
+ul.shareBtn li a.urlBtn {background-position:-59.5px -59.5px; }

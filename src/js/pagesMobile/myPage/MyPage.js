@@ -30,6 +30,12 @@ module.exports = function() {
 		},
 		imageUploader : {
 			api_url : APIController().API_URL+'/apis/member/profileImage',
+			previewOpt : {
+				viewPort : {
+					width : 121,
+					height : 121
+				}
+			},
 			flashOpts : {
 				swf : '../images/swf/imagePreview.swf',
 				id : 'imageUpoader',

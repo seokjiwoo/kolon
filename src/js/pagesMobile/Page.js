@@ -16,6 +16,8 @@ module.exports = function() {
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
+	snsShare = require('../components/SnsShare.js'),
+	scrollMenu = require('../components/ScrollMenu'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
@@ -50,6 +52,9 @@ module.exports = function() {
 
 		initHorizontalScroll();	//horizontal scroll wrap width
 
+		scrollMenu.init();			// scroll에 따른 메뉴 활성화
+		snsShare.init();			// snsshare 메뉴
+
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
@@ -63,9 +68,15 @@ module.exports = function() {
 		initAddressPopupButton();	// 주소록 팝업버튼
 
 		$('.btnToggle').on('click', function(e) { // common slideToggle
+			var btn = $(this);
 			e.preventDefault();
 			$(this).toggleClass('open');
 			$(this).siblings('.slideCon').slideToggle();
+			$(this).siblings('.slideCon').find('.btnClose').on('click', function(e) {
+				e.preventDefault();
+				$(this).closest('.slideCon').slideUp();
+				$(btn).removeClass('open')
+			})
 		});
 		$('.searchToggle').on('click', function(e) { // common slideToggle
 			e.preventDefault();
@@ -325,14 +336,14 @@ module.exports = function() {
 			e.preventDefault();
 			if( !$(".hiddenMenu").is( ":visible" ) ) {
 				$(".hiddenMenu").addClass("active");
-				$(".gnb").css({
-					minHeight : $(window).height() + 480
-				});
+				// $(".gnb").css({
+				// 	minHeight : $(window).height() + 480
+				// });
 			} else {
 				$(".hiddenMenu").removeClass("active");
-				$(".gnb").css({
-					minHeight : $(".gnb").height() - 330
-				});
+				// $(".gnb").css({
+				// 	minHeight : $(".gnb").height() - 330
+				// });
 			}
 		});
 	};
@@ -357,6 +368,11 @@ module.exports = function() {
 	 */
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
+
+		if (opts.name !== 'snsshare' && loginData == null) {
+			$(document).trigger('needLogin');
+			return;
+		}
 
 		var opts = {
 			name : 'addressPopup',
@@ -397,15 +413,15 @@ module.exports = function() {
 	/**
 	 * GNB open
 	 */
-	function openSideMenu() {
-		$(".gnb").addClass("acitve").css({minHeight: $(window).height() + 150 }).stop().animate({left:0}, 400, function() {
+	function openSideMenu() {//.css({minHeight: $(window).height() + 150 })
+		$(".gnb").addClass("acitve").stop().animate({right:0}, 400, function() {
 			$(".container").addClass("fix");
 			$(".header").addClass("fix");
 		});
 		if( $(".hiddenMenu").hasClass( "active" ) ){
-			$(".gnb").css({
-				minHeight : $(window).height() + 480
-			});
+			// $(".gnb").css({
+			// 	minHeight : $(window).height() + 480
+			// });
 		}
 		$("body").append("<div class='dimBg'><div>");
 	};
@@ -414,7 +430,7 @@ module.exports = function() {
 	 * GNB close
 	 */
 	function closeSideMenu() {
-		$(".gnb").stop().animate({left:-300}, 400, function() {
+		$(".gnb").stop().animate({right:-300}, 400, function() {
 			$(this).removeClass("acitve");
 			$(".container").removeClass("fix");
 			$(".header").removeClass("fix");
@@ -428,6 +444,7 @@ module.exports = function() {
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxRefreshListener(e) {
 		initHorizontalScroll();
+		snsShare.refresh();
 	}
 
 	// Colorbox Cleanup 시점

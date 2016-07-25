@@ -6,6 +6,7 @@ function SnsShare() {
 
 	var win = window,
 	$ = win.jQuery,
+	util = require('../utils/Util.js'),
 	debug = require('../utils/Console.js'),
 	fileName = 'compoents/SnsShare.js';
 
@@ -64,9 +65,11 @@ function SnsShare() {
 
 		debug.log(fileName, 'init', self.opts);
 
-		win.ZeroClipboard.config({
-			swfPath: '/js/zeroclipboard/dist/ZeroClipboard.swf'
-		});
+		if (!util.isMobile()) {
+			win.ZeroClipboard.config({
+				swfPath: '/js/zeroclipboard/dist/ZeroClipboard.swf'
+			});
+		}
 
 		setElements();
 		setBindEvents();
@@ -92,8 +95,16 @@ function SnsShare() {
 		self.shareBtns.on('click', onShareBtnsClick);
 		self.btnSharePop.on('click', onSharePopClick);
 
-		var clipBtn = self.shareBtns.filter('[data-share-sns=\'url\']');
-		self.clip = new win.ZeroClipboard(clipBtn).setText(clipBtn.data('share-url') || win.location.href);
+		self.clipBtn = self.shareBtns.filter('[data-share-sns=\'url\']');
+		if (!util.isMobile()) {
+			self.clip = new win.ZeroClipboard(self.clipBtn).setText(self.clipBtn.data('share-url') || win.location.href);
+		} else {
+			self.clipBtn.attr({
+				'href': self.clipBtn.data('share-url') || win.location.href,
+				'onclick': 'return false;'
+			});
+			self.clipBtn.on('touchstart', onGuideMessage);
+		}
 
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener)
 					.on(CARD_LIST_EVENT.APPENDED, refresh);
@@ -123,7 +134,28 @@ function SnsShare() {
 		var target = $(e.currentTarget),
 		shareUrl = target.data('share-url');
 
-		self.selShareUrl = { 'shareUrl' : hasDomain(shareUrl) ? shareUrl : win.location.protocol + '//' + win.location.host + shareUrl };
+		if (shareUrl) {
+			self.selShareUrl = { 'shareUrl' : hasDomain(shareUrl) ? shareUrl : win.location.protocol + '//' + win.location.host + shareUrl };
+		} else {
+			self.selShareUrl = { 'shareUrl' : win.location.href };
+		}
+	}
+
+	function onGuideMessage() {
+		if (self.simplyToast) {
+			self.simplyToast.remove();
+		}
+
+		self.simplyToast = $.simplyToast('길게 누르시면 복사하실 수 있습니다.', 'info', {
+			customClass: 'vx_simply_toast',
+			offset:
+			{
+				from: 'bottom',
+				amount: 20
+			},
+			align: 'center',
+			allowDismiss: false
+		});
 	}
 
 	function hasDomain(url) {
@@ -156,8 +188,10 @@ function SnsShare() {
 				break;
 		}
 
-		if (snsType === 'url') {
+		if (snsType === 'url' && !util.isMobile()) {
 			win.alert('주소가 복사되었습니다.\n원하는 곳에 붙여넣기(Ctrl+V)해주세요.');
+			return;
+		} else if (snsType === 'url' && util.isMobile()) {
 			return;
 		}
 
@@ -179,12 +213,13 @@ function SnsShare() {
 		self.shareClose.off('click', onShareCloseClick);
 		self.shareBtns.off('click', onShareBtnsClick);
 		self.btnSharePop.off('click', onSharePopClick);
-		self.clip.off('complete');
+		if (self.clip) self.clip.off('complete');
+		self.clipBtn.off('touchstart', onGuideMessage);
 
 		eventManager.off(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener)
 					.off(CARD_LIST_EVENT.APPENDED, refresh);
 
-		delete self.clip;
+		if (self.clip) delete self.clip;
 	}
 
 	function destroy() {
@@ -208,6 +243,8 @@ function SnsShare() {
 		$(self.opts.templates.wrap).imagesLoaded()
 							.always(function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								$('#mobileShareUrl').off('touchstart', onGuideMessage)
+													.on('touchstart', onGuideMessage);
 							});
 	}
 
