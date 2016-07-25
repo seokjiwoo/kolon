@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"의견묻기 목록"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 의견묻기"} -->
 </head>
 <body data-page-id="qna">
 	<div class="wrapper qna">
-	<!-- @@include ../_template/menu.html -->
+		<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
 				<div class="specialArea">
@@ -16,115 +16,458 @@
 					</div>
 					<div class="specialSlide">
 						<ul id="expertList" class="slide">
-							<!-- 
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
-							 -->
+							<script id="experts-template" type="text/x-handlebars-template">
+							{{!-- experts-template --}}
+								{{#each experts}}
+								<li>
+									<a href="javascript:;"><img src="{{imageUrl}}" alt="" /><span>{{name}} / {{companyName}}</span></a>
+								</li>
+								{{/each}}
+							{{!--// experts-template --}}
+							</script>
 						</ul>
 					</div>
-					<!-- 
-					<div class="slideNav">
-						<a href="" class="active"></a>
-						<a href=""></a>
-						<a href=""></a>
+				</div>
+
+				<div class="wrapT myWrap">
+					<div class="selectBox" style="float:right">
+						<select id="alignDrop">
+							<option value="newest">최신순</option>
+							<option value="answer">의견많은순</option>
+						</select>
 					</div>
-					 -->
-				</div>
+					<h3 class="conTit"></h3>
 
-				<!-- 기능구현 여부 명확하지 않음 -->
-				<!-- 
-				<p class="dummyImg"><img src="../images/dummy_01.jpg" alt="" /></p>
-				<p class="dummyImg"><img src="../images/dummy_02.jpg" alt="" /></p>
-				 -->
-				<!-- // 기능구현 여부 명확하지 않음 -->
+					<!-- list -->
+					<div id="opinionList" class="qaList"></div>
+					<!--// list -->
 
-				<div class="wrapT">
-					<h3 class="conTit">최근 등록된 질문 <a href="">등록된 질문</a></h3>
-					<ul class="qaList">
-						<li>
-							<div class="top">
-								<span class="info">홈서비스</span>
-							</div>
-							<div class="txt">
-								<p>고양이를 위한 공간을 만들고 싶어요</p>
-								<p class="except">새로 이사갈 집이  24평입니다. 고양이랑 같이 살고 있는데고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.괜찮은 아이디어가 어떤게 있을까요? 새로 이사갈 집이  24평입니다. 고양이랑 같이 살고 있는데고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.괜찮은 아이디어가 어떤게 있을까요?</p>
-							</div>
-							<div class="thumb">
-								<a href=""><img src="../images/temp01.jpg" alt="" /></a>
-								<a href=""><img src="../images/temp01.jpg" alt="" /></a>
-								<a href=""><img src="../images/temp01.jpg" alt="" /></a>
-							</div>
-							<p class="mt15">
-								<span class="name">USERNAME  <em>2016. 03. 28</em></span>
-								<a href="" class="fl_r">의견묻기<span class="pointBrown">12</span></a>
-								<span class="state fl_r">
-									<!-- <b class="pointCyan">답변완료</b> -->
-									<b>미답변</b>
-								</span>
-							</p>
-						</li>
-						<li>
-							<div class="top">
-								<span class="info">홈서비스</span>
-							</div>
-							<div class="txt">
-								<p>고양이를 위한 공간을 만들고 싶어요</p>
-								<p class="except">새로 이사갈 집이  24평입니다. 고양이랑 같이 살고 있는데고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.괜찮은 아이디어가 어떤게 있을까요? 새로 이사갈 집이  24평입니다. 고양이랑 같이 살고 있는데고양이를 위해서 집안 곳곳에 캣타워를 설치 하고 싶습니다.괜찮은 아이디어가 어떤게 있을까요?</p>
-							</div>
-							<div class="thumb">
-								<a href=""><img src="../images/temp01.jpg" alt="" /></a>
-								<a href=""><img src="../images/temp01.jpg" alt="" /></a>
-								<a href=""><img src="../images/temp01.jpg" alt="" /></a>
-							</div>
-							<p class="mt15">
-								<span class="name">USERNAME  <em>2016. 03. 28</em></span>
-								<a href="" class="fl_r">의견묻기<span class="pointBrown">12</span></a>
-								<span class="state fl_r">
-									<b class="pointCyan">답변완료</b>
-									<!-- <b>미답변</b> -->
-								</span>
-							</p>
-						</li>
-					</ul>
-					<p class="t_c mt20"><a href="" class="btnSizeS btnColor05">등록된 질문 더보기</a></p>
+					<div class="paging">
+						<a class="jumpButton pageButton" id="prevPageButton" href="#">이전</a>
+						<span class="num" id="pageButtonArea">
+						</span>
+						<a class="jumpButton pageButton" id="nextPageButton" href="#">다음</a>
+					</div>
 				</div>
-				<a href="" class="btnSizeB btnColor02">문의하기</a>
 			</section>
-			<!-- @@include ../_template/footer.html -->
 		</div>
+		<!-- @@include ../_template/footer.html -->
 	</div>
-	<script>
-		// $(document).ready(function(){
-		// 	$(".specialSlide .slide").bxSlider({
-		// 		minSlides: 3,
-		// 		maxSlides: 4,
-		// 		slideWidth: 75,
-		// 		slideMargin: 10
-		// 	})
-		// });
-	</script>
 
 
-<script id="experts-template" type="text/x-handlebars-template">
-{{!-- experts-template --}}
-	{{#each experts}}
+<script id="my-opinion-template" type="text/x-handlebars-template">
+{{!-- my-opinion-template --}}
+<h2 class="optit"><a href='/myPage/myQnA.html'><span>내가 최근에 등록한 의견</span></a></h2>
+<ul>
+	{{#each .}}
 	<li>
-		<a href="javascript:;">
-			<img src="{{imageUrl}}" alt="" />
-			<span>{{name}} / {{companyName}}</span>
+		<a href="#">
+			<span>{{title}}</span>
+			<span>
+				<span>{{createDate}}</span>
+				<span><em class="pointRed">{{answerCount}}개</em> 의견</span>
+			</span>
 		</a>
 	</li>
 	{{/each}}
-{{!--// experts-template --}}
+</ul>
+{{!--// my-opinion-template --}}
 </script>
 
+<script id="opinion-template" type="text/x-handlebars-template">
+{{!-- opinion-template --}}
+	{{#each .}}
+	<li>
+		<!-- 의견 내용 -->
+		<div class="top">
+			<span class="info">{{category}}</span>
+			<span class="name" style="float:right">{{userName}}  <em>{{createDate}}</em></span>
+		</div>
+		<div class="txt">
+			<p>{{title}}</p>
+			<p class="except except02">{{{content}}} <a href="#" class="more">더보기</a></p>
+		</div>
+		<div class="thumb">
+			<!-- 사진 -->
+			<a href="../../_popup/popPhotoDetailView.html"
+					class="btnPop"
+					data-user-class="qna popEdge popPhotoDetailView opinionNumber{{opinionNumber}}"
+					data-opinion-info='{
+						"opinionNumber" : "{{opinionNumber}}",
+						"opinionImages" : "{{images}}",
+						"title" : "{{title}}"
+					}'>
+			{{#each images}}
+				<img src="{{.}}" alt="" />
+			{{/each}}
+			</a>
+			<!--// 사진 -->
+		</div>
+		<div class="commentCount">
+			<span class="state fl_r">
+			{{{answerCountTag}}}
+		</div>
+		<!--// 의견 내용 -->
+		<div id="commentArea{{opinionNumber}}" class="commentArea">
+			{{#if moreButtonFlag}}
+			<a href="#" class="moreBtn" id="moreAnswers{{opinionNumber}}"><span>이전 댓글보기</span></a></p>
+			{{/if}}
+			<!-- 댓글 리스트 -->
+			<ul id="answerList{{opinionNumber}}" class="opinionsList" data-answer-next-page='2'>
+				{{#each answers}}
+				<li style="overflow:visible">
+					<div class="thumb"><img src="{{answererImageUrl}}" alt=""></div>
+					<div class="opinionList-info">
+						<div class="opinionList-top">
+							<p class="opinionList-name">
+								<span>{{expertName}}</span>
+								<span>{{expertCompany}}</span>
+							</p>
+							<a href="javascript:;" class="btnSizeS btnColor04" style="float:right;opacity:0">1:1 메시지</a>
+						</div>
+						<div class="txt" style="padding-left:0">{{{content}}}</div>
+						<div class="count" style="margin-top:10px;">
+							<span style="float:left;color:#999">{{createDate}}</span>
+							<span id="answer{{answerNumber}}" class="answerCount {{answerCountClass}}">
+								<p id="answerCount{{answerNumber}}">{{helpCount}}</p>
+							</span>
+						</div>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+			<!--// 댓글 리스트 -->
+
+			<!-- 댓글 입력 폼 -->
+			<div class="commentTextarea">
+				<form method="post" action="#" id="answerForm{{opinionNumber}}" class="answerForm">
+					<fieldset>
+						<legend>의견 입력 폼</legend>
+						<div class="commentBtn">
+							<div class="writeBox">
+								<textarea class="pullSize" id="answerBox{{opinionNumber}}" placeholder="의견을 남겨주세요." title="의견입력"></textarea>
+							</div>
+							<div class="thumb"><span><img src="" alt="" class='myProfileImage' /></span></div>
+							<button class="confirmBtn btnColor03">등록</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<!-- 
+			<div class="commentInput">
+				<form method="post" action="#" id="answerForm{{opinionNumber}}" class='answerForm'>
+					<fieldset>
+						<legend>의견 입력 폼</legend>
+						<div class="commentTextarea">
+							<textarea class="pullSize" id='answerBox{{opinionNumber}}' style="width:99%;" placeholder="의견을 남겨주세요." title="의견입력"></textarea>
+							<div class="commentBtn">
+								<div class="thumb"><span><img src="" alt="" class='myProfileImage' /></span></div>
+								<button class="confirmBtn">등록</button>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			 -->
+			<!--// 댓글 입력 폼 -->
+		</div>
+	</li>
+
+	<li style="display:none">
+		<div class="opinionbox">
+			<!-- 의견 내용 -->
+			<div class="conbox">
+				<strong><span class="it">{{category}}</span>{{title}}</strong>
+				<div class="conboxTxt">
+					<p class="except02">{{{content}}} <a href="" class="more">더보기</a></p>
+				</div>
+				<!-- 사진 -->
+				<a href="../../_popup/popPhotoDetailView.html"
+						class="btnPop btnPop895"
+						data-user-class="qna popEdge popPhotoDetailView opinionNumber{{opinionNumber}}"
+						data-opinion-info='{
+							"opinionNumber" : "{{opinionNumber}}",
+							"opinionImages" : "{{images}}",
+							"title" : "{{title}}"
+						}'>
+				<ul class="photoList">
+					{{#each images}}
+					<li><img src="{{.}}" alt="" /></li>
+					{{/each}}
+				</ul>
+				</a>
+				<!--// 사진 -->
+				<div class="commentCount">
+					{{{answerCountTag}}} <!-- <em class="pointBlue">답변완료</em> -->
+					<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor01 writeCommentButton">의견작성</button>
+				</div>
+			</div>
+			<!--// 의견 내용 -->
+			<div id="commentArea{{opinionNumber}}" class="commentArea">
+				{{#if moreButtonFlag}}
+				<a href="#" class="moreBtn" id="moreAnswers{{opinionNumber}}"><span>이전 댓글보기</span></a></p>
+				{{/if}}
+				<!-- 댓글 리스트 -->
+				<ul id="answerList{{opinionNumber}}" data-answer-next-page='2'>
+					{{#each answers}}
+					<li>
+						<div class="commentName">
+							<div class="name">
+								<span><img src="{{answererImageUrl}}" alt="" /></span>
+								<span>
+									<span><em>{{expertCompany}}</em> {{expertName}}</span>
+									<span class="except">{{answererSectionCodeName}}</span>
+								</span>
+							</div>
+						</div>
+						<p class="txt">{{{content}}}</p>
+						<p class="date">{{createDate}} <i id='answer{{answerNumber}}' class='answerCount {{answerCountClass}}'><span id='answerCount{{answerNumber}}'>{{helpCount}}</span></i></p><!-- 스마일 클릭시 도움됨 표시 'on' -->
+					</li>
+					{{/each}}
+				</ul>
+				<!--// 댓글 리스트 -->
+				<!-- 댓글 입력 폼 -->
+				<div class="commentInput">
+					<form method="post" action="#" id="answerForm{{opinionNumber}}" class='answerForm'>
+						<fieldset>
+							<legend>의견 입력 폼</legend>
+							<div class="commentTextarea">
+								<textarea class="pullSize" id="answerBox{{opinionNumber}}" placeholder="의견을 남겨주세요." title="의견입력"></textarea>
+								<div class="commentBtn">
+									<div class="thumb"><span><img src="" alt="" class="myProfileImage" /></span></div>
+									<button class="confirmBtn">등록</button>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<!--// 댓글 입력 폼 -->
+			</div>
+		</div>
+	</li>
+	{{/each}}
+{{!--// opinion-template --}}
+</script>
+
+
+<script id="opinion-answer-template" type="text/x-handlebars-template">
+{{!-- opinion-answer-template --}}
+	{{#each .}}
+	<li style="overflow:visible">
+		<div class="thumb"><img src="{{answererImageUrl}}" alt=""></div>
+		<div class="opinionList-info">
+			<div class="opinionList-top">
+				<p class="opinionList-name">
+					<span>{{expertName}}</span>
+					<span>{{expertCompany}}</span>
+				</p>
+				<a href="javascript:;" class="btnSizeS btnColor04" style="float:right;opacity:0">1:1 메시지</a>
+			</div>
+			<div class="txt" style="padding-left:0">{{{content}}}</div>
+			<div class="count" style="margin-top:10px;">
+				<span style="float:left;color:#999">{{createDate}}</span>
+				<span id="answer{{answerNumber}}" class="answerCount {{answerCountClass}}">
+					<p id="answerCount{{answerNumber}}">{{helpCount}}</p>
+				</span>
+			</div>
+		</div>
+	</li>
+	{{/each}}
+{{!--// opinion-answer-template --}}
+</script>
+
+
+
+
+
+<!-- 의견묻기 입력 폼 -->
+<div class="opinionwrite">
+	<a href="#" class="toggleBtn btnSizeB btnColor02"><span>의견 묻기</span></a>
+	<div class="opinionInput wrapT" style="display:none">
+		<form id="opinionWriteForm" method="post" action="#">
+			<fieldset>
+				<legend>의견묻기 입력 폼</legend>
+				<table class="opinionTb">
+					<caption>의견작성하기테이블 주제선택, 제목입력, 자세한 내용입력, 첨부파일, 스크랩북항목으로 구성되어 있습니다</caption>
+					<colgroup><col style="width:141px"><col style="width:auto"></colgroup>
+					<tbody>
+						<tr>
+							<td colspan="2">
+								<div class="selectBox" style="width:100%">
+									<select id="opinionThemes" class="pullSize w795" title="주제선택">
+										<option value="-">주제를 선택해주세요</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<input id="opinionTitle" type="text" class="pullSize w752" style="width:100%" placeholder="제목을 입력해주세요." title="의견제목입력" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2">
+								<textarea id="opinionContent" class="pullSize w752" placeholder="자세한 내용을 작성해 주세요." title="자세한 내용 입력"></textarea> 
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">사진첨부<span>(최대3장)</span></th>
+							<td>
+								<div class="fileup">
+									<input id="fileUpText" type="text" class="pullSize" placeholder="첨부파일" title="첨부파일명" readonly="readonly"/>
+									<a id="fileUpButton" href="../../_popup/popAttachPictures.html" class="btnFileup btnPop" data-user-class="qna popEdge popAttachPictures"><span>파일선택</span></a>
+									<div id="fileUpList" class="fileupList"></div>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">스크랩북에서<br>선택<span>(최대3장)</span></th>
+							<td>
+								<div id="scrapList" class="scrapList">
+									<ul>
+										<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+									</ul>
+								</div>
+								<script id="scrapList-template" type="text/x-handlebars-template">
+								{{!-- scrapList-template --}}
+									<ul>
+										<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+									{{#each .}}
+										<li class="js-scrap-list" data-scrap-number="{{scrapNumber}}" data-scrap-uid="{{scrapUid}}"><div class="scrapImg conDel"><img src="{{imgPath}}" alt="" /><a href="javascript:;" class="btnDel js-scrap-del">이미지 삭제</a></div></li>
+									{{/each}}
+									</ul>
+								{{!-- scrapList-template --}}
+								</script>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="text-align:center;margin-top:20px">
+					<button type="submit" class="btn btnSizeB btnColor03">작성</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+<!--// 의견묻기 입력 폼 -->
+
+
+<aside class="col-right" style="display:none">
+	<div id="myOpinion" class="latelyOpinion"></div>
+	<div id="expertRank" class="expertHelp">
+		<script id="expert-rank-template" type="text/x-handlebars-template">
+		{{!-- expert-rank-template --}}
+		<h2 class="optit"><span>가장 많은 도움을 준 전문가</span></h2>
+		<ul id='expertList2'>
+			{{#each .}}
+			<li>
+				<a href="#">
+					<span class="thumb"><img src="{{expertImageUrl}}" alt="" /></span>
+					<span class="info">
+						<strong>{{serviceNames}}</strong>
+						<span><em>{{expertCompany}}</em> {{expertName}}</span>
+						<span>{{content}}</span>
+					</span>
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+		{{!--// expert-rank-template --}}
+		</script>
+		<!--<div class="paper-nav mt30">
+			<a href="#" class="active"><span>1</span></a>
+			<a href="#"><span>2</span></a>
+			<a href="#"><span>3</span></a>
+		</div>-->
+	</div>
+</aside>
+
+
+<!-- [D] 임시 구성 -->
+<style>
+	.commentTextarea .writeInfo {min-height:36px;padding:0 14px;border:1px solid #ccc;border-bottom:0;background:#f8f8f8}
+	.commentTextarea .answerForm fieldset {width:100%}
+	
+	.commentArea, .commentTextarea {display:none}
+	.commentBtn {position:relative}
+	.showCommentInput.commentArea, .showCommentInput .commentTextarea {display:block}
+	.showCommentInput.commentArea {border-bottom:none}
+	.showCommentInput.commentArea .thumb {position: absolute;margin-top:0;top:5px;left:3px}
+	.showCommentInput.commentArea .confirmBtn {display: inline-block;color:#fff;outline:0;border:0;text-align:center;letter-spacing:-1px;box-sizing:border-box;width:100%;height:45px;font-size:18px;line-height:55px}
+	.showCommentInput.commentArea .pullSize {width:80%;box-sizing:border-box;float:right;margin:5px 0 5px}
+
+	.opinionList-wrap {padding:25px 0;overflow:auto}
+	.opinionList-info {padding-left:60px}
+	.opinionList-name {float: left}
+	.opinionList-name span {display:block;line-height:1.4em}
+	.opinionList-name span:first-child {font-weight:700}
+	.opinionList-name span:last-child {color:#666}
+	.opinionList-top:after {content:"";display:block;clear:both}
+
+	.opinionsList .count span:last-child{height:16px;float:right;color:#f1645c;padding-left:20px;background: url(../images/pc/ico_help.png) no-repeat 0 0;background-size:16px;}
+	.opinionsList .count span.on:last-child{height:16px;background-position:0 -16px;}
+
+	.commentArea .moreBtn{top:10px;left:50%;margin-left:-59px;width:117px;height:30px;padding-left:23px;background:#f8f8f8;border-radius:14px;display:inline-block;text-align:left; position:relative;}
+	.commentArea .moreBtn span{padding-top:8px;display:block;color:#000;font-family:'NotoSansR',sans-serif;font-size:13px;}
+	.commentArea .moreBtn:after {content: '';width: 13px;height: 8px;margin-top: -4px;background: url(../images/pc/ico_more.png) no-repeat 0 -8px;position: absolute;top: 50%;right: 15px;display: inline-block;}
+
+	.paging {width: 100%;margin: 0 auto;padding: 50px 0;text-align: center;}
+	.paging>a {line-height: 14px;}
+	.paging a {display: inline-block;color: #666;vertical-align: top;}
+	.paging span {margin: 0 20px;padding: 0 12px;position: relative;display: inline-block;}
+	.paging span:before {left: 0;}
+	.paging span:after, .paging span:before {content: '';width: 1px;height: 14px;position: absolute;top: 2px;background: #ccc;}
+	.paging span a.on {color: #00aeb9;}
+	.paging span a {width: 15px;padding: 2px 8px;text-align: center;color: #999;line-height: 1;}
+	.paging a {display: inline-block;color: #666;vertical-align: top;}
+
+	.qaList .txt p:first-child{word-wrap:break-word}
+
+	.opinionwrite>a {position: relative;display: block;text-align: center;color: #fff}
+	.opinionwrite>a>span {display: inline-block;padding: 0 30px 0 0;background: url(../images/pc/bg_opinion_arrow.png) no-repeat right 22px;font-family: NotoSansR,sans-serif;font-size: 20px;}
+	.opinionwrite>a.active span {background-position: right -27px;}
+	[data-page-id="qna"] input[type=text].pullSize {padding: 10px;border: 1px solid #d6d6d6;margin-right: 0;box-sizing: border-box;}
+	#opinionThemes {width:100%}
+
+	[data-page-id="qna"] .opinionInput{padding-top:27px;display:none;}
+	[data-page-id="qna"] .opinionInput table.opinionTb{width:100%;}
+	[data-page-id="qna"] .opinionInput table.opinionTb tbody tr th,
+	[data-page-id="qna"] .opinionInput table.opinionTb tbody tr td{padding:10px 0; border-bottom:1px solid #d6d6d6;}
+	[data-page-id="qna"] .opinionInput table.opinionTb tbody tr:first-child td{padding-top:0;}
+	[data-page-id="qna"] .opinionInput table.opinionTb tbody tr th{font-weight:normal;font-family:'NotoSansR', sans-serif;font-size:14px;text-align:left; background:#f7f7f7; padding:0 14px;}
+	[data-page-id="qna"] .opinionInput table.opinionTb tbody tr th span{padding-top:3px;display:block;color:#999;font-family:'NotoSansL', sans-serif;font-size:14px;}
+	[data-page-id="qna"] .opinionInput table.opinionTb tbody tr th + td {padding:20px 14px 20px 20px;}
+	[data-page-id="qna"] .opinionInput textarea.pullSize{height:144px;}
+
+	[data-page-id="qna"] .scrapList ul{height:90px;overflow:hidden;}
+	[data-page-id="qna"] .scrapList ul li{width:90px;height:90px;overflow:hidden;float:left;margin-left:10px; position:relative;}
+	[data-page-id="qna"] .scrapList ul li:after {content:''; width:88px;height:88px; border:1px dashed #d1d1d1; position:absolute; top:0px; left:0px; z-index:1;}
+	[data-page-id="qna"] .scrapList ul li .scrapImg {width:88px;height:88px; border:1px solid #d1d1d1; position:absolute; top:0px; left:0px; z-index:2;}
+	[data-page-id="qna"] .scrapList ul li .scrapImg a.btnDel {width:19px; height:19px; font-size:0; background:url('../images/pc/btn_closeBg.png') 0 0 no-repeat; position:absolute; top:0; right:0; z-index:2;}
+	[data-page-id="qna"] .scrapList ul li:first-child{width:88px;height:88px;border:1px solid #d6d6d6;margin-left:0;}
+	[data-page-id="qna"] .scrapList ul li:first-child:after {display:none;}
+	[data-page-id="qna"] .scrapList ul li:first-child a{display:block;height:88px;background:#fff url("../images/pc/ico_plus.png") no-repeat center center;}
+	[data-page-id="qna"] .scrapList ul li img{width:88px; height:88px;}
+
+	.fileup{overflow:hidden;}
+	.fileup .inputs{float:left;}
+	.fileup .fileupList {width:100%;}
+	/*.fileup .fileupList > div {margin-top:10px;background:url('../images/pc/ico_image2.png') 0 50% no-repeat; color:#999; vertical-align:middle;}*/
+	.fileup .fileupList > div a.btnDel {width:11px; height:11px; font-size:0; background:url('../images/pc/btn_closeS.png') 0 0 no-repeat; display:inline-block; vertical-align:middle;}
+	.fileup a.btnFileup{width:75px;height:40px;display:block;float:right;background:#666;border-radius:20px;text-align:center;}
+	.fileup a.btnFileup span{line-height:40px;display:block;color:#fff;font-size:13px;}
+	[data-page-id="qna"] .arrayWrap{width:100%; margin-top:27px;}
+
+	#fileUpText {width:50%}
+
+	.specialSlide {margin:20px 0 0 20px}
+</style>
+
+<!-- 
+<a href="../_popup/popAttachSelector.html" class="btnPop" data-user-class="popEdge attachSelector">test</a>
+<a href="../_popup/popInquire.html" class="btnPop" data-user-class="popEdge attachSelector">test</a>
+
+<span class="pic"><input type="file"></span>
+ -->
 </body>
 </html>
