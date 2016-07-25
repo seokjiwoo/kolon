@@ -39,16 +39,17 @@ function ScrollMenu() {
 
 	function setElements() {
 		self.startY = 0;
+		self.exPos = $(win).scrollTop();
 		self.body = $('body');
 	}
 
 	function setBindEvents() {
-		// $(win).on('scroll', $.proxy(onScrollListener, self))
-		// 		.on('resize', $.proxy(onResizeListener, self));
+		$(win).on('scroll', $.proxy(onScrollListener, self))
+				.on('resize', $.proxy(onResizeListener, self));
 		
-		$(win).on('touchstart', $.proxy(onTouchStart, self))
-				.on('touchmove', $.proxy(onTouchMove, self))
-				.on('touchend', $.proxy(onTouchEnd, self));
+		// $(win).on('touchstart', $.proxy(onTouchStart, self))
+		// 		.on('touchmove', $.proxy(onTouchMove, self))
+		// 		.on('touchend', $.proxy(onTouchEnd, self));
 	}
 
 	function onTouchStart(e) {
@@ -82,6 +83,24 @@ function ScrollMenu() {
 		} else {
 			self.body.removeClass(self.opts.cssClass.isScrolling);
 		}
+
+	}
+
+	function onScrollListener() {
+		var winTop = $(win).scrollTop(),
+		dist = winTop - self.exPos;
+
+		if (dist > 0) {
+			self.body.addClass(self.opts.cssClass.isScrolling);
+		} else {
+			self.body.removeClass(self.opts.cssClass.isScrolling);
+		}
+
+		self.exPos = winTop;
+	}
+
+	function onResizeListener() {
+		onScrollListener();
 	}
 
 }
