@@ -71,7 +71,7 @@
 
 .opinionsWrap{position:relative;padding-bottom:25px;border-bottom:1px solid #ccc;text-align:center}
 .opinionsWrap p{margin-top:10px;line-height:1.4em;font-size:24px;}
-.opinionsWrap > span{padding:4px 6px;font-size:11px;border: 1px solid #00aeb9;color: #00aeb9;display: inline-block;}
+.opinionsWrap > span{padding:4px 6px;font-size:11px;    border: 1px solid #436ebb;color: #436ebb;display: inline-block;border-radius: 15px;}
 .opinionsWrap .date{margin-top:25px;}
 .opinionsWrap .date span{display:block;line-height:1.4em;font-size:14px;}
 .opinionsWrap .date span:last-child{color:#999;}
