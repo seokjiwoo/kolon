@@ -7,6 +7,7 @@
 .mt30 {margin-top:30px;}
 .mt40 {margin-top:40px;}
 .mb0 {margin-bottom:0 !important;}
+.ml4 {margin-left:4px;}
 
 .pt0{padding-top:0 !important;}
 .pt25{padding-top:25px !important;}
@@ -100,7 +101,8 @@ a.pointLink {color:#2d427a;text-decoration:underline;}
 
 
 /* button */
-.btnWrap{text-align: center;}
+.btnWrap{text-align: center;} 
+.btnWrapLeft{text-align:left;} 
 .btnWrap02{overflow: hidden;}
 .btnWrap02 a{float: left;width: 49%;}
 .btnWrap02 a:first-child{margin-right: 2%;}

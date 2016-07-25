@@ -118,7 +118,7 @@ module.exports = function() {
 			})
 		});
 
-		$(".portfolioArea > ul").bxSlider({ // 전문가 상세 이미지 인덱스 체크
+		var widthSlider = $(".portfolioArea > ul").bxSlider({ // 전문가 상세 이미지 인덱스 체크
 			pager : false,
 			onSliderLoad  : function() {
 				var max = $(this).find('li').filter(':not(.bx-clone)').size();
@@ -129,6 +129,10 @@ module.exports = function() {
 				$(".portfolioArea .count").find("i").text( newIndex + 1 );
 			}
 		});
+
+		$('.tabWrap a').click(function(){
+			widthSlider.reloadSlider(); 
+		}) 
 
 		$(".optList > li").each(function(){ // 마이페이지-주문상세
 			$(this).find(".hiddenArea").parent("li").next().css({
