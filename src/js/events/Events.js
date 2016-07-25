@@ -122,11 +122,29 @@ function Events() {
 				SOCIAL_LOGIN_URL : 'socialLoginUrlResult',
 				SOCIAL_CONNECT : 'socialConnectResult',
 				SOCIAL_DISCONNECT : 'socialDisconnectResult',
-				NOT_A_ROBOT : 'notarobotResult'
+				NOT_A_ROBOT : 'notarobotResult',
+				REFRESH_MY_INFO : 'myInfoResult'
 			},
 			// Opinions - 의견묻기
+			// @see OpinionsController.js
 			OPINIONS : {
-				SCRAPED_LIST : 'scrapedOpinionsListResult'
+				// 의견 주제 코드 리스트 
+				CLASS : 'opinionsClassResult',
+				// 의견묻기 리스트 조회
+				LIST : 'opinionsListResult',
+				// 의견묻기 답변 전체 리스트 조회
+				ANSWERS : 'opinionAnswersResult',
+				// 의견묻기 전문가 리스트
+				EXPERTS_LIST : 'opinionsExpertsListResult',
+				// 의견묻기 스크랩 폴더 목록
+				SCRAPED_LIST : 'scrapedOpinionsListResult',
+				// 의견묻기 등록 (첨부 파일 목록, 스크랩 번호 목록 처리 안 되어 있음!)
+				POST_OPINION : 'postOpinionResult',
+				// 의견묻기 답변 등록
+				POST_ANSWER : 'postAnswerResult',
+				// 의견묻기 답변 유용함 체크
+				POLL_ANSWER : 'pollAnswerResult',
+
 			},
 			// Message - 메세지
 			// @see MessageController.js
