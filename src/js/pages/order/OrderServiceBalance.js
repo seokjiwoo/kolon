@@ -118,7 +118,7 @@ module.exports = function() {
 				var data = result.data;
 				
 				var paymentInfo = data.balancePayment.balancePaymentPrice;
-				paymentInfo.leftPoint = 100000;
+				//paymentInfo.leftPoint = 100000;
 				
 				baseTotalPrice = Number(paymentInfo.totalPaymentPrice);
 				pointLimit = Number(paymentInfo.leftPoint) || 0;
@@ -255,19 +255,6 @@ module.exports = function() {
 	};
 
 	function getHashString(e) {
-		if (!$('#agree01cb').hasClass('on')) {
-			alert('개인정보 제 3자 제공에 동의해 주세요.');
-			return;
-		}
-		if (!selectedOneAddress) {
-			alert('배송지를 지정해 주세요.');
-			return;
-		}
-		if ($('#visitTimeSelector').val() == '') {
-			alert('희망 실측 방문/상담 시간을 지정해 주세요.');
-			return;
-		}
-		
 		var paymentPrice = Number($('#Amt').val());
 
 		var productsArray = new Array();
