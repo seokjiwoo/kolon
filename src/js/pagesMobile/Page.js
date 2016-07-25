@@ -16,6 +16,7 @@ module.exports = function() {
 
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
+	scrollMenu = require('../components/ScrollMenu'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
@@ -49,6 +50,8 @@ module.exports = function() {
 		initGnb();
 
 		initHorizontalScroll();	//horizontal scroll wrap width
+
+		scrollMenu.init();
 
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
