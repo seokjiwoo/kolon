@@ -6,38 +6,29 @@
 
 
 <header class="header">
-	<a href="#" id="gnbBtn" class="gnbBtn"><span class="hide">메뉴열기</span></a>
-	<h1 class="logo"><a href="/"><img src="../images/txt_logo.png" alt="common" /></a></h1>
+	<h1 class="logo"><a href="/" id="gnbBtn"><img src="../images/txt_logo.png" alt="common" /></a></h1>
 	<a href="#" id="searchOpen" class="searchBtn btnToggle"><span class="hide">검색</span><span class="cancelBtn">취소</span></a>
-	<div class="searchWrap slideCon">
-		<form method="post" action="/">
-			<fieldset>
-				<legend>통합검색</legend>
-				<div class="searchForm">
-					<p><input type="text" id="keyword" title="검색어 입력" name="keyword" placeholder="검색어 입력" value="" /><button class="keywordDel">입력 내용 삭제</button></p>
-				</div>
-				<div class="keyword">
-					<ul class="keywordList">
-						<li><a href="#"><span>북유럽</span> 침실</a></li>
-						<li><a href="#"><span>북유럽</span> 인테리어</a></li>
-						<li><a href="#"><span>북유럽</span> 소품</a></li>
-						<li><a href="#"><span>북유럽</span> 침실</a></li>
-						<li><a href="#"><span>북유럽</span> 인테리어</a></li>
-						<li><a href="#"><span>북유럽</span> 소품</a></li>
-						<li><a href="#"><span>북유럽</span> 침실</a></li>
-						<li><a href="#"><span>북유럽</span> 인테리어</a></li>
-						<li><a href="#"><span>북유럽</span> 소품</a></li>
-						<li><a href="#"><span>북유럽</span> 침실</a></li>
-						<li><a href="#"><span>북유럽</span> 인테리어</a></li>
-						<li><a href="#"><span>북유럽</span> 소품</a></li>
-					</ul>
-				</div>
-			</fieldset>
-		</form>
+	<div class="menuhWrap slideCon">
+		<div class="btmArea">
+			<ul class="colMenu">
+				<li><a href="/"><em class="italic">home</em> 커먼홈</a></li>
+				<li><a href="/manage/"><em class="italic">manage</em> 자산관리</a></li>
+				<li><a href="/rent/"><em class="italic">rent</em> 집구하기</a></li>
+				<li><a href="/fund/"><em class="italic">fund</em> 투자하기</a></li>
+				<li><a href="/newForm/"><em class="italic">newform</em> 뉴폼</a></li>
+				<li><a href="/shop/"><em class="italic">shop</em> 샵</a></li>
+				<li><a href="/homeService/"><em class="italic">service</em> 서비스</a></li>
+				<li><a href="/magazine/"><em class="italic">magazine</em> 매거진</a></li>
+			</ul>
+			<ul class="rowMenu">
+				<li><a href="/manager/">커먼전문가</a></li>
+				<li><a href="/qna/">의견묻기</a></li>
+				<li><a href="">도움말</a></li>
+				<li><a href="">마이커먼</a></li>
+			</ul>
+		</div>
 	</div>
-	<a href="/myPage/myCart.html" class="bagBtn"><span>1</span></a>
 </header>
-
 <nav class="gnb">
 	<div class="topArea">
 		<div class="userBox">
@@ -76,8 +67,7 @@
 			</ul>
 		</div>
 		<a href="/member/login.html" id="btnJoinMyPage" class="myBtn"><span>로그인 / 회원가입</span></a> <!-- <a href="/myPage/" class="myBtn"><span>마이커먼</span></a> -->
-
-		<div class="hiddenMenu">
+		<!--<div class="hiddenMenu">
 			<ul>
 				<li>
 					<a href="/myPage/order.html">
@@ -103,7 +93,7 @@
 						<span id="menuCountOrderNewform"></span>
 					</a>
 				</li>
-				<!--<li>
+				<li>
 					<a href="">
 						<span>시공취소/환불</span>
 						<span id="menuCountCancelNewform">2</span>
@@ -120,33 +110,58 @@
 						<span>서비스 취소/환불</span>
 						<span id="menuCountCancelService" class="off">2</span>
 					</a>
-				</li>-->
+				</li>
+			</ul>
+		</div>-->
+		<div class="myCommon">
+			<!-- <a href="#" id="menuToggle" class="downBtn"><span class="hide"></span></a> -->
+		</div>
+	</div>
+	<div class="gnbWrap">
+		<div class="searchWrap">
+			<form method="post" action="/">
+				<fieldset>
+					<legend>통합검색</legend>
+					<div class="searchForm">
+						<input type="text" id="keyword" title="검색어 입력" name="keyword" placeholder="검색어 입력" value="" /><button class="btnSearch">검색</button>
+					</div>
+					<div class="slidWrap">
+						<a href="" class="btnToggle">최근검색어</a>
+						<div class="keyword slideCon">
+							<ul class="keywordList">
+								<li><a href="#"><span>북유럽</span> 침실</a></li>
+								<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+								<li><a href="#"><span>북유럽</span> 소품</a></li>
+								<li><a href="#"><span>북유럽</span> 침실</a></li>
+								<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+								<li><a href="#"><span>북유럽</span> 소품</a></li>
+								<li><a href="#"><span>북유럽</span> 침실</a></li>
+								<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+								<li><a href="#"><span>북유럽</span> 소품</a></li>
+								<li><a href="#"><span>북유럽</span> 침실</a></li>
+								<li><a href="#"><span>북유럽</span> 인테리어</a></li>
+								<li><a href="#"><span>북유럽</span> 소품</a></li>
+							</ul>
+							<a class="keywordDel" href="">전체삭제</a>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="slidWrap">
+			<a href="" class="btnToggle">추천태그</a>
+			<ul class="slideCon">
+				<li>#태그1</li>
+				<li>#태그2</li>
+				<li>#태그3</li>
 			</ul>
 		</div>
-		<div class="myCommon">
-			<a href="#" id="menuToggle" class="downBtn"><span class="hide"></span></a>
+		<div class="stateArea">
+			<ul>
+				<li><a href="tel:+18506484200">상담전화</a></li>
+				<li><a id="buttonLogInOut" href="/member/login.html">로그인</a></li>
+			</ul>
 		</div>
-	</div>
-	<div class="btmArea">
-		<ul class="colMenu">
-			<li><a href="/manage/">자산관리 <em>Manage</em></a></li>
-			<li><a href="/newForm/">뉴폼 <em>New Form</em></a></li>
-			<li><a href="/rent/">집구하기 <em>Rent</em></a></li>
-			<li><a href="/shop/">샵 <em>Shop</em></a></li>
-			<li><a href="/fund/">투자하기 <em>Fund</em></a></li>
-			<li><a href="/homeService/">홈서비스 <em>Home Service</em></a></li>
-			<li><a href="/magazine/">매거진  <em>Magazine</em></a></li>
-		</ul>
-		<ul class="rowMenu">
-			<li><a href="/qna/">의견묻기</a></li>
-			<li><a href="/manager/">커먼전문가</a></li>
-		</ul>
-	</div>
-	<div class="stateArea">
-		<ul>
-			<li><a id="buttonLogInOut" href="/member/login.html">로그인</a></li>
-			<li><a href="tel:+18506484200">전화상담</a></li>
-		</ul>
 	</div>
 	<a href="#" id="closeGnbBtn" class="closeBtn"><span class="hide">메뉴닫기</span></a>
 </nav>

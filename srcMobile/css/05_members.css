@@ -112,7 +112,7 @@
 .snsBtnS.kakao{background-position: 16px -74px;}
 .snsBtnS.twitter{background-position: 16px -119px;}
 .snsBtnM{height:35px;font-size:15px;background:url("../images/ico_sns.png") no-repeat; color:#333;}
-.snsBtnM span{display:block;padding-top:11px;}
+.snsBtnM span{display:block;padding-top:11px;padding-left: 30px;}
 .snsBtnM:before{position:absolute;left:55px;top:11px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 .snsBtnM.facebook{ background-position:26px 10px;background-size:10px 137px;}
 .snsBtnM.naver{background-position: 26px -30px;background-size:10px 137px;}

@@ -318,14 +318,14 @@ module.exports = function() {
 			e.preventDefault();
 			if( !$(".hiddenMenu").is( ":visible" ) ) {
 				$(".hiddenMenu").addClass("active");
-				$(".gnb").css({
-					minHeight : $(window).height() + 480
-				});
+				// $(".gnb").css({
+				// 	minHeight : $(window).height() + 480
+				// });
 			} else {
 				$(".hiddenMenu").removeClass("active");
-				$(".gnb").css({
-					minHeight : $(".gnb").height() - 330
-				});
+				// $(".gnb").css({
+				// 	minHeight : $(".gnb").height() - 330
+				// });
 			}
 		});
 	};
@@ -390,15 +390,15 @@ module.exports = function() {
 	/**
 	 * GNB open
 	 */
-	function openSideMenu() {
-		$(".gnb").addClass("acitve").css({minHeight: $(window).height() + 150 }).stop().animate({left:0}, 400, function() {
+	function openSideMenu() {//.css({minHeight: $(window).height() + 150 })
+		$(".gnb").addClass("acitve").stop().animate({left:0}, 400, function() {
 			$(".container").addClass("fix");
 			$(".header").addClass("fix");
 		});
 		if( $(".hiddenMenu").hasClass( "active" ) ){
-			$(".gnb").css({
-				minHeight : $(window).height() + 480
-			});
+			// $(".gnb").css({
+			// 	minHeight : $(window).height() + 480
+			// });
 		}
 		$("body").append("<div class='dimBg'><div>");
 	};
