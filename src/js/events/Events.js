@@ -188,7 +188,9 @@ function Events() {
 				// 장바구니 등록
 				ADD : 'addMyCartListResult',
 				// 장바구니 삭제
-				DELETE : 'deleteMyCartListResult'
+				DELETE : 'deleteMyCartListResult',
+				// 장바구니 삭제
+				UPDATE : 'updateMyCartListResult'
 			},
 			// 스크랩
 			// @see ScrapController.js

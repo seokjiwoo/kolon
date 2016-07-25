@@ -416,7 +416,7 @@ module.exports = function() {
 	 */
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
-
+		if (opts == undefined) opts = {};
 		if (opts.name !== 'snsshare' && loginData == null) {
 			$(document).trigger('needLogin');
 			return;
@@ -498,7 +498,9 @@ module.exports = function() {
 	function verifyMemberResultHandler(e, status, authData) {
 		switch(Number(status)) {
 			case 200:
-				Super.alertPopup('본인확인이 완료되었습니다.', authData.message, '확인');
+				Super.alertPopup('본인확인이 완료되었습니다.', authData.message, '확인', function(){
+					location.reload(true);
+				});
 				memberInfoController.getMyInfo();
 				break;
 			default:

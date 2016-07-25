@@ -29,6 +29,8 @@ module.exports = function() {
 
 	var pointLimit;
 	var baseTotalPrice;
+	var usePoint;
+	var paymentPrice;
 
 	var productsInfo;
 
@@ -163,41 +165,16 @@ module.exports = function() {
 					$('#pointCk01').attr('disabled', 'disabled');
 					$('#pointWt').attr('disabled', 'disabled');
 				}
-				$('#pointWt').change(function(e){
-					var newValue = Number($('#pointWt').val());
-					if (newValue < 5000) {
-						if (newValue != 0) alert('포인트는 최하 5000포인트부터 사용가능합니다.');
-						$('#pointWt').val('');
-						$('.usedPoint').text('0');
-						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
-					} else if (newValue > pointLimit) {
-						alert('사용 가능한 포인트를 초과합니다. 다시 입력해주세요.');
-						$('#pointWt').val('');
-						$('.usedPoint').text('0');
-						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
-					} else {
-						if (newValue > baseTotalPrice) {
-							newValue = baseTotalPrice;
-							$('#pointWt').val(newValue);
-						}
-						$('.usedPoint').text(util.currencyFormat(newValue));
-						$('.totalPrice').text(util.currencyFormat(baseTotalPrice-newValue));
-					}
-					$('#usingPoint').val($('#pointWt').val());
-					$('#Amt').val(baseTotalPrice-newValue);
-				});
+				$('#pointWt').change(reCalculatePointUse);
 				$('#useAllPointCheck').click(function(e){
 					if (!$('#pointCk01').prop('checked')) {
+						$('#pointLb01').addClass('on');
 						$('#pointWt').val(pointLimit);
-						$('.usedPoint').text(pointLimit);
-						$('.totalPrice').text(util.currencyFormat(baseTotalPrice-pointLimit));
 					} else {
+						$('#pointLb01').removeClass('on');
 						$('#pointWt').val('');
-						$('.usedPoint').text('0');
-						$('.totalPrice').text(util.currencyFormat(baseTotalPrice));
 					}
-					$('#usingPoint').val($('#pointWt').val());
-					$('#Amt').val(baseTotalPrice-pointLimit);
+					reCalculatePointUse();
 				});
 
 				$('.basePrice').text(util.currencyFormat(data.paymentInfo.totalPaymentPrice-totalDeliveryCharge));
@@ -213,7 +190,7 @@ module.exports = function() {
 				}
 				$('#cardSelect').html(cardSelectTag);
 
-				if (data.paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
+				reCalculatePointUse();
 
 				/* var bankSelectTag = '<option value="" label="은행 선택" selected="selected">은행 선택</option>';
 				for (var key in data.banks) {
@@ -250,12 +227,46 @@ module.exports = function() {
 		}
 	}
 
+	function reCalculatePointUse() {
+		usePoint = Number($('#pointWt').val());
+
+		$('#pointLb01').removeClass('on');
+		if (isNaN(usePoint)) usePoint = 0;
+		if (usePoint < 5000) {
+			if (usePoint != 0) alert('포인트는 최하 5000포인트부터 사용가능합니다.');
+			usePoint = 0;
+		} else if (usePoint > pointLimit) {
+			alert('사용 가능한 포인트를 초과합니다. 다시 입력해주세요.');
+			usePoint = 0;
+		} else if (usePoint > baseTotalPrice) {
+			usePoint = baseTotalPrice;
+			$('#pointLb01').addClass('on');
+		}
+
+		$('#pointWt').val(usePoint);
+		$('#usingPoint').val(usePoint);
+		$('.usedPoint').text(util.currencyFormat(usePoint));
+		$('.totalPrice').text(util.currencyFormat(baseTotalPrice-usePoint));		
+		if (usePoint == 0) $('#pointWt').val('');
+
+		paymentPrice = baseTotalPrice-usePoint;
+		$('#Amt').val(paymentPrice);
+
+		if (paymentPrice < 50000) {
+			$('#quotaSelect').val('00');
+			$('#quotaSelect').attr('disabled', 'disabled');
+		} else {
+			$('#quotaSelect').removeAttr('disabled');
+		}
+	};
+
 	function myInfoResultHandler(e) {
 		loginData = loginDataModel.loginData();
-		//debug.log(loginData);
+		
 		$('#BuyerName').val(loginData.memberName);
 		if (loginData.phone != null) {
 			$('#BuyerTel').val(loginData.phone);
+			if (loginData.email != null) $('#BuyerEmail').val(loginData.email);
 		} else {
 			alert('본인인증이 필요한 페이지입니다.');
 			//Cookies.remove('instantOrder');
@@ -268,9 +279,6 @@ module.exports = function() {
 			alert('개인정보 제 3자 제공에 동의해 주세요.');
 			return;
 		}
-		var usingPoint = parseInt($("#usingPoint").val());
-		if (isNaN(usingPoint)) usingPoint = 0;
-		var paymentPrice = baseTotalPrice - usingPoint;
 
 		var productsArray = new Array();
 		for (var key in productsInfo) {

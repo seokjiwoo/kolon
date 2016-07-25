@@ -32,6 +32,8 @@ module.exports = function() {
 
 	var pointLimit;
 	var baseTotalPrice;
+	var usePoint;
+	var paymentPrice;
 
 	var productsInfo;
 
@@ -114,6 +116,12 @@ module.exports = function() {
 		switch(eventType) {
 			case ORDER_EVENT.NEWFORM_ORDER_BALANCE_INFO:
 				var data = result.data;
+				
+				var paymentInfo = data.balancePayment.balancePaymentPrice;
+				paymentInfo.leftPoint = 100000;
+				
+				baseTotalPrice = Number(paymentInfo.totalPaymentPrice);
+				pointLimit = Number(paymentInfo.leftPoint) || 0;
 
 				productsInfo = data.constProducts;
 				$.map(productsInfo, function(each){
@@ -123,27 +131,55 @@ module.exports = function() {
 				});
 				
 				renderData(productsInfo, '#order-product-templates', '#order-product-wrap', true);
-				/*
-				var paymentInfo = data.constPaymentInfo.paymentPrice;
-				paymentInfo.totalAdvancePriceDesc = util.currencyFormat(paymentInfo.totalAdvancePrice);
+
+				var orderConfirmInfo = data.constOrderConfirm;
+				orderConfirmInfo.estimatePriceDesc = util.currencyFormat(orderConfirmInfo.estimatePrice);
+				orderConfirmInfo.surveyPriceDesc = util.currencyFormat(orderConfirmInfo.surveyPrice);
+				$.map(orderConfirmInfo.constEstimateItems, function(each){
+					each.itemPriceDesc = util.currencyFormat(each.itemPrice);
+				});
+
+				renderData(orderConfirmInfo, '#order-estimate-templates', '#order-estimate-wrap', true);
+				renderData(orderConfirmInfo.constEstimateItems, '#order-estimate-items-templates', '#order-estimate-items-wrap', true);
 				
+				paymentInfo.estimatePriceDesc = util.currencyFormat(paymentInfo.estimatePrice);
+				paymentInfo.advancePriceDesc = util.currencyFormat(paymentInfo.advancePrice);
+				paymentInfo.totalPaymentPriceDesc = util.currencyFormat(paymentInfo.totalPaymentPrice);
+
+				renderData(paymentInfo, '#order-payment-templates', '#order-payment-wrap', true);
+
 				$('.totalProductPrice').text(util.currencyFormat(paymentInfo.totalProductPrice));
 				$('.totalConstExpectPriceDesc').text(util.currencyFormat(paymentInfo.totalConstExpectPrice));
+
 				$('.savingPoint').text(util.currencyFormat(paymentInfo.savingPoint));
-				$('.basePrice').text(paymentInfo.totalAdvancePriceDesc);
+				$('.basePrice').text(paymentInfo.totalPaymentPriceDesc);
 				$('.basicDiscount').text(util.currencyFormat(paymentInfo.totalDiscountPrice));
-				//$('.usedPoint').text('0');
+				$('.usedPoint').text('0');
 				$('.handlingPrice').text('0');
-				$('.totalPrice').text(paymentInfo.totalAdvancePriceDesc);
-				*/
+				$('.totalPrice').text(paymentInfo.totalPaymentPriceDesc);
+
+				if (pointLimit < 5000) {
+					$('#pointCk01').attr('disabled', 'disabled');
+					$('#pointWt').attr('disabled', 'disabled');
+				}
+				$('#pointWt').change(reCalculatePointUse);
+				$('#useAllPointCheck').click(function(e){
+					if (!$('#pointCk01').prop('checked')) {
+						$('#pointLb01').addClass('on');
+						$('#pointWt').val(pointLimit);
+					} else {
+						$('#pointLb01').removeClass('on');
+						$('#pointWt').val('');
+					}
+					reCalculatePointUse();
+				});
+
 				var cardSelectTag = '<option value="" label="카드 선택" selected="selected">카드 선택</option>';
 				for (var key in data.listCards) {
 					var eachCard = data.listCards[key];
 					cardSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.cardCompanyName+'">'+eachCard.cardCompanyName+'</option>';
 				}
 				$('#cardSelect').html(cardSelectTag);
-
-				//if (paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
@@ -156,9 +192,8 @@ module.exports = function() {
 				$("#VbankExpDate").val(data.pgInfo.vbankExpDate);
 				
 				$('#GoodsName').val(productsInfo[0].productName);
-				$('#Amt').val(paymentInfo.totalAdvancePrice);
+				$('#Amt').val(paymentInfo.totalPaymentPrice);
 				$('#Moid').val(data.orderNumber);
-				$('#GoodsCnt').val(productsInfo.length);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
 				$('#SelectCardCode').val(''); // 카드번호
@@ -170,6 +205,39 @@ module.exports = function() {
 				if (!util.isIe()) $('#payBANK').remove();
 				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;
+		}
+	};
+
+	function reCalculatePointUse() {
+		usePoint = Number($('#pointWt').val());
+
+		$('#pointLb01').removeClass('on');
+		if (isNaN(usePoint)) usePoint = 0;
+		if (usePoint < 5000) {
+			if (usePoint != 0) alert('포인트는 최하 5000포인트부터 사용가능합니다.');
+			usePoint = 0;
+		} else if (usePoint > pointLimit) {
+			alert('사용 가능한 포인트를 초과합니다. 다시 입력해주세요.');
+			usePoint = 0;
+		} else if (usePoint > baseTotalPrice) {
+			usePoint = baseTotalPrice;
+			$('#pointLb01').addClass('on');
+		}
+		
+		$('#pointWt').val(usePoint);
+		$('#usingPoint').val(usePoint);
+		$('.usedPoint').text(util.currencyFormat(usePoint));
+		$('.totalPrice').text(util.currencyFormat(baseTotalPrice-usePoint));		
+		if (usePoint == 0) $('#pointWt').val('');
+
+		paymentPrice = baseTotalPrice-usePoint;
+		$('#Amt').val(paymentPrice);
+
+		if (paymentPrice < 50000) {
+			$('#quotaSelect').val('00');
+			$('#quotaSelect').attr('disabled', 'disabled');
+		} else {
+			$('#quotaSelect').removeAttr('disabled');
 		}
 	};
 

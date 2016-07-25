@@ -71,8 +71,7 @@ module.exports = function() {
 		setBindEvents();
 
 		// myCartShop 리스트 조회
-		var productSectionCode = 'PD_PROD_SVC_SECTION_01';
-		controller.myCartList(productSectionCode);
+		controller.myCartList('PD_PROD_SVC_SECTION_01');
 	}
 
 	function setElements() {
@@ -91,22 +90,22 @@ module.exports = function() {
 
 	function setDeleteEvents() {
 		// 옵션 삭제 처리 - 확인필요
-		$('.optList').each(function(){
-			$(this).find('.js-opt-delete').click(function(e) {
-				e.preventDefault();
-				/*
-				eventManager.trigger(OPTIONNUM_EVENT.CHANGE, [$(this).parent(), 0]);
-				$(this).closest('.optList').remove();
-				*/
-			});
+		$('').each(function(){
+		});
+		$('.optList .js-opt-delete').click(function(e) {
+			e.preventDefault();
+			if (confirm('선택하신 상품을 삭제하시겠습니까?')) {
+				var deleteList = [$(this).data('cart-number')];
+				controller.deleteMyCartList(deleteList);
+			}
 		});
 
 		// 선택 리스트 삭제 처리
 		$(self.opts.listDel).on('click', function(e) {
 			e.preventDefault();
 			if (confirm('선택하신 상품을 삭제하시겠습니까?')) {
-				var list = $('[data-chk-group=\'myCartShop\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
-				deleteList = [];
+				var list = $('[data-chk-group=\'myCartShop\']').not('[data-chk-role=\'chkAll\']').filter('.on');
+				var deleteList = [];
 				$.each(list, function() {
 					deleteList.push($(this).data('cart-number'));
 				});
@@ -128,8 +127,9 @@ module.exports = function() {
 		target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
 		displayUpdate();
 
-		controller.updateMyCartList(info.productNumber, {
-			"orderOptionNumber": target.data().optionNum,
+		controller.updateMyCartList(info.cartNumber, {
+			"productNumber": info.productNumber,
+			"orderOptionNumber": info.optionNumber,
 			"quantity": value
 		});
 	}
@@ -157,14 +157,14 @@ module.exports = function() {
 
 		$.each(list, function() {
 			info = $(this).data('list-info');
-			value1 = (info.basePrice * info.quantity) + info.deliveryCharge;
-			value2 = (info.salePrice * info.quantity) + info.deliveryCharge;
+			value1 = (info.basePrice) + info.deliveryCharge;
+			value2 = (info.salePrice) + info.deliveryCharge;
 
 			totalBaseValue += value1;
-			discountValue += (info.basePrice-info.salePrice)*info.quantity;
+			discountValue += info.discountPrice;
 			totalSaleValue += value2;
 
-			$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
+			//$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
 			$(this).find(self.opts.optionNum).html(info.quantity);
 
 			orderData.push({
@@ -231,6 +231,9 @@ module.exports = function() {
 						location.href = '/order/orderGoods.html';
 					}
 				});
+				break;
+			case CART_EVENT.UPDATE:
+				controller.myCartList('PD_PROD_SVC_SECTION_01');
 				break;
 			case CART_EVENT.DELETE:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);

@@ -16,6 +16,8 @@ module.exports = function() {
 	$(controller).on('resendAuthNumberResult', resendAuthNumberHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(controller).on('notarobotResult', onRecaptchaHandler);
+	$(controller).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../../model/LoginModel');
 
 	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
@@ -52,6 +54,14 @@ module.exports = function() {
 		$('#loginForm').submit(loginHandler);
 	};
 	
+	function myInfoResultHandler() {
+		var loginData = loginDataModel.loginData();
+		
+		if (loginData != null) {
+			alert('이미 로그인되어 있습니다');
+			location.href = '/';
+		}
+	}
 	
 	/**
 	 * 회원 이용약관 목록 핸들링
@@ -325,15 +335,9 @@ module.exports = function() {
 			if (win.grecaptcha) {
 				win.VX_G_RECAPTCHA_CALL_BACK();
 			} else {
-				//console.log('arguments', arguments);
 				readyReCaptcha();
 			}
 		});
-
-		// tag = $('<script></script>');
-		// tag.attr('src', 'https://www.google.com/recaptcha/api.js?onload=VX_G_RECAPTCHA_CALL_BACK&render=explicit');
-		// $('head').append(tag);
- 
 	}
 
 	function readyReCaptcha() {

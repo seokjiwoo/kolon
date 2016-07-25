@@ -91,7 +91,7 @@
 									<div>
 										<ul class="pointBul">
 											<li><p class="tbBul"><label for="pointWt">포인트 사용</label><input type="text" style="width:111px;" id="pointWt" value=""/> p</p></li>
-											<li><p id='useAllPointCheck' class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""/><label for="pointCk01">모두사용 ( 잔여 포인트 :  <b class="pointRed">{{leftPointDesc}}</b> p )</label></p></li>
+											<li><p id='useAllPointCheck' class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""/><label for="pointCk01" id='pointLb01'>모두사용 ( 잔여 포인트 :  <b class="pointRed">{{leftPointDesc}}</b> p )</label></p></li>
 										</ul>
 										<p class="underTxt">포인트는 5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
 									</div>
@@ -559,8 +559,6 @@
 
 	<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
 	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00" />		<!-- 할부개월수 (00, 01, 02, ....) -->
-
-	<!-- 은행 코드? -->
 
 	<input type="hidden" name="MID" id="MID" value="">
 	<input type="hidden" name="UserIP" id="UserIP" value="">

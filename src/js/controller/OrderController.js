@@ -159,13 +159,13 @@ function ClassOrderController() {
 	 * @param {Arrary} myCartRequestList
 	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
 	 */
-	function addMyCartList(myCartRequestList) {
+	function addMyCartList(myCartRequestList, requestedObj) {
 		Super.callApi('/apis/me/cart', 'POST', myCartRequestList, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('addMyCartListResult', [status, result]);
+				$(callerObj).trigger('addMyCartListResult', [status, result, requestedObj]);
 			} else {
 				Super.handleError('addMyCartList', result);
-				$(callerObj).trigger('addMyCartListResult', [status, result]);
+				$(callerObj).trigger('addMyCartListResult', [status, result, requestedObj]);
 			}
 		}, false);
 	}
@@ -175,8 +175,8 @@ function ClassOrderController() {
 	 * @param {Arrary} myCartRequestList
 	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPUT
 	 */
-	function updateMyCartList(productNumber, myCartRequestList) {
-		Super.callApi('/apis/me/cart/'+productNumber, 'PUT', myCartRequestList, function(status, result) {
+	function updateMyCartList(cartNumber, quantityRequest) {
+		Super.callApi('/apis/me/cart/'+cartNumber, 'PUT', quantityRequest, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('updateMyCartListResult', [status, result]);
 			} else {
@@ -583,10 +583,10 @@ function ClassOrderController() {
 	function ordersAdvanceComplete(orderNumber) {
 		Super.callApi('/apis/constorders/advance/' + orderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+				$(callerObj).trigger('ordersCompleteResult', [status, result.common]);
 			} else {
 				Super.handleError('ordersComplete', result);
-				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+				$(callerObj).trigger('ordersCompleteResult', [status, result.common]);
 			}
 		}, true);
 	};
@@ -595,15 +595,15 @@ function ClassOrderController() {
 	function ordersBalanceComplete(orderNumber) {
 		Super.callApi('/apis/constorders/balance/' + orderNumber, 'GET', {}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+				$(callerObj).trigger('ordersCompleteResult', [status, result.common]);
 			} else {
 				Super.handleError('ordersComplete', result);
-				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+				$(callerObj).trigger('ordersCompleteResult', [status, result.common]);
 			}
 		}, true);
 	};
 
-	
+
 
 	/**
 	 * hash_String 취득(EncryptData)

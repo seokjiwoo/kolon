@@ -57,7 +57,8 @@
 								"optionNumber" : {{orderOptionNumber}},
 								"quantity" : {{quantity}},
 								"basePrice" : {{basePrice}},
-								"salePrice" : {{discountPrice}}
+								"discountPrice" : {{discountPrice}},
+								"salePrice" : {{salePrice}}
 							}'>
 							<td>
 								<div class="cartChk">
@@ -78,28 +79,32 @@
 									<div class="optList">
 										<!-- 옵션 -->
 										<div class="option">
-											<p class="optionTit">{{orderOptionName}}</p>
-											<p class="optionPrice"><b>{{discountPrice}}</b> 원</p>
+											{{#if orderOptionName}}
+												<p class="optionTit">{{orderOptionName}}</p>
+											{{else}}
+												<p class="optionTit">단일옵션</p>
+											{{/if}}
+											<p class="optionPrice"><b>{{addPrice}}</b> 원</p>
 											<!-- [D] 최대수량 -->
 											<p class="optionNum" data-optionnum-opts='{"max": 99, "min": 1}' data-option-num='{{orderOptionNumber}}'>
 												<a href="#" class="btnMinus">빼기</a>
 												<span class="num">{{quantity}}</span>
 												<a href="#" class="btnPlus">더하기</a>
 											</p>
-											{{!--<a href="#" class="btnDel js-opt-delete">삭제</a>--}}
+											<a href="#" class="btnDel js-opt-delete" data-cart-number="{{cartNumber}}">삭제</a>
 										</div>
 									</div>
 									<!--// 옵션 수량 선택 -->
 								</div>
 							</td>
-							<td><p class="price"><b class="js-list-price">{{basePriceDesc}}</b> 원</p></td>
-							<td><p class="price"><b>{{discountPriceDesc}}</b> 원</p></td>
+							<td><p class="price"><b class="js-list-price">{{basePrice}}</b> 원</p></td>
+							<td><p class="price"><b>{{discountPrice}}</b> 원</p></td>
 							{{#vxIF deliveryChargeDesc "==" "0"}}
 								<td>무료</td>
 								{{else}}
 								<td>{{deliveryChargeDesc}} 원</td>
 							{{/vxIF}}
-							<td><p class="price fontL red"><b class="js-list-totalPrice"></b> 원</p></td>
+							<td><p class="price fontL red"><b>{{salePrice}}</b> 원</p></td>
 						</tr>
 						{{/each}}
 						<!--// 반복영역 -->

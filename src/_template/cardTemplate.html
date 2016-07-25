@@ -94,7 +94,11 @@
 				</div>
 				<div class="cardCon">
 					<ul class="card_icon">
-						<li class="cart cardDetail"><a href="javascript:alert('준비중입니다')">장바구니</a></li>
+						{{#vxIF optionUseYn "==" "Y"}}
+							<li class="cart cardDetail"><a href="{{detailUrl}}">장바구니</a></li>
+						{{else}}
+							<li class="cart cardDetail"><a href="#" class='cardAddCartButton' data-product-number='{{cardNumber}}'>장바구니</a></li>
+						{{/vxIF}}
 						<li class="share cardDetail"><a href="../_popup/popShare.html" class="btnPop btnPop540" data-share-url="{{detailUrl}}" data-user-class="snsSharePop popEdge">공유</a></li>
 					</ul>
 				</div>

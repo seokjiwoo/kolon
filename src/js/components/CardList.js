@@ -7,7 +7,12 @@ module.exports = function() {
 	var eventManager = require('../events/EventManager'),
 	events = require('../events/events'),
 	ISOTOPE_EVENT = events.ISOTOPE,
-	CARD_LIST_EVENT = events.CARD_LIST;
+	CARD_LIST_EVENT = events.CARD_LIST,
+	CART_EVENT = events.CART,
+	FOLLOWING_EVENT = events.FOLLOWING;
+
+	var orderController = require('../controller/OrderController.js');
+	$(orderController).on(CART_EVENT.ADD, addCartHandler);
 
 	var callerObj = {
 		/**
@@ -74,12 +79,7 @@ module.exports = function() {
 				transitionDuration: 0
 			});
 
-			// isotope event
-			eventManager.off(ISOTOPE_EVENT.REFRESH, refresh)
-						.off(ISOTOPE_EVENT.DESTROY, destory);
-
-			eventManager.on(ISOTOPE_EVENT.REFRESH, refresh)
-						.on(ISOTOPE_EVENT.DESTROY, destory);
+			bindEffects();
 		}
 		initOverEffect();
 		initCardRadio();
@@ -95,25 +95,7 @@ module.exports = function() {
 			wrap.isotope('destroy');
 			cleanOverEffect();
 		}
-	}
-
-	function html(tags) {
-		var insertElements = $(tags);
-
-		if (!fixedFlag) {
-			wrap.append(insertElements)
-			.isotope('appended', insertElements)
-			.isotope('layout');
-		} else {
-			wrap.append(insertElements);
-		}
-		
-		initOverEffect();
-		initCardRadio();
-
-		eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
-		//$(callerObj).trigger('cardAppended');
-	}
+	};
 
 	function appendData(cardListArray) {
 		/*
@@ -170,10 +152,6 @@ module.exports = function() {
 					each.basePrice = each.salePrice = each.discountPrice = 'Stop sale';
 					break;
 			}
-//
-//
-
-			//debug.log(each);
 		});
 
 		var data = {
@@ -196,7 +174,43 @@ module.exports = function() {
 			wrap.empty();
 		}
 		$(callerObj).trigger('cardRemoveAll');
-	}
+	};
+
+	function html(tags) {
+		var insertElements = $(tags);
+
+		if (!fixedFlag) {
+			wrap.append(insertElements)
+			.isotope('appended', insertElements)
+			.isotope('layout');
+		} else {
+			wrap.append(insertElements);
+		}
+		
+		initOverEffect();
+		initCardRadio();
+
+		$('.cardAddCartButton').click(function(e) {
+			e.preventDefault();
+			orderData = [{
+				"productNumber": $(this).data().productNumber,
+				"orderOptionNumber": 0,
+				"quantity": 1
+			}];
+			orderController.addMyCartList(orderData, $(this));
+		});
+
+		bindEffects();
+		eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
+	};
+
+	function bindEffects() {
+		eventManager.off(ISOTOPE_EVENT.REFRESH, refresh)
+					.off(ISOTOPE_EVENT.DESTROY, destory);
+
+		eventManager.on(ISOTOPE_EVENT.REFRESH, refresh)
+					.on(ISOTOPE_EVENT.DESTROY, destory);
+	};
 
 	function initOverEffect(e) {
 		cleanOverEffect(e);
@@ -234,6 +248,18 @@ module.exports = function() {
 		$(this).removeClass('sHover');
 	};
 	
+	function addCartHandler(e, status, result) {
+		e.stopImmediatePropagation();
+		if (status == 200) {
+			if (confirm('선택하신 상품을 마이커먼에 담았습니다.\n바로 확인 하시겠습니까?')) {
+				location.href = '/myPage/myCartShop.html';
+				return;
+			}
+		} else {
+			alert('error '+status);
+		}
+	};
+
 	/**
 	 * 개인화 수집 카드
 	 */

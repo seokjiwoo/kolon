@@ -140,7 +140,7 @@ function ClassUtils() {
 	}
 
 	function isIe() {
-		return (navigator.userAgent.indexOf("msie") != -1);
+		return (navigator.userAgent.indexOf("Trident") != -1);
 	}
 
 	function isMobile() {
