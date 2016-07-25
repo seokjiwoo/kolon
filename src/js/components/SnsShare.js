@@ -202,8 +202,6 @@ function SnsShare() {
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));
 
-		win.console.log(data);
-
 		$(self.opts.templates.wrap).empty()
 							.append(insertElements);
 

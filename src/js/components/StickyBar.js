@@ -39,19 +39,22 @@ function StickyBar() {
 	};
 	
 	function init(options) {
-		self = callerObj;
-		self.opts = $.extend({}, opts, options);
-
-		debug.log(fileName, 'init', self.opts);
-
-		setElements();
-		setBindEvents();
-
-		onScrollListener();
+		if (_isReady) return;
 
 		_isReady = true;
 
-		setDetect();
+		$(win).on('load', function() {
+			self = callerObj;
+			self.opts = $.extend({}, opts, options);
+
+			debug.log(fileName, 'init', self.opts);
+
+			setElements();
+			setBindEvents();
+
+			onScrollListener();
+			setDetect();
+		});
 	}
 
 	function setElements() {
@@ -70,8 +73,6 @@ function StickyBar() {
 
 	function setDetect() {
 		var topBanner = $('#topBanner');
-
-		win.console.log(topBanner.size());
 
 		if (!topBanner.size()) return;
 
