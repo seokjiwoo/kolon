@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"의견묻기 목록"} -->
 </head>
-<body data-page-id="">
+<body data-page-id="qna">
 	<div class="wrapper qna">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -15,7 +15,8 @@
 						<p><span>커먼</span>과 함께합니다. <br /><span>전문가의 의견</span>을 받아보세요.</p>
 					</div>
 					<div class="specialSlide">
-						<ul class="slide">
+						<ul id="expertList" class="slide">
+							<!-- 
 							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
 							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
 							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
@@ -26,18 +27,23 @@
 							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
 							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
 							<li><a href=""><img src="../images/temp_specia.png" alt="" /><span>이강준 /  SPAC</span></a></li>
+							 -->
 						</ul>
 					</div>
+					<!-- 
 					<div class="slideNav">
 						<a href="" class="active"></a>
 						<a href=""></a>
 						<a href=""></a>
 					</div>
+					 -->
 				</div>
 
 				<!-- 기능구현 여부 명확하지 않음 -->
+				<!-- 
 				<p class="dummyImg"><img src="../images/dummy_01.jpg" alt="" /></p>
 				<p class="dummyImg"><img src="../images/dummy_02.jpg" alt="" /></p>
+				 -->
 				<!-- // 기능구현 여부 명확하지 않음 -->
 
 				<div class="wrapT">
@@ -109,5 +115,21 @@
 			})
 		});
 	</script>
+
+
+<script id="experts-template" type="text/x-handlebars-template">
+{{!-- experts-template --}}
+	{{#each experts}}
+	<li>
+		<div class="hexagon" style="background-image: url('{{imageUrl}}')"><!-- 배경이미지 -->
+			<div class="hexTop"><span></span></div>
+			<div class="hexBottom"><span></span></div>
+		</div>
+		<h3 class="expertName">{{name}} / {{companyName}}</h3>
+	</li>
+	{{/each}}
+{{!--// experts-template --}}
+</script>
+
 </body>
 </html>
