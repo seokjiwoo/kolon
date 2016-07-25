@@ -160,7 +160,7 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 .btmFix.fixwrap ul li{width:50%;float:left;}
 
 /* form */
-.container input[type="checkbox"],
+input[type="checkbox"],
 .layerPopup input[type="checkbox"]{position: absolute;opacity: 0;top:0;left: -20px;}
 .container input[type="text"], .container input[type="password"], .container input[type="email"], .container input[type="tel"], select, .layerPopup input[type="text"],.layerPopup input[type="password"]{width:100%;padding: 5px;border:1px solid #d1d1d1; /*border-radius: 7px;*/color: #999;font-size: 13px;line-height: 18px;box-sizing:border-box;}
 .selectBox {width:100%; vertical-align:top; padding:5px 10px; border:1px solid #ccc; display:inline-block; vertical-align:middle; position:relative; z-index:0; box-sizing: border-box;}
@@ -183,8 +183,8 @@ a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat
 .checkbox {position: relative;/*margin-top:18px;*/}
 ul.checkbox{overflow: hidden;}
 .checkbox li{float: left;width: 50%;margin-top: 15px;}
-.checkbox label{font-size: 13px;color: #666;}
-.checkbox label:before{content: '';display:inline-block;width:25px;height:25px;border-radius:50%; margin-right:10px;vertical-align:middle; background:url('../images/ico_follow_on.png') center no-repeat #ccc; background-size:13px 9px}
+.checkbox label{display:inline-block;position: relative;padding-left: 30px;font-size: 13px;color: #666;}
+.checkbox label:before{content: '';position: absolute;left: 0;top: 0;width:25px;height:25px;border-radius:50%; margin-right:10px;vertical-align:middle; background:url('../images/ico_follow_on.png') center no-repeat #ccc; background-size:13px 9px}
 .checkbox label.on:before{background-color:#2d427a;}
 .checkAll label {color:#333; font-size:13px;}
 .checkAll label:before{content: '';display:inline-block;width:25px;height:25px;border-radius:50%; margin-right:10px;vertical-align:middle; background:url('../images/ico_follow_on.png') center no-repeat #ccc; background-size:13px 9px; color:#333;}
@@ -256,7 +256,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 .tabParents.pdNon,
 .tabParents.pdNon .tabSquare {padding:0;}
 
-.selectwrap{padding:10px 15px;background:#e0e0e0;}
+.selectwrap{padding:10px 15px;background:#f9fafc;}
 .selectwrap ul{overflow:hidden;}
 .selectwrap ul li{width:49.5%;float:left;margin-left:1%;}
 .selectwrap ul li:first-child{margin-left:0;}

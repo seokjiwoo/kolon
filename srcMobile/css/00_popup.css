@@ -45,7 +45,6 @@
 
 /*.popEdge .popTit {position: relative;top:0;line-height: 80px;text-align: center;font-size:30px;}*/
 .popEdge .popTit {width:100%; line-height: 46px;text-align: center;font-size:18px;background:#fff;}
-.popEdge .popTit:after{content: '';display: block;width: 100%;bottom: 0;height: 1px;background: #666;}
 .popEdge .popTit span.count{color:#f1645c;}
 .popEdge .subTit {font-size:15px;color:#333; }
 .popEdge .subTit:first-child {margin-top:25px;}
@@ -130,7 +129,7 @@
 .popCon .checkbox + .btnWrap,
 .popCon .popTb + .btnWrap {margin-top:24px;}
 .popCon .checkPw {width:100%; text-align:center; margin-bottom:20px}
-.popCon .checkPw p.tit {font-size:20px; color:#000; letter-spacing:-1px; font-family:'NotoSansR', sans-serif;}
+.popCon .checkPw p.tit {font-size:15px; color:#000; letter-spacing:-1px; font-family:'NotoSansR', sans-serif;line-height: 1.3em}
 .popCon .checkPw p + p {margin-top:10px;}
 .popCon .expertInfo {width:100%; overflow:hidden;}
 .popCon .expertInfo .ePic {width:180px; height:180px; margin-left:15px; border-radius:50%; overflow:hidden; float:left;}
