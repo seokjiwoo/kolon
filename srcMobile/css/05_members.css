@@ -85,7 +85,6 @@
 .members .lifeStyle p{line-height:1.4em;font-size:22px;font-family:'RobotoR','NotoSansR', sans-serif;color:#333;}
 .members .lifeStyle img{max-width:280px; margin-top:8px;}
 .members .loginForm{padding:0 30px;margin-top:7px;}
-.members .loginForm > div{padding-bottom:20px;border-bottom:1px solid #ccc;}
 .members .loginForm > div > p{padding-bottom:18px; border-bottom:2px solid #666; text-align:center;font-family:'RobotoB','NotoSansB', sans-serif; font-size:15px;}
 .members .loginForm ul{margin-top:12px;}
 .members .loginForm ul li{margin-top:6px;}
@@ -100,7 +99,7 @@
 .members .policy .btnPop {color:#b08967;text-decoration:underline}
 .members .btnPop{display: inline-block;margin:0;border-radius:0;background:none;padding:0}
 
-.snsList{margin-top:20px;}
+.snsList{margin-top:10px;}
 .snsList li{padding:0 30px;margin-top:6px;}
 .snsList li:first-child{margin-top:0;}
 .snsBtn{position:relative;display:block;border:1px solid #ccc;border-radius:20px;text-align:center;font-family:'RobotoB','NotoSansB', sans-serif;letter-spacing:-1px;}
@@ -156,7 +155,7 @@
 .members .certification p:last-child{margin-top:15px;color:#666;letter-spacing:-1px;}
 .members .certification p:first-child span,
 .members .certification p:last-child span{color:#436ebb;}
-.members .numInput{padding:0 15px;margin-top:20px;}
+.members .numInput{padding:0 15px;margin-top:20px;line-height: 1.3em;}
 .members .numInput ul {margin-top:10px;}
 .members .numInput ul li{margin-top:6px;}
 .members .numInput ul li:first-child{margin-top:0;}

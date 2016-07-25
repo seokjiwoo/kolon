@@ -58,9 +58,15 @@ module.exports = function() {
 		initAddressPopupButton();	// 주소록 팝업버튼
 
 		$('.btnToggle').on('click', function(e) { // common slideToggle
+			var btn = $(this);
 			e.preventDefault();
 			$(this).toggleClass('open');
 			$(this).siblings('.slideCon').slideToggle();
+			$(this).siblings('.slideCon').find('.btnClose').on('click', function(e) {
+				e.preventDefault();
+				$(this).closest('.slideCon').slideUp();
+				$(btn).removeClass('open')
+			})
 		});
 		$('.searchToggle').on('click', function(e) { // common slideToggle
 			e.preventDefault();
@@ -391,7 +397,7 @@ module.exports = function() {
 	 * GNB open
 	 */
 	function openSideMenu() {//.css({minHeight: $(window).height() + 150 })
-		$(".gnb").addClass("acitve").stop().animate({left:0}, 400, function() {
+		$(".gnb").addClass("acitve").stop().animate({right:0}, 400, function() {
 			$(".container").addClass("fix");
 			$(".header").addClass("fix");
 		});
@@ -407,7 +413,7 @@ module.exports = function() {
 	 * GNB close
 	 */
 	function closeSideMenu() {
-		$(".gnb").stop().animate({left:-300}, 400, function() {
+		$(".gnb").stop().animate({right:-300}, 400, function() {
 			$(this).removeClass("acitve");
 			$(".container").removeClass("fix");
 			$(".header").removeClass("fix");

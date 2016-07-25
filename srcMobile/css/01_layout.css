@@ -21,7 +21,7 @@ a{color:#666;}
 .header{width:100%;min-height:45px;background:#fff;}
 .header .logo{display:inline-block;}
 .header .logo:after{content:'';display: inline-block;vertical-align: middle;width: 10px;height: 6px;background: url('../images/drop_menu.png') no-repeat;background-size: 100%;}
-.header .logo a{display:inline-block;width:109px;height:45px;padding:0 13px;vertical-align: middle;}
+.header .logo h1{display:inline-block;width:109px;height:45px;padding:0 13px;vertical-align: middle;}
 .header .logo img{width:100%;vertical-align:top;margin-top:15px;}
 .header .gnbBtn,
 .header .searchBtn,
@@ -30,7 +30,6 @@ a{color:#666;}
 .header .searchBtn{ display:block;right:0;width:45px;background:url("../images/ico_gnb_btn.png") no-repeat 14px 15px;background-size:18px;}
 .header .searchBtn span.cancelBtn {display:none;}
 .header .searchBtn.open {z-index:10; background:none;}
-.header .searchBtn.open span.cancelBtn {position:absolute; top:0; right:0;display: block;width:37px;height: 42px;font-size: 0;background: url('../images/close.png') no-repeat;background-size: 100%;}
 .login .header .searchBtn{ right:34px;width:34px; }
 .header .searchBtn.open,
 .login .header .searchBtn.open {top:13px;right:15px;}
@@ -44,7 +43,7 @@ a{color:#666;}
 .is-scrolling .myCartTotal,
 .is-scrolling .btmFix {position:fixed; bottom:0; left:0; z-index:10;}
 
-.gnb{overflow: auto;position:fixed;left:-300px;top:0;bottom:0;height: 100%;z-index:10;width:300px;height:100%;background:#fff;display:block;}
+.gnb{overflow: auto;position:fixed;right:-300px;top:0;bottom:0;height: 100%;z-index:10;width:300px;height:100%;background:#fff;display:block;}
 .gnb .topArea{position:relative;}
 .gnb .userBox{text-align:center;padding-top:25px;background:#ff466c;}
 .gnb .userBox .thumb{width:60px;height:60px;display:inline-block;overflow:hidden;border-radius:100%;}
@@ -61,7 +60,8 @@ a{color:#666;}
 .gnb .myBtn span{display:block;padding-top:6px;color:#fff;}
 .gnb .myBtn.btnMypage { top:203px;margin-left:-50px;width:102px; }
 
-.menuhWrap {overflow: auto;position: fixed;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,.9) url('../images/bg_menu.png') no-repeat;background-size: cover;z-index: 1}
+.menuhWrap{overflow: auto;position: fixed;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,.9) url('../images/bg_menu.png') no-repeat;background-size: cover;z-index: 1}
+.menuhWrap .btnClose{z-index: 1;position:absolute;top:13px;right:15px;width:34px;display: block;width:37px;height: 42px;font-size: 0;background: url('../images/close.png') no-repeat;background-size: 100%;}
 .menuhWrap .btmArea{padding:30px 25px;}
 .menuhWrap .colMenu li a{height:40px;line-height:40px;display:block;font-size:14px;letter-spacing:-1px;color:#fff;}
 .menuhWrap .colMenu li a em{margin-right: 5px;font-size: 35px;color: #fff;}
