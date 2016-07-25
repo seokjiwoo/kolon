@@ -1,14 +1,14 @@
 .search .subTop{}
 .search .subTop .searchWrap{position:relative; display:block;}
 .search .subTop .searchWrap .searchForm {padding-right:0;}
-.search .searchDetail {padding:10px 15px 10px 100px; overflow:hidden; position:relative; border-bottom:1px solid #e5e5e5;}
-.search .searchDetail .searchDetailWrap {width:100%; vertical-align:middle; text-align:right;}
-.search .searchDetail .searchDetailWrap p.sdTit {position:absolute; top:21px; left:15px; font-size:; color:#333;}
-.search .searchDetail .searchDetailWrap p.sdTit b {color:#f97068; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
-.search .searchDetail .searchDetailWrap a.detailBtn {width:62px; height:18px; padding:8px 32px 8px 10px; color:#666; border:1px solid #ccc; display:inline-block; background:url(../images/ico_add.png) 90% 50% no-repeat; background-size:11px 11px; vertical-align:middle; line-height:18px; text-align:left;}
-.search .selectBox {width:auto; min-width:70px; padding:8px 10px;}
-.search .selectBox select {width:auto; min-width:80px; padding:0;}
+.searchDetail {padding:10px 15px 10px 100px; overflow:hidden; position:relative; border-bottom:1px solid #e5e5e5;}
+.searchDetail .searchDetailWrap {width:100%; vertical-align:middle; text-align:right;}
+.searchDetail .searchDetailWrap p.sdTit {position:absolute; top:21px; left:15px; font-size:; color:#333;}
+.searchDetail .searchDetailWrap p.sdTit b {color:#f97068; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
+.searchDetail .searchDetailWrap a.detailBtn {width:62px; height:18px; padding:8px 32px 8px 10px; color:#666; border:1px solid #ccc; display:inline-block; background:url(../images/ico_add.png) 90% 50% no-repeat; background-size:11px 11px; vertical-align:middle; line-height:18px; text-align:left;}
+.selectBox {width:auto; min-width:70px; padding:8px 10px;}
+.selectBox select {width:auto; min-width:80px; padding:0;}
 @media (max-width:320px){
-	.search .searchDetail .searchDetailWrap a.detailBtn {padding-right:17px;}
+	.searchDetail .searchDetailWrap a.detailBtn {padding-right:17px;}
 }
 .search .resultWrap {margin-top:-22px;}

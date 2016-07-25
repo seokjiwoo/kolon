@@ -263,3 +263,18 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 
 .addressFormWrap {padding:25px 15px 0; margin-top:15px; background:#fff; position:relative;}
 .addressFormWrap .btmFix {position:fixed; bottom:0; left:0;}
+
+.popEdge .popCon.profilePicWrap {padding:0;}
+.popEdge .popCon.profilePicWrap .js-msg {display:none;}
+.popEdge .popCon.profilePicWrap .profilePictures {width:115px; min-height:115px; margin:67.5px auto; position:relative;}
+.popEdge .popCon.profilePicWrap .profilePictures .js-holder {width:115px; height:115px; border-radius:50%; border:3.5px solid #fff; overflow:hidden; background:url(../images/profilePic_img_bg.png) -2px 100% no-repeat; background-size:76px 93.5px;position:absolute;left:0;top:0; z-index:2;}
+.popEdge .popCon.profilePicWrap .profilePictures .js-holder img {width:115px; height:115px;}
+.popEdge .popCon.profilePicWrap .profilePictures a.picturesBtn {width:35px; height:35px; border-radius:50%; background:url(../images/profilePic_img_btn.png) 50% no-repeat #999; background-size:15px 13.5px; overflow:hidden; position:absolute; bottom:0; right:0; font-size:0; z-index:3;}
+.popEdge .popCon.profilePicWrap .profilePictures a.picturesBtn input[type=file] {width:35px; height:35px; overflow:hidden;}
+
+.attachSelector #cboxClose {display:none;}
+.photoSelectWrap {width:100%; background:#fff;}
+ul.photoSelectBtn {width:100%; overflow:hidden; margin:0 auto; border:1px solid #ccc; vertical-align:middle;}
+ul.photoSelectBtn li {padding:20px 10px; vertical-align:middle; color:#333; font-size:15px;}
+ul.photoSelectBtn li + li {border-top:1px solid #ccc;}
+ul.photoSelectBtn li a {width:100%; display:inline-block;}
