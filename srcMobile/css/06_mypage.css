@@ -488,7 +488,7 @@ ul.optList p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB',
 ul.optList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;margin-top:5px;}
 ul.optList .cancelArea .state,
 ul.optList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
-ul.optList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px;}
+ul.optList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:15px;}
 ul.optList .cancelArea .btnSizeS{float:right;}
 ul.optList .cancelArea + a{margin-top:15px;}
 
@@ -607,8 +607,8 @@ table ul.myCartInfoList li a {color:#999;}
 .my .orderProduct .top h3{font-size:15px;}
 .my .allChk{padding:10px 15px;background:#464646;}
 .my .allChk:after{content:"";display:block;clear:both;}
-.my .allChk .checkbox{float:left;}
-.my .allChk .checkbox label{display:inline-block;margin-top:4px;color:#fff;}
+.my .allChk .checkbox{float:left;line-height:25px;}
+.my .allChk .checkbox label{display:inline-block;color:#fff;}
 .my .allChk .btnSizeS{float:right;}
 .my .orderProduct .productRow{padding:0 15px;}
 .my .productList.checkType{margin-top:0;border-top:0;}
