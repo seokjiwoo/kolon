@@ -88,8 +88,8 @@
 .talkProfile .pic img{display: block;width: 100%;}
 .talkProfile .btnToggle:after{content:'';display: inline-block;width: 10px;height: 6px;margin-left: 5px;vertical-align: middle;background: url('../images/ico_toggle.png') no-repeat 0 -6px;background-size: 10px 12px;}
 .talkProfile .btnToggle.open:after{background-position: 0 0}
-.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;padding: 20px 0;background: #f8f8f8;z-index: 1;box-shadow: 0 2px 0 rgba(0,0,0,.15);}
-.talkProfile .slideCon p{margin-top: 5px;font-size: 11px;color: #f1645c;line-height: 1.4em;}
+.talkProfile .slideCon{position: absolute;top:50px;left: 0;width: 100%;padding: 20px 0;background: #fff;z-index: 1;box-shadow: 0 2px 0 rgba(0,0,0,.15);}
+.talkProfile .slideCon p{margin-top: 5px;font-size: 11px;color: #b08967;line-height: 1.4em;}
 .talkProfile .slideCon p span{font-size: 18px;color: #000;}
 .talkProfile .slideCon .btnWrap{margin-top: 15px;}
 .talkProfile .slideCon a{width: 125px;margin:0 5px;}
@@ -103,7 +103,7 @@
 .chatRoom .chatter p{margin-top: 5px;}
 .chatRoom .chatter .pic{overflow: hidden;position: absolute;top: 0;width: 32px;height: 32px;border-radius: 50%;}
 .chatRoom .chatter .pic img{display: block;width: 100%;}
-.chatRoom .chatter .name{color: #000;font-size: 11px;}
+.chatRoom .chatter .name{color: #000;font-size: 12px;}
 .chatRoom .chatter .time{margin:0 5px;color: #999;vertical-align: bottom;font-size: 11px;}
 .chatRoom .chatter span{overflow: hidden;display: inline-block;max-width: 75%;/*border-radius: 5px;*/}
 .chatRoom .chatter .text{padding: 10px;}
@@ -115,13 +115,13 @@
 
 
 .chatRoom .taker{text-align: right;}
-.chatRoom .taker .text{background: #f37972;color: #fff;text-align: left;line-height: 1.3em;}
+.chatRoom .taker .text{background: #2d427a;color: #fff;text-align: left;line-height: 1.3em;}
 
 .inputMessage{position: fixed;bottom: 0;left: 0;width: 100%;box-shadow:0px -2px 0px rgba(0,0,0,.15);}
 .inputMessage fieldset{overflow: hidden;position: relative;height: 45px;padding:0 65px 0 45px;}
 .inputMessage input[type="text"]{border:0;line-height:35px;}
 .inputMessage input[type="file"]{position: absolute;top:-30px;}
-.inputMessage .btnSend{position: absolute;top:14px;right: 10px;;color: #a9c700;background: none;border:0;}
+.inputMessage .btnSend{position: absolute;top:14px;right: 10px;;color: #436ebb;background: none;border:0;}
 .inputMessage .attachPic{position: absolute;top:14px;left: 15px;display: inline-block;width: 25px;height: 18px;background: url('../images/ico_pic.png') no-repeat; background-size: 100%;}
 
 #lastAddress > select{margin:0 0 15px;} 
