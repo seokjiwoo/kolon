@@ -154,17 +154,16 @@ module.exports = function() {
 				displayBasicData(result.data.expert);
 				$('.except').dotdotdot({watch:'window'});
 				if (result.data.expert.followYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
-				
+
 				expertsController.products(self.expertNumber, 'newest');
+				
+				displayBasicData(result.data.expert, $('#manager-message-templates'), $('.js-message-templates-wrap'));
 				break;
 			case EXPERTS_EVENT.PRODUCTS:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				// cardList.removeAllData();
 				// cardList.appendData(result.data.products);
 				
-				win.console.log(result.data);
-				win.console.table(result.data);
-				win.console.log($('.js-manager-product-wrap').size());
 				displayBasicData(result.data, $('#manager-product-templates'), $('.js-manager-product-wrap'));
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
