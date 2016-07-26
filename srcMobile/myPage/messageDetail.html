@@ -5,48 +5,100 @@
 </head>
 <body data-page-id="myPage-messageDetail">
 	<div class="wrapper my">
-		<!-- @@include ../_template/menu.html -->
+		<!-- @@include ../_template/menu_message_detail.html -->
 		<div class="container pageWrap">
 			<div class="chatRoom">
-				<div class="talkProfile">
-					<a href="#talkTarget" class="btnToggle">박실장</a>
-					<div id="talkTarget" class="slideCon">
-						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
-						<p><span>박실장</span><br>KOLON GLOBAL</p>
-						<p class="btnWrap"><a href="" class="btnSizeS btnColor02">전문가 페이지</a><a href="" class="btnSizeS btnColor05">전화</a></p>
-					</div>
-				</div>
-				<section class="wrap">
-					<p class="day">2014.04.25</p>
-					<div class="chatter sender">
-						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
-						<p class="name">박실장</p>
-						<p><span class="text">벽지는정하셨나요?</span></p>
-						<p><span class="text">벽지는정하셨나요?</span><span class="time">14:04</span></p>
-					</div>
-					<div class="chatter taker">						
-						<p><span class="time">14:04</span><span class="text">아니요.. 보여주신 샘플들도 예쁘지만, 처음 생각했던 이미지와는 조금 다른 것 같네요. 샘플 몇개만 더 보여주실 수 있나요? </span></p>
-					</div>
-					<div class="chatter sender">
-						<div class="pic"><img src="/images/temp01.jpg" alt=""></div>
-						<p class="name">박실장</p>
-						<p><span class="thumb"><img src="/images/temp14.jpg" alt=""></span></p>
-						<p><span class="thumb"><img src="/images/temp12.jpg" alt=""></span></p>
-						<p><span class="thumb"><img src="/images/temp11.jpg" alt=""></span><span class="time">14:04</span></p>
-					</div>
+				
+				<!-- [D] #message-member-templates - wrap -->
+				<div class="talkProfile" id="message-member-wrap"></div>
+				<!--// [D] #message-member-templates - wrap -->
+
+				<!-- [D] #message-detail-list-templates - wrap -->
+				<section class="wrap js-message-wrap">
+					<!-- [D] height JS에서 계산하여 설정 -->
+					<div id="message-detail-list-wrap"></div>
 				</section>
+				<!--// [D] #message-detail-list-templates - wrap -->
+
 				<div class="inputMessage">
-					<form action="">
-						<fieldset>
-						<label for="attachPic" class="attachPic"></label>
-							<input type="file" id="attachPic">
-							<input type="text" placeholder="메시지 쓰기...">
-							<button type="submit" class="btnSend">보내기</button>
-						</fieldset>
-					</form>
+					<div class="inputField">
+						<label for="attach" class="attachPic"></label>
+						<form method="POST" action="#" id="quickMessageAttachForm">
+							<input type="file" name="file" id="attach" title="사진첨부하기" />
+						</form>
+						<input type="text" id="messageContent" placeholder="최대 400자까지 입력 가능" title="메시지쓰기" maxlength="400" />
+						<button type="button" class="btnSend" id="quickMessageButton">보내기</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
- </body>
+
+<!-- [D] 임시 구성 -->
+<style>
+	.chatRoom .js-message-wrap {padding:0 15px 0 15px;margin-bottom:-20px}
+	#message-detail-list-wrap {overflow:hidden;overflow-y:auto}
+	#message-detail-list-wrap .chatter:last-child {padding-bottom:15px}
+	#message-detail-list-wrap .chatter .text img {width:100%}
+</style>
+
+<script id="message-member-templates" type="text/x-handlebars-template">
+{{!-- message-member-templates --}}
+	<!-- <a href="#talkTarget" class="btnToggle">{{saleMemberName}}</a> -->
+	<div id="message-saleMemeberInfo" class="slideCon">
+		<div class="pic"><img src="{{profileImageUrl}}" alt="{{saleMemberName}}"></div>
+		<p><span>{{saleMemberName}}</span><br>{{corporationName}}</p>
+		<p class="btnWrap">
+			<a href="/manager/detail.html?expertNumber={{saleMemberNumber}}" class="btnSizeS btnColor02">전문가 페이지</a>
+			<a href="tel:{{corporationPhoneNumber}}" class="btnSizeS btnColor05">전화</a>
+		</p>
+	</div>
+{{!--// message-member-templates --}}
+</script>
+
+<script id="message-detail-list-templates" type="text/x-handlebars-template">
+{{!-- message-detail-list-templates --}}
+	<ul>
+		{{#each vxMessageGroup}}
+			{{#each .}}
+				{{#if @first}}
+					<p class="day">{{VX_YYYYMMDD}}</p>
+				{{/if}}
+				{{#vxSwitch inquiryType}}
+					{{#vxCase "INQUIRY" break=true}}
+						<div class="chatter taker">
+							<!-- <div class="pic"><img src="{{profileImageUrl}}" alt=""></div> -->
+							{{#if attachFileUrl}}
+								<p><span class="text">{{contents}}</span></p>
+								<p><span class="time">{{VX_TIME}}</span><span class="text"><img src='{{attachFileUrl}}' alt='이미지'></span></p>
+							{{else}}
+								<p><span class="time">{{VX_TIME}}</span><span class="text">{{contents}}</span></p>
+							{{/if}}
+						</div>
+					{{/vxCase}}
+					{{#vxCase "ANSWER" break=true}}
+						<div class="chatter sender">
+							<div class="pic"><img src="{{profileImageUrl}}" alt=""></div>
+							<p class="name">{{memberName}}</p>
+							{{#if attachFileUrl}}
+								<p><span class="text">{{contents}}</span></p>
+								<p><span class="text"><img src='{{attachFileUrl}}' alt='이미지'></span><span class="time">{{VX_TIME}}</span></p>
+							{{else}}
+								<p><span class="text">{{contents}}</span><span class="time">{{VX_TIME}}</span></p>
+							{{/if}}
+						</div>
+					{{/vxCase}}
+					{{#vxCase "LINE" break=true}}
+						<div class="chatter sender">
+							<p class="line">여기까지 읽으셨습니다.</p>
+						</div>
+					{{/vxCase}}
+				{{/vxSwitch}}
+			{{/each}}
+		{{/each}}
+	</ul>
+{{!--// message-member-templates --}}
+</script>
+
+</body>
 </html>
