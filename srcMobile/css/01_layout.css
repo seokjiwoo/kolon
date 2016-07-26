@@ -1,10 +1,10 @@
-body{margin:0;line-height:1;font-family:'NotoSansR', 'RobotoR', sans-serif; -webkit-text-size-adjust: 100%;}
+body{margin:0;line-height:1;font-family: sans-serif; -webkit-text-size-adjust: 100%;}
 a{text-decoration:none;}
 a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
 ul, ol, li,dl,dt,dd{list-style:none;padding:0;margin:0;}
 fieldset{border:0;padding:0;margin:0;}
 h1, h2, h3, h4, h5, h6, p{margin:0;font-weight:normal;}
-input, textarea, button, select, option, {line-height:1;font-family:'NotoSansR', 'RobotoR', sans-serif;border:0;outline:0;background:none;font-size: 13px;}
+input, textarea, button, select, option, {line-height:1;font-family: sans-serif;border:0;outline:0;background:none;font-size: 13px;}
 table{border-collapse:collapse;border-spacing:0;}
 img{border:none}
 textarea{resize: none;}
@@ -15,7 +15,7 @@ a{color:#666;}
 *, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
 */
 .hide{visibility:hidden;overflow: hidden; position:absolute; width:0; height:0; margin:0 !important; padding:0 !important; font-size: 0 !important;}
-.wrapper{/*background:#e0e0e0;l*/letter-spacing:-0.5px;font-size: 13px;}
+.wrapper{/*background:#e0e0e0;l*/letter-spacing:-0.5px;font-size: 13px;min-height: 100%;}
 .container{position: relative;width:100%;z-index: 0;}
 
 .header{width:100%;min-height:45px;background:#fff;}
