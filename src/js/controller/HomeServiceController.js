@@ -35,6 +35,14 @@ function ClassHomeServiceController() {
 			 */
 			requestMoving: requestMoving,
 			/**
+			 * 세탁 서비스 주소검색
+			 */
+			washingCompanyList: washingCompanyList,
+			/**
+			 * 세탁 서비스 시간검색
+			 */
+			washingTimeList: washingTimeList,
+			/**
 			 * 홈서비스 신청 리스트
 			 */
 			homeServiceOrderList: homeServiceOrderList,
@@ -111,6 +119,38 @@ function ClassHomeServiceController() {
 			}
 		}, false);
 	};
+
+	/**
+	 * 세탁서비스 가능여부 검색
+	 */
+	function washingCompanyList(address) {
+		Super.callApi('/apis/living/wash/address', 'POST', {
+			"address": address
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('washingCompanyResult', [status, result]);
+			} else {
+				Super.handleError('washingCompanyList', result);
+				$(callerObj).trigger('washingCompanyResult', [status, result]);
+			}
+		}, true);
+	}
+
+	/**
+	 * 세탁서비스 가능시각 검색
+	 */
+	function washingTimeList(address) {
+		Super.callApi('/apis/living/wash/dateTime', 'POST', {
+			"address": address
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('washingTimeResult', [status, result]);
+			} else {
+				Super.handleError('washingTimeList', result);
+				$(callerObj).trigger('washingTimeResult', [status, result]);
+			}
+		}, true);
+	}
 	
 	/**
 	 * 홈서비스 신청 리스트
