@@ -26,7 +26,7 @@ a{color:#666;}
 .header .gnbBtn,
 .header .searchBtn,
 .header .bagBtn{position:absolute;top:0;height:45px;}
-.header .gnbBtn{ left:0;width:45px;background:url("../images/ico_gnb_btn.png") no-repeat center center;background-size:18px;}
+.header .gnbBtn{ right:0;width:45px;background:url("../images/ico_gnb_btn.png") no-repeat center center;background-size:18px;}
 .header .searchBtn{ display:block;right:0;width:45px;background:url("../images/ico_gnb_btn.png") no-repeat 14px 15px;background-size:18px;}
 .header .searchBtn span.cancelBtn {display:none;}
 .header .searchBtn.open {z-index:10; background:none;}

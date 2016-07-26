@@ -111,7 +111,7 @@ module.exports = function() {
 
 		if (!isFollow) {
 			// 팔로우 하기
-			controller.addFollows(info.followTargetCode, info.followNumber, info.followTargetSectionCode, { wrap : wrap, css : self.opts.cssClass.isFollow });
+			controller.addFollows(info.followTargetCode, '', { wrap : wrap, css : self.opts.cssClass.isFollow });
 			debug.log(fileName, 'onWrapPopBtnClick', isFollow, info);
 		}
 	}
@@ -213,8 +213,13 @@ module.exports = function() {
 		var availableTags = [];
 
 		$.map(data.follows, function(item) {
-			availableTags.push(item.coperationName);
-			availableTags.push(item.memberName);
+			if (item.coperationName) {
+				availableTags.push(item.coperationName);
+			}
+
+			if (item.memberName) {
+				availableTags.push(item.memberName);
+			}
 		});
 
 		if (self.searchInp.autocomplete('instance')) {
@@ -255,15 +260,10 @@ module.exports = function() {
 
 		switch(eventType) {
 			case FOLLOWING_EVENT.LIST:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				
+				$('#js-follwing-count').text(result.data.follows.length);
+
 				displayData(result.data);
 				displayFilter(result.data);
 				break;

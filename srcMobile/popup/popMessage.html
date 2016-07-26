@@ -10,95 +10,81 @@
 	<!-- @@include ../_template/footer.html -->
 </div>
 
-<div id="cboxLoadedContent" class="orderPop popEdge">
-	<div class="btmFix"><a href="" class="btnSizeB btnColor03 popClose">보내기</a></div>
+<style>
+	
+	[data-page-id="popup-message"] .arrayWrap{width:100%; margin-top:27px;}
+
+	[data-page-id="popup-message"] #popup-message {position:absolute;left:0;top:0;right:0;bottom:0}
+	[data-page-id="popup-message"] .layerPopup {height:100%}
+	[data-page-id="popup-message"] .js-message-submit {position:fixed;bottom:0}
+
+	[data-page-id="popup-message"] .scrapList ul{height:90px;overflow:hidden;}
+	[data-page-id="popup-message"] .scrapList ul li{width:90px;height:90px;overflow:hidden;float:left;margin-left:10px; position:relative;}
+	[data-page-id="popup-message"] .scrapList ul li:after {content:''; width:88px;height:88px; border:1px dashed #d1d1d1; position:absolute; top:0px; left:0px; z-index:1;}
+	[data-page-id="popup-message"] .scrapList ul li .scrapImg {width:88px;height:88px; border:1px solid #d1d1d1; position:absolute; top:0px; left:0px; z-index:2;}
+	[data-page-id="popup-message"] .scrapList ul li .scrapImg a.btnDel {width:19px; height:19px; font-size:0; background:url('../images/pc/btn_closeBg.png') 0 0 no-repeat; position:absolute; top:0; right:0; z-index:2;}
+	[data-page-id="popup-message"] .scrapList ul li:first-child{width:88px;height:88px;border:1px solid #d6d6d6;margin-left:0;}
+	[data-page-id="popup-message"] .scrapList ul li:first-child:after {display:none;}
+	[data-page-id="popup-message"] .scrapList ul li:first-child a{display:block;width:100%;height:88px;background:#fff url("../images/pc/ico_plus.png") no-repeat center center;}
+	[data-page-id="popup-message"] .scrapList ul li img{width:88px; height:88px;}
+
+	#fileUpList {float: left;margin-top: -15px;margin-left: 35px;}
+	#fileUpList {width:100%;}
+	#fileUpList > div a.btnDel {width:11px; height:11px; font-size:0; background:url('../images/pc/btn_closeS.png') 0 0 no-repeat; display:inline-block; vertical-align:middle;}
+	.fileup a.btnFileup{width:75px;height:40px;display:block;float:right;background:#666;border-radius:20px;text-align:center;}
+	.fileup a.btnFileup span{line-height:40px;display:block;color:#fff;font-size:13px;}
+</style>
+
+<div id="popup-message" class="orderPop popEdge">
 	<div class="layerPopup">
 		<div class="popTop">
 			<h3 class="popTit">1:1 메시지</h3>
-			<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
+			<a href="javascript:window.close();" class="closeBtn"><span class="hide">팝업닫기</span></a>
 		</div>
-		<div class="popcon">
-			<div class="messageProfile">
-				<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
-				<p>
-					<span>홍길동</span>
-					<span>Modern House</span>
-				</p>
-			</div>
-			<div class="reviewArea">
-				<div class="writeBox">
-					<div class="messageInput">
-						<textarea placeholder="자세한 내용을 작성해주세요 . 답변 및 작성내용 확인은 마이커먼에서 하실 수 있습니다."></textarea>
-					</div>
-					<div class="info">
-						<span class="pic"><input type="file" /></span>
-						<span class="count">0 <i>/ 1000</i></span>
-					</div>
-					<div class="thumbList">
-						<ul>
-							<li><img src="/images/temp01.jpg" alt="" /><a href=""><span class="hide">삭제</span></a></li>
-							<li><img src="/images/temp01.jpg" alt="" /><a href=""><span class="hide">삭제</span></a></li>
-							<li><img src="/images/temp01.jpg" alt="" /><a href=""><span class="hide">삭제</span></a></li>
-						</ul>
+		<form action="#" class="js-message-form">
+			<div class="popcon">
+				<div class="messageProfile">
+					<div class="thumb"><img id="popup-saleMemberPic" src="" alt="" /></div>
+					<p>
+						<span id="popup-saleMemberName"></span>
+						<span id="popup-saleMemberCompany"></span>
+					</p>
+				</div>
+				<div class="reviewArea">
+					<div class="writeBox">
+						<div class="messageInput">
+							<textarea class="js-message-inp" maxlength="1000"
+									placeholder="자세한 내용을 작성해주세요 . 답변 및 작성내용 확인은 마이커먼에서 하실 수 있습니다."></textarea>
+						</div>
+						<div class="info">
+							<span class="pic">
+								<a id="fileUpButton" href="../../_popup/popAttachPictures.html" class="btnFileup btnPop" data-user-class="qna popEdge popAttachPictures">
+									<input type="file" id="fileUpText" />
+								</a>
+								<div id="fileUpList" class="fileupList"></div>
+							</span>
+						</div>
+						<div class="thumbList">
+							<div id="scrapList" class="scrapList">
+								<ul>
+									<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+								</ul>
+							</div>
+							<script id="scrapList-template" type="text/x-handlebars-template">
+							{{!-- scrapList-template --}}
+								<ul>
+									<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
+								{{#each .}}
+									<li class="js-scrap-list" data-scrap-number="{{scrapNumber}}" data-scrap-uid="{{scrapUid}}"><div class="scrapImg conDel"><img src="{{imgPath}}" alt="" /><a href="javascript:;" class="btnDel js-scrap-del">이미지 삭제</a></div></li>
+								{{/each}}
+								</ul>
+							{{!-- scrapList-template --}}
+							</script>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="popTop">
-		<h4 class="popTit">1:1 메시지</h4>
-	</div>
-	<div class="popCon js-message-popup">
-		<form class="js-message-form" method="post" action="#">
-			<fieldset>
-				<legend>1:1 메시지</legend>
-				<table class="opinionTb">
-					<caption>1:1 메시지 테이블 자세한 내용입력, 첨부파일, 스크랩북항목으로 구성되어 있습니다</caption>
-					<colgroup><col style="width:141px"><col style="width:auto"></colgroup>
-					<tbody>
-						<tr>
-							<td colspan="2">
-								<textarea class="pullSize w734 js-message-inp" title="자세한 내용을 작성해 주세요." placeholder="자세한 내용을 작성해 주세요." cols="50" rows="5" maxlength="1000"></textarea>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">사진첨부</th>
-							<td>
-								<div class="fileup">
-									<input id="fileUpText" type="text" class="pullSize" style="width:458px;" placeholder="첨부파일" title="첨부파일명" readonly="readonly"/>
-									<a id="fileUpButton" href="../../_popup/popAttachPictures.html" class="btnFileup btnPop btnPop590" data-user-class="qna popEdge popAttachPictures"><span>파일선택</span></a>
-									<div id="fileUpList" class="fileupList"></div>
-								</div>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">스크랩북에서 선택<span>(최대3장)</span></th>
-							<td>
-								<div id="scrapList" class="scrapList">
-									<ul>
-										<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
-									</ul>
-								</div>
-								<script id="scrapList-template" type="text/x-handlebars-template">
-								{{!-- scrapList-template --}}
-									<ul>
-										<li id="scrapUpButton"><a href="../../_popup/popScrapAdd.html" class="btnPop btnPop530 btnPop590" data-user-class="qna popEdge popScrapAdd"><span class="hide">스크랩</span></a></li>
-									{{#each .}}
-										<li class="js-scrap-list" data-scrap-number="{{scrapNumber}}" data-scrap-uid="{{scrapUid}}"><div class="scrapImg conDel"><img src="{{imgPath}}" alt="" /><a href="javascript:;" class="btnDel js-scrap-del">이미지 삭제</a></div></li>
-									{{/each}}
-									</ul>
-								{{!-- scrapList-template --}}
-								</script>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="btnWrap">
-					<p class="popUnderTxt">주고 받은 메시지는 마이커먼 &gt; 내 활동 &gt; 1:1 메시지에서 확인하실 수 있습니다.</p>
-					<br>
-					<a href="#" class="btnSizeM btnColor02 js-message-submit">보내기</a>
-				</div>
-			</fieldset>
+			<a href="#" class="btnSizeB btnColor01 js-message-submit">보내기</a>
 		</form>
 	</div>
 </div>

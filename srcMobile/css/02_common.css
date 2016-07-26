@@ -89,7 +89,7 @@ a.pointLink {color:#2d427a;text-decoration:underline;}
 .tabType03{background: #f9fafc; border-bottom:1px solid #ccc;}
 .tabType03 ul{height: 49px;overflow: hidden;}
 .tabType03 li{text-align: center;}
-.tabType03 a{position: relative;display: block;padding: 0 25px;color: #333;font-size: 13px;line-height: 49px;}
+.tabType03 a{position: relative;display: block;padding: 0 24.9px;color: #333;font-size: 13px;line-height: 49px;}
 .tabType03 .on a{color: #000;}
 .tabType03 .on a:after{content: '';position: absolute;left:0;bottom: -2px;width: 100%;height: 3px;background: #2d427a}
 
@@ -290,7 +290,7 @@ textarea{padding: 10px;border:1px solid #d0d0d0;width: 100%;box-sizing: border-b
 .previewList .count02{float: right;color:#333;font-size: 11px;}
 .previewList .count02 b{color:#436ebb;}
 .previewList .op{margin-top: 3px;font-size: 11px;color: #999;}
-.previewList .op02{margin-top: 3px;font-size: 11px;color: #436ebb;}
+.previewList .op02{margin-top: 3px;font-size: 11px;color: #b08967;}
 .previewList .price {margin-top:12px;;}
 .previewList .price span{color:#999;}
 .previewList .price b {font-size:15px;}

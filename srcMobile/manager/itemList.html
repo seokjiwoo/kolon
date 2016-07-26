@@ -3,50 +3,105 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 전문가"} -->
 </head>
-<body data-page-id="">
+<body data-page-id="manager-itemList">
 	<div class="wrapper manager">
-	<!-- @@include ../_template/menu.html -->
+	<!-- @@include ../_template/menu_manager_detail.html -->
 		<div class="container">
-			<section>
-				<h2 class="pageTit">판매상품</h2>
-				<div class="pageTop scrapTop mb0">
-					<p>상품<b class="roman"> 15</b> 개가 있습니다.</p>
-				</div>
-				<div class="selectwrap">
-					<div class="selectBox select100">
-						<select name="" title="정렬순서 선택">
-							<option value="" selected="selected">최신순</option>
-							<option value="">인기순</option>
-							<option value="">가격높은순</option>
-							<option value="">가격낮은순</option>
-						</select>
-					</div>
-				</div>
-				<div class="myWrap">
-					<ul class="previewList">
-						<li>
-							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
-							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
-							<p class="op02">옵션 : 25평형</p>
-							<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
-						</li>
-						<li>
-							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
-							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고... </a></p>
-							<p class="op02">옵션 : 25평형</p>
-							<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
-						</li>
-						<li>
-							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
-							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
-							<p class="op02">옵션 : 25평형</p>
-							<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
-						</li>
-					</ul>
-				</div>
-			</section>
+
+			<!-- [D] #manager-detail-templates - wrap -->
+			<section class="js-manager-detail-wrap"></section>
+			<!--// [D] #manager-detail-templates - wrap -->
+
 		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<script id="manager-detail-templates" type="text/x-handlebars-template">
+{{!-- manager-detail-templates --}}
+	<h2 class="pageTit">판매상품</h2>
+	<div class="pageTop scrapTop mb0">
+		<p>상품<b class="roman"> {{countProduct}}</b> 개가 있습니다.</p>
+	</div>
+	<div class="managerProfile">
+		<b>{{name}}</b>
+		<span>{{companyName}}</span>
+	</div>
+	<div class="selectwrap">
+		<div class="selectBox select100">
+			<select id="orderDrop" title="정렬순서 선택">
+				<option value="newest" selected="selected">최신순</option>
+				<option value="like">인기순</option>
+				<option value="maxPrice">가격높은순</option>
+				<option value="minPrice">가격낮은순</option>
+				<option value="scrap">스크랩순</option>
+			</select>
+		</div>
+	</div>
+	<div class="myWrap">
+		
+		<!-- [D] #manager-product-templates - wrap -->
+		<ul class="previewList js-manager-product-wrap"></ul>
+		<!--// [D] #manager-product-templates - wrap -->
+
+	</div>
+{{!--// manager-item-templates --}}
+</script>
+
+
+<script id="manager-product-templates" type="text/x-handlebars-template">
+{{!-- manager-product-templates --}}
+	{{#if products.length}}
+		{{#each products}}
+			<li>
+				<div class="thumb"><img src="{{cardImageUrl}}" alt=""></div>
+				<p class="except is-truncated">
+					{{#vxSwitch cardTypeCode}}
+						{{#vxCase "DP_CARD_TYPE_01" break=True}}
+							{{!-- 매거진 --}}
+							<a href="/magazine/detail.html?articleNumber={{cardNumber}}">{{cardName}}</a>
+						{{/vxCase}}
+						{{#vxCase "DP_CARD_TYPE_02" break=True}}
+							{{!-- 뉴폼 상품 --}}
+							<a href="/newForm/detail.html?productNumber={{cardNumber}}">{{cardName}}</a>
+						{{/vxCase}}
+						{{#vxCase "DP_CARD_TYPE_03" break=True}}
+							{{!-- 샵 상품 --}}
+							<a href="/shop/detail.html?productNumber={{cardNumber}}">{{cardName}}</a>
+						{{/vxCase}}
+						{{#vxCase "DP_CARD_TYPE_07" break=True}}
+							{{!-- 전문가 --}}
+							<a href="/manager/detail.html?expertNumber={{cardNumber}}">{{cardName}}</a>
+						{{/vxCase}}
+					{{/vxSwitch}}
+				</p>
+
+				{{#if pyeong}}
+					<p class="op02">옵션 : {{pyeong}}</p>
+					<p class="price"><b>{{vxCurrencyFormat basePrice}}</b> 원 <span>({{pyeong}})</span></p>
+				{{else}}
+					<p class="price"><b>{{vxCurrencyFormat basePrice}}</b> 원</p>
+				{{/if}}
+			</li>
+		{{/each}}
+	{{else}}
+		<li>
+			<p class="noContent" style="display:block">상품이 없습니다.</p>
+		</li>
+	{{/if}}
+{{!--// manager-product-templates --}}
+</script>
+
+<script id="manager-message-templates" type="text/x-handlebars-template">
+{{!-- manager-message-templates --}}
+	<a href="/popup/popMessage.html?saleMemberNumber={{expertNum}}" target="_blank"
+					class="messageBtn openWindowPopup-none"
+					data-winpop-opts='{
+						"name" : "messagePopup",
+						"width" : "100%",
+						"height" : "100%"
+						}'>1:1 메시지</a>
+{{!-- manager-message-templates --}}
+</script>
+
 </body>
 </html>

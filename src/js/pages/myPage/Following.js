@@ -213,8 +213,13 @@ module.exports = function() {
 		var availableTags = [];
 
 		$.map(data.follows, function(item) {
-			availableTags.push(item.coperationName);
-			availableTags.push(item.memberName);
+			if (item.coperationName) {
+				availableTags.push(item.coperationName);
+			}
+
+			if (item.memberName) {
+				availableTags.push(item.memberName);
+			}
 		});
 
 		if (self.searchInp.autocomplete('instance')) {

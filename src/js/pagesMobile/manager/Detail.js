@@ -112,12 +112,19 @@ module.exports = function() {
 								eventManager.triggerHandler(INFOSLIDER_EVENT.REFRESH);
 								setBtnsEvents();
 
-								var portfolioSlider = $('#portfolioSlider').bxSlider({
+								var portfolioSlider,
+								portfolioSliderTotal;
+
+								portfolioSlider = $('#portfolioSlider').bxSlider({
 									pager : false,
 									onSliderLoad : function(index) {
-										var total = $(this).children().filter(':not(.bx-clone)').size();
-										$(this).closest('.portfolioArea').find('.js-cur').text(index + 1);
-										$(this).closest('.portfolioArea').find('.js-total').text(total);
+										portfolioSliderTotal = $(this).children().filter(':not(.bx-clone)').size();
+										if (portfolioSliderTotal) {
+											$(this).closest('.portfolioArea').find('.js-cur').text(index + 1);
+										} else {
+											$(this).closest('.portfolioArea').find('.js-cur').text(0);
+										}
+										$(this).closest('.portfolioArea').find('.js-total').text(portfolioSliderTotal);
 									},
 									onSlideAfter : function($slideElement, oldIndex, newIndex) {
 										$(this).closest('.portfolioArea').find('.js-cur').text(newIndex + 1);
@@ -127,9 +134,27 @@ module.exports = function() {
 								$('#portfolioSlider').imagesLoaded()
 														.always(function() {
 															portfolioSlider.reloadSlider();
+															if (portfolioSliderTotal === 1) {
+																portfolioSlider.destroySlider();
+															}
 														});
 							});
 	}
+
+	// Handlebars 마크업 템플릿 구성
+	function displayBasicData(data, _template, templatesWrap) {
+		_template = _template || self.template;
+		templatesWrap = templatesWrap || self.templatesWrap;
+
+		var source = _template.html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
+
+		templatesWrap.empty()
+						.addClass(self.opts.cssClass.isLoading)
+						.append(insertElements);
+	}
+
 
 	function onControllerListener(e, status, response/*, elements*/) {
 		var eventType = e.type,
@@ -146,6 +171,11 @@ module.exports = function() {
 					$('.except').dotdotdot({watch:'window'});
 					if (result.data.expert.followYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 				}
+
+				expertsController.products(self.expertNumber, 'newest');
+				break;
+			case EXPERTS_EVENT.PRODUCTS:
+				displayBasicData(result.data, $('#manager-product-templates'), $('.js-manager-product-wrap'));
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
