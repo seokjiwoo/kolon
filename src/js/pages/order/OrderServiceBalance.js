@@ -304,7 +304,11 @@ module.exports = function() {
 				$("#EncryptData").val(data.data.hash_String);
 			},
 			complete : function(data) {
-				goPay(document.payForm);
+				if (paymentPrice == 0) {
+					document.payForm.submit();
+				} else {
+					goPay(document.payForm);
+				}
 			},
 			error : function(xhr, status, error) {
 				Super.Super.alertPopup('결재에 실패하였습니다', status+': '+error, '확인');
