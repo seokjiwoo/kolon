@@ -42,7 +42,7 @@ a{color:#666;}
 .is-scrolling .myCartTotal,
 .is-scrolling .btmFix {position:fixed; bottom:0; left:0; z-index:10;}
 
-.gnb{overflow: auto;position:fixed;right:-300px;top:0;bottom:0;height: 100%;z-index:10;width:300px;height:100%;background:#fff;display:block;}
+.gnb{overflow: auto;position:fixed;right:-300px;top:0;bottom:0;height: 100%;z-index:91;width:300px;height:100%;background:#fff;display:block;}
 .gnb .topArea{position:relative;}
 .gnb .userBox{text-align:center;padding-top:25px;background:#ff466c;}
 .gnb .userBox .thumb{width:60px;height:60px;display:inline-block;overflow:hidden;border-radius:100%;}
