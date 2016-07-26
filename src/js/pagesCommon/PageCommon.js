@@ -681,6 +681,11 @@ module.exports = function() {
 		//@example {{vxMobileNumberFormat value}}
 		window.Handlebars.registerHelper('vxMobileNumberFormat', function(phoneNumber) {
 			return util.mobileNumberFormat(phoneNumber);
-		})
+		});
+
+		//@example {{vxCurrencyFormat value}}
+		window.Handlebars.registerHelper('vxCurrencyFormat', function(value) {
+			return util.currencyFormat(value);
+		});
 	}
 }
