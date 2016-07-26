@@ -104,6 +104,8 @@ module.exports = function() {
 			$('#myPageHeaderFollowingCount').html(activity.followCount);
 			$('#myPageHeaderPointCount').html(loginData.savingPoint);
 			$('#myPageHeaderMyCartCount').html(activity.cartCount);
+			$('#myCartConstNewCount').html(activity.cartConstNewCount);
+			$('#myCartDlvyNewCount').html(activity.cartDlvyNewCount);
 		}
 	}
 
