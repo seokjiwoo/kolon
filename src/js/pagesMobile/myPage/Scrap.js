@@ -30,7 +30,7 @@ module.exports = function() {
 
 	var opts = {
 		container : '.container',
-		categoryMenu : '.tabType01 a',
+		categoryMenu : '.tabType03 a',
 		cardWrap : '#cardWrap',
 		templates : {
 			wrap : '#scrapAll',
@@ -79,9 +79,6 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
-		cardList = CardList();
-		cardList.init();
-
 		// controller Method
 		// scrapList(attr) - 스크랩 카드 목록
 		// scrapImageList(folderNumber) - 스크랩 이미지 목록
@@ -94,6 +91,9 @@ module.exports = function() {
 	}
 
 	function setElements() {
+		cardList = CardList();
+		cardList.init();
+
 		self.container = $(self.opts.container);
 		self.templatesWrap = self.container.find(self.opts.templates.wrap);
 		self.categoryMenu = self.container.find(self.opts.categoryMenu);
@@ -148,20 +148,21 @@ module.exports = function() {
 		activePageMenu(hashVars.category);
 
 		switch(hashVars.category) {
-			// 모든 스크랩
 			case 'all':
+			default:
+				cardList.removeAllData();
 				controller.scrapList('ALL');
 				break;
-			// 뉴폼/샵
 			case 'product':
+				cardList.removeAllData();
 				controller.scrapList('PRODUCT');
 				break;
-			// 메거진
 			case 'magazine':
+				cardList.removeAllData();
 				controller.scrapList('MAGAZINE');
 				break;
-			// 이미지
 			case 'images':
+				cardList.removeAllData();
 				// controller.scrapList('IMAGE');
 				// controller.scrapImageList(hashVars.folderNumber);
 				if (hashVars.folderNumber || hashVars.scrapNumber) {
@@ -170,19 +171,15 @@ module.exports = function() {
 					controller.scrapList('IMAGE');
 				}
 				break;
-			// 모든 스크랩
-			default:
-				controller.scrapList('ALL');
-				break;
 		}
 	}
 
 	// tab Active 처리
 	function activePageMenu(category) {
 		if (category) {
-			$('.tabType01 a[href=\'/myPage/scrap.html#category=' + category + '\']').trigger('click');
+			$('.tabType03 a[href=\'/myPage/scrap.html#category=' + category + '\']').trigger('click');
 		} else {
-			$('.tabType01 a[href=\'/myPage/scrap.html#category=all\']').trigger('click');
+			$('.tabType03 a[href=\'/myPage/scrap.html#category=all\']').trigger('click');
 		}
 	}
 
@@ -190,7 +187,7 @@ module.exports = function() {
 	function displayData(templates, data) {
 		var source = templates.html(),
 		template = win.Handlebars.compile(source),
-		insertElements = $(template(data));
+		insertElements = $(template(data.data));
 
 		eventManager.triggerHandler(ISOTOPE_EVENT.DESTROY);
 		self.templatesWrap.empty()
@@ -211,179 +208,55 @@ module.exports = function() {
 
 		switch(eventType) {
 			case SCRAP_EVENT.LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				displayData($(self.opts.templates.all), result);
+				debug.log(result.data.scraps);
+				cardList.appendData(result.data.scraps);
+				$('.removeScrap').show();
+				$('#scrapCount').text(result.data.scraps.length);
 				break;
-			case SCRAP_EVENT.IMAGE_LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
+			case SCRAP_EVENT.DELETE_SCRAP:
+				if (status == 200) {
+					location.reload(true);
+				} else {
+					alert(status+': '+response.message);
 				}
+				break;
 
+			case SCRAP_EVENT.IMAGE_LIST:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				displayData($(self.opts.templates.images), result);
 				break;
-			case SCRAP_EVENT.ADD_SCRAP:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				201	Created
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
-				testResult();
-				break;
 			case SCRAP_EVENT.EDIT_SCRAP:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				201	Created
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
-				testResult();
-				break;
-			case SCRAP_EVENT.DELETE_SCRAP:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				204	No Content
-				401	Unauthorized
-				403	Forbidden
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				testResult();
 				break;
 			case SCRAP_EVENT.ADD_SCRAP_FOLDER:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				201	Created
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
 				testResult();
 				break;
 			case SCRAP_EVENT.EDIT_SCRAP_FOLDER:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				201	Created
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
 				testResult();
 				break;
 			case SCRAP_EVENT.DELETE_SCRAP_FOLDER:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				204	No Content
-				401	Unauthorized
-				403	Forbidden
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
 				testResult();
 				break;
 		}
 	}
 
 	function testResult() {
-		win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
+		//win.location.reload();
+	}
+
+	/**
+	 * 스크랩 삭제
+	 */
+	function onDeleteScrap(e) {
+		e.preventDefault();
+
+		debug.log(fileName, 'onDeleteScrap', $(e.target), self.selPopBtnInfo.target.data().scrapNumber);
+		controller.deleteScrap(self.selPopBtnInfo.target.data().scrapNumber);
 	}
 
 	/**
@@ -447,26 +320,6 @@ module.exports = function() {
 
 		debug.log(fileName, 'onNewFolder', target, self.selPopBtnInfo, inp.val());
 		controller.addScrapFolder(inp.val());
-	}
-
-	/**
-	 * 스크랩 삭제
-	 */
-	function onDeleteScrap(e) {
-		e.preventDefault();
-
-		var target = $(e.target);
-		// 스크랩 유무에 따른 - 문구 처리
-		/*
-		message = '해당 카드를 삭제하시겠습니까?',
-		isAllow = win.confirm(message);
-
-		if (!isAllow) {
-			return;
-		}
-		*/
-		debug.log(fileName, 'onDeleteScrap', target, self.selPopBtnInfo);
-		controller.deleteScrap(self.selPopBtnInfo.info.scrapNumber);
 	}
 
 	function setColoboxFolder() {
