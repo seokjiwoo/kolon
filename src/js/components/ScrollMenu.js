@@ -44,12 +44,13 @@ function ScrollMenu() {
 	}
 
 	function setBindEvents() {
-		$(win).on('scroll', $.proxy(onScrollListener, self))
-				.on('resize', $.proxy(onResizeListener, self));
+		// $(win).on('scroll', $.proxy(onScrollListener, self))
+		// 		.on('resize', $.proxy(onResizeListener, self));
 		
-		// $(win).on('touchstart', $.proxy(onTouchStart, self))
-		// 		.on('touchmove', $.proxy(onTouchMove, self))
-		// 		.on('touchend', $.proxy(onTouchEnd, self));
+		$(win).on('touchstart', $.proxy(onTouchStart, self))
+				.on('touchmove', $.proxy(onTouchMove, self))
+				.on('touchend', $.proxy(onTouchEnd, self));
+		onScrollListener();
 	}
 
 	function onTouchStart(e) {
@@ -65,7 +66,7 @@ function ScrollMenu() {
 		touchObj = event.changedTouches[0],
 		dist = parseInt(touchObj.clientY) - self.startY;
 
-		if (dist > 0) {
+		if (dist > 0 && winTop > $('.header').outerHeight()) {
 			self.body.addClass(self.opts.cssClass.isScrolling);
 		} else {
 			self.body.removeClass(self.opts.cssClass.isScrolling);
@@ -78,7 +79,7 @@ function ScrollMenu() {
 		touchObj = event.changedTouches[0],
 		dist = parseInt(touchObj.clientY) - self.startY;
 
-		if (dist > 0) {
+		if (dist > 0 && winTop > $('.header').outerHeight()) {
 			self.body.addClass(self.opts.cssClass.isScrolling);
 		} else {
 			self.body.removeClass(self.opts.cssClass.isScrolling);
