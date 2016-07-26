@@ -221,6 +221,8 @@ module.exports = function() {
 				$('#SelectQuota').val('00'); // 할부개월수
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
+				$('#fromCart').val(util.getUrlVar().fromCart == 'Y' ? 'Y' : 'N');
+				
 				$('.requestPaymentButton').click(getHashString);
 				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;
@@ -288,7 +290,7 @@ module.exports = function() {
 				product.orderOptionNum,
 				product.quantity,
 				($('#delivery1').is(':visible') ? selectedOneAddress : selectedMultiAddress[key]),
-				encodeURI( $('#messageField-'+(Number(key)+1)).val() )
+				encodeURI( $('#messageField-'+($('#delivery1').is(':visible') ? '1' : '2')+'-'+(Number(key)+1)).val() )
 			);
 			if (!eachOrderArray[3]) {
 				alert('배송지를 지정해 주세요.');
@@ -322,7 +324,11 @@ module.exports = function() {
 				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
-				goPay(document.payForm);
+				if (paymentPrice == 0) {
+					document.payForm.submit();
+				} else {
+					goPay(document.payForm);
+				}
 			},
 			error : function(xhr, status, error) {
 				Super.Super.alertPopup('결재에 실패하였습니다', status+': '+error, '확인');

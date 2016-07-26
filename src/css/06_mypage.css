@@ -267,11 +267,11 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .record.record04 .recordDate b {margin-left:5px;text-decoration:initial;}
 
 .my .secTit + table{margin-top: 20px;}
-.record.detail th,.record.detail td{height: 50px;}
+.record.detail th,.record.detail td{height: 50px;font-size:16px; }
 
-.my .moreView {border-top:1px solid #999;border-bottom:1px solid #999;}
-.record.recordBg {margin-top:-2px;}
-.record.recordBg th, .record.recordBg td {text-align:left;}
+.my .moreView {/*border-top:1px solid #999;border-bottom:1px solid #999;*/}
+.record.recordBg {margin:0;border:0;}
+.record.recordBg th, .record.recordBg td {padding: 20px;text-align:left;}
 .record.recordBg th {background:#f8f8f8;}
 .record.recordBg td {background:#fff;font-family:'NotoSansL', sans-serif;color: #333;}
 .my .payment {color:#f2726b;}

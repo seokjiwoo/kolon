@@ -59,13 +59,12 @@ module.exports = function() {
 
 		scrollMenu.init();			// scroll에 따른 메뉴 활성화
 		snsShare.init();			// snsshare 메뉴
-
-		initInfoSlider();	// #infoSlider bxSlider
+		initInfoSlider();			// #infoSlider bxSlider
+		keyboardAction();			// input 포커스 시 하단 고정 버튼 클래스 추가
 
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
 					.on(COLORBOX_EVENT.DESTROY, onColorboxDestoryListener);
-
 
 		// WindowOpener eventManager 연결
 		eventManager.on(WINDOWOPENER_EVENT.REFRESH, onWinOpenerRefreshListener)
@@ -572,5 +571,34 @@ module.exports = function() {
 	function onWinOpenerDestoryListener(e) {
 		$('.openAddressPopup, .openWindowPopup').off('click', onWindowPopupHandler);
 		eventManager.off(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
+	}
+	function keyboardAction(){		
+		var is_keyboard = false;
+		var is_landscape = false;
+		var initial_screen_size = window.innerHeight;
+
+		/* Android */
+		window.addEventListener("resize", function() {
+			is_keyboard = (window.innerHeight < initial_screen_size);
+			is_landscape = (screen.height < screen.width);
+			
+			updateViews();
+		}, false);
+
+		/* iOS 
+		$('input').bind('focus blur',function() {
+			$(window).scrollTop(10);
+			is_keyboard = $(window).scrollTop() > 0;
+			$(window).scrollTop(0);
+			updateViews();
+		});*/
+
+		function updateViews() {
+			if (is_keyboard) {
+				$('.js-btmFix-btn').addClass('keyUp');
+			} else {
+				$('.js-btmFix-btn').removeClass('keyUp');
+			}
+		}
 	}
 }

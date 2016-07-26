@@ -65,6 +65,7 @@
 .popCon p{margin-top:20px;}
 .popCon p:first-child{margin-top:0;}
 .btnHome{display: inline-block;margin:35px auto 0;padding: 9px 25px;background: #f1645c;color: #fff;font-family: 'NotoSansM', sans-serif;font-size: 14px;border-radius: 20px;}
+.ie9 .popEdge .popCon{margin-top:-40px;}
 
 #popAgree01 .popCon{text-align: left;}
 

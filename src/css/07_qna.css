@@ -2,7 +2,8 @@
 .myOpinion{float:right;width:895px;font-size:14px;}
 .myOpinion .opinionArea{margin-top:0;}
 
-.qna .container .wrap{padding-top: 50px;}
+.qna .topMenu{background: rgba(255,255,255,.8);}
+.qna .container .wrap{padding-top:120px;}
 
 .qna .subTop{text-align: center;background: url('../images/top_expert.jpg') no-repeat;background-size: cover;color: #fff;}
 .qna .subTxt{font-size: 34px;}
@@ -90,11 +91,13 @@
 .opinionbox .title p span{font-family:'NotoSansM',sans-serif; font-size:14px;}
 .opinionbox .title p span:first-child + span{font-family:'NotoSansL',sans-serif;padding-left:5px;}
 
-.opinionbox .conbox{padding:30px 20px;background:#fff; font-size:14px;}
+.opinionbox .conbox{padding:20px;background:#fff; font-size:14px;}
 .opinionbox .conbox.round{border-bottom:1px solid #545454;}
 .opinionbox .conbox strong{display: block;font-size:20px;font-family:'NotoSansR',sans-serif;color:#000;word-break: break-all;word-wrap:break-word;line-height: 1.2em;}
-.opinionbox .conbox strong span.it {padding:2px 8px; border:2px solid #00aeb9; font-size:14px; color:#00aeb9; margin-right:10px;}
-.opinionbox .conbox .conboxTxt > p{min-height:72px;height:72px; margin-top:20px;color:#666;line-height:1.3em;font-family:'NotoSansR',sans-serif; position:relative;word-break: break-all;word-wrap: break-word;}
+.opinionbox .conbox strong span {padding:2px 8px; border:2px solid; font-size:14px; color:#b08967; margin-right:10px;}
+.opinionbox .conbox strong span.it{border-color:#b08967;color:#b08967;}
+.opinionbox .conbox strong span.complete{border-color:#465f8d;color:#465f8d;}
+.opinionbox .conbox .conboxTxt > p{min-height:72px;height:72px; margin-top:15px;color:#666;line-height:1.3em;font-family:'NotoSansR',sans-serif; position:relative;word-break: break-all;word-wrap: break-word;}
 .opinionbox .conbox .conboxTxt {padding-right:80px; position:relative; overflow:hidden;}
 .opinionbox .conbox .more {position:absolute; bottom:0; right:-70px; padding-right:20px; font-size:14px; color:#999;}
 .opinionbox .conbox .more:after {content:''; width:13px; height:8px; margin-top:-3px; background:url("../images/ico_more.png") no-repeat 0 0; position:absolute; top:50%; right:0; display:inline-block;}
@@ -132,8 +135,8 @@
 
 .opinionbox .expert{position:relative;}
 .opinionbox .expert:after{content:"";display:block;clear:both;}
-.opinionbox i{min-width:16px;height:16px;display:inline-block;margin-left:10px; padding-right:23px;background:url("../images/ico_help.png") no-repeat right 0;font-style:normal; vertical-align:middle;}
-.opinionbox i span{color:#f1645c;display:block;font-family:'NotoSansR',sans-serif; vertical-align:middle;}
+.opinionbox i{min-width:16px;height:16px;display:inline-block;margin-left:10px; padding-right:23px;background:url("../images/ico_help.png") no-repeat right 0;font-style:normal; vertical-align:middle;cursor: pointer;}
+.opinionbox i span{color:#465f8d;display:block;font-family:'NotoSansR',sans-serif; vertical-align:middle;}
 .opinionbox i.on {background-position:right -16px;}
 .opinionbox .commentName {width:236px;overflow:hidden;float:left;}
 .opinionbox .name{width:100%; height:64px; display:table-cell; vertical-align:middle;}

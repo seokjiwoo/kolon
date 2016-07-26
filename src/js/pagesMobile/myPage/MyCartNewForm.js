@@ -256,7 +256,7 @@ module.exports = function() {
 						$(document).trigger('verifyMember');
 					} else {
 						Cookies.set('instantOrder', orderData);
-						location.href = '/order/orderGoods.html';
+						location.href = '/order/orderService.html?fromCart=Y';
 					}
 				});
 				break;

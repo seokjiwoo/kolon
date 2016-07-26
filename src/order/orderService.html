@@ -248,7 +248,8 @@
 												<li>시공예정가격은 평균적인 예상 가격으로 실측 후 실제 금액이 결정됩니다.</li>
 												<li>선금 결제 단계에서 포인트 사용은 불가하며 실측/견적 진행 후 잔여 금액 납부 시 사용 가능합니다.</li>
 												<li>실측 후 시공진행 시 선금은 제외되며 시공을 하지 않으시더라도 납부하신 선금은 전액 환불됩니다.</li>
-												<li>시공기간 동안 짐을 보관할 곳이 필요하시거나 시공 후 깔끔한 청소를 원하신다면 실측 시담당자에게 문의해보세요. 보관 서비스와 청소 서비스를 함께 진행해드립니다. <br/>(본 계약 진행 시 추가 비용 발생)</li>
+												<li>선결제 완료 후 계약 취소를 원하시면 고객센터(1644-1234)로 문의 부탁드립니다.</li>
+												<li>시공기간 동안 짐을 보관할 곳이 필요하시거나 시공 후 깔끔한 청소를 원하신다면 실측 시 담당자에게 문의해보세요. 보관 서비스와 청소 서비스를 함께 진행해드립니다. <br/>(본 계약 진행 시 추가 비용 발생)</li>
 											</ul>
 										</div>
 									</dd>
@@ -556,6 +557,8 @@
 		<!-- @@include ../_template/footer.html -->
 	</div>
 <form id="payForm" name="payForm" method="post" action="/apis/constorders/advance/process">
+	<input type="hidden" name="fromCart" id="fromCart" value="N">
+	
 	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호) -->
 	<input type="hidden" name="wishSurveyDate" id="wishSurveyDate" value="" /> <!-- 희망 실측 방문/상담 날짜 -->
 	<input type="hidden" name="wishSurveyHour" id="wishSurveyHour" value="" /> <!-- 희망 실측 방문/상담 시간 -->

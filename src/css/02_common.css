@@ -99,9 +99,12 @@
 .record.record03 .checkbox {margin-top:0;}
 .my .record.record03 .orderState {padding:0 6px}
 .my .record.record03 a.btnIcoMore {position:relative;text-align:left;margin-top:6px;width:45px;padding:0 20px 0 15px;font-size:13px;}
+.my .record.record03 a.btnIcoMore .close{display: none;}
 .my .record.record03 a.btnIcoMore:after {content:'';display:block;position:absolute;top:50%;right:7px;width:15px;height:10px;margin-top:-5px;background:url(../images/btn_more_ico.png) 0 0 no-repeat}
-.my .record.record03 a.btnIcoMore.active {background:#f1645c;text-align:center;padding:0 25px 0 10px}
+.my .record.record03 a.btnIcoMore.active {background:#b08967;text-align:center;padding:0 25px 0 10px}
 .my .record.record03 a.btnIcoMore.active:after {background-position:0 -10px;right:10px;}
+.my .record.record03 a.btnIcoMore.active .close{display: block;}
+.my .record.record03 a.btnIcoMore.active .open{display: none;}
 
 .record.record04 td{border-bottom: 0;border-top: 1px solid #e1e1e1;}
 .record.record04 .total td{border-top:1px solid #000;color: #000; }

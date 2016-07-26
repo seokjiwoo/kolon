@@ -10,8 +10,8 @@
 			<div class="wrap">
 			<section class="singleCard" id="myActivity">
 				<h2 class="secTit">세탁서비스 신청</h2>
-
 				<h3 class="subTit">서비스 신청자 정보 (필수)</h3>
+				<form method='POST' action='#' id='requestWashingForm'>
 				<div class="tbSet orderCont mt20">
 					<table summary="세탁 정보 표로써 서비스지역, 수거일시의 정보가 담겨있습니다.">
 						<caption>세탁 정보 표</caption>
@@ -21,15 +21,15 @@
 						</colgroup>
 						<tbody>
 							<tr>
-								<th scope="col">이름</th>
+								<th scope="col">이름 </th>
 								<td>
-									<input type="text" title="이름 입력" value="" style="width:360px;">
+									<input type="text" id='name' title="이름 입력" value="" style="width:360px;">
 								</td>
 							</tr>
 							<tr>
 								<th scope="col">연락처</th>
 								<td>
-									<input type="text" title="휴대폰번호 입력" value="" style="width:360px;">
+									<input type="text" id='phoneNumber' title="휴대폰번호 입력" value="" style="width:360px;">
 								</td>
 							</tr>
 						</tbody>
@@ -47,17 +47,16 @@
 								<td>
 									<div class="arrayWrap alignBox">
 										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
-												<li><a href="#">자택</a></li>
-												<li><a href="#" data-value="type-1">아파트</a></li>
-												<li><a href="#" data-value="type-2">회사</a></li>
+											<ul class="drop" data-prevent="true" id='addressDrop'>
 											</ul>
 										</div>
 										<div class="leftBox">
-											<a href="../_popupWindow/addressBook.html" class="btnSizeM btnColor01 openAddressPopup">새주소</a>
+											<a href="../popup/addressBook.html" class="btnSizeM btnColor01 openAddressPopup">새주소</a>
 										</div>
 									</div>
 									<p class="underTxt">* 현재 가능한 서비스 지역은 <b>강남구, 서초구, 송파구, 분당</b>입니다. 추후 서비스 지역을 확대할 계획입니다.</p>
+									<p class="underTxt" id='washingAddress'></p>
+									<p class="underTxt" id='availableMessage'></p>
 								</td>
 							</tr>
 							<tr>
@@ -70,22 +69,29 @@
 												<span class="calInp">
 													<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
 													<a href="#" class="calBtn js-btn">날짜 선택</a>
-													<div class="cal-container js-picker"></div>
+													<div id='washDate' class="cal-container js-picker"></div>
 												</span>
 											</div>
 											<!--// datePicker -->
 										</div>
 										<div class="leftBox">
-											<ul class="drop" data-prevent="true">
+											<ul id='timeDrop' class="drop" data-prevent="true">
 												<li><a href="#">수거시간</a></li>
-												<li><a href="#" data-value="type-1">12:00 – 13:00</a></li>
-												<li><a href="#" data-value="type-1">13:00 – 14:00</a></li>
-												<li><a href="#" data-value="type-1">14:00 – 15:00</a></li>
-												<li><a href="#" data-value="type-1">15:00 – 16:00</a></li>
-												<li><a href="#" data-value="type-1">16:00 – 17:00</a></li>
-												<li><a href="#" data-value="type-1">17:00 – 18:00</a></li>
-												<li><a href="#" data-value="type-1">19:00 – 20:00</a></li>
-												<li><a href="#" data-value="type-1">21:00 – 22:00</a></li>
+												<li><a href="#" data-value="09:00">09:00 – 10:00</a></li>
+												<li><a href="#" data-value="10:00">10:00 – 11:00</a></li>
+												<li><a href="#" data-value="11:00">11:00 – 12:00</a></li>
+												<li><a href="#" data-value="12:00">12:00 – 13:00</a></li>
+												<li><a href="#" data-value="13:00">13:00 – 14:00</a></li>
+												<li><a href="#" data-value="14:00">14:00 – 15:00</a></li>
+												<li><a href="#" data-value="15:00">15:00 – 16:00</a></li>
+												<li><a href="#" data-value="16:00">16:00 – 17:00</a></li>
+												<li><a href="#" data-value="17:00">17:00 – 18:00</a></li>
+												<li><a href="#" data-value="18:00">18:00 – 19:00</a></li>
+												<li><a href="#" data-value="19:00">19:00 – 20:00</a></li>
+												<li><a href="#" data-value="20:00">20:00 – 21:00</a></li>
+												<li><a href="#" data-value="21:00">21:00 – 22:00</a></li>
+												<li><a href="#" data-value="22:00">22:00 – 23:00</a></li>
+												<li><a href="#" data-value="23:00">23:00 – 24:00</a></li>
 											</ul>
 										</div>
 									</div>
@@ -95,30 +101,31 @@
 						</tbody>
 					</table>
 					<div class="btnC">
-						<button class="btn btnSizeM btnColor01 btnWM">세탁업체 추천 요청</button>
+						<button id='getCompanyListButton' class="btn btnSizeM btnColor01 btnWM">세탁업체 추천 요청</button>
 					</div>
 				</div>
 				<h3 class="subTit">추천 세탁업체 선택</h3>
 				<div class="orderCont recommendBox">
-					<div class="payTab tabWrap">
-						<span class="on best">
+					<div id='companyListWrap' class="payTab tabWrap">
+						<p id='selectMessage'>세탁정보를 먼저 입력하시고, “세탁업체 추천요청”을 누르시면,<br>최적의 세탁업체를 추천해 드립니다.</p>
+						<span id='washCompany_washOn' class="washCompany" data-company-code='LS_COMPANY_SECTION_01'> <!-- best -->
 							<a href="#" class="radioBtn">
 								<p class="thumBox"><img src="../images/thum_recommend04.jpg"></p>
 								<p class="labelTxt">워시온</p>
 							</a>
-							<p><button id="buttonPop" class="btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
+							<p><button id="" class="buttonPop btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
 						</span>
-						<span class="">
+						<span id='washCompany_washSwat' class="washCompany" data-company-code='LS_COMPANY_SECTION_02'> <!-- best -->
 							<a href="#" class="radioBtn">
 								<p class="thumBox"><img src="../images/thum_recommend05.jpg"></p>
 								<p class="labelTxt">세탁특공대</p>
 							</a>
-							<p><button class="btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
+							<p><button id="" class="buttonPop btn btnSizeS btnColor03 btnWM">서비스가격 확인</button></p>
 						</span>
 					</div>					
 					<h3 class="subTit">추가 요청사항 (선택)</h3>
 					<div class="tbSet orderCont mt20">
-						<textarea class="mt20 pullSize" cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
+						<textarea id='additionalComments' class="mt20 pullSize" cols="100" rows="5" title="주의해야 할 사항 또는 요청하실 사항 입력" placeholder="주의해야 할 사항 또는 요청하실 사항 있으시면 기입해주세요."></textarea>
 					</div>
 				</div>				
 				<h3 class="subTit">개인정보 제 3자 제공 동의</h3>
@@ -134,7 +141,7 @@
 						</div>
 						<p class="checkAgree checkbox">
 							<input type="checkbox" id="agree01">
-							<label for="agree01">개인정보 제 3자 제공에 동의합니다.</label>
+							<label for="agree01" id='agree01lb'>개인정보 제 3자 제공에 동의합니다.</label>
 						</p>
 					</div>
 				</div>

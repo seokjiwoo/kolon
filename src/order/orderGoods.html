@@ -416,7 +416,7 @@
 		<tr>
 			<td>
 				<div class="photoList">
-					<a href="#">
+					<a href="/shop/detail.html?productNumber={{productNumber}}">
 						<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
 						<span class="cartInfo">
 							<span class="cartTit">{{productName}}</span>
@@ -437,14 +437,14 @@
 				<dl>
 					<dt>배송 시 요청사항 (선택)</dt>
 					<dd>
-						<select title="배송 시 요청사항을 선택해 주세요" style="width:309px" id='messageSelect-1' class='messageSelect'>
+						<select title="배송 시 요청사항을 선택해 주세요" style="width:309px" id='messageSelect-1-{{@index}}' class='messageSelect'>
 							<option value="" label="배송 시 요청사항을 선택해 주세요." selected="selected">배송 시 요청사항을 선택해 주세요.</option>
 							<option value="경비실에 맡겨주세요." label="경비실에 맡겨주세요.">경비실에 맡겨주세요.</option>
 							<option value="빠른 배송 부탁드립니다." label="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
 							<option value="부재 시 핸드폰으로 연락바랍니다." label="부재 시 핸드폰으로 연락바랍니다.">부재 시 핸드폰으로 연락바랍니다.</option>
 							<option value="-" label="직접 입력">직접 입력</option>
 						</select>
-						<input type="text" style="width:545px;" title="배송 시 요청사항 입력란" id='messageField-1' class='messageField' value=""/>
+						<input type="text" style="width:545px;" title="배송 시 요청사항 입력란" id='messageField-1-{{@index}}' class='messageField' value=""/>
 					</dd>
 				</dl>
 			</td>
@@ -488,7 +488,7 @@
 		<tr>
 			<td>
 				<div class="photoList">
-					<a href="#">
+					<a href="/shop/detail.html?productNumber={{productNumber}}">
 						<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
 						<span class="cartInfo">
 							<span class="cartTit">{{productName}}</span>
@@ -543,6 +543,8 @@
 {{!--// order-delivery2-templates --}}
 </script>
 <form id="payForm" name="payForm" method="post" action="/apis/orders/process">
+	<input type="hidden" name="fromCart" id="fromCart" value="N">
+	
 	<input type="hidden" name="usingPoint" id="usingPoint" value="" /> <!-- 사용할 포인트 -->
 	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) -->
 

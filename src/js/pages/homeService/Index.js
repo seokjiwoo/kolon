@@ -78,6 +78,17 @@ module.exports = function() {
 				location.href = 'requestMoving.html';
 			}
 		});
+		$('#requestWashing').click(function(e){
+			e.preventDefault();
+			loginData = loginDataModel.loginData();
+			if (loginData == null) {
+				$(document).trigger('needLogin');
+			} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
+				$(document).trigger('verifyMember', ['LIVING']);
+			} else {
+				location.href = 'requestWashing.html';
+			}
+		});
 	}
 
 	function onScrollListener() {

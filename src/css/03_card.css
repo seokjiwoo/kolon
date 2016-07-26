@@ -99,11 +99,11 @@
 .cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
 .cardWrap .cardThumb img{display: block;width: 100%;}
 .cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:14px auto;background: #fff}
-.cardWrap p.cardPrice {padding:10px 13px 10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
+.cardWrap p.cardPrice {padding:10px 0;font-style: normal;font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: bold}
 .cardWrap p.cardPrice span {font-size:14px; position:absolute; right:0;}
 .cardWrap p.cardPrice span.priceTop {top:0px;}
-.cardWrap p.cardPrice span.priceBottom {bottom:15px; font-weight: 400}
-
+.cardWrap p.cardPrice span.priceBottom {bottom:-5px; }
+.cardWrap p.cardPrice span.priceBottom i{font-size: 10px;vertical-align: top;}
 
 /* card flag */
 .cardCon .today {width:96px; height:96px; background:url('../images/card_point.png') -144px 0 no-repeat; position:absolute; top:10px; right:20px; z-index:4;}
@@ -198,7 +198,7 @@
 .cardHover .worker .cardAuthorLike span + span {margin-left:10px;}
 .cardHover .worker .cardAuthorLike .comt:before{background-position:-12px 0}
 .cardHover .worker .cardAuthorLike .scrap:before{background-position:-25px -10px}
-.cardHover .worker .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
+.cardHover .worker .cardAuthorPic{overflow: hidden;width:64px;height:64px;border-radius:50%;margin:10px auto 0;}
 .cardHover .worker .cardAuthorPic img{display: block;width: 100%;}
 .cardHover .worker .cardAuthorInfo{padding:15px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
 .cardType02 .cardHover .worker .cardAuthorInfo{padding:0px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
@@ -227,7 +227,9 @@ ul.cardWrap > li .cardCon span.cardMore {display:none;}
 ul.cardWrap > li.cHover .cardCon .cardCon {}
 ul.cardWrap > li.cHover .cardCon ul.check_icon li a {color:#fff;}
 ul.cardWrap > li.cHover .cardCon ul.check_icon li.like a:after {background-position:0 -21px;}
+ul.cardWrap > li.cHover .cardCon ul.check_icon li.like a:hover:after{background-position:0 -42px;}
 ul.cardWrap > li.cHover .cardCon ul.check_icon li.share a:after {background-position:-20px -20px;}
+ul.cardWrap > li.cHover .cardCon ul.check_icon li.share a:hover:after{background-position:-20px -40px;}
 ul.cardWrap > li .cardCon .cardTxt span.cardMore {display:none; padding:8px 31px 9px 15px; color:#5e5c74; background:#fff; border-radius:15px; overflow:hidden; font-size:14px; position:absolute; bottom:0; left:50%; margin-left:-50px; z-index :5;}
 ul.cardWrap > li .cardCon .cardTxt span.cardMore:after {content:''; width:14px; height:10px; margin-top:-5px; background:url(../images/cardMore_arrow.png) -14px 0 no-repeat; position:absolute; top:50%; right:13px; display:inline-block;}
 ul.cardWrap > li.cardType05.cHover .cardCon .cardTxt p,
