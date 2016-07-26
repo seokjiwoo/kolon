@@ -132,7 +132,7 @@ ul.reserInfo > li .reserCont p {width:50%; float:left;}
 ul.reserInfo > li .reserCont p span.dateInp {margin-right:15px; border:1px solid #ccc;}
 ul.reserInfo > li .reserCont p span.dateInp input.datePicker {width:100%;}
 ul.reserInfo > li .reserCont p select {width:99.8%;}
-ul.reserInfo > li .reserCont p.date {width:99.8%; border:1px solid #ccc;}
+ul.reserInfo > li .reserCont p.date {width:100%; border:1px solid #ccc;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
 ul.reserInfo > li .reserCont p.date span.dateInp {width:50%; float:left; display:inline-block; margin:0; border:0;}
 ul.reserInfo > li .reserCont p.date span.dateInp em {display:inline-block;}
 ul.reserInfo > li .reserCont p.date span.dateInp + span.dateInp em {padding-left:10px; position:relative;}
