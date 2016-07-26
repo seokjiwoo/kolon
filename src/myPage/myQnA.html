@@ -37,7 +37,7 @@
 				</div>
 				<!-- 의견 내용 -->
 				<div class="conbox">
-					<strong><a href="../../_popup/popPhotoDetailView.html"  class="btnPop btnPop895" data-user-class="qna popEdge"><span class="it">{{opinionClass}}</span>{{title}}</a></strong>
+					<strong><!-- <span class="complete">답변완료</span> --><span class="it">{{opinionClass}}</span>{{title}}</strong>
 					<div class="conboxTxt">
 						<p class="except">{{{content}}} <a href="" class="more">더보기</a></p>
 					</div>
@@ -49,8 +49,8 @@
 					</ul>
 					<!--// 사진 -->
 					<div class="commentCount">
-						{{{answerCount}}} <!-- <em class="pointBlue">답변완료</em> -->
-						<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor02 writeCommentButton">의견작성</button>
+						{{{answerCount}}}
+						<button id="writeCommentButton{{opinionNumber}}" class="btn btnSizeS btnColor01 writeCommentButton">답글작성</button>
 					</div>
 				</div>
 				<!--// 의견 내용 -->
