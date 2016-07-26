@@ -14,76 +14,81 @@
 					<!-- 홈서비스 세탁 주문서  -->
 					<h3 class="subTit">서비스 신청 정보</h3>
 					<!-- 세탁 신청 정보 -->
-					<div class="orderCont">
-						<div class="delivery1">
-							<div class="tbSet" id="order-delivery-wrap">
-								<table class="tbL">
-									<caption>세탁 서비스 신청 정보</caption>
-									<colgroup>
-										<col style="width:25%;"/><col style="width:75%;"/>
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="col">받으실 분</th>
-											<td scope="col">신청자명</td>										
-										</tr>
-										<tr>
-											<th scope="col">주소</th>
-											<td scope="col">주소시 주소구 주소동 121-1-1</td>
-										</tr>
-										<tr>
-											<th scope="col">연락처</th>
-											<td scope="col">010-2994-3469</td>
+					<div id="order-homeService-wrap">
+					<script id="order-homeService-templates" type="text/x-handlebars-template">
+					{{!-- order-delivery-templates --}}
+						<div class="orderCont">
+							<div class="delivery1">
+								<div class="tbSet">
+									<table class="tbL">
+										<caption>세탁 서비스 신청 정보</caption>
+										<colgroup>
+											<col style="width:25%;"/><col style="width:75%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="col">받으실 분</th>
+												<td scope="col">{{washServiceDetail.requestTargetName}}</td>										
+											</tr>
+											<tr>
+												<th scope="col">주소</th>
+												<td scope="col"></td>
+											</tr>
+											<tr>
+												<th scope="col">연락처</th>
+												<td scope="col">{{washServiceDetail.requestTargetContact}}</td>
 
-										</tr>
-										<tr>
-											<th scope="col">요청사항</th>
-											<td scope="col">도착전 연락 부탁드립니다.</td>
-										</tr>
-									</tbody>
-								</table>
+											</tr>
+											<tr>
+												<th scope="col">요청사항</th>
+												<td scope="col">도착전 연락 부탁드립니다.</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								
+								<!-- 업체 및 서비스 정보 -->
+								<div class="tbSet" id="order-delivery-wrap">
+									<table>
+										<caption>세탁 서비스 신청 정보</caption>
+										<colgroup>
+											<col style="width:25%;"/><col style="width:75%;"/>
+										</colgroup>
+										<thead>
+											<th>업체</th><th>서비스 정보</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td scope="col">[세탁서비스]<br>{{washServiceDetail.companyName}}</td>
+												<td scope="col">{{washServiceDetail.serviceInfomation}}</td>										
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
-							
-							<!-- 업체 및 서비스 정보 -->
+						</div>
+						<!-- 결제 정보 -->
+						<h3 class="subTit">결제 정보</h3>
+						<div class="orderCont">
 							<div class="tbSet" id="order-delivery-wrap">
 								<table>
-									<caption>세탁 서비스 신청 정보</caption>
+									<caption>결제 정보</caption>
 									<colgroup>
 										<col style="width:25%;"/><col style="width:75%;"/>
 									</colgroup>
 									<thead>
-										<th>업체</th><th>서비스 정보</th>
+										<th>총 결제금액</th>
 									</thead>
 									<tbody>
 										<tr>
-											<td scope="col">[세탁서비스]<br>워시온</td>
-											<td scope="col">셔츠 X 2 / 정장하의 X 3 / 정장조끼 X 2 / 롱가디건 X 1 / 맨투맨 X 1</td>										
+											<td scope="col">{{washServiceDetail.priceDesc}}원</td>						
 										</tr>
 									</tbody>
 								</table>
 							</div>
+							<span class="underTxt">※ 홈서비스 결제 안내<br>- 결제하신 서비스에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</span>
 						</div>
-					</div>
-					<!-- 결제 정보 -->
-					<h3 class="subTit">결제 정보</h3>
-					<div class="orderCont">
-						<div class="tbSet" id="order-delivery-wrap">
-							<table>
-								<caption>결제 정보</caption>
-								<colgroup>
-									<col style="width:25%;"/><col style="width:75%;"/>
-								</colgroup>
-								<thead>
-									<th>총 결제금액</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td scope="col">5,000원</td>						
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<span class="underTxt">※ 홈서비스 결제 안내<br>- 결제하신 서비스에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</span>
+					</script>
 					</div>
 					<!--// 결제 정보 -->
 					<!-- 결제 방법 -->
@@ -94,7 +99,6 @@
 								<fieldset >
 									<legend>결제방법 선택</legend>
 									<span id='payCARD' class="payRadio on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-									<span id='payVBANK' class="payRadio"><a href="#pay2" class="radioBtn">무통장 입금</a></span>
 									<span id='payBANK' class="payRadio"><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
 								</fieldset>
 							</form>
@@ -178,10 +182,6 @@
 																		<span class="tbListTit">기본할인</span>
 																		<span class="price">-<b class='basicDiscount'></b> 원</span>
 																	</li>
-																	<!--<li>
-																		<span class="tbListTit">포인트</span>
-																		<span class="price">-<b class='usedPoint'></b> P</span>
-																	</li>-->
 																</ul>
 															</td>
 														</tr>
@@ -206,89 +206,6 @@
 								</div>
 							</div>
 							<!--// 신용카드 -->
-							<!-- 무통장 입금 -->
-							<div class="pay" id="pay2" style="display:none;">
-								<div class="orderTbW">
-									<form method="post" action="/">
-										<div class="tbHf">
-											<div class="tbSet orderTb lineN tbHV">
-												<table>
-													<caption>무통장 입금 결제에 관한 결제 안내를 제공합니다.</caption>
-													<colgroup>
-														<col style="width:22%;"/><col style="width:78%;"/>
-													</colgroup>
-													<tbody>
-														<!--<tr>
-															<th scope="row">입금은행</th>
-															<td>
-																<select title="은행선택" style="width:148px;" id='bankSelect'>
-																	<option value="" label="은행 선택" selected="selected">은행 선택</option>
-																</select>
-															</td>
-														</tr>-->
-														<tr>
-															<th scope="row">결제안내</th>
-															<td>
-																<ul class="noBul">
-																	<li>하단의 &lt;결제하기> 버튼을 클릭합니다.</li>
-																	<li>다음 화면에 나오는 계좌번호로 입금하시면 결제가 완료됩니다.</li>
-																</ul>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-										<div class="tbHf">
-											<div class="tbSet02 tbHV">
-												<table>
-													<caption>무통장 입금 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
-													<colgroup>
-														<col style="width:22%;"/><col style="width:78%;"/>
-													</colgroup>
-													<tbody>
-														<tr>
-															<th scope="row">상품금액</th>
-															<td class="txtR">
-																<span class="price"><b class='basePrice'></b> 원</span>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">할인금액</th>
-															<td>
-																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
-																	<!--<li>
-																		<span class="tbListTit">포인트</span>
-																		<span class="price">-<b class='usedPoint'></b> P</span>
-																	</li>-->
-																</ul>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
-														</tr>
-														<tr class="total dotted">
-															<th scope="row">총 결제금액</th>
-															<td class="txtR">
-																<span class="price pointRed"><b class="italicNum totalPrice"></b> 원</span>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</form>
-								</div>
-								<div class="btnC">
-									<button type="button" class="btn btnSizeL btnColor02 btnWM requestPaymentButton" value="결제하기">결제하기</button> 
-								</div>
-							</div>
-							<!--// 무통장 입금 -->
 							<!-- 실시간 계좌이체  -->
 							<div class="pay" id="pay3" style="display:none;">
 								<div class="orderTbW">
@@ -336,10 +253,6 @@
 																		<span class="tbListTit">기본할인</span>
 																		<span class="price">-<b class='basicDiscount'></b> 원</span>
 																	</li>
-																	<!--<li>
-																		<span class="tbListTit">포인트</span>
-																		<span class="price">-<b class='usedPoint'></b> P</span>
-																	</li>-->
 																</ul>
 															</td>
 														</tr>

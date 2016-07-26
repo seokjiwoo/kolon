@@ -138,7 +138,12 @@ function ClassOrderController() {
 			/**
 			 * 시공형 주문목록
 			 */
-			myConstOrdersList: myConstOrdersList
+			myConstOrdersList: myConstOrdersList,
+			
+			/**
+			 * 생활서비스 주문서 작성 페이지 조회
+			 */
+			homeServiceOrderForm: homeServiceOrderForm,
 		}
 		
 		return callerObj;	
@@ -614,6 +619,22 @@ function ClassOrderController() {
 			}
 		}, true);
 	};
+
+	/**
+	 * 생활서비스 주문서 작성페이지 조회
+	 */
+	function homeServiceOrderForm(orderNumber) {
+		Super.callApi('/apis/living/order', 'POST', {
+			"serviceRequestNumber": orderNumber
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('homeServiceOrderFormResult', [status, result]);
+			} else {
+				Super.handleError('homeServiceOrderForm', result);
+				$(callerObj).trigger('homeServiceOrderFormResult', [status, result]);
+			}
+		}, true);
+	}
 	
 	// 주문/배송 현황 조회
 	function myConstOrdersList(startDate, endDate, keyword, deliveryStateCode) {

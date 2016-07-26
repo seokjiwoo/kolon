@@ -217,10 +217,7 @@ module.exports = function() {
 	function initTopBanner() {
 		if (loginData == null) {
 			// 푸로모션 배너영역
-			$('#lnbWrapper').css({
-				"top": 0,
-				"height": "100%"
-			});
+			hideTopBanner();
 		} else if (loginData.joinSectionCode == 'BM_JOIN_SECTION_01' && loginData.emailAuthYn != 'Y') {
 			topBannerShowFlag = true;
 			$('#topBannerCheckArea').remove();
@@ -241,15 +238,9 @@ module.exports = function() {
 			$('#closeTopBannerButton').click(hideTopBanner);
 			lnbScroller.refresh();
 		} else if (loginData.stateCode == "BM_MEM_STATE_02") {
-			$('#lnbWrapper').css({
-				"top": 0,
-				"height": "100%"
-			});
+			hideTopBanner();
 		} else {
-			$('#lnbWrapper').css({
-				"top": 0,
-				"height": "100%"
-			});
+			hideTopBanner();
 		}
 	};
 

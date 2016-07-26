@@ -198,7 +198,7 @@ module.exports = function() {
 				"orderOptionNumber": 0,
 				"quantity": 1
 			}];
-			orderController.addMyCartList(orderData, $(this));
+			orderController.addMyCartList(orderData, 'card');
 		});
 
 		bindEffects();
@@ -249,15 +249,17 @@ module.exports = function() {
 		$(this).removeClass('sHover');
 	};
 	
-	function addCartHandler(e, status, result) {
-		e.stopImmediatePropagation();
-		if (status == 200) {
-			if (confirm('선택하신 상품을 마이커먼에 담았습니다.\n바로 확인 하시겠습니까?')) {
-				location.href = '/myPage/myCartShop.html';
-				return;
+	function addCartHandler(e, status, result, elements) {
+		if (elements == 'card') {
+			e.stopImmediatePropagation();
+			if (status == 200) {
+				if (confirm('선택하신 상품을 마이카트에 담았습니다.\n바로 확인 하시겠습니까?')) {
+					location.href = '/myPage/myCartShop.html';
+					return;
+				}
+			} else {
+				alert('error '+status);
 			}
-		} else {
-			alert('error '+status);
 		}
 	};
 

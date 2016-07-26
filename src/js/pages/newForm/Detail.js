@@ -210,8 +210,7 @@ module.exports = function() {
 				delete each.quantity;
 				delete each.price;
 			});
-			console.log(cartData);
-			cartController.addMyCartList(cartData);
+			cartController.addMyCartList(cartData, 'newForm');
 		}
 	};
 
@@ -268,14 +267,16 @@ module.exports = function() {
 		switch(eventType) {
 			// [S] CART - 장바구니
 				case CART_EVENT.ADD:
-					switch (status) {
-						case 200:
-							if (win.confirm('선택하신 상품을 마이커먼에 담았습니다.\n바로 확인 하시겠습니까?')) {
+					if (elements == 'newForm') {
+						e.stopImmediatePropagation();
+						if (status == 200) {
+							if (confirm('선택하신 상품을 마이카트에 담았습니다.\n바로 확인 하시겠습니까?')) {
 								location.href = '/myPage/myCartNewForm.html';
+								return;
 							}
-							break;
-						default:
-							break;
+						} else {
+							alert('error '+status);
+						}
 					}
 					break;
 			// [E] CART - 장바구니

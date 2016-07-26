@@ -100,7 +100,6 @@ module.exports = function() {
 		});
 
 		$('#washDate').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
-		$('#washDate').addClass('disabled');
 	};
 
 	function refreshAddressDataHandler(e) {
@@ -142,17 +141,27 @@ module.exports = function() {
 	function washingCompanyListHandler(e, status, result) {
 		if (result.status != 200) {
 			$('#availableMessage').html('<b>'+result.message+'</b>');
-			$('#washDate').addClass('disabled');
-			$("#washDate").datepicker("option", "disabled", true);
+			//$("#washDate").datepicker("option", "disabled", true);
 		} else {
 			$('#availableMessage').html(result.message);
-			$('#washDate').removeClass('disabled');
-			$("#washDate").datepicker("option", "disabled", false);
+			//$("#washDate").datepicker("option", "disabled", false);
 		}
 	};
 
 	function washingTimeHandler(e, status, result) {
 		timeArray = result.data.availableDateTime;
+		refreshTimeDropStatus();
+	};
+
+	function refreshTimeDropStatus() {
+		var requestDate = moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD');
+		if (timeArray[requestDate] == undefined) {
+			//alert('서비스 불가능 지역입니다');
+		} else {
+			$.each(timeArray[requestDate], function(key, each){
+				$('#availableLabel'+key.substr(0, 2)).text(each.washOnYn == 'Y' && each.washSwatYn == 'Y' ? '' : '(신청불가)');
+			})
+		}
 	};
 
 	function requestWashingCompany(e) {
@@ -220,11 +229,11 @@ module.exports = function() {
 
 			switch(companyCode) {
 				case 'LS_COMPANY_SECTION_01':
-					var companyNumber = 1;
+					var companyNumber = 113;
 					var serviceDateTimeRequest = timeArray[requestDate][requestTime].washOnDateTime;
 					break;
 				case 'LS_COMPANY_SECTION_02':
-					var companyNumber = 2;
+					var companyNumber = 114;
 					var serviceDateTimeRequest = timeArray[requestDate][requestTime].washSwatDateTime;
 					break;
 			}

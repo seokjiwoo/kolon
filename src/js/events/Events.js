@@ -315,7 +315,10 @@ function Events() {
 				// 뉴폼상품 잔금결제 페이지 조회
 				NEWFORM_ORDER_BALANCE_INFO: 'newFormBalanceFormResult',
 				// 뉴폼상품 주문 리스트 조회
-				NEWFORM_ORDER_LIST: 'myConstOrdersListResult'
+				NEWFORM_ORDER_LIST: 'myConstOrdersListResult',
+
+				// 홈서비스 주문서 작성 페이지 조회
+				HOMESERVICE_ORDER_INFO: 'homeServiceOrderFormResult'
 			},
 			CLAIMS : {
 				// 교환/반품/취소 목록 조회
