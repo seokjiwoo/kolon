@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 전문가"} -->
+</head>
+<body data-page-id="manager-detail">
+	<!-- [D] menu_manager 임시 구성을 위해 .magazine 추가함 -->
+	<div class="wrapper manager magazine">
+	<!-- @@include ../_template/menu_manager.html -->
+		<div class="container">
+
+			<!-- [D] #manager-detail-templates - wrap -->
+			<section class="js-manager-detail-wrap"></section>
+			<!--// [D] #manager-detail-templates - wrap -->
+
+		<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+
+
+<script id="manager-detail-templates" type="text/x-handlebars-template">
+	{{!-- manager-detail-templates --}}
+	<div class="portfolioBar">
+		<div class="pfInfo">
+			<!-- <p class="photo"><a href="/manager/brand.html?expertNumber={{expertNum}}"><img src="{{imageUrl}}" alt="" /></a></p> -->
+			<p class="photo"><a href="javascript:;"><img src="{{imageUrl}}" alt="" /></a></p>
+			<div class="pfTxt">
+				<p class="name">{{name}}</p>
+				<p>{{companyName}}</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="portfolioArea">
+		<div class="count"><i class="js-cur"></i> / <em class="js-total"></em></div>
+		<ul id="portfolioSlider">
+			{{#each portfolios}}
+			<li><img src="{{.}}" alt="포트폴리오 {{vxMath @index '+' 1}}"></li>
+			{{/each}}
+		</ul>
+	</div>
+	<div class="expertArea">
+		<div class="thumb"><img src="{{imageUrl}}" alt="" /></div>
+		<div class="info">
+			<em>{{name}}<i>{{companyName}}</i></em>
+			<p class="except">{{summaryIntro}}</p>
+			{{!-- 평점 evalScore TBD --}}
+			<div class="fol">
+				<!-- <span>{{evalScore}}</span> -->
+				<span style="display:none">&nbsp;</span>
+				<span style="margin-left:0" id="followerCount">{{countFollower}}</span>
+			</div>
+			{{!--// 평점 evalScore TBD --}}
+			<div class="btnwrap">
+				<a href="#" id="btnFollow" class="btnSizeS"><span id="followView">팔로워</span></a>
+				<a href="/popup/popMessage.html?saleMemberNumber={{expertNum}}" target="_blank"
+					class="btnSizeS openWindowPopup-none"
+					data-winpop-opts='{
+						"name" : "messagePopup",
+						"width" : "100%",
+						"height" : "100%"
+						}'>1:1 메시지</a>
+			</div>
+		</div>
+	</div>
+	<div class="wrapT">
+		<h3 class="conTit">위치</h3>
+		<div class="mapArea">
+			<div class="addr">
+				<p>{{roadBaseAddr}}</p>
+				<p>서비스 가능 : {{serviceArea}}</p>
+			</div>
+			<!-- 지도 API 연결 필요 -->
+			<!-- [D] TBD -->
+			<!-- <div class="map"><img src="../images/temp18.jpg" alt="" /></div> -->
+			<!--// [D] TBD -->
+		</div>
+	</div>
+	<div class="wrapT">
+		<h3 class="conTit">전문가 소개</h3>
+		<div class="expertInfo">
+			<p>{{intro}}</p>
+			<!-- 선택 시 이미지 뷰어 제공 , 이미지 뷰어에 대한 자세한 정의는 Common - 이미지 뷰어 참고 (디자인 정의 필요) -->
+			<!-- <div class="imageView"><img src="../images/temp14.jpg" alt="" /></div> -->
+			{{#if listTags}}
+			<div class="relationTag">
+				<h2 class="partTit">연관태그</h2>
+				{{#each listTags}}
+				<a href="/search/result.html?query={{.}}" class="tagBtn"><span>#{{.}}</span></a>
+				{{/each}}
+			</div>
+			{{/if}}
+		</div>
+	</div>
+	<div class="wrapT">
+		<h3 class="conTit">판매상품 ({{countProduct}}) <a href="/manager/itemList.html?expertNumber={{expertNum}}">전체보기</a></h3>
+		{{#vxIF countProduct "!=" "0"}}
+		<ul class="previewList">
+			<li>
+				<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+				<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+				<p class="op02">옵션 : 25평형</p>
+				<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
+			</li>
+			<li>
+				<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+				<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고... </a></p>
+				<p class="op02">옵션 : 25평형</p>
+				<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
+			</li>
+			<li>
+				<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+				<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+				<p class="op02">옵션 : 25평형</p>
+				<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
+			</li>
+		</ul>
+		{{/vxIF}}
+	</div>
+	{{!--// manager-detail-templates --}}
+</script>
+
+</body>
+</html>

@@ -48,12 +48,19 @@ module.exports = function() {
 		if (pageId == undefined) pageId = $('body').data('pageId');
 		Super.init(_pageId, 'm');
 
+		// Mobile 터치 딜레이를 없애기 위함.
+		if (window.FastClick) {
+			window.FastClick.attach(document.body);
+		}
+
 		initGnb();
 
 		initHorizontalScroll();	//horizontal scroll wrap width
 
 		scrollMenu.init();			// scroll에 따른 메뉴 활성화
 		snsShare.init();			// snsshare 메뉴
+
+		initInfoSlider();	// #infoSlider bxSlider
 
 		// Colorbox Complete 시점
 		eventManager.on(COLORBOX_EVENT.REFRESH, onColorboxRefreshListener)
@@ -63,6 +70,16 @@ module.exports = function() {
 		// WindowOpener eventManager 연결
 		eventManager.on(WINDOWOPENER_EVENT.REFRESH, onWinOpenerRefreshListener)
 					.on(WINDOWOPENER_EVENT.DESTROY, onWinOpenerDestoryListener);
+
+		// info slider event Listener
+		eventManager.on(INFOSLIDER_EVENT.REFRESH, infoSliderRefreshHandler)
+					.on(INFOSLIDER_EVENT.DESTROY, infoSliderDestoryhHandler);
+
+		// info slider event Listener
+		eventManager.on(INFOSLIDER_EVENT.REFRESH, onWinOpenerRefreshListener)
+					.on(INFOSLIDER_EVENT.DESTROY, onWinOpenerDestoryListener);
+
+		eventManager.on(CARD_LIST_EVENT.APPENDED, cardAppendedHandler);
 
 
 		initAddressPopupButton();	// 주소록 팝업버튼
@@ -214,6 +231,14 @@ module.exports = function() {
 		});
 	}
 
+	function initInfoSlider() {
+		if (!$('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').bxSlider({
+				pager:false
+			});
+		}
+	}
+
 	function initHorizontalScroll() {
 		$('.scrollWrap').each(function() {//horizontal scroll wrap width
 			var totalWidth = 0;
@@ -272,7 +297,7 @@ module.exports = function() {
 	 * 내 정보 갱신 반영
 	 */
 	function myInfoResultHandler(e) {
-		var loginData = loginDataModel.loginData();
+		loginData = loginDataModel.loginData();
 
 		if (loginData != null) {
 			var email = loginData.email == null ? '' : loginData.email;
@@ -404,6 +429,7 @@ module.exports = function() {
 	 * 시스텝 팝업 설정
 	 */
 	function initAddressPopupButton() {
+		onWinOpenerDestoryListener();
 		$('.openAddressPopup, .openWindowPopup').on('click', onWindowPopupHandler);
 		eventManager.on(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
@@ -420,6 +446,7 @@ module.exports = function() {
 	function onWindowPopupHandler(e, href, opts) {
 		e.preventDefault();
 
+		if (opts == undefined) opts = {};
 		if (opts.name !== 'snsshare' && loginData == null) {
 			$(document).trigger('needLogin');
 			return;
@@ -443,10 +470,17 @@ module.exports = function() {
 		
 		if (target.data('winpop-opts') != undefined) opts = $.extend({}, opts, target.data('winpop-opts'));
 
-		opts.left 	= opts.left || (window.screen.width/2 - opts.width/2);
-		opts.top 	= opts.top || (window.screen.height/2 - opts.height/2);
+		opts.left 	= opts.left || (window.screen.width/2 - opts.width/2) || 0;
+		opts.top 	= opts.top || (window.screen.height/2 - opts.height/2) || 0;
 
 		$.map(opts, function(value, key) {
+			if ((key === 'width' || key === 'height') && value === '100%') {
+				if (key === 'width') {
+					value = $(window).width();
+				} else {
+					value = $(window).height();
+				}
+			}
 			optStr += key + '=' + value + ',';
 		});
 
@@ -490,6 +524,24 @@ module.exports = function() {
 		$(document).off('touchmove');
 	};
 
+	function infoSliderRefreshHandler(e) {
+		if ($('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').data('bxSlider').reloadSlider();
+		} else {
+			initInfoSlider();
+		}
+	}
+
+	function infoSliderDestoryhHandler(e) {
+		if ($('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').data('bxSlider').destroySlider();
+		}
+	}
+
+
+	function cardAppendedHandler(e) {
+		initAddressPopupButton();
+	};
 
 	// Colorbox Complete 시점
 	// @see EventManager.js#onColorBoxListener

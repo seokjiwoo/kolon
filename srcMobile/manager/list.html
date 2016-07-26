@@ -1,385 +1,155 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 매거진"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 전문가"} -->
 </head>
-<body data-page-id="magazine-list">
-	<div class="wrapper managerMain">
+<body data-page-id="manager">
+	<div class="wrapper manager">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
-				<div class="specialistWrap">
-					<div class="specialistVisual">
-						<h3 class="spTit"><img src="/images/specialistSlide_title.png" alt="커먼전문가를 소개합니다. specialist"/></h3>
-						<div class="specialistSlide">
-							<ul class="spSlide">
-								<li>
-									<a href="#">
-										<img src="/images/temp20.jpg" alt=""/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="/images/temp20.jpg" alt=""/>
-									</a>
-								</li>
-								<li>
-									<a href="#">
-										<img src="/images/temp20.jpg" alt=""/>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="magazineCont">
-						<div class="allMagazine">
-							<div class="specialistSearch">
-								<div class="searchbox mt0">
-									<input type="text" placeholder="전문가명 검색하세요">
-									<button><span class="hide">검색</span></button>
-								</div>
-							</div>
-							<div class="specialistSelect">
-								<select>
-									<option value="" selected="selected">최신순</option>
-									<option value="">인기순</option>
-								</select>
-							</div>
-							<ul class="cardWrap" id="cardWrap" >
-								<li class="card cardType07 cardSize02 cHover">
-									<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
-										<div class="hexTop"><span></span></div>
-										<div class="hexBottom"><span></span></div>
-									</div>
-									<div class="cardCon">
-										<div class="cardLine"><p class="italicNum">specialist</p></div>
-										<!-- card 내용 -->
-										<a href="#" class="cardTxt">
-											<p class="cardCat">Space Specialist</p>
-											<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-											<span href="#" class="cardMore">+ 6</span>
-										</a>
-										<!--// card 내용 -->
-										<!-- card hover 내용 -->
-										<div class="cardHover hoverStyle04">
-											<div class="cardCon">
-												<div class="iHover">
-													<div class="hoverImage">
-														<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
-															<div class="imgHexTop"><span></span></div>
-															<div class="imgHexBottom"><span></span></div>
-														</div>
-														<div class="imageCon"></div>
-													</div>
-												</div>
-												<div class="specialist">
-													<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
-													<p class="specialistInfo">
-														<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-														<span class="adr">경기도 상록구 사동</span>
-													</p>
-												</div>
-												<ul class="card_icon">
-													<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-													<li class="share cardDetail"><a href="#">공유</a></li>
-												</ul>
-											</div>
-										</div>
-										<!--// card hover 내용 -->
-										<ul class="check_icon">
-											<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-											<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-											<li class="cardDetail like"><a href="#">23569</a></li>
-										</ul>
-										<!-- hover 제어 버튼 -->
-										<a href="#" class="hoverMore">상세보기</a>
-										<a href="#" class="hoverClose">닫기</a>
-										<!--// hover 제어 버튼 -->
-									</div>
-								</li>
-								<li class="card cardType07 cardSize02">
-									<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
-										<div class="hexTop"><span></span></div>
-										<div class="hexBottom"><span></span></div>
-									</div>
-									<div class="cardCon">
-										<div class="cardLine"><p class="italicNum">specialist</p></div>
-										<!-- card 내용 -->
-										<a href="#" class="cardTxt">
-											<p class="cardCat">Space Specialist</p>
-											<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-											<span href="#" class="cardMore">+ 6</span>
-										</a>
-										<!--// card 내용 -->
-										<!-- card hover 내용 -->
-										<div class="cardHover hoverStyle04">
-											<div class="cardCon">
-												<div class="iHover">
-													<div class="hoverImage">
-														<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
-															<div class="imgHexTop"><span></span></div>
-															<div class="imgHexBottom"><span></span></div>
-														</div>
-														<div class="imageCon"></div>
-													</div>
-												</div>
-												<div class="specialist">
-													<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
-													<p class="specialistInfo">
-														<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-														<span class="adr">경기도 상록구 사동</span>
-													</p>
-												</div>
-												<ul class="card_icon">
-													<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-													<li class="share cardDetail"><a href="#">공유</a></li>
-												</ul>
-											</div>
-										</div>
-										<!--// card hover 내용 -->
-										<ul class="check_icon">
-											<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-											<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-											<li class="cardDetail like"><a href="#">23569</a></li>
-										</ul>
-										<!-- hover 제어 버튼 -->
-										<a href="#" class="hoverMore">상세보기</a>
-										<a href="#" class="hoverClose">닫기</a>
-										<!--// hover 제어 버튼 -->
-									</div>
-								</li>
-								<li class="card cardType07 cardSize02">
-									<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
-										<div class="hexTop"><span></span></div>
-										<div class="hexBottom"><span></span></div>
-									</div>
-									<div class="cardCon">
-										<div class="cardLine"><p class="italicNum">specialist</p></div>
-										<!-- card 내용 -->
-										<a href="#" class="cardTxt">
-											<p class="cardCat">Space Specialist</p>
-											<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-											<span href="#" class="cardMore">+ 6</span>
-										</a>
-										<!--// card 내용 -->
-										<!-- card hover 내용 -->
-										<div class="cardHover hoverStyle04">
-											<div class="cardCon">
-												<div class="iHover">
-													<div class="hoverImage">
-														<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
-															<div class="imgHexTop"><span></span></div>
-															<div class="imgHexBottom"><span></span></div>
-														</div>
-														<div class="imageCon"></div>
-													</div>
-												</div>
-												<div class="specialist">
-													<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
-													<p class="specialistInfo">
-														<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-														<span class="adr">경기도 상록구 사동</span>
-													</p>
-												</div>
-												<ul class="card_icon">
-													<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-													<li class="share cardDetail"><a href="#">공유</a></li>
-												</ul>
-											</div>
-										</div>
-										<!--// card hover 내용 -->
-										<ul class="check_icon">
-											<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-											<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-											<li class="cardDetail like"><a href="#">23569</a></li>
-										</ul>
-										<!-- hover 제어 버튼 -->
-										<a href="#" class="hoverMore">상세보기</a>
-										<a href="#" class="hoverClose">닫기</a>
-										<!--// hover 제어 버튼 -->
-									</div>
-								</li>
-								<li class="card cardType07 cardSize02">
-									<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
-										<div class="hexTop"><span></span></div>
-										<div class="hexBottom"><span></span></div>
-									</div>
-									<div class="cardCon">
-										<div class="cardLine"><p class="italicNum">specialist</p></div>
-										<!-- card 내용 -->
-										<a href="#" class="cardTxt">
-											<p class="cardCat">Space Specialist</p>
-											<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-											<span href="#" class="cardMore">+ 6</span>
-										</a>
-										<!--// card 내용 -->
-										<!-- card hover 내용 -->
-										<div class="cardHover hoverStyle04">
-											<div class="cardCon">
-												<div class="iHover">
-													<div class="hoverImage">
-														<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
-															<div class="imgHexTop"><span></span></div>
-															<div class="imgHexBottom"><span></span></div>
-														</div>
-														<div class="imageCon"></div>
-													</div>
-												</div>
-												<div class="specialist">
-													<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
-													<p class="specialistInfo">
-														<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-														<span class="adr">경기도 상록구 사동</span>
-													</p>
-												</div>
-												<ul class="card_icon">
-													<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-													<li class="share cardDetail"><a href="#">공유</a></li>
-												</ul>
-											</div>
-										</div>
-										<!--// card hover 내용 -->
-										<ul class="check_icon">
-											<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-											<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-											<li class="cardDetail like"><a href="#">23569</a></li>
-										</ul>
-										<!-- hover 제어 버튼 -->
-										<a href="#" class="hoverMore">상세보기</a>
-										<a href="#" class="hoverClose">닫기</a>
-										<!--// hover 제어 버튼 -->
-									</div>
-								</li>
-								<li class="card cardType07 cardSize02">
-									<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
-										<div class="hexTop"><span></span></div>
-										<div class="hexBottom"><span></span></div>
-									</div>
-									<div class="cardCon">
-										<div class="cardLine"><p class="italicNum">specialist</p></div>
-										<!-- card 내용 -->
-										<a href="#" class="cardTxt">
-											<p class="cardCat">Space Specialist</p>
-											<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-											<span href="#" class="cardMore">+ 6</span>
-										</a>
-										<!--// card 내용 -->
-										<!-- card hover 내용 -->
-										<div class="cardHover hoverStyle04">
-											<div class="cardCon">
-												<div class="iHover">
-													<div class="hoverImage">
-														<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
-															<div class="imgHexTop"><span></span></div>
-															<div class="imgHexBottom"><span></span></div>
-														</div>
-														<div class="imageCon"></div>
-													</div>
-												</div>
-												<div class="specialist">
-													<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
-													<p class="specialistInfo">
-														<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-														<span class="adr">경기도 상록구 사동</span>
-													</p>
-												</div>
-												<ul class="card_icon">
-													<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-													<li class="share cardDetail"><a href="#">공유</a></li>
-												</ul>
-											</div>
-										</div>
-										<!--// card hover 내용 -->
-										<ul class="check_icon">
-											<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-											<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-											<li class="cardDetail like"><a href="#">23569</a></li>
-										</ul>
-										<!-- hover 제어 버튼 -->
-										<a href="#" class="hoverMore">상세보기</a>
-										<a href="#" class="hoverClose">닫기</a>
-										<!--// hover 제어 버튼 -->
-									</div>
-								</li>
-								<li class="card cardType07 cardSize02">
-									<div class="hexagon" style="background-image: url('/images/temp03.jpg')"><!-- 배경이미지 -->
-										<div class="hexTop"><span></span></div>
-										<div class="hexBottom"><span></span></div>
-									</div>
-									<div class="cardCon">
-										<div class="cardLine"><p class="italicNum">specialist</p></div>
-										<!-- card 내용 -->
-										<a href="#" class="cardTxt">
-											<p class="cardCat">Space Specialist</p>
-											<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-											<span href="#" class="cardMore">+ 6</span>
-										</a>
-										<!--// card 내용 -->
-										<!-- card hover 내용 -->
-										<div class="cardHover hoverStyle04">
-											<div class="cardCon">
-												<div class="iHover">
-													<div class="hoverImage">
-														<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
-															<div class="imgHexTop"><span></span></div>
-															<div class="imgHexBottom"><span></span></div>
-														</div>
-														<div class="imageCon"></div>
-													</div>
-												</div>
-												<div class="specialist">
-													<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
-													<p class="specialistInfo">
-														<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-														<span class="adr">경기도 상록구 사동</span>
-													</p>
-												</div>
-												<ul class="card_icon">
-													<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-													<li class="share cardDetail"><a href="#">공유</a></li>
-												</ul>
-											</div>
-										</div>
-										<!--// card hover 내용 -->
-										<ul class="check_icon">
-											<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-											<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-											<li class="cardDetail like"><a href="#">23569</a></li>
-										</ul>
-										<!-- hover 제어 버튼 -->
-										<a href="#" class="hoverMore">상세보기</a>
-										<a href="#" class="hoverClose">닫기</a>
-										<!--// hover 제어 버튼 -->
-									</div>
-								</li>
-							</ul>
+				<div class="portfolioBar">
+					<div class="pfInfo">
+						<p class="photo"><a href=""><img src="../images/temp01.jpg" alt="" /></a></p>
+						<div class="pfTxt">
+							<p class="name">홍길동</p>
+							<p>Mordern House</p>
 						</div>
 					</div>
 				</div>
+				<div class="portfolioArea">
+					<div class="count"><i></i> / <em></em></div>
+					<ul>
+						<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+						<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+						<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+					</ul>
+				</div>
+				<div class="expertArea">
+					<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
+					<div class="info">
+						<em>모던하우스 홍길동<i>Modern House</i></em>
+						<p>편안하고 개성있는 공간을 만들어 드립니다.</p>
+						<div class="fol">
+							<span>4.5</span>
+							<span>100</span>
+						</div>
+						<div class="btnwrap">
+							<a href="#" class="btnSizeS">팔로우</a>
+							<a href="#" class="btnSizeS ">1:1 메시지</a>
+						</div>
+					</div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">위치</h3>
+					<div class="mapArea">
+						<div class="addr">
+							<p>서울시 마포구 서교동</p>
+							<p>서비스 가능 : 서울 전지역, 경기도 분당, 경기도 판교, 경기도 광주 </p>
+						</div>
+						<!-- 지도 API 연결 필요 -->
+						<div class="map"><img src="../images/temp18.jpg" alt="" /></div>
+					</div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">전문가 소개</h3>
+					<div class="expertInfo">
+						<p>KGC는 라이프스타일을 고려하여 편안하고 개성있는 공간을
+						제공하는 인테리어 디자인 그룹입니다. 
+						고객님의 감성에 YELLOW PLASTIC만의 감각을 더하여 
+						차별화된 공간연출을 하고 있습니다. 기본 공간을 연출하는
+						인테리어위에 홈스타일링을 함께 진행을 하여 공간에 어울리는
+						가구, 패브릭(침구,커텐,쿠션), 소품 어레인지먼트 까지</p>
+						<!-- 선택 시 이미지 뷰어 제공 , 이미지 뷰어에 대한 자세한 정의는 Common - 이미지 뷰어 참고 (디자인 정의 필요) -->
+						<div class="imageView"><img src="../images/temp14.jpg" alt="" /></div>
+						<div class="relationTag">
+							<h2 class="partTit">연관태그</h2>
+							<a href="#" class="tagBtn"><span>#실용적인</span></a>
+							<a href="#" class="tagBtn"><span>#소박한</span></a>
+							<a href="#" class="tagBtn"><span>#트랜디한</span></a>
+							<a href="#" class="tagBtn"><span>#독특한</span></a>
+							<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+							<a href="#" class="tagBtn"><span>#분위기좋은</span></a>
+							<a href="#" class="tagBtn"><span>#아이들이좋아하는</span></a>
+							<a href="#" class="tagBtn"><span>#분위기좋은</span></a>
+							<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+							<a href="#" class="tagBtn"><span>#소박한</span></a>
+						</div>
+					</div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">판매상품 (3) <a href="">전체보기</a></h3>
+					<ul class="previewList">
+						<li>
+							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+							<p class="op02">옵션 : 25평형</p>
+							<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
+						</li>
+						<li>
+							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고... </a></p>
+							<p class="op02">옵션 : 25평형</p>
+							<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
+						</li>
+						<li>
+							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+							<p class="op02">옵션 : 25평형</p>
+							<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
+						</li>
+					</ul>
+				</div>
+				<div class="wrapT" style="display:none;"><!-- 숨김 -->
+					<h3 class="conTit">완료된 공간 (3) <a href="">전체보기</a></h3><!-- 추후 적용 -->
+					<ul class="previewList">
+						<li>
+							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+							<p class="op02">옵션 : 25평형</p>
+							<p class="price"><span>2016. 03. 30</span></p>
+							<div class="txt">
+								<p>똑같은 아파트구조에 특별함을 원했던 저의 바램을 커먼에서이루어 주셨어요 모던하면서 동양적인 저희집 거실인테리어를 소개 시켜드립니다. </p>
+								<a href="#" class="tagBtn"><span>#실용적인</span></a>
+								<a href="#" class="tagBtn"><span>#소박한</span></a>
+								<a href="#" class="tagBtn"><span>#트랜디한</span></a>
+								<a href="#" class="tagBtn"><span>#독특한</span></a>
+								<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+							</div>
+						</li>
+						<li>
+							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+							<p class="op02">옵션 : 25평형</p>
+							<p class="price"><span>2016. 03. 30</span></p>
+							<div class="txt">
+								<p>똑같은 아파트구조에 특별함을 원했던 저의 바램을 커먼에서이루어 주셨어요 모던하면서 동양적인 저희집 거실인테리어를 소개 시켜드립니다. </p>
+								<a href="#" class="tagBtn"><span>#실용적인</span></a>
+								<a href="#" class="tagBtn"><span>#소박한</span></a>
+								<a href="#" class="tagBtn"><span>#트랜디한</span></a>
+								<a href="#" class="tagBtn"><span>#독특한</span></a>
+								<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+							</div>
+						</li>
+						<li>
+							<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
+							<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
+							<p class="op02">옵션 : 25평형</p>
+							<p class="price"><span>2016. 03. 30</span></p>
+							<div class="txt">
+								<p>똑같은 아파트구조에 특별함을 원했던 저의 바램을 커먼에서이루어 주셨어요 모던하면서 동양적인 저희집 거실인테리어를 소개 시켜드립니다. </p>
+								<a href="#" class="tagBtn"><span>#실용적인</span></a>
+								<a href="#" class="tagBtn"><span>#소박한</span></a>
+								<a href="#" class="tagBtn"><span>#트랜디한</span></a>
+								<a href="#" class="tagBtn"><span>#독특한</span></a>
+								<a href="#" class="tagBtn"><span>#럭셔리한</span></a>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</section>
-			<!-- @@include ../_template/footer.html -->
+		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
-	<!-- 테스트용 임시 -->
-	<script language="javascript" type="text/javascript">
-	;(function(win, $) {
-		'use strict';
-		$(function() {
-			var _wrapId = '#cardWrap',
-			wrap = $(_wrapId);
-
-			wrap.isotope({
-				itemSelector : _wrapId + ' > li:not(.stamp)',
-				stamp : _wrapId + ' > .stamp',
-				layoutMode : 'packery',
-				packery : {
-					columnWidth : 145,
-					gutter : 10
-				}
-			});
-		});
-	})(window, window.jQuery);
-	</script>
-	<!--// 테스트용 임시 -->
 </body>
 </html>

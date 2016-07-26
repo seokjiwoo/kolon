@@ -18,24 +18,26 @@
 			<!--// card 내용 -->
 			<ul class="check_icon">
 				<li class="cardDetail like"><a href="javascript:alert('준비중입니다')">{{likeCount}}</a></li>
-				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
+				<li class="cardDetail share"><a href="../_popup/popShare.html" class="btnPop" data-share-url="{{detailUrl}}" data-user-class="snsSharePop popEdge">{{scrapCount}}</a></li>
 			</ul>
 			<!-- flag -->
 			<!-- <div class="melody"></div> -->
 			<!--// flag -->
-			<!--<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a> -->
+			<a href="../_popup/popScrapDel.html" class="btnPop removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
+		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
 		{{!-- Type1 --}}
 
 		{{!-- Type2: 뉴폼 상품 cardType01 cardSize03 --}}
-		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_02"}}<div class="cardCon">
-		<div class="cardLine"><p class="italicNum">designer</p></div>
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_02"}}
+		<div class="cardCon">
+			<div class="cardLine"><p class="italicNum">{{producerTypeCodeName}}</p></div>
 			<!-- card 내용 -->
-			<a href="#" class="cardTxt cardDetail">
-				<p class="cardCat">{ unit }</p>
-				<h2 class="cardTit"><b>인더스트리얼</b> 욕실 </h2>
-				<p class="cardPrice">250,000 <span class="priceBottom">won / 3.3m2</span></p>
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">{ {{productType}} }</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<p class="cardPrice">{{{salePrice}}}</p>
 				<span class="cardMore">상세보기</span>
 			</a>
 			<!--// card 내용 -->
@@ -43,28 +45,28 @@
 			<div class="cardHover hoverStyle01">
 				<div class="cardCon">
 					<ul class="card_icon">
-						<li class="cart cardDetail"><a href="#">장바구니</a></li>
-						<li class="share cardDetail"><a href="#">공유</a></li>
+						<li class="cart cardDetail"><a href="{{detailUrl}}">장바구니</a></li>
+						<li class="share cardDetail"><a href="../_popup/popShare.html" class="btnPop" data-share-url="{{detailUrl}}" data-user-class="snsSharePop popEdge">공유</a></li>
 					</ul>
 					<div class="worker">
-						<div class="cardAuthorPic"><img src="/images/temp01.jpg" alt=""></div>
-						<p class="cardAuthorInfo"><b>Kittybunnypony</b><br>패브릭 전문 브랜드</p>
+						<div class="cardAuthorPic"><img src="{{expertImageUrl}}" alt="{{expertName}}"></div>
+						<p class="cardAuthorInfo"><b>{{expertName}}</b><br>{{companyName}}</p>
+						<!--<div class="cardAuthorLike">
+							<span class="star">4.8</span><span class="comt">120</span>
+						</div>-->
 					</div>
 				</div>
 			</div>
 			<!--// card hover 내용 -->
 			<ul class="check_icon">
-				<li class="cardDetail like"><a href="#">23569</a></li>
-				<li class="cardDetail share"><a href="#">7542</a></li>
+				<li class="cardDetail like"><a href="javascript:alert('준비중입니다')">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
 			</ul>
-			<!-- hover 제어 버튼 -->
-			<a href="#" class="hoverMore">상세보기</a>
-			<a href="#" class="hoverClose">닫기</a>
-			<!--// hover 제어 버튼 -->
 			<!-- flag -->
-			<div class="today"><p><span><b>20</b>%</span></p></div>
-			<div class="celeb"><p></p></div>
+			<!--<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>-->
+			<!--<div class="celeb"><p><span><b>셀럽</b>추천</p></div>-->
 			<!--// flag -->
+			<a href="../_popup/popScrapDel.html" class="btnPop removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
 		{{/vxIF}}
 		{{!-- Type2 --}}
@@ -72,43 +74,80 @@
 		{{!-- Type3: 샵 상품 cardType02 cardSize02 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_03"}}
 		<div class="cardCon">
-			<div class="cardLine"><p class="italicNum">handmade</p></div>
+			<div class="cardLine"><p class="italicNum">{{producerTypeCodeName}}</p></div>
 			<!-- card 내용 -->
-			<a href="#" class="cardTxt cardDetail">
-				<p class="cardCat">{ clock }</p>
-				<h2 class="cardTit"><b>샌드위치 모던</b>페이퍼 시계</h2>
-				<p class="cardPrice">37,000 <span class="priceBottom">won / 3.3m2</span></p>
-				<span href="#" class="cardMore">상품 상세보기</span>
+			<a href="{{detailUrl}}" class="cardTxt cardDetail">
+				<p class="cardCat">{ {{productType}} }</p>
+				<h2 class="cardTit">{{cardName}}</h2>
+				<p class="cardPrice">{{{salePrice}}}</p>
+				<span class="cardMore">상세보기</span>
 			</a>
 			<!--// card 내용 -->
 			<!-- card hover 내용 -->
 			<div class="cardHover hoverStyle02">
+				<div class="worker">
+					<div class="cardAuthorPic"><img src="{{expertImageUrl}}" alt="{{expertName}}"></div>
+					<p class="cardAuthorInfo"><b>{{expertName}}</b><br>{{companyName}}</p>
+					<!--<div class="cardAuthorLike">
+						<span class="star">4.8</span><span class="comt">120</span>
+					</div>-->
+				</div>
 				<div class="cardCon">
 					<ul class="card_icon">
-						<li class="cart cardDetail"><a href="#">장바구니</a></li>
-						<li class="share cardDetail"><a href="#">공유</a></li>
+						{{#vxIF optionUseYn "==" "Y"}}
+							<li class="cart cardDetail"><a href="{{detailUrl}}">장바구니</a></li>
+						{{else}}
+							<li class="cart cardDetail"><a href="#" class='cardAddCartButton' data-product-number='{{cardNumber}}'>장바구니</a></li>
+						{{/vxIF}}
+						<li class="share cardDetail"><a href="../_popup/popShare.html" class="btnPop" data-share-url="{{detailUrl}}" data-user-class="snsSharePop popEdge">공유</a></li>
 					</ul>
 				</div>
 			</div>
 			<!--// card hover 내용 -->
 			<ul class="check_icon">
-				<li class="cardDetail like"><a href="#">23569</a></li>
-				<li class="cardDetail share"><a href="#">7542</a></li>
+				<li class="cardDetail like"><a href="javascript:alert('준비중입니다')">{{likeCount}}</a></li>
+				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
 			</ul>
-			<!-- hover 제어 버튼 -->
-			<a href="#" class="hoverMore">상세보기</a>
-			<a href="#" class="hoverClose">닫기</a>
-			<!--// hover 제어 버튼 -->
 			<!-- flag -->
-			<div class="upTo"><p><span><b>20</b></span></p></div>
-			<div class="md"><p></p></div>
+			<!--<div class="upTo"><p><span><b>20</b>개</span>한정</p></div>-->
+			<!--<div class="md"><p><span><b>MD</b>추천</span></p></div>-->
 			<!--// flag -->
+			<a href="../_popup/popScrapDel.html" class="btnPop removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
+		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
 		{{!-- Type3 --}}
 
 		{{!-- Type5: 그래프 cardType08 cardSize02 --}}
 		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_05"}}
+		<div class="cardCon">
+			<h2 class="cardTit">{{{title}}}</h2>
+			<div class="cardThum">
+				<div class="js-graph-doughnut"
+					data-graph-opts='{
+						"color" : {
+							"background" : "#ea5973",
+							"graph" : "#fff"
+						},
+						"attr" : {
+							"width" : "130",
+							"height" : "130"
+						},
+						"percent" : {{percent}},
+						"speed" : 1000,
+						"onScreen" : {{percent}}
+					}'>
+					<!-- [D] 퍼센트 정보 출력시 .js-graph-percent -->
+					<span class="txt-percent">
+						<span class="js-graph-percent"></span>%
+					</span>
+				</div>
+				{{{description}}}
+				</div>
+			</div>
+			<a href="" class="cardEnter"><img src="/images/btn_card_moreW.png" alt=""></a>
+		</div>
+		<!--<a href="" class="cardRemove"></a>-->
 		{{/vxIF}}
 		{{!-- Type5 --}}
 
@@ -117,10 +156,10 @@
 		<div class="cardCon">
 			<div class="cardLine"><p class="italicNum">specialist</p></div>
 			<!-- card 내용 -->
-			<a href="#" class="cardTxt">
-				<p class="cardCat">Space Specialist</p>
-				<h2 class="cardTit">부동산 투자의 달인<b>김석훈</b><span>THE<br>1STPENGUIN</span></h2>
-				<span href="#" class="cardMore">+ 6</span>
+			<a href="{{detailUrl}}" class="cardTxt">
+				<p class="cardCat">specialist</p>
+				<h2 class="cardTit">{{typeName}} 전문가<b>{{name}}</b><span>{{companyName}}</span></h2>
+				<span href="{{detailUrl}}" class="cardMore">상세보기</span>
 			</a>
 			<!--// card 내용 -->
 			<!-- card hover 내용 -->
@@ -128,7 +167,7 @@
 				<div class="cardCon">
 					<div class="iHover">
 						<div class="hoverImage">
-							<div class="imgHexagon" style="background-image: url('/images/temp06.jpg')"><!-- hover 배경이미지 -->
+							<div class="imgHexagon" style="{{hoverImage}}"><!-- hover 배경이미지 -->
 								<div class="imgHexTop"><span></span></div>
 								<div class="imgHexBottom"><span></span></div>
 							</div>
@@ -136,30 +175,26 @@
 						</div>
 					</div>
 					<div class="specialist">
-						<div class="specialistPic"><img src="/images/temp01.jpg" alt=""></div>
+						<div class="specialistPic"><img src="{{imageUrl}}" alt=""></div>
 						<p class="specialistInfo">
-							<span class="tit"><b>김석훈</b>THE<br>1STPENGUIN</span>
-							<span class="adr">경기도 상록구 사동</span>
+							<span class="tit"><b>{{name}}</b>{{companyName}}</span>
+							<span class="adr">{{roadBaseAddr}}</span>
 						</p>
 					</div>
 					<ul class="card_icon">
-						<li class="talk cardDetail"><a href="#">1:1대화</a></li>
-						<li class="share cardDetail"><a href="#">공유</a></li>
+						<li class="talk cardDetail"><a href="/popup/popMessage.html?saleMemberNumber={{expertNum}}" target="_blank" class="openWindowPopup-none" data-winpop-opts='{"name": "messagePopup","width": "100%","height": "100%"}'>1:1대화</a></li>
+						<li class="share cardDetail"><a href="../_popup/popShare.html" class="btnPop" data-share-url="{{detailUrl}}" data-user-class="snsSharePop popEdge">공유</a></li>
 					</ul>
 				</div>
 			</div>
 			<!--// card hover 내용 -->
 			<ul class="check_icon">
-				<li class="cardDetail text"><a href="#"><span>상품</span>21</a></li>
-				<li class="cardDetail text"><a href="#"><span>완료</span>15</a></li>
-				<li class="cardDetail like"><a href="#">23569</a></li>
+				<li class="cardDetail text"><a href="/manager/itemList.html?expertNumber={{expertNum}}"><span>판매<br>상품</span>{{countProduct}}</a></li>
+				<!--<li class="cardDetail text"><a href="javascript:alert('준비중입니다')"><span>완료된<br>공간</span>{{countView}}</a></li>-->
+				<li class="cardDetail text"><a href="/manager/detail.html?expertNumber={{expertNum}}"><span>팔로워</span>{{countFollower}}</a></li>
 			</ul>
-			<!-- hover 제어 버튼 -->
-			<a href="#" class="hoverMore">상세보기</a>
-			<a href="#" class="hoverClose">닫기</a>
-			<!--// hover 제어 버튼 -->
 			<!-- flag -->
-			<div class="hi"></div>
+			<!-- <div class="hi"></div> -->
 			<!--// flag -->
 		</div>
 		{{/vxIF}}
