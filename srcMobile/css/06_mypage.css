@@ -249,10 +249,10 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .messageProfile .thumb{width:48px;height:48px;display:inline-block;overflow:hidden;border-radius:100%;}
 .messageProfile .thumb img{width:100%;}
 .messageProfile p span{display:block;}
-.messageProfile p span:last-child{margin-top:5px;color:#f1645c;}
-.messageInput{text-align:left;}
-.messageInput textarea{height:150px;border:0;}
-
+.messageProfile p span:last-child{margin-top:5px;color:#b08967;}
+.messageInput{width:100%; overflow:hidden; text-align:left;}
+.messageInput textarea{height:150px;border:1px solid #ccc; padding:15px;}
+.messageInput + .info {margin-top:-5px;}
 .reviewTop{position:relative;color:#000;text-align:center;line-height:45px;border-bottom:1px solid #000;background:#fff;}
 .reviewTop h2{font-size:18px;}
 .reviewTop .closeBtn{position:absolute;top:0;right:0;width:45px;height:45px;display:block;background:url("../images/ico_close.png") no-repeat center center;background-size:16px;}
@@ -275,7 +275,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .writeBox .pic input{position:absolute;left:0;top:8px;width:25px;height:18px;overflow:hidden;opacity:0;}
 .writeBox .count{display:inline-block;float:right;color:#999;margin-top:10px;}
 .writeBox .count i{font-style:normal;color:#666;}
-.writeBox .thumbList{background:#f8f8f8;border:1px solid #ccc;padding:15px;}
+.writeBox .thumbList{margin-bottom:30px; background:#f8f8f8;border:1px solid #ccc; border-top:1px solid #eaeaea; padding:15px;}
 .writeBox .thumbList ul{overflow:hidden;}
 .writeBox .thumbList ul li{position:relative;width:31%;margin-left:3.5%;float:left;}
 .writeBox .thumbList ul li:first-child{margin-left:0;}
