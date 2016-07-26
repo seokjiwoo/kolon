@@ -118,6 +118,7 @@ function ClassOrderController() {
 			ordersComplete: ordersComplete,
 			ordersAdvanceComplete: ordersAdvanceComplete,
 			ordersBalanceComplete: ordersBalanceComplete,
+			ordersHomeServiceComplete: ordersHomeServiceComplete,
 			/**
 			 * hash_String 취득(EncryptData)
 			 */
@@ -547,6 +548,17 @@ function ClassOrderController() {
 		}, true);
 	};
 
+	// 홈서비스 주문 완료
+	function ordersHomeServiceComplete(orderNumber) {
+		Super.callApi('/apis/living/wash/order/' + orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			} else {
+				Super.handleError('ordersComplete', result);
+				$(callerObj).trigger('ordersCompleteResult', [status, result]);
+			}
+		}, true);
+	};
 
 
 	/**

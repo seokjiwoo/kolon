@@ -496,6 +496,7 @@ module.exports = function() {
 			orderData = [{
 				"productNumber": self.productNumber,
 				"orderOptionNumber": selectedOptionData.orderOptionNumber,
+				"productOptionNumber": selectedOptionData.orderOptionNumber,
 				"quantity": 1,
 				"price": Number(selectedOptionData.price)
 			}];

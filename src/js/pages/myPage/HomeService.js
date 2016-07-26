@@ -222,7 +222,14 @@ module.exports = function() {
 						case "LS_WASH_STATE_02": 
 						case "LS_WASH_STATE_03": 
 						case "LS_WASH_STATE_04": 
-						case "LS_WASH_STATE_05": each.paymentStatus = util.currencyFormat(each.price)+' 원<br><a href="/order/orderHomeService.html?orderNumber='+each.serviceRequestNumber+'" class="btnSizeS btnColor02">결제하기</a>'; break;
+						case "LS_WASH_STATE_05": 
+							each.paymentStatus = util.currencyFormat(each.price)+' 원<br>';
+							if (each.paymentStateCode == 'LS_ORDER_STATE_01') {
+								each.paymentStatus += '<a href="/order/orderHomeService.html?orderNumber='+each.serviceRequestNumber+'" class="btnSizeS btnColor02">결제하기</a>';
+							} else {
+								each.paymentStatus += '<span>'+each.paymentStateCodeName+'</span>';
+							}
+							break;
 					}
 					break;
 			}

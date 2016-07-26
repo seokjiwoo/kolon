@@ -256,6 +256,7 @@ module.exports = function() {
 		$('#BuyerName').val(loginData.memberName);
 		if (loginData.phone != null) {
 			$('#BuyerTel').val(loginData.phone);
+			if (loginData.email != null) $('#BuyerEmail').val(loginData.email);
 		} else {
 			alert('본인인증이 필요한 페이지입니다.');
 			//Cookies.remove('instantOrder');

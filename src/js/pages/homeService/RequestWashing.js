@@ -135,7 +135,6 @@ module.exports = function() {
 		serviceAddress = addressObject;
 
 		controller.washingCompanyList(serviceAddress.roadBaseAddress+' '+serviceAddress.detailAddress);
-		controller.washingTimeList(serviceAddress.roadBaseAddress+' '+serviceAddress.detailAddress);
 	};
 
 	function washingCompanyListHandler(e, status, result) {
@@ -146,6 +145,7 @@ module.exports = function() {
 			$('#availableMessage').html(result.message);
 			//$("#washDate").datepicker("option", "disabled", false);
 		}
+		controller.washingTimeList(serviceAddress.roadBaseAddress+' '+serviceAddress.detailAddress);
 	};
 
 	function washingTimeHandler(e, status, result) {
@@ -238,6 +238,7 @@ module.exports = function() {
 					break;
 			}
 
+			serviceAddress.addressSectionCode = 'LS_ADDR_SECTION_01';
 			var livingService = {
 				"addRequestContents": comment,
 				"companyNumber": companyNumber,

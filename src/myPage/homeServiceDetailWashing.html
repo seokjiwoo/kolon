@@ -38,6 +38,7 @@
 							</ul>
 						</div>
 					</div>
+					{{#vxIF paymentStateCodeName "==" "LS_ORDER_STATE_02"}}
 					<h3 class="subTit">결제정보</h3>
 					<table class="record record02" summary="결제정보 표로써 주문금액, 할인금액, 배송비, 총 결제금액, 결제방법 정보가 담겨있습니다.">
 						<caption>결제정보 표</caption>
@@ -49,32 +50,24 @@
 						</colgroup>
 						<tr>
 							<th class="t_l h50">결제 금액</th>
-							<td class="t_r"><span class="fontM">2,600,000 원</span></td>
+							<td class="t_r"><span class="fontM">{{priceDesc}} 원</span></td>
 							<th class="t_l">결제 방법</th>
 							<td class="t_l rowspan">
-								<p class="fontM">무통장 입금</p>
+								<p class="fontM">{{paymentMethodCodeName}}</p>
 								<ul class="arraySide mt20">
-									<li>
-										<p>입금계좌<span>123-567890-01-123</span>	</p>
-									</li>
-									<li>
-										<p>예금주<span>(주)코오롱 글로벌</span></p>
-									</li>
-									<li>
-										<p>입금기한<span>결제완료</span></p>
-									</li>
-									<li>
-										<p>증빙서류<span>현금영수증 지출증빙용<br>(01012345678)</span></p>
-									</li>
+									<!--<li>
+										<p>입금계좌<span>123-567890-01-123</span></p>
+									</li>-->
 								</ul>
 								<div class="btnBox mt20">
-									<a href="" class="btnSizeS btnColor03">거래명세서</a>
-									<a href="" class="btnSizeS btnColor03">입금표</a>
-									<a href="" class="btnSizeS btnColor03">현금영수증</a>
+									<a href="javascript:alert('준비중')" class="btnSizeS btnColor03">거래명세서</a>
+									<a href="javascript:alert('준비중')" class="btnSizeS btnColor03">입금표</a>
+									<a href="javascript:alert('준비중')" class="btnSizeS btnColor03">현금영수증</a>
 								</div>
 							</td>
 						</tr>
 					</table>
+					{{/vxIF}}
 					<h3 class="subTit mt40">주문자 정보</h3>
 					<div class="tbSet tbMt">
 						<table class="tbLThC">
@@ -121,7 +114,7 @@
 								</tr>
 								<tr>
 									<th scope="row">업체</th>
-									<td>[세탁서비스]워시온</td>
+									<td>[세탁서비스]{{companyName}}</td>
 									<th scope="row">신청정보</th>
 									<td>{{serviceInfomation}}</td>
 								</tr>

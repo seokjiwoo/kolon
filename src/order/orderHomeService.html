@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 시공형 주문/결제"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 홈서비스 결제"} -->
 	<!-- @@include ../_template/headerPayment.html -->
 </head>
 <body class="login" data-page-id="order-orderHomeService">
@@ -9,14 +9,13 @@
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<div class="wrap">
-				<section class="singleCard" id="myActivity">
+				<section class="singleCard" id="order-homeService-wrap">
+				<script id="order-homeService-templates" type="text/x-handlebars-template">
+				{{!-- order-delivery-templates --}}
 					<h2 class="secTit">주문/결제</h2>
 					<!-- 홈서비스 세탁 주문서  -->
 					<h3 class="subTit">서비스 신청 정보</h3>
 					<!-- 세탁 신청 정보 -->
-					<div id="order-homeService-wrap">
-					<script id="order-homeService-templates" type="text/x-handlebars-template">
-					{{!-- order-delivery-templates --}}
 						<div class="orderCont">
 							<div class="delivery1">
 								<div class="tbSet">
@@ -32,7 +31,7 @@
 											</tr>
 											<tr>
 												<th scope="col">주소</th>
-												<td scope="col"></td>
+												<td scope="col">{{washServiceDetail.requestAddress}}</td>
 											</tr>
 											<tr>
 												<th scope="col">연락처</th>
@@ -41,7 +40,7 @@
 											</tr>
 											<tr>
 												<th scope="col">요청사항</th>
-												<td scope="col">도착전 연락 부탁드립니다.</td>
+												<td scope="col">{{washServiceDetail.addRequestContents}}</td>
 											</tr>
 										</tbody>
 									</table>
@@ -88,8 +87,6 @@
 							</div>
 							<span class="underTxt">※ 홈서비스 결제 안내<br>- 결제하신 서비스에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</span>
 						</div>
-					</script>
-					</div>
 					<!--// 결제 정보 -->
 					<!-- 결제 방법 -->
 					<h3 class="subTit">결제 방법</h3>
@@ -168,27 +165,6 @@
 														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
-														<tr>
-															<th scope="row">상품금액</th>
-															<td class="txtR">
-																<span class="price"><b class='basePrice'></b> 원</span>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">할인금액</th>
-															<td>
-																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
-																</ul>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
-														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
 															<td class="txtR">
@@ -239,27 +215,6 @@
 														<col style="width:22%;"/><col style="width:78%;"/>
 													</colgroup>
 													<tbody>
-														<tr>
-															<th scope="row">상품금액</th>
-															<td class="txtR">
-																<span class="price"><b class='basePrice'></b> 원</span>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">할인금액</th>
-															<td>
-																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
-																</ul>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
-														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
 															<td class="txtR">
@@ -281,26 +236,13 @@
 					</div>
 					<!--// 결제 방법 -->
 				<!--// 시공형 선결제 주문서 -->
+				</script>
 				</section>
 			</div>
 		</div>	
 		<!-- @@include ../_template/footer.html -->
 	</div>
-<form id="payForm" name="payForm" method="post" action="/apis/constorders/advance/process">
-	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호) -->
-	<input type="hidden" name="wishSurveyDate" id="wishSurveyDate" value="" /> <!-- 희망 실측 방문/상담 날짜 -->
-	<input type="hidden" name="wishSurveyHour" id="wishSurveyHour" value="" /> <!-- 희망 실측 방문/상담 시간 -->
-	<input type="hidden" name="wishConstBeginDate" id="wishConstBeginDate" value="" /> <!-- 시공날짜 시작 -->
-	<input type="hidden" name="wishConstEndDate" id="wishConstEndDate" value="" /> <!-- 시공날짜 끝 -->
-	<input type="hidden" name="addressSequence" id="addressSequence" value="" /> <!-- 회원주소순번 -->
-
-	<input type="hidden" name="dwellingFormCode" id="dwellingFormCode" value="" /> <!-- 주거 형태 -->
-	<input type="hidden" name="dwellingPyeongCode" id="dwellingPyeongCode" value="" /> <!-- 주거 평형 -->
-	<input type="hidden" name="remodelingReasonCode" id="remodelingReasonCode" value="" /> <!-- 인테리어 사유 코드 -->
-	<input type="hidden" name="remodelingReasonEtc" id="remodelingReasonEtc" value="" /> <!-- 인테리어 사유 -->
-	<input type="hidden" name="addRequestContents" id="addRequestContents" value="" /> <!-- 인테리어 사유 -->
-	<input type="hidden" name="termsNumber" value="3">
-
+<form id="payForm" name="payForm" method="post" action="/apis/living/order/process">
 	<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
 	<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->
 	<input type="hidden" name="Moid" id="Moid" value=""/> <!-- 주문번호 -->
@@ -330,7 +272,7 @@
 	<input type="hidden" name="SocketYN" value="Y">
 	<input type="hidden" name="TrKey" value="">
 	<input type="hidden" name="SkinType" value="blue">
-	<input type="hidden" name="redirectUrl" value="/order/completeAdvance.html">
+	<input type="hidden" name="redirectUrl" value="/order/completeHomeService.html">
 </form>
 </body>
 </html>

@@ -97,57 +97,41 @@ module.exports = function() {
 				var data = result.common.data;
 
 				data.washServiceDetail.priceDesc = util.currencyFormat(data.washServiceDetail.price);
-/*
-				productsInfo = data.constProducts;
-				$.map(productsInfo, function(each){
-					each.productPriceDesc = util.currencyFormat(each.productPrice);
-					each.discountPriceDesc = util.currencyFormat(each.discountPrice);
-					each.constExpectPriceDesc = util.currencyFormat(each.constExpectPrice);
-				});
-*/				
+				data.washServiceDetail.requestTargetContact = util.mobileNumberFormat(data.washServiceDetail.requestTargetContact);
+
 				renderData(data, '#order-homeService-templates', '#order-homeService-wrap', true);
 
-				/*
-				var paymentInfo = data.constPaymentInfo.paymentPrice;
-				paymentInfo.totalAdvancePriceDesc = util.currencyFormat(paymentInfo.totalAdvancePrice);
-				
-				$('.totalProductPrice').text(util.currencyFormat(paymentInfo.totalProductPrice));
-				$('.totalConstExpectPriceDesc').text(util.currencyFormat(paymentInfo.totalConstExpectPrice));
-				$('.savingPoint').text(util.currencyFormat(paymentInfo.savingPoint));
-				$('.basePrice').text(paymentInfo.totalAdvancePriceDesc);
-				$('.basicDiscount').text(util.currencyFormat(paymentInfo.totalDiscountPrice));
-				//$('.usedPoint').text('0');
-				$('.handlingPrice').text('0');
-				$('.totalPrice').text(paymentInfo.totalAdvancePriceDesc);
-*/
+				orderNumber = data.orderNumber;
+
+				$('.totalPrice').text(data.washServiceDetail.priceDesc);
+
 				var cardSelectTag = '<option value="" label="카드 선택" selected="selected">카드 선택</option>';
-				for (var key in data.listCards) {
-					var eachCard = data.listCards[key];
+				for (var key in data.cards) {
+					var eachCard = data.cards[key];
 					cardSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.cardCompanyName+'">'+eachCard.cardCompanyName+'</option>';
 				}
 				$('#cardSelect').html(cardSelectTag);
 
-				//if (paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
+				if (data.washServiceDetail.price < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
 				});
-		
+
 				$('#MID').val(data.pgInfo.mid);
 				$("#MallIP").val(data.pgInfo.mallIp);
 				$("#UserIP").val(data.pgInfo.userIp);
 				$("#EdiDate").val(data.pgInfo.ediDate);
 				$("#VbankExpDate").val(data.pgInfo.vbankExpDate);
 				
-				$('#GoodsName').val(productsInfo[0].productName);
-				//$('#Amt').val(paymentInfo.totalAdvancePrice);
-				$('#Moid').val(data.orderNumber);
-				$('#GoodsCnt').val(productsInfo.length);
+				$('#GoodsName').val(data.washServiceDetail.companyName);
+				$('#Amt').val(data.washServiceDetail.price);
+				$('#Moid').val(orderNumber);
+				$('#GoodsCnt').val(1);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
 				$('#SelectCardCode').val(''); // 카드번호
 				$('#SelectQuota').val('00'); // 할부개월수
-				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
 				$('.requestPaymentButton').click(getHashString);
 
@@ -159,8 +143,10 @@ module.exports = function() {
 
 	function myInfoResultHandler(e) {
 		loginData = loginDataModel.loginData();
-		
+		$('#BuyerName').val(loginData.memberName);
 		if (loginData.phone != null) {
+			$('#BuyerTel').val(loginData.phone);
+			if (loginData.email != null) $('#BuyerEmail').val(loginData.email);
 		} else {
 			alert('본인인증이 필요한 페이지입니다.');
 			location.href='/';
@@ -170,28 +156,6 @@ module.exports = function() {
 	function getHashString(e) {
 		var paymentPrice = Number($('#Amt').val());
 
-		var productsArray = new Array();
-		for (var key in productsInfo) {
-			var product = productsInfo[key];
-			var eachOrderArray = new Array(
-				product.productNumber,
-				product.productOptionNumber
-			);
-			productsArray.push(eachOrderArray.join('|'));
-		}
-		
-		$('#products').val(productsArray.join(','));
-		$('#wishSurveyDate').val(moment($('.js-picker-visit').datepicker('getDate')).format('YYYYMMDD'));
-		$('#wishSurveyHour').val($('#visitTimeSelector').val());
-		$('#wishConstBeginDate').val(moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'));
-		$('#wishConstEndDate').val(moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'));
-		$('#addressSequence').val(selectedOneAddress);
-		$('#dwellingFormCode').val($('input[name="hTp1"]:checked').val());
-		$('#dwellingPyeongCode').val($('input[name="hTp2"]:checked').val());
-		$('#remodelingReasonCode').val($('input[name="hTp3"]:checked').val());
-		$('#remodelingReasonEtc').val(encodeURI($('#homeReasonEtcField').val()));
-		$('#addRequestContents').val(encodeURI($('#requestField').val()));
-	
 		switch($('#PayMethod').val()) {
 			case 'CARD':
 				if ($('#cardSelect').val() == '') {
@@ -209,7 +173,7 @@ module.exports = function() {
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url: "/apis/living/order/getHashString/"+orderNumber+"?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
 				$("#Moid").val(data.data.orderNumber);
