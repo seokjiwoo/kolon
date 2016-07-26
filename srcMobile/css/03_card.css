@@ -338,8 +338,8 @@ ul.cardWrap > li.cardType06 .cardCon .cardTxt span.cardMore {color:#00a7d3;}
 ul.cardWrap > li.cardType06 .cardCon .cardTxt span.cardMore:after {background-position:-42px 0;}
 ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore {width:42.5px; height:20px; padding:0; color:#fff; background:url(../images/bg_dim.png) 0 0 repeat; text-align:center; margin-left:-21.25px; font-size:12px; font-family:'NotoSansL', sans-serif; line-height:20px;}
 ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {display:none;}
-.cardHover .cardCon ul.card_icon li.sHover {background:red;}
-.cardCon ul.check_icon li.sHover a {background:red;}
+.cardHover .cardCon ul.card_icon li.sHover {}
+.cardCon ul.check_icon li.sHover a {}
 
 .hoverStyle01 {background:url(../images/card_hover01.png) 0 0 no-repeat;background-size:145px 345px;}
 .hoverStyle02 {background:url(../images/card_hover02.png) 0 0 no-repeat; background-size:145px 257px;}
