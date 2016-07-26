@@ -139,6 +139,7 @@ span.price.fontS {font-size:14px;}
 
 .order .secTit{font-family:'NotoSansR', sans-serif;font-size: 30px;color: #000;}
 
+.order .container{padding-top: 173px}
 .order .container .wrap{width: 100%; padding-top: 50px;}
 .order .singleCard{padding:0 50px;}
 .order h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}

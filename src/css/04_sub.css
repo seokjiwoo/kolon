@@ -65,7 +65,7 @@
 .doubleCard:first-child{margin-right: 60px;}
 
 /* search */
-.search .container{padding-top: 265px;}
+.search .container{padding-top: 378px;}
 .search .subTop{position: fixed;top: 173px;width: 100%;min-width: 1240px;z-index: 4;background: #fff}
 .search .catSorting.catSortH01{top:205px;}
 .catList{width: 100%;margin-top: 18px;border-bottom: 1px solid #000}
