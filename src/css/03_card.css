@@ -99,7 +99,7 @@
 .cardWrap .cardThumb{overflow: hidden;width: 180px;height:180px;border-radius:50%;margin:15px auto;}
 .cardWrap .cardThumb img{display: block;width: 100%;}
 .cardWrap .cardIntro:before{content:'';display:block;width: 25px;height: 1px;margin:14px auto;background: #fff}
-.cardWrap p.cardPrice {padding:10px 13px 10px 0; font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
+.cardWrap p.cardPrice {padding:10px 40px 10px 0;font-style: normal;font-size:40px; font-style:italic; position:relative; display:inline-block; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-weight: 700}
 .cardWrap p.cardPrice span {font-size:14px; position:absolute; right:0;}
 .cardWrap p.cardPrice span.priceTop {top:0px;}
 .cardWrap p.cardPrice span.priceBottom {bottom:15px; font-weight: 400}
@@ -198,7 +198,7 @@
 .cardHover .worker .cardAuthorLike span + span {margin-left:10px;}
 .cardHover .worker .cardAuthorLike .comt:before{background-position:-12px 0}
 .cardHover .worker .cardAuthorLike .scrap:before{background-position:-25px -10px}
-.cardHover .worker .cardAuthorPic{overflow: hidden;width:63px;height:64px;border-radius:50%;margin:10px auto 0;}
+.cardHover .worker .cardAuthorPic{overflow: hidden;width:64px;height:64px;border-radius:50%;margin:10px auto 0;}
 .cardHover .worker .cardAuthorPic img{display: block;width: 100%;}
 .cardHover .worker .cardAuthorInfo{padding:15px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
 .cardType02 .cardHover .worker .cardAuthorInfo{padding:0px 0 20px;font-family:'NotoSansR', sans-serif;font-size: 14px;line-height: 1.2em;color:#fff; line-height:130%;}
