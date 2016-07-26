@@ -43,11 +43,22 @@ function ClassHomeServiceController() {
 			 */
 			washingTimeList: washingTimeList,
 			/**
+			 * 세탁 서비스 신청
+			 */
+			requestWashing: requestWashing,
+			/**
 			 * 홈서비스 신청 리스트
 			 */
 			homeServiceOrderList: homeServiceOrderList,
+			/**
+			 * 홈서비스 취소 리스트
+			 */
 			homeServiceCancelList: homeServiceCancelList,
-			homeServiceDetailMoving: homeServiceDetailMoving
+			/**
+			 * 홈서비스 상세
+			 */
+			homeServiceDetailMoving: homeServiceDetailMoving,
+			homeServiceDetailWashing: homeServiceDetailWashing
 		}
 		
 		return callerObj;	
@@ -151,6 +162,24 @@ function ClassHomeServiceController() {
 			}
 		}, true);
 	}
+
+	/**
+	 * 세탁서비스 신청
+	 */
+	function requestWashing(companyCode, addressRequest, livingService, washServiceRequest) {
+		Super.callApi('/apis/living/wash/'+companyCode, 'POST', {
+			"addressRequest": addressRequest,
+			"livingService": livingService,
+			"washServiceRequest": washServiceRequest
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('requestWashingResult', [status, result.data]);
+			} else {
+				Super.handleError('requestWashing', result);
+				$(callerObj).trigger('requestWashingResult', [status, result]);
+			}
+		}, false);
+	}
 	
 	/**
 	 * 홈서비스 신청 리스트
@@ -197,6 +226,23 @@ function ClassHomeServiceController() {
 		Super.callApi('/apis/living/'+serviceRequestNumber, 'GET', {
 			"serviceRequestNumber": serviceRequestNumber,
 			"serviceSectionCode": "LS_SERVICE_TYPE_01"
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('homeServiceDetailResult', [status, result.data]);
+			} else {
+				Super.handleError('homeServiceDetail', result);
+				$(callerObj).trigger('homeServiceDetailResult', [status, result]);
+			}
+		}, false);
+	};
+
+	/**
+	 * 홈서비스 디테일 (세탁)
+	 */
+	function homeServiceDetailWashing(serviceRequestNumber) {
+		Super.callApi('/apis/living/'+serviceRequestNumber, 'GET', {
+			"serviceRequestNumber": serviceRequestNumber,
+			"serviceSectionCode": "LS_SERVICE_TYPE_02"
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('homeServiceDetailResult', [status, result.data]);

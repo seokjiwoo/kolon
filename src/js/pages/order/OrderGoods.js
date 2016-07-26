@@ -290,7 +290,7 @@ module.exports = function() {
 				product.orderOptionNum,
 				product.quantity,
 				($('#delivery1').is(':visible') ? selectedOneAddress : selectedMultiAddress[key]),
-				encodeURI( $('#messageField-'+(Number(key)+1)).val() )
+				encodeURI( $('#messageField-'+($('#delivery1').is(':visible') ? '1' : '2')+'-'+(Number(key)+1)).val() )
 			);
 			if (!eachOrderArray[3]) {
 				alert('배송지를 지정해 주세요.');

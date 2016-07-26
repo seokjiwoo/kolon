@@ -16,6 +16,10 @@ module.exports = function() {
 	DatePicker = DatePickerClass(),
 	dropDownMenu =  require('../../components/DropDownMenu.js');
 
+	var eventManager = require('../../events/EventManager'),
+	events = require('../../events/events'),
+	CARD_LIST_EVENT = events.CARD_LIST;
+
 	var controller = require('../../controller/HomeServiceController.js');
 	$(controller).on('homeServiceOrderListResult', listHandler);
 
@@ -212,11 +216,21 @@ module.exports = function() {
 						case "LS_MOVING_STATE_06": each.paymentStatus = '결제완료'; break;
 						case "LS_MOVING_STATE_07": each.paymentStatus = ''; break;
 					}
+				case 'LS_SERVICE_TYPE_02':
+					switch(each.statusCode) {
+						case "LS_WASH_STATE_01": each.paymentStatus = '세탁물 수거 후에 결제가능'; break;
+						case "LS_WASH_STATE_02": 
+						case "LS_WASH_STATE_03": 
+						case "LS_WASH_STATE_04": 
+						case "LS_WASH_STATE_05": each.paymentStatus = '83,000 원<br><a href="" class="btnSizeS btnColor02">결제하기</a>'; break;
+					}
 					break;
 			}
 		});
 		debug.log(result);
 		renderData(result, '#homeservice-list-templates', '#homeservice-wrap', true);
+
+		eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 	};
 
 	function renderData(data, templateSelector, wrapperSelector, clearFlag) {
