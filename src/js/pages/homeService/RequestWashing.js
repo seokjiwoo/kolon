@@ -27,6 +27,8 @@ module.exports = function() {
 	var serviceAddress;
 	var selectedTimeObject;
 
+	var companyNumberObject;
+
 	var mCode;
 	
 	var loginController = require('../../controller/LoginController');
@@ -52,6 +54,8 @@ module.exports = function() {
 		setDatePicker();
 
 		refreshAddressDataHandler();
+
+		companyNumberObject = {};
 		
 		$('.washCompany').hide();
 
@@ -143,6 +147,10 @@ module.exports = function() {
 			//$("#washDate").datepicker("option", "disabled", true);
 		} else {
 			$('#availableMessage').html(result.message);
+			companyNumberObject = {
+				"washOn": result.data.washOn.companyNumber,
+				"washSwat": result.data.washSwat.companyNumber
+			}
 			//$("#washDate").datepicker("option", "disabled", false);
 		}
 		controller.washingTimeList(serviceAddress.roadBaseAddress+' '+serviceAddress.detailAddress);
@@ -229,11 +237,11 @@ module.exports = function() {
 
 			switch(companyCode) {
 				case 'LS_COMPANY_SECTION_01':
-					var companyNumber = 113;
+					var companyNumber = companyNumberObject.washOn;
 					var serviceDateTimeRequest = timeArray[requestDate][requestTime].washOnDateTime;
 					break;
 				case 'LS_COMPANY_SECTION_02':
-					var companyNumber = 114;
+					var companyNumber = companyNumberObject.washSwat;
 					var serviceDateTimeRequest = timeArray[requestDate][requestTime].washSwatDateTime;
 					break;
 			}
