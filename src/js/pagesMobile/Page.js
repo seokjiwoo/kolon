@@ -240,13 +240,23 @@ module.exports = function() {
 
 	function initHorizontalScroll() {
 		$('.scrollWrap').each(function() {//horizontal scroll wrap width
-			var totalWidth = 0;
-			var margin = 0;
+			var totalWidth = 0,
+			margin = 0,
+			setWidth = 0;
 			$(this).find('li').each(function(index) {
-				totalWidth += parseInt($(this).width(), 10);
+				totalWidth += parseInt($(this).outerWidth(), 10);
 				margin += parseInt($(this).css('margin-right'), 10);
 			});
-			$(this).find('ul').css('width',totalWidth+margin);
+			setWidth = totalWidth + margin + 1;
+			$(this).find('ul').css('width', setWidth);
+
+			if ($(window).outerWidth() > setWidth) {
+				$(this).find('ul').css({ 'margin-left' : ($(window).outerWidth() - setWidth) / 2 });
+			} else {
+				if (!$(this).find('li.on').size()) return;
+				if ($(this).find('li.on').offset().left < $(window).outerWidth()) return;
+				$(this).stop().animate({scrollLeft: $(this).find('li.on').offset().left}, 1000);
+			}
 		})
 	}
 
