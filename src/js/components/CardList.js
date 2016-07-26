@@ -123,18 +123,18 @@ module.exports = function() {
 					each.detailUrl = "/newForm/detail.html?productNumber="+each.cardNumber;
 					each.productType = each.productTypeCodeName.toLowerCase();
 					
-					each.basePrice = util.currencyFormat(each.basePrice)+' <span class="priceBottom">원 / 평</span>';
-					each.salePrice = util.currencyFormat(each.salePrice)+' <span class="priceBottom">원 / 평</span>';
-					each.discountPrice = util.currencyFormat(each.discountPrice)+' <span class="priceBottom">원 / 평</span>';
+					each.basePrice = util.currencyFormat(each.basePrice)+' <span class="priceBottom">WON / 3.3m<i>2</i></span>';
+					each.salePrice = util.currencyFormat(each.salePrice)+' <span class="priceBottom">WON / 3.3m<i>2</i></span>';
+					each.discountPrice = util.currencyFormat(each.discountPrice)+' <span class="priceBottom">WON / 3.3m<i>2</i></span>';
 					break;
 				case 'DP_CARD_TYPE_03':
 					each.cardClass = 'cardType02 cardSize02';
 					each.detailUrl = "/shop/detail.html?productNumber="+each.cardNumber;
 					each.productType = each.productTypeCodeName.toLowerCase();
 					
-					each.basePrice = util.currencyFormat(each.basePrice)+' <span class="priceBottom">원</span>';
-					each.salePrice = util.currencyFormat(each.salePrice)+' <span class="priceBottom">원</span>';
-					each.discountPrice = util.currencyFormat(each.discountPrice)+' <span class="priceBottom">원</span>';
+					each.basePrice = util.currencyFormat(each.basePrice)+' <span class="priceBottom">WON</span>';
+					each.salePrice = util.currencyFormat(each.salePrice)+' <span class="priceBottom">WON</span>';
+					each.discountPrice = util.currencyFormat(each.discountPrice)+' <span class="priceBottom">WON</span>';
 					break;
 				case 'DP_CARD_TYPE_07':
 					each.cardClass = 'cardType07 cardSize02';

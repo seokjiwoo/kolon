@@ -132,8 +132,10 @@ module.exports = function() {
 		var target = $(e.currentTarget);
 		if (target.parent('li').hasClass('on')) {
 			target.parent('li').removeClass('on');
+			target.siblings().slideUp();
 		} else {
 			target.parent('li').removeClass('on').addClass('on');
+			target.siblings().slideDown();
 		}
 	}
 
