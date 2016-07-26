@@ -41,7 +41,8 @@
     "html5shiv": "^3.7.3",
     "zeroclipboard": "^2.2.0",
     "placeholders": "^4.0.1",
-    "simply-toast": "https://github.com/ericprieto/simply-toast.git#master"
+    "simply-toast": "https://github.com/ericprieto/simply-toast.git#master",
+    "fastclick": "^1.0.6"
   },
   "resolutions": {
     "jquery": ">=1.6.0"
