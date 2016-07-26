@@ -204,6 +204,11 @@ module.exports = function() {
 			alert('옵션을 선택해주세요.');
 		} else {
 			var cartData = orderData.concat();
+			$.map(cartData, function(each) {
+				delete each.quantity;
+				delete each.price;
+			});
+			console.log(cartData);
 			cartController.addMyCartList(cartData);
 		}
 	};
@@ -487,7 +492,7 @@ module.exports = function() {
 
 			orderData = [{
 				"productNumber": self.productNumber,
-				"productOptionNumber": selectedOptionData.orderOptionNumber,
+				"orderOptionNumber": selectedOptionData.orderOptionNumber,
 				"quantity": 1,
 				"price": Number(selectedOptionData.price)
 			}];
