@@ -30,7 +30,6 @@ a{color:#666;}
 .header .searchBtn{ display:block;right:0;width:45px;background:url("../images/ico_gnb_btn.png") no-repeat 14px 15px;background-size:18px;}
 .header .searchBtn span.cancelBtn {display:none;}
 .header .searchBtn.open {z-index:10; background:none;}
-.login .header .searchBtn{ right:34px;width:34px; }
 .header .searchBtn.open,
 .login .header .searchBtn.open {top:13px;right:15px;}
 .header .bagBtn{display:none;right:0;width:34px;background:url("../images/ico_bag.png") no-repeat center center;background-size:18px;}
