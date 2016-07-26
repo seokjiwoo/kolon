@@ -1,0 +1,132 @@
+<!-- [D] PC style 임시 적용 -->
+<style>
+	#menuCountCart {height:20px;border-radius:10px;padding:0 7px;color:#fff;font-size:13px;font-family:sans-serif;line-height:20px}
+	#menuCountCart {position:absolute;top:-10px;right:2px;background:#a11b13}
+</style>
+
+
+<header class="header menuDetail">
+	<a href="javascript:location.back(-1);" class="prev">이전페이지가기</a>
+	<div class="shareBtn">
+		<a href="#" class="messageBtn">1:1 메세지</a>
+		<!-- <a href="#" class="scrap js-add-scrap">스크랩</a> -->
+		<a href="../_popup/popShare.html"
+			class="btnPop share"
+			data-user-class="snsSharePop popEdge"
+			data-share-url="">공유</a>
+	</div>
+	<a href="#" id="gnbBtn" class="gnbBtn"><span class="hide">메뉴열기</span></a>
+</header>
+
+<nav class="gnb">
+	<div class="topArea">
+		<div class="userBox">
+			<span class="thumb"><img src="/images/profile.png" alt="" id="profileImage" /></span>
+			<p id="profileName"><em>로그인 해주세요</em></p>
+			<p id="profileMail"></p>
+		</div>
+		<div class="topMenu">
+			<ul id="myMenuButtonList">
+				<li>
+					<a href="/myPage/notice.html">
+						<span>알림</span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/scrap.html">
+						<span>스크랩</span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/like.html">
+						<span>좋아요</span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/following.html">
+						<span>팔로잉</span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/myCartNewForm.html">
+						<span>마이카트</span>
+						<span id="menuCountCart" class="count"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<a href="/member/login.html" id="btnJoinMyPage" class="myBtn"><span>로그인 / 회원가입</span></a> <!-- <a href="/myPage/" class="myBtn"><span>마이커먼</span></a> -->
+
+		<div class="hiddenMenu">
+			<ul>
+				<li>
+					<a href="/myPage/order.html">
+						<span>진행중인 주문/배송</span>
+						<span id="menuCountOrderGoods"></span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/return.html">
+						<span>취소/반품/교환</span>
+						<span id="menuCountCancelGoods"></span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/recentSeenItem.html">
+						<span>최근 본 상품</span>
+						<span id="menuCountRecentViewItem"></span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/myService.html">
+						<span>나의 시공중인 상품</span>
+						<span id="menuCountOrderNewform"></span>
+					</a>
+				</li>
+				<!--<li>
+					<a href="">
+						<span>시공취소/환불</span>
+						<span id="menuCountCancelNewform">2</span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/homeService.html">
+						<span>진행 중인 서비스</span>
+						<span id="menuCountOrderService" class="off">2</span>
+					</a>
+				</li>
+				<li>
+					<a href="/myPage/homeServiceCancel.html">
+						<span>서비스 취소/환불</span>
+						<span id="menuCountCancelService" class="off">2</span>
+					</a>
+				</li>-->
+			</ul>
+		</div>
+		<div class="myCommon">
+			<a href="#" id="menuToggle" class="downBtn"><span class="hide"></span></a>
+		</div>
+	</div>
+	<div class="btmArea">
+		<ul class="colMenu">
+			<li><a href="/manage/">자산관리 <em>Manage</em></a></li>
+			<li><a href="/newForm/">뉴폼 <em>New Form</em></a></li>
+			<li><a href="/rent/">집구하기 <em>Rent</em></a></li>
+			<li><a href="/shop/">샵 <em>Shop</em></a></li>
+			<li><a href="/fund/">투자하기 <em>Fund</em></a></li>
+			<li><a href="/homeService/">홈서비스 <em>Home Service</em></a></li>
+			<li><a href="/magazine/">매거진  <em>Magazine</em></a></li>
+		</ul>
+		<ul class="rowMenu">
+			<li><a href="/qna/">의견묻기</a></li>
+			<li><a href="/manager/">커먼전문가</a></li>
+		</ul>
+	</div>
+	<div class="stateArea">
+		<ul>
+			<li><a id="buttonLogInOut" href="/member/login.html">로그인</a></li>
+			<li><a href="tel:+18506484200">전화상담</a></li>
+		</ul>
+	</div>
+	<a href="#" id="closeGnbBtn" class="closeBtn"><span class="hide">메뉴닫기</span></a>
+</nav>

@@ -124,15 +124,35 @@
 
 .magazine .video {width:100%; overflow:hidden;}
 .magazine .video video {width:100%;}
-.magazine .header .gnbBtn {background:url(../images/ico_gnb_btn_magazine.png) 50% no-repeat;  background-size:18px;}
-.is-scrolling .magazine .header {position:fixed; background-color:#fff;}
+
+.manager .header .gnbBtn{background:url(../images/ico_gnb_btn_magazine.png) 50% no-repeat;  background-size:18px;}
+.wrapper .header.menuDetail,
+.is-scrolling .manager .header,
+.is-scrolling .magazine .header{position:fixed; background-color:#fff;}
+.wrapper .header.menuDetail .gnbBtn,
+.is-scrolling .manager .header .gnbBtn
+.is-scrolling .manager .header .gnbBtn,
 .is-scrolling .magazine .header .gnbBtn {background:url(../images/ico_gnb_btn.png) 50% no-repeat; background-size:18px;}
+.manager .header .prev,
 .magazine .header .prev {display:none;}
-.is-scrolling .magazine .header .prev {width:10px; height:45px; position:absolute; top:0; left:50px; background:url(../images/icon_page_prev.png) 50% no-repeat; background-size:10px 17px; display:inline-block; font-size:0;}
-.magazine .header {position:absolute; top:0; left:0; background:none; z-index:9;}
-.magazine .header .shareBtn {float:right; text-align:right;}
-.magazine .header .shareBtn a {width:19.5px; height:20px; margin-right:17px; display:inline-block; background:url(../images/icon_share.png) no-repeat; background-size:56px 40px;; font-size:0; }
+.wrapper .header.menuDetail .prev,
+.is-scrolling .manager .header .prev,
+.is-scrolling .magazine .header .prev {width:45px; height:45px; position:absolute; top:0; left:0; background:url(../images/icon_page_prev.png) 50% no-repeat; background-size:10px 17px; display:inline-block; font-size:0;}
+.manager .header,
+.magazine .header{position:absolute; top:0; left:0; background:none; z-index:9;}
+.manager .header .shareBtn,
+.magazine .header .shareBtn {margin-right:40px; float:right; text-align:right;}
+.manager .header .shareBtn a,
+.magazine .header .shareBtn a{width:19.5px; height:20px; margin-right:17px; display:inline-block; background:url(../images/icon_share.png) no-repeat; background-size:92px 40px;; font-size:0; }
+.manager .header .shareBtn a.scrap,
 .magazine .header .shareBtn a.scrap {background-position: 0 0;}
+.manager .header .shareBtn a.share,
 .magazine .header .shareBtn a.share {background-position: -37px 0;}
+.wrapper .header.menuDetail .shareBtn a.scrap,
+.is-scrolling .manager .header .shareBtn a.scrap,
 .is-scrolling .magazine .header .shareBtn a.scrap {background-position: 0 -21px;}
+.wrapper .header.menuDetail .shareBtn a.share,
+.is-scrolling .manager .header .shareBtn a.share,
 .is-scrolling .magazine .header .shareBtn a.share {background-position: -37px -21px;}
+.wrapper .header.menuDetail .shareBtn a.messageBtn {width:24px; height:21.5px; background-position: -68px -18px;}
+.wrapper .header.menuDetail {position:relative;}

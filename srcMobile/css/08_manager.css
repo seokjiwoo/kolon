@@ -94,3 +94,7 @@
 .manager .portfolioBar .pfInfo .pfTxt {padding:2px 0; margin-left:10px; float:left; font-size:12px; color:#b08967;}
 .manager .portfolioBar .pfInfo .pfTxt p.name {font-weight:bold; color:#333;}
 .manager .portfolioBar .pfInfo .pfTxt p + p {margin-top:5px;}
+
+.manager .managerProfile {width:100%; overflow:hidden; padding:36px 0 21px; text-align:center; background:#f9fafc;}
+.manager .managerProfile b {width:100%; font-size:23px; line-height:24.5px; color:#1a1a1a; display:inline-block;}
+.manager .managerProfile span {font-size:12px; color:#b08967;}
