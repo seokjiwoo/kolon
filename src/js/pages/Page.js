@@ -228,7 +228,7 @@ module.exports = function() {
 			$('#topBannerImage').attr('src', '/images/banner_email.jpg');
 			$('#topBanner').css('background', '#ff849d').show();
 			$('#topBannerLink').addClass('resendAuthMail'); 
-			$('.container').css('padding-top', ($('.subTop').length==0?173:113)+'px');
+			//$('.container').css('padding-top', ($('.subTop').length==0?173:113)+'px');
 			$('#closeTopBannerButton').click(hideTopBanner);
 			lnbScroller.refresh();
 		} else if (loginData.stateCode == "BM_MEM_STATE_01" && Cookies.get('topBannerHide') != 'EXTERMINATE') {
@@ -237,7 +237,7 @@ module.exports = function() {
 			$('#topBannerImage').attr('src', '/images/banner_phone.jpg');
 			$('#topBanner').css('background', '#d3b295').show();
 			$('#topBannerLink').addClass('profileEditButton'); 
-			$('.container').css('padding-top', ($('.subTop').length==0?173:113)+'px');
+			//$('.container').css('padding-top', ($('.subTop').length==0?173:113)+'px');
 			$('#closeTopBannerButton').click(hideTopBanner);
 			lnbScroller.refresh();
 		} else if (loginData.stateCode == "BM_MEM_STATE_02") {
@@ -385,6 +385,8 @@ module.exports = function() {
 			"top": 0,
 			"height": "100%"
 		});
+		$('.search .subTop').css('top','60px');
+		$('.search .container').css('padding-top','263px');
 	};
 
 	/**

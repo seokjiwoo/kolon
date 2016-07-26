@@ -21,7 +21,7 @@ button{cursor: pointer;}
 .topBanner {display: none; width:100%; height:113px; overflow:hidden; background:#fff; position:relative; text-align:center;}
 .topBanner:after {content:''; width:100%; height:10px; background:url('../images/bg_topBanner.png') 0 0 repeat-x; position:absolute; bottom:0; left:0; z-index:2;}
 .topBanner img {width:1920px; height:113px; margin-left:-960px; position:absolute; top:0; left:50%; z-index:1;}
-.topBanner .bannerClose {width:0; height:0; padding:24px 42px 0 0; margin-top:-15px; background:url('../images/btn_closeNew.png') 0 0 no-repeat; overflow:hidden; position:absolute; top:50%; right:38px; z-index:3;}
+.topBanner .bannerClose {width: 50px;height: 50px;position:absolute; top:33px; right:68px; z-index:3;background:url('../images/btn_closeNew.png') no-repeat center; font-size: 0;}
 .topBanner .checkbox{z-index: 9;float: right;margin:50px 120px 0 0;}
 .topBanner .checkbox input{position: absolute;opacity: 0;top: 0;left: -20px;}
 
@@ -38,7 +38,7 @@ button{cursor: pointer;}
 .topMenu .menu ul.menuList li + li {margin-left:30px;}
 .topMenu .menu ul.menuList li a{display:block; padding:18px 0;font-size:24px;color:#000;}
 .topMenu .menu ul.menuList:first-child li a {color:#f84b40;}
-.topMenu .menu ul.menuList:last-child li a {color:#00aeb9;}
+.topMenu .menu ul.menuList:last-child li a {color:#465f8d;}
 @media (max-width:1310px){.topMenu .menu ul.menuList li + li {margin-left:20px;}}
 
 .topMenu .topR{width:20%; min-width:236px; height:60px; text-align:right; font-size: 14px; float:right; position:relative;}
@@ -208,7 +208,7 @@ button{cursor: pointer;}
 #flQna .resultQna li a{display: block;padding: 15px 10px;color: #666;box-shadow:none;}
 #flQna .resultQna li:first-child{border:0;}
 
-.container {position: relative;min-height:900px;padding:60px 0 100px 0;z-index: 0}
+.container {position: relative;min-height:900px;padding:113px 0 100px 0;z-index: 0}
 .main .container {padding-top:113px;padding-bottom: 0;}
 .container .wrap{overflow: hidden;position: relative;max-width: 1200px;margin:0 auto;padding:35px 10px;}
 .main .container .wrap{max-width: 2025px;padding:30px 0 0; background:url('../images/main_wrap_bg2.gif') 75.5% 8px repeat-y; position:relative; }/*overflow:visible;*/
@@ -234,7 +234,6 @@ button{cursor: pointer;}
 .main .container .myList p.myTit + a {margin-left:65px;}
 
 /* myPage top change */
-.container.bgTop {padding:0 0 200px;}
 .my .container.bgTop .wrap {padding-top:82px;padding-bottom:102px}
 
 /* footer */

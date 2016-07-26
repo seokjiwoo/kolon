@@ -8,13 +8,13 @@
 .btnColor02.btnWL {width:300px;}
 
 ul.tbList {width:100%; margin:0 auto; display:inline-block;}
-ul.tbList li {width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 7px no-repeat; text-align:left; display:inline-block;}
+ul.tbList li {display:inline-block;width:97%; padding-left:11px; background:url('../images/bul_dot.png') 0 7px no-repeat; text-align:left;line-height: 1.2em;}
 ul.tbList li + li {margin-top:16px;}
 ul.tbList li span {width:60%; text-align:right; float:right; display:inline-block;}
 ul.tbList li span.tbListTit {width:40%; text-align:left; float:left;}
 ul.tbList2 {width:528px; margin:0 auto;}
 ul.tbList2 li span b {font-family: 'NotoSansB', sans-serif;}
-ul.tbList2 li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 4px no-repeat; text-align:left; display:inline-block; color:#999;}
+ul.tbList2 li {display:inline-block;width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 4px no-repeat; text-align:left; color:#999;line-height: 1.3em;}
 ul.tbList2 li + li {margin-top:10px;}
 
 .payTb {margin-top:30px; font-family:'NotoSansB', sans-serif;}
@@ -46,7 +46,7 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb ul.pointBul li p.pointCk {margin:5px 0 0 20px; text-align:left;}
 .payTb p.underTxt {margin:15px 0 0 40px; text-align:left;}
 .payTb dl.payHL div {height:156px;}
-.payTb dl.payHL2 div {height:200px;}
+.payTb dl.payHL2 div {height:260px;}
 .payTb ul.giveList {width:150px; overflow:hidden; margin:0 auto;}
 .payTb ul.giveList li {width:50%; float:left; line-height:120%; text-align:left; font-family:'NotoSansR', sans-serif;}
 .payTb ul.giveList li b {font-family:'NotoSansB', sans-serif;}
@@ -139,6 +139,7 @@ span.price.fontS {font-size:14px;}
 
 .order .secTit{font-family:'NotoSansR', sans-serif;font-size: 30px;color: #000;}
 
+.order .container{padding-top: 173px}
 .order .container .wrap{width: 100%; padding-top: 50px;}
 .order .singleCard{padding:0 50px;}
 .order h2.secTit + h3.subTit {border-top:1px solid #666; margin-top:19px; padding-top:29px;}
@@ -280,8 +281,10 @@ span.price.fontS {font-size:14px;}
 .order .orderCont .orderTb table tr td.pointH {height:58px;}
 .order .orderCont .agreeBox { width:1019px; padding:40px 40px 32px; margin-top:20px; overflow:hidden; border-top:1px solid #545454; border-bottom:1px solid #e8e8e8; background:#fafafa;}
 .order .orderCont .agreeBox .agreeCont {width:942px; height:220px; padding:38px; border:1px solid #e1e1e1; background:#fff; overflow-y:scroll;}
-.order .orderCont .agreeBox .agreeCont p {color:#666;}
+.order .orderCont .agreeBox .agreeCont p {color:#666;font-size: 14px;line-height: 1.3em;}
 .order .orderCont .agreeBox .agreeCont p + p {margin-top:30px; line-height:130%;}
+.order .orderCont .agreeBox .agreeCont ul{font-size: 14px;margin-top: 10px;line-height: 1.3em;color: #666;}
+.order .orderCont .agreeBox .agreeCont li{margin-top: 5px;}
 .order .orderCont .payTab {width:100%; margin-top:20px; padding:30px 0; border-top:1px solid #545454; overflow:hidden;}
 .order .orderCont .payTab fieldset legend {width:0; height:0; overflow:hidden; position:absolute; top:-999; left:-999; line-height:100%; visibility:hidden;}
 .order .orderCont .payTab a {margin-left:42px; display:inline-block; color:#666;}

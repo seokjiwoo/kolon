@@ -27,7 +27,7 @@
 	<h2 class="secTit">주문 내역 <span class="icoTitle"></span> 주문 상세</h2>
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
 	{{#if ordererInfo}}
-		<table class="record record04 detail" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
+		<table class="record detail" summary="주문번호 표로써 주문정보를 알 수 있습니다.">
 			<caption>주문번호 표</caption>
 			<colgroup>
 				<col style="width:114px">
@@ -101,7 +101,7 @@
 		</table>
 
 		<h3 class="subTit mt40">주문상품</h3>
-		<table class="record record03" summary="주문상품 표로써 상품정보, 판매처, 수령자, 배송비, 할인금액, 결제금액, 진행상태 정보가 담겨있습니다.">
+		<table class="record record03" summary="주문상품 표로써 상품정보, 판매처, 수령자, 배송비, 할인금액, 결제금액, 진행상태 정보가 담겨있습니다." style="border-bottom: 0;">
 			<caption>주문상품 표</caption>
 			<colgroup>
 				<col style="width:65px">
@@ -159,7 +159,7 @@
 				{{#if @first}}
 				<td rowspan="{{../length}}">
 					{{receiverName}}
-					<a href="#" class="btnSizeS btnColor03 btnIcoMore" id='moreView{{@../index}}'>더보기</a>
+					<a href="#" class="btnSizeS btnColor03 btnIcoMore" id='moreView{{@../index}}'><span class="open">더보기</span><span class="close">접기</span></a>
 				</td>
 				<td class="orderState stateWrap" rowspan="{{../length}}">
 					{{#vxSwitch orderStateCode}}
@@ -231,7 +231,7 @@
 			</tr>
 			{{#if @last}}
 			<tr>
-				<td colspan='8' style='padding:0'>
+				<td colspan='8' style='padding:0;border:0;'>
 					<div class="moreView" id='moreTable{{@../index}}'>
 						<table class="record recordBg" summary="주문자 정보 표로써 받으실 분, 주소, 연락처1, 연락처2, 요청사항 정보가 담겨있습니다.">
 							<caption>주문자 정보 표</caption>
