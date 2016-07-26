@@ -119,7 +119,11 @@ module.exports = function() {
 									pager : false,
 									onSliderLoad : function(index) {
 										portfolioSliderTotal = $(this).children().filter(':not(.bx-clone)').size();
-										$(this).closest('.portfolioArea').find('.js-cur').text(index + 1);
+										if (portfolioSliderTotal) {
+											$(this).closest('.portfolioArea').find('.js-cur').text(index + 1);
+										} else {
+											$(this).closest('.portfolioArea').find('.js-cur').text(0);
+										}
 										$(this).closest('.portfolioArea').find('.js-total').text(portfolioSliderTotal);
 									},
 									onSlideAfter : function($slideElement, oldIndex, newIndex) {
