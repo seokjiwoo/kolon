@@ -159,7 +159,7 @@ module.exports = function() {
 			//alert('서비스 불가능 지역입니다');
 		} else {
 			$.each(timeArray[requestDate], function(key, each){
-				$('#availableLabel'+key.substr(0, 2)).text(each.washOnYn == 'Y' && each.washSwatYn == 'Y' ? '' : '(신청불가)');
+				$('#availableLabel'+key.substr(0, 2)).text(each.washOnYn == 'N' && each.washSwatYn == 'N' ? '(신청불가)' : '');
 			})
 		}
 	};
