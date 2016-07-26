@@ -26,7 +26,9 @@
 			<p class="photo"><a href="javascript:;"><img src="{{imageUrl}}" alt="" /></a></p>
 			<div class="pfTxt">
 				<p class="name">{{name}}</p>
-				<p>{{companyName}}</p>
+				{{#if companyName}}
+					<p><a href="/manager/brand.html?expertNumber={{expertNum}}">{{companyName}}</a></p>
+				{{/if}}
 			</div>
 		</div>
 	</div>
@@ -42,7 +44,11 @@
 	<div class="expertArea">
 		<div class="thumb"><img src="{{imageUrl}}" alt="" /></div>
 		<div class="info">
-			<em>{{name}}<i>{{companyName}}</i></em>
+			{{#if companyName}}
+				<em>{{name}}<a href="/manager/brand.html?expertNumber={{expertNum}}"><i>{{companyName}}</i></a></em>
+			{{else}}
+				<em>{{name}}</em>
+			{{/if}}
 			<p class="except">{{summaryIntro}}</p>
 			{{!-- 평점 evalScore TBD --}}
 			<div class="fol">
@@ -94,30 +100,58 @@
 	</div>
 	<div class="wrapT">
 		<h3 class="conTit">판매상품 ({{countProduct}}) <a href="/manager/itemList.html?expertNumber={{expertNum}}">전체보기</a></h3>
-		{{#vxIF countProduct "!=" "0"}}
-		<ul class="previewList">
-			<li>
-				<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
-				<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
-				<p class="op02">옵션 : 25평형</p>
-				<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
-			</li>
-			<li>
-				<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
-				<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고... </a></p>
-				<p class="op02">옵션 : 25평형</p>
-				<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
-			</li>
-			<li>
-				<div class="thumb"><img src="/images/temp05.jpg" alt=""></div>
-				<p class="except is-truncated"><a href="">현재 문의하신 제품은 품절입니다. 다음 달 첫째 주에 재입고 되오니, 재입고 알림을 받고...</a> </p>
-				<p class="op02">옵션 : 25평형</p>
-				<p class="price"><b>880,000</b> 원 <span>(79㎡/24PY)</span></p>
-			</li>
-		</ul>
-		{{/vxIF}}
+		
+		<!-- [D] #manager-product-templates - wrap -->
+		<ul class="previewList js-manager-product-wrap"></ul>
+		<!--// [D] #manager-product-templates - wrap -->
+
 	</div>
 	{{!--// manager-detail-templates --}}
+</script>
+
+
+
+<script id="manager-product-templates" type="text/x-handlebars-template">
+{{#if products.length}}
+	{{#each products}}
+		{{#vxIF @index "<" 3}}
+		<li>
+			<div class="thumb"><img src="{{cardImageUrl}}" alt=""></div>
+			<p class="except is-truncated">
+				{{#vxSwitch cardTypeCode}}
+					{{#vxCase "DP_CARD_TYPE_01" break=True}}
+						{{!-- 매거진 --}}
+						<a href="/magazine/detail.html?articleNumber={{cardNumber}}">{{cardName}}</a>
+					{{/vxCase}}
+					{{#vxCase "DP_CARD_TYPE_02" break=True}}
+						{{!-- 뉴폼 상품 --}}
+						<a href="/newForm/detail.html?productNumber={{cardNumber}}">{{cardName}}</a>
+					{{/vxCase}}
+					{{#vxCase "DP_CARD_TYPE_03" break=True}}
+						{{!-- 샵 상품 --}}
+						<a href="/shop/detail.html?productNumber={{cardNumber}}">{{cardName}}</a>
+					{{/vxCase}}
+					{{#vxCase "DP_CARD_TYPE_07" break=True}}
+						{{!-- 전문가 --}}
+						<a href="/manager/detail.html?expertNumber={{cardNumber}}">{{cardName}}</a>
+					{{/vxCase}}
+				{{/vxSwitch}}
+			</p>
+
+			{{#if pyeong}}
+				<p class="op02">옵션 : {{pyeong}}</p>
+				<p class="price"><b>{{vxCurrencyFormat basePrice}}</b> 원 <span>({{pyeong}})</span></p>
+			{{else}}
+				<p class="price"><b>{{vxCurrencyFormat basePrice}}</b> 원</p>
+			{{/if}}
+		</li>
+		{{/vxIF}}
+	{{/each}}
+{{else}}
+	<li>
+		<p class="noContent" style="display:block">상품이 없습니다.</p>
+	</li>
+{{/if}}
 </script>
 
 </body>
