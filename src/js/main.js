@@ -166,6 +166,11 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/order/OrderServiceBalance.js');
 				break;
 
+			// 홈서비스 주문서 작성
+			case 'order-orderHomeService':
+				PageModuleClass = require('./pages/order/OrderHomeService.js');
+				break;
+
 			// 주문완료 complete
 			case 'order-complete':
 				PageModuleClass = require('./pages/order/Complete.js');
