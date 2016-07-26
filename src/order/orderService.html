@@ -39,7 +39,7 @@
 										<tr>
 											<td>
 												<div class="photoList">
-													<a href="#">
+													<a href="/newForm/detail.html?productNumber={{productNumber}}">
 														<span class="thumb"><img src="{{productImageUrl}}" alt=""/></span>
 														<span class="cartInfo">
 															<span class="cartTit">{{productName}}</span>
@@ -48,8 +48,8 @@
 													</a>
 												</div>
 											</td>
-											<td>{{saleMemberName}}</td>
 											<td><b>{{productPriceDesc}}</b> 원</td>
+											<td>{{saleMemberName}}</td>
 											<td><b>{{discountPriceDesc}}</b> 원</td>
 											<td><b>{{constExpectPriceDesc}}</b> 원</td>
 										</tr>
@@ -348,29 +348,10 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">상품금액</th>
+															<th scope="row">선결제금액(10%)</th>
 															<td class="txtR">
 																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
-														</tr>
-														<tr>
-															<th scope="row">할인금액</th>
-															<td>
-																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
-																	<!--<li>
-																		<span class="tbListTit">포인트</span>
-																		<span class="price">-<b class='usedPoint'></b> P</span>
-																	</li>-->
-																</ul>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
 														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
@@ -435,25 +416,6 @@
 															<td class="txtR">
 																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
-														</tr>
-														<tr>
-															<th scope="row">할인금액</th>
-															<td>
-																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
-																	<!--<li>
-																		<span class="tbListTit">포인트</span>
-																		<span class="price">-<b class='usedPoint'></b> P</span>
-																	</li>-->
-																</ul>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
 														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
@@ -526,10 +488,6 @@
 																</ul>
 															</td>
 														</tr>
-														<tr>
-															<th scope="row">배송비</th>
-															<td class="txtR"><span class="price"><b class='handlingPrice'></b> 원</span></td>
-														</tr>
 														<tr class="total dotted">
 															<th scope="row">총 결제금액</th>
 															<td class="txtR">
@@ -543,7 +501,7 @@
 									</form>
 								</div>
 								<div class="btnC">
-									<button type="button" class="btn btnSizeL btnColor02 btnWM requestPaymentButton" value="결제하기">결제하기</button> 
+									<button type="button" class="btn btnSizeL btnColor02 btnWM requestPaymentButton" value="결제하기">결제 및 실측요청하기</button> 
 								</div>
 							</div>
 							<!--// 실시간 계좌이체  -->
