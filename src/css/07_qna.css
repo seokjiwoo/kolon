@@ -134,7 +134,7 @@
 
 .opinionbox .expert{position:relative;}
 .opinionbox .expert:after{content:"";display:block;clear:both;}
-.opinionbox i{min-width:16px;height:16px;display:inline-block;margin-left:10px; padding-right:23px;background:url("../images/ico_help.png") no-repeat right 0;font-style:normal; vertical-align:middle;}
+.opinionbox i{min-width:16px;height:16px;display:inline-block;margin-left:10px; padding-right:23px;background:url("../images/ico_help.png") no-repeat right 0;font-style:normal; vertical-align:middle;cursor: pointer;}
 .opinionbox i span{color:#465f8d;display:block;font-family:'NotoSansR',sans-serif; vertical-align:middle;}
 .opinionbox i.on {background-position:right -16px;}
 .opinionbox .commentName {width:236px;overflow:hidden;float:left;}

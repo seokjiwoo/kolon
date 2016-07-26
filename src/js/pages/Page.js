@@ -385,6 +385,8 @@ module.exports = function() {
 			"top": 0,
 			"height": "100%"
 		});
+		$('.search .subTop').css('top','60px');
+		$('.search .container').css('padding-top','187px');
 	};
 
 	/**

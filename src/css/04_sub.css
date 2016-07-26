@@ -66,7 +66,7 @@
 
 /* search */
 .search .container{padding-top: 265px;}
-.search .subTop{position: fixed;top: 60px;width: 100%;min-width: 1240px;z-index: 4;background: #fff}
+.search .subTop{position: fixed;top: 173px;width: 100%;min-width: 1240px;z-index: 4;background: #fff}
 .search .catSorting.catSortH01{top:205px;}
 .catList{width: 100%;margin-top: 18px;border-bottom: 1px solid #000}
 .catList ul{overflow: hidden;max-width:1200px;margin:0 auto;text-align: center;}

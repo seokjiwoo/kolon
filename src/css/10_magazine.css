@@ -1,6 +1,7 @@
 /* magazine */
-.magazine{background: url('../images/bg_magazine.jpg') no-repeat center top;}
+.magazine .subTop{width: 100%;height: 960px;padding-top: 60px;background: url('../images/bg_magazine.jpg') no-repeat center top;}
 .magazine .subTop .wrap{overflow: visible;padding: 0;}
+.magazine .subTop + .wrap{margin-top: -275px;}
 .magazine #popularList{padding: 0;margin:0;}
 .magazine .pageTit{float: right;width: 550px;height: 135px;background-position: 0 -124px;}
 .magazine .subTop .subTit{float: right;width: 550px;margin-top: 65px;text-align: left;font-size: 25px;font-family:'NotoSansL', sans-serif;}
