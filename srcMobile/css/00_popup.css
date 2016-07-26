@@ -285,3 +285,13 @@ ul.shareBtn li a.fb {background-position:0 0;}
 ul.shareBtn li a.tw {background-position:-60px 0;}
 ul.shareBtn li a.ks {background-position:-121px 0;}
 ul.shareBtn li a.urlBtn {background-position:-59.5px -59.5px; }
+
+.layerPopup .scrapbookAddWrap {padding:0 15px;}
+.layerPopup .newFolder {border:1px solid #d1d1d1; padding:8px 43.5px 8px 10px; position:relative; overflow:hidden;}
+.layerPopup .newFolder input[type=text] {width:100%; border:0; padding:0;}
+.layerPopup .newFolder button.newFolderAdd {padding:10px; font-size:11px; color:#436ebb; position:absolute; top:0; right:0; background:#fff;}
+.layerPopup .newFolder button.newFolderAdd:before {content:''; width:10px; height:10px; margin-top:-5px; background:url(../images/newfolder_add.png) 0 0 no-repeat; background-size:10px 10px; position:absolute; top:50%; left:-5px;}
+.layerPopup .newFolder button.folderDelBtn {width:19px; height:19px; padding:0; border-radius:50%; border:0; outline:0; font-size:0; margin-top:-9.5px; background:url(../images/ico_close03.png) 50% no-repeat #e5e5e5; background-size:7px 7px; overflow:hidden; display:inline-block; position:absolute; top:50%; right:10px;}
+.layerPopup .selectBox + .newFolder {margin-top:6px;}
+.layerPopup .scrapbookAddWrap + .btnWrap {padding:15px 0;}
+.layerPopup .scrapbookAddWrap + .btnWrap .btnSizeL {width:127px;}
