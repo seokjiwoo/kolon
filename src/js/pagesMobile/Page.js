@@ -78,6 +78,53 @@ module.exports = function() {
 				$(btn).removeClass('open')
 			})
 		});
+
+
+		// 임시 이벤트 디텍팅 처리
+		$.each(['show', 'hide'], function (i, ev) {
+			var el = $.fn[ev];
+			$.fn[ev] = function () {
+				this.trigger(ev);
+				return el.apply(this, arguments);
+			};
+		});
+
+		$('.header .menuhWrap').on('show hide', function(e) {
+			var type = e.type;
+			switch(type) {
+				case 'show':
+					$(document).on('touchmove', function(e) {
+						var target = $(e.target);
+						if (target.hasClass('menuhWrap') || target.closest('.menuhWrap').size()) {
+						} else {
+							e.preventDefault();
+						}
+					});
+					break;
+				default:
+					$(document).off('touchmove');
+					break;
+			}
+		});
+
+		$('nav.gnb').on('show hide', function(e) {
+			var type = e.type;
+			switch(type) {
+				case 'show':
+					$(document).on('touchmove', function(e) {
+						var target = $(e.target);
+						if (target.hasClass('.gnb') || target.closest('.gnb').size()) {
+						} else {
+							e.preventDefault();
+						}
+					});
+					break;
+				default:
+					$(document).off('touchmove');
+					break;
+			}
+		});
+
 		$('.searchToggle').on('click', function(e) { // common slideToggle
 			e.preventDefault();
 			$(this).toggleClass('searchOpen');
@@ -440,6 +487,7 @@ module.exports = function() {
 			$(".header").removeClass("fix");
 		});
 		$(".dimBg").remove();
+		$(document).off('touchmove');
 	};
 
 
