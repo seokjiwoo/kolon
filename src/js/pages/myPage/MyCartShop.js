@@ -228,7 +228,7 @@ module.exports = function() {
 						$(document).trigger('verifyMember', ['MYCART_SHOP']);
 					} else {
 						Cookies.set('instantOrder', orderData);
-						location.href = '/order/orderGoods.html';
+						location.href = '/order/orderGoods.html?fromCart=Y';
 					}
 				});
 				break;

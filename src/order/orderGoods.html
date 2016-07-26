@@ -416,7 +416,7 @@
 		<tr>
 			<td>
 				<div class="photoList">
-					<a href="#">
+					<a href="/shop/detail.html?productNumber={{productNumber}}">
 						<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
 						<span class="cartInfo">
 							<span class="cartTit">{{productName}}</span>
@@ -488,7 +488,7 @@
 		<tr>
 			<td>
 				<div class="photoList">
-					<a href="#">
+					<a href="/shop/detail.html?productNumber={{productNumber}}">
 						<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
 						<span class="cartInfo">
 							<span class="cartTit">{{productName}}</span>
@@ -543,6 +543,8 @@
 {{!--// order-delivery2-templates --}}
 </script>
 <form id="payForm" name="payForm" method="post" action="/apis/orders/process">
+	<input type="hidden" name="fromCart" id="fromCart" value="N">
+	
 	<input type="hidden" name="usingPoint" id="usingPoint" value="" /> <!-- 사용할 포인트 -->
 	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) -->
 

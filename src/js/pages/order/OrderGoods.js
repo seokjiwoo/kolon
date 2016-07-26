@@ -221,6 +221,8 @@ module.exports = function() {
 				$('#SelectQuota').val('00'); // 할부개월수
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
+				$('#fromCart').val(util.getUrlVar().fromCart == 'Y' ? 'Y' : 'N');
+				
 				$('.requestPaymentButton').click(getHashString);
 				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;

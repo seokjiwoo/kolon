@@ -556,6 +556,8 @@
 		<!-- @@include ../_template/footer.html -->
 	</div>
 <form id="payForm" name="payForm" method="post" action="/apis/constorders/advance/process">
+	<input type="hidden" name="fromCart" id="fromCart" value="N">
+	
 	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호) -->
 	<input type="hidden" name="wishSurveyDate" id="wishSurveyDate" value="" /> <!-- 희망 실측 방문/상담 날짜 -->
 	<input type="hidden" name="wishSurveyHour" id="wishSurveyHour" value="" /> <!-- 희망 실측 방문/상담 시간 -->

@@ -170,7 +170,7 @@ module.exports = function() {
 						$(document).trigger('verifyMember', ['MYCART_NEWFORM']);
 					} else {
 						Cookies.set('instantNFOrder', [$(this).data('order-info')]);
-						location.href = '/order/orderService.html';
+						location.href = '/order/orderService.html?fromCart=Y';
 					}
 				});
 
@@ -181,7 +181,7 @@ module.exports = function() {
 						$(document).trigger('verifyMember', ['MYCART_NEWFORM']);
 					} else {
 						Cookies.set('instantNFOrder', orderData);
-						location.href = '/order/orderService.html';
+						location.href = '/order/orderService.html?fromCart=Y';
 					}
 				});
 				break;
