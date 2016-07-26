@@ -18,14 +18,15 @@ module.exports = function() {
 	var controller = require('../../controller/HomeServiceController.js');
 	$(controller).on('washingTimeResult', washingTimeHandler);
 	$(controller).on('washingCompanyResult', washingCompanyListHandler);
-	//$(controller).on('requestWashingResult', requestWashingResultHandler);
+	$(controller).on('requestWashingResult', requestWashingResultHandler);
 
 	var addressController = require('../../controller/AddressController.js');
 	$(addressController).on('addressListResult', addressListHandler);
 	var addressArray;
 	var timeArray;
 	var serviceAddress;
-	
+	var selectedTimeObject;
+
 	var mCode;
 	
 	var loginController = require('../../controller/LoginController');
@@ -51,15 +52,7 @@ module.exports = function() {
 		setDatePicker();
 
 		refreshAddressDataHandler();
-		/*controller.movingAddressList();
-
-		$('#addressDrop1').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
-			controller.movingAddressList(data.values[0]);
-		});
-
-		$('#addressDrop2').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
-			controller.movingCompanyList(data.values[0]);
-		});*/
+		
 		$('.washCompany').hide();
 
 		$('#getCompanyListButton').click(requestWashingCompany);
@@ -67,6 +60,7 @@ module.exports = function() {
 		$('#addressDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			setAddress(data.values[0]);
 		});
+
 		$('#buttonPop').on('click', function(e) {
 			Super.Super.htmlPopup('../../_popup/priceChart.html', 590, 'popEdge', {
 				onOpen: function() {
@@ -163,6 +157,9 @@ module.exports = function() {
 
 	function requestWashingCompany(e) {
 		e.preventDefault();
+	
+		$('.washCompany').hide();
+		$('.washCompany').removeClass('on');
 		
 		var requestTargetName = $('#name').val();
 		var requestTargetContact = $('#phoneNumber').val();
@@ -176,19 +173,29 @@ module.exports = function() {
 		} else if ($('#timeDrop').val() == '') {
 			alert('희망 서비스 시각을 선택해 주세요');
 		} else {
-			$('#selectMessage').hide();
-			$('.washCompany').hide();
-
 			var requestDate = moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD');
 			var requestTime = $('#timeDrop').val()[0];
-			if (timeArray[requestDate][requestTime].washOnYn == 'Y') {
-				$('#washCompany_washOn').show();
-			}
-			if (timeArray[requestDate][requestTime].washSwatYn == 'Y') {
-				$('#washCompany_washSwat').show();
-			}
 			
-			//controller.movingCompanyList(moment(, originAddress.regionCode);
+			if (timeArray[requestDate] == undefined) {
+				alert('서비스 불가능 지역입니다');
+				$('#selectMessage').text('서비스 불가능 지역입니다.').show();
+			} else {
+				selectedTimeObject = timeArray[requestDate][requestTime];
+
+				if (selectedTimeObject.washOnYn != 'Y' && selectedTimeObject.washSwatYn != 'Y') {
+					alert('해당 일시에 서비스 가능한 세탁업체가 없습니다.\n일시를 변경 후 다시 시도해 주세요.')
+					$('#selectMessage').html('해당 일시에 서비스 가능한 세탁업체가 없습니다.<br>일시를 변경 후 다시 시도해 주세요.').show();
+				} else {
+					$('#selectMessage').hide();
+
+					if (selectedTimeObject.washOnYn == 'Y') {
+						$('#washCompany_washOn').show();
+					}
+					if (selectedTimeObject.washSwatYn == 'Y') {
+						$('#washCompany_washSwat').show();
+					}
+				}
+			}
 		}
 	};
 
@@ -197,34 +204,51 @@ module.exports = function() {
 		var requestTargetName = $('#name').val();
 		var requestTargetContact = $('#phoneNumber').val();
 		var comment = $('#additionalComments').val();
-		/*
+		
 		if (requestTargetName == '') {
 			alert('이름을 입력해 주세요');
 		} else if (requestTargetContact == '') {
 			alert('연락처를 입력해 주세요');
-		} else if (movingTypeCode == undefined) {
-			alert('서비스 종류를 선택해 주세요');
 		} else if ($('#companyListWrap').find('.on').data() == undefined ) {
 			alert('서비스 업체를 선택해 주세요');
 		} else if (!$('#agree01lb').hasClass('on')) {
 			alert('개인정보 제 3자 제공에 동의해 주세요');
 		} else {
-			originAddress.addressSectionCode = 'LS_ADDR_SECTION_01';
-			targetAddress.addressSectionCode = 'LS_ADDR_SECTION_02'; 
-			var movingService = {
-				"movingDate": moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD'),
-				"movingTypeCode": movingTypeCode
+			var companyCode = $('#companyListWrap').find('.on').data().companyCode;
+			var requestDate = moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD');
+			var requestTime = $('#timeDrop').val()[0];
+
+			switch(companyCode) {
+				case 'LS_COMPANY_SECTION_01':
+					var companyNumber = 1;
+					var serviceDateTimeRequest = timeArray[requestDate][requestTime].washOnDateTime;
+					break;
+				case 'LS_COMPANY_SECTION_02':
+					var companyNumber = 2;
+					var serviceDateTimeRequest = timeArray[requestDate][requestTime].washSwatDateTime;
+					break;
 			}
+
 			var livingService = {
 				"addRequestContents": comment,
-				"companyNumber": $('#companyListWrap').find('.on').data().companyNumber,
+				"companyNumber": companyNumber,
 				"requestTargetContact": requestTargetContact,
 				"requestTargetName": requestTargetName,
-				"serviceSectionCode": "LS_SERVICE_TYPE_01",
+				"serviceSectionCode": "LS_SERVICE_TYPE_02",
 				"termsNumber": 0
-			}
-			controller.requestMoving(originAddress, targetAddress, movingService, livingService);
-		}*/
+			};
+			var washServiceRequest = {
+				"dateTime": timeArray[requestDate][requestTime].dateTime,
+				"serviceDateTimeRequest": serviceDateTimeRequest,
+				"washContent": comment
+			};
+
+			//console.log( serviceAddress );
+			//console.log( livingService );
+			//console.log( washServiceRequest );
+
+			controller.requestWashing(companyCode, serviceAddress, livingService, washServiceRequest);
+		}
 	};
 
 	function requestWashingResultHandler(e, status, result) {
