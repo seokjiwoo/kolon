@@ -59,8 +59,8 @@ a{color:#666;}
 .gnb .myBtn span{display:block;padding-top:6px;color:#fff;}
 .gnb .myBtn.btnMypage {top:230px;margin-left:-50px;width:102px; }
 
-.menuhWrap{overflow: auto;position: fixed;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,.9) url('../images/bg_menu.png') no-repeat;background-size: cover;z-index: 1}
-.menuhWrap .btnClose{z-index: 1;position:absolute;top:13px;right:15px;width:34px;display: block;width:37px;height: 42px;font-size: 0;background: url('../images/close.png') no-repeat;background-size: 100%;}
+.menuhWrap{-webkit-overflow-scrolling:touch; overflow: auto;position: fixed;top: 0;width: 100%;height: 100%;background: rgba(0,0,0,.9) url('../images/bg_menu.png') no-repeat;background-size: cover;z-index: 1}
+.menuhWrap .btnClose{z-index: 1;position:absolute;top:13px;right:15px;display: block;width:37px;height: 42px;font-size: 0;background: url('../images/close.png') no-repeat;background-size: 100%;}
 .menuhWrap .btmArea{padding:30px 25px;}
 .menuhWrap .colMenu li a{height:40px;line-height:40px;display:block;font-size:14px;letter-spacing:-1px;color:#fff;}
 .menuhWrap .colMenu li a em{margin-right: 5px;font-size: 35px;color: #fff;}
