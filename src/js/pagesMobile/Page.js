@@ -252,6 +252,10 @@ module.exports = function() {
 
 			if ($(window).outerWidth() > setWidth) {
 				$(this).find('ul').css({ 'margin-left' : ($(window).outerWidth() - setWidth) / 2 });
+			} else {
+				if (!$(this).find('li.on').size()) return;
+				if ($(this).find('li.on').offset().left < $(window).outerWidth()) return;
+				$(this).stop().animate({scrollLeft: $(this).find('li.on').offset().left}, 1000);
 			}
 		})
 	}
