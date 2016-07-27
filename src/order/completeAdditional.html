@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 결제완료"} -->
+</head>
+<body class="login" data-page-id="order-complete-additional">
+	<div class="wrapper order">
+		<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+
+				<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
+
+			</div>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+	</div>
+
+
+<script id="order-complete-templates" type="text/x-handlebars-template">
+	{{!-- order-complete-templates --}}
+	<h2 class="secTit setTitC">결제완료</h2>
+	<!-- 시공형 상품 추가결제 완료 -->
+	<div class="completeBox">
+		<p class="tit"><b>선택하신 상품의 추가 결제가 완료되었습니다.</b></p>
+		<p><b>{{vxMemberName}}</b> 고객님께서 {{vxOrderDate}}에 주문하신 주문번호는 <span class="pointRed">{{vxOrderNumber}}</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 시공중인 상품에서 확인하실 수 있습니다.</p>
+	</div>
+	<!-- 결제 정보 -->
+	<h3 class="subTit">결제 정보</h3>
+	<div class="orderCont">
+		<div class="orderCont mt20">
+			<table class="payTable">
+				<tbody>
+					<tr>
+						<th>결제금액</th>
+					</tr>
+					<tr>
+						<td class="total t_c"><b class="italicNum totalPrice">{{paymentInfo.paymentPriceDesc}}</b> 원</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="orderCont" style='margin:20px 0;line-height:1.8em'>
+		<p>추가금액 결제 안내</p>
+		<ul>
+			<li>결제하신 서비스 건에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</li>
+		</ul>
+	</div>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>결제방법에 관한 결제방법, 입금자명, 입금계좌 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">결제방법</th>
+						<td>{{paymentInfo.paymentMethodCodeName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- // 주문상품내역 -->
+	<!-- //시공형 상품 추가결제 완료 -->
+	<div class="btnC">
+		<a href="/" class="btn btnSizeL btnColor02 btnWL">커먼 메인으로 이동</a>
+	</div>
+	{{!--// order-complete-templates --}}
+</script>
+</body>
+</html>

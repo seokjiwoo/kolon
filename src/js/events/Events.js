@@ -314,6 +314,8 @@ function Events() {
 				NEWFORM_ORDER_DEPOSIT_INFO: 'newFormDepositFormResult',
 				// 뉴폼상품 잔금결제 페이지 조회
 				NEWFORM_ORDER_BALANCE_INFO: 'newFormBalanceFormResult',
+				// 뉴폼상품 추가결제 페이지 조회
+				NEWFORM_ORDER_ADDITIONAL_INFO: 'newFormAdditionalFormResult',
 				// 뉴폼상품 주문 리스트 조회
 				NEWFORM_ORDER_LIST: 'myConstOrdersListResult',
 

@@ -105,6 +105,9 @@ module.exports = function() {
 		});
 
 		$('#washDate').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
+		$('#washDate').on('onSelect', function(){
+			refreshTimeDropStatus();
+		});
 	};
 
 	function refreshAddressDataHandler(e) {
@@ -164,10 +167,11 @@ module.exports = function() {
 	};
 
 	function refreshTimeDropStatus() {
-		var requestDate = moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD');
+		var requestDate = moment($('#washDate').datepicker('getDate')).format('YYYY-MM-DD');
 		if (timeArray[requestDate] == undefined) {
-			//alert('서비스 불가능 지역입니다');
+			//
 		} else {
+			//console.log(timeArray[requestDate]);
 			$.each(timeArray[requestDate], function(key, each){
 				$('#availableLabel'+key.substr(0, 2)).text(each.washOnYn == 'N' && each.washSwatYn == 'N' ? '(신청불가)' : '');
 			})

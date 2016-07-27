@@ -182,10 +182,13 @@ module.exports = function() {
 	function displayData(data) {
 		$.map(data, function(eachCartItem) {
 			if (eachCartItem.deliveryCharge == null) eachCartItem.deliveryCharge = 0;
-			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
+			if (eachCartItem.isDeliveryChargePrepaid == false) eachCartItem.salePrice += eachCartItem.deliveryCharge;
+
+			eachCartItem.addPriceDesc = util.currencyFormat(eachCartItem.addPrice);
 			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
-			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
 			eachCartItem.discountPriceDesc = util.currencyFormat(eachCartItem.discountPrice);
+			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
+			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
 			
 
 			if (util.isLocal()) {

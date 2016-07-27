@@ -165,6 +165,9 @@ $(document).ready(function() {
 			case 'order-orderServiceBalance':
 				PageModuleClass = require('./pages/order/OrderServiceBalance.js');
 				break;
+			case 'order-additional-payment':
+				PageModuleClass = require('./pages/order/OrderAdditionalPayment.js');
+				break;
 
 			// 홈서비스 주문서 작성
 			case 'order-orderHomeService':
@@ -180,6 +183,9 @@ $(document).ready(function() {
 				break;
 			case 'order-complete-balance':
 				PageModuleClass = require('./pages/order/CompleteBalance.js');
+				break;
+			case 'order-complete-additional':
+				PageModuleClass = require('./pages/order/CompleteAdditional.js');
 				break;
 			case 'order-complete-homeService':
 				PageModuleClass = require('./pages/order/CompleteHomeService.js');

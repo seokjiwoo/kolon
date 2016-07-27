@@ -251,7 +251,8 @@ module.exports = function() {
 				break;
 			case 401:
 				switch(Number(response.errorCode)) {
-					case 1613:	// 휴면계정
+					case 1613:	// 휴면계정 (실명인증 한 경우)
+					case 1620:	// 휴면계정 (실명인증 안 한 경우)
 						Cookies.set('accountReuse', $('#inputName').val(), { expires: 1/1440 });	// 1 minutes
 						location.href = '/member/accountReuse.html';
 						break;
