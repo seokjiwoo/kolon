@@ -1,12 +1,13 @@
 #membersLogin{background-image: url('../images/bg_member.png');}
+#membersLogin .container > .wrap{padding-top: 148px;}
 
-.members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #f1645c;font-size:40px;}
-.members .pageTit:before, .members .pageTit:after{content:'';display: inline-block;width: 70px;height: 1px;vertical-align: middle; ;background: #f8b2ae;}
+.members .pageTit{padding:40px 0;color: #fff;text-align: center;background: #465f8d;font-size:40px;}
+.members .pageTit:before, .members .pageTit:after{content:'';display: inline-block;width: 70px;height: 1px;vertical-align: middle; ;background: #fff;}
 .members .pageTit:before{margin-right:20px;}
 .members .pageTit:after{margin-left:20px;}
 .members .subTit{width:100%;font-family:'NotoSansR', sans-serif;color: #000;font-size: 20px;}
 .members .singleCard .subTit{padding-bottom:25px;border-bottom:1px solid #545454; text-align: center;line-height: 1.3em}
-.members .singleCard .subTit b{color: #00aeb9}
+.members .singleCard .subTit b{color: #b08967}
 .members .container .subTit .note{display: block;margin-top:8px;text-align: center;font-size: 14px;color: #666;}
 .members .singleCard .subTit.ft30{font-size: 30px !important;}
 .members .container .subTxt{font-size: 16px;color: #000;}
