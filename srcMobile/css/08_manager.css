@@ -6,7 +6,7 @@
 .manager .portfolioArea .count i,
 .manager .portfolioArea .count em{font-style:normal;}
 .manager .portfolioArea .bx-controls-direction .bx-prev,
-.manager .portfolioArea .bx-controls-direction .bx-next{position:absolute;top:50%;margin:-14px 0 0 0;width:20px;height:33px;display:block;background:url("../images/ico_slide_btn.png") no-repeat 0 0;background-size:100%;opacity:0.5;}
+.manager .portfolioArea .bx-controls-direction .bx-next{position:absolute;top:24%;margin:-14px 0 0 0;width:20px;height:33px;display:block;background:url("../images/ico_slide_btn.png") no-repeat 0 0;background-size:100%;opacity:0.5;}
 .manager .portfolioArea .bx-controls-direction .bx-prev{left:15px;}
 .manager .portfolioArea .bx-controls-direction .bx-next{background-position:0 -33px;right:15px;}
 .manager .expertArea{position:relative;height:202px;padding-top:30px;background:#343434;margin-bottom:10px;}
@@ -106,6 +106,9 @@
 .manager .managerProfile {width:100%; overflow:hidden; padding:36px 0 21px; text-align:center; background:#f9fafc;}
 .manager .managerProfile b {width:100%; font-size:23px; line-height:24.5px; color:#1a1a1a; display:inline-block;}
 .manager .managerProfile span {font-size:12px; color:#b08967;}
+
+.manager .portfolioArea .followList{background:#343434;}
+.manager .portfolioArea .followList .lately{margin-top:0;padding-bottom:15px;}
 
 @media (max-width:480px){
   .managerMain .specialistVisual .info{right:17%;top:29%;}
