@@ -60,6 +60,7 @@ a.agreeBtn.open:after {background-position:0 0;}
 .order .payTab.tabWrap .on a {background-position:0 0; color:#000;}
 .order a.deliveryBtn {width:100%; height:35px; border-radius:17.5px; color:#fff; text-align:center; background:#2d427a; display:inline-block; vertical-align:middle; line-height:35px;}
 .order a.deliveryBtn span {padding-right:18.5px; display:inline-block; background:url(../images/ico_follow_on.png) 100% 50% no-repeat; background-size:13.5px 10px;}
+.order .productBtnWrap .newAddress form + .newAdr {margin-top:15px;}
 @media (max-width:320px){
 	.order .payTab.tabWrap span + span {margin-left:3px;}
 }
@@ -70,7 +71,6 @@ a.agreeBtn.open:after {background-position:0 0;}
 .order .tbBox ul.tbList li b{width:20%; color:#666; font-family:'NotoSansR', 'RobotoR', sans-serif; display:inline-block; float:left;}
 .order .tbBox ul.tbList li span {width:80%; float:left; display:inline-block;}
 .order .tbBox ul.tbList li + li {margin-top:10px;}
-
 .delivery1 .tabWrap {padding-top:0;}
 .order .formWrap + .orderTit,
 .order .tbBox + .orderTit {margin-top:20px;}
