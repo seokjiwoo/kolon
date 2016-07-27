@@ -313,12 +313,13 @@ h3.sTit{font-size:50px;}
 .imgBox img {width:100%;vertical-align:top}
 .subNewformTit {margin-top:10px;font-family:'NotoSansL', sans-serif;font-size:15px;color:#666;}
 
-.detailArea.noImg .icoNewformTit:before{display:none;}
-.detailArea.noImg .subNewformTit{line-height:1.4em;}
+.detailArea.titBgnone .icoNewformTit:before{display:none;}
+.detailArea.txtPadding .subNewformTit{line-height:1.4em;padding:0 15px;}
+.detailArea.imgPadding .imgBox{padding:0 15px;}
 .detailArea .platewrap{padding:0 15px;}
 .detailArea .platewrap .plate{border-top:1px solid #333;border-bottom:1px solid #333;}
 .detailArea.colorArea{padding:40px 0 40px;border-top:1px solid #ccc;}
-.detailArea.colorArea .slide{}
+.detailArea.colorArea .slide{margin-top:25px;}
 .detailArea.colorArea .slide ul{}
 .detailArea.colorArea .slide ul li{}
 .detailArea.colorArea .slide ul li a{}
