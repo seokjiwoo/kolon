@@ -1,5 +1,5 @@
 /* manager */
-.managerList .container .wrap{padding-top: 80px;}
+.managerList .subTop{padding-top: 60px;}
 .managerList{background: #48484a;}
 .managerList .topMenu{background: #fff !important;}
 .managerList .topTit{position: absolute;top: 400px;width:50%;right: 0;background:none;text-align: right;z-index: 4;}

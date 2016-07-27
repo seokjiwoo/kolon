@@ -371,7 +371,11 @@ module.exports = function() {
 		if ($('#topBannerCheckArea label').hasClass('on')) Cookies.set('topBannerHide', 'EXTERMINATE', { expires: 7 });
 
 		$('#topBanner').hide();
-		$('.container').css('padding-top','0');
+		if($('.wrapper').hasClass('members')) {
+			$('.container').css('padding-top','60px')
+		} else {
+			$('.container').css('padding-top','0')
+		}
 		$('#lnbWrapper').css({
 			"top": 0,
 			"height": "100%"
