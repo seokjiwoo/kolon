@@ -633,3 +633,6 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #movingDetail  .stateWrap li{width: 82%;}
 
 #myPoint .subTit + .record td{padding: 30px;}
+
+.my .alignBox .dropExpand.dropOn{width: 456px;}
+.my .alignBox .drop.dropChk li{width: 122px;}
