@@ -92,8 +92,11 @@ module.exports = function() {
 		// Handlebars setting
 		initHandlebars();
 
+		// Mobile FastClick 예외 요소 - needsclick 적용
+		setFastClickIgnore();
+
 		$('.radioBox label').on('click', radioButtonHandler); 		// radio button
-		$('.checkbox label').on('click', checkBoxHandler);			// checkbox
+		$('.checkbox label').on('click touch', checkBoxHandler);			// checkbox
 		$('.btnPop').on('click', htmlPopupLinkHandler);				// basic Popup
 		$('.optionNum a.btnMinus, .optionNum a.btnPlus').on('click', optionNumHandler);	// option num
 		
@@ -111,6 +114,14 @@ module.exports = function() {
 
 		$(window).resize(function(e) { winH = $(window).height(); });
 	};
+
+	// Mobile FastClick 예외 요소 - needsclick 적용
+	function setFastClickIgnore() {
+		if (util.isMobile()) {
+			$('.radioBox >').addClass('needsclick');
+			$('.checkbox >').addClass('needsclick');
+		};
+	}
 
 	function loginDataHandler(e, status, result) {
 		loginData = loginDataModel.loginData();
@@ -456,6 +467,9 @@ module.exports = function() {
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxRefreshListener(e) {
+		// Mobile FastClick 예외 요소 - needsclick 적용
+		setFastClickIgnore();
+
 		$('.radioBox label').off('click', radioButtonHandler)
 							.on('click', radioButtonHandler);
 
@@ -475,6 +489,9 @@ module.exports = function() {
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
+		// Mobile FastClick 예외 요소 - needsclick 적용
+		setFastClickIgnore();
+
 		$('.radioBox label').off('click', radioButtonHandler)
 							.on('click', radioButtonHandler);
 
