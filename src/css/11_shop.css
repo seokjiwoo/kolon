@@ -124,7 +124,6 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .detailArea{text-align: center;}
 .detailArea h3 span {display:block;font-size:60px;font-style:normal;font-family:NotoSansM;font-weight:normal;font-style:normal;}
 .shopTop.detailArea h3 {font-size:55px;}
-.shopTop.topArea .topContBox .unitPrice {margin-top:100px;}
 
 .productDetail .cardSlider .bx-wrapper{position:relative;overflow: hidden;}
 .productDetail .cardSlider .cardWrap{width: 100%;min-width:100%;max-width:none;}
@@ -152,7 +151,7 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .topArea .topContBox .topCont .cardCon {position:absolute;width:auto;padding:0;top:165px;right:0;}
 .topArea .topContBox .topCont .cardCon .upTo2 {position:static;}
 
-.topArea .topContBox .unitPrice {overflow:hidden;margin-top:150px;}
+.topArea .topContBox .unitPrice {overflow:hidden;position: absolute;bottom: 280px;}
 .topArea .topContBox .unitPrice li {float:left;margin:30px 0 0 75px;}
 .topArea .topContBox .unitPrice li h4 {display:inline-block;background:#000;padding:2px 4px;font-size:14px;color:#fff;}
 .topArea .topContBox .unitPrice li p {position:relative;padding-right:10px;margin-top:10px;font-family:'NotoSansT', sans-serif;font-size:36px;font-weight:normal}
