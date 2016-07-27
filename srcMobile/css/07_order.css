@@ -91,12 +91,15 @@ a.agreeBtn.open:after {background-position:0 0;}
 
 .complete {width:100%; overflow:hidden;}
 .complete h2.secTit {text-align:center;}
-.complete p {text-align:center; line-height:20px;}
+.complete p {text-align:center; line-height:20px; color:#666;}
 .complete p b {color:#000;}
-.complete p span.pointRed {text-decoration:underline; font-weight:bold;}
+.complete p span.pointBrown {text-decoration:underline; font-weight:bold;}
 .complete p span.iconArrow {padding-left:15px; position:relative; display:inline-block;}
 .complete p span.iconArrow:before {content:''; width:10.5px; height:9.5px; margin-top:-4.525px; background:url(../images/ico_arrow.png) 0 0% no-repeat; background-size:10.5px 9.5px; position:absolute; top:50%; left:0;}
-
+.complete p.tit {font-size:20px; color:#333; padding-top:25px; position:relative;}
+.complete p.tit:before {content:''; width:93.5px; height:15px; margin-left:-46.75px; background:url(../images/txt_common02.png) 0 0 no-repeat; background-size:93.5px 15px; position:absolute; top:0; left:50%;}
+.complete p.tit + p {margin-top:10px;}
+.completeBg {background:url(../images/complete_bg.png) 0 80% no-repeat #fff; background-size:57.5px 60.5px;}
 .addressList {width:100%; overflow:hidden;}
 .addressList li {width:100%; padding:20px 0 13px; border-bottom:1px solid #ccc; overflow:hidden;}
 .addressList li p {line-height:130%;}
@@ -116,7 +119,6 @@ a.agreeBtn.open:after {background-position:0 0;}
 .addressNon {width:100%; overflow:hidden; padding:30px 0 37px; color:#666; text-align:center; line-height:20px;}
 .formWrap + .underTxtMark {margin-top:14.5px;}
 .underTxtMark + h3.conTit {margin-top:25px;}
-
 ul.orderDetailList {width:100%; overflow:hidden;}
 ul.orderDetailList li {padding:15px 0; border-bottom:1px solid #ccc;}
 ul.orderDetailList li p {width:100%; overflow:hidden; color:#333; font-size:15px; line-height:130%;}
@@ -124,7 +126,6 @@ ul.orderDetailList li p.detailTxt {font-size:13px; color:#666;}
 ul.orderDetailList li p > b {width:20%; float:left; display:inline-block; font-weight:normal;}
 ul.orderDetailList li p > span {width:80%; float:right; display:inline-block; text-align:right;}
 ul.orderDetailList li p + p {margin-top:9px;}
-
 ul.reserInfo {width:100%; overflow:hidden;}
 ul.reserInfo > li {padding:15px 0;}
 ul.reserInfo > li + li {border-top:1px dashed #ccc;}
