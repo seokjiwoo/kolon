@@ -108,7 +108,7 @@
 .activeOption .cancelOption:before {content:'';display:inline-block;position:absolute;top:50%;left:50%;margin:-6px 0 0 -5px;width:11px;height:11px;background:url(../images/btn_closeW.png) no-repeat;}
 
 
-.detailArea h3 {font-size:60px;font-style:normal;font-family:NotoSansM;}
+.detailArea h3 {font-size:60px;font-style:normal;font-family:'NotoSansM';}
 h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;font-weight: bold;font-style: italic;}
 .detailArea .icoNewformTit:before {content:'';display:block;width:83px;height:75px;margin:0 auto;background:url('../images/ico_newform_tit.png') no-repeat}
 .italic {font-style:italic;font-family:'Times New Roman', sans-serif;font-weight:bold}
@@ -122,12 +122,12 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 
 /* shop detail */
 .detailArea{text-align: center;}
-.detailArea h3 span {display:block;font-size:60px;font-style:normal;font-family:NotoSansM;font-weight:normal;font-style:normal;}
+.detailArea h3 span {display:block;font-size:60px;font-style:normal;font-family:'NotoSansM';font-weight:normal;font-style:normal;}
 .shopTop.detailArea h3 {font-size:55px;}
 
 .productDetail .cardSlider .bx-wrapper{position:relative;overflow: hidden;}
 .productDetail .cardSlider .cardWrap{width: 100%;min-width:100%;max-width:none;}
-.productDetail .cardSlider li{padding-bottom:0;}
+.productDetail .cardSlider li{padding-bottom:0;margin-bottom: 0}
 .productDetail .cardSlider .bx-controls{position: absolute;z-index: 1;top: 0;right:0}
 .productDetail .cardSlider .bx-controls a{display: inline-block;width: 41px;height: 41px;position: static;background: url('../images/detail_arrow.png') no-repeat;}
 .productDetail .cardSlider .bx-controls .bx-prev{margin-right: 10px;background-position: -69px 0}
@@ -136,7 +136,7 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .productDetail .detailArea .subTit:after{content:'';display: block;width: 100px;height: 1px;background: #000;margin:50px auto 0; }
 
 /* magazine detail */
-.magazineTop.detailArea h3 span {font-size:60px;font-style:normal;font-family:NotoSansM;}
+.magazineTop.detailArea h3 span {font-size:60px;font-style:normal;font-family:'NotoSansM';}
 
 /* newform detail */
 /* topArea */
@@ -214,7 +214,7 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .unitIco li {display:inline-block;text-align:center;width:100px;height:115px;margin-left:7px;}
 .unitIco li:first-child {margin-left:0;}
 .unitIco li span {font-size:14px}
-.unitIco li span:before {content:'';display:block;width:55px;height:55px;margin:15px auto 0;background:url(../images/ico_unit.png) no-repeat;}
+.unitIco li span:before {content:'';display:block;width:55px;height:55px;margin:15px auto 0;background:url('../images/ico_unit.png') no-repeat;}
 .unitIco li.unitIco01 span:before {background-position:0 0;}
 .unitIco li.unitIco02 span:before {background-position:0 -55px;}
 .unitIco li.unitIco03 span:before {background-position:0 -110px;}
@@ -238,20 +238,20 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .basicOption li p {font-size:14px;margin-top:15px;}
 .basicOption li p.optionLeft {float:left;}
 .basicOption li p.optionRight {float:right;}
-.basicOption li:before {content:'';display:inline-block;margin:0 auto;background:url(../images/newform_option.png) no-repeat;}
+.basicOption li:before {content:'';display:inline-block;margin:0 auto;background:url('../images/newform_option.png') no-repeat;}
 .basicOption li.basicOption01:before {width:51px;height:48px;background-position:0 center;}
 .basicOption li.basicOption02:before {width:52px;height:48px;background-position:-100px 0;}
 .basicOption li.basicOption03:before {width:165px;height:48px;background-position:0 -50px;}
 .basicOption li .basicIco {font-size:14px;}
 .basicOption li .basicIco .italic {font-size:20px;}
-.basicOption li .basicIco .italic:before {content:'';display:block;width:12px;height:14px;margin:15px auto 10px;background:url(../images/newform_option.png) no-repeat;background-position:-7px -118px;}
+.basicOption li .basicIco .italic:before {content:'';display:block;width:12px;height:14px;margin:15px auto 10px;background:url('../images/newform_option.png') no-repeat;background-position:-7px -118px;}
 .basicOption li.basicOption03 .basicIco .italic:before {width:113px;height:15px;background-position:-50px -118px;}
 .constructPrice {margin-top:70px}
 .constructPrice dl {overflow:hidden;width:400px;margin:30px auto 0;font-size:14px;}
 .constructPrice dl + dl {margin-top:15px;}
 .constructPrice dt, .constructPrice dd {float:left;display:inline-block;text-align:left;margin:0;line-height:20px;}
 .constructPrice dt {position:relative;width:90px}
-.constructPrice dt:after {content:'';display:inline-block;position:absolute;top:50%;right:0;margin-top:-6px;width:15px;height:12px;background:url(../images/newform_option.png) no-repeat;background-position:-30px -119px;}
+.constructPrice dt:after {content:'';display:inline-block;position:absolute;top:50%;right:0;margin-top:-6px;width:15px;height:12px;background:url('../images/newform_option.png') no-repeat;background-position:-30px -119px;}
 .constructPrice dt + dd {width:120px;margin-left:20px;}
 .constructPrice dd + dd {margin-left:20px;}
 .constructPrice .italic {font-size:20px;}
@@ -323,8 +323,8 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .productDetail #SellerArea .cardSlider .bx-controls .bx-next{background-position: -27px -41px}
 
 /* recommend */
-.detailArea.recommend{padding-top: 150px;text-align: center;}
-.detailArea.recommend + .recommend{padding-bottom: 140px;}
+.detailArea.recommend{text-align: center;margin-top: 100px;padding-bottom: 100px;}
+.detailArea.recommend + .recommend{margin-top: 0}
 
 /* packageArea */
 .packageArea{background: url('../images/bg_relate.jpg') no-repeat center top;}

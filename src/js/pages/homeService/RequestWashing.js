@@ -65,7 +65,8 @@ module.exports = function() {
 			setAddress(data.values[0]);
 		});
 
-		$('#buttonPop').on('click', function(e) {
+		$('.priceChart').on('click', function(e) {
+			e.preventDefault();
 			Super.Super.htmlPopup('../../_popup/priceChart.html', 590, 'popEdge', {
 				onOpen: function() {
 					$('.tabBox a').on('click focusin',function(){
@@ -112,6 +113,7 @@ module.exports = function() {
 
 	function selectAddressDataHandler(e, seq) {
 		$('#addressLabel').text(addressArray[seq].addressManagementName);
+		setAddress(seq);
 	};
 
 	function addressListHandler(e, status, list) {
@@ -138,7 +140,7 @@ module.exports = function() {
 		$('#washingAddress').html('<dt>- 도로명</dt><dd>'+addressObject.roadBaseAddress+'</dd><dt>- 지번</dt><dd>'+addressObject.lotBaseAddress+'</dd><dt>- 상세주소</dt><dd>'+addressObject.detailAddress+'</dd>');
 		serviceAddress = addressObject;
 
-		controller.washingCompanyList(serviceAddress.roadBaseAddress+' '+serviceAddress.detailAddress);
+		controller.washingCompanyList(serviceAddress.roadBaseAddress);
 	};
 
 	function washingCompanyListHandler(e, status, result) {
@@ -153,7 +155,7 @@ module.exports = function() {
 			}
 			//$("#washDate").datepicker("option", "disabled", false);
 		}
-		controller.washingTimeList(serviceAddress.roadBaseAddress+' '+serviceAddress.detailAddress);
+		controller.washingTimeList(serviceAddress.roadBaseAddress);
 	};
 
 	function washingTimeHandler(e, status, result) {
@@ -257,8 +259,7 @@ module.exports = function() {
 			};
 			var washServiceRequest = {
 				"dateTime": timeArray[requestDate][requestTime].dateTime,
-				"serviceDateTimeRequest": serviceDateTimeRequest,
-				"washContent": comment
+				"serviceDateTimeRequest": serviceDateTimeRequest
 			};
 
 			//console.log( serviceAddress );
