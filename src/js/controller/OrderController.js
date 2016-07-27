@@ -170,8 +170,8 @@ function ClassOrderController() {
 	 * @param {Arrary} myCartRequestList
 	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/my-page-controller/createMyCartUsingPOST
 	 */
-	function addMyCartList(myCartRequestList, requestedObj) {
-		Super.callApi('/apis/me/cart', 'POST', myCartRequestList, function(status, result) {
+	function addMyCartList(myCartRequestList, constFlag, requestedObj) {
+		Super.callApi('/apis/me/cart'+(constFlag?'?constYn=Y':''), 'POST', myCartRequestList, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addMyCartListResult', [status, result, requestedObj]);
 			} else {

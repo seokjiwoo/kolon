@@ -225,7 +225,7 @@ module.exports = function() {
 				delete each.price;
 			});
 			
-			cartController.addMyCartList(cartData, 'shop');
+			cartController.addMyCartList(cartData, false, 'shop');
 		}
 	};
 

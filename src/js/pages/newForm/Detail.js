@@ -210,7 +210,7 @@ module.exports = function() {
 				delete each.quantity;
 				delete each.price;
 			});
-			cartController.addMyCartList(cartData, 'newForm');
+			cartController.addMyCartList(cartData, true, 'newForm');
 		}
 	};
 

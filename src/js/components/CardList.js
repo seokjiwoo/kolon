@@ -191,6 +191,7 @@ module.exports = function() {
 		initOverEffect();
 		initCardRadio();
 
+		// 카트에 바로담기 버튼. 시공상품은 옵션 없는 케이스가 없으므로 배송상품 카트에서만 핸들링되는 case가 존재함.
 		$('.cardAddCartButton').click(function(e) {
 			e.preventDefault();
 			orderData = [{
@@ -198,7 +199,7 @@ module.exports = function() {
 				"orderOptionNumber": 0,
 				"quantity": 1
 			}];
-			orderController.addMyCartList(orderData, 'card');
+			orderController.addMyCartList(orderData, false, 'card');
 		});
 
 		bindEffects();
