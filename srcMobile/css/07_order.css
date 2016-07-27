@@ -2,7 +2,8 @@
 .order .orderWrap {background:#fff; padding:25px 15px; font-family:'NotoSansR', 'RobotoR', sans-serif;}
 .order .orderWrap + .orderWrap {margin-top:10px;}
 .order .zipCode label.btnColor03 {background:#666;}
-
+.order .orderTab span a.nonBtn,
+.order .orderTab span.on a.nonBtn {background:#cbcbcb; color:#ededed;}
 .orderInfo {border:4px solid #333; margin-top:15px;}
 .orderInfo dl {width:100%; position:relative;}
 .orderInfo dl + dl {border-top:1px solid #333;}
@@ -139,7 +140,7 @@ ul.reserInfo > li .reserCont p.date span.dateInp {width:50%; float:left; display
 ul.reserInfo > li .reserCont p.date span.dateInp em {display:inline-block;}
 ul.reserInfo > li .reserCont p.date span.dateInp + span.dateInp em {padding-left:10px; position:relative;}
 ul.reserInfo > li .reserCont p.date span.dateInp + span.dateInp em:before {content:'';width:7px; height:1px; background:#ccc; position:absolute; top:50%; left:0;}
-ul.reserInfo > li .reserCont select + textarea {margin-top:10px;}
+ul.reserInfo > li .reserCont .selectBox + textarea {margin-top:10px;}
 ul.reserInfo > li p.underTxt {margin-top:10px; vertical-align:middle;}
 ul.reserInfo > li .reserText {width:100%; text-align:right; color:#666; line-height:130%; margin-top:10px;}
 ul.reserInfo > li .reserText p + p {margin-top:10px;}
