@@ -18,6 +18,7 @@ module.exports = function() {
 	events = require('../events/events'),
 	snsShare = require('../components/SnsShare.js'),
 	scrollMenu = require('../components/ScrollMenu'),
+	cardList = require('../components/CardList.js'),
 	COLORBOX_EVENT = events.COLOR_BOX,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
@@ -70,6 +71,10 @@ module.exports = function() {
 		eventManager.on(WINDOWOPENER_EVENT.REFRESH, onWinOpenerRefreshListener)
 					.on(WINDOWOPENER_EVENT.DESTROY, onWinOpenerDestoryListener);
 
+		// MeberInfo event Listener
+		eventManager.on(MEMBERINFO_EVENT.WILD_CARD, onMemberInfoHandler);
+
+
 		// info slider event Listener
 		eventManager.on(INFOSLIDER_EVENT.REFRESH, infoSliderRefreshHandler)
 					.on(INFOSLIDER_EVENT.DESTROY, infoSliderDestoryhHandler);
@@ -82,6 +87,8 @@ module.exports = function() {
 
 
 		initAddressPopupButton();	// 주소록 팝업버튼
+
+		cardList().initOverEffect();
 
 		$('.btnToggle').on('click', function(e) { // common slideToggle
 			var btn = $(this);
@@ -558,7 +565,7 @@ module.exports = function() {
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxRefreshListener(e) {
-		initHorizontalScroll();
+		cardList().initOverEffect();
 		snsShare.refresh();
 	}
 
@@ -566,6 +573,22 @@ module.exports = function() {
 	// @see EventManager.js#onColorBoxListener
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
+		cardList().cleanOverEffect();
+	}
+
+	// MeberInfo event Listener
+	// @see Events.js#Events.MEMBER_INFO
+	// @example
+	// 	var isLogin = eventManager.triggerHandler(MEMBERINFO_EVENT.IS_LOGIN);
+	function onMemberInfoHandler(e) {
+		var type = e.type;
+
+		switch(type) {
+			// 로그인 유무 체크
+			case MEMBERINFO_EVENT.IS_LOGIN:
+				return (loginDataModel.loginData()) ? true : false;
+				break;
+		}
 	}
 
 

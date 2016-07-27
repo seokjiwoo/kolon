@@ -3,99 +3,136 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"배송형 상품 상세정보"} -->
 </head>
-<body data-page-id="">
+<body data-page-id="shop-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
-				<div class="detailArea topArea">
-					<div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
-				    		<div class="topCont subTop">
-					    		<ul class="tagList">
-								<li><a href="#">NewForm</a></li>
-								<li><a href="#">Compact</a></li>
-								<li><a href="#">Full</a></li>
-								<li><a href="#">50㎡ (15PY)</a></li>
-							</ul>
-						    <h3>LIVINGROOM</h3>
-						    <p class="infoSub">반려식물 선인장 인테리어<span>오래 키울수록 친구같아지는 선인장</span></p>					    
-						    <p class="ownerInfo">by 박실장 <span>KOLON GLOBAL</span></p>
-							<div class="cardCon">
-								<div class="upTo2">
-									<p>기간한정<span><b>20</b>%</span></p>
+				<div class="detailArea topArea js-detail-info-wrap">
+					<script id="detail-info-templates" type="text/x-handlebars-template">
+					{{!-- detail-info-templates --}}
+						<div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
+							<div class="topCont subTop">
+								<ul class="tagList">
+									{{!-- 생산자유형 --}}
+										{{#vxSwitch producerTypeCode}}
+											{{#vxDefault}}
+											<li><a href="#">{{producerTypeCodeName}}</a></li>
+											{{/vxDefault}}
+										{{/vxSwitch}}
+									{{!-- 생산자유형 --}}
+
+									{{!-- 상품분류 최하위 --}}
+										{{#vxSwitch productTypeCode}}
+											{{#vxDefault}}
+											<li><a href="#">{{productTypeCodeName}}</a></li>
+											{{/vxDefault}}
+										{{/vxSwitch}}
+									{{!-- 상품분류 최하위 --}}
+								</ul>
+								<h3>{{productName}}</h3>
+								<p class="infoSub">{{productDesc}}</span></p>
+
+								<div class="js-detail-partner-wrap"></div>
+
+								<div class="cardCon">
+									<div class="upTo2">
+										<p>
+										기간한정 / API - 확인 필요
+										<!-- <span><b>20</b>%</span> -->
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="detailRow01">
+							<div class="info">
+								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
+									<div class="dis">
+										<span class="sale">{{basePriceDesc}}원</span>
+										<span class="discount">{{discountMethod}}<i>%</i></span>
+									</div>
+									<div class="price"><span>{{salePriceDesc}}</span>원</div>
+								{{else}}
+									<div class="price"><span>{{salePriceDesc}}</span>원</div>
+								{{/vxIF}}
+								<div class="delivery">
+									<span>배송비 주문 시 결제</span>
+									<span><em>{{deliverCharge}}</em>원</span>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="detailRow01">
-						<div class="info">
-							<div class="dis">
-								<span class="sale">165,000원</span>
-								<span class="discount">10<i>%</i></span>
-							</div>
-							<div class="price"><span>150,000</span>원</div>
-							<div class="delivery">
-								<span>배송비 주문 시 결제</span>
-								<span><em>3,000</em>원</span>
-							</div>
+						<!-- 
+						<div class="deadlineCount">
+							<p class="deadlineDate">남은 시간 <b>2일</b> 남음</p>
+							<p class="deadlineNum">현재 <b>3개</b> 남음</p>
 						</div>
-					</div>
-					<div class="deadlineCount">
-					    	<p class="deadlineDate">남은 시간 <b>2일</b> 남음</p>
-					    	<p class="deadlineNum">현재 <b>3개</b> 남음</p>
-				    </div>
-					<div class="newFormBtn">
-				  		<ul class="subBtn">
-				  			<li class="subBtn01">
-				  				<a href="#">
-				  					<span class="hide">좋아요</span>
-				  					<span class="countNum">12,213</span>
-				  				</a>
-				  			</li>
-				  			<li class="subBtn02">
-				  				<a href="#">
-				  					<span class="hide">스크랩</span>
-				  					<span class="countNum">12,213</span>
-				  				</a>
-				  			</li>
-				  			<li>
-				  				<span class="socialBtn">
-				  					<a href="#" class="socialBtnOpen">
-				  						<span class="hide">공유하기</span>
-				  					</a>
-				  					<a href="#" class="socialBtn01">
-				  						<span class="hide">페이스북</span>
-				  					</a>
-						            <a href="#" class="socialBtn02">
-						            	<span class="hide">트위터</span>
-						            </a>
-						            <a href="#" class="socialBtn03">
-						            	<span class="hide">핀터레스트</span>
-						            </a>
-						            <a href="#" class="socialBtn04">
-						            	<span class="hide">카카오스토리</span>
-						            </a>
-						            <a href="#" class="socialBtn05">
-						            	<span class="hide">URL복사</span>
-						            </a>
-						            <a href="#" class="socialBtnClose">
-						            	<span class="hide">닫기</span>
-						            </a>
-				  				</span>
-				  			</li>
-				  		</ul>
-					</div>
-				</div>
-				<div class="detailArea eventBanner">
-					<a href=""><img src="../images/eventBanner01.png"></a>
-					<a href=""><img src="../images/eventBanner02.png"></a>
+						 -->
+						<div class="newFormBtn">
+							<ul class="subBtn">
+								<li class="subBtn01">
+									<a href="#" class="js-add-like">
+										<span class="hide">좋아요</span>
+										<span class="countNum">{{likeCount}}</span>
+									</a>
+								</li>
+								<li class="subBtn02">
+									<a href="#" class="js-add-scrap">
+										<span class="hide">스크랩</span>
+										<span class="countNum">{{scrapCount}}</span>
+									</a>
+								</li>
+								<li>
+									<span class="socialBtn js-social-wrap">
+										<a href="#" class="socialBtnOpen js-open">
+											<span class="hide">공유하기</span>
+										</a>
+										<a href="#" class="socialBtn01" data-share-sns="facebook">
+											<span class="hide">페이스북</span>
+										</a>
+										<a href="#" class="socialBtn02" data-share-sns="twitter">
+											<span class="hide">트위터</span>
+										</a>
+										<a href="#" class="socialBtn03" data-share-sns="pinterest">
+											<span class="hide">핀터레스트</span>
+										</a>
+										<a href="#" class="socialBtn04" data-share-sns="kakaostory">
+											<span class="hide">카카오스토리</span>
+										</a>
+										<a href="#" class="socialBtn05" data-share-sns="url">
+											<span class="hide">URL복사</span>
+										</a>
+										<a href="#" class="socialBtnClose js-close">
+											<span class="hide">닫기</span>
+										</a>
+									</span>
+								</li>
+							</ul>
+						</div>
+					{{!--// detail-info-templates --}}
+					</script>
 				</div>
 
+				<!-- 이벤트 베너 -->
+				<div class="detailArea eventBanner js-detail-events-wrap">
+					<script id="detail-events-templates" type="text/x-handlebars-template">
+						{{!-- detail-events-templates --}}
+						{{#each .}}
+							<a href="javascript:;" style="background-image:url('../images/eventBanner_left.png')">이벤트 / API - 확인 필요</a>
+						{{/each}}
+						{{!--// detail-events-templates --}}
+					</script>
+				</div>
+				<!-- // 이벤트 베너 -->
+
+				<!-- detail 상단 탭 -->
 				<div class="tabType03Fix payTab tabWrap js-menu-tab">
 					<span class="on"><a href="#productsInfo">상품정보</a></span>
 					<span><a href="#sellerInfo">판매자정보</a></span>
 					<span><a href="#purchasingInfo">구매정보</a></span>
 				</div>
+				<!-- // detail 상단 탭 -->
 
 				<div>
 					<!-- tab1 상품정보 -->
@@ -106,129 +143,49 @@
 						</div>
 						<!--// 기본 정보 -->
 
-						<!-- 컨셉 영역, 이미지 스크랩 가능 -->
-						<div class="detailArea conceptArea titBgnone txtPadding">
-							<p class="mt30 imgBox"><img src="../images/compact_detail02.png"></p>
-							<h3 class="icoNewformTit">[BEN] goofy stool</h3>
-							<p class="subNewformTit">디자이너 필립스탁의 유명한3대 체어의 라인을 따다 합쳐서 만든 의자로 인테리어 소품으로도 큰 인기를 얻고 있습니다. </p>
+						<!-- 상품 상세설명 -->
+						<div class="shop-detail-description-wrap">
+							<script id="shop-detail-description-templates" type="text/x-handlebars-template">
+								{{!-- shop-detail-templates --}}
+								<!-- <span>{{productDesc}}</span> -->
+								<img src="/images/temp32.jpg" alt="" class="fullSlideImg">
+								{{!--// shop-detail-templates --}}
+							</script>
 						</div>
-
-						<div class="detailArea conceptArea imgBox imgPadding">
-							<p class="imgBox"><img src="../images/compact_detail03.png"></p>
-						</div>
-
-						<div class="detailArea conceptArea noImg">
-							<div class="platewrap">
-								<div class="plate">
-									<p class="subNewformTit">Fyn 섬에 위치한 고즈넉한 도시오덴세의 분위기를 담아냈습니다.눈 뜨면 가장 먼저 찾는 안경과 아침잠을 깨우는 알람시계,자는 동안 충전해야 할 핸드폰을 올려두기에아주 좋은 크기의 사이드 테이블입니다.</p>
-									<div class="havy">“언제 어디서나 나의 옆에 있어줄”</div>
-									<p class="subNewformTit">따로 보관해야 할 소중한 물건을 넣어두기에 적합한한 개의 서랍과 떨어지지 않도록깊숙이 보관할 수 있는 내부 수납공간,앙증맞은 형태의 다리까지,하나 일 때도 좋지만 침대 양쪽에 두고 사용하면 더욱 좋습니다.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="detailArea conceptArea">
-							<p class="imgBox"><img src="../images/compact_detail04.png"></p>
-						</div>
-						<!-- // 컨셉 영역, 이미지 스크랩 가능 -->				
-
-						<!-- 유닛상품영역 -->
-						<div class="detailArea unitArea type2 noImg">
-							<h3 class="icoNewformTit">Easy&amp;Funny stool</h3>
-							<p class="subNewformTit">뒤집어서 사용시 수납공간이 되는 다용도 스툴</p>
-							<h4 class="unitTit">
-								<span class="italic">1</span> 
-								<span>다양한 용도</span>
-							</h4>
-							<p class="unitInfo">- 심플하며 안정감 있는 디자인으로<br />스툴로써 손색이 없습니다.<br />- 어느장소에 두고 사이드 테이블로 사용 할 수 있습니다.<br />- 뒤집어서 바구니, 우산꽂이, 화분등바스켓을로 자유로이 사용 할 수 있습니다</p>
-
-							<h4 class="unitTit">
-								<span class="italic">2</span> 
-								<span>용이한 보관</span>
-							</h4>
-							<p class="unitInfo">태킹이 가능하여 여러 개를 쌓아 보관이 용이하며<br />
-
-							<h4 class="unitTit">
-								<span class="italic">3</span>
-								<span>인체에 전혀 무해한 PP</span>
-							</h4>
-							<p class="unitInfo">경호르몬이 존재 할 수 없는<br />PP재질로 만들어져 인체에 무해합니다.</p>
-
-							<h4 class="unitTit">
-								<span class="italic">4</span>
-								<span> 강력한 내구성</span>
-							</h4>
-							<p class="unitInfo">일반 우드 재질과는 달리<br /> 시간이 지나도 변형이 없는 내구성을 자랑합니다.</p>
-						</div>
-						<!-- // 유닛상품영역 -->
-
-						<div class="detailArea colorArea">
-							<h3>Color</h3>
-							<p class="subNewformTit">다양하고 개성있는 나만의 컬러</p>
-							<div class="slide">
-								<div class="view">
-									<a href="" class="thumb"><img src="../images/temp_color.png" alt=""></a>
-								</div>
-								<a href="" class="prev"><span class="hide">이전</span></a>
-								<a href="" class="next"><span class="hide">다음</span></a>
-							</div>
-						</div>
-
-						<!-- 자재 설명 영역 -->
-						<div class="detailArea materialInfoArea">
-							<h3>Spec info</h3>
-							<ul class="productList">
-								<li>
-									<a href="" class="btnToggle">
-										<h4>Size</h4>
-									</a>
-									<div class="slideCon">
-										<div class="productSpec">
-											<p>W x 22.4″ H x 33″ D x 18.5″ Seat Height x 19″</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<a href="" class="btnToggle">
-										<h4>Information</h4>
-									</a>
-									<div class="slideCon">
-										<div class="productSpec">
-											<ul>
-												<li>마감재 패턴 : PP_다크 오렌지</li>
-												<li>구성 및 재질 : PP(폴리프로필렌)<li>
-												<li>도장마감 : Becker Acroma 친환경 도료 투명도장</li>
-											</ul>
-											<p>* 모니터 해상도에 따라 색상이 다르게 보일 수 있습니다.</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<!-- 자재 설명 영역 -->
+						<!-- // 상품 상세설명 -->
 
 						<!-- 태그 영역 -->
-						<div class="detailArea">
-							<div class="tagArea">
-								<h3 class="mb15">Tag</h3>
-								<a href="#" class="tagBtn"><span>#신혼부부</span></a>
-								<a href="#" class="tagBtn"><span>#다이닝</span></a>
-								<a href="#" class="tagBtn"><span>#짜투리공간</span></a>
-								<a href="#" class="tagBtn"><span>#알콩달콩</span></a>
-								<a href="#" class="tagBtn"><span>#라이프스타일</span></a>
-							</div>
+						<div class="detailArea js-detail-tags-wrap">
+							<script id="detail-tags-templates" type="text/x-handlebars-template">
+							{{!-- detail-tags-templates --}}
+								<div class="tagArea">
+									<h3 class="mb15">Tag</h3>
+									{{#each .}}
+										<a href="/search/result.html?query={{.}}" class="tagBtn"><span>{{.}}</span></a>
+									{{/each}}
+								</div>
+							{{!--// detail-tags-templates --}}
+							</script>
 						</div>
 						<!-- // 태그 영역 -->
 
 						<!-- 추천 패키지 영역 -->
 						<div id="recommendNewForm" class="detailArea recommend">
-							
+							<div class="wrap cardSlider">
+								<h3 class="sTit">Recommend NewForm Package</h3>
+								<p class="subTit">추천 뉴폼패키지</p>
+								<ul class="cardWrap slider04" id='recommendNewFormWrap'></ul>
+							</div>
 						</div>
 						<!-- // 추천 패키지 영역 -->
 
 						<!-- 추천 리빙 영역 -->
 						<div id="recommendLiving" class="detailArea recommend">
-							
+							<div class="wrap cardSlider">
+								<h3 class="sTit">Recommend Shop Item</h3>
+								<p class="subTit">추천 샵 아이템</p>
+								<ul class="cardWrap slider04" id='recommendShopWrap'></ul>
+							</div>
 						</div>
 						<!-- // 추천 리빙 영역 -->
 					</div>
@@ -237,41 +194,43 @@
 					<!-- tab2 디자이너정보 -->
 					<div id="sellerInfo">
 						<!-- 판매자안내 영역 -->
-						<div id="SellerArea" class="detailArea sellerArea manager">
-							<div class="portfolioArea">
-								<div class="count"><i></i> / <em></em></div>
-								<ul>
-									<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
-									<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
-									<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
-								</ul>
-								<div class="expertArea mb0">
-									<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
-									<div class="info">
-										<em>모던하우스 홍길동<i>Modern House</i></em>
-										<p>편안하고 개성있는 공간을 만들어 드립니다.</p>
-										<div class="fol">
-											<span>4.5</span>
-											<span>100</span>
-										</div>
-										<div class="btnwrap">
-											<a href="#" class="btnSizeS">팔로우</a>
-											<a href="#" class="btnSizeS ">1:1 메시지</a>
+						<div id="SellerArea" class="detailArea sellerArea manager js-info-partner-wrap">
+							<script id="info-partner-templates" type="text/x-handlebars-template">
+							{{!-- info-partner-template --}}
+								<div class="portfolioArea">
+									<!-- <div class="count"><i></i> / <em></em></div> -->
+									<ul>
+										<li>
+											<a href="/manager/detail.html?expertNumber={{partnerNumber}}"><img src="{{imageUrl}}" alt="" /></a>
+										</li>
+										<!-- 
+										<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+										<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+										 -->
+									</ul>
+									<div class="expertArea mb0">
+										<div class="thumb"><img src="{{imageUrl}}" alt="" /></div>
+										<div class="info">
+											<em>{{partnerName}}<i>{{company}}</i></em>
+											<p>편안하고 개성있는 공간을 만들어 드립니다.</p>
+											<!-- 
+											<div class="fol">
+												<span>4.5</span>
+												<span>100</span>
+											</div>
+											 -->
+											<div class="btnwrap">
+												<a href="#" class="btnSizeS js-add-follow" id="btnFollow">팔로우</a>
+												<a href="#" target="_blank" class="btnSizeS openWindowPopup-none" id="btnMessage">1:1 메시지</a>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="followList">
-									<div class="lately">
-										<ul>
-											<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-											<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-											<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-											<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-										</ul>
-										<a href="" class="more">+<em>6</em></a>
+									<div class="followList">
+										<div id="js-seller-card-wrap" class="lately"></div>
 									</div>
 								</div>
-							</div>
+							{{!--// info-partner-template --}}
+							</script>
 						</div>
 						<!-- // 판매자안내 영역 -->
 					</div>
@@ -283,7 +242,7 @@
 							<h3>Purchasing Information</h3>
 							<ul class="productList">
 								<li>
-									<a href="" class="btnToggle">
+									<a href="#" class="btnToggle">
 										<h4>서비스 절차</h4>
 									</a>
 									<div class="slideCon">
@@ -302,7 +261,7 @@
 									</div>
 								</li>
 								<li>
-									<a href="" class="btnToggle">
+									<a href="#" class="btnToggle">
 										<h4>서비스/취소/환불 등 안내</h4>
 									</a>
 									<div class="slideCon">
@@ -321,7 +280,7 @@
 									</div>
 								</li>
 								<li>
-									<a href="" class="btnToggle">
+									<a href="#" class="btnToggle">
 										<h4>A/S 안내</h4>
 									</a>
 									<div class="slideCon">
@@ -340,7 +299,7 @@
 									</div>
 								</li>
 								<li>
-									<a href="" class="btnToggle">
+									<a href="#" class="btnToggle">
 										<h4>상품제공고시</h4>
 									</a>
 									<div class="slideCon">
@@ -365,60 +324,136 @@
 				</div>
 
 				<!-- 배송형 옵션  -->
-				<div class="optionArea">
-					<ul>
-						<li>
-							<select>
-								<option value="">옵션선택</option>
-							</select>
-						</li>
-						<li>
-							<div class="optInfo">
-								<p>가나다라마바사아자차카타파하가나다라</p>
-								<div class="info">
-									<span>
-										<select>
-											<option value="">10</option>
-										</select>
-									</span>
-									<span class="pirce">
-										<span><em>1,700,000</em>원 </span>
-										<a href="" class="remove"><span class="hide">삭제</span></a>
-									</span>
-								</div>
+				<div id="criteria-options-wrap" class="detailBottomTab bottomTabWrap">
+					<script id="detail-criteria-options-templates" type="text/x-handlebars-template">
+					{{!-- detail-criteria-options-templates --}}
+						<div class="optionArea bottomTabWrap">
+							<ul>
+								<li>
+									<div id="selectedOptionList"></div>
+								</li>
+							</ul>
+							<div class="total">
+								<span>총 합계</span>
+								<span><em class="italic" id="totalOptionsPrice">{{basePriceDesc}}</em>원</span>
 							</div>
-						</li>
-					</ul>
-					<div class="total">
-						<span>총 합계</span>
-						<span><em class="italic">1,720,000</em>원</span>
-					</div>
+						</div>
+						<div class="buySection">
+							<div class="type02">
+								<a href="#" class="js-add-like" data-product-number="{{productNumber}}"><span class="hide">좋아요</span></a>
+								<a href="#" class="js-add-cart">마이카트</a>
+								<a href="#" class="js-prd-buy">구매하기</a>
+							</div>
+						</div>
+					</script>
 				</div>
-				<div class="buySection">
-					<div class="type01">
-						<a href="">마이카트</a>
-						<a href="">구매하기</a>
-					</div>
-					<div class="type02">
-						<a href=""></a>
-						<a href="">마이카트</a>
-						<a href="">구매하기</a>
-					</div>
-					<div class="type03">
-						<a href=""></a>
-						<a href="">마이카트</a>
-						<a href="">
-							<span>구매하기</span>
-							<span class="tip">10% 선결제 시 실측 무료</span>
-						</a>
-					</div>
-				</div>
-
-				<!-- // 배송형 옵션  -->
+				<!-- // 배송형 옵션 -->
 				
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+
+
+<!-- @@include ../_template/cardTemplate.html -->
+
+<script id="seller-card-templates" type="text/x-handlebars-template">
+{{!-- seller-card-templates --}}
+	{{#if productCards.length}}
+		<ul>
+		{{#each productCards}}
+			{{#vxIF @index "<" 4}}
+			<li>
+			{{#vxSwitch cardTypeCode}}
+			{{#vxCase "DP_CARD_TYPE_01" break=True}}
+				{{!-- 매거진 --}}
+				<a href="/magazine/detail.html?articleNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{#vxCase "DP_CARD_TYPE_02" break=True}}
+				{{!-- 뉴폼 상품 --}}
+				<a href="/newForm/detail.html?productNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{#vxCase "DP_CARD_TYPE_03" break=True}}
+				{{!-- 샵 상품 --}}
+				<a href="/shop/detail.html?productNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{#vxCase "DP_CARD_TYPE_07" break=True}}
+				{{!-- 전문가 --}}
+				<a href="/manager/detail.html?expertNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{/vxSwitch}}
+					<img src="{{cardImageUrl}}" alt="{{cardName}}">
+				</a>
+			</li>
+			{{/vxIF}}
+		{{/each}}
+		</ul>
+		{{#vxIF productCards.length ">" 5}}
+			<a href="/manager/detail.html?expertNumber={{productCards.[0].expertNum}}" class="more">
+				+<em>{{vxMath productCards.length "-" 4}}</em>
+			</a>
+		{{/vxIF}}
+	{{else}}
+		<li>
+			<p class="noContent" style="display:block">상품이 없습니다.</p>
+		</li>
+	{{/if}}
+{{!--// seller-card-templates --}}
+</script>
+
+<script id="detail-partner-templates" type="text/x-handlebars-template">
+{{!-- detail-partner-template --}}
+	{{#if company}}
+		<p class="ownerInfo">by {{partnerName}} <span>{{company}}</span></p>
+	{{else}}
+		<p class="ownerInfo">by {{partnerName}}</p>
+	{{/if}}
+{{!--// detail-partner-template --}}
+</script>
+
+<script id="detail-options-templates" type="text/x-handlebars-template">
+{{!-- detail-options-templates --}}
+	{{#each .}}
+		<li><a href="#" data-value="{{optionLevel}}-{{@index}}">{{optionName}} {{priceTag}}</a></li>
+	{{/each}}
+{{!--// detail-options-templates --}}
+</script>
+
+<script id="detail-selected-options-templates" type="text/x-handlebars-template">
+{{!-- detail-selected-options-templates --}}
+	{{#each .}}
+		<div class="optInfo">
+			<p>{{name}}</p>
+			<div class="info">
+				<span>
+					<select class="optionNum" data-option-num='{{orderOptionNumber}}'>
+						{{#vxSelect 0 100 1 quantity}}
+							{{#if this.selected}}
+								<option value="{{this.index}}" selected="selected">{{this.index}}</option>
+							{{else}}
+								<option value="{{this.index}}">{{this.index}}</option>
+							{{/if}}
+						{{/vxSelect}}
+					</select>
+				</span>
+				<span class="pirce">
+					<span><em>{{price}}</em>원 </span>
+					<a href="#" class="remove cancelOption" data-option-num="{{orderOptionNumber}}"><span class="hide">삭제</span></a>
+				</span>
+			</div>
+		</div>
+	{{/each}}
+{{!-- detail-selected-options-templates --}}
+</script>
+
+
+<!-- [D] 임시 구성 -->
+<style>
+	#criteria-options-wrap .bottomTabWrap {display:none}
+	#criteria-options-wrap .bottomTabWrap.active {display:block}
+	.topArea .newFormBtn .subBtn li a {width:40px}
+</style>
+
 </body>
 </html>

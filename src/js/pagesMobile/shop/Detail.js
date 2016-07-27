@@ -112,7 +112,7 @@ module.exports = function() {
 		$(productController).on(PRODUCT_EVENT.WILD_CARD, onControllerListener);
 		$(followController).on(FOLLOWING_EVENT.WILD_CARD, onControllerListener);
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
-		eventManager.on(OPTIONNUM_EVENT.CHANGE, optionQtyChangeHandler);
+		// eventManager.on(OPTIONNUM_EVENT.CHANGE, optionQtyChangeHandler);
 	}
 
 	function setBtnsEvents() {
@@ -157,7 +157,7 @@ module.exports = function() {
 			
 			if ($('.detailBottomTab .bottomTabWrap').hasClass('active')) {
 				$('.optionScroll').height($('.optionList').height());
-				self.optionIScroll.refresh();
+				// self.optionIScroll.refresh();
 			}
 			return;
 		}
@@ -185,6 +185,21 @@ module.exports = function() {
 			return;
 		}
 
+
+		var isSelOptions = false;
+		$.map(orderData, function(item) {
+			if (item.quantity) {
+				isSelOptions = true;
+				return false;
+			}
+		});
+
+		if ($('.detailBottomTab .bottomTabWrap').hasClass('active') && !isSelOptions) {
+			win.alert('옵션을 선택해주세요.');
+			return;
+		}
+
+
 		if ($('.detailBottomTab .bottomTabWrap').hasClass('active')) {
 			if (target.hasClass('js-add-cart')) {
 				addCart();
@@ -195,7 +210,7 @@ module.exports = function() {
 			if (optionsUseFlag) {
 				$('.detailBottomTab .bottomTabWrap').addClass('active');
 				$('.optionScroll').height($('.optionList').height());
-				self.optionIScroll.refresh();
+				// self.optionIScroll.refresh();
 			} else {
 				if (target.hasClass('js-add-cart')) {
 					addCart();
@@ -219,10 +234,14 @@ module.exports = function() {
 		if (optionsUseFlag && orderData.length == 0) {
 			alert('옵션을 선택해주세요.');
 		} else {
-			var cartData = orderData.concat();
-			$.map(cartData, function(each) {
-				delete each.name;
-				delete each.price;
+			var sortData = orderData.concat(),
+			cartData = [];
+			$.map(sortData, function(each) {
+				if (each.quantity) {
+					delete each.name;
+					delete each.price;
+					cartData.push(each);
+				}
 			});
 			
 			cartController.addMyCartList(cartData, false, 'shop');
@@ -237,10 +256,14 @@ module.exports = function() {
 		} else if (loginData.stateCode == 'BM_MEM_STATE_01') {
 			$(document).trigger('verifyMember', 'SHOP');
 		} else {
-			var cartData = orderData.concat();
-			$.map(cartData, function(each) {
-				delete each.name;
-				delete each.price;
+			var sortData = orderData.concat(),
+			cartData = [];
+			$.map(sortData, function(each) {
+				if (each.quantity) {
+					delete each.name;
+					delete each.price;
+					cartData.push(each);
+				}
 			});
 
 			Cookies.set('instantOrder', cartData);
@@ -293,11 +316,11 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								destoryBtnsEvents();
 								setBtnsEvents();
-								setStickySnsShare();
+								// setStickySnsShare();
 
-								if (!stickyBar.isReady()) {
-									stickyBar.init();
-								}
+								// if (!stickyBar.isReady()) {
+								// 	stickyBar.init();
+								// }
 							});
 	};
 
@@ -362,11 +385,18 @@ module.exports = function() {
 					
 					optionsDisplay();
 
-					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
+					if (result.data.product.registeredLikeYn == 'Y') {
+						$('.js-add-like').addClass('on');
+						if ($('.js-add-like').closest('.type02').size()) {
+							$('.js-add-like').closest('.type02').addClass('type03')	;
+						}
+					}
+
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
 
 					$('.js-add-cart, .js-option-open').on('click', onCartBuyListener);
-					$('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
+					// $('[data-option-num]').on('change', optionSelectHandler);
+					// $('.optionListDrop').on(DropDownScroll.EVENT.CHANGE, optionSelectHandler);
 
 					switch(result.data.product.saleStateCode) {
 						case "PD_SALE_STATE_01":
@@ -381,7 +411,7 @@ module.exports = function() {
 							break;
 					}
 
-					productController.options(self.productNumber, criteriaOptionCount, 0, selectedOptions);
+					productController.entireOptions(self.productNumber, criteriaOptionCount, 0, selectedOptions);
 					productController.partnerInfo(self.productNumber);
 					
 					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_01');
@@ -403,6 +433,10 @@ module.exports = function() {
 					optionsHandler(result.data.options);
 					break;
 				case PRODUCT_EVENT.PARTNER_INFO:
+					if (!result.data.partner) {
+						return;
+					}
+
 					var partnerData1 = result.data.partner;
 					var partnerData2 = result.data.partner;
 					if (partnerData2.memberMasterYn == 'Y') {
@@ -430,15 +464,7 @@ module.exports = function() {
 					}
 					break;
 				case PRODUCT_EVENT.PARTNER_GOODS:
-					//console.log(result.data.productCards.length);
-					partnerGoodsList.appendData(result.data.productCards);
-					$('#sellerCard').bxSlider({
-						pager:false,
-						slideMargin: 10,
-						minSlides: 2,
-						maxSlides: 2,
-						slideWidth: 285
-					});
+					displayData(result.data, $('#seller-card-templates'), $('#js-seller-card-wrap'));
 					break;
 				case PRODUCT_EVENT.RECOMMEND:
 					switch(response.data.productServiceSectionCode) {
@@ -495,30 +521,25 @@ module.exports = function() {
 		} else {
 			$('.optionScroll').closest('.activeRight').removeClass('has-iscroll');
 		}
-
-		if (!self.optionIScroll) {
-			self.optionIScroll = new win.IScroll('.optionScroll', {
-				scrollbars: true,
-				mouseWheel: true,
-				fadeScrollbars: false,
-				bounce: false
-			});
-
-			$('.activeOption .activeRight').on('mousewheel DOMMouseScroll', function(e) {
-				var target = $(e.target),
-				isScrollArea = target.hasClass('.optionScroll') || target.closest('.optionScroll').size();
-
-				if (isScrollArea) {
-					e.preventDefault();
-				}
-			});
-		} else {
-			self.optionIScroll.refresh();
-		}
 	}
 
 	function optionsHandler(options) {
-		if (options.length == 0) {
+		if (options.length) {
+			orderData = [];
+			$.map(options, function(opt) {
+				orderData.push({
+					"productNumber": self.productNumber,
+					"orderOptionNumber": opt.orderOptionNumber,
+					"quantity": 0,
+					"name": opt.optionName,
+					"price": parseInt(opt.price, 10)
+				});
+			});
+			totalQty = 0;
+
+			displayData(orderData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
+			
+		} else {
 			// 단일옵션
 			orderData = [{
 				"productNumber": self.productNumber,
@@ -530,55 +551,14 @@ module.exports = function() {
 			totalQty = 1;
 			
 			displayData(orderData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
-			optionsDisplay();
-
 			$('.cancelOption').hide();
-			debug.log(orderData);
-			var totalPrice = reCalculateTotalPrice(orderData);
-			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
-		} else if (options.length == 1) {
-			// 최종선택.
-			var selectedOptionData = options[0];
-
-			var addKey = true;
-			for (var key in orderData) {
-				if (orderData[key].orderOptionNumber == selectedOptionData.orderOptionNumber) addKey = false;
-			}
-			if (addKey) {
-				orderData.push({
-					"productNumber": self.productNumber,
-					"orderOptionNumber": selectedOptionData.orderOptionNumber,
-					"quantity": 1,
-					"name": selectedOptionData.optionName,
-					"price": util.currencyFormat(selectedOptionData.price)
-				});
-			}
-
-			displayData(orderData, $('#detail-selected-options-templates'), $('#selectedOptionList'));
-			optionsDisplay();
-
-			$('.cancelOption').click(optionRemoveHandler);
-			
-			var totalPrice = reCalculateTotalPrice(orderData);
-			$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
-		} else {
-			var optionLevel;
-			var valueArray = new Array();
-
-			for (var key in options) {
-				var eachOptions = options[key];
-				optionLevel = eachOptions.optionLevel;
-				if (eachOptions.price != null) {
-					eachOptions.priceTag = '('+util.currencyFormat(parseInt(eachOptions.price, 10))+'원)';
-					eachOptions.price = util.currencyFormat(parseInt(eachOptions.price, 10));
-				}
-				valueArray.push(eachOptions.optionName);
-			}
-
-			optionsDataArray[optionLevel] = valueArray;
-			displayData(options, $('#detail-options-templates'), $('#optionsDrop'+(optionLevel-1)+'Con'));
-			DropDownScroll.refresh();
 		}
+
+		optionsDisplay();
+		var totalPrice = reCalculateTotalPrice(orderData);
+		$('#totalOptionsPrice').html(util.currencyFormat(totalPrice));
+		$('.cancelOption').click(optionRemoveHandler);
+		$('[data-option-num]').on('change', optionQtyChangeHandler);
 	}
 
 	function optionSelectHandler(e, data) {
@@ -590,11 +570,15 @@ module.exports = function() {
 
 		selectedOptions[optionLevel-1] = selectedOptionData;
 		selectedOptions.splice(optionLevel);
-		productController.options(self.productNumber, criteriaOptionCount, optionLevel, selectedOptions);
+		productController.entireOptions(self.productNumber, criteriaOptionCount, optionLevel, selectedOptions);
 	};
 
 	function optionQtyChangeHandler(e, target, value) {
 		//var newQty = parseInt(target.find('.num').text());
+		
+		var target = $(this),
+		value = target.val();
+
 		totalQty = value;
 
 		for (var key in orderData) {
@@ -603,7 +587,7 @@ module.exports = function() {
 		}
 
 		var totalPrice = reCalculateTotalPrice(orderData);
-		$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
+		$('#totalOptionsPrice').html(util.currencyFormat(totalPrice));
 	};
 
 	function optionRemoveHandler(e) {
@@ -619,7 +603,7 @@ module.exports = function() {
 		$('.cancelOption').click(optionRemoveHandler);
 		
 		var totalPrice = reCalculateTotalPrice(orderData);
-		$('#totalOptionsPrice').html(util.currencyFormat(totalPrice)+'<b>원</b>');
+		$('#totalOptionsPrice').html(util.currencyFormat(totalPrice));
 	};
 
 	function reCalculateTotalPrice(orderData) {
