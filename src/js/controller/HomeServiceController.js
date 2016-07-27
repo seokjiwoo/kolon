@@ -47,7 +47,23 @@ function ClassHomeServiceController() {
 			 */
 			requestWashing: requestWashing,
 			/**
-			 * 세탁 서비스 신청
+			 * 세탁 서비스 픽업 변경 가능 시간대 조회
+			 */
+			changeWashingPickupTimeList: changeWashingPickupTimeList,
+			/**
+			 * 세탁 서비스 픽업 변경
+			 */
+			changeWashingPickupTime: changeWashingPickupTime,
+			/**
+			 * 세탁 서비스 배달 변경 가능 시간대 조회
+			 */
+			changeWashingDeliveryTimeList: changeWashingDeliveryTimeList,
+			/**
+			 * 세탁 서비스 배달 변경
+			 */
+			changeWashingDeliveryTime: changeWashingDeliveryTime,
+			/**
+			 * 세탁 서비스 취소
 			 */
 			cancelWashing: cancelWashing,
 			/**
@@ -186,6 +202,68 @@ function ClassHomeServiceController() {
 	}
 
 	/**
+	 * 세탁서비스 수거시간 변경 날짜 조회
+	 */
+	function changeWashingPickupTimeList(companyCode, orderNumber) {
+		Super.callApi('/apis/living/wash/pickupTime/'+companyCode+'/'+orderNumber, 'POST', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('changeWashingPickupTimeListResult', [status, result.data]);
+			} else {
+				Super.handleError('changeWashingPickupTimeList', result);
+				$(callerObj).trigger('changeWashingPickupTimeListResult', [status, result]);
+			}
+		}, false);
+	}
+	
+	/**
+	 * 세탁서비스 수거시간 변경
+	 */
+	function changeWashingPickupTime(companyCode, orderNumber, dateTime, serviceDateTimeRequest) {
+		Super.callApi('/apis/living/wash/pickupTime/'+companyCode+'/'+orderNumber, 'PUT', {
+			"dateTime": dateTime,
+			"serviceDateTimeRequest": serviceDateTimeRequest
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('changeWashingPickupTimeResult', [status, result.data]);
+			} else {
+				Super.handleError('changeWashingPickupTime', result);
+				$(callerObj).trigger('changeWashingPickupTimeResult', [status, result]);
+			}
+		}, false);
+	}
+
+	/**
+	 * 세탁서비스 배달시간 변경 날짜 조회
+	 */
+	function changeWashingDeliveryTimeList(companyCode, orderNumber) {
+		Super.callApi('/apis/living/wash/pickupTime/'+companyCode+'/'+orderNumber, 'POST', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('changeWashingDeliveryTimeListResult', [status, result.data]);
+			} else {
+				Super.handleError('changeWashingDeliveryTimeList', result);
+				$(callerObj).trigger('changeWashingDeliveryTimeListResult', [status, result]);
+			}
+		}, false);
+	}
+
+	/**
+	 * 세탁서비스 배달시간 변경
+	 */
+	function changeWashingDeliveryTime(companyCode, orderNumber, dateTime, serviceDateTimeRequest) {
+		Super.callApi('/apis/living/wash/pickupTime/'+companyCode+'/'+orderNumber, 'PUT', {
+			"dateTime": dateTime,
+			"serviceDateTimeRequest": serviceDateTimeRequest
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('changeWashingDeliveryTimeResult', [status, result.data]);
+			} else {
+				Super.handleError('changeWashingDeliveryTime', result);
+				$(callerObj).trigger('changeWashingDeliveryTimeResult', [status, result]);
+			}
+		}, false);
+	}
+
+	/**
 	 * 세탁서비스 취소
 	 */
 	function cancelWashing(companyCode, orderNumber, reason) {
@@ -200,7 +278,6 @@ function ClassHomeServiceController() {
 			}
 		}, false);
 	}
-	
 	
 	/**
 	 * 홈서비스 신청 리스트

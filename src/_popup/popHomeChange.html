@@ -1,18 +1,22 @@
 <div class="popTop">
 	<h4 class="popTit">수거/배달 일시 변경</h4>
 </div>
-<div class="popCon">
+<div class="popCon" id='homeServiceChangeWrap'>
+	<script id="homeServiceChangeTemplates" type="text/x-handlebars-template">
+	{{!-- homeServiceChangeTemplates --}}
 	<h5 class="subTit">예약정보</h5>
 	<ul class="liBox mt20">
-		<li><b>수거일시</b> : 2016.06.10 금요일 / 오후 02:00 – 오후 03:00</li>
-		<li><b>배달일시</b> : 2016.06.13 월요일 / 오후 02:00 – 오후 03:00</li>
+		<li><b>수거일시</b> : {{pickupDate}}</li>
+		{{#if deliveryDate}}
+		<li><b>배달일시</b> : {{deliveryDate}}</li>
+		{{/if}}
 	</ul>
 	<ul class="tbList3 mt5">
 		<li>수거/배달 일시 변경은 수거시간 기준으로 90분이 되기 전에만 가능합니다.</li>
 	</ul>
 	<h5 class="subTit">수거/배달 일시 변경</h5>
 	<table class="record timeSet js-range-picker">
-		<tr>
+		<tr id='pickupRow'>
 			<th>수거일시를 선택해주세요.<br>(수거 가능한 시간만 표시됩니다)</th>
 			<td>
 				<!-- datePicker -->
@@ -26,19 +30,12 @@
 				<!--// datePicker -->
 				<div class="alignBox">
 					<ul class="drop" data-prevent="true">
-						<li><a href="#">오전10:00 - 오전 11:00</a></li>
-						<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>
-						<li><a href="#" data-value="type-2">오후12:00 - 오후 01:00</a></li>
-						<li><a href="#" data-value="type-3">오후01:00 - 오후 02:00</a></li>
-						<li><a href="#" data-value="type-4">오후02:00 - 오후 03:00</a></li>
-						<li><a href="#" data-value="type-5">오후03:00 - 오후 04:00</a></li>
-						<li><a href="#" data-value="type-6">오후04:00 - 오후 05:00</a></li>
-						<li><a href="#" data-value="type-7">오후05:00 - 오후 06:00</a></li>
+						<!--<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>-->
 					</ul>
 				</div>
 			</td>
 		</tr>
-		<tr>
+		<tr id='deliveryRow'>
 			<th>배달일시를 선택해주세요.<br>(배달 가능한 시간만 표시됩니다)</th>
 			<td>
 				<!-- datePicker -->
@@ -52,18 +49,13 @@
 				<!--// datePicker -->
 				<div class="alignBox" style="z-index: 0">
 					<ul class="drop" data-prevent="true">
-						<li><a href="#">오전10:00 - 오전 11:00</a></li>
-						<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>
-						<li><a href="#" data-value="type-2">오후12:00 - 오후 01:00</a></li>
-						<li><a href="#" data-value="type-3">오후01:00 - 오후 02:00</a></li>
-						<li><a href="#" data-value="type-4">오후02:00 - 오후 03:00</a></li>
-						<li><a href="#" data-value="type-5">오후03:00 - 오후 04:00</a></li>
-						<li><a href="#" data-value="type-6">오후04:00 - 오후 05:00</a></li>
-						<li><a href="#" data-value="type-7">오후05:00 - 오후 06:00</a></li>
+						<!--<li><a href="#" data-value="type-1">오전11:00 - 오후 12:00</a></li>-->
 					</ul>
 				</div>
 			</td>
 		</tr>
 	</table>
 	<p class="btnWrap"><a href="" class="btnSizeM btnColor02">변경 하기</a></p>
+	{{!--// homeServiceChangeTemplates --}}
+	</script>
 </div>

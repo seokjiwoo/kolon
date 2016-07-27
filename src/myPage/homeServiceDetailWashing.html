@@ -122,9 +122,11 @@
 									<th scope="row">수거/배송일시</th>
 									<td colspan="3">
 										<!--<a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor01 fl_right btnPop btnPop590 absolutePosition" data-user-class="my popEdge dateChangePop">일시변경</a>-->
-										<a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor01 fl_right btnPop btnPop590 absolutePosition" data-user-class="my popEdge dateChangePop">일시변경</a>  
-										- 수거일시 : {{pickUpReservationDateTime}}<br>
-										- 배송일시 : {{deliveryUpReservationDateTime}}
+										<a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor01 fl_right btnPop btnPop590 absolutePosition" id='washChangeButton'  data-user-class="my popEdge dateChangePop">일시변경</a>  
+										- 수거일시 : {{pickupDate}}
+										{{#if deliveryDate}}
+										<br>- 배송일시 : {{deliveryDate}}
+										{{/if}}
 									</td>
 								</tr>
 								<tr>
