@@ -122,6 +122,12 @@ module.exports = function() {
 			case CB_EVENTS.COMPLETE:
 				if (self.colorbox.hasClass(opts.cssClass.categoryPop)) {
 					setRangeSlider();
+
+					// popup 내의 이미지에러로 인한 이슈로 판단 - 임시 처리
+					$('#cboxLoadingGraphic, #cboxLoadingOverlay').hide();
+					setTimeout(function() {
+						$('#cboxLoadingGraphic, #cboxLoadingOverlay').hide();
+					}, 200);
 				}
 				break;
 			case CB_EVENTS.CLEANUP:
@@ -227,6 +233,7 @@ module.exports = function() {
 		switch(eventType) {
 			case PRODUCT_EVENT.SHOP_LIST:
 				cardList.appendData(result.productCards);
+				$('#shopListCount').text(result.productCards.length);
 				break;
 		}
 	};

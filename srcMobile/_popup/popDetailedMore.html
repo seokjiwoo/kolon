@@ -1,7 +1,7 @@
 <div class="layerPopup newForm">
 	<div class="popTop">
 		<h3 class="popTit">상세조건</h3>
-		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
+		<a href="#" class="closeBtn popClose"><span class="hide">팝업닫기</span></a>
 	</div>
 	<div class="popCon popScroll">
 		<div class="orderDeliveryWrap">
@@ -141,17 +141,35 @@
 	</div>
 	<div class="btmFix fixwrap">
 		<ul>
-			<li><a href="" class="btnSizeB btnColor03 popClose">취소</a></li>
+			<li><a href="#" class="btnSizeB btnColor03 popClose">취소</a></li>
 			<li><a href="" class="btnSizeB btnColor02">확인</a></li>
 		</ul>
 	</div>
 </div>
-<script language="javascript" type="text/javascript">
-//<![CDATA[
-	$('.payInfoMore').click(function() {
-		$(this).toggleClass('opened');
-		$('.payInfoSlide').not($(this).parent().next('.payInfoSlide').slideToggle()).hide();
-	});
-	
-//]]>
+
+<!-- [D] 임시구성 -->
+<style>
+	#colorbox .orderDeliveryWrap {padding:0}
+	.sortGraph .ui-slider-handle.leftBtn {background: url(https://stg.koloncommon.com/images/detail_arrow.png) 0 0 no-repeat}
+	.sortGraph .ui-slider-handle.rightBtn {background: url(https://stg.koloncommon.com/images/detail_arrow.png) 0 -26px no-repeat}
+	.ui-slider-horizontal .ui-slider-range {margin:0}
+	.sortGraph .won {width:100%;overflow:hidden;margin-top:15px}
+	.sortGraph .won span {width:50%;float:left;display:inline-block;letter-spacing:-1px}
+	.sortGraph .won span.wonL {text-align:left}
+	.sortGraph .won span.wonR {text-align:right}
+</style>
+
+<script>
+	;(function(win, $) {
+		'use strict';
+
+		$(function() {
+			function onToggler() {
+				$(this).toggleClass('opened');
+				$('#colorbox .payInfoSlide').not($(this).parent().next('.payInfoSlide').slideToggle()).hide();
+			};
+			$('#colorbox .payInfoMore').off('click', onToggler);
+			$('#colorbox .payInfoMore').on('click', onToggler);
+		});
+	})(window, window.jQuery);
 </script>
