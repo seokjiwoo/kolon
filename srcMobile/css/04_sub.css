@@ -5,20 +5,26 @@
 .searchDetail .searchDetailWrap {width:100%; vertical-align:middle; text-align:right;}
 .searchDetail .searchDetailWrap p.sdTit {position:absolute; top:21px; left:15px; font-size:; color:#333;}
 .searchDetail .searchDetailWrap p.sdTit b {color:#f97068; font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
-.searchDetail .searchDetailWrap a.detailBtn {width:62px; height:18px; padding:8px 32px 8px 10px; color:#666; border:1px solid #ccc; display:inline-block; background:url(../images/ico_add.png) 90% 50% no-repeat; background-size:11px 11px; vertical-align:middle; line-height:18px; text-align:left;}
-.selectBox {width:auto; min-width:70px; padding:8px 10px;}
-.selectBox select {width:auto; min-width:80px; padding:0;}
+.searchDetail .searchDetailWrap a.detailBtn {width:62px; height:18px; padding:8px 32px 8px 10px; color:#666; border:1px solid #ccc; display:inline-block; background:url(../images/ico_add.png) 90% 50% no-repeat #fff; background-size:11px 11px; vertical-align:middle; line-height:18px; text-align:left;}
+.searchDetail .selectBox {width:auto; min-width:70px; padding:8px 10px; background:#fff;}
+.searchDetail .selectBox select {width:auto; min-width:80px; padding:0;}
 @media (max-width:320px){
 	.searchDetail .searchDetailWrap a.detailBtn {padding-right:17px;}
 }
 .search .resultWrap {margin-top:-22px;}
 
 .shop section {background:url(../images/shop_bg.png) 50% 0 repeat-y;}
-.shop .tagWrap {padding:0 15px; overflow:hidden;}
-.shop .tagWrap .tagList {width:100%; white-space: nowrap; overflow:auto;}
-.shop .tagWrap .tagList a + a {margin-left:10px;}
-.shop .tagWrap .tagList a {padding:15px 0; font-size:12px; color:#666; display:inline-block;}
+.tagWrap {padding:0 15px; overflow:hidden;}
+.tagWrap .tagList {width:100%; white-space: nowrap; overflow:auto;}
+.tagWrap .tagList a + a {margin-left:10px;}
+.tagWrap .tagList a {padding:15px 0; font-size:12px; color:#666; display:inline-block;}
 .shop .shopWrap {width:100%; overflow:hidden;}
 .shop .shopWrap ul.cardWrap li.cardTitle.shop {width:155px; height:170px; position:absolute; top:360px; left:0; margin-top:0; z-index:1;}
 .shop .shopWrap ul.cardWrap li.cardTitle.shop .cardTitleCont {width:155px; height:170px;  position:relative;}
 .shop .shopWrap ul.cardWrap li.cardTitle.shop .cardTitleCont .cardTitleBg {width:375px; height:882px; margin-left:-115px; background:url(../images/shop_title_bg.png) 0 0 no-repeat; background-size:375px 882px; position:absolute; top:-259px; left:50%; z-index:0;}
+
+.newform section {background:url(../images/newform_bg.png) 50% 0 repeat-y; background-size:360px 1132px;}
+.newform .newFormWrap {width:100%; overflow:hidden;}
+.newform .newFormWrap ul.cardWrap li.cardTitle.newForm {width:155px; height:135px; position:absolute; top:480px; left:0; margin-top:0; z-index:1;}
+.newform .newFormWrap ul.cardWrap li.cardTitle.newForm .cardTitleCont {width:155px; height:135px;  position:relative;}
+.newform .newFormWrap ul.cardWrap li.cardTitle.newForm .cardTitleCont .cardTitleBg {width:375px; height:882px; margin-left:-115px; background:url(../images/newform_title_bg.png) 0 0 no-repeat; background-size:284.5px 764.5px; position:absolute; top:-259px; left:50%; z-index:0;}

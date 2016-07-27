@@ -133,26 +133,30 @@
 							<li>
 								<p class="tit">평형을 선택해 주세요</p>
 								<div class="reserCont">
-									<select title="평형을 선택">
-										<option value="" selected="selected">평형을 선택해 주세요</option>
-										<option value="">66㎡/20PY 미만</option>
-										<option value="">66㎡/20PY</option>
-										<option value="">99㎡/30PY</option>
-										<option value="">132㎡/40PY</option>
-										<option value="">165㎡/50PY 이상</option>
-									</select>
+									<div class="selectBox">
+										<select title="평형을 선택">
+											<option value="" selected="selected">평형을 선택해 주세요</option>
+											<option value="">66㎡/20PY 미만</option>
+											<option value="">66㎡/20PY</option>
+											<option value="">99㎡/30PY</option>
+											<option value="">132㎡/40PY</option>
+											<option value="">165㎡/50PY 이상</option>
+										</select>
+									</div>
 								</div>
 							</li>
 							<li>
 								<p class="tit">리모델링을 하는 사유가 무엇인가요?</p>
 								<div class="reserCont">
-									<select title="사유를 선택">
-										<option value="" selected="selected">사유를 선택해 주세요</option>
-										<option value="">결혼을 해서 새 집에 들어가요</option>
-										<option value="">이사할 집이에요</option>
-										<option value="">집이 오래돼서 고치고 싶어요!</option>
-										<option value="">기타</option>
-									</select>
+									<div class="selectBox">
+										<select title="사유를 선택">
+											<option value="" selected="selected">사유를 선택해 주세요</option>
+											<option value="">결혼을 해서 새 집에 들어가요</option>
+											<option value="">이사할 집이에요</option>
+											<option value="">집이 오래돼서 고치고 싶어요!</option>
+											<option value="">기타</option>
+										</select>
+									</div>
 									<textarea name="" title="기타 사항을 입력해 주세요." placeholder="기타 사항을 입력해 주세요."></textarea>
 								</div>
 							</li>
@@ -257,17 +261,13 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="wrapT" style="margin-bottom:100px;">
+				<div class="wrapT">
 					<h3 class="conTit">결제 방법</h3>
-					<div class="payTab tabWrap">
-						<form method="post" action="/">
-							<fieldset >
-								<legend>결제방법 선택</legend>
-								<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-								<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
-								<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
-							</fieldset>
-						</form>
+					<div class="tabWrap orderTab">
+						<span class="on"><a href="#pay1" class="btnSizeS btnColor05">신용카드</a></span>
+						<span><a href="#pay2" class="btnSizeS btnColor05">무통장 입금</a></span>
+						<span><a href="#pay3" class="btnSizeS btnColor05">실시간 계좌이체</a></span>
+						<span><a href="#" class="btnSizeS btnColor05 nonBtn">휴대폰 결제</a></span>
 					</div>
 					<div>
 						<!-- 신용카드 -->
@@ -363,30 +363,34 @@
 										<div class="" id="cashCt1">
 											<div class="shipPhone">
 												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<p>
-													<select title="소득공제 방법 선택" style="width:auto;">
-														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-														<option value="" label="현금영수증 카드">현금영수증 카드</option>
-													</select>
-												</p>
-												<p>
-													<select title="휴대폰 통신사 번호 선택">
-														<option value="" label="010" selected="selected">010</option>
-														<option value="" label=""></option>
-													</select> - 
-													<input type="text" title="휴대폰 앞자리 입력"/> - 
-													<input type="text" title="휴대폰 뒷자리 입력"/>
-												</p>
+												<div class="inp inpA">
+													<div class="selectBox">
+														<select title="소득공제 방법 선택">
+															<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+															<option value="" label="현금영수증 카드">현금영수증 카드</option>
+														</select>
+													</div>
+												</div>
+												<div class="inp inp3">
+													<div class="selectBox">
+														<select title="휴대폰 통신사 번호 선택">
+															<option value="" label="010" selected="selected">010</option>
+															<option value="" label=""></option>
+														</select>
+													</div> - 
+													<input type="tel" title="휴대폰 앞자리 입력"/> - 
+													<input type="tel" title="휴대폰 뒷자리 입력"/>
+												</div>
 												<!--// 개인소득공제 : 휴대폰 번호 -->
 												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!--
-												<p class="inp4">
+												<!-- 
+												<p class="inp inp4">
 													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
 												</p>
-												-->
+												 -->
 												<!--// 개인소득공제 : 현금영수증 카드 -->
 											</div>
 											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
@@ -395,11 +399,11 @@
 										<!-- 사업자 지출 증빙 -->
 										<div id="cashCt2" style="display:none;">
 											<div class="shipPhone">
-												<p>
+												<div class="inp inp3">
 													<input type="text" title="사업자번호 앞자리 입력"/> - 
 													<input type="text" title="사업자번호 중간자리 입력"/> - 
 													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</p>
+												</div>
 											</div>
 											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
 										</div>
@@ -415,8 +419,8 @@
 								<form method="post" action="/">
 									<div class="underTxtMark">결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</div>
 									<ul class="infoBtnWrap">
-										<li><p><a href="" class="btnSizeS btnColor03">실시간 계좌이체 안내</a></p></li>
-										<li><p><a href="" class="btnSizeS btnColor03">은행별 이용시간</a></p></li>
+										<li><p><a href="../_popup/popRemittance01.html" class="btnSizeS btnColor03 btnPop" data-user-class="pop">실시간 계좌이체 안내</a></p></li>
+										<li><p><a href="../_popup/popRemittance02.html" class="btnSizeS btnColor03 btnPop" data-user-class="pop">은행별 이용시간</a></p></li>
 									</ul>
 									<h3 class="conTit">현금영수증 발급 신청</h3>
 									<div class="payTab tabWrap">
@@ -428,30 +432,34 @@
 										<div id="cashCt2_1">
 											<div class="shipPhone">
 												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<p>
-													<select title="소득공제 방법 선택" style="width:auto;">
-														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-														<option value="" label="현금영수증 카드">현금영수증 카드</option>
-													</select>
-												</p>
-												<p>
-													<select title="휴대폰 통신사 번호 선택">
-														<option value="" label="010" selected="selected">010</option>
-														<option value="" label=""></option>
-													</select> - 
+												<div class="inp inpA">
+													<div class="selectBox">
+														<select title="소득공제 방법 선택" style="width:auto;">
+															<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+															<option value="" label="현금영수증 카드">현금영수증 카드</option>
+														</select>
+													</div>
+												</div>
+												<div class="inp inp3">
+													<div class="selectBox">
+														<select title="휴대폰 통신사 번호 선택">
+															<option value="" label="010" selected="selected">010</option>
+															<option value="" label=""></option>
+														</select>
+													</div> - 
 													<input type="text" title="휴대폰 앞자리 입력"/> - 
 													<input type="text" title="휴대폰 뒷자리 입력"/>
-												</p>
+												</div>
 												<!--// 개인소득공제 : 휴대폰 번호 -->
 												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!--
-												<p class="inp4">
+												<!-- 
+												<div class="inp inp4">
 													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
-												</p>
-												-->
+												</div>
+												 -->
 												<!--// 개인소득공제 : 현금영수증 카드 -->
 												<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
 											</div>
@@ -460,11 +468,11 @@
 										<!-- 사업자 지출 증빙 -->
 										<div id="cashCt2_2" style="display:none;">
 											<div class="shipPhone">
-												<p>
+												<div class="inp inp3">
 													<input type="text" title="사업자번호 앞자리 입력"/> - 
 													<input type="text" title="사업자번호 중간자리 입력"/> - 
 													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</p>
+												</div>
 											</div>
 											<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
 										</div>
@@ -702,7 +710,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="wrapT" style="margin-bottom:100px;">
+				<div class="wrapT">
 					<h3 class="conTit">결제 방법</h3>
 					<div class="payTab tabWrap">
 						<form method="post" action="/">

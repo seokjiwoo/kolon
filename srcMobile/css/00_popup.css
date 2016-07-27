@@ -87,7 +87,7 @@
 .popCon h5.popSubTit + .popTb,
 .popCon h5.popSubTit + .tbSet,
 .popCon .popTb + h5.popSubTit {margin-top:20px;}
-.popBtn {width:100%; padding:20px 0; background:#666; color:#fff; position:fixed; bottom:0; left:0; font-size:18px; display:inline-block; text-align:center;}
+.popBtn {width:100%; padding:20px 0; background:#293145; color:#fff; position:fixed; bottom:0; left:0; font-size:18px; display:inline-block; text-align:center;}
 .popCon .popBtnS {width:110px; height:40px; background:#999; color:#fff; border-radius:7px; overflow:hidden; display:inline-block; line-height:40px; text-align:center; outline:0; border:0;}
 .popCon .tbSet.mtNon {margin-top:-31px;}
 .popCon .popTb {width:100%; display:inline-block; border-top:1px solid #545454;}
