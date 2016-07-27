@@ -6,7 +6,7 @@
 .manager .portfolioArea .count i,
 .manager .portfolioArea .count em{font-style:normal;}
 .manager .portfolioArea .bx-controls-direction .bx-prev,
-.manager .portfolioArea .bx-controls-direction .bx-next{position:absolute;top:50%;margin:-14px 0 0 0;width:20px;height:33px;display:block;background:url("../images/ico_slide_btn.png") no-repeat 0 0;background-size:100%;opacity:0.5;}
+.manager .portfolioArea .bx-controls-direction .bx-next{position:absolute;top:24%;margin:-14px 0 0 0;width:20px;height:33px;display:block;background:url("../images/ico_slide_btn.png") no-repeat 0 0;background-size:100%;opacity:0.5;}
 .manager .portfolioArea .bx-controls-direction .bx-prev{left:15px;}
 .manager .portfolioArea .bx-controls-direction .bx-next{background-position:0 -33px;right:15px;}
 .manager .expertArea{position:relative;height:202px;padding-top:30px;background:#343434;margin-bottom:10px;}
@@ -67,6 +67,14 @@
 .managerMain .specialistVisual .specialistSlide ul.spSlide {}
 .managerMain .specialistVisual .specialistSlide ul.spSlide li {background:url(../images/manager_slide_bg.gif) 0 50% no-repeat; background-size:100%;}
 .managerMain .specialistVisual .specialistSlide ul.spSlide li img {width:100%;}
+.managerMain .specialistVisual .specialistSlide ul.spSlide a{position:relative;display:block;}
+
+.managerMain .specialistVisual .info{position:absolute;right:14%;top:26%;z-index:10;width:90px;height:90px;display:block;padding:0 10px;}
+.managerMain .specialistVisual .info span{display:block;text-align:center;line-height:1.4em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
+.managerMain .specialistVisual .info span:nth-child(1){font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;color:#a4867e;font-style:italic;font-size:15px;font-weight:bold}
+.managerMain .specialistVisual .info span:nth-child(2){color:#a3857d;}
+.managerMain .specialistVisual .info span:nth-child(3){font-size:24px;color:#fff;}
+
 .managerMain h3.spTit {width:239.5px; height:81px; position:absolute; bottom:40px; right:15px; z-index:5;}
 .managerMain h3.spTit img {width:auto; max-width:100%;}
 .managerMain .specialistSlide .bx-wrapper {position:relative;}
@@ -98,3 +106,15 @@
 .manager .managerProfile {width:100%; overflow:hidden; padding:36px 0 21px; text-align:center; background:#f9fafc;}
 .manager .managerProfile b {width:100%; font-size:23px; line-height:24.5px; color:#1a1a1a; display:inline-block;}
 .manager .managerProfile span {font-size:12px; color:#b08967;}
+
+.manager .portfolioArea .followList{background:#343434;}
+.manager .portfolioArea .followList .lately{margin-top:0;padding-bottom:15px;}
+
+@media (max-width:480px){
+  .managerMain .specialistVisual .info{right:17%;top:29%;}
+}
+
+@media (max-width:320px){
+  .managerMain .specialistVisual .specialistSlide:after{background-position:0 23px;}
+  .managerMain .specialistVisual .info{right:14%;top:26%;}
+}
