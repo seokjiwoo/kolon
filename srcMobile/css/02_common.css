@@ -13,9 +13,9 @@
 .pt0{padding-top:0 !important;}
 .pt25{padding-top:25px !important;}
 
-.t_r {text-align:right}
-.t_l {text-align:left;}
-.t_c {text-align:center;}
+.t_r {text-align:right !important;}
+.t_l {text-align:left !important;}
+.t_c {text-align:center !important;}
 
 .fl_l{float: left;}
 .fl_r{float: right;}
@@ -439,7 +439,7 @@ h4.partTit {font-size:12px;}
 .productList .btnToggle.open{background-position: 2px 5px;}
 .productList .productBtnWrap {width:100%; overflow:hidden; padding-top:15px; }
 .productList .productBtnWrap .newAddress {width:100%; padding:15px 0; border-top:1px dashed #ccc; overflow:hidden;}
-
+.productList .productBtnWrap + .productBtnWrap {padding-top:0;}
 .productList li .selectWrap {width:100%; overflow:hidden; margin-top:15px; padding-top:15px; border:1px dashed #ccc;}
 .productList li ul.addressList li {padding:0; border:0;}
 .productList li .textWrap {border:0; padding:0; margin:0;}

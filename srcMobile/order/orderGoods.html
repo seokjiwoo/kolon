@@ -12,8 +12,8 @@
 				<div class="wrapT">
 					<h3 class="conTit">주문 상품 / 배송 정보</h3>
 					<!-- list -->
+					<!-- <p class="setPriceGray">묶음 배송상품</p> --><!-- 묶음 배송 상품일 경우-->
 					<ul class="productList">
-						<li class="productTit"><span>묶음 배송상품</span></li><!-- 묶음 배송 상품일 경우-->
 						<li>
 							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
 							<div class="info">
@@ -52,6 +52,51 @@
 								</li>
 							</ul>
 							<!--// 결제금액 내역 -->
+							<div class="productBtnWrap">
+								<div class="newAddress">
+									<!-- 배송지 선택 폼 -->
+									<form method="post" action="/">
+										<fieldset>
+											<legend>배송지 선택 폼</legend>
+											<div class="selectBox">
+												<select title="배송지 선택">
+													<option value="" selected="selected">자택</option>
+													<option value="">회사</option>
+												</select>
+											</div>
+										</fieldset>
+									</form>
+									<!--// 배송지 선택 폼 -->
+									<a href="#" class="btnColor04 btnSizeL btnSizeW newAdr btn">새 주소 추가</a><!-- 새주소 추가 버튼 -->
+								</div>
+							</div>
+							<!-- 배송지 -->
+							<ul class="addressList">
+								<li>
+									<div class="addressCont">
+										<p><b>받으실 분</b><span>홍길동</span></p>
+										<p><b>연락처</b><span>010-1234-5678</span></p>
+										<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
+									</div>
+								</li>
+							</ul>
+							<!--// 배송지 -->
+							<div class="productBtnWrap">
+								<div class="newAddress">
+									<div class="textWrap">
+										<div class="selectBox">
+											<select title="배송 시 요청사항 선택">
+												<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+												<option value="">경비실에 맡겨주세요</option>
+												<option value="">빠른 배송 부탁드립니다.</option>
+												<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+											</select>
+										</div>
+										<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
+										<p class="countTxt"><span>0</span>/50</p>
+									</div>
+								</div>
+							</div>
 						</li>
 						<li>
 							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
@@ -113,7 +158,7 @@
 								<!-- 등록된 주소가 있는 경우 -->
 								<ul class="addressList">
 									<li>
-										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></span><span class="pointRed">기본 주소</span></p>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></span><span class="pointBrown">기본 주소</span></p>
 										<div class="addressCont">
 											<p><b>주문자</b><span>홍길동</span></p>
 											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
@@ -125,7 +170,7 @@
 										</div>
 									</li>
 									<li>
-										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></span><span class="pointGreen">최근 주소</span></p>
+										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></span><span class="pointBrown">최근 주소</span></p>
 										<div class="addressCont">
 											<p><b>주문자</b><span>홍길동</span></p>
 											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
@@ -157,12 +202,14 @@
 								<!--// 등록된 주소가 있는 경우 -->
 								<h4 class="partTit">배송 시 요청 사항</h4>
 								<div class="textWrap">
-									<select title="배송 시 요청사항 선택">
-										<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-										<option value="">경비실에 맡겨주세요</option>
-										<option value="">빠른 배송 부탁드립니다.</option>
-										<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-									</select>
+									<div class="selectBox">
+										<select title="배송 시 요청사항 선택">
+											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
+											<option value="">경비실에 맡겨주세요</option>
+											<option value="">빠른 배송 부탁드립니다.</option>
+											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
+										</select>
+									</div>
 									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
 									<p class="countTxt"><span>0</span>/50</p>
 								</div>
@@ -287,19 +334,23 @@
 											<tr>
 												<th scope="row">카드선택</th>
 												<td>
-													<select title="수령지 선택">
-														<option value="" label="카드 선택" selected="selected">카드 선택</option>
-														<option value="" label=""></option>
-													</select>
+													<div class="selectBox">
+														<select title="수령지 선택">
+															<option value="" label="카드 선택" selected="selected">카드 선택</option>
+															<option value="" label=""></option>
+														</select>
+													</div>
 												</td>
 											</tr>
 											<tr>
 												<th scope="row">할부방식</th>
 												<td>
-													<select title="수령지 선택">
-														<option value="" label="일시불" selected="selected">일시불</option>
-														<option value="" label=""></option>
-													</select>
+													<div class="selectBox">
+														<select title="수령지 선택">
+															<option value="" label="일시불" selected="selected">일시불</option>
+															<option value="" label=""></option>
+														</select>
+													</div>
 												</td>
 											</tr>
 										</tbody>
@@ -332,10 +383,12 @@
 											<tr>
 												<th scope="row">은행선택</th>
 												<td>
-													<select title="은행선택">
-														<option value="" label="은행 선택" selected="selected">은행 선택</option>
-														<option value="" label=""></option>
-													</select>
+													<div class="selectBox">
+														<select title="은행선택">
+															<option value="" label="은행 선택" selected="selected">은행 선택</option>
+															<option value="" label=""></option>
+														</select>
+													</div>
 												</td>
 											</tr>
 											<tr>
@@ -367,30 +420,34 @@
 										<div class="" id="cashCt1">
 											<div class="shipPhone">
 												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<p>
-													<select title="소득공제 방법 선택" style="width:auto;">
-														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-														<option value="" label="현금영수증 카드">현금영수증 카드</option>
-													</select>
-												</p>
-												<p>
-													<select title="휴대폰 통신사 번호 선택">
-														<option value="" label="010" selected="selected">010</option>
-														<option value="" label=""></option>
-													</select> - 
-													<input type="text" title="휴대폰 앞자리 입력"/> - 
-													<input type="text" title="휴대폰 뒷자리 입력"/>
-												</p>
+													<div class="inp inpA">
+														<div class="selectBox">
+															<select title="소득공제 방법 선택">
+																<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+																<option value="" label="현금영수증 카드">현금영수증 카드</option>
+															</select>
+														</div>
+													</div>
+													<div class="inp inp3">
+														<div class="selectBox">
+															<select title="휴대폰 통신사 번호 선택">
+																<option value="" label="010" selected="selected">010</option>
+																<option value="" label=""></option>
+															</select>
+														</div> - 
+														<input type="tel" title="휴대폰 앞자리 입력"/> - 
+														<input type="tel" title="휴대폰 뒷자리 입력"/>
+													</div>
 												<!--// 개인소득공제 : 휴대폰 번호 -->
 												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!--
-												<p class="inp4">
+												<!-- 
+												<p class="inp inp4">
 													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
 												</p>
-												-->
+												 -->
 												<!--// 개인소득공제 : 현금영수증 카드 -->
 											</div>
 											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
@@ -399,11 +456,11 @@
 										<!-- 사업자 지출 증빙 -->
 										<div id="cashCt2" style="display:none;">
 											<div class="shipPhone">
-												<p>
+												<div class="inp inp3">
 													<input type="text" title="사업자번호 앞자리 입력"/> - 
 													<input type="text" title="사업자번호 중간자리 입력"/> - 
 													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</p>
+												</div>
 											</div>
 											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
 										</div>
@@ -432,30 +489,34 @@
 										<div id="cashCt2_1">
 											<div class="shipPhone">
 												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<p>
-													<select title="소득공제 방법 선택" style="width:auto;">
-														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-														<option value="" label="현금영수증 카드">현금영수증 카드</option>
-													</select>
-												</p>
-												<p>
-													<select title="휴대폰 통신사 번호 선택">
-														<option value="" label="010" selected="selected">010</option>
-														<option value="" label=""></option>
-													</select> - 
+												<div class="inp inpA">
+													<div class="selectBox">
+														<select title="소득공제 방법 선택" style="width:auto;">
+															<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+															<option value="" label="현금영수증 카드">현금영수증 카드</option>
+														</select>
+													</div>
+												</div>
+												<div class="inp inp3">
+													<div class="selectBox">
+														<select title="휴대폰 통신사 번호 선택">
+															<option value="" label="010" selected="selected">010</option>
+															<option value="" label=""></option>
+														</select>
+													</div> - 
 													<input type="text" title="휴대폰 앞자리 입력"/> - 
 													<input type="text" title="휴대폰 뒷자리 입력"/>
-												</p>
+												</div>
 												<!--// 개인소득공제 : 휴대폰 번호 -->
 												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!--
-												<p class="inp4">
+												<!-- 
+												<div class="inp inp4">
 													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
 													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
-												</p>
-												-->
+												</div>
+												 -->
 												<!--// 개인소득공제 : 현금영수증 카드 -->
 												<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
 											</div>
@@ -464,11 +525,11 @@
 										<!-- 사업자 지출 증빙 -->
 										<div id="cashCt2_2" style="display:none;">
 											<div class="shipPhone">
-												<p>
+												<div class="inp inp3">
 													<input type="text" title="사업자번호 앞자리 입력"/> - 
 													<input type="text" title="사업자번호 중간자리 입력"/> - 
 													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</p>
+												</div>
 											</div>
 											<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
 										</div>
