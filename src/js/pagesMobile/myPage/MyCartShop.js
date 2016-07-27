@@ -41,13 +41,12 @@ module.exports = function() {
 			wrap : '.js-myCartShop-orderInfo',
 			price : '.js-orderInfo-price',
 			discount : '.js-dicount-price',
-			delivery : '.js-order-delivery',
 			totalPrice : '.js-orderInfo-totalPrice',
-			moreBtn : '.js-orderInfo-more',
-			moreWrap : '.js-orderInfo-more-wrap'
+			moreWrap : '.js-orderInfo-more-wrap',
+			moreBtn : '.js-orderInfo-more'
 		},
 		templates : {
-			wrap : '.js-myCartShop-list-wrap',
+			wrap : '.singleCard',
 			template : '#myCartShop-list-templates'
 		},
 		listSize : '.js-list-size',
@@ -74,8 +73,7 @@ module.exports = function() {
 		setBindEvents();
 
 		// myCartShop 리스트 조회
-		var productSectionCode = 'PD_PROD_SVC_SECTION_01';
-		controller.myCartList(productSectionCode);
+		controller.myCartList('PD_PROD_SVC_SECTION_01');
 	}
 
 	function setElements() {
@@ -83,60 +81,76 @@ module.exports = function() {
 		self.template = $(self.opts.templates.template);
 
 		self.colorbox = $(self.opts.colorbox);
-		self.chkedList = null;
 	}
 
 	function setBindEvents() {
 		$(controller).on(CART_EVENT.WILD_CARD, onControllerListener);
 
-		eventManager.on(OPTIONNUM_EVENT.CHANGE, onOptionNumChange);
+		// eventManager.on(OPTIONNUM_EVENT.CHANGE, onOptionNumChange);
 		eventManager.on(CHECKBOX_EVENT.CHANGE, onCheckBoxChange);
 	}
 
 	function setDeleteEvents() {
 		// 옵션 삭제 처리 - 확인필요
-		$('.optList').each(function(){
-			$(this).find('.js-opt-delete').click(function(e) {
-				e.preventDefault();
-				/*
-				eventManager.trigger(OPTIONNUM_EVENT.CHANGE, [$(this).parent(), 0]);
-				$(this).closest('.optList').remove();
-				*/
-			});
+		$('').each(function(){
+		});
+		$('.optList .js-opt-delete').click(function(e) {
+			e.preventDefault();
+			if (confirm('선택하신 상품을 삭제하시겠습니까?')) {
+				var deleteList = [$(this).data('cart-number')];
+				controller.deleteMyCartList(deleteList);
+			}
 		});
 
 		// 선택 리스트 삭제 처리
 		$(self.opts.listDel).on('click', function(e) {
 			e.preventDefault();
+			if (confirm('선택하신 상품을 삭제하시겠습니까?')) {
+				var list = $('[data-chk-group=\'myCartShop\']').not('[data-chk-role=\'chkAll\']').filter('.on');
+				var deleteList = [];
+				$.each(list, function() {
+					deleteList.push($(this).data('cart-number'));
+				});
+				if (!deleteList.length) {
+					alert('삭제할 상품이 없습니다.');
+					return;
+				}
 
-			var list = $('[data-chk-group=\'myCartShop\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
-			deleteList = [];
-
-			$.each(list, function() {
-				deleteList.push($(this).data('cart-number'));
-			});
-
-			if (!deleteList.length) {
-				return;
+				// myCartShop 리스트 삭제
+				controller.deleteMyCartList(deleteList);
 			}
+		});
 
-			// myCartShop 리스트 삭제
-			controller.deleteMyCartList(deleteList);
+		$('[data-option-num]').on('change', function() {
+			var target = $(this),
+			value = parseInt($(this).val(), 10),
+			info = target.closest(self.opts.cartList.wrap).data('list-info');
+			info.quantity = value;
+
+			target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
+			displayUpdate();
+
+			controller.updateMyCartList(info.cartNumber, {
+				"productNumber": info.productNumber,
+				"orderOptionNumber": info.optionNumber,
+				"quantity": value
+			});
 		});
 	}
 
-	function onOptionNumChange(e, target, value) {
-		var info = target.closest(self.opts.cartList.wrap).data('list-info');
-		info.quantity = value;
+	// function onOptionNumChange(e, target, value) {
+	// 	var info = target.closest(self.opts.cartList.wrap).data('list-info');
+	// 	info.quantity = value;
 
-		target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
-		displayUpdate();
+	// 	target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
+	// 	displayUpdate();
 
-		controller.updateMyCartList(info.productNumber, {
-			"orderOptionNumber": target.data().optionNum,
-			"quantity": value
-		});
-	}
+	// 	controller.updateMyCartList(info.cartNumber, {
+	// 		"productNumber": info.productNumber,
+	// 		"orderOptionNumber": info.optionNumber,
+	// 		"quantity": value
+	// 	});
+	// }
 
 	function onCheckBoxChange(e, target, chkGroup, chked) {
 		var list = [];
@@ -144,58 +158,42 @@ module.exports = function() {
 		$.each(chked, function() {
 			list.push($(this).closest(self.opts.cartList.wrap).get(0));
 		});
-
-		self.templatesWrap.find(self.opts.listSize).html(chked.size());
-
-		// 체크 수량에 따라 삭제 버튼 - 활성/비활성화 처리
-		if (chked.size()) {
-			self.templatesWrap.find(self.opts.listDel).removeAttr('disabled');
-		} else {
-			self.templatesWrap.find(self.opts.listDel).attr('disabled',true);
-		}
-
-		self.chkedList = list;
-
-		displayUpdate();
+		displayUpdate(list);
 	}
 
-	function displayUpdate() {
+	function displayUpdate(chked) {
 		orderData = new Array();
 		
-		var list = (self.chkedList === null) ? self.templatesWrap.find(self.opts.cartList.wrap) : self.chkedList,
+		var list = chked || self.templatesWrap.find(self.opts.cartList.wrap),
 		orderInfo = self.templatesWrap.find(self.opts.cartOrderInfo.wrap),
 		info = {},
 		value1 = 0,
 		value2 = 0,
 		totalBaseValue = 0,
 		discountValue = 0,
-		totalSaleValue = 0,
-		totalDeliveryValue = 0;
+		totalSaleValue = 0;
 
 		$.each(list, function() {
 			info = $(this).data('list-info');
-			value1 = (info.basePrice * info.quantity);// + info.deliveryCharge;
-			value2 = (info.salePrice * info.quantity) + info.deliveryCharge;
-
-			totalDeliveryValue += (info.deliveryCharge || 0);
+			value1 = (info.basePrice) + info.deliveryCharge;
+			value2 = (info.salePrice) + info.deliveryCharge;
 
 			totalBaseValue += value1;
-			discountValue += (info.basePrice-info.salePrice)*info.quantity;
+			discountValue += info.discountPrice;
 			totalSaleValue += value2;
 
-			$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
+			//$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
 			$(this).find(self.opts.optionNum).html(info.quantity);
 
 			orderData.push({
 				"productNumber": info.productNumber,
 				"orderOptionNumber": info.optionNumber,
-				"quantity": info.quantity,
+				"quantity": info.quantity
 			});
 		});
 
 		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalBaseValue));
-		orderInfo.find(self.opts.cartOrderInfo.discount).html(util.currencyFormat(discountValue));
-		orderInfo.find(self.opts.cartOrderInfo.delivery).html(util.currencyFormat(totalDeliveryValue));
+		orderInfo.find(self.opts.cartOrderInfo.discount).html(util.currencyFormat(discountValue || 0));
 		orderInfo.find(self.opts.cartOrderInfo.totalPrice).html(util.currencyFormat(totalSaleValue));
 	}
 
@@ -203,6 +201,7 @@ module.exports = function() {
 		e.preventDefault();
 
 		$(self.opts.cartOrderInfo.moreWrap).toggle();
+		$(this).toggleClass('opened');
 	}
 
 	function displayData(data) {
@@ -211,6 +210,8 @@ module.exports = function() {
 			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
 			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
 			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
+			eachCartItem.discountPriceDesc = util.currencyFormat(eachCartItem.discountPrice);
+			
 
 			if (util.isLocal()) {
 				eachCartItem.productImageUrl = 'https://dev.koloncommon.com' + eachCartItem.productImageUrl;
@@ -247,18 +248,19 @@ module.exports = function() {
 				displayUpdate();
 				setDeleteEvents();
 
-				$('#js-myCartShop-submit').click(function(e) {
-					e.preventDefault();
-
+				$('#js-myCartShop-submit').click(function(e){
 					var loginData = loginDataModel.loginData();
 
 					if (loginData.stateCode == 'BM_MEM_STATE_01') {
-						$(document).trigger('verifyMember', 'MYCART_SHOP');
+						$(document).trigger('verifyMember', ['MYCART_SHOP']);
 					} else {
 						Cookies.set('instantOrder', orderData);
 						location.href = '/order/orderGoods.html?fromCart=Y';
 					}
 				});
+				break;
+			case CART_EVENT.UPDATE:
+				controller.myCartList('PD_PROD_SVC_SECTION_01');
 				break;
 			case CART_EVENT.DELETE:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
