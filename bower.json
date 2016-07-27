@@ -42,7 +42,8 @@
     "zeroclipboard": "^2.2.0",
     "placeholders": "^4.0.1",
     "simply-toast": "https://github.com/ericprieto/simply-toast.git#master",
-    "fastclick": "^1.0.6"
+    "fastclick": "^1.0.6",
+    "jqueryui-touch-punch": "https://github.com/furf/jquery-ui-touch-punch.git#master"
   },
   "resolutions": {
     "jquery": ">=1.6.0"
