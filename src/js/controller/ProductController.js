@@ -50,7 +50,9 @@ function ClassProductController() {
 			// 리뷰 리스트 (사용안함)
 			reviews : reviews,
 			// 다중옵션 리스트
-			options : options
+			options : options,
+			// 다중옵션 상품의 전체 옵션 (모바일)
+			entireOptions : entireOptions
 		};		
 		return callerObj;
 	}
