@@ -184,8 +184,29 @@ function ClassProductController() {
 		for (var i = 0; i < optionLevel; i++) {
 			optionValues["optionValue"+(i+1)] = optionValueArray[i];
 		}
-		debug.log(optionValues);
+		
 		Super.callApi('/apis/products/' + productNumber + '/options', 'GET', optionValues, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('productOptionsResult', [status, result]);
+			} else {
+				Super.handleError('productOptions', result);
+				$(callerObj).trigger('productOptionsResult', [status, result]);
+			}
+		}, true);
+	}
+	/**
+	 * 다중옵션 상품의 전체 옵션 (모바일)
+	 * @param  {Number} criteriaOptionCount
+	 * @param  {Number} optionLevel
+	 * @param  {Array} optionValueArray
+	 * @see  https://dev.koloncommon.com/swagger/swagger-ui.html#!/product-controller/getProductOptionValuesUsingGET
+	 * @ GET /apis/products/{productNumber}/options
+	 */
+	function entireOptions(productNumber, criteriaOptionCount) {
+		Super.callApi('/apis/products/' + productNumber + '/options', 'GET', {
+			"criteriaOptionCount": criteriaOptionCount,
+			"optionLevel": criteriaOptionCount
+		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('productOptionsResult', [status, result]);
 			} else {
