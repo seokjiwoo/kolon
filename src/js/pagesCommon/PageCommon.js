@@ -704,5 +704,34 @@ module.exports = function() {
 		window.Handlebars.registerHelper('vxCurrencyFormat', function(value) {
 			return util.currencyFormat(value);
 		});
+
+		//@see http://stackoverflow.com/questions/11924452/iterating-over-basic-for-loop-using-handlebars-js#answer-11924998
+		// @exampe 
+		// {{#vxSelect 1 100 1 quantity}}
+		// 	{{#if this.selected}}
+		// 		<option value="{{this}}" selected="selected">{{this}}</option>
+		// 	{{else}}
+		// 		<option value="{{this}}">{{this}}</option>
+		// 	{{/if}}
+		// {{/vxSelect}}
+		window.Handlebars.registerHelper('vxSelect', function(from, to, incr, select, block) {
+			var accum = '';
+			for(var i = from; i < to; i += incr) {
+				if (i === select) {
+					accum += block.fn({index : i, selected : true});
+				} else {
+					accum += block.fn({index : i, selected : false});
+				}
+			}
+			return accum;
+		});
+		// window.Handlebars.registerHelper('vxFor', function(from, to, incr, block, active) {
+		// 	var accum = '';
+		// 	for(var i = from; i < to; i += incr) {
+		// 		accum += block.fn(i);
+		// 	}
+		// 	console.log('accum', accum);
+		// 	return accum;
+		// });
 	}
 }
