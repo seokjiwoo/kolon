@@ -144,7 +144,7 @@
 .cardCon{ position:relative; z-index:4;top:0;display: block;width:125px;padding:43px 10px;color:#000; }
 .cardTop{position: absolute;top:0;left:0;z-index: 1}
 .cardBtm{position: absolute;bottom:0;left:0;z-index: 1}
-.cardCon:after {content:''; width:83px; height:37px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:24px; right:-4px; opacity:0.5; z-index:-1;}
+.cardCon:after {content:''; width:83px; height:37px; transform:rotate(-29.65deg) skewx(-30deg); position:absolute; bottom:25px; right:-6px; opacity:0.5; z-index:-1;}
 
 .cardCon .cardEnter{position: absolute;left:50%;bottom:30px;margin-left: -32px;z-index: 2; width:auto; height:auto;}
 .cardCon .cardEnter img{display: block;}
