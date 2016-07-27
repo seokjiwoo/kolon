@@ -184,6 +184,11 @@ $(document).ready(function() {
 			case 'order-complete-homeService':
 				PageModuleClass = require('./pages/order/CompleteHomeService.js');
 				break;
+
+			case 'order-failure':
+				PageModuleClass = require('./pages/order/Failure.js');
+				break;
+
 		// [E] 주문서 작성 order
 
 

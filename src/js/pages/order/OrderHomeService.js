@@ -114,6 +114,9 @@ module.exports = function() {
 
 				if (data.washServiceDetail.price < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
+				$('.radioBox label').on('click', function(e){
+					$(this).addClass('on').parent().parent().siblings('li').find('label').removeClass('on');
+				});
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
 				});
