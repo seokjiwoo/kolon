@@ -24,8 +24,8 @@
 							<form method="post" action="/">
 								<fieldset>
 									<legend>검색결과 조건 정렬 선택</legend>
-									<p class="sdTit">총 <b>150</b>개 상품</p>
-									<a href="../_popup/popDetailedMore.html" class="btnPop detailBtn" data-user-class="pop">상세조건</a><!-- 뉴폼 상세조건 필터 -->
+									<p class="sdTit">총 <b id="shopListCount"></b>개 상품</p>
+									<a href="../_popup/popDetailedMore.html" class="btnPop detailBtn" data-user-class="pop categoryPop">상세조건</a><!-- 뉴폼 상세조건 필터 -->
 									<div class="selectBox">
 										<select id="orderDrop" title="검색결과 정렬 선택" class="">
 											<option value="newest" selected="selected">최신순</option>
@@ -56,7 +56,15 @@
 						cardSize02 -> 285x499
 						cardSize03 -> 285x676
 					 -->
-					<ul class="cardWrap" id="cardWrap"></ul>
+					<ul class="cardWrap" id="cardWrap">
+						<!-- Shop Card Stamp -->
+						<li class="cardTitle shop stamp">
+							<div class="cardTitleCont">
+								<div class="cardTitleBg"></div>
+							</div>
+						</li>
+						<!--// Shop Card Stamp -->
+					</ul>
 					<!-- 
 					<li class="cardTitle shop stamp">
 						<div class="cardTitleCont">

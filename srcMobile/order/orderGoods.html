@@ -2,300 +2,50 @@
 <html lang='ko-kr'>
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문서 작성"} -->
+	<!-- @@include ../_template/headerPayment.html -->
 </head>
-<body data-page-id="myPage-order">
+<body data-page-id="order-orderGoods">
 	<div class="wrapper order">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<section>
 				<h2 class="pageTit">주문/결제</h2>
-				<div class="wrapT">
-					<h3 class="conTit">주문 상품 / 배송 정보</h3>
-					<!-- list -->
-					<!-- <p class="setPriceGray">묶음 배송상품</p> --><!-- 묶음 배송 상품일 경우-->
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<!-- 결제금액 내역 -->
-							<ul class="priceBox">
-								<li>
-									<p class="priceBoxTit">할인금액</p>
-									<p class="priceBoxCont"><b>0</b> 원</p>
-								</li>
-								<li>
-									<p class="priceBoxTit">배송비</p>
-									<p class="priceBoxCont"><b>20,000</b> 원</p>
-								</li>
-								<li class="check">
-									<p class="priceBoxTit">결제금액</p>
-									<p class="priceBoxCont"><b>1,720,000</b> 원</p>
-								</li>
-							</ul>
-							<!--// 결제금액 내역 -->
-							<div class="productBtnWrap">
-								<div class="newAddress">
-									<!-- 배송지 선택 폼 -->
-									<form method="post" action="/">
-										<fieldset>
-											<legend>배송지 선택 폼</legend>
-											<div class="selectBox">
-												<select title="배송지 선택">
-													<option value="" selected="selected">자택</option>
-													<option value="">회사</option>
-												</select>
-											</div>
-										</fieldset>
-									</form>
-									<!--// 배송지 선택 폼 -->
-									<a href="#" class="btnColor04 btnSizeL btnSizeW newAdr btn">새 주소 추가</a><!-- 새주소 추가 버튼 -->
-								</div>
-							</div>
-							<!-- 배송지 -->
-							<ul class="addressList">
-								<li>
-									<div class="addressCont">
-										<p><b>받으실 분</b><span>홍길동</span></p>
-										<p><b>연락처</b><span>010-1234-5678</span></p>
-										<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
-									</div>
-								</li>
-							</ul>
-							<!--// 배송지 -->
-							<div class="productBtnWrap">
-								<div class="newAddress">
-									<div class="textWrap">
-										<div class="selectBox">
-											<select title="배송 시 요청사항 선택">
-												<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-												<option value="">경비실에 맡겨주세요</option>
-												<option value="">빠른 배송 부탁드립니다.</option>
-												<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-											</select>
-										</div>
-										<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
-										<p class="countTxt"><span>0</span>/50</p>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<!-- 결제금액 내역 -->
-							<ul class="priceBox">
-								<li>
-									<p class="priceBoxTit">할인금액</p>
-									<p class="priceBoxCont"><b>0</b> 원</p>
-								</li>
-								<li>
-									<p class="priceBoxTit">배송비</p>
-									<p class="priceBoxCont"><b>20,000</b> 원</p>
-								</li>
-								<li class="check">
-									<p class="priceBoxTit">결제금액</p>
-									<p class="priceBoxCont"><b>1,720,000</b> 원</p>
-								</li>
-							</ul>
-							<!--// 결제금액 내역 -->
-							<!-- 묶음 배송 상품일 경우 - 묶음 배송비 -->
-							<ul class="priceBox">
-								<li>
-									<p class="priceBoxTit">묶음 배송비</p>
-									<p class="priceBoxCont"><b>4,000</b> 원</p>
-								</li>
-							</ul>
-							<!-- // 묶음 배송 상품일 경우 - 묶음 배송비 -->
-						</li>
-					</ul>
-					<!--// list -->
-					<!-- 묶음 배송 상품일 경우-->
-				</div>
-				<div class="wrapT">
-					<fieldset class="selectAddress">
+				<div class="wrapT" id="deliveryTabWrap">
+					<fieldset id="deliveryTab" class="selectAddress">
 						<h3 class="conTit">수령지 정보</h3>
 						<div class="payTab tabWrap">
 							<span class="on"><a href="#delivery1" class="radioBtn">단일 배송지</a></span>
 							<span><a href="#delivery2" class="radioBtn">복수 배송지</a></span>
 						</div>
-						<div class="">
-							<!-- 단일 배송지 -->
-							<div class="delivery1" id="delivery1">
-								<div class="addressBtnWrap">
-									<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-								</div>
-								<!-- 등록된 주소가 있는 경우 -->
-								<ul class="addressList">
-									<li>
-										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">집</label></span><span class="pointBrown">기본 주소</span></p>
-										<div class="addressCont">
-											<p><b>주문자</b><span>홍길동</span></p>
-											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길 <br/>코오롱빌딩 7층</span></p>
-											<p><b>연락처</b><span>010-1234-5678</span></p>
-										</div>
-										<div class="btnwrap">
-											<a href="#" class="btnSizeS btnColor05">수정</a>
-											<a href="#" class="btnSizeS btnColor05">삭제</a>
-										</div>
-									</li>
-									<li>
-										<p class="addressTit base"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">회사</label></span><span class="pointBrown">최근 주소</span></p>
-										<div class="addressCont">
-											<p><b>주문자</b><span>홍길동</span></p>
-											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
-											<p><b>연락처</b><span>010-1234-5678</span></p>
-										</div>
-										<div class="btnwrap">
-											<a href="#" class="btnSizeS btnColor05">수정</a>
-											<a href="#" class="btnSizeS btnColor05">삭제</a>
-										</div>
-									</li>
-									<li>
-										<p class="addressTit"><span class="radioBox"><input type="radio" name="" id="adr1" /><label for="adr1">친정집</label></span></p>
-										<div class="addressCont">
-											<p><b>주문자</b><span>홍길동</span></p>
-											<p><b>도로명</b><span>경기도 과천시 물사랑로 3862길<br/>코오롱빌딩 7층</span></p>
-											<p><b>연락처</b><span>010-1234-5678</span></p>
-										</div>
-										<div class="btnwrap">
-											<a href="#" class="btnSizeS btnColor05">수정</a>
-											<a href="#" class="btnSizeS btnColor05">삭제</a>
-										</div>
-									</li>
-									<!-- 등록된 주소가 없는 경우 -->
-									<li>
-										<div class="addressNon">등록된 주소가 없습니다.<br/>수령할 주소를 등록해주세요.</div>
-									</li>
-									<!--// 등록된 주소가 없는 경우 -->
-								</ul>
-								<!--// 등록된 주소가 있는 경우 -->
-								<h4 class="partTit">배송 시 요청 사항</h4>
-								<div class="textWrap">
-									<div class="selectBox">
-										<select title="배송 시 요청사항 선택">
-											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-											<option value="">경비실에 맡겨주세요</option>
-											<option value="">빠른 배송 부탁드립니다.</option>
-											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-										</select>
-									</div>
-									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
-									<p class="countTxt"><span>0</span>/50</p>
-								</div>
-							</div>
-							<!--// 단일 배송지 -->
-							<!-- 복수 배송지 -->
-							<div class="delivery2" id="delivery2" style="display:none">
-								<a href="../_popup/popOrderDelivery.html" class="deliveryBtn btnPop" data-user-class="pop"><span>복수 배송지 선택</span></a>
-							</div>
-							<!--// 복수 배송지 -->
-						</div>
 					</fieldset>
 				</div>
 				<div class="wrapT">
-					<h3 class="conTit">결제 정보</h3>
-					<div class="orderInfo">
-						<dl>
-							<dt>
-								<span>주문 금액</span>
-								<span class="orderTxt">(상품금액+배송비)</span>
-							</dt>
-							<dd>
-								<p class="price"><b>1,720,000</b> 원</p>
-							</dd>
-						</dl>
-						<dl class="minus">
-							<dt><span>총 할인금액</span></dt>
-							<dd>
-								<p class="price"><b>0</b> 원</p>
-								<ul class="odList">
-									<li>
-										<p class="odListTit">기본 할인</p>
-										<p class="odListCont"><b>0</b> 원</p>
-									</li>
-									<li>
-										<p class="odListTit">포인트</p>
-										<p class="odListCont"><b>0</b> 원</p>
-									</li>
-								</ul>
-							</dd>
-							<dt><span>혜택적용 </span></dt>
-							<dd>
-								<p class="odListTit">
-									<span class="checkbox">
-										<input type="checkbox" id="checkOd"/>
-										<label for="checkOd">모두 사용</label>
-									</span>
-								</p>
-								<p class="odListCont"><span class="point"><em>잔여 포인트</em><b>1300</b> P</span></p>
-							</dd>
-							<dd>
-								<ul class="odList point">
-									<li>
-										<p class="odListTit"><label for="point">포인트 사용</label></p>
-										<p class="odListCont"><input type="text" id="point" style="width:121px;"/> p</p>
-									</li>
-								</ul>
-								<p class="underTxt">포인트는  5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
-							</dd>
-						</dl>
-						<dl class="equal">
-							<dd class="total">
-								<p class="odListTit">총 결제금액</p>
-								<p class="odListCont"><b>1,720,000</b> 원</p>
-							</dd>
-							<dt>
-								<span>구매혜택</span>
-							</dt>
-							<dd>
-								<ul class="odList">
-									<li>
-										<p class="odListTit">적립 예정 포인트</p>
-										<p class="odListCont"><span class="point"><b>1300</b> P</span></p>
-									</li>
-								</ul>
-							</dd>
-						</dl>
+					<h3 class="conTit">주문 상품 / 배송 정보</h3>
+					<!-- list -->
+					<!-- <p class="setPriceGray">묶음 배송상품</p> --><!-- 묶음 배송 상품일 경우-->
+					<div id="addressFormWrapper">
+						<!-- 단일 배송지 -->
+						<ul class="productList" id="delivery1"></ul>
+						<!--// 단일 배송지 -->
+
+						<!-- 복수 배송지 -->
+						<div class="productList" id="delivery2" style="display:none"></div>
+						<!--// 복수 배송지 -->
 					</div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 정보</h3>
+					
+					<div class="orderInfo" id="paymentForm1"></div>
+
 					<table class="formWrap tbL">
 						<caption>개인정보 제 3자 제공 동의</caption>
 						<thead>
 							<tr>
 								<th scope="col">
 									<span class="checkbox">
-										<input type="checkbox" id="checkAgree"/>
-										<label for="checkAgree">개인정보 제 3자 제공 동의</label>
+										<input type="checkbox" id="agree01"/>
+										<label for="agree01" id="agree01cb">개인정보 제 3자 제공 동의</label>
 									</span>
 								</th>
 							<tr>
@@ -315,10 +65,12 @@
 				<div class="wrapT">
 					<h3 class="conTit">결제 방법</h3>
 					<div class="tabWrap orderTab">
-						<span class="on"><a href="#pay1" class="btnSizeS btnColor05">신용카드</a></span>
-						<span><a href="#pay2" class="btnSizeS btnColor05">무통장 입금</a></span>
-						<span><a href="#pay3" class="btnSizeS btnColor05">실시간 계좌이체</a></span>
+						<span id="payCARD" class="payRadio on"><a href="#pay1" class="btnSizeS btnColor05">신용카드</a></span>
+						<span id="payVBANK" class="payRadio"><a href="#pay2" class="btnSizeS btnColor05">무통장 입금</a></span>
+						<!-- 
+						<span id="payBANK"><a href="#pay3" class="btnSizeS btnColor05">실시간 계좌이체</a></span>
 						<span><a href="#pay4" class="btnSizeS btnColor05">휴대폰 결제</a></span>
+						 -->
 					</div>
 					<div>
 						<!-- 신용카드 -->
@@ -334,23 +86,28 @@
 											<tr>
 												<th scope="row">카드선택</th>
 												<td>
-													<div class="selectBox">
-														<select title="수령지 선택">
-															<option value="" label="카드 선택" selected="selected">카드 선택</option>
-															<option value="" label=""></option>
-														</select>
-													</div>
+													<select id="cardSelect" title="카드 선택" >
+														<option value="" label="카드 선택" selected="selected">카드 선택</option>
+													</select>
 												</td>
 											</tr>
 											<tr>
 												<th scope="row">할부방식</th>
 												<td>
-													<div class="selectBox">
-														<select title="수령지 선택">
-															<option value="" label="일시불" selected="selected">일시불</option>
-															<option value="" label=""></option>
-														</select>
-													</div>
+													<select id="quotaSelect" title="할부방식 선택">
+														<option value="00" label="일시불" selected="selected">일시불</option>
+														<option value="02" label="2개월">2개월</option>
+														<option value="03" label="3개월">3개월</option>
+														<option value="04" label="4개월">4개월</option>
+														<option value="05" label="5개월">5개월</option>
+														<option value="06" label="6개월">6개월</option>
+														<option value="07" label="7개월">7개월</option>
+														<option value="08" label="8개월">8개월</option>
+														<option value="09" label="9개월">9개월</option>
+														<option value="10" label="10개월">10개월</option>
+														<option value="11" label="11개월">11개월</option>
+														<option value="12" label="12개월">12개월</option>
+													</select>
 												</td>
 											</tr>
 										</tbody>
@@ -375,97 +132,30 @@
 							<div class="orderTbW">
 								<form method="post" action="/">
 									<table class="formWrap">
-										<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제 안내, 현금영수증 발금신청 정보를 제공합니다.</caption>
+										<caption>무통장 입금 결제에 관한 결제 안내를 제공합니다.</caption>
 										<colgroup>
 											<col style="width:22%;"/><col style="width:78%;"/>
 										</colgroup>
 										<tbody>
-											<tr>
-												<th scope="row">은행선택</th>
+											<!--<tr>
+												<th scope="row">입금은행</th>
 												<td>
-													<div class="selectBox">
-														<select title="은행선택">
-															<option value="" label="은행 선택" selected="selected">은행 선택</option>
-															<option value="" label=""></option>
-														</select>
-													</div>
+													<select title="은행선택" style="width:148px;" id='bankSelect'>
+														<option value="" label="은행 선택" selected="selected">은행 선택</option>
+													</select>
 												</td>
-											</tr>
+											</tr>-->
 											<tr>
-												<th scope="row"><label for="bank01">입금자</label></th>
+												<th scope="row">결제안내</th>
 												<td>
-													<input type="text" class="" id="bank01" value=""/>
+													<ul class="noBul">
+														<li>하단의 &lt;결제하기> 버튼을 클릭합니다.</li>
+														<li>다음 화면에 나오는 계좌번호로 입금하시면 결제가 완료됩니다.</li>
+													</ul>
 												</td>
-											</tr>
-											<tr>
-												<th scope="row">예금주</th>
-												<td class="t_r">예금주명</td>
-											</tr>
-											<tr>
-												<th scope="row">입금<br/>마감일</th>
-												<td class="t_r">2016. 05. 30</td>
 											</tr>
 										</tbody>
 									</table>
-									<div class="underTxtMark">
-										주문시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.
-									</div>
-									<h3 class="conTit">현금영수증 발급 신청</h3>
-									<div class="payTab tabWrap">
-										<span class="on"><a href="#cashCt1" class="radioBtn">개인 소득 공제</a></span>
-										<span><a href="#cashCt2" class="radioBtn">사업자 지출 증빙</a></span>
-									</div>
-									<div class="">
-										<!-- 개인소득공제 -->
-										<div class="" id="cashCt1">
-											<div class="shipPhone">
-												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<div class="inp inpA">
-													<div class="selectBox">
-														<select title="소득공제 방법 선택">
-															<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-															<option value="" label="현금영수증 카드">현금영수증 카드</option>
-														</select>
-													</div>
-												</div>
-												<div class="inp inp3">
-													<div class="selectBox">
-														<select title="휴대폰 통신사 번호 선택">
-															<option value="" label="010" selected="selected">010</option>
-															<option value="" label=""></option>
-														</select>
-													</div> - 
-													<input type="tel" title="휴대폰 앞자리 입력"/> - 
-													<input type="tel" title="휴대폰 뒷자리 입력"/>
-												</div>
-												<!--// 개인소득공제 : 휴대폰 번호 -->
-												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!-- 
-												<p class="inp inp4">
-													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
-												</p>
-												 -->
-												<!--// 개인소득공제 : 현금영수증 카드 -->
-											</div>
-											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
-										</div>
-										<!--// 개인소득공제 -->
-										<!-- 사업자 지출 증빙 -->
-										<div id="cashCt2" style="display:none;">
-											<div class="shipPhone">
-												<div class="inp inp3">
-													<input type="text" title="사업자번호 앞자리 입력"/> - 
-													<input type="text" title="사업자번호 중간자리 입력"/> - 
-													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</div>
-											</div>
-											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
-										</div>
-										<!--// 사업자 지출 증빙 -->
-									</div>
 								</form>
 							</div>
 						</div>
@@ -572,12 +262,14 @@
 				<div class="myCartTotal">
 					<ul class="totalList slideMore">
 						<li>
-							<p class="totalTit">총 상품금액 (3개)</p>
-							<p class="totalCont"><b>1,700,000</b> 원</p>
+							<p class="totalTit">
+								총 상품금액 (<span class="js-product-count" style="width:auto;font-size:15px;line-height:20px;color:#333;"></span>개)
+							</p>
+							<p class="totalCont"><b class="js-basePrice">1,700,000</b> 원</p>
 						</li>
 						<li>
 							<p class="totalTit">총 할인금액</p>
-							<p class="totalCont"><b>- 0</b> 원</p>
+							<p class="totalCont"><b>- </b><b class="js-basicDiscount">0</b> 원</p>
 						</li>
 						<li class="point">
 							<ul class="odList">
@@ -587,26 +279,313 @@
 								</li>
 								<li>
 									<p class="odListTit">포인트</p>
-									<p class="odListCont"><b>0</b> 원</p>
+									<p class="odListCont"><b>- </b><b class="js-usedPoint">0</b> 원</p>
 								</li>
 							</ul>
 						</li>
 						<li>
 							<p class="totalTit">배송비</p>
-							<p class="totalCont"><b>20,000</b> 원</p>
+							<p class="totalCont"><b class="js-handlingPrice"></b> 원</p>
 						</li>
 					</ul>
 					<div class="total">
 						<p class="totalTit">결제예정금액</p>
-						<p class="totalCont"><b>1,720,000</b> 원</p>
+						<p class="totalCont"><b class="js-totalPrice">1,720,000</b> 원</p>
 						<a href="#" class="more btnMore">상세보기</a>
 					</div>
-					<a href="#" class="totalBtn">주문하기</a>
+					<a href="javascript:;" class="totalBtn requestPaymentButton">결제하기</a>
 				</div>
 				<!--// scroll 시 고정 영역 -->
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+
+<!-- [D] 단일 배송지 -->
+<script id="order-delivery1-templates" type="text/x-handlebars-template">
+{{!-- order-delivery1-templates --}}
+	{{#each products}}
+	<li>
+		<a href="/shop/detail.html?productNumber={{productNumber}}" class="thumb">
+			<img src="{{productImageUrl}}" alt="{{productName}}" />
+		</a>
+		<div class="info">
+			<span>{{saleMemberName}}</span>
+			<p><a href="/shop/detail.html?productNumber={{productNumber}}">{{{productName}}}</a></p>
+		</div>
+		<ul class="productData">
+			<li>
+				<p class="name">{{orderOptionName}}</p>
+				<p class="count">
+					<span><em>{{productOptionPrice}}</em>원</span>
+					<span>{{quantity}} 개</span>
+				</p>
+			</li>
+		</ul>
+		<!-- 결제금액 내역 -->
+		<ul class="priceBox">
+			<li>
+				<p class="priceBoxTit">할인금액</p>
+				<p class="priceBoxCont"><b>{{discountPrice}}</b> 원</p>
+			</li>
+			<li>
+				<p class="priceBoxTit">배송비</p>
+				<p class="priceBoxCont"><b>{{deliveryCharge}}</b> 원</p>
+			</li>
+			<li class="check">
+				<p class="priceBoxTit">결제금액</p>
+				<p class="priceBoxCont"><b>{{paymentPrice}}</b> 원</p>
+			</li>
+		</ul>
+		{{#if @last}}
+			<!--// 결제금액 내역 -->
+			<div class="productBtnWrap">
+				<div class="newAddress">
+					<!-- 배송지 선택 폼 -->
+					<form method="post" action="/">
+						<fieldset>
+							<legend>배송지 선택 폼</legend>
+							<div class="selectBox">
+								<select id="addressSelect-1" class="addressSelect" title="수령지 선택">
+									<option value="" label="" selected="selected">새 주소 추가 눌러 주소를 등록해주세요</option>
+								</select>
+							</div>
+						</fieldset>
+					</form>
+					<!--// 배송지 선택 폼 -->
+					<a href="/popup/addressBook.html" target="_blank" 
+						 id="addressBook-1" class="btnColor04 btnSizeL btnSizeW newAdr btn openAddressPopup">새 주소 추가</a><!-- 새주소 추가 버튼 -->
+				</div>
+			</div>
+			<!-- 배송지 -->
+			<ul class="addressList">
+				<li>
+					<div class="addressCont" id="address-1">
+						<!-- 
+						<p><b>받으실 분</b><span>홍길동</span></p>
+						<p><b>연락처</b><span>010-1234-5678</span></p>
+						<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
+						 -->
+					</div>
+				</li>
+			</ul>
+			<!--// 배송지 -->
+			<div class="productBtnWrap">
+				<div class="newAddress">
+					<div class="textWrap">
+						<div class="selectBox">
+							<select id="messageSelect-1-{{@index}}" title="배송 시 요청사항 선택">
+								<option value="" label="배송 시 요청사항을 선택해 주세요." selected="selected">배송 시 요청사항을 선택해 주세요.</option>
+								<option value="경비실에 맡겨주세요." label="경비실에 맡겨주세요.">경비실에 맡겨주세요.</option>
+								<option value="빠른 배송 부탁드립니다." label="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
+								<option value="부재 시 핸드폰으로 연락바랍니다." label="부재 시 핸드폰으로 연락바랍니다.">부재 시 핸드폰으로 연락바랍니다.</option>
+								<option value="-" label="직접 입력">직접 입력</option>
+							</select>
+						</div>
+						<textarea id="messageField-1-{{@index}}" title="배송 시 요청사항 직접입력" placeholder="직접 입력" maxlength="50"></textarea>
+					</div>
+				</div>
+			</div>
+		{{/if}}
+	</li>
+	{{/each}}
+{{!--// order-delivery1-templates --}}
+</script>
+
+<!-- [D] 복수 배송지 -->
+<script id="order-delivery2-templates" type="text/x-handlebars-template">
+{{!-- order-delivery2-templates --}}
+	{{#each products}}
+	<li>
+		<a href="/shop/detail.html?productNumber={{productNumber}}" class="thumb">
+			<img src="{{productImageUrl}}" alt="{{productName}}" />
+		</a>
+		<div class="info">
+			<span>{{saleMemberName}}</span>
+			<p><a href="/shop/detail.html?productNumber={{productNumber}}">{{{productName}}}</a></p>
+		</div>
+		<ul class="productData">
+			<li>
+				<p class="name">{{orderOptionName}}</p>
+				<p class="count">
+					<span><em>{{productOptionPrice}}</em>원</span>
+					<span>{{quantity}} 개</span>
+				</p>
+			</li>
+		</ul>
+		<!-- 결제금액 내역 -->
+		<ul class="priceBox">
+			<li>
+				<p class="priceBoxTit">할인금액</p>
+				<p class="priceBoxCont"><b>{{discountPrice}}</b> 원</p>
+			</li>
+			<li>
+				<p class="priceBoxTit">배송비</p>
+				<p class="priceBoxCont"><b>{{deliveryCharge}}</b> 원</p>
+			</li>
+			<li class="check">
+				<p class="priceBoxTit">결제금액</p>
+				<p class="priceBoxCont"><b>{{paymentPrice}}</b> 원</p>
+			</li>
+		</ul>
+		<!--// 결제금액 내역 -->
+		<div class="productBtnWrap">
+			<div class="newAddress">
+				<!-- 배송지 선택 폼 -->
+				<form method="post" action="/">
+					<fieldset>
+						<legend>배송지 선택 폼</legend>
+						<div class="selectBox">
+							<select id="addressSelect-2-{{@index}}" class="addressSelect" title="수령지 선택">
+								<option value="" label="" selected="selected">새 주소 추가 눌러 주소를 등록해주세요</option>
+							</select>
+						</div>
+					</fieldset>
+				</form>
+				<!--// 배송지 선택 폼 -->
+				<a href="/popup/addressBook.html" target="_blank" 
+					 id="addressBook-2-{{@index}}" class="btnColor04 btnSizeL btnSizeW newAdr btn openAddressPopup">새 주소 추가</a><!-- 새주소 추가 버튼 -->
+			</div>
+		</div>
+		<!-- 배송지 -->
+		<ul class="addressList">
+			<li>
+				<div class="addressCont" id="address-2-{{@index}}">
+					<!-- 
+					<p><b>받으실 분</b><span>홍길동</span></p>
+					<p><b>연락처</b><span>010-1234-5678</span></p>
+					<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
+					 -->
+				</div>
+			</li>
+		</ul>
+		<!--// 배송지 -->
+		<div class="productBtnWrap">
+			<div class="newAddress">
+				<div class="textWrap">
+					<div class="selectBox">
+						<select id="messageSelect-2-{{@index}}" title="배송 시 요청사항 선택">
+							<option value="" label="배송 시 요청사항을 선택해 주세요." selected="selected">배송 시 요청사항을 선택해 주세요.</option>
+							<option value="경비실에 맡겨주세요." label="경비실에 맡겨주세요.">경비실에 맡겨주세요.</option>
+							<option value="빠른 배송 부탁드립니다." label="빠른 배송 부탁드립니다.">빠른 배송 부탁드립니다.</option>
+							<option value="부재 시 핸드폰으로 연락바랍니다." label="부재 시 핸드폰으로 연락바랍니다.">부재 시 핸드폰으로 연락바랍니다.</option>
+							<option value="-" label="직접 입력">직접 입력</option>
+						</select>
+					</div>
+					<textarea id="messageField-2-{{@index}}" title="배송 시 요청사항 직접입력" placeholder="직접 입력" maxlength="50"></textarea>
+				</div>
+			</div>
+		</div>
+	</li>
+	{{/each}}
+{{!--// order-delivery2-templates --}}
+</script>
+
+
+<script id="order-payment-templates" type="text/x-handlebars-template">
+{{!-- order-payment-templates --}}
+	<dl>
+		<dt>
+			<span>주문 금액</span>
+			<span class="orderTxt">(상품금액+배송비)</span>
+		</dt>
+		<dd>
+			<p class="price"><b>{{totalOrderPriceDesc}}</b> 원</p>
+		</dd>
+	</dl>
+	<dl class="minus">
+		<dt><span>총 할인금액</span></dt>
+		<dd>
+			<p class="price"><b>{{totalDiscountPriceDesc}}</b> 원</p>
+			<ul class="odList">
+				<li>
+					<p class="odListTit">기본 할인</p>
+					<p class="odListCont"><b>{{totalDiscountPriceDesc}}</b> 원</p>
+				</li>
+				<li>
+					<p class="odListTit">포인트</p>
+					<p class="odListCont"><b>0</b> 원</p>
+				</li>
+			</ul>
+		</dd>
+		<dt><span>혜택적용 </span></dt>
+		<dd>
+			<p class="odListTit">
+				<span class="checkbox" id="useAllPointCheck">
+					<input type="checkbox" id="pointCk01" checked="checked" />
+					<label for="pointCk01" id="pointLb01" class="on">모두 사용</label>
+				</span>
+			</p>
+			<p class="odListCont"><span class="point"><em>잔여 포인트</em><b>{{leftPointDesc}}</b> P</span></p>
+		</dd>
+		<dd>
+			<ul class="odList point">
+				<li>
+					<p class="odListTit"><label for="pointWt">포인트 사용</label></p>
+					<p class="odListCont"><input type="text" id="pointWt" style="width:121px;"/> p</p>
+				</li>
+			</ul>
+			<p class="underTxt">포인트는  5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
+		</dd>
+	</dl>
+	<dl class="equal">
+		<dd class="total">
+			<p class="odListTit">총 결제금액</p>
+			<p class="odListCont"><b>{{totalPaymentPriceDesc}}</b> 원</p>
+		</dd>
+		<dt>
+			<span>구매혜택</span>
+		</dt>
+		<dd>
+			<ul class="odList">
+				<li>
+					<p class="odListTit">적립 예정 포인트</p>
+					<p class="odListCont"><span class="point"><b>{{savingPointDesc}}</b> P</span></p>
+				</li>
+			</ul>
+		</dd>
+	</dl>
+{{!--// order-payment-templates --}}
+</script>
+
+<form id="payForm" name="payForm" method="post" action="/apis/orders/process">
+	<input type="hidden" name="fromCart" id="fromCart" value="N">
+	
+	<input type="hidden" name="usingPoint" id="usingPoint" value="" /> <!-- 사용할 포인트 -->
+	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) -->
+
+	<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
+	<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->
+	<input type="hidden" name="Moid" id="Moid" value=""/> <!-- 주문번호 -->
+	<input type="hidden" name="BuyerName" id="BuyerName" value=""/> <!-- 이름 -->
+	<input type="hidden" name="BuyerEmail" id="BuyerEmail" value=""/> <!-- 이메일 -->
+	<input type="hidden" name="BuyerAddr" id="BuyerAddr" value="">	<!-- 주소 -->
+	<input type="hidden" name="BuyerTel" id="BuyerTel" value=""/> <!-- 전화번호 -->
+	<input type="hidden" name="GoodsCnt" id="GoodsCnt" value="">	<!-- 상품 갯수 -->
+
+	<input type="hidden" name="PayMethod" id="PayMethod" value="CARD" />	<!-- 결재수단 (CARD/BANK/VBANK) --> 
+
+	<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
+	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00" />		<!-- 할부개월수 (00, 01, 02, ....) -->
+
+	<input type="hidden" name="MID" id="MID" value="">
+	<input type="hidden" name="UserIP" id="UserIP" value="">
+	<input type="hidden" name="MallIP" id="MallIP" value="">
+	<input type="hidden" name="TransType" value="0">
+	<input type="hidden" name="OptionList" value="">
+	<input type="hidden" name="VbankExpDate" id="VbankExpDate" value="VbankExpDate"> 
+	<input type="hidden" name="MallUserID" value=""> 
+	<input type="hidden" name="SUB_ID" value="">
+	<input type="hidden" name="GoodsCl" value="">
+	<input type="hidden" name="EncodeParameters" value="CardNo,CardExpire,CardPwd">
+	<input type="hidden" name="EdiDate" id="EdiDate" value="ediDate">
+	<input type="hidden" name="EncryptData" id="EncryptData" value="hash_String">
+	<input type="hidden" name="SocketYN" value="Y">
+	<input type="hidden" name="TrKey" value="">
+	<input type="hidden" name="SkinType" value="blue">
+	<input type="hidden" name="redirectUrl" value="/order/complete.html">
+</form>
+
 </body>
 </html>

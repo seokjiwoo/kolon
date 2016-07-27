@@ -194,7 +194,9 @@ module.exports = function() {
 		});
 
 		$('.tabWrap a').click(function(){
-			widthSlider.reloadSlider(); 
+			if (widthSlider && widthSlider.size()) {
+				widthSlider.reloadSlider(); 
+			}
 		}) 
 
 		$(".optList > li").each(function(){ // 마이페이지-주문상세
