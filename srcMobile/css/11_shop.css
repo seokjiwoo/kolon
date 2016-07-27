@@ -22,12 +22,14 @@ h3.sTit{font-size:50px;}
 .detailArea .platewrap .plate{border-top:1px solid #333;border-bottom:1px solid #333;}
 .detailArea.colorArea{padding:40px 0 40px;border-top:1px solid #ccc;}
 
-.detailArea.colorArea .slide{height:220px;background:url("../images/bg_color_slide.png") no-repeat center 0;background-size:100%;}
-.detailArea.colorArea .slide ul{width:204px;margin:-6px auto 0 auto;}
-.detailArea.colorArea .slide ul:after{content:"";display:block;clear:both;}
-.detailArea.colorArea .slide ul li:after{}
-.detailArea.colorArea .slide ul li a{display:block;}
-.detailArea.colorArea .slide ul li a img{width:100%;vertical-align:top;}
+.detailArea.colorArea .slide{position:relative;background:url("../images/bg_color_slide.png") no-repeat center 0;background-size:100%;}
+.detailArea.colorArea .view{width:57.5%;margin:0 auto;}
+.detailArea.colorArea .view .thumb{display:block;}
+.detailArea.colorArea .view .thumb img{width:100%;vertical-align:top;margin-top:-15px;}
+.detailArea.colorArea .slide .prev,
+.detailArea.colorArea .slide .next{position:absolute;top:50%;width:20px;height:32px;overflow:hidden;display:block;margin-top:-16px;}
+.detailArea.colorArea .slide .prev{left:36px;background:url("../images/btn_color_slider.png") no-repeat 0 -35px;background-size:100%;}
+.detailArea.colorArea .slide .next{right:36px;background:url("../images/btn_color_slider.png") no-repeat 0 0;background-size:100%;}
 
 /* tab */
 #sellerInfo, #purchasingInfo {display:none;}
@@ -279,11 +281,48 @@ h3.sTit{font-size:50px;}
 .detailRow01 .info .delivery span:first-child{padding-right:8px;border-right:1px solid #ccc;color:#666;}
 .detailRow01 .info .delivery span:last-child em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-style:italic;font-weight:bold;}
 
-.buyArea{margin-top:10px;}
-.buyArea a{height:55px;line-height:55px;display:block;float:left;text-align:center;color:#fff;font-size:18px;}
-.buyArea a:nth-child(1){width:20%;background:#333 url("../images/ico_heart_white.png") no-repeat center center;background-size:22px;}
-.buyArea a:nth-child(2){width:40%;background:#000;}
-.buyArea a:nth-child(3){width:40%;background:#f1645c;}
+.optionArea{padding:8px 15px 15px 15px;background:#e6e6e6;}
+.optionArea ul{}
+.optionArea ul li{border-top:1px solid #ccc;margin-top:8px;padding-top:8px;}
+.optionArea ul li:first-child{border-top:0;margin-top:0;padding-top:0;}
+.optionArea .optInfo{padding:10px;background:#fff;}
+.optionArea .optInfo p{color:#666;line-height:1.4em;}
+.optionArea .optInfo .info{margin-top:10px;}
+.optionArea .optInfo .info:after{content:"";display:block;clear:both;}
+.optionArea .optInfo .info > span{display:inline-block;}
+.optionArea .optInfo .info > span:first-child{width:66px;float:left;}
+.optionArea .optInfo .info > span:last-child{float:right;}
+.optionArea .optInfo .pirce *{vertical-align:middle;}
+.optionArea .optInfo .pirce span{font-size:15px;}
+.optionArea .optInfo .pirce span em{font-weight:bold;font-style:normal;}
+.optionArea .optInfo .remove{width:25px;height:25px;display:inline-block;border:1px solid #ccc;background:url("../images/ico_close03.png") no-repeat center center;background-size:12px;}
+.optionArea .total{margin-top:28px;}
+.optionArea .total:after{content:"";display:block;clear:both;}
+.optionArea .total span{display:inline-block;}
+.optionArea .total span:first-child{float:left;}
+.optionArea .total span:last-child{float:right;color:#f1645c;}
+.optionArea .total span em{font-size:24px;}
+
+.buySection > div:after{content:"";display:block;clear:both;}
+.buySection .type01 a,
+.buySection .type02 a{height:55px;line-height:55px;display:block;float:left;text-align:center;color:#fff;font-size:18px;}
+.buySection .type03 a{height:55px;display:block;float:left;text-align:center;color:#fff;font-size:18px;}
+
+.buySection .type01 a:nth-child(1){width:50%;background:#293145;}
+.buySection .type01 a:nth-child(2){width:50%;background:#f1645c;}
+
+.buySection .type02 a:nth-child(1){width:20%;background:#202737 url("../images/icon_heart_off.png") no-repeat center center;background-size:22px;}
+.buySection .type02 a:nth-child(2){width:40%;background:#293145;}
+.buySection .type02 a:nth-child(3){width:40%;background:#f1645c;}
+
+.buySection .type03 a span{display:block;}
+.buySection .type03 a:nth-child(1),
+.buySection .type03 a:nth-child(2){line-height:55px;}
+.buySection .type03 a span:first-child{padding-top:8px;}
+.buySection .type03 a span.tip{font-size:13px;letter-spacing:-1px;line-height:1.4em;}
+.buySection .type03 a:nth-child(1){width:20%;background:#202737 url("../images/icon_heart_on.png") no-repeat center center;background-size:22px;}
+.buySection .type03 a:nth-child(2){width:40%;background:#293145;}
+.buySection .type03 a:nth-child(3){width:40%;background:#f1645c;}
 
 .purchasing .productList .btnToggle{border-color:#ccc;}
 .purchasing .service{background:#f8f8f8;padding:15px;}
@@ -313,12 +352,13 @@ h3.sTit{font-size:50px;}
 .imgBox img {width:100%;vertical-align:top}
 .subNewformTit {margin-top:10px;font-family:'NotoSansL', sans-serif;font-size:15px;color:#666;}
 
-.detailArea.noImg .icoNewformTit:before{display:none;}
-.detailArea.noImg .subNewformTit{line-height:1.4em;}
+.detailArea.titBgnone .icoNewformTit:before{display:none;}
+.detailArea.txtPadding .subNewformTit{line-height:1.4em;padding:0 15px;}
+.detailArea.imgPadding .imgBox{padding:0 15px;}
 .detailArea .platewrap{padding:0 15px;}
 .detailArea .platewrap .plate{border-top:1px solid #333;border-bottom:1px solid #333;}
 .detailArea.colorArea{padding:40px 0 40px;border-top:1px solid #ccc;}
-.detailArea.colorArea .slide{}
+.detailArea.colorArea .slide{margin-top:25px;}
 .detailArea.colorArea .slide ul{}
 .detailArea.colorArea .slide ul li{}
 .detailArea.colorArea .slide ul li a{}
@@ -481,6 +521,8 @@ h3.sTit{font-size:50px;}
   .constructPrice dt {width:70px;}
   .constructPrice dt+dd {width:100px;margin-left:10px;}
   .constructPrice dd b {font-size:14px;}
+
+  .buySection .type03 a span.tip{letter-spacing:-2px}
 }
 
 /* conceptArea */
@@ -572,12 +614,6 @@ h3.sTit{font-size:50px;}
 .detailRow01 .info .delivery span{display:inline-block;line-height:1em;font-size:15px;}
 .detailRow01 .info .delivery span:first-child{padding-right:8px;border-right:1px solid #ccc;color:#666;}
 .detailRow01 .info .delivery span:last-child em{font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;font-style:italic;font-weight:bold;}
-
-.buyArea{margin-top:10px;}
-.buyArea a{height:55px;line-height:55px;display:block;float:left;text-align:center;color:#fff;font-size:18px;}
-.buyArea a:nth-child(1){width:20%;background:#333 url("../images/ico_heart_white.png") no-repeat center center;background-size:22px;}
-.buyArea a:nth-child(2){width:40%;background:#000;}
-.buyArea a:nth-child(3){width:40%;background:#f1645c;}
 
 .purchasing .productList .btnToggle{border-color:#ccc;}
 .purchasing .service{background:#f8f8f8;padding:15px;}
