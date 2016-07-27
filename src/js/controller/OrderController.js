@@ -118,6 +118,7 @@ function ClassOrderController() {
 			ordersComplete: ordersComplete,
 			ordersAdvanceComplete: ordersAdvanceComplete,
 			ordersBalanceComplete: ordersBalanceComplete,
+			ordersAdditionalComplete: ordersAdditionalComplete,
 			ordersHomeServiceComplete: ordersHomeServiceComplete,
 			/**
 			 * hash_String 취득(EncryptData)
@@ -135,6 +136,10 @@ function ClassOrderController() {
 			 * 시공형 주문서 잔금결제 페이지 조회
 			 */
 			orderNewFormBalanceForm: orderNewFormBalanceForm,
+			/**
+			 * 시공형 주문서 추가결제 페이지 조회
+			 */
+			addPaymentOrderForm: addPaymentOrderForm,
 
 			/**
 			 * 시공형 주문목록
@@ -548,6 +553,20 @@ function ClassOrderController() {
 		}, true);
 	};
 
+	// 추가결제 주문 완료
+	function ordersAdditionalComplete(orderNumber) {
+		Super.callApi('/apis/constorders/addition/' + orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('ordersCompleteResult', [status, result.common]);
+			} else {
+				Super.handleError('ordersComplete', result);
+				$(callerObj).trigger('ordersCompleteResult', [status, result.common]);
+			}
+		}, true);
+	};
+
+	
+
 	// 홈서비스 주문 완료
 	function ordersHomeServiceComplete(orderNumber) {
 		Super.callApi('/apis/living/wash/order/' + orderNumber, 'GET', {}, function(status, result) {
@@ -631,6 +650,24 @@ function ClassOrderController() {
 			}
 		}, true);
 	};
+
+	/**
+	 * 시공형 추가결제 주문서 작성 페이지 조회
+	 * @see http://dev.koloncommon.com/swagger/swagger-ui.html#!/order-controller/orderUsingPOST_1
+	 */
+	function addPaymentOrderForm(orderNumber) {
+		Super.callApi('/apis/constorders/addition/'+orderNumber, 'POST', {
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('newFormAdditionalFormResult', [status, result.common]);
+			} else {
+				Super.handleError('newFormAdditionalForm', result);
+				$(callerObj).trigger('newFormAdditionalFormResult', [status, result.common]);
+			}
+		}, true);
+	};
+
+	
 
 	/**
 	 * 생활서비스 주문서 작성페이지 조회

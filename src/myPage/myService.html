@@ -223,7 +223,9 @@
 				<!-- @@include ../_template/pop_order_state02.html {"step":"step11", "step11":"on"} -->
 				시공완료<span class="stateIcor"></span>
 			</div>
-			<a href="#" class="btnSizeS btnColor01">추가금액 결제</a>
+			{{#vxIF addPaymentYn "!=" "N"}}
+			<a href="/order/additionalPayment.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">추가금액 결제</a>
+			{{/vxIF}}
 			{{/vxCase}}
 			{{#vxCase "SL_CONST_STATE_16" break=true}}
 			<div class="stateTxt stateWrap">

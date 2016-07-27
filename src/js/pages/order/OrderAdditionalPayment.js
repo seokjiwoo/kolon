@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'order/OrderService.js';
+	fileName = 'order/OrderAdditionalPayment.js';
 
 	var SuperClass = require('../Page.js'),
 	Super = SuperClass(),
@@ -18,7 +18,7 @@ module.exports = function() {
 	ORDER_EVENT = events.ORDER;
 
 	var orderNumber;
-	var baseTotalPrice;
+	var totalPrice;
 
 	var productsInfo;
 	
@@ -53,7 +53,7 @@ module.exports = function() {
 			alert('잘못된 접근입니다.');
 			location.href='/';
 		} else {
-			controller.homeServiceOrderForm(orderNumber);
+			controller.addPaymentOrderForm(orderNumber);
 		}
 	}
 
@@ -72,26 +72,22 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
-			case ORDER_EVENT.HOMESERVICE_ORDER_INFO:
-				var data = result.common.data;
+			case ORDER_EVENT.NEWFORM_ORDER_ADDITIONAL_INFO:
+			console.log(result);
+				var data = result.data;
+				totalPrice = data.constOrderAddition.totalPaymentPrice;
 
-				data.washServiceDetail.priceDesc = util.currencyFormat(data.washServiceDetail.price);
-				data.washServiceDetail.requestTargetContact = util.mobileNumberFormat(data.washServiceDetail.requestTargetContact);
-
-				renderData(data, '#order-homeService-templates', '#order-homeService-wrap', true);
-
-				orderNumber = data.orderNumber;
-
-				$('.totalPrice').text(data.washServiceDetail.priceDesc);
+				$('#reasonField').text(data.constOrderAddition.additionPaymentReason);
+				$('.totalPrice').text(util.currencyFormat(totalPrice));
 
 				var cardSelectTag = '<option value="" label="카드 선택" selected="selected">카드 선택</option>';
-				for (var key in data.cards) {
-					var eachCard = data.cards[key];
+				for (var key in data.listCards) {
+					var eachCard = data.listCards[key];
 					cardSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.cardCompanyName+'">'+eachCard.cardCompanyName+'</option>';
 				}
 				$('#cardSelect').html(cardSelectTag);
 
-				if (data.washServiceDetail.price < 50000) $('#quotaSelect').attr('disabled', 'disabled');
+				if (totalPrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
 				$('.radioBox label').on('click', function(e){
 					$(this).addClass('on').parent().parent().siblings('li').find('label').removeClass('on');
@@ -106,8 +102,8 @@ module.exports = function() {
 				$("#EdiDate").val(data.pgInfo.ediDate);
 				$("#VbankExpDate").val(data.pgInfo.vbankExpDate);
 				
-				$('#GoodsName').val(data.washServiceDetail.companyName);
-				$('#Amt').val(data.washServiceDetail.price);
+				$('#GoodsName').val('커먼 시공서비스 추가결제');
+				$('#Amt').val(totalPrice);
 				$('#Moid').val(orderNumber);
 				$('#GoodsCnt').val(1);
 				
@@ -136,8 +132,6 @@ module.exports = function() {
 	};
 
 	function getHashString(e) {
-		var paymentPrice = Number($('#Amt').val());
-
 		switch($('#PayMethod').val()) {
 			case 'CARD':
 				if ($('#cardSelect').val() == '') {
@@ -155,7 +149,7 @@ module.exports = function() {
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/living/order/getHashString/"+orderNumber+"?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url:"/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+totalPrice+"&orderNumber="+orderNumber,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
 				$("#Moid").val(data.data.orderNumber);

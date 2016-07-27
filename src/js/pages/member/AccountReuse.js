@@ -27,9 +27,9 @@ module.exports = function() {
 	function init() {
 		Super.init();
 		debug.log(fileName, $, util);
-
+		
 		if (Cookies.get('accountReuse') != undefined) {
-			$('#userId').val(Cookies.get('accountReuse'));
+			$('#userId').text(Cookies.get('accountReuse'));
 
 			$('#reuseAuth').click(function(e){
 				controller.reuseAccount();
@@ -41,12 +41,13 @@ module.exports = function() {
 	}
 
 	function reuseResultHandler(e, status, result) {
+		alert(result.message);
+
 		switch (status) {
 			case 200:
-				//
+				location.href='/';
 				break;
 			default:
-				Super.Super.alertPopup('휴면 계정 활성화', result.message, '확인');
 				break;
 		}
 	}

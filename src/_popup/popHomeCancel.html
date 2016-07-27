@@ -1,8 +1,10 @@
 <div class="popTop">
 	<h4 class="popTit">서비스 취소 신청</h4>
 </div>
-<div class="popCon">
-	<h5 class="subTit">1. 수령지 : 자택 - <span class="subAddr">서울특별시 강남구 청담동 246</span></h5>
+<div class="popCon" id='homeServiceCancelWrap'>
+	<script id="homeServiceCancelTemplates" type="text/x-handlebars-template">
+	{{!-- homeServiceCancelTemplates --}}
+	<h5 class="subTit">1. 수령지 : <span class="subAddr">{{requestAddress}}</span></h5>
 	<table class="record" summary="취소 신정정보 표로써 신청일, 취소 완료일, 취소신청 사유/책임 정보가 담겨있습니다.">
 		<caption>주문 취소 신청정보 표</caption>
 		<tr>
@@ -11,30 +13,33 @@
 			<th>서비스 결제</th>
 			<th>진행상태</th>
 		<tr>
-			<td class="popRecord"><div class="recordThumb"><img src="../images/temp09.jpg" alt=""></div></td>
-			<td class="popRecord recordInfo">크리스탈 샹들리에<span class="producOption">옵션 : 오팔 화이트 중형</span><span class="producOption">수량 : 1</span><span class="productPrice">1,700,000 원</span>
+			<td class="popRecord"><div class="recordThumb"><img src="{{companyImageUrl}}" alt=""></div></td>
+			<td class="popRecord recordInfo">[{{serviceSectionCodeName}}서비스]<span class="producOption">{{companyName}}</span>
 			</td>
-			<td>홍길동</td>
+			<td>{{requestTargetName}}</td>
 			<td>세탁물 수거 후에 결제가능</td>
-			<td>신청완료</td>
+			<td>{{statusCodeName}}</td>
 		</tr>
 	</table>
-	<form action="">
+	<form action="#" method='POST' id='washCancelForm'>
 		<fieldset class="reasonCancel">
 			<h5>주문 취소 사유</h5>
 			<select title="주문 취소 사유를 선택해주세요">
-				<option value="defalut">주문 취소 사유를 선택해주세요</option>
-				<option value=""></option>
-				<option value=""></option>
-				<option value=""></option>
-				<option value=""></option>
+				<option value="">주문 취소 사유를 선택해주세요</option>
+				<option value="서비스 의사 없어짐">서비스 의사 없어짐</option>
+				<option value="타 업체 이용예정">타 업체 이용예정</option>
+				<option value="세탁물 도난/분실">세탁물 도난/분실</option>
+				<option value="천재지변">천재지변</option>
+				<option value="">기타</option>
 			</select>
-			<input type="text" title="상세 내용 입력">
+			<input type="text" title="상세 내용 입력" id='reasonField'>
 		</fieldset>
+		<ul class="tbList3 mt30">
+			<li>서비스 취소 신청은 수거시간 90분전에만 가능합니다.</li>
+			<li>결제수단별 환불방법과 환불소요기한에 차이가 있을 수 있습니다.</li>
+		</ul>
+		<div class="btnWrap"><button id='washCancelSubmitButton' class="btn btnSizeM btnColor01">취소 신청하기</button></div>
 	</form>
-	<ul class="tbList3 mt30">
-		<li>서비스 취소 신청은 수거시간 90분전에만 가능합니다.</li>
-		<li>결제수단별 환불방법과 환불소요기한에 차이가 있을 수 있습니다.</li>
-	</ul>
-	<div class="btnWrap"><a href="" class="btnSizeM btnColor01">취소 신청하기</a></div>
+	{{!-- homeServiceCancelTemplates --}}
+	</script>
 </div>
