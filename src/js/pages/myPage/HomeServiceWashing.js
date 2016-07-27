@@ -18,6 +18,7 @@ module.exports = function() {
 	COLORBOX_EVENTS = events.COLOR_BOX;
 
 	var info;
+	var serviceRequestNumber;
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();
@@ -37,7 +38,7 @@ module.exports = function() {
 	function init() {
 		MyPage.init();
 		
-		var serviceRequestNumber = util.getUrlVar().serviceRequestNumber;
+		serviceRequestNumber = util.getUrlVar().serviceRequestNumber;
 
 		$(document).on(COLORBOX_EVENTS.COMPLETE, popupHandler);
 
@@ -137,6 +138,8 @@ module.exports = function() {
 		$('#washCancelSubmitButton').click(function(e){
 			e.preventDefault();
 			alert('들어올 때는 마음대로지만 나갈 때는 아니란다');
+
+			//controller.cancelWashing(companyCode, serviceRequestNumber, reason);
 		});
 	};
 

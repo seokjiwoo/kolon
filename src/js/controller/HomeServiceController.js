@@ -47,6 +47,10 @@ function ClassHomeServiceController() {
 			 */
 			requestWashing: requestWashing,
 			/**
+			 * 세탁 서비스 신청
+			 */
+			cancelWashing: cancelWashing,
+			/**
 			 * 홈서비스 신청 리스트
 			 */
 			homeServiceOrderList: homeServiceOrderList,
@@ -180,6 +184,23 @@ function ClassHomeServiceController() {
 			}
 		}, false);
 	}
+
+	/**
+	 * 세탁서비스 취소
+	 */
+	function cancelWashing(companyCode, orderNumber, reason) {
+		Super.callApi('/apis/living/wash/'+companyCode+'/'+orderNumber, 'DELETE', {
+			"washStateReason": reason
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('cancelWashingResult', [status, result.data]);
+			} else {
+				Super.handleError('cancelWashing', result);
+				$(callerObj).trigger('cancelWashingResult', [status, result]);
+			}
+		}, false);
+	}
+	
 	
 	/**
 	 * 홈서비스 신청 리스트
