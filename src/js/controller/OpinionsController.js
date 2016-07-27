@@ -64,13 +64,13 @@ function ClassOpinionsController() {
 				$(callerObj).trigger('opinionsClassResult', [status, result]);
 			}
 		}, true);
-	}
+	};
 	
 	function opinionsList(order, page) {
 		Super.callApi('/apis/opinions', 'GET', {
 			"orderType": order,
 			"page": page,
-			"size": 2
+			"size": 20
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('opinionsListResult', [status, result.data]);
