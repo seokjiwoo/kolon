@@ -9,7 +9,8 @@
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<div class="wrap">
-				<section class="singleCard" id="order-homeService-wrap">
+				<section class="singleCard">
+				<section id="order-homeService-wrap" style='margin-bottom:20px'>
 				<script id="order-homeService-templates" type="text/x-handlebars-template">
 				{{!-- order-delivery-templates --}}
 					<h2 class="secTit">주문/결제</h2>
@@ -88,6 +89,8 @@
 							<span class="underTxt">※ 홈서비스 결제 안내<br>- 결제하신 서비스에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</span>
 						</div>
 					<!--// 결제 정보 -->
+				</script>
+				</section>
 					<!-- 결제 방법 -->
 					<h3 class="subTit">결제 방법</h3>
 					<div class="orderCont">
@@ -96,7 +99,7 @@
 								<fieldset >
 									<legend>결제방법 선택</legend>
 									<span id='payCARD' class="payRadio on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-									<span id='payBANK' class="payRadio"><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
+									<span id='payBANK' class="payRadio"><a href="#pay2" class="radioBtn">실시간 계좌이체</a></span>
 								</fieldset>
 							</form>
 						</div>
@@ -183,7 +186,7 @@
 							</div>
 							<!--// 신용카드 -->
 							<!-- 실시간 계좌이체  -->
-							<div class="pay" id="pay3" style="display:none;">
+							<div class="pay" id="pay2" style="display:none;">
 								<div class="orderTbW">
 									<form method="post" action="/">
 										<div class="tbHf">
@@ -236,7 +239,6 @@
 					</div>
 					<!--// 결제 방법 -->
 				<!--// 시공형 선결제 주문서 -->
-				</script>
 				</section>
 			</div>
 		</div>	
