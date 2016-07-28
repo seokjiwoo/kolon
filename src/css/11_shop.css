@@ -125,7 +125,7 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .detailArea h3 span {display:block;font-size:60px;font-style:normal;font-family:'NotoSansM';font-weight:normal;font-style:normal;}
 .shopTop.detailArea h3 {font-size:55px;}
 
-.productDetail .cardSlider .bx-wrapper{position:relative;overflow: hidden;}
+.productDetail .cardSlider .bx-wrapper{position:relative;margin:0 auto;}
 .productDetail .cardSlider .cardWrap{width: 100%;min-width:100%;max-width:none;}
 .productDetail .cardSlider li{padding-bottom:0;margin-bottom: 0}
 .productDetail .cardSlider .bx-controls{position: absolute;z-index: 1;top: 0;right:0}
@@ -319,7 +319,7 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .sellerArea .sellerProduct h5:before{top:0;left:0;background-position: 0 -115px}
 .sellerArea .sellerProduct h5:after{border:0;right: 0;background-position: -57px -114px}
 
-.productDetail #SellerArea .cardSlider .bx-controls{top:30px;left: 50%;right: auto;margin-left: -46px;}
+.productDetail #SellerArea .cardSlider .bx-controls{top:30px;left: 242px;right: auto;width: 92px;}
 .productDetail #SellerArea .cardSlider .bx-controls .bx-prev{margin-right: 10px;background-position: -27px 0}
 .productDetail #SellerArea .cardSlider .bx-controls .bx-next{background-position: -27px -41px}
 
