@@ -6,110 +6,110 @@
 <body data-page-id="magazine-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
-		<!-- 상단 배너 -->
-		<div class="detailArea magazineTop topArea" id='top-cont-wrap'>
-			<script id="top-cont-templates" type="text/x-handlebars-template">
-			{{!-- top-cont-box-templates --}}
-			<div class="topContBox" style="background-image:url('{{mainImageUrl}}')">
-		    	<div class="topCont subTop">
-			    	<ul class="tagList">
-						<li><a href="#">{{createDate}}</a></li>
-					</ul>
+		<div class="container">
+			<!-- 상단 배너 -->
+			<div class="detailArea magazineTop topArea" id='top-cont-wrap'>
+				<script id="top-cont-templates" type="text/x-handlebars-template">
+				{{!-- top-cont-box-templates --}}
+				<div class="topContBox" style="background-image:url('{{mainImageUrl}}')">
+			    	<div class="topCont subTop">
+				    	<ul class="tagList">
+							<li><a href="#">{{createDate}}</a></li>
+						</ul>
 
-				    <h3><span>{{magazineTitle}}</span></h3>
-				    <p class="infoSub">{{magazineDesc}}</p>
-				    <!--<p>by 박실장 <span>KOLON GLOBAL</span></p>-->
+					    <h3><span>{{magazineTitle}}</span></h3>
+					    <p class="infoSub">{{magazineDesc}}</p>
+					    <!--<p>by 박실장 <span>KOLON GLOBAL</span></p>-->
 
-					<div class="newFormBtn shopBtn">
-				  		<ul class="subBtn">
-				  			<li class="subBtn01">
-				  				<a href="#" class='js-add-like'>
-				  					<span class="hide">좋아요</span>
-				  					<span class="countNum">{{likeCount}}</span>
-				  				</a>
-				  			</li>
-				  			<li class="subBtn02">
-				  				<a href="#" class='js-add-scrap'>
-				  					<span class="hide">스크랩</span>
-				  					<span class="countNum">{{scrapCount}}</span>
-				  				</a>
-				  			</li>
-				  			<li>
-				  				<span class="socialBtn">
-				  					<a href="#" class="socialBtnOpen">
-				  						<span class="hide">공유하기</span>
-				  					</a>
-				  					<a href="#" class="socialBtn01">
-				  						<span class="hide">페이스북</span>
-				  					</a>
-						            <a href="#" class="socialBtn02">
-						            	<span class="hide">트위터</span>
-						            </a>
-						            <a href="#" class="socialBtn03">
-						            	<span class="hide">카카오스토리</span>
-						            </a>
-						            <a href="#" class="socialBtn04">
-						            	<span class="hide">핀터레스트</span>
-						            </a>
-						            <a href="#" class="socialBtn05">
-						            	<span class="hide">URL복사</span>
-						            </a>
-						            <a href="#" class="socialBtnClose">
-						            	<span class="hide">닫기</span>
-						            </a>
-				  				</span>
-				  			</li>
-				  		</ul>
+						<div class="newFormBtn shopBtn">
+					  		<ul class="subBtn">
+					  			<li class="subBtn01">
+					  				<a href="#" class='js-add-like'>
+					  					<span class="hide">좋아요</span>
+					  					<span class="countNum">{{likeCount}}</span>
+					  				</a>
+					  			</li>
+					  			<li class="subBtn02">
+					  				<a href="#" class='js-add-scrap'>
+					  					<span class="hide">스크랩</span>
+					  					<span class="countNum">{{scrapCount}}</span>
+					  				</a>
+					  			</li>
+					  			<li>
+					  				<span class="socialBtn">
+					  					<a href="#" class="socialBtnOpen">
+					  						<span class="hide">공유하기</span>
+					  					</a>
+					  					<a href="#" class="socialBtn01">
+					  						<span class="hide">페이스북</span>
+					  					</a>
+							            <a href="#" class="socialBtn02">
+							            	<span class="hide">트위터</span>
+							            </a>
+							            <a href="#" class="socialBtn03">
+							            	<span class="hide">카카오스토리</span>
+							            </a>
+							            <a href="#" class="socialBtn04">
+							            	<span class="hide">핀터레스트</span>
+							            </a>
+							            <a href="#" class="socialBtn05">
+							            	<span class="hide">URL복사</span>
+							            </a>
+							            <a href="#" class="socialBtnClose">
+							            	<span class="hide">닫기</span>
+							            </a>
+					  				</span>
+					  			</li>
+					  		</ul>
+						</div>
 					</div>
 				</div>
+				{{!--// top-cont-templates --}}
+				</script>
 			</div>
-			{{!--// top-cont-templates --}}
-			</script>
-		</div>
-		<!-- // 상단 배너 -->
+			<!-- // 상단 배너 -->
 
-		<!-- 이벤트 베너 -->
-		<div class="detailArea eventBanner">
-			<span style="background-image:url('../images/eventBanner_left_blank.png')"></span>
-			<span style="background-image:url('../images/eventBanner_right_blank.png')"></span>
-		</div>
-		<!-- // 이벤트 베너 -->
+			<!-- 이벤트 베너 -->
+			<div class="detailArea eventBanner">
+				<span style="background-image:url('../images/eventBanner_left_blank.png')"></span>
+				<span style="background-image:url('../images/eventBanner_right_blank.png')"></span>
+			</div>
+			<!-- // 이벤트 베너 -->
 
-		<!-- 본문 -->
-		<div class="wrap" id='description-wrap'>
-			<script id="description-templates" type="text/x-handlebars-template">
-				{{!-- description-templates --}}
-				 <span>{{{magazineContents}}}</span>
-				{{!--// description-templates --}}
-			</script>
-		</div>
-		<!-- // 본문 -->
+			<!-- 본문 -->
+			<div class="wrap" id='description-wrap'>
+				<script id="description-templates" type="text/x-handlebars-template">
+					{{!-- description-templates --}}
+					 <span>{{{magazineContents}}}</span>
+					{{!--// description-templates --}}
+				</script>
+			</div>
+			<!-- // 본문 -->
 
-		<!-- 태그 영역 -->
-		<div class="detailArea tagArea">
-			<h3>Tag</h3>
-			<ul>
-				<li><a href="#">#짜투리공간</a></li>
-				<li><a href="#">#내추럴모던</a></li>
-				<li><a href="#">#동선이좋은공간</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#라이프스타일</a></li>
-				<li><a href="#">#반려동물</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#반려동물</a></li>
-				<li><a href="#">#동선이좋은공간</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#라이프스타일</a></li>
-				<li><a href="#">#반려동물</a></li>
-				<li><a href="#">#헌집줄게새집다오</a></li>
-				<li><a href="#">#반려동물</a></li>
-			</ul>
+			<!-- 태그 영역 -->
+			<div class="detailArea tagArea">
+				<h3>Tag</h3>
+				<ul>
+					<li><a href="#">#짜투리공간</a></li>
+					<li><a href="#">#내추럴모던</a></li>
+					<li><a href="#">#동선이좋은공간</a></li>
+					<li><a href="#">#헌집줄게새집다오</a></li>
+					<li><a href="#">#라이프스타일</a></li>
+					<li><a href="#">#반려동물</a></li>
+					<li><a href="#">#헌집줄게새집다오</a></li>
+					<li><a href="#">#반려동물</a></li>
+					<li><a href="#">#동선이좋은공간</a></li>
+					<li><a href="#">#헌집줄게새집다오</a></li>
+					<li><a href="#">#라이프스타일</a></li>
+					<li><a href="#">#반려동물</a></li>
+					<li><a href="#">#헌집줄게새집다오</a></li>
+					<li><a href="#">#반려동물</a></li>
+				</ul>
+			</div>
+			<!-- // 태그 영역 -->
 		</div>
-		<!-- // 태그 영역 -->
-
 		<!-- @@include ../_template/footer.html -->
 	</div>
-
 <script>
 	$(function() {
 		$('.socialBtnOpen').click(function(e){

@@ -325,10 +325,14 @@ module.exports = function() {
 				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
+				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/orders/process' : 'https://dev.m.koloncommon.com/apis/orders/process');
+				$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
+
 				if (paymentPrice == 0) {
 					document.payForm.submit();
 				} else {
-					goPay(document.payForm);
+					// goPay(document.payForm);
+					goPaySmart();
 				}
 			},
 			error : function(xhr, status, error) {

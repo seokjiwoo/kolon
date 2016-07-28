@@ -81,10 +81,10 @@ function ClassOpinionsController() {
 		}, true);
 	};
 	
-	function opinionAnswers(opinionNumber, page) {
+	function opinionAnswers(opinionNumber, page, size) {
 		Super.callApi('/apis/opinions/'+opinionNumber+'/answer', 'GET', {
 			"page": page,
-			"size": 5
+			"size": size || 5
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('opinionAnswersResult', [status, result.data, opinionNumber]);
