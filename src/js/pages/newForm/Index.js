@@ -60,9 +60,7 @@ module.exports = function() {
 
 	var listOrder = 'newest';
 
-	var SuperClass = require('../Page.js'),
-	Super = SuperClass(),
-	callerObj = {
+	var callerObj = {
 		/**
 		 * 초기화
 		 */
