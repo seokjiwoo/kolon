@@ -349,6 +349,7 @@ module.exports = function() {
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
+					displayData(result.data.product, $('#purchasing-information-templates'), $('#PurchasingArea'));
 					
 					if (result.data.product.tags.length == 0) {
 						$('#tagArea').hide();
