@@ -2,21 +2,21 @@
 	<div class="popTop">
 		<h4 class="popTit">폴더 수정하기</h4>
 	</div>
-	<div class="popCon">
-		<div class="scrapbookAddWrap">
-			<div class="newFolder">
-				<form method="post" action="/">
-					<fieldset>
-						<legend>폴더 수정하기</legend>
+	<form method="post" action="#" id='js-scrapFolderEdit-form'>
+		<fieldset>
+			<legend>폴더 수정하기</legend>
+			<div class="popCon">
+				<div class="scrapbookAddWrap">
+					<div class="newFolder">
 						<input type="text" class="js-scrapFolderEdit-inp" title="폴더명" placeholder="내 새로운 부엌을 위한 스크랩" style="width:260px;" />
 						<button class="folderDelBtn js-scrapFolderEdit-delete">폴더삭제</button>
-					</fieldset>
-				</form>
+					</div>
+				</div>
+				<div class="btnWrap">
+					<a href="#" class="btnSizeL btnColor05">취소</a>
+					<button type='submit' class="btn btnSizeL btnColor01">수정</button>
+				</div>
 			</div>
-		</div>
-		<div class="btnWrap">
-			<a href="#" class="btnSizeL btnColor05">취소</a>
-			<a href="#" class="btnSizeL btnColor01 js-scrapFolderEdit-submit">수정</a>
-		</div>
-	</div>
+		</fieldset>
+	</form>
 </div>

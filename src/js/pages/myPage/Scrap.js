@@ -28,6 +28,8 @@ module.exports = function() {
 	var CardList = require('../../components/CardList.js');
 	var cardList;
 
+	var category;
+
 	var opts = {
 		container : '.container',
 		categoryMenu : '.tabType01 a',
@@ -42,18 +44,13 @@ module.exports = function() {
 			wrap : 'scrapFolderEdit',
 			inp : '.js-scrapFolderEdit-inp',
 			delete : '.js-scrapFolderEdit-delete',
-			submit : '.js-scrapFolderEdit-submit'
-		},
-		newFolder : {
-			wrap : 'scrapFolderNew',
-			inp : '.js-scrapFolderNew-inp',
-			submit : '.js-scrapFolderNew-submit'
+			submit : '#js-scrapFolderEdit-form'
 		},
 		removeFolder : {
 			wrap : 'scrapFolderRemove',
 			submit : '.js-scrapFolderRemove-submit'
 		},
-		scrap : {
+		removeScrap : {
 			wrap : 'scrapRemove',
 			submit : '.js-scrapFolderRemove-submit'
 		},
@@ -208,9 +205,13 @@ module.exports = function() {
 
 		switch(eventType) {
 			case SCRAP_EVENT.LIST:
-				debug.log(result.data.scraps);
-				cardList.appendData(result.data.scraps);
-				$('.removeScrap').show();
+				var hashVars = util.getHashVar();
+				if (hashVars.category == 'images') {
+					displayData($(self.opts.templates.images), result);
+				} else {
+					cardList.appendData(result.data.scraps);
+					$('.removeScrap').show();
+				}
 				break;
 			case SCRAP_EVENT.DELETE_SCRAP:
 				if (status == 200) {
@@ -226,26 +227,21 @@ module.exports = function() {
 				break;
 			case SCRAP_EVENT.EDIT_SCRAP:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-
-				testResult();
+				win.location.reload();
 				break;
 			case SCRAP_EVENT.ADD_SCRAP_FOLDER:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				testResult();
+				win.location.reload();
 				break;
 			case SCRAP_EVENT.EDIT_SCRAP_FOLDER:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				testResult();
+				win.location.reload();
 				break;
 			case SCRAP_EVENT.DELETE_SCRAP_FOLDER:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				testResult();
+				win.location.reload();
 				break;
 		}
-	}
-
-	function testResult() {
-		//win.location.reload();
 	}
 
 	/**
@@ -277,7 +273,6 @@ module.exports = function() {
 		controller.deleteScrapFolder(self.selPopBtnInfo.info.folderNumber);
 	}
 
-
 	/**
 	 * 스크랩 폴더 수정
 	 */
@@ -302,42 +297,19 @@ module.exports = function() {
 		controller.editScrapFolder(self.selPopBtnInfo.info.folderNumber, inp.val());
 	}
 
-	/**
-	 * 스크랩 폴더 등록
-	 */
-	function onNewFolder(e) {
-		e.preventDefault();
-
-		var target = $(e.target),
-		inp = self.colorbox.find(self.opts.newFolder.inp);
-
-		if (!inp.val() || inp.val() === ' ') {
-			win.alert('폴더명을 입력하세요.');
-			inp.focus();
-			return;
-		}
-
-		debug.log(fileName, 'onNewFolder', target, self.selPopBtnInfo, inp.val());
-		controller.addScrapFolder(inp.val());
-	}
-
 	function setColoboxFolder() {
 		if (self.colorbox.hasClass(self.opts.editFolder.wrap)) {
 			self.colorbox.find(self.opts.editFolder.inp).attr('placeholder', self.selPopBtnInfo.info.folderName);
 			self.colorbox.find(self.opts.editFolder.delete).on('click', onDeleteFolder);
-			self.colorbox.find(self.opts.editFolder.submit).on('click', onEditFolder);
-		}
-
-		if (self.colorbox.hasClass(self.opts.newFolder.wrap)) {
-			self.colorbox.find(self.opts.newFolder.submit).on('click', onNewFolder);
+			self.colorbox.find(self.opts.editFolder.submit).on('submit', onEditFolder);
 		}
 
 		if (self.colorbox.hasClass(self.opts.removeFolder.wrap)) {
 			self.colorbox.find(self.opts.removeFolder.submit).on('click', onDeleteFolder);
 		}
 
-		if (self.colorbox.hasClass(self.opts.scrap.wrap)) {
-			self.colorbox.find(self.opts.scrap.submit).on('click', onDeleteScrap);
+		if (self.colorbox.hasClass(self.opts.removeScrap.wrap)) {
+			self.colorbox.find(self.opts.removeScrap.submit).on('click', onDeleteScrap);
 		}
 
 		debug.log(fileName, 'setColoboxFolder');
@@ -346,19 +318,15 @@ module.exports = function() {
 	function destroyColoboxFolder() {
 		if (self.colorbox.hasClass(self.opts.editFolder.wrap)) {
 			self.colorbox.find(self.opts.editFolder.delete).off('click', onDeleteFolder);
-			self.colorbox.find(self.opts.editFolder.submit).off('click', onEditFolder);
-		}
-
-		if (self.colorbox.hasClass(self.opts.newFolder.wrap)) {
-			self.colorbox.find(self.opts.newFolder.submit).off('click', onNewFolder);
+			self.colorbox.find(self.opts.editFolder.submit).off('submit', onEditFolder);
 		}
 
 		if (self.colorbox.hasClass(self.opts.removeFolder.wrap)) {
 			self.colorbox.find(self.opts.removeFolder.submit).off('click', onDeleteFolder);
 		}
 
-		if (self.colorbox.hasClass(self.opts.scrap.wrap)) {
-			self.colorbox.find(self.opts.scrap.submit).off('click', onDeleteScrap);
+		if (self.colorbox.hasClass(self.opts.removeScrap.wrap)) {
+			self.colorbox.find(self.opts.removeScrap.submit).off('click', onDeleteScrap);
 		}
 
 		debug.log(fileName, 'setColoboxFolder');
