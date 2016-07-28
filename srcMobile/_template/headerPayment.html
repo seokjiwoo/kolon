@@ -40,7 +40,7 @@
 		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/orders/process' : 'https://dev.m.koloncommon.com/apis/orders/process');
 		$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
 
-		document.payForm.target = "_blank";
+		// document.payForm.target = "_blank";
 		document.payForm.method = "post";
 		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
 		document.payForm.submit();
