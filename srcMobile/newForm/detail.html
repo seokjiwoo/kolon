@@ -6,22 +6,22 @@
 <body data-page-id="newForm-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
-		<div class="container">
+		<div class="container newFormContainer">
 			<!-- 상단 배너 -->
 			<div class="detailArea topArea">
 			    <div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
 			    	<div class="topCont subTop">
 				    	<ul class="tagList">
-							<li><a href="#">NewForm</a></li>
-							<li><a href="#">Compact</a></li>
-							<li><a href="#">Full</a></li>
 							<li><a href="#">50㎡ (15PY)</a></li>
 						</ul>
 
 					    <h3>LIVINGROOM</h3>
 					    <p class="infoSub">반려식물 선인장 인테리어<span>오래 키울수록 친구같아지는 선인장</span></p>					    
 
-					    <p class="ownerInfo">by 박실장 <span>KOLON GLOBAL</span></p>
+					    <p class="ownerInfo">
+					    	by 박실장 <span>KOLON GLOBAL</span>
+					    	<span class="serviceInfo"><b class="localInfo">전지역</b><i></i><b class="scrapDate">180</b></span>
+					    </p>
 						<div class="cardCon">
 							<div class="upTo2">
 								<p>기간한정<span><b>20</b>%</span></p>
@@ -30,16 +30,17 @@
 					</div>
 				</div>
 
+				<h4 class="italic">NewForm, Compact, Full</h4>
 				<ul class="unitPrice">
 			    	<li>
-			    		<h4>50㎡/15PY <br>평당 단가</h4>
+			    		<h5>50㎡/15PY <br>평당 단가</h5>
 			    		<div class="unitPriceBox">
 			    			<p>165,000<b>원</b><span class="discount">10<i>%</i></span></p>
 			    			<p class="salePrice">150,000<b>원</b></p>
 			    		</div>
 			    	</li>
 			    	<li>
-			    		<h4>50㎡/15PY <br>기준 금액</h4>
+			    		<h5>50㎡/15PY <br>기준 금액</h5>
 						<div class="unitPriceBox">			    			
 			    			<p>30,000,000<b>원</b><span class="discount">10<i>%</i></span></p>
 			    			<p class="salePrice">27,000,000<b>원</b></p>
@@ -53,47 +54,16 @@
 			    </div>
 				
 				<div class="newFormBtn">
-			  		<ul class="subBtn">
-			  			<li class="subBtn01">
-			  				<a href="#">
-			  					<span class="hide">좋아요</span>
-			  					<span class="countNum">12,213</span>
-			  				</a>
-			  			</li>
-			  			<li class="subBtn02">
-			  				<a href="#">
-			  					<span class="hide">스크랩</span>
-			  					<span class="countNum">12,213</span>
-			  				</a>
-			  			</li>
-			  			<li>
-			  				<span class="socialBtn">
-			  					<a href="#" class="socialBtnOpen">
-			  						<span class="hide">공유하기</span>
-			  					</a>
-			  					<a href="#" class="socialBtn01">
-			  						<span class="hide">페이스북</span>
-			  					</a>
-					            <a href="#" class="socialBtn02">
-					            	<span class="hide">트위터</span>
-					            </a>
-					            <a href="#" class="socialBtn03">
-					            	<span class="hide">핀터레스트</span>
-					            </a>
-					            <a href="#" class="socialBtn04">
-					            	<span class="hide">카카오스토리</span>
-					            </a>
-					            <a href="#" class="socialBtn05">
-					            	<span class="hide">URL복사</span>
-					            </a>
-					            <a href="#" class="socialBtnClose">
-					            	<span class="hide">닫기</span>
-					            </a>
-			  				</span>
-			  			</li>
-			  		</ul>
+					<div class="sns">
+						<a href="#" class="iconF" data-share-sns="facebook">페이스북</a>
+						<a href="#" class="iconT" data-share-sns="twitter">트위터</a>
+						<a href="#" class="iconK" data-share-sns="kakaostory">카카오스토리</a>
+						<a href="#" class="iconP" data-share-sns="pinterest">핀터레스트</a>
+						<a href="http://localhost:3000/magazine/detail.html?articleNumber=1" class="iconU" data-share-sns="url" onclick="return false;">url복사</a>
+					</div>
+					<!-- class on 추가 시 좋아요 활성화 -->
+					<a href="#" class="like js-add-like">3</a>
 				</div>
-
 			</div>
 			<!-- // 상단 배너 -->
 
@@ -203,20 +173,22 @@
 					<div class="detailArea unitArea">
 						<h3 class="icoNewformTit">Room Type</h3>
 						<p class="subNewformTit">현관 / 주방 / 거실 / 홈바 / 침실 / 화장실 / 기타</p>
-						<h4 class="unitTit">
-							<span class="italic">1. Living Room</span>아늑한 휴식을 위한 거실</span>
-						</h4>
-						<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
+						<div class="rowwrap">
+							<h4 class="unitTit">
+								<span class="italic">1. Living Room</span>아늑한 휴식을 위한 거실</span>
+							</h4>
+							<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
 
-						<h4 class="unitTit">
-							<span class="italic">2. Entrance</span>아늑한 휴식을 위한 거실</span>
-						</h4>
-						<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
+							<h4 class="unitTit">
+								<span class="italic">2. Entrance</span>아늑한 휴식을 위한 거실</span>
+							</h4>
+							<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
 
-						<h4 class="unitTit">
-							<span class="italic">3. Bedroom</span>아늑한 휴식을 위한 거실</span>
-						</h4>
-						<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
+							<h4 class="unitTit">
+								<span class="italic">3. Bedroom</span>아늑한 휴식을 위한 거실</span>
+							</h4>
+							<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
+						</div>
 					</div>
 					<!-- // 유닛상품영역 -->
 					
@@ -289,47 +261,41 @@
 					
 					<!-- VR  페이지 연결 영역 -->
 					<div class="detailArea vrArea">
-						
+						<h3 class="icoNewformTit"><span class="hide">Newform Preview</span></h3>
 					</div>
 					<!-- // VR  페이지 연결 영역 -->
 
 					<!-- 관련 패키지 영역 -->
 					<div class="detailArea packageArea">
-						
+						<h3 class="icoNewformTit">Related Newform Package</h3>
+						<p class="subNewformTit">Compact Newly Weds PKG</p>
 					</div>
 					<!-- // 관련 패키지 영역 -->
 				
 					<!-- 태그 영역 -->
-					<div class="detailArea tagArea">
-						<h3>Tag</h3>
-						<ul>
-							<li><a href="#">#짜투리공간</a></li>
-							<li><a href="#">#내추럴모던</a></li>
-							<li><a href="#">#동선이좋은공간</a></li>
-							<li><a href="#">#헌집줄게새집다오</a></li>
-							<li><a href="#">#라이프스타일</a></li>
-							<li><a href="#">#반려동물</a></li>
-							<li><a href="#">#헌집줄게새집다오</a></li>
-							<li><a href="#">#반려동물</a></li>
-							<li><a href="#">#동선이좋은공간</a></li>
-							<li><a href="#">#헌집줄게새집다오</a></li>
-							<li><a href="#">#라이프스타일</a></li>
-							<li><a href="#">#반려동물</a></li>
-							<li><a href="#">#헌집줄게새집다오</a></li>
-							<li><a href="#">#반려동물</a></li>
-						</ul>
+					<div class="detailArea">
+						<div class="tagArea">
+							<h3 class="mb15">Tag</h3>
+							<a href="#" class="tagBtn"><span>#신혼부부</span></a>
+							<a href="#" class="tagBtn"><span>#다이닝</span></a>
+							<a href="#" class="tagBtn"><span>#짜투리공간</span></a>
+							<a href="#" class="tagBtn"><span>#알콩달콩</span></a>
+							<a href="#" class="tagBtn"><span>#라이프스타일</span></a>
+						</div>
 					</div>
 					<!-- // 태그 영역 -->
 
 					<!-- 추천 패키지 영역 -->
 					<div id="recommendNewForm" class="detailArea recommend">
-						
+						<h3>Recommend Newform Package</h3>
+						<p class="subNewformTit">추천 뉴폼패키지</p>
 					</div>
 					<!-- // 추천 패키지 영역 -->
 
 					<!-- 추천 리빙 영역 -->
 					<div id="recommendLiving" class="detailArea recommend">
-						
+						<h3>Recommend Living Item</h3>
+						<p class="subNewformTit">추천 리빙아이템</p>
 					</div>
 					<!-- // 추천 리빙 영역 -->
 				</div>
@@ -346,19 +312,27 @@
 								<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
 								<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
 							</ul>
-							<div class="expertArea">
+							<div class="expertArea mb0">
 								<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
 								<div class="info">
-									<em>모던하우스 홍길동<i>Modern House</i></em>
-									<p>편안하고 개성있는 공간을 만들어 드립니다.</p>
-									<div class="fol">
-										<span>4.5</span>
-										<span>100</span>
-									</div>
+									<h3>홍길동</h3>
+									<em><i>Modern House</i></em>
+									<p class="localInfo">경기도 상록구 사동</p>
 									<div class="btnwrap">
-										<a href="#" class="btnSizeS">팔로우</a>
+										<a href="" class="btnSizeS btnFollow active">팔로잉</a>
 										<a href="#" class="btnSizeS ">1:1 메시지</a>
 									</div>
+								</div>
+							</div>
+							<div class="followList">
+								<div class="lately">
+									<ul>
+										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
+										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
+										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
+										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
+									</ul>
+									<a href="" class="more">+<em>6</em></a>
 								</div>
 							</div>
 						</div>
