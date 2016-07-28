@@ -83,7 +83,7 @@ a.pointLink {color:#2d427a;text-decoration:underline;}
 
 .tabType02{overflow: hidden;background: #f9fafc;}
 .tabType02 li{float: left;width: 50%;border-bottom: 2px solid #e5e5e5;text-align: center;}
-.tabType02 .on{border-bottom-color: #a9c700}
+.tabType02 .on{border-bottom-color: #2d427a}
 .tabType02 a{position: relative;display: block;padding: 0 25px;color: #666;font-size: 13px;line-height: 49px;}
 .tabType02 .on a{color: #000;}
 
@@ -406,7 +406,8 @@ h4.partTit {font-size:12px;}
 .productList > li:last-child{padding-bottom:0;}
 .productList .thumb{width:78px;height:78px;display:block;overflow:hidden;float:left;margin-right:10px;}
 .productList .thumb img{width:100%;vertical-align:top;}
-.productList .info span{padding:4px 6px; font-size:11px; border:1px solid #2d427a; color:#2d427a; display:inline-block;line-height:1;}
+.productList .info + .cancelArea{margin-top:44px;}
+.productList .info span{padding:4px 6px; font-size:11px; border:1px solid #436ebb; color:#436ebb; display:inline-block;}
 .productList .info p{line-height:1.4em;margin-top:6px;font-family:'NotoSansB', 'RobotoB', sans-serif;font-size:15px;color:#333;}
 .productList .info p a{color:#333;}
 .productList .productData{clear:both;}
@@ -424,9 +425,10 @@ h4.partTit {font-size:12px;}
 .productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
 .productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;}
 .productList .cancelArea .state,
-.productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px; font-size:15PX; color:#333;}
-.productList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:14px;}
-.productList .cancelArea .btnSizeS{float:right;}
+.productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
+.productList .cancelArea .state{position:relative;}
+.productList .cancelArea .state:after {content:''; width:14.5px; height:15.5px; background:url("../images/ico_info.png") no-repeat right 1px;background-size:14.5px 30px; color:#b08967; font-weight:bold; position:absolute; top:0px; right:0;}
+.productList .cancelArea .btnSizeS{float:right;margin-left:4px;}
 .productList .workInfo{padding-top:10px;margin-top:40px;clear:both;border-top:1px solid #ccc;clear:both;}
 .productList .workInfo .addr p{line-height:1.4em;}
 .productList .workInfo .addr p:first-child + p{color:#666;}
