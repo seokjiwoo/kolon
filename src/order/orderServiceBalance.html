@@ -49,8 +49,8 @@
 													</a>
 												</div>
 											</td>
-                                            <td>{{saleMemberName}}</td>
                                             <td><b>{{productPriceDesc}}</b> 원</td>
+                                            <td>{{saleMemberName}}</td>
                                             <!--<td><b>{{discountPriceDesc}}</b> 원</td>
                                             <td><b>{{constExpectPriceDesc}}</b> 원</td>
                                             <td><b>???</b> 원</td>-->
@@ -72,20 +72,19 @@
 											<tr>
 												<th scope="row">시공대상</th>
 												<td>{{roadBaseAddress}}</td>
-												<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
-												<td><span class="price"><b>{{estimatePriceDesc}}</b>원</span></td>
+												<th rowspan="3" scope="row">실측 후 금액<br/>(상품 금액  ± 실측 후 변동금액) </th>
+												<td rowspan="3"><span class="price"><b>{{estimatePriceDesc}}</b>원</span></td>
 											</tr>
 											<tr>
 												<th scope="row">예상기간</th>
 												<td>{{constExpectBeginDate}} ~ {{constExpectEndDate}} ({{constExpectDay}}일)</td>
-												<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
-												<td rowspan="2"><span class="price"><b>{{surveyPriceDesc}}</b>원</span></td>
+												<!--<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
+												<td rowspan="2"><span class="price"><b>{{surveyPriceDesc}}</b>원</span></td>-->
 											</tr>
 											<tr>
 												<th scope="row">시공업체</th>
 												<td>
-													<!--<span class="companyInfo">김석우  |  (주)가인인테리어</span>
-													<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>-->
+													<span class="companyInfo">{{saleMemberName}} | {{saleCompanyName}}</span><a href="/manager/brand.html?expertNumber={{saleMemberNumber}}" class="btnSizeS btnColor01">시공업체 보기</a>
 												</td>
 											</tr>
                                         {{!--// order-estimate-templates --}}
@@ -114,21 +113,14 @@
 									<th scope="col">시공 상세</th>
 									<th scope="col" class="borderLeft1">포함사항</th>
 								</tr>
-								{{#each .}}
-								<tr>
+								{{#each constEstimateItems}}
+							    <tr>
 									<td>{{itemName}}</td>
 									<td>{{itemPriceDesc}}원</td>
-									<td class="t_l"><!--LG, DID, 대동,대우 등의 실크벽지, 초배시공--></td>
+									<td class="t_l">{{detailInfo}}</td>
 									{{#if @first}}
-									<td rowspan="{{../length}}" class="borderLeft1 t_l">
-										<ul class="gunboat">
-											<li>고객요청시 무료방문견적 및 상세 견적서 제공</li>
-											<li>고객요청시 3D 디자인시안 무료 제공 (계약전-유료)</li>
-											<li>고객과 협의 없이 계약서 상 기재된 자재 미사용시 차액 3배 지불 </li>
-											<li>시공업체 잘못으로 계약서 상 시공기간 초과시 손해금액 배상</li>
-											<li>계약서 상 추가금액에 특약이 없을 시<br /> 어떠한 경우에도 계약금액 외 추가금액 요구 불가</li>
-											<li>시공완료일 부터 12개월 이내 부실시공으로 인한 하자발생시 A/S.</li>
-										</ul>
+									<td rowspan="{{itemName.length}}" class="borderLeft1 t_l">
+										{{../estimateAddInfo}}
 									</td>
 									{{/if}}
 								</tr>
@@ -145,7 +137,7 @@
 					{{!-- order-payment-templates --}}
 						<div class="payTb payTbL border">
 							<dl class="payS minus">
-								<dt><div>상품금액</div></dt>
+								<dt><div>실측 후 금액</div></dt>
 								<dd><div><span class="price"><b>{{estimatePriceDesc}}</b> 원</span></div></dd>
 							</dl>
 							<dl class="payS equal">
@@ -153,8 +145,11 @@
 									<div>
 										<ul class="priceList">
 											<li>
-												<em>선결제금액</em>
-												<span class="price"><b>{{advancePriceDesc}}</b> 원</span>
+												<em>선결제/할부금액</em>
+												<span class="price"><b>선결제금액 {{advancePriceDesc}}</b> 원</span>
+												{{#vxIF installmentPaymentYn "==" "Y"}}
+												<span class="price price2line"><b>선결제금액 {{advancePriceDesc}}</b> 원<b><br>할부금액 {{installmentPrice}}</b> 원</span>
+												{{/vxIF}}
 											</li>
 											<li>
 												<em>총 할인금액</em>
@@ -178,7 +173,7 @@
 									<div>
 										<ul class="pointBul">
 											<li><p class="tbBul"><label for="pointWt">포인트 사용</label><input type="text" style="width:111px;" id="pointWt" value=""> p</p></li>
-											<li><p id='useAllPointCheck' class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""><label for="pointCk01" class="" id='pointLb01'>모두사용 ( 잔여 포인트 : {{leftPoint}} p )</label></p></li>
+											<li><p id='useAllPointCheck' class="pointCk checkbox on"><input type="checkbox" id="pointCk01" value=""><label for="pointCk01" class="" id='pointLb01'>모두사용 ( 잔여 포인트 : {{leftPointDesc}} p )</label></p></li>
 										</ul>
 										<p class="underTxt">포인트는 5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
 									</div>
@@ -280,7 +275,7 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">상품금액</th>
+															<th scope="row">실측 후 금액</th>
 															<td class="txtR">
 																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
@@ -289,10 +284,6 @@
 															<th scope="row">할인금액</th>
 															<td>
 																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
 																	<li>
 																		<span class="tbListTit">포인트</span>
 																		<span class="price">-<b class='usedPoint'></b> P</span>
@@ -359,7 +350,7 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">상품금액</th>
+															<th scope="row">실측 후 금액</th>
 															<td class="txtR">
 																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
@@ -368,10 +359,6 @@
 															<th scope="row">할인금액</th>
 															<td>
 																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
 																	<li>
 																		<span class="tbListTit">포인트</span>
 																		<span class="price">-<b class='usedPoint'></b> P</span>
@@ -430,7 +417,7 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">상품금액</th>
+															<th scope="row">실측 후 금액</th>
 															<td class="txtR">
 																<span class="price"><b class='basePrice'></b> 원</span>
 															</td>
@@ -439,10 +426,6 @@
 															<th scope="row">할인금액</th>
 															<td>
 																<ul class="tbList">
-																	<li>
-																		<span class="tbListTit">기본할인</span>
-																		<span class="price">-<b class='basicDiscount'></b> 원</span>
-																	</li>
 																	<li>
 																		<span class="tbListTit">포인트</span>
 																		<span class="price">-<b class='usedPoint'></b> P</span>
@@ -520,7 +503,7 @@
 													</colgroup>
 													<tbody>
 														<tr>
-															<th scope="row">상품금액</th>
+															<th scope="row">실측 후 금액</th>
 															<td class="txtR">
 																<span class="price"><b>2,602,500</b> 원</span>
 															</td>

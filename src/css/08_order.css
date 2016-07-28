@@ -75,6 +75,7 @@ ul.tbList2 li + li {margin-top:10px;}
 .payTb dl.payS.minus:after {background:url('../images/ico_order2.png') 0 0 no-repeat;}
 .payTb dl.payS.plus:after {background:url('../images/ico_order2.png') 0 -93px no-repeat;}
 span.price {font-size:20px; font-family:'NotoSansR', sans-serif;}
+span.price2line {font-size:13px; font-family:'NotoSansR', sans-serif; }
 span.price b {font-family:'NotoSansB', sans-serif;}
 span.price b.italicNum{font-size: 30px;}
 span.price.pointRed {font-size:30px;}
@@ -109,6 +110,7 @@ span.price.fontS {font-size:14px;}
 .payTb.border dl ul.priceList li:after{content:"";display:block;clear:both;}
 .payTb.border dl ul.priceList li em{width:102px;height:56px;line-height:56px;padding-left:38px;float:left;display:block;font-style:normal;font-family: 'NotoSansR',sans-serif;background:#f8f8f8;text-align:left;}
 .payTb.border dl ul.priceList li span.price{height:56px;line-height:56px;float:left;padding-left:36px;}
+.payTb.border dl ul.priceList li span.price2line { line-height:27px;}
 .payTb.border dl ul.priceList li span.point{height:56px;line-height:56px;float:left;padding-left:44px;background:url("../images/bul_dot.png") no-repeat 34px center;}
 .payTb.border dl ul.priceList li span.point i{font-style:normal;padding-left:30px;}
 

@@ -141,7 +141,7 @@ module.exports = function() {
 				});
 
 				renderData(orderConfirmInfo, '#order-estimate-templates', '#order-estimate-wrap', true);
-				renderData(orderConfirmInfo.constEstimateItems, '#order-estimate-items-templates', '#order-estimate-items-wrap', true);
+				renderData(orderConfirmInfo, '#order-estimate-items-templates', '#order-estimate-items-wrap', true);
 				
 				paymentInfo.estimatePriceDesc = util.currencyFormat(paymentInfo.estimatePrice);
 				paymentInfo.advancePriceDesc = util.currencyFormat(paymentInfo.advancePrice);
