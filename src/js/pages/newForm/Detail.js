@@ -365,9 +365,9 @@ module.exports = function() {
 					var partnerData1 = result.data.partner;
 					var partnerData2 = result.data.partner;
 					if (partnerData2.memberMasterYn == 'Y') {
-						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
-					} else {
 						partnerData2.link = '/manager/brand.html?expertNumber='+partnerData2.partnerNumber;
+					} else {
+						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
 					}
 					displayData(partnerData1, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
 					displayData(partnerData2, $('#info-partner-templates'), $('.js-info-partner-wrap'));
