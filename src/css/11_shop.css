@@ -148,6 +148,7 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .topArea .topContBox .topCont .js-detail-partner-wrap p:before {content:'';display:block;width:60px;height:1px;background:#000;margin:20px 0 24px;}
 .topArea .topContBox .topCont .js-detail-partner-wrap p {font-size:16px;}
 .topArea .topContBox .topCont .js-detail-partner-wrap p span {font-family:'NotoSansL' sans-serif;}
+.topArea .topContBox .topCont .infoPosiibleArea {font-weight:normal;}
 .topArea .topContBox .topCont .cardCon {position:absolute;width:auto;padding:0;top:165px;right:0;}
 .topArea .topContBox .topCont .cardCon .upTo2 {position:static;}
 
