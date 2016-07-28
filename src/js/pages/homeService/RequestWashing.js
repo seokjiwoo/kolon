@@ -196,7 +196,7 @@ module.exports = function() {
 		} else if ($('#timeDrop').val() == '') {
 			alert('희망 서비스 시각을 선택해 주세요');
 		} else {
-			var requestDate = moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD');
+			var requestDate = moment($('#washDate').datepicker('getDate')).format('YYYY-MM-DD');
 			var requestTime = $('#timeDrop').val()[0];
 			
 			if (timeArray[requestDate] == undefined) {
@@ -238,7 +238,7 @@ module.exports = function() {
 			alert('개인정보 제 3자 제공에 동의해 주세요');
 		} else {
 			var companyCode = $('#companyListWrap').find('.on').data().companyCode;
-			var requestDate = moment($('#moveDate').datepicker('getDate')).format('YYYY-MM-DD');
+			var requestDate = moment($('#washDate').datepicker('getDate')).format('YYYY-MM-DD');
 			var requestTime = $('#timeDrop').val()[0];
 
 			switch(companyCode) {
@@ -265,7 +265,7 @@ module.exports = function() {
 				"dateTime": timeArray[requestDate][requestTime].dateTime,
 				"serviceDateTimeRequest": serviceDateTimeRequest
 			};
-
+			//console.log(requestDate);
 			//console.log( serviceAddress );
 			//console.log( livingService );
 			//console.log( washServiceRequest );
@@ -277,7 +277,7 @@ module.exports = function() {
 	function requestWashingResultHandler(e, status, result) {
 		if (status == 200) {
 			alert('신청이 완료 되었습니다. 업체에서 확인 후 빠른 시간 내에 연락 드리겠습니다.');
-			location.href = '/homeService/#move';
+			location.href = '/homeService/#washing';
 		} else {
 			alert(status+': '+result.message);
 		}
