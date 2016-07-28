@@ -197,6 +197,6 @@ a.btnDetail:after {content:'';display: inline-block;width: 10px;height: 10px;mar
 .popEdge .shareBtn .ks{background-position: -128px 0;}
 .popEdge .shareBtn .pn{background-position: -192px 0;}
 
-.popEdge .shareLink{width: 60%;display: block;margin:0 auto;padding: 10px;border:1px solid #000;border-radius: 5px;}
+.popEdge .shareLink{width: 72%;display: block;margin:0 auto;padding: 10px;border:1px solid #000;border-radius: 5px;}
 .popEdge .shareLink input{padding: 0;background: #fff;border:0;vertical-align: middle;}
 .popEdge .shareLink .btnCopy{border:0;background: none;color: #465f8d;font-family:'NotoSansM', sans-serif;vertical-align: middle;}
