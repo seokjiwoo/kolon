@@ -411,3 +411,7 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 .dlBasic dt:first-child, .dlBasic dd:first-child{margin:0;}
 .dlBasic dt{clear: left;}
 .dlBasic dt:after{content:'';display: inline-block;width: 1px;height: 10px;margin-left: 10px;background: #ccc;vertical-align: middle;}
+
+
+.scrapImageWrapper { display:inline-block;position:relative; }
+.scrapImageWrapper a.scrapButton { position:absolute;bottom:10px;right:10px;width:120px;height:41px;background:url('../images/imgScrapBtn.png');text-indent:-9999px; }

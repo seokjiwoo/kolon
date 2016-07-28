@@ -42,12 +42,12 @@ module.exports = function() {
 			wrap : 'scrapFolderEdit',
 			inp : '.js-scrapFolderEdit-inp',
 			delete : '.js-scrapFolderEdit-delete',
-			submit : '.js-scrapFolderEdit-submit'
+			submit : '#js-scrapFolderEdit-form'
 		},
 		newFolder : {
 			wrap : 'scrapFolderNew',
 			inp : '.js-scrapFolderNew-inp',
-			submit : '.js-scrapFolderNew-submit'
+			submit : '#js-scrapFolderNew-form'
 		},
 		removeFolder : {
 			wrap : 'scrapFolderRemove',
@@ -326,11 +326,11 @@ module.exports = function() {
 		if (self.colorbox.hasClass(self.opts.editFolder.wrap)) {
 			self.colorbox.find(self.opts.editFolder.inp).attr('placeholder', self.selPopBtnInfo.info.folderName);
 			self.colorbox.find(self.opts.editFolder.delete).on('click', onDeleteFolder);
-			self.colorbox.find(self.opts.editFolder.submit).on('click', onEditFolder);
+			self.colorbox.find(self.opts.editFolder.submit).on('submit', onEditFolder);
 		}
 
 		if (self.colorbox.hasClass(self.opts.newFolder.wrap)) {
-			self.colorbox.find(self.opts.newFolder.submit).on('click', onNewFolder);
+			self.colorbox.find(self.opts.newFolder.submit).on('submit', onNewFolder);
 		}
 
 		if (self.colorbox.hasClass(self.opts.removeFolder.wrap)) {
@@ -347,11 +347,11 @@ module.exports = function() {
 	function destroyColoboxFolder() {
 		if (self.colorbox.hasClass(self.opts.editFolder.wrap)) {
 			self.colorbox.find(self.opts.editFolder.delete).off('click', onDeleteFolder);
-			self.colorbox.find(self.opts.editFolder.submit).off('click', onEditFolder);
+			self.colorbox.find(self.opts.editFolder.submit).off('submit', onEditFolder);
 		}
 
 		if (self.colorbox.hasClass(self.opts.newFolder.wrap)) {
-			self.colorbox.find(self.opts.newFolder.submit).off('click', onNewFolder);
+			self.colorbox.find(self.opts.newFolder.submit).off('submit', onNewFolder);
 		}
 
 		if (self.colorbox.hasClass(self.opts.removeFolder.wrap)) {

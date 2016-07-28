@@ -39,6 +39,7 @@ module.exports = function() {
 	cardList = require('../components/CardList.js'),
 	events = require('../events/events'),
 	COLORBOX_EVENT = events.COLOR_BOX,
+	SCRAP_EVENT = events.SCRAP,
 	MEMBERINFO_EVENT = events.MEMBER_INFO,
 	INFOSLIDER_EVENT = events.INFO_SLIDER,
 	WINDOWOPENER_EVENT = events.WINDOW_OPENER,
@@ -46,6 +47,9 @@ module.exports = function() {
 
 	var memberInfoController = require('../controller/MemberInfoController');
 	$(memberInfoController).on('verifyMemberResult', verifyMemberResultHandler);
+
+	var scrapController = require('../controller/ScrapController.js');
+	$(scrapController).on(SCRAP_EVENT.WILD_CARD, scrapEventListener);
 	
 	var FloatMenu = require('../components/FloatingMenu.js'),
 	floatMenu = FloatMenu();
@@ -466,7 +470,6 @@ module.exports = function() {
 	
 	/**
 	 * 휴대폰 수정(=실명인증) 진행
-	 * 
 	 */
 	function requestVerifyMember(e, authType) {
 		e.preventDefault();
@@ -512,6 +515,62 @@ module.exports = function() {
 	function onColorboxRefreshListener(e) {
 		cardList().initOverEffect();
 		snsShare.refresh();
+
+		$('.imageScrapable').each(function(key, each){
+			if (!$(this).hasClass('scrap-image')) {
+				$(this).addClass('scrap-image').removeClass('imageScrapable');
+				$(this).wrapAll("<div class='scrapImageWrapper' />");
+				$(this).parent().append('<a href="#" class="scrapButton">스크랩</a>');
+				$(this).parent().find('.scrapButton').click(function(e){
+					e.preventDefault();
+					//var filePath = $(this).parent().find('.scrap-image').attr('src');
+					var filePath = window.location.protocol+"//"+window.location.host+'/'+$(this).parent().find('.scrap-image').attr('src');
+			
+					Super.htmlPopup('/_popup/popScrapBookAdd.html', 540, 'popEdge', {
+						onOpen: function() {
+							$('#makeNewScrapFolderButton').click(function(e){
+								e.preventDefault();
+								Super.htmlPopup('/_popup/popScrapNew.html', 540, 'popEdge');
+							});
+							$('#addToScrapForm').submit(function(e){
+								scrapController.addImageScrap($('#scrapTargetFolderSelect').val(), filePath);
+								e.preventDefault();
+							});
+							scrapController.scrapList('IMAGE');
+						}
+					});
+				});
+			};
+		});
+
+		if ($('#colorbox').hasClass('scrapFolderNew')) {
+			$('#colorbox').find('#js-scrapFolderNew-form').on('submit', onNewFolder);
+		}
+	}
+
+	function scrapEventListener(e, status, result) {
+		var eventType = e.type;
+
+		switch(eventType) {
+			case SCRAP_EVENT.LIST:
+				var tags = '<option value="" selected="selected">폴더 선택</option>';
+				$.each(result.data.scraps, function(key, each) {
+					tags += '<option value="'+each.folderNumber+'">'+each.folderName+'</option>';
+				});
+				$('#scrapTargetFolderSelect').html(tags);
+				break;
+			case SCRAP_EVENT.ADD_SCRAP:
+				if (status == 200) {
+					alert('스크랩이 완료되었습니다');
+					$.colorbox.close();
+				} else {
+					alert(result.message);
+				}
+				break;
+			case SCRAP_EVENT.ADD_SCRAP_FOLDER:
+				location.reload();
+				break;
+		};
 	}
 
 	// Colorbox Cleanup 시점
@@ -519,6 +578,28 @@ module.exports = function() {
 	// @see Events.js#Events.COLOR_BOX
 	function onColorboxDestoryListener(e) {
 		cardList().cleanOverEffect();
+
+		if ($('#colorbox').hasClass('scrapFolderNew')) {
+			$('#colorbox').find('.js-scrapFolderNew-submit').off('click', onNewFolder);
+		}
+	}
+
+	/**
+	 * 스크랩 폴더 등록
+	 */
+	function onNewFolder(e) {
+		e.preventDefault();
+
+		var target = $(e.target),
+		inp = $('#colorbox').find('.js-scrapFolderNew-inp');
+
+		if (!inp.val() || inp.val() === ' ') {
+			alert('폴더명을 입력하세요.');
+			inp.focus();
+			return;
+		}
+
+		scrapController.addScrapFolder(inp.val());
 	}
 
 	// MeberInfo event Listener
@@ -532,7 +613,6 @@ module.exports = function() {
 			// 로그인 유무 체크
 			case MEMBERINFO_EVENT.IS_LOGIN:
 				return (loginDataModel.loginData()) ? true : false;
-				break;
 		}
 	}
 
@@ -546,7 +626,7 @@ module.exports = function() {
 
 	function infoSliderDestoryhHandler(e) {
 		if ($('#infoSlider').data('bxSlider')) {
-			$('#infoSlider').data('bxSlider').destroySlider();
+			$('#infoSlider').data('bxSlider').destroySlider();f
 		}
 	}
 

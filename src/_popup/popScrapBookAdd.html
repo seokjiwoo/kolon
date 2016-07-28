@@ -2,19 +2,17 @@
 	<h4 class="popTit">스크랩 북에 추가</h4>
 </div>
 <div class="popCon">
-	<div class="popFormLine">
-		<form method="post" action="/">
-			<fieldset>
-				<legend>스크랩 북에 추가</legend>
-				<select name="" title="폴더 선택" style="width:314px;">
-					<option value="" selected="selected">폴더 선택</option>
-					<option value=""></option>
+	<form method="post" action="#" id='addToScrapForm'>
+		<fieldset>
+			<legend>스크랩 북에 추가</legend>
+			<div class="popFormLine">
+				<select name="" title="폴더 선택" style="width:314px;" id='scrapTargetFolderSelect'>
 				</select>
-				<button class="popBtnS">새폴더만들기</button>
-			</fieldset> 
-		</form>
-	</div>
-	<div class="btnWrap">
-		<a href="#" class="btnSizeM btnColor01">저장</a>
-	</div>
+				<button type="button" class="popBtnS" id='makeNewScrapFolderButton'>새폴더만들기</button>
+			</div>
+			<div class="btnWrap">
+				<button type="submit" class="btn btnSizeM btnColor01">저장</a>
+			</div>
+		</fieldset> 
+	</form>
 </div>

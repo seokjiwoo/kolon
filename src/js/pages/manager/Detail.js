@@ -134,7 +134,7 @@ module.exports = function() {
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
 					case 200: 
-						$('#followerCount').text(Number($('#followerCount').text())+1);
+						$('#followerCount').text(result.data.followCount);
 						$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 						break;
 					default: win.alert(result.message); break;
