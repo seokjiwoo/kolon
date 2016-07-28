@@ -83,7 +83,6 @@
 	<div class='lnb' id='lnb'>
 		<div class="profile">
 			<a href="" class="close" id="profileClose"></a>
-			<a href="#" class="setting profileEditButton" id='settingButton'></a>
 			<a href="/index.html" class="logoL"><img src="/images/logoW.png" alt="COMMON"></a>
 			<div class="pic"><img src="/images/profile.png" id="profileImage" alt=""></div> <!-- /images/temp01.jpg -->
 			<p class="profileInfo" id="profileName"><span>로그인 해주세요</span></p> <!--<span>김세환 님</span><br>dudlri@naver.com -->
@@ -97,25 +96,28 @@
 			<a href="/member/login.html" class="btnMy" id="btnJoinMyPage">로그인 / 회원가입</a><!-- 로그인 후 <a href="" class="btnMy btnMypage">나의 커먼</a>-->
 			<ul class="myMenu" id="myMenu"> 
 				<li><a href="/myPage/order.html">진행 중인 주문/배송<span class="count" id='menuCountOrderGoods'></span></a></li>
-				<li><a href="/myPage/return.html">취소/반품/교환<span class="count" id='menuCountCancelGoods'></span></a></li>
+				<li><a href="/myPage/return.html">교환/반품/취소<!-- <span class="count" id='menuCountCancelGoods'></span> --></a></li>
+				<li><a href="/myPage/myService.html">진행 중인 시공<span class="count"></span></a></li>
+				<li><a href="/myPage/myServiceDetail.html">시공취소/환불</a></li>
+				<li><a href="/homeService.html">진행중인 서비스<span class="count"></span></a></li>
+				<li><a href="/myPage/homeServiceCancel.html">서비스 취소/환불</a></li>
 				<li><a href="/myPage/recentSeenItem.html">최근 본 상품<span class="count" id='menuCountRecentViewItem'></span></a></li>
-				<li><a href="/myPage/myService.html">나의 시공중인 상품<span class="count" id='menuCountOrderNewform'></span></a></li>
 				<!--<li><a href="">가성비 비교 견적서<span class="count">16</span></a></li>-->
 			</ul>
 			<a href="" class="menuToggle" id="menuToggle"></a><!-- menuToggle hide/show -->
 		</div>
 		<ul class="leftMenu">
-			<li><a href="/manage/" class="depth01">자산관리 <b>MANAGE</b></a></li>
-			<li><a href="/rent/" class="depth01">집구하기 <b>RENT</b></a></li>
-			<li><a href="/fund/" class="depth01">투자하기 <b>FUND</b></a></li>
-			<li><a href="/newForm/" class="depth01">뉴폼 <b>NEW FORM</b></a></li>
-			<li><a href="/shop/" class="depth01">샵 <b>SHOP</b></a></li>
-			<li><a href="/homeService/" class="depth01">홈서비스 <b>HOME SERVICE</b></a></li>
-			<li><a href="/magazine/" class="depth01">매거진 <b>MAGAZINE</b></a></li>
-			<li><a href="/qna/" class="depth01">의견묻기</a></li>
-			<li><a href="/manager/" class="depth01">커먼전문가</a></li>
+			<li><a href="/manage/" class="fin">manage</a></li>
+			<li><a href="/rent/" class="fin">rent</a></li>
+			<li><a href="/fund/" class="fin">fund</a></li>
+			<li><a href="/newForm/" class="sale">newform</a></li>
+			<li><a href="/shop/" class="sale">shop</a></li>
+			<li><a href="/homeService/" class="sale">service</a></li>
+			<li><a href="/magazine/" class="fun">magazine</a></li>
+			<li><a href="/qna/" class="help">의견묻기</a></li>
+			<li><a href="/manager/" class="help">커먼전문가</a></li>
 		</ul>
-		<a href="/member/login.html" id="buttonLogInOut" class="btnSizeM btnColor03 btnLog">로그인</a>
-		<!-- 로그인 후 <a href="" class="btnSizeM btnColor03 btnLog">로그아웃</a> -->
+		<a href="/member/login.html" id="buttonLogInOut" class="btnSizeM btnColor04 btnLog">로그인</a>
+		<!-- 로그인 후 <a href="" class="btnSizeM btnColor04 btnLog">로그아웃</a> -->
 	</div>
 </aside>
