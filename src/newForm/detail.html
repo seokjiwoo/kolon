@@ -35,6 +35,9 @@
 						<h3>{{productName}}</h3>
 						<p class="infoSub">{{productDesc}}</p>
 						<div class="js-detail-partner-wrap"></div>
+						{{#if constPossibleArea}}
+						<div class="infoPosiibleArea">시공가능 지역 : {{constPossibleArea}}</div>
+						{{/if}}
 
 					    <ul class="unitPrice">
 					    	<li>
