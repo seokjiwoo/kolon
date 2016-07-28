@@ -125,9 +125,9 @@ a.btnSizeB{width: 100%;height: 55px;font-size: 18px;line-height: 55px;}
 .btnColor05{background:#999} /*grey*/
 .btnColor06{background:#333} /*dark grey*/
 .btnColor07{background:#293145;}/*dark blue*/
-a.btnFollow{min-width:106px;padding-right:22px; border:1px solid #adc427;border-radius:17px;color:#adc427; text-align:center; position:relative; background:#fff;}
+a.btnFollow{min-width:106px;padding-right:22px; border:1px solid #2d427a;border-radius:17px;color:#2d427a; text-align:center; position:relative; background:#fff;}
 a.btnFollow:after{content:''; width:12px; height:12px; margin-top:-6px; background:url("../images/ico_follow_off.png") no-repeat 0 0;background-size:12px; position:absolute; top:50%; right:23px;}
-a.btnFollow.active{background:#adc427;color:#fff;}
+a.btnFollow.active{background:#2d427a;color:#fff;}
 a.btnFollow.active:after{background:url("../images/ico_follow_on.png") no-repeat 0 0;background-size:12px;}
 @media (max-width:320px){
 	.btnWrap03 a {width:31.3%;}
@@ -416,19 +416,19 @@ h4.partTit {font-size:12px;}
 .productList .productData li:first-child{border-top:0;}
 .productList .productData li p{line-height:1.4em;}
 .productList .productData li p.name{color:#999;}
-.productList .productData li p.name + p.count{margin-top:10px;}
-.productList .productData li p.count{text-align:right;font-size:15px;}
-.productList .productData li p.count select{width:68px;display:inline-block;margin-right:30px;}
-.productList .productData li p.count span{display:inline-block;}
-.productList .productData li p.count span:first-child{position:relative;padding-right:10px;}
-.productList .productData li p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
-.productList .productData li p.count span:last-child{color:#666;}
-.productList .productData li p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
+.productList .productData li p.name + .count{margin-top:10px;}
+.productList .productData li .count{text-align:right;font-size:15px;}
+.productList .productData li .count .selectBox{width:68px;display:inline-block;margin-right:30px;}
+.productList .productData li .count span{display:inline-block;}
+.productList .productData li .count span:first-child{position:relative;padding-right:10px;}
+.productList .productData li .count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
+.productList .productData li .count span:last-child{color:#666;}
+.productList .productData li .count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
 .productList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;}
 .productList .cancelArea .state,
 .productList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
 .productList .cancelArea .state{position:relative;}
-.productList .cancelArea .state:after {content:''; width:14.5px; height:15.5px; background:url("../images/ico_info.png") no-repeat right 1px;background-size:14.5px 30px; color:#b08967; font-weight:bold; position:absolute; top:0px; right:0;}
+.productList .cancelArea .state:after {content:''; width:14.5px; height:15.5px; background:url("../images/ico_info.png") no-repeat right 1px;background-size:14.5px 30px; background-position:0 -15px; color:#b08967; font-weight:bold; position:absolute; top:1px; right:0;}
 .productList .cancelArea .btnSizeS{float:right;margin-left:4px;}
 .productList .workInfo{padding-top:10px;margin-top:40px;clear:both;border-top:1px solid #ccc;clear:both;}
 .productList .workInfo .addr p{line-height:1.4em;}
