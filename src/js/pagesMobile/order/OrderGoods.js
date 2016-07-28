@@ -119,6 +119,11 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDERS_INFO:
+				if (result.status == 400) {
+					alert(result.message);
+					history.back(-1);
+					return;
+				}
 				var data = result.common.data;
 				//data.paymentInfo.leftPoint = 100000;
 
