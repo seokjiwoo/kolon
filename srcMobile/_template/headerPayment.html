@@ -1,34 +1,58 @@
-<script src="https://web.nicepay.co.kr/flex/js/nicepay_tr.js" language="javascript"></script>
+<!-- <script src="https://web.nicepay.co.kr/flex/js/nicepay_tr.js" language="javascript"></script> -->
 <script language="javascript">
-NicePayUpdate();    //ActiveX Control 초기화 함수로 head 태그 안에 선언합니다.
+// PC 결제 모듈
+// NicePayUpdate();    //ActiveX Control 초기화 함수로 head 태그 안에 선언합니다.
 
-/**
- * nicepay 를 통해 결제를 시작합니다.
- */
-function nicepay() {
-    var payForm = document.payForm;
-    // 필수 사항들을 체크하는 로직을 삽입해주세요.
-    goPay(payForm);
-}
+// /**
+//  * nicepay 를 통해 결제를 시작합니다.
+//  */
+// function nicepay() {
+// 	var payForm = document.payForm;
+// 	// 필수 사항들을 체크하는 로직을 삽입해주세요.
+// 	goPay(payForm);
+// }
 
-/**
- * 결제를 취소 할때 호출됩니다.
- */
-function nicepayClose() {
-    alert("결제가 취소 되었습니다");
-}
+// /**
+//  * 결제를 취소 할때 호출됩니다.
+//  */
+// function nicepayClose() {
+// 	alert("결제가 취소 되었습니다");
+// }
 
-/**
- * 사용자가 결제요청을 누를때 실행됩니다.
- * form 명을 확인하여 주십시요.
- */
-function nicepaySubmit() {
-    document.payForm.submit();
-}
-function chkTransType(value) {
-    document.payForm.TransType.value = value;
-}
-function chkPayType() {
-    document.payForm.PayMethod.value = checkedButtonValue('selectType');
-}
+// /**
+//  * 사용자가 결제요청을 누를때 실행됩니다.
+//  * form 명을 확인하여 주십시요.
+//  */
+// function nicepaySubmit() {
+// 	document.payForm.submit();
+// }
+// function chkTransType(value) {
+// 	document.payForm.TransType.value = value;
+// }
+// function chkPayType() {
+// 	document.payForm.PayMethod.value = checkedButtonValue('selectType');
+// }
+</script>
+
+<script>
+	// Mobile 결제 모듈
+	function goPaySmart() {
+		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/orders/process' : 'https://dev.m.koloncommon.com/apis/orders/process');
+		$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
+
+		document.payForm.target = "_blank";
+		document.payForm.method = "post";
+		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
+		document.payForm.submit();
+	}
+
+	function chkTransType(value)
+	{
+		document.payForm.TransType.value = value;
+	}
+
+	function chkPayType()
+	{
+		document.payForm.PayMethod.value = checkedButtonValue('selectType');
+	}
 </script>
