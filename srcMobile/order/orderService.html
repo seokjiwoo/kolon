@@ -3,7 +3,7 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문서 작성"} -->
 </head>
-<body data-page-id="myPage-order">
+<body data-page-id="order-orderService">
 	<div class="wrapper order">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -110,11 +110,30 @@
 							<li>
 								<p class="tit">희망 시공기간 선택  (선택)</p>
 								<!-- datePicker -->
-								<div class="reserCont datePic">
+								<!-- <div class="reserCont datePic">
 									<p class="date">
 										<span class="dateInp"><em><input type="text" value="2016.04.20" id="datePic01" class='datePicker' /></em></span>
 										<span class="dateInp"><em><input type="text" value="2016.04.20" id="datePic02" class='datePicker' /></em></span>
 									</p>
+								</div> -->
+								<div class="datePic js-range-picker">
+									<ul>
+										<li>
+											<span class="dateInp">
+												<input type="text" value="" title="희망 시공 시작 날짜 입력" class="datePicker js-alt-from" readonly="readonly"/>
+												<a href="#" class="calBtn js-btn-from">날짜선택</a>
+												<div class="cal-container js-picker-from"></div>
+											</span> 
+										</li>
+										<li><span>-</span></li>
+										<li>
+											<span class="dateInp">
+												<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="datePicker js-alt-to" readonly="readonly"/>
+												<a href="#" class="calBtn js-btn-to">날짜선택</a>
+												<div class="cal-container js-picker-to"></div>
+											</span>
+										</li>
+									</ul>
 								</div>
 								<!--// datePicker -->
 								<p class="underTxt">* 실측 상황에 따라 시공 기간은 변경될 수 있습니다.</p>
@@ -969,5 +988,13 @@
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<!-- [D] 임시 구성 -->
+<style>
+	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
+	.datePic ul {overflow:visible;height:30px}
+	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
+</style>
+
 </body>
 </html>
