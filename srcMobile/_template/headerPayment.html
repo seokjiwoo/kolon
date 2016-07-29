@@ -41,6 +41,7 @@
 		$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
 
 		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
 		document.payForm.method = "post";
 		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
 		document.payForm.submit();
