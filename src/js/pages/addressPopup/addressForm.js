@@ -85,10 +85,13 @@ module.exports = function() {
 		var phoneNumber = String($('#phone1').val())+$('#phone2').val()+$('#phone3').val();
 		var addressSectionCode = $('#basicAddrFlag').hasClass('on') ? 'BM_ADDR_SECTION_02' : 'BM_ADDR_SECTION_03';
 		
-		if ($.trim($('#adrName1').val()) == '') {
+		var adrName1Val = $.trim($('#adrName1').val());
+		var adrName2Val = $.trim($('#adrName2').val());
+
+		if (adrName1Val == '' || true == adrName1.contains('주소 별칭을 입력해 주세요')) {
 			alert('주소 별칭을 입력해 주세요');
 			return;
-		} else if ($.trim($('#adrName2').val()) == '') {
+		} else if (adrName2Val == '' || true == adrName2.contains('이름을 입력해 주세요')) {
 			alert('이름을 입력해 주세요');
 			return;
 		} else if ($.trim($('#phone2').val()) == '' || $.trim($('#phone3').val()) == '') {
