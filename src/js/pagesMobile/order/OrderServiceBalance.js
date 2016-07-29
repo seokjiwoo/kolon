@@ -157,7 +157,7 @@ module.exports = function() {
 				$('.basicDiscount').text(util.currencyFormat(paymentInfo.totalDiscountPrice));
 				$('.usedPoint').text('0');
 				$('.handlingPrice').text('0');
-				$('.totalPrice').text(paymentInfo.totalPaymentPriceDesc);
+				$('.js-totalPrice').text(paymentInfo.totalPaymentPriceDesc);
 
 				if (pointLimit < 5000) {
 					$('#pointCk01').attr('disabled', 'disabled');
