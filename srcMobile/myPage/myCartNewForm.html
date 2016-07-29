@@ -95,7 +95,7 @@
 									{{/vxSelect}}
 								</select>
 								 -->
-								<span><b class="js-list-price">{{salePrice}}</b>원</span>
+								<span><b class="js-list-price">{{salePriceDesc}}</b>원</span>
 								<a href="javascript:;" class="btnDel js-opt-delete" data-cart-number={{cartNumber}}>삭제</a>
 							</p>
 							<!-- <p class="listPrice">
@@ -154,17 +154,19 @@
 		<div class="myCartTotal js-myCartNewForm-orderInfo">
 			<ul class="totalList slideMore js-orderInfo-more-wrap">
 				<li>
-					<p class="totalTit">총 상품금액 (3개)</p>
+					<p class="totalTit">총 상품금액 (<b class="js-list-size"></b>개)</p>
 					<p class="totalCont"><b class="js-orderInfo-price"></b> 원</p>
 				</li>
 				<li>
 					<p class="totalTit">할인금액</p>
 					<p class="totalCont"><b>- </b><b class="js-dicount-price">0</b> 원</p>
 				</li>
+				<!-- 
 				<li>
 					<p class="totalTit">배송비</p>
 					<p class="totalCont"><b class="js-order-delivery"></b> 원</p>
 				</li>
+				 -->
 			</ul>
 			<div class="total">
 				<p class="totalTit">결제예정금액</p>
