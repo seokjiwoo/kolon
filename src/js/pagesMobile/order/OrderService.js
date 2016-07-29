@@ -350,7 +350,7 @@ module.exports = function() {
 					document.payForm.submit();
 				} else {
 					// goPay(document.payForm);
-					goPaySmart();
+					goPaySmartNewForm();
 				}
 			},
 			error : function(xhr, status, error) {

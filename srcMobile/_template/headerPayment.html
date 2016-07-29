@@ -47,6 +47,17 @@
 		document.payForm.submit();
 	}
 
+	function goPaySmartNewForm() {
+		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/advance/process' : 'https://dev.m.koloncommon.com/apis/constorders/advance/process');
+		$("#MallReserved").val($("#products").val());
+
+		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
+		document.payForm.method = "post";
+		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
+		document.payForm.submit();
+	}
+
 	function chkTransType(value)
 	{
 		document.payForm.TransType.value = value;
