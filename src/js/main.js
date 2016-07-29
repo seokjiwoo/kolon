@@ -224,6 +224,10 @@ $(document).ready(function() {
 				PageModuleClass = require('./pages/myPage/MyService.js');
 				break;
 
+			case "myPage-myService-cancel":
+				PageModuleClass = require('./pages/myPage/MyServiceCancel.js');
+				break;
+
 			// 시공상품 상세 myServiceDetail
 			case 'myPage-myServiceDetail':
 				PageModuleClass = require('./pages/myPage/MyServiceDetail.js');

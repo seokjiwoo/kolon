@@ -281,62 +281,32 @@ module.exports = function() {
 
 		switch(eventType) {
 			case CLAIMS_EVENT.LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
+				//result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
+				if (result.data.listOrderItems) {
+					$.each(result.data.listOrderItems, function(index, orderItems) {
+						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
+						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
+						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
+						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
 
-				if (result.data && result.data.orders) {
-					$.each(result.data.orders, function(index, orders) {
-						orders.totalPaymentPriceDesc = util.currencyFormat(parseInt(orders.totalPaymentPrice, 10));
-						if (orders.listOrderItems) {
-							$.each(orders.listOrderItems, function(index, listOrderItems) {
-								listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
-							});
+						if (util.isLocal()) {
+							orderItems.productImageUrl = 'https://dev.koloncommon.com/' + orderItems.productImageUrl;
 						}
+
+						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
+						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
 					});
 				}
-
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
 				displayData(result.data);
 				break;
 			case CLAIMS_EVENT.EXCHANGE:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				displayData(result.data.detail, self.colorbox.find('#change-detail-templates'), self.colorbox.find('.js-change-detail'));
 				break;
 			case CLAIMS_EVENT.RETURN:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 
 				displayData(result.data.detail, self.colorbox.find('#return-detail-templates'), self.colorbox.find('.js-return-detail'));
