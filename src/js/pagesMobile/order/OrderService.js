@@ -342,8 +342,9 @@ module.exports = function() {
 				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
-				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/orders/process' : 'https://dev.m.koloncommon.com/apis/orders/process');
-				$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
+				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/advance/process' : 'https://dev.m.koloncommon.com/apis/constorders/advance/process');
+				$("#MallReserved").val($("#products").val());
+				// $("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
 
 				if (paymentPrice == 0) {
 					document.payForm.submit();
@@ -383,7 +384,7 @@ module.exports = function() {
 	function setAddress(addressNum, seq) {
 		var addressObject = addressArray[seq],
 		htmlStr = '';
-		
+
 		htmlStr += '<p><b>받으실 분</b><span>' + addressObject.receiverName + '</span></p>';
 		htmlStr += '<p><b>연락처</b><span>' + util.mobileNumberFormat(addressObject.cellPhoneNumber) + '</span></p>';
 		htmlStr += '<p><b>도로명</b><span>' + addressObject.roadBaseAddress + '</span></p>';
