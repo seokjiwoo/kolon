@@ -138,13 +138,11 @@
 						{{#vxSwitch orderStateCode}}
 							{{#vxCase "SL_CONST_STATE_01" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-1">선금 입금대기</a>
+								<a href="../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">실측/견적 요청 취소</a>
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_02" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-2">실측/견적 요청</a>
-								<!-- 
 								<a href="../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">실측/견적 요청 취소</a>
-								-->
-								<!-- 실측/견적 요청 취소 신청 팝업 -->
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_03" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-3">실측/견적 진행</a>
@@ -154,6 +152,7 @@
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_05" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-5">계약 완료</a>
+								<a href="/order/orderServiceBalance.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">시공금액 결제</a>
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_06" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-6">잔금 입금대기</a>
@@ -166,6 +165,7 @@
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_09" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-9">시공진행</a>
+								<a href="myServiceDetail.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">시공현황 확인</a>
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_10" break=true}}
 								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-10">시공검수중</a>
