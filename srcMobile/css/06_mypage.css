@@ -159,10 +159,10 @@
 .pageTop {padding:10px 60px 10px 15px; background:#f9fafc; position:relative; color:#333; border-top:1px solid #e0e0e0;}
 .pageTop p {width:100%; line-height:130%; font-size:13px;}
 .pageTop button.allDel {padding:7.5px 7.5px 7.5px 15px; position:absolute; top:0; right:0; border:0; background:none;}
-.pageTop.scrapTop {padding:10px 0;}
-.pageTop.scrapTop b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
+.pageTop.scrapTop {padding:10px 0; border-bottom:1px solid #c9c9c9;}
+.pageTop.scrapTop b {margin:0 15px;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
 .pageTop.scrapTop b i{color:#436ebb;}
-.pageTop.scrapTop p {text-align:center;}
+.pageTop.scrapTop p {text-align:left;}
 .pageTop.scrapTop + .scrollWrap {border-top:1px solid #ddd;}
 .dateS {margin-top:10px; padding:6.5px 15px; border-bottom:1px solid #c9c9c9; background:#f9fafc; overflow:hidden;}
 .dateS p {width:100%; display:inline-block; color:#333; font-size:13px;}
@@ -413,7 +413,7 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
   .scrapListWrap ul.scrapList li.on a:before {width:140px; height:140px;}
 }
 
-p.setTit {width:100%; overflow:hidden; text-align:center; background:#967bee; border-bottom:1px solid #e5e5e5; color:#fff; font-size:11px; line-height:19px;}
+p.setTit {width:100%; overflow:hidden; text-align:center; background:#f2f4f7; color:#333; font-size:12px; line-height:25px;}
 .setPrice {width:100%; overflow:hidden; padding-bottom:21px; background:#e0e0e0;}
 .setPrice .setP {padding:15px; overflow:hidden; background:#f8f8f8; border-top:1px solid #ccc; border-bottom:1px solid #ccc;}
 .setPrice p {color:#333;}
@@ -453,10 +453,10 @@ ul.optList p.count span:first-child{position:relative;padding-right:10px;}
 ul.optList p.count span:first-child:after{position:absolute;right:2px;top:4px;content:"";display:block;width:1px;height:12px;background:#ccc;}
 ul.optList p.count span:last-child{color:#666;}
 ul.optList p.count span em{font-style:normal;font-family:'NotoSansB', 'RobotoB', sans-serif;font-weight:bold;}
-ul.optList .cancelArea{padding:12px 15px;background:#f8f8f8;overflow:hidden;margin-top:5px;}
+ul.optList .cancelArea{padding:12px 15px;background:#fff;overflow:hidden;margin-top:5px; border:1px solid #ddd;}
 ul.optList .cancelArea .state,
 ul.optList .cancelArea .cancel{display:inline-block;float:left;padding:2px 20px 2px 0;margin-top:5px;}
-ul.optList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:15px;}
+ul.optList .cancelArea .state{background:url("../images/ico_info.png") no-repeat right 1px;background-size:15px; color:#b08967; font-weight:bold;}
 ul.optList .cancelArea .btnSizeS{float:right;}
 ul.optList .cancelArea + a{margin-top:15px;}
 
@@ -573,10 +573,10 @@ table ul.myCartInfoList li a {color:#999;}
 .my .orderProduct{padding-top:25px;background:#fff;}
 .my .orderProduct .top{padding:0 15px 10px;}
 .my .orderProduct .top h3{font-size:15px;}
-.my .allChk{padding:10px 15px;background:#464646;}
+.my .allChk{padding:10px 15px;background:#f2f4f7;}
 .my .allChk:after{content:"";display:block;clear:both;}
 .my .allChk .checkbox{float:left;line-height:25px;}
-.my .allChk .checkbox label{display:inline-block;color:#fff;}
+.my .allChk .checkbox label{display:inline-block;color:#333;}
 .my .allChk .btnSizeS{float:right;}
 .my .orderProduct .productRow{padding:0 15px;}
 .my .productList.checkType{margin-top:0;border-top:0;}
@@ -584,16 +584,19 @@ table ul.myCartInfoList li a {color:#999;}
 .my .productList.checkType li{position:relative;}
 .my .productList.checkType .checkbox{position:absolute;left:0;top:15;}
 
-.hiddenArea{position:relative;/*border-bottom:1px solid #ccc;*/margin-bottom:15px;}
-.hiddenArea > a{height:42px;line-height:42px;display:block;text-align:center;}
-.hiddenArea > a:after{width:20px;height:9px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:100%;margin-left:4px;}
-.hiddenArea > a.active:after{background-position:0 0;}
-.hiddenArea .detailInfo{padding:0 15px;background:#f8f8f8;display:none;border-top:1px solid #ccc;}
+.hiddenArea{position:relative;}
+.hiddenArea > a{width:100%; padding:0 15px; height:42px;line-height:42px; display:inline-block; position:relative; box-sizing: border-box;}
+.hiddenArea > a:after{width:20px;height:9px; margin-top:-4.5px;overflow:hidden;display:inline-block;content:"";background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:100%;margin-left:4px; position:absolute; top:50%; right:15px;}
+.hiddenArea > a.open:after{background-position:0 0;}
+.hiddenArea .detailInfo{padding:0 15px;background:#f9fafc;display:none;border-top:1px dashed #ccc;}
 .hiddenArea .detailInfo.active{display:block;}
-.hiddenArea .detailInfo dl{padding:15px 0 15px;border-top:1px solid #ccc;}
+.hiddenArea .detailInfo dl{padding:15px 0 15px;}
 .hiddenArea .detailInfo dl:first-child{border-top:0;}
-.hiddenArea .detailInfo dl dt{margin-bottom:10px;font-size:15px;}
-.hiddenArea .detailInfo dl dd{padding:2px 0;}
+.hiddenArea .detailInfo dl + dl {padding-top:0;}
+.hiddenArea .detailInfo dl dt{width:100%; margin-bottom:5px;font-size:13px; overflow:hidden;}
+.hiddenArea .detailInfo dl dt span:first-child{float:left;}
+.hiddenArea .detailInfo dl dt span:last-child{float:right;}
+.hiddenArea .detailInfo dl dd{width:100%; padding:2px 0; overflow:hidden; font-size:12px;;}
 .hiddenArea .detailInfo dl dd:after{content:"";display:block;clear:both;}
 .hiddenArea .detailInfo dl dd span{color:#666;}
 .hiddenArea .detailInfo dl dd span:first-child{float:left;}
@@ -609,7 +612,7 @@ table ul.myCartInfoList li a {color:#999;}
 .deliveryInfo p:after{content:"";display:block;clear:both;}
 .deliveryInfo p span:first-child{float:left;}
 .deliveryInfo p span:last-child{float:right;}
-.deliveryInfo p span a{color:#00aeb9;text-decoration:underline;}
+.deliveryInfo p span a{color:#436ebc;text-decoration:underline;}
 
 .deliveryState .top{padding-bottom:10px;border-bottom: 1px solid #666;}
 .deliveryState .top h4{font-size:15px;}
@@ -623,7 +626,7 @@ table ul.myCartInfoList li a {color:#999;}
 .deliveryState ul li p span:first-child{float:left;}
 .deliveryState ul li p span:last-child{float:right;}
 
-.stateInfo{padding:15px 0 15px;border-top:1px solid #666;}
+.stateInfo{padding:15px 0 15px;border-top:1px solid #999;}
 .stateInfo .top{padding-bottom:10px;}
 .stateInfo .top h4{font-size:15px;}
 .stateInfo p{padding:2px 0;color:#666;}
@@ -657,8 +660,8 @@ table ul.myCartInfoList li a {color:#999;}
 .returnInfo01 ul li span em{position:relative;font-style:normal;padding-right:16px;} 
 .returnInfo01 ul li span em:after{position:absolute;top:5px;right:10px;content:"";width:1px;height:10px;background:#a0a0a0;display:block;}
 .returnInfo01 dl.infowrap01{margin-top:15px;}
-.returnInfo01 dl.infowrap01 dd{padding:15px;background:#f8f8f8;line-height:1.4em;margin-top:10px;font-size:13px;color:#666;}
-.returnInfo01 dl.infowrap01 dd span{display:block;color:#00aeb9;}
+.returnInfo01 dl.infowrap01 dd{padding:15px;background:#f9fafc;line-height:1.4em;margin-top:10px;font-size:13px;color:#666;}
+.returnInfo01 dl.infowrap01 dd span{display:block;color:#436ebb;}
 .returnInfo01 dl.infowrap02{margin-top:15px;}
 .returnInfo01 dl.infowrap02 dt{margin-bottom:10px;}
 .returnInfo01 dl.infowrap02 dd{margin-top:5px;}
@@ -994,3 +997,8 @@ table ul.myCartInfoList li a {color:#999;}
 .myPop .stateWrap .state .step11 span:after {display:none;}
 .myPop .stateWrap .state.orderStep .stepImg {height:92px;}
 .myPop .stateWrap .state.orderStep:before {content:''; width:20px; height:31px; margin-left:-100px; position:absolute; top:77px; left:50%; background:#fff; z-index:1;}
+
+.listWrap ul.optList {background:transparent;}
+.listWrap ul.optList li {width:auto; padding:15px; background:#fff;}
+.listWrap ul.optList li + li  {margin-top:5px; padding-top:15px; border-top:0;}
+.listWrap + p.setTit {margin-top:5px;}
