@@ -381,8 +381,16 @@ module.exports = function() {
 	};
 
 	function setAddress(addressNum, seq) {
-		var addressObject = addressArray[seq];
-		$('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
+		var addressObject = addressArray[seq],
+		htmlStr = '';
+		
+		htmlStr += '<p><b>받으실 분</b><span>' + addressObject.receiverName + '</span></p>';
+		htmlStr += '<p><b>연락처</b><span>' + util.mobileNumberFormat(addressObject.cellPhoneNumber) + '</span></p>';
+		htmlStr += '<p><b>도로명</b><span>' + addressObject.roadBaseAddress + '</span></p>';
+		htmlStr += '<p><b>지번</b><span>' + addressObject.lotBaseAddress + '</span></p>';
+		$('#address-'+addressNum).html(htmlStr);
+
+		// $('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
 		selectedOneAddress = seq;
 	};
 
