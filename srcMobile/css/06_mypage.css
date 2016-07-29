@@ -159,13 +159,14 @@
 .pageTop {padding:10px 60px 10px 15px; background:#f9fafc; position:relative; color:#333; border-top:1px solid #e0e0e0;}
 .pageTop p {width:100%; line-height:130%; font-size:13px;}
 .pageTop button.allDel {padding:7.5px 7.5px 7.5px 15px; position:absolute; top:0; right:0; border:0; background:none;}
-
 .pageTop.scrapTop {padding:10px 0;}
 .pageTop.scrapTop b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic; font-weight:bold;}
 .pageTop.scrapTop b i{color:#436ebb;}
 .pageTop.scrapTop p {text-align:center;}
 .pageTop.scrapTop + .scrollWrap {border-top:1px solid #ddd;}
-
+.dateS {margin-top:10px; padding:6.5px 15px; border-bottom:1px solid #c9c9c9; background:#f9fafc; overflow:hidden;}
+.dateS p {width:100%; display:inline-block; color:#333; font-size:13px;}
+.dateS p b {font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif; font-style:italic;}
 ul.noticeList {width:100%; border-top:1px solid #ccc;}
 ul.noticeList li {height:79px; padding:0 15px; position:relative; overflow:hidden;}
 ul.noticeList li.on {background:#e7f8f8;}
@@ -209,7 +210,6 @@ ul.noticeList li .text p.time {width:75px; text-align:center; position:absolute;
 .scrapWrap ul.scrap li ul.scrapMoreList li a.delBtn:after {border:0; margin-top:-5.25px; background-position:0 -38px;}
 .scrapWrap ul.scrap li .dim {display:none; width:100%; height:100%; background:#000; opacity:0.5; position:absolute; top:0; left:0;}
 .scrapbtnTopR {width:100%; text-align:right; padding:10px 0;}
-
 /* scrap color */
 .scrapWrap ul.scrap li.scrapBg01 {background-color:#5ccfd0;}
 .scrapWrap ul.scrap li.scrapBg02 {background-color:#ae66ff;}
@@ -332,13 +332,14 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .periodSearch > a{position:relative;height:58px;display:block;padding:0 15px;}
 .periodSearch > a span{display:block;padding-top:22px;font-size:15px;color:#1a1a1a;}
 .periodSearch > a em{position:absolute;right:17px;top:24px;width:15px;height:10px;overflow:hidden;display:block;background:url("../images/ico_toggleL.png") no-repeat 0 -7px;background-size:15px;}
-.periodSearch .searchArea{display:none;position:absolute;left:0;top:58px;z-index:10;width:100%;background:#fff;padding:0 15px 15px;box-sizing: border-box;}
-.periodSearch .searchArea.active{position:static;display:block;margin-top:10px;padding-top:25px;}
+.periodSearch .searchArea{display:none;width:100%;background:#fff;padding:0 15px 15px;box-sizing: border-box;}
+.periodSearch .searchArea.active{display:block;margin-top:10px;padding-top:25px;}
 .periodSearch > a em.up{background-position:0 0;}
 .periodSearch .btnList{overflow:hidden;}
 .periodSearch .btnList li{width:19.5%;float:left;margin-left:0.5%;}
 .periodSearch .btnList li:first-child{margin-left:0;}
 .periodSearch .btnList li a{display:block;height:30px;padding: 0 12px;font-size: 13px;border:1px solid #ccc;border-radius: 15px;line-height: 30px;text-align:center;}
+.periodSearch .btnList li.js-default a,
 .periodSearch .btnList li.acitve a{background:#2d427a;border-color:#2d427a;color:#fff;}
 .datePic{margin-top:8px;}
 .datePic ul{overflow:hidden;}
@@ -352,7 +353,6 @@ ul.cardWrap li p.checkbox {position:absolute; top:100px; left:10px; z-index:5;}
 .searchbox input[type="text"]{border:0;}
 .searchbox button{position:absolute;right:0;top:0;width:28px;height:28px;background:url("../images/ico_search.png") no-repeat center center;background-size:14px;border:0;}
 .searchbox button:before{position:absolute;left:-5px;top:6px;content:"";width:1px;height:14px;display:block;background:#ccc;}
-
 .followSearch .searchbox{position:relative;padding-left:28px;margin-top:8px;background:#f9fafc; border:0;}
 .followSearch .searchbox input[type="text"]{border:0; background:#f9fafc;}
 .followSearch .searchbox button{position:absolute;left:0;top:-1px;width:28px;height:29px; padding:0; background:url("../images/ico_search.png") no-repeat center center ;background-size:14px 14.5px;border:0;}
@@ -706,6 +706,20 @@ table ul.myCartInfoList li a {color:#999;}
 .estimateArea .adr span:last-child{padding-left:15px;background:url("../images/ico_onestar.png") no-repeat 0 center;background-size:12px;margin-left:5px;}
 .estimateArea .pid{margin-top:15px;}
 .estimateArea .pid .btnSizeS{width:32%;}
+.estimateAreaCenter {padding:25px 15px 25px;background:#fff;border-bottom:1px solid #e0e0e0;}
+.estimateAreaCenter .profile{width:100%; text-align:center; overflow:hidden;}
+.estimateAreaCenter .profile .thumb{width:48px;height:48px;overflow:hidden;border-radius:100%;margin:0 auto;}
+.estimateAreaCenter .profile .thumb img{width:100%;}
+.estimateAreaCenter .profile .info{margin-top:5px;}
+.estimateAreaCenter .profile .info span.name {width:100%; font-weight:bold; font-size:15px; color:#333; text-align:center;}
+.estimateAreaCenter .profile .info p.txt {width:100%; text-align:center; margin-top:5px;}
+.estimateAreaCenter .profile .info p.txt span {padding:1px 0; font-size:12px; display:inline-block; color:#b08967;}
+.estimateAreaCenter .profile .info p.txt span.adr {padding-left:11px; color:#666; position:relative; background:url("../images/ico_map.png") no-repeat 0 center;background-size:9px;}
+.estimateAreaCenter .pid {width:100%; margin-top:15px; text-align:center; overflow:hidden;}
+.estimateAreaCenter .pid a {min-width:100px;}
+
+.estimateAreaCenter .profile .adr:after {display:none;}
+.estimateAreaCenter .profile .pid {text-align:center;}
 .returnInfo01 .totalPrice{border-bottom:0;}
 
 .estList{border-bottom:1px solid #666;font-size:15px;}
