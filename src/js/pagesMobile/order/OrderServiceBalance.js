@@ -32,6 +32,8 @@ module.exports = function() {
 
 	var pointLimit;
 	var baseTotalPrice;
+	var usePoint;
+	var paymentPrice;
 
 	var productsInfo;
 
@@ -43,6 +45,7 @@ module.exports = function() {
 	var loginDataModel = require('../../model/LoginModel');
 	var loginData;
 
+	var orderNumber;
 	var orderData;
 	
 	var callerObj = {
@@ -84,17 +87,14 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 
+		orderNumber = util.getUrlVar().orderNumber;
 		var orderProductArray = new Array();
 
-		if (Cookies.getJSON('instantNFOrder') == undefined) {
+		if (orderNumber == undefined) {
 			alert('잘못된 접근입니다.');
-			//Cookies.remove('instantNFOrder');
 			location.href='/';
 		} else {
-			orderProductArray = Cookies.getJSON('instantNFOrder');
-			debug.log(orderProductArray);
-			//Cookies.remove('instantNFOrder');
-			controller.orderNewFormDepositForm(orderProductArray);
+			controller.orderNewFormBalanceForm(orderNumber);
 		}
 	}
 
@@ -102,44 +102,6 @@ module.exports = function() {
 		self.selPopBtnInfo = {};
 
 		
-	}
-
-	function setDatePicker() {
-		var consultWrap = $('.js-picker');
-		ConsultPicker.init({
-			type : 'default',
-			default : {
-				wrap : consultWrap,
-				picker : consultWrap.find('.js-picker'),
-				altField : consultWrap.find('.js-alt'),
-				button : consultWrap.find('.js-btn'),
-				changeYear: true,
-				changeMonth: true
-			}
-		});
-		
-		var buildWrap = $('.js-range-picker');
-		BuildPicker.init({
-			type : 'range',
-			range : {
-				from : {
-					wrap : buildWrap,
-					picker : buildWrap.find('.js-picker-from'),
-					altField : buildWrap.find('.js-alt-from'),
-					button : buildWrap.find('.js-btn-from'),
-					changeYear: true,
-					changeMonth: true
-				},
-				to : {
-					wrap : buildWrap,
-					picker : buildWrap.find('.js-picker-to'),
-					altField : buildWrap.find('.js-alt-to'),
-					button : buildWrap.find('.js-btn-to'),
-					changeYear: true,
-					changeMonth: true
-				}
-			}
-		});
 	}
 
 	function setBindEvents() {
@@ -153,9 +115,14 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
-			case ORDER_EVENT.NEWFORM_ORDER_DEPOSIT_INFO:
+			case ORDER_EVENT.NEWFORM_ORDER_BALANCE_INFO:
 				var data = result.data;
-				//data.paymentInfo.leftPoint = 100000;
+				
+				var paymentInfo = data.balancePayment.balancePaymentPrice;
+				//paymentInfo.leftPoint = 100000;
+				
+				baseTotalPrice = Number(paymentInfo.totalPaymentPrice);
+				pointLimit = Number(paymentInfo.leftPoint) || 0;
 
 				productsInfo = data.constProducts;
 				$.map(productsInfo, function(each){
@@ -164,69 +131,51 @@ module.exports = function() {
 					each.constExpectPriceDesc = util.currencyFormat(each.constExpectPrice);
 				});
 				
-				renderData(productsInfo, '#order-delivery-templates', '#order-delivery-wrap', true);
+				renderData(productsInfo, '#order-product-templates', '#order-product-wrap', true);
 
-				setDatePicker();
-				$('.js-picker').datepicker('option', 'minDate', new Date());
-				$('.js-picker-from').datepicker('option', 'minDate', new Date());
-				$('.js-picker-from').datepicker('option', 'maxDate', null);
-				$('.js-picker-to').datepicker('option', 'minDate', new Date());
+				var orderConfirmInfo = data.constOrderConfirm;
+				orderConfirmInfo.estimatePriceDesc = util.currencyFormat(orderConfirmInfo.estimatePrice);
+				orderConfirmInfo.surveyPriceDesc = util.currencyFormat(orderConfirmInfo.surveyPrice);
+				$.map(orderConfirmInfo.constEstimateItems, function(each){
+					each.itemPriceDesc = util.currencyFormat(each.itemPrice);
+				});
+
+				renderData(orderConfirmInfo, '#order-estimate-templates', '#order-estimate-wrap', true);
+				renderData(orderConfirmInfo, '#order-estimate-items-templates', '#order-estimate-items-wrap', true);
 				
-				refreshAddressDataHandler();
-				$('.addressSelect').change(function(e){
-					setAddress($(this).attr('id').substr(14), $(this).val());
-				});
+				paymentInfo.estimatePriceDesc = util.currencyFormat(paymentInfo.estimatePrice);
+				paymentInfo.advancePriceDesc = util.currencyFormat(paymentInfo.advancePrice);
+				paymentInfo.totalPaymentPriceDesc = util.currencyFormat(paymentInfo.totalPaymentPrice);
 
-				var constReservation = data.constReservation;
-				var tags = '<div class="radioBox mt15 needsclick">';
-				$.each(constReservation.dwellingForm, function(key, each) {
-					tags += '<input class="needsclick" type="radio" id="hTp1' + key + '" name="hTp1" value="'+each.code+'"/>';
-					tags += '<label for="hTp1' + key + '" class="htype htype0' + (key+1) + ' needsclick">';
-					tags += 	'<span>' + each.codeName + '</span>';
-					tags += '</label>';
-				});
-				tags += '</div>';
-				$('.js-home-type').html(tags);
+				renderData(paymentInfo, '#order-payment-templates', '#order-payment-wrap', true);
 
-
-				tags = '<select title="평형을 선택">';
-				tags += '<option value="" selected="selected">평형을 선택해 주세요</option>';
-				$.each(constReservation.dwellingPyeong, function(key, each) {
-					tags += '<option value="' + each.code + '">' + each.codeName + '</option>';
-					// tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp2" id="hTp2'+key+'"/><label for="hTp2'+key+'">'+each.codeName+'</label></span></li>';
-				});
-				tags += '</select>';
-				$('.js-home-size').html(tags);
-
-
-				tags = '<select title="사유를 선택">';
-				tags += '<option value="" selected="selected">사유를 선택해 주세요</option>';
-				$.each(constReservation.remodelingReason, function(key, each) {
-					tags += '<option value="' + each.code + '">' + each.codeName + '</option>';
-					// tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp3" id="hTp3'+key+'"/><label for="hTp3'+key+'">'+each.codeName+'</label></span></li>';
-				});
-				tags += '</select>';
-				$('.js-home-reason').html(tags);
-
-
-				$('.radioBox label').on('click', function(e){
-					// $(this).addClass('on').parent().parent().siblings('li').find('label').removeClass('on');
-					$(this).addClass('on').siblings('label').removeClass('on');
-				});
-
-				$('.agreeCont').html(constReservation.constOrderTerms[0].termsContents);
-				
-				var paymentInfo = data.constPaymentInfo.paymentPrice;
-				paymentInfo.totalAdvancePriceDesc = util.currencyFormat(paymentInfo.totalAdvancePrice);
-				
 				$('.totalProductPrice').text(util.currencyFormat(paymentInfo.totalProductPrice));
 				$('.totalConstExpectPriceDesc').text(util.currencyFormat(paymentInfo.totalConstExpectPrice));
+
 				$('.savingPoint').text(util.currencyFormat(paymentInfo.savingPoint));
-				$('.basePrice').text(paymentInfo.totalAdvancePriceDesc);
+				$('.basePrice').text(paymentInfo.totalPaymentPriceDesc);
 				$('.basicDiscount').text(util.currencyFormat(paymentInfo.totalDiscountPrice));
-				//$('.usedPoint').text('0');
+				$('.usedPoint').text('0');
 				$('.handlingPrice').text('0');
-				$('.totalPrice').text(paymentInfo.totalAdvancePriceDesc);
+				$('.totalPrice').text(paymentInfo.totalPaymentPriceDesc);
+
+				if (pointLimit < 5000) {
+					$('#pointCk01').attr('disabled', 'disabled');
+					$('#pointWt').attr('disabled', 'disabled');
+				}
+				$('#pointWt').change(reCalculatePointUse);
+				$('#useAllPointCheck').click(function(e){
+					if (!$('#pointCk01').prop('checked')) {
+						$('#pointLb01').addClass('on');
+						$('#pointWt').val(pointLimit);
+					} else {
+						$('#pointLb01').removeClass('on');
+						$('#pointWt').val('');
+					}
+					reCalculatePointUse();
+				});
+
+				reCalculatePointUse();
 
 				var cardSelectTag = '<option value="" label="카드 선택" selected="selected">카드 선택</option>';
 				for (var key in data.listCards) {
@@ -234,8 +183,6 @@ module.exports = function() {
 					cardSelectTag += '<option value="'+eachCard.code+'" label="'+eachCard.cardCompanyName+'">'+eachCard.cardCompanyName+'</option>';
 				}
 				$('#cardSelect').html(cardSelectTag);
-
-				if (paymentInfo.totalAdvancePrice < 50000) $('#quotaSelect').attr('disabled', 'disabled');
 
 				$('.radioBtn').click(function(e){
 					$('#PayMethod').val($('.payRadio.on').attr('id').substr(3));
@@ -248,22 +195,52 @@ module.exports = function() {
 				$("#VbankExpDate").val(data.pgInfo.vbankExpDate);
 				
 				$('#GoodsName').val(productsInfo[0].productName);
-				$('#Amt').val(paymentInfo.totalAdvancePrice);
-				$('#Moid').val(data.orderNumber);
-				$('#GoodsCnt').val(productsInfo.length);
+				$('#Amt').val(paymentInfo.totalPaymentPrice);
+				$('#Moid').val(orderNumber);
 				
 				$('#PayMethod').val('CARD'); // CARD / BANK / VBANK
 				$('#SelectCardCode').val(''); // 카드번호
 				$('#SelectQuota').val('00'); // 할부개월수
 				$('#products').val(''); // 상품요약전문 (상품번호|주문옵션번호|수량|주소순번|배송요청메모) 
 
-				$('#fromCart').val(util.getUrlVar().fromCart == 'Y' ? 'Y' : 'N');
-
 				$('.requestPaymentButton').click(getHashString);
 
 				if (!util.isIe()) $('#payBANK').remove();
 				eventManager.triggerHandler(CARD_LIST_EVENT.APPENDED);
 				break;
+		}
+	};
+
+	function reCalculatePointUse() {
+		usePoint = Number($('#pointWt').val());
+
+		$('#pointLb01').removeClass('on');
+		if (isNaN(usePoint)) usePoint = 0;
+		if (usePoint < 5000) {
+			if (usePoint != 0) alert('포인트는 최하 5000포인트부터 사용가능합니다.');
+			usePoint = 0;
+		} else if (usePoint > pointLimit) {
+			alert('사용 가능한 포인트를 초과합니다. 다시 입력해주세요.');
+			usePoint = 0;
+		} else if (usePoint > baseTotalPrice) {
+			usePoint = baseTotalPrice;
+			$('#pointLb01').addClass('on');
+		}
+		
+		$('#pointWt').val(usePoint);
+		$('#usingPoint').val(usePoint);
+		$('.usedPoint').text(util.currencyFormat(usePoint));
+		$('.totalPrice').text(util.currencyFormat(baseTotalPrice-usePoint));		
+		if (usePoint == 0) $('#pointWt').val('');
+
+		paymentPrice = baseTotalPrice-usePoint;
+		$('#Amt').val(paymentPrice);
+
+		if (paymentPrice < 50000) {
+			$('#quotaSelect').val('00');
+			$('#quotaSelect').attr('disabled', 'disabled');
+		} else {
+			$('#quotaSelect').removeAttr('disabled');
 		}
 	};
 
@@ -282,19 +259,6 @@ module.exports = function() {
 	};
 
 	function getHashString(e) {
-		if (!$('#agree01cb').hasClass('on')) {
-			alert('개인정보 제 3자 제공에 동의해 주세요.');
-			return;
-		}
-		if (!selectedOneAddress) {
-			alert('배송지를 지정해 주세요.');
-			return;
-		}
-		if ($('#visitTimeSelector').val() == '') {
-			alert('희망 실측 방문/상담 시간을 지정해 주세요.');
-			return;
-		}
-		
 		var paymentPrice = Number($('#Amt').val());
 
 		var productsArray = new Array();
@@ -336,21 +300,19 @@ module.exports = function() {
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice+"&orderNumber="+orderNumber,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
-				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
-				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/advance/process' : 'https://dev.m.koloncommon.com/apis/constorders/advance/process');
-				$("#MallReserved").val($("#products").val());
-				// $("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
+				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/balance/process' : 'https://dev.m.koloncommon.com/apis/constorders/balance/process');
+				$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
 
 				if (paymentPrice == 0) {
 					document.payForm.submit();
 				} else {
 					// goPay(document.payForm);
-					goPaySmartNewForm();
+					goPaySmartNewFormBalance();
 				}
 			},
 			error : function(xhr, status, error) {
@@ -382,16 +344,8 @@ module.exports = function() {
 	};
 
 	function setAddress(addressNum, seq) {
-		var addressObject = addressArray[seq],
-		htmlStr = '';
-
-		htmlStr += '<p><b>받으실 분</b><span>' + addressObject.receiverName + '</span></p>';
-		htmlStr += '<p><b>연락처</b><span>' + util.mobileNumberFormat(addressObject.cellPhoneNumber) + '</span></p>';
-		htmlStr += '<p><b>도로명</b><span>' + addressObject.roadBaseAddress + '</span></p>';
-		htmlStr += '<p><b>지번</b><span>' + addressObject.lotBaseAddress + '</span></p>';
-		$('#address-'+addressNum).html(htmlStr);
-
-		// $('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
+		var addressObject = addressArray[seq];
+		$('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
 		selectedOneAddress = seq;
 	};
 
