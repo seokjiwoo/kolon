@@ -521,32 +521,35 @@ module.exports = function() {
 				$(this).addClass('scrap-image').removeClass('imageScrapable');
 				$(this).wrapAll("<div class='scrapImageWrapper' />");
 				$(this).parent().append('<a href="#" class="scrapButton">스크랩</a>');
-				$(this).parent().find('.scrapButton').click(function(e){
-					e.preventDefault();
-					if (loginData == null) {
-						$(document).trigger('needLogin');
-					} else {
-						var filePath = window.location.protocol+"//"+window.location.host+'/'+$(this).parent().find('.scrap-image').attr('src');
-						Super.htmlPopup('/_popup/popScrapBookAdd.html', 540, 'popEdge', {
-							onOpen: function() {
-								$('#makeNewScrapFolderButton').click(function(e){
-									e.preventDefault();
-									Super.htmlPopup('/_popup/popScrapNew.html', 540, 'popEdge');
-								});
-								$('#addToScrapForm').submit(function(e){
-									scrapController.addImageScrap($('#scrapTargetFolderSelect').val(), filePath);
-									e.preventDefault();
-								});
-								scrapController.scrapList('IMAGE');
-							}
-						});
-					}
-				});
+				$(this).parent().find('.scrapButton').click(setImageScrapPopup);
 			};
 		});
 
 		if ($('#colorbox').hasClass('scrapFolderNew')) {
 			$('#colorbox').find('#js-scrapFolderNew-form').on('submit', onNewFolder);
+		}
+	}
+
+	function setImageScrapPopup(e) {
+		if (e != undefined) e.preventDefault();
+
+		if (loginData == null) {
+			$(document).trigger('needLogin');
+		} else {
+			var filePath = window.location.protocol+"//"+window.location.host+'/'+$(this).parent().find('.scrap-image').attr('src');
+			Super.htmlPopup('/_popup/popScrapBookAdd.html', 540, 'popEdge', {
+				onOpen: function() {
+					$('#makeNewScrapFolderButton').click(function(e){
+						e.preventDefault();
+						Super.htmlPopup('/_popup/popScrapNew.html', 540, 'popEdge scrapFolderNew');
+					});
+					$('#addToScrapForm').submit(function(e){
+						scrapController.addImageScrap($('#scrapTargetFolderSelect').val(), filePath);
+						e.preventDefault();
+					});
+					scrapController.scrapList('IMAGE');
+				}
+			});
 		}
 	}
 
@@ -570,7 +573,7 @@ module.exports = function() {
 				}
 				break;
 			case SCRAP_EVENT.ADD_SCRAP_FOLDER:
-				location.reload();
+				setImageScrapPopup();
 				break;
 		};
 	}
@@ -582,7 +585,7 @@ module.exports = function() {
 		cardList().cleanOverEffect();
 
 		if ($('#colorbox').hasClass('scrapFolderNew')) {
-			$('#colorbox').find('.js-scrapFolderNew-submit').off('click', onNewFolder);
+			$('#colorbox').find('#js-scrapFolderNew-form').off('submit', onNewFolder);
 		}
 	}
 

@@ -106,11 +106,22 @@
 									</span>
 								</li>
 							</ul>
-						</div>
+						</div>today
 						<div class="cardCon">
-							<div class="upTo2">
-								<!-- <p>기간한정<span><b>20</b>%</span></p> -->
-							</div>
+							{{#vxIF promotionUseYn "==" "Y"}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_01"}}
+									<div class="today"><p>요일특가 <span><b>{{discountMethod}}</b>%</span></p></div>
+								{{/vxIF}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_02"}}
+									<div class="today"><p>기간한정<span><b>{{endDateTime}}</b> 남음</span></p></div>
+								{{/vxIF}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_03"}}
+									<div class="upTo2"><p><span><b>{{promotionLimitQuantity}}</b>개</span>한정</p></div>
+								{{/vxIF}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_04"}}
+									<div class="today"><p>공동구매 <span><b>{{promotionLimitQuantity}}</b>개</span></p></div>
+								{{/vxIF}}
+							{{/vxIF}}
 						</div>
 					</div>
 				</div>
