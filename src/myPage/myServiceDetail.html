@@ -2,6 +2,26 @@
 <html lang='ko-kr'>
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 시공 상품 내역"} -->
+<style>
+	.js-graph {position:relative}
+
+	.js-diffdate .js-diffdate-status,
+	.js-diffdate .js-diffdate-date {position:absolute;line-height:15px;margin-top:-12px; font-size:14px; color:#666;}
+
+	.js-diffdate .js-diffdate-start {left:0;top:50%;margin-left:20px;}
+	.js-diffdate .js-diffdate-end {right:0;top:50%;margin-right:20px}
+
+	.js-diffdate .js-diffdate-status {width:100%;height:30px;top:50%;text-align:center;margin-top:-23px;}
+	.js-diffdate-status .js-diffdate-progress {color:#f1645c; font-size:13px; display:inline-block;}
+	.js-diffdate-status .js-diffdate-dday {color:#333; font-size:24px; margin-top:11px; display:inline-block;}
+	.js-graph-area .js-graph-doughnut {width:130px;height:130px;margin:0 auto}
+	.js-graph-area .js-graph-horizonbar {position:relative;width:100%;margin-top:30px}
+
+	.js-graph-horizonbar .area {height:30px;border-bottom-right-radius:15px;border-bottom-left-radius:15px;border-top-right-radius:15px;border-top-left-radius:15px}
+	.js-graph-horizonbar .bg {position:absolute;width:100%;background:#f8f8f8}
+	.js-graph-horizonbar .data {position:absolute;width:0%;background:#f1645c;z-index:1;}
+	.js-graph-horizonbar .txt-percent {position:absolute;display:inline-block;line-height:15px;margin:7px 0 0 12px;color:#fff;z-index:2;}
+</style>
 </head>
 <body data-page-id="myPage-myServiceDetail">
 	<div class="wrapper my">
@@ -12,11 +32,13 @@
 			<div class="wrap">
 				<!-- @@include ../_template/my_depth03_02.html {"myMenu01":"on"} -->
 				<section class="singleCard" id="serviceDetail">
-					<ul class="shareCon">
+					<script id="service-detail-templates" type="text/x-handlebars-template">
+					{{!-- service-detail-templates --}}
+					<!--<ul class="shareCon">
 						<li><a href="" class="fb"></a></li>
 						<li><a href="" class="tw"></a></li>
 						<li><a href="" class="ks"></a></li>
-					</ul>
+					</ul>-->
 					<h2 class="secTit">시공 상품 내역 <span class="icoTitle"></span> 시공 상세</h2>
 					<table class="record detail">
 						<colgroup>
@@ -28,32 +50,32 @@
 						<caption>시공상품 내역에 관한 주문번호, 시공대상 정보를 제공합니다.</caption>
 						<tr>
 							<th>주문번호</th>
-							<td class="date t_l" colspan="3">2016.04.20 <b>2354865</b></td>
+							<td class="date t_l" colspan="3">{{orderDate}} / <b>{{orderNumber}}</b></td>
 						</tr>
 						<tr>
 							<th>시공대상</th>
-							<td class="btnWrapR t_l" colspan="3">서울특별시 강남구 청담동 248</td>
+							<td class="btnWrapR t_l" colspan="3">{{roadBaseAddress}} {{detailAddress}}</td>
 						</tr>
 						<tr>
 							<th>희망시공기간</th>
-							<td class="btnWrapR t_l">2016.04.17 ~ 05.02(16일)</td>
+							<td class="btnWrapR t_l">{{wishConstBeginDate}} ~ {{wishConstEndDate}} ({{wishConstDay}}일)</td>
 							<th>예상시공기간</th>
-							<td class="btnWrapR t_l">2016.04.17 ~ 05.02(16일)</td>
+							<td class="btnWrapR t_l">{{constExpectBeginDate}} ~ {{constExpectEndDate}} ({{constExpectDay}}일)</td>
 						</tr>
 					</table>
 					<div class="stateWrap">
 						<div class="state">
-							<p class="stepImg step03"><span></span></p>
+							<p class="stepImg step0{{stepNumber}}"><span></span></p>
 							<ul>
-								<li>실측/견적<br>요청</li>
-								<li>실측/견적<br>진행</li>
-								<li class="on">계약완료</li>
-								<li>입금대기</li>
-								<li>결제완료</li>
-								<li>시공<br>준비중</li>
-								<li>시공 진행</li>
-								<li>시공 검수</li>
-								<li>시공완료 및<br>구매확정</li>
+								<li class="{{stepClass1}}">실측/견적<br>요청</li>
+								<li class="{{stepClass2}}">실측/견적<br>진행</li>
+								<li class="{{stepClass3}}">계약완료</li>
+								<li class="{{stepClass4}}">입금대기</li>
+								<li class="{{stepClass5}}">결제완료</li>
+								<li class="{{stepClass6}}">시공<br>준비중</li>
+								<li class="{{stepClass7}}">시공 진행</li>
+								<li class="{{stepClass8}}">시공 검수</li>
+								<li class="{{stepClass9}}">시공완료 및<br>구매확정</li>
 							</ul>
 						</div>
 					</div>
@@ -119,7 +141,7 @@
 							<td class="t_r"><span class="fontM">2,600,000 원</span></td>
 						</tr>
 					</table>
-					<h3 class="subTit mt40">할부 정보</h3>
+					<!--<h3 class="subTit mt40">할부 정보</h3>
 					<div class="tbSet tbMt">
 						<table>
 							<caption>할부 정보에 관한 기간, 개월수, 잔여개원, 총 할부청구금액, 잔여 할부금액 정보를 제공합니다.</caption>
@@ -150,7 +172,7 @@
 								</tr>
 							</tbody>
 						</table>
-					</div>
+					</div>-->
 					<h3 class="subTit mt40">주문자 정보</h3>
 					<div class="tbSet tbMt">
 						<table class="tbLThC">
@@ -161,13 +183,13 @@
 							<tbody>
 								<tr>
 									<th scope="row">주문자 이름</th>
-									<td colspan="3">홍길동</td>
+									<td colspan="3">{{ordererName}}</td>
 								</tr>
 								<tr>
 									<th scope="row">연락처</th>
-									<td>010-1234-5678</td>
+									<td>{{receiverContact}}</td>
 									<th scope="row">이메일 주소</th>
-									<td><a href="mailto:kolon1234@gmail.com" target="_blank"  title="새창으로 열기">kolon1234@gmail.com</a></td>
+									<td><a href="mailto:{{ordererEmail}}" target="_blank"  title="새창으로 열기">{{ordererEmail}}</a></td>
 								</tr>
 							</tbody>
 						</table>
@@ -191,47 +213,16 @@
 					<div class="conCard construction">
 						<div class="graph">
 							<!-- graph -->
-
-							<!-- [D] 테스트 임시 구성
-									js- 프리픽스는 js에서 셀렉트를 위해 지정한 클래스명입니다.
-							 -->
-							<style>
-								.js-graph {position:relative}
-								
-								.js-diffdate .js-diffdate-status,
-								.js-diffdate .js-diffdate-date {position:absolute;line-height:15px;margin-top:-12px; font-size:14px; color:#666;}
-								
-								.js-diffdate .js-diffdate-start {left:0;top:50%;margin-left:20px;}
-								.js-diffdate .js-diffdate-end {right:0;top:50%;margin-right:20px}
-
-								.js-diffdate .js-diffdate-status {width:100%;height:30px;top:50%;text-align:center;margin-top:-23px;}
-								.js-diffdate-status .js-diffdate-progress {color:#f1645c; font-size:13px; display:inline-block;}
-								.js-diffdate-status .js-diffdate-dday {color:#333; font-size:24px; margin-top:11px; display:inline-block;}
-								.js-graph-area .js-graph-doughnut {width:130px;height:130px;margin:0 auto}
-								.js-graph-area .js-graph-horizonbar {position:relative;width:100%;margin-top:30px}
-
-								.js-graph-horizonbar .area {height:30px;border-bottom-right-radius:15px;border-bottom-left-radius:15px;border-top-right-radius:15px;border-top-left-radius:15px}
-								.js-graph-horizonbar .bg {position:absolute;width:100%;background:#f8f8f8}
-								.js-graph-horizonbar .data {position:absolute;width:0%;background:#f1645c;z-index:1;}
-								.js-graph-horizonbar .txt-percent {position:absolute;display:inline-block;line-height:15px;margin:7px 0 0 12px;color:#fff;z-index:2;}
-							</style>
-
-							<!-- 
-								[D] data-diffdate-opts 범위 옵션 설정
-
-								startDate : 기준일, 옵션 'today' 금일 기준
-								endDate : 종료일
-							-->
 							<div class="js-graph js-diffdate"
 								data-diffdate-opts='{
-									"startDate" : "today",
-									"endDate" : "2016.06.30"
+									"startDate" : "{{constExpectBeginDate}}",
+									"endDate" : "{{constExpectEndDate}}"
 								}'>
 								<div>
 									<!-- [D] 시작일 입력 -->
-									<span class="js-diffdate-date js-diffdate-start">2016.04.15</span>
+									<span class="js-diffdate-date js-diffdate-start">{{constExpectBeginDate}}</span>
 									<!-- [D] 종료일 입력 -->
-									<span class="js-diffdate-date js-diffdate-end">2016.06.30</span>
+									<span class="js-diffdate-date js-diffdate-end">{{constExpectEndDate}}</span>
 									<div class="js-diffdate-status">
 										<span class="js-diffdate-progress"></span><br>
 										<span class="js-diffdate-dday"></span>
@@ -311,6 +302,7 @@
 						</div>
 					</div>
 				</section>
+				</script>
 			</div>
 		</div>
 		<!-- @@include ../_template/footer.html -->

@@ -138,7 +138,9 @@
 {{!-- order-list-templates --}}
 {{#if constOrderState.length}}
 {{#each constOrderState}}
-	<tr>
+	<tr data-order-info='{
+			"orderNumber" : "{{orderNumber}}"
+		}'>
 		<td class="recordDate">
 			<p class="date">{{orderDate}}<br><a href="myServiceDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
 		</td>
@@ -159,14 +161,14 @@
 				<!-- @@include ../_template/pop_order_state02.html {"step":"step01", "step01":"on"} -->
 				선금 입금대기<span class="stateIcor"></span>
 			</div>
-			<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">실측/견적 요청취소</a>
+			<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn absolutePosition" data-user-class="my popEdge popOrderCancelRequest">실측/견적 요청취소</a>
 			{{/vxCase}}
 			{{#vxCase "SL_CONST_STATE_02" break=true}}
 			<div class="stateTxt stateWrap">
 				<!-- @@include ../_template/pop_order_state02.html {"step":"step02", "step02":"on"} -->
 				실측/견적 요청<span class="stateIcor"></span>
 			</div>
-			<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">실측/견적 요청취소</a>
+			<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn absolutePosition" data-user-class="my popEdge popOrderCancelRequest">실측/견적 요청취소</a>
 			{{/vxCase}}
 			{{#vxCase "SL_CONST_STATE_03" break=true}}
 			<div class="stateTxt stateWrap">

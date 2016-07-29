@@ -55,6 +55,7 @@ module.exports = function() {
 	floatMenu = FloatMenu();
 	
 	$(document).on('verifyMember', requestVerifyMember);
+	$(document).on('initProfileEditButton', initProfileEditButton);
 
 	return callerObj;
 	
@@ -160,26 +161,7 @@ module.exports = function() {
 
 			initTopBanner();
 			
-			$('.profileEditButton').click(function(e){
-				e.preventDefault();
-				closeLnbHandler();
-				if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
-					confirmPasswordResultHandler(null, 200);
-				} else {
-					Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
-						onOpen: function() {
-							$('#checkPwForm').submit(function(e){
-								e.preventDefault();
-								loginController.confirmPassword($('#checkPw').val());
-							});
-						},
-						onSubmit: function() {
-							loginController.confirmPassword($('#checkPw').val());
-						}
-					});
-				}
-				e.stopPropagation();
-			});
+			initProfileEditButton();
 
 			$('.resendAuthMail').click(function(e){
 				e.preventDefault();
@@ -206,6 +188,29 @@ module.exports = function() {
 			initTopBanner();
 		}
 	};
+
+	function initProfileEditButton(e) {
+		$('.profileEditButton').click(function(e){
+			e.preventDefault();
+			closeLnbHandler();
+			if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+				confirmPasswordResultHandler(null, 200);
+			} else {
+				Super.htmlPopup('../../_popup/popCheckPw.html', 590, 'popEdge', {
+					onOpen: function() {
+						$('#checkPwForm').submit(function(e){
+							e.preventDefault();
+							loginController.confirmPassword($('#checkPw').val());
+						});
+					},
+					onSubmit: function() {
+						loginController.confirmPassword($('#checkPw').val());
+					}
+				});
+			}
+			e.stopPropagation();
+		});
+	}
 
 	function resendAuthMailHandler(e, status, result) {
 		if (status == 200) {
