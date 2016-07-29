@@ -708,6 +708,14 @@ table ul.myCartInfoList li a {color:#999;}
 .estimateArea .pid .btnSizeS{width:32%;}
 .returnInfo01 .totalPrice{border-bottom:0;}
 
+.profileZone{height:250px;background:#ec5372;text-align:center;}
+.profileZone .thumbWrap{position:relative;width:115px;height:115px;display:inline-block;margin-top:66px;}
+.profileZone .thumb{width:115px;height:115px;overflow:hidden;display:inline-block;border:4px solid #fff;border-radius:100%;background:#ec5372 url("../images/bg_profile_default.png") no-repeat -5px 14px;background-size:76px;}
+.profileZone .thumb img{width:100%;vertical-align:top;}
+.profileZone .imageFind{position:absolute;bottom:-12px;right:0;width:35px;height:35px;border-radius:100%;background:#999 url("../images/ico_pic02.png") no-repeat center center;background-size:15px;}
+.profileZone .find{width:35px;height:35px;overflow:hidden;opacity:0;}
+.profileZone + .t_c{margin-top:25px;}
+
 .estList{border-bottom:1px solid #666;font-size:15px;}
 .estList li{padding:15px 0;border-top:1px solid #ccc;}
 .estList li:first-child{border-top:0;}
