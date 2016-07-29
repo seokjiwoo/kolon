@@ -81,8 +81,8 @@
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk03" class="on">취소신청</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_01_01" id="chk03" checked>
+									<label for="chk01" class="on">취소신청</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_01_01" id="chk01" checked>
 								</p>
 							</li>
 							<li>
@@ -93,53 +93,53 @@
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk01" class="on">교환신청</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_03_01" id="chk01" checked>
+									<label for="chk03" class="on">교환신청</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_03_01" id="chk03" checked>
 								</p>
 							</li>
 
 							<li>
 								<p class="checkbox">
-									<label for="chk07" class="on">취소승인</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_01_02" id="chk07" checked>
+									<label for="chk04" class="on">취소승인</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_01_02" id="chk04" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk07" class="on">반품승인</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_02_02" id="chk07" checked>
+									<label for="chk05" class="on">반품승인</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_02_02" id="chk05" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk07" class="on">교환승인</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_03_02" id="chk07" checked>
-								</p>
-							</li>
-
-							<li>
-								<p class="checkbox">
-									<label for="chk06" class="on">취소반려</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_01_03" id="chk06" checked>
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk05" class="on">반품반려</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_02_03" id="chk05" checked>
-								</p>
-							</li>
-							<li>
-								<p class="checkbox">
-									<label for="chk04" class="on">교환반려</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_03_03" id="chk04" checked>
+									<label for="chk06" class="on">교환승인</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_03_02" id="chk06" checked>
 								</p>
 							</li>
 
 							<li>
 								<p class="checkbox">
-									<label for="chk12" class="on">취소신청 취소</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_01_06" id="chk12" checked>
+									<label for="chk07" class="on">취소반려</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_01_03" id="chk07" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk08" class="on">반품반려</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_02_03" id="chk08" checked>
+								</p>
+							</li>
+							<li>
+								<p class="checkbox">
+									<label for="chk09" class="on">교환반려</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_03_03" id="chk09" checked>
+								</p>
+							</li>
+
+							<li>
+								<p class="checkbox">
+									<label for="chk10" class="on">취소신청 취소</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_01_06" id="chk10" checked>
 								</p>
 							</li>
 							<li>
@@ -150,21 +150,21 @@
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk10" class="on">교환신청 취소</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_03_04" id="chk10" checked>
+									<label for="chk12" class="on">교환신청 취소</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_03_04" id="chk12" checked>
 								</p>
 							</li>
 							
 							<li>
 								<p class="checkbox">
-									<label for="chk05" class="on">환불요청</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_01_04,SL_CLAIM_STATE_02_04" id="chk05" checked>
+									<label for="chk13" class="on">환불요청</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_01_04,SL_CLAIM_STATE_02_04" id="chk13" checked>
 								</p>
 							</li>
 							<li>
 								<p class="checkbox">
-									<label for="chk05" class="on">환불완료</label>
-									<input type="checkbox" name="SL_CLAIM_STATE_01_05,SL_CLAIM_STATE_02_05" id="chk05" checked>
+									<label for="chk14" class="on">환불완료</label>
+									<input type="checkbox" name="SL_CLAIM_STATE_01_05,SL_CLAIM_STATE_02_05" id="chk14" checked>
 								</p>
 							</li>
 						</ul>
@@ -191,10 +191,10 @@
 	<colgroup>
 		<col style="width:120px;"/>
 		<col style="width:110px;"/>
-		<col style="width:245px;"/>
+		<col style="width:235px;"/>
 		<col style="width:110px;"/>
 		<col style="width:100px;"/> 
-		<col style="width:110px;"/> 
+		<col style="width:120px;"/> 
 	</colgroup>
 	<tr>
 		<th>주문정보</th>
@@ -204,64 +204,60 @@
 		<th>진행상태</th>
 	</tr>
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
-	{{#if orders.length}}
-		{{#each orders}}
-			<tr data-order-info='{
-					"orderNumber" : "{{orderNumber}}",
-					"orderProductSequence" : "{{orderProductSequence}}",
-					"deliveryNumber" : "{{deliveryNumber}}"
-				}'>
-				<td rowspan="{{listOrderItems.length}}" class="recordDate">
-					<p class="date">{{orderDate}}<br><a href="orderDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
-					<p class="total"><b>환불금액</b><br>{{totalPaymentPriceDesc}} 원</p>
+	{{#if listOrderItems.length}}
+		{{#each deliveryChunk}}
+		{{#each .}}
+		<tr data-order-info='{
+			"orderNumber" : "{{orderNumber}}",
+			"productNumber" : "{{productNumber}}",
+			"orderOptionNumber" : "{{orderOptionNumber}}",
+			"deliveryNumber" : "{{deliveryNumber}}"
+		}'>
+			{{#if @first}}
+			<td rowspan="{{../length}}" class="recordDate">
+				<p class="date">{{orderDate}}<br>{{orderNumber}}</p>
+				<p class="total"><b>환불금액</b><br>{{discountApplyAmtDesc}} 원</p>
+			</td>
+			{{/if}}
+			<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
+			{{#if orderOptionName}}
+				<td class="recordInfo" style="padding-left: 0"><a href="/shop/detail.html?productNumber={{productNumber}}" class="color01">{{productName}}</a><span class="producOption">옵션 : {{orderOptionName}}</span><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 				</td>
-				{{#each listOrderItems}}
-					{{#vxIF @index "!==" 0}}
-			<tr data-order-info='{
-				"orderNumber" : "{{../orderNumber}}",
-				"orderProductSequence" : "{{../orderProductSequence}}",
-				"deliveryNumber" : "{{../deliveryNumber}}"
-			}'>
-					{{/vxIF}}
-				<td><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
-				{{#if optionName}}
-						<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="producOption">옵션 : {{optionName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span></td>
-				{{else}}
-						<td class="recordInfo"><span class="owner">{{../sellerName}}</span><span class="productTit">{{productName}}</span><span class="count">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-					</td>
-				{{/if}}
-				<td>{{../receiverName}}</td>
-				<td>{{deliveryFee}}</td>
-				<td class="orderState stateWrap">
-					{{#vxSwitch deliveryStateCode}}
-					<div class="stateTxt">
-						{{#vxCase "SL_ORDER_STATE_07" break=true}}
-							<div class="stateTxt">
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</div>
-						{{/vxCase}}
-						{{#vxCase "SL_ORDER_STATE_08" break=true}}
-							<div class="stateTxt">
-								<a href="../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderReturnDetail">반품상세</a>
-							</div>
-						{{/vxCase}}
-						{{#vxCase "SL_ORDER_STATE_09" break=true}}
-							<div class="stateTxt">
-								<a href="../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderChangeDetail">교환상세</a>
-							</div>
-						{{/vxCase}}
-						{{#vxCase "SL_ORDER_STATE_10" break=true}}
-							<div class="stateTxt">
-								<a href="" class="btnSizeS btnColor01">재배송</a>
-							</div>
-						{{/vxCase}}
-					{{/vxSwitch}}
+			{{else}}
+				<td class="recordInfo"><a href="/shop/detail.html?productNumber={{productNumber}}" class="color01">{{productName}}</a><span class="count">수량 : {{orderQuantity}}</span><span class="productPrice">{{productOptionPriceDesc}} 원</span>
 				</td>
-					{{#vxIF @index "!==" 0}}
-			</tr>
-					{{/vxIF}}
-				{{/each}}
-			</tr>
+			{{/if}}
+			{{#if @first}}
+			<td rowspan="{{../length}}">{{receiverName}}</td>
+			<td rowspan="{{../length}}">{{deliveryChargeDesc}} 원</td>
+			<td class="orderState stateWrap" rowspan="{{../length}}">
+				{{orderStateCodeName}}
+				{{#vxSwitch orderStateCode}}
+					{{#vxCase "SL_ORDER_STATE_07" break=true}}
+						<div class="stateTxt">
+							<a href="../_popup/popOrderCancelDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderReturnDetail">취소상세</a>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_08" break=true}}
+						<div class="stateTxt">
+							<a href="../_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderReturnDetail">반품상세</a>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_09" break=true}}
+						<div class="stateTxt">
+							<a href="../_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderChangeDetail">교환상세</a>
+						</div>
+					{{/vxCase}}
+					{{#vxCase "SL_ORDER_STATE_10" break=true}}
+						<div class="stateTxt">
+							<a href="" class="btnSizeS btnColor01">재배송</a>
+						</div>
+					{{/vxCase}}
+				{{/vxSwitch}}
+			</td>
+			{{/if}}
+		</tr>
+		{{/each}}
 		{{/each}}
 	{{else}}
 	{{!-- 데이터 유무에 따른 화면 처리 --}}
@@ -269,7 +265,8 @@
 			<td colspan="7" class="noList">교환/반품/취소 내역이 없습니다.</td>
 		</tr>
 	{{/if}}
-{{!--// return-list-templates --}}
+
+
 </script>
 
 

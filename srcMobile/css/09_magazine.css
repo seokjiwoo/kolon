@@ -156,3 +156,14 @@
 .is-scrolling .magazine .header .shareBtn a.share {background-position: -37px -21px;}
 .wrapper .header.menuDetail .shareBtn a.messageBtn {width:24px; height:21.5px; background-position: -68px -18px;}
 .wrapper .header.menuDetail {position:relative;}
+
+.mProductInfo{text-align:center;}
+.mProductInfo .num{width:80px;height:64px;display:inline-block;padding-top:26px;background:url("../images/bg_hexagon_line.png") no-repeat 0 0;background-size:100%;}
+.mProductInfo .num em{display:block;font-family:TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, sans-serif;color:#2d427a;line-height:1.2em;font-weight:bold;}
+.mProductInfo .num em:first-child{font-size:14px;}
+.mProductInfo .num em:last-child{font-size:26px;}
+.mProductInfo p{margin-top:15px;color:#666;line-height:1.4em;}
+.mProductWrap{border-top:1px solid #ccc;margin-top:30px;padding-bottom:20px;}
+.mProductWrap .previewList p{line-height:1.4em;}
+.mProductWrap .previewList .except + p{color:#b08967;}
+.mProductWrap .previewList .btnSizeS{float:right;}

@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'myPage/Order.js';
+	fileName = 'myPage/MyServiceCancel.js';
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
@@ -19,7 +19,7 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	ORDER_EVENT = events.ORDER,
 	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
-	
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -30,7 +30,7 @@ module.exports = function() {
 
 	var opts = {
 		templates : {
-			wrap : '.js-order-list-wrap',
+			wrap : '#js-order-list-wrap',
 			template : '#order-list-templates'
 		},
 		colorbox : '#colorbox',
@@ -55,8 +55,8 @@ module.exports = function() {
 	
 	function init() {
 		MyPage.init();
-		
-		debug.log(fileName, $, util, controller, eventManager, events, COLORBOX_EVENT);
+
+		debug.log(fileName, 'init');
 
 		self = callerObj;
 		self.opts = opts;
@@ -107,183 +107,11 @@ module.exports = function() {
 		self.search.on('submit', function(e) {
 			e.preventDefault();
 		});
-
+/*
 		self.searchSubmit.on('click', onSearch);
 		self.searchInp.on('keydown', onSearch);
 
-		self.templatesWrap.on('click', '.js-btn', onWrapPopBtnClick);
-	}
-
-	function onWrapPopBtnClick(e) {
-		e.preventDefault();
-
-		var target = $(e.currentTarget),
-		isConfirm = false,
-		info = target.closest('[data-order-info]').data('order-info');
-
-		self.selPopBtnInfo = {
-			target : target,
-			info : info
-		};
-
-		if (target.hasClass('js-order-confirm')) {
-			if (win.confirm('선택하신 상품의 구매를 확정하시겠습니까?')) {
-				controller.orderConfirm(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber, self.selPopBtnInfo.info.orderOptionNumber);
-			}
-		}
-	}
-
-	// Handlebars 마크업 템플릿 구성
-	function displayData(data, type) {
-		var _template = self.template,
-		_templatesWrap = self.templatesWrap;
-
-		var source = _template.html(),
-		template = win.Handlebars.compile(source),
-		insertElements = $(template(data));
-
-		_templatesWrap.empty()
-							.addClass(self.opts.cssClass.isLoading)
-							.append(insertElements);
-
-		_templatesWrap.imagesLoaded()
-							.always(function() {
-								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
-								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
-								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
-							});
-	}
-
-	function displayCancelPopup(data, type) {
-		var _template = self.colorbox.find('#cancel-request-templates');
-		var _templatesWrap = self.colorbox.find('.js-cancelRequest-wrap');
-
-		var source = _template.html(),
-		template = win.Handlebars.compile(source),
-		insertElements = $(template(data));
-
-		_templatesWrap.empty()
-							.addClass(self.opts.cssClass.isLoading)
-							.append(insertElements);
-
-		_templatesWrap.imagesLoaded()
-							.always(function() {
-								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
-								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
-								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
-							});
-		
-		var cancelOrderDataArray = new Array();
-		$.each(data.product, function(key, each){
-			cancelOrderDataArray.push(new Array(each.productNumber, each.orderOptionNumber));
-		});
-
-		self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
-		self.colorbox.find('#js-order-cancel-form').on('submit', function(e) {
-			e.preventDefault();
-
-			var isValid = true,
-			cancelType, cancelReson;
-
-			$.each($('.cancelReasonDrop'), function(key, each){
-				cancelOrderDataArray[key].push($(each).val());
-				if (!$(each).val()) isValid = false;
-			});
-			$.each($('.cancelReasonField'), function(key, each){
-				cancelOrderDataArray[key].push(encodeURI($(each).val()));
-				if (!$(each).val()) isValid = false;
-			});
-			
-			if (!isValid) {
-				win.alert('취소 사유를 선택/입력 해주세요.');
-				return;
-			}
-			
-			var cancelOrderArray = new Array();
-			$.map(cancelOrderDataArray, function(each) {
-				cancelOrderArray.push(each.join('|'));
-			});
-
-			// productNumber|orderOptionNumber|클레임사유 코드|취소신청사유
-			var cancelOrder = cancelOrderArray.join(',');
-			//console.log(cancelOrder);
-			controller.orderCancel(self.selPopBtnInfo.info.orderNumber, cancelOrder);
-		});
-	};
-
-	function setColoboxEvevnts() {
-		// 취소신청
-		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			if (self.selPopBtnInfo.info.joinedOrder == "1") {
-				controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
-			} else {
-				var cancelRequestMessage = '';
-				$.each($('[data-order-info]'), function(key, each){
-					var eachInfo = $(each).data('order-info');
-					if (self.selPopBtnInfo.info.orderNumber == eachInfo.orderNumber) {
-						cancelRequestMessage += (eachInfo.productNumber+'|'+eachInfo.orderOptionNumber+',');
-					} 
-				});
-				controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, cancelRequestMessage);
-			}
-		}
-
-		// 배송추적
-		if (self.colorbox.hasClass('popOrderDelivery')) {
-			controller.orderTrackingInfo(
-				self.selPopBtnInfo.info.orderNumber,
-				self.selPopBtnInfo.info.deliveryNumber
-			);
-		}
-
-		self.colorbox.find('.btnColor02').on('click', function(e) {
-			e.preventDefault();
-			testResult();
-		});
-	}
-
-	function testResult() {
-		win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
-	}
-
-	function destroyColoboxEvevnts() {
-	}
-
-	function onColorBoxAreaListener(e) {
-		switch(e.type) {
-			case COLORBOX_EVENT.COMPLETE:
-				setColoboxEvevnts();
-				break;
-			case COLORBOX_EVENT.CLEANUP:
-				destroyColoboxEvevnts();
-				break;
-		}
-	}
-
-	function onDropCheckMenuChange(e, data) {
-		var target = $(e.target);
-
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getOrderList(self.searchInp.val(), data.values.join(','));
-	}
-
-	function onSearch(e) {
-		if (e.type === 'keydown') {
-			if (e.which !== $.ui.keyCode.ENTER) {
-				return;
-			}
-		}
-
-		e.preventDefault();
-
-		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
-			win.alert('검색어를 입력하세요.');
-			self.searchInp.val('').focus();
-			return;
-		}
-
-		getOrderList(self.searchInp.val());
+		self.templatesWrap.on('click', '.js-btn', onWrapPopBtnClick);*/
 	}
 
 	function setRangePicker() {
@@ -344,12 +172,61 @@ module.exports = function() {
 		});
 	}
 
+	function getOrderList(keyword, deliveryStateCode) {
+		keyword = keyword || '';
+		deliveryStateCode = deliveryStateCode || '';
+
+		controller.myConstCancelList(
+			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			keyword,
+			deliveryStateCode
+		);
+	}
+
+	function onColorBoxAreaListener(e) {
+		switch(e.type) {
+			case COLORBOX_EVENT.COMPLETE:
+				setColoboxEvevnts();
+				break;
+			case COLORBOX_EVENT.CLEANUP:
+				destroyColoboxEvevnts();
+				break;
+		}
+	}
+
+	function onDropCheckMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		getOrderList(self.searchInp.val(), data.values.join(','));
+	}
+
+	function onSearch(e) {
+		if (e.type === 'keydown') {
+			if (e.which !== $.ui.keyCode.ENTER) {
+				return;
+			}
+		}
+
+		e.preventDefault();
+
+		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
+			win.alert('검색어를 입력하세요.');
+			self.searchInp.val('').focus();
+			return;
+		}
+
+		getOrderList(self.searchInp.val());
+	}
+
 	function onControllerListener(e, status, response, type) {
 		var eventType = e.type,
 		result = response;
 
 		switch(eventType) {
-			case ORDER_EVENT.ORDER_LIST:
+			case ORDER_EVENT.NEWFORM_ORDER_LIST:
+				/*
 				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
 
 				if (result.data.listOrderItems) {
@@ -367,9 +244,16 @@ module.exports = function() {
 						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
 					});
 				}
+				*/
+				
+				$.each(result.constOrderState, function(key, eachOrder){
+					eachOrder.orderDate = moment(eachOrder.orderDateTime).format('YYYY.MM.DD');
+					eachOrder.constProduct = eachOrder.constProducts[0];
+					eachOrder.constProduct.productPriceDesc = util.currencyFormat(eachOrder.constProduct.productPrice);
+				});
 
-				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
-				displayData(result.data);
+				debug.log(fileName, 'onControllerListener', eventType, status, result);
+				displayData(result);
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
@@ -396,19 +280,6 @@ module.exports = function() {
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
 				displayData(result.data, type);
 				break;
-			
-			case ORDER_EVENT.CANCEL_DETAIL:
-				displayCancelPopup(result.data, type);
-				break;
-			
-			case ORDER_EVENT.ORDER_CANCEL:
-				if (result == 200) {
-					alert('주문취소가 완료되었습니다');
-					location.reload(true);
-				} else {
-					alert(result.message);
-				}
-				break;
 
 			case ORDER_EVENT.ORDER_TRACKING:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
@@ -422,5 +293,99 @@ module.exports = function() {
 				$('#dsDeliverCode').text(deliverInfo.invoiceNumber);
 				break;
 		}
+	}
+	
+	// Handlebars 마크업 템플릿 구성
+	function displayData(data, type) {
+		var source = self.template.html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
+
+		self.templatesWrap.empty().addClass(self.opts.cssClass.isLoading).append(insertElements);
+
+		self.templatesWrap.imagesLoaded().always(function() {
+			self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+		});
+
+		/*
+		if (type === 'COLOR_BOX') {
+			_template = self.colorbox.find('#cancel-request-templates');
+			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
+		}
+
+		if (type === 'COLOR_BOX') {
+			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
+				e.preventDefault();
+
+				var forms = self.colorbox.find('.js-cancel-form'),
+				isValid = false,
+				cancelType, cancelReson;
+
+				$.each(forms, function() {
+					cancelType = $(this).find('.js-type').val();
+					cancelReson = $(this).find('.js-inp').val();
+					if (cancelType && cancelReson) {
+						isValid = true;
+					} else {
+						isValid = false;
+						return false;
+					}
+				});
+
+				if (!isValid) {
+					win.alert('취소 사유를 선택/입력 해주세요.');
+					return;
+				}
+
+				$.each(forms, function() {
+					cancelType = $(this).find('.js-type').val();
+					cancelReson = $(this).find('.js-inp').val();
+				});
+			});
+		}*/
+	}
+
+	function setColoboxEvevnts() {
+		/*
+		// 취소신청
+		if (self.colorbox.hasClass('popOrderCancelRequest')) {
+			controller.orderDetail(self.selPopBtnInfo.info.orderNumber, 'COLOR_BOX');
+		}
+
+		// 배송추적
+		if (self.colorbox.hasClass('popOrderDelivery')) {
+			controller.orderTrackingInfo(
+				self.selPopBtnInfo.info.orderNumber,
+				self.selPopBtnInfo.info.deliveryNumber
+			);
+		}
+
+		self.colorbox.find('.btnColor02').on('click', function(e) {
+			e.preventDefault();
+			testResult();
+		});*/
+	}
+
+	function testResult() {
+		//win.alert('임시처리 결과처리 - location.reload');
+		win.location.reload();
+	}
+
+	function destroyColoboxEvevnts() {
+	}
+
+	function onColorBoxAreaListener(e) {
+		/*
+		switch(e.type) {
+			case COLORBOX_EVENT.COMPLETE:
+				setColoboxEvevnts();
+				break;
+			case COLORBOX_EVENT.CLEANUP:
+				destroyColoboxEvevnts();
+				break;
+		}*/
 	}
 };

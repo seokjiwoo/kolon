@@ -1,0 +1,10 @@
+.helpList li{border-top:1px solid #ccc;}
+.helpList li i{position:absolute;top:50%;right:10px;width:20px;height:10px;overflow:hidden;display:block;background:url("../images/ico_toggleL.png") no-repeat 0 -13px;background-size:20px;margin-top:-5px;}
+.helpList li:first-child{border-top:0;}
+.helpList li p{position:relative;padding:20px 0;line-height:1.4em;font-size:15px;color:#333;cursor:pointer;}
+.helpList li p span{color:#436ebb;}
+.helpList li div.con{display:none;padding:20px 10px;background:#f9fafc;border-top:1px dashed #ccc;color:#666;line-height:1.4em;}
+.helpList li.active i{background-position:0 0;}
+.helpSearch{position:relative;margin-bottom:25px;padding-left:40px;background:#f9fafc url("../images/ico_search.png") no-repeat 15px center;background-size:14px;}
+.helpSearch input[type="text"]{height:45px;background:#f9fafc;border:0;color:#436ebb;}
+.helpSearch .close{position:absolute;top:14px;right:15px;width:18px;height:18px;background:url("../images/ico_search_close.png") no-repeat 0 0;background-size:16px;}

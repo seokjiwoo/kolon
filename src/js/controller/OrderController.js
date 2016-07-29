@@ -40,10 +40,6 @@ function ClassOrderController() {
 			 */
 			myOrdersList: myOrdersList,
 			/**
-			 * 교환/반품/취소 조회
-			 */
-			myCancelList: myCancelList,
-			/**
 			 * 주문/배송 - 주문상세
 			 */
 			orderDetail: orderDetail,
@@ -145,6 +141,10 @@ function ClassOrderController() {
 			 * 시공형 주문목록
 			 */
 			myConstOrdersList: myConstOrdersList,
+			/**
+			 * 시공형 취소목록
+			 */
+			myConstCancelList: myConstCancelList,
 			
 			/**
 			 * 생활서비스 주문서 작성 페이지 조회
@@ -252,8 +252,8 @@ function ClassOrderController() {
 		}, false);
 	};
 
-	// 교환/반품/취소 조회
-	function myCancelList(startDate, endDate, keyword, deliveryStateCode) {
+	// 교환/반품/취소 목록 조회
+	function myClaimsList(startDate, endDate, keyword, deliveryStateCode) {
 		Super.callApi('/apis/me/orders/cancel/list', 'GET', {
 			'startDate' : startDate,
 			'endDate' : endDate,
@@ -261,10 +261,24 @@ function ClassOrderController() {
 			'deliveryStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('myCancelListResult', [status, result]);
+				var deliveryChunk = {};
+				$.map(result.data.listOrderItems, function(eachOrder) {
+					if (eachOrder.parentDeliveryNumber != 0) eachOrder.deliveryNumber = eachOrder.parentDeliveryNumber;
+					if (deliveryChunk[eachOrder.deliveryNumber] == undefined) deliveryChunk[eachOrder.deliveryNumber] = new Array();
+					deliveryChunk[eachOrder.deliveryNumber].push(eachOrder);
+				});
+				var deliceryChunkArray = new Array();
+				$.map(deliveryChunk, function(eachOrder) {
+					deliceryChunkArray.push(eachOrder);
+				});
+				deliceryChunkArray.reverse();
+
+				result.data.deliveryChunk = deliceryChunkArray;
+
+				$(callerObj).trigger('myClaimsListResult', [status, result]);
 			} else {
-				Super.handleError('myCancelsList', result);
-				$(callerObj).trigger('myCancelListResult', [status, result]);
+				Super.handleError('myClaimsList', result);
+				$(callerObj).trigger('myClaimsListResult', [status, result]);
 			}
 		}, false);
 	};
@@ -314,11 +328,8 @@ function ClassOrderController() {
 
 	// 주문 취소 신청 처리
 	// POST /apis/me/orders/{orderNumber}/cancel
-	function orderCancel(orderNumber, claim, items) {
-		Super.callApi('/apis/me/orders/'+orderNumber + '/cancel', 'POST', {
-			'claim' : claim,
-			'items' : items
-		}, function(status, result) {
+	function orderCancel(orderNumber, cancelList) {
+		Super.callApi('/apis/me/orders/'+orderNumber+ '/cancel?cancelList='+encodeURI(cancelList), 'POST', {}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('orderCancelResult', [status, result]);
 			} else {
@@ -381,24 +392,6 @@ function ClassOrderController() {
 			} else {
 				Super.handleError('orderTrackingInfo', result);
 				$(callerObj).trigger('orderTrackingInfoResult', [status, result]);
-			}
-		}, false);
-	};
-
-
-	// 교환/반품/취소 목록 조회
-	function myClaimsList(startDate, endDate, keyword, deliveryStateCode) {
-		Super.callApi('/apis/me/orders/cancel/list', 'GET', {
-			'startDate' : startDate,
-			'endDate' : endDate,
-			'keyword' : keyword || '',
-			'deliveryStateCode' : deliveryStateCode || ''
-		}, function(status, result) {
-			if (status == 200) {
-				$(callerObj).trigger('myClaimsListResult', [status, result]);
-			} else {
-				Super.handleError('myClaimsList', result);
-				$(callerObj).trigger('myClaimsListResult', [status, result]);
 			}
 		}, false);
 	};
@@ -683,9 +676,9 @@ function ClassOrderController() {
 				$(callerObj).trigger('homeServiceOrderFormResult', [status, result]);
 			}
 		}, true);
-	}
+	};
 	
-	// 주문/배송 현황 조회
+	// 시공상품 주문 현황 조회
 	function myConstOrdersList(startDate, endDate, keyword, deliveryStateCode) {
 		Super.callApi('/apis/me/constorders', 'GET', {
 			'startDate' : startDate,
@@ -694,20 +687,23 @@ function ClassOrderController() {
 			'deliveryStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
-				/*
-				var deliveryChunk = {};
-				$.map(result.data.listOrderItems, function(eachOrder) {
-					if (eachOrder.parentDeliveryNumber != 0) eachOrder.deliveryNumber = eachOrder.parentDeliveryNumber;
-					if (deliveryChunk[eachOrder.deliveryNumber] == undefined) deliveryChunk[eachOrder.deliveryNumber] = new Array();
-					deliveryChunk[eachOrder.deliveryNumber].push(eachOrder);
-				});
-				var deliceryChunkArray = new Array();
-				$.map(deliveryChunk, function(eachOrder) {
-					deliceryChunkArray.push(eachOrder);
-				});
-				deliceryChunkArray.reverse();
-
-				result.data.deliveryChunk = deliceryChunkArray;*/
+				$(callerObj).trigger('myConstOrdersListResult', [status, result.data]);
+			} else {
+				Super.handleError('myConstOrdersList', result);
+				$(callerObj).trigger('myConstOrdersListResult', [status, result]);
+			}
+		}, false);
+	};
+	
+	// 시공상품 취소 현황 조회
+	function myConstCancelList(startDate, endDate, keyword, deliveryStateCode) {
+		Super.callApi('/apis/me/constorders/cancel', 'GET', {
+			'startDate' : startDate,
+			'endDate' : endDate,
+			'keyword' : keyword || '',
+			'deliveryStateCode' : deliveryStateCode || ''
+		}, function(status, result) {
+			if (status == 200) {
 				$(callerObj).trigger('myConstOrdersListResult', [status, result.data]);
 			} else {
 				Super.handleError('myConstOrdersList', result);
@@ -716,7 +712,6 @@ function ClassOrderController() {
 		}, false);
 	};
 
-	
 
 	/*
     get /apis/me/orders/{orderNumber}/cancel
