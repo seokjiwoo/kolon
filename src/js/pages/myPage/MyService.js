@@ -226,26 +226,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.NEWFORM_ORDER_LIST:
-				/*
-				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
-
-				if (result.data.listOrderItems) {
-					$.each(result.data.listOrderItems, function(index, orderItems) {
-						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
-						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
-						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
-						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
-
-						if (util.isLocal()) {
-							orderItems.productImageUrl = 'https://dev.koloncommon.com/' + orderItems.productImageUrl;
-						}
-
-						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
-						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
-					});
-				}
-				*/
-				
 				$.each(result.constOrderState, function(key, eachOrder){
 					eachOrder.orderDate = moment(eachOrder.orderDateTime).format('YYYY.MM.DD');
 					eachOrder.constProduct = eachOrder.constProducts[0];
@@ -254,10 +234,28 @@ module.exports = function() {
 
 				debug.log(fileName, 'onControllerListener', eventType, status, result);
 				displayData(result);
+				
+				$('.js-btn').on('click', onWrapPopBtnClick);
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				break;
+
+			case ORDER_EVENT.NEWFORM_ORDER_CANCEL_FORM:
+				displayCancelPopup(result);
+				break;
+
+			case ORDER_EVENT.NEWFORM_ORDER_CANCEL:
+				switch(status) {
+					case 200:
+						win.alert('취소 신청이 완료되었습니다.');
+						location.reload();
+						break;
+					default:
+						win.alert(result.message);
+						break;
+				}
 				break;
 
 			case ORDER_EVENT.ORDER_DETAIL:
@@ -308,84 +306,79 @@ module.exports = function() {
 			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 		});
+	}
 
-		/*
-		if (type === 'COLOR_BOX') {
-			_template = self.colorbox.find('#cancel-request-templates');
-			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
+	function displayCancelPopup(data) {
+		$.map(data.constProducts, function(each) {
+			each.productPrice = util.currencyFormat(each.productPrice);
+			each.discountPrice = util.currencyFormat(each.discountPrice);
+			each.constExpectPrice = util.currencyFormat(each.constExpectPrice);
+		});
+		if (data.constOrderInfo != null) data.constOrderInfo.receiverContact = util.mobileNumberFormat(data.constOrderInfo.receiverContact);
+		if (data.refundPayment.refundPaymentPrice != undefined) {
+			data.refundPayment.refundPaymentPrice.totalAdvancePrice = util.currencyFormat(data.refundPayment.refundPaymentPrice.totalAdvancePrice);
+			data.refundPayment.refundPaymentPrice.totalRefundPrice = util.currencyFormat(data.refundPayment.refundPaymentPrice.totalRefundPrice);
+		} else {
+			data.refundPayment.refundPaymentPrice = {
+				totalAdvancePrice: 0,
+				totalRefundPrice: 0
+			}
+			data.refundPayment.paymentMethodCode = "SL_PAYMENT_METHOD_99";
 		}
+		data.refundPayment.paymentMethodCode = data.refundPayment.paymentMethods[0].paymentMethodCodeName;
 
-		if (type === 'COLOR_BOX') {
-			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
-			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
-				e.preventDefault();
+		
+		var source = $('#cancel-popup-template').html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
 
-				var forms = self.colorbox.find('.js-cancel-form'),
-				isValid = false,
-				cancelType, cancelReson;
+		$('#cancel-popup-wrap').empty().addClass(self.opts.cssClass.isLoading).append(insertElements);
+		$('#cancel-popup-wrap').imagesLoaded().always(function() {
+			self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+		});
+		
+		$(document).trigger('initProfileEditButton');
 
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-					if (cancelType && cancelReson) {
-						isValid = true;
-					} else {
-						isValid = false;
-						return false;
-					}
-				});
+		$('.js-order-cancel-form').click(function(e){
+			e.stopPropagation();
+			var reasonCode = $('#cancelReasonDrop').val();
+			var reasonText = $.trim($('#cancelReasonField').val());
+			if (reasonCode == '' || reasonText == '') {
+				win.alert('취소 사유를 선택/입력 해주세요.');
+			} else {
+				controller.myConstCancel(self.currentOrderNumber, reasonCode, reasonText);
+			}
+		});
+	}
+	
+	function onWrapPopBtnClick(e) {
+		e.preventDefault();
 
-				if (!isValid) {
-					win.alert('취소 사유를 선택/입력 해주세요.');
-					return;
-				}
+		var target = $(e.currentTarget),
+		info = target.closest('[data-order-info]').data('order-info');
 
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-				});
-			});
+		self.selPopBtnInfo = {
+			target : target,
+			info : info
+		};
+
+		/* if (target.hasClass('js-order-confirm')) {
+			if (win.confirm('선택하신 상품의 구매를 확정하시겠습니까?')) {
+				controller.orderConfirm(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber, self.selPopBtnInfo.info.orderOptionNumber);
+			}
 		}*/
-	}
-
-	function setColoboxEvevnts() {
-		/*
-		// 취소신청
-		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			controller.orderDetail(self.selPopBtnInfo.info.orderNumber, 'COLOR_BOX');
-		}
-
-		// 배송추적
-		if (self.colorbox.hasClass('popOrderDelivery')) {
-			controller.orderTrackingInfo(
-				self.selPopBtnInfo.info.orderNumber,
-				self.selPopBtnInfo.info.deliveryNumber
-			);
-		}
-
-		self.colorbox.find('.btnColor02').on('click', function(e) {
-			e.preventDefault();
-			testResult();
-		});*/
-	}
-
-	function testResult() {
-		//win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
-	}
-
-	function destroyColoboxEvevnts() {
 	}
 
 	function onColorBoxAreaListener(e) {
-		/*
 		switch(e.type) {
 			case COLORBOX_EVENT.COMPLETE:
-				setColoboxEvevnts();
+				if (self.colorbox.hasClass('popOrderCancelRequest')) {
+					self.currentOrderNumber = self.selPopBtnInfo.info.orderNumber;
+					controller.myConstCancelFormRequest(self.selPopBtnInfo.info.orderNumber);
+				}
 				break;
-			case COLORBOX_EVENT.CLEANUP:
-				destroyColoboxEvevnts();
-				break;
-		}*/
+		}
 	}
 };

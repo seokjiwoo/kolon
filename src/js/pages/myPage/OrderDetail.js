@@ -100,7 +100,7 @@ module.exports = function() {
 				console.log($(this).data());
 				cancelRequestMessage += ($(this).data().productNumber+'|'+$(this).data().optionNumber+',');
 			});
-			console.log(cancelRequestMessage);
+			
 			if (cancelRequestMessage == '') {
 				return;
 			}
@@ -268,6 +268,7 @@ module.exports = function() {
 			
 			case ORDER_EVENT.CANCEL_DETAIL:
 				displayCancelPopup(result.data, type);
+				$(document).trigger('initProfileEditButton');
 				break;
 
 			case ORDER_EVENT.ORDER_CANCEL:
@@ -279,7 +280,6 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
 				break;
 		}
 	}
