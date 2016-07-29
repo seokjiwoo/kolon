@@ -1,267 +1,331 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 뉴폼 상세"} -->
+	<!-- @@include ../_template/header.html {"title":"뉴폼 상품 상세정보"} -->
 </head>
 <body data-page-id="newForm-detail">
 	<div class="wrapper">
 	<!-- @@include ../_template/menu.html -->
-		<div class="container newFormContainer">
-			<!-- 상단 배너 -->
-			<div class="detailArea topArea">
-			    <div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
-			    	<div class="topCont subTop">
-				    	<ul class="tagList">
-							<li><a href="#">50㎡ (15PY)</a></li>
-						</ul>
+		<div class="container">
+			<section>
+				<div class="detailArea topArea js-detail-info-wrap">
+					<script id="detail-info-templates" type="text/x-handlebars-template">
+					{{!-- detail-info-templates --}}
+						<div class="topContBox" style="background-image:url('../images/newform_topBg.png')">
+							<div class="topCont subTop">
+								<ul class="tagList">
+									{{!-- 생산자유형 --}}
+										{{#vxSwitch producerTypeCode}}
+											{{#vxDefault}}
+											<li><a href="#">{{producerTypeCodeName}}</a></li>
+											{{/vxDefault}}
+										{{/vxSwitch}}
+									{{!-- 생산자유형 --}}
 
-					    <h3>LIVINGROOM</h3>
-					    <p class="infoSub">반려식물 선인장 인테리어<span>오래 키울수록 친구같아지는 선인장</span></p>					    
+									{{!-- 상품분류 최하위 --}}
+										{{#vxSwitch productTypeCode}}
+											{{#vxDefault}}
+											<li><a href="#">{{productTypeCodeName}}</a></li>
+											{{/vxDefault}}
+										{{/vxSwitch}}
+									{{!-- 상품분류 최하위 --}}
+								</ul>
+								<h3>{{productName}}</h3>
+								<p class="infoSub">{{productDesc}}</span></p>
 
-					    <p class="ownerInfo">
-					    	by 박실장 <span>KOLON GLOBAL</span>
-					    	<span class="serviceInfo"><b class="localInfo">전지역</b><i></i><b class="scrapDate">180</b></span>
-					    </p>
-						<div class="cardCon">
-							<div class="upTo2">
-								<p>기간한정<span><b>20</b>%</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
+								<div class="js-detail-partner-wrap"></div>
 
-				<h4 class="italic">NewForm, Compact, Full</h4>
-				<ul class="unitPrice">
-			    	<li>
-			    		<h5>50㎡/15PY <br>평당 단가</h5>
-			    		<div class="unitPriceBox">
-			    			<p>165,000<b>원</b><span class="discount">10<i>%</i></span></p>
-			    			<p class="salePrice">150,000<b>원</b></p>
-			    		</div>
-			    	</li>
-			    	<li>
-			    		<h5>50㎡/15PY <br>기준 금액</h5>
-						<div class="unitPriceBox">			    			
-			    			<p>30,000,000<b>원</b><span class="discount">10<i>%</i></span></p>
-			    			<p class="salePrice">27,000,000<b>원</b></p>
-			    		</div>
-			    	</li>
-			    </ul>
-
-			    <div class="deadlineCount">
-			    	<p class="deadlineDate">남은 시간 <b>2일</b> 남음</p>
-			    	<p class="deadlineNum">현재 <b>3개</b> 남음</p>
-			    </div>
-				
-				<div class="newFormBtn">
-					<div class="sns">
-						<a href="#" class="iconF" data-share-sns="facebook">페이스북</a>
-						<a href="#" class="iconT" data-share-sns="twitter">트위터</a>
-						<a href="#" class="iconK" data-share-sns="kakaostory">카카오스토리</a>
-						<a href="#" class="iconP" data-share-sns="pinterest">핀터레스트</a>
-						<a href="http://localhost:3000/magazine/detail.html?articleNumber=1" class="iconU" data-share-sns="url" onclick="return false;">url복사</a>
-					</div>
-					<!-- class on 추가 시 좋아요 활성화 -->
-					<a href="#" class="like js-add-like">3</a>
-				</div>
-			</div>
-			<!-- // 상단 배너 -->
-
-			<!-- 이벤트 베너 -->
-			<div class="detailArea eventBanner">
-				<a href=""><img src="../images/eventBanner01.png"></a>
-				<a href=""><img src="../images/eventBanner02.png"></a>
-			</div>
-			<!-- // 이벤트 베너 -->
-
-			<div class="tabType03Fix payTab tabWrap js-menu-tab">
-				<span class="on"><a href="#productsInfo">상품정보</a></span>
-				<span><a href="#sellerInfo">디자이너정보</a></span>
-				<span><a href="#purchasingInfo">구매정보</a></span>
-			</div>
-			
-			<div>
-				<!-- tab1 상품정보 -->
-				<div id="productsInfo">
-					<!-- 기본 정보 -->
-					<div id="ProductArea" class="detailArea basicArea">
-						<h3>Basics Info</h3>
-						<div class="floorSpace">
-							<h4 class="alignLine">기준평형</h4>
-							<p><b class="italic">15</b>평 기준</p>
-						</div>
-						<div class="composition">
-							<h4 class="alignLine">구성</h4>
-							<!-- 
-								unitIco01 = 현관
-								unitIco02 = 거실
-								unitIco03 = 침실
-								unitIco04 = 욕실
-								unitIco05 = 주방
-								unitIco06 = 아이방
-							 -->
-							<ul class="unitIco">
-								<li class="unitIco01 on"><span>현관</span></li>
-								<li class="unitIco02 on"><span>거실</span></li>
-								<li class="unitIco03 on"><span>침실</span></li>
-								<li class="unitIco04"><span>욕실</span></li>
-								<li class="unitIco05"><span>주방</span></li>
-								<li class="unitIco06"><span>아이방</span></li>
-							</ul>
-							<p class="floorPlanBox"><img src="../images/floor_plan.png"></p>
-							<div class="btnWrapLeft">
-								<a href="" class="btnSizeS btnColor03">도면 확대보기</a>
-							</div>
-						</div>
-						<div class="optionBox">
-							<h4 class="alignLine">옵션</h4>
-							<ul class="basicOption">
-								<li class="basicOption01">
-									<p>인테리어<br>시공상품</p>
-									<span class="basicIco"><span class="italic">150,000</span>원</span>
-								</li>
-								<li class="basicOption02">
-									<p>홈드레싱<br>패키지 상품</p>
-									<span class="basicIco"><span class="italic">150,000</span>원</span>
-								</li>
-								<li class="basicOption03">
-									<div class="clearBox">
-										<p class="optionLeft">인테리어<br>시공상품</p>
-										<p class="optionRight">홈드레싱<br>패키지 상품</p>
+								<div class="cardCon">
+									<div class="upTo2">
+										<p>
+										기간한정 / API - 확인 필요
+										<!-- <span><b>20</b>%</span> -->
+										</p>
 									</div>
-									<span class="basicIco"><span class="italic">850,000</span>원</span>
+								</div>
+
+							</div>
+						</div>
+						<div class="detailRow01">
+							<div class="info">
+								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
+									<div class="dis">
+										<span class="sale">{{basePriceDesc}}원</span>
+										<span class="discount">{{discountMethod}}<i>%</i></span>
+									</div>
+									<div class="price"><span>{{salePriceDesc}}</span>원</div>
+								{{else}}
+									<div class="price"><span>{{salePriceDesc}}</span>원</div>
+								{{/vxIF}}
+								<div class="delivery">
+									<span>배송비 주문 시 결제</span>
+									<span><em>{{deliverCharge}}</em>원</span>
+								</div>
+							</div>
+						</div>
+						<!-- 
+						<div class="deadlineCount">
+							<p class="deadlineDate">남은 시간 <b>2일</b> 남음</p>
+							<p class="deadlineNum">현재 <b>3개</b> 남음</p>
+						</div>
+						 -->
+						<div class="newFormBtn">
+							<ul class="subBtn">
+								<li class="subBtn01">
+									<a href="#" class="js-add-like">
+										<span class="hide">좋아요</span>
+										<span class="countNum">{{likeCount}}</span>
+									</a>
+								</li>
+								<li class="subBtn02">
+									<a href="#" class="js-add-scrap">
+										<span class="hide">스크랩</span>
+										<span class="countNum">{{scrapCount}}</span>
+									</a>
+								</li>
+								<li>
+									<span class="socialBtn js-social-wrap">
+										<a href="#" class="socialBtnOpen js-open">
+											<span class="hide">공유하기</span>
+										</a>
+										<a href="#" class="socialBtn01" data-share-sns="facebook">
+											<span class="hide">페이스북</span>
+										</a>
+										<a href="#" class="socialBtn02" data-share-sns="twitter">
+											<span class="hide">트위터</span>
+										</a>
+										<a href="#" class="socialBtn03" data-share-sns="pinterest">
+											<span class="hide">핀터레스트</span>
+										</a>
+										<a href="#" class="socialBtn04" data-share-sns="kakaostory">
+											<span class="hide">카카오스토리</span>
+										</a>
+										<a href="#" class="socialBtn05" data-share-sns="url">
+											<span class="hide">URL복사</span>
+										</a>
+										<a href="#" class="socialBtnClose js-close">
+											<span class="hide">닫기</span>
+										</a>
+									</span>
 								</li>
 							</ul>
 						</div>
-						<div class="constructPrice">
-							<h4 class="alignLine">시공가</h4>
-							<dl>
-								<dt>평당</dt>
-								<dd>원가<b class="ml4 italic">165,000</b>원</dd>
-								<dd class="pointPrice">할인가<b class="ml4 italic">150,000</b>원</dd>
-							</dl>
-							<dl>
-								<dt>15평 기준</dt>
-								<dd>원가<b class="ml4 italic">33,000,000</b>원</dd>
-								<dd class="pointPrice">할인가<b class="ml4 italic">30,000,000</b>원</dd>
-							</dl>
+					{{!--// detail-info-templates --}}
+					</script>
+				</div>
+
+				<!-- 이벤트 베너 -->
+				<div class="detailArea eventBanner js-detail-events-wrap">
+					<script id="detail-events-templates" type="text/x-handlebars-template">
+						{{!-- detail-events-templates --}}
+						{{#each .}}
+							<a href="javascript:;" style="background-image:url('../images/eventBanner_left.png')">이벤트 / API - 확인 필요</a>
+						{{/each}}
+						{{!--// detail-events-templates --}}
+					</script>
+				</div>
+				<!-- // 이벤트 베너 -->
+
+				<!-- detail 상단 탭 -->
+				<div class="tabType03Fix payTab tabWrap js-menu-tab">
+					<span class="on"><a href="#productsInfo">상품정보</a></span>
+					<span><a href="#sellerInfo">판매자정보</a></span>
+					<span><a href="#purchasingInfo">구매정보</a></span>
+				</div>
+				<!-- // detail 상단 탭 -->
+
+				<div>
+					<!-- tab1 상품정보 -->
+					<div id="productsInfo">
+						<!-- 기본 정보 -->
+						<div id="ProductArea" class="detailArea basicArea">
+							<h3>Basics Info</h3>
 						</div>
-						<div class="installment">
-							<h4 class="alignLine">할부 결제</h4>
-							<p>120개월 할부<span class="ml4">30,000,000</span>원</p>
-							<p class="pointPrice">월 <span class="italic">550,000</span>원 X <span class="italic">120</span>개월</p>
+						<!--// 기본 정보 -->
+
+						<!-- 상품 상세설명 -->
+						<div class="shop-detail-description-wrap">
+							<script id="shop-detail-description-templates" type="text/x-handlebars-template">
+								{{!-- shop-detail-templates --}}
+								<!-- <span>{{productDesc}}</span> -->
+								<img src="/images/temp32.jpg" alt="" class="fullSlideImg">
+								{{!--// shop-detail-templates --}}
+							</script>
 						</div>
-					</div>
-					<!-- // 기본 정보 -->
+						<!-- // 상품 상세설명 -->
 
-					<!-- 컨셉 영역, 이미지 스크랩 가능 -->
-					<div class="detailArea conceptArea">
-						<h3 class="icoNewformTit">Compact but enough</h3>
-						<p class="subNewformTit">신혼부부의 셀렘을 영원히 간직할 둘만의 공간</p>
-						<p class="mt30 imgBox"><img src="../images/compact_detail.png"></p>
-					</div>
-					<!-- // 컨셉 영역, 이미지 스크랩 가능 -->
-
-					<!-- 자재영역 -->
-					<div class="detailArea materialArea">
-						<h3 class="icoNewformTit"><span class="hide">Material Board</span></h3>
-						<p class="imgBox"><img src="../images/material_board.png"></p>
-					</div>
-					<!-- // 자재영역 -->
-
-					<!-- 유닛상품영역 -->
-					<div class="detailArea unitArea">
-						<h3 class="icoNewformTit">Room Type</h3>
-						<p class="subNewformTit">현관 / 주방 / 거실 / 홈바 / 침실 / 화장실 / 기타</p>
-						<div class="rowwrap">
-							<h4 class="unitTit">
-								<span class="italic">1. Living Room</span>아늑한 휴식을 위한 거실</span>
-							</h4>
-							<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
-
-							<h4 class="unitTit">
-								<span class="italic">2. Entrance</span>아늑한 휴식을 위한 거실</span>
-							</h4>
-							<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
-
-							<h4 class="unitTit">
-								<span class="italic">3. Bedroom</span>아늑한 휴식을 위한 거실</span>
-							</h4>
-							<p class="unitInfo">하루 동안 있었던 이야기를 나누기도 하고, 하루 일과를 마치고 몸과 마음 속 긴장을 끈을 풀 수 있도록 안락하면서도 세련되게 꾸몄습니다.</p>
+						<!-- 태그 영역 -->
+						<div class="detailArea js-detail-tags-wrap">
+							<script id="detail-tags-templates" type="text/x-handlebars-template">
+							{{!-- detail-tags-templates --}}
+								<div class="tagArea">
+									<h3 class="mb15">Tag</h3>
+									{{#each .}}
+										<a href="/search/result.html?query={{.}}" class="tagBtn"><span>{{.}}</span></a>
+									{{/each}}
+								</div>
+							{{!--// detail-tags-templates --}}
+							</script>
 						</div>
+						<!-- // 태그 영역 -->
+
+						<!-- 추천 패키지 영역 -->
+						<div id="recommendNewForm" class="detailArea recommend">
+							<div class="wrap cardSlider">
+								<h3 class="sTit">Recommend NewForm Package</h3>
+								<p class="subTit">추천 뉴폼패키지</p>
+								<ul class="cardWrap slider04" id='recommendNewFormWrap'></ul>
+							</div>
+						</div>
+						<!-- // 추천 패키지 영역 -->
+
+						<!-- 추천 리빙 영역 -->
+						<div id="recommendLiving" class="detailArea recommend">
+							<div class="wrap cardSlider">
+								<h3 class="sTit">Recommend Shop Item</h3>
+								<p class="subTit">추천 샵 아이템</p>
+								<ul class="cardWrap slider04" id='recommendShopWrap'></ul>
+							</div>
+						</div>
+						<!-- // 추천 리빙 영역 -->
 					</div>
-					<!-- // 유닛상품영역 -->
-					
-					<!-- 자재 설명 영역 -->
-					<div class="detailArea materialInfoArea">
-						<h3>Materials</h3>
-						<ul class="productList">
-							<li>
-								<a href="" class="btnToggle">
-									<h4>Interior</h4>
-									<p>실크벽지 /바닥타일/ 조명&amp;전기 / 중문</p>
-								</a>
-								<ul class="priceBox slideCon" style="display: none;">
-									<li>
-										<p class="thumb"><img src="../images/temp01.jpg" alt=""></p>
+					<!-- // tab1 상품정보 -->
+
+					<!-- tab2 디자이너정보 -->
+					<div id="sellerInfo">
+						<!-- 판매자안내 영역 -->
+						<div id="SellerArea" class="detailArea sellerArea manager js-info-partner-wrap">
+							<script id="info-partner-templates" type="text/x-handlebars-template">
+							{{!-- info-partner-template --}}
+								<div class="portfolioArea">
+									<!-- <div class="count"><i></i> / <em></em></div> -->
+									<ul>
+										<li>
+											<a href="/manager/detail.html?expertNumber={{partnerNumber}}"><img src="{{imageUrl}}" alt="" /></a>
+										</li>
+										<!-- 
+										<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+										<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+										 -->
+									</ul>
+									<div class="expertArea mb0">
+										<div class="thumb"><a href="/manager/detail.html?expertNumber={{partnerNumber}}"><img src="{{imageUrl}}" alt="" /></a></div>
 										<div class="info">
-											<h5>바닥 타일마감</h5>
-											<p>그레이 무광 매트 타일 폭(mm) 600 * 600</p>
+											<a href="/manager/detail.html?expertNumber={{partnerNumber}}"><em>{{partnerName}}<i>{{company}}</i></em></a>
+											<p>편안하고 개성있는 공간을 만들어 드립니다.</p>
+											<!-- 
+											<div class="fol">
+												<span>4.5</span>
+												<span>100</span>
+											</div>
+											 -->
+											<div class="btnwrap">
+												<a href="#" class="btnSizeS js-add-follow" id="btnFollow">팔로우</a>
+												<a href="#" target="_blank" class="btnSizeS openWindowPopup-none" id="btnMessage">1:1 메시지</a>
+											</div>
 										</div>
-									</li>
-									<li>
-										<p class="thumb"><img src="../images/temp01.jpg" alt=""></p>
-										<div class="info">
-											<h5>벽체, 천정 마감</h5>
-											<p>모래알 패턴 실크 벽지</p>
+									</div>
+									<div class="followList">
+										<div id="js-seller-card-wrap" class="lately"></div>
+									</div>
+								</div>
+							{{!--// info-partner-template --}}
+							</script>
+						</div>
+						<!-- // 판매자안내 영역 -->
+					</div>
+					<!-- // tab2 디자이너정보 -->
+
+					<!-- tab3 구매정보 -->
+					<div id="purchasingInfo">
+						<div class="detailArea materialInfoArea purchasing">
+							<h3>Purchasing Information</h3>
+							<ul class="productList">
+								<li>
+									<a href="#" class="btnToggle">
+										<h4>서비스 절차</h4>
+									</a>
+									<div class="slideCon">
+										<div class="service">
+											<dl>
+												<dt>서비스 문의 방법</dt>
+												<dd>고객센터에 문의해 주시기 바랍니다.</dd>
+												<dt>취소/환불 가능시점</dt>
+												<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
+											</dl>
 										</div>
-									</li>
-									<li>
-										<p class="thumb"><img src="../images/temp01.jpg" alt=""></p>
-										<div class="info">
-											<h5>LED 센서등</h5>
-											<p>사이즈(mm) 180 * 180 섹싱 CW(6500K)</p>
+									</div>
+								</li>
+								<li>
+									<a href="#" class="btnToggle">
+										<h4>서비스/취소/환불 등 안내</h4>
+									</a>
+									<div class="slideCon">
+										<div class="service">
+											<dl>
+												<dt>서비스 문의 방법</dt>
+												<dd>고객센터에 문의해 주시기 바랍니다.</dd>
+												<dt>취소/환불 가능시점</dt>
+												<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
+											</dl>
 										</div>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="" class="btnToggle">
-									<h4>Home styling</h4>
-									<p>3인 소파(그레이 페브릭) / 프롭에어 / 페브릭(모피 / 블랭켓, 쿠션, 담요) / 원형 커피 테이블(w/꽃병 물컵) / 플로어 램프 / 러그(그레이 샤가) / 잡지바구니</p>
-								</a>
-								<ul class="priceBox slideCon" style="display: none;">
-									<li>
-										<p class="thumb"><img src="../images/temp01.jpg" alt=""></p>
-										<div class="info">
-											<h5>바닥 타일마감</h5>
-											<p>그레이 무광 매트 타일 폭(mm) 600 * 600</p>
+									</div>
+								</li>
+								<li>
+									<a href="#" class="btnToggle">
+										<h4>A/S 안내</h4>
+									</a>
+									<div class="slideCon">
+										<div class="service">
+											<dl>
+												<dt>서비스 문의 방법</dt>
+												<dd>고객센터에 문의해 주시기 바랍니다.</dd>
+												<dt>취소/환불 가능시점</dt>
+												<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
+											</dl>
 										</div>
-									</li>
-									<li>
-										<p class="thumb"><img src="../images/temp01.jpg" alt=""></p>
-										<div class="info">
-											<h5>벽체, 천정 마감</h5>
-											<p>모래알 패턴 실크 벽지</p>
-											<a href="" class="btnSizeS btnColor03">상세보기</a>
+									</div>
+								</li>
+								<li>
+									<a href="#" class="btnToggle">
+										<h4>상품제공고시</h4>
+									</a>
+									<div class="slideCon">
+										<div class="service">
+											<dl>
+												<dt>서비스 문의 방법</dt>
+												<dd>고객센터에 문의해 주시기 바랍니다.</dd>
+												<dt>취소/환불 가능시점</dt>
+												<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
+												<dt>취소/환불 불가사유</dt>
+												<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
+											</dl>
 										</div>
-									</li>
-									<li>
-										<p class="thumb"><img src="../images/temp01.jpg" alt=""></p>
-										<div class="info">
-											<h5>LED 센서등</h5>
-											<p>사이즈(mm) 180 * 180 섹싱 CW(6500K)</p>
-										</div>
-									</li>
-								</ul>
-							</li>
-						</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
 					<!-- 자재 설명 영역 -->
 					
 					<!-- VR  페이지 연결 영역 -->
 					<div class="detailArea vrArea">
 						<h3 class="icoNewformTit"><span class="hide">Newform Preview</span></h3>
+						Newform Preview 영역
 					</div>
 					<!-- // VR  페이지 연결 영역 -->
 
@@ -269,12 +333,17 @@
 					<div class="detailArea packageArea">
 						<h3 class="icoNewformTit">Related Newform Package</h3>
 						<p class="subNewformTit">Compact Newly Weds PKG</p>
+						<ul class="cardWrap" id="cardWrap">
+							<!-- newForm Card Stamp -->
+							
+							<!--// newForm Card Stamp -->
+						</ul>
 					</div>
 					<!-- // 관련 패키지 영역 -->
 				
 					<!-- 태그 영역 -->
-					<div class="detailArea">
-						<div class="tagArea">
+					<div class="detailArea tagArea">
+						<div>
 							<h3 class="mb15">Tag</h3>
 							<a href="#" class="tagBtn"><span>#신혼부부</span></a>
 							<a href="#" class="tagBtn"><span>#다이닝</span></a>
@@ -289,6 +358,14 @@
 					<div id="recommendNewForm" class="detailArea recommend">
 						<h3>Recommend Newform Package</h3>
 						<p class="subNewformTit">추천 뉴폼패키지</p>
+						<div class="btnWrap mt10">
+							<a href="" class="btn btnSizeS btnColor03">더보기</a>
+						</div>
+						<ul class="cardWrap" id="cardWrap">
+							<!-- newForm Card Stamp -->
+							
+							<!--// newForm Card Stamp -->
+						</ul>
 					</div>
 					<!-- // 추천 패키지 영역 -->
 
@@ -296,139 +373,149 @@
 					<div id="recommendLiving" class="detailArea recommend">
 						<h3>Recommend Living Item</h3>
 						<p class="subNewformTit">추천 리빙아이템</p>
+						<div class="btnWrap mt10">
+							<a href="" class="btn btnSizeS btnColor03">더보기</a>
+						</div>
+						<ul class="cardWrap" id="cardWrap">
+							<!-- newForm Card Stamp -->
+							
+							<!--// newForm Card Stamp -->
+						</ul>
 					</div>
 					<!-- // 추천 리빙 영역 -->
 				</div>
-				<!-- // tab1 상품정보 -->
 
-				<!-- tab2 디자이너정보 -->
-				<div id="sellerInfo">
-					<!-- 판매자안내 영역 -->
-					<div id="SellerArea" class="detailArea sellerArea manager">
-						<div class="portfolioArea">
-							<div class="count"><i></i> / <em></em></div>
+				<!-- 배송형 옵션  -->
+				<div id="criteria-options-wrap" class="detailBottomTab bottomTabWrap">
+					<script id="detail-criteria-options-templates" type="text/x-handlebars-template">
+					{{!-- detail-criteria-options-templates --}}
+						<div class="optionArea bottomTabWrap">
 							<ul>
-								<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
-								<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
-								<li><a href=""><img src="../images/temp17.jpg" alt="" /></a></li>
+								<li>
+									<div id="selectedOptionList"></div>
+								</li>
 							</ul>
-							<div class="expertArea mb0">
-								<div class="thumb"><img src="../images/temp01.jpg" alt="" /></div>
-								<div class="info">
-									<h3>홍길동</h3>
-									<em><i>Modern House</i></em>
-									<p class="localInfo">경기도 상록구 사동</p>
-									<div class="btnwrap">
-										<a href="" class="btnSizeS btnFollow active">팔로잉</a>
-										<a href="#" class="btnSizeS ">1:1 메시지</a>
-									</div>
-								</div>
-							</div>
-							<div class="followList">
-								<div class="lately">
-									<ul>
-										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-										<li><a href=""><img src="../images/temp10.jpg" alt=""></a></li>
-									</ul>
-									<a href="" class="more">+<em>6</em></a>
-								</div>
+							<div class="total">
+								<span>총 합계</span>
+								<span><em class="italic" id="totalOptionsPrice">{{basePriceDesc}}</em>원</span>
 							</div>
 						</div>
-					</div>
-					<!-- // 판매자안내 영역 -->
+						<div class="buySection">
+							<div class="type02">
+								<a href="#" class="js-add-like" data-product-number="{{productNumber}}"><span class="hide">좋아요</span></a>
+								<a href="#" class="js-add-cart">마이카트</a>
+								<a href="#" class="js-prd-buy">구매하기</a>
+							</div>
+						</div>
+					</script>
 				</div>
-				<!-- // tab2 디자이너정보 -->
+				<!-- // 배송형 옵션 -->
+				
+			</section>
+			<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
 
-				<!-- tab3 구매정보 -->
-				<div id="purchasingInfo">
-					<div class="detailArea materialInfoArea purchasing">
-						<h3>Purchasing Information</h3>
-						<ul class="productList">
-							<li>
-								<a href="" class="btnToggle">
-									<h4>서비스 절차</h4>
-								</a>
-								<div class="slideCon">
-									<div class="service">
-										<dl>
-											<dt>서비스 문의 방법</dt>
-											<dd>고객센터에 문의해 주시기 바랍니다.</dd>
-											<dt>취소/환불 가능시점</dt>
-											<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
-										</dl>
-									</div>
-								</div>
-							</li>
-							<li>
-								<a href="" class="btnToggle">
-									<h4>서비스/취소/환불 등 안내</h4>
-								</a>
-								<div class="slideCon">
-									<div class="service">
-										<dl>
-											<dt>서비스 문의 방법</dt>
-											<dd>고객센터에 문의해 주시기 바랍니다.</dd>
-											<dt>취소/환불 가능시점</dt>
-											<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
-										</dl>
-									</div>
-								</div>
-							</li>
-							<li>
-								<a href="" class="btnToggle">
-									<h4>A/S 안내</h4>
-								</a>
-								<div class="slideCon">
-									<div class="service">
-										<dl>
-											<dt>서비스 문의 방법</dt>
-											<dd>고객센터에 문의해 주시기 바랍니다.</dd>
-											<dt>취소/환불 가능시점</dt>
-											<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
-										</dl>
-									</div>
-								</div>
-							</li>
-							<li>
-								<a href="" class="btnToggle">
-									<h4>상품제공고시</h4>
-								</a>
-								<div class="slideCon">
-									<div class="service">
-										<dl>
-											<dt>서비스 문의 방법</dt>
-											<dd>고객센터에 문의해 주시기 바랍니다.</dd>
-											<dt>취소/환불 가능시점</dt>
-											<dd>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. <dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>다음의 경우에는 불가합니다.가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나취급부주의로 인한 파손/고장/오염된 경우.</dd>
-											<dt>취소/환불 불가사유</dt>
-											<dd>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다.기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다.일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이지역은 2~3일 가량 배송일정이 늦어질 수 있습니다.고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발한 후 왕복 배송비는 고객님 부담입니다</dd>
-										</dl>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<!-- // tab3 구매정보 -->
+
+
+<!-- @@include ../_template/cardTemplate.html -->
+
+<script id="seller-card-templates" type="text/x-handlebars-template">
+{{!-- seller-card-templates --}}
+	{{#if productCards.length}}
+		<ul>
+		{{#each productCards}}
+			{{#vxIF @index "<" 4}}
+			<li>
+			{{#vxSwitch cardTypeCode}}
+			{{#vxCase "DP_CARD_TYPE_01" break=True}}
+				{{!-- 매거진 --}}
+				<a href="/magazine/detail.html?articleNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{#vxCase "DP_CARD_TYPE_02" break=True}}
+				{{!-- 뉴폼 상품 --}}
+				<a href="/newForm/detail.html?productNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{#vxCase "DP_CARD_TYPE_03" break=True}}
+				{{!-- 샵 상품 --}}
+				<a href="/shop/detail.html?productNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{#vxCase "DP_CARD_TYPE_07" break=True}}
+				{{!-- 전문가 --}}
+				<a href="/manager/detail.html?expertNumber={{cardNumber}}">
+			{{/vxCase}}
+			{{/vxSwitch}}
+					<img src="{{cardImageUrl}}" alt="{{cardName}}">
+				</a>
+			</li>
+			{{/vxIF}}
+		{{/each}}
+		</ul>
+		{{#vxIF productCards.length ">" 5}}
+			<a href="/manager/detail.html?expertNumber={{productCards.[0].expertNum}}" class="more">
+				+<em>{{vxMath productCards.length "-" 4}}</em>
+			</a>
+		{{/vxIF}}
+	{{else}}
+		<li>
+			<p class="noContent" style="display:block">상품이 없습니다.</p>
+		</li>
+	{{/if}}
+{{!--// seller-card-templates --}}
+</script>
+
+<script id="detail-partner-templates" type="text/x-handlebars-template">
+{{!-- detail-partner-template --}}
+	{{#if company}}
+		<p class="ownerInfo">by {{partnerName}} <span>{{company}}</span></p>
+	{{else}}
+		<p class="ownerInfo">by {{partnerName}}</p>
+	{{/if}}
+{{!--// detail-partner-template --}}
+</script>
+
+<script id="detail-options-templates" type="text/x-handlebars-template">
+{{!-- detail-options-templates --}}
+	{{#each .}}
+		<li><a href="#" data-value="{{optionLevel}}-{{@index}}">{{optionName}} {{priceTag}}</a></li>
+	{{/each}}
+{{!--// detail-options-templates --}}
+</script>
+
+<script id="detail-selected-options-templates" type="text/x-handlebars-template">
+{{!-- detail-selected-options-templates --}}
+	{{#each .}}
+		<div class="optInfo">
+			<p>{{name}}</p>
+			<div class="info">
+				<span>
+					<select class="optionNum" data-option-num='{{orderOptionNumber}}'>
+						{{#vxSelect 0 100 1 quantity}}
+							{{#if this.selected}}
+								<option value="{{this.index}}" selected="selected">{{this.index}}</option>
+							{{else}}
+								<option value="{{this.index}}">{{this.index}}</option>
+							{{/if}}
+						{{/vxSelect}}
+					</select>
+				</span>
+				<span class="pirce">
+					<span><em>{{price}}</em>원 </span>
+					<a href="#" class="remove cancelOption" data-option-num="{{orderOptionNumber}}"><span class="hide">삭제</span></a>
+				</span>
 			</div>
 		</div>
-		<!-- @@include ../_template/footer.html -->
-	</div>
+	{{/each}}
+{{!-- detail-selected-options-templates --}}
+</script>
+
+
+<!-- [D] 임시 구성 -->
+<style>
+	#criteria-options-wrap .bottomTabWrap {display:none}
+	#criteria-options-wrap .bottomTabWrap.active {display:block}
+	.topArea .newFormBtn .subBtn li a {width:40px}
+</style>
+
 </body>
 </html>

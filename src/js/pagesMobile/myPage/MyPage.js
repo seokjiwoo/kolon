@@ -112,6 +112,12 @@ module.exports = function() {
 			$('#myPageHeaderMyCartCount').html(activity.cartCount);
 			$('#myCartConstNewCount').html(activity.cartConstNewCount);
 			$('#myCartDlvyNewCount').html(activity.cartDlvyNewCount);
+
+			setTimeout(function() {
+				// 임시 처리..
+				$('#myCartConstNewCount').html(activity.cartConstNewCount);
+				$('#myCartDlvyNewCount').html(activity.cartDlvyNewCount);
+			}, 1000);
 		}
 	}
 

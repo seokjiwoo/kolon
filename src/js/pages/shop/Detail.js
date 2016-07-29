@@ -346,6 +346,8 @@ module.exports = function() {
 						});
 					}
 
+					result.data.product.promotionCode = $.trim(String(result.data.product.promotionCode));
+					
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));

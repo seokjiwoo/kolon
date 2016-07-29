@@ -9,7 +9,7 @@
 		<div class="container">
 			<!-- @@include ../_template/my_depth01.html -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu03":"on"} -->
-			<section id="">
+			<section>
 				<div class="tabParents">
 					<ul class="tabSquare">
 						<li class="on"><a href="/myPage/myService.html">시공 상품 내역</a></li>
@@ -54,102 +54,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="orderState">
-					<ul>
-						<li class="active">
-							<p>실측/견적</p>
-							<em>3</em>
-						</li>
-						<li>
-							<p>계약/결제</p>
-							<em>0</em>
-						</li>
-						<li>
-							<p>시공</p>
-							<em>5</em>
-						</li>
-						<li>
-							<p>시공완료</p>
-							<em>12</em>
-						</li>
-					</ul>
-				</div>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="/myPage/myServiceDetail.html">2354754</a>
-					</p>
-					<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">[인테리어 패키지]<br /> 모노 화이트 스타일 욕실</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="count">
-										<b>1,700,000</b> 원
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="../_popup/popProgress01.html" class="state btnPop" data-user-class="pop">실측/견적 요청</a>
-								<a href="../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">실측/견적 요청 취소</a><!-- 실측/견적 요청 취소 신청 팝업 -->
-								<div class="workInfo">
-									<div class="addr">
-										<p>판매자 시공지</p>
-										<p>코오롱 글로벌 서울시 강남구 삼성동 8-5</p>
-									</div>
-									<ul>
-										<li><span>시공시작일</span>2016.04.26</li>
-										<li><span>완공예정일</span>2016.05.28</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="#">2354754</a>
-					</p>
-					<p class="payPrice">결제금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">[인테리어 패키지]<br /> 모노 화이트 스타일 욕실</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em> 원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop">실측/견적 요청</a>
-								<a href="../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop"  data-user-class="pop">실측/견적 요청 취소</a><!-- 결제 취소 신청  -->
-								<div class="workInfo">
-									<div class="addr">
-										<p>판매자 시공지</p>
-										<p>코오롱 글로벌 서울시 강남구 삼성동 8-5</p>
-									</div>
-									<ul>
-										<li><span>시공시작일</span>2016.04.26</li>
-										<li><span>완공예정일</span>2016.05.28</li>
-									</ul>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+
+				<div id="js-order-list-wrap"></div>
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
@@ -165,7 +71,133 @@
 	.js-order-filter.is-active-2 li:nth-child(2) a[data-filter] {color:#fff}
 	.js-order-filter.is-active-3 li:nth-child(3) a[data-filter] {color:#fff}
 	.js-order-filter.is-active-4 li:nth-child(4) a[data-filter] {color:#fff}
-
 </style>
+
+
+
+
+<script id="order-list-templates" type="text/x-handlebars-template">
+{{!-- order-list-templates --}}
+	<div class="orderState js-order-filter is-active-{{vxActiveFilterIdx}}">
+		<ul>
+			{{#with vxOrderStateCodes}}
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_CONST_STATE_02,SL_CONST_STATE_03">
+					<p>실측/견적</p>
+					<em>{{vxMath SL_CONST_STATE_02 "+" SL_CONST_STATE_03}}</em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_CONST_STATE_05,SL_CONST_STATE_07">
+					<p>계약/결제</p>
+					<em>{{vxMath SL_CONST_STATE_05 "+" SL_CONST_STATE_07}}</em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_CONST_STATE_09,SL_CONST_STATE_10">
+					<p>시공</p>
+					<em>{{vxMath SL_CONST_STATE_09 "+" SL_CONST_STATE_10}}</em>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="js-filter" data-filter="SL_CONST_STATE_11">
+					<p>시공완료<i></i></p>
+					<em>{{SL_CONST_STATE_11}}</em>
+				</a>
+			</li>
+			{{/with}}
+		</ul>
+	</div>
+	{{#if constOrderState.length}}
+	{{#each constOrderState}}
+		<div class="wrapT">
+			<p class="orderNum">
+				<span>{{orderDate}}</span>
+				<a href="/myPage/myServiceDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+			</p>
+			<p class="payPrice">결제금액 <em>{{constProduct.productPriceDesc}}</em> 원</p>
+			<ul class="productList">
+				<li>
+					<a href="/newForm/detail.html?productNumber={{constProduct.productNumber}}" class="thumb">
+						<img src="constProduct.productImageUrl" alt="" />
+					</a>
+					<div class="info">
+						{{#if constProduct.companyName}}
+							<span>{{constProduct.companyName}}</span>
+						{{/if}}
+						<p><a href="">[{{constProduct.productOptionName}}]<br /> {{constProduct.productName}}</a></p>
+					</div>
+					<ul class="productData">
+						<li>
+							<p class="count">
+								<b>{{constProduct.productPriceDesc}}</b> 원
+							</p>
+						</li>
+					</ul>
+					<div class="cancelArea">
+						{{#vxSwitch orderStateCode}}
+							{{#vxCase "SL_CONST_STATE_01" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-1">선금 입금대기</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_02" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-2">실측/견적 요청</a>
+								<!-- 
+								<a href="../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">실측/견적 요청 취소</a>
+								-->
+								<!-- 실측/견적 요청 취소 신청 팝업 -->
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_03" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-3">실측/견적 진행</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_04" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-4">실측/견적 완료</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_05" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-5">계약 완료</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_06" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-6">잔금 입금대기</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_07" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-7">잔금 결제완료</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_08" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-8">시공준비중</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_09" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-9">시공진행</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_10" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-10">시공검수중</a>
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_11" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-11">시공완료</a>
+								{{#vxIF addPaymentYn "!=" "N"}}
+								<a href="/order/additionalPayment.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">추가금액 결제</a>
+								{{/vxIF}}
+							{{/vxCase}}
+							{{#vxCase "SL_CONST_STATE_16" break=true}}
+								<a href="../_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-16">구매확정</a>
+							{{/vxCase}}
+						{{/vxSwitch}}
+						<div class="workInfo">
+							<div class="addr">
+								<p>판매처</p>
+								<p>{{constProduct.saleMemberName}}</p>
+							</div>
+							<ul>
+								<li><span>완공예정일</span>실측 후 게시</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	{{/each}}
+	{{else}}
+		<div class="noContent" style="display:block">주문/시공 내역이 없습니다.</div>
+	{{/if}}
+{{!--// order-list-templates --}}
+</script>
 
 </body>

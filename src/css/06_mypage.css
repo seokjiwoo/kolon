@@ -29,6 +29,8 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 
 .my .myMenu + .singleCard {padding:20px 50px 50px}
 .my .singleCard{padding:0 50px 50px}
+.my .cardWrap{margin-top: 0;}
+.my .secTit + .cardWrap{margin-top: 60px;}
 .my .cardWrap02{float: left;width: 910px;min-width: 0;}
 .my .secTit{font-family:'NotoSansR', sans-serif;font-size: 30px;color: #000;}
 .secTit02 {padding-bottom: 25px;border-bottom: 1px solid #000;}
@@ -125,15 +127,15 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .timeCard .time{margin-top: 5px;font-size: 14px;color: #666;}
 
 .timeCard .innerWrap{overflow: hidden;padding: 20px 30px;border:1px solid #e6e6e6;}
-.timeCard .innerWrap .name{width: 140px;font-family:'NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
+.timeCard .innerWrap .name{width: 180px;font-family:'NotoSansR', sans-serif;color: #000;font-size: 14px;line-height: 1.4em;letter-spacing: 0;}
 .timeCard .innerWrap .name b{font-family:'NotoSansM', sans-serif;}
-.timeCard .innerWrap .myRateWrap{width: 190px;text-align: center;}
+/*.timeCard .innerWrap .myRateWrap{width: 190px;text-align: center;}
 .timeCard .innerWrap .myRate{color: #666;margin-right:10px;}
-.timeCard .innerWrap .myRate b{color: #666;}
+.timeCard .innerWrap .myRate b{color: #666;}*/
 .timeCard .innerWrap .btnFollow{width: 175px;text-align: center;margin-right: 19px}
 .timeCard .innerWrap .btnFollow a{min-width: 110px;}
 .timeCard .innerWrap .btnFollow a:after{content: '';display: inline-block;width: 17px;height: 16px;margin-left: 10px;background: url('../images/ico_checkL.png') no-repeat center;vertical-align: sub;}
-.timeCard .innerWrap .btnFollow a.dismiss{border:1px solid #a9c700;color: #a9c700}
+.timeCard .innerWrap .btnFollow a.dismiss{border:1px solid #465f8d;color: #465f8d}
 .timeCard .innerWrap .btnFollow a.dismiss:after{background-image:url('../images/ico_plusG.png');}
 .timeCard .innerWrap li{display: inline-block;vertical-align: middle;}
 .timeCard .innerWrap .imgWrap{overflow: hidden;margin-left:-10px;font-family:'NotoSansM', sans-serif;}
@@ -192,11 +194,12 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 #myMsg .recordCon .newMsg span:after {content:''; border-left:15px solid transparent; border-right:15px solid transparent; border-top:9px solid #f37972; position:absolute; bottom:-9px; right:0;}
 #myMsg .recordCon .date{position: absolute;right: 30px;bottom: 20px;color: #999;font-size: 14px;}
 
-#following fieldset{width:100%;margin-bottom: 30px;background: #fff;border:1px solid #e6e6e6;color: #404040;display: block;font-family:'NotoSansM', sans-serif}
+#following fieldset{width:100%;margin-bottom: 30px;background: #fff;border:1px solid #45608e;color: #404040;display: block;font-family:'NotoSansM', sans-serif}
 #following #followSearch{width: 1070px;margin:0 20px;;border:0;vertical-align: middle;}
-#following button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_search.png') no-repeat center;font-size: 0;vertical-align: middle;}
+#following button{display: inline-block;width: 40px;height: 40px;border:0;background: url('../images/btn_searchN.png') no-repeat center;font-size: 0;vertical-align: middle;}
+#following .innerWrap .recordPic{overflow: hidden;width: 96px;height: 96px;margin-right: 20px;border-radius: 50%;background: #eee;}
 
-.recordSort{;table-layout: fixed;width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
+.recordSort{table-layout: fixed;width: 100%;border-top:1px solid #545454;border-bottom:1px solid #ccc;;font-family:'NotoSansR', sans-serif;font-size: 14px;text-align: center;line-height: 1.2em}
 .recordSort th{padding: 15px;background: #f8f8f8;color: #333;}
 .recordSort td{padding:15px 0 15px 15px;}
 .recordSort{margin:20px 0 30px;text-align: left;}
@@ -240,6 +243,10 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .record .recordInfo .productPrice{font-family:'NotoSansM', sans-serif;}
 .record .recordInfo .productPrice + .producOption{margin-top: 10px;}
 .record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#b08967;font-family:'NotoSansM', sans-serif;border:2px solid #b08967;}
+.record .recordInfo .promo{margin-right:5px;text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;font-family:'NotoSansM', sans-serif;border:2px solid;}
+.record .recordInfo .promoType01{color:#ff514d;border-color: #ff514d}
+.record .recordInfo .promoType02{color:#ff693b;border-color: #ff693b}
+.record .recordInfo .promoType03{color:#ff9e1d;border-color: #ff9e1d}
 .record .orderState{position: relative;}
 .record .orderState a{font-size:13px;}
 .record .btnWrap{margin-top: 5px;}

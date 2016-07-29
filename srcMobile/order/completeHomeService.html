@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 주문완료"} -->
+</head>
+<body class="login" data-page-id="order-complete-homeService">
+	<div class="wrapper order">
+		<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+
+				<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
+
+			</div>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+	</div>
+
+
+<script id="order-complete-templates" type="text/x-handlebars-template">
+	{{!-- order-complete-templates --}}
+	<h2 class="secTit setTitC">주문완료</h2>
+	<!--홈서비스 세탁 주문 완료  -->
+	<div class="completeBox">
+		<p class="tit"><b>선택하신 서비스의 주문&#47;결제가 완료되었습니다.</b></p>
+		<p><b>{{vxMemberName}}</b> 고객님께서 {{vxOrderDate}}에 주문하신 주문번호는 <span class="pointRed">{{vxOrderNumber}}</span>입니다.<br/>주문내역 확인은 주문내역 확인은 마이커먼 &gt; 홈서비스에서 확인하실 수 있습니다.</p>
+	</div>
+	<h3 class="subTit">결제 정보</h3>
+	<div class="orderCont">
+		<div class="tbSet" id="order-delivery-wrap">
+			<table>
+				<caption>결제 정보</caption>
+				<colgroup>
+					<col style="width:25%;"/><col style="width:75%;"/>
+				</colgroup>
+				<thead>
+					<th>총 결제금액</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td scope="col">{{washServiceDetail.priceDesc}}원</td>						
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<span class="underTxt">※ 홈서비스 결제 안내<br>- 결제하신 서비스에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</span>
+	</div>
+	<div class="orderCont">
+		<div class="tbSet">
+			<table class="tbLThC">
+				<caption>결제방법에 관한 입금자명, 입금계좌 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">결제방법</th>
+						<td>{{washServiceDetail.paymentMethodCodeName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<h3 class="subTit">주문상품내역</h3>
+	<div class="orderCont">
+		<div class="tbSet" id="order-delivery-wrap">
+			<table>
+				<caption>{{washServiceDetail.serviceSectionCodeName}} 서비스 신청 정보</caption>
+				<colgroup>
+					<col style="width:25%;"/><col style="width:75%;"/>
+				</colgroup>
+				<thead>
+					<th>업체</th><th>서비스 정보</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td scope="col">[{{washServiceDetail.serviceSectionCodeName}}서비스]<br>{{washServiceDetail.companyName}}</td>
+						<td scope="col">{{washServiceDetail.serviceInfomation}}</td>										
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- 배송형 상품 주문 완료  -->
+	<div class="btnC">
+		<a href="/" class="btn btnSizeL btnColor02 btnWL">커먼 메인으로 이동</a>
+	</div>
+	{{!--// order-complete-templates --}}
+</script>
+</body>
+</html>

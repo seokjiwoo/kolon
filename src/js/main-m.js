@@ -166,10 +166,37 @@ $(document).ready(function() {
 			case 'order-orderService':
 				PageModuleClass = require('./pagesMobile/order/OrderService.js');
 				break;
+			case 'order-orderServiceBalance':
+				PageModuleClass = require('./pagesMobile/order/OrderServiceBalance.js');
+				break;
+			case 'order-additional-payment':
+				PageModuleClass = require('./pagesMobile/order/OrderAdditionalPayment.js');
+				break;
+
+			// 홈서비스 주문서 작성
+			case 'order-orderHomeService':
+				PageModuleClass = require('./pagesMobile/order/OrderHomeService.js');
+				break;
 
 			// 주문완료 complete
 			case 'order-complete':
 				PageModuleClass = require('./pagesMobile/order/Complete.js');
+				break;
+			case 'order-complete-advance':
+				PageModuleClass = require('./pagesMobile/order/CompleteAdvance.js');
+				break;
+			case 'order-complete-balance':
+				PageModuleClass = require('./pagesMobile/order/CompleteBalance.js');
+				break;
+			case 'order-complete-additional':
+				PageModuleClass = require('./pagesMobile/order/CompleteAdditional.js');
+				break;
+			case 'order-complete-homeService':
+				PageModuleClass = require('./pagesMobile/order/CompleteHomeService.js');
+				break;
+
+			case 'order-failure':
+				PageModuleClass = require('./pagesMobile/order/Failure.js');
 				break;
 		// [E] 주문서 작성 order
 

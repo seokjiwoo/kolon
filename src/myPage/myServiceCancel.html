@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 시공 상품 내역"} -->
+</head>
+<body data-page-id="myPage-myService-cancel">
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container bgTop">
+			<!-- @@include ../_template/my_depth01.html {"myMenu01":"on"} -->
+			<!-- @@include ../_template/my_depth02.html {"myMenu03":"on"} -->
+			<div class="wrap">
+				<!-- @@include ../_template/my_depth03_02.html {"myMenu02":"on"} -->
+				<section class="singleCard" id="myService" style='min-height:550px'>
+					<h2 class="secTit">시공 취소 환불 내역</h2>
+					<table class="recordSort" summary="주문 배송 조회 표로써 기간별 주문조회, 시공 내역 검색 정보가 담겨있습니다.">
+						<colgroup>
+							<col style="width:130px;"/>
+							<col style="width:auto;"/>
+						</colgroup>
+						<caption>시공 취소 환불 내역 조회 표</caption>
+						<tr>
+							<th>기간별 주문조회</th>
+							<td>
+								<ul class="sortTerm">
+									<li><a href="" class="on">1주일</a></li>
+									<li><a href="">2주일</a></li>
+									<li><a href="">1개월</a></li>
+									<li><a href="">3개월</a></li>
+									<li><a href="">6개월</a></li>
+								</ul>
+								<div class="sortTermSet">
+									<!-- datePicker -->
+									<div class="calendar cal2 js-range-picker">
+										<span class="calInp">
+											<input type="text" title="희망 시공 시작 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-from">날짜선택</a>
+											<div class="cal-container js-picker-from"></div>
+										</span> 
+										<span class="calInp">
+											<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn-to">날짜선택</a>
+											<div class="cal-container js-picker-to"></div>
+										</span>
+									</div>
+									<!--// datePicker -->
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>시공 내역 검색</th>
+							<td>
+								<form action="">
+									<fieldset class="recordSearch">
+										<legend class="hide">시공 내역 검색</legend>
+										<input type="text" id="recordInput" title="주문내역 입력 란">
+										<label for="recordInput"></label>
+										<button type="submit">검색</button>
+									</fieldset>
+								</form>
+							</td>
+						</tr>
+					</table>
+					<div class="alignBox expand">
+						<h3 class="subTit">주문내역 <span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+						<ul class="drop dropChk dropExpand" data-prevent="true">
+							<li><a href="#">진행상태 보기</a></li>
+							<li><p class="checkbox">
+								<label for="chkAll" class="on">전체</label>
+								<input type="checkbox" name="SL_CONST_STATE" id="chkAll" checked data-all-checker="true">
+							</p></li><li><p class="checkbox">
+								<label for="chk01" class="on">취소신청</label>
+								<input type="checkbox" name="SL_CONST_STATE_12" id="chk01" checked>
+							</p></li><li><p class="checkbox">
+								<label for="chk02" class="on">취소승인</label>
+								<input type="checkbox" name="SL_CONST_STATE_13" id="chk02" checked>
+							</p></li><li><p class="checkbox">
+								<label for="chk03" class="on">취소반려</label>
+								<input type="checkbox" name="SL_CONST_STATE_14" id="chk03" checked>
+							</p></li><li><p class="checkbox">
+								<label for="chk04" class="on">환불완료</label>
+								<input type="checkbox" name="SL_CONST_STATE_15" id="chk04" checked>
+							</p></li>
+						</ul>
+					</div>
+
+					<table class="record record03" summary="시공 상품 목록 표로써 주문번호, 상품정보, 판매처, 시공지, 완공일, 진행상태 정보가 담겨있습니다.">
+						<caption>시공 취소 상품 목록 표</caption>
+						<thead>
+							<colgroup>
+								<col style="width:100px;"/>
+								<col style="width:110px;"/>
+								<col style="width:215px;"/>
+								<col style="width:110px;"/>
+								<col style="width:100px;"/> 
+								<col style="width:160px;"/> 
+							</colgroup>
+							<tr>
+								<th>주문일/주문번호</th>
+								<th colspan="2">상품정보</th>
+								<th>판매처</th>
+								<th>완공일</th>
+								<th>진행상태</th>
+							</tr>
+						</thead>
+						<tbody id='js-order-list-wrap'></tbody>
+					</table>
+				</section>
+			</div>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+	</div>
+
+<script id="order-list-templates" type="text/x-handlebars-template">
+{{!-- order-list-templates --}}
+{{#if constOrderState.length}}
+{{#each constOrderState}}
+	<tr>
+		<td class="recordDate">
+			<p class="date">{{orderDate}}<br><a href="myServiceDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+		</td>
+		<td><div class="recordThumb"><img src="{{constProduct.productImageUrl}}" alt=""></div></td>
+		<td class="recordInfo">
+			<span class="owner">{{constProduct.saleMemberName}}</span><br>
+			[{{constProduct.productOptionName}}] <a href="/newForm/detail.html?productNumber={{constProduct.productNumber}}">
+			<span class="productTit">{{constProduct.productName}}</span></a>
+			<span class="producOption">옵션 : {{constProduct.productOptionName}}</span>
+			<span class="productPrice">{{constProduct.productPriceDesc}} 원</span>
+		</td>
+		<td>{{constProduct.saleMemberName}}</td>
+		<td>실측 후 게시</td>
+		<td class="orderState">
+			{{#vxSwitch orderStateCode}}
+			{{#vxCase "SL_CONST_STATE_01" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step01", "step01":"on"} -->
+				선금 입금대기<span class="stateIcor"></span>
+			</div>
+			<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">실측/견적 요청취소</a>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_02" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step02", "step02":"on"} -->
+				실측/견적 요청<span class="stateIcor"></span>
+			</div>
+			<a href="../../_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">실측/견적 요청취소</a>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_03" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step03", "step03":"on"} -->
+				실측/견적 진행<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_04" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step04", "step04":"on"} -->
+				실측/견적 완료<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_05" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step05", "step05":"on"} -->
+				계약 완료<span class="stateIcor"></span>
+			</div>
+			<a href="/order/orderServiceBalance.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">시공금액 결제</a>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_06" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step06", "step06":"on"} -->
+				잔금 입금대기<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_07" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step07", "step07":"on"} -->
+				잔금 결제완료<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_08" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step08", "step08":"on"} -->
+				시공준비중<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_09" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step09", "step09":"on"} -->
+				시공진행<span class="stateIcor"></span>
+			</div>
+			<a href="myServiceDetail.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">시공현황 확인</a>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_10" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step10", "step10":"on"} -->
+				시공검수중<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_11" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step11", "step11":"on"} -->
+				시공완료<span class="stateIcor"></span>
+			</div>
+			{{#vxIF addPaymentYn "!=" "N"}}
+			<a href="/order/additionalPayment.html?orderNumber={{orderNumber}}" class="btnSizeS btnColor01">추가금액 결제</a>
+			{{/vxIF}}
+			{{/vxCase}}
+			{{#vxCase "SL_CONST_STATE_16" break=true}}
+			<div class="stateTxt stateWrap">
+				<!-- @@include ../_template/pop_order_state02.html {"step":"step11", "step11":"on"} -->
+				구매확정<span class="stateIcor"></span>
+			</div>
+			{{/vxCase}}
+			{{/vxSwitch}}
+		</td>
+	</tr>
+{{/each}}
+{{else}}
+	<tr>
+		<td colspan="7" class="noList">주문/시공 내역이 없습니다.</td>
+	</tr>
+{{/if}}
+{{!--// order-list-templates --}}
+</script>
+</body>
+</html>
