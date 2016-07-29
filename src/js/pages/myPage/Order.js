@@ -172,75 +172,60 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 							});
+		
+		var cancelOrderDataArray = new Array();
+		$.each(data.product, function(key, each){
+			cancelOrderDataArray.push(new Array(each.productNumber, each.orderOptionNumber));
+		});
 
 		self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
-		self.colorbox.find('.js-cancel-submit').on('click', function(e) {
+		self.colorbox.find('#js-order-cancel-form').on('submit', function(e) {
 			e.preventDefault();
 
-			var forms = self.colorbox.find('.js-cancel-form'),
-			isValid = false,
+			var isValid = true,
 			cancelType, cancelReson;
 
-			$.each(forms, function() {
-				cancelType = $(this).find('.js-type').val();
-				cancelReson = $(this).find('.js-inp').val();
-				if (cancelType && cancelReson) {
-					isValid = true;
-				} else {
-					isValid = false;
-					return false;
-				}
+			$.each($('.cancelReasonDrop'), function(key, each){
+				cancelOrderDataArray[key].push($(each).val());
+				if (!$(each).val()) isValid = false;
 			});
-
+			$.each($('.cancelReasonField'), function(key, each){
+				cancelOrderDataArray[key].push(encodeURI($(each).val()));
+				if (!$(each).val()) isValid = false;
+			});
+			
 			if (!isValid) {
 				win.alert('취소 사유를 선택/입력 해주세요.');
 				return;
 			}
-
-			$.each(forms, function() {
-				cancelType = $(this).find('.js-type').val();
-				cancelReson = $(this).find('.js-inp').val();
-
-				controller.orderCancel(
-					self.selPopBtnInfo.info.orderNumber,
-					{
-						"accountAuthDatetime": "2016-04-01",
-						"accountAuthYn": "Y",
-						"addDeliveryChargeTotal": 0,
-						"claimDeliveryChargeTotal": 0,
-						"claimReasonCode": cancelType,
-						"claimReasonStatement": "string",
-						"claimTypeCode": "string",
-						"orderNumber": 0,
-						"refundAccountNumber": 0,
-						"refundBankCode": "string",
-						"refundDepositorName": cancelReson
-					},
-					[
-						{
-							"addDeliveryCharge": 0,
-							"claimDeliveryCharge": 0,
-							"claimNumber": 0,
-							"claimProcessDatetime": "string",
-							"claimProcessQuantity": 0,
-							"claimProductAmount": 0,
-							"claimRequestQuantity": 0,
-							"claimStateCode": "string",
-							"claimStateReason": "string",
-							"deliveryChargePaymentCode": "string",
-							"orderNumber": 0,
-							"orderProductSequence": "string"
-						}
-					]
-				);
+			
+			var cancelOrderArray = new Array();
+			$.map(cancelOrderDataArray, function(each) {
+				cancelOrderArray.push(each.join('|'));
 			});
+
+			// productNumber|orderOptionNumber|클레임사유 코드|취소신청사유
+			var cancelOrder = cancelOrderArray.join(',');
+			//console.log(cancelOrder);
+			controller.orderCancel(self.selPopBtnInfo.info.orderNumber, cancelOrder);
 		});
 	};
 
 	function setColoboxEvevnts() {
 		// 취소신청
 		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
+			if (self.selPopBtnInfo.info.joinedOrder == "1") {
+				controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
+			} else {
+				var cancelRequestMessage = '';
+				$.each($('[data-order-info]'), function(key, each){
+					var eachInfo = $(each).data('order-info');
+					if (self.selPopBtnInfo.info.orderNumber == eachInfo.orderNumber) {
+						cancelRequestMessage += (eachInfo.productNumber+'|'+eachInfo.orderOptionNumber+',');
+					} 
+				});
+				controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, cancelRequestMessage);
+			}
 		}
 
 		// 배송추적
@@ -414,6 +399,15 @@ module.exports = function() {
 			
 			case ORDER_EVENT.CANCEL_DETAIL:
 				displayCancelPopup(result.data, type);
+				break;
+			
+			case ORDER_EVENT.ORDER_CANCEL:
+				if (result == 200) {
+					alert('주문취소가 완료되었습니다');
+					location.reload(true);
+				} else {
+					alert(result.message);
+				}
 				break;
 
 			case ORDER_EVENT.ORDER_TRACKING:
