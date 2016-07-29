@@ -225,7 +225,7 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
-			case ORDER_EVENT.NEWFORM_ORDER_LIST:
+			case ORDER_EVENT.NEWFORM_CANCEL_LIST:
 				/*
 				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
 
@@ -246,7 +246,7 @@ module.exports = function() {
 				}
 				*/
 				
-				$.each(result.constOrderState, function(key, eachOrder){
+				$.each(result.constOrderCancel, function(key, eachOrder){
 					eachOrder.orderDate = moment(eachOrder.orderDateTime).format('YYYY.MM.DD');
 					eachOrder.constProduct = eachOrder.constProducts[0];
 					eachOrder.constProduct.productPriceDesc = util.currencyFormat(eachOrder.constProduct.productPrice);

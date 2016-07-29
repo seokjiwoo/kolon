@@ -92,6 +92,8 @@ module.exports = function() {
 			case 'SL_CONST_STATE_14':
 			case 'SL_CONST_STATE_15':
 				info.stepNumber = '0';
+				$('.myMenu ul li').removeClass('on');
+				$('.myMenu ul li:eq(1)').addClass('on');
 				break;
 		}
 

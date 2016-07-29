@@ -722,10 +722,10 @@ function ClassOrderController() {
 			'deliveryStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
-				$(callerObj).trigger('myConstOrdersListResult', [status, result.data]);
+				$(callerObj).trigger('myConstCancelListResult', [status, result.data]);
 			} else {
-				Super.handleError('myConstOrdersList', result);
-				$(callerObj).trigger('myConstOrdersListResult', [status, result]);
+				Super.handleError('myConstCancelList', result);
+				$(callerObj).trigger('myConstCancelListResult', [status, result]);
 			}
 		}, false);
 	};
