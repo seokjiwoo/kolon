@@ -121,21 +121,21 @@ module.exports = function() {
 			}
 		});
 
-		$('[data-option-num]').on('change', function() {
-			var target = $(this),
-			value = parseInt($(this).val(), 10),
-			info = target.closest(self.opts.cartList.wrap).data('list-info');
-			info.quantity = value;
+		// $('[data-option-num]').on('change', function() {
+		// 	var target = $(this),
+		// 	value = parseInt($(this).val(), 10),
+		// 	info = target.closest(self.opts.cartList.wrap).data('list-info');
+		// 	info.quantity = value;
 
-			target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
-			displayUpdate();
+		// 	target.closest(self.opts.cartList.wrap).attr('data-list-info', JSON.stringify(info));
+		// 	displayUpdate();
 
-			controller.updateMyCartList(info.cartNumber, {
-				"productNumber": info.productNumber,
-				"orderOptionNumber": info.optionNumber,
-				"quantity": value
-			});
-		});
+		// 	controller.updateMyCartList(info.cartNumber, {
+		// 		"productNumber": info.productNumber,
+		// 		"orderOptionNumber": info.optionNumber,
+		// 		"quantity": value
+		// 	});
+		// });
 	}
 
 	// function onOptionNumChange(e, target, value) {
@@ -177,9 +177,7 @@ module.exports = function() {
 			info = $(this).data('list-info');
 			value1 = (info.basePrice) + info.deliveryCharge;
 			value2 = (info.salePrice) + info.deliveryCharge;
-
-			totalBaseValue += value1;
-			discountValue += info.discountPrice;
+			
 			totalSaleValue += value2;
 
 			//$(this).find(self.opts.cartList.totalPrice).html(util.currencyFormat(value2));
@@ -191,9 +189,10 @@ module.exports = function() {
 			});
 		});
 
-		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalBaseValue));
-		orderInfo.find(self.opts.cartOrderInfo.discount).html(util.currencyFormat(discountValue || 0));
+		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalSaleValue));
 		orderInfo.find(self.opts.cartOrderInfo.totalPrice).html(util.currencyFormat(totalSaleValue));
+
+		$('.js-list-size').text(orderData.length);
 	}
 
 	function onCartOrderInfoToggler(e) {
@@ -205,12 +204,7 @@ module.exports = function() {
 
 	function displayData(data) {
 		$.map(data, function(eachCartItem) {
-			if (eachCartItem.deliveryCharge == null) eachCartItem.deliveryCharge = 0;
-			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
-			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
 			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
-			eachCartItem.discountPriceDesc = util.currencyFormat(eachCartItem.discountPrice);
-			
 
 			if (util.isLocal()) {
 				eachCartItem.productImageUrl = 'https://dev.koloncommon.com' + eachCartItem.productImageUrl;
@@ -243,6 +237,7 @@ module.exports = function() {
 		switch(eventType) {
 			case CART_EVENT.LIST:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				console.log('result.data.myCarts', result.data.myCarts.length)
 				displayData(result.data.myCarts);
 				displayUpdate();
 				setDeleteEvents();

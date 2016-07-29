@@ -178,23 +178,40 @@ module.exports = function() {
 				});
 
 				var constReservation = data.constReservation;
-				var tags = '';
-				$.each(constReservation.dwellingForm, function(key, each){
-					tags += '<li class="hType0'+(key+1)+'"><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp1" id="hTp1'+key+'"/><label for="hTp1'+key+'">'+each.codeName+'</label></span></li>';  // <li class="">
+				var tags = '<div class="radioBox mt15 needsclick">';
+				$.each(constReservation.dwellingForm, function(key, each) {
+					tags += '<input class="needsclick" type="radio" id="hTp1' + key + '" name="hTp1" value="'+each.code+'"/>';
+					tags += '<label for="hTp1' + key + '" class="htype htype0' + (key+1) + ' needsclick">';
+					tags += 	'<span>' + each.codeName + '</span>';
+					tags += '</label>';
 				});
-				$('.homeType').html(tags);
-				tags = '';
-				$.each(constReservation.dwellingPyeong, function(key, each){
-					tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp2" id="hTp2'+key+'"/><label for="hTp2'+key+'">'+each.codeName+'</label></span></li>';
+				tags += '</div>';
+				$('.js-home-type').html(tags);
+
+
+				tags = '<select title="평형을 선택">';
+				tags += '<option value="" selected="selected">평형을 선택해 주세요</option>';
+				$.each(constReservation.dwellingPyeong, function(key, each) {
+					tags += '<option value="' + each.code + '">' + each.codeName + '</option>';
+					// tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp2" id="hTp2'+key+'"/><label for="hTp2'+key+'">'+each.codeName+'</label></span></li>';
 				});
-				$('.homeSize').html(tags);
-				tags = '';
-				$.each(constReservation.remodelingReason, function(key, each){
-					tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp3" id="hTp3'+key+'"/><label for="hTp3'+key+'">'+each.codeName+'</label></span></li>';
+				tags += '</select>';
+				$('.js-home-size').html(tags);
+
+
+				tags = '<select title="사유를 선택">';
+				tags += '<option value="" selected="selected">사유를 선택해 주세요</option>';
+				$.each(constReservation.remodelingReason, function(key, each) {
+					tags += '<option value="' + each.code + '">' + each.codeName + '</option>';
+					// tags += '<li><span class="radioBox"><input type="radio" value="'+each.code+'" name="hTp3" id="hTp3'+key+'"/><label for="hTp3'+key+'">'+each.codeName+'</label></span></li>';
 				});
-				$('.homeReason').html(tags);
+				tags += '</select>';
+				$('.js-home-reason').html(tags);
+
+
 				$('.radioBox label').on('click', function(e){
-					$(this).addClass('on').parent().parent().siblings('li').find('label').removeClass('on');
+					// $(this).addClass('on').parent().parent().siblings('li').find('label').removeClass('on');
+					$(this).addClass('on').siblings('label').removeClass('on');
 				});
 
 				$('.agreeCont').html(constReservation.constOrderTerms[0].termsContents);
@@ -325,7 +342,15 @@ module.exports = function() {
 				$("#Moid").val(data.data.orderNumber);
 			},
 			complete : function(data) {
-				goPay(document.payForm);
+				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/orders/process' : 'https://dev.m.koloncommon.com/apis/orders/process');
+				$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
+
+				if (paymentPrice == 0) {
+					document.payForm.submit();
+				} else {
+					// goPay(document.payForm);
+					goPaySmart();
+				}
 			},
 			error : function(xhr, status, error) {
 				Super.Super.alertPopup('결재에 실패하였습니다', status+': '+error, '확인');
