@@ -4,174 +4,110 @@
 	<!-- @@include ../_template/header.html {"title":"COMMON 시공형 주문/결제"} -->
 	<!-- @@include ../_template/headerPayment.html -->
 </head>
-<body class="login" data-page-id="order-additional-payment">
-<div class="wrapper order">
+<body data-page-id="order-additional-payment">
+	<div class="wrapper order">
 	<!-- @@include ../_template/menu.html -->
-	<div class="container">
-		<div class="wrap">
-			<h2 class="secTit">주문/결제</h2>
-			<h3 class="subTit t_c" style="font-size: 24px;font-family:'NotoSansM', sans-serif;"><span id='reasonField'></span>로 인하여 추가 결제가 필요합니다.</h3>
-			<h3 class="subTit mt20">결제 정보</h3>
-			<div class="orderCont mt20">
-				<table class="payTable">
-					<tbody>
-						<tr>
-							<th>결제금액</th>
-						</tr>
-						<tr>
-							<td class="total t_c"><b class="italicNum totalPrice"></b> 원</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<h3 class="subTit mt30">결제 방법</h3>
-			<div class="orderCont">
-				<div class="payTab tabWrap">
-					<form method="post" action="/">
-						<fieldset>
-							<legend>결제방법 선택</legend>
-							<span id="payCARD" class="payRadio on"><a href="#pay1" class="radioBtn">신용카드</a></span>
-							<span id="payBANK" class="payRadio"><a href="#pay2" class="radioBtn">실시간 계좌이체</a></span>
-						</fieldset>
-					</form>
-				</div>
-				<div>
-					<!-- 신용카드 -->
-					<div class="pay" id="pay1">
-						<div class="orderTbW">
-							<form method="post" action="/">
-								<div class="tbHf">
-									<div class="tbSet orderTb lineN tbHV">
-										<table style="height: 514px;">
-											<caption>신용카드 결재에 관한 카드 선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
-											<colgroup>
-												<col style="width:22%;"><col style="width:78%;">
-											</colgroup>
-											<tbody>
-												<tr>
-													<th scope="row">카드선택</th>
-													<td>
-														<select title="카드 선택" style="width:148px;" id="cardSelect">
-															<option value="" label="카드 선택" selected="selected">카드 선택</option>
-														</select>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">할부방식</th>
-													<td>
-														<select title="할부방식 선택" style="width:148px;" id="quotaSelect">
-															<option value="00" label="일시불" selected="selected">일시불</option>
-															<option value="02" label="2개월">2개월</option>
-															<option value="03" label="3개월">3개월</option>
-															<option value="04" label="4개월">4개월</option>
-															<option value="05" label="5개월">5개월</option>
-															<option value="06" label="6개월">6개월</option>
-															<option value="07" label="7개월">7개월</option>
-															<option value="08" label="8개월">8개월</option>
-															<option value="09" label="9개월">9개월</option>
-															<option value="10" label="10개월">10개월</option>
-															<option value="11" label="11개월">11개월</option>
-															<option value="12" label="12개월">12개월</option>
-														</select>
-													</td>
-												</tr>
-												<tr>
-													<th scope="row">무이자할부<br>적용 카드</th>
-													<td>
-														<ul class="noBul">
-															<li><b>XX카드</b> 2,3,4,5 개월 (5만원 이상)</li>
-															<li><b>XX카드</b> 2,3,4,5 개월 (5만원 이상)ㅣ12월 (5만원 이상)</li>
-															<li><b>XX카드</b> 2,3,4,5 개월 (5만원 이상)ㅣ 6 , 12개월 (5만원 이상)</li>
-															<li><b>XX카드</b> 2,3,4,5 개월 (5만원 이상)</li>
-															<li><b>XX카드</b> 2,3,4,5 개월 (5만원 이상)</li>
-															<li><b>XX카드</b> 2,3,4,5 개월 (5만원 이상)</li>
-														</ul>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								<div class="tbHf">
-									<div class="tbSet02 tbHV">
-										<table style="height: 514px;">
-											<caption>신용카드 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
-											<colgroup>
-												<col style="width:22%;"><col style="width:78%;">
-											</colgroup>
-											<tbody>
-												<tr class="total dotted">
-													<th scope="row">총 결제금액</th>
-													<td class="txtR">
-														<span class="price pointRed"><b class="italicNum totalPrice"></b> 원</span>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="btnC">
-							<button type="button" class="btn btnSizeL btnColor02 btnWM requestPaymentButton" value="결제하기">결제하기</button> 
-						</div>
+		<div class="container">
+			<section>
+				<h2 class="pageTit">주문/결제</h2>
+				<div class="wrapT">
+					<div class="complete">
+						<p><b id="reasonField"></b>로 인하여 추가 결제가 필요합니다</p>
 					</div>
-					<!--// 신용카드 -->
-					<!-- 실시간 계좌이체  -->
-					<div class="pay" id="pay2" style="display: none;">
-						<div class="orderTbW">
-							<form method="post" action="/">
-								<div class="tbHf">
-									<div class="tbSet orderTb lineN tbHV">
-										<table style="height: 424px;">
-											<caption>실시간 계좌이체 결제에 관한 결제정보를 제공합니다.</caption>
-											<colgroup>
-												<col style="width:22%;"><col style="width:78%;">
-											</colgroup>
-											<tbody>
-												<tr>
-													<th scope="row">결제안내</th>
-													<td>
-														<ul class="noBul">
-															<li>은행을 거치지 않고 회원님 계좌에서 바로 이체되는 편리한 서비스입니다. (이체 수수료는 무료, 최소 이체금액 1,000원)</li>
-															<li>&lt;결제하기&gt; 버튼을 클릭한 후, 이체하실 은행 계좌번호를 입력해주세요. (결제 시 공인인증서 필수)</li>
-														</ul>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								<div class="tbHf">
-									<div class="tbSet02 tbHV">
-										<table style="height: 424px;">
-											<caption>실시간 계좌이체 결제에 관한 주문금액, 할인금액, 배송비, 총결제금액 정보를 제공합니다.</caption>
-											<colgroup>
-												<col style="width:22%;"><col style="width:78%;">
-											</colgroup>
-											<tbody>
-												<tr class="total dotted">
-													<th scope="row">총 결제금액</th>
-													<td class="txtR">
-														<span class="price pointRed"><b class="italicNum totalPrice"></b> 원</span>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="btnC">
-							<button type="button" class="btn btnSizeL btnColor02 btnWM requestPaymentButton" value="결제하기">결제하기</button> 
-						</div>
-					</div>
-					<!--// 실시간 계좌이체  -->
 				</div>
-			</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 정보</h3>
+					<div class="orderInfo">
+						<dl class="equal">
+							<dd class="total">
+								<p class="odListTit">결제금액</p>
+								<p class="odListCont"><b class="js-totalPrice"></b> 원</p>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 방법</h3>
+					<div class="tabWrap orderTab">
+						<span id="payCARD" class="payRadio on" style="width:100%"><a href="#pay1" class="btnSizeS btnSizew btnColor05 radioBtn">신용카드</a></span>
+					</div>
+					<div>
+						<!-- 신용카드 -->
+						<div class="pay" id="pay1">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>신용카드 결재에 관한 카드 선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">카드선택</th>
+												<td>
+													<select id="cardSelect" title="카드 선택" >
+														<option value="" label="카드 선택" selected="selected">카드 선택</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">할부방식</th>
+												<td>
+													<select id="quotaSelect" title="할부방식 선택">
+														<option value="00" label="일시불" selected="selected">일시불</option>
+														<option value="02" label="2개월">2개월</option>
+														<option value="03" label="3개월">3개월</option>
+														<option value="04" label="4개월">4개월</option>
+														<option value="05" label="5개월">5개월</option>
+														<option value="06" label="6개월">6개월</option>
+														<option value="07" label="7개월">7개월</option>
+														<option value="08" label="8개월">8개월</option>
+														<option value="09" label="9개월">9개월</option>
+														<option value="10" label="10개월">10개월</option>
+														<option value="11" label="11개월">11개월</option>
+														<option value="12" label="12개월">12개월</option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<h4 class="tbTit">무이자 할부적용 카드</h4>
+									<div class="tbBox">
+										<ul class="tbList">
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ12월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ 6 , 12개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 신용카드 -->
+					</div>
+				</div>
+				<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+				<div class="myCartTotal">
+					<ul class="totalList slideMore">
+						<li>
+							<p class="totalTit">총 결제금액</p>
+							<p class="totalCont"><b class="js-totalPrice"></b> 원</p>
+						</li>
+					</ul>
+					<div class="total">
+						<p class="totalTit">총 결제금액</span></p>
+						<p class="totalCont" style="right:15px"><b class="js-totalPrice"></b> 원</p>
+						<!-- <a href="#" class="more btnMore">상세보기</a> -->
+					</div>
+					<a href="javascript:;" class="totalBtn requestPaymentButton">결제하기</a>
+				</div>
+				<!--// scroll 시 고정 영역 -->
+			</section>
 		</div>
 	</div>
-</div>
+
 <form id="payForm" name="payForm" method="post" action="/apis/constorders/addition/process">
 	<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
 	<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->

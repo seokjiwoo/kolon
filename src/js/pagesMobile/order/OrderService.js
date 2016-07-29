@@ -343,7 +343,7 @@ module.exports = function() {
 			},
 			complete : function(data) {
 				$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/advance/process' : 'https://dev.m.koloncommon.com/apis/constorders/advance/process');
-				$("#MallReserved").val($("#products").val());
+				$("#MallReserved").val(encodeURI($("#products").val()));
 				// $("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
 
 				if (paymentPrice == 0) {

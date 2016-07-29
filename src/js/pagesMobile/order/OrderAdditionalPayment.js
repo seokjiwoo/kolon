@@ -78,7 +78,7 @@ module.exports = function() {
 				totalPrice = data.constOrderAddition.totalPaymentPrice;
 
 				$('#reasonField').text(data.constOrderAddition.additionPaymentReason);
-				$('.totalPrice').text(util.currencyFormat(totalPrice));
+				$('.js-totalPrice').text(util.currencyFormat(totalPrice));
 
 				var cardSelectTag = '<option value="" label="카드 선택" selected="selected">카드 선택</option>';
 				for (var key in data.listCards) {

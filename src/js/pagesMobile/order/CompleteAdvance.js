@@ -87,6 +87,11 @@ module.exports = function() {
 							.always(function() {
 								self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								$('.js-more').on('click', function(e) {
+									e.preventDefault();
+									$(this).toggleClass('active');
+									$('.js-more-target').slideToggle();
+								});
 							});
 	}
 
@@ -107,7 +112,9 @@ module.exports = function() {
 				result.data.constPaymentInfo.totalConstExpectPriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalConstExpectPrice);
 				result.data.constPaymentInfo.totalAdvancePriceDesc = util.currencyFormat(result.data.constPaymentInfo.paymentPrice.totalAdvancePrice);
 				
-				result.data.constOrderInfo.receiverContact = util.mobileNumberFormat(result.data.constOrderInfo.receiverContact);
+				if (result.data.constOrderInfo && result.data.constOrderInfo.receiverContact) {
+					result.data.constOrderInfo.receiverContact = util.mobileNumberFormat(result.data.constOrderInfo.receiverContact);
+				}
 
 				$.map(result.data.constProducts, function(eachItem){
 					eachItem.constExpectPriceDesc = util.currencyFormat(eachItem.constExpectPrice);
