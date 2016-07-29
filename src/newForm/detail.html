@@ -41,21 +41,21 @@
 
 					    <ul class="unitPrice">
 					    	<li>
-					    		<h4>50㎡/15PY 기준 평당 단가</h4>
-								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
-									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
-									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
-								{{else}}
-									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
-								{{/vxIF}}
-					    	</li>
-					    	<li>
-					    		<h4>50㎡/15PY 기준 금액</h4>
+					    		<h4>평당 가격</h4>
 								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
 									<p>{{pyeongBasePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
 									<p class="salePrice">{{pyeongSalePriceDesc}}<b>원</b></p>
 								{{else}}
 									<p class="salePrice">{{pyeongSalePriceDesc}}<b>원</b></p>
+								{{/vxIF}}
+					    	</li>
+					    	<li>
+					    		<h4>{{squareMeter}}㎡/{{pyeong}}PY 기준 금액</h4>
+								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
+									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
+									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
+								{{else}}
+									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
 								{{/vxIF}}
 					    	</li>
 					    </ul>
