@@ -64,8 +64,33 @@
 				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
 			</ul>
 			<!-- flag -->
-			<!--<div class="today"><p>오늘만 <span><b>20</b>%</span></p></div>-->
-			<!--<div class="celeb"><p><span><b>셀럽</b>추천</p></div>-->
+			{{#vxIF promotionUseYn "==" "Y"}}
+				{{#vxSwitch promotionCode}}
+				{{#vxCase "PM_DISCOUNT_SECTION_01" break=true}}
+					<div class="today"><p>게릴라 <span><b>{{discountMethod}}</b>%</span></p></div>
+				{{/vxCase}}
+				{{#vxCase "PM_DISCOUNT_SECTION_02" break=true}}
+					<div class="today"><p>기간한정 <span><b>{{discountMethod}}</b>%</span></p></div>
+				{{/vxCase}}
+				{{#vxCase "PM_DISCOUNT_SECTION_03" break=true}}
+					<div class="upTo"><p><span><b>{{promotionLimitQuantity}}</b>개</span>한정</p></div>
+				{{/vxCase}}
+				{{#vxCase "PM_DISCOUNT_SECTION_04" break=true}}
+					<div class="today"><p>공동구매 <span><b>{{discountMethod}}</b>%</span></p></div>
+				{{/vxCase}}
+				{{/vxSwitch}}
+			{{/vxIF}}
+			{{#vxSwitch promotionRecommendCodeName}}
+				{{#vxCase "PD_PROMOTION_RECOMMEND_01" break=true}}
+					<div class="md"><p><span><b>MD</b>추천</span></p></div>
+				{{/vxCase}}
+				{{#vxCase "PD_PROMOTION_RECOMMEND_02" break=true}}
+					<div class="celeb"><p><span><b>셀럽</b>추천</p></div>
+				{{/vxCase}}
+				{{#vxCase "PD_PROMOTION_RECOMMEND_03" break=true}}
+					<div class="issue"><p>Hot issue</p></div>
+				{{/vxCase}}
+			{{/vxSwitch}}
 			<!--// flag -->
 			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
@@ -110,8 +135,33 @@
 				<li class="cardDetail share"><a href="javascript:alert('준비중입니다')">{{scrapCount}}</a></li>
 			</ul>
 			<!-- flag -->
-			<!--<div class="upTo"><p><span><b>20</b>개</span>한정</p></div>-->
-			<!--<div class="md"><p><span><b>MD</b>추천</span></p></div>-->
+			{{#vxIF promotionUseYn "==" "Y"}}
+				{{#vxSwitch promotionCode}}
+				{{#vxCase "PM_DISCOUNT_SECTION_01" break=true}}
+					<div class="today"><p>게릴라 <span><b>{{discountMethod}}</b>%</span></p></div>
+				{{/vxCase}}
+				{{#vxCase "PM_DISCOUNT_SECTION_02" break=true}}
+					<div class="today"><p>기간한정 <span><b>{{discountMethod}}</b>%</span></p></div>
+				{{/vxCase}}
+				{{#vxCase "PM_DISCOUNT_SECTION_03" break=true}}
+					<div class="upTo"><p><span><b>{{promotionLimitQuantity}}</b>개</span>한정</p></div>
+				{{/vxCase}}
+				{{#vxCase "PM_DISCOUNT_SECTION_04" break=true}}
+					<div class="today"><p>공동구매 <span><b>{{discountMethod}}</b>%</span></p></div>
+				{{/vxCase}}
+				{{/vxSwitch}}
+			{{/vxIF}}
+			{{#vxSwitch promotionRecommendCodeName}}
+				{{#vxCase "PD_PROMOTION_RECOMMEND_01" break=true}}
+					<div class="md"><p><span><b>MD</b>추천</span></p></div>
+				{{/vxCase}}
+				{{#vxCase "PD_PROMOTION_RECOMMEND_02" break=true}}
+					<div class="celeb"><p><span><b>셀럽</b>추천</p></div>
+				{{/vxCase}}
+				{{#vxCase "PD_PROMOTION_RECOMMEND_03" break=true}}
+					<div class="issue"><p>Hot issue</p></div>
+				{{/vxCase}}
+			{{/vxSwitch}}
 			<!--// flag -->
 			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
 		</div>
