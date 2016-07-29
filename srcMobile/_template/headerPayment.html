@@ -49,7 +49,7 @@
 
 	function goPaySmartNewForm() {
 		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/advance/process' : 'https://dev.m.koloncommon.com/apis/constorders/advance/process');
-		$("#MallReserved").val($("#products").val());
+		$("#MallReserved").val(encodeURI($("#products").val()));
 
 		// document.payForm.target = "_blank";
 		document.payForm.acceptCharset = "euc-kr";
@@ -72,7 +72,7 @@
 
 	function goPaySmartAdditionalPay() {
 		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/addition/process' : 'https://dev.m.koloncommon.com/apis/constorders/addition/process');
-		$("#MallReserved").val($("#products").val());
+		$("#MallReserved").val(encodeURI($("#products").val()));
 
 
 		// document.payForm.target = "_blank";
@@ -84,7 +84,7 @@
 
 	function goPaySmartHomeService() {
 		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/living/order/process' : 'https://dev.m.koloncommon.com/apis/living/order/process');
-		$("#MallReserved").val($("#products").val());
+		$("#MallReserved").val(encodeURI($("#products").val()));
 
 
 		// document.payForm.target = "_blank";
