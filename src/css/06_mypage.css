@@ -243,6 +243,10 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .record .recordInfo .productPrice{font-family:'NotoSansM', sans-serif;}
 .record .recordInfo .productPrice + .producOption{margin-top: 10px;}
 .record .recordInfo .owner {text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;color:#b08967;font-family:'NotoSansM', sans-serif;border:2px solid #b08967;}
+.record .recordInfo .promo{margin-right:5px;text-align:center;margin-bottom:5px;display:inline-block;padding:3px 8px;font-size:14px;font-family:'NotoSansM', sans-serif;border:2px solid;}
+.record .recordInfo .promoType01{color:#ff514d;border-color: #ff514d}
+.record .recordInfo .promoType02{color:#ff693b;border-color: #ff693b}
+.record .recordInfo .promoType03{color:#ff9e1d;border-color: #ff9e1d}
 .record .orderState{position: relative;}
 .record .orderState a{font-size:13px;}
 .record .btnWrap{margin-top: 5px;}
