@@ -195,6 +195,8 @@ module.exports = function() {
 		orderInfo.find(self.opts.cartOrderInfo.price).html(util.currencyFormat(totalBaseValue));
 		orderInfo.find(self.opts.cartOrderInfo.discount).html(util.currencyFormat(discountValue || 0));
 		orderInfo.find(self.opts.cartOrderInfo.totalPrice).html(util.currencyFormat(totalSaleValue));
+
+		$('.js-list-size').text(orderData.length);
 	}
 
 	function onCartOrderInfoToggler(e) {
