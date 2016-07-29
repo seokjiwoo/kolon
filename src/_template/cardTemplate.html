@@ -70,13 +70,13 @@
 					<div class="today"><p>게릴라 <span><b>{{discountMethod}}</b>%</span></p></div>
 				{{/vxCase}}
 				{{#vxCase "PM_DISCOUNT_SECTION_02" break=true}}
-					<div class="today"><p>기간한정 <span><b>{{discountMethod}}</b>%</span></p></div>
+					<div class="today"><p>기간한정 <span><b>{{endDateTime}}</b> 남음</span></p></div>
 				{{/vxCase}}
 				{{#vxCase "PM_DISCOUNT_SECTION_03" break=true}}
 					<div class="upTo"><p><span><b>{{promotionLimitQuantity}}</b>개</span>한정</p></div>
 				{{/vxCase}}
 				{{#vxCase "PM_DISCOUNT_SECTION_04" break=true}}
-					<div class="today"><p>공동구매 <span><b>{{discountMethod}}</b>%</span></p></div>
+					<div class="today"><p>공동구매 <span><b>{{promotionLimitQuantity}}</b>개</span></p></div>
 				{{/vxCase}}
 				{{/vxSwitch}}
 			{{/vxIF}}
@@ -141,13 +141,13 @@
 					<div class="today"><p>게릴라 <span><b>{{discountMethod}}</b>%</span></p></div>
 				{{/vxCase}}
 				{{#vxCase "PM_DISCOUNT_SECTION_02" break=true}}
-					<div class="today"><p>기간한정 <span><b>{{discountMethod}}</b>%</span></p></div>
+					<div class="today"><p>기간한정 <span><b>{{endDateTime}}</b> 남음</span></p></div>
 				{{/vxCase}}
 				{{#vxCase "PM_DISCOUNT_SECTION_03" break=true}}
 					<div class="upTo"><p><span><b>{{promotionLimitQuantity}}</b>개</span>한정</p></div>
 				{{/vxCase}}
 				{{#vxCase "PM_DISCOUNT_SECTION_04" break=true}}
-					<div class="today"><p>공동구매 <span><b>{{discountMethod}}</b>%</span></p></div>
+					<div class="today"><p>공동구매 <span><b>{{promotionLimitQuantity}}</b>개</span></p></div>
 				{{/vxCase}}
 				{{/vxSwitch}}
 			{{/vxIF}}
