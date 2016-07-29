@@ -317,13 +317,13 @@ module.exports = function() {
 	function verifyMemberResultHandler(e, status, authData) {
 		switch(Number(status)) {
 			case 200:
-				Super.alertPopup('본인확인이 완료되었습니다.', authData.message, '확인', function(){
-					location.reload(true);
-				});
+				alert(authData.message);
 				memberInfoController.getMyInfo();
+				location.reload(true);
 				break;
 			default:
-				Super.alertPopup('본인확인에 실패하였습니다.', authData.message, '확인');
+				alert(authData.message);
+				//Super.alertPopup('본인확인에 실패하였습니다.', authData.message, '확인');
 				break;
 		}
 	};
