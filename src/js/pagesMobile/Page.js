@@ -230,6 +230,22 @@ module.exports = function() {
 		}
 		$(".hiddenArea > a").showArea();
 
+		$(".helpList li").on("click", function(){ //  도움말 상세
+			var tg = $(this)
+			 if( !tg.find(".con").is(":visible") ){
+			 	$(".helpList li").removeClass("active");
+			 	tg.addClass("active");
+			 	$(".helpList li").find(".con").stop().slideUp();
+			 	tg.find(".con").stop().slideDown();
+			 }else{
+			 	$(".helpList li").removeClass("active");
+			 	tg.find(".con").stop().slideUp();
+			 }
+		});
+		$(".helpList li").find(".con").on("click", function(e){
+			e.stopPropagation();
+		})
+
 		$('.mSlide').bxSlider({ //magazine slide
 			controls:false
 		});
