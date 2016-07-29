@@ -138,10 +138,25 @@ module.exports = function() {
 		var _template = self.template,
 		_templatesWrap = self.templatesWrap;
 
-		if (type === 'COLOR_BOX') {
-			_template = self.colorbox.find('#cancel-request-templates');
-			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
-		}
+		var source = _template.html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
+
+		_templatesWrap.empty()
+							.addClass(self.opts.cssClass.isLoading)
+							.append(insertElements);
+
+		_templatesWrap.imagesLoaded()
+							.always(function() {
+								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
+								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+							});
+	}
+
+	function displayCancelPopup(data, type) {
+		var _template = self.colorbox.find('#cancel-request-templates');
+		var _templatesWrap = self.colorbox.find('.js-cancelRequest-wrap');
 
 		var source = _template.html(),
 		template = win.Handlebars.compile(source),
@@ -158,75 +173,74 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 							});
 
-		if (type === 'COLOR_BOX') {
-			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
-			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
-				e.preventDefault();
+		self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+		self.colorbox.find('.js-cancel-submit').on('click', function(e) {
+			e.preventDefault();
 
-				var forms = self.colorbox.find('.js-cancel-form'),
-				isValid = false,
-				cancelType, cancelReson;
+			var forms = self.colorbox.find('.js-cancel-form'),
+			isValid = false,
+			cancelType, cancelReson;
 
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-					if (cancelType && cancelReson) {
-						isValid = true;
-					} else {
-						isValid = false;
-						return false;
-					}
-				});
-
-				if (!isValid) {
-					win.alert('취소 사유를 선택/입력 해주세요.');
-					return;
+			$.each(forms, function() {
+				cancelType = $(this).find('.js-type').val();
+				cancelReson = $(this).find('.js-inp').val();
+				if (cancelType && cancelReson) {
+					isValid = true;
+				} else {
+					isValid = false;
+					return false;
 				}
-
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-
-					controller.orderCancel(
-						self.selPopBtnInfo.info.orderNumber,
-						{
-							"accountAuthDatetime": "2016-04-01",
-							"accountAuthYn": "Y",
-							"addDeliveryChargeTotal": 0,
-							"claimDeliveryChargeTotal": 0,
-							"claimReasonCode": cancelType,
-							"claimReasonStatement": "string",
-							"claimTypeCode": "string",
-							"orderNumber": 0,
-							"refundAccountNumber": 0,
-							"refundBankCode": "string",
-							"refundDepositorName": cancelReson
-						},
-						[
-							{
-								"addDeliveryCharge": 0,
-								"claimDeliveryCharge": 0,
-								"claimNumber": 0,
-								"claimProcessDatetime": "string",
-								"claimProcessQuantity": 0,
-								"claimProductAmount": 0,
-								"claimRequestQuantity": 0,
-								"claimStateCode": "string",
-								"claimStateReason": "string",
-								"deliveryChargePaymentCode": "string",
-								"orderNumber": 0,
-								"orderProductSequence": "string"
-							}
-						]
-					);
-				});
 			});
-		}
-	}
+
+			if (!isValid) {
+				win.alert('취소 사유를 선택/입력 해주세요.');
+				return;
+			}
+
+			$.each(forms, function() {
+				cancelType = $(this).find('.js-type').val();
+				cancelReson = $(this).find('.js-inp').val();
+
+				controller.orderCancel(
+					self.selPopBtnInfo.info.orderNumber,
+					{
+						"accountAuthDatetime": "2016-04-01",
+						"accountAuthYn": "Y",
+						"addDeliveryChargeTotal": 0,
+						"claimDeliveryChargeTotal": 0,
+						"claimReasonCode": cancelType,
+						"claimReasonStatement": "string",
+						"claimTypeCode": "string",
+						"orderNumber": 0,
+						"refundAccountNumber": 0,
+						"refundBankCode": "string",
+						"refundDepositorName": cancelReson
+					},
+					[
+						{
+							"addDeliveryCharge": 0,
+							"claimDeliveryCharge": 0,
+							"claimNumber": 0,
+							"claimProcessDatetime": "string",
+							"claimProcessQuantity": 0,
+							"claimProductAmount": 0,
+							"claimRequestQuantity": 0,
+							"claimStateCode": "string",
+							"claimStateReason": "string",
+							"deliveryChargePaymentCode": "string",
+							"orderNumber": 0,
+							"orderProductSequence": "string"
+						}
+					]
+				);
+			});
+		});
+	};
+
 	function setColoboxEvevnts() {
 		// 취소신청
 		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			controller.orderDetail(self.selPopBtnInfo.info.orderNumber, 'COLOR_BOX');
+			controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
 		}
 
 		// 배송추적
@@ -396,6 +410,10 @@ module.exports = function() {
 
 				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
 				displayData(result.data, type);
+				break;
+			
+			case ORDER_EVENT.CANCEL_DETAIL:
+				displayCancelPopup(result.data, type);
 				break;
 
 			case ORDER_EVENT.ORDER_TRACKING:

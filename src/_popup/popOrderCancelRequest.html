@@ -135,8 +135,7 @@
 </div>
 
 <script id="cancel-request-templates" type="text/x-handlebars-template">
-	{{#each listOrderItems}}
-	<h5 class="subTit">{{vxMath @index "+" 1}}. 상품 수령지 : 자택 - <span class="subAddr">{{receiverRoadBaseAddress}}</span></h5>
+	<h5 class="subTit">{{vxMath @index "+" 1}}. 상품 수령지 : {{receiverName}}<!-- - <span class="subAddr">{{receiverRoadBaseAddress}}</span>--></h5>
 	<table class="record" summary="취소 신정정보 표로써 신청일, 취소 완료일, 취소신청 사유/책임 정보가 담겨있습니다.">
 		<caption>주문 취소 신청정보 표</caption>
 		<tr>
@@ -146,74 +145,39 @@
 			<th>할인금액</th>
 			<th>진행상태</th>
 		</tr>
+		{{#each product}}
 		<tr>
 			<td class="popRecord"><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
 			<td class="popRecord recordInfo">
-			{{#if optionName}}
-				{{productName}}<span class="producOption">옵션 : {{optionName}}</span><span class="producOption">수량 : {{itemCount}}</span><span class="productPrice">{{itemPriceDesc}} 원</span>
-			{{else}}
-				<span class="productPrice">{{itemPriceDesc}} 원</span>
-			{{/if}}
+			{{productName}}
+			{{#if orderOptionName}}<span class="producOption">옵션 : {{orderOptionName}}</span>{{/if}}
+			<span class="producOption">수량 : {{orderQuantity}}</span>
+			<span class="productPrice">{{productOptionPrice}} 원</span>
 			</td>
 
-			<td>{{sellerName}}</td>
+			<td>{{saleMemberName}}</td>
 			{{#if deliveryFee}}
 				<td>{{deliveryFeeDesc}}</td>
 			{{else}}
 				<td>{{deliveryFee}}</td>
 			{{/if}}
-			<td>{{itemPriceDesc}}원</td>
-			<td>
-			{{#vxSwitch deliveryStateCode}}
-				{{#vxCase "SL_ORDER_STATE_01" break=true}}
-					입금대기
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_02" break=true}}
-					결제완료
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_03" break=true}}
-					상품준비중
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_04" break=true}}
-					배송중
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_05" break=true}}
-					배송완료
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_06" break=true}}
-					구매확정
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_07" break=true}}
-					취소상세
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_08" break=true}}
-					반품상세
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_09" break=true}}
-					교환상세
-				{{/vxCase}}
-				{{#vxCase "SL_ORDER_STATE_10" break=true}}
-					재배송
-				{{/vxCase}}
-			{{/vxSwitch}}
-			</td>
+			<td>{{discountApplyAmt}}원</td>
+			<td>{{orderStateCodeName}}</td>
 		</tr>
+		{{/each}}
 	</table>
 	<form action="" class="js-cancel-form">
 		<fieldset class="reasonCancel">
 			<h5>주문 취소 사유</h5>
 			<select title="주문 취소 사유를 선택해주세요" class="js-type">
 				<option value="">주문 취소 사유를 선택해주세요</option>
-				<option value="SL_CLAIM_TYPE_01_02">배송지연 - 취소책임: 판매자</option>
-				<option value="SL_CLAIM_TYPE_01_03">주문 실수 - 취소책임: 구매자</option>
-				<option value="">다른 상품으로 재주문 - 취소책임: 구매자</option>
-				<option value="SL_CLAIM_TYPE_01_06">중복주문 - 취소책임: 구매자</option>
-				<option value="SL_CLAIM_TYPE_01_07">기타(구매자 책임 사유)</option>
+				{{#each claimReasons}}
+				<option value="{{code}}">{{codeDescription}}</option>
+				{{/each}}
 			</select>
 			<input type="text" title="상세 내용 입력" class="js-inp">
 		</fieldset>
 	</form>
-	{{/each}}
 
 	<h5 class="subTit">환불정보</h5>
 	<div class="table03Wrap">
