@@ -205,14 +205,15 @@ module.exports = function() {
 				widthSlider.reloadSlider(); 
 			}
 		}) 
-
+		/*
 		$(".optList > li").each(function(){ // 마이페이지-주문상세
 			$(this).find(".hiddenArea").parent("li").next().css({
 				border:0,
 				paddingTop : 0
 			})
 		});
-
+		*/
+		/*
 		$.fn.showArea = function(){ // 마이페이지-주문상세
 			return this.each(function(){
 				var tg = $(this);
@@ -229,6 +230,7 @@ module.exports = function() {
 			})
 		}
 		$(".hiddenArea > a").showArea();
+		*/
 
 		$(".helpList li").on("click", function(){ //  도움말 상세
 			var tg = $(this)
