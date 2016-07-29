@@ -85,7 +85,7 @@ module.exports = function() {
 		recommendShopList.init('#recommendShopWrap', true);
 		
 		recommendNewFormList = CardList();
-		recommendNewFormList.init('#recommendShopWrap', true);
+		recommendNewFormList.init('#recommendNewFormWrap', true);
 
 		//stickyBar.init();
 

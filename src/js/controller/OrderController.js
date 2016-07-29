@@ -109,13 +109,9 @@ function ClassOrderController() {
 			 */
 			myOrdersInfo: myOrdersInfo,
 			/**
-			 * 주문완료
+			 * 배송형 주문완료
 			 */
 			ordersComplete: ordersComplete,
-			ordersAdvanceComplete: ordersAdvanceComplete,
-			ordersBalanceComplete: ordersBalanceComplete,
-			ordersAdditionalComplete: ordersAdditionalComplete,
-			ordersHomeServiceComplete: ordersHomeServiceComplete,
 			/**
 			 * hash_String 취득(EncryptData)
 			 */
@@ -136,6 +132,12 @@ function ClassOrderController() {
 			 * 시공형 주문서 추가결제 페이지 조회
 			 */
 			addPaymentOrderForm: addPaymentOrderForm,
+			/**
+			 * 시공형 주문완료
+			 */
+			ordersAdvanceComplete: ordersAdvanceComplete,
+			ordersBalanceComplete: ordersBalanceComplete,
+			ordersAdditionalComplete: ordersAdditionalComplete,
 
 			/**
 			 * 시공형 주문목록
@@ -145,11 +147,27 @@ function ClassOrderController() {
 			 * 시공형 취소목록
 			 */
 			myConstCancelList: myConstCancelList,
-			
 			/**
-			 * 생활서비스 주문서 작성 페이지 조회
+			 * 시공형 실측취소 요청 폼
+			 */
+			myConstCancelFormRequest: myConstCancelFormRequest,
+			/**
+			 * 시공형 실측취소
+			 */
+			myConstCancel: myConstCancel,
+			/**
+			 * 시공형 주문상세
+			 */
+			orderNewFormDetail: orderNewFormDetail,
+
+			/**
+			 * 홈서비스 주문서 작성 페이지 조회
 			 */
 			homeServiceOrderForm: homeServiceOrderForm,
+			/**
+			 * 홈서비스 주문완료
+			 */
+			ordersHomeServiceComplete: ordersHomeServiceComplete,
 		}
 		
 		return callerObj;	
@@ -708,6 +726,46 @@ function ClassOrderController() {
 			} else {
 				Super.handleError('myConstOrdersList', result);
 				$(callerObj).trigger('myConstOrdersListResult', [status, result]);
+			}
+		}, false);
+	};
+	
+	// 시공상품 상세 조회
+	function orderNewFormDetail(orderNumber) {
+		Super.callApi('/apis/me/constorders/'+orderNumber, 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myConstDetailResult', [status, result.data]);
+			} else {
+				Super.handleError('orderNewFormDetail', result);
+				$(callerObj).trigger('myConstDetailResult', [status, result]);
+			}
+		}, false);
+	};
+
+	//  
+	
+	
+	// 시공상품 취소 팝업 요청
+	function myConstCancelFormRequest(orderNumber) {
+		Super.callApi('/apis/me/constorders/'+orderNumber+'/cancel', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myConstCancelFormResult', [status, result.data]);
+			} else {
+				Super.handleError('myConstCancelFormRequest', result);
+				$(callerObj).trigger('myConstCancelFormResult', [status, result]);
+			}
+		}, false);
+	};
+
+	// 시공상품 취소 요청
+	function myConstCancel(orderNumber, reasonCode, reasonText) {
+		Super.callApi('/apis/me/constorders/'+orderNumber+'/cancel?claimReasonCode='+reasonCode+'&claimReasonStatement='+encodeURI(reasonText), 'POST', {
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('myConstCancelResult', [status, result.data]);
+			} else {
+				Super.handleError('myConstCancel', result);
+				$(callerObj).trigger('myConstCancelResult', [status, result]);
 			}
 		}, false);
 	};

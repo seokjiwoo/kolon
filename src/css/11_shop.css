@@ -331,4 +331,4 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 .packageArea{background: url('../images/bg_relate.jpg') no-repeat center top;}
 .packageArea .icoNewformTit{margin-bottom: 75px;}
 .packageArea .cardWrap{overflow: hidden;margin: 0;padding: 0;}
-.packageArea .cardWrap li{position: relative;margin:10px;}
+.packageArea .cardWrap li{position: relative;margin:0;}

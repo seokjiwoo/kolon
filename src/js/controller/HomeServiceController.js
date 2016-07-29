@@ -27,6 +27,10 @@ function ClassHomeServiceController() {
 			 */
 			movingDateList: movingDateList,
 			/**
+			 * 이사 서비스 가능지역 여부 검색
+			 */
+			movingServiceAvailable: movingServiceAvailable,
+			/**
 			 * 이사 서비스 업체검색
 			 */
 			movingCompanyList: movingCompanyList,
@@ -96,6 +100,20 @@ function ClassHomeServiceController() {
 			} else {
 				Super.handleError('movingAddressList', result);
 				$(callerObj).trigger('movingAddressListResult', [status, result]);
+			}
+		}, false);
+	};
+	
+	/**
+	 * 이사 서비스 가능여부 검색
+	 */
+	function movingServiceAvailable(regionCode) {
+		Super.callApi('/apis/living/moving/'+regionCode+'/address', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('movingServiceAvailableResult', [status, result.data]);
+			} else {
+				Super.handleError('movingServiceAvailable', result);
+				$(callerObj).trigger('movingServiceAvailableResult', [status, result]);
 			}
 		}, false);
 	};

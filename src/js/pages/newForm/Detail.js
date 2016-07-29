@@ -30,6 +30,7 @@ module.exports = function() {
 	var loginDataModel = require('../../model/LoginModel');
 
 	var CardList = require('../../components/CardList.js');
+	var unitProductsList;
 	var recommendShopList;
 	var recommendNewFormList;
 	var partnerGoodsList;
@@ -76,6 +77,9 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 		setBtnsEvents();
+
+		unitProductsList = CardList();
+		unitProductsList.init('#packageUnitsWrap', true);
 		
 		recommendShopList = CardList();
 		recommendShopList.init('#recommendShopWrap', true);
@@ -315,6 +319,15 @@ module.exports = function() {
 					self.productName = result.data.product.productName;
 					self.salePrice = result.data.product.salePrice;
 					self.stock = result.data.product.stock;
+
+					unitProductsList.appendData(result.data.product.unitProducts);
+					$('#packageUnitsWrap').bxSlider({
+						pager:false,
+						slideMargin: 10,
+						minSlides: 4,
+						maxSlides: 4,
+						slideWidth: 285
+					});
 
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
