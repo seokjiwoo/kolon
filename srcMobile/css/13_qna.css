@@ -29,64 +29,76 @@
 .qaList li:first-child{border-top:0;}
 .qaList li .except02{overflow: hidden;height: 4.5em;word-break: break-all;}
 .qaList .top:after{content:"";display:block;clear:both;}
-.qaList .info{float:left;padding:4px 6px;border:1px solid #436ebb;color:#436ebb;display: inline-block;font-size:11px;border-radius: 15px;}
-.qaList .name{margin-top:2px;}
-.qaList .name em{color:#999;font-style:normal;}
+.qaList .info{padding:4px 6px;border:1px solid #436ebb;color:#436ebb;display: inline-block;font-size:11px;border-radius: 15px;}
+.qaList .dateInfo{margin-top:15px;}
+.qaList .dateInfo:after{content:"";display:block;clear:both;}
+.qaList .dateInfo .name{float:left;display:block;font-size:14px;}
+.qaList .dateInfo .name span{padding-right:5px;}
+.qaList .dateInfo .name em{color:#999;font-style:normal;}
+
+.qaList .qaState{float:right;}
+.qaState span{display:inline-block;line-height:1.4em;font-size:14px;}
+.qaState span:first-child{position:relative;padding-right:5px;color:#999;font-weight:bold;}
+.qaState span:first-child:after{position:absolute;right:0;top:5px;content:"";display:inline-block;width:1px;height:10px;background:#ccc;}
+.qaState span:last-child{color:#333;}
+.qaState span:last-child em{font-style:normal;color:#b08967;}
+.qaState span.on{color:#436ebb;}
+
 .qaList .state{color: #999;font-size: 12px;}
 .qaList .state:after{content:'';display: inline-block;width: 1px;height: 11px;margin:0 5px;background: #dadada;vertical-align: middle;}
 .qaList .txt p{margin-top:10px;line-height:1.4em;}
 .qaList .txt p:first-child{font-size:15px;}
 .qaList .txt p:last-child{color:#666;}
 .qaList .thumb{position:relative;margin-top:20px;}
-.qaList .thumb a{display:inline-block;}
-.qaList .thumb a img{width:78px;}
+.qaList .thumb:after{content:"";display:block;clear:both;}
+.qaList .thumb a{width:33%;display:block;float:left;margin-left:0.5%;}
+.qaList .thumb a:first-child{margin-left:0;}
+.qaList .thumb a img{width:100%}
 .qaList .thumb .icoComment{position:absolute;right:0;bottom:0;}
 
 .opinionsList li{padding:25px 0;border-top:1px solid #ccc;}
 .opinionsList li:first-child{border-top:0;}
+.opinionsList li:last-child{padding-bottom:0;}
 .opinionsList li:after{content:"";display:block;clear:both;}
 .opinionsList .thumb{width:48px;height:48px;overflow:hidden;border-radius:100%;float:left;}
 .opinionsList .thumb img{width:100%;vertical-align:top;}
-.opinionsList .info{padding-left:60px;}
 .opinionsList .info .top:after{content:"";display:block;clear:both;}
-.opinionsList .info .name{float:left;}
+.opinionsList .info .name{float:left;margin:6px 0 0 10px;}
 .opinionsList .info .btnSizeS{float:right;}
 
 .opinionsList .info .name span{display:block;line-height:1.4em;}
-.opinionsList .info .name span:first-child{font-weight:bold}
-.opinionsList .info .name span:last-child{color:#666;}
-.opinionsList .info .txt{line-height:1.4em;}
+.opinionsList .info .name span{font-weight:bold}
+.opinionsList .info .name em{color:#b08967;font-style:normal;}
+.opinionsList .info .txt{line-height:1.4em;margin-top:15px;color:#666;}
 .opinionsList .info .count{margin-top:10px;}
+.opinionsList .info .count:after{content:"";display:block;clear:both;}
 .opinionsList .info .count span{line-height:1.4em;}
 .opinionsList .info .count span:first-child{float:left;color:#999;}
-.opinionsList .info .count span:last-child{float:right;color:#f1645c;padding-left:20px;background:url("../images/ico_help.png") no-repeat 0 center;background-size:15px;}
+.opinionsList .info .count .good{float:right;color:#666;padding-left:20px;background:url("../images/ico_help.png") no-repeat 0 2px;background-size:15px;}
+.opinionsList .info .count .good.on{background-position:0 -21px;}
+.commentCount span{display:block;padding-left:22px;background:url("../images/ico_comment02.png") no-repeat 0 center;background-size:18px;}
 
-.opinionsFix{height:55px;padding:0 15px;border-top:1px solid #ccc;background:#fff;}
-.opinionsFix:after{content:"";display:block;clear:both;}
-.opinionsFix a{display:inline-block;line-height:1.4em;}
-.opinionsFix a:first-child{float:left;padding-left:20px;background:url("../images/ico_back.png") no-repeat 0 center;background-size:9px;font-size:18px;color:#333;margin-top:12px;}
-.opinionsFix a:last-child{float:right;padding-left:20px;background:url("../images/ico_comment.png") no-repeat 0 center;background-size:17px;color:#f1645c;margin-top:14px;}
-.opinionsFix{position:fixed;bottom: 0;left: 0;right: 0;z-index: 1;}
-.opinionsFix + .container{padding-bottom: 55px;}
-
-.opinionsWrap{position:relative;padding-bottom:25px;border-bottom:1px solid #ccc;text-align:center}
+.opinionsWrap{position:relative;padding:25px 0 25px;text-align:center;background:#f9fafc;}
+.opinionsWrap.bgW{background:#fff;}
+.opinionsWrap .opwrap{padding:0 15px;}
 .opinionsWrap p{margin-top:10px;line-height:1.4em;font-size:24px;}
-.opinionsWrap > span{padding:4px 6px;font-size:11px;    border: 1px solid #436ebb;color: #436ebb;display: inline-block;border-radius: 15px;}
-.opinionsWrap .date{margin-top:25px;}
-.opinionsWrap .date span{display:block;line-height:1.4em;font-size:14px;}
-.opinionsWrap .date span:last-child{color:#999;}
+.opinionsWrap span.ico{padding:4px 6px;font-size:11px;    border: 1px solid #436ebb;color: #436ebb;display: inline-block;border-radius: 15px;}
+.opinionsWrap .qaState{margin-top:25px;}
 .opinionsWrap .icoComment{position:absolute;right:0;bottom:25px;}
 
-.opinionsCon{padding-top:30px;}
-.opinionsCon p{line-height:1.4em;color:#666;}
+.opinionsCon p{line-height:1.4em;color:#666;margin-top:15px;}
 .opinionsCon ul{margin-top:25px;}
 .opinionsCon ul li{margin-top:25px;}
 .opinionsCon ul li:first-child{margin-top:0;}
 .opinionsCon ul li img{width:100%;vertical-align:top;}
+.opinionsCon .name{display:block;font-size:14px;}
+.opinionsCon .name span{padding-right:5px;}
+.opinionsCon .name em{color:#999;font-style:normal;}
+
 .txtInput{border:1px solid #ccc;text-align:left;margin-top:25px;}
 .txtInput .btnSizeS{width:55px !important;}
 .txtInput .txt{padding:15px;}
-.txtInput textarea{width:100%;height:100px;border:0;}
+.txtInput textarea{width:100%;height:100px;border:0;padding:0;}
 .txtInput .submit{background:#f8f8f8;padding:5px;border-top:1px solid #ccc;text-align:right;}
 .txtInput .submit span{color:#999;}
 .txtInput .submit i{font-style:normal;color:#666;}

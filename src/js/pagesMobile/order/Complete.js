@@ -87,6 +87,11 @@ module.exports = function() {
 							.always(function() {
 								self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								$('.js-more').on('click', function(e) {
+									e.preventDefault();
+									$(this).toggleClass('active');
+									$('.js-more-target').slideToggle();
+								});
 							});
 	}
 

@@ -632,7 +632,7 @@ table ul.myCartInfoList li a {color:#999;}
 .stateInfo p span:last-child{float:right;}
 .stateInfo ul li{margin-top:6px;}
 .stateInfo ul li:first-child{margin-top:0;}
-.stateInfo textarea{height:80px;color:#666;}
+.stateInfo textarea{width:100%; height:80px;color:#666;}
 
 .difference{padding:6px 0;border-top:1px dashed #ccc;font-size:15px;}
 .difference p{padding:5px 0;}
@@ -914,15 +914,20 @@ table ul.myCartInfoList li a {color:#999;}
 
 .addressBtnWrap {padding-bottom:15px; border-bottom:1px solid #ccc;}
 
-.my .stateWrap {width:100%; position:relative; overflow:hidden;}
+.stateWrap {width:100%; position:relative; overflow:hidden;}
 .stateWrap .stepImg, 
 .stateWrap .stepImg span{width:310px; height:15.45px; margin-left:-155px; background: url('../images/ico_step.png') 0 0 no-repeat; background-size:310px 154.5px;position:absolute; top:15px; left:50%;}
-.my .stateWrap .state{padding: 15px 0; position:relative;}
-.my .stateWrap ul{max-width:310px; overflow: hidden; margin:0 auto;}
-.my .stateWrap li{min-height:34px; float: left;padding-top:30px;text-align: center;color: #666;font-size: 13px;line-height: 1.3em}
-.my .stateWrap li.on{font-family:'NotoSansM', sans-serif;color: #000; font-weight:bold;}
-.my .stateWrap .stepImg{height:154.5px;}
-.my .stateWrap .stepImg span{display: block;height: 100%;}
+.stateWrap .state{padding: 15px 0; position:relative;}
+.stateWrap ul{width:100%; z-index:3;}
+.stateWrap li{min-height:34px; float: left;padding-top:30px;text-align: center;color: #666;font-size: 13px;line-height: 1.3em}
+.stateWrap li.on{font-family:'NotoSansM', sans-serif;color: #000; font-weight:bold;}
+.stateWrap .stepImg{height:154.5px;}
+.stateWrap .stepImg span{display: block;height: 100%;}
+.stateWrap .state .step {max-width:310px; overflow: hidden; margin:0 auto;}
+.stateWrap .state .step ul:nth-child(1) li {float:left;}
+.stateWrap .state .step ul:nth-child(2) li {float:right}
+.stateWrap .state .step ul:nth-child(3) li {float:left;} 
+.stateWrap .state .step ul:nth-child(4) li {float:right}
 
 .my .stateWrap .state .stepImg{background-position:0 0;}
 .my .stateWrap .state .stepImg span{background: url('../images/ico_step_on.png') 0 0 no-repeat; overflow:hidden; background-size:310px 154.5px; top:0;}
@@ -945,3 +950,33 @@ table ul.myCartInfoList li a {color:#999;}
 .my .stateWrap .state .step10 span:after {content:''; width:206px; height:30px; position:absolute; top:125px; left:125px; background:url('../images/ico_step.png') -125px -125px no-repeat; background-size:310px 154.5px;}
 .my .stateWrap .state .step11 span{width: 750px; height:155px;}
 .my .stateWrap .state .step11 span:after {display:none;}
+.my .stateWrap .state.orderStep .stepImg {height:92.5px;}
+.my .stateWrap .state.orderStep:before {content:''; width:179px; height:31px; margin-left:-156px; position:absolute; top:77px; left:50%; background:#fff; z-index:1;}
+
+.myPop .stateWrap .state .stepImg {background: url('../images/ico_step_pop.png') no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .stepImg span {background: url('../images/ico_step_pop_on.png') no-repeat; overflow:hidden; background-size:200px 218.5px; top:0;}
+.myPop .stateWrap .state .stepImg,
+.myPop .stateWrap .state .stepImg span {width:200px; height:218.5px; background-position:0 0; margin-left:-100px;}
+.myPop .stateWrap .state li{width:33.33%; text-align:center; font-size:12px;}
+.myPop .stateWrap .step {max-width:197px;}
+.myPop .stateWrap .state .step01 span{width: 45px; height:30px;}
+.myPop .stateWrap .state .step02 span{width: 110px; height:30px;}
+.myPop .stateWrap .state .step03 span{width: 175px; height:30px;}
+.myPop .stateWrap .state .step04 span{width: 200px; height:92px;}
+.myPop .stateWrap .state .step04 span:after {content:''; width:150px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step_pop.png') 0 -64px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step05 span{width: 200px; height:92px;}
+.myPop .stateWrap .state .step05 span:after {content:''; width:85px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step_pop.png') 0 -64px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step06 span{width: 200px; height:92px;}
+.myPop .stateWrap .state .step06 span:after {content:''; width:20px; height:30px; position:absolute; top:64px; left:0; background:url('../images/ico_step_pop.png') 0 -64px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step07 span{width: 200px; height:155px;}
+.myPop .stateWrap .state .step07 span:after {content:''; width:180px; height:30px; position:absolute; top:128.5px; left:45px; background:url('../images/ico_step_pop.png') -45px -128.5px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step08 span{width: 200px; height:155px;}
+.myPop .stateWrap .state .step08 span:after {content:''; width:180px; height:30px; position:absolute; top:128.5px; left:110px; background:url('../images/ico_step_pop.png') -110px -128.5px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step09 span{width: 200px; height:155px;}
+.myPop .stateWrap .state .step09 span:after {content:''; width:180px; height:30px; position:absolute; top:128.5px; left:175px; background:url('../images/ico_step_pop.png') -175px -128.5px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step10 span{width: 200px; height:219px;}
+.myPop .stateWrap .state .step10 span:after {content:''; width:150px; height:30px; position:absolute; top:189.5px; left:0; background:url('../images/ico_step_pop.png') 0 -189.5px no-repeat; background-size:200px 218.5px;}
+.myPop .stateWrap .state .step11 span{width: 200px; height:219px;}
+.myPop .stateWrap .state .step11 span:after {display:none;}
+.myPop .stateWrap .state.orderStep .stepImg {height:92px;}
+.myPop .stateWrap .state.orderStep:before {content:''; width:20px; height:31px; margin-left:-100px; position:absolute; top:77px; left:50%; background:#fff; z-index:1;}

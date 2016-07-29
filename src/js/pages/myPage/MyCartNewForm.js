@@ -177,6 +177,11 @@ module.exports = function() {
 				$('#js-myCartNewForm-submit').click(function(e){
 					var loginData = loginDataModel.loginData();
 
+					if (!orderData.length) {
+						win.alert('실측 신청하실 상품을 선택해주세요.');
+						return;
+					}
+
 					if (loginData.stateCode == 'BM_MEM_STATE_01') {
 						$(document).trigger('verifyMember', ['MYCART_NEWFORM']);
 					} else {

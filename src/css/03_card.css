@@ -66,7 +66,7 @@
 .cardTitle.master .cardTitleCont .cardTitleBg {width:1006px; height:1271px; top:-274px; right:400px; background:url('../images/main_bg_master.png') 0 0 no-repeat;}
 
 /* hexagon css */
-.hexagon{position: absolute;top:85px;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
+.hexagon{position: absolute;left: 0;width: 100%;background-position: center;background-repeat: no-repeat;margin: 82.27px 0;}
 .floating .hexagon{top:0}
 .hexTop, .hexBottom {overflow: hidden;position: absolute;z-index: 1;background: inherit;left: 41.7373px;width: 201.525px;height: 201.525px;transform: scaleY(0.57735) rotate(-45deg);-ms-transform: scaleY(0.57735) rotate(-45deg);}
 .hexTop{top: -101.76px}
@@ -460,6 +460,7 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .cardWrap .expert .cardIntro:before{display: none;}
 
 .cardCon .removeScrap { display:none; position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_remove.png') center no-repeat; border-radius: 50%; z-index:8;font-size: 0;}
+.cardCon .editScrap { display:none; position:absolute; top:42px; right:20px;width:40px; height:40px; background: #b3b3b3 url('../images/btn_edit.png') center no-repeat; border-radius: 50%; z-index:8;font-size: 0;}
 
 /*  */
 .cardBgWrap {position:absolute;top:0;left:0;right:0;bottom:0;z-index:6;pointer-events:none;}

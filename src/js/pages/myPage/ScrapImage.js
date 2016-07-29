@@ -45,6 +45,15 @@ module.exports = function() {
 			wrap : 'scrapFolderRemove',
 			submit : '.js-scrapFolderRemove-submit'
 		},
+		editScrap: {
+			wrap : 'scrapEdit',
+			removeButton: '#removeCardButton',
+			submit : '#scrapEditForm'
+		},
+		removeScrap : {
+			wrap : 'scrapRemove',
+			submit : '.js-scrapFolderRemove-submit'
+		},
 		cssClass : {
 			isLoading : 'is-loading'
 		},
@@ -219,55 +228,44 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
+			case SCRAP_EVENT.LIST:
+				var tags = '<option value="" selected="selected">폴더 이동</option>';
+				$.each(result.data.scraps, function(key, each) {
+					tags += '<option value="'+each.folderNumber+'">'+each.folderName+'</option>';
+				});
+				$('#scrapTargetFolderSelect').html(tags);
+				break;
 			case SCRAP_EVENT.IMAGE_LIST:
-				/*
-				401	Unauthorized
-				403	Forbidden
-				404	Not Found
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
-
-				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
+				result.data.folderName = util.getUrlVar('folderName');
+				result.data.folderNumber = util.getUrlVar('folderNumber');
+				result.data.scrapCount = result.data.scrapImages.length;
 
 				if (self.isCarouselMode) {
-					result = {"folders":[{"folderName":"폴더1","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":6,"scrapImages":[{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2016/06/10/22/25/ortler-1449018_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/03/23/12/19/solda-293200_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/02/18/23/31/mountain-269547_960_720.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp111.jpg"}]}],"scraps":[{"category":"string","imageUrl":"string","magazine":{"createDate":"string","subTitle":"string","title":"string"},"product":{"price":0,"productDesc":"string","productName":"string"},"scrapCount":0,"scrapNumber":0,"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},"tags":["string"]}]};
+					//result = {"folders":[{"folderName":"폴더1","folderNumber":0,"recentImageTitle":"string","recentImageUrl":"string","scrapCount":6,"scrapImages":[{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2016/06/10/22/25/ortler-1449018_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/03/23/12/19/solda-293200_960_720.jpg"},{"imageTitle":"string","imageUrl":"https://pixabay.com/static/uploads/photo/2014/02/18/23/31/mountain-269547_960_720.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp11.jpg"},{"imageTitle":"string","imageUrl":"../images/temp111.jpg"}]}],"scraps":[{"category":"string","imageUrl":"string","magazine":{"createDate":"string","subTitle":"string","title":"string"},"product":{"price":0,"productDesc":"string","productName":"string"},"scrapCount":0,"scrapNumber":0,"seller":{"companyName":"string","sellerImageUrl":"string","sellerName":"string"},"tags":["string"]}]};
 				}
 
-				displayData(result);
+				displayData(result.data);
+				if (!self.isCarouselMode) $('.editScrap').show();
+				break;
+			case SCRAP_EVENT.DELETE_SCRAP:
+				if (status == 200) {
+					location.reload(true);
+				} else {
+					alert(status+': '+response.message);
+				}
+				break;
+			case SCRAP_EVENT.EDIT_SCRAP:
+				if (status == 200) {
+					location.reload(true);
+				} else {
+					alert(status+': '+response.message);
+				}
 				break;
 			case SCRAP_EVENT.DELETE_SCRAP_FOLDER:
-				/*
-				{
-					"status": "string",
-					"message": "string",
-					"errorCode": "string",
-					"data": {}
-				}
-				204	No Content
-				401	Unauthorized
-				403	Forbidden
-				 */
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onScrapControllerListener', eventType, status, response);
-
-				testResult();
+				location.reload(true);
 				break;
 		}
-	}
-
-	function testResult() {
-		win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
 	}
 
 	/**
@@ -305,6 +303,22 @@ module.exports = function() {
 			self.colorbox.find(self.opts.removeFolder.submit).on('click', onDeleteFolder);
 		}
 
+		if (self.colorbox.hasClass(self.opts.editScrap.wrap)) {
+			self.colorbox.find(self.opts.editScrap.removeButton).on('click', function(e){
+				e.preventDefault();
+				MyPage.Super.Super.htmlPopup('/_popup/popScrapDel.html', 540, 'popEdge scrapRemove');
+			});
+			self.colorbox.find(self.opts.editScrap.submit).on('submit', function(e){
+				e.preventDefault();
+				controller.editScrap(self.selPopBtnInfo.target.data().scrapNumber, $('#scrapTargetFolderSelect').val());
+			});
+			controller.scrapList('IMAGE');
+		}
+		
+		if (self.colorbox.hasClass(self.opts.removeScrap.wrap)) {
+			self.colorbox.find(self.opts.removeScrap.submit).on('click', onDeleteScrap);
+		}
+
 		debug.log(fileName, 'setColoboxFolder');
 	}
 
@@ -315,11 +329,16 @@ module.exports = function() {
 			self.carousels = [];
 		}
 
-		if (self.colorbox.hasClass(self.opts.removeFolder.wrap)) {
-			self.colorbox.find(self.opts.removeFolder.submit).off('click', onDeleteFolder);
-		}
-
 		debug.log(fileName, 'setColoboxFolder');
+	}
+
+	/**
+	 * 스크랩 삭제
+	 */
+	function onDeleteScrap(e) {
+		e.preventDefault();
+		debug.log(fileName, 'onDeleteScrap', $(e.target), self.selPopBtnInfo.target.data().scrapNumber);
+		controller.deleteScrap(self.selPopBtnInfo.target.data().scrapNumber);
 	}
 
 	function onColorBoxAreaListener(e) {

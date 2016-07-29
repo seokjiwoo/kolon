@@ -19,7 +19,8 @@ module.exports = function() {
 
 	var info;
 	var serviceRequestNumber;
-	var serviceCompanyCode = 'LS_COMPANY_SECTION_02';	// 임시처리. 바꿔야 함.
+	var serviceCompanyCode;
+	var statusCode;
 
 	var now;
 	var pickup;
@@ -69,6 +70,7 @@ module.exports = function() {
 		debug.log();
 
 		info = result.washRequestDetail;
+		serviceCompanyCode = info.livingCompanySectionCode;
 		
 		info.stepClass1 = '';
 		info.stepClass2 = '';
@@ -130,19 +132,6 @@ module.exports = function() {
 	function setDateChangePopup() {
 		renderData(info, '#homeServiceChangeTemplates', '#homeServiceChangeWrap', true);
 
-		if (now.diff(pickup, 'minute') < 90) {
-			// 픽업 수정가능
-			controller.changeWashingPickupTimeList(serviceCompanyCode, serviceRequestNumber);
-		} else {
-			$('#pickupRow').hide();
-		}
-		if (info.deliveryUpReservationDateTime != null && now.diff(delivery, 'minute') < 90) {
-			// 배송 수정가능
-			controller.changeWashingDeliveryTimeList(serviceCompanyCode, serviceRequestNumber);
-		} else {
-			$('#deliveryRow').hide();
-		}
-
 		var rangePicker = $('#colorbox').find('.js-range-picker');
 		DatePicker.init({
 			type : 'range',
@@ -164,19 +153,97 @@ module.exports = function() {
 			}
 		});
 
+		if (now.diff(pickup, 'minute') < 90) {
+			// 픽업 수정가능
+			statusCode = 'pickup';
+			controller.changeWashingPickupTimeList(serviceCompanyCode, serviceRequestNumber);
+			$('.js-picker-from').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
+			$('.js-picker-from').on('onSelect', function(){
+				refreshTimeDrop();
+			});
+		} else {
+			$('#pickupRow').hide();
+		}
+		if (info.deliveryUpReservationDateTime != null && now.diff(delivery, 'minute') < 90) {
+			// 배송 수정가능
+			statusCode = 'delivery';
+			controller.changeWashingDeliveryTimeList(serviceCompanyCode, serviceRequestNumber);
+			$('.js-picker-to').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
+			$('.js-picker-to').on('onSelect', function(){
+				refreshTimeDrop();
+			});
+		} else {
+			$('#deliveryRow').hide();
+		}
+
+		$('#washChangeForm').submit(function(e){
+			e.preventDefault();
+
+			switch(statusCode) {
+				case 'pickup':
+					var requestDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
+					var requestValue = $('#pickupDrop').val().split('|');
+							
+					if (requestValue.length == 1) {
+						alert('변경예정시각을 선택해주세요');
+					} else {
+						controller.changeWashingPickupTime(serviceCompanyCode, serviceRequestNumber, requestValue[0], requestValue[1]);
+					}
+					break;
+				case 'delivery':
+					var requestDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
+					var requestValue = $('#deliveryDrop').val().split('|');
+							
+					if (requestValue.length == 1) {
+						alert('변경예정시각을 선택해주세요');
+					} else {
+						controller.changeWashingDeliveryTime(serviceCompanyCode, serviceRequestNumber, requestValue[0], requestValue[1]);
+					}
+					break;
+			}
+		});
+
 		dropDownMenu.init({
 			wrap : $('#colorbox')
 		});
 	};
 
+	var timeArray; 
+
 	function changePickupTimeListHandler(e, status, result) {
-		//
-			// changeWashingPickupTime
+		timeArray = result.availableDateTime;
+		refreshTimeDrop();
 	};
 
 	function changeDeliveryTimeListHandler(e, status, result) {
-		//
-			//  changeWashingDeliveryTime
+		timeArray = result.availableDateTime;
+		refreshTimeDrop();
+	};
+
+	function refreshTimeDrop() {
+		switch(statusCode) {
+			case 'pickup':
+				var requestDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
+				break;
+			case 'delivery':
+				var requestDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
+				break;
+		}
+
+		if (timeArray[requestDate] == undefined) {
+			//
+		} else {
+			var tags = '';
+			$.each(timeArray[requestDate], function(key, each){
+				if (serviceCompanyCode == 'LS_COMPANY_SECTION_01') {
+					if (each.washOnYn == 'Y') tags += '<option value="'+each.dateTime+'|'+each.washOnDateTime+'">'+key+'</option>';
+				} else if (serviceCompanyCode == 'LS_COMPANY_SECTION_02') {
+					if (each.washSwatYn == 'Y') tags += '<option value="'+each.dateTime+'|'+each.washSwatDateTime+'">'+key+'</option>';
+				};
+			});
+			if (tags == '') tags = '<option value="">선택 가능한 시간이 없습니다</option>';
+			$('.timeDrop').html(tags);
+		}
 	};
 
 	function changeWashingTimeHandler(e, status, result) {

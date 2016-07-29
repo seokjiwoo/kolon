@@ -34,6 +34,10 @@ function ClassMyPageController() {
 			 * 최근 본 상품 목록
 			 */
 			recentViewItems: recentViewItems,
+			/**
+			 * 좋아요 목록
+			 */
+			likes: likes,
 
 			/**
 			 * 포인트 조회
@@ -103,6 +107,18 @@ function ClassMyPageController() {
 			}
 		}, true);
 	};
+
+	function likes() {
+		Super.callApi('/apis/me/like', 'GET', {}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('likeItemsResult', [200, result]);
+			} else {
+				Super.handleError('likeItems', result);
+				$(callerObj).trigger('likeItemsResult', [status, result]);
+			}
+		}, true);
+	}
+
 	
 	function myPoints() {
 		Super.callApi('/apis/me/point', 'GET', {}, function(status, result) {
