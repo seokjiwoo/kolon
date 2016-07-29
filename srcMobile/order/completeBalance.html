@@ -3,15 +3,11 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문완료"} -->
 </head>
-<body class="login" data-page-id="order-complete-balance">
+<body data-page-id="order-complete-balance">
 	<div class="wrapper order">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<div class="wrap">
-
-				<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
-
-			</div>
+			<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
 		</div>
 		<!-- @@include ../_template/footer.html -->
 	</div>
@@ -19,158 +15,140 @@
 
 <script id="order-complete-templates" type="text/x-handlebars-template">
 	{{!-- order-complete-templates --}}
-	<h2 class="secTit setTitC">주문완료</h2>
-	<!-- 시공형 상품 잔금결제 완료 -->
-	<div class="completeBox">
-		<p class="tit"><b>선택하신 상품의 결제 및 계약이 완료되었습니다.</b></p>
-		<p><b>{{vxMemberName}}</b> 고객님께서 {{vxOrderDate}}에 주문하신 주문번호는 <span class="pointRed">{{vxOrderNumber}}</span>입니다.<br/>주문내역 확인은 마이커먼 &gt; 시공중인 상품에서 확인하실 수 있습니다.</p>
-	</div>
-	<!-- 결제 정보 -->
-	<h3 class="subTit">결제 정보</h3>
-		<div class="orderCont">
-			<div class="payTb payTbL border">
-				<dl class="payS minus">
-					<dt><div>견적금액</div></dt>
-					<dd><div><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b> 원</span></div></dd>
-				</dl>
-				<dl class="payS equal">
-					<dd class="pricewrap">
-						<div>
-							<ul class="priceList">
-								<li>
-									<em>선결제금액</em>
-									<span class="price"><b>{{constPaymentInfo.totalPaymentPriceDesc}}</b> 원</span>
-								</li>
-								<li>
-									<em>총 할인금액</em>
-									<span class="point"><i>{{constPaymentInfo.totalDiscountPriceDesc}} P</i></span>
-								</li>
-							</ul>
-						</div>
+	<section>
+		<h2 class="pageTit">주문완료</h2>
+		<div class="wrapT">
+			<div class="complete">
+				<p><b>{{vxMemberName}}</b> 고객님께서 {{vxOrderDate}}에 <br/>주문하신 주문번호는 <span class="pointRed">{{vxOrderNumber}}</span>입니다.<br/>주문내역 확인은 마이커먼 <span class="iconArrow">시공중인 상품에서</span>  <br/>확인하실 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="wrapT">
+			<h3 class="conTit">결제 정보</h3>
+			<div class="orderInfo">
+				<dl class="minus">
+					<dt>
+						<span>주문 금액</span>
+						<span class="orderTxt">견적금액</span>
+					</dt>
+					<dd>
+						<p class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b> 원</p>
 					</dd>
 				</dl>
-				<dl class="payS">
-					<dt><div>총 결제금액</div></dt>
+				<dl class="minus">
+					<dt><span>총 할인금액</span></dt>
 					<dd>
-						<div><span class="price"><b>{{constPaymentInfo.advancePriceDesc}}</b> 원</span></div>
+						<ul class="odList">
+							<li>
+								<p class="odListTit">선결제금액</p>
+								<p class="odListCont"><b>{{constPaymentInfo.totalPaymentPriceDesc}}</b> 원</p>
+							</li>
+							<li>
+								<p class="odListTit">기본 할인</p>
+								<p class="odListCont"><b>{{constPaymentInfo.totalDiscountPriceDesc}}</b> P</p>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="equal">
+					<dd class="total">
+						<p class="odListTit">총 결제금액</p>
+						<p class="odListCont"><b>{{constPaymentInfo.advancePriceDesc}}</b> 원</p>
 					</dd>
 				</dl>
 			</div>
-		</div>
-	<div class="orderCont">
-		<div class="tbSet">
-			<table class="tbLThC">
-				<caption>결제방법에 관한 결제방법, 입금자명, 입금계좌 정보를 제공합니다.</caption>
-				<colgroup>
-					<col style="width:15%;"/><col style="width:30%;"/><col style="width:15%;"/><col style="width:40%;"/>
-				</colgroup>
+			<!-- 결제방법이 신용카드 인 경우 -->
+			<table class="formWrap tbR">
+				<caption>결제 방법</caption>
+				<thead>
+					<tr>
+						<th scope="col">결제 방법</th>
+					<tr>
+				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">결제방법</th>
 						<td>{{constPaymentInfo.method}}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<!-- // 결제 정보 -->
-	<h3 class="subTit">적립예정 포인트</h3>
-	<div class="orderCont">
-		<div class="tbSet">
-			<table class="tbLThC">
-				<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정 시 적립에 관한 정보를 제공합니다.</caption>
+		<div class="wrapT">
+			<h3 class="conTit">주문상품내역</h3>
+			{{#each constProducts}}
+			<ul class="productList">
+				<li>
+					<a href="/newForm/detail.html?productNumber={{productNumber}}" class="thumb">
+						<img src="{{productImageUrl}}" alt="{{productName}}" />
+					</a>
+					<div class="info">
+						<span>{{saleMemberName}}</span>
+						<p><a href="/newForm/detail.html?productNumber={{productNumber}}">{{{productName}}}</a></p>
+					</div>
+					<ul class="productData">
+						<li>
+							<p class="name">{{orderOptionName}}</p>
+							<p class="count">
+								<span style="display:none"></span>
+								<span><em>{{productPriceDesc}}</em>원</span>
+								<!-- 
+								<span><em>{{productPriceDesc}}</em>원</span>
+								<span>{{quantity}} 개</span>
+								-->
+							</p>
+						</li>
+					</ul>
+					<!-- 결제금액 내역 -->
+					<ul class="priceBox">
+						<li>
+							<p class="priceBoxTit">상품금액</p>
+							<p class="priceBoxCont"><b>{{constExpectPriceDesc}}</b> 원</p>
+						</li>
+						<li>
+							<p class="priceBoxTit">실측 후 금액</p>
+							<p class="priceBoxCont"><b>{{constExpectPrice}}</b> 원</p>
+						</li>
+						<li>
+							<p class="priceBoxTit">할인금액</p>
+							<p class="priceBoxCont">- <b>{{discountPriceDesc}}</b> 원</p>
+						</li>
+						<li class="check">
+							<p class="priceBoxTit">선결제금액</p>
+							<p class="priceBoxCont"><b>???</b> 원</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			{{/each}}
+			<table class="formWrap tbL">
+				<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
 				<colgroup>
-					<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
+					<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
 				</colgroup>
 				<tbody>
 					<tr>
-						<th scope="row">기본 적립</th>
-						<td><span class="pointRed">{{constPaymentInfo.savingPointDesc}}</span> P</td>
-						<th scope="row">적립 시점</th>
-						<td>구매확정 시 적립</td>
+						<th scope="row">시공대상</th>
+						<td>{{constOrderInfo.roadBaseAddress}}</td>
+						<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
+						<td><span class="price"><b></b>원</span></td>
+					</tr>
+					<tr>
+						<th scope="row">예상기간</th>
+						<td>0000.00.00 ~ 0000.00.00 (0일)</td>
+						<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
+						<td rowspan="2"><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b>원</span></td>
+					</tr>
+					<tr>
+						<th scope="row">시공업체</th>
+						<td>
+							<!--<span class="companyInfo">김석우  |  (주)가인인테리어</span>
+							<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>-->
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<!-- 주문상품내역 -->
-	<h3 class="subTit">주문상품내역</h3>
-	<div class="orderCont">
-		<div class="delivery1">
-			<div class="">
-				<table class="record">
-					<caption>주문상품내역</caption>
-					<colgroup>
-						<col style="width:35%;"/><col style="width:15%;"/><col style="width:10%;"/><col style="width:14%;"/><col style="width:13%;"/><col style="width:13%;"/>
-					</colgroup>
-					<thead>
-						<tr>
-							<th scope="col">상품정보</th>
-							<th scope="col">상품금액</th>
-							<th scope="col">판매자</th>
-							<th scope="col">실측 후 금액</th>
-							<th scope="col">할인금액</th>
-							<th scope="col">선결제금액</th>
-						</tr>
-					</thead>
-					<tbody>
-						{{#each constProducts}}
-						<tr>
-							<td>
-								<div class="photoList">
-									<a href="/newForm/detail.html?productNumber={{productNumber}}">
-										<span class="thumb"><img src="{{productImageUrl}}" alt=""/></span>
-										<span class="cartInfo">
-											<span class="cartTit">{{productName}}</span>
-										</span>
-									</a>
-								</div>
-							</td>
-							<td><b>{{constExpectPriceDesc}}</b> 원</td>
-							<td>{{saleMemberName}}</td>
-							<td><b>{{constExpectPrice}}</b> 원</td>
-							<td><b>- {{discountPriceDesc}}</b> 원</td>
-							<td><b>???</b> 원</td>
-						</tr>
-						{{/each}}
-					</tbody>
-				</table>
-				<div class="tbSBg tbSet">
-					<table class="">
-						<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
-						<colgroup>
-							<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
-						</colgroup>
-						<tbody>
-							<tr>
-								<th scope="row">시공대상</th>
-								<td>{{constOrderInfo.roadBaseAddress}}</td>
-								<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
-								<td><span class="price"><b></b>원</span></td>
-							</tr>
-							<tr>
-								<th scope="row">예상기간</th>
-								<td>0000.00.00 ~ 0000.00.00 (0일)</td>
-								<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
-								<td rowspan="2"><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b>원</span></td>
-							</tr>
-							<tr>
-								<th scope="row">시공업체</th>
-								<td>
-									<!--<span class="companyInfo">김석우  |  (주)가인인테리어</span>
-									<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>-->
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<h3 class="subTit">시공견적 상세정보</h3>
-	<div class="orderCont">
-		<div class="tbSet">
-			<table class="lineS">
+		<div class="wrapT">
+			<h3 class="conTit">시공견적 상세정보</h3>
+			<table class="formWrap tbL" style="margin-top:0;border-top:0">
 				<caption>시공 견적 상세 정보에 관한 항목, 견적, 시공 상세, 포함사항 정보를 제공합니다.</caption>
 				<colgroup>
 					<col style="width:12%;"/><col style="width:13%;"/><col style="width:33%;"/><col style="width:42%;"/>
@@ -201,14 +179,11 @@
 					</tr>
 				</tbody>
 			</table>
-			
 		</div>
-	</div>
-	<!-- // 주문상품내역 -->
-	<!-- //시공형 상품 잔금결제 완료 -->
-	<div class="btnC">
-		<a href="/" class="btn btnSizeL btnColor02 btnWL">커먼 메인으로 이동</a>
-	</div>
+		<div class="myCartTotal">
+			<a href="/" class="totalBtn">커먼 메인으로 이동</a>
+		</div>
+	</section>
 	{{!--// order-complete-templates --}}
 </script>
 </body>
