@@ -265,10 +265,6 @@ module.exports = function() {
 				"serviceDateTimeRequest": serviceDateTimeRequest
 			};
 			
-			//console.log( serviceAddress );
-			//console.log( livingService );
-			//console.log( washServiceRequest );
-
 			controller.requestWashing(companyCode, serviceAddress, livingService, washServiceRequest);
 		}
 	};

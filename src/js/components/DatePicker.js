@@ -59,8 +59,6 @@ module.exports = function() {
 	DefaultPicker = function() {
 		return {
 			init : function() {
-				debug.log(fileName, 'DefaultPicker init');
-
 				this.setElements();
 				this.setDatePicker();
 				this.setBindEvents();
@@ -69,21 +67,15 @@ module.exports = function() {
 				this.defOpts = opts.default;
 				this.wrap = $(this.defOpts.wrap);
 
-				debug.log('this.wrap', this.wrap);
-
 				this.altField = getJqueryElement(this.wrap, this.defOpts.altField);
 				this.button = getJqueryElement(this.wrap, this.defOpts.button);
 				this.picker = getJqueryElement(this.wrap, this.defOpts.picker);
 			},
 			setBindEvents : function() {
-				debug.log(fileName, 'DefaultPicker setBindEvents');
-
 				this.altField.on('click', $.proxy(this.onPickerToggler, this));
 				this.button.on('click', $.proxy(this.onPickerToggler, this));
 			},
 			onPickerToggler : function(e) {
-				debug.log(fileName, 'DefaultPicker onPickerToggler', e);
-
 				e.preventDefault();
 				this.picker.toggleClass(opts.cssClass.SHOW_HIDE);
 
@@ -100,8 +92,6 @@ module.exports = function() {
 				}
 			},
 			onPickerHide : function(e) {
-				debug.log(fileName, 'DefaultPicker onPickerHide', e);
-
 				if (e && e.target) {
 					var target = $(e.target);
 					if (target.closest(this.wrap).size()) {
@@ -115,8 +105,6 @@ module.exports = function() {
 			},
 			// datepicker 설정
 			setDatePicker : function() {
-				debug.log(fileName, 'DefaultPicker setDatePicker', opts.type);
-
 				if (!this.defOpts.onSelect || this.defOpts.onSelect === $.noop) {
 					this.defOpts.onSelect = $.proxy(this.onPickerSelect, this);
 				}
@@ -124,7 +112,6 @@ module.exports = function() {
 			},
 			// 일자 선택 callback
 			onPickerSelect : function(selectedDate, inst) {
-				debug.log(fileName, 'DefaultPicker onPickerSelect', selectedDate, inst);
 				this.picker.trigger('onSelect', [selectedDate, inst]);
 				this.onPickerHide();
 			}
@@ -136,8 +123,6 @@ module.exports = function() {
 	RangePicker = function() {
 		return {
 			init : function() {
-				debug.log(fileName, 'RangePicker init');
-
 				this.setElements();
 				this.setDatePicker();
 				this.setBindEvents();
@@ -162,8 +147,6 @@ module.exports = function() {
 				}
 			},
 			setBindEvents : function() {
-				debug.log(fileName, 'RangePicker setBindEvents');
-
 				this.fromAltField.on('click', $.proxy(this.onPickerToggler, this)).data(opts.dataAttr.IS_FROM, true);
 				this.fromButton.on('click', $.proxy(this.onPickerToggler, this)).data(opts.dataAttr.IS_FROM, true);
 
@@ -171,8 +154,6 @@ module.exports = function() {
 				this.toButton.on('click', $.proxy(this.onPickerToggler, this)).data(opts.dataAttr.IS_FROM, false);
 			},
 			onPickerToggler : function(e) {
-				debug.log(fileName, 'RangePicker onPickerToggler', e);
-
 				e.preventDefault();
 
 				var target = $(e.currentTarget),
@@ -204,8 +185,6 @@ module.exports = function() {
 				}
 			},
 			onPickerHide : function(e) {
-				debug.log(fileName, 'RangePicker onPickerHide', e);
-
 				var wrap = (this.fromPicker.is(':visible')) ? this.fromWrap : this.toWrap,
 				picker = (this.fromPicker.is(':visible')) ? this.fromPicker : this.toPicker,
 				calendar = (this.fromPicker.is(':visible')) ? this.fromPicker.closest('.calendar') : this.toPicker.closest('.calendar');
@@ -223,8 +202,6 @@ module.exports = function() {
 			},
 			// datepicker 설정
 			setDatePicker : function() {
-				debug.log(fileName, 'RangePicker setDatePicker', opts.type, this.fromOpts, this.toOpts);
-
 				this.fromPicker.datepicker(this.fromOpts).data(opts.dataAttr.IS_FROM, true);
 				this.toPicker.datepicker(this.toOpts).data(opts.dataAttr.IS_FROM, false);
 
@@ -234,8 +211,6 @@ module.exports = function() {
 			},
 			// 일자 선택 callback
 			onPickerSelect : function(selectedDate, inst) {
-				debug.log(fileName, 'RangePicker onPickerSelect', selectedDate, inst);
-
 				var picker = $(inst.dpDiv).closest('.hasDatepicker'),
 				isFrom = picker.data(opts.dataAttr.IS_FROM);
 
@@ -267,8 +242,6 @@ module.exports = function() {
 	 */
 	function init(options) {
 		opts = $.extend({}, defParams, options);
-
-		debug.log(fileName, 'init', opts, opts.type);
 
 		switch(opts.type) {
 			case 'range':

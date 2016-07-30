@@ -28,13 +28,11 @@ function FlashAddCallBack() {
 				SELECTED_OVER_SIZE : 'eventCallback.overMaxSize'
 			},
 			init : function() {
-				debug.log(fileName, 'init');
 				win.FLASH = this;
 				return this;
 			},
 			setOptions : function(opts) {
 				this.opts = $.extend(true, defParams, opts);
-				debug.log(fileName, 'setOptions', this.opts, opts);
 			},
 			eventInit : function() {
 				debug.log(fileName, 'eventInit', arguments);
@@ -43,7 +41,6 @@ function FlashAddCallBack() {
 				debug.log(fileName, 'trace', arguments);
 			},
 			eventCallback : function(type, values) {
-				debug.log(fileName, 'eventCallback', arguments);
 				switch(type) {
 					case 'init':
 						this.imageUpoader = $('#' + this.opts.id).get(0);
@@ -51,12 +48,10 @@ function FlashAddCallBack() {
 						$(this).trigger(this.EVENT.INIT, this.imageUpoader);
 						break;
 					case 'selectedFile':
-						debug.log(fileName, 'selectedFile', values);
 						values.bs64 = this.opts.base64Format.replace('{{TYPE}}', values.file.type.replace('.','')) + values.bs64;
 						$(this).trigger(this.EVENT.SELECTED_FILES, values);
 						break;
 					case 'overMaxSize':
-						debug.log(fileName, 'overMaxSize', values);
 						$(this).trigger(this.EVENT.SELECTED_OVER_SIZE, values);
 						break;
 				}

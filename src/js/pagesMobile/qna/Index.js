@@ -289,8 +289,6 @@ module.exports = function() {
 			$('#answerList'+opinionNumber).prepend(elements);
 
 			if (result.opinionAnswerList.length == 5) $('#moreAnswers'+opinionNumber).show();
-
-			//console.log($('#answerList'+targetNumber).data().answerNextPage);
 		}
 	}
 

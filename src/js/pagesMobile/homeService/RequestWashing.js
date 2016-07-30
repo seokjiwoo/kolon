@@ -303,11 +303,7 @@ module.exports = function() {
 				"dateTime": timeArray[requestDate][requestTime].dateTime,
 				"serviceDateTimeRequest": serviceDateTimeRequest
 			};
-			//console.log(requestDate);
-			//console.log( serviceAddress );
-			//console.log( livingService );
-			//console.log( washServiceRequest );
-
+			
 			controller.requestWashing(companyCode, serviceAddress, livingService, washServiceRequest);
 		}
 	};

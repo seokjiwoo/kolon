@@ -46,8 +46,6 @@ function DropDownMenu() {
 		self = callerObj;
 		self.opts = $.extend({}, opts, options);
 
-		debug.log(fileName, 'init', self.opts);
-
 		setElements();
 		setBindEvents();
 	}

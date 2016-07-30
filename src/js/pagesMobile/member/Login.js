@@ -331,7 +331,6 @@ module.exports = function() {
 			if (win.grecaptcha) {
 				win.VX_G_RECAPTCHA_CALL_BACK();
 			} else {
-				//console.log('arguments', arguments);
 				readyReCaptcha();
 			}
 		});

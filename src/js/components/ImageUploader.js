@@ -102,8 +102,6 @@ function ClassImageUploader() {
 		self = callerObj;
 		self.opts = $.extend(true, opts, options);
 
-		debug.log(fileName, 'init', self.opts);
-
 		setElements();
 
 		if (!util.isSupport().fileReader) {
@@ -177,13 +175,10 @@ function ClassImageUploader() {
 	}
 
 	function setHtmlVersion() {
-		debug.log(fileName, 'setHtmlVersion');
-
 		self.inpFile.removeClass(self.opts.cssClass.hide);
 	}
 
 	function setBindEvents() {
-		debug.log(fileName, 'setBindEvents');
 		self.inpFile.on('change', onInpFileChange);
 
 		if (!util.isIE()) {
@@ -256,8 +251,6 @@ function ClassImageUploader() {
 	}
 
 	function onBtnCancelClick(e) {
-		debug.log(fileName, 'onBtnCancelClick', e);
-
 		if (self.flashVersion) {
 			flashAddCallBack.callFlash('cancel');
 		} else {
@@ -288,8 +281,6 @@ function ClassImageUploader() {
 	}
 				
 	function onBtnSubmitClick(e, defaultImage) {
-		debug.log(fileName, 'onBtnSubmitClick', e);
-
 		if (!defaultImage) {
 			if (!self.selectedFiles.length) {
 				win.alert('이미지를 선택하세요.');
@@ -297,7 +288,6 @@ function ClassImageUploader() {
 			}
 			
 			debug.info(fileName, '전송처리 단계~', getSelectedFiles());
-			debug.log(fileName, 'self.imageInfo', self.imageInfo);
 		}
 
 		$(self).trigger(EVENT.SUBMIT);
@@ -314,7 +304,6 @@ function ClassImageUploader() {
 				withCredentials: true
 			},
 			beforeSubmit: function(data, form, option) {
-				debug.log(data, form, option);
 				return true;
 			}, success: function(response, status) {
 				$(self).trigger(EVENT.UPLOAD_SUCCESS, response.data);

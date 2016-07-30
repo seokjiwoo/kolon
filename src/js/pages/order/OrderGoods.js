@@ -309,7 +309,6 @@ module.exports = function() {
 
 		var messageLengthFlag = true;
 		$.map($('.messageField'), function(each){
-			console.log( $(each), util.byteLength($(each).pVal()), $(each).pVal() );
 			if (util.byteLength($(each).pVal()) > 50) messageLengthFlag = false; 
 		});
 		if (!messageLengthFlag) {

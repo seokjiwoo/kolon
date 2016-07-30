@@ -290,9 +290,6 @@ module.exports = function() {
 			// [E] CART - 장바구니
 
 			// [S] PRODUCT - 상품
-				case PRODUCT_EVENT.TOAST_MESSAGE:
-					//console.log(result.message); 
-					break;
 				case PRODUCT_EVENT.INFO:
 					orderData = new Array();
 
@@ -505,7 +502,6 @@ module.exports = function() {
 			easing: 'easeInBack',
 			complete: function() {
 				toastCount++;
-				console.log(toastMessageArray.length, toastCount)
 				if (toastCount >= toastMessageArray.length) {
 					$('.toast').remove();
 				} else {

@@ -226,7 +226,7 @@ gulp.task('bowerInstall', function(cb) {
 	});
 
 	bowerInstall.stderr.on('data', function (data) {
-		console.log(data)
+		console.log(data);
 	});
 });
 

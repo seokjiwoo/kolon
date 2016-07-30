@@ -737,7 +737,6 @@ module.exports = function() {
 		// 	for(var i = from; i < to; i += incr) {
 		// 		accum += block.fn(i);
 		// 	}
-		// 	console.log('accum', accum);
 		// 	return accum;
 		// });
 	}

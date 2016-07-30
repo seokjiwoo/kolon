@@ -58,8 +58,6 @@ function DoughnutChart() {
 		self = callerObj;
 		self.opts = $.extend({}, opts, options);
 
-		debug.log(fileName, 'init', self.opts);
-
 		setElements();
 		removeBindEvents();
 		setBindEvents();
@@ -97,8 +95,6 @@ function DoughnutChart() {
 	}
 
 	function createChart(elements) {
-		debug.log(fileName, 'createChart');
-
 		var container, opts, graphOpts, drawOpts;
 		$.each(elements || self.graphs, function() {
 			container = $(this);
@@ -106,8 +102,6 @@ function DoughnutChart() {
 
 			graphOpts = {};
 			graphOpts = $.extend({}, self.opts.graphOpts, opts);
-
-			debug.log(fileName, 'createChart > graphs', container, graphOpts);
 
 			drawOpts = {
 				container : container,

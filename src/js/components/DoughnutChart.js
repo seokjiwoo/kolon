@@ -70,8 +70,6 @@ function DoughnutChart() {
 		self = callerObj;
 		self.opts = $.extend({}, opts, options);
 
-		debug.log(fileName, 'init', self.opts, util.isSupport().svg);
-
 		if (!util.isSupport().svg) {
 			debug.warn('SVG 를 지원하지 않는 환경입니다.');
 			return;
@@ -118,8 +116,6 @@ function DoughnutChart() {
 		width, height, outerRadius, innerRadius,
 		arc, svg, background, dataGraph, graphOpts,
 		opts, container, drawOpts, viewBox, translate;
-
-		debug.log(fileName, 'createChart');
 
 		$.each(elements || self.graphs, function() {
 			container = $(this);
@@ -172,8 +168,6 @@ function DoughnutChart() {
 				graphOpts : graphOpts, 
 				newAngle : getDataPercent(graphOpts.percent) * t
 			};
-
-			debug.log(fileName, 'createChart > graphs', container, graphOpts, drawOpts);
 
 			if (graphOpts.onScreen) {
 				setWaypoint(dataGraph, drawOpts);
