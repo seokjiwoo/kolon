@@ -73,7 +73,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.NEWFORM_ORDER_ADDITIONAL_INFO:
-			console.log(result);
 				var data = result.data;
 				totalPrice = data.constOrderAddition.totalPaymentPrice;
 

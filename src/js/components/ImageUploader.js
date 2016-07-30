@@ -270,7 +270,23 @@ function ClassImageUploader() {
 
 	function onBtnDefaultClick(e) {
 		self.inpFile.val('');
-		onBtnSubmitClick(e, true);
+		//onBtnSubmitClick(e, true);
+
+		$.ajax({
+			url: self.opts.api_url,
+			method: 'DELETE',
+			xhrFields: {
+				withCredentials: true
+			},
+			beforeSubmit: function(data, form, option) {
+				debug.log(data, form, option);
+				return true;
+			}, success: function(response, status) {
+				$(self).trigger(EVENT.UPLOAD_SUCCESS, response.data);
+			}, error: function() {
+				$(self).trigger(EVENT.UPLOAD_FAILURE);
+			}                               
+		});
 	}
 				
 	function onBtnSubmitClick(e, defaultImage) {

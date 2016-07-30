@@ -97,7 +97,6 @@ module.exports = function() {
 			var cancelRequestMessage = '';
 
 			$.each(list, function() {
-				console.log($(this).data());
 				cancelRequestMessage += ($(this).data().productNumber+'|'+$(this).data().optionNumber+',');
 			});
 			
@@ -115,7 +114,6 @@ module.exports = function() {
 		if (target.hasClass('js-order-cancel-all')) {
 			MyPage.Super.Super.htmlPopup('../../_popup/popOrderCancelRequest.html', 895, 'popEdge', {
 				onOpen: function() {
-					console.log(self.selPopBtnInfo.info);
 					if (self.selPopBtnInfo.info.joinedOrder == "1") {
 						controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
 					} else {
@@ -209,9 +207,8 @@ module.exports = function() {
 				cancelOrderArray.push(each.join('|'));
 			});
 
-			// productNumber|orderOptionNumber|클레임사유 코드|취소신청사유
 			var cancelOrder = cancelOrderArray.join(',');
-			//console.log(cancelOrder);
+			
 			controller.orderCancel(self.selPopBtnInfo.info.orderNumber, cancelOrder);
 		});
 	};

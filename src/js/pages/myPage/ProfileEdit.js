@@ -61,7 +61,7 @@ module.exports = function() {
 
 			$(window).on('beforeunload', function(){
 				if (confirm("이 페이지를 벗어나면 변경하신 내용이 저장되지 않습니다.\n이전 화면으로 이동하시려면 [확인]을 누르시고, 현재 페이지에 있으시려면 [취소]를 눌러주세요.")) {
-					Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+					Cookies.set('profileEditAuth', 'auth', { expires: 1/24 });
 				} else {
 					return false;
 				}
@@ -71,6 +71,15 @@ module.exports = function() {
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
 			$('.verifyMemberPopup').click(submitMobileEditForm);
+
+			$('#requestResign').click(function(e){
+				$(window).off('beforeunload');
+				location.href='/myPage/resign.html';
+			});
+			$('#editPassword').click(function(e){
+				$(window).off('beforeunload');
+				location.href='editPassword.html';
+			});
 		} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
@@ -300,9 +309,7 @@ module.exports = function() {
 		if (status == 200) {
 			alert('등록이 완료되었습니다');
 			$.colorbox.close();
-			$(window).off('beforeunload');
-			Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
-			location.reload(true);
+			pageRefresh();
 		} else {
 			alert(result.message);
 		}
@@ -365,10 +372,8 @@ module.exports = function() {
 				$('#myPageHeaderId').text(enteredId);
 				$('#profileID').val(enteredId).attr('disabled', 'disabled');
 				$('#changeEmailField').hide();
-				
-				$(window).off('beforeunload');
-				Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
-				location.reload(true);
+
+				pageRefresh();
 				break;
 			case 400:	// 인증실패
 			default:
@@ -426,11 +431,8 @@ module.exports = function() {
 		if (status == 200) {
 			switch(response.status) {
 				case '201':
-					MyPage.Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
-						$(window).off('beforeunload');
-						Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
-						location.reload(true);
-					});
+					alert(response.message);
+					pageRefresh();
 					break;
 				default:
 					MyPage.Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
@@ -453,5 +455,11 @@ module.exports = function() {
 			tags += ('<option value="'+(i<10 ? '0'+i : i)+'">'+i+'</option>');
 		}
 		$('#joinBirth03').html(tags);
+	};
+
+	function pageRefresh() {
+		$(window).off('beforeunload');
+		Cookies.set('profileEditAuth', 'auth', { expires: 1/24 });
+		location.reload(true);
 	};
 };

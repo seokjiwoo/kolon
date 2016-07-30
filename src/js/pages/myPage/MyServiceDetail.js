@@ -41,8 +41,7 @@ module.exports = function() {
 
 	function dataHandler(e, status, result) {
 		var info = result.constOrderStateDetail;
-		console.log(info);
-
+		
 		info.orderDate = moment(info.orderDateTime).format('YYYY.MM.DD');
 		switch(info.orderStateCode) {
 			case 'SL_CONST_STATE_01':

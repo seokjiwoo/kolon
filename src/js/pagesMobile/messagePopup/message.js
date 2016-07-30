@@ -49,8 +49,7 @@ module.exports = function() {
 		setBindEvents();
 
 		messagePopup.init();
-
-		win.console.log('self.expertNumber', self.expertNumber);
+		
 		expertsController.detail(self.expertNumber);
 		$(expertsController).on(EXPERTS_EVENT.WILD_CARD, onControllerListener);
 
