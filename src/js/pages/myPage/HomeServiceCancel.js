@@ -22,7 +22,8 @@ module.exports = function() {
 		 * 초기화
 		 */
 		init: init
-	};
+	},
+	self;
 	
 	return callerObj;
 	

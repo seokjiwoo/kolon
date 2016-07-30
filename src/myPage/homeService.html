@@ -120,12 +120,13 @@
 		<td>{{{paymentStatus}}}</td>
 		<td class="orderState">
 			<div class="stateTxt">{{statusCodeName}}</div>
-			{{#vxSwitch statusCode}}
-				{{#vxCase "LS_WASH_STATE_01" break=true}}
-				<div class="btnWrap"><a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor03 btnPop btnPop590 absolutePosition" data-user-class="my popEdge dateChangePop">일시변경</a></div>
-				<div class="btnWrap"><a href="../../_popup/popHomeCancel.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-user-class="my popEdge">취소신청</a></div>
-				{{/vxCase}}
-			{{/vxSwitch}}
+			{{#vxIF statusCode "==" "LS_WASH_STATE_01"}}
+				<div class="btnWrap"><a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor03 btnPop btnPop590 absolutePosition" data-order-number='{{serviceRequestNumber}}' data-user-class="my popEdge dateChangePop">일시변경</a></div>
+				<div class="btnWrap"><a href="../../_popup/popHomeCancel.html" class="btnSizeS btnColor01 btnPop btnPop895 absolutePosition" data-order-number='{{serviceRequestNumber}}' data-user-class="my popEdge washCancel">취소신청</a></div>
+			{{/vxIF}}
+			{{#vxIF statusCode "==" "LS_WASH_STATE_04"}} 
+				<div class="btnWrap"><a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor03 btnPop btnPop590 absolutePosition" data-order-number='{{serviceRequestNumber}}' data-user-class="my popEdge dateChangePop">일시변경</a></div>
+			{{/vxIF}}
 		</td>
 	</tr>
 	{{/vxCase}}

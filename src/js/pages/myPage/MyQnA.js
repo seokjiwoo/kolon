@@ -122,7 +122,7 @@ module.exports = function() {
 			var pId = $(this).attr('id').substr(18);
 			$('#commentArea'+pId).addClass('showCommentInput');
 		} else {
-			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
+			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 		}
 	};
 

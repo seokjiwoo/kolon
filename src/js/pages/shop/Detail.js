@@ -169,7 +169,7 @@ module.exports = function() {
 		
 		if (target.hasClass('js-add-like')) {
 			if (target.hasClass('on')) {
-				//
+				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
 			} else {
 				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
 			}
@@ -419,6 +419,7 @@ module.exports = function() {
 					self.expertNumber = partnerData2.partnerNumber;
 					$('#btnFollow').on('click', onFollowListener);
 					$('#btnMessage').attr('href', '/popup/popMessage.html?saleMemberNumber='+partnerData2.partnerNumber);
+					if (partnerData2.registeredFollowYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 					
 					partnerGoodsList = CardList();
 					partnerGoodsList.init('#sellerCard', true);
@@ -427,7 +428,11 @@ module.exports = function() {
 				case FOLLOWING_EVENT.ADD_FOLLOW:
 					switch(status) {
 						case 200: 
-							$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+							if (result.data.followYn == 'Y') {
+								$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+							} else {
+								$('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우');
+							}
 							break;
 						default: win.alert(result.message); break;
 					}
@@ -482,12 +487,8 @@ module.exports = function() {
 
 	function onFollowListener(e) {
 		e.preventDefault();
-
 		var target = $(e.currentTarget);
-
-		if (target.hasClass('js-add-follow')) {
-			followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
-		}
+		followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
 	}
 
 	function optionsDisplay() {

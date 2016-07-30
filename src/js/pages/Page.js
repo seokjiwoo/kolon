@@ -158,8 +158,11 @@ module.exports = function() {
 
 			$('#menuCountOrderGoods').text(loginData.myMenu.orderCount || 0);
 			$('#menuCountCancelGoods').text(loginData.myMenu.claimCount || 0);
-			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount || 0);
 			$('#menuCountOrderNewform').text(loginData.myMenu.contractorCount || 0);
+			$('#menuCountCancelNewForm').text(loginData.myMenu.contractorClaimCount || 0);
+			$('#menuCountOrderService').text(loginData.myMenu.serviceCount || 0);
+			$('#menuCountCancelService').text(loginData.myMenu.serviceClaimCount || 0);
+			$('#menuCountRecentViewItem').text(loginData.myMenu.recentCount || 0);
 			if (loginData.myActivity.cartCount == 0) {
 				$('#menuCountCart').hide();
 			} else {

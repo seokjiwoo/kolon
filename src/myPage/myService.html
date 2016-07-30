@@ -152,7 +152,7 @@
 			<span class="producOption">옵션 : {{constProduct.productOptionName}}</span>
 			<span class="productPrice">{{constProduct.productPriceDesc}} 원</span>
 		</td>
-		<td>{{constProduct.saleMemberName}}</td>
+		<td><a href='/manager/brand.html?expertNumber={{constProduct.saleMemberNumber}}' class='companyLink'>{{constProduct.saleMemberName}}</a></td>
 		<td>실측 후 게시</td>
 		<td class="orderState">
 			{{#vxSwitch orderStateCode}}
