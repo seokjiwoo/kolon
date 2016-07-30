@@ -223,6 +223,9 @@ module.exports = function() {
 		switch(eventType) {
 			case PRODUCT_EVENT.SHOP_LIST:
 				cardList.appendData(result.productCards);
+
+				var cardListCnt = (null != result) ? result.length : 0;
+				$("#cardTotalCnt").html(cardListCnt);
 				break;
 		}
 	};
