@@ -1,71 +1,87 @@
-<!DOCTYPE html>
-<html lang='ko-kr'>
-<head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 수거/배송 일시 변경"} -->
-</head>
-<body>
-	<div class="btmFix"><a href="" class="btnSizeB btnColor03 popClose">변경하기</a></div>
 	<div class="layerPopup my">
 		<div class="popTop">
 			<h3 class="popTit">수거/배송 일시 변경</h3>
 			<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
 		</div>
-		<div class="popcon">
-			<div class="wrapT">
-				<div class="frequency">
-					<h3 class="conTit">예약 정보</h3>
-					<dl>
-						<dt>수거/배송 일시</dt>
-						<dd>수거일시 : 2016.06.10 금요일, 오후 02:00 – 오후 03:00</dd>
-						<dd>배송일시 : 2016.06.13 월요일, 오후 02:00 – 오후 03:00</dd>
-					</dl>
-					<p>수거/배달 일시 변경은 수거시간 기준으로 90분 전까지 가능합니다.</p>
+		<div id="homeServiceChangeWrap" class="popcon">
+			<script id="homeServiceChangeTemplates" type="text/x-handlebars-template">
+				{{!-- homeServiceChangeTemplates --}}
+				<div class="wrapT">
+					<div class="frequency">
+						<h3 class="conTit">예약 정보</h3>
+						<dl>
+							<dt>수거/배송 일시</dt>
+							<dd>수거일시 : {{pickupDate}}</dd>
+							{{#if deliveryDate}}
+							<dd>배송일시 : {{deliveryDate}}</dd>
+							{{/if}}
+						</dl>
+						<p>수거/배달 일시 변경은 수거시간 기준으로 90분 전까지 가능합니다.</p>
+					</div>
 				</div>
-			</div>
-			<div class="wrapT">
-				<h3 class="conTit">수거/배송 일시 변경</h3>
-				<div class="dateChange">
-					<ul>
-						<li>
+				<form id="washChangeForm" action="#" method='POST'>
+					<div class="wrapT">
+						<h3 class="conTit">수거/배송 일시 변경</h3>
+						<div class="dateChange js-range-picker">
 							<ul>
-								<li>
-									<p>수거일시를 선택해주세요</p>
-									<p>수거 가능한 시간만 표시됩니다.</p>
+								<li id="pickupRow">
+									<ul>
+										<li>
+											<p>수거일시를 선택해주세요</p>
+											<p>수거 가능한 시간만 표시됩니다.</p>
+										</li>
+										<li>
+											<!-- datePicker -->
+											<div class="calendar">
+												<span class="calInp">
+													<input type="text" title="희망 수거 날짜 입력" value="" class="js-alt-from" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn-from">날짜선택</a>
+													<div class="cal-container js-picker-from"></div>
+												</span> 
+											</div>
+											<!--// datePicker -->
+										</li>
+										<li>
+											<div class="selectBox" style="z-index: 0">
+												<select id="pickupDrop" style='width:100%' class="timeDrop">
+													<options>오전11:00 - 오후 12:00</options>
+												</select>
+											</div>
+										</li>
+									</ul>
 								</li>
-								<li>
-									<select>
-										<option>2016.06.10 금요일</option>
-									</select>
-								</li>
-								<li>
-									<select>
-										<option>2016.06.10 금요일</option>
-									</select>
+								<li id="deliveryRow">
+									<ul>
+										<li>
+											<p>배송일시를 선택해주세요</p>
+											<p>수거 가능한 시간만 표시됩니다.</p>
+										</li>
+										<li>
+											<!-- datePicker -->
+											<div class="calendar">
+												<span class="calInp">
+													<input type="text" title="희망 배달 날짜 입력" value="" class="js-alt-to" readonly="readonly"/>
+													<a href="#" class="calBtn js-btn-to">날짜선택</a>
+													<div class="cal-container js-picker-to"></div>
+												</span> 
+											</div>
+											<!--// datePicker -->
+										</li>
+										<li>
+											<div class="selectBox" style="z-index: 0">
+												<select id="deliveryDrop" style='width:100%' class="timeDrop">
+													<options>오전11:00 - 오후 12:00</options>
+												</select>
+											</div>
+										</li>
+									</ul>
 								</li>
 							</ul>
-						</li>
-						<li>
-							<ul>
-								<li>
-									<p>배송일시를 선택해주세요</p>
-									<p>수거 가능한 시간만 표시됩니다.</p>
-								</li>
-								<li>
-									<select>
-										<option>2016.06.10 금요일</option>
-									</select>
-								</li>
-								<li>
-									<select>
-										<option>2016.06.10 금요일</option>
-									</select>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
+						</div>
+					</div>
+					<a href="javascript:;" class="btnSizeB btnColor03 js-submit">변경하기</a>
+				</form>
+				{{!--// homeServiceChangeTemplates --}}
+			</script>
 		</div>
 	</div>
-</body>
-</html>
