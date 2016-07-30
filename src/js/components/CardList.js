@@ -143,6 +143,10 @@ module.exports = function() {
 					each.background = 'background-color:#c6b19e; background-image:url("'+each.bigImageUrl+'")';
 					each.hoverImage = 'background-image:url("'+each.portfolios[0]+'")';
 					break;
+				case 'DP_CARD_TYPE_10':
+					each.cardClass = 'cardSize02';
+					each.hoverImage = 'background-image:url("'+each.cardImageUrl+'")';
+					break;
 			}
 
 			switch(each.saleStateCode) {
