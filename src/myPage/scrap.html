@@ -20,15 +20,22 @@
 <style>
 	.wrap .js-card-list {
 		opacity: 1;
-		-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
+		-webkit-transition: all 200ms cubic-bezier(0.455, 0.030, 0.515, 0.955);transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); /* easeInOutQuad */
 	}
 	.wrap.is-loading .js-card-list {opacity: 0;-webkit-transform: scale(0.01,0.01);-ms-transform: scale(0.01, 0.01);transform: scale(0.01, 0.01)}
 </style>
 
+<script id="scrap-cards-templates" type="text/x-handlebars-template">
+	{{!-- scrap-cards-templates --}}
+	<h2 class="hide">스크랩</h2>
+	<ul class="cardWrap" id="cardWrap"></ul>
+	{{!--// scrap-cards-templates --}}
+</script>
+
 <script id="scrap-images-templates" type="text/x-handlebars-template">
 	{{!-- scrap-images-templates --}}
-	<h2 class="hide">이미지 스크랩 폴더</h2>
-	<p class="btnWrap t_r">
+	<h2 class="hide">스크랩</h2>
+	<p class="btnWrap t_r" id='newFolderButton'>
 		<a href="../_popup/popScrapNew.html" class="btnSizeS btnColor04 newFolder btnPop btnPop540" data-user-class="scrapFolderNew popEdge">새폴더 만들기</a>
 	</p>
 	<ul class="scrapPack" id="cardWrap">

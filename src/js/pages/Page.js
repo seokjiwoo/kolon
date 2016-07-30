@@ -117,7 +117,12 @@ module.exports = function() {
 	function initInfoSlider() {
 		if (!$('#infoSlider').data('bxSlider')) {
 			$('#infoSlider').bxSlider({
-				pager:false
+				pager: false,
+				onSlideBefore: function(){
+					$('.bx-controls').hide();
+				},onSlideAfter: function(){
+					$('.bx-controls').show();
+				}
 			});
 		}
 	}

@@ -303,9 +303,16 @@ module.exports = function() {
 	 * slide in detail page
 	 */
 	function initTabSlider() { 
-		$('#infoSlider').bxSlider({
-			pager:false
-		});
+		if (!$('#infoSlider').data('bxSlider')) {
+			$('#infoSlider').bxSlider({
+				pager: false,
+				onSlideBefore: function(){
+					$('.bx-controls').hide();
+				},onSlideAfter: function(){
+					$('.bx-controls').show();
+				}
+			});
+		}
 	};
 	
 	function needLoginHandler(e) {

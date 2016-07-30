@@ -193,7 +193,7 @@ module.exports = function() {
 
 			$.map(opinions, function(each) {
 				each.opinionClass = opinionsClassArray[each.opinionClassNumber];
-				each.content = each.content.replace(/\n/, '<br />');
+				each.content = each.content.replace(/(?:\r\n|\r|\n)/g, '<br />');
 				if (each.answerCount == 0) {
 					each.answerCountTag = '<p>미답변</p>';
 				} else {
@@ -202,7 +202,7 @@ module.exports = function() {
 				
 				if (each.answerCount > 5) each.moreButtonFlag = 'Y';
 				$.map(each.answers, function(eachAnswers) {
-					eachAnswers.content = eachAnswers.content.replace(/\n/, '<br />');
+					eachAnswers.content = eachAnswers.content.replace(/(?:\r\n|\r|\n)/g, '<br />');
 					if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 					if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 					if (eachAnswers.answererImageUrl == null) eachAnswers.answererImageUrl = '/images/profile40.jpg';
@@ -281,7 +281,7 @@ module.exports = function() {
 			$('#answerList'+opinionNumber).data().answerNextPage++;
 
 			$.map(result.opinionAnswerList, function(eachAnswers) {
-				eachAnswers.content = eachAnswers.content.replace(/\n/, '<br />');
+				eachAnswers.content = eachAnswers.content.replace(/(?:\r\n|\r|\n)/g, '<br />');
 				if (eachAnswers.expertName == undefined) eachAnswers.expertName = eachAnswers.answererName;
 				if (eachAnswers.registeredHelpYn == 'Y') eachAnswers.answerCountClass='on';
 				if (eachAnswers.answererImageUrl == null) eachAnswers.answererImageUrl = '/images/profile40.jpg';

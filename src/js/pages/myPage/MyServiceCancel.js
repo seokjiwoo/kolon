@@ -20,6 +20,8 @@ module.exports = function() {
 	ORDER_EVENT = events.ORDER,
 	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
 
+	var clameState = 'SL_CONST_STATE_12,SL_CONST_STATE_13,SL_CONST_STATE_14,SL_CONST_STATE_15';
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -44,7 +46,7 @@ module.exports = function() {
 			altTo : '.js-alt-to'
 		},
 		search : {
-			wrap : '.js-order-search',
+			wrap : '.js-return-search',
 			inp : '.js-inp',
 			submit : '.js-submit',
 		},
@@ -66,18 +68,6 @@ module.exports = function() {
 		setRangePicker();
 
 		getOrderList();
-	}
-
-	function getOrderList(keyword, deliveryStateCode) {
-		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
-
-		controller.myOrdersList(
-			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
-			keyword,
-			deliveryStateCode
-		);
 	}
 
 	function setElements() {
@@ -107,11 +97,9 @@ module.exports = function() {
 		self.search.on('submit', function(e) {
 			e.preventDefault();
 		});
-/*
+
 		self.searchSubmit.on('click', onSearch);
 		self.searchInp.on('keydown', onSearch);
-
-		self.templatesWrap.on('click', '.js-btn', onWrapPopBtnClick);*/
 	}
 
 	function setRangePicker() {
@@ -172,15 +160,12 @@ module.exports = function() {
 		});
 	}
 
-	function getOrderList(keyword, deliveryStateCode) {
-		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
-
+	function getOrderList() {
 		controller.myConstCancelList(
 			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
 			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
-			keyword,
-			deliveryStateCode
+			self.searchInp.pVal(),
+			clameState
 		);
 	}
 
@@ -199,14 +184,13 @@ module.exports = function() {
 		var target = $(e.target);
 
 		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
-		getOrderList(self.searchInp.pVal(), data.values.join(','));
+		clameState = data.values.join(',');
+		getOrderList();
 	}
 
 	function onSearch(e) {
-		if (e.type === 'keydown') {
-			if (e.which !== $.ui.keyCode.ENTER) {
-				return;
-			}
+		if (e.type === 'keydown' && e.which !== $.ui.keyCode.ENTER) {
+			return;
 		}
 
 		e.preventDefault();
@@ -216,8 +200,7 @@ module.exports = function() {
 			self.searchInp.val('').focus();
 			return;
 		}
-
-		getOrderList(self.searchInp.pVal());
+		getOrderList();
 	}
 
 	function onControllerListener(e, status, response, type) {

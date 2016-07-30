@@ -21,7 +21,7 @@
 						<caption>홈서비스 내역 조회 표</caption>
 						<tr>
 							<th>기간별 주문조회</th>
-							<td>
+							<td style='padding-bottom:15px'>
 								<ul class="sortTerm">
 									<li><a href="#" class="on">1주일</a></li>
 									<li><a href="#">2주일</a></li>
@@ -47,19 +47,6 @@
 								</div>
 							</td>
 						</tr>
-						<tr>
-							<th>내역 검색</th>
-							<td>
-								<form action="#">
-									<fieldset class="recordSearch">
-										<legend class="hide">시공 내역 검색</legend>
-										<input type="text" id="recordInput">
-										<label for="recordInput"></label>
-										<button type="submit" id='searchButton'>검색</button>
-									</fieldset>
-								</form>
-							</td>
-						</tr>
 					</table>
 					<div class="alignBox">						
 						<h3 class="subTit">홈서비스 목록<span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
@@ -76,6 +63,13 @@
 <script id="homeservice-list-templates" type="text/x-handlebars-template">
 {{!-- homeservice-list-templates --}}
 <caption>홈서비스 목록 표</caption>
+<colgroup>
+	<col style="width:15%">
+	<col style="width:14%">
+	<col style="width:39%">
+	<col style="width:16%">
+	<col style="width:16%">
+</colgroup>
 <tr>
 	<th>신청일/신청번호</th>
 	<th colspan="2">서비스정보</th>

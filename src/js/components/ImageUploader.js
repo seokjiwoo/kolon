@@ -307,6 +307,9 @@ function ClassImageUploader() {
 			url: self.opts.api_url,
 			method: 'POST',
 			contentType: "multipart/form-data",
+			data: {
+				file: self.inpFile.val()
+			},
 			xhrFields: {
 				withCredentials: true
 			},
@@ -319,6 +322,7 @@ function ClassImageUploader() {
 				$(self).trigger(EVENT.UPLOAD_FAILURE);
 			}
 		});
+
 		/*
 		var selectedFile = self.selectedFiles[0];
 		var formData = util.makeMultipartForm(selectedFile.bs64, selectedFile.file.name);

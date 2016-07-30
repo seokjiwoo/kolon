@@ -161,6 +161,9 @@ module.exports = function() {
 				$('.messageField').change(function(e){
 					$('#messageSelect-'+$(this).attr('id').substr(13)).val('-');
 				});
+				$('.messageField').keyup(function(e){
+					$('#messageCount-'+$(this).attr('id').substr(13)).text( util.byteLength($(this).pVal()) );
+				});
 				$('.openAddressPopup').click(function(e) {
 					addressBookTarget = $(this).attr('id').substr(12);
 					debug.log($(this).attr('id').substr(12));
@@ -303,6 +306,16 @@ module.exports = function() {
 			}
 			productsArray.push(eachOrderArray.join('|'));
 		}
+
+		var messageLengthFlag = true;
+		$.map($('.messageField'), function(each){
+			console.log( $(each), util.byteLength($(each).pVal()), $(each).pVal() );
+			if (util.byteLength($(each).pVal()) > 50) messageLengthFlag = false; 
+		});
+		if (!messageLengthFlag) {
+			alert('배송요청사항은 한글 25자, 영문, 숫자 50자까지 가능합니다');
+			return;
+		}
 		
 		$('#products').val(productsArray.join(','));
 		switch($('#PayMethod').pVal()) {
@@ -392,6 +405,8 @@ module.exports = function() {
 			addressArray[each.addressSequence] = each;
 			tags += '<option value="'+each.addressSequence+'" label="'+each.addressManagementName+'">'+each.addressManagementName+'</option>';
 		});
+
+		if (list.items.length == 0) tags = '<option value="-" label="우측 버튼을 눌러 주소를 등록해주세요" selected="selected">우측 버튼을 눌러 주소를 등록해주세요</option>';
 		$('.addressSelect').html(tags);
 	};
 

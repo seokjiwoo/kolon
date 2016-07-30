@@ -246,7 +246,7 @@ function ClassOrderController() {
 			'startDate' : startDate,
 			'endDate' : endDate,
 			'keyword' : keyword || '',
-			'deliveryStateCode' : deliveryStateCode || ''
+			'orderStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
 				var deliveryChunk = {};
@@ -276,7 +276,7 @@ function ClassOrderController() {
 			'startDate' : startDate,
 			'endDate' : endDate,
 			'keyword' : keyword || '',
-			'deliveryStateCode' : deliveryStateCode || ''
+			'orderStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
 				var deliveryChunk = {};
@@ -702,7 +702,7 @@ function ClassOrderController() {
 			'startDate' : startDate,
 			'endDate' : endDate,
 			'keyword' : keyword || '',
-			'deliveryStateCode' : deliveryStateCode || ''
+			'orderStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('myConstOrdersListResult', [status, result.data]);
@@ -719,7 +719,7 @@ function ClassOrderController() {
 			'startDate' : startDate,
 			'endDate' : endDate,
 			'keyword' : keyword || '',
-			'deliveryStateCode' : deliveryStateCode || ''
+			'orderStateCode' : deliveryStateCode || ''
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('myConstCancelListResult', [status, result.data]);

@@ -552,7 +552,6 @@ module.exports = function() {
 
 	function optionsHandler(options) {
 		if (options.length == 0) {
-			// 최종선택.
 			alert('상품 옵션 세부 데이터가 없습니다.');
 			$('#totalOptionsPrice').html('0<b>원</b>');
 		} else if (options.length == 1) {

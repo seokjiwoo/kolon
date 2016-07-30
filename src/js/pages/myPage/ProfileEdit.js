@@ -52,7 +52,7 @@ module.exports = function() {
 
 			$('#changeEmailField').hide();
 			
-			var tags = '';
+			var tags = '<option value="">년</option>';
 			for (var i = new Date().getFullYear()-14; i > new Date().getFullYear()-99; i--) {
 				tags += ('<option value="'+i+'">'+i+'</option>');
 			}
@@ -407,12 +407,17 @@ module.exports = function() {
 
 		var name = $('#editName').pVal();
 		var birthDate = $('#joinBirth01').pVal()+$('#joinBirth02').pVal()+$('#joinBirth03').pVal();
+		if ($('#joinBirth01').pVal() == '' ||$('#joinBirth02').pVal() == '' ||$('#joinBirth03').pVal() == '') {
+			alert('생년월일을 입력해 주세요');
+			return;
+		}
 		var age = util.calculateAge(new Date($('#joinBirth01').pVal(), $('#joinBirth02').pVal(), $('#joinBirth03').pVal()));
 		var phone = $('#profileHomePhone').pVal();
 		var agreeMail = $('#agreeReceive01')[0].checked ? 'Y' : 'N';
 		var agreeSms = $('#agreeReceive02')[0].checked ? 'Y' : 'N';
 		
 		$('#joinNameAlert').text('');
+
 		if (age < 14) {
 			alert('만 14세 미만은 가입하실 수 없습니다.');
 			$('.birth').find('span.note').addClass('alert');
@@ -455,7 +460,7 @@ module.exports = function() {
 		var selectedYear = parseInt($('#joinBirth01').pVal());
 		var selectedMonth = parseInt($('#joinBirth02').pVal());
 		var lastDate = new Date(selectedYear, selectedMonth, 0).getDate();
-		var tags = '';
+		var tags = '<option value="">일</option>';
 		for (var i = 1; i <= lastDate; i++) {
 			tags += ('<option value="'+(i<10 ? '0'+i : i)+'">'+i+'</option>');
 		}

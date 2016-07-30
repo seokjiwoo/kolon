@@ -135,7 +135,13 @@ function ClassUtils() {
 			 * 	IE Detection
 			 * @type {Boolean}
 			 */
-			isIE : isIE
+			isIE : isIE,
+			/**
+			 * @description
+			 * 	문자열의 바이트 수 반환
+			 * @type {String}
+			 */
+			byteLength: byteLength
 		};
 	}
 
@@ -358,5 +364,19 @@ function ClassUtils() {
 		userAgent = userAgent || navigator.userAgent;
 		return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1 || userAgent.indexOf("Edge/") > -1;
 	}
+
+	function byteLength(str) {
+		var l= 0;
+		
+		for(var idx=0; idx < str.length; idx++) {
+			var c = escape(str.charAt(idx));
+			
+			if( c.length==1 ) l ++;
+			else if( c.indexOf("%u")!=-1 ) l += 2;
+			else if( c.indexOf("%")!=-1 ) l += c.length/3;
+		}
+		
+		return l;
+	};
 
 }

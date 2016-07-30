@@ -148,14 +148,20 @@ module.exports = function() {
 			case 'all':
 			default:
 				cardList.removeAllData();
+				$('#cardWrap').removeClass('scrapPack').addClass('cardWrap');
+				$('#newFolderButton').remove();
 				controller.scrapList('ALL');
 				break;
 			case 'product':
 				cardList.removeAllData();
+				$('#cardWrap').removeClass('scrapPack').addClass('cardWrap');
+				$('#newFolderButton').remove();
 				controller.scrapList('PRODUCT');
 				break;
 			case 'magazine':
 				cardList.removeAllData();
+				$('#cardWrap').removeClass('scrapPack').addClass('cardWrap');
+				$('#newFolderButton').remove();
 				controller.scrapList('MAGAZINE');
 				break;
 			case 'images':

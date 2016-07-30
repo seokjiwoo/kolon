@@ -359,6 +359,8 @@ module.exports = function() {
 			tags += '<option value="'+each.addressSequence+'" label="'+each.addressManagementName+'" '+(each.addressSectionCode=="BM_ADDR_SECTION_02"?'selected="selected"':'')+' >'+each.addressManagementName+'</option>';
 			if (each.addressSectionCode == "BM_ADDR_SECTION_02") defaultAddress = key+1;
 		});
+
+		if (list.items.length == 0) tags = '<option value="-" label="우측 버튼을 눌러 주소를 등록해주세요" selected="selected">우측 버튼을 눌러 주소를 등록해주세요</option>';
 		$('.addressSelect').html(tags);
 
 		if (defaultAddress != null) setAddress(1, String(defaultAddress));

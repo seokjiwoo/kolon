@@ -144,7 +144,7 @@ module.exports = function() {
 					controller.login(enteredId, pw, keepLogin);
 				} else {
 					$('#idAlert').text('아이디(이메일 또는 휴대폰 번호)를 입력해주세요.');
-					Super.Super.alertPopup('비밀번호 찾기', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
+					Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', '아이디(이메일 또는 휴대폰 번호)를 정확하게 입력해주세요.', '확인');
 				}
 			}
 		}

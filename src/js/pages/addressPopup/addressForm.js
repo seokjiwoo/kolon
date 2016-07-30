@@ -94,14 +94,19 @@ module.exports = function() {
 		var adrName1Val = $.trim($('#adrName1').pVal());
 		var adrName2Val = $.trim($('#adrName2').pVal());
 
+	
+
 		if (adrName1Val == '') {
 			alert('주소 별칭을 입력해 주세요');
 			return;
 		} else if (adrName2Val == '') {
 			alert('이름을 입력해 주세요');
 			return;
+		} else if (util.byteLength(adrName1Val) > 100 ||util.byteLength(adrName2Val) > 100) {
+			alert('한글 50자, 영문, 숫자 100자까지 가능합니다');
+			return;
 		} else if ($.trim($('#phone2').pVal()) == '' || $.trim($('#phone3').pVal()) == '') {
-			alert('연락처를 입력해 주세요');
+			alert(util.byteLength(adrName1Val)+'연락처를 입력해 주세요');
 			return;
 		} else if (!util.checkValidMobileNumber(phoneNumber1)) {
 			alert('올바른 연락처를 입력해 주세요');

@@ -19,6 +19,8 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	ORDER_EVENT = events.ORDER,
 	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+
+	var clameState = 'SL_ORDER_STATE_01,SL_ORDER_STATE_02,SL_ORDER_STATE_03,SL_ORDER_STATE_04,SL_ORDER_STATE_05,SL_ORDER_STATE_06';
 	
 	var callerObj = {
 		/**
@@ -68,15 +70,12 @@ module.exports = function() {
 		getOrderList();
 	}
 
-	function getOrderList(keyword, deliveryStateCode) {
-		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
-
+	function getOrderList() {
 		controller.myOrdersList(
 			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
 			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
-			keyword,
-			deliveryStateCode
+			self.searchInp.pVal(),
+			clameState
 		);
 	}
 
@@ -264,14 +263,13 @@ module.exports = function() {
 		var target = $(e.target);
 
 		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
-		getOrderList(self.searchInp.pVal(), data.values.join(','));
+		clameState = data.values.join(',');
+		getOrderList();
 	}
 
 	function onSearch(e) {
-		if (e.type === 'keydown') {
-			if (e.which !== $.ui.keyCode.ENTER) {
-				return;
-			}
+		if (e.type === 'keydown' && e.which !== $.ui.keyCode.ENTER) {
+			return;
 		}
 
 		e.preventDefault();
@@ -281,8 +279,7 @@ module.exports = function() {
 			self.searchInp.val('').focus();
 			return;
 		}
-
-		getOrderList(self.searchInp.pVal());
+		getOrderList();
 	}
 
 	function setRangePicker() {

@@ -70,16 +70,14 @@ module.exports = function() {
 		setBindEvents();
 		setRangePicker();
 
-		getClaimsList();
+		getOrderList();
 	}
 
-	function getClaimsList(keyword, deliveryStateCode) {
-		keyword = self.searchInp.pVal();
-
+	function getOrderList() {
 		controller.myClaimsList(
 			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
 			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
-			keyword,
+			self.searchInp.pVal(),
 			clameState
 		);
 	}
@@ -200,7 +198,7 @@ module.exports = function() {
 
 		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
 		clameState = data.values.join(',');
-		getClaimsList();
+		getOrderList();
 	}
 
 	function onSearch(e) {
@@ -215,7 +213,7 @@ module.exports = function() {
 			self.searchInp.val('').focus();
 			return;
 		}
-		getClaimsList();
+		getOrderList();
 	}
 
 	function setRangePicker() {
@@ -240,10 +238,10 @@ module.exports = function() {
 		});
 
 		$('.js-picker-from').on('onSelect', function() {
-			getClaimsList();
+			getOrderList();
 		});
 		$('.js-picker-to').on('onSelect', function() {
-			getClaimsList();
+			getOrderList();
 		});
 
 		$('.js-picker-from').datepicker('setDate', moment().subtract(7, 'days').format('YYYY-MM-DD'));
@@ -271,7 +269,7 @@ module.exports = function() {
 			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').pVal()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 
-			getClaimsList();
+			getOrderList();
 		});
 	}
 
