@@ -204,9 +204,8 @@ module.exports = function() {
 				cancelOrderArray.push(each.join('|'));
 			});
 
-			// productNumber|orderOptionNumber|클레임사유 코드|취소신청사유
 			var cancelOrder = cancelOrderArray.join(',');
-			//console.log(cancelOrder);
+			
 			controller.orderCancel(self.selPopBtnInfo.info.orderNumber, cancelOrder);
 		});
 	};
@@ -354,6 +353,8 @@ module.exports = function() {
 
 				if (result.data.listOrderItems) {
 					$.each(result.data.listOrderItems, function(index, orderItems) {
+						orderItems.orderDate = moment(orderItems.orderDateTime).format('YYYY.MM.DD');
+						
 						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
 						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
 						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));

@@ -237,7 +237,7 @@ module.exports = function() {
 		switch(eventType) {
 			case CART_EVENT.LIST:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				console.log('result.data.myCarts', result.data.myCarts.length)
+				
 				displayData(result.data.myCarts);
 				displayUpdate();
 				setDeleteEvents();

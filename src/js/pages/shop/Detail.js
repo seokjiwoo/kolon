@@ -433,7 +433,6 @@ module.exports = function() {
 					}
 					break;
 				case PRODUCT_EVENT.PARTNER_GOODS:
-					//console.log(result.data.productCards.length);
 					partnerGoodsList.appendData(result.data.productCards);
 					$('#sellerCard').bxSlider({
 						pager:false,

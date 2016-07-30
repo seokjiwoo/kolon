@@ -293,8 +293,6 @@ module.exports = function() {
 			$('#answerList'+opinionNumber).prepend(elements);
 
 			if (result.opinionAnswerList.length == 5) $('#moreAnswers'+opinionNumber).show();
-
-			//console.log($('#answerList'+targetNumber).data().answerNextPage);
 		}
 	}
 
@@ -615,6 +613,7 @@ module.exports = function() {
 			$('#answer'+pollAnswerId).addClass('on');
 		} else {
 			alert(result.message);
+			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/logout.html';
 		}
 	};
 

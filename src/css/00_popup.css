@@ -162,6 +162,9 @@
 .popCon .btnWrap button + button,
 .popCon .btnWrap a + a {margin-left:6px;}
 
+.popCon table.opinionTb tr td { position:relative; }
+.popCon table.opinionTb tr td span.counter { position:absolute;right:25px;bottom:10px; }
+
 ul.popList {width:100%; overflow:hidden;}
 ul.popList li span b {font-family: 'NotoSansB', sans-serif;}
 ul.popList li {width:97%; padding-left:11px; background:url('../images/bul_dot2.png') 0 8px no-repeat; text-align:left; display:inline-block; color:#999; letter-spacing:-1px;}

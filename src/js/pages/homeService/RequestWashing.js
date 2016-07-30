@@ -171,7 +171,6 @@ module.exports = function() {
 		if (timeArray[requestDate] == undefined) {
 			//
 		} else {
-			//console.log(timeArray[requestDate]);
 			$.each(timeArray[requestDate], function(key, each){
 				$('#availableLabel'+key.substr(0, 2)).text(each.washOnYn == 'N' && each.washSwatYn == 'N' ? '(신청불가)' : '');
 			})
@@ -265,7 +264,7 @@ module.exports = function() {
 				"dateTime": timeArray[requestDate][requestTime].dateTime,
 				"serviceDateTimeRequest": serviceDateTimeRequest
 			};
-			//console.log(requestDate);
+			
 			//console.log( serviceAddress );
 			//console.log( livingService );
 			//console.log( washServiceRequest );

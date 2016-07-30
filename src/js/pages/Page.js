@@ -256,7 +256,7 @@ module.exports = function() {
 	function confirmPasswordResultHandler(e, status, result) {
 		switch(status) {
 			case 200:
-				Cookies.set('profileEditAuth', 'auth', { expires: 1/1440 });	// 1 minutes
+				Cookies.set('profileEditAuth', 'auth', { expires: 1/24 });	// 1 hour
 				location.href = '/myPage/profileEdit.html';
 				break;
 			case 400:
@@ -433,7 +433,7 @@ module.exports = function() {
 			left : null,
 			top : null,
 			width : 770,
-			height : 730,
+			height : 750,
 			menubar : 'no',
 			status : 'no',
 			resizable : 'no',
@@ -603,7 +603,7 @@ module.exports = function() {
 		var target = $(e.target),
 		inp = $('#colorbox').find('.js-scrapFolderNew-inp');
 
-		if (!inp.val() || inp.val() === ' ') {
+		if (!inp.val() || $.trim(inp.val()) == '') {
 			alert('폴더명을 입력하세요.');
 			inp.focus();
 			return;
