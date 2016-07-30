@@ -98,6 +98,10 @@
 	height:28px;
 	line-height:28px;
 }
+.ui-datepicker td .noHands {
+	font-weight: bold;
+	background: url('/images/ico_noHands.png') center 22px no-repeat;
+}
 .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
 	margin: .7em 0 0 0;

@@ -31,6 +31,10 @@ function ClassHomeServiceController() {
 			 */
 			movingServiceAvailable: movingServiceAvailable,
 			/**
+			 * 손없는날 검색
+			 */
+			movingServiceFineDay: movingServiceFineDay,
+			/**
 			 * 이사 서비스 업체검색
 			 */
 			movingCompanyList: movingCompanyList,
@@ -115,7 +119,24 @@ function ClassHomeServiceController() {
 				Super.handleError('movingServiceAvailable', result);
 				$(callerObj).trigger('movingServiceAvailableResult', [status, result]);
 			}
-		}, false);
+		}, true);
+	};
+
+	/**
+	 * 손없는날 검색
+	 */
+	function movingServiceFineDay(year, month) {
+		Super.callApi('/apis/living/nohands', 'GET', {
+			"year": year,
+			"month": month
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('fineDayResult', [status, result.data]);
+			} else {
+				Super.handleError('movingServiceFineDay', result);
+				$(callerObj).trigger('fineDayResult', [status, result]);
+			}
+		}, true);
 	};
 
 	/**

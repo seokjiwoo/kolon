@@ -19,6 +19,8 @@ module.exports = function() {
 	$(controller).on('movingDateListResult', movingDateListHandler);
 	$(controller).on('movingCompanyListResult', movingCompanyListHandler);
 	$(controller).on('requestMovingResult', requestMovingResultHandler);
+	$(controller).on('movingServiceAvailableResult', movingServiceAvailableResultHandler);
+	$(controller).on('fineDayResult', movingServiceFineDayResultHandler);
 
 	var addressController = require('../../controller/AddressController.js');
 	$(addressController).on('addressListResult', addressListHandler);
@@ -107,6 +109,7 @@ module.exports = function() {
 				mCode = String(year);
 				mCode += (month < 10 ? '0'+month : month);
 				controller.movingDateList(originAddress.regionCode, mCode);
+				controller.movingServiceFineDay($('#moveDate').datepicker('getDate').getFullYear(), $('#moveDate').datepicker('getDate').getMonth());
 			}
 		}});
 		$('#moveDate').addClass('disabled');
@@ -117,7 +120,21 @@ module.exports = function() {
 			} else if ($('#moveDate').hasClass('cal-show')) {
 				mCode = moment($('#moveDate').datepicker('getDate')).format('YYYYMM');
 				controller.movingDateList(originAddress.regionCode, mCode);
+				controller.movingServiceFineDay($('#moveDate').datepicker('getDate').getFullYear(), $('#moveDate').datepicker('getDate').getMonth());
 			}
+		});
+	};
+
+	function movingServiceAvailableResultHandler(e, status, result) {
+		if (result.movingServiceYn == 'N') {
+			alert("이사 출발지를 확인해주세요.");
+			$('#companyListWrap').text('이사 출발지를 확인해주세요.');
+		}
+	};
+
+	function movingServiceFineDayResultHandler(e, status, result) {
+		$.map(result.nohands, function(each){
+			$('.ui-datepicker-calendar').find('a:contains("'+each+'")').addClass('noHands');
 		});
 	};
 

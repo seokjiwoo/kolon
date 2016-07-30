@@ -103,6 +103,7 @@ module.exports = function() {
 			minDate: 0,
 			showOn: "off"
 		});
+		$('#washDate').addClass('disabled');
 
 		$('#washDate').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
 		$('#washDate').on('onSelect', function(){
@@ -149,14 +150,15 @@ module.exports = function() {
 	function washingCompanyListHandler(e, status, result) {
 		if (result.status != 200) {
 			$('#availableMessage').html('<b>'+result.message+'</b>');
-			//$("#washDate").datepicker("option", "disabled", true);
+			$("#washDate").datepicker("option", "disabled", true);
 		} else {
 			$('#availableMessage').html(result.message);
 			companyNumberObject = {
 				"washOn": result.data.washOn.companyNumber,
 				"washSwat": result.data.washSwat.companyNumber
 			}
-			//$("#washDate").datepicker("option", "disabled", false);
+			$('#washDate').removeClass('disabled');
+			$("#washDate").datepicker("option", "disabled", false);
 		}
 		controller.washingTimeList(serviceAddress.roadBaseAddress);
 	};
