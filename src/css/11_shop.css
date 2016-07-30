@@ -138,6 +138,10 @@ h3.sTit{font-size:50px;font-family: TimesNewRoman, "Times New Roman", Times, Bas
 /* magazine detail */
 .magazineTop.detailArea h3 span {font-size:60px;font-style:normal;font-family:'NotoSansM';}
 
+.toast { position:fixed;width:590px;height:90px;bottom:-100px;left:50%;margin-left:-295px;background:url('../images/toastBackground.png');color:#ffffff;z-index:10;text-align:center; }
+.toast p.message { margin:32px 0;font-size:20px; }
+.toast a.toastClose {position:absolute; top:0; right:0; width:40px; height: 40px; text-indent: -9999px;}
+
 /* newform detail */
 /* topArea */
 .topArea .topContBox {height:900px;background-position:top center;background-repeat:no-repeat;}

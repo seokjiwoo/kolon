@@ -271,7 +271,9 @@ function Events() {
 				// 상품 리뷰 상세
 				REVIEWS : 'productReviewsResult',
 				// 추천 상품 리스트
-				RECOMMEND: 'recommendProductResult'
+				RECOMMEND: 'recommendProductResult',
+				// 토스트 메시지
+				TOAST:'productToastResult'
 			},
 			// OrderController - 주문조회
 			// @see OrderController.js

@@ -138,8 +138,6 @@ module.exports = function() {
 	function onUploadFailure(e, jqXHR) {
 		debug.log(fileName, 'onUploaderFailure', imageUploader.EVENT.UPLOAD_FAILURE, jqXHR);
 		alert('프로필 사진 변경에 실패하였습니다');
-
-		///apis/me/profileImage
 	}
 
 	function onUploaderCancel(e) {

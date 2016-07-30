@@ -50,6 +50,10 @@ module.exports = function() {
 	},
 	self;
 
+	var toastCount = 0;
+	var toastMessageArray;
+	var toastAutoIntervalId;
+
 	var opts = {
 		templates : {
 			wrap : '.container',
@@ -355,6 +359,19 @@ module.exports = function() {
 					
 					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_01');
 					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_02');
+
+					productController.toastMessages(self.productNumber);
+					break;
+				case PRODUCT_EVENT.TOAST:
+					if (result.data.messages.length > 1) {
+						toastMessageArray = result.data.messages;
+						toastCount = 0;
+						openToast();
+
+						$('#toastClose').click(nextToast);
+					} else {
+						$('.toast').remove();
+					}
 					break;
 				case PRODUCT_EVENT.LIKES:
 					switch(status) {
@@ -461,6 +478,41 @@ module.exports = function() {
 					break;
 			// [E] PRODUCT - 상품
 		}
+	}
+
+	function openToast() {
+		$('#toastMessage').text(toastMessageArray[toastCount]);
+
+		$('.toast').delay(500).animate({
+			"bottom": "70px"
+		}, {
+			duration: 500, 
+			easing: 'easeOutBack',
+			complete: function() {
+				toastAutoIntervalId = setTimeout(nextToast, 2000);
+			}
+		});
+	}
+
+	function nextToast(e) {
+		if (e != undefined) e.preventDefault();
+		clearTimeout(toastAutoIntervalId);
+
+		$('.toast').animate({
+			"bottom": "-200px"
+		}, {
+			duration: 500, 
+			easing: 'easeInBack',
+			complete: function() {
+				toastCount++;
+				console.log(toastMessageArray.length, toastCount)
+				if (toastCount >= toastMessageArray.length) {
+					$('.toast').remove();
+				} else {
+					openToast();
+				}
+			}
+		});
 	}
 
 	function onFollowListener(e) {
