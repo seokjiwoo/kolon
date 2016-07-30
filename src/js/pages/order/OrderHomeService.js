@@ -136,26 +136,26 @@ module.exports = function() {
 	};
 
 	function getHashString(e) {
-		var paymentPrice = Number($('#Amt').val());
+		var paymentPrice = Number($('#Amt').pVal());
 
-		switch($('#PayMethod').val()) {
+		switch($('#PayMethod').pVal()) {
 			case 'CARD':
-				if ($('#cardSelect').val() == '') {
+				if ($('#cardSelect').pVal() == '') {
 					alert('카드를 지정해 주세요.');
 					return;
 				}
-				if ($('#SelectQuota').val() == '') {
+				if ($('#SelectQuota').pVal() == '') {
 					alert('할부개월수를 지정해 주세요.');
 					return;
 				}
-				$('#SelectCardCode').val($('#cardSelect').val()); 	// 카드회사 번호
-				$('#SelectQuota').val($('#quotaSelect').val()); 	// 할부개월수
+				$('#SelectCardCode').val($('#cardSelect').pVal()); 	// 카드회사 번호
+				$('#SelectQuota').val($('#quotaSelect').pVal()); 	// 할부개월수
 				break;
 		}
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/living/order/getHashString/"+orderNumber+"?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url: "/apis/living/order/getHashString/"+orderNumber+"?ediDate="+$("#EdiDate").pVal()+"&price="+paymentPrice,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
 				$("#Moid").val(data.data.orderNumber);

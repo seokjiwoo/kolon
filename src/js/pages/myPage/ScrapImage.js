@@ -310,7 +310,7 @@ module.exports = function() {
 			});
 			self.colorbox.find(self.opts.editScrap.submit).on('submit', function(e){
 				e.preventDefault();
-				controller.editScrap(self.selPopBtnInfo.target.data().scrapNumber, $('#scrapTargetFolderSelect').val());
+				controller.editScrap(self.selPopBtnInfo.target.data().scrapNumber, $('#scrapTargetFolderSelect').pVal());
 			});
 			controller.scrapList('IMAGE');
 		}

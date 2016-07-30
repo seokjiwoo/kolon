@@ -205,9 +205,9 @@ module.exports = function() {
 	function requestMovingCompany(e) {
 		e.preventDefault();
 		
-		var requestTargetName = $('#name').val();
-		var requestTargetContact = $('#phoneNumber').val();
-		var movingTypeCode = $(':radio[name="hTp"]:checked').val();
+		var requestTargetName = $('#name').pVal();
+		var requestTargetContact = $('#phoneNumber').pVal();
+		var movingTypeCode = $(':radio[name="hTp"]:checked').pVal();
 		
 		if (requestTargetName == '') {
 			alert('이름을 입력해 주세요');
@@ -224,10 +224,10 @@ module.exports = function() {
 
 	function requestMovingSubmit(e) {
 		e.preventDefault();
-		var requestTargetName = $('#name').val();
-		var requestTargetContact = $('#phoneNumber').val();
-		var movingTypeCode = $(':radio[name="hTp"]:checked').val();
-		var comment = $('#additionalComments').val();
+		var requestTargetName = $('#name').pVal();
+		var requestTargetContact = $('#phoneNumber').pVal();
+		var movingTypeCode = $(':radio[name="hTp"]:checked').pVal();
+		var comment = $('#additionalComments').pVal();
 		
 		if (requestTargetName == '') {
 			alert('이름을 입력해 주세요');

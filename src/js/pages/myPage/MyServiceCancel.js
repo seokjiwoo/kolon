@@ -73,8 +73,8 @@ module.exports = function() {
 		deliveryStateCode = deliveryStateCode || '';
 
 		controller.myOrdersList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
 			keyword,
 			deliveryStateCode
 		);
@@ -165,7 +165,7 @@ module.exports = function() {
 			}
 			
 			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
-			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').pVal()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 
 			getOrderList();
@@ -177,8 +177,8 @@ module.exports = function() {
 		deliveryStateCode = deliveryStateCode || '';
 
 		controller.myConstCancelList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
 			keyword,
 			deliveryStateCode
 		);
@@ -198,8 +198,8 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getOrderList(self.searchInp.val(), data.values.join(','));
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
+		getOrderList(self.searchInp.pVal(), data.values.join(','));
 	}
 
 	function onSearch(e) {
@@ -211,13 +211,13 @@ module.exports = function() {
 
 		e.preventDefault();
 
-		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
+		if (!self.searchInp.pVal() || self.searchInp.pVal() === ' ') {
 			win.alert('검색어를 입력하세요.');
 			self.searchInp.val('').focus();
 			return;
 		}
 
-		getOrderList(self.searchInp.val());
+		getOrderList(self.searchInp.pVal());
 	}
 
 	function onControllerListener(e, status, response, type) {
@@ -325,8 +325,8 @@ module.exports = function() {
 				cancelType, cancelReson;
 
 				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
+					cancelType = $(this).find('.js-type').pVal();
+					cancelReson = $(this).find('.js-inp').pVal();
 					if (cancelType && cancelReson) {
 						isValid = true;
 					} else {
@@ -341,8 +341,8 @@ module.exports = function() {
 				}
 
 				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
+					cancelType = $(this).find('.js-type').pVal();
+					cancelReson = $(this).find('.js-inp').pVal();
 				});
 			});
 		}*/

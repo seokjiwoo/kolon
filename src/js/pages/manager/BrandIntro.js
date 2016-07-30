@@ -96,10 +96,10 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
 		cardList.removeAllData();
-		expertsController.brandProducts(self.expertNumber, target.val().join(''));
-		// getOrderList(self.searchInp.val(), data.values.join(','));
+		expertsController.brandProducts(self.expertNumber, target.pVal().join(''));
+		// getOrderList(self.searchInp.pVal(), data.values.join(','));
 	}
 
 	function onFollowListener(e) {

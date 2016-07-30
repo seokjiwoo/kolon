@@ -294,6 +294,12 @@ ul.cardWrap > li.cardType07 .cardCon .cardTxt span.cardMore:after {background-po
 .hoverStyle02 {background:url(../images/card_hover02.png) 0 0 no-repeat;}
 .hoverStyle03 {background:url(../images/card_hover03.png) 0 0 no-repeat;}
 .hoverStyle04 {width:285px; height:502px; background:url(../images/card_hover04.png) 0 100% no-repeat;}
+.hoverStyle05 { width:285px;height:502px; }
+.hoverStyle05 .cardCon { position:absolute;top:0;left:0; }
+.hoverStyle05 .hoverImage { width:285px;height:502px; }
+.hoverStyle05 .hoverImage .imgHexagon,
+.hoverStyle05 .hoverImage .imgHexagon .imgHexTop
+.hoverStyle05 .hoverImage .imgHexagon .imgHexBottom {background-size:285px 502px;}
 
 /* card type 01~10 */
 .cardWrap .cardType01 {}

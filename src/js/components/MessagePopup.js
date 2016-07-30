@@ -85,12 +85,22 @@ function ClassMessagePopup() {
 	}
 
 	function setBindEvents() {
+		self.msgInp.on('keyup', checkLengthHandler);
 		self.msgForm.on('submit', onSubmitPrevent);
 		self.msgSubmit.on('click', onSubmitListener);
 
 		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 		$(opinionsController).on(OPINIONS_EVENT.WILD_CARD, onControllerListener);
 		$(messageController).on(MESSAGE_EVENT.WILD_CARD, onControllerListener);
+	}
+
+	function checkLengthHandler(e) {
+		if (self.msgInp.val().length > 1000) {
+			alert('내용은 1000자까지 작성할 수 있습니다.');
+			self.msgInp.val( self.msgInp.val().substr(0, 1000) );
+		}
+
+		$('#messageLength').text(self.msgInp.val().length);
 	}
 
 	function onSubmitPrevent(e) {
@@ -102,6 +112,10 @@ function ClassMessagePopup() {
 		
 		if (!self.msgInp.val()) {
 			win.alert('자세한 내용을 작성해 주세요.');
+			return;
+		}
+		if (self.msgInp.val().length > 1000) {
+			win.alert('내용은 1000자까지 작성할 수 있습니다.');
 			return;
 		}
 

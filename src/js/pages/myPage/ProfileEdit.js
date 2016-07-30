@@ -61,7 +61,7 @@ module.exports = function() {
 
 			$(window).on('beforeunload', function(){
 				if (confirm("이 페이지를 벗어나면 변경하신 내용이 저장되지 않습니다.\n이전 화면으로 이동하시려면 [확인]을 누르시고, 현재 페이지에 있으시려면 [취소]를 눌러주세요.")) {
-					Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
+					Cookies.set('profileEditAuth', 'auth', { expires: 1/24 });
 				} else {
 					return false;
 				}
@@ -71,6 +71,15 @@ module.exports = function() {
 			$('#changeEmailIdForm').submit(submitEmailEditForm);
 			$('#changeInfoForm').submit(submitInfoEditForm);
 			$('.verifyMemberPopup').click(submitMobileEditForm);
+
+			$('#requestResign').click(function(e){
+				$(window).off('beforeunload');
+				location.href='/myPage/resign.html';
+			});
+			$('#editPassword').click(function(e){
+				$(window).off('beforeunload');
+				location.href='editPassword.html';
+			});
 		} else {
 			alert('잘못된 접근입니다');
 			location.href = '/';
@@ -275,9 +284,9 @@ module.exports = function() {
 	function submitChangeRefundAccount(e) {
 		e.preventDefault();
 
-		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').val();
-		var accountNumber = $('#accountNumber').val();
-		var depositorName = $('#depositorName').val();
+		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').pVal();
+		var accountNumber = $('#accountNumber').pVal();
+		var depositorName = $('#depositorName').pVal();
 
 		if (bankCode == '') {
 			alert('은행을 선택해 주세요');
@@ -300,9 +309,7 @@ module.exports = function() {
 		if (status == 200) {
 			alert('등록이 완료되었습니다');
 			$.colorbox.close();
-			$(window).off('beforeunload');
-			Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
-			location.reload(true);
+			pageRefresh();
 		} else {
 			alert(result.message);
 		}
@@ -319,9 +326,9 @@ module.exports = function() {
 
 		var emailId = '';
 		if ($('#profileID').attr('disabled') == 'disabled') {
-			if ($('#changeEmailField').is(':visible')) emailId = $('#profileNewID').val();
+			if ($('#changeEmailField').is(':visible')) emailId = $('#profileNewID').pVal();
 		} else {
-			emailId = $('#profileID').val();
+			emailId = $('#profileID').pVal();
 		}
 
 		if (emailId == '') {
@@ -355,7 +362,7 @@ module.exports = function() {
 						authNumberResendFlag = false;
 					},
 					onSubmit: function() {
-						controller.changeEmailId(enteredId, $('#emailAuthNumber').val());
+						controller.changeEmailId(enteredId, $('#emailAuthNumber').pVal());
 					}
 				});
 				break;
@@ -365,10 +372,8 @@ module.exports = function() {
 				$('#myPageHeaderId').text(enteredId);
 				$('#profileID').val(enteredId).attr('disabled', 'disabled');
 				$('#changeEmailField').hide();
-				
-				$(window).off('beforeunload');
-				Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
-				location.reload(true);
+
+				pageRefresh();
 				break;
 			case 400:	// 인증실패
 			default:
@@ -395,10 +400,10 @@ module.exports = function() {
 
 		var generalPhoneNumberRule = /^[0-9]{8,12}$/i;
 
-		var name = $('#editName').val();
-		var birthDate = $('#joinBirth01').val()+$('#joinBirth02').val()+$('#joinBirth03').val();
-		var age = util.calculateAge(new Date($('#joinBirth01').val(), $('#joinBirth02').val(), $('#joinBirth03').val()));
-		var phone = $('#profileHomePhone').val();
+		var name = $('#editName').pVal();
+		var birthDate = $('#joinBirth01').pVal()+$('#joinBirth02').pVal()+$('#joinBirth03').pVal();
+		var age = util.calculateAge(new Date($('#joinBirth01').pVal(), $('#joinBirth02').pVal(), $('#joinBirth03').pVal()));
+		var phone = $('#profileHomePhone').pVal();
 		var agreeMail = $('#agreeReceive01')[0].checked ? 'Y' : 'N';
 		var agreeSms = $('#agreeReceive02')[0].checked ? 'Y' : 'N';
 		
@@ -409,7 +414,7 @@ module.exports = function() {
 		} else if ($.trim(name) == '') {
 			alert('이름을 입력해 주세요.');
 			$('#editName').focus();
-		} else if ( !generalPhoneNumberRule.test($('#profileHomePhone').val()) ) {
+		} else if ( !generalPhoneNumberRule.test($('#profileHomePhone').pVal()) ) {
 			alert('전화번호를 입력해 주세요.');
 			$('#profileHomePhone').focus();
 		} else {
@@ -426,11 +431,8 @@ module.exports = function() {
 		if (status == 200) {
 			switch(response.status) {
 				case '201':
-					MyPage.Super.Super.alertPopup('회원정보수정이 완료되었습니다.', response.message, '확인', function() {
-						$(window).off('beforeunload');
-						Cookies.set('profileEditAuth', 'auth', { expires: 1/2880 });
-						location.reload(true);
-					});
+					alert(response.message);
+					pageRefresh();
 					break;
 				default:
 					MyPage.Super.Super.alertPopup('회원정보수정에 실패하였습니다.', response.message, '확인');
@@ -445,13 +447,19 @@ module.exports = function() {
 	 * 한 달의 날짜 수 업데이트
 	 */
 	function updateDateSelect() {
-		var selectedYear = parseInt($('#joinBirth01').val());
-		var selectedMonth = parseInt($('#joinBirth02').val());
+		var selectedYear = parseInt($('#joinBirth01').pVal());
+		var selectedMonth = parseInt($('#joinBirth02').pVal());
 		var lastDate = new Date(selectedYear, selectedMonth, 0).getDate();
 		var tags = '';
 		for (var i = 1; i <= lastDate; i++) {
 			tags += ('<option value="'+(i<10 ? '0'+i : i)+'">'+i+'</option>');
 		}
 		$('#joinBirth03').html(tags);
+	};
+
+	function pageRefresh() {
+		$(window).off('beforeunload');
+		Cookies.set('profileEditAuth', 'auth', { expires: 1/24 });
+		location.reload(true);
 	};
 };

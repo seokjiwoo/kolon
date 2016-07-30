@@ -32,6 +32,8 @@ module.exports = function() {
 	var recaptchaWidget,
 	recaptchaData;
 
+	var mobileAuthIntervalId;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -110,7 +112,7 @@ module.exports = function() {
 	 * 이메일 필드 검사
 	 */
 	function checkEmailField(e) {
-		var inputValue = $.trim($('#inputName').val());
+		var inputValue = $.trim($('#inputName').pVal());
 
 		if (util.checkValidMobileNumber(inputValue)) {
 			$('#idAlert').text('');
@@ -134,7 +136,7 @@ module.exports = function() {
 	 * 패스워드 필드 검사 
 	 */
 	function checkPasswordField(e) {
-		var inputValue = $('#inputPW').val();
+		var inputValue = $('#inputPW').pVal();
 		/*
 		if (!util.checkValidPassword(inputValue)) {
 			$('#pwAlert').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
@@ -149,8 +151,8 @@ module.exports = function() {
 	function loginHandler(e) {
 		e.preventDefault();
 
-		var id = $.trim($('#inputName').val());
-		var pw = $.trim($('#inputPW').val());
+		var id = $.trim($('#inputName').pVal());
+		var pw = $.trim($('#inputPW').pVal());
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
 		if (id == '') { 
@@ -167,7 +169,7 @@ module.exports = function() {
 				controller.login(id, pw, keepLogin);
 			} else {
 				// 이메일
-				enteredId = $('#inputName').val();
+				enteredId = $('#inputName').pVal();
 				if (util.checkVaildEmail(enteredId)) {
 					controller.login(enteredId, pw, keepLogin);
 				} else {
@@ -210,8 +212,8 @@ module.exports = function() {
 						break;
 					case 201:	// 회원가입 완료
 						Super.Super.alertPopup('회원가입이 완료되었습니다.', '메인화면으로 이동합니다.', '확인', function() {
-							var id = $.trim($('#inputName').val());
-							var pw = $.trim($('#inputPW').val());
+							var id = $.trim($('#inputName').pVal());
+							var pw = $.trim($('#inputPW').pVal());
 							controller.login(id, pw, keepLogin);
 						});
 						break;
@@ -223,7 +225,10 @@ module.exports = function() {
 						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 					case 1901:	// 모바일 인증번호
-						if (!firstTryFlag) alert(response.message);
+						if (!firstTryFlag) {
+							alert(response.message);
+							break;
+						}
 					case 1900:	// 모바일 가입 인증 요구
 						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
 							onOpen: function() {
@@ -236,12 +241,20 @@ module.exports = function() {
 
 								controller.resendAuthNumber(enteredId);
 								authNumberResendFlag = false;
+
+								$('#remainTimeField').data().remainTime = 181;
+
+								mobileAuthIntervalId = setInterval(function(){
+									var time = $('#remainTimeField').data().remainTime-1;
+									$('#remainTimeField').data().remainTime = Math.max(0, time);
+									$('#remainTimeField').text(Math.floor(time/60)+':'+(time%60<10 ? '0'+(time%60) : time%60));
+								}, 1000);
 							},
 							onSubmit: function() {
-								if ($.trim($('#mobileAuthNumber').val()) == '') {
+								if ($.trim($('#mobileAuthNumber').pVal()) == '') {
 									alert('휴대전화로 전송된 인증번호를 입력해 주세요.');
 								} else {
-									controller.login(enteredId, $('#inputPW').val(), keepLogin, $('#mobileAuthNumber').val());
+									controller.login(enteredId, $('#inputPW').pVal(), keepLogin, $('#mobileAuthNumber').pVal());
 								}
 							}
 						});
@@ -253,7 +266,7 @@ module.exports = function() {
 				switch(Number(response.errorCode)) {
 					case 1613:	// 휴면계정 (실명인증 한 경우)
 					case 1620:	// 휴면계정 (실명인증 안 한 경우)
-						Cookies.set('accountReuse', $('#inputName').val(), { expires: 1/1440 });	// 1 minutes
+						Cookies.set('accountReuse', $('#inputName').pVal(), { expires: 1/1440 });	// 1 minutes
 						location.href = '/member/accountReuse.html';
 						break;
 					case 1614: 	// recaptcha 설정
@@ -290,6 +303,7 @@ module.exports = function() {
 		switch(status) {
 			case 200:
 				if (authNumberResendFlag) alert(response.message);
+				$('#remainTimeField').data().remainTime = 181;
 				$('#mobileAuthNumber').val('');
 				break;
 			default:

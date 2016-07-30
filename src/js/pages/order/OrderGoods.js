@@ -151,11 +151,11 @@ module.exports = function() {
 
 				refreshAddressDataHandler();
 				$('.addressSelect').change(function(e){
-					setAddress($(this).attr('id').substr(14), $(this).val());
+					setAddress($(this).attr('id').substr(14), $(this).pVal());
 				});
 				$('.messageSelect').change(function(e){
-					if ($(this).val() != '-') {
-						$('#messageField-'+$(this).attr('id').substr(14)).val( $(this).val() );
+					if ($(this).pVal() != '-') {
+						$('#messageField-'+$(this).attr('id').substr(14)).val( $(this).pVal() );
 					}
 				});
 				$('.messageField').change(function(e){
@@ -235,7 +235,7 @@ module.exports = function() {
 	}
 
 	function reCalculatePointUse() {
-		usePoint = Number($('#pointWt').val());
+		usePoint = Number($('#pointWt').pVal());
 
 		$('#pointLb01').removeClass('on');
 		if (isNaN(usePoint)) usePoint = 0;
@@ -295,7 +295,7 @@ module.exports = function() {
 				product.orderOptionNum,
 				product.quantity,
 				($('#delivery1').is(':visible') ? selectedOneAddress : selectedMultiAddress[key]),
-				encodeURI( $('#messageField-'+($('#delivery1').is(':visible') ? '1' : '2')+'-'+(Number(key)+1)).val() )
+				encodeURI( $('#messageField-'+($('#delivery1').is(':visible') ? '1' : '2')+'-'+(Number(key)+1)).pVal() )
 			);
 			if (!eachOrderArray[3]) {
 				alert('배송지를 지정해 주세요.');
@@ -305,25 +305,25 @@ module.exports = function() {
 		}
 		
 		$('#products').val(productsArray.join(','));
-		switch($('#PayMethod').val()) {
+		switch($('#PayMethod').pVal()) {
 			case 'CARD':
-				if ($('#cardSelect').val() == '') {
+				if ($('#cardSelect').pVal() == '') {
 					alert('카드를 지정해 주세요.');
 					return;
 				}
-				if ($('#SelectQuota').val() == '') {
+				if ($('#SelectQuota').pVal() == '') {
 					alert('할부개월수를 지정해 주세요.');
 					return;
 				}
-				$('#SelectCardCode').val($('#cardSelect').val()); 	// 카드회사 번호
-				$('#SelectQuota').val($('#quotaSelect').val()); 	// 할부개월수
+				$('#SelectCardCode').val($('#cardSelect').pVal()); 	// 카드회사 번호
+				$('#SelectQuota').val($('#quotaSelect').pVal()); 	// 할부개월수
 				break;
 		}
 		$("#Amt").val(paymentPrice);
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/orders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url: "/apis/orders/getHashString?ediDate="+$("#EdiDate").pVal()+"&price="+paymentPrice,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
 				$("#Moid").val(data.data.orderNumber);

@@ -182,7 +182,7 @@ module.exports = function() {
 			switch(statusCode) {
 				case 'pickup':
 					var requestDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
-					var requestValue = $('#pickupDrop').val().split('|');
+					var requestValue = $('#pickupDrop').pVal().split('|');
 							
 					if (requestValue.length == 1) {
 						alert('변경예정시각을 선택해주세요');
@@ -192,7 +192,7 @@ module.exports = function() {
 					break;
 				case 'delivery':
 					var requestDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
-					var requestValue = $('#deliveryDrop').val().split('|');
+					var requestValue = $('#deliveryDrop').pVal().split('|');
 							
 					if (requestValue.length == 1) {
 						alert('변경예정시각을 선택해주세요');
@@ -259,10 +259,10 @@ module.exports = function() {
 		renderData(info, '#homeServiceCancelTemplates', '#homeServiceCancelWrap', true);
 
 		$('#reasonSelect').change(function(e){
-			if ($(this).val() == '-' || $(this).val() == '') {
+			if ($(this).pVal() == '-' || $(this).pVal() == '') {
 				$('#reasonField').val('');
 			} else {
-				$('#reasonField').val($(this).val());
+				$('#reasonField').val($(this).pVal());
 			}
 		});
 		$('#reasonField').change(function(e){
@@ -270,13 +270,13 @@ module.exports = function() {
 		});
 		$('#washCancelForm').submit(function(e){
 			e.preventDefault();
-			if ($('#reasonSelect').val() == '-') {
+			if ($('#reasonSelect').pVal() == '-') {
 				alert('주문 취소 사유를 선택해주세요');
-			} else if ($('#reasonSelect').val() == '' && $.trim($('#reasonField').val()) == '') {
+			} else if ($('#reasonSelect').pVal() == '' && $.trim($('#reasonField').pVal()) == '') {
 				alert('주문 취소 사유를 입력해주세요');
 			} else {
-				var reason = $('#reasonSelect').val();
-				if ($.trim($('#reasonField').val()) == '') reason = $('#reasonField').val();
+				var reason = $('#reasonSelect').pVal();
+				if ($.trim($('#reasonField').pVal()) == '') reason = $('#reasonField').pVal();
 
 				controller.cancelWashing(serviceCompanyCode, serviceRequestNumber, reason);
 			}

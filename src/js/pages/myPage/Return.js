@@ -74,11 +74,11 @@ module.exports = function() {
 	}
 
 	function getClaimsList(keyword, deliveryStateCode) {
-		keyword = self.searchInp.val();
+		keyword = self.searchInp.pVal();
 
 		controller.myClaimsList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
 			keyword,
 			clameState
 		);
@@ -198,7 +198,7 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
 		clameState = data.values.join(',');
 		getClaimsList();
 	}
@@ -210,7 +210,7 @@ module.exports = function() {
 
 		e.preventDefault();
 
-		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
+		if (!self.searchInp.pVal() || self.searchInp.pVal() === ' ') {
 			win.alert('검색어를 입력하세요.');
 			self.searchInp.val('').focus();
 			return;
@@ -268,7 +268,7 @@ module.exports = function() {
 					break;
 			}
 			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
-			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').pVal()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 
 			getClaimsList();

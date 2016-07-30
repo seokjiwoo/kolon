@@ -130,10 +130,10 @@ module.exports = function() {
 		e.preventDefault();
 		var opinionNumber = $(this).attr('id').substr(10);
 
-		if ($.trim($('#answerBox'+opinionNumber).val()) == '') {
+		if ($.trim($('#answerBox'+opinionNumber).pVal()) == '') {
 			alert('내용을 작성해 주세요');
 		} else {
-			controller.postAnswer(opinionNumber, $.trim($('#answerBox'+opinionNumber).val()));
+			controller.postAnswer(opinionNumber, $.trim($('#answerBox'+opinionNumber).pVal()));
 		}
 	};
 

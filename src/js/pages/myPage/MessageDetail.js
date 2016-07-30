@@ -80,7 +80,7 @@ module.exports = function() {
 	};
 
 	function quickAttachHandler(e) {
-       var fileName = $(this).val();
+       var fileName = $(this).pVal();
 	   
 	   $('#quickMessageAttachForm').ajaxSubmit({
 			url: APIController().API_URL + '/apis/inquiries/images',
@@ -103,7 +103,7 @@ module.exports = function() {
 
 	function quickMessageHandler(e) {
 		e.preventDefault();
-		var content = $('#messageContent').val();
+		var content = $('#messageContent').pVal();
 
 		if ($.trim(content) == '') {
 			alert('내용을 입력하세요.');

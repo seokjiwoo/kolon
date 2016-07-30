@@ -93,9 +93,9 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
 		cardList.removeAllData();
-		expertsController.products(self.expertNumber, target.val().join(''));
+		expertsController.products(self.expertNumber, target.pVal().join(''));
 	}
 
 	function onFollowListener(e) {

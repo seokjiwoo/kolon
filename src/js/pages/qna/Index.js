@@ -293,8 +293,6 @@ module.exports = function() {
 			$('#answerList'+opinionNumber).prepend(elements);
 
 			if (result.opinionAnswerList.length == 5) $('#moreAnswers'+opinionNumber).show();
-
-			//console.log($('#answerList'+targetNumber).data().answerNextPage);
 		}
 	}
 
@@ -466,7 +464,7 @@ module.exports = function() {
 	}
 
 	function onScrapAddSelFolderChange(e) {
-		var folderNumber = $(this).val(),
+		var folderNumber = $(this).pVal(),
 		scrapList = self.colorbox.find('.js-scrap-list');
 
 		scrapList.removeClass('is-show');
@@ -555,17 +553,17 @@ module.exports = function() {
 	function writeFormSubmitHandler(e) {
 		e.preventDefault();
 
-		if ($('#opinionThemes').val() == '-') {
+		if ($('#opinionThemes').pVal() == '-') {
 			alert('주제를 선택해주세요');
-		} else if ($.trim($('#opinionTitle').val()) == '') {
+		} else if ($.trim($('#opinionTitle').pVal()) == '') {
 			alert('제목을 입력해주세요');
-		} else if ($.trim($('#opinionContent').val()) == '') {
+		} else if ($.trim($('#opinionContent').pVal()) == '') {
 			alert('자세한 내용을 작성해 주세요');
 		} else {
 			controller.postOpinion(
-				$('#opinionThemes').val(),
-				$.trim($('#opinionTitle').val()),
-				$.trim($('#opinionContent').val()),
+				$('#opinionThemes').pVal(),
+				$.trim($('#opinionTitle').pVal()),
+				$.trim($('#opinionContent').pVal()),
 				uploadImageArray,
 				uploadScrapNumbers
 			);
@@ -584,10 +582,10 @@ module.exports = function() {
 		e.preventDefault();
 		var opinionNumber = $(this).attr('id').substr(10);
 
-		if ($.trim($('#answerBox'+opinionNumber).val()) == '') {
+		if ($.trim($('#answerBox'+opinionNumber).pVal()) == '') {
 			alert('내용을 작성해 주세요');
 		} else {
-			controller.postAnswer(opinionNumber, $.trim($('#answerBox'+opinionNumber).val()));
+			controller.postAnswer(opinionNumber, $.trim($('#answerBox'+opinionNumber).pVal()));
 		}
 	};
 
@@ -615,6 +613,7 @@ module.exports = function() {
 			$('#answer'+pollAnswerId).addClass('on');
 		} else {
 			alert(result.message);
+			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/logout.html';
 		}
 	};
 

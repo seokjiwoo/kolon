@@ -81,13 +81,13 @@ module.exports = function() {
 	function submitJoinForm(e) {
 		e.preventDefault();
 		
-		var id = $('#joinId').val();
-		var pw1 = $('#joinPW').val();
-		var pw2 = $('#joinPW02').val();
-		var joinName = $('#joinName').val();
-		var phone = $('#joinPhone').val();
-		var birthDate = $('#joinBirth01').val()+$('#joinBirth02').val()+$('#joinBirth03').val();
-		var age = util.calculateAge(new Date($('#joinBirth01').val(), $('#joinBirth02').val(), $('#joinBirth03').val()));
+		var id = $('#joinId').pVal();
+		var pw1 = $('#joinPW').pVal();
+		var pw2 = $('#joinPW02').pVal();
+		var joinName = $('#joinName').pVal();
+		var phone = $('#joinPhone').pVal();
+		var birthDate = $('#joinBirth01').pVal()+$('#joinBirth02').pVal()+$('#joinBirth03').pVal();
+		var age = util.calculateAge(new Date($('#joinBirth01').pVal(), $('#joinBirth02').pVal(), $('#joinBirth03').pVal()));
 		
 		$('#joinNameAlert').text('');
 		
@@ -123,7 +123,7 @@ module.exports = function() {
 	 * 이메일 필드 검사
 	 */
 	function checkEmailField(e) {
-		var inputValue = $('#joinId').val();
+		var inputValue = $('#joinId').pVal();
 		if (util.checkVaildEmail(inputValue) == false) {
 			$('#joinIdAlert').text('이메일 주소를 정확하게 입력해주세요.');
 		} else {
@@ -172,8 +172,8 @@ module.exports = function() {
 	 * 패스워드 필드 검사 
 	 */
 	function checkPasswordField(e) {
-		var inputValue1 = $('#joinPW').val();
-		var inputValue2 = $('#joinPW02').val();
+		var inputValue1 = $('#joinPW').pVal();
+		var inputValue2 = $('#joinPW02').pVal();
 		
 		if (inputValue2 != '' && inputValue1 != inputValue2) {
 			$('#joinPWAlert').text('비밀번호가 일치하지 않습니다.');
@@ -188,7 +188,7 @@ module.exports = function() {
 	 * 전화번호 필드 검사 
 	 */
 	function checkPhoneField(e) {
-		var inputValue = $('#joinPhone').val();
+		var inputValue = $('#joinPhone').pVal();
 		if (!util.checkValidMobileNumber(inputValue)) {
 			$('#joinPhoneAlert').text('10-12자리의 숫자만 입력해 주세요.');
 		} else {
@@ -200,8 +200,8 @@ module.exports = function() {
 	 * 한 달의 날짜 수 업데이트
 	 */
 	function updateDateSelect() {
-		var selectedYear = parseInt($('#joinBirth01').val());
-		var selectedMonth = parseInt($('#joinBirth02').val());
+		var selectedYear = parseInt($('#joinBirth01').pVal());
+		var selectedMonth = parseInt($('#joinBirth02').pVal());
 		var lastDate = new Date(selectedYear, selectedMonth, 0).getDate();
 		var tags = '';
 		for (var i = 1; i <= lastDate; i++) {

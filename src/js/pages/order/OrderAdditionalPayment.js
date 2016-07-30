@@ -73,7 +73,6 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.NEWFORM_ORDER_ADDITIONAL_INFO:
-			console.log(result);
 				var data = result.data;
 				totalPrice = data.constOrderAddition.totalPaymentPrice;
 
@@ -132,24 +131,24 @@ module.exports = function() {
 	};
 
 	function getHashString(e) {
-		switch($('#PayMethod').val()) {
+		switch($('#PayMethod').pVal()) {
 			case 'CARD':
-				if ($('#cardSelect').val() == '') {
+				if ($('#cardSelect').pVal() == '') {
 					alert('카드를 지정해 주세요.');
 					return;
 				}
-				if ($('#SelectQuota').val() == '') {
+				if ($('#SelectQuota').pVal() == '') {
 					alert('할부개월수를 지정해 주세요.');
 					return;
 				}
-				$('#SelectCardCode').val($('#cardSelect').val()); 	// 카드회사 번호
-				$('#SelectQuota').val($('#quotaSelect').val()); 	// 할부개월수
+				$('#SelectCardCode').val($('#cardSelect').pVal()); 	// 카드회사 번호
+				$('#SelectQuota').val($('#quotaSelect').pVal()); 	// 할부개월수
 				break;
 		}
 
 		jQuery.ajax({
 			type: "GET",
-			url:"/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+totalPrice+"&orderNumber="+orderNumber,
+			url:"/apis/constorders/getHashString?ediDate="+$("#EdiDate").pVal()+"&price="+totalPrice+"&orderNumber="+orderNumber,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
 				$("#Moid").val(data.data.orderNumber);

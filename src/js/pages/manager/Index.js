@@ -62,7 +62,7 @@ module.exports = function() {
 		
 		$('#searchButton').click(function(e){
 			e.preventDefault();
-			if ($.trim($('#searchField').val()) == '') {
+			if ($.trim($('#searchField').pVal()) == '') {
 				alert('최소 한글자의 검색어를 입력해주세요.');
 			} else {
 				refreshList();
@@ -94,7 +94,7 @@ module.exports = function() {
 
 	function refreshList() {
 		cardList.removeAllData();
-		controller.name(orderCode, $('#searchField').val());
+		controller.name(orderCode, $('#searchField').pVal());
 	}
 
 	function expertListHandler(e, status, result) {

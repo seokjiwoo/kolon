@@ -82,11 +82,11 @@ module.exports = function() {
 	function addressSubmitHandler(e) {
 		e.preventDefault();
 
-		var phoneNumber = String($('#phone1').val())+$('#phone2').val()+$('#phone3').val();
+		var phoneNumber = String($('#phone1').pVal())+$('#phone2').pVal()+$('#phone3').pVal();
 		var addressSectionCode = $('#basicAddrFlag').hasClass('on') ? 'BM_ADDR_SECTION_02' : 'BM_ADDR_SECTION_03';
 		
-		var adrName1Val = $.trim($('#adrName1').val());
-		var adrName2Val = $.trim($('#adrName2').val());
+		var adrName1Val = $.trim($('#adrName1').pVal());
+		var adrName2Val = $.trim($('#adrName2').pVal());
 
 
 		if (adrName1Val == '' || adrName1Val.indexOf('주소의 별칭을 입력해주세요') != -1) {
@@ -95,24 +95,24 @@ module.exports = function() {
 		} else if (adrName2Val == '' || adrName2Val.indexOf('이름을 입력해주세요') != -1) {
 			alert('이름을 입력해 주세요');
 			return;
-		} else if ($.trim($('#phone2').val()) == '' || $.trim($('#phone3').val()) == '') {
+		} else if ($.trim($('#phone2').pVal()) == '' || $.trim($('#phone3').pVal()) == '') {
 			alert('연락처를 입력해 주세요');
 			return;
 		} else if (!util.checkValidMobileNumber(phoneNumber)) {
 			alert('올바른 연락처를 입력해 주세요');
 			return;
-		} else if ($.trim($('#zipCode').val()) == '') {
+		} else if ($.trim($('#zipCode').pVal()) == '') {
 			alert('주소를 입력해 주세요');
 			return;
 		} else { 
 			var addressObject = {
-				"addressManagementName": $('#adrName1').val(),
-				"zipCode": $('#zipCode').val(),
-				"regionCode": $('#regionCode').val(),
+				"addressManagementName": $('#adrName1').pVal(),
+				"zipCode": $('#zipCode').pVal(),
+				"regionCode": $('#regionCode').pVal(),
 				"lotBaseAddress": $('#jibunAddress').text(),
-				"roadBaseAddress": $('#roadAddress').val(),
-				"detailAddress": $('#extraAddress').val(),
-				"receiverName": $('#adrName2').val(),
+				"roadBaseAddress": $('#roadAddress').pVal(),
+				"detailAddress": $('#extraAddress').pVal(),
+				"receiverName": $('#adrName2').pVal(),
 				"cellPhoneNumber": phoneNumber,
 				"addressSectionCode": addressSectionCode
 			}

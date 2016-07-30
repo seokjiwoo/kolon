@@ -250,6 +250,15 @@
 		</div>
 		{{/vxIF}}
 		{{!-- Type7 --}}
+		
+		{{!-- Type10 이미지 --}}
+		{{#vxIF cardTypeCode "==" "DP_CARD_TYPE_10"}}
+		<div class="cardCon">
+			<a href="../_popup/popScrapDel.html" class="btnPop btnPop540 removeScrap" data-scrap-number="{{scrapNumber}}" data-user-class="scrapRemove popEdge">삭제</a>
+		</div>
+		<!--<a href="" class="cardRemove"></a>-->
+		{{/vxIF}}
+		{{!-- Type10 --}}
 	</li>
 {{/cards}} 
 </script>
