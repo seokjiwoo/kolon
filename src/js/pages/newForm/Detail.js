@@ -30,6 +30,7 @@ module.exports = function() {
 	var loginDataModel = require('../../model/LoginModel');
 
 	var CardList = require('../../components/CardList.js');
+	var unitProductsList;
 	var recommendShopList;
 	var recommendNewFormList;
 	var partnerGoodsList;
@@ -76,6 +77,9 @@ module.exports = function() {
 		setElements();
 		setBindEvents();
 		setBtnsEvents();
+
+		unitProductsList = CardList();
+		unitProductsList.init('#packageUnitsWrap', true);
 		
 		recommendShopList = CardList();
 		recommendShopList.init('#recommendShopWrap', true);
@@ -304,6 +308,7 @@ module.exports = function() {
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
+					displayData(result.data.product, $('#purchasing-information-templates'), $('#PurchasingArea'));
 
 					if (result.data.product.tags.length == 0) {
 						$('#tagArea').hide();
@@ -314,6 +319,15 @@ module.exports = function() {
 					self.productName = result.data.product.productName;
 					self.salePrice = result.data.product.salePrice;
 					self.stock = result.data.product.stock;
+
+					unitProductsList.appendData(result.data.product.unitProducts);
+					$('#packageUnitsWrap').bxSlider({
+						pager:false,
+						slideMargin: 10,
+						minSlides: 4,
+						maxSlides: 4,
+						slideWidth: 285
+					});
 
 					if (result.data.product.registeredLikeYn == 'Y') $('.js-add-like').addClass('on');
 					if (result.data.product.registeredScrapYn == 'Y') $('.js-add-scrap').addClass('on');
@@ -365,9 +379,9 @@ module.exports = function() {
 					var partnerData1 = result.data.partner;
 					var partnerData2 = result.data.partner;
 					if (partnerData2.memberMasterYn == 'Y') {
-						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
-					} else {
 						partnerData2.link = '/manager/brand.html?expertNumber='+partnerData2.partnerNumber;
+					} else {
+						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
 					}
 					displayData(partnerData1, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
 					displayData(partnerData2, $('#info-partner-templates'), $('.js-info-partner-wrap'));

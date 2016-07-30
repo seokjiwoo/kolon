@@ -7,10 +7,13 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'myPage/RecentSeenItem.js';
+	fileName = 'myPage/Like.js';
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass();
+
+	var controller = require('../../controller/MyPageController.js');
+	$(controller).on('recentViewItemsResult', itemListHandler);
 
 	var CardList = require('../../components/CardList.js');
 	var cardList;
@@ -26,11 +29,17 @@ module.exports = function() {
 	
 	function init() {
 		MyPage.init();
-
-
+		
 		cardList = CardList();
 		cardList.init();
 		
 		debug.log(fileName, $, util);
+
+		controller.recentViewItems();
+	}
+
+	function itemListHandler(e, status, result) {
+		console.log(result.data);
+		cardList.appendData(result.data.likeList);
 	}
 };

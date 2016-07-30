@@ -85,7 +85,7 @@ module.exports = function() {
 		recommendShopList.init('#recommendShopWrap', true);
 		
 		recommendNewFormList = CardList();
-		recommendNewFormList.init('#recommendShopWrap', true);
+		recommendNewFormList.init('#recommendNewFormWrap', true);
 
 		//stickyBar.init();
 
@@ -346,9 +346,12 @@ module.exports = function() {
 						});
 					}
 
+					result.data.product.promotionCode = $.trim(String(result.data.product.promotionCode));
+					
 					displayData(result.data.product, $('#shop-detail-description-templates'), $('.shop-detail-description-wrap'));
 					displayData(result.data.product, $('#detail-info-templates'), $('.js-detail-info-wrap'));
 					displayData(result.data.product, $('#detail-criteria-options-templates'), $('#criteria-options-wrap'));
+					displayData(result.data.product, $('#purchasing-information-templates'), $('#PurchasingArea'));
 					
 					if (result.data.product.tags.length == 0) {
 						$('#tagArea').hide();
@@ -406,9 +409,9 @@ module.exports = function() {
 					var partnerData1 = result.data.partner;
 					var partnerData2 = result.data.partner;
 					if (partnerData2.memberMasterYn == 'Y') {
-						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
-					} else {
 						partnerData2.link = '/manager/brand.html?expertNumber='+partnerData2.partnerNumber;
+					} else {
+						partnerData2.link = '/manager/detail.html?expertNumber='+partnerData2.partnerNumber;
 					}
 					displayData(partnerData1, $('#detail-partner-templates'), $('.js-detail-partner-wrap'));
 					displayData(partnerData2, $('#info-partner-templates'), $('.js-info-partner-wrap'));

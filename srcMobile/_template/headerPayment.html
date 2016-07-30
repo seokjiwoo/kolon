@@ -41,6 +41,54 @@
 		$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
 
 		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
+		document.payForm.method = "post";
+		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
+		document.payForm.submit();
+	}
+
+	function goPaySmartNewForm() {
+		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/advance/process' : 'https://dev.m.koloncommon.com/apis/constorders/advance/process');
+		$("#MallReserved").val(encodeURI($("#products").val()));
+
+		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
+		document.payForm.method = "post";
+		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
+		document.payForm.submit();
+	}
+
+	function goPaySmartNewFormBalance() {
+		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/balance/process' : 'https://dev.m.koloncommon.com/apis/constorders/balance/process');
+		$("#MallReserved").val(encodeURI($("#usingPoint").val()+"||"+$("#products").val()));
+
+
+		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
+		document.payForm.method = "post";
+		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
+		document.payForm.submit();
+	}
+
+	function goPaySmartAdditionalPay() {
+		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/constorders/addition/process' : 'https://dev.m.koloncommon.com/apis/constorders/addition/process');
+		$("#MallReserved").val(encodeURI($("#products").val()));
+
+
+		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
+		document.payForm.method = "post";
+		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
+		document.payForm.submit();
+	}
+
+	function goPaySmartHomeService() {
+		$("#ReturnURL").val((window.document.domain === 'stg.m.koloncommon.com') ? 'https://stg.m.koloncommon.com/apis/living/order/process' : 'https://dev.m.koloncommon.com/apis/living/order/process');
+		$("#MallReserved").val(encodeURI($("#products").val()));
+
+
+		// document.payForm.target = "_blank";
+		document.payForm.acceptCharset = "euc-kr";
 		document.payForm.method = "post";
 		document.payForm.action = "https://web.nicepay.co.kr/smart/paySmart.jsp";
 		document.payForm.submit();

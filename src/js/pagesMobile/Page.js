@@ -205,14 +205,15 @@ module.exports = function() {
 				widthSlider.reloadSlider(); 
 			}
 		}) 
-
+		/*
 		$(".optList > li").each(function(){ // 마이페이지-주문상세
 			$(this).find(".hiddenArea").parent("li").next().css({
 				border:0,
 				paddingTop : 0
 			})
 		});
-
+		*/
+		/*
 		$.fn.showArea = function(){ // 마이페이지-주문상세
 			return this.each(function(){
 				var tg = $(this);
@@ -229,6 +230,23 @@ module.exports = function() {
 			})
 		}
 		$(".hiddenArea > a").showArea();
+		*/
+
+		$(".helpList li").on("click", function(){ //  도움말 상세
+			var tg = $(this)
+			 if( !tg.find(".con").is(":visible") ){
+			 	$(".helpList li").removeClass("active");
+			 	tg.addClass("active");
+			 	$(".helpList li").find(".con").stop().slideUp();
+			 	tg.find(".con").stop().slideDown();
+			 }else{
+			 	$(".helpList li").removeClass("active");
+			 	tg.find(".con").stop().slideUp();
+			 }
+		});
+		$(".helpList li").find(".con").on("click", function(e){
+			e.stopPropagation();
+		})
 
 		$('.mSlide').bxSlider({ //magazine slide
 			controls:false
@@ -299,13 +317,13 @@ module.exports = function() {
 	function verifyMemberResultHandler(e, status, authData) {
 		switch(Number(status)) {
 			case 200:
-				Super.alertPopup('본인확인이 완료되었습니다.', authData.message, '확인', function(){
-					location.reload(true);
-				});
+				alert(authData.message);
 				memberInfoController.getMyInfo();
+				location.reload(true);
 				break;
 			default:
-				Super.alertPopup('본인확인에 실패하였습니다.', authData.message, '확인');
+				alert(authData.message);
+				//Super.alertPopup('본인확인에 실패하였습니다.', authData.message, '확인');
 				break;
 		}
 	};

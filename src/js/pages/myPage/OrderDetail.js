@@ -75,7 +75,6 @@ module.exports = function() {
 
 	function setBindEvents() {
 		$(controller).on(ORDER_EVENT.WILD_CARD, onControllerListener);
-		eventManager.on(COLORBOX_EVENT.WILD_CARD, onColorBoxAreaListener);
 
 		$('.dropChk').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
 
@@ -86,7 +85,7 @@ module.exports = function() {
 		e.preventDefault();
 
 		var target = $(e.currentTarget),
-		info = target.data('order-info');
+		info = target.closest('[data-order-info]').data('order-info');
 
 		self.selPopBtnInfo = {
 			target : target,
@@ -94,31 +93,43 @@ module.exports = function() {
 		};
 
 		if (target.hasClass('js-order-cancel')) {
-			var list = $('[data-chk-group=\'orderDetail\']').not('[data-chk-role=\'chkAll\']').filter('.on'),
-			deleteList = [];
+			var list = $('[data-chk-group=\'orderDetail\']').not('[data-chk-role=\'chkAll\']').filter('.on');
+			var cancelRequestMessage = '';
 
 			$.each(list, function() {
-				deleteList.push($(this).data('order-number'));
+				console.log($(this).data());
+				cancelRequestMessage += ($(this).data().productNumber+'|'+$(this).data().optionNumber+',');
 			});
-
-			if (!deleteList.length) {
+			
+			if (cancelRequestMessage == '') {
 				return;
 			}
 
-			// 주문 취소 신청 처리
-			// controller.orderCancel(deleteList, '', '');
+			MyPage.Super.Super.htmlPopup('../../_popup/popOrderCancelRequest.html', 895, 'popEdge', {
+				onOpen: function() {
+					controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, cancelRequestMessage);
+				}
+			});
+		}
 
-			eventManager.trigger(HTMLPOPUP_EVENT.OPEN, [
-				'../../_popup/popOrderCancelRequest.html',
-				895,
-				'popEdge',
-				{
-					onOpen: function() {
-						controller.orderDetail(deleteList, 'COLOR_BOX');
+		if (target.hasClass('js-order-cancel-all')) {
+			MyPage.Super.Super.htmlPopup('../../_popup/popOrderCancelRequest.html', 895, 'popEdge', {
+				onOpen: function() {
+					console.log(self.selPopBtnInfo.info);
+					if (self.selPopBtnInfo.info.joinedOrder == "1") {
+						controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
+					} else {
+						var cancelRequestMessage = '';
+						$.each($('[data-order-info]'), function(key, each){
+							var eachInfo = $(each).data('order-info');
+							if (self.selPopBtnInfo.info.orderNumber == eachInfo.orderNumber) {
+								cancelRequestMessage += (eachInfo.productNumber+'|'+eachInfo.orderOptionNumber+',');
+							} 
+						});
+						controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, cancelRequestMessage);
 					}
 				}
-			]);
-
+			});
 		}
 	}
 
@@ -127,11 +138,6 @@ module.exports = function() {
 		var _template = self.template,
 		_templatesWrap = self.templatesWrap;
 
-		if (type === 'COLOR_BOX') {
-			_template = self.colorbox.find('#cancel-request-templates');
-			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
-		}
-		
 		var source = _template.html(),
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));
@@ -146,90 +152,6 @@ module.exports = function() {
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 							});
-
-		if (type === 'COLOR_BOX') {
-			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
-			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
-				e.preventDefault();
-
-				var forms = self.colorbox.find('.js-cancel-form'),
-				isValid = false,
-				cancelType, cancelReson;
-
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-					if (cancelType && cancelReson) {
-						isValid = true;
-					} else {
-						isValid = false;
-						return false;
-					}
-				});
-
-				if (!isValid) {
-					win.alert('취소 사유를 선택/입력 해주세요.');
-					return;
-				}
-
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-
-					controller.orderCancel(
-						self.selPopBtnInfo.info.orderNumber,
-						{
-							"accountAuthDatetime": "2016-04-01",
-							"accountAuthYn": "Y",
-							"addDeliveryChargeTotal": 0,
-							"claimDeliveryChargeTotal": 0,
-							"claimReasonCode": cancelType,
-							"claimReasonStatement": "string",
-							"claimTypeCode": "string",
-							"orderNumber": 0,
-							"refundAccountNumber": 0,
-							"refundBankCode": "string",
-							"refundDepositorName": cancelReson
-						},
-						[
-							{
-								"addDeliveryCharge": 0,
-								"claimDeliveryCharge": 0,
-								"claimNumber": 0,
-								"claimProcessDatetime": "string",
-								"claimProcessQuantity": 0,
-								"claimProductAmount": 0,
-								"claimRequestQuantity": 0,
-								"claimStateCode": "string",
-								"claimStateReason": "string",
-								"deliveryChargePaymentCode": "string",
-								"orderNumber": 0,
-								"orderProductSequence": "string"
-							}
-						]
-					);
-				});
-			});
-		}
-	}
-
-	function setColoboxEvevnts() {
-		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-		}
-	}
-
-	function destroyColoboxEvevnts() {
-	}
-
-	function onColorBoxAreaListener(e) {
-		switch(e.type) {
-			case COLORBOX_EVENT.COMPLETE:
-				setColoboxEvevnts();
-				break;
-			case COLORBOX_EVENT.CLEANUP:
-				destroyColoboxEvevnts();
-				break;
-		}
 	}
 
 	function onDropCheckMenuChange(e, data) {
@@ -237,6 +159,62 @@ module.exports = function() {
 
 		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
 	}
+	function displayCancelPopup(data, type) {
+		var _template = self.colorbox.find('#cancel-request-templates');
+		var _templatesWrap = self.colorbox.find('.js-cancelRequest-wrap');
+
+		var source = _template.html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
+
+		_templatesWrap.empty()
+							.addClass(self.opts.cssClass.isLoading)
+							.append(insertElements);
+
+		_templatesWrap.imagesLoaded()
+							.always(function() {
+								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
+								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+							});
+		
+		var cancelOrderDataArray = new Array();
+		$.each(data.product, function(key, each){
+			cancelOrderDataArray.push(new Array(each.productNumber, each.orderOptionNumber));
+		});
+
+		self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+		self.colorbox.find('#js-order-cancel-form').on('submit', function(e) {
+			e.preventDefault();
+
+			var isValid = true,
+			cancelType, cancelReson;
+
+			$.each($('.cancelReasonDrop'), function(key, each){
+				cancelOrderDataArray[key].push($(each).val());
+				if (!$(each).val()) isValid = false;
+			});
+			$.each($('.cancelReasonField'), function(key, each){
+				cancelOrderDataArray[key].push(encodeURI($(each).val()));
+				if (!$(each).val()) isValid = false;
+			});
+			
+			if (!isValid) {
+				win.alert('취소 사유를 선택/입력 해주세요.');
+				return;
+			}
+			
+			var cancelOrderArray = new Array();
+			$.map(cancelOrderDataArray, function(each) {
+				cancelOrderArray.push(each.join('|'));
+			});
+
+			// productNumber|orderOptionNumber|클레임사유 코드|취소신청사유
+			var cancelOrder = cancelOrderArray.join(',');
+			//console.log(cancelOrder);
+			controller.orderCancel(self.selPopBtnInfo.info.orderNumber, cancelOrder);
+		});
+	};
 
 	function onControllerListener(e, status, response, type) {
 		var eventType = e.type,
@@ -286,6 +264,12 @@ module.exports = function() {
 					$('#moreTable'+tableId).slideToggle();
 				});
 				break;
+				
+			
+			case ORDER_EVENT.CANCEL_DETAIL:
+				displayCancelPopup(result.data, type);
+				$(document).trigger('initProfileEditButton');
+				break;
 
 			case ORDER_EVENT.ORDER_CANCEL:
 				switch(status) {
@@ -296,7 +280,6 @@ module.exports = function() {
 					default:
 						break;
 				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
 				break;
 		}
 	}

@@ -101,13 +101,14 @@ function ClassScrapController() {
 		}, false);
 	};
 
-	function addImageScrap(folderNumber, targetCode, imageUrl) {
-		if (targetCode == callerObj.SCRAP_TARGET_CODE_CARD_GOODS || targetCode == callerObj.SCRAP_TARGET_CODE_CARD_MAGAZINE) folderNumber = 0;
+	function addImageScrap(folderNumber, imageUrl) {
+		var targetCode = 'BM_SCRAP_TARGET_03';
 
 		Super.callApi('/apis/scraps', 'POST', {
 			"folderNumber": folderNumber,
 			"scrapTargetCd": targetCode,
-			"scrapImageUrl": imageUrl
+			"scrapImageUrl": imageUrl,
+			"scrapTargetNumber": 0
 		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('addScrapResult', [status, result]);

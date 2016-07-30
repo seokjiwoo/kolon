@@ -1,0 +1,52 @@
+<div class="layerPopup myPop">
+	<div class="popTop">
+		<h3 class="popTit">배송 상품 주문/배송 진행 상태</h3>
+		<a href="#" class="closeBtn popClose"><span class="hide">팝업닫기</span></a>
+	</div>
+	<div class="popCon">
+		<div class="stateWrap">
+			<div class="state orderStep">
+				<p class="stepImg js-step-img"><span></span></p><!-- step1 ~ step11까지 있음 -->
+				<div class="step js-step">
+					<ul>
+						<li>입금 대기</li>
+						<li>결제 완료</li>
+						<li>상품 준비 중</li>
+					</ul>
+					<ul>
+						<li>배송 중</li>
+						<li>배송완료</li>
+						<li>구매확정</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// @example
+	// <a href="../_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-2">결제 완료</a>
+	$(function() {
+		var stepClass = $('#colorbox').attr('class'),
+		hasStep = (/js-step-/).test(stepClass),
+		step = null;
+
+		if (hasStep) {
+			$.map(stepClass.split(' '), function(className) {
+				if (className.indexOf('js-step') !== -1) {
+					step = parseInt(className.split('js-step-')[1]);
+				}
+			});
+		}
+
+		function addZero(num) {
+			return (num < 10) ? '0' + num : num;
+		}
+
+		if (step) {
+			$('.js-step-img').addClass('step' + addZero(step));
+			$('.js-step li').eq(step - 1).addClass('on');
+		}
+	});
+</script>

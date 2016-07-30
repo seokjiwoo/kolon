@@ -2,19 +2,16 @@
 	<h4 class="popTit">카드 수정하기</h4>
 </div>
 <div class="popCon">
-	<div class="popFormLine">
-		<form method="post" action="/">
-			<fieldset>
-				<legend>카드 수정하기</legend>
-				<select name="" title="이동할 폴더 선택" style="width:314px;">
-					<option value="" selected="selected">폴더 이동</option>
-					<option value="">내 새로운 부엌을 위한 스크랩</option>
-				</select>
-				<button class="popBtnS">카드 삭제</button>
-			</fieldset> 
-		</form>
-	</div>
-	<div class="btnWrap">
-		<a href="#" class="btnSizeM btnColor01">저장</a>
-	</div>
+	<form method="post" action="#" id='scrapEditForm'>
+		<fieldset>
+			<legend>카드 수정하기</legend>
+			<div class="popFormLine">
+				<select name="" title="이동할 폴더 선택" style="width:314px;" id='scrapTargetFolderSelect'></select>
+				<button type='button' class="popBtnS" id='removeCardButton'>카드 삭제</button>
+			</div>
+			<div class="btnWrap">
+				<button type='submit' class="btn btnSizeM btnColor01">저장</button>
+			</div>
+		</fieldset> 
+	</form>
 </div>

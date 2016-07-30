@@ -39,7 +39,20 @@
 
 						<ul class="unitPrice">
 							<li>
-								<h4>배송비 {{deliveryChargeCodeName}}</h4>
+								{{#vxSwitch deliveryChargeCode}}
+									{{#vxCase "PD_DLVY_CHARGE_SETUP_01" break=true}}
+										<h4>배송비 무료배송</h4>
+									{{/vxCase}}
+									{{#vxCase "PD_DLVY_CHARGE_SETUP_02" break=true}}
+										<h4>배송비 API원 (선불)</h4>
+									{{/vxCase}}
+									{{#vxCase "PD_DLVY_CHARGE_SETUP_03" break=true}}
+										<h4>배송비 API원 (착불)</h4>
+									{{/vxCase}}
+									{{#vxCase "PD_DLVY_CHARGE_SETUP_04" break=true}}
+										<h4>배송비 주문금액별 차등</h4>
+									{{/vxCase}}
+								{{/vxSwitch}}
 								{{#vxIF discountMethodCode "==" "SE_PROD_DISCOUNT_METHOD_01"}}
 									<p>{{basePriceDesc}}<b>원</b><span class="discount">{{discountMethod}}<i>%</i></span></p>
 									<p class="salePrice">{{salePriceDesc}}<b>원</b></p>
@@ -93,12 +106,22 @@
 									</span>
 								</li>
 							</ul>
-						</div>
+						</div>today
 						<div class="cardCon">
-							<div class="upTo2">
-								<p>기간한정 / API - 확인 필요</p>
-								<!-- <p>기간한정<span><b>20</b>%</span></p> -->
-							</div>
+							{{#vxIF promotionUseYn "==" "Y"}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_01"}}
+									<div class="today"><p>요일특가 <span><b>{{discountMethod}}</b>%</span></p></div>
+								{{/vxIF}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_02"}}
+									<div class="today"><p>기간한정<span><b>{{endDateTime}}</b> 남음</span></p></div>
+								{{/vxIF}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_03"}}
+									<div class="upTo2"><p><span><b>{{promotionLimitQuantity}}</b>개</span>한정</p></div>
+								{{/vxIF}}
+								{{#vxIF promotionCode "==" "PM_DISCOUNT_SECTION_04"}}
+									<div class="today"><p>공동구매 <span><b>{{promotionLimitQuantity}}</b>개</span></p></div>
+								{{/vxIF}}
+							{{/vxIF}}
 						</div>
 					</div>
 				</div>
@@ -159,7 +182,7 @@
 									</div>
 									<div class="allPriceBox">
 										<div class="allPriceLeft">
-											<p>배송비<span>주문시 결제 0<b>원</b></span></p>
+											<p>배송비<span><b>API</b>원</span></p>
 										</div>
 										<div class="allPriceRight">
 											<p>총합계<span id='totalOptionsPrice'>{{basePriceDesc}}<b>원</b></span></p>
@@ -225,12 +248,16 @@
 			<div id="ProductArea" class="detailArea shop-detail-description-wrap" style="overflow: hidden">
 				<script id="shop-detail-description-templates" type="text/x-handlebars-template">
 					{{!-- shop-detail-templates --}}
-					<!-- <span>{{productDesc}}</span> -->
-					<img src="/images/temp32.jpg" alt="" class="fullSlideImg">
+						{{{pcDetailContents}}}
 					{{!--// shop-detail-templates --}}
 				</script>
 			</div>
 			<!-- // 상품 상세설명 -->
+
+			<div>
+				스크랩가능 이미지 샘플 <br>
+				<img src="http://cfile28.uf.tistory.com/image/2727144055EC2FA61BD2B4" class="imageScrapable" alt="">
+			</div>
 
 			<!-- 태그 영역 -->
 			<div class="detailArea tagArea" id='tagArea'>
@@ -278,85 +305,35 @@
 
 			<!-- 구매정보 영역 -->
 			<div id="PurchasingArea" class="detailArea purchasingArea">
+				<script id="purchasing-information-templates" type="text/x-handlebars-template">
+				{{!-- purchasing-information-templates --}}
 				<h3 class="sTit">Purchasing Information</h3>
 				<p>구매정보</p>
 				<ul class="accordion">
+					{{#each productGuides}}
 					<li>
-						<a href="">배송안내</a>
+						<a href="">{{guideName}}</a>
 						<div class="accordCon">
-							<ul>
-								<li>
-									<strong>서비스 문의 방법</strong>
-									<p>고객센터에 문의해 주시기 바랍니다.</p>
-								</li>
-								<li>
-									<strong>취소/환불 가능시점</strong>
-									<p>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. </p>
-								</li>
-								<li>
-									<strong>취소/환불 불가사유</strong>
-									<p>다음의 경우에는 불가합니다. 가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나 취급부주의로 인한 파손/고장/오염된 경우</p>
-								</li>
-								<li>
-									<strong>참고사항</strong>
-									<p>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다. <br> 
-									기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다. 일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이 지역은 2~3일 가량 배송일정이 늦어질 <br> 
-									수 있습니다. 고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발 한 후 왕복 배송비는 고객님 부담입니다</p>
-								</li>
-							</ul>
+							{{{contents}}}
 						</div>
 					</li>
+					{{/each}}
 					<li>
-						<a href="">교환/반품/취소 등 안내</a>
+						<a href="">상품정보제공고시</a>
 						<div class="accordCon">
-							<ul>
-								<li>
-									<strong>서비스 문의 방법</strong>
-									<p>고객센터에 문의해 주시기 바랍니다.</p>
-								</li>
-								<li>
-									<strong>취소/환불 가능시점</strong>
-									<p>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. </p>
-								</li>
-								<li>
-									<strong>취소/환불 불가사유</strong>
-									<p>다음의 경우에는 불가합니다. 가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나 취급부주의로 인한 파손/고장/오염된 경우</p>
-								</li>
-								<li>
-									<strong>참고사항</strong>
-									<p>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다. <br> 
-									기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다. 일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이 지역은 2~3일 가량 배송일정이 늦어질 <br> 
-									수 있습니다. 고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발 한 후 왕복 배송비는 고객님 부담입니다</p>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li>
-						<a href="">A/S안내</a>
-						<div class="accordCon">
-							<ul>
-								<li>
-									<strong>서비스 문의 방법</strong>
-									<p>고객센터에 문의해 주시기 바랍니다.</p>
-								</li>
-								<li>
-									<strong>취소/환불 가능시점</strong>
-									<p>취소 및 환불은 상품 신청 후  3일 이내에 신청하실 수 있습니다. </p>
-								</li>
-								<li>
-									<strong>취소/환불 불가사유</strong>
-									<p>다음의 경우에는 불가합니다. 가능기간을 초과하였을 경우 상품 및 구성품을 분실하였거나 취급부주의로 인한 파손/고장/오염된 경우</p>
-								</li>
-								<li>
-									<strong>참고사항</strong>
-									<p>가구 배송 시 사다리차 또는 곤도라 사용 등 추가비용이 발생되는 비용은 고객님이 부담하셔야 합니다. <br> 
-									기상이변이나 악천후로 인하여 배송이 지연될 수 있습니다. 일부 상품은 제주도 및 도서지역은 배송이 불가하며, 배송난이 지역은 2~3일 가량 배송일정이 늦어질 <br> 
-									수 있습니다. 고객님 사유로 인해 부득이 반품할 경우 업체에서 배송출발 한 후 왕복 배송비는 고객님 부담입니다</p>
-								</li>
-							</ul>
+							<table>
+								{{#each productNotifications}}
+								<tr>
+									<th>{{notificationName}}</th>
+									<td>{{notificationContents}}</td>
+								</tr>
+								{{/each}}
+							</table>
 						</div>
 					</li>
 				</ul>
+				{{!--// purchasing-information-templates --}}
+				</script>
 			</div>
 			<!-- // 구매정보 영역 -->
 		</div>

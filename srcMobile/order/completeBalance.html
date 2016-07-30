@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 주문완료"} -->
+</head>
+<body data-page-id="order-complete-balance">
+	<div class="wrapper order">
+		<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+	</div>
+
+
+<script id="order-complete-templates" type="text/x-handlebars-template">
+	{{!-- order-complete-templates --}}
+	<section>
+		<h2 class="pageTit">주문완료</h2>
+		<div class="wrapT">
+			<div class="complete">
+				<p><b>{{vxMemberName}}</b> 고객님께서 {{vxOrderDate}}에 <br/>주문하신 주문번호는 <span class="pointRed">{{vxOrderNumber}}</span>입니다.<br/>주문내역 확인은 마이커먼 <span class="iconArrow">시공중인 상품에서</span>  <br/>확인하실 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="wrapT">
+			<h3 class="conTit">결제 정보</h3>
+			<div class="orderInfo">
+				<dl class="minus">
+					<dt>
+						<span>주문 금액</span>
+						<span class="orderTxt">견적금액</span>
+					</dt>
+					<dd>
+						<p class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b> 원</p>
+					</dd>
+				</dl>
+				<dl class="minus">
+					<dt><span>총 할인금액</span></dt>
+					<dd>
+						<ul class="odList">
+							<li>
+								<p class="odListTit">선결제금액</p>
+								<p class="odListCont"><b>{{constPaymentInfo.totalPaymentPriceDesc}}</b> 원</p>
+							</li>
+							<li>
+								<p class="odListTit">기본 할인</p>
+								<p class="odListCont"><b>{{constPaymentInfo.totalDiscountPriceDesc}}</b> P</p>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl class="equal">
+					<dd class="total">
+						<p class="odListTit">총 결제금액</p>
+						<p class="odListCont"><b>{{constPaymentInfo.advancePriceDesc}}</b> 원</p>
+					</dd>
+				</dl>
+			</div>
+			<!-- 결제방법이 신용카드 인 경우 -->
+			<table class="formWrap tbR">
+				<caption>결제 방법</caption>
+				<thead>
+					<tr>
+						<th scope="col">결제 방법</th>
+					<tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{constPaymentInfo.method}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="wrapT">
+			<h3 class="conTit">주문상품내역</h3>
+			{{#each constProducts}}
+			<ul class="productList">
+				<li>
+					<a href="/newForm/detail.html?productNumber={{productNumber}}" class="thumb">
+						<img src="{{productImageUrl}}" alt="{{productName}}" />
+					</a>
+					<div class="info">
+						<span>{{saleMemberName}}</span>
+						<p><a href="/newForm/detail.html?productNumber={{productNumber}}">{{{productName}}}</a></p>
+					</div>
+					<ul class="productData">
+						<li>
+							<p class="name">{{orderOptionName}}</p>
+							<p class="count">
+								<span style="display:none"></span>
+								<span><em>{{productPriceDesc}}</em>원</span>
+								<!-- 
+								<span><em>{{productPriceDesc}}</em>원</span>
+								<span>{{quantity}} 개</span>
+								-->
+							</p>
+						</li>
+					</ul>
+					<!-- 결제금액 내역 -->
+					<ul class="priceBox">
+						<li>
+							<p class="priceBoxTit">상품금액</p>
+							<p class="priceBoxCont"><b>{{constExpectPriceDesc}}</b> 원</p>
+						</li>
+						<li>
+							<p class="priceBoxTit">실측 후 금액</p>
+							<p class="priceBoxCont"><b>{{constExpectPrice}}</b> 원</p>
+						</li>
+						<li>
+							<p class="priceBoxTit">할인금액</p>
+							<p class="priceBoxCont">- <b>{{discountPriceDesc}}</b> 원</p>
+						</li>
+						<li class="check">
+							<p class="priceBoxTit">선결제금액</p>
+							<p class="priceBoxCont"><b>???</b> 원</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			{{/each}}
+			<table class="formWrap tbL">
+				<caption>시공대상에 관한, 시공대상, 예상기간, 시공업체 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:12%;"/><col style="width:33%;"/><col style="width:30%;"/><col style="width:25%;"/>
+				</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">시공대상</th>
+						<td>{{constOrderInfo.roadBaseAddress}}</td>
+						<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
+						<td><span class="price"><b></b>원</span></td>
+					</tr>
+					<tr>
+						<th scope="row">예상기간</th>
+						<td>0000.00.00 ~ 0000.00.00 (0일)</td>
+						<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
+						<td rowspan="2"><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b>원</span></td>
+					</tr>
+					<tr>
+						<th scope="row">시공업체</th>
+						<td>
+							<!--<span class="companyInfo">김석우  |  (주)가인인테리어</span>
+							<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>-->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="wrapT">
+			<h3 class="conTit">시공견적 상세정보</h3>
+			<table class="formWrap tbL" style="margin-top:0;border-top:0">
+				<caption>시공 견적 상세 정보에 관한 항목, 견적, 시공 상세, 포함사항 정보를 제공합니다.</caption>
+				<colgroup>
+					<col style="width:12%;"/><col style="width:13%;"/><col style="width:33%;"/><col style="width:42%;"/>
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">항목</th>
+						<th scope="col">견적</th>
+						<th scope="col">시공 상세</th>
+						<th scope="col" class="lineL">포함사항</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td></td>
+						<td class="txtR">원</td>
+						<td></td>
+						<td rowspan="1" class="lineL">
+							<ul class="tbList2">
+								<li>고객요청시 무료방문견적 및 상세 견적서 제공</li>
+								<li>고객요청시 3D 디자인시안 무료 제공 (계약전-유료)</li>
+								<li>고객과 협의 없이 계약서 상 기재된 자재 미사용시 차액 3배 지불 </li>
+								<li>시공업체 잘못으로 계약서 상 시공기간 초과시 손해금액 배상</li>
+								<li>계약서 상 추가금액에 특약이 없을 시 <br/>어떠한 경우에도 계약금액 외 추가금액 요구 불가</li>
+								<li>시공완료일 부터 12개월 이내 부실시공으로 인한 하자발생시 A/S.</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="myCartTotal">
+			<a href="/" class="totalBtn">커먼 메인으로 이동</a>
+		</div>
+	</section>
+	{{!--// order-complete-templates --}}
+</script>
+</body>
+</html>

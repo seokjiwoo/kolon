@@ -19,6 +19,7 @@ module.exports = function() {
 	$(controller).on('movingDateListResult', movingDateListHandler);
 	$(controller).on('movingCompanyListResult', movingCompanyListHandler);
 	$(controller).on('requestMovingResult', requestMovingResultHandler);
+	$(controller).on('movingServiceAvailableResult', movingServiceAvailableResultHandler);
 
 	var addressController = require('../../controller/AddressController.js');
 	$(addressController).on('addressListResult', addressListHandler);
@@ -127,6 +128,7 @@ module.exports = function() {
 		if (status == 200) {
 			if (result.livingCompanyList.length == 0) {
 				$('#companyListWrap').text('검색된 이사업체가 없습니다.');
+				controller.movingServiceAvailable(originAddress.regionCode);
 			} else {
 				var template = window.Handlebars.compile($('#moving-company-templates').html());
 				var elements = $(template(result.livingCompanyList));
@@ -140,6 +142,13 @@ module.exports = function() {
 			}
 		} else {
 			alert('/apis/living/moving/company/ - '+status+':'+result.message);
+		}
+	};
+
+	function movingServiceAvailableResultHandler(e, status, result) {
+		if (result.movingServiceYn == 'N') {
+			alert("이사 출발지를 확인해주세요.");
+			$('#companyListWrap').text('이사 출발지를 확인해주세요.');
 		}
 	};
 

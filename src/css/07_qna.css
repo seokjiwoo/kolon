@@ -2,7 +2,7 @@
 .myOpinion{float:right;width:895px;font-size:14px;}
 .myOpinion .opinionArea{margin-top:0;}
 
-.qna .topMenu{background: rgba(255,255,255,.8);}
+.qna .topMenu{background: rgba(255,255,255,.9) !important;}
 .qna .container .wrap{padding-top:120px;}
 
 .qna .subTop{text-align: center;background: url('../images/top_expert.jpg') no-repeat;background-size: cover;color: #fff;}

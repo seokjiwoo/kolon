@@ -58,12 +58,15 @@
 										<label for="myCartNewForm-list{{@index}}" class="on" data-cart-number="{{cartNumber}}" data-chk-group="myCartNewForm"><span class="hide">선택</span></label>
 									</p>
 									<div class="photoList">
-										<a href="#">
+										<a href="/newForm/detail.html?productNumber={{productNumber}}">
 											<span class="thumb"><img src="{{productImageUrl}}" alt="{{productName}}"/></span>
-											<span class="cartInfo">
-												<em>{{producerType}}</em>
+											<span class="cartInfo recordInfo">
+												<!-- promoType01 : 요일한정특가
+													 promoType02 : 기간한정특가
+													 promoType03 : 수량 한정 특가 -->
+												<b class="promo promoType01">{{myCartPromotion}}</b><b class="owner">{{criteriaPyeong}} 평</b>
 												<span class="cartTit">{{productName}}</span>
-												<span>{{orderOptionName}}</span>
+												<span>{{producerType}}</span>
 											</span>
 										</a>
 									</div>
@@ -72,7 +75,7 @@
 							<td><span class="price fontL"><b class="js-list-price">{{salePriceDesc}}</b> 원</span></td>
 							<td>
 								<!--<a href="../_popup/popMyServiceDetail.html" class="btnSizeS btnColor06 btnPop btnPop895" data-user-class="myServiceDetail popEdge">실측/견적 요청</a>-->
-								<button type="button" class="btn btnSizeS btnColor06 js-myCartNewForm-order" data-order-info='{
+								<button type="button" class="btn btnSizeS btnColor01 js-myCartNewForm-order" data-order-info='{
 									"productNumber" : {{productNumber}},
 									"productOptionNumber" : {{orderOptionNumber}}
 								}'>실측/견적 요청</button>
@@ -95,16 +98,13 @@
 							<input type="checkbox" id="myCartNewForm-list-all" checked>
 							<label for="myCartNewForm-list-all" class="on"
 								data-chk-role="chkAll"
-								data-chk-group="myCartNewForm">전체 선택 <span class="pointRed">(총<span class="js-list-size"></span>개)</span></label>
+								data-chk-group="myCartNewForm">전체 선택 <span class="color06">(총<span class="js-list-size"></span>개)</span></label>
 						</p>
+						<a href="#" class="btnSizeS btnColor04 js-list-delete" style="margin-left: 120px;">삭제</a>
 					</div>
 					<p class="btnR">
-						<a href="#" class="btnSizeS btnColor04 js-list-delete">삭제</a>
+						<button type="button" id='js-myCartNewForm-submit' class="btn btnSizeS btnColor01 btnWM">실측/견적 요청</button>
 					</p>
-				</div>
-				<!--// 결제 정보 -->
-				<div class="btnC mt40">
-					<button type="button" id='js-myCartNewForm-submit' class="btn btnSizeL btnColor06 btnWM">실측/견적 요청</button>
 				</div>
 			{{/if}}
 		</form>

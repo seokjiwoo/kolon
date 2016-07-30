@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang='ko-kr'>
 <head>
-	<!-- @@include ../_template/header.html {"title":"COMMON 주문서 작성"} -->
+	<!-- @@include ../_template/header.html {"title":"COMMON 시공형 주문/결제"} -->
+	<!-- @@include ../_template/headerPayment.html -->
 </head>
-<body data-page-id="myPage-order">
+<body data-page-id="order-orderService">
 	<div class="wrapper order">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
@@ -13,79 +14,7 @@
 				<div class="wrapT">
 					<h3 class="conTit">주문 상품 / 배송 정보</h3>
 					<!-- list -->
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>2 개</span>
-									</p>
-								</li>
-							</ul>
-							<!-- 결제금액 내역 -->
-							<ul class="priceBox">
-								<li>
-									<p class="priceBoxTit">할인금액</p>
-									<p class="priceBoxCont"><b>0</b> 원</p>
-								</li>
-								<li>
-									<p class="priceBoxTit">배송비</p>
-									<p class="priceBoxCont"><b>20,000</b> 원</p>
-								</li>
-								<li class="check">
-									<p class="priceBoxTit">결제금액</p>
-									<p class="priceBoxCont"><b>1,720,000</b> 원</p>
-								</li>
-							</ul>
-							<!--// 결제금액 내역 -->
-						</li>
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<!-- 결제금액 내역 -->
-							<ul class="priceBox">
-								<li>
-									<p class="priceBoxTit">할인금액</p>
-									<p class="priceBoxCont"><b>0</b> 원</p>
-								</li>
-								<li>
-									<p class="priceBoxTit">배송비</p>
-									<p class="priceBoxCont"><b>20,000</b> 원</p>
-								</li>
-								<li class="check">
-									<p class="priceBoxTit">결제금액</p>
-									<p class="priceBoxCont"><b>1,720,000</b> 원</p>
-								</li>
-							</ul>
-							<!--// 결제금액 내역 -->
-						</li>
-					</ul>
+					<ul id="order-delivery-wrap" class="productList"></ul>
 					<!--// list -->
 					<!-- 묶음 배송 상품일 경우-->
 				</div>
@@ -95,45 +24,98 @@
 						<ul class="reserInfo">
 							<li>
 								<p class="tit">희망 실측 방문/상담 날짜 선택 (필수)</p>
-								<!-- datePicker -->
-								<div class="reserCont datePic">
-									<p><span class="dateInp"><input type="text" value="2016.04.20" id="datePic01" class='datePicker' /></span></p>
+								<div class="reserCont datePic js-picker">
+									<!-- datePicker -->
 									<p>
-										<select title="시간 선택" class="time">
-											<option value="" selected="selected">시간</option>
-											<option value=""></option>
+										<span class="dateInp">
+											<input type="text" title="상담 날짜 입력" value="" class="js-alt" readonly="readonly"/>
+											<a href="#" class="calBtn js-btn">날짜 선택</a>
+											<div class="cal-container js-picker js-picker-visit"></div>
+										</span>
+									</p>
+									<!--// datePicker -->
+									<p>
+										<select class="time" id="visitTimeSelector" title="시간 선택">
+											<option value="" label="시간" selected="selected">시간</option>
+											<option value="0" label="오전 12시">오전 12시</option>
+											<option value="1" label="오전 01시">오전 01시</option>
+											<option value="2" label="오전 02시">오전 02시</option>
+											<option value="3" label="오전 03시">오전 03시</option>
+											<option value="4" label="오전 04시">오전 04시</option>
+											<option value="5" label="오전 05시">오전 05시</option>
+											<option value="6" label="오전 06시">오전 06시</option>
+											<option value="7" label="오전 07시">오전 07시</option>
+											<option value="8" label="오전 08시">오전 08시</option>
+											<option value="9" label="오전 09시">오전 09시</option>
+											<option value="10" label="오전 10시">오전 10시</option>
+											<option value="11" label="오전 11시">오전 11시</option>
+											<option value="12" label="오후 12시">오후 12시</option>
+											<option value="13" label="오후 01시">오후 01시</option>
+											<option value="14" label="오후 02시">오후 02시</option>
+											<option value="15" label="오후 03시">오후 03시</option>
+											<option value="16" label="오후 04시">오후 04시</option>
+											<option value="17" label="오후 05시">오후 05시</option>
+											<option value="18" label="오후 06시">오후 06시</option>
+											<option value="19" label="오후 07시">오후 07시</option>
+											<option value="20" label="오후 08시">오후 08시</option>
+											<option value="21" label="오후 09시">오후 09시</option>
+											<option value="22" label="오후 10시">오후 10시</option>
+											<option value="23" label="오후 11시">오후 11시</option>
 										</select>
 									</p>
 								</div>
-								<!--// datePicker -->
 							</li>
 							<li>
 								<p class="tit">희망 시공기간 선택  (선택)</p>
 								<!-- datePicker -->
-								<div class="reserCont datePic">
+								<!-- <div class="reserCont datePic">
 									<p class="date">
 										<span class="dateInp"><em><input type="text" value="2016.04.20" id="datePic01" class='datePicker' /></em></span>
 										<span class="dateInp"><em><input type="text" value="2016.04.20" id="datePic02" class='datePicker' /></em></span>
 									</p>
+								</div> -->
+								<div class="datePic js-range-picker">
+									<ul>
+										<li>
+											<span class="dateInp">
+												<input type="text" value="" title="희망 시공 시작 날짜 입력" class="datePicker js-alt-from" readonly="readonly"/>
+												<a href="#" class="calBtn js-btn-from">날짜선택</a>
+												<div class="cal-container js-picker-from"></div>
+											</span> 
+										</li>
+										<li><span>-</span></li>
+										<li>
+											<span class="dateInp">
+												<input type="text" title="희망 시공 끝나는 날짜 입력" value="" class="datePicker js-alt-to" readonly="readonly"/>
+												<a href="#" class="calBtn js-btn-to">날짜선택</a>
+												<div class="cal-container js-picker-to"></div>
+											</span>
+										</li>
+									</ul>
 								</div>
 								<!--// datePicker -->
 								<p class="underTxt">* 실측 상황에 따라 시공 기간은 변경될 수 있습니다.</p>
 							</li>
 							<li>
 								<p class="tit">건물 종류를 선택해 주세요</p>
-								<div class="homeType">
+								<div class="homeType js-home-type">
+									<!-- [D] JS 에서 elemment 추가 -->
+									<!-- 
 									<div class="radioBox mt15">
-										<input type="radio" id="hTp1" name="hTp" value="LS_MOVING_TYPE_01"/><label for="hTp1" class="htype htype01"><span>아파트</span></label>
-										<input type="radio" id="hTp2" name="hTp" value="LS_MOVING_TYPE_02"/><label for="hTp2" class="htype htype02"><span>주택</span></label>
-										<input type="radio" id="hTp3" name="hTp" value="LS_MOVING_TYPE_03"/><label for="hTp3" class="htype htype03"><span>빌라</span></label>
-										<input type="radio" id="hTp4" name="hTp" value="LS_MOVING_TYPE_04"/><label for="hTp4" class="htype htype04"><span>원룸</span></label>
+										<input type="radio" id="hTp10" name="hTp1" value="BM_DWELLING_FORM_01"/><label for="hTp10" class="htype htype01"><span>아파트</span></label>
+										<input type="radio" id="hTp11" name="hTp1" value="BM_DWELLING_FORM_02"/><label for="hTp11" class="htype htype02"><span>주택</span></label>
+										<input type="radio" id="hTp12" name="hTp1" value="BM_DWELLING_FORM_03"/><label for="hTp12" class="htype htype03"><span>빌라</span></label>
+										<input type="radio" id="hTp13" name="hTp1" value="BM_DWELLING_FORM_04"/><label for="hTp13" class="htype htype04"><span>원룸</span></label>
 									</div>
+									-->
 								</div>
 							</li>
 							<li>
 								<p class="tit">평형을 선택해 주세요</p>
 								<div class="reserCont">
-									<div class="selectBox">
+									<div class="selectBox js-home-size">
+										<!-- [D] JS 에서 elemment 추가 -->
+										<!-- 
 										<select title="평형을 선택">
 											<option value="" selected="selected">평형을 선택해 주세요</option>
 											<option value="">66㎡/20PY 미만</option>
@@ -142,13 +124,16 @@
 											<option value="">132㎡/40PY</option>
 											<option value="">165㎡/50PY 이상</option>
 										</select>
+										 -->
 									</div>
 								</div>
 							</li>
 							<li>
 								<p class="tit">리모델링을 하는 사유가 무엇인가요?</p>
 								<div class="reserCont">
-									<div class="selectBox">
+									<div class="selectBox js-home-reason">
+										<!-- [D] JS 에서 elemment 추가 -->
+										<!-- 
 										<select title="사유를 선택">
 											<option value="" selected="selected">사유를 선택해 주세요</option>
 											<option value="">결혼을 해서 새 집에 들어가요</option>
@@ -156,14 +141,15 @@
 											<option value="">집이 오래돼서 고치고 싶어요!</option>
 											<option value="">기타</option>
 										</select>
+										-->
 									</div>
-									<textarea name="" title="기타 사항을 입력해 주세요." placeholder="기타 사항을 입력해 주세요."></textarea>
+									<textarea id="homeReasonEtcField" title="기타 사항을 입력해 주세요." placeholder="기타 사항을 입력해 주세요."></textarea>
 								</div>
 							</li>
 							<li>
-								<p class="tit">리모델링을 하는 사유가 무엇인가요?</p>
+								<p class="tit">추가 요청사항 (선택)</p>
 								<div class="reserCont">
-									<textarea name="" title="추가로 필요한 사항을 입력해 주세요." placeholder="추가로 필요한 사항을 입력해 주세요."></textarea>
+									<textarea id="requestField" title="추가로 필요한 사항을 입력해 주세요." placeholder="추가로 필요한 사항을 입력해 주세요."></textarea>
 								</div>
 								<table class="formWrap tbL">
 									<caption>개인정보 제 3자 제공 동의</caption>
@@ -171,8 +157,8 @@
 										<tr>
 											<th scope="col">
 												<span class="checkbox">
-													<input type="checkbox" id="checkAgree"/>
-													<label for="checkAgree">개인정보 제 3자 제공 동의</label>
+													<input type="checkbox" id="agree01"/>
+													<label for="agree01" id="agree01cb">개인정보 제 3자 제공 동의</label>
 												</span>
 											</th>
 										<tr>
@@ -201,7 +187,7 @@
 								<span class="orderTxt">(상품금액+배송비)</span>
 							</dt>
 							<dd>
-								<p class="price"><b>2,000,000</b> 원</p>
+								<p class="price"><b class="totalProductPrice"></b> 원</p>
 							</dd>
 						</dl>
 						<dl class="minus">
@@ -210,7 +196,7 @@
 								<ul class="odList">
 									<li>
 										<p class="odListTit">기본 할인</p>
-										<p class="odListCont"><b>0</b> 원</p>
+										<p class="odListCont"><b class="basicDiscount"></b> 원</p>
 									</li>
 								</ul>
 							</dd>
@@ -218,22 +204,11 @@
 						<dl class="equal">
 							<dt><span>시공 예정 금액</span></dt>
 							<dd>
-								<p class="price"><b>1,720,000</b> 원</p>
+								<p class="price"><b class="totalConstExpectPriceDesc"></b> 원</p>
 							</dd>
 							<dd class="total">
 								<p class="odListTit">총 결제금액 <span>(선결제 10%금액)</span></p>
-								<p class="odListCont"><b>172,000</b> 원</p>
-							</dd>
-							<dt>
-								<span>구매혜택</span>
-							</dt>
-							<dd>
-								<ul class="odList">
-									<li>
-										<p class="odListTit">적립 예정 포인트</p>
-										<p class="odListCont"><span class="point"><b>1300</b> P</span></p>
-									</li>
-								</ul>
+								<p class="odListCont"><b class="basePrice"></b> 원</p>
 							</dd>
 						</dl>
 					</div>
@@ -264,10 +239,8 @@
 				<div class="wrapT">
 					<h3 class="conTit">결제 방법</h3>
 					<div class="tabWrap orderTab">
-						<span class="on"><a href="#pay1" class="btnSizeS btnColor05">신용카드</a></span>
-						<span><a href="#pay2" class="btnSizeS btnColor05">무통장 입금</a></span>
-						<span><a href="#pay3" class="btnSizeS btnColor05">실시간 계좌이체</a></span>
-						<span><a href="#" class="btnSizeS btnColor05 nonBtn">휴대폰 결제</a></span>
+						<span id="payCARD" class="payRadio on"><a href="#pay1" class="btnSizeS btnColor05 radioBtn">신용카드</a></span>
+						<span id="payVBANK" class="payRadio"><a href="#pay2" class="btnSizeS btnColor05 radioBtn">무통장 입금</a></span>
 					</div>
 					<div>
 						<!-- 신용카드 -->
@@ -283,18 +256,27 @@
 											<tr>
 												<th scope="row">카드선택</th>
 												<td>
-													<select title="수령지 선택">
+													<select id="cardSelect" title="카드 선택" >
 														<option value="" label="카드 선택" selected="selected">카드 선택</option>
-														<option value="" label=""></option>
 													</select>
 												</td>
 											</tr>
 											<tr>
 												<th scope="row">할부방식</th>
 												<td>
-													<select title="수령지 선택">
-														<option value="" label="일시불" selected="selected">일시불</option>
-														<option value="" label=""></option>
+													<select id="quotaSelect" title="할부방식 선택">
+														<option value="00" label="일시불" selected="selected">일시불</option>
+														<option value="02" label="2개월">2개월</option>
+														<option value="03" label="3개월">3개월</option>
+														<option value="04" label="4개월">4개월</option>
+														<option value="05" label="5개월">5개월</option>
+														<option value="06" label="6개월">6개월</option>
+														<option value="07" label="7개월">7개월</option>
+														<option value="08" label="8개월">8개월</option>
+														<option value="09" label="9개월">9개월</option>
+														<option value="10" label="10개월">10개월</option>
+														<option value="11" label="11개월">11개월</option>
+														<option value="12" label="12개월">12개월</option>
 													</select>
 												</td>
 											</tr>
@@ -326,194 +308,36 @@
 										</colgroup>
 										<tbody>
 											<tr>
-												<th scope="row">은행선택</th>
+												<th scope="row">결제안내</th>
 												<td>
-													<select title="은행선택">
-														<option value="" label="은행 선택" selected="selected">은행 선택</option>
-														<option value="" label=""></option>
-													</select>
+													<ul class="noBul">
+														<li>하단의 &lt;결제하기> 버튼을 클릭합니다.</li>
+														<li>다음 화면에 나오는 계좌번호로 입금하시면 결제가 완료됩니다.</li>
+													</ul>
 												</td>
-											</tr>
-											<tr>
-												<th scope="row"><label for="bank01">입금자</label></th>
-												<td>
-													<input type="text" class="" id="bank01" value=""/>
-												</td>
-											</tr>
-											<tr>
-												<th scope="row">예금주</th>
-												<td class="t_r">예금주명</td>
-											</tr>
-											<tr>
-												<th scope="row">입금<br/>마감일</th>
-												<td class="t_r">2016. 05. 30</td>
 											</tr>
 										</tbody>
 									</table>
-									<div class="underTxtMark">
-										주문시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.
-									</div>
-									<h3 class="conTit">현금영수증 발급 신청</h3>
-									<div class="payTab tabWrap">
-										<span class="on"><a href="#cashCt1" class="radioBtn">개인 소득 공제</a></span>
-										<span><a href="#cashCt2" class="radioBtn">사업자 지출 증빙</a></span>
-									</div>
-									<div class="">
-										<!-- 개인소득공제 -->
-										<div class="" id="cashCt1">
-											<div class="shipPhone">
-												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<div class="inp inpA">
-													<div class="selectBox">
-														<select title="소득공제 방법 선택">
-															<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-															<option value="" label="현금영수증 카드">현금영수증 카드</option>
-														</select>
-													</div>
-												</div>
-												<div class="inp inp3">
-													<div class="selectBox">
-														<select title="휴대폰 통신사 번호 선택">
-															<option value="" label="010" selected="selected">010</option>
-															<option value="" label=""></option>
-														</select>
-													</div> - 
-													<input type="tel" title="휴대폰 앞자리 입력"/> - 
-													<input type="tel" title="휴대폰 뒷자리 입력"/>
-												</div>
-												<!--// 개인소득공제 : 휴대폰 번호 -->
-												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!-- 
-												<p class="inp inp4">
-													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
-												</p>
-												 -->
-												<!--// 개인소득공제 : 현금영수증 카드 -->
-											</div>
-											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
-										</div>
-										<!--// 개인소득공제 -->
-										<!-- 사업자 지출 증빙 -->
-										<div id="cashCt2" style="display:none;">
-											<div class="shipPhone">
-												<div class="inp inp3">
-													<input type="text" title="사업자번호 앞자리 입력"/> - 
-													<input type="text" title="사업자번호 중간자리 입력"/> - 
-													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</div>
-											</div>
-											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
-										</div>
-										<!--// 사업자 지출 증빙 -->
-									</div>
 								</form>
 							</div>
 						</div>
 						<!--// 무통장 입금 -->
-						<!-- 실시간 계좌이체  -->
-						<div class="pay" id="pay3" style="display:none;">
-							<div class="orderTbW">
-								<form method="post" action="/">
-									<div class="underTxtMark">결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</div>
-									<ul class="infoBtnWrap">
-										<li><p><a href="../_popup/popRemittance01.html" class="btnSizeS btnColor03 btnPop" data-user-class="pop">실시간 계좌이체 안내</a></p></li>
-										<li><p><a href="../_popup/popRemittance02.html" class="btnSizeS btnColor03 btnPop" data-user-class="pop">은행별 이용시간</a></p></li>
-									</ul>
-									<h3 class="conTit">현금영수증 발급 신청</h3>
-									<div class="payTab tabWrap">
-										<span class="on"><a href="#cashCt2_1" class="radioBtn">개인 소득 공제</a></span>
-										<span><a href="#cashCt2_2" class="radioBtn">사업자 지출 증빙</a></span>
-									</div>
-									<div class="">
-										<!-- 개인소득공제 -->
-										<div id="cashCt2_1">
-											<div class="shipPhone">
-												<!-- 개인소득공제 : 휴대폰 번호 -->
-												<div class="inp inpA">
-													<div class="selectBox">
-														<select title="소득공제 방법 선택" style="width:auto;">
-															<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
-															<option value="" label="현금영수증 카드">현금영수증 카드</option>
-														</select>
-													</div>
-												</div>
-												<div class="inp inp3">
-													<div class="selectBox">
-														<select title="휴대폰 통신사 번호 선택">
-															<option value="" label="010" selected="selected">010</option>
-															<option value="" label=""></option>
-														</select>
-													</div> - 
-													<input type="text" title="휴대폰 앞자리 입력"/> - 
-													<input type="text" title="휴대폰 뒷자리 입력"/>
-												</div>
-												<!--// 개인소득공제 : 휴대폰 번호 -->
-												<!-- 개인소득공제 : 현금영수증 카드 -->
-												<!-- 
-												<div class="inp inp4">
-													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
-													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
-												</div>
-												 -->
-												<!--// 개인소득공제 : 현금영수증 카드 -->
-												<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
-											</div>
-										</div>
-										<!--// 개인소득공제 -->
-										<!-- 사업자 지출 증빙 -->
-										<div id="cashCt2_2" style="display:none;">
-											<div class="shipPhone">
-												<div class="inp inp3">
-													<input type="text" title="사업자번호 앞자리 입력"/> - 
-													<input type="text" title="사업자번호 중간자리 입력"/> - 
-													<input type="text" title="사업자번호 뒷자리 입력"/>
-												</div>
-											</div>
-											<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
-										</div>
-										<!--// 사업자 지출 증빙 -->
-									</div>
-								</form>
-							</div>
-						</div>
-						<!--// 실시간 계좌이체  -->
 					</div>
 				</div>
 				<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
 				<div class="myCartTotal">
 					<ul class="totalList slideMore">
 						<li>
-							<p class="totalTit">상품금액</p>
-							<p class="totalCont"><b>1,700,000</b> 원</p>
-						</li>
-						<li>
-							<p class="totalTit">총 할인금액</p>
-							<p class="totalCont"><b>- 0</b> 원</p>
-						</li>
-						<li class="point">
-							<ul class="odList">
-								<li>
-									<p class="odListTit">기본 할인</p>
-									<p class="odListCont"><b>- 0</b> 원</p>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<p class="totalTit">시공예정 금액</p>
-							<p class="totalCont"><b>1,720,000</b> 원</p>
+							<p class="totalTit">총 상품금액</p>
+							<p class="totalCont"><b class="totalProductPrice"></b> 원</p>
 						</li>
 					</ul>
 					<div class="total">
 						<p class="totalTit">총 결제금액 <span>(선 결제 10% 금액)</span></p>
-						<p class="totalCont"><b>172,000</b> 원</p>
+						<p class="totalCont"><b class="basePrice"></b> 원</p>
 						<a href="#" class="more btnMore">상세보기</a>
 					</div>
-					<a href="#" class="totalBtn">결제 및 실측 요청</a>
+					<a href="javascript:;" class="totalBtn requestPaymentButton">결제 및 실측 요청</a>
 				</div>
 				<!--// scroll 시 고정 영역 -->
 			</section>
@@ -969,5 +793,148 @@
 			<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+<!-- [D] 임시 구성 -->
+<style>
+	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
+	.datePic ul {overflow:visible;height:30px}
+	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
+	ul.reserInfo>li .reserCont.js-picker {overflow:visible;min-height:30px}
+</style>
+
+<script id="order-delivery-templates" type="text/x-handlebars-template">
+{{!-- order-delivery-templates --}}
+	{{#each .}}
+	<li>
+		<a href="/newForm/detail.html?productNumber={{productNumber}}" class="thumb">
+			<img src="{{productImageUrl}}" alt="{{productName}}" />
+		</a>
+		<div class="info">
+			<span>{{saleMemberName}}</span>
+			<p><a href="/newForm/detail.html?productNumber={{productNumber}}">{{{productName}}}</a></p>
+		</div>
+		<ul class="productData">
+			<li>
+				<p class="name">{{orderOptionName}}</p>
+				<p class="count">
+					<span style="display:none"></span>
+					<span><em>{{productPriceDesc}}</em>원</span>
+					<!-- 
+					<span><em>{{productPriceDesc}}</em>원</span>
+					<span>{{quantity}} 개</span>
+					-->
+				</p>
+			</li>
+		</ul>
+		<!-- 결제금액 내역 -->
+		<ul class="priceBox">
+			<li>
+				<p class="priceBoxTit">할인금액</p>
+				<p class="priceBoxCont"><b>{{discountPriceDesc}}</b> 원</p>
+			</li>
+			<!-- 
+			<li>
+				<p class="priceBoxTit">배송비</p>
+				<p class="priceBoxCont"><b>{{deliveryCharge}}</b> 원</p>
+			</li>
+			-->
+			<li class="check">
+				<p class="priceBoxTit">결제금액</p>
+				<p class="priceBoxCont"><b>{{constExpectPriceDesc}}</b> 원</p>
+			</li>
+		</ul>
+		{{#if @last}}
+			<!-- 시공지 정보 -->
+			<div class="productBtnWrap">
+				<div class="newAddress">
+					<!-- 배송지 선택 폼 -->
+					<form method="post" action="/">
+						<fieldset>
+							<legend>배송지 선택 폼</legend>
+							<div class="selectBox">
+								<select id="addressSelect-1" class="addressSelect" title="수령지 선택">
+									<option value="" label="" selected="selected">새 주소 추가 눌러 주소를 등록해주세요</option>
+								</select>
+							</div>
+						</fieldset>
+					</form>
+					<!--// 배송지 선택 폼 -->
+					<a href="/popup/addressBook.html" target="_blank" 
+						 id="addressBook-1" class="btnColor04 btnSizeL btnSizeW newAdr btn openAddressPopup">새 주소 추가</a><!-- 새주소 추가 버튼 -->
+				</div>
+			</div>
+			<ul class="addressList">
+				<li>
+					<div class="addressCont" id="address-1">
+						<!-- 
+						<p><b>받으실 분</b><span>홍길동</span></p>
+						<p><b>연락처</b><span>010-1234-5678</span></p>
+						<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
+						 -->
+					</div>
+				</li>
+			</ul>
+			<!--// 시공지 정보 -->
+		{{/if}}
+	</li>
+	{{/each}}
+{{!--// order-delivery-templates --}}
+</script>
+
+
+<form id="payForm" name="payForm" method="post" action="/apis/constorders/advance/process">
+	<input type="hidden" name="fromCart" id="fromCart" value="N">
+	
+	<input type="hidden" name="products" id="products" value="" /> <!-- 상품요약전문 (상품번호|주문옵션번호) -->
+	<input type="hidden" name="wishSurveyDate" id="wishSurveyDate" value="" /> <!-- 희망 실측 방문/상담 날짜 -->
+	<input type="hidden" name="wishSurveyHour" id="wishSurveyHour" value="" /> <!-- 희망 실측 방문/상담 시간 -->
+	<input type="hidden" name="wishConstBeginDate" id="wishConstBeginDate" value="" /> <!-- 시공날짜 시작 -->
+	<input type="hidden" name="wishConstEndDate" id="wishConstEndDate" value="" /> <!-- 시공날짜 끝 -->
+	<input type="hidden" name="addressSequence" id="addressSequence" value="" /> <!-- 회원주소순번 -->
+
+	<input type="hidden" name="dwellingFormCode" id="dwellingFormCode" value="" /> <!-- 주거 형태 -->
+	<input type="hidden" name="dwellingPyeongCode" id="dwellingPyeongCode" value="" /> <!-- 주거 평형 -->
+	<input type="hidden" name="remodelingReasonCode" id="remodelingReasonCode" value="" /> <!-- 인테리어 사유 코드 -->
+	<input type="hidden" name="remodelingReasonEtc" id="remodelingReasonEtc" value="" /> <!-- 인테리어 사유 -->
+	<input type="hidden" name="addRequestContents" id="addRequestContents" value="" /> <!-- 인테리어 사유 -->
+	<input type="hidden" name="termsNumber" value="3">
+
+	<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
+	<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->
+	<input type="hidden" name="Moid" id="Moid" value=""/> <!-- 주문번호 -->
+	<input type="hidden" name="BuyerName" id="BuyerName" value=""/> <!-- 이름 -->
+	<input type="hidden" name="BuyerEmail" id="BuyerEmail" value=""/> <!-- 이메일 -->
+	<input type="hidden" name="BuyerAddr" id="BuyerAddr" value="">	<!-- 주소 -->
+	<input type="hidden" name="BuyerTel" id="BuyerTel" value=""/> <!-- 전화번호 -->
+	<input type="hidden" name="GoodsCnt" id="GoodsCnt" value="">	<!-- 상품 갯수 -->
+
+	<input type="hidden" name="PayMethod" id="PayMethod" value="CARD" />	<!-- 결재수단 (CARD/BANK/VBANK) --> 
+
+	<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
+	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00" />		<!-- 할부개월수 (00, 01, 02, ....) -->
+
+	<input type="hidden" name="MID" id="MID" value="">
+	<input type="hidden" name="UserIP" id="UserIP" value="">
+	<input type="hidden" name="MallIP" id="MallIP" value="">
+	<input type="hidden" name="TransType" value="0">
+	<input type="hidden" name="OptionList" value="">
+	<input type="hidden" name="VbankExpDate" id="VbankExpDate" value="VbankExpDate"> 
+	<input type="hidden" name="MallUserID" value=""> 
+	<input type="hidden" name="SUB_ID" value="">
+	<input type="hidden" name="GoodsCl" value="">
+	<input type="hidden" name="EncodeParameters" value="CardNo,CardExpire,CardPwd">
+	<input type="hidden" name="EdiDate" id="EdiDate" value="ediDate">
+	<input type="hidden" name="EncryptData" id="EncryptData" value="hash_String">
+	<input type="hidden" name="SocketYN" value="Y">
+	<input type="hidden" name="TrKey" value="">
+	<input type="hidden" name="SkinType" value="blue">
+	<input type="hidden" name="redirectUrl" value="/order/completeAdvance.html">
+
+	<!-- only Mobile -->
+	<input type="hidden" name="ReturnURL" id="ReturnURL" value="">
+	<input type="hidden" name="MallReserved" id="MallReserved" value="">
+	<!--// only Mobile -->
+</form>
+
 </body>
 </html>

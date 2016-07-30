@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 시공형 주문/결제"} -->
+	<!-- @@include ../_template/headerPayment.html -->
+</head>
+<body data-page-id="order-orderServiceBalance">
+	<div class="wrapper order">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<!-- 시공형 실측 신청 -->
+			<section>
+				<h2 class="pageTit">주문/결제</h2>
+				<div class="wrapT">
+					<h3 class="conTit">시공 확정 정보</h3>
+					<!-- list -->
+					<ul id="order-product-wrap" class="productList"></ul>
+					<table id="order-estimate-wrap" class="formWrap tbL"></table>
+					<!--// list -->
+					<!-- 묶음 배송 상품일 경우-->
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">시공 견적 상세 정보</h3>
+					<table id="order-estimate-items-wrap" class="formWrap tbL" style="margin-top:0;border-top:0"></table>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 정보</h3>
+					<div id="order-payment-wrap" class="orderInfo"></div>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 방법</h3>
+					<div class="tabWrap orderTab">
+						<span id="payCARD" class="payRadio on"><a href="#pay1" class="btnSizeS btnColor05 radioBtn">신용카드</a></span>
+						<span id="payVBANK" class="payRadio"><a href="#pay2" class="btnSizeS btnColor05 radioBtn">무통장 입금</a></span>
+					</div>
+					<div>
+						<!-- 신용카드 -->
+						<div class="pay" id="pay1">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>신용카드 결재에 관한 카드 선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">카드선택</th>
+												<td>
+													<select id="cardSelect" title="카드 선택" >
+														<option value="" label="카드 선택" selected="selected">카드 선택</option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">할부방식</th>
+												<td>
+													<select id="quotaSelect" title="할부방식 선택">
+														<option value="00" label="일시불" selected="selected">일시불</option>
+														<option value="02" label="2개월">2개월</option>
+														<option value="03" label="3개월">3개월</option>
+														<option value="04" label="4개월">4개월</option>
+														<option value="05" label="5개월">5개월</option>
+														<option value="06" label="6개월">6개월</option>
+														<option value="07" label="7개월">7개월</option>
+														<option value="08" label="8개월">8개월</option>
+														<option value="09" label="9개월">9개월</option>
+														<option value="10" label="10개월">10개월</option>
+														<option value="11" label="11개월">11개월</option>
+														<option value="12" label="12개월">12개월</option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<h4 class="tbTit">무이자 할부적용 카드</h4>
+									<div class="tbBox">
+										<ul class="tbList">
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ12월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ 6 , 12개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 신용카드 -->
+						<!-- 무통장 입금 -->
+						<div class="pay" id="pay2" style="display:none;">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제 안내, 현금영수증 발금신청 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">결제안내</th>
+												<td>
+													<ul class="noBul">
+														<li>하단의 &lt;결제하기> 버튼을 클릭합니다.</li>
+														<li>다음 화면에 나오는 계좌번호로 입금하시면 결제가 완료됩니다.</li>
+													</ul>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</form>
+							</div>
+						</div>
+						<!--// 무통장 입금 -->
+					</div>
+				</div>
+				<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+				<div class="myCartTotal">
+					<ul class="totalList slideMore">
+						<li>
+							<p class="totalTit">실측 후 금액</p>
+							<p class="totalCont"><b class="basePrice"></b> 원</p>
+						</li>
+						<li>
+							<p class="totalTit">할인금액</p>
+							<p class="totalCont">포인트 -<b class="usedPoint">0</b> P</p>
+						</li>
+					</ul>
+					<div class="total">
+						<p class="totalTit">총 결제금액</span></p>
+						<p class="totalCont"><b class="js-totalPrice"></b> 원</p>
+						<a href="#" class="more btnMore">상세보기</a>
+					</div>
+					<a href="javascript:;" class="totalBtn requestPaymentButton">결제하기</a>
+				</div>
+				<!--// scroll 시 고정 영역 -->
+			</section>
+			<!--// 시공형 실측 신청 -->
+			<!-- 시공형 잔금 결제 -->
+			<section style="display:none"><!-- 숨김 -->
+				<h2 class="pageTit">주문/결제</h2>
+				<div class="wrapT">
+					<h3 class="conTit">주문 상품 / 배송 정보</h3>
+					<!-- list -->
+					<ul class="productList">
+						<li>
+							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
+							<div class="info">
+								<span>코오롱 글로벌</span>
+								<p><a href="">프렌치 모던 스타일 샹들리에<br /> 모던 샹들리에</a></p>
+							</div>
+							<ul class="productData">
+								<li>
+									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
+									<p class="count">
+										<span><em>1,700,000</em>원</span>
+										<span>1 개</span>
+									</p>
+								</li>
+							</ul>
+							<!-- 결제금액 내역 -->
+							<ul class="priceBox">
+								<li>
+									<p class="priceBoxTit">실측 후 금액</p>
+									<p class="priceBoxCont"><b>1,700,000</b> 원<span>(실측 후 : +20000 원)</span></p>
+								</li>
+								<li>
+									<p class="priceBoxTit">할인금액</p>
+									<p class="priceBoxCont"><b>0</b> 원</p>
+								</li>
+								<li class="check">
+									<p class="priceBoxTit">선결제 금액</p>
+									<p class="priceBoxCont"><b>150,000</b> 원</p>
+								</li>
+							</ul>
+							<!--// 결제금액 내역 -->
+						</li>
+					</ul>
+					<!--// list -->
+					<!-- 묶음 배송 상품일 경우-->
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">시공지 정보</h3>
+					<ul class="addressList">
+						<li>
+							<div class="addressCont">
+								<p><b>받으실 분</b><span>홍길동</span></p>
+								<p><b>연락처</b><span>010-1234-5678</span></p>
+								<p><b>주소</b><span>서울시 강남구 삼성동 8-5<br>미래 아파트 111동 123호<br>79㎡/24PY</span></p>
+								<p><b>예상기간</b><span>2016. 04. 17 - 05.02 (16일)</span></p>
+								<p><b>시공업체</b><span>김석우  |  (주)가인인테리어</span></p>
+								<p><span><a href="#" class="btnSizeS btnColor03">시공업체보기</a></span></p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">시공 견적 상세 정보</h3>
+					<ul class="orderDetailList">
+						<li>
+							<p><b>도배</b><span>홍길동</span></p>
+							<p class="detailTxt">LG, DID, 대동,대우 등의 실크벽지, 초배시공</p>
+						</li>
+						<li>
+							<p><b>바닥재</b><span class="price"><b>670,000</b> 원</span></p>
+							<p class="detailTxt">LG. 한화, 고려 등의 중 보행용 바닥재</p>
+						</li>
+						<li>
+							<p><b>거실확장</b><span class="price"><b>3,300,000</b> 원</span></p>
+							<p class="detailTxt">철거,바닥난방,조형공사,단열작업,전기</p>
+						</li>
+						<li>
+							<p><b>붙박이장</b><span class="price"><b>1,320,000</b> 원</span></p>
+							<p class="detailTxt">멤브레인류도어, 내부수납, 메이커 제품</p>
+						</li>
+					</ul>
+				</div>
+				<div class="myCartInfo">
+					<p class="myCartInfoTit">포함사항</p>
+					<ul class="myCartInfoList">
+						<li>고객요청시 무료방문견적 및 상세 견적서 제공.</li>
+						<li>고객요청시 3D 디자인시안 무료 제공 (계약전-유료).</li>
+						<li>고객과 협의 없이 계약서 상 기재된 자재 미사용시 차액 3배 지불. </li>
+						<li>시공업체 잘못으로 계약서 상 시공기간 초과시 손해금액 배상.</li>
+						<li>계약서 상 추가금액에 특약이 없을 시 어떠한 경우에도 계약금액 <br/>외 추가금액 요구 불가. 시공완료일 부터 12개월 이내 부실시공 <br/>으로 인한 하자발생시 A/S.</li>
+					</ul>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 정보</h3>
+					<div class="orderInfo">
+						<dl>
+							<dt>
+								<span>견적 금액</span>
+							</dt>
+							<dd>
+								<p class="price"><b>1,720,000</b> 원</p>
+							</dd>
+						</dl>
+						<dl class="minus">
+							<dt><span>총 할인금액</span></dt>
+							<dd>
+								<p class="price"><b>0</b> 원</p>
+								<ul class="odList">
+									<li>
+										<p class="odListTit">기본 할인</p>
+										<p class="odListCont"><b>0</b> 원</p>
+									</li>
+									<li>
+										<p class="odListTit">포인트</p>
+										<p class="odListCont"><b>0</b> 원</p>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl class="minus">
+							<dt><span>선결제 금액/할부금액</span></dt>
+							<dd>
+								<ul class="odList">
+									<li>
+										<p class="odListTit">할인금액</p>
+										<p class="odListCont"><b>300,000</b> 원</p>
+									</li>
+									<li>
+										<p class="odListTit">할부(24개월)</p>
+										<p class="odListCont"><b>10,000,000</b> 원</p>
+									</li>
+								</ul>
+							</dd>
+							<dt><span>혜택적용 </span></dt>
+							<dd>
+								<p class="odListTit">
+									<span class="checkbox">
+										<input type="checkbox" id="checkOd"/>
+										<label for="checkOd">모두 사용</label>
+									</span>
+								</p>
+								<p class="odListCont"><span class="point"><em>잔여 포인트</em><b>1300</b> P</span></p>
+							</dd>
+							<dd>
+								<ul class="odList point">
+									<li>
+										<p class="odListTit"><label for="point">포인트 사용</label></p>
+										<p class="odListCont"><input type="text" id="point" style="width:121px;"/> p</p>
+									</li>
+								</ul>
+								<p class="underTxt">포인트는 5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
+							</dd>
+						</dl>
+						<dl class="equal">
+							<dd class="total">
+								<p class="odListTit">총 결제금액</p>
+								<p class="odListCont"><b>1,720,000</b> 원</p>
+							</dd>
+							<dt>
+								<span>구매혜택</span>
+							</dt>
+							<dd>
+								<ul class="odList">
+									<li>
+										<p class="odListTit">적립 예정 포인트</p>
+										<p class="odListCont"><span class="point"><b>1300</b> P</span></p>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<table class="formWrap tbL">
+						<caption>개인정보 제 3자 제공 동의</caption>
+						<thead>
+							<tr>
+								<th scope="col">
+									<span class="checkbox">
+										<input type="checkbox" id="checkAgree"/>
+										<label for="checkAgree">개인정보 제 3자 제공 동의</label>
+									</span>
+								</th>
+							<tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="#" class="agreeBtn btnToggle">개인정보 제 3자 제공</a>
+									<div class="agreeCont slideCon">
+										가. 회사가 개인정보를 수집하는 목적은 이용자의 신분과 서비스 이용의사를 확인하여 최적화되고 맞춤화된 서비스를 제공하기 위함입니다. 회사는 최초 회원가입 시 서비스 제공을 원활하게하기 위해 필요한 최소한의 정보만을 수집하고 있으며 회사가 제공하는 서비스 이용에 따른 필요한 정보를 추가로 수집할 수 있습니다. 
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="wrapT">
+					<h3 class="conTit">결제 방법</h3>
+					<div class="payTab tabWrap">
+						<form method="post" action="/">
+							<fieldset >
+								<legend>결제방법 선택</legend>
+								<span class="on"><a href="#pay1" class="radioBtn">신용카드</a></span>
+								<span><a href="#pay2" class="radioBtn">무통장 입금</a></span>
+								<span><a href="#pay3" class="radioBtn">실시간 계좌이체</a></span>
+							</fieldset>
+						</form>
+					</div>
+					<div>
+						<!-- 신용카드 -->
+						<div class="pay" id="pay1">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>신용카드 결재에 관한 카드 선택, 할부방식, 무이자 할부 적용카드 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">카드선택</th>
+												<td>
+													<select title="수령지 선택">
+														<option value="" label="카드 선택" selected="selected">카드 선택</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">할부방식</th>
+												<td>
+													<select title="수령지 선택">
+														<option value="" label="일시불" selected="selected">일시불</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<h4 class="tbTit">무이자 할부적용 카드</h4>
+									<div class="tbBox">
+										<ul class="tbList">
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ12월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)ㅣ 6 , 12개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+											<li><b>XX카드</b><span>2,3,4,5 개월 (5만원 이상)</span></li>
+										</ul>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 신용카드 -->
+						<!-- 무통장 입금 -->
+						<div class="pay" id="pay2" style="display:none;">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<table class="formWrap">
+										<caption>무통장 입금 결제에 관한 은행선택, 입금자, 예금주, 입금마감일, 결제 안내, 현금영수증 발금신청 정보를 제공합니다.</caption>
+										<colgroup>
+											<col style="width:22%;"/><col style="width:78%;"/>
+										</colgroup>
+										<tbody>
+											<tr>
+												<th scope="row">은행선택</th>
+												<td>
+													<select title="은행선택">
+														<option value="" label="은행 선택" selected="selected">은행 선택</option>
+														<option value="" label=""></option>
+													</select>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="bank01">입금자</label></th>
+												<td>
+													<input type="text" class="" id="bank01" value=""/>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row">예금주</th>
+												<td class="t_r">예금주명</td>
+											</tr>
+											<tr>
+												<th scope="row">입금<br/>마감일</th>
+												<td class="t_r">2016. 05. 30</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="underTxtMark">
+										주문시 입력한 입금자 명과 실제 입금자 명이 다르거나, 입금하신 금액이 실제 결제 금액과 다를 경우 입금확인이 지연될 수 있습니다.
+									</div>
+									<h3 class="conTit">현금영수증 발급 신청</h3>
+									<div class="payTab tabWrap">
+										<span class="on"><a href="#cashCt1" class="radioBtn">개인 소득 공제</a></span>
+										<span><a href="#cashCt2" class="radioBtn">사업자 지출 증빙</a></span>
+									</div>
+									<div class="">
+										<!-- 개인소득공제 -->
+										<div class="" id="cashCt1">
+											<div class="shipPhone">
+												<!-- 개인소득공제 : 휴대폰 번호 -->
+												<p>
+													<select title="소득공제 방법 선택" style="width:auto;">
+														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+														<option value="" label="현금영수증 카드">현금영수증 카드</option>
+													</select>
+												</p>
+												<p>
+													<select title="휴대폰 통신사 번호 선택">
+														<option value="" label="010" selected="selected">010</option>
+														<option value="" label=""></option>
+													</select> - 
+													<input type="text" title="휴대폰 앞자리 입력"/> - 
+													<input type="text" title="휴대폰 뒷자리 입력"/>
+												</p>
+												<!--// 개인소득공제 : 휴대폰 번호 -->
+												<!-- 개인소득공제 : 현금영수증 카드 -->
+												<!--
+												<p class="inp4">
+													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
+												</p>
+												-->
+												<!--// 개인소득공제 : 현금영수증 카드 -->
+											</div>
+											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 개인소득공제 -->
+										<!-- 사업자 지출 증빙 -->
+										<div id="cashCt2" style="display:none;">
+											<div class="shipPhone">
+												<p>
+													<input type="text" title="사업자번호 앞자리 입력"/> - 
+													<input type="text" title="사업자번호 중간자리 입력"/> - 
+													<input type="text" title="사업자번호 뒷자리 입력"/>
+												</p>
+											</div>
+											<p class="cashCheck checkbox on"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 사업자 지출 증빙 -->
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 무통장 입금 -->
+						<!-- 실시간 계좌이체  -->
+						<div class="pay" id="pay3" style="display:none;">
+							<div class="orderTbW">
+								<form method="post" action="/">
+									<div class="underTxtMark">결제와 동시에 즉시 이체 되며, 주문 취소 시 당일 입금됩니다.</div>
+									<ul class="infoBtnWrap">
+										<li><p><a href="" class="btnSizeS btnColor03">실시간 계좌이체 안내</a></p></li>
+										<li><p><a href="" class="btnSizeS btnColor03">은행별 이용시간</a></p></li>
+									</ul>
+									<h3 class="conTit">현금영수증 발급 신청</h3>
+									<div class="payTab tabWrap">
+										<span class="on"><a href="#cashCt2_1" class="radioBtn">개인 소득 공제</a></span>
+										<span><a href="#cashCt2_2" class="radioBtn">사업자 지출 증빙</a></span>
+									</div>
+									<div class="">
+										<!-- 개인소득공제 -->
+										<div id="cashCt2_1">
+											<div class="shipPhone">
+												<!-- 개인소득공제 : 휴대폰 번호 -->
+												<p>
+													<select title="소득공제 방법 선택" style="width:auto;">
+														<option value="" label="휴대폰번호" selected="selected">휴대폰번호</option>
+														<option value="" label="현금영수증 카드">현금영수증 카드</option>
+													</select>
+												</p>
+												<p>
+													<select title="휴대폰 통신사 번호 선택">
+														<option value="" label="010" selected="selected">010</option>
+														<option value="" label=""></option>
+													</select> - 
+													<input type="text" title="휴대폰 앞자리 입력"/> - 
+													<input type="text" title="휴대폰 뒷자리 입력"/>
+												</p>
+												<!--// 개인소득공제 : 휴대폰 번호 -->
+												<!-- 개인소득공제 : 현금영수증 카드 -->
+												<!--
+												<p class="inp4">
+													<input type="text" title="현금영수증 카드 번호 첫번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 두번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 세번째자리 입력"/> - 
+													<input type="text" title="현금영수증 카드 번호 마지막자리 입력"/>
+												</p>
+												-->
+												<!--// 개인소득공제 : 현금영수증 카드 -->
+												<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+											</div>
+										</div>
+										<!--// 개인소득공제 -->
+										<!-- 사업자 지출 증빙 -->
+										<div id="cashCt2_2" style="display:none;">
+											<div class="shipPhone">
+												<p>
+													<input type="text" title="사업자번호 앞자리 입력"/> - 
+													<input type="text" title="사업자번호 중간자리 입력"/> - 
+													<input type="text" title="사업자번호 뒷자리 입력"/>
+												</p>
+											</div>
+											<p class="cashCheck checkbox"><input type="checkbox" id="pointCk02" value=""><label for="pointCk02">선택한 방법으로 현금영수증 발급 방식 저장</label></p>
+										</div>
+										<!--// 사업자 지출 증빙 -->
+									</div>
+								</form>
+							</div>
+						</div>
+						<!--// 실시간 계좌이체  -->
+					</div>
+				</div>
+				<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+				<div class="myCartTotal">
+					<ul class="totalList slideMore">
+						<li>
+							<p class="totalTit">상품금액</p>
+							<p class="totalCont"><b>1,700,000</b> 원</p>
+						</li>
+						<li>
+							<p class="totalTit">총 할인금액</p>
+							<p class="totalCont"><b>- 0</b> 원</p>
+						</li>
+						<li class="point">
+							<ul class="odList">
+								<li>
+									<p class="odListTit">기본 할인</p>
+									<p class="odListCont"><b>- 0</b> 원</p>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<p class="totalTit">시공예정 금액</p>
+							<p class="totalCont"><b>1,720,000</b> 원</p>
+						</li>
+					</ul>
+					<div class="total">
+						<p class="totalTit">총 결제금액 <span>(선 결제 10% 금액)</span></p>
+						<p class="totalCont"><b>172,000</b> 원</p>
+						<a href="#" class="more btnMore">상세보기</a>
+					</div>
+					<a href="#" class="totalBtn">결제 및 실측 요청</a>
+					<!-- 잔금결재시 -->
+					<!-- <a href="#" class="totalBtn">결제 요청</a> -->
+					<!--// 잔금결재시 -->
+				</div>
+				<!--// scroll 시 고정 영역 -->
+			</section>
+			<!--// 시공형 잔금 결제 -->
+			<!-- @@include ../_template/footer.html -->
+		</div>
+	</div>
+
+<!-- [D] 임시 구성 -->
+<style>
+	.datePic .dateInp input[type=text] {border:0;background:none;background-size:26px;box-sizing:border-box}
+	.datePic ul {overflow:visible;height:30px}
+	.datePic .dateInp .calBtn {width:0;height:0;padding:16px 16px 0 0;background:url(../images/ico_cal.png) 0 0 no-repeat;background-size:cover;display:inline-block;overflow:hidden;position:absolute;top:5px;right:10px;border:none;border-radius:0}
+	ul.reserInfo>li .reserCont.js-picker {overflow:visible;min-height:30px}
+</style>
+
+<!-- 주문 상품 / 시공지 정보 -->
+<script id="order-product-templates" type="text/x-handlebars-template">
+{{!-- order-product-templates --}}
+	{{#each .}}
+	<li>
+		<a href="/newForm/detail.html?productNumber={{productNumber}}" class="thumb">
+			<img src="{{productImageUrl}}" alt="{{productName}}" />
+		</a>
+		<div class="info">
+			<span>{{saleMemberName}}</span>
+			<p><a href="/newForm/detail.html?productNumber={{productNumber}}">{{{productName}}}</a></p>
+		</div>
+		<ul class="productData">
+			<li>
+				<p class="name">{{orderOptionName}}</p>
+				<p class="count">
+					<span style="display:none"></span>
+					<span><em>{{productPriceDesc}}</em>원</span>
+					<!-- 
+					<span><em>{{productPriceDesc}}</em>원</span>
+					<span>{{quantity}} 개</span>
+					-->
+				</p>
+			</li>
+		</ul>
+		<!-- 결제금액 내역 -->
+		<ul class="priceBox">
+			<li>
+				<p class="priceBoxTit">할인금액</p>
+				<p class="priceBoxCont"><b>{{discountPriceDesc}}</b> 원</p>
+			</li>
+			<li class="check">
+				<p class="priceBoxTit">결제금액</p>
+				<p class="priceBoxCont"><b>{{constExpectPriceDesc}}</b> 원</p>
+			</li>
+		</ul>
+	</li>
+	{{/each}}
+{{!--// order-product-templates --}}
+</script>
+
+<script id="order-estimate-templates" type="text/x-handlebars-template">
+{{!-- order-estimate-templates --}}
+	<caption>시공 상품 구매 안내</caption>
+	<tr>
+		<th scope="row">시공대상</th>
+		<td>{{roadBaseAddress}}</td>
+		<th rowspan="3" scope="row">실측 후 금액<br/>(상품 금액  ± 실측 후 변동금액) </th>
+		<td rowspan="3"><span class="price"><b>{{estimatePriceDesc}}</b>원</span></td>
+	</tr>
+	<tr>
+		<th scope="row">예상기간</th>
+		<td>{{constExpectBeginDate}} ~ {{constExpectEndDate}} ({{constExpectDay}}일)</td>
+		<!--<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
+		<td rowspan="2"><span class="price"><b>{{surveyPriceDesc}}</b>원</span></td>-->
+	</tr>
+	<tr>
+		<th scope="row">시공업체</th>
+		<td>
+			<span class="companyInfo">{{saleMemberName}} | {{saleCompanyName}}</span>&nbsp;<a href="/manager/brand.html?expertNumber={{saleMemberNumber}}" class="btnSizeS btnColor01">시공업체</a>
+		</td>
+	</tr>
+{{!--// order-estimate-templates --}}
+</script>
+
+
+<!--// 주문 상품 / 시공지 정보 -->
+<script id="order-estimate-items-templates" type="text/x-handlebars-template">
+{{!-- order-estimate-items-templates --}}
+	<tr>
+		<th scope="col">항목</th>
+		<th scope="col">견적</th>
+		<th scope="col">시공 상세</th>
+		<th scope="col" class="borderLeft1">포함사항</th>
+	</tr>
+	{{#each constEstimateItems}}
+	<tr>
+		<td>{{itemName}}</td>
+		<td>{{itemPriceDesc}}원</td>
+		<td class="t_l">{{detailInfo}}</td>
+		{{#if @first}}
+		<td class="borderLeft1 t_l">
+			{{../estimateAddInfo}}
+		</td>
+		{{/if}}
+	</tr>
+	{{/each}}
+{{!--// order-estimate-items-templates --}}
+</script>
+
+
+<!-- 결제 정보 -->
+<!-- <h3 class="subTit mt40">결제 정보</h3>
+<div class="orderCont" id="order-payment-wrap"></div> -->
+<script id="order-payment-templates" type="text/x-handlebars-template">
+{{!-- order-payment-templates --}}
+	<dl>
+		<dt>
+			<span>실측 후 금액</span>
+		</dt>
+		<dd>
+			<p class="price"><b>{{estimatePriceDesc}}</b> 원</p>
+		</dd>
+	</dl>
+	<dl class="minus">
+		<dt><span>총 할인금액</span></dt>
+		<dd>
+			<ul class="odList">
+				<li>
+					<p class="odListTit">선결제/할부금액</p>
+					<p class="odListCont"><b>선결제금액 {{advancePriceDesc}}</b> 원</p>
+				</li>
+				{{#vxIF installmentPaymentYn "==" "Y"}}
+				<li>
+					<p class="odListTit">할부금액</p>
+					<p class="odListCont"><b>{{installmentPrice}}</b> 원</p>
+				</li>
+				{{/vxIF}}
+				<li>
+					<p class="odListTit">포인트</p>
+					<p class="odListCont"><b>0</b> 원</p>
+				</li>
+			</ul>
+		</dd>
+		<dt><span>혜택적용 </span></dt>
+		<dd>
+			<p class="odListTit">
+				<span class="checkbox" id="useAllPointCheck">
+					<input type="checkbox" id="pointCk01" checked="checked" />
+					<label for="pointCk01" id="pointLb01" class="on">모두 사용</label>
+				</span>
+			</p>
+			<p class="odListCont"><span class="point"><em>잔여 포인트</em><b>{{leftPointDesc}}</b> P</span></p>
+		</dd>
+		<dd>
+			<ul class="odList point">
+				<li>
+					<p class="odListTit"><label for="pointWt">포인트 사용</label></p>
+					<p class="odListCont"><input type="text" id="pointWt" style="width:121px;"/> p</p>
+				</li>
+			</ul>
+			<p class="underTxt">포인트는  5,000 포인트 부터 1,000 포인트 단위로 사용 가능합니다.</p>
+		</dd>
+	</dl>
+	<dl class="equal">
+		<dd class="total">
+			<p class="odListTit">총 결제금액</p>
+			<p class="odListCont"><b>{{totalPaymentPriceDesc}}</b> 원</p>
+		</dd>
+	</dl>
+{{!--// order-payment-templates --}}
+</script>
+<!--// 결제 정보 -->
+
+<form id="payForm" name="payForm" method="post" action="/apis/constorders/balance/process">
+	<input type="hidden" name="usingPoint" id="usingPoint" value="" /> <!-- 사용할 포인트 -->
+
+	<input type="hidden" name="GoodsName" id="GoodsName" value=""/> <!-- 상품명 -->
+	<input type="hidden" name="Amt" id="Amt" value=""/> <!-- 가격 -->
+	<input type="hidden" name="Moid" id="Moid" value=""/> <!-- 주문번호 -->
+	<input type="hidden" name="BuyerName" id="BuyerName" value=""/> <!-- 이름 -->
+	<input type="hidden" name="BuyerEmail" id="BuyerEmail" value=""/> <!-- 이메일 -->
+	<input type="hidden" name="BuyerAddr" id="BuyerAddr" value="">	<!-- 주소 -->
+	<input type="hidden" name="BuyerTel" id="BuyerTel" value=""/> <!-- 전화번호 -->
+	<input type="hidden" name="GoodsCnt" id="GoodsCnt" value="1">	<!-- 상품 갯수 -->
+
+	<input type="hidden" name="PayMethod" id="PayMethod" value="CARD" />	<!-- 결재수단 (CARD/BANK/VBANK) --> 
+
+	<input type="hidden" name="SelectCardCode" id="SelectCardCode" value="" />	<!-- 카드 코드 -->
+	<input type="hidden" name="SelectQuota" id="SelectQuota" value="00" />		<!-- 할부개월수 (00, 01, 02, ....) -->
+
+	<input type="hidden" name="MID" id="MID" value="">
+	<input type="hidden" name="UserIP" id="UserIP" value="">
+	<input type="hidden" name="MallIP" id="MallIP" value="">
+	<input type="hidden" name="TransType" value="0">
+	<input type="hidden" name="OptionList" value="">
+	<input type="hidden" name="VbankExpDate" id="VbankExpDate" value="VbankExpDate"> 
+	<input type="hidden" name="MallUserID" value=""> 
+	<input type="hidden" name="SUB_ID" value="">
+	<input type="hidden" name="GoodsCl" value="">
+	<input type="hidden" name="EncodeParameters" value="CardNo,CardExpire,CardPwd">
+	<input type="hidden" name="EdiDate" id="EdiDate" value="ediDate">
+	<input type="hidden" name="EncryptData" id="EncryptData" value="hash_String">
+	<input type="hidden" name="SocketYN" value="Y">
+	<input type="hidden" name="TrKey" value="">
+	<input type="hidden" name="SkinType" value="blue">
+	<input type="hidden" name="redirectUrl" value="/order/completeBalance.html">
+
+	<!-- only Mobile -->
+	<input type="hidden" name="ReturnURL" id="ReturnURL" value="">
+	<input type="hidden" name="MallReserved" id="MallReserved" value="">
+	<!--// only Mobile -->
+</form>
+</body>
+</html>

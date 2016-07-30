@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 결제완료"} -->
+</head>
+<body data-page-id="order-complete-additional">
+	<div class="wrapper order">
+		<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<div class="wrap">
+
+				<section class="singleCard js-order-complete-wrap" id="myActivity"></section>
+
+			</div>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+	</div>
+
+
+<script id="order-complete-templates" type="text/x-handlebars-template">
+	{{!-- order-complete-templates --}}
+	<section>
+		<h2 class="pageTit">결제완료</h2>
+		<div class="wrapT">
+			<div class="complete">
+				<p><b>{{vxMemberName}}</b> 고객님께서 {{vxOrderDate}}에 <br/>주문하신 주문번호는 <span class="pointRed">{{vxOrderNumber}}</span>입니다.<br/>주문내역 확인은 마이커먼 <span class="iconArrow">시공중인 상품에서</span>  <br/>확인하실 수 있습니다.</p>
+			</div>
+		</div>
+		<div class="wrapT">
+			<h3 class="conTit">결제 정보</h3>
+			<div class="orderInfo">
+				<dl class="equal">
+					<dt>
+						<span>주문 금액</span>
+						<span class="orderTxt">상품금액</span>
+						<dd>
+							<p class="price"><b>{{paymentInfo.paymentPriceDesc}}</b> 원</p>
+						</dd>
+					</dt>
+					<dl class="minus"></dl>
+					<dl class="equal">
+						<dd class="total">
+							<p class="odListTit">결제금액</p>
+							<p class="odListCont"><b>{{paymentInfo.paymentPriceDesc}}</b> 원</p>
+						</dd>
+					</dl>
+				</dl>
+			</div>
+			<table class="formWrap tbL">
+				<caption>추가금액 결제 안내</caption>
+				<thead>
+					<tr>
+						<th scope="col">추가금액 결제 안내</th>
+					<tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>결제하신 서비스 건에 대한 취소/환불은 콜센터를 통해 문의 바랍니다.</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="formWrap tbL">
+				<caption>결제방법에 관한 결제방법, 입금자명, 입금계좌 정보를 제공합니다.</caption>
+				<thead>
+					<tr>
+						<th scope="col">결제 방법</th>
+					<tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{paymentInfo.paymentMethodCodeName}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- scroll 시 고정 영역 (스크롤 액션에 따라 노출) -->
+		<div class="myCartTotal">
+			<a href="/" class="totalBtn">커먼 메인으로 이동</a>
+		</div>
+		<!--// scroll 시 고정 영역 -->
+	</section>
+	{{!--// order-complete-templates --}}
+</script>
+</body>
+</html>

@@ -297,7 +297,6 @@ function Events() {
 				// 취소 신청 조회 팝업
 				CANCEL_DETAIL : 'cancelDetailResult',
 
-
 				// OrderController - 주문서 작성
 				// @see OrderController.js
 				// @see http://dev.koloncommon.com/swagger/swagger-ui.html#/me-order-controller
@@ -318,6 +317,12 @@ function Events() {
 				NEWFORM_ORDER_ADDITIONAL_INFO: 'newFormAdditionalFormResult',
 				// 뉴폼상품 주문 리스트 조회
 				NEWFORM_ORDER_LIST: 'myConstOrdersListResult',
+				NEWFORM_CANCEL_LIST: 'myConstCancelListResult',
+
+				NEWFORM_ORDER_CANCEL_FORM: 'myConstCancelFormResult',
+				NEWFORM_ORDER_CANCEL: 'myConstCancelResult',
+
+				
 
 				// 홈서비스 주문서 작성 페이지 조회
 				HOMESERVICE_ORDER_INFO: 'homeServiceOrderFormResult'

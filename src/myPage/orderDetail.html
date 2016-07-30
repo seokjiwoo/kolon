@@ -127,33 +127,32 @@
 				"orderNumber" : "{{orderNumber}}",
 				"productNumber" : "{{productNumber}}",
 				"orderOptionNumber" : "{{orderOptionNumber}}",
-				"deliveryNumber" : "{{deliveryNumber}}"
+				"deliveryNumber" : "{{deliveryNumber}}",
+				"joinedOrder": "{{../length}}"
 			}'>
-				{{#if @first}}
-				<td rowspan="{{../length}}">
+				<td>
 					<p class="checkAgree checkbox">
 						<input type="checkbox" title="상품선택" id="orderDetail-list{{@index}}" checked>
 						<label for="orderDetail-list{{@index}}" class="on"
-								data-order-number="{{../orderNumber}}" data-chk-group="orderDetail"><span class="hide">선택</span></label>
+								data-order-number="{{orderNumber}}" data-product-number="{{productNumber}}" data-option-number="{{orderOptionNumber}}" data-chk-group="orderDetail"><span class="hide">선택</span></label>
 					</p>
 				</td>
-				{{/if}}
 				<td class="w90"><div class="recordThumb"><img src="{{productImageUrl}}" alt="{{productName}}"></div></td>
 				<td class="recordInfo">
 					<span class="owner">{{saleMemberName}}</span><br>
 					{{#if orderOptionName}}
 						{{productName}}<span class="producOption">옵션 : {{orderOptionName}}<br>수량 : {{orderQuantity}}</span><span class="productPrice">{{productPrice}} 원</span>
 					{{else}}
-						<span class="productPrice">{{productPrice}} 원</span>
+						{{productName}}<span class="productPrice">{{productPrice}} 원</span>
 					{{/if}}
 				</td>
 				<td>{{productOptionPrice}}원</td>
 				{{#if @first}}
-					{{#if deliveryCharge}}
+					{{#vxIF deliveryChargePaymentCode '==' 'SL_DLVY_CHARGE_PAYMENT_04'}}
 						<td rowspan="{{../length}}">무료</td>
 					{{else}}
 						<td rowspan="{{../length}}">{{deliveryCharge}}원</td>
-					{{/if}}
+					{{/vxIF}}
 				{{/if}}
 				<td class="payment">{{discountApplyAmt}} 원</td>
 				{{#if @first}}
@@ -168,21 +167,21 @@
 								<!-- @@include ../_template/pop_order_state.html {"step":"step01", "step01":"on"} -->
 								입금대기<span class="stateIcor"></span>
 							</div>
-							<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+							<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn js-order-cancel-all" data-user-class="my popEdge">취소신청</a>
 						{{/vxCase}}
 						{{#vxCase "SL_ORDER_STATE_02" break=true}}
 							<div class="stateTxt">
 								<!-- @@include ../_template/pop_order_state.html {"step":"step02", "step02":"on"} -->
 								결제완료<span class="stateIcor"></span>
 							</div>
-							<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+							<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn js-order-cancel-all" data-user-class="my popEdge">취소신청</a>
 						{{/vxCase}}
 						{{#vxCase "SL_ORDER_STATE_03" break=true}}
 							<div class="stateTxt">
 								<!-- @@include ../_template/pop_order_state.html {"step":"step03", "step03":"on"} -->
 								상품준비중<span class="stateIcor"></span>
 							</div>
-							<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
+							<a href="../../_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop btnPop895 js-btn js-order-cancel-all" data-user-class="my popEdge">취소신청</a>
 						{{/vxCase}}
 						{{#vxCase "SL_ORDER_STATE_04" break=true}}
 							<div class="stateTxt">
