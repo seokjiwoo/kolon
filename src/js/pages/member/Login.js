@@ -32,6 +32,8 @@ module.exports = function() {
 	var recaptchaWidget,
 	recaptchaData;
 
+	var mobileAuthIntervalId;
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -223,7 +225,10 @@ module.exports = function() {
 						Super.Super.alertPopup('로그인/회원가입에 실패하였습니다.', response.message, '확인');
 						break;
 					case 1901:	// 모바일 인증번호
-						if (!firstTryFlag) alert(response.message);
+						if (!firstTryFlag) {
+							alert(response.message);
+							break;
+						}
 					case 1900:	// 모바일 가입 인증 요구
 						Super.Super.htmlPopup('../../_popup/popAuthorizeMobile.html', 590, 'popEdge', {
 							onOpen: function() {
@@ -236,6 +241,14 @@ module.exports = function() {
 
 								controller.resendAuthNumber(enteredId);
 								authNumberResendFlag = false;
+
+								$('#remainTimeField').data().remainTime = 181;
+
+								mobileAuthIntervalId = setInterval(function(){
+									var time = $('#remainTimeField').data().remainTime-1;
+									$('#remainTimeField').data().remainTime = Math.max(0, time);
+									$('#remainTimeField').text(Math.floor(time/60)+':'+(time%60<10 ? '0'+(time%60) : time%60));
+								}, 1000);
 							},
 							onSubmit: function() {
 								if ($.trim($('#mobileAuthNumber').val()) == '') {
@@ -290,6 +303,7 @@ module.exports = function() {
 		switch(status) {
 			case 200:
 				if (authNumberResendFlag) alert(response.message);
+				$('#remainTimeField').data().remainTime = 181;
 				$('#mobileAuthNumber').val('');
 				break;
 			default:
