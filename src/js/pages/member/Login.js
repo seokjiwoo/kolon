@@ -19,9 +19,6 @@ module.exports = function() {
 	$(controller).on('myInfoResult', myInfoResultHandler);
 	var loginDataModel = require('../../model/LoginModel');
 
-	var memberInfoController = require('../../controller/MemberInfoController');
-	$(memberInfoController).on('termsListResult', termsListHandler);
-	$(memberInfoController).on('termsResult', termsContentHandler);
 	var util = require('../../utils/Util.js');
 
 	var enteredId;
@@ -47,12 +44,9 @@ module.exports = function() {
 		Super.init();
 		
 		controller.getSocialLoginUrl();
-		memberInfoController.getMemberTermsList();
 		
 		$('#inputName').change(checkEmailField);
 		$('#inputPW').change(checkPasswordField);
-		$('#popAgree01').click(getTermsContent);
-		$('#popAgree02').click(getTermsContent);
 		$('#loginForm').submit(loginHandler);
 	};
 	
@@ -64,37 +58,6 @@ module.exports = function() {
 			location.href = '/';
 		}
 	}
-	
-	/**
-	 * 회원 이용약관 목록 핸들링
-	 */
-	function termsListHandler(e, termsList) {
-		for (var key in termsList) {
-			var eachTerms = termsList[key];
-			switch(eachTerms.termsTypeCode) {
-				case 'DP_TERMS_TYPE_01':
-					$('#popAgree01').data('termsNumber', eachTerms.termsNumber);
-					break;
-				case 'DP_TERMS_TYPE_04':
-					$('#popAgree02').data('termsNumber', eachTerms.termsNumber);
-					break;
-			}
-		}
-	};
-
-	/**
-	 * 회원 이용약관 본문 요청
-	 */
-	function getTermsContent(e) {
-		memberInfoController.getMemberTermsContent($(this).data('termsNumber'));
-	};
-	
-	/**
-	 * 회원 이용약관 본문 핸들링
-	 */
-	function termsContentHandler(e, term) {
-		Super.Super.messagePopup(term.termsName, term.termsContents, 590, 'popEdge');
-	};
 	
 	/**
 	 * 소셜 로그인 URL 목록처리

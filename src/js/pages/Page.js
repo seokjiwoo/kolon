@@ -47,6 +47,8 @@ module.exports = function() {
 
 	var memberInfoController = require('../controller/MemberInfoController');
 	$(memberInfoController).on('verifyMemberResult', verifyMemberResultHandler);
+	$(memberInfoController).on('termsListResult', termsListHandler);
+	$(memberInfoController).on('termsResult', termsContentHandler);
 
 	var scrapController = require('../controller/ScrapController.js');
 	$(scrapController).on(SCRAP_EVENT.WILD_CARD, scrapEventListener);
@@ -64,9 +66,13 @@ module.exports = function() {
 		if (pageId == undefined) pageId = $('body').data('pageId');
 		Super.init(pageId, 'pc');
 		
+		memberInfoController.getMemberTermsList();
+		
 		// 전 페이지 공용 요소 초기화
 		initMenu();			// GNB/LNB
 		floatMenu.init();		// 플로팅버튼
+		$('.popAgree01').click(getTermsContent);
+		$('.popAgree02').click(getTermsContent);
 
 		// 일부 페이지 공용 요소 초기화
 		initChart();	// 차트 컴포넌트
@@ -76,6 +82,7 @@ module.exports = function() {
 		initAddressPopupButton();	// 주소록 팝업버튼
 		initOrderTable();	// 주문결재 페이지 테이블 높이 설정
 		initInfoSlider();	// #infoSlider bxSlider
+
 
 		$('#sortToggle').on('click', function(e) {//category search drop-down
 			e.preventDefault();
@@ -650,6 +657,38 @@ module.exports = function() {
 		$('.openAddressPopup, .openWindowPopup').off('click', onWindowPopupHandler);
 		eventManager.off(WINDOWOPENER_EVENT.OPEN, onWindowPopupHandler);
 	}
+	
+	/**
+	 * 회원 이용약관 목록 핸들링
+	 */
+	function termsListHandler(e, termsList) {
+		for (var key in termsList) {
+			var eachTerms = termsList[key];
+			switch(eachTerms.termsTypeCode) {
+				case 'DP_TERMS_TYPE_01':
+					$('.popAgree01').data('termsNumber', eachTerms.termsNumber);
+					break;
+				case 'DP_TERMS_TYPE_04':
+					$('.popAgree02').data('termsNumber', eachTerms.termsNumber);
+					break;
+			}
+		}
+	};
+
+	/**
+	 * 회원 이용약관 본문 요청
+	 */
+	function getTermsContent(e) {
+		e.preventDefault();
+		memberInfoController.getMemberTermsContent($(this).data('termsNumber'));
+	};
+	
+	/**
+	 * 회원 이용약관 본문 핸들링
+	 */
+	function termsContentHandler(e, term) {
+		Super.messagePopup(term.termsName, term.termsContents, 590, 'popEdge');
+	};
 	
 	/**
 	 * full slide img 중앙정렬
