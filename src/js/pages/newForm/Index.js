@@ -125,6 +125,10 @@ module.exports = function() {
 		switch(eventType) {
 			case PRODUCT_EVENT.NEWFORM_LIST:
 				cardList.appendData(result.productCards);
+
+				// var cardListCnt = (null != result.productCards) ? result.productCardsCnt : 0;
+				// $("#cardTotalCnt").html(cardListCnt); 
+
 				break;
 		}
 	}
