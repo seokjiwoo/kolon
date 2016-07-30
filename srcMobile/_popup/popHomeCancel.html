@@ -1,0 +1,53 @@
+<div class="popTop">
+	<h4 class="popTit">서비스 취소 신청</h4>
+</div>
+<div class="popCon" id='homeServiceCancelWrap'>
+	<script id="homeServiceCancelTemplates" type="text/x-handlebars-template">
+	{{!-- homeServiceCancelTemplates --}}
+	<h3 class="conTit">수령지 : <span class="subAddr">{{requestAddress}}</span></h3>
+	<table class="formWrap tbL" style="border-top:0;margin-top:0">
+		<caption>주문 취소 신청정보 표</caption>
+		<tr>
+			<th colspan="2">서비스 정보</th>
+			<th>신청자</th>
+			<th>서비스 결제</th>
+			<th>진행상태</th>
+		<tr>
+			<td class="popRecord"><div class="recordThumb"><img src="{{companyImageUrl}}" alt=""></div></td>
+			<td class="popRecord recordInfo">[{{serviceSectionCodeName}}서비스]<br><span class="producOption">{{companyName}}</span>
+			</td>
+			<td>{{requestTargetName}}</td>
+			<td>세탁물 수거 후에 결제가능</td>
+			<td>{{statusCodeName}}</td>
+		</tr>
+	</table>
+	<div class="wrapT">
+		<form id="washCancelForm" action="#" method='POST'>
+			<fieldset class="reasonCancel">
+				<h3 class="conTit">주문 취소 사유</h3>
+				<div class="selectBox">
+					<select id="reasonSelect" title="주문 취소 사유를 선택해주세요">
+						<option value="-">주문 취소 사유를 선택해주세요</option>
+						<option value="서비스 의사 없어짐">서비스 의사 없어짐</option>
+						<option value="타 업체 이용예정">타 업체 이용예정</option>
+						<option value="세탁물 도난/분실">세탁물 도난/분실</option>
+						<option value="천재지변">천재지변</option>
+						<option value="">기타</option>
+					</select>
+				</div>
+				<div>
+					<input type="text" title="상세 내용 입력" id="reasonField">
+				</div>
+			</fieldset>
+			<ul class="tbList3 mt30">
+				<li>서비스 취소 신청은 수거시간 90분전에만 가능합니다.</li>
+				<li>결제수단별 환불방법과 환불소요기한에 차이가 있을 수 있습니다.</li>
+			</ul>
+			<div class="btnWrap" style="padding-bottom:20px">
+				<button id="washCancelSubmitButton" class="btn btnSizeS btnSizeW btnColor01">취소 신청하기</button>
+			</div>
+		</form>
+	</div>
+	{{!-- homeServiceCancelTemplates --}}
+	</script>
+</div>

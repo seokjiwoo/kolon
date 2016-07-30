@@ -531,6 +531,10 @@ module.exports = function() {
 		e.preventDefault();
 
 		if (loginData != null) {
+			// placeholder add
+			Placeholders.enable($('#opinionTitle'));
+			Placeholders.enable($('#opinionContent'));
+
 			if (!$(this).hasClass("active")) {
 				uploadFileNumber = 0;
 				uploadImageArray = new Array();

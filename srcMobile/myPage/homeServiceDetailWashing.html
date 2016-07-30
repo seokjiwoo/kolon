@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang='ko-kr'>
+<head>
+	<!-- @@include ../_template/header.html {"title":"COMMON 신청상세"} -->
+</head>
+<body data-page-id="myPage-homeServiceWashing">
+	<div class="wrapper my">
+	<!-- @@include ../_template/menu.html -->
+		<div class="container">
+			<section class="description-wrap" id="washingDetail"></section>
+		</div>
+		<!-- @@include ../_template/footer.html -->
+	</div>
+
+
+<script id="description-templates" type="text/x-handlebars-template">
+{{!-- description-templates --}}
+	<h2 class="pageTit">신청 상세 내역 > 세탁</h2>
+	
+	<div class="wrapT">
+		<div class="payInfo">
+			<h3 class="conTit">신청일/신청번호</h3>
+			<div class="orders">
+				<p>
+					<span>신청일</span>
+					<span>{{createDateTime}}</span>
+				</p>
+				<p>
+					<span>신청번호</span>
+					<span>{{serviceRequestNumber}}</span>
+				</p>
+			</div>
+		</div>
+		<ul class="serviceList">
+			<li>
+				<div class="top"></div>
+			</li>
+		</ul>
+		<div class="stateWrap">
+			<div class="state">
+				<p class="stepImg step0{{step}}" style="height:90px"><span></span></p><!-- step1 ~ step11까지 있음 -->
+				<div class="white-rect-mask" style="position:absolute;background:#fff;width:294px;height:40px;bottom:48px;left:0">&nbsp;</div>
+				<div class="step">
+					<ul>
+						<li class="{{stepClass1}}">신청</li>
+						<li class="{{stepClass2}}">수거</li>
+						<li class="{{stepClass3}}">세탁</li>
+					</ul>
+					<ul>
+						<li class="{{stepClass4}}">배달</li>
+						<li class="{{stepClass5}}">결제완료</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapT">
+		<div class="payInfo">
+			<h3 class="conTit">주문자 정보</h3>
+			<div class="orders">
+				<p>
+					<span>주문자</span>
+					<span>{{memberName}}</span>
+				</p>
+				<p>
+					<span>연락처</span>
+					<span>{{memberPhoneNumber}}</span>
+				</p>
+				<p>
+					<span>이메일</span>
+					<span>{{memberEmail}}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	{{#vxIF paymentStateCode "==" "LS_ORDER_STATE_02"}}
+	<div class="wrapT">
+		<div class="payInfo">
+			<h3 class="conTit">결제정보</h3>
+			<div class="orders">
+				<p>
+					<span>결제 금액</span>
+					<span>{{priceDesc}} 원</span>
+				</p>
+				<p>
+					<span>결제 방법</span>
+					<span>{{paymentMethodCodeName}}</span>
+				</p>
+				<p>
+					<a href="javascript:alert('준비중')" class="btnSizeS btnSizeW btnColor03">거래명세서</a>
+				</p>
+				<p>
+					<a href="javascript:alert('준비중')" class="btnSizeS btnSizeW btnColor03">입금표</a>
+				</p>
+				<p>
+					<a href="javascript:alert('준비중')" class="btnSizeS btnSizeW btnColor03">현금영수증</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	{{/vxIF}}
+
+	<div class="wrapT">
+		<div class="payInfo">
+			<h3 class="conTit">서비스신청 정보</h3>
+			<div class="orders">
+				<p>
+					<span>받으실 분</span>
+					<span>{{requestTargetName}}</span>
+				</p>
+				<p>
+					<span>주소</span>
+					<span>{{requestAddress}}</span>
+				</p>
+				<p>
+					<span>연락처</span>
+					<span>{{requestTargetContact}}</span>
+				</p>
+			</div>
+		</div>
+		<ul class="serviceList">
+			<li>
+				<div class="top"><em>업체</em></div>
+				<p>
+					<span>[세탁서비스]</span>
+					<span>{{companyName}}</span>
+				</p>
+				<p>
+					<span>신청정보</span>
+					<span>{{serviceInfomation}}</span>
+				</p>
+			</li>
+		</ul>
+		<ul class="serviceList">
+			<li>
+				<div class="top"><em>수거/배송일시</em></div>
+				<p>
+					<span>수거일시</span>
+					<span>{{pickupDate}}</span>
+				</p>
+				{{#if deliveryDate}}
+				<p>
+					<span>배송일시</span>
+					<span>{{deliveryDate}}</span>
+				</p>
+				{{/if}}
+				<p>
+					<span>요청사항</span>
+					<span>{{addRequestContents}}</span>
+				</p>
+				<p>
+					<a id="washChangeButton" 
+						href="/_popup/popHomeChange.html"
+						class="btnSizeS btnColor01 btnSizeW btnPop absolutePosition"
+						data-user-class="my popEdge dateChangePop">일시변경</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+	<div class="questionBox"><p>서비스에 대한 문의사항은 고객센터(1666-8868)로 문의 부탁드립니다</p></div>
+	<p class="btnWrap">
+		<a href="/_popup/popHomeCancel.html"
+			id="washCancelButton"
+			class="btn btnSizeB btnSizeW btnColor01 btnPop"
+			data-user-class="my popEdge washCancel">취소신청</a>
+	</p>
+{{!-- description-templates --}}
+</script>
+</body>
+</html>
