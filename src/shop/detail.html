@@ -43,15 +43,15 @@
 
 						<ul class="unitPrice">
 							<li>
-								{{#vxSwitch deliveryChargeCode}}
+								{{#vxSwitch deliveryInfo.deliveryChargeCode}}
 									{{#vxCase "PD_DLVY_CHARGE_SETUP_01" break=true}}
 										<h4>배송비 무료배송</h4>
 									{{/vxCase}}
 									{{#vxCase "PD_DLVY_CHARGE_SETUP_02" break=true}}
-										<h4>배송비 API원 (선불)</h4>
+										<h4>배송비 {{deliveryInfo.deliveryChargeDesc}}원 (선불)</h4>
 									{{/vxCase}}
 									{{#vxCase "PD_DLVY_CHARGE_SETUP_03" break=true}}
-										<h4>배송비 API원 (착불)</h4>
+										<h4>배송비 {{deliveryInfo.deliveryChargeDesc}}원 (착불)</h4>
 									{{/vxCase}}
 									{{#vxCase "PD_DLVY_CHARGE_SETUP_04" break=true}}
 										<h4>배송비 주문금액별 차등</h4>
@@ -186,7 +186,7 @@
 									</div>
 									<div class="allPriceBox">
 										<div class="allPriceLeft">
-											<p>배송비<span><b>API</b>원</span></p>
+											<!-- no more use : p>배송비<span><b>API</b>원</span></p -->
 										</div>
 										<div class="allPriceRight">
 											<p>총합계<span id='totalOptionsPrice'>{{basePriceDesc}}<b>원</b></span></p>
