@@ -7,6 +7,10 @@
 	<div class="wrapper productDetail">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
+			<div class='toast'>
+				<p id='toastMessage' class='message'></p>
+				<a href='#' id='toastClose' class='toastClose'>메시지 닫기</a>
+			</div>
 			<!-- 상단 배너 -->
 			<div class="detailArea topArea js-detail-info-wrap">
 				<script id="detail-info-templates" type="text/x-handlebars-template">
@@ -269,7 +273,7 @@
 					{{!-- detail-tags-templates --}}
 					<ul>
 						{{#each .}}
-						<li><a href="/search/result.html?query={{.}}">{{.}}</a></li>
+						<li>#<a href="/search/result.html?query={{.}}">{{.}}</a></li>
 						{{/each}}
 					</ul>
 					{{!--// detail-tags-templates --}}

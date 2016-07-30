@@ -73,6 +73,11 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.HOMESERVICE_ORDER_INFO:
+				if (result.status == 400 || result.status == 406) {
+					alert(result.message);
+					history.back(-1);
+					return;
+				}
 				var data = result.common.data;
 
 				data.washServiceDetail.priceDesc = util.currencyFormat(data.washServiceDetail.price);

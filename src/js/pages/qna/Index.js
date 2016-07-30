@@ -148,7 +148,7 @@ module.exports = function() {
 		
 		$('#alignDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
 			listOrder = data.values[0];
-			controller.opinionsList(listOrder, currentPage);
+			controller.opinionsList(listOrder, 1);
 		});
 		
 		controller.opinionsList(listOrder, currentPage);
@@ -291,6 +291,7 @@ module.exports = function() {
 			var template = window.Handlebars.compile($('#opinion-answer-template').html());
 			var elements = $(template(result.opinionAnswerList));
 			$('#answerList'+opinionNumber).prepend(elements);
+			$('.answerCount').click(pollAnswer);
 
 			if (result.opinionAnswerList.length == 5) $('#moreAnswers'+opinionNumber).show();
 		}
@@ -523,7 +524,7 @@ module.exports = function() {
 			var pId = $(this).attr('id').substr(18);
 			$('#commentArea'+pId).toggleClass('showCommentInput');
 		} else {
-			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
+			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 		}
 	};
 
@@ -550,7 +551,7 @@ module.exports = function() {
 				$(".opinionInput").stop().slideUp();
 			};
 		} else {
-			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html';
+			if (confirm('로그인이 필요한 페이지입니다. 로그인하시겠습니까?')) location.href='/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 		}
 	};
 
@@ -617,7 +618,7 @@ module.exports = function() {
 			$('#answer'+pollAnswerId).addClass('on');
 		} else {
 			alert(result.message);
-			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/logout.html';
+			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 		}
 	};
 

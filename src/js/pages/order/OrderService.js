@@ -154,6 +154,11 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.NEWFORM_ORDER_DEPOSIT_INFO:
+				if (result.status == 400 || result.status == 406) {
+					alert(result.message);
+					history.back(-1);
+					return;
+				}
 				var data = result.data;
 				//data.paymentInfo.leftPoint = 100000;
 
@@ -345,20 +350,29 @@ module.exports = function() {
 	};
 
 	function addressListHandler(e, status, list) {
-		var tags = '<option value="-" label="선택해 주세요" selected="selected">선택해 주세요</option>';
+		var tags = '<option value="-" label="선택해 주세요">선택해 주세요</option>';
+		var defaultAddress = null;
 		
 		addressArray = new Array();
-		$.map(list.items, function(each) {
+		$.each(list.items, function(key, each) {
 			addressArray[each.addressSequence] = each;
-			tags += '<option value="'+each.addressSequence+'" label="'+each.addressManagementName+'">'+each.addressManagementName+'</option>';
+			tags += '<option value="'+each.addressSequence+'" label="'+each.addressManagementName+'" '+(each.addressSectionCode=="BM_ADDR_SECTION_02"?'selected="selected"':'')+' >'+each.addressManagementName+'</option>';
+			if (each.addressSectionCode == "BM_ADDR_SECTION_02") defaultAddress = key+1;
 		});
 		$('.addressSelect').html(tags);
+
+		if (defaultAddress != null) setAddress(1, String(defaultAddress));
 	};
 
 	function setAddress(addressNum, seq) {
-		var addressObject = addressArray[seq];
-		$('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
-		selectedOneAddress = seq;
+		if (seq == '-') {
+			$('#address-'+addressNum).html('');
+			selectedOneAddress = null;
+		} else {
+			var addressObject = addressArray[seq];
+			$('#address-'+addressNum).html('<p><span><b>받으실 분</b>'+addressObject.receiverName+'</span><span><b>연락처</b>'+util.mobileNumberFormat(addressObject.cellPhoneNumber)+' </span></p><p><span><b>도로명</b>'+addressObject.roadBaseAddress+' '+addressObject.detailAddress+'</span><span><b>지번</b>'+addressObject.lotBaseAddress+'</span></p>');
+			selectedOneAddress = seq;
+		}
 	};
 
 	function selectAddressDataHandler(e, seq) {

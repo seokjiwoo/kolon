@@ -38,7 +38,8 @@ module.exports = function() {
 	};
 
 	function addressHandler(e, status, data) {
-		var phoneNumber = util.mobileNumberFormat(data.cellPhoneNumber).split('-');
+		var phoneNumber1 = util.mobileNumberFormat(data.cellPhoneNumber).split('-');
+		var phoneNumber2 = util.mobileNumberFormat(data.generalPhoneNumber).split('-');
 		$('#adrName1').val(data.addressManagementName);
 		$('#adrName2').val(data.receiverName);
 		$('#zipCode').val(data.zipCode);
@@ -46,9 +47,12 @@ module.exports = function() {
 		$('#roadAddress').val(data.roadBaseAddress);
 		$('#extraAddress').val(data.detailAddress);
 		$('#regionCode').val(data.regionCode);
-		$('#phone1').val(phoneNumber[0]);
-		$('#phone2').val(phoneNumber[1]);
-		$('#phone3').val(phoneNumber[2]);
+		$('#phone1').val(phoneNumber1[0]);
+		$('#phone2').val(phoneNumber1[1]);
+		$('#phone3').val(phoneNumber1[2]);
+		$('#phone4').val(phoneNumber2[0]);
+		$('#phone5').val(phoneNumber2[1]);
+		$('#phone6').val(phoneNumber2[2]);
 		$('#extraAddress').removeAttr('disabled');
 	};
 
@@ -82,7 +86,9 @@ module.exports = function() {
 	function addressSubmitHandler(e) {
 		e.preventDefault();
 
-		var phoneNumber = String($('#phone1').pVal())+$('#phone2').pVal()+$('#phone3').pVal();
+		var phoneNumber1 = String($('#phone1').pVal())+$('#phone2').pVal()+$('#phone3').pVal();
+		var phoneNumber2 = String($('#phone4').pVal())+$('#phone5').pVal()+$('#phone6').pVal();
+		if ($('#phone5').pVal()+$('#phone6').pVal() == '') phoneNumber2 = '';
 		var addressSectionCode = $('#basicAddrFlag').hasClass('on') ? 'BM_ADDR_SECTION_02' : 'BM_ADDR_SECTION_03';
 		
 		var adrName1Val = $.trim($('#adrName1').pVal());
@@ -97,7 +103,10 @@ module.exports = function() {
 		} else if ($.trim($('#phone2').pVal()) == '' || $.trim($('#phone3').pVal()) == '') {
 			alert('연락처를 입력해 주세요');
 			return;
-		} else if (!util.checkValidMobileNumber(phoneNumber)) {
+		} else if (!util.checkValidMobileNumber(phoneNumber1)) {
+			alert('올바른 연락처를 입력해 주세요');
+			return;
+		} else if (!util.checkValidMobileNumber(phoneNumber2) && ($('#phone5').pVal()+$('#phone6').pVal()) != '') {
 			alert('올바른 연락처를 입력해 주세요');
 			return;
 		} else if ($.trim($('#zipCode').pVal()) == '') {
@@ -112,7 +121,8 @@ module.exports = function() {
 				"roadBaseAddress": $('#roadAddress').pVal(),
 				"detailAddress": $('#extraAddress').pVal(),
 				"receiverName": $('#adrName2').pVal(),
-				"cellPhoneNumber": phoneNumber,
+				"cellPhoneNumber": phoneNumber1,
+				"generalPhoneNumber": phoneNumber2,
 				"addressSectionCode": addressSectionCode
 			}
 

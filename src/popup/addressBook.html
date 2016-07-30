@@ -46,7 +46,9 @@
 							</td>
 							<td class="btnZone">
 								<a href="#" data-address-seq='{{addressSequence}}' class="btnSizeS btnColor01 editAddress">수정</a>
+								{{#if deleteAddressTag}}
 								<a href="#" data-address-seq='{{addressSequence}}' class="btnSizeS btnColor03 deleteAddress">삭제</a>
+								{{/if}}
 							</td>
 						</tr>
 					{{/each}}

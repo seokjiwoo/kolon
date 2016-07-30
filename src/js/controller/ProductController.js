@@ -35,6 +35,8 @@ function ClassProductController() {
 			evals : evals,
 			// 상품 정보
 			info : info,
+			// 토스트 메시지
+			toastMessages: toastMessages,
 			// 상품 좋아요
 			likes : likes,
 			// 상품 판매자 정보
@@ -149,6 +151,23 @@ function ClassProductController() {
 			}
 		}, true);
 	}
+
+	/**
+	 * 토스트 메시지 가져오기
+	 */
+	function toastMessages(productNumber) {
+		Super.callApi('/apis/count/product/'+productNumber+'/toastMessages', 'GET', {
+			"url": encodeURI(document.URL)
+		}, function(status, result) {
+			if (status == 200) {
+				$(callerObj).trigger('productToastResult', [status, result]);
+			} else {
+				Super.handleError('productInfo', result);
+				$(callerObj).trigger('productToastResult', [status, result]);
+			}
+		}, true);
+	}
+	
 
 	/**
 	 * 상품 좋아요

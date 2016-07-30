@@ -53,6 +53,10 @@ module.exports = function() {
 	},
 	self;
 
+	var toastCount = 0;
+	var toastMessageArray;
+	var toastAutoIntervalId;
+
 	var opts = {
 		templates : {
 			wrap : '.container',
@@ -169,7 +173,7 @@ module.exports = function() {
 		
 		if (target.hasClass('js-add-like')) {
 			if (target.hasClass('on')) {
-				//
+				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
 			} else {
 				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
 			}
@@ -389,6 +393,19 @@ module.exports = function() {
 					
 					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_01');
 					productController.recommend(self.productNumber, 'PD_PROD_SVC_SECTION_02');
+
+					productController.toastMessages(self.productNumber);
+					break;
+				case PRODUCT_EVENT.TOAST:
+					if (result.data.messages.length > 1) {
+						toastMessageArray = result.data.messages;
+						toastCount = 0;
+						openToast();
+
+						$('#toastClose').click(nextToast);
+					} else {
+						$('.toast').remove();
+					}
 					break;
 				case PRODUCT_EVENT.LIKES:
 					switch(status) {
@@ -419,6 +436,7 @@ module.exports = function() {
 					self.expertNumber = partnerData2.partnerNumber;
 					$('#btnFollow').on('click', onFollowListener);
 					$('#btnMessage').attr('href', '/popup/popMessage.html?saleMemberNumber='+partnerData2.partnerNumber);
+					if (partnerData2.registeredFollowYn == 'Y') $('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
 					
 					partnerGoodsList = CardList();
 					partnerGoodsList.init('#sellerCard', true);
@@ -427,7 +445,11 @@ module.exports = function() {
 				case FOLLOWING_EVENT.ADD_FOLLOW:
 					switch(status) {
 						case 200: 
-							$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+							if (result.data.followYn == 'Y') {
+								$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+							} else {
+								$('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우');
+							}
 							break;
 						default: win.alert(result.message); break;
 					}
@@ -480,14 +502,45 @@ module.exports = function() {
 		}
 	}
 
+	function openToast() {
+		$('#toastMessage').text(toastMessageArray[toastCount]);
+
+		$('.toast').delay(500).animate({
+			"bottom": "70px"
+		}, {
+			duration: 500, 
+			easing: 'easeOutBack',
+			complete: function() {
+				toastAutoIntervalId = setTimeout(nextToast, 2000);
+			}
+		});
+	}
+
+	function nextToast(e) {
+		if (e != undefined) e.preventDefault();
+		clearTimeout(toastAutoIntervalId);
+
+		$('.toast').animate({
+			"bottom": "-200px"
+		}, {
+			duration: 500, 
+			easing: 'easeInBack',
+			complete: function() {
+				toastCount++;
+				console.log(toastMessageArray.length, toastCount)
+				if (toastCount >= toastMessageArray.length) {
+					$('.toast').remove();
+				} else {
+					openToast();
+				}
+			}
+		});
+	}
+
 	function onFollowListener(e) {
 		e.preventDefault();
-
 		var target = $(e.currentTarget);
-
-		if (target.hasClass('js-add-follow')) {
-			followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
-		}
+		followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
 	}
 
 	function optionsDisplay() {

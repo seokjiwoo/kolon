@@ -93,7 +93,7 @@ function ClassMemberInfoController() {
 			} else {
 				Super.handleError('getMyInfo', result);
 			}
-		}, false);
+		}, true);
 	};
 
 	/**

@@ -30,6 +30,7 @@ module.exports = function() {
 	recaptchaData;
 
 	var mobileAuthIntervalId;
+	var callBackUrl;
 
 	var callerObj = {
 		/**
@@ -44,6 +45,12 @@ module.exports = function() {
 		Super.init();
 		
 		controller.getSocialLoginUrl();
+
+		if (util.getUrlVar('callbackUrl') != undefined) {
+			callBackUrl = decodeURIComponent(util.getUrlVar('callbackUrl'));
+		} else {
+			callBackUrl = '/';
+		}
 		
 		$('#inputName').change(checkEmailField);
 		$('#inputPW').change(checkPasswordField);
@@ -55,7 +62,7 @@ module.exports = function() {
 		
 		if (loginData != null) {
 			alert('이미 로그인되어 있습니다');
-			location.href = '/';
+			location.href = callBackUrl;
 		}
 	}
 	
@@ -171,7 +178,7 @@ module.exports = function() {
 			case 201:
 				switch(Number(response.status)) {
 					case 200:	// 로그인 성공
-						location.href = '/';
+						location.href = callBackUrl;
 						break;
 					case 201:	// 회원가입 완료
 						Super.Super.alertPopup('회원가입이 완료되었습니다.', '메인화면으로 이동합니다.', '확인', function() {

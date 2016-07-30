@@ -10,6 +10,9 @@ module.exports = function() {
 	$(controller).on('addressListResult', addressListHandler);
 	$(controller).on('deleteAddressResult', deleteAddressHandler);
 
+	var SuperClass = require('../Page.js'),
+	Super = SuperClass();
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -31,6 +34,8 @@ module.exports = function() {
 			if (each.addressSectionCode == 'BM_ADDR_SECTION_02') {
 				each.rowClass = 'basic';
 				each.basicAddressMark = '<em>기본배송지</em><br/>';
+			} else {
+				each.deleteAddressTag = 'Y';
 			}
 			each.cellPhoneNumber = util.mobileNumberFormat(each.cellPhoneNumber);
 		});

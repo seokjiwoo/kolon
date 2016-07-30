@@ -229,7 +229,7 @@ aside.myMenu li.on a:before{content: '';display: inline-block;min-width: 7px;hei
 .record th, .record td{border-bottom: 1px solid #e1e1e1}
 .record th{padding: 15px;background: #f8f8f8;color: #333;}
 .record td{padding: 15px;}
-.record td > a{margin-top: 6px;}
+.record td > a.companyLink{margin-top: 6px;color:#333333}
 .record .recordDate{border-right: 1px solid #e1e1e1}
 .record .date b{color: #f1645c;}
 .record .date a{color: #f1645c;text-decoration: underline;font-family:'NotoSansM', sans-serif;}

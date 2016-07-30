@@ -79,6 +79,7 @@ module.exports = function() {
 			$('.js-add-like .countNum').text(Number($('.js-add-like .countNum').text())+1);
 		} else {
 			alert(result.message);
+			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 		}
 	};
 
@@ -88,6 +89,7 @@ module.exports = function() {
 			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
 		} else {
 			alert(result.message);
+			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 		}
 	};
 };

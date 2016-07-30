@@ -119,7 +119,7 @@ module.exports = function() {
 
 		switch(eventType) {
 			case ORDER_EVENT.ORDERS_INFO:
-				if (result.status == 400) {
+				if (result.status == 400 || result.status == 406) {
 					alert(result.message);
 					history.back(-1);
 					return;

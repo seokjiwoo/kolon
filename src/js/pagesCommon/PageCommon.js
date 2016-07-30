@@ -310,7 +310,7 @@ module.exports = function() {
 	
 	function needLoginHandler(e) {
 		alert('로그인이 필요합니다');
-		location.href = '/member/login.html';
+		location.href = '/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
 	}
 
 	function htmlPopupLinkHandler(e) {
