@@ -343,6 +343,9 @@ module.exports = function() {
 						$.each(result.data, function(index, product) {
 							product.basePriceDesc = util.currencyFormat(parseInt(product.basePrice, 10));
 							product.salePriceDesc = util.currencyFormat(parseInt(product.salePrice, 10));
+
+							//add comma
+							product.deliveryInfo.deliveryChargeDesc = util.currencyFormat(parseInt(product.deliveryInfo.deliveryCharge, 10));
 						});
 					}
 
