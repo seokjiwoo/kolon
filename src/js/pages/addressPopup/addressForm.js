@@ -88,11 +88,10 @@ module.exports = function() {
 		var adrName1Val = $.trim($('#adrName1').pVal());
 		var adrName2Val = $.trim($('#adrName2').pVal());
 
-
-		if (adrName1Val == '' || adrName1Val.indexOf('주소의 별칭을 입력해주세요') != -1) {
+		if (adrName1Val == '') {
 			alert('주소 별칭을 입력해 주세요');
 			return;
-		} else if (adrName2Val == '' || adrName2Val.indexOf('이름을 입력해주세요') != -1) {
+		} else if (adrName2Val == '') {
 			alert('이름을 입력해 주세요');
 			return;
 		} else if ($.trim($('#phone2').pVal()) == '' || $.trim($('#phone3').pVal()) == '') {

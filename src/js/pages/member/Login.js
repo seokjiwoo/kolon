@@ -151,8 +151,8 @@ module.exports = function() {
 	function loginHandler(e) {
 		e.preventDefault();
 
-		var id = $.trim($('#inputName').pVal());
-		var pw = $.trim($('#inputPW').pVal());
+		var id = $.trim($('#inputName').pVal()); 
+		var pw = $.trim($('#inputPW').pVal()); 
 		var keepLogin = $('#saveInfoBox').hasClass('on') ? 'Y' : 'N';
 
 		if (id == '') { 
