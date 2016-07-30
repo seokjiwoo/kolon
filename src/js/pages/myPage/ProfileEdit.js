@@ -284,9 +284,9 @@ module.exports = function() {
 	function submitChangeRefundAccount(e) {
 		e.preventDefault();
 
-		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').val();
-		var accountNumber = $('#accountNumber').val();
-		var depositorName = $('#depositorName').val();
+		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').pVal();
+		var accountNumber = $('#accountNumber').pVal();
+		var depositorName = $('#depositorName').pVal();
 
 		if (bankCode == '') {
 			alert('은행을 선택해 주세요');
@@ -326,9 +326,9 @@ module.exports = function() {
 
 		var emailId = '';
 		if ($('#profileID').attr('disabled') == 'disabled') {
-			if ($('#changeEmailField').is(':visible')) emailId = $('#profileNewID').val();
+			if ($('#changeEmailField').is(':visible')) emailId = $('#profileNewID').pVal();
 		} else {
-			emailId = $('#profileID').val();
+			emailId = $('#profileID').pVal();
 		}
 
 		if (emailId == '') {
@@ -362,7 +362,7 @@ module.exports = function() {
 						authNumberResendFlag = false;
 					},
 					onSubmit: function() {
-						controller.changeEmailId(enteredId, $('#emailAuthNumber').val());
+						controller.changeEmailId(enteredId, $('#emailAuthNumber').pVal());
 					}
 				});
 				break;
@@ -400,10 +400,10 @@ module.exports = function() {
 
 		var generalPhoneNumberRule = /^[0-9]{8,12}$/i;
 
-		var name = $('#editName').val();
-		var birthDate = $('#joinBirth01').val()+$('#joinBirth02').val()+$('#joinBirth03').val();
-		var age = util.calculateAge(new Date($('#joinBirth01').val(), $('#joinBirth02').val(), $('#joinBirth03').val()));
-		var phone = $('#profileHomePhone').val();
+		var name = $('#editName').pVal();
+		var birthDate = $('#joinBirth01').pVal()+$('#joinBirth02').pVal()+$('#joinBirth03').pVal();
+		var age = util.calculateAge(new Date($('#joinBirth01').pVal(), $('#joinBirth02').pVal(), $('#joinBirth03').pVal()));
+		var phone = $('#profileHomePhone').pVal();
 		var agreeMail = $('#agreeReceive01')[0].checked ? 'Y' : 'N';
 		var agreeSms = $('#agreeReceive02')[0].checked ? 'Y' : 'N';
 		
@@ -414,7 +414,7 @@ module.exports = function() {
 		} else if ($.trim(name) == '') {
 			alert('이름을 입력해 주세요.');
 			$('#editName').focus();
-		} else if ( !generalPhoneNumberRule.test($('#profileHomePhone').val()) ) {
+		} else if ( !generalPhoneNumberRule.test($('#profileHomePhone').pVal()) ) {
 			alert('전화번호를 입력해 주세요.');
 			$('#profileHomePhone').focus();
 		} else {
@@ -447,8 +447,8 @@ module.exports = function() {
 	 * 한 달의 날짜 수 업데이트
 	 */
 	function updateDateSelect() {
-		var selectedYear = parseInt($('#joinBirth01').val());
-		var selectedMonth = parseInt($('#joinBirth02').val());
+		var selectedYear = parseInt($('#joinBirth01').pVal());
+		var selectedMonth = parseInt($('#joinBirth02').pVal());
 		var lastDate = new Date(selectedYear, selectedMonth, 0).getDate();
 		var tags = '';
 		for (var i = 1; i <= lastDate; i++) {

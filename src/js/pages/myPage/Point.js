@@ -138,7 +138,7 @@ module.exports = function() {
 					break;
 			}
 			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
-			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').pVal()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 		});
 	}

@@ -282,19 +282,19 @@ module.exports = function() {
 		var target = $(e.target),
 		inp = self.colorbox.find(self.opts.editFolder.inp);
 
-		if (!inp.val() || inp.val() === ' ') {
+		if (!inp.pVal() || inp.pVal() === ' ') {
 			win.alert('폴더명을 입력하세요.');
 			inp.focus();
 			return;
 		}
 		
-		if (inp.val() === self.selPopBtnInfo.info.folderName) {
-			debug.log(fileName, 'onEditFolder - 폴더명 동일', target, self.selPopBtnInfo, inp.val());
+		if (inp.pVal() === self.selPopBtnInfo.info.folderName) {
+			debug.log(fileName, 'onEditFolder - 폴더명 동일', target, self.selPopBtnInfo, inp.pVal());
 		} else {
-			debug.log(fileName, 'onEditFolder', target, self.selPopBtnInfo, inp.val());	
+			debug.log(fileName, 'onEditFolder', target, self.selPopBtnInfo, inp.pVal());	
 		}
 
-		controller.editScrapFolder(self.selPopBtnInfo.info.folderNumber, inp.val());
+		controller.editScrapFolder(self.selPopBtnInfo.info.folderNumber, inp.pVal());
 	}
 
 	function setColoboxFolder() {

@@ -73,8 +73,8 @@ module.exports = function() {
 		deliveryStateCode = deliveryStateCode || '';
 
 		controller.myOrdersList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
 			keyword,
 			deliveryStateCode
 		);
@@ -186,12 +186,12 @@ module.exports = function() {
 			cancelType, cancelReson;
 
 			$.each($('.cancelReasonDrop'), function(key, each){
-				cancelOrderDataArray[key].push($(each).val());
-				if (!$(each).val()) isValid = false;
+				cancelOrderDataArray[key].push($(each).pVal());
+				if (!$(each).pVal()) isValid = false;
 			});
 			$.each($('.cancelReasonField'), function(key, each){
-				cancelOrderDataArray[key].push(encodeURI($(each).val()));
-				if (!$(each).val()) isValid = false;
+				cancelOrderDataArray[key].push(encodeURI($(each).pVal()));
+				if (!$(each).pVal()) isValid = false;
 			});
 			
 			if (!isValid) {
@@ -263,8 +263,8 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getOrderList(self.searchInp.val(), data.values.join(','));
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
+		getOrderList(self.searchInp.pVal(), data.values.join(','));
 	}
 
 	function onSearch(e) {
@@ -276,13 +276,13 @@ module.exports = function() {
 
 		e.preventDefault();
 
-		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
+		if (!self.searchInp.pVal() || self.searchInp.pVal() === ' ') {
 			win.alert('검색어를 입력하세요.');
 			self.searchInp.val('').focus();
 			return;
 		}
 
-		getOrderList(self.searchInp.val());
+		getOrderList(self.searchInp.pVal());
 	}
 
 	function setRangePicker() {
@@ -336,7 +336,7 @@ module.exports = function() {
 			}
 			
 			$('.js-picker-to').datepicker('setDate', win.moment().format('YYYY-MM-DD'));
-			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').val()).format('YYYY-MM-DD'));
+			$('.js-picker-to').datepicker('option', 'minDate', win.moment($('.js-alt-from').pVal()).format('YYYY-MM-DD'));
 			e.stopPropagation();
 
 			getOrderList();

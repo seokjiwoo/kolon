@@ -183,8 +183,8 @@ module.exports = function() {
 		$('.washCompany').hide();
 		$('.washCompany').removeClass('on');
 		
-		var requestTargetName = $('#name').val();
-		var requestTargetContact = $('#phoneNumber').val();
+		var requestTargetName = $('#name').pVal();
+		var requestTargetContact = $('#phoneNumber').pVal();
 		
 		if (requestTargetName == '') {
 			alert('이름을 입력해 주세요');
@@ -192,11 +192,11 @@ module.exports = function() {
 			alert('연락처를 입력해 주세요');
 		} else if (serviceAddress == undefined) {
 			alert('서비스 지역을 선택해 주세요');
-		} else if ($('#timeDrop').val() == '') {
+		} else if ($('#timeDrop').pVal() == '') {
 			alert('희망 서비스 시각을 선택해 주세요');
 		} else {
 			var requestDate = moment($('#washDate').datepicker('getDate')).format('YYYY-MM-DD');
-			var requestTime = $('#timeDrop').val()[0];
+			var requestTime = $('#timeDrop').pVal()[0];
 			
 			if (timeArray[requestDate] == undefined) {
 				alert('서비스 불가능 지역입니다');
@@ -223,9 +223,9 @@ module.exports = function() {
 
 	function requestWashingSubmit(e) {
 		e.preventDefault();
-		var requestTargetName = $('#name').val();
-		var requestTargetContact = $('#phoneNumber').val();
-		var comment = $('#additionalComments').val();
+		var requestTargetName = $('#name').pVal();
+		var requestTargetContact = $('#phoneNumber').pVal();
+		var comment = $('#additionalComments').pVal();
 		
 		if (requestTargetName == '') {
 			alert('이름을 입력해 주세요');
@@ -238,7 +238,7 @@ module.exports = function() {
 		} else {
 			var companyCode = $('#companyListWrap').find('.on').data().companyCode;
 			var requestDate = moment($('#washDate').datepicker('getDate')).format('YYYY-MM-DD');
-			var requestTime = $('#timeDrop').val()[0];
+			var requestTime = $('#timeDrop').pVal()[0];
 
 			switch(companyCode) {
 				case 'LS_COMPANY_SECTION_01':

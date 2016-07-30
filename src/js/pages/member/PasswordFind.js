@@ -53,7 +53,7 @@ module.exports = function() {
 		e.preventDefault();
 
 		tempAuthKey = '';
-		var id = $.trim($('#inputId').val());
+		var id = $.trim($('#inputId').pVal());
 		
 		if (util.checkValidMobileNumber(id)) {
 			// 휴대폰 번호

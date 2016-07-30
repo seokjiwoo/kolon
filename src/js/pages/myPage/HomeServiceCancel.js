@@ -72,7 +72,7 @@ module.exports = function() {
 		if (e != undefined) e.preventDefault();
 		var fromDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
 		var toDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
-		controller.homeServiceCancelList($('#recordInput').val(), fromDate, toDate);
+		controller.homeServiceCancelList($('#recordInput').pVal(), fromDate, toDate);
 		if (e != undefined) e.stopPropagation();
 	};
 

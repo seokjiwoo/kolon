@@ -50,7 +50,7 @@ module.exports = function() {
 				}
 			});
 
-			var reasonStatement = $('#reasonStatement').val();
+			var reasonStatement = $('#reasonStatement').pVal();
 
 			if (reasonCodes.length == 0) {
 				MyPage.Super.Super.alertPopup('탈퇴에 실패하였습니다', '회원탈퇴 사유를 1개 이상 체크해주세요.', '닫기');
@@ -121,9 +121,9 @@ module.exports = function() {
 	function submitChangeRefundAccount(e) {
 		e.preventDefault();
 
-		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').val();
-		var accountNumber = $('#accountNumber').val();
-		var depositorName = $('#depositorName').val();
+		var bankCode = $('#refundBankDrop').closest('.js-drop-scroll').pVal();
+		var accountNumber = $('#accountNumber').pVal();
+		var depositorName = $('#depositorName').pVal();
 
 		if (bankCode == '') {
 			alert('은행을 선택해 주세요');

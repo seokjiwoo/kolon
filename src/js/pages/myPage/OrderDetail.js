@@ -155,7 +155,7 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
 	}
 	function displayCancelPopup(data, type) {
 		var _template = self.colorbox.find('#cancel-request-templates');
@@ -189,12 +189,12 @@ module.exports = function() {
 			cancelType, cancelReson;
 
 			$.each($('.cancelReasonDrop'), function(key, each){
-				cancelOrderDataArray[key].push($(each).val());
-				if (!$(each).val()) isValid = false;
+				cancelOrderDataArray[key].push($(each).pVal());
+				if (!$(each).pVal()) isValid = false;
 			});
 			$.each($('.cancelReasonField'), function(key, each){
-				cancelOrderDataArray[key].push(encodeURI($(each).val()));
-				if (!$(each).val()) isValid = false;
+				cancelOrderDataArray[key].push(encodeURI($(each).pVal()));
+				if (!$(each).pVal()) isValid = false;
 			});
 			
 			if (!isValid) {

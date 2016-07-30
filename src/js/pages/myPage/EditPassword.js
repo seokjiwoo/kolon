@@ -38,8 +38,8 @@ module.exports = function() {
 	 * 패스워드 필드 검사 
 	 */
 	function checkPasswordField(e) {
-		var inputValue1 = $('#newPW01').val();
-		var inputValue2 = $('#newPW02').val();
+		var inputValue1 = $('#newPW01').pVal();
+		var inputValue2 = $('#newPW02').pVal();
 		
 		if (!util.checkValidPassword(inputValue1)) {
 			$('#newPWAlert1').text('비밀번호는 영문, 숫자, 특수문자 조합한 9~16자리입니다.');
@@ -62,9 +62,9 @@ module.exports = function() {
 	function submitPasswordForm(e) {
 		e.preventDefault();
 		
-		var pw0 = $('#currentPW').val();
-		var pw1 = $('#newPW01').val();
-		var pw2 = $('#newPW02').val();
+		var pw0 = $('#currentPW').pVal();
+		var pw1 = $('#newPW01').pVal();
+		var pw2 = $('#newPW02').pVal();
 		
 		if (pw1 == '') {
 			alert('비밀번호를 입력해 주세요.');

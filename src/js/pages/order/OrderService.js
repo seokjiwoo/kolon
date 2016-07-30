@@ -174,7 +174,7 @@ module.exports = function() {
 				
 				refreshAddressDataHandler();
 				$('.addressSelect').change(function(e){
-					setAddress($(this).attr('id').substr(14), $(this).val());
+					setAddress($(this).attr('id').substr(14), $(this).pVal());
 				});
 
 				var constReservation = data.constReservation;
@@ -273,12 +273,12 @@ module.exports = function() {
 			alert('배송지를 지정해 주세요.');
 			return;
 		}
-		if ($('#visitTimeSelector').val() == '') {
+		if ($('#visitTimeSelector').pVal() == '') {
 			alert('희망 실측 방문/상담 시간을 지정해 주세요.');
 			return;
 		}
 		
-		var paymentPrice = Number($('#Amt').val());
+		var paymentPrice = Number($('#Amt').pVal());
 
 		var productsArray = new Array();
 		for (var key in productsInfo) {
@@ -292,34 +292,34 @@ module.exports = function() {
 		
 		$('#products').val(productsArray.join(','));
 		$('#wishSurveyDate').val(moment($('.js-picker-visit').datepicker('getDate')).format('YYYYMMDD'));
-		$('#wishSurveyHour').val($('#visitTimeSelector').val());
+		$('#wishSurveyHour').val($('#visitTimeSelector').pVal());
 		$('#wishConstBeginDate').val(moment($('.js-picker-from').datepicker('getDate')).format('YYYYMMDD'));
 		$('#wishConstEndDate').val(moment($('.js-picker-to').datepicker('getDate')).format('YYYYMMDD'));
 		$('#addressSequence').val(selectedOneAddress);
-		$('#dwellingFormCode').val($('input[name="hTp1"]:checked').val());
-		$('#dwellingPyeongCode').val($('input[name="hTp2"]:checked').val());
-		$('#remodelingReasonCode').val($('input[name="hTp3"]:checked').val());
-		$('#remodelingReasonEtc').val(encodeURI($('#homeReasonEtcField').val()));
-		$('#addRequestContents').val(encodeURI($('#requestField').val()));
+		$('#dwellingFormCode').val($('input[name="hTp1"]:checked').pVal());
+		$('#dwellingPyeongCode').val($('input[name="hTp2"]:checked').pVal());
+		$('#remodelingReasonCode').val($('input[name="hTp3"]:checked').pVal());
+		$('#remodelingReasonEtc').val(encodeURI($('#homeReasonEtcField').pVal()));
+		$('#addRequestContents').val(encodeURI($('#requestField').pVal()));
 	
-		switch($('#PayMethod').val()) {
+		switch($('#PayMethod').pVal()) {
 			case 'CARD':
-				if ($('#cardSelect').val() == '') {
+				if ($('#cardSelect').pVal() == '') {
 					alert('카드를 지정해 주세요.');
 					return;
 				}
-				if ($('#SelectQuota').val() == '') {
+				if ($('#SelectQuota').pVal() == '') {
 					alert('할부개월수를 지정해 주세요.');
 					return;
 				}
-				$('#SelectCardCode').val($('#cardSelect').val()); 	// 카드회사 번호
-				$('#SelectQuota').val($('#quotaSelect').val()); 	// 할부개월수
+				$('#SelectCardCode').val($('#cardSelect').pVal()); 	// 카드회사 번호
+				$('#SelectQuota').val($('#quotaSelect').pVal()); 	// 할부개월수
 				break;
 		}
 
 		jQuery.ajax({
 			type: "GET",
-			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").val()+"&price="+paymentPrice,
+			url: "/apis/constorders/getHashString?ediDate="+$("#EdiDate").pVal()+"&price="+paymentPrice,
 			success : function(data) {
 				$("#EncryptData").val(data.data.hash_String);
 				$("#Moid").val(data.data.orderNumber);

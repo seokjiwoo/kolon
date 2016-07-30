@@ -40,8 +40,8 @@ module.exports = function() {
 	 * 패스워드 필드 검사 
 	 */
 	function checkPasswordField(e) {
-		var inputValue1 = $.trim($('#resetPW').val());
-		var inputValue2 = $.trim($('#resetPW02').val());
+		var inputValue1 = $.trim($('#resetPW').pVal());
+		var inputValue2 = $.trim($('#resetPW02').pVal());
 		
 		if (inputValue1 == '') {
 			$('#resetPWAlert1').text('비밀번호를 입력해 주세요.');
@@ -64,8 +64,8 @@ module.exports = function() {
 	function resetPasswordHandler(e) {
 		e.preventDefault();
 
-		var inputValue1 = $.trim($('#resetPW').val());
-		var inputValue2 = $.trim($('#resetPW02').val());
+		var inputValue1 = $.trim($('#resetPW').pVal());
+		var inputValue2 = $.trim($('#resetPW02').pVal());
 		
 		if (inputValue1 == '') {
 			$('#resetPWAlert1').text('비밀번호를 입력해 주세요.');

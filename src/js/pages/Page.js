@@ -200,11 +200,11 @@ module.exports = function() {
 					onOpen: function() {
 						$('#checkPwForm').submit(function(e){
 							e.preventDefault();
-							loginController.confirmPassword($('#checkPw').val());
+							loginController.confirmPassword($('#checkPw').pVal());
 						});
 					},
 					onSubmit: function() {
-						loginController.confirmPassword($('#checkPw').val());
+						loginController.confirmPassword($('#checkPw').pVal());
 					}
 				});
 			}
@@ -483,7 +483,7 @@ module.exports = function() {
 			onOpen:function() {
 				$('#requestVerifyMemberForm').submit(function(e){
 					e.preventDefault();
-					var id = $('#verifyPhoneNumber').val();
+					var id = $('#verifyPhoneNumber').pVal();
 					if (util.checkValidMobileNumber(id)) {
 						memberInfoController.verifyMemberByPhone(id, authType);
 					} else {
@@ -549,7 +549,7 @@ module.exports = function() {
 						Super.htmlPopup('/_popup/popScrapNew.html', 540, 'popEdge scrapFolderNew');
 					});
 					$('#addToScrapForm').submit(function(e){
-						scrapController.addImageScrap($('#scrapTargetFolderSelect').val(), filePath);
+						scrapController.addImageScrap($('#scrapTargetFolderSelect').pVal(), filePath);
 						e.preventDefault();
 					});
 					scrapController.scrapList('IMAGE');
@@ -603,13 +603,13 @@ module.exports = function() {
 		var target = $(e.target),
 		inp = $('#colorbox').find('.js-scrapFolderNew-inp');
 
-		if (!inp.val() || $.trim(inp.val()) == '') {
+		if (!inp.pVal() || $.trim(inp.pVal()) == '') {
 			alert('폴더명을 입력하세요.');
 			inp.focus();
 			return;
 		}
 
-		scrapController.addScrapFolder(inp.val());
+		scrapController.addScrapFolder(inp.pVal());
 	}
 
 	// MeberInfo event Listener

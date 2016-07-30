@@ -150,13 +150,13 @@ module.exports = function() {
 
 	function onSearchInpKeydwn(e) {
 		if (e.which && e.which === $.ui.keyCode.ENTER) {
-			sortingFollow(self.searchInp.val());
+			sortingFollow(self.searchInp.pVal());
 		}
 	}
 
 	function onSearchBtnClick(e) {
 		e.preventDefault();
-		sortingFollow(self.searchInp.val());
+		sortingFollow(self.searchInp.pVal());
 	}
 
 	function sortingFollow(str, autocomplete) {
