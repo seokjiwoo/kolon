@@ -122,7 +122,9 @@
 									<th scope="row">수거/배송일시</th>
 									<td colspan="3">
 										<!--<a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor01 fl_right btnPop btnPop590 absolutePosition" data-user-class="my popEdge dateChangePop">일시변경</a>-->
-										<a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor01 fl_right btnPop btnPop590 absolutePosition" id='washChangeButton'  data-user-class="my popEdge dateChangePop">일시변경</a>  
+										{{#vxIF statusCode "!=" "LS_WASH_STATE_02"}}
+										<a href="../../_popup/popHomeChange.html" class="btnSizeS btnColor01 fl_right btnPop btnPop590 absolutePosition" id='washChangeButton'  data-user-class="my popEdge dateChangePop">일시변경</a>
+										{{/vxIF}}  
 										- 수거일시 : {{pickupDate}}
 										{{#if deliveryDate}}
 										<br>- 배송일시 : {{deliveryDate}}
