@@ -318,39 +318,39 @@
 						{{#vxSwitch orderStateCode}}
 							{{!-- 입금대기 --}}
 							{{#vxCase "SL_ORDER_STATE_01" break=true}}
-								<a href="javascript:;" class="state">임급대기</a>
+								<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-1">입금대기</a>
 								<a href="/_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
 							{{/vxCase}}
 
 							{{!-- 결제완료 --}}
 							{{#vxCase "SL_ORDER_STATE_02" break=true}}
-								<a href="javascript:;" class="state">결제완료</a>
+								<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-2">결제완료</a>
 								<a href="/_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
 								<a href="/_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a>
 							{{/vxCase}}
 
 							{{!-- 상품준비 --}}
 							{{#vxCase "SL_ORDER_STATE_03" break=true}}
-								<a href="javascript:;" class="state">상품준비중</a>
+								<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-3">상품준비중</a>
 								<a href="/_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderCancelRequest">취소신청</a>
 							{{/vxCase}}
 
 							{{!-- 배송중 --}}
 							{{#vxCase "SL_ORDER_STATE_04" break=true}}
-								<a href="javascript:;" class="state">배송중</a>
+								<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-4">배송중</a>
 								<a href="/_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a>
 							{{/vxCase}}
 
 							{{!-- 배송완료 --}}
 							{{#vxCase "SL_ORDER_STATE_05" break=true}}
-								<a href="javascript:;" class="state">배송완료</a>
+								<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-5">배송완료</a>
 								<a href="/_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a>
 								<a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a>
 							{{/vxCase}}
 
 							{{!-- 구매확정 --}}
 							{{#vxCase "SL_ORDER_STATE_06" break=true}}
-								<a href="javascript:;" class="state">구매확정</a>
+								<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-6">구매확정</a>
 							{{/vxCase}}
 
 							{{!-- 주문취소 --}}
