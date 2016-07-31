@@ -3,332 +3,218 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 주문.배송 조회"} -->
 </head>
-<body data-page-id="">
+<body data-page-id="myPage-orderDetail">
 	<div class="wrapper my">
 	<!-- @@include ../_template/menu.html -->
 		<div class="container">
-			<section>
-				<h2 class="pageTit">주문상세</h2>
-				<div class="pageTop scrapTop">
-					<p><b class="roman">2016.04.14 <i>2354865</i></b></p>
-				</div>
-				<div class="wrapT">
-					<div class="payInfo">
-						<h3 class="conTit">결제 정보</h3>
-						<div class="priceView">
-							<p>
-								<span>상품 금액</span>
-								<span><b>1,700,000 </b>원</span>
-							</p>
-							<p>
-								<span>할인금액</span>
-								<span><b>-3,000 </b>원</span>
-							</p>
-							<p>
-								<span>기본할인</span>
-								<span>-2000 원</span>
-							</p>
-							<p>
-								<span>포인트</span>
-								<span>-1000 원</span>
-							</p>
-							<p>
-								<span>배송비</span>
-								<span><b>0</b> 원</span>
-							</p>
-						</div>
-						<div class="totalPrice">
-							<span>총 결제금액</span>
-							<span><em>1,720,000</em> 원</span>
-						</div>
-						<div class="payment">
-							<p>
-								<span>결제방법</span>
-								<span>무통장입금</span>
-							</p>
-							<p>
-								<span>입금계좌</span>
-								<span>123-567890-01-123</span>
-							</p>
-							<p>
-								<span>예금주</span>
-								<span>(주)코오롱 글로벌</span>
-							</p>
-							<p>
-								<span>입금기한</span>
-								<span>결제완료</span>
-							</p>
-							<p>
-								<span>증빙서류</span>
-								<span>현금영수증 지출증빙용(01012345678)</span>
-							</p>
-						</div>
-						<div class="btnwrap">
-							<a href="" class="btnSizeS btnColor05">견적서</a>
-							<a href="" class="btnSizeS btnColor05">현금영수증</a>
-							<a href="" class="btnSizeS btnColor05">거래명세서</a>
-							<a href="" class="btnSizeS btnColor05">입금표</a>
-						</div>
-					</div>
-				</div>
-				<div class="wrapT">
-					<div class="payInfo">
-						<h3 class="conTit">주문자 정보</h3>
-						<div class="orders">
-							<p>
-								<span>주문자</span>
-								<span>홍길동</span>
-							</p>
-							<p>
-								<span>연락처</span>
-								<span>010-1234-5678</span>
-							</p>
-							<p>
-								<span>이메일</span>
-								<span>Kolon1234@gmail.com</span>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="myWrap listWrap">
-					<div class="allChk">
-						<div class="checkbox">
-							<input type="checkbox" id="chk01" />
-							<label for="chk01">전체선택</label>
-						</div>
-						<a href="../_popup/popCancelOrder.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">취소신청</a>
-					</div>
-				</div>
-				<div class="myWrap listWrap">
-					<ul class="optList">
-						<li>
-							<a href="#">
-								<p class="checkbox">
-									<input type="checkbox" id="check01">
-									<label for="check01"></label>
-								</p>
-								<p class="photo"><img src="../images/temp05.jpg" alt=""></p>
-								<div class="cont">
-									<span>코오롱 글로벌</span>
-									<p>숨어있는 다이닝 스페이스 숨어있는 다이닝 스페이스 </p>
-								</div>
-							</a>
-							<div class="option">
-								<p class="listTxt">모던화이트 모던화이트 모던화이트</p>
-								<p class="count">
-									<span><em>1,700,000</em>원</span>
-									<span>1 개</span>
-								</p>
-							</div>
-							<div class="cancelArea">
-								<a href="" class="state">결제완료</a>
-								<!-- <a href="../_popup/popProgress01.html" class="state btnPop" data-user-class="pop">결제완료</a> -->
-								<!-- <a href="../_popup/popDeliveryView.html" class="btnPop" data-user-class="pop">배송정보 팝업 임시 링크</a> -->
-								<a href="../_popup/popCancelOrder.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">취소신청</a>
-							</div>
-							<div class="hiddenArea">
-								<a href="" class="btnToggle">판매자/수령자 정보</a>
-								<div class="detailInfo slideCon">
-									<dl>
-										<dt>
-											<span>판매자</span>
-											<span>ANNA</span>
-										</dt>
-										<dd>
-											<span>연락처</span>
-											<span>010-1234-5678</span>
-										</dd>
-									</dl>
-									<dl>
-										<dt>
-											<span>수령자</span>
-											<span>홍길동</span>
-										</dt>
-										<dd>
-											<span>주소</span>
-											<span>서울시 강남구 삼성동 8-5</span>
-										</dd>
-										<dd>
-											<span>휴대폰 번호</span>
-											<span>010-1234-5678</span>
-										</dd>
-										<dd>
-											<span>일반 전화번호</span>
-											<span>02-567-8901</span>
-										</dd>
-										<dd>
-											<span>요청사항</span>
-											<span>도착 전에 연락 부탁 드립니다.</span>
-										</dd>
-									</dl>
-								</div>
-							</div>
-						</li>
-						<li>
-							<a href="#">
-								<p class="checkbox">
-									<input type="checkbox" id="check01">
-									<label for="check01"></label>
-								</p>
-								<p class="photo"><img src="../images/temp05.jpg" alt=""></p>
-								<div class="cont">
-									<span>코오롱 글로벌</span>
-									<p>숨어있는 다이닝 스페이스 숨어있는 다이닝 스페이스 </p>
-								</div>
-							</a>
-							<div class="option">
-								<p class="listTxt">모던화이트 모던화이트 모던화이트</p>
-								<p class="count">
-									<span><em>1,700,000</em>원</span>
-									<span>1 개</span>
-								</p>
-							</div>
-							<div class="cancelArea">
-								<a href="" class="state">결제완료</a>
-								<a href="" class="btnSizeS btnColor01">취소신청</a>
-							</div>
-							<div class="hiddenArea">
-								<a href="" class="btnToggle">판매자/수령자 정보</a>
-								<div class="detailInfo slideCon">
-									<dl>
-										<dt>판매자 정보</dt>
-										<dd>
-											<span>판매자</span>
-											<span>ANNA</span>
-										</dd>
-										<dd>
-											<span>연락처</span>
-											<span>010-1234-5678</span>
-										</dd>
-									</dl>
-									<dl>
-										<dt>수령자 정보</dt>
-										<dd>
-											<span>받는 사람</span>
-											<span>홍길동</span>
-										</dd>
-										<dd>
-											<span>주소</span>
-											<span>서울시 강남구 삼성동 8-5</span>
-										</dd>
-										<dd>
-											<span>휴대폰 번호</span>
-											<span>010-1234-5678</span>
-										</dd>
-										<dd>
-											<span>일반 전화번호</span>
-											<span>02-567-8901</span>
-										</dd>
-										<dd>
-											<span>요청사항</span>
-											<span>도착 전에 연락 부탁 드립니다.</span>
-										</dd>
-									</dl>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<p class="setTit">묶음배송</p>
-				<div class="myWrap listWrap">
-					<ul class="optList">
-						<li>
-							<a href="#">
-								<p class="checkbox">
-									<input type="checkbox" id="check04">
-									<label for="check04"></label>
-								</p>
-								<p class="photo"><img src="../images/temp05.jpg" alt=""></p>
-								<div class="cont">
-									<span>코오롱 글로벌</span>
-									<p>숨어있는 다이닝 스페이스 숨어있는 다이닝 스페이스 </p>
-								</div>
-							</a>
-							<div class="option">
-								<p class="listTxt">모던화이트 모던화이트 모던화이트</p>
-								<p class="count">
-									<span><em>1,700,000</em>원</span>
-									<span>1 개</span>
-								</p>
-							</div>
-							<div class="option">
-								<p class="listTxt">모던화이트 모던화이트 모던화이트</p>
-								<p class="count">
-									<span><em>1,700,000</em>원</span>
-									<span>1 개</span>
-								</p>
-							</div>
-							<div class="cancelArea">
-								<a href="" class="state">결제완료</a>
-								<a href="../_popup/popCancelOrder.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">취소신청</a>
-							</div>
-							<a href="#">
-								<p class="checkbox">
-									<input type="checkbox" id="check04">
-									<label for="check04"></label>
-								</p>
-								<p class="photo"><img src="../images/temp05.jpg" alt=""></p>
-								<div class="cont">
-									<span>코오롱 글로벌</span>
-									<p>숨어있는 다이닝 스페이스 숨어있는 다이닝 스페이스 </p>
-								</div>
-							</a>
-							<div class="option">
-								<p class="listTxt">모던화이트 모던화이트 모던화이트</p>
-								<p class="count">
-									<span><em>1,700,000</em>원</span>
-									<span>1 개</span>
-								</p>
-							</div>
-							<div class="cancelArea">
-								<a href="" class="state">결제완료</a>
-								<a href="../_popup/popCancelOrder.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">취소신청</a>
-							</div>
-							<div class="hiddenArea">
-								<a href="" class="btnToggle">판매자/수령자 정보</a>
-								<div class="detailInfo slideCon">
-									<dl>
-										<dt>판매자 정보</dt>
-										<dd>
-											<span>판매자</span>
-											<span>ANNA</span>
-										</dd>
-										<dd>
-											<span>연락처</span>
-											<span>010-1234-5678</span>
-										</dd>
-									</dl>
-									<dl>
-										<dt>수령자 정보</dt>
-										<dd>
-											<span>받는 사람</span>
-											<span>홍길동</span>
-										</dd>
-										<dd>
-											<span>주소</span>
-											<span>서울시 강남구 삼성동 8-5</span>
-										</dd>
-										<dd>
-											<span>휴대폰 번호</span>
-											<span>010-1234-5678</span>
-										</dd>
-										<dd>
-											<span>일반 전화번호</span>
-											<span>02-567-8901</span>
-										</dd>
-										<dd>
-											<span>요청사항</span>
-											<span>도착 전에 연락 부탁 드립니다.</span>
-										</dd>
-									</dl>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</section>
+			
+			<!-- [D] #order-detail-templates - wrap -->
+			<section class="singleCard js-order-detail-wrap" id="myOrderDetail"></section>
+			<!--// [D] #order-detail-templates - wrap -->
+
 		<!-- @@include ../_template/footer.html -->
 		</div>
 	</div>
+
+
+<script id="order-detail-templates" type="text/x-handlebars-template">
+{{!-- order-detail-templates --}}
+	<h2 class="pageTit">주문 내역 &#62; 주문 상세</h2>
+	{{!-- 데이터 유무에 따른 화면 처리 --}}
+	{{#if ordererInfo}}
+		<div class="pageTop scrapTop">
+			<p><b class="roman">{{orderDate}} <i>{{orderNumber}}</i></b></p>
+			<div class="wrapT">
+				<div class="payInfo">
+					<h3 class="conTit">결제 정보</h3>
+					<div class="priceView">
+						<p>
+							<span>주문 금액</span>
+							<span><b>{{paymentInfo.orderPriceDesc}}</b> 원</span>
+						</p>
+						<p>
+							<span>할인금액</span>
+							<span><b>- {{paymentInfo.discountPrice}}</b> 원</span>
+						</p>
+						<p>
+							<span>기본할인</span>
+							<span>- {{paymentInfo.discountPrice}} 원</span>
+						</p>
+						<p style="display:none">
+							<span>포인트</span>
+							<span>-1000 원</span>
+						</p>
+						<p>
+							<span>배송비</span>
+							<span><b>{{paymentInfo.deliveryCharge}}</b> 원</span>
+						</p>
+						<p>
+							<span>결제방법</span>
+							<span>{{paymentInfo.method}}</span>
+						</p>
+					</div>
+					<div class="totalPrice" style="border-bottom:0">
+						<span>총 결제금액</span>
+						<span><em>{{paymentInfo.totalPaymentPriceDesc}}</em> 원</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrapT">
+				<div class="payInfo">
+					<h3 class="conTit">주문자 정보</h3>
+					<div class="orders">
+						<p>
+							<span>주문자 정보</span>
+							<span>{{ordererInfo.ordererName}}</span>
+						</p>	
+						<p>
+							<span>연락처</span>
+							<span>{{ordererInfo.cellPhoneNumber}}</span>
+						</p>
+						<p>
+							<span>이메일 주소</span>
+							<span>{{ordererInfo.ordererEmail}}</span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="myWrap listWrap">
+				<div class="allChk">
+					<div class="checkbox">
+						<input type="checkbox" id="orderDetail-list-all">
+						<label for="orderDetail-list-all" class="on"
+								data-chk-role="chkAll"
+								data-chk-group="orderDetail">전체 선택 <span>( 총 {{listOrderItem.length}}개)</span></label>
+					</div>
+					<a href="/_popup/popOrderCancelRequest.html"
+						class="btnSizeS btnColor01 btnPop js-btn js-order-cancel"
+						data-user-class="pop"
+						data-order-info='{
+							"orderNumber" : "{{orderNumber}}",
+							"orderProductSequence" : "{{orderProductSequence}}",
+							"deliveryNumber" : "{{deliveryNumber}}"
+						}'>취소신청</a>
+				</div>
+			</div>
+
+			<div class="myWrap listWrap">
+				<ul class="optList">
+					{{#each deliveryChunk}}
+						{{#each .}}
+						<li data-order-info='{
+							"orderNumber" : "{{orderNumber}}",
+							"productNumber" : "{{productNumber}}",
+							"orderOptionNumber" : "{{orderOptionNumber}}",
+							"deliveryNumber" : "{{deliveryNumber}}",
+							"joinedOrder": "{{../length}}"
+						}'>
+							<a href="#">
+								<p class="checkbox">
+									<input type="checkbox" title="상품선택" id="orderDetail-list{{@index}}" checked>
+									<label for="orderDetail-list{{@index}}" class="on"
+											data-order-number="{{orderNumber}}" data-product-number="{{productNumber}}" data-option-number="{{orderOptionNumber}}" data-chk-group="orderDetail"><span class="hide">선택</span></label>
+								</p>
+								<p class="photo"><img src="{{productImageUrl}}" alt=""></p>
+								<div class="cont">
+									<span>{{saleMemberName}}</span>
+									<p>{{productName}}</p>
+								</div>
+							</a>
+							<div class="option">
+								{{#if orderOptionName}}
+									<p class="listTxt">{{orderOptionName}}</p>
+									<p class="count">
+										<span><em>{{productPrice}}</em>원</span>
+										<span>{{orderQuantity}} 개</span>
+									</p>
+								{{else}}
+									<p class="count">
+										<span style="display:none"></span>
+										<span style="color:#000"><em>{{productPrice}}</em>원</span>
+									</p>
+								{{/if}}
+							</div>
+							<div class="cancelArea">
+								{{#vxSwitch orderStateCode}}
+									{{#vxCase "SL_ORDER_STATE_01" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-1">입금대기</a>
+										<a href="/_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop js-btn js-order-cancel-all" data-user-class="my popEdge">취소신청</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_02" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-2">결제완료</a>
+										<a href="/_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop js-btn js-order-cancel-all" data-user-class="my popEdge">취소신청</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_03" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-3">상품준비중</a>
+										<a href="/_popup/popOrderCancelRequest.html" class="btnSizeS btnColor01 btnPop js-btn js-order-cancel-all" data-user-class="my popEdge">취소신청</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_04" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-4">배송중</a>
+										<div class="btnWrap"><a href="/_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a></div>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_05" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-5">배송완료</a>
+										<a href="/_popup/popOrderDelivery.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderDelivery">배송추적</a>
+										<a href="#" class="btnSizeS btnColor01 js-btn js-order-confirm">구매확정</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_06" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-6">구매확정</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_07" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-7">취소상세</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_08" break=true}}
+										<a href="/_popup/popOrderReturnDetail.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderReturnDetail">반품상세</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_09" break=true}}
+										<a href="/_popup/popOrderChangeDetail.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="my popEdge popOrderChangeDetail">교환상세</a>
+									{{/vxCase}}
+									{{#vxCase "SL_ORDER_STATE_10" break=true}}
+										<a href="/_popup/popProgress01.html" class="state btnPop" data-user-class="pop js-step-10">재배송</a>
+									{{/vxCase}}
+								{{/vxSwitch}}
+							</div>
+							{{#if @last}}
+								<div class="hiddenArea">
+									<a href="#" class="btnToggle">수령자 정보</a>
+									<div class="detailInfo slideCon">
+										<dl>
+											<dt>
+												<span>받으실 분</span>
+												<span>{{slOrderDlvyAddr.receiverName}}</span>
+											</dt>
+											<dd>
+												<span>주소</span>
+												<span>{{slOrderDlvyAddr.roadBaseAddress}} {{slOrderDlvyAddr.detailAddress}}</span>
+											</dd>
+											<dd>
+												<span>연락처</span>
+												<span>{{slOrderDlvyAddr.cellPhoneNumber}}</span>
+											</dd>
+											<dd>
+												<span>요청사항</span>
+												<span>{{slOrderDlvyAddr.deliveryRequestMemo}}</span>
+											</dd>
+										</dl>
+									</div>
+								</div>
+							{{/if}}
+						</li>
+						{{/each}}
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+	{{else}}
+		<div class="wrapT">
+			<p class="noContent" style="display:block">주문 상세 데이터가 없습니다.</p>
+		</div>
+	{{/if}}
+{{!--// order-detail-templates --}}
+</script>
+
+
 </body>
 </html>

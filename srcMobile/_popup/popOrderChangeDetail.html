@@ -1,0 +1,57 @@
+<div class="popTop">
+	<h4 class="popTit">교환 상세내역</h4>
+</div>
+<div class="popCon">
+	<h3 class="subTit">교환 신청정보</h3>
+	<table class="record record02 js-change-detail" summary="교환 신청정보 표로써 신청일, 교환 완료일, 교환신청 사유/책임 정보를 담고 있습니다.">
+		<!--  
+		<caption>교환 신청정보 표</caption>
+		<colgroup>
+			<col style="width:186px">
+			<col style="width:auto">
+			<col style="width:186px">
+			<col style="width:auto">
+		</colgroup>
+		<tr>
+			<th>신청일</th>
+			<td>2016.05.03 / 16:07:15</td>
+			<th>교환 완료일</th>
+			<td>2016.05.03 / 16:07:15</td>
+		</tr>
+		<tr>								
+			<th>교환신청 사유/책임</th>
+			<td colspan="3">상품에 흡집이 많이 나있네요. 다른 상품으로 교환 원합니다. <strong>- 판매자</strong></td>
+		</tr>
+		 -->
+	</table>
+
+	<ul class="tbList3 mt30">
+		<li>상세 문의는 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
+	</ul>
+	
+	<div class="btnCenter">
+		<button type="submit" class="btn btnSizeM btnColor01 popClose">확인</button>
+	</div>
+</div>
+
+
+
+<script id="change-detail-templates" type="text/x-handlebars-template">
+	<caption>교환 신청정보 표</caption>
+	<colgroup>
+		<col style="width:186px">
+		<col style="width:auto">
+		<col style="width:186px">
+		<col style="width:auto">
+	</colgroup>
+	<tr>
+		<th>신청일</th>
+		<td>{{requestDate}}</td>
+		<th>교환 완료일</th>
+		<td>{{completeDate}}</td>
+	</tr>
+	<tr>								
+		<th>교환신청 사유/책임</th>
+		<td colspan="3">{{claimDesc}}<strong>- 판매자</strong></td>
+	</tr>
+</script>

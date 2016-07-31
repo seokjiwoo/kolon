@@ -98,7 +98,8 @@
 						<ul class="productData">
 							<li>
 								<p class="count">
-									<span><em>{{constProduct.productPriceDesc}}</em> 원</span>
+									<span style="display:none"></span>
+									<span style="color:#000"><em>{{constProduct.productPriceDesc}}</em> 원</span>
 								</p>
 							</li>
 						</ul>
@@ -113,7 +114,9 @@
 			{{/if}}
 		{{/each}}
 	{{else}}
-		<p class="noContent" style="display:block">주문/시공 취소 내역이 없습니다.</p>
+		<div class="wrapT">
+			<p class="noContent" style="display:block">주문/시공 취소 내역이 없습니다.</p>
+		</div>
 	{{/if}}
 {{!--// order-list-templates --}}
 
