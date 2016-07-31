@@ -75,8 +75,9 @@ module.exports = function() {
 
 	function likeResultHandler(e, status, result) {
 		if (status == 200) {
-			$('.js-add-like').addClass('on');
-			$('.js-add-like .countNum').text(Number($('.js-add-like .countNum').text())+1);
+			$('.js-add-like').toggleClass('on');
+			if ($('.js-add-like').hasClass('on')) win.alert('해당 글을 \'좋아요\' 하였습니다.');
+			$('.js-add-like .countNum').text(result.data.likeCount);
 		} else {
 			alert(result.message);
 			if (result.status == '401' && result.errorCode == '1603') location.href = '/member/login.html?callbackUrl='+encodeURIComponent(document.URL);
