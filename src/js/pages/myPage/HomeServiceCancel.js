@@ -14,8 +14,13 @@ module.exports = function() {
 	DatePickerClass = require('../../components/DatePicker.js'),
 	DatePicker = DatePickerClass();
 	
+	var events = require('../../events/events'),
+	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+	
 	var controller = require('../../controller/HomeServiceController.js');
 	$(controller).on('homeServiceOrderListResult', listHandler);
+
+	var clameState = "LS_MOVING_STATE_02,LS_MOVING_STATE_05,LS_WASH_STATE_02";
 
 	var callerObj = {
 		/**
@@ -69,11 +74,19 @@ module.exports = function() {
 		});
 	};
 
+	function onDropCheckMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
+		clameState = data.values.join(',');
+		refreshListCritica();
+	}
+
 	function refreshListCritica(e) {
 		if (e != undefined) e.preventDefault();
 		var fromDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
 		var toDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
-		controller.homeServiceCancelList($('#recordInput').pVal(), fromDate, toDate);
+		controller.homeServiceCancelList($('#recordInput').pVal(), fromDate, toDate, clameState);
 		if (e != undefined) e.stopPropagation();
 	};
 
@@ -108,6 +121,7 @@ module.exports = function() {
 	};
 
 	function setBindEvents() {
+		$('.dropChk').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
 		$('#searchButton').click(refreshListCritica);
 	}
 

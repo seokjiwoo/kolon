@@ -362,6 +362,7 @@ table.ui-datepicker-calendar td.ui-datepicker-week-end a.ui-state-active {color:
 /* dropBox check 기능 있을 시 dropChk class 추가 */
 .drop.dropChk li:first-child {width:138px;padding:0;}
 .drop.dropChk li {position:relative;width:108px;padding:0 15px;background:#fff;}
+.drop.dropChk li span.label {display:block;width:100%;font-size:13px;color:#333;}
 .drop.dropChk li label {display:block;width:100%;font-size:13px;color:#999;}
 .drop.dropChk .checkbox {display:block;height:40px;margin-top:0;}
 .drop.dropChk .checkbox label:before {content:'';display:inline-block;width:20px;height:20px;border:none;border-radius:0;margin-right:0;visibility:hidden;position:absolute;top:10px;right:0;}

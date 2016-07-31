@@ -1,6 +1,8 @@
 /* global $ */
 
 module.exports = function() {
+	var util = require('../utils/Util.js');
+
 	var callerObj = {
 		/**
 		 * 초기화
@@ -28,6 +30,21 @@ module.exports = function() {
 			maxSlides: 2,
 			controls: false,
 			slideWidth: 100,
+		});
+
+		if (document.URL.indexOf('detail.html?productNumber') == -1) {
+			$('#flCall').find('.productInfo').hide();
+		} else {
+			$('#currentProductNumber').text(util.getUrlVar().productNumber);
+		}
+		$('#requestConsultForm').submit(function(e){
+			e.preventDefault();
+			if ($('#consultPhone02').pVal()+$('#consultPhone03').pVal() == '') {
+				alert('전화번호를 입력해주세요');
+			} else {
+				// $('#consultPhone01').val()+$('#consultPhone02').pVal()+$('#consultPhone03').pVal()
+				alert('전화상담 요청이 완료되었습니다.\n남기신 전화번호로 상담원이 연락드릴 예정입니다.');
+			}
 		});
 	}
 

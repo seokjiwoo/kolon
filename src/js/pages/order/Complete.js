@@ -134,7 +134,6 @@ module.exports = function() {
 		}
 	}
 
-
 	function myInfoResultHandler(e) {
 		var loginData = loginDataModel.loginData();
 
@@ -145,5 +144,4 @@ module.exports = function() {
 			controller.ordersComplete(self.orderNumber);
 		}
 	}
-
 };

@@ -169,11 +169,7 @@ module.exports = function() {
 		}
 		
 		if (target.hasClass('js-add-like')) {
-			if (target.hasClass('on')) {
-				productController.likes(self.productNumber, 'BM_LIKE_SECTION_02');
-			} else {
-				productController.likes(self.productNumber, 'BM_LIKE_SECTION_02');
-			}
+			productController.likes(self.productNumber, 'BM_LIKE_SECTION_02');
 			return;
 		}
 
@@ -201,8 +197,12 @@ module.exports = function() {
 
 	function scrapResultHandler(e, status, result) {
 		if (status == 200) {
-			$('.js-add-scrap').addClass('on');
-			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
+			if (result.data.scrapYn == 'Y') {
+				$('.js-add-scrap').addClass('on');
+			} else {
+				$('.js-add-scrap').removeClass('on');
+			}
+			$('.js-add-scrap .countNum').text(result.data.scrapCount);
 		}
 	}
 
@@ -372,7 +372,9 @@ module.exports = function() {
 				case PRODUCT_EVENT.LIKES:
 					switch(status) {
 						case 200:
-							win.alert('해당 상품을 \'좋아요\' 하였습니다.');
+							$('.js-add-like').toggleClass('on');
+							if ($('.js-add-like').hasClass('on')) win.alert('해당 상품을 \'좋아요\' 하였습니다.');
+							$('.js-add-like .countNum').text(result.data.likeCount);
 							location.reload();
 							break;
 						default:

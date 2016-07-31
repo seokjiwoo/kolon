@@ -157,6 +157,26 @@ module.exports = function() {
 		var _template = self.colorbox.find('#cancel-request-templates');
 		var _templatesWrap = self.colorbox.find('.js-cancelRequest-wrap');
 
+		$.each(data.product, function(index, orderItem) {
+			orderItem.orderDate = moment(orderItem.orderDateTime).format('YYYY.MM.DD');
+			
+			orderItem.productPriceDesc = util.currencyFormat(parseInt(orderItem.productPrice, 10));
+			if (orderItem.deliveryChargePaymentCode == 'SL_DLVY_CHARGE_PAYMENT_04' || orderItem.deliveryCharge == 0) {
+				orderItem.deliveryChargeDesc = '무료';
+			} else {
+				orderItem.deliveryChargeDesc = util.currencyFormat(orderItem.deliveryCharge)+' 원';
+			}
+			orderItem.productOptionPriceDesc = util.currencyFormat(parseInt(orderItem.productOptionPrice, 10));
+			orderItem.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItem.discountApplyAmt, 10));
+		});
+		$.each(data.refundInfo.listDiscountItem, function(key, item){
+			item.discountAmtDesc = util.currencyFormat(orderItem.discountAmt);
+		})
+		data.refundInfo.paymentAmountDesc = util.currencyFormat(data.refundInfo.paymentAmount);
+		data.refundInfo.refundDeliveryFeeDesc = util.currencyFormat(data.refundInfo.refundDeliveryFee);
+		data.refundInfo.subtractionAmtDesc = util.currencyFormat(data.refundInfo.subtractionAmt);
+		data.refundInfo.additionalDeliveryChargeDesc = util.currencyFormat(data.refundInfo.additionalDeliveryCharge);
+
 		var source = _template.html(),
 		template = win.Handlebars.compile(source),
 		insertElements = $(template(data));

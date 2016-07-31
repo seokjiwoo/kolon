@@ -591,7 +591,7 @@ module.exports = function() {
 				break;
 			case SCRAP_EVENT.ADD_SCRAP:
 				if (status == 200) {
-					alert('스크랩이 완료되었습니다');
+					if (result.data.scrapYn == 'Y') alert('스크랩이 완료되었습니다');
 					$.colorbox.close();
 				} else {
 					alert(result.message);

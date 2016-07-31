@@ -18,7 +18,10 @@ module.exports = function() {
 
 	var eventManager = require('../../events/EventManager'),
 	events = require('../../events/events'),
-	CARD_LIST_EVENT = events.CARD_LIST;
+	CARD_LIST_EVENT = events.CARD_LIST,
+	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+
+	var clameState = 'LS_WASH_STATE_01,LS_WASH_STATE_03,LS_WASH_STATE_04,LS_WASH_STATE_05,LS_MOVING_STATE_01,LS_MOVING_STATE_03,LS_MOVING_STATE_04';
 
 	var info;
 	var serviceRequestNumber;
@@ -114,7 +117,7 @@ module.exports = function() {
 		if (e != undefined) e.preventDefault();
 		var fromDate = moment($('.js-picker-from').datepicker('getDate')).format('YYYY-MM-DD');
 		var toDate = moment($('.js-picker-to').datepicker('getDate')).format('YYYY-MM-DD');
-		controller.homeServiceOrderList($('#recordInput').pVal(), fromDate, toDate);
+		controller.homeServiceOrderList($('#recordInput').pVal(), fromDate, toDate, clameState);
 		if (e != undefined) e.stopPropagation();
 	};
 
@@ -150,6 +153,8 @@ module.exports = function() {
 
 	function setBindEvents() {
 		debug.log(fileName, 'setBindEvents');
+
+		$('.dropChk').on(DROPDOWNMENU_EVENT.CHANGE, onDropCheckMenuChange);
 
 		var CB_EVENTS = opts.colorbox.event;
 
@@ -207,6 +212,14 @@ module.exports = function() {
 				setWashCancelPopup();
 				break;
 		}
+	}
+
+	function onDropCheckMenuChange(e, data) {
+		var target = $(e.target);
+
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
+		clameState = data.values.join(',');
+		refreshListCritica();
 	}
 
 	function setHomeServiceLayer() {

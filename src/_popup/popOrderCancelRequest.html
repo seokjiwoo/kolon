@@ -23,27 +23,12 @@
 			{{productName}}
 			{{#if orderOptionName}}<span class="producOption">옵션 : {{orderOptionName}}</span>{{/if}}
 			<span class="producOption">수량 : {{orderQuantity}}</span>
-			<span class="productPrice">{{productOptionPrice}} 원</span>
+			<span class="productPrice">{{productOptionPriceDesc}} 원</span>
 			</td>
 
 			<td>{{saleMemberName}}</td>
-			<td>
-			{{#vxSwitch deliveryChargeCode}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_01" break=true}}
-					무료
-				{{/vxCase}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_02" break=true}}
-					{{deliveryFee}}원
-				{{/vxCase}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_03" break=true}}
-					{{deliveryFee}}원
-				{{/vxCase}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_04" break=true}}
-					{{deliveryFee}}원
-				{{/vxCase}}
-			{{/vxSwitch}}
-			</td>
-			<td>{{discountApplyAmt}}원</td>
+			<td>{{deliveryChargeDesc}}</td>
+			<td>{{discountApplyAmtDesc}}원</td>
 			<td>{{orderStateCodeName}}</td>
 		</tr>
 	</table>
@@ -74,19 +59,19 @@
 					</colgroup>
 					<tr>
 						<th class="h50">결제금액</th>
-						<td class="h50">{{refundInfo.paymentAmount}} 원</td>
+						<td class="h50">{{refundInfo.paymentAmountDesc}} 원</td>
 					</tr>
 					<tr>
 						<th>할인금액</th>
 						<td>
 							{{#each refundInfo.listDiscountItem}}
-							&middot; {{discountType}} <span>{{discountAmt}}원</span>
+							&middot; {{discountType}} <span>{{discountAmtDesc}}원</span>
 							{{/each}}
 						</td>
 					</tr>
 					<tr>
 						<th class="h50">환불배송비</th>
-						<td class="h50">{{refundInfo.refundDeliveryFee}}원</td>
+						<td class="h50">{{refundInfo.refundDeliveryFeeDesc}}원</td>
 					</tr>
 				</table>
 				<table class="record" summary="환불정보 표로써 차감금액, 추가배송비 정보가 담겨있습니다.">
@@ -97,11 +82,11 @@
 					</colgroup>
 					<tr>
 						<th class="h50">차감금액</th>
-						<td class="h50">{{refundInfo.subtractionAmt}}원</td>
+						<td class="h50">{{refundInfo.subtractionAmtDesc}}원</td>
 					</tr>
 					<tr>
 						<th>추가배송비</th>
-						<td>{{refundInfo.additionalDeliveryCharge}}원</td>
+						<td>{{refundInfo.additionalDeliveryChargeDesc}}원</td>
 					</tr>
 				</table>
 				<table class="record" summary="환불정보 표로써 환불예상금액, 결제취소방법 정보가 담겨있습니다.">
@@ -112,7 +97,7 @@
 					</colgroup>
 					<tr>
 						<th class="h50">환불예상금액</th>
-						<td class="h50">{{refundInfo.paymentAmount}} 원</td>
+						<td class="h50">{{refundInfo.paymentAmountDesc}} 원</td>
 					</tr>
 					<tr>
 						<td colspan="2" class="t_c">{{refundInfo.paymentMethodCodeName}}</b></td>

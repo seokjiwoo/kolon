@@ -171,20 +171,12 @@ module.exports = function() {
 		}
 		
 		if (target.hasClass('js-add-like')) {
-			if (target.hasClass('on')) {
-				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
-			} else {
-				productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
-			}
+			productController.likes(self.productNumber, 'BM_LIKE_SECTION_03');
 			return;
 		}
 
 		if (target.hasClass('js-add-scrap')) {
-			if (target.hasClass('on')) {
-				//
-			} else {
-				scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_GOODS, self.productNumber);
-			}
+			scrapController.addCardScrap(scrapController.SCRAP_TARGET_CODE_CARD_GOODS, self.productNumber);
 			return;
 		}
 
@@ -211,8 +203,12 @@ module.exports = function() {
 
 	function scrapResultHandler(e, status, result) {
 		if (status == 200) {
-			$('.js-add-scrap').addClass('on');
-			$('.js-add-scrap .countNum').text(Number($('.js-add-scrap .countNum').text())+1);
+			if (result.data.scrapYn == 'Y') {
+				$('.js-add-scrap').addClass('on');
+			} else {
+				$('.js-add-scrap').removeClass('on');
+			}
+			$('.js-add-scrap .countNum').text(result.data.scrapCount);
 		}
 	}
 
@@ -409,8 +405,9 @@ module.exports = function() {
 				case PRODUCT_EVENT.LIKES:
 					switch(status) {
 						case 200:
-							win.alert('해당 상품을 \'좋아요\' 하였습니다.');
-							location.reload();
+							$('.js-add-like').toggleClass('on');
+							if ($('.js-add-like').hasClass('on')) win.alert('해당 상품을 \'좋아요\' 하였습니다.');
+							$('.js-add-like .countNum').text(result.data.likeCount);
 							break;
 						default:
 							win.alert(result.message);

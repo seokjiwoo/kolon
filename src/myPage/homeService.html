@@ -48,11 +48,44 @@
 							</td>
 						</tr>
 					</table>
-					<div class="alignBox">						
+					<div class="alignBox expand">
 						<h3 class="subTit">홈서비스 목록<span class="subTxt">주문번호를 클릭하시면 상세 화면으로 이동하실 수 있습니다.</span></h3>
+						<ul class="drop dropChk dropExpand" data-prevent="true">
+							<li><a href="#">진행상태 보기</a></li>
+							<li><p class="checkbox">
+								<label for="chkAll" class="on">전체</label>
+								<input type="checkbox" name="SL_ORDER_STATE" id="chkAll" checked data-all-checker="true">
+							</p></li><li><p class="checkbox">
+								<span class='label'>세탁</span>
+							</p></li><li><p class="checkbox">
+								<label for="chk02" class="on">신청완료</label>
+								<input type="checkbox" name="LS_WASH_STATE_01" id="chk02" checked>
+							</p></li><li><p class="checkbox">
+								<label for="chk03" class="on">수거완료</label>
+								<input type="checkbox" name="LS_WASH_STATE_03" id="chk03" checked>
+							</p></li><li><p class="checkbox">
+							</p></li><li><p class="checkbox">
+								<label for="chk05" class="on">세탁</label>
+								<input type="checkbox" name="LS_WASH_STATE_04" id="chk05" checked>
+							</p></li><li><p class="checkbox">
+								<label for="chk06" class="on">배송완료</label>
+								<input type="checkbox" name="LS_WASH_STATE_05" id="chk06" checked>
+							</p></li><li><p class="checkbox">
+								<span class='label'>이사</span>
+							</p></li><li><p class="checkbox">
+								<label for="chk08" class="on">신청완료</label>
+								<input type="checkbox" name="LS_MOVING_STATE_01" id="chk08" checked>
+							</p></li><li><p class="checkbox">
+								<label for="chk09" class="on">서비스 확정</label>
+								<input type="checkbox" name="LS_MOVING_STATE_03" id="chk09" checked>
+							</p></li><li><p class="checkbox">
+							</p></li><li><p class="checkbox">
+								<label for="chk11" class="on">이사완료</label>
+								<input type="checkbox" name="LS_MOVING_STATE_04" id="chk11" checked>
+							</p></li>
+						</ul>
 					</div>
 					<table class="record record03" id="homeservice-wrap" summary="홈서비스 목록 표로써 주문번호, 상품정보, 판매처, 시공지, 완공일, 진행상태 정보가 담겨있습니다.">
-						
 					</table>
 				</section>
 			</div>

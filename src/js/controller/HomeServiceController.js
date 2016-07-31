@@ -321,11 +321,12 @@ function ClassHomeServiceController() {
 	/**
 	 * 홈서비스 신청 리스트
 	 */
-	function homeServiceOrderList(searchRequest, startDate, endDate, page, size) {
+	function homeServiceOrderList(searchRequest, startDate, endDate, status, page, size) {
 		Super.callApi('/apis/living/', 'GET', {
 			"searchRequest": searchRequest,
 			"startDate": startDate,
 			"endDate": endDate,
+			"serviceStatus": status,
 			"status": "REQUEST"
 		}, function(status, result) {
 			if (status == 200) {
@@ -340,11 +341,12 @@ function ClassHomeServiceController() {
 	/**
 	 * 홈서비스 취소 리스트
 	 */
-	function homeServiceCancelList(searchRequest, startDate, endDate, page, size) {
+	function homeServiceCancelList(searchRequest, startDate, endDate, status, page, size) {
 		Super.callApi('/apis/living/', 'GET', {
 			"searchRequest": searchRequest,
 			"startDate": startDate,
 			"endDate": endDate,
+			"serviceStatus": status,
 			"status": "CANCEL"
 		}, function(status, result) {
 			if (status == 200) {
