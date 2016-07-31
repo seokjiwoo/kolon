@@ -6,7 +6,7 @@
 	{{!-- homeServiceCancelTemplates --}}
 	<h5 class="subTit">1. 수령지 : <span class="subAddr">{{requestAddress}}</span></h5>
 	<table class="record" summary="취소 신정정보 표로써 신청일, 취소 완료일, 취소신청 사유/책임 정보가 담겨있습니다.">
-		<caption>주문 취소 신청정보 표</caption>
+		<caption>취소 신청정보 표</caption>
 		<tr>
 			<th colspan="2">서비스 정보</th>
 			<th>신청자</th>
@@ -23,9 +23,9 @@
 	</table>
 	<form action="#" method='POST' id='washCancelForm'>
 		<fieldset class="reasonCancel">
-			<h5>주문 취소 사유</h5>
-			<select id='reasonSelect' title="취소 사유를 선택해주세요">
-				<option value="-">취소 사유를 선택해주세요</option>
+			<h5>취소 신청 사유</h5>
+			<select id='reasonSelect' title="취소 신청 사유를 선택해주세요">
+				<option value="-">취소 신청 사유를 선택해주세요</option>
 				<option value="서비스 의사 없어짐">서비스 의사 없어짐</option>
 				<option value="타 업체 이용예정">타 업체 이용예정</option>
 				<option value="세탁물 도난/분실">세탁물 도난/분실</option>

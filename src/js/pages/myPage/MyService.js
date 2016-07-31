@@ -329,7 +329,7 @@ module.exports = function() {
 			var reasonCode = $('#cancelReasonDrop').pVal();
 			var reasonText = $.trim($('#cancelReasonField').pVal());
 			if (reasonCode == '' || reasonText == '') {
-				win.alert('취소 사유를 선택/입력 해주세요.');
+				win.alert('취소 신청 사유를 선택/입력 해주세요.');
 			} else {
 				controller.myConstCancel(self.currentOrderNumber, reasonCode, reasonText);
 			}

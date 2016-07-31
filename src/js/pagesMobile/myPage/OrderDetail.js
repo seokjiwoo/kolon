@@ -105,7 +105,7 @@ module.exports = function() {
 				return;
 			}
 
-			// 주문 취소 신청 처리
+			// 취소 신청 처리
 			// controller.orderCancel(deleteList, '', '');
 
 			eventManager.trigger(HTMLPOPUP_EVENT.OPEN, [
@@ -168,7 +168,7 @@ module.exports = function() {
 				});
 
 				if (!isValid) {
-					win.alert('취소 사유를 선택/입력 해주세요.');
+					win.alert('취소 신청 사유를 선택/입력 해주세요.');
 					return;
 				}
 

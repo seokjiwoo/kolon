@@ -48,7 +48,7 @@ function ClassOrderController() {
 			 */
 			cancelDetail: cancelDetail,
 			/**
-			 * 주문 취소 신청 처리
+			 * 취소 신청 처리
 			 */
 			orderCancel: orderCancel,
 			/**
@@ -344,7 +344,7 @@ function ClassOrderController() {
 		}, false);
 	};
 
-	// 주문 취소 신청 처리
+	// 취소 신청 처리
 	// POST /apis/me/orders/{orderNumber}/cancel
 	function orderCancel(orderNumber, cancelList) {
 		Super.callApi('/apis/me/orders/'+orderNumber+ '/cancel?cancelList='+encodeURI(cancelList), 'POST', {}, function(status, result) {
@@ -775,7 +775,7 @@ function ClassOrderController() {
     get /apis/me/orders/{orderNumber}/cancel
         취소 신청 조회 팝업
     post /apis/me/orders/{orderNumber}/cancel
-        주문 취소 신청 처리
+        취소 신청 처리
     post /apis/me/orders/{orderNumber}/confirm
         구매확정
     post /apis/me/orders/{orderNumber}/exchange

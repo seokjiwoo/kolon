@@ -8,7 +8,7 @@
 {{!-- cancel-popup-template --}}
 	<h5 class="subTit">주문 상품 / 시공지 정보</h5>
 	<table class="record" summary="취소 신정정보 표로써 신청일, 취소 완료일, 취소신청 사유/책임 정보가 담겨있습니다.">
-		<caption>주문 취소 신청정보 표</caption>
+		<caption>취소 신청정보 표</caption>
 		<colgroup>
 			<col style="width:90px;"/>
 			<col style="width:280px;"/>
@@ -52,9 +52,9 @@
 	</table>
 	<form action="">
 		<fieldset class="reasonCancel">
-			<h5>취소 사유</h5>
-			<select title="취소 사유를 선택해주세요" id="cancelReasonDrop">
-				<option value="">취소 사유를 선택해주세요</option>
+			<h5>취소 신청 사유</h5>
+			<select title="취소 신청 사유를 선택해주세요" id="cancelReasonDrop">
+				<option value="">취소 신청 사유를 선택해주세요</option>
 				{{#each claimReasonCode}}
 				<option value="{{code}}">{{codeName}}</option>
 				{{/each}}

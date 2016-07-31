@@ -287,7 +287,7 @@ function Events() {
 				ORDER_CONFIRM : 'orderConfirmResult',
 				// 주문/배송 - 배송추적 팝업 조회
 				ORDER_TRACKING : 'orderTrackingInfoResult',
-				// 주문 취소 신청 처리
+				// 취소 신청 처리
 				ORDER_CANCEL : 'orderCancelResult',
 				// 교환 신청 처리
 				ORDER_EXCHANGE : 'orderExchangeResult',
