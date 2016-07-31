@@ -70,7 +70,7 @@ module.exports = function() {
 
 	function getOrderList(keyword, deliveryStateCode) {
 		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
+		deliveryStateCode = deliveryStateCode || 'SL_ORDER_STATE_01,SL_ORDER_STATE_02,SL_ORDER_STATE_03,SL_ORDER_STATE_04,SL_ORDER_STATE_05,SL_ORDER_STATE_06';
 
 		controller.myOrdersList(
 			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
@@ -278,7 +278,7 @@ module.exports = function() {
 			getOrderList();
 		});
 
-		$('.js-sort-date li.js-default').trigger('click');
+		$('.js-sort-date li.js-default').trigger('click').removeClass('js-default');
 	}
 
 	function onControllerListener(e, status, response) {

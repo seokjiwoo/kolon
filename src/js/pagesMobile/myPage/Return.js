@@ -71,7 +71,7 @@ module.exports = function() {
 
 	function getClaimsList(keyword, deliveryStateCode) {
 		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
+		deliveryStateCode = deliveryStateCode || 'SL_CLAIM_STATE_01_01,SL_CLAIM_STATE_01_02,SL_CLAIM_STATE_01_03,SL_CLAIM_STATE_02_01,SL_CLAIM_STATE_02_02,SL_CLAIM_STATE_02_03,SL_CLAIM_STATE_03_01,SL_CLAIM_STATE_03_02,SL_CLAIM_STATE_03_03,SL_CLAIM_STATE_01_04,SL_CLAIM_STATE_02_04,SL_CLAIM_STATE_03_04,SL_CLAIM_STATE_01_05,SL_CLAIM_STATE_02_05,SL_CLAIM_STATE_01_06,SL_CLAIM_STATE_02_06';
 
 		controller.myClaimsList(
 			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
@@ -270,7 +270,7 @@ module.exports = function() {
 			getClaimsList();
 		});
 
-		$('.js-sort-date li.js-default').trigger('click');
+		$('.js-sort-date li.js-default').trigger('click').removeClass('js-default');
 	}
 
 	function onControllerListener(e, status, response) {
