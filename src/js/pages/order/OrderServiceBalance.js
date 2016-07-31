@@ -150,6 +150,7 @@ module.exports = function() {
 				
 				paymentInfo.estimatePriceDesc = util.currencyFormat(paymentInfo.estimatePrice);
 				paymentInfo.advancePriceDesc = util.currencyFormat(paymentInfo.advancePrice);
+				paymentInfo.installmentPriceDesc = util.currencyFormat(paymentInfo.installmentPrice);
 				paymentInfo.totalPaymentPriceDesc = util.currencyFormat(paymentInfo.totalPaymentPrice);
 
 				renderData(paymentInfo, '#order-payment-templates', '#order-payment-wrap', true);
