@@ -114,7 +114,9 @@ module.exports = function() {
 
 		$('.js-picker .js-alt,.js-btn').click(function(e) {
 			if ($('#moveDate').hasClass('disabled')) {
+				e.stopImmediatePropagation();
 				alert("이사 출발지를 먼저 선택해주세요");
+				$('#moveDate').datepicker("hide");
 			} else if ($('#moveDate').hasClass('cal-show')) {
 				mCode = moment($('#moveDate').datepicker('getDate')).format('YYYYMM');
 				controller.movingDateList(originAddress.regionCode, mCode);

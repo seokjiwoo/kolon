@@ -39,6 +39,6 @@ module.exports = function() {
 	}
 
 	function itemListHandler(e, status, result) {
-		cardList.appendData(result.data.likeList);
+		cardList.appendData(result.data.myRecentProductCards);
 	}
 };

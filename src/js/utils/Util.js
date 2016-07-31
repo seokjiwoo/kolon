@@ -46,6 +46,11 @@ function ClassUtils() {
 			 */
 			checkValidPassword: checkValidPassword,
 			/**
+			 * 전화 번호 검증
+			 * @param {String} value - mobile phone number for validation 
+			 */
+			checkValidPhoneNumber: checkValidPhoneNumber,
+			/**
 			 * 핸드폰 번호 검증
 			 * @param {String} value - mobile phone number for validation 
 			 */
@@ -168,6 +173,11 @@ function ClassUtils() {
 
 	function checkValidMobileNumber(value) {
 		var re = /^[0-9]{10,12}$/i;
+		return (($.trim(value) !== '') && re.test(value));
+	}
+
+	function checkValidPhoneNumber(value) {
+		var re = /^[0-9]{9,12}$/i;
 		return (($.trim(value) !== '') && re.test(value));
 	}
 	

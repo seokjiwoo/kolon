@@ -91,23 +91,34 @@ module.exports = function() {
 	}
 
 	function setDatePicker() {
-		var datePicker = $('.js-picker');
-		DatePicker.init({
+		var datePicker = $('.calendar.js-picker');
+		
+		DatePicker.init({default:{
 			wrap : datePicker,
 			picker : datePicker.find('.js-picker'),
 			altField : datePicker.find('.js-alt'),
 			button : datePicker.find('.js-btn'),
+			dateFormat : 'yy.mm.dd',
+			minDate: 0,
+			onSelect : $.noop,
 			changeYear: true,
 			changeMonth: true,
 			disabled: true,
-			minDate: 0,
 			showOn: "off"
+		}});
+		$('#washDate').on('onSelect', function(){
+			refreshTimeDropStatus();
 		});
 		$('#washDate').addClass('disabled');
 
-		$('#washDate').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
-		$('#washDate').on('onSelect', function(){
-			refreshTimeDropStatus();
+		datePicker.find('.js-alt,.js-btn').click(function(e) {
+			if ($('#washDate').hasClass('disabled')) {
+				e.stopImmediatePropagation();
+				alert("서비스 주소를 확인해주세요");
+				$('#washDate').datepicker("hide");
+			} else if ($('#washDate').hasClass('cal-show')) {
+				//
+			}
 		});
 	};
 
@@ -150,7 +161,8 @@ module.exports = function() {
 	function washingCompanyListHandler(e, status, result) {
 		if (result.status != 200) {
 			$('#availableMessage').html('<b>'+result.message+'</b>');
-			$("#washDate").datepicker("option", "disabled", true);
+			$('#washDate').addClass('disabled');
+			$("#washDate").datepicker("option", "disabled");
 		} else {
 			$('#availableMessage').html(result.message);
 			companyNumberObject = {
@@ -159,6 +171,7 @@ module.exports = function() {
 			}
 			$('#washDate').removeClass('disabled');
 			$("#washDate").datepicker("option", "disabled", false);
+			$('#washDate').datepicker("option", "maxDate", new Date(moment().add(7, 'day')));
 		}
 		controller.washingTimeList(serviceAddress.roadBaseAddress);
 	};

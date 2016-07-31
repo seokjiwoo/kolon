@@ -14,6 +14,10 @@ module.exports = function() {
 	
 	var CardList = require('../../components/CardList.js');
 	var cardList;
+	var DropDownMenu = require('../../components/DropDownMenu.js');
+
+	var magazineTypeCode = '';
+	var order = 'newest';
 	
 	var model = require('../../model/CardListModel.js');
 	
@@ -38,8 +42,20 @@ module.exports = function() {
 		$(cardList).on('cardAppended', cardAppendedHandler);
 		cardList.init();	// 카드 리스트
 		
-		controller.list();
 		bestKeySlide();
+
+		$('#magazineTypeDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+			cardList.removeAllData();
+			magazineTypeCode = data.values[0];
+			controller.list(magazineTypeCode, order);
+		});
+		$('#magazineAlignDrop').on(DropDownMenu.EVENT.CHANGE, function(e, data) {
+			cardList.removeAllData();
+			order = data.values[0];
+			controller.list(magazineTypeCode, order);
+		});
+		
+		controller.list(magazineTypeCode, order);
 	};
 
 	function getListHandler(e, status, result) {

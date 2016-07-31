@@ -22,6 +22,7 @@ module.exports = function() {
 	var util = require('../../utils/Util.js');
 
 	var enteredId;
+	var enteredAuthNumber = 0;
 	var authNumberResendFlag = false;
 	var firstTryFlag = true;		// 페이지 열리고 첫 시도인지 체크 (휴대전화로 가입시도 후 페이지 새로고침 했을 때 이전 세션 때문에 인증번호 틀림 에러코드 돌아오는 문제 때문에...)
 	
@@ -136,7 +137,11 @@ module.exports = function() {
 				// 휴대폰 번호
 				enteredId = id;
 				firstTryFlag = true;
-				controller.login(id, pw, keepLogin);
+				if (enteredAuthNumber == 0) {
+					controller.login(id, pw, keepLogin);
+				} else {
+					controller.login(id, pw, keepLogin, enteredAuthNumber);
+				}
 			} else {
 				// 이메일
 				enteredId = $('#inputName').pVal();
@@ -196,6 +201,7 @@ module.exports = function() {
 						break;
 					case 1901:	// 모바일 인증번호
 						if (!firstTryFlag) {
+							enteredAuthNumber = 0;
 							alert(response.message);
 							break;
 						}
@@ -221,10 +227,11 @@ module.exports = function() {
 								}, 1000);
 							},
 							onSubmit: function() {
-								if ($.trim($('#mobileAuthNumber').pVal()) == '') {
+								enteredAuthNumber = $.trim($('#mobileAuthNumber').pVal());
+								if (enteredAuthNumber == '') {
 									alert('휴대전화로 전송된 인증번호를 입력해 주세요.');
 								} else {
-									controller.login(enteredId, $('#inputPW').pVal(), keepLogin, $('#mobileAuthNumber').pVal());
+									controller.login(enteredId, $('#inputPW').pVal(), keepLogin, enteredAuthNumber);
 								}
 							}
 						});
@@ -264,7 +271,7 @@ module.exports = function() {
 	function onRecaptchaHandler(e, status, response) {
 		recaptchaData = response.data;
 		setRecaptcha();
-	}
+	};
 
 	/**
 	 * 인증번호 재발송 이벤트 핸들링

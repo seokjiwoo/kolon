@@ -105,13 +105,13 @@ module.exports = function() {
 		} else if (util.byteLength(adrName1Val) > 100 ||util.byteLength(adrName2Val) > 100) {
 			alert('한글 50자, 영문, 숫자 100자까지 가능합니다');
 			return;
-		} else if ($.trim($('#phone2').pVal()) == '' || $.trim($('#phone3').pVal()) == '') {
-			alert(util.byteLength(adrName1Val)+'연락처를 입력해 주세요');
+		} else if (($.trim($('#phone2').pVal()) == '' || $.trim($('#phone3').pVal()) == '') && ($.trim($('#phone5').pVal()) == '' || $.trim($('#phone6').pVal()) == '')) {
+			alert('최소 1개의 연락처를 입력하세요');
 			return;
-		} else if (!util.checkValidMobileNumber(phoneNumber1)) {
+		} else if (!util.checkValidPhoneNumber(phoneNumber1)) {
 			alert('올바른 연락처를 입력해 주세요');
 			return;
-		} else if (!util.checkValidMobileNumber(phoneNumber2) && ($('#phone5').pVal()+$('#phone6').pVal()) != '') {
+		} else if (!util.checkValidPhoneNumber(phoneNumber2) && ($('#phone5').pVal()+$('#phone6').pVal()) != '') {
 			alert('올바른 연락처를 입력해 주세요');
 			return;
 		} else if ($.trim($('#zipCode').pVal()) == '') {
