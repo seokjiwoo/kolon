@@ -231,7 +231,7 @@ a[class^="btnSize"], .btn{display: inline-block;color: #fff;outline: 0;border: 0
 .paper-nav a span{position:absolute;left:-99990em;top:-99990em;z-index:-1;display:inline-block;}
 
 .radioBox{position: relative;line-height: 30px;}
-.radioBox input{position: absolute;opacity: 0;left: 0;}
+.radioBox input{position: absolute;opacity: 0;left: 0; z-index:-1;}
 .radioBox label:before{content: '';display: inline-block;width: 18px;height: 18px;margin-right:5px;background: url('../images/ico_radio.png') 0 -18px no-repeat;vertical-align: middle;}
 .radioBox label.on:before{background-position: 0 0;}
 .radioBox label {color:#000;}
