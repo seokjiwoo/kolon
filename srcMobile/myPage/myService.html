@@ -113,7 +113,7 @@
 		<div class="wrapT">
 			<p class="orderNum">
 				<span>{{orderDate}}</span>
-				<a href="/myPage//myPage/myServiceDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
+				<a href="/myPage/myServiceDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a></p>
 			</p>
 			<p class="payPrice">결제금액 <em>{{constProduct.productPriceDesc}}</em> 원</p>
 			<ul class="productList">
@@ -195,7 +195,9 @@
 		</div>
 	{{/each}}
 	{{else}}
-		<div class="noContent" style="display:block">주문/시공 내역이 없습니다.</div>
+		<div class="wrapT">
+			<p class="noContent" style="display:block">주문/시공 내역이 없습니다.</p>
+		</div>
 	{{/if}}
 {{!--// order-list-templates --}}
 </script>
