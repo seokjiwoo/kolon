@@ -95,8 +95,6 @@ module.exports = function() {
 		self.searchInp = self.search.find(self.opts.search.inp);
 		self.searchSubmit = self.search.find(self.opts.search.submit);
 
-		self.selPopBtnInfo = {};
-
 		self.activeFilterIdx = null;
 	}
 
@@ -129,11 +127,9 @@ module.exports = function() {
 		};
 
 		if (target.hasClass('js-order-confirm')) {
-			isConfirm = win.confirm('선택하신 상품의 구매를 확정하시겠습니까?');
-		}
-
-		if (isConfirm) {
-			controller.orderConfirm(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.orderProductSequence);
+			if (win.confirm('선택하신 상품의 구매를 확정하시겠습니까?')) {
+				controller.orderConfirm(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber, self.selPopBtnInfo.info.orderOptionNumber);
+			}
 		}
 	}
 
@@ -159,19 +155,84 @@ module.exports = function() {
 							});
 	}
 
+	function displayCancelPopup(data, type) {
+		var _template = self.colorbox.find('#cancel-request-templates');
+		var _templatesWrap = self.colorbox.find('.js-cancelRequest-wrap');
+
+		var source = _template.html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
+
+		_templatesWrap.empty()
+							.addClass(self.opts.cssClass.isLoading)
+							.append(insertElements);
+
+		_templatesWrap.imagesLoaded()
+							.always(function() {
+								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
+								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+							});
+		
+		var cancelOrderDataArray = new Array();
+		$.each(data.product, function(key, each){
+			cancelOrderDataArray.push(new Array(each.productNumber, each.orderOptionNumber));
+		});
+
+		self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+		self.colorbox.find('#js-order-cancel-form').on('submit', function(e) {
+			e.preventDefault();
+
+			var isValid = true,
+			cancelType, cancelReson;
+
+			$.each($('.cancelReasonDrop'), function(key, each){
+				cancelOrderDataArray[key].push($(each).pVal());
+				if (!$(each).pVal()) isValid = false;
+			});
+			$.each($('.cancelReasonField'), function(key, each){
+				cancelOrderDataArray[key].push(encodeURI($(each).pVal()));
+				if (!$(each).pVal()) isValid = false;
+			});
+			
+			if (!isValid) {
+				win.alert('취소 사유를 선택/입력 해주세요.');
+				return;
+			}
+			
+			var cancelOrderArray = new Array();
+			$.map(cancelOrderDataArray, function(each) {
+				cancelOrderArray.push(each.join('|'));
+			});
+
+			var cancelOrder = cancelOrderArray.join(',');
+			
+			controller.orderCancel(self.selPopBtnInfo.info.orderNumber, cancelOrder);
+		});
+	};
+
 	function setColoboxEvevnts() {
 		// 취소신청
 		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			controller.orderDetail(self.selPopBtnInfo.info.orderNumber);
+			if (self.selPopBtnInfo.info.joinedOrder == "1") {
+				controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, self.selPopBtnInfo.info.productNumber+'|'+self.selPopBtnInfo.info.orderOptionNumber);
+			} else {
+				var cancelRequestMessage = '';
+				$.each($('[data-order-info]'), function(key, each){
+					var eachInfo = $(each).data('order-info');
+					if (self.selPopBtnInfo.info.orderNumber == eachInfo.orderNumber) {
+						cancelRequestMessage += (eachInfo.productNumber+'|'+eachInfo.orderOptionNumber+',');
+					} 
+				});
+				controller.cancelDetail(self.selPopBtnInfo.info.orderNumber, cancelRequestMessage);
+			}
 		}
 
 		// 배송추적
 		if (self.colorbox.hasClass('popOrderDelivery')) {
 			controller.orderTrackingInfo(
 				self.selPopBtnInfo.info.orderNumber,
-				self.selPopBtnInfo.info.orderProductSequence,
-				self.selPopBtnInfo.info.deliveryNumber,
-				self.selPopBtnInfo.info.orderNumber
+				self.selPopBtnInfo.info.deliveryNumber
 			);
 		}
 
@@ -281,7 +342,7 @@ module.exports = function() {
 		$('.js-sort-date li.js-default').trigger('click').removeClass('js-default');
 	}
 
-	function onControllerListener(e, status, response) {
+	function onControllerListener(e, status, response, type) {
 		var eventType = e.type,
 		result = response;
 
@@ -344,35 +405,53 @@ module.exports = function() {
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
-				switch(status) {
-					case 200:
-						window.alert('구매가 확정되었습니다.');
-						location.reload();
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 
 			case ORDER_EVENT.ORDER_DETAIL:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
+				if (result && !result.data) {
+					displayData([], type);
+					return;
 				}
-				debug.log(fileName, 'onControllerListener', eventType, status, response);
+
+				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
+				result.data.discountPriceDesc = util.currencyFormat(parseInt(result.data.discountPriceDesc, 10));
+
+				if (result.data.listOrderItems) {
+					$.each(result.data.listOrderItems, function(index, listOrderItems) {
+						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
+						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
+						listOrderItems.deliveryFreeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFree, 10));
+					});
+				}
+
+				debug.log(fileName, 'onControllerListener', eventType, status, response, result);
+				displayData(result.data, type);
+				break;
+			
+			case ORDER_EVENT.CANCEL_DETAIL:
+				displayCancelPopup(result.data, type);
+				break;
+			
+			case ORDER_EVENT.ORDER_CANCEL:
+				if (result == 200) {
+					alert('주문취소가 완료되었습니다');
+					location.reload(true);
+				} else {
+					alert(result.message);
+				}
 				break;
 
 			case ORDER_EVENT.ORDER_TRACKING:
-				switch(status) {
-					case 200:
-						break;
-					default:
-						break;
-				}
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
+				var deliverInfo = response.data.deliveryInfo;
+
+				$('#dsProductName').text(deliverInfo.productName);
+				$('#dsProductOrderNumber').text(deliverInfo.orderNumber);
+				$('#dsDeliverName').text(deliverInfo.courierName);
+				$('#dsDeliverName').attr('href', deliverInfo.invoiceInquiryUrl);
+				$('#dsDeliverTel').text(deliverInfo.courierPhoneNumber);
+				$('#dsDeliverCode').text(deliverInfo.invoiceNumber);
 				break;
 		}
 	}
