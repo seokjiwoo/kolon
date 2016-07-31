@@ -100,14 +100,7 @@ module.exports = function() {
 
 	function onFollowListener(e) {
 		e.preventDefault();
-
-		var target = $(e.currentTarget);
-
-		if (target.hasClass('js-add-follow')) {
-			followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
-		} else if (target.hasClass('js-delete-follow')) {
-			followController.deleteFollows(self.followTargetNumber);
-		}
+		followController.addFollows(self.expertNumber, 'BM_FOLLOW_TYPE_01');
 	}
 
 	function destroyBtnsEvents() {
@@ -154,18 +147,13 @@ module.exports = function() {
 				break;
 			case FOLLOWING_EVENT.ADD_FOLLOW:
 				switch(status) {
-					case 200: 
-						$('#followerCount').text(Number($('#followerCount').text())+1);
-						$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
-						break;
-					default: win.alert(result.message); break;
-				}
-				break;
-			case FOLLOWING_EVENT.DELETE_FOLLOW:
-				switch(status) {
-					case 200: 
-						$('#followerCount').text(Number($('#followerCount').text())-1);
-						$('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우');
+					case 200:
+						$('#followerCount').text(result.data.followCount);
+						if (result.data.followYn == 'Y') {
+							$('#btnFollow').removeClass('js-add-follow').addClass('js-delete-follow').text('팔로잉');
+						} else {
+							$('#btnFollow').removeClass('js-delete-follow').addClass('js-add-follow').text('팔로우');
+						}
 						break;
 					default: win.alert(result.message); break;
 				}
