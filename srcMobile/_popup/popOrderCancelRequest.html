@@ -1,345 +1,183 @@
 <div class="layerPopup order">
 	<div class="popTop">
-		<h3 class="popTit">결제 취소 신청</h3>
+		<h3 class="popTit">주문 취소 신청</h3>
 		<a href="#" class="closeBtn popClose"><span class="hide">팝업닫기</span></a>
 	</div>
 	<div class="popCon popScroll">
-		<div class="popBtnMb">
-			<div class="wrapT">
-				<div class="deliveryArea">
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="stateInfo">
-								<h4 class="conTit noBorder">입금대기</h4>
-								<p>
-									<span>신청인</span>
-									<span>홍길동</span>
+		<div class="popBtnMb js-cancelRequest-wrap"></div>
+	</div>
+</div>
+
+<script id="cancel-request-templates" type="text/x-handlebars-template">
+	{{#each product}}
+		<h5 class="subTit">{{vxMath @index "+" 1}}. 상품 수령지 : {{receiverName}}<!-- - <span class="subAddr">{{receiverRoadBaseAddress}}</span>--></h5>
+		<div class="wrapT">
+			<div class="deliveryArea">
+				<ul class="productList">
+					<li>
+						<a href="javascript:;" class="thumb"><img src="{{productImageUrl}}" alt="" /></a>
+						<div class="info">
+							<span>{{saleMemberName}}</span>
+							<p><a href="javascript:;">{{productName}}</a></p>
+						</div>
+						<ul class="productData">
+							<li>
+								{{#if orderOptionName}}
+									<p class="name">{{orderOptionName}}</p>
+								{{/if}}
+								<p class="count">
+									<span><em>{{productOptionPrice}}</em>원</span>
+									<span>{{orderQuantity}} 개</span>
 								</p>
-								<p>
-									<span>연락처</span>
-									<span>010-1234-5678</span>
-								</p>
-								<p>
-									<span>시공지</span>
-									<span>서울특별시 강남구 삼성동 8-5</span>
-								</p>
-								<p>
-									<span>할인금액</span>
-									<span>0원</span>
-								</p>
-								<p>
-									<span>결제금액</span>
-									<span>3,700,000원</span>
-								</p>
-							</div>
-							<div class="stateInfo">
-								<h3 class="conTit noBorder">취소 사유</h3>
+							</li>
+						</ul>
+						<!-- 
+						<div class="stateInfo">
+							<h4 class="conTit noBorder">입금대기</h4>
+							<p>
+								<span>신청인</span>
+								<span>홍길동</span>
+							</p>
+							<p>
+								<span>연락처</span>
+								<span>010-1234-5678</span>
+							</p>
+							<p>
+								<span>시공지</span>
+								<span>서울특별시 강남구 삼성동 8-5</span>
+							</p>
+							<p>
+								<span>할인금액</span>
+								<span>0원</span>
+							</p>
+							<p>
+								<span>결제금액</span>
+								<span>3,700,000원</span>
+							</p>
+						</div>
+						 -->
+						<div class="stateInfo">
+							<h3 class="conTit noBorder">취소 신청 사유</h3>
+							<form>
+								<fieldset class="reasonCancel">
 								<ul>
 									<li>
 										<div class="selectBox">
-											<select>
-												<option value="취소신청 사유를 선택해주세요.">취소신청 사유를 선택해주세요.</option>
+											<select class="cancelReasonDrop">
+												<option value="">주문 취소 사유를 선택해주세요</option>
+												{{#each ../claimReasons}}
+												<option value="{{code}}">{{codeDescription}}</option>
+												{{/each}}
 											</select>
 										</div>
 									</li>
-									<li><textarea placeholder="직접 입력"></textarea></li>
+									<li><input type="text" title="상세 내용 입력" class="cancelReasonField"></li>
 								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
+								</fieldset>
+							</form>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<div class="wrapT">
-				<div class="deliveryArea">
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="name">120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입 120x120 라운드 타입</p>
-									<p class="count">
-										<span><em>1,700,000</em>원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="stateInfo">
-								<h4 class="conTit noBorder">입금대기</h4>
-								<p>
-									<span>신청인</span>
-									<span>홍길동</span>
-								</p>
-								<p>
-									<span>연락처</span>
-									<span>010-1234-5678</span>
-								</p>
-								<p>
-									<span>시공지</span>
-									<span>서울특별시 강남구 삼성동 8-5</span>
-								</p>
-								<p>
-									<span>할인금액</span>
-									<span>0원</span>
-								</p>
-								<p>
-									<span>결제금액</span>
-									<span>3,700,000원</span>
-								</p>
-							</div>
-							<div class="stateInfo">
-								<h3 class="conTit noBorder">취소신청 사유</h3>
-								<ul>
-									<li>
-										<div class="selectBox">
-											<select>
-												<option value="취소신청 사유를 선택해주세요.">취소신청 사유를 선택해주세요.</option>
-											</select>
-										</div>
-									</li>
-									<li><textarea placeholder="직접 입력"></textarea></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
+		</div>
+	{{/each}}
+	<form id="js-order-cancel-form" class="js-cancel-form" action="#" method="post">
+		<fieldset class="reasonCancel">
+		{{#if refundInfo}}
 			<div class="wrapT">
 				<div class="payInfo">
 					<h3 class="conTit">환불정보</h3>
 					<div class="priceView">
 						<p>
-							<span>상품금액</span>
-							<span><b>1,700,000</b>원</span>
+							<span>결제금액</span>
+							<span><b>{{refundInfo.paymentAmount}}</b>원</span>
 						</p>
+						{{#each refundInfo.listDiscountItem}}
 						<p>
-							<span>할인금액</span>
-							<span><b>-3,000 </b>원</span>
+							<span>{{discountType}}</span>
+							<span><b>{{discountAmt}}</b>원</span>
 						</p>
-						<p>
-							<span>기본할인</span>
-							<span> -2000 원</span>
-						</p>
-						<p>
-							<span>포인트</span>
-							<span> -1000 원</span>
-						</p>
-						<!-- 기획서상 없는데 pc에는 있는것 같아요 
+						{{/each}}
 						<p>
 							<span>환불배송비</span>
-							<span><b>2,500</b>원</span>
-						</p> -->
+							<span><b>{{refundInfo.refundDeliveryFee}}</b>원</span>
+						</p>
 					</div>
 					<div class="difference">
 						<p>
 							<span>차감금액</span>
-							<span><b>0</b>원</span>
+							<span><b>{{refundInfo.subtractionAmt}}</b>원</span>
+						</p>
+						<p>
+							<span>추가 배송비</span>
+							<span><b>{{refundInfo.additionalDeliveryCharge}}</b>원</span>
 						</p>
 					</div>
 				</div>
 				<div class="totalPrice">
 					<span>환불예상금액</span>
-					<span><em>1,720,000</em> 원</span>
+					<span><em>{{refundInfo.paymentAmount}}</em> 원</span>
 				</div>
-				<div class="cancelResult">무통장입금(취소완료 즉시 환불)</div>
+				<div class="cancelResult">{{refundInfo.paymentMethodCodeName}}</div>
 			</div>
-			<div class="myCartInfo">
-				<p class="myCartInfoTit">주의사항</p>
-				<ul class="myCartInfoList">
-					<li>주문 취소 신청은 상품 배송 이전 단계에서만 가능합니다.</li>
-					<li>묶음상품/해외배송상품 주문 취소 시 배송정책에 따라 추가되는배송비를 결제하셔야 주문취소가 완료됩니다.</li>
-					<li>실측/견적 진행 취소를 원하실 경우 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
-					<li>결제수단별 환불방법과 환불소요기한에 차이가 있을 수있습니다.</li>
-				</ul>
+		{{/if}}
+		{{#vxIF refundInfo.paymentMethodCode "==" "SL_PAYMENT_METHOD_03"}}
+			<div class="wrapT">
+				<div class="payInfo">
+					<h3 class="conTit">환불계좌</h3>
+					{{#if refundAccount}}
+						<div class="priceView">
+							<p>
+								<span>입금은행</span>
+								<span><b>{{refundAccount.bankName}}</b></span>
+							</p>
+							<p>
+								<span>계좌번호</span>
+								<span><b>{{refundAccount.accountNumber}}</b></span>
+							</p>
+						</div>
+						<div class="priceView">
+							<p>
+								<span>예금주</span>
+								<span><b>{{refundAccount.depositorName}}</b></span>
+							</p>
+							<p>
+								<button class="btnSizeS btnSizeW btnColor03 btn profileEditButton">계좌수정</button>
+							</p>
+						</div>
+					{{else}}
+						<div class="priceView">
+							<p class="noContent" style="display:block">
+								등록된 환불계좌가 없습니다. <a class="profileEditButton">마이커먼 > 정보수정</a>에서 환불계좌를 등록하신 후에 다시 시도해 주세요.
+							</p>
+						</div>
+					{{/if}}
+				</div>
 			</div>
-		</div>
-	</div>
-	<div class="btnWrap">
-		<a href="" class="popBtn">취소 신청하기</a>
-	</div>
-	<div class="popCon js-cancelRequest-wrap"></div>
-</div>
-
-<script id="cancel-request-templates" type="text/x-handlebars-template">
-	<p>{{product}}</p>
-	{{#each product}}
-	<h5 class="subTit">{{vxMath @index "+" 1}}. 상품 수령지 : {{receiverName}}<!-- - <span class="subAddr">{{receiverRoadBaseAddress}}</span>--></h5>
-	<table class="record" summary="취소 신정정보 표로써 신청일, 취소 완료일, 취소신청 사유/책임 정보가 담겨있습니다.">
-		<caption>주문 취소 신청정보 표</caption>
-		<tr>
-			<th colspan="2">상품정보</th>
-			<th>판매처</th>
-			<th>배송비</th>
-			<th>할인금액</th>
-			<th>진행상태</th>
-		</tr>
-		<tr>
-			<td class="popRecord"><div class="recordThumb"><img src="{{productImageUrl}}" alt=""></div></td>
-			<td class="popRecord recordInfo">
-			{{productName}}
-			{{#if orderOptionName}}<span class="producOption">옵션 : {{orderOptionName}}</span>{{/if}}
-			<span class="producOption">수량 : {{orderQuantity}}</span>
-			<span class="productPrice">{{productOptionPrice}} 원</span>
-			</td>
-
-			<td>{{saleMemberName}}</td>
-			<td>
-			{{#vxSwitch deliveryChargeCode}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_01" break=true}}
-					무료
-				{{/vxCase}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_02" break=true}}
-					{{deliveryFee}}원
-				{{/vxCase}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_03" break=true}}
-					{{deliveryFee}}원
-				{{/vxCase}}
-				{{#vxCase "PD_DLVY_CHARGE_SETUP_04" break=true}}
-					{{deliveryFee}}원
-				{{/vxCase}}
-			{{/vxSwitch}}
-			</td>
-			<td>{{discountApplyAmt}}원</td>
-			<td>{{orderStateCodeName}}</td>
-		</tr>
-	</table>
-	<form>
-		<fieldset class="reasonCancel">
-			<h5>주문 취소 사유</h5>
-			<select title="주문 취소 사유를 선택해주세요" class="cancelReasonDrop">
-				<option value="">주문 취소 사유를 선택해주세요</option>
-				{{#each ../claimReasons}}
-				<option value="{{code}}">{{codeDescription}}</option>
-				{{/each}}
-			</select>
-			<input type="text" title="상세 내용 입력" class="cancelReasonField">
-		</fieldset>
-	</form>
-	{{/each}}
-	
-	<form action="#" method='post' class="js-cancel-form" id='js-order-cancel-form'>
-		<fieldset class="reasonCancel">
-			{{#if refundInfo}}
-			<h5 class="subTit">환불정보</h5>
-			<div class="table03Wrap">
-				<table class="record" summary="환불정보 표로써 결제금액, 할인금액, 환불배송비 정보가 담겨있습니다.">
-					<caption>환불정보 표</caption>
-					<colgroup>
-						<col style="width:47%">
-						<col style="width:auto">
-					</colgroup>
-					<tr>
-						<th class="h50">결제금액</th>
-						<td class="h50">{{refundInfo.paymentAmount}} 원</td>
-					</tr>
-					<tr>
-						<th>할인금액</th>
-						<td>
-							{{#each refundInfo.listDiscountItem}}
-							&middot; {{discountType}} <span>{{discountAmt}}원</span>
-							{{/each}}
-						</td>
-					</tr>
-					<tr>
-						<th class="h50">환불배송비</th>
-						<td class="h50">{{refundInfo.refundDeliveryFee}}원</td>
-					</tr>
-				</table>
-				<table class="record" summary="환불정보 표로써 차감금액, 추가배송비 정보가 담겨있습니다.">
-					<caption>환불정보 표</caption>
-					<colgroup>
-						<col style="width:47%">
-						<col style="width:auto">
-					</colgroup>
-					<tr>
-						<th class="h50">차감금액</th>
-						<td class="h50">{{refundInfo.subtractionAmt}}원</td>
-					</tr>
-					<tr>
-						<th>추가배송비</th>
-						<td>{{refundInfo.additionalDeliveryCharge}}원</td>
-					</tr>
-				</table>
-				<table class="record" summary="환불정보 표로써 환불예상금액, 결제취소방법 정보가 담겨있습니다.">
-					<caption>환불정보 표</caption>
-					<colgroup>
-						<col style="width:47%">
-						<col style="width:auto">
-					</colgroup>
-					<tr>
-						<th class="h50">환불예상금액</th>
-						<td class="h50">{{refundInfo.paymentAmount}} 원</td>
-					</tr>
-					<tr>
-						<td colspan="2" class="t_c">{{refundInfo.paymentMethodCodeName}}</b></td>
-					</tr>
-				</table>
-			</div>
-			{{/if}}
-			{{#vxIF refundInfo.paymentMethodCode "==" "SL_PAYMENT_METHOD_03"}}
-			<h5>환불계좌</h5>
-			<div style='margin-bottom:40px'>
-				{{#if refundAccount}}
-					<table class="record" summary="환불계좌 표">
-						<caption>환불계좌 표</caption>
-						<colgroup>
-							<col style="width:25%;"/>
-							<col style="width:50%;"/>
-							<col style="width:24%;"/>
-						</colgroup>
-						<tr>
-							<th>입금은행</th>
-							<th>계좌번호</th>
-							<th>예금주</th>
-						</tr>
-						<tr>
-							<td class="color04">{{refundAccount.bankName}}</td>
-							<td class="color04">{{refundAccount.accountNumber}} <button class="btnSizeS btnColor03 btn profileEditButton" style="min-width: 0;margin-left: 15px;">계좌수정</a></td>
-							<td class="color04">{{refundAccount.depositorName}}</td>
-						</tr>
-					</table>
-				{{else}}
-					등록된 환불계좌가 없습니다. <a class='profileEditButton'>마이커먼 > 정보수정</a>에서 환불계좌를 등록하신 후에 다시 시도해 주세요.
-				{{/if}}
-			</div>
-			{{/vxIF}}
-			<!-- 
-			<ul class="tbList3">
+		{{/vxIF}}
+		<!-- 
+		<div class="myCartInfo">
+			<p class="myCartInfoTit">주의사항</p>
+			<ul class="myCartInfoList">
 				<li>주문 취소 신청은 상품 배송 이전 단계에서만 가능합니다.</li>
-				<li>배송중인 상품의 취소를 원하실 경우 고객센터(1666-8868)로 문의 부탁드립니다.</li>
-				<li>묶음상품/해외배송상품 주문 취소 시 배송정책에 따라 추가되는 배송비를 결제하셔야 주문취소가 완료됩니다.</li>
-				<li>결제수단별 환불방법과 환불소요기한에 차이가 있을 수 있습니다.</li>
+				<li>묶음상품/해외배송상품 주문 취소 시 배송정책에 따라 추가되는배송비를 결제하셔야 주문취소가 완료됩니다.</li>
+				<li>실측/견적 진행 취소를 원하실 경우 고객센터(070-0000-0000)로 문의 부탁드립니다.</li>
+				<li>결제수단별 환불방법과 환불소요기한에 차이가 있을 수있습니다.</li>
 			</ul>
-			-->
-			{{#vxIF refundInfo.paymentMethodCode "==" "SL_PAYMENT_METHOD_03"}}
-				{{#if refundAccount}}
-				<div class="btnCenter">
-					<button type="submit" class="btn btnSizeM btnColor01 js-cancel-submit">확인</button>
-				</div>
-				{{else}}
-				{{/if}}
+		</div>
+		 -->
+		{{#vxIF refundInfo.paymentMethodCode "==" "SL_PAYMENT_METHOD_03"}}
+			{{#if refundAccount}}
+			<div class="btnWrap">
+				<a href="#" class="popBtn js-cancel-submit">확인</a>
+			</div>
 			{{else}}
-				<div class="btnCenter">
-					<button type="submit" class="btn btnSizeM btnColor01 js-cancel-submit">확인</button>
-				</div>
-			{{/vxIF}}
+			{{/if}}
+		{{else}}
+			<div class="btnWrap">
+				<a href="#" class="popBtn js-cancel-submit">확인</a>
+			</div>
+		{{/vxIF}}
 		</fieldset>
 	</form>
 </script>

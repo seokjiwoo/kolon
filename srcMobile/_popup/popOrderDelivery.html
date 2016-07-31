@@ -1,305 +1,33 @@
-<div class="layerPopup order">
-	<!-- 복수 배송지 주소가 없을시 -->
-	
-	<div class="popTop">
-		<h3 class="popTit">복수 배송지 선택</h3>
-		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
+<div class="popTop">
+	<h4 class="popTit">배송 정보</h4>
+</div>
+<div class="popCon">
+	<h5 class="popSubTit">주문정보</h5>
+	<div class="popTb">
+		<table class="tbL" summary="주문정보를 제공합니다.">
+			<caption>주문정보</caption>
+			<colgroup>
+				<col style="width:18%;"/><col style="width:32%;"/><col style="width:18%;"/><col style="width:32%;"/>
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">상품명</th>
+					<td colspan="3" id='dsProductName'></td>
+				</tr>
+				<tr>
+					<th scope="row">주문번호</th>
+					<td colspan="3" id='dsProductOrderNumber'></td>
+				</tr>
+				<tr>
+					<th scope="row">배송사</th>
+					<td><a href="#" target='_blank' class="pointRed" id='dsDeliverName'></a> (<span id='dsDeliverTel'></span>)</td>
+					<th scope="row">송장번호</th>
+					<td id='dsDeliverCode'></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<div class="popCon popScroll">
-		<div class="orderDeliveryWrap">
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<a href="#" class="btnColor04 btnSizeL btnSizeW btn">새 주소 추가</a>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<a href="" class="popBtn">확인</a>
-		</div>
+	<div class="btnWrap mt40" style="padding-bottom:20px">
+		<a href="#" class="btnSizeL btnColor01 btnWM popClose">확인</a>
 	</div>
-	
-	<!--// 복수 배송지 주소가 없을시 -->
-	<!-- 복수 배송지 입력 -->
-	<!-- 
-	<div class="popTop">
-		<h3 class="popTit">복수 배송지 선택</h3>
-		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
-	</div>
-	<div class="popCon popScroll">
-		<div class="orderDeliveryWrap">
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<form method="post" action="/">
-									<fieldset>
-										<legend>배송지 선택 폼</legend>
-										<div class="selectBox">
-											<select title="배송지 선택">
-												<option value="" selected="selected">자택</option>
-												<option value="">회사</option>
-											</select>
-										</div>
-									</fieldset>
-								</form>
-							</div>
-						</div>
-						<ul class="addressList">
-							<li>
-								<div class="addressCont">
-									<p><b>받으실 분</b><span>홍길동</span></p>
-									<p><b>연락처</b><span>010-1234-5678</span></p>
-									<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
-								</div>
-							</li>
-						</ul>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<div class="textWrap">
-									<div class="selectBox">
-										<select title="배송 시 요청사항 선택">
-											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-											<option value="">경비실에 맡겨주세요</option>
-											<option value="">빠른 배송 부탁드립니다.</option>
-											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-										</select>
-									</div>
-									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
-									<p class="countTxt"><span>0</span>/50</p>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="myWrap">
-				<ul class="productList">
-					<li>
-						<a href="" class="thumb"><img src="../images/temp01.jpg" alt=""></a>
-						<div class="info">
-							<span>코오롱 글로벌</span>
-							<p><a href="">프렌치 모던 스타일 샹들리에<br> 모던 샹들리에</a></p>
-						</div>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<form method="post" action="/">
-									<fieldset>
-										<legend>배송지 선택 폼</legend>
-										<div class="selectBox">
-											<select title="배송지 선택">
-												<option value="" selected="selected">자택</option>
-												<option value="">회사</option>
-											</select>
-										</div>
-									</fieldset>
-								</form>
-							</div>
-						</div>
-						<ul class="addressList">
-							<li>
-								<div class="addressCont">
-									<p><b>받으실 분</b><span>홍길동</span></p>
-									<p><b>연락처</b><span>010-1234-5678</span></p>
-									<p><b>도로명</b><span>서울특별시 강남구 도산대로 4길 66 (청담동)</span></p>
-								</div>
-							</li>
-						</ul>
-						<div class="productBtnWrap">
-							<div class="newAddress">
-								<div class="textWrap">
-									<div class="selectBox">
-										<select title="배송 시 요청사항 선택">
-											<option value="" selected="selected">배송 시 요청사항을 선택해 주세요</option>
-											<option value="">경비실에 맡겨주세요</option>
-											<option value="">빠른 배송 부탁드립니다.</option>
-											<option value="">부재 시 핸드폰으로 연락바랍니다.</option>
-										</select>
-									</div>
-									<textarea name="" title="배송 시 요청사항 직접입력" placeholder="직접 입력"></textarea>
-									<p class="countTxt"><span>0</span>/50</p>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<a href="" class="popBtn">확인</a>
-		</div>
-	</div>
-	 -->
-	<!--// 복수 배송지 입력 -->
-	<!-- 새주소 추가 -->
-	<!-- 
-	<div class="popTop">
-		<h3 class="popTit">새 주소 추가</h3>
-		<a href="" class="closeBtn"><span class="hide">팝업닫기</span></a>
-	</div>
-	<div class="popCon">
-		<div class="orderDeliveryWrap">
-			<div class="myWrap">
-				<form method="post" action="/">
-					<fieldset>
-						<legend>새주소 입력 폼</legend>
-						<table class="formWrap">
-							<caption>새주소 입력 폼</caption>
-							<colgroup>
-								<col width=""/><col width=""/>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th scope="row"><label for="adrName">주소 별칭</label></th>
-									<td><input type="text" id="adrName" placeholder="주소의 별칭을 입력해주세요."/></td>
-								</tr>
-								<tr>
-									<th scope="row"><label for="name">받으실 분</label></th>
-									<td><input type="text" id="name" placeholder="이름을 입력해 주세요."/></td>
-								</tr>
-								<tr>
-									<th>연락처1</th>
-									<td class="phone">
-										<div class="selectBox">
-											<select name="" title="국번 선택">
-												<option value="">02</option>
-											</select>
-										</div>
-										 -
-										<input type="tel" title="연락처 앞자리 입력"> -
-										<input type="tel" title="연락처 뒷자리 입력">
-									</td>
-								</tr>
-								<tr>
-									<th>연락처2</th>
-									<td class="phone">
-										<div class="selectBox">
-											<select name="" title="국번 선택">
-												<option value="">02</option>
-											</select>
-										</div>
-										 -
-										<input type="tel" title="연락처 앞자리 입력"> -
-										<input type="tel" title="연락처 뒷자리 입력">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-						<h4 class="partTit">주소</h4>
-						<div class="shipAddress">
-							<p class="zipCode"><input type="text" value="13893" id="zipCode"><label for="zipCode">주소검색</label><a href=""></a></p>
-							<p><input type="text"><label for="" class="hide">주소</label></p>
-							<p><input type="text"><label for="" class="hide">상세 주소 입력</label></p>
-							<p>
-								<span class="checkbox">
-									<input type="checkbox" id="checkAddress1">
-									<label for="checkAddress1">기본 배송지로 설정</label>
-								</span>
-							</p>
-						</div>
-					</fieldset> 
-				</form>
-			</div>
-		</div>
-	</div>
-	<div class="btmFix fixwrap">
-		<ul>
-			<li><a href="" class="btnSizeB btnColor03 popClose">취소</a></li>
-			<li><a href="" class="btnSizeB btnColor02">확인</a></li>
-		</ul>
-	</div>
-	 -->
-	<!--// 새주소 추가 -->
 </div>

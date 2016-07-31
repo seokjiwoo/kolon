@@ -172,6 +172,7 @@ module.exports = function() {
 								_templatesWrap.removeClass(self.opts.cssClass.isLoading);
 								eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 								eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+								$(document).trigger('initProfileEditButton');
 							});
 		
 		var cancelOrderDataArray = new Array();
@@ -180,6 +181,10 @@ module.exports = function() {
 		});
 
 		self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+		self.colorbox.find('#js-order-cancel-form .js-cancel-submit').on('click', function(e) {
+			e.preventDefault();
+			self.colorbox.find('#js-order-cancel-form').trigger('submit');
+		});
 		self.colorbox.find('#js-order-cancel-form').on('submit', function(e) {
 			e.preventDefault();
 
