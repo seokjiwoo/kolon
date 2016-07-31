@@ -277,9 +277,9 @@ module.exports = function() {
 		$('#washCancelForm').submit(function(e){
 			e.preventDefault();
 			if ($('#reasonSelect').val() == '-') {
-				alert('주문 취소 사유를 선택해주세요');
+				alert('취소 사유를 선택해주세요');
 			} else if ($('#reasonSelect').val() == '' && $.trim($('#reasonField').val()) == '') {
-				alert('주문 취소 사유를 입력해주세요');
+				alert('취소 사유를 입력해주세요');
 			} else {
 				var reason = $('#reasonSelect').val();
 				if ($.trim($('#reasonField').val()) == '') reason = $('#reasonField').val();
