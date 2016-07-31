@@ -19,6 +19,7 @@ module.exports = function() {
 	$(controller).on('resendAuthNumberResult', resendAuthNumberHandler);
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(controller).on('notarobotResult', onRecaptchaHandler);
+	$(controller).on('myInfoResult', myInfoResultHandler);
 
 	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
@@ -32,6 +33,9 @@ module.exports = function() {
 	// recaptcha widget ID
 	var recaptchaWidget,
 	recaptchaData;
+
+	var mobileAuthIntervalId;
+	var callBackUrl;
 
 	var callerObj = {
 		/**
@@ -47,6 +51,12 @@ module.exports = function() {
 		
 		controller.getSocialLoginUrl();
 		memberInfoController.getMemberTermsList();
+
+		if (util.getUrlVar('callbackUrl') != undefined) {
+			callBackUrl = decodeURIComponent(util.getUrlVar('callbackUrl'));
+		} else {
+			callBackUrl = '/';
+		}
 		
 		$('#inputName').change(checkEmailField);
 		$('#inputPW').change(checkPasswordField);
@@ -55,6 +65,14 @@ module.exports = function() {
 		$('#loginForm').submit(loginHandler);
 	};
 	
+	function myInfoResultHandler() {
+		var loginData = loginDataModel.loginData();
+		
+		if (loginData != null) {
+			alert('이미 로그인되어 있습니다');
+			location.href = callBackUrl;
+		}
+	}
 	
 	/**
 	 * 회원 이용약관 목록 핸들링
@@ -202,7 +220,8 @@ module.exports = function() {
 			case 201:
 				switch(Number(response.status)) {
 					case 200:	// 로그인 성공
-						location.href = util.getReferrer() || '/';
+						// location.href = util.getReferrer() || '/';
+						location.href = callBackUrl;
 						break;
 					case 201:	// 회원가입 완료
 						Super.Super.alertPopup('회원가입이 완료되었습니다.', '메인화면으로 이동합니다.', '확인', function() {
@@ -232,6 +251,14 @@ module.exports = function() {
 
 								controller.resendAuthNumber(enteredId);
 								authNumberResendFlag = false;
+
+								$('#remainTimeField').data().remainTime = 181;
+
+								mobileAuthIntervalId = setInterval(function(){
+									var time = $('#remainTimeField').data().remainTime-1;
+									$('#remainTimeField').data().remainTime = Math.max(0, time);
+									$('#remainTimeField').text(Math.floor(time/60)+':'+(time%60<10 ? '0'+(time%60) : time%60));
+								}, 1000);
 							},
 							onSubmit: function() {
 								if ($.trim($('#mobileAuthNumber').val()) == '') {
