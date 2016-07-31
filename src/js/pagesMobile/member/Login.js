@@ -20,6 +20,7 @@ module.exports = function() {
 	$(controller).on('socialLoginUrlResult', socialLoginUrlResultHandler);
 	$(controller).on('notarobotResult', onRecaptchaHandler);
 	$(controller).on('myInfoResult', myInfoResultHandler);
+	var loginDataModel = require('../../model/LoginModel');
 
 	var memberInfoController = require('../../controller/MemberInfoController');
 	$(memberInfoController).on('termsListResult', termsListHandler);
