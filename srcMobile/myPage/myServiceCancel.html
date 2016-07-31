@@ -3,13 +3,13 @@
 <head>
 	<!-- @@include ../_template/header.html {"title":"COMMON 시공 취소 .환불 내역"} -->
 </head>
-<body data-page-id="myPage-myService">
+<body data-page-id="myPage-myService-cancel">
 	<div class="wrapper my">
 		<!-- @@include ../_template/menu.html -->
 		<div class="container">
 			<!-- @@include ../_template/my_depth01.html -->
 			<!-- @@include ../_template/my_depth02.html {"myMenu03":"on"} -->
-			<section id="">
+			<section>
 				<div class="tabParents">
 					<ul class="tabSquare">
 						<li><a href="/myPage/myService.html">시공 상품 내역</a></li>
@@ -54,63 +54,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="#">2354754</a>
-					</p>
-					<p class="payPrice">환불금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">[인테리어 패키지]<br /> 모노 화이트 스타일 욕실</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="count">
-										<span><em>1,700,000</em> 원</span>
-										<span>1 개</span>
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea"><!-- 기획서에 버튼 tap시 내용 없음 -->
-								<a href="" class="cancel">취소신청</a>
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<p class="setPriceGray">환불완료일자  2016.04.20</p>
-				<div class="wrapT">
-					<p class="orderNum">
-						<span>2016.04.27</span>
-						<a href="#">2354754</a>
-					</p>
-					<p class="payPrice">환불금액 <em>3,320,000</em> 원</p>
-					<ul class="productList">
-						<li>
-							<a href="" class="thumb"><img src="../images/temp01.jpg" alt="" /></a>
-							<div class="info">
-								<span>코오롱 글로벌</span>
-								<p><a href="">[인테리어 패키지]<br /> 모노 화이트 스타일 욕실</a></p>
-							</div>
-							<ul class="productData">
-								<li>
-									<p class="count">
-										<b>1,700,000</b> 원
-									</p>
-								</li>
-							</ul>
-							<div class="cancelArea">
-								<a href="" class="cancel">취소신청</a>
-								<a href="" class="btnSizeS btnColor01">취소상세</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<p class="setPriceGray">환불완료일자  2016.04.20</p>
+
+				<div id="js-order-list-wrap"></div>
+
 			</section>
 			<!-- @@include ../_template/footer.html -->
 		</div>
@@ -126,7 +72,49 @@
 	.js-order-filter.is-active-2 li:nth-child(2) a[data-filter] {color:#fff}
 	.js-order-filter.is-active-3 li:nth-child(3) a[data-filter] {color:#fff}
 	.js-order-filter.is-active-4 li:nth-child(4) a[data-filter] {color:#fff}
-
 </style>
+
+<script id="order-list-templates" type="text/x-handlebars-template">
+{{!-- order-list-templates --}}
+	{{#if constOrderCancel.length}}
+		{{#each constOrderCancel}}
+			<div class="wrapT">
+				<p class="orderNum">
+					<span>{{orderDate}}</span>
+					<a href="/myPage/myServiceDetail.html?orderNumber={{orderNumber}}">{{orderNumber}}</a>
+				</p>
+				<p class="payPrice">환불금액 <em>{{constProduct.constExpectPrice}}</em> 원</p>
+				<ul class="productList">
+					<li>
+						<a href="/newForm/detail.html?productNumber={{constProduct.productNumber}}" class="thumb">
+							<img src="{{constProduct.productImageUrl}}" alt="" />
+						</a>
+						<div class="info">
+							<span>{{constProduct.saleMemberName}}</span>
+							<p>
+								<a href="/newForm/detail.html?productNumber={{constProduct.productNumber}}">[{{constProduct.productOptionName}}]<br />{{constProduct.productName}}</a>
+							</p>
+						</div>
+						<ul class="productData">
+							<li>
+								<p class="count">
+									<span><em>{{constProduct.productPriceDesc}}</em> 원</span>
+								</p>
+							</li>
+						</ul>
+						<div class="cancelArea">
+							{{orderStateCodeName}}
+						</div>
+					</li>
+				</ul>
+			</div>
+			{{#if ../constEndDate}}
+				<p class="setPriceGray">환불완료일자  {{../constEndDate}}</p>
+			{{/if}}
+		{{/each}}
+	{{else}}
+		<p class="noContent" style="display:block">주문/시공 취소 내역이 없습니다.</p>
+	{{/if}}
+{{!--// order-list-templates --}}
 
 </body>

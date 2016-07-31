@@ -7,7 +7,7 @@ module.exports = function() {
 	$ = win.jQuery,
 	debug = require('../../utils/Console.js'),
 	util = require('../../utils/Util.js'),
-	fileName = 'myPage/MyService.js';
+	fileName = 'myPage/MyServiceCancel.js';
 
 	var MyPageClass = require('./MyPage.js'),
 	MyPage = MyPageClass(),
@@ -19,6 +19,8 @@ module.exports = function() {
 	COLORBOX_EVENT = events.COLOR_BOX,
 	ORDER_EVENT = events.ORDER,
 	DROPDOWNMENU_EVENT = events.DROPDOWN_MENU;
+
+	var clameState = 'SL_CONST_STATE_12,SL_CONST_STATE_13,SL_CONST_STATE_14,SL_CONST_STATE_15';
 
 	var callerObj = {
 		/**
@@ -44,7 +46,7 @@ module.exports = function() {
 			altTo : '.js-alt-to'
 		},
 		search : {
-			wrap : '.js-order-search',
+			wrap : '.js-return-search',
 			inp : '.js-inp',
 			submit : '.js-submit',
 		},
@@ -68,18 +70,6 @@ module.exports = function() {
 		getOrderList();
 	}
 
-	function getOrderList(keyword, deliveryStateCode) {
-		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
-
-		controller.myOrdersList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
-			keyword,
-			deliveryStateCode
-		);
-	}
-
 	function setElements() {
 		self.templatesWrap = $(self.opts.templates.wrap);
 		self.template = $(self.opts.templates.template);
@@ -94,6 +84,8 @@ module.exports = function() {
 		self.search = $(self.opts.search.wrap);
 		self.searchInp = self.search.find(self.opts.search.inp);
 		self.searchSubmit = self.search.find(self.opts.search.submit);
+
+		self.selPopBtnInfo = {};
 	}
 
 	function setBindEvents() {
@@ -105,11 +97,9 @@ module.exports = function() {
 		self.search.on('submit', function(e) {
 			e.preventDefault();
 		});
-/*
+
 		self.searchSubmit.on('click', onSearch);
 		self.searchInp.on('keydown', onSearch);
-
-		self.templatesWrap.on('click', '.js-btn', onWrapPopBtnClick);*/
 	}
 
 	function setRangePicker() {
@@ -173,15 +163,12 @@ module.exports = function() {
 										.removeClass('js-default');
 	}
 
-	function getOrderList(keyword, deliveryStateCode) {
-		keyword = keyword || '';
-		deliveryStateCode = deliveryStateCode || '';
-
-		controller.myConstOrdersList(
-			win.moment(self.rangeAltFrom.val()).format(self.opts.dateFormat),
-			win.moment(self.rangeAltTo.val()).format(self.opts.dateFormat),
-			keyword,
-			deliveryStateCode
+	function getOrderList() {
+		controller.myConstCancelList(
+			win.moment(self.rangeAltFrom.pVal()).format(self.opts.dateFormat),
+			win.moment(self.rangeAltTo.pVal()).format(self.opts.dateFormat),
+			self.searchInp.pVal(),
+			clameState
 		);
 	}
 
@@ -199,26 +186,24 @@ module.exports = function() {
 	function onDropCheckMenuChange(e, data) {
 		var target = $(e.target);
 
-		debug.log(fileName, 'onDropCheckMenuChange', target, target.val(), data);
-		getOrderList(self.searchInp.val(), data.values.join(','));
+		debug.log(fileName, 'onDropCheckMenuChange', target, target.pVal(), data);
+		clameState = data.values.join(',');
+		getOrderList();
 	}
 
 	function onSearch(e) {
-		if (e.type === 'keydown') {
-			if (e.which !== $.ui.keyCode.ENTER) {
-				return;
-			}
+		if (e.type === 'keydown' && e.which !== $.ui.keyCode.ENTER) {
+			return;
 		}
 
 		e.preventDefault();
 
-		if (!self.searchInp.val() || self.searchInp.val() === ' ') {
+		if (!self.searchInp.pVal() || self.searchInp.pVal() === ' ') {
 			win.alert('검색어를 입력하세요.');
 			self.searchInp.val('').focus();
 			return;
 		}
-
-		getOrderList(self.searchInp.val());
+		getOrderList();
 	}
 
 	function onControllerListener(e, status, response, type) {
@@ -226,7 +211,7 @@ module.exports = function() {
 		result = response;
 
 		switch(eventType) {
-			case ORDER_EVENT.NEWFORM_ORDER_LIST:
+			case ORDER_EVENT.NEWFORM_CANCEL_LIST:
 				/*
 				result.data.totalPaymentPriceDesc = util.currencyFormat(parseInt(result.data.totalPaymentPrice, 10));
 
@@ -247,104 +232,18 @@ module.exports = function() {
 				}
 				*/
 				
-				result.vxOrderStateCodes = {
-					// 선금 입금대기
-					'SL_CONST_STATE_01' : 0,
-					// 실측/견적 요청
-					'SL_CONST_STATE_02' : 0,
-					// 실측/견적 진행
-					'SL_CONST_STATE_03' : 0,
-					// 실측 완료
-					'SL_CONST_STATE_04' : 0,
-					// 계약 완료
-					'SL_CONST_STATE_05' : 0,
-					// 잔금 입금대기
-					'SL_CONST_STATE_06' : 0,
-					// 잔금 결제완료
-					'SL_CONST_STATE_07' : 0,
-					// 시공준비중
-					'SL_CONST_STATE_08' : 0,
-					// 시공진행
-					'SL_CONST_STATE_09' : 0,
-					// 시공검수중
-					'SL_CONST_STATE_10' : 0,
-					// 시공완료
-					'SL_CONST_STATE_11' : 0,
-					// 취소신청
-					'SL_CONST_STATE_12' : 0,
-					// 취소승인
-					'SL_CONST_STATE_13' : 0,
-					// 취소반려
-					'SL_CONST_STATE_14' : 0,
-					// 환불완료
-					'SL_CONST_STATE_15' : 0,
-					// 구매확정
-					'SL_CONST_STATE_16' : 0
-				};
-
-				if (result.constOrderState && result.constOrderState.length) {
-					$.each(result.constOrderState, function(key, eachOrder){
-						eachOrder.orderDate = moment(eachOrder.orderDateTime).format('YYYY.MM.DD');
-						eachOrder.constProduct = eachOrder.constProducts[0];
-						eachOrder.constProduct.productPriceDesc = util.currencyFormat(eachOrder.constProduct.productPrice);
-
-						if (result.vxOrderStateCodes[eachOrder.orderStateCode]) {
-							result.vxOrderStateCodes[eachOrder.orderStateCode] += 1;
-						} else {
-							result.vxOrderStateCodes[eachOrder.orderStateCode] = 1;
-						}
-					});
-				}
-
-
-				// if (result.data.listOrderItems) {
-				// 	$.each(result.data.listOrderItems, function(index, orderItems) {
-				// 		orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
-				// 		orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
-				// 		orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
-				// 		orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
-
-				// 		if (result.data.vxOrderStateCodes[orderItems.orderStateCode]) {
-				// 			result.data.vxOrderStateCodes[orderItems.orderStateCode] += 1;
-				// 		} else {
-				// 			result.data.vxOrderStateCodes[orderItems.orderStateCode] = 1;
-				// 		}
-
-				// 		if (util.isLocal()) {
-				// 			orderItems.productImageUrl = 'https://dev.koloncommon.com' + orderItems.productImageUrl;
-				// 		}
-
-				// 		// 총 결제 금액
-				// 		orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
-				// 		orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
-				// 	});
-				// }
-
+				$.each(result.constOrderCancel, function(key, eachOrder){
+					eachOrder.orderDate = moment(eachOrder.orderDateTime).format('YYYY.MM.DD');
+					eachOrder.constProduct = eachOrder.constProducts[0];
+					eachOrder.constProduct.productPriceDesc = util.currencyFormat(eachOrder.constProduct.productPrice);
+				});
 
 				debug.log(fileName, 'onControllerListener', eventType, status, result);
 				displayData(result);
-
-				$('.js-btn').on('click', onWrapPopBtnClick);
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
-				break;
-
-			case ORDER_EVENT.NEWFORM_ORDER_CANCEL_FORM:
-				displayCancelPopup(result);
-				break;
-
-			case ORDER_EVENT.NEWFORM_ORDER_CANCEL:
-				switch(status) {
-					case 200:
-						win.alert('취소 신청이 완료되었습니다.');
-						location.reload();
-						break;
-					default:
-						win.alert(result.message);
-						break;
-				}
 				break;
 
 			case ORDER_EVENT.ORDER_DETAIL:
@@ -395,73 +294,84 @@ module.exports = function() {
 			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 		});
-	}
 
-	function displayCancelPopup(data) {
-		$.map(data.constProducts, function(each) {
-			each.productPrice = util.currencyFormat(each.productPrice);
-			each.discountPrice = util.currencyFormat(each.discountPrice);
-			each.constExpectPrice = util.currencyFormat(each.constExpectPrice);
-		});
-		if (data.constOrderInfo != null) data.constOrderInfo.receiverContact = util.mobileNumberFormat(data.constOrderInfo.receiverContact);
-		if (data.refundPayment.refundPaymentPrice != undefined) {
-			data.refundPayment.refundPaymentPrice.totalAdvancePrice = util.currencyFormat(data.refundPayment.refundPaymentPrice.totalAdvancePrice);
-			data.refundPayment.refundPaymentPrice.totalRefundPrice = util.currencyFormat(data.refundPayment.refundPaymentPrice.totalRefundPrice);
-		} else {
-			data.refundPayment.refundPaymentPrice = {
-				totalAdvancePrice: 0,
-				totalRefundPrice: 0
-			}
-			data.refundPayment.paymentMethodCode = "SL_PAYMENT_METHOD_99";
+		/*
+		if (type === 'COLOR_BOX') {
+			_template = self.colorbox.find('#cancel-request-templates');
+			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
 		}
-		data.refundPayment.paymentMethodCode = data.refundPayment.paymentMethods[0].paymentMethodCodeName;
 
-		
-		var source = $('#cancel-popup-template').html(),
-		template = win.Handlebars.compile(source),
-		insertElements = $(template(data));
+		if (type === 'COLOR_BOX') {
+			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
+			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
+				e.preventDefault();
 
-		$('#cancel-popup-wrap').empty().addClass(self.opts.cssClass.isLoading).append(insertElements);
-		$('#cancel-popup-wrap').imagesLoaded().always(function() {
-			self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
-			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
-			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
-		});
-		
-		$(document).trigger('initProfileEditButton');
+				var forms = self.colorbox.find('.js-cancel-form'),
+				isValid = false,
+				cancelType, cancelReson;
 
-		$('.js-order-cancel-form').click(function(e){
-			e.stopPropagation();
-			var reasonCode = $('#cancelReasonDrop').pVal();
-			var reasonText = $.trim($('#cancelReasonField').pVal());
-			if (reasonCode == '' || reasonText == '') {
-				win.alert('취소 사유를 선택/입력 해주세요.');
-			} else {
-				controller.myConstCancel(self.currentOrderNumber, reasonCode, reasonText);
-			}
-		});
+				$.each(forms, function() {
+					cancelType = $(this).find('.js-type').pVal();
+					cancelReson = $(this).find('.js-inp').pVal();
+					if (cancelType && cancelReson) {
+						isValid = true;
+					} else {
+						isValid = false;
+						return false;
+					}
+				});
+
+				if (!isValid) {
+					win.alert('취소 사유를 선택/입력 해주세요.');
+					return;
+				}
+
+				$.each(forms, function() {
+					cancelType = $(this).find('.js-type').pVal();
+					cancelReson = $(this).find('.js-inp').pVal();
+				});
+			});
+		}*/
 	}
 
-	function onWrapPopBtnClick(e) {
-		e.preventDefault();
+	function setColoboxEvevnts() {
+		/*
+		// 취소신청
+		if (self.colorbox.hasClass('popOrderCancelRequest')) {
+			controller.orderDetail(self.selPopBtnInfo.info.orderNumber, 'COLOR_BOX');
+		}
 
-		var target = $(e.currentTarget),
-		info = target.closest('[data-order-info]').data('order-info');
+		// 배송추적
+		if (self.colorbox.hasClass('popOrderDelivery')) {
+			controller.orderTrackingInfo(
+				self.selPopBtnInfo.info.orderNumber,
+				self.selPopBtnInfo.info.deliveryNumber
+			);
+		}
 
-		self.selPopBtnInfo = {
-			target : target,
-			info : info
-		};
+		self.colorbox.find('.btnColor02').on('click', function(e) {
+			e.preventDefault();
+			testResult();
+		});*/
+	}
+
+	function testResult() {
+		//win.alert('임시처리 결과처리 - location.reload');
+		win.location.reload();
+	}
+
+	function destroyColoboxEvevnts() {
 	}
 
 	function onColorBoxAreaListener(e) {
+		/*
 		switch(e.type) {
 			case COLORBOX_EVENT.COMPLETE:
-				if (self.colorbox.hasClass('popOrderCancelRequest')) {
-					self.currentOrderNumber = self.selPopBtnInfo.info.orderNumber;
-					controller.myConstCancelFormRequest(self.selPopBtnInfo.info.orderNumber);
-				}
+				setColoboxEvevnts();
 				break;
-		}
+			case COLORBOX_EVENT.CLEANUP:
+				destroyColoboxEvevnts();
+				break;
+		}*/
 	}
 };

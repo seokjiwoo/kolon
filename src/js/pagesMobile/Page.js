@@ -29,6 +29,7 @@ module.exports = function() {
 	$(memberInfoController).on('verifyMemberResult', verifyMemberResultHandler);
 
 	$(document).on('verifyMember', requestVerifyMember);
+	$(document).on('initProfileEditButton', initProfileEditButton);
 	
 	var callerObj = {
 		/**
@@ -378,25 +379,7 @@ module.exports = function() {
 				$('#menuCountCart').text(loginData.myActivity.cartCount);
 			}
 
-			$('.profileEditButton').click(function(e){
-				e.preventDefault();
-				closeSideMenu();
-				if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
-					confirmPasswordResultHandler(null, 200);
-				} else {
-					Super.htmlPopup('../../_popup/popCheckPw.html', '100%', 'popEdge', {
-						onOpen: function() {
-							$('#checkPwForm').submit(function(e){
-								e.preventDefault();
-								loginController.confirmPassword($('#checkPw').val());
-							});
-						},
-						onSubmit: function() {
-							loginController.confirmPassword($('#checkPw').val());
-						}
-					});
-				}
-			});
+			initProfileEditButton();
 		} else {
 			// 로그인 상태가 아닐 때
 			$('#topMemberInfo').remove();
@@ -413,6 +396,31 @@ module.exports = function() {
 			//$('#buttonLogInOut').attr('href', '/member/login.html').text('로그인');
 		}
 	};
+
+	function initProfileEditButton(e) {
+		$('.profileEditButton').off('click');
+		$('.profileEditButton').on('click', function(e) {
+			e.preventDefault();
+			closeSideMenu();
+			if (loginData.joinSectionCode == "BM_JOIN_SECTION_02") {
+				confirmPasswordResultHandler(null, 200);
+			} else {
+				Super.htmlPopup('../../_popup/popCheckPw.html', '100%', 'popEdge', {
+					onOpen: function() {
+						$('#checkPwForm').submit(function(e){
+							e.preventDefault();
+							loginController.confirmPassword($('#checkPw').pVal());
+						});
+					},
+					onSubmit: function() {
+						loginController.confirmPassword($('#checkPw').pVal());
+					}
+				});
+			}
+			e.stopPropagation();
+		});
+	}
+
 
 	function confirmPasswordResultHandler(e, status, result) {
 		switch(status) {

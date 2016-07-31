@@ -227,6 +227,10 @@ $(document).ready(function() {
 				PageModuleClass = require('./pagesMobile/myPage/MyService.js');
 				break;
 
+			case "myPage-myService-cancel":
+				PageModuleClass = require('./pagesMobile/myPage/MyServiceCancel.js');
+				break;
+
 			// 시공상품 상세 myServiceDetail
 			case 'myPage-myServiceDetail':
 				PageModuleClass = require('./pagesMobile/myPage/MyServiceDetail.js');
@@ -359,3 +363,18 @@ $(document).ready(function() {
 	pageModule = PageModuleClass();
 	pageModule.init(pageId);
 });
+
+;(function($) {
+	'use strict';
+
+	$.fn.pVal = function() {
+		var $this = $(this),
+		val = $this.eq(0).val();
+
+		if (val === $this.attr('placeholder')) {
+			return '';
+		} else {
+			return val;
+		}
+	};
+})(window.jQuery);
