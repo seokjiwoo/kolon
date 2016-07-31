@@ -139,7 +139,7 @@ module.exports = function() {
 						value.deliveryChargeDesc = '무료';
 					} else {
 						value.deliveryChargeDesc = '<b>'+util.currencyFormat(value.deliveryCharge)+'</b> 원';
-						if (deliveryChargePrepaid == false) value.deliveryChargeDesc += '<br/>(착불)';
+						if (value.deliveryChargePrepaid == false) value.deliveryChargeDesc += '<br/>(착불)';
 					}
 				});
 				$.each(data.paymentInfo, function(key, value) {

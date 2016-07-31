@@ -143,8 +143,8 @@ module.exports = function() {
 
 	function onUploadSuccess(e, result) {
 		debug.log(fileName, 'onUploaderSuccess', imageUploader.EVENT.UPLOAD_SUCCESS, result);
-		alert('프로필 사진 변경이 완료되었습니다');
-		location.reload(true);
+		//alert('프로필 사진 변경이 완료되었습니다');
+		//location.reload(true);
 	}
 
 	function onUploadFailure(e, jqXHR) {

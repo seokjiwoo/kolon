@@ -560,7 +560,8 @@ module.exports = function() {
 		if (loginData == null) {
 			$(document).trigger('needLogin');
 		} else {
-			var filePath = window.location.protocol+"//"+window.location.host+'/'+$(this).parent().find('.scrap-image').attr('src');
+			//var filePath = window.location.protocol+"//"+window.location.host+'/'+$(this).parent().find('.scrap-image').attr('src');
+			var filePath = $(this).parent().find('.scrap-image').attr('src');
 			Super.htmlPopup('/_popup/popScrapBookAdd.html', 540, 'popEdge', {
 				onOpen: function() {
 					$('#makeNewScrapFolderButton').click(function(e){
