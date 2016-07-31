@@ -104,7 +104,7 @@ module.exports = function() {
 			refreshListCritica();
 		});
 
-		$('.js-sort-date li.js-default').trigger('click');
+		$('.js-sort-date li.js-default').trigger('click').removeClass('js-default');
 	};
 
 	function refreshListCritica(e) {
