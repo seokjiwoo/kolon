@@ -94,8 +94,6 @@ module.exports = function() {
 		self.search = $(self.opts.search.wrap);
 		self.searchInp = self.search.find(self.opts.search.inp);
 		self.searchSubmit = self.search.find(self.opts.search.submit);
-
-		self.selPopBtnInfo = {};
 	}
 
 	function setBindEvents() {
@@ -325,6 +323,8 @@ module.exports = function() {
 
 				debug.log(fileName, 'onControllerListener', eventType, status, result);
 				displayData(result);
+
+				$('.js-btn').on('click', onWrapPopBtnClick);
 				break;
 
 			case ORDER_EVENT.ORDER_CONFIRM:
@@ -442,7 +442,16 @@ module.exports = function() {
 		});
 	}
 
-	function destroyColoboxEvevnts() {
+	function onWrapPopBtnClick(e) {
+		e.preventDefault();
+
+		var target = $(e.currentTarget),
+		info = target.closest('[data-order-info]').data('order-info');
+
+		self.selPopBtnInfo = {
+			target : target,
+			info : info
+		};
 	}
 
 	function onColorBoxAreaListener(e) {

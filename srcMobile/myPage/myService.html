@@ -117,7 +117,7 @@
 			</p>
 			<p class="payPrice">결제금액 <em>{{constProduct.productPriceDesc}}</em> 원</p>
 			<ul class="productList">
-				<li>
+				<li data-order-info='{ "orderNumber" : "{{orderNumber}}" }'>
 					<a href="/newForm/detail.html?productNumber={{constProduct.productNumber}}" class="thumb">
 						<img src="constProduct.productImageUrl" alt="" />
 					</a>
@@ -138,11 +138,11 @@
 						{{#vxSwitch orderStateCode}}
 							{{#vxCase "SL_CONST_STATE_01" break=true}}
 								<a href="/_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-1">선금 입금대기</a>
-								<a href="/_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">실측/견적 요청 취소</a>
+								<a href="/_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="pop popOrderCancelRequest">실측/견적 요청 취소</a>
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_02" break=true}}
 								<a href="/_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-2">실측/견적 요청</a>
-								<a href="/_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop" data-user-class="pop">실측/견적 요청 취소</a>
+								<a href="/_popup/popCancelMeasurement.html" class="btnSizeS btnColor01 btnPop js-btn" data-user-class="pop popOrderCancelRequest">실측/견적 요청 취소</a>
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_03" break=true}}
 								<a href="/_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-3">실측/견적 진행</a>
@@ -177,7 +177,7 @@
 								{{/vxIF}}
 							{{/vxCase}}
 							{{#vxCase "SL_CONST_STATE_16" break=true}}
-								<a href="/_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-16">구매확정</a>
+								<a href="/_popup/popProgress02.html" class="state btnPop" data-user-class="pop js-step-11">구매확정</a>
 							{{/vxCase}}
 						{{/vxSwitch}}
 						<div class="workInfo">
