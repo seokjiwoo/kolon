@@ -48,7 +48,8 @@ module.exports = function() {
 			inp : '.js-inp',
 			submit : '.js-submit',
 		},
-		dateFormat : 'YYYYMMDD'
+		dateFormat : 'YYYYMMDD',
+		orderFilter : '.js-order-filter .js-filter'
 	};
 	
 	return callerObj;
@@ -94,6 +95,8 @@ module.exports = function() {
 		self.search = $(self.opts.search.wrap);
 		self.searchInp = self.search.find(self.opts.search.inp);
 		self.searchSubmit = self.search.find(self.opts.search.submit);
+
+		self.activeFilterIdx = null;;
 	}
 
 	function setBindEvents() {
@@ -183,6 +186,18 @@ module.exports = function() {
 			keyword,
 			deliveryStateCode
 		);
+	}
+
+	function onFilterChange(e) {
+		e.preventDefault();
+		
+		var target = $(e.currentTarget),
+		values = target.data('filter');
+
+		self.activeFilterIdx = target.closest('li').index() + 1;
+
+		debug.log(fileName, 'onFilterChange', values);
+		getOrderList(self.searchInp.val(), values);
 	}
 
 	function onColorBoxAreaListener(e) {
@@ -281,6 +296,8 @@ module.exports = function() {
 					// 구매확정
 					'SL_CONST_STATE_16' : 0
 				};
+
+				result.vxActiveFilterIdx = self.activeFilterIdx;
 
 				if (result.constOrderState && result.constOrderState.length) {
 					$.each(result.constOrderState, function(key, eachOrder){
@@ -392,6 +409,10 @@ module.exports = function() {
 
 		self.templatesWrap.imagesLoaded().always(function() {
 			self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+
+			$(self.opts.orderFilter).off('click', onFilterChange);
+			$(self.opts.orderFilter).on('click', onFilterChange);
+
 			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 		});
