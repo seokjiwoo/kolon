@@ -59,8 +59,11 @@ function ClassMagazineController() {
 
 	//	매거진 리스트
 	//	GET /apis/magazines
-	function list() {
-		Super.callApi('/apis/magazines', 'GET', {}, function(status, result) {
+	function list(magazineTypeCode, order) {
+		Super.callApi('/apis/magazines', 'GET', {
+			"magazineTypeCode": magazineTypeCode,
+			"orderType": order
+		}, function(status, result) {
 			if (status == 200) {
 				$(callerObj).trigger('magazineListResult', [status, result.data]);
 			} else {

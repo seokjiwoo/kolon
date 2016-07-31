@@ -172,11 +172,17 @@ module.exports = function() {
 
 	function removeAllData() {
 		if (!fixedFlag) {
-			while (wrap.data('isotope').items.length) {
-				wrap.isotope('remove', wrap.data('isotope').items[0].element);
+			var cardCount = wrap.data('isotope').items.length;
+			var removeHeader = 0;
+			for (var i = 0; i < cardCount; i++) {
+				if ($(wrap.data('isotope').items[removeHeader].element).hasClass('card')) {
+					wrap.isotope('remove', wrap.data('isotope').items[removeHeader].element);
+				} else {
+					removeHeader++;
+				}
 			}
 		} else {
-			wrap.empty();
+			wrap.find('.card').remove();
 		}
 		$(callerObj).trigger('cardRemoveAll');
 	};
