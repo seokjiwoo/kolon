@@ -331,6 +331,22 @@ module.exports = function() {
 				debug.log(fileName, 'onControllerListener', eventType, status, response);
 				break;
 
+			case ORDER_EVENT.NEWFORM_ORDER_CANCEL_FORM:
+				displayCancelPopup(result);
+				break;
+
+			case ORDER_EVENT.NEWFORM_ORDER_CANCEL:
+				switch(status) {
+					case 200:
+						win.alert('취소 신청이 완료되었습니다.');
+						location.reload();
+						break;
+					default:
+						win.alert(result.message);
+						break;
+				}
+				break;
+
 			case ORDER_EVENT.ORDER_DETAIL:
 				if (result && !result.data) {
 					displayData([], type);
@@ -379,84 +395,64 @@ module.exports = function() {
 			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
 			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
 		});
-
-		/*
-		if (type === 'COLOR_BOX') {
-			_template = self.colorbox.find('#cancel-request-templates');
-			_templatesWrap =  self.colorbox.find('.js-cancelRequest-wrap');
-		}
-
-		if (type === 'COLOR_BOX') {
-			self.colorbox.find('form').on('submit', function(e) {e.preventDefault();});
-			self.colorbox.find('.js-cancel-submit').on('click', function(e) {
-				e.preventDefault();
-
-				var forms = self.colorbox.find('.js-cancel-form'),
-				isValid = false,
-				cancelType, cancelReson;
-
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-					if (cancelType && cancelReson) {
-						isValid = true;
-					} else {
-						isValid = false;
-						return false;
-					}
-				});
-
-				if (!isValid) {
-					win.alert('취소 사유를 선택/입력 해주세요.');
-					return;
-				}
-
-				$.each(forms, function() {
-					cancelType = $(this).find('.js-type').val();
-					cancelReson = $(this).find('.js-inp').val();
-				});
-			});
-		}*/
 	}
 
-	function setColoboxEvevnts() {
-		/*
-		// 취소신청
-		if (self.colorbox.hasClass('popOrderCancelRequest')) {
-			controller.orderDetail(self.selPopBtnInfo.info.orderNumber, 'COLOR_BOX');
+	function displayCancelPopup(data) {
+		$.map(data.constProducts, function(each) {
+			each.productPrice = util.currencyFormat(each.productPrice);
+			each.discountPrice = util.currencyFormat(each.discountPrice);
+			each.constExpectPrice = util.currencyFormat(each.constExpectPrice);
+		});
+		if (data.constOrderInfo != null) data.constOrderInfo.receiverContact = util.mobileNumberFormat(data.constOrderInfo.receiverContact);
+		if (data.refundPayment.refundPaymentPrice != undefined) {
+			data.refundPayment.refundPaymentPrice.totalAdvancePrice = util.currencyFormat(data.refundPayment.refundPaymentPrice.totalAdvancePrice);
+			data.refundPayment.refundPaymentPrice.totalRefundPrice = util.currencyFormat(data.refundPayment.refundPaymentPrice.totalRefundPrice);
+		} else {
+			data.refundPayment.refundPaymentPrice = {
+				totalAdvancePrice: 0,
+				totalRefundPrice: 0
+			}
+			data.refundPayment.paymentMethodCode = "SL_PAYMENT_METHOD_99";
 		}
+		data.refundPayment.paymentMethodCode = data.refundPayment.paymentMethods[0].paymentMethodCodeName;
 
-		// 배송추적
-		if (self.colorbox.hasClass('popOrderDelivery')) {
-			controller.orderTrackingInfo(
-				self.selPopBtnInfo.info.orderNumber,
-				self.selPopBtnInfo.info.deliveryNumber
-			);
-		}
+		
+		var source = $('#cancel-popup-template').html(),
+		template = win.Handlebars.compile(source),
+		insertElements = $(template(data));
 
-		self.colorbox.find('.btnColor02').on('click', function(e) {
-			e.preventDefault();
-			testResult();
-		});*/
-	}
+		$('#cancel-popup-wrap').empty().addClass(self.opts.cssClass.isLoading).append(insertElements);
+		$('#cancel-popup-wrap').imagesLoaded().always(function() {
+			self.templatesWrap.removeClass(self.opts.cssClass.isLoading);
+			eventManager.triggerHandler(COLORBOX_EVENT.REFRESH);
+			eventManager.triggerHandler(COLORBOX_EVENT.RESIZE);
+		});
+		
+		$(document).trigger('initProfileEditButton');
 
-	function testResult() {
-		//win.alert('임시처리 결과처리 - location.reload');
-		win.location.reload();
+		$('.js-order-cancel-form').click(function(e){
+			e.stopPropagation();
+			var reasonCode = $('#cancelReasonDrop').pVal();
+			var reasonText = $.trim($('#cancelReasonField').pVal());
+			if (reasonCode == '' || reasonText == '') {
+				win.alert('취소 사유를 선택/입력 해주세요.');
+			} else {
+				controller.myConstCancel(self.currentOrderNumber, reasonCode, reasonText);
+			}
+		});
 	}
 
 	function destroyColoboxEvevnts() {
 	}
 
 	function onColorBoxAreaListener(e) {
-		/*
 		switch(e.type) {
 			case COLORBOX_EVENT.COMPLETE:
-				setColoboxEvevnts();
+				if (self.colorbox.hasClass('popOrderCancelRequest')) {
+					self.currentOrderNumber = self.selPopBtnInfo.info.orderNumber;
+					controller.myConstCancelFormRequest(self.selPopBtnInfo.info.orderNumber);
+				}
 				break;
-			case COLORBOX_EVENT.CLEANUP:
-				destroyColoboxEvevnts();
-				break;
-		}*/
+		}
 	}
 };
