@@ -283,13 +283,13 @@ module.exports = function() {
 				if (result.data.listOrderItems) {
 					$.each(result.data.listOrderItems, function(index, orderItems) {
 						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
-						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
+						if (orderItems.deliveryChargePaymentCode == 'SL_DLVY_CHARGE_PAYMENT_04' || orderItems.deliveryCharge == 0) {
+							orderItems.deliveryChargeDesc = '무료';
+						} else {
+							orderItems.deliveryChargeDesc = util.currencyFormat(orderItems.deliveryCharge);
+						}
 						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
 						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
-
-						if (util.isLocal()) {
-							orderItems.productImageUrl = 'https://dev.koloncommon.com/' + orderItems.productImageUrl;
-						}
 
 						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
 						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));

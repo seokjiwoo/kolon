@@ -428,7 +428,7 @@
 			<td>{{saleMemberName}}</td>
 			<td><b>{{productOptionPrice}}</b> 원</td>
 			<td><b>{{quantity}}</b></td>
-			<td><b>{{deliveryCharge}}</b> 원</td>
+			<td>{{{deliveryChargeDesc}}}</td>
 			<td><b>{{discountPrice}}</b> 원</td>
 			<td><b>{{paymentPrice}}</b> 원</td>
 		</tr>
@@ -455,13 +455,13 @@
 			<td colspan="7" class="adrArea">
 				<dl>
 					<dt>수령지 정보</dt>
-					<dd class="adrInfo">
-						<select title="수령지 선택" style="width:212px;" class='addressSelect' id='addressSelect-1'>
+					<dd class="adrInfo" style='width:370px'>
+						<select title="수령지 선택" style="width:275px;" class='addressSelect' id='addressSelect-1'>
 							<option value="" label="" selected="selected">우측 버튼을 눌러 주소를 등록해주세요</option>
 						</select>
 						<a href="/popup/addressBook.html" id='addressBook-1' class="btnSizeS btnColor01 openAddressPopup">새주소</a>
 					</dd>
-					<dd class="adrCon" id='address-1'>
+					<dd class="adrCon" id='address-1' style="width:570px" >
 					</dd>
 				</dl>
 			</td>
@@ -500,7 +500,7 @@
 			<td>{{saleMemberName}}</td>
 			<td><b>{{productOptionPrice}}</b> 원</td>
 			<td><b>{{quantity}}</b></td>
-			<td><b>{{deliveryCharge}}</b> 원</td>
+			<td>{{{deliveryChargeDesc}}}</td>
 			<td><b>{{discountPrice}}</b> 원</td>
 			<td><b>{{paymentPrice}}</b> 원</td>
 		</tr>
@@ -525,13 +525,13 @@
 			<td colspan="7" class="adrArea">
 				<dl>
 					<dt>수령지 정보</dt>
-					<dd class="adrInfo">
-						<select title="수령지 선택" style="width:212px;" class='addressSelect' id='addressSelect-2-{{@index}}'>
+					<dd class="adrInfo" style='width:370px'>
+						<select title="수령지 선택" style="width:275px;" class='addressSelect' id='addressSelect-2-{{@index}}'>
 							<option value="" label="" selected="selected">우측 버튼을 눌러 주소를 등록해주세요</option>
 						</select>
 						<a href="../popup/addressBook.html" id='addressBook-2-{{@index}}' class="btnSizeS btnColor01 openAddressPopup">새주소</a>
 					</dd>
-					<dd class="adrCon" id='address-2-{{@index}}'>
+					<dd class="adrCon" id='address-2-{{@index}}' style="width:570px" >
 					</dd>
 				</dl>
 			</td>

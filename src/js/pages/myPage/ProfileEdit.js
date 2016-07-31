@@ -80,7 +80,6 @@ module.exports = function() {
 			$(window).on('beforeunload', function(){
 				if (confirm("이 페이지를 벗어나면 변경하신 내용이 저장되지 않습니다.\n이전 화면으로 이동하시려면 [확인]을 누르시고, 현재 페이지에 있으시려면 [취소]를 눌러주세요.")) {
 					Cookies.set('profileEditAuth', 'auth', { expires: 1/24 });
-					return false;
 				} else {
 					return false;
 				}

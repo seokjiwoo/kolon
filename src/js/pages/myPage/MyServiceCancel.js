@@ -219,10 +219,6 @@ module.exports = function() {
 						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
 						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
 
-						if (util.isLocal()) {
-							orderItems.productImageUrl = 'https://dev.koloncommon.com/' + orderItems.productImageUrl;
-						}
-
 						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
 						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
 					});
@@ -256,7 +252,7 @@ module.exports = function() {
 					$.each(result.data.listOrderItems, function(index, listOrderItems) {
 						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
 						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
-						listOrderItems.deliveryFreeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFree, 10));
+						listOrderItems.deliveryChargeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryCharge, 10));
 					});
 				}
 

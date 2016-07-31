@@ -54,6 +54,11 @@ module.exports = function() {
 		$('#phone5').val(phoneNumber2[1]);
 		$('#phone6').val(phoneNumber2[2]);
 		$('#extraAddress').removeAttr('disabled');
+		
+		if (data.addressSectionCode == 'BM_ADDR_SECTION_02') {
+			$('#adr1').prop('checked', 'checked');
+			$('#basicAddrFlag').addClass('on');
+		}
 	};
 
 	function findZipCode(e) {

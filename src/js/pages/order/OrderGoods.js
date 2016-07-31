@@ -135,6 +135,12 @@ module.exports = function() {
 				$.each(data.products, function(key, value) {
 					//data.paymentInfo[key+'Desc'] = util.currencyFormat(value);
 					totalDeliveryCharge += value.deliveryCharge;
+					if (value.deliveryCharge == 0) {
+						value.deliveryChargeDesc = '무료';
+					} else {
+						value.deliveryChargeDesc = '<b>'+util.currencyFormat(value.deliveryCharge)+'</b> 원';
+						if (deliveryChargePrepaid == false) value.deliveryChargeDesc += '<br/>(착불)';
+					}
 				});
 				$.each(data.paymentInfo, function(key, value) {
 					data.paymentInfo[key+'Desc'] = util.currencyFormat(value);

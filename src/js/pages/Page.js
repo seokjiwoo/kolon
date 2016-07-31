@@ -215,7 +215,11 @@ module.exports = function() {
 					onOpen: function() {
 						$('#checkPwForm').submit(function(e){
 							e.preventDefault();
-							loginController.confirmPassword($('#checkPw').pVal());
+							if ($('#checkPw').pVal() == '') {
+								alert('비밀번호를 입력해 주세요.');
+							} else {
+								loginController.confirmPassword($('#checkPw').pVal());
+							}
 						});
 					},
 					onSubmit: function() {
@@ -275,7 +279,7 @@ module.exports = function() {
 				location.href = '/myPage/profileEdit.html';
 				break;
 			case 400:
-				alert(result.message);
+				alert('비밀번호가 일치하지 않습니다.');
 				break;
 		}
 	};
@@ -448,7 +452,7 @@ module.exports = function() {
 			left : null,
 			top : null,
 			width : 770,
-			height : 750,
+			height : 770,
 			menubar : 'no',
 			status : 'no',
 			resizable : 'no',

@@ -353,13 +353,13 @@ module.exports = function() {
 						orderItems.orderDate = moment(orderItems.orderDateTime).format('YYYY.MM.DD');
 						
 						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
-						orderItems.deliveryChargeDesc = util.currencyFormat(parseInt(orderItems.deliveryCharge, 10));
+						if (orderItems.deliveryChargePaymentCode == 'SL_DLVY_CHARGE_PAYMENT_04' || orderItems.deliveryCharge == 0) {
+							orderItems.deliveryChargeDesc = '무료';
+						} else {
+							orderItems.deliveryChargeDesc = util.currencyFormat(orderItems.deliveryCharge);
+						}
 						orderItems.productOptionPriceDesc = util.currencyFormat(parseInt(orderItems.productOptionPrice, 10));
 						orderItems.discountApplyAmtDesc = util.currencyFormat(parseInt(orderItems.discountApplyAmt, 10));
-
-						if (util.isLocal()) {
-							orderItems.productImageUrl = 'https://dev.koloncommon.com/' + orderItems.productImageUrl;
-						}
 
 						orderItems.vxTotalPaymentPrice = orderItems.productPrice - orderItems.discountAmt;
 						orderItems.vxTotalPaymentPriceDesc = util.currencyFormat(parseInt(orderItems.vxTotalPaymentPrice, 10));
@@ -384,10 +384,14 @@ module.exports = function() {
 				result.data.discountPriceDesc = util.currencyFormat(parseInt(result.data.discountPriceDesc, 10));
 
 				if (result.data.listOrderItems) {
-					$.each(result.data.listOrderItems, function(index, listOrderItems) {
-						listOrderItems.itemPriceDesc = util.currencyFormat(parseInt(listOrderItems.itemPrice, 10));
-						listOrderItems.discountPriceDesc = util.currencyFormat(parseInt(listOrderItems.discountPrice, 10));
-						listOrderItems.deliveryFreeDesc = util.currencyFormat(parseInt(listOrderItems.deliveryFree, 10));
+					$.each(result.data.listOrderItems, function(index, orderItems) {
+						orderItems.itemPriceDesc = util.currencyFormat(parseInt(orderItems.itemPrice, 10));
+						orderItems.discountPriceDesc = util.currencyFormat(parseInt(orderItems.discountPrice, 10));
+						if (orderItems.deliveryChargePaymentCode == 'SL_DLVY_CHARGE_PAYMENT_04' || orderItems.deliveryCharge == 0) {
+							orderItems.deliveryChargeDesc = '무료';
+						} else {
+							orderItems.deliveryChargeDesc = util.currencyFormat(orderItems.deliveryCharge);
+						}
 					});
 				}
 

@@ -187,13 +187,12 @@ module.exports = function() {
 			eachCartItem.addPriceDesc = util.currencyFormat(eachCartItem.addPrice);
 			eachCartItem.basePriceDesc = util.currencyFormat(eachCartItem.basePrice);
 			eachCartItem.discountPriceDesc = util.currencyFormat(eachCartItem.discountPrice);
-			eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
-			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
-			
-
-			if (util.isLocal()) {
-				eachCartItem.productImageUrl = 'https://dev.koloncommon.com' + eachCartItem.productImageUrl;
+			if (eachCartItem.deliveryChargePaymentCode == 'SL_DLVY_CHARGE_PAYMENT_04' || eachCartItem.deliveryCharge == 0) {
+				eachCartItem.deliveryChargeDesc = '무료';
+			} else {
+				eachCartItem.deliveryChargeDesc = util.currencyFormat(eachCartItem.deliveryCharge);
 			}
+			eachCartItem.salePriceDesc = util.currencyFormat(eachCartItem.salePrice);
 		});
 
 		var source = self.template.html(),

@@ -93,7 +93,6 @@ module.exports = function() {
 
 		stickyBar.init();
 
-		productController.detailCountAdd();
 		$(window).on('beforeunload', function(){
 			productController.detailCountSubtract();
 		});
