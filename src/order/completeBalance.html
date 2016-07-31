@@ -16,7 +16,6 @@
 		<!-- @@include ../_template/footer.html -->
 	</div>
 
-
 <script id="order-complete-templates" type="text/x-handlebars-template">
 	{{!-- order-complete-templates --}}
 	<h2 class="secTit setTitC">주문완료</h2>
@@ -38,12 +37,19 @@
 						<div>
 							<ul class="priceList">
 								<li>
-									<em>선결제금액</em>
-									<span class="price"><b>{{constPaymentInfo.totalPaymentPriceDesc}}</b> 원</span>
+									<em>선결제/할부금액</em>
+									{{#vxSwitch constPaymentInfo.balancePaymentPrice.installmentPaymentYn}}
+										{{#vxCase "N" break=true}}
+										<span class="price"><b>선결제금액 {{advancePriceDesc}}</b> 원</span>
+										{{/vxCase}}
+										{{#vxCase "Y" break=true}}
+										<span class="price price2line"><b>선결제금액 {{constPaymentInfo.balancePaymentPrice.advancePrice}}</b> 원<b><br>할부금액 {{constPaymentInfo.balancePaymentPrice.installmentPrice}}</b> 원</span>
+										{{/vxCase}}
+									{{/vxSwitch}}
 								</li>
 								<li>
 									<em>총 할인금액</em>
-									<span class="point"><i>{{constPaymentInfo.totalDiscountPriceDesc}} P</i></span>
+									<span class="point"><i> P</i></span>
 								</li>
 							</ul>
 						</div>
@@ -52,7 +58,7 @@
 				<dl class="payS">
 					<dt><div>총 결제금액</div></dt>
 					<dd>
-						<div><span class="price"><b>{{constPaymentInfo.advancePriceDesc}}</b> 원</span></div>
+						<div><span class="price"><b>{{constPaymentInfo.balancePaymentPrice.totalPaymentPrice}}</b> 원</span></div>
 					</dd>
 				</dl>
 			</div>
@@ -73,26 +79,6 @@
 			</table>
 		</div>
 	</div>
-	<!-- // 결제 정보 -->
-	<h3 class="subTit">적립예정 포인트</h3>
-	<div class="orderCont">
-		<div class="tbSet">
-			<table class="tbLThC">
-				<caption>적립예정 포인트에 관한 기본, 시점, 구매 확정 시 적립에 관한 정보를 제공합니다.</caption>
-				<colgroup>
-					<col style="width:15%;"/><col style="width:35%;"/><col style="width:15%;"/><col style="width:35%;"/>
-				</colgroup>
-				<tbody>
-					<tr>
-						<th scope="row">기본 적립</th>
-						<td><span class="pointRed">{{constPaymentInfo.savingPointDesc}}</span> P</td>
-						<th scope="row">적립 시점</th>
-						<td>구매확정 시 적립</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
 	<!-- 주문상품내역 -->
 	<h3 class="subTit">주문상품내역</h3>
 	<div class="orderCont">
@@ -108,9 +94,6 @@
 							<th scope="col">상품정보</th>
 							<th scope="col">상품금액</th>
 							<th scope="col">판매자</th>
-							<th scope="col">실측 후 금액</th>
-							<th scope="col">할인금액</th>
-							<th scope="col">선결제금액</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -128,9 +111,6 @@
 							</td>
 							<td><b>{{constExpectPriceDesc}}</b> 원</td>
 							<td>{{saleMemberName}}</td>
-							<td><b>{{constExpectPrice}}</b> 원</td>
-							<td><b>- {{discountPriceDesc}}</b> 원</td>
-							<td><b>???</b> 원</td>
 						</tr>
 						{{/each}}
 					</tbody>
@@ -145,20 +125,19 @@
 							<tr>
 								<th scope="row">시공대상</th>
 								<td>{{constOrderInfo.roadBaseAddress}}</td>
-								<th scope="row">실측 후 금액<br/>(상품 금액  ± 실측  후  추가금액) </th>
-								<td><span class="price"><b></b>원</span></td>
+								<th rowspan="3" scope="row">실측 후 금액<br/>(상품 금액  ± 실측 후 변동금액) </th>
+								<td rowspan="3"><span class="price"><b>{{constPaymentInfo.balancePaymentPrice.estimatePrice}}</b>원</span></td>
 							</tr>
 							<tr>
 								<th scope="row">예상기간</th>
-								<td>0000.00.00 ~ 0000.00.00 (0일)</td>
-								<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
-								<td rowspan="2"><span class="price"><b>{{constPaymentInfo.estimatePriceDesc}}</b>원</span></td>
+								<td>시작일(API) ~ 종료일(API) (걸리는시간(API)일)</td>
+								<!--<th scope="row" rowspan="2">견적금액<br/>(실측 후 총 금액 – 할인 금액)</th>
+								<td rowspan="2"><span class="price"><b>{{surveyPriceDesc}}</b>원</span></td>-->
 							</tr>
 							<tr>
 								<th scope="row">시공업체</th>
 								<td>
-									<!--<span class="companyInfo">김석우  |  (주)가인인테리어</span>
-									<a href="#" class="btnSizeS btnColor01 btnPop">시공업체 보기</a>-->
+									<span class="companyInfo">담당자명(API) | 업체명(API)</span><a href="/manager/brand.html?expertNumber={{saleMemberNumber}}" class="btnSizeS btnColor01">시공업체 보기</a>
 								</td>
 							</tr>
 						</tbody>
